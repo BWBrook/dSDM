@@ -1,0 +1,15 @@
+project:
+  title: "dSDM"
+  type: website
+  output-dir: outputs/quarto
+
+execute:
+  freeze: auto
+  echo: false
+  warning: false
+  message: false
+
+format:
+  html:
+    theme: cosmo
+    toc: true

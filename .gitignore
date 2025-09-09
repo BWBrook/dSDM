@@ -1,53 +1,37 @@
-# History files
+# R / RStudio
+.Rproj.user
 .Rhistory
-.Rapp.history
-
-# Session Data files
 .RData
-.RDataTmp
-
-# User-specific files
 .Ruserdata
+.Rprofile.user
+.DS_Store
 
-# Example code in package build process
-*-Ex.R
+# renv
+renv/library/
+renv/staging/
 
-# Output files from R CMD build
-/*.tar.gz
-/*.zip
+# targets
+_targets/
+# optional frozen outputs from Quarto later
+.quarto/_freeze/
+.quarto/
+docs/_site/
 
-# Output files from R CMD check
-/*.Rcheck/
+# data
+data/
+data-raw/
+data-raw/cache/
+inst/extdata/*.zip
+inst/extdata/*.gz
 
-# RStudio files
-.Rproj.user/
+# build / checks
+.Rcheck/
 
-# produced vignettes
-vignettes/*.html
-vignettes/*.pdf
-
-# OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
-.httr-oauth
-
-# knitr and R markdown default cache directories
-*_cache/
-/cache/
-
-# Temporary files created by R markdown
-*.utf8.md
-*.knit.md
-
-# R Environment Variables
-.Renviron
-
-# pkgdown site
-docs/
-
-# translation temp files
-po/*~
-
-# RStudio Connect folder
-rsconnect/
+# Global CSV ignore was masking versioned examples. Keep data/ ignored but
+# explicitly allow tracked sample/manifests.
+*.csv
+!inst/extdata/*.csv
+!metadata/*.csv
 
 # renv
 renv/library/
@@ -56,8 +40,14 @@ renv/staging/
 # output files
 outputs/
 
+/*.tar.gz
+/*.zip
+
+vignettes/*.html
+vignettes/*.pdf
+
 # Quarto / rmarkdown artefacts
-*.html                  # rendered notebooks
+*.html
 *.knit.md
 /report_files
 *.tex
@@ -65,9 +55,11 @@ outputs/
 *.aux
 *.toc
 *.pdf
+a*.md
 
 # _targets
-/_targets/* 
+/_targets/*
+/docs/ 
 
 # Misc
 .DS_Store
@@ -78,3 +70,4 @@ outputs/
 *.js
 *.css
 *.woff
+/Alroy/

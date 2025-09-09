@@ -1,0 +1,22 @@
+BootStrap: docker
+From: rocker/r2u:jammy
+
+%post
+    # Install system dependencies for geospatial work
+    apt-get update && apt-get install -y --no-install-recommends \
+        gdal-bin libgdal-dev libgeos-dev libproj-dev libudunits2-dev \
+        && rm -rf /var/lib/apt/lists/*
+
+    # Copy project files into image (handled in %files section)
+
+    # Bootstrap dependencies (restore if renv.lock exists, otherwise init + snapshot)
+    R -q -e "source('scripts/bootstrap.R')"
+
+%files
+    . /project
+
+%environment
+    export R_LIBS_USER=/usr/local/lib/R/site-library
+
+%runscript
+    exec R -q -e "targets::tar_make()"

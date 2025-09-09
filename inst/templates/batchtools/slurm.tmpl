@@ -1,0 +1,19 @@
+#!/bin/bash
+# Template for batchtools SLURM backend
+
+## Job name: <%= job.name %>
+#SBATCH --job-name=<%= job.name %>
+#SBATCH --output=<%= log.file %>
+#SBATCH --error=<%= log.file %>
+
+## Resources (override via config/env as needed)
+#SBATCH --time=<%= resources$walltime %>
+#SBATCH --cpus-per-task=<%= resources$ncpus %>
+#SBATCH --mem=<%= resources$mem %>M
+<% if (!is.null(resources$partition)) { %>#SBATCH --partition=<%= resources$partition %><% } %>
+
+## Load modules if required (edit for your cluster)
+# module load R/4.3
+
+## Execute
+Rscript -e "future.batchtools::do_job_collection()"
