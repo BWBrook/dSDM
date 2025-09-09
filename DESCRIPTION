@@ -1,0 +1,46 @@
+Package: dSDM
+Title: Species distribution modelling with ML and DL
+Version: 0.0.0.9000
+Authors@R: c(person(given = "Barry", family = "Brook", role = c("aut","cre")))
+Description: Reproducible dSDM compendium using 'renv', 'targets', 'Quarto'. It 
+    is structured as an R package so it can be loaded with 'devtools' or 
+    'pkgload' and used in a 'targets' pipeline.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends: R (>= 4.5)
+Imports:
+    targets,
+    tarchetypes,
+    dplyr,
+    readr,
+    purrr,
+    tidyr,
+    sf,
+    terra,
+    arrow,
+    duckdb,
+    config,
+    qs,
+    lgr,
+    progressr,
+    vroom,
+    yaml,
+    checkmate,
+    janitor,
+    dotenv
+Suggests:
+    testthat,
+    lintr,
+    styler,
+    quarto,
+    roxygen2,
+    rcmdcheck,
+    devtools,
+    future,
+    future.batchtools,
+    pak,
+    renv,
+    pkgdown
+Roxygen: list(markdown = TRUE)
+Config/testthat/edition: 3

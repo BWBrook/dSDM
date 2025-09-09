@@ -1,0 +1,17 @@
+default:
+  data_dir: "data"
+  db_path: "data/interim/local.duckdb"
+  sample_frac: 1.0
+
+local:
+  inherits: default
+
+ci:
+  inherits: default
+  sample_frac: 0.02
+
+slurm:
+  inherits: default
+  workers: 64
+  time: "06:00:00"
+  mem_gb: 4

@@ -1,0 +1,7 @@
+cff-version: 1.2.0
+title: "dSDM paper"
+authors:
+  - family-names: Brook
+    given-names: Barry
+message: "Please cite as below."
+version: 0.0.0.9000
