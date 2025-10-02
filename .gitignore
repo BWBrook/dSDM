@@ -55,7 +55,7 @@ vignettes/*.pdf
 *.aux
 *.toc
 *.pdf
-a*.md
+AGENTS.md
 
 # _targets
 /_targets/*
@@ -70,4 +70,4 @@ a*.md
 *.js
 *.css
 *.woff
-/Alroy/
+*.Renviron
