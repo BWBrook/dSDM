@@ -1,0 +1,12 @@
+---
+references:
+  - id: dsdmDraftSource
+    citation-key: dsdmDraftSource
+    type: manuscript
+    title: A deep-learning advance for species distribution modelling
+    author:
+      - family: Brook
+        given: Barry W.
+    issued:
+      - year: 2026
+...

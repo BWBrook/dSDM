@@ -1,0 +1,65 @@
+default_profile: draft
+
+profiles:
+  draft:
+    description: Draft manuscript profile for the converted early dSDM paper draft.
+    manuscript_sources:
+      - ../text/main.md
+      - ../text/figures.md
+    lint_sources:
+      - ../text/figures.md
+    author_metadata: ../authors.yaml
+    bibliography: ../references/refs.yaml
+    csl: ../csl/oikos.csl
+    journal: Oikos
+    csl_search_dirs:
+      - ../csl
+    output_dir: ../build
+    output_stem: dsdm_manuscript
+    page_numbers: lower_right
+    line_spacing: 1.5
+    line_numbering: continuous
+    references_new_page: true
+    figures:
+      placement: captions_page
+      caption_position: top
+      placeholder_id: figures
+    margins:
+      unit: cm
+      paper_size: a4
+      top: 2.0
+      bottom: 2.0
+      left: 2.5
+      right: 2.5
+
+  submission:
+    description: Strict submission-readiness profile; enable after citation and reference cleanup.
+    manuscript_sources:
+      - ../text/main.md
+      - ../text/figures.md
+    lint_sources:
+      - ../text/main.md
+      - ../text/figures.md
+    author_metadata: ../authors.yaml
+    bibliography: ../references/refs.yaml
+    csl: ../csl/oikos.csl
+    journal: Oikos
+    csl_search_dirs:
+      - ../csl
+    output_dir: ../build
+    output_stem: dsdm_manuscript
+    page_numbers: lower_right
+    line_spacing: 1.5
+    line_numbering: continuous
+    references_new_page: true
+    figures:
+      placement: captions_page
+      caption_position: top
+      placeholder_id: figures
+    margins:
+      unit: cm
+      paper_size: a4
+      top: 2.0
+      bottom: 2.0
+      left: 2.5
+      right: 2.5
