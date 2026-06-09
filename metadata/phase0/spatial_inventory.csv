@@ -1,0 +1,9 @@
+path,member,spatial_kind,driver,crs,extent,dimensions_or_features,bands_or_layers,case_study,notes
+data/input/spatial_polygons.zip,,archive,ZIP,,,12,2,se_birds,spatial archive with shapefile members
+data/input/spatial_polygons.zip,spatial_polygons/ibra7_subregions/ibra7_subregions.shp,vector,ESRI Shapefile,4283,"(72.577376, -54.776993) - (167.998140, -9.141290)",419,ibra7_subregions,se_birds,Polygon
+data/input/spatial_polygons.zip,spatial_polygons/study_area/study_area.shp,vector,ESRI Shapefile,4283,"(132.089783, -43.860400) - (153.638340, -23.088638)",1,study_area,se_birds,Polygon
+temp/data/spatial/human_footprint_se.tif,,raster,GTiff,9122,"-179.9999928,-89.9189715 to 180.0081965,89.9309565",43201x21582,1,se_birds,
+temp/data/spatial/human_footprint_tas.tif,,raster,GTiff,4326,"143.82,-43.7425 to 148.5,-39.2025",468x454,1,tas_mammals,
+temp/data/spatial/offshore_islands.kml,,vector,LIBKML,4326,"(143.774879, -43.563362) - (148.545841, -39.534543)",8,Import,tas_mammals,Unknown (any)
+temp/data/spatial/tas_stack.tif,,raster,GTiff,4326,"143.82,-43.7425 to 148.5,-39.1925",468x455,32,tas_mammals,
+temp/data/spatial/tasmania_coast.shp,,vector,ESRI Shapefile,4326,"(143.819440, -43.860400) - (148.498790, -39.198470)",1,tasmania_coast,tas_mammals,Polygon

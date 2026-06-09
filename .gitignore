@@ -24,8 +24,13 @@ data-raw/cache/
 inst/extdata/*.zip
 inst/extdata/*.gz
 
+# untracked staging/context material during refactor
+temp/
+
 # build / checks
 .Rcheck/
+__pycache__/
+*.py[cod]
 
 # Global CSV ignore was masking versioned examples. Keep data/ ignored but
 # explicitly allow tracked sample/manifests.
@@ -59,7 +64,6 @@ AGENTS.md
 
 # _targets
 /_targets/*
-/docs/ 
 
 # Misc
 .DS_Store
@@ -71,3 +75,13 @@ AGENTS.md
 *.css
 *.woff
 *.Renviron
+
+# Tracked manuscript source tree; generated manuscript outputs stay local.
+!manuscript/
+!manuscript/**
+manuscript/build/
+manuscript/.cache/
+
+# Tracked project metadata and inventory manifests.
+!metadata/
+!metadata/**
