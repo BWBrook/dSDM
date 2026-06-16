@@ -1,0 +1,28 @@
+{
+  "fixture_kind": "synthetic_decision_manifest",
+  "fixture_note": "Synthetic only. Unresolved Barry-level decisions must block real stages.",
+  "manifest_id": "syn_decisions_unresolved",
+  "decisions": [
+    {
+      "id": "P1-D001",
+      "owner": "Barry",
+      "status": "unresolved",
+      "value": null,
+      "notes": "Synthetic unresolved focal species decision."
+    },
+    {
+      "id": "P1-D002",
+      "owner": "Barry",
+      "status": "unresolved",
+      "value": null,
+      "notes": "Synthetic unresolved Thylogale decision placeholder."
+    },
+    {
+      "id": "P1-D007",
+      "owner": "executor",
+      "status": "resolved",
+      "value": "raw snapshots plus checksums",
+      "notes": "Synthetic executor-level versioning decision."
+    }
+  ]
+}

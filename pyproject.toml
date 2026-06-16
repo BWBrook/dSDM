@@ -1,0 +1,13 @@
+[project]
+name = "dsdm-phase1-contracts"
+version = "0.0.0"
+description = "Minimal Phase 1 contract validators for the dSDM rebuild."
+requires-python = ">=3.11"
+dependencies = []
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]

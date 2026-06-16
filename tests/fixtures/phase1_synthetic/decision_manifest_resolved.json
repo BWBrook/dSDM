@@ -1,0 +1,28 @@
+{
+  "fixture_kind": "synthetic_decision_manifest",
+  "fixture_note": "Synthetic only. Values are fake and do not decide real science.",
+  "manifest_id": "syn_decisions_resolved",
+  "decisions": [
+    {
+      "id": "P1-D001",
+      "owner": "Barry",
+      "status": "resolved",
+      "value": "synthetic species contract only",
+      "notes": "Synthetic resolution for tests only."
+    },
+    {
+      "id": "P1-D002",
+      "owner": "Barry",
+      "status": "resolved",
+      "value": "synthetic placeholder only",
+      "notes": "Synthetic resolution for tests only."
+    },
+    {
+      "id": "P1-D007",
+      "owner": "executor",
+      "status": "resolved",
+      "value": "raw snapshots plus checksums",
+      "notes": "Synthetic executor-level versioning decision."
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "fixture_kind": "synthetic_source_manifest",
+  "fixture_note": "Synthetic only. Checksums cover synthetic fixture files, not real data.",
+  "manifest_id": "syn_source_manifest",
+  "files": [
+    {
+      "path": "species_contract_resolved.json",
+      "sha256": "f12970cdf29e8efc01467d28be09dd87ba9804ee068db0ee1591a50e8018a3e1"
+    },
+    {
+      "path": "decision_manifest_resolved.json",
+      "sha256": "d0622672516e5c455d2591bfad5333940fbda9d8319b4eae2b2ab2ef6128da68"
+    },
+    {
+      "path": "source_rows.json",
+      "sha256": "78d86dbc400f4e6047a6baac324620c36bee8939b6c45c4c07f178ee30bddc40"
+    }
+  ]
+}

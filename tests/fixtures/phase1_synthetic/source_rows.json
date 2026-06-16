@@ -1,0 +1,62 @@
+{
+  "fixture_kind": "synthetic_source_rows",
+  "fixture_note": "Synthetic only. Coordinates are invented and not real site locations.",
+  "rows": [
+    {
+      "run_id": "syn_run_001",
+      "row_id": "syn_row_presence_001",
+      "species_id": "syn_species_001",
+      "scientific_name": "Fictomys contracta",
+      "source": "synthetic_ala",
+      "source_record_id": "SYN_ALA_001",
+      "source_dataset_id": "SYN_ALA",
+      "source_dataset_name": "Synthetic ALA-like fixture",
+      "lon_raw": 100.001,
+      "lat_raw": -40.001,
+      "lon_clean": 100.001,
+      "lat_clean": -40.001,
+      "grid_cell_id": "SYN_GRID_001",
+      "pa": 1,
+      "pa_type": "presence",
+      "decision_manifest_id": "syn_decisions_resolved",
+      "input_manifest_id": "syn_source_manifest"
+    },
+    {
+      "run_id": "syn_run_001",
+      "row_id": "syn_row_true_absence_001",
+      "species_id": "syn_species_001",
+      "scientific_name": "Fictomys contracta",
+      "source": "synthetic_camera",
+      "source_record_id": "SYN_CAM_001",
+      "source_dataset_id": "SYN_CAMERA",
+      "source_dataset_name": "Synthetic camera fixture",
+      "camera_site_id": "SYN_SITE_001",
+      "survey_id": "SYN_SURVEY_001",
+      "survey_effort": "synthetic_effort_only",
+      "grid_cell_id": "SYN_GRID_002",
+      "pa": 0,
+      "pa_type": "true_absence",
+      "absence_basis": "synthetic_true_absence_rule",
+      "true_absence_rule_id": "SYN_TRUE_ABSENCE_RULE",
+      "decision_manifest_id": "syn_decisions_resolved",
+      "input_manifest_id": "syn_source_manifest"
+    },
+    {
+      "run_id": "syn_run_001",
+      "row_id": "syn_row_pseudoabsence_001",
+      "species_id": "syn_species_002",
+      "scientific_name": "Imagomeles absentia",
+      "source": "synthetic_background",
+      "source_record_id": "SYN_BG_001",
+      "source_dataset_id": "SYN_BACKGROUND",
+      "source_dataset_name": "Synthetic background fixture",
+      "grid_cell_id": "SYN_GRID_003",
+      "pa": 0,
+      "pa_type": "pseudoabsence",
+      "absence_basis": "synthetic_pseudoabsence_rule",
+      "pseudoabsence_rule_id": "SYN_PSEUDOABSENCE_RULE",
+      "decision_manifest_id": "syn_decisions_resolved",
+      "input_manifest_id": "syn_source_manifest"
+    }
+  ]
+}

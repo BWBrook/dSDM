@@ -1,0 +1,28 @@
+{
+  "fixture_kind": "synthetic_species_contract",
+  "fixture_note": "Synthetic only. Does not describe real species.",
+  "species": [
+    {
+      "species_id": "syn_species_001",
+      "scientific_name": "Fictomys contracta",
+      "accepted_name": "Fictomys contracta",
+      "common_name": "Synthetic contract mammal",
+      "class": "Mammalia",
+      "include_phase1": true,
+      "decision_status": "resolved",
+      "decision_reference": "P1-D001",
+      "notes": "Synthetic included species."
+    },
+    {
+      "species_id": "syn_species_002",
+      "scientific_name": "Imagomeles absentia",
+      "accepted_name": "Imagomeles absentia",
+      "common_name": "Synthetic absence mammal",
+      "class": "Mammalia",
+      "include_phase1": true,
+      "decision_status": "resolved",
+      "decision_reference": "P1-D001",
+      "notes": "Synthetic included species."
+    }
+  ]
+}

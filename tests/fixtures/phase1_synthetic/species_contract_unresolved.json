@@ -1,0 +1,17 @@
+{
+  "fixture_kind": "synthetic_species_contract",
+  "fixture_note": "Synthetic only. Does not describe real species.",
+  "species": [
+    {
+      "species_id": "syn_species_unresolved_001",
+      "scientific_name": "Fictomys undecided",
+      "accepted_name": "Fictomys undecided",
+      "common_name": "Synthetic undecided mammal",
+      "class": "Mammalia",
+      "include_phase1": true,
+      "decision_status": "unresolved",
+      "decision_reference": "P1-D001",
+      "notes": "Synthetic unresolved species membership."
+    }
+  ]
+}
