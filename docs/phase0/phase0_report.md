@@ -11,9 +11,9 @@ off that this evidence is sufficient for detailed Phase 1 planning.
 ## Known facts
 
 - Repository root: `/Users/bwbrook/papers/dSDM`
-- Inventory files counted: 89
-- Git states in inventory: {'tracked': 20, 'ignored': 48, 'untracked': 21}
-- Main roles in inventory: {'repo_file': 5, 'repo_scaffold': 13, 'input_payload': 1, 'phase0_doc': 3, 'plan_doc': 1, 'planning_doc': 2, 'manuscript_source': 9, 'metadata': 1, 'phase0_manifest': 4, 'phase0_helper': 2, 'legacy_reference': 3, 'legacy_processed_data': 14, 'legacy_spatial_data': 8, 'legacy_code': 22, 'source_code': 1}
+- Inventory files counted: 94
+- Git states in inventory: {'tracked': 46, 'ignored': 48}
+- Main roles in inventory: {'repo_file': 5, 'repo_scaffold': 13, 'input_payload': 1, 'planning_doc': 6, 'phase0_doc': 4, 'plan_doc': 1, 'manuscript_source': 9, 'metadata': 1, 'phase0_manifest': 4, 'phase0_helper': 2, 'legacy_reference': 3, 'legacy_processed_data': 14, 'legacy_spatial_data': 8, 'legacy_code': 22, 'source_code': 1}
 - Legacy R scripts inventoried: 22
 - Legacy categories: {'dsdm_preprocess': 1, 'dsdm_tuning': 1, 'dsdm_transfer': 4, 'dsdm_training': 1, 'evaluation': 2, 'dsdm_helpers': 1, 'unrelated_scratch': 1, 'data_acquisition': 1, 'point_processing': 1, 'data_combination': 1, 'spatial_folds': 1, 'predictor_formatting': 1, 'baseline_ml': 3, 'baseline_ml_helpers': 1, 'data_helpers': 1, 'orchestration': 1}
 - Tabular resources inventoried: 20
@@ -71,23 +71,7 @@ off that this evidence is sufficient for detailed Phase 1 planning.
 ## Current git status excerpt
 
 ```text
-M .gitignore
- D src/0_galah_ALA.r
- D src/1_process_point_data.R
- D src/1a_tas_sdm_data_combine.r
- D src/2_tas_sdm_data_cv_split.r
- D src/3_create_sdm_data.R
- D src/4a_ml_randomForest.R
- D src/4b_ml_ANN.R
- D src/4c_ml_ensemble.R
- D src/8_model_eval.R
- D src/modelling_functions.R
- D src/sdm_data_func.R
- D src/z_execute.R
-?? docs/
-?? manuscript/
-?? metadata/phase0/
-?? scripts/
+!! .DS_Store
 !! data/
 !! manuscript/build/
 !! scripts/__pycache__/
