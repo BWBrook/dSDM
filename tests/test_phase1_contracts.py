@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import copy
 import json
 import sys
 import unittest
@@ -12,6 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 FIXTURE_DIR = ROOT / "tests" / "fixtures" / "phase1_synthetic"
 sys.path.insert(0, str(ROOT / "src"))
 
+import dsdm_phase1  # noqa: E402
 from dsdm_phase1.contracts import (  # noqa: E402
     ValidationError,
     validate_decision_manifest,
@@ -169,6 +171,134 @@ class Phase1ContractTests(unittest.TestCase):
             validate_source_contracts(contracts)
 
         self.assertIn("SHA-256 hex digest", str(caught.exception))
+
+
+class AcquisitionDryRunTests(unittest.TestCase):
+    def valid_inputs(self) -> dict[str, dict]:
+        return {
+            "species_decision_manifest": load_fixture("decision_manifest_resolved.json"),
+            "species_contract": load_fixture("species_contract_resolved.json"),
+            "source_decision_manifest": load_fixture(
+                "decision_manifest_source_resolved.json"
+            ),
+            "source_contracts": load_fixture("source_contracts_resolved.json"),
+        }
+
+    def test_unresolved_source_decisions_block_dry_run_summary(self) -> None:
+        inputs = self.valid_inputs()
+        inputs["source_decision_manifest"] = load_fixture(
+            "decision_manifest_source_unresolved.json"
+        )
+
+        with self.assertRaises(ValidationError) as caught:
+            dsdm_phase1.build_acquisition_dry_run_summary(
+                run_id="syn_run_goal_005",
+                **inputs,
+            )
+
+        message = str(caught.exception)
+        self.assertIn("P1-D007", message)
+        self.assertIn("P1-D008", message)
+        self.assertIn("P1-D009", message)
+
+    def test_unresolved_species_contract_blocks_dry_run_summary(self) -> None:
+        inputs = self.valid_inputs()
+        inputs["species_contract"] = load_fixture("species_contract_unresolved.json")
+
+        with self.assertRaises(ValidationError) as caught:
+            dsdm_phase1.build_acquisition_dry_run_summary(
+                run_id="syn_run_goal_005",
+                **inputs,
+            )
+
+        self.assertIn("unresolved decision status", str(caught.exception))
+
+    def test_invalid_source_contracts_block_dry_run_summary(self) -> None:
+        inputs = self.valid_inputs()
+        inputs["source_contracts"] = load_fixture("source_contracts_unsafe_path.json")
+
+        with self.assertRaises(ValidationError) as caught:
+            dsdm_phase1.build_acquisition_dry_run_summary(
+                run_id="syn_run_goal_005",
+                **inputs,
+            )
+
+        self.assertIn("safe relative path", str(caught.exception))
+
+    def test_valid_synthetic_inputs_produce_deterministic_dry_run_summary(self) -> None:
+        inputs = self.valid_inputs()
+        missing_source_path = FIXTURE_DIR / "synthetic_sources" / "syn_ala_snapshot.json"
+        self.assertFalse(missing_source_path.exists())
+
+        first = dsdm_phase1.build_acquisition_dry_run_summary(
+            run_id="syn_run_goal_005",
+            **copy.deepcopy(inputs),
+        )
+        second = dsdm_phase1.build_acquisition_dry_run_summary(
+            run_id="syn_run_goal_005",
+            **copy.deepcopy(inputs),
+        )
+
+        expected = {
+            "run_id": "syn_run_goal_005",
+            "stage": "synthetic_acquisition_manifest_dry_run",
+            "status": "ready_for_mocked_acquisition",
+            "decision_manifest_ids": {
+                "species_contract": "syn_decisions_resolved",
+                "source_contracts": "syn_source_decisions_resolved",
+            },
+            "required_decisions": [
+                "P1-D001",
+                "P1-D002",
+                "P1-D007",
+                "P1-D008",
+                "P1-D009",
+            ],
+            "species_count": 2,
+            "included_species_ids": ["syn_species_001", "syn_species_002"],
+            "source_ids": ["syn_ala_contract", "syn_camera_contract"],
+            "source_types": ["ala_occurrence", "camera_trap"],
+            "source_checksums": {
+                "syn_ala_contract": "1111111111111111111111111111111111111111111111111111111111111111",
+                "syn_camera_contract": "2222222222222222222222222222222222222222222222222222222222222222",
+            },
+            "licenses": {
+                "syn_ala_contract": "synthetic-license-placeholder",
+                "syn_camera_contract": "synthetic-license-placeholder",
+            },
+            "sensitivities": {
+                "syn_ala_contract": "synthetic-not-sensitive",
+                "syn_camera_contract": "synthetic-not-sensitive",
+            },
+            "sources": [
+                {
+                    "source_id": "syn_ala_contract",
+                    "source_type": "ala_occurrence",
+                    "decision_references": ["P1-D007"],
+                    "checksum": {
+                        "algorithm": "sha256",
+                        "value": "1111111111111111111111111111111111111111111111111111111111111111",
+                    },
+                    "license": "synthetic-license-placeholder",
+                    "sensitivity": "synthetic-not-sensitive",
+                    "local_path": "synthetic_sources/syn_ala_snapshot.json",
+                },
+                {
+                    "source_id": "syn_camera_contract",
+                    "source_type": "camera_trap",
+                    "decision_references": ["P1-D008", "P1-D009"],
+                    "checksum": {
+                        "algorithm": "sha256",
+                        "value": "2222222222222222222222222222222222222222222222222222222222222222",
+                    },
+                    "license": "synthetic-license-placeholder",
+                    "sensitivity": "synthetic-not-sensitive",
+                    "local_path": "synthetic_sources/syn_camera_source.json",
+                },
+            ],
+        }
+        self.assertEqual(first, expected)
+        self.assertEqual(second, expected)
 
 
 if __name__ == "__main__":
