@@ -49,6 +49,29 @@ REQUIRED_ROW_PROVENANCE_FIELDS = (
 
 ALLOWED_PA_TYPES = {"presence", "true_absence", "pseudoabsence"}
 
+ALLOWED_SOURCE_TYPES = {"ala_occurrence", "camera_trap"}
+
+REQUIRED_SOURCE_CONTRACT_FIELDS = (
+    "source_id",
+    "source_type",
+    "decision_references",
+    "local_path",
+    "checksum",
+    "license",
+    "sensitivity",
+    "provenance",
+)
+
+SOURCE_TYPE_DECISIONS = {
+    "ala_occurrence": ("P1-D007",),
+    "camera_trap": ("P1-D008", "P1-D009"),
+}
+
+SOURCE_TYPE_REQUIRED_BLOCKS = {
+    "ala_occurrence": ("versioning",),
+    "camera_trap": ("authority", "true_absence"),
+}
+
 
 def validate_decision_manifest(
     manifest: dict[str, Any], *, stage: str
@@ -195,10 +218,10 @@ def validate_manifest_checksums(
         expected = entry.get("sha256")
         if not isinstance(path_text, str) or not path_text:
             raise ValidationError("manifest file entry requires path")
-        if not isinstance(expected, str) or len(expected) != 64:
-            raise ValidationError(f"manifest file {path_text} requires a SHA-256 digest")
-        if Path(path_text).is_absolute() or ".." in Path(path_text).parts:
-            raise ValidationError(f"manifest file path is not safely relative: {path_text}")
+        _validate_sha256_hex_digest(
+            expected, label=f"manifest file {path_text}"
+        )
+        _validate_safe_relative_path(path_text, label="manifest file")
 
         path = (base / path_text).resolve()
         if base != path and base not in path.parents:
@@ -219,9 +242,135 @@ def validate_manifest_checksums(
     }
 
 
+def validate_source_contracts(bundle: dict[str, Any]) -> dict[str, Any]:
+    """Validate synthetic source-contract metadata without reading sources."""
+
+    contracts = bundle.get("contracts")
+    if not isinstance(contracts, list) or not contracts:
+        raise ValidationError("source-contract bundle requires a non-empty contracts list")
+
+    source_ids: list[str] = []
+    source_types: set[str] = set()
+    decision_references: set[str] = set()
+
+    for index, contract in enumerate(contracts, start=1):
+        if not isinstance(contract, dict):
+            raise ValidationError(f"source contract {index} must be an object")
+        missing = [
+            field
+            for field in REQUIRED_SOURCE_CONTRACT_FIELDS
+            if field not in contract
+        ]
+        if missing:
+            raise ValidationError(
+                f"source contract {index} missing required fields: {', '.join(missing)}"
+            )
+
+        source_id = contract["source_id"]
+        if not isinstance(source_id, str) or not source_id:
+            raise ValidationError(f"source contract {index} requires a non-empty source_id")
+        if source_id in source_ids:
+            raise ValidationError(f"duplicate source_id: {source_id}")
+
+        source_type = contract["source_type"]
+        if source_type not in ALLOWED_SOURCE_TYPES:
+            allowed = ", ".join(sorted(ALLOWED_SOURCE_TYPES))
+            raise ValidationError(
+                f"source contract {source_id} has invalid source_type {source_type!r}; allowed: {allowed}"
+            )
+
+        references = contract["decision_references"]
+        if not isinstance(references, list) or not references:
+            raise ValidationError(f"source contract {source_id} requires decision_references")
+        if not all(isinstance(item, str) and item for item in references):
+            raise ValidationError(f"source contract {source_id} decision_references must be non-empty strings")
+        for decision_id in SOURCE_TYPE_DECISIONS[source_type]:
+            if decision_id not in references:
+                raise ValidationError(
+                    f"source contract {source_id} missing decision reference {decision_id}"
+                )
+
+        _validate_safe_relative_path(
+            contract["local_path"], label=f"source contract {source_id}"
+        )
+        _validate_checksum_block(contract["checksum"], label=f"source contract {source_id}")
+        _require_non_empty_string(contract, "license", source_id)
+        _require_non_empty_string(contract, "sensitivity", source_id)
+        _require_non_empty_mapping(contract, "provenance", source_id)
+        for block_name in SOURCE_TYPE_REQUIRED_BLOCKS[source_type]:
+            block = _require_non_empty_mapping(contract, block_name, source_id)
+            expected_decision = {
+                "versioning": "P1-D007",
+                "authority": "P1-D008",
+                "true_absence": "P1-D009",
+            }[block_name]
+            if block.get("decision_id") != expected_decision:
+                raise ValidationError(
+                    f"source contract {source_id} {block_name} must reference {expected_decision}"
+                )
+
+        source_ids.append(source_id)
+        source_types.add(source_type)
+        decision_references.update(references)
+
+    return {
+        "source_ids": source_ids,
+        "source_types": sorted(source_types),
+        "decision_references": sorted(decision_references),
+        "contract_count": len(contracts),
+    }
+
+
 def _sha256(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def _validate_safe_relative_path(path_text: Any, *, label: str) -> None:
+    if not isinstance(path_text, str) or not path_text:
+        raise ValidationError(f"{label} requires a path")
+    path = Path(path_text)
+    if path.is_absolute() or ".." in path.parts:
+        raise ValidationError(f"{label} path is not a safe relative path: {path_text}")
+    if path.parts and path.parts[0] in {"data", "temp"}:
+        raise ValidationError(f"{label} path cannot target real payload directory: {path_text}")
+
+
+def _validate_checksum_block(block: Any, *, label: str) -> None:
+    if not isinstance(block, dict):
+        raise ValidationError(f"{label} requires checksum metadata")
+    algorithm = block.get("algorithm")
+    value = block.get("value")
+    if algorithm != "sha256":
+        raise ValidationError(f"{label} checksum algorithm must be sha256")
+    _validate_sha256_hex_digest(value, label=f"{label} checksum value")
+
+
+def _validate_sha256_hex_digest(value: Any, *, label: str) -> None:
+    if not isinstance(value, str) or len(value) != 64:
+        raise ValidationError(f"{label} must be a SHA-256 hex digest")
+    try:
+        int(value, 16)
+    except ValueError as exc:
+        raise ValidationError(f"{label} must be a SHA-256 hex digest") from exc
+
+
+def _require_non_empty_string(
+    contract: dict[str, Any], field: str, source_id: str
+) -> str:
+    value = contract.get(field)
+    if not isinstance(value, str) or not value:
+        raise ValidationError(f"source contract {source_id} requires non-empty {field}")
+    return value
+
+
+def _require_non_empty_mapping(
+    contract: dict[str, Any], field: str, source_id: str
+) -> dict[str, Any]:
+    value = contract.get(field)
+    if not isinstance(value, dict) or not value:
+        raise ValidationError(f"source contract {source_id} requires {field}")
+    return value

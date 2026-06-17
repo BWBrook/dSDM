@@ -16,6 +16,7 @@ from dsdm_phase1.contracts import (  # noqa: E402
     ValidationError,
     validate_decision_manifest,
     validate_manifest_checksums,
+    validate_source_contracts,
     validate_source_rows,
     validate_species_contract,
 )
@@ -93,6 +94,81 @@ class Phase1ContractTests(unittest.TestCase):
                 "source_rows.json",
             ],
         )
+
+    def test_source_contracts_stage_rejects_unresolved_source_decisions(self) -> None:
+        manifest = load_fixture("decision_manifest_source_unresolved.json")
+
+        with self.assertRaises(ValidationError) as caught:
+            validate_decision_manifest(manifest, stage="source_contracts")
+
+        message = str(caught.exception)
+        self.assertIn("P1-D007", message)
+        self.assertIn("P1-D008", message)
+        self.assertIn("P1-D009", message)
+
+    def test_source_contracts_stage_rejects_missing_source_decisions(self) -> None:
+        manifest = load_fixture("decision_manifest_resolved.json")
+
+        with self.assertRaises(ValidationError) as caught:
+            validate_decision_manifest(manifest, stage="source_contracts")
+
+        message = str(caught.exception)
+        self.assertIn("P1-D008", message)
+        self.assertIn("P1-D009", message)
+
+    def test_source_contracts_stage_accepts_synthetic_resolved_decisions(self) -> None:
+        manifest = load_fixture("decision_manifest_source_resolved.json")
+
+        result = validate_decision_manifest(manifest, stage="source_contracts")
+
+        self.assertEqual(result["stage"], "source_contracts")
+        self.assertEqual(
+            result["required_decisions"],
+            ["P1-D007", "P1-D008", "P1-D009"],
+        )
+
+    def test_source_contract_metadata_preserves_audit_and_decision_links(self) -> None:
+        contracts = load_fixture("source_contracts_resolved.json")
+
+        result = validate_source_contracts(contracts)
+
+        self.assertEqual(
+            result["source_ids"],
+            ["syn_ala_contract", "syn_camera_contract"],
+        )
+        self.assertEqual(
+            result["decision_references"],
+            ["P1-D007", "P1-D008", "P1-D009"],
+        )
+        self.assertEqual(
+            result["source_types"],
+            ["ala_occurrence", "camera_trap"],
+        )
+
+    def test_source_contract_metadata_rejects_unsafe_paths(self) -> None:
+        contracts = load_fixture("source_contracts_unsafe_path.json")
+
+        with self.assertRaises(ValidationError) as caught:
+            validate_source_contracts(contracts)
+
+        self.assertIn("safe relative path", str(caught.exception))
+
+    def test_source_contract_metadata_rejects_missing_audit_metadata(self) -> None:
+        contracts = load_fixture("source_contracts_missing_audit.json")
+
+        with self.assertRaises(ValidationError) as caught:
+            validate_source_contracts(contracts)
+
+        self.assertIn("checksum", str(caught.exception))
+
+    def test_source_contract_metadata_rejects_non_hex_checksum(self) -> None:
+        contracts = load_fixture("source_contracts_resolved.json")
+        contracts["contracts"][0]["checksum"]["value"] = "z" * 64
+
+        with self.assertRaises(ValidationError) as caught:
+            validate_source_contracts(contracts)
+
+        self.assertIn("SHA-256 hex digest", str(caught.exception))
 
 
 if __name__ == "__main__":

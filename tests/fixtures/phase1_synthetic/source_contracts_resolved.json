@@ -1,0 +1,50 @@
+{
+  "fixture_kind": "synthetic_source_contracts",
+  "fixture_note": "Synthetic only. Does not point to real ALA or camera-trap data.",
+  "contracts": [
+    {
+      "source_id": "syn_ala_contract",
+      "source_type": "ala_occurrence",
+      "decision_references": ["P1-D007"],
+      "local_path": "synthetic_sources/syn_ala_snapshot.json",
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "license": "synthetic-license-placeholder",
+      "sensitivity": "synthetic-not-sensitive",
+      "versioning": {
+        "decision_id": "P1-D007",
+        "strategy": "synthetic snapshot plus checksum"
+      },
+      "provenance": {
+        "source_system": "synthetic_ala",
+        "source_record_policy": "synthetic only"
+      }
+    },
+    {
+      "source_id": "syn_camera_contract",
+      "source_type": "camera_trap",
+      "decision_references": ["P1-D008", "P1-D009"],
+      "local_path": "synthetic_sources/syn_camera_source.json",
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "2222222222222222222222222222222222222222222222222222222222222222"
+      },
+      "license": "synthetic-license-placeholder",
+      "sensitivity": "synthetic-not-sensitive",
+      "authority": {
+        "decision_id": "P1-D008",
+        "source_location": "synthetic fixture path only"
+      },
+      "true_absence": {
+        "decision_id": "P1-D009",
+        "rule": "synthetic true-absence placeholder only"
+      },
+      "provenance": {
+        "source_system": "synthetic_camera",
+        "site_policy": "synthetic only"
+      }
+    }
+  ]
+}

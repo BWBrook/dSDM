@@ -1,0 +1,28 @@
+{
+  "fixture_kind": "synthetic_decision_manifest",
+  "fixture_note": "Synthetic only. Unresolved source decisions must block source_contracts.",
+  "manifest_id": "syn_source_decisions_unresolved",
+  "decisions": [
+    {
+      "id": "P1-D007",
+      "owner": "executor",
+      "status": "unresolved",
+      "value": null,
+      "notes": "Synthetic unresolved ALA versioning decision."
+    },
+    {
+      "id": "P1-D008",
+      "owner": "dSDM",
+      "status": "unresolved",
+      "value": null,
+      "notes": "Synthetic unresolved primary camera-source authority decision."
+    },
+    {
+      "id": "P1-D009",
+      "owner": "Barry",
+      "status": "unresolved",
+      "value": null,
+      "notes": "Synthetic unresolved true-absence interpretation decision."
+    }
+  ]
+}

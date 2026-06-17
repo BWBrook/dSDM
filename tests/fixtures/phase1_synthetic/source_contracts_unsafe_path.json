@@ -1,0 +1,30 @@
+{
+  "fixture_kind": "synthetic_source_contracts",
+  "fixture_note": "Synthetic only. This fixture intentionally uses an unsafe path for a negative test.",
+  "contracts": [
+    {
+      "source_id": "syn_unsafe_camera_contract",
+      "source_type": "camera_trap",
+      "decision_references": ["P1-D008", "P1-D009"],
+      "local_path": "../data/real_camera_source.csv",
+      "checksum": {
+        "algorithm": "sha256",
+        "value": "3333333333333333333333333333333333333333333333333333333333333333"
+      },
+      "license": "synthetic-license-placeholder",
+      "sensitivity": "synthetic-not-sensitive",
+      "authority": {
+        "decision_id": "P1-D008",
+        "source_location": "unsafe synthetic fixture path"
+      },
+      "true_absence": {
+        "decision_id": "P1-D009",
+        "rule": "synthetic true-absence placeholder only"
+      },
+      "provenance": {
+        "source_system": "synthetic_camera",
+        "site_policy": "synthetic only"
+      }
+    }
+  ]
+}

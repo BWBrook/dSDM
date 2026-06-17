@@ -1,0 +1,22 @@
+{
+  "fixture_kind": "synthetic_source_contracts",
+  "fixture_note": "Synthetic only. This fixture intentionally omits checksum metadata for a negative test.",
+  "contracts": [
+    {
+      "source_id": "syn_missing_audit_contract",
+      "source_type": "ala_occurrence",
+      "decision_references": ["P1-D007"],
+      "local_path": "synthetic_sources/syn_missing_audit.json",
+      "license": "synthetic-license-placeholder",
+      "sensitivity": "synthetic-not-sensitive",
+      "versioning": {
+        "decision_id": "P1-D007",
+        "strategy": "synthetic snapshot plus checksum"
+      },
+      "provenance": {
+        "source_system": "synthetic_ala",
+        "source_record_policy": "synthetic only"
+      }
+    }
+  ]
+}

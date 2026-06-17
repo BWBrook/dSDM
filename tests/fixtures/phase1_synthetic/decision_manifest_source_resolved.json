@@ -1,0 +1,28 @@
+{
+  "fixture_kind": "synthetic_decision_manifest",
+  "fixture_note": "Synthetic only. Values are fake and do not decide real source policy.",
+  "manifest_id": "syn_source_decisions_resolved",
+  "decisions": [
+    {
+      "id": "P1-D007",
+      "owner": "executor",
+      "status": "resolved",
+      "value": "synthetic raw-source snapshot plus checksum policy",
+      "notes": "Synthetic resolution for source-contract tests only."
+    },
+    {
+      "id": "P1-D008",
+      "owner": "dSDM",
+      "status": "resolved",
+      "value": "synthetic camera fixture authority only",
+      "notes": "Synthetic resolution for source-contract tests only."
+    },
+    {
+      "id": "P1-D009",
+      "owner": "Barry",
+      "status": "resolved",
+      "value": "synthetic true-absence rule placeholder only",
+      "notes": "Synthetic resolution for source-contract tests only."
+    }
+  ]
+}
