@@ -8,6 +8,7 @@ from .contracts import (
     ValidationError,
     validate_decision_manifest,
     validate_source_contracts,
+    validate_source_rows,
     validate_species_contract,
 )
 
@@ -128,6 +129,54 @@ def build_mocked_acquisition_request_manifest(
     }
 
 
+def build_normalized_source_row_gate_summary(
+    *,
+    run_id: str,
+    species_decision_manifest: dict[str, Any],
+    species_contract: dict[str, Any],
+    source_decision_manifest: dict[str, Any],
+    source_contracts: dict[str, Any],
+    request_decision_manifest: dict[str, Any],
+    source_rows: list[dict[str, Any]],
+) -> dict[str, Any]:
+    """Validate synthetic normalized rows and return row-readiness summary data."""
+
+    request_manifest = build_mocked_acquisition_request_manifest(
+        run_id=run_id,
+        species_decision_manifest=species_decision_manifest,
+        species_contract=species_contract,
+        source_decision_manifest=source_decision_manifest,
+        source_contracts=source_contracts,
+        request_decision_manifest=request_decision_manifest,
+    )
+    row_validation = validate_source_rows(source_rows)
+    rows = sorted(source_rows, key=lambda row: row["row_id"])
+
+    return {
+        "run_id": run_id,
+        "stage": "synthetic_normalized_source_row_gate",
+        "status": "ready_for_synthetic_normalized_row_review",
+        "mocked_request_status": request_manifest["status"],
+        "decision_manifest_ids": request_manifest["decision_manifest_ids"],
+        "row_count": row_validation["row_count"],
+        "row_ids": [row["row_id"] for row in rows],
+        "species_ids": _sorted_unique(rows, "species_id"),
+        "sources": _sorted_unique(rows, "source"),
+        "source_dataset_ids": _sorted_unique(rows, "source_dataset_id"),
+        "source_dataset_names": _sorted_unique(rows, "source_dataset_name"),
+        "pa_types": row_validation["pa_types"],
+        "sources_by_pa_type": row_validation["sources_by_pa_type"],
+        "required_provenance_fields": row_validation["required_provenance_fields"],
+        "true_absence_rule_ids": _sorted_optional_unique(
+            rows, "true_absence_rule_id"
+        ),
+        "pseudoabsence_rule_ids": _sorted_optional_unique(
+            rows, "pseudoabsence_rule_id"
+        ),
+        "rows": [_row_summary(row) for row in rows],
+    }
+
+
 def _source_summary(contract: dict[str, Any]) -> dict[str, Any]:
     return {
         "source_id": contract["source_id"],
@@ -141,6 +190,26 @@ def _source_summary(contract: dict[str, Any]) -> dict[str, Any]:
         "sensitivity": contract["sensitivity"],
         "local_path": contract["local_path"],
     }
+
+
+def _row_summary(row: dict[str, Any]) -> dict[str, Any]:
+    summary = {
+        "row_id": row["row_id"],
+        "species_id": row["species_id"],
+        "scientific_name": row["scientific_name"],
+        "source": row["source"],
+        "source_record_id": row["source_record_id"],
+        "source_dataset_id": row["source_dataset_id"],
+        "source_dataset_name": row["source_dataset_name"],
+        "pa": row["pa"],
+        "pa_type": row["pa_type"],
+        "grid_cell_id": row.get("grid_cell_id"),
+    }
+    if "pseudoabsence_rule_id" in row:
+        summary["pseudoabsence_rule_id"] = row["pseudoabsence_rule_id"]
+    if "true_absence_rule_id" in row:
+        summary["true_absence_rule_id"] = row["true_absence_rule_id"]
+    return summary
 
 
 def _mocked_request_record(
@@ -255,6 +324,14 @@ def _required_string_list(
 
 def _dedupe(values: list[str]) -> list[str]:
     return list(dict.fromkeys(values))
+
+
+def _sorted_unique(rows: list[dict[str, Any]], field: str) -> list[Any]:
+    return sorted({row[field] for row in rows})
+
+
+def _sorted_optional_unique(rows: list[dict[str, Any]], field: str) -> list[Any]:
+    return sorted({row[field] for row in rows if row.get(field)})
 
 
 def _sort_decision_ids(values: list[str]) -> list[str]:

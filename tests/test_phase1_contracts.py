@@ -498,5 +498,240 @@ class MockedAcquisitionRequestTests(unittest.TestCase):
         self.assertFalse(missing_camera_path.exists())
 
 
+class NormalizedSourceRowGateTests(unittest.TestCase):
+    def valid_inputs(self) -> dict[str, object]:
+        return {
+            "species_decision_manifest": load_fixture("decision_manifest_resolved.json"),
+            "species_contract": load_fixture("species_contract_resolved.json"),
+            "source_decision_manifest": load_fixture(
+                "decision_manifest_source_resolved.json"
+            ),
+            "source_contracts": load_fixture("source_contracts_resolved.json"),
+            "request_decision_manifest": load_fixture(
+                "decision_manifest_request_resolved.json"
+            ),
+            "source_rows": load_fixture("source_rows.json")["rows"],
+        }
+
+    def test_unresolved_request_decisions_block_row_summaries(self) -> None:
+        inputs = self.valid_inputs()
+        inputs["request_decision_manifest"] = load_fixture(
+            "decision_manifest_request_ala_unresolved.json"
+        )
+
+        with self.assertRaises(ValidationError) as caught:
+            dsdm_phase1.build_normalized_source_row_gate_summary(
+                run_id="syn_run_goal_007",
+                **inputs,
+            )
+
+        message = str(caught.exception)
+        self.assertIn("P1-D003", message)
+        self.assertIn("P1-D004", message)
+
+    def test_missing_request_decisions_block_row_summaries(self) -> None:
+        inputs = self.valid_inputs()
+        decisions = inputs["request_decision_manifest"]["decisions"]
+        inputs["request_decision_manifest"]["decisions"] = [
+            decision for decision in decisions if decision["id"] != "P1-D010"
+        ]
+
+        with self.assertRaises(ValidationError) as caught:
+            dsdm_phase1.build_normalized_source_row_gate_summary(
+                run_id="syn_run_goal_007",
+                **inputs,
+            )
+
+        self.assertIn("P1-D010", str(caught.exception))
+
+    def test_invalid_source_contracts_block_row_summaries(self) -> None:
+        inputs = self.valid_inputs()
+        inputs["source_contracts"] = load_fixture("source_contracts_unsafe_path.json")
+
+        with self.assertRaises(ValidationError) as caught:
+            dsdm_phase1.build_normalized_source_row_gate_summary(
+                run_id="syn_run_goal_007",
+                **inputs,
+            )
+
+        self.assertIn("safe relative path", str(caught.exception))
+
+    def test_missing_row_provenance_blocks_row_summaries(self) -> None:
+        inputs = self.valid_inputs()
+        broken_rows = copy.deepcopy(inputs["source_rows"])
+        del broken_rows[0]["source_record_id"]
+        inputs["source_rows"] = broken_rows
+
+        with self.assertRaises(ValidationError) as caught:
+            dsdm_phase1.build_normalized_source_row_gate_summary(
+                run_id="syn_run_goal_007",
+                **inputs,
+            )
+
+        self.assertIn("source_record_id", str(caught.exception))
+
+    def test_invalid_pa_type_blocks_row_summaries(self) -> None:
+        inputs = self.valid_inputs()
+        broken_rows = copy.deepcopy(inputs["source_rows"])
+        broken_rows[0]["pa_type"] = "synthetic_absence"
+        inputs["source_rows"] = broken_rows
+
+        with self.assertRaises(ValidationError) as caught:
+            dsdm_phase1.build_normalized_source_row_gate_summary(
+                run_id="syn_run_goal_007",
+                **inputs,
+            )
+
+        self.assertIn("invalid pa_type", str(caught.exception))
+
+    def test_missing_true_absence_rule_blocks_row_summaries(self) -> None:
+        inputs = self.valid_inputs()
+        broken_rows = copy.deepcopy(inputs["source_rows"])
+        true_absence = next(row for row in broken_rows if row["pa_type"] == "true_absence")
+        del true_absence["true_absence_rule_id"]
+        inputs["source_rows"] = broken_rows
+
+        with self.assertRaises(ValidationError) as caught:
+            dsdm_phase1.build_normalized_source_row_gate_summary(
+                run_id="syn_run_goal_007",
+                **inputs,
+            )
+
+        self.assertIn("true_absence_rule_id", str(caught.exception))
+
+    def test_missing_pseudoabsence_rule_blocks_row_summaries(self) -> None:
+        inputs = self.valid_inputs()
+        broken_rows = copy.deepcopy(inputs["source_rows"])
+        pseudoabsence = next(row for row in broken_rows if row["pa_type"] == "pseudoabsence")
+        del pseudoabsence["pseudoabsence_rule_id"]
+        inputs["source_rows"] = broken_rows
+
+        with self.assertRaises(ValidationError) as caught:
+            dsdm_phase1.build_normalized_source_row_gate_summary(
+                run_id="syn_run_goal_007",
+                **inputs,
+            )
+
+        self.assertIn("pseudoabsence_rule_id", str(caught.exception))
+
+    def test_valid_synthetic_rows_produce_deterministic_row_summary(self) -> None:
+        inputs = self.valid_inputs()
+        missing_ala_path = FIXTURE_DIR / "synthetic_sources" / "syn_ala_snapshot.json"
+        missing_camera_path = (
+            FIXTURE_DIR / "synthetic_sources" / "syn_camera_source.json"
+        )
+        self.assertFalse(missing_ala_path.exists())
+        self.assertFalse(missing_camera_path.exists())
+
+        first = dsdm_phase1.build_normalized_source_row_gate_summary(
+            run_id="syn_run_goal_007",
+            **copy.deepcopy(inputs),
+        )
+        second = dsdm_phase1.build_normalized_source_row_gate_summary(
+            run_id="syn_run_goal_007",
+            **copy.deepcopy(inputs),
+        )
+
+        expected = {
+            "run_id": "syn_run_goal_007",
+            "stage": "synthetic_normalized_source_row_gate",
+            "status": "ready_for_synthetic_normalized_row_review",
+            "mocked_request_status": "ready_for_mocked_request_review",
+            "decision_manifest_ids": {
+                "species_contract": "syn_decisions_resolved",
+                "source_contracts": "syn_source_decisions_resolved",
+                "request_manifest": "syn_request_decisions_resolved",
+            },
+            "row_count": 3,
+            "row_ids": [
+                "syn_row_presence_001",
+                "syn_row_pseudoabsence_001",
+                "syn_row_true_absence_001",
+            ],
+            "species_ids": ["syn_species_001", "syn_species_002"],
+            "sources": [
+                "synthetic_ala",
+                "synthetic_background",
+                "synthetic_camera",
+            ],
+            "source_dataset_ids": ["SYN_ALA", "SYN_BACKGROUND", "SYN_CAMERA"],
+            "source_dataset_names": [
+                "Synthetic ALA-like fixture",
+                "Synthetic background fixture",
+                "Synthetic camera fixture",
+            ],
+            "pa_types": ["presence", "pseudoabsence", "true_absence"],
+            "sources_by_pa_type": {
+                "presence": ["synthetic_ala"],
+                "pseudoabsence": ["synthetic_background"],
+                "true_absence": ["synthetic_camera"],
+            },
+            "required_provenance_fields": [
+                "run_id",
+                "row_id",
+                "species_id",
+                "scientific_name",
+                "source",
+                "source_record_id",
+                "source_dataset_id",
+                "source_dataset_name",
+                "pa",
+                "pa_type",
+                "decision_manifest_id",
+                "input_manifest_id",
+            ],
+            "true_absence_rule_ids": ["SYN_TRUE_ABSENCE_RULE"],
+            "pseudoabsence_rule_ids": ["SYN_PSEUDOABSENCE_RULE"],
+            "rows": [
+                {
+                    "row_id": "syn_row_presence_001",
+                    "species_id": "syn_species_001",
+                    "scientific_name": "Fictomys contracta",
+                    "source": "synthetic_ala",
+                    "source_record_id": "SYN_ALA_001",
+                    "source_dataset_id": "SYN_ALA",
+                    "source_dataset_name": "Synthetic ALA-like fixture",
+                    "pa": 1,
+                    "pa_type": "presence",
+                    "grid_cell_id": "SYN_GRID_001",
+                },
+                {
+                    "row_id": "syn_row_pseudoabsence_001",
+                    "species_id": "syn_species_002",
+                    "scientific_name": "Imagomeles absentia",
+                    "source": "synthetic_background",
+                    "source_record_id": "SYN_BG_001",
+                    "source_dataset_id": "SYN_BACKGROUND",
+                    "source_dataset_name": "Synthetic background fixture",
+                    "pa": 0,
+                    "pa_type": "pseudoabsence",
+                    "grid_cell_id": "SYN_GRID_003",
+                    "pseudoabsence_rule_id": "SYN_PSEUDOABSENCE_RULE",
+                },
+                {
+                    "row_id": "syn_row_true_absence_001",
+                    "species_id": "syn_species_001",
+                    "scientific_name": "Fictomys contracta",
+                    "source": "synthetic_camera",
+                    "source_record_id": "SYN_CAM_001",
+                    "source_dataset_id": "SYN_CAMERA",
+                    "source_dataset_name": "Synthetic camera fixture",
+                    "pa": 0,
+                    "pa_type": "true_absence",
+                    "grid_cell_id": "SYN_GRID_002",
+                    "true_absence_rule_id": "SYN_TRUE_ABSENCE_RULE",
+                },
+            ],
+        }
+        self.assertEqual(first, expected)
+        self.assertEqual(second, expected)
+        self.assertNotEqual(
+            first["sources_by_pa_type"]["true_absence"],
+            first["sources_by_pa_type"]["pseudoabsence"],
+        )
+        self.assertFalse(missing_ala_path.exists())
+        self.assertFalse(missing_camera_path.exists())
+
+
 if __name__ == "__main__":
     unittest.main()
