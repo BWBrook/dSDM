@@ -19,6 +19,16 @@ class ValidationError(ValueError):
 STAGE_REQUIRED_DECISIONS: dict[str, tuple[str, ...]] = {
     "species_contract": ("P1-D001", "P1-D002"),
     "source_contracts": ("P1-D007", "P1-D008", "P1-D009"),
+    "mocked_acquisition_requests": (
+        "P1-D003",
+        "P1-D004",
+        "P1-D005",
+        "P1-D006",
+        "P1-D007",
+        "P1-D008",
+        "P1-D009",
+        "P1-D010",
+    ),
 }
 
 REQUIRED_SPECIES_FIELDS = (

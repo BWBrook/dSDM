@@ -301,5 +301,202 @@ class AcquisitionDryRunTests(unittest.TestCase):
         self.assertEqual(second, expected)
 
 
+class MockedAcquisitionRequestTests(unittest.TestCase):
+    def valid_inputs(self) -> dict[str, dict]:
+        return {
+            "species_decision_manifest": load_fixture("decision_manifest_resolved.json"),
+            "species_contract": load_fixture("species_contract_resolved.json"),
+            "source_decision_manifest": load_fixture(
+                "decision_manifest_source_resolved.json"
+            ),
+            "source_contracts": load_fixture("source_contracts_resolved.json"),
+            "request_decision_manifest": load_fixture(
+                "decision_manifest_request_resolved.json"
+            ),
+        }
+
+    def test_unresolved_ala_request_decisions_block_mocked_requests(self) -> None:
+        inputs = self.valid_inputs()
+        inputs["request_decision_manifest"] = load_fixture(
+            "decision_manifest_request_ala_unresolved.json"
+        )
+
+        with self.assertRaises(ValidationError) as caught:
+            dsdm_phase1.build_mocked_acquisition_request_manifest(
+                run_id="syn_run_goal_006",
+                **inputs,
+            )
+
+        message = str(caught.exception)
+        self.assertIn("P1-D003", message)
+        self.assertIn("P1-D004", message)
+        self.assertIn("P1-D005", message)
+        self.assertIn("P1-D006", message)
+
+    def test_missing_ala_request_decision_blocks_mocked_requests(self) -> None:
+        inputs = self.valid_inputs()
+        decisions = inputs["request_decision_manifest"]["decisions"]
+        inputs["request_decision_manifest"]["decisions"] = [
+            decision for decision in decisions if decision["id"] != "P1-D004"
+        ]
+
+        with self.assertRaises(ValidationError) as caught:
+            dsdm_phase1.build_mocked_acquisition_request_manifest(
+                run_id="syn_run_goal_006",
+                **inputs,
+            )
+
+        self.assertIn("P1-D004", str(caught.exception))
+
+    def test_unresolved_camera_request_decisions_block_mocked_requests(self) -> None:
+        inputs = self.valid_inputs()
+        inputs["request_decision_manifest"] = load_fixture(
+            "decision_manifest_request_camera_unresolved.json"
+        )
+
+        with self.assertRaises(ValidationError) as caught:
+            dsdm_phase1.build_mocked_acquisition_request_manifest(
+                run_id="syn_run_goal_006",
+                **inputs,
+            )
+
+        message = str(caught.exception)
+        self.assertIn("P1-D008", message)
+        self.assertIn("P1-D009", message)
+        self.assertIn("P1-D010", message)
+
+    def test_missing_camera_request_decision_blocks_mocked_requests(self) -> None:
+        inputs = self.valid_inputs()
+        decisions = inputs["request_decision_manifest"]["decisions"]
+        inputs["request_decision_manifest"]["decisions"] = [
+            decision for decision in decisions if decision["id"] != "P1-D010"
+        ]
+
+        with self.assertRaises(ValidationError) as caught:
+            dsdm_phase1.build_mocked_acquisition_request_manifest(
+                run_id="syn_run_goal_006",
+                **inputs,
+            )
+
+        self.assertIn("P1-D010", str(caught.exception))
+
+    def test_invalid_source_contracts_block_mocked_requests(self) -> None:
+        inputs = self.valid_inputs()
+        inputs["source_contracts"] = load_fixture("source_contracts_unsafe_path.json")
+
+        with self.assertRaises(ValidationError) as caught:
+            dsdm_phase1.build_mocked_acquisition_request_manifest(
+                run_id="syn_run_goal_006",
+                **inputs,
+            )
+
+        self.assertIn("safe relative path", str(caught.exception))
+
+    def test_valid_synthetic_inputs_produce_deterministic_mocked_requests(self) -> None:
+        inputs = self.valid_inputs()
+        missing_ala_path = FIXTURE_DIR / "synthetic_sources" / "syn_ala_snapshot.json"
+        missing_camera_path = (
+            FIXTURE_DIR / "synthetic_sources" / "syn_camera_source.json"
+        )
+        self.assertFalse(missing_ala_path.exists())
+        self.assertFalse(missing_camera_path.exists())
+
+        first = dsdm_phase1.build_mocked_acquisition_request_manifest(
+            run_id="syn_run_goal_006",
+            **copy.deepcopy(inputs),
+        )
+        second = dsdm_phase1.build_mocked_acquisition_request_manifest(
+            run_id="syn_run_goal_006",
+            **copy.deepcopy(inputs),
+        )
+
+        expected = {
+            "run_id": "syn_run_goal_006",
+            "stage": "mocked_acquisition_request_dry_run",
+            "status": "ready_for_mocked_request_review",
+            "dry_run_status": "ready_for_mocked_acquisition",
+            "decision_manifest_ids": {
+                "species_contract": "syn_decisions_resolved",
+                "source_contracts": "syn_source_decisions_resolved",
+                "request_manifest": "syn_request_decisions_resolved",
+            },
+            "required_decisions": [
+                "P1-D001",
+                "P1-D002",
+                "P1-D003",
+                "P1-D004",
+                "P1-D005",
+                "P1-D006",
+                "P1-D007",
+                "P1-D008",
+                "P1-D009",
+                "P1-D010",
+            ],
+            "source_ids": ["syn_ala_contract", "syn_camera_contract"],
+            "source_types": ["ala_occurrence", "camera_trap"],
+            "request_count": 2,
+            "requests": [
+                {
+                    "request_id": "syn_run_goal_006:syn_ala_contract",
+                    "source_contract_id": "syn_ala_contract",
+                    "source_id": "syn_ala_contract",
+                    "source_type": "ala_occurrence",
+                    "execution_status": "not_executed",
+                    "mocked": True,
+                    "decision_references": [
+                        "P1-D003",
+                        "P1-D004",
+                        "P1-D005",
+                        "P1-D006",
+                        "P1-D007",
+                    ],
+                    "checksum": {
+                        "algorithm": "sha256",
+                        "value": "1111111111111111111111111111111111111111111111111111111111111111",
+                    },
+                    "license": "synthetic-license-placeholder",
+                    "sensitivity": "synthetic-not-sensitive",
+                    "intent": {
+                        "kind": "synthetic_ala_request",
+                        "query_names": [
+                            "synthetic_fictomys_contracta",
+                            "synthetic_imagomeles_absentia",
+                        ],
+                        "alias_policy_id": "SYN_ALA_ALIAS_POLICY",
+                        "date_filter_policy_id": "SYN_ALA_DATE_POLICY",
+                        "data_resource_filter_policy_id": "SYN_ALA_RESOURCE_POLICY",
+                        "quality_filter_policy_id": "SYN_ALA_QUALITY_POLICY",
+                        "versioning_policy_id": "SYN_ALA_VERSIONING_POLICY",
+                    },
+                },
+                {
+                    "request_id": "syn_run_goal_006:syn_camera_contract",
+                    "source_contract_id": "syn_camera_contract",
+                    "source_id": "syn_camera_contract",
+                    "source_type": "camera_trap",
+                    "execution_status": "not_executed",
+                    "mocked": True,
+                    "decision_references": ["P1-D008", "P1-D009", "P1-D010"],
+                    "checksum": {
+                        "algorithm": "sha256",
+                        "value": "2222222222222222222222222222222222222222222222222222222222222222",
+                    },
+                    "license": "synthetic-license-placeholder",
+                    "sensitivity": "synthetic-not-sensitive",
+                    "intent": {
+                        "kind": "synthetic_camera_ingest_request",
+                        "camera_authority_id": "SYN_CAMERA_AUTHORITY",
+                        "true_absence_rule_id": "SYN_TRUE_ABSENCE_RULE",
+                        "effort_policy_id": "SYN_CAMERA_EFFORT_POLICY",
+                    },
+                },
+            ],
+        }
+        self.assertEqual(first, expected)
+        self.assertEqual(second, expected)
+        self.assertFalse(missing_ala_path.exists())
+        self.assertFalse(missing_camera_path.exists())
+
+
 if __name__ == "__main__":
     unittest.main()

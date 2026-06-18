@@ -1,0 +1,74 @@
+{
+  "fixture_kind": "synthetic_request_decision_manifest",
+  "fixture_note": "Synthetic only. Unresolved camera request decisions must block mocked request creation.",
+  "manifest_id": "syn_request_decisions_camera_unresolved",
+  "decisions": [
+    {
+      "id": "P1-D003",
+      "owner": "Barry",
+      "status": "resolved",
+      "value": {
+        "query_names": ["synthetic_fictomys_contracta", "synthetic_imagomeles_absentia"],
+        "alias_policy_id": "SYN_ALA_ALIAS_POLICY"
+      },
+      "notes": "Synthetic ALA query-name decision for tests only."
+    },
+    {
+      "id": "P1-D004",
+      "owner": "Barry",
+      "status": "resolved",
+      "value": {
+        "date_filter_policy_id": "SYN_ALA_DATE_POLICY"
+      },
+      "notes": "Synthetic ALA date-bound decision for tests only."
+    },
+    {
+      "id": "P1-D005",
+      "owner": "Barry",
+      "status": "resolved",
+      "value": {
+        "data_resource_filter_policy_id": "SYN_ALA_RESOURCE_POLICY"
+      },
+      "notes": "Synthetic ALA data-resource decision for tests only."
+    },
+    {
+      "id": "P1-D006",
+      "owner": "Barry",
+      "status": "resolved",
+      "value": {
+        "quality_filter_policy_id": "SYN_ALA_QUALITY_POLICY"
+      },
+      "notes": "Synthetic ALA quality-filter decision for tests only."
+    },
+    {
+      "id": "P1-D007",
+      "owner": "executor",
+      "status": "resolved",
+      "value": {
+        "versioning_policy_id": "SYN_ALA_VERSIONING_POLICY"
+      },
+      "notes": "Synthetic ALA versioning decision for tests only."
+    },
+    {
+      "id": "P1-D008",
+      "owner": "dSDM",
+      "status": "unresolved",
+      "value": null,
+      "notes": "Synthetic unresolved camera authority decision."
+    },
+    {
+      "id": "P1-D009",
+      "owner": "Barry",
+      "status": "unresolved",
+      "value": null,
+      "notes": "Synthetic unresolved camera true-absence decision."
+    },
+    {
+      "id": "P1-D010",
+      "owner": "Barry",
+      "status": "unresolved",
+      "value": null,
+      "notes": "Synthetic unresolved camera effort decision."
+    }
+  ]
+}

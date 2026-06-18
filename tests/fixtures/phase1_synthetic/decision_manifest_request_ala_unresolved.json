@@ -1,0 +1,71 @@
+{
+  "fixture_kind": "synthetic_request_decision_manifest",
+  "fixture_note": "Synthetic only. Unresolved ALA request decisions must block mocked request creation.",
+  "manifest_id": "syn_request_decisions_ala_unresolved",
+  "decisions": [
+    {
+      "id": "P1-D003",
+      "owner": "Barry",
+      "status": "unresolved",
+      "value": null,
+      "notes": "Synthetic unresolved ALA query-name decision."
+    },
+    {
+      "id": "P1-D004",
+      "owner": "Barry",
+      "status": "unresolved",
+      "value": null,
+      "notes": "Synthetic unresolved ALA date-bound decision."
+    },
+    {
+      "id": "P1-D005",
+      "owner": "Barry",
+      "status": "unresolved",
+      "value": null,
+      "notes": "Synthetic unresolved ALA data-resource decision."
+    },
+    {
+      "id": "P1-D006",
+      "owner": "Barry",
+      "status": "unresolved",
+      "value": null,
+      "notes": "Synthetic unresolved ALA quality-filter decision."
+    },
+    {
+      "id": "P1-D007",
+      "owner": "executor",
+      "status": "resolved",
+      "value": {
+        "versioning_policy_id": "SYN_ALA_VERSIONING_POLICY"
+      },
+      "notes": "Synthetic ALA versioning decision for tests only."
+    },
+    {
+      "id": "P1-D008",
+      "owner": "dSDM",
+      "status": "resolved",
+      "value": {
+        "camera_authority_id": "SYN_CAMERA_AUTHORITY"
+      },
+      "notes": "Synthetic camera authority decision for tests only."
+    },
+    {
+      "id": "P1-D009",
+      "owner": "Barry",
+      "status": "resolved",
+      "value": {
+        "true_absence_rule_id": "SYN_TRUE_ABSENCE_RULE"
+      },
+      "notes": "Synthetic camera true-absence decision for tests only."
+    },
+    {
+      "id": "P1-D010",
+      "owner": "Barry",
+      "status": "resolved",
+      "value": {
+        "effort_policy_id": "SYN_CAMERA_EFFORT_POLICY"
+      },
+      "notes": "Synthetic camera effort decision for tests only."
+    }
+  ]
+}

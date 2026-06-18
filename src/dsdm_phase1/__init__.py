@@ -8,11 +8,15 @@ from .contracts import (
     validate_source_rows,
     validate_species_contract,
 )
-from .manifests import build_acquisition_dry_run_summary
+from .manifests import (
+    build_acquisition_dry_run_summary,
+    build_mocked_acquisition_request_manifest,
+)
 
 __all__ = [
     "ValidationError",
     "build_acquisition_dry_run_summary",
+    "build_mocked_acquisition_request_manifest",
     "validate_decision_manifest",
     "validate_manifest_checksums",
     "validate_source_contracts",
