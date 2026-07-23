@@ -1,0 +1,341 @@
+{
+  "schema_version": "1.0",
+  "goal_id": "013",
+  "profile_id": "ala-tasmania-2001-2025-count-only-preflight",
+  "plan_id": "goal013-ala-row-pilot-2026-07-23",
+  "reviewed_at_utc": "2026-07-23T14:08:55Z",
+  "successful_record_requests": 23,
+  "http_attempts": 23,
+  "returned_rows": 525,
+  "max_returned_rows": 575,
+  "stable_pagination": {
+    "field": "occurrenceID",
+    "direction": "asc",
+    "explicit_order_accepted_and_echoed_requests": 23,
+    "expected_length_requests": 23,
+    "nonempty_page_count": 21,
+    "strictly_ascending_nonempty_pages": 21,
+    "sampled_parent_page_overlap_count": 0,
+    "equal_total_parent_pairs": 9,
+    "ascending_boundary_parent_pairs": 9,
+    "scope": "bounded order and overlap behaviour only; not snapshot-consistent pagination"
+  },
+  "search_route_limitation": {
+    "maximum_accessible_results": 5000,
+    "snapshot_consistent_pagination_documented": false,
+    "implication": "Species queries above 5000 results require a later supported download/export design; this search pilot cannot establish complete acquisition."
+  },
+  "response_projection": {
+    "frozen_requested_field_count": 20,
+    "server_added_raw_allowlist": [
+      "otherProperties"
+    ],
+    "server_added_field_stats": {
+      "otherProperties": {
+        "presence_count": 402,
+        "non_null_count": 402,
+        "types": [
+          "object"
+        ]
+      }
+    },
+    "handling": "otherProperties values remain quarantined in ignored raw responses and are dropped from the canonical projection"
+  },
+  "pagination": {
+    "pair_count": 9,
+    "pairs": [
+      {
+        "focal_species_id": "thylogale_billardierii",
+        "first_page_rows": 25,
+        "second_page_rows": 25,
+        "total_records_equal": true,
+        "overlap_count": 0,
+        "boundary_strictly_ascending": true
+      },
+      {
+        "focal_species_id": "notamacropus_rufogriseus",
+        "first_page_rows": 25,
+        "second_page_rows": 25,
+        "total_records_equal": true,
+        "overlap_count": 0,
+        "boundary_strictly_ascending": true
+      },
+      {
+        "focal_species_id": "macropus_giganteus",
+        "first_page_rows": 25,
+        "second_page_rows": 25,
+        "total_records_equal": true,
+        "overlap_count": 0,
+        "boundary_strictly_ascending": true
+      },
+      {
+        "focal_species_id": "trichosurus_vulpecula",
+        "first_page_rows": 25,
+        "second_page_rows": 25,
+        "total_records_equal": true,
+        "overlap_count": 0,
+        "boundary_strictly_ascending": true
+      },
+      {
+        "focal_species_id": "pseudocheirus_peregrinus",
+        "first_page_rows": 25,
+        "second_page_rows": 25,
+        "total_records_equal": true,
+        "overlap_count": 0,
+        "boundary_strictly_ascending": true
+      },
+      {
+        "focal_species_id": "vombatus_ursinus",
+        "first_page_rows": 25,
+        "second_page_rows": 25,
+        "total_records_equal": true,
+        "overlap_count": 0,
+        "boundary_strictly_ascending": true
+      },
+      {
+        "focal_species_id": "sarcophilus_harrisii",
+        "first_page_rows": 25,
+        "second_page_rows": 25,
+        "total_records_equal": true,
+        "overlap_count": 0,
+        "boundary_strictly_ascending": true
+      },
+      {
+        "focal_species_id": "dasyurus_maculatus",
+        "first_page_rows": 25,
+        "second_page_rows": 25,
+        "total_records_equal": true,
+        "overlap_count": 0,
+        "boundary_strictly_ascending": true
+      },
+      {
+        "focal_species_id": "dasyurus_viverrinus",
+        "first_page_rows": 25,
+        "second_page_rows": 25,
+        "total_records_equal": true,
+        "overlap_count": 0,
+        "boundary_strictly_ascending": true
+      }
+    ]
+  },
+  "field_behavior": {
+    "occurrenceID": {
+      "presence_count": 525,
+      "non_null_count": 525,
+      "null_count": 0,
+      "missing_count": 0,
+      "types": [
+        "string"
+      ]
+    },
+    "dataResourceUid": {
+      "presence_count": 525,
+      "non_null_count": 525,
+      "null_count": 0,
+      "missing_count": 0,
+      "types": [
+        "string"
+      ]
+    },
+    "dataResourceName": {
+      "presence_count": 525,
+      "non_null_count": 525,
+      "null_count": 0,
+      "missing_count": 0,
+      "types": [
+        "string"
+      ]
+    },
+    "datasetID": {
+      "presence_count": 0,
+      "non_null_count": 0,
+      "null_count": 0,
+      "missing_count": 525,
+      "types": []
+    },
+    "datasetName": {
+      "presence_count": 0,
+      "non_null_count": 0,
+      "null_count": 0,
+      "missing_count": 525,
+      "types": []
+    },
+    "eventDate": {
+      "presence_count": 479,
+      "non_null_count": 479,
+      "null_count": 0,
+      "missing_count": 46,
+      "types": [
+        "integer"
+      ]
+    },
+    "year": {
+      "presence_count": 525,
+      "non_null_count": 525,
+      "null_count": 0,
+      "missing_count": 0,
+      "types": [
+        "integer"
+      ]
+    },
+    "decimalLatitude": {
+      "presence_count": 523,
+      "non_null_count": 523,
+      "null_count": 0,
+      "missing_count": 2,
+      "types": [
+        "number"
+      ]
+    },
+    "decimalLongitude": {
+      "presence_count": 523,
+      "non_null_count": 523,
+      "null_count": 0,
+      "missing_count": 2,
+      "types": [
+        "number"
+      ]
+    },
+    "coordinateUncertaintyInMeters": {
+      "presence_count": 321,
+      "non_null_count": 321,
+      "null_count": 0,
+      "missing_count": 204,
+      "types": [
+        "number"
+      ]
+    },
+    "coordinatePrecision": {
+      "presence_count": 0,
+      "non_null_count": 0,
+      "null_count": 0,
+      "missing_count": 525,
+      "types": []
+    },
+    "raw_scientificName": {
+      "presence_count": 525,
+      "non_null_count": 525,
+      "null_count": 0,
+      "missing_count": 0,
+      "types": [
+        "string"
+      ]
+    },
+    "raw_taxonConceptID": {
+      "presence_count": 0,
+      "non_null_count": 0,
+      "null_count": 0,
+      "missing_count": 525,
+      "types": []
+    },
+    "scientificName": {
+      "presence_count": 525,
+      "non_null_count": 525,
+      "null_count": 0,
+      "missing_count": 0,
+      "types": [
+        "string"
+      ]
+    },
+    "taxonConceptID": {
+      "presence_count": 525,
+      "non_null_count": 525,
+      "null_count": 0,
+      "missing_count": 0,
+      "types": [
+        "string"
+      ]
+    },
+    "acceptedNameUsage": {
+      "presence_count": 0,
+      "non_null_count": 0,
+      "null_count": 0,
+      "missing_count": 525,
+      "types": []
+    },
+    "acceptedNameUsageID": {
+      "presence_count": 0,
+      "non_null_count": 0,
+      "null_count": 0,
+      "missing_count": 525,
+      "types": []
+    },
+    "taxonRank": {
+      "presence_count": 525,
+      "non_null_count": 525,
+      "null_count": 0,
+      "missing_count": 0,
+      "types": [
+        "string"
+      ]
+    },
+    "assertions": {
+      "presence_count": 525,
+      "non_null_count": 525,
+      "null_count": 0,
+      "missing_count": 0,
+      "types": [
+        "array"
+      ]
+    },
+    "license": {
+      "presence_count": 525,
+      "non_null_count": 525,
+      "null_count": 0,
+      "missing_count": 0,
+      "types": [
+        "string"
+      ]
+    }
+  },
+  "fallback_behavior": {
+    "macropus_synonym": {
+      "concept_id_rows": 0,
+      "normalized_name_rows": 25,
+      "concept_id_parent_sample_overlap_count": 0,
+      "normalized_name_parent_sample_overlap_count": 25
+    },
+    "vombatus_children": {
+      "vombatus_ursinus_hirsutus": {
+        "returned_rows": 0,
+        "parent_sample_overlap_count": 0
+      },
+      "vombatus_ursinus_tasmaniensis": {
+        "returned_rows": 25,
+        "parent_sample_overlap_count": 15
+      },
+      "vombatus_ursinus_ursinus": {
+        "returned_rows": 25,
+        "parent_sample_overlap_count": 17
+      }
+    }
+  },
+  "deduplication": {
+    "key": "occurrenceID",
+    "rows_before_deduplication": 525,
+    "unique_rows_after_deduplication": 468,
+    "duplicate_references_across_query_branches": 57,
+    "duplicates_within_page_or_parent_pagination": 0
+  },
+  "assertions": {
+    "parent_expansion_runtime_coverage": "established_for_bounded_pilot_only",
+    "macropus_giganteus_tasmaniensis_synonym_id_coverage": "unresolved_id_zero_name_path_positive",
+    "vombatus_ursinus_hirsutus_scope_coverage": "unresolved_scoped_zero",
+    "occurrenceID_deduplication": "established_for_bounded_pilot_only"
+  },
+  "unresolved_assertions": [
+    "macropus_synonym_concept_id_returned_zero_rows_in_bounded_pilot",
+    "vombatus_ursinus_hirsutus_returned_zero_rows_in_bounded_pilot"
+  ],
+  "observations": "All counts are returned rows from capped pilot pages, not ecological totals or complete query coverage.",
+  "inference": "The bounded pilot validates the direct row request, field, provenance, sampled order/overlap, and deduplication contract. It does not prove snapshot consistency or complete descendant coverage. Species queries above 5000 results require a later supported download/export design.",
+  "readiness": "pilot_pass_ready_for_bounded_full_acquisition_design",
+  "not_ready_for": [
+    "complete_occurrence_acquisition",
+    "snapshot_consistent_pagination",
+    "camera_readiness",
+    "normalization_readiness",
+    "ecological_totals_or_full_query_coverage",
+    "complete_descendant_or_synonym_coverage"
+  ]
+}

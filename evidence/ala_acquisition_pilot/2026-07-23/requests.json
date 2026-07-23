@@ -1,0 +1,6071 @@
+{
+  "schema_version": "1.0",
+  "goal_id": "013",
+  "profile_id": "ala-tasmania-2001-2025-count-only-preflight",
+  "plan_id": "goal013-ala-row-pilot-2026-07-23",
+  "collection_started_at_utc": "2026-07-23T13:34:23Z",
+  "collection_completed_at_utc": "2026-07-23T13:40:07Z",
+  "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+  "method": "GET",
+  "planned_record_requests": 23,
+  "successful_record_requests": 23,
+  "http_attempts": 23,
+  "max_returned_rows": 575,
+  "returned_rows": 525,
+  "records_retained_in_tracked_evidence": false,
+  "coordinates_retained_in_tracked_evidence": false,
+  "requests": [
+    {
+      "ordinal": 1,
+      "key": "parent__thylogale_billardierii__start_000",
+      "branch": "parent",
+      "focal_species_id": "thylogale_billardierii",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/82e69509-af63-4502-86f7-43362b777865",
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "ordered_parameters": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/82e69509-af63-4502-86f7-43362b777865\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "fl",
+          "occurrenceID,dataResourceUid,dataResourceName,datasetID,datasetName,eventDate,year,decimalLatitude,decimalLongitude,coordinateUncertaintyInMeters,coordinatePrecision,raw_scientificName,raw_taxonConceptID,scientificName,taxonConceptID,acceptedNameUsage,acceptedNameUsageID,taxonRank,assertions,license"
+        ],
+        [
+          "pageSize",
+          "25"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ],
+        [
+          "sort",
+          "occurrenceID"
+        ],
+        [
+          "dir",
+          "asc"
+        ]
+      ],
+      "canonical_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F82e69509-af63-4502-86f7-43362b777865%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&fl=occurrenceID%2CdataResourceUid%2CdataResourceName%2CdatasetID%2CdatasetName%2CeventDate%2Cyear%2CdecimalLatitude%2CdecimalLongitude%2CcoordinateUncertaintyInMeters%2CcoordinatePrecision%2Craw_scientificName%2Craw_taxonConceptID%2CscientificName%2CtaxonConceptID%2CacceptedNameUsage%2CacceptedNameUsageID%2CtaxonRank%2Cassertions%2Clicense&pageSize=25&start=0&facet=false&disableAllQualityFilters=true&sort=occurrenceID&dir=asc",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-07-23T13:34:23Z",
+      "retrieval_timestamp_basis": "recovered_raw_file_write_mtime",
+      "attempt_count": 1,
+      "retry_events": [],
+      "returned_rows": 25,
+      "raw_file": "001-parent-thylogale-billardierii-start-000.json",
+      "raw_sha256": "470ca15a7f86ba8101806a429a21809de35bf5459a174394d87d609e95cc13d7",
+      "raw_bytes": 22509,
+      "response_controls": {
+        "page_size": 25,
+        "start_index": 0,
+        "total_records": 4525,
+        "expected_returned_rows": 25,
+        "returned_rows_match_expected": true,
+        "sort": "occurrenceID",
+        "direction": "asc",
+        "occurrence_ids_strictly_ascending": true,
+        "facet_result_count": 0
+      },
+      "field_stats": {
+        "occurrenceID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceUid": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "datasetID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "datasetName": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "eventDate": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "year": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "decimalLatitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "decimalLongitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinateUncertaintyInMeters": {
+          "presence_count": 6,
+          "non_null_count": 6,
+          "null_count": 0,
+          "missing_count": 19,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinatePrecision": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "raw_scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "raw_taxonConceptID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "taxonConceptID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "acceptedNameUsage": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "acceptedNameUsageID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "taxonRank": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "assertions": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "array"
+          ]
+        },
+        "license": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        }
+      },
+      "unrequested_field_stats": {
+        "otherProperties": {
+          "presence_count": 20,
+          "non_null_count": 20,
+          "types": [
+            "object"
+          ]
+        }
+      },
+      "validation": {
+        "occurrence_id_non_null_count": 25,
+        "occurrence_id_duplicate_count": 0,
+        "critical_identity_ready_count": 25,
+        "date_scope_violation_count": 0,
+        "event_date_unparseable_count": 0,
+        "extra_field_count": 0
+      },
+      "query_binding": {
+        "echoes_checked": 2,
+        "matched_echoes": 2,
+        "q_values_per_echo": 1,
+        "fq_values_per_echo": 2,
+        "quality_values_per_echo": 1
+      }
+    },
+    {
+      "ordinal": 2,
+      "key": "parent__thylogale_billardierii__start_025",
+      "branch": "parent",
+      "focal_species_id": "thylogale_billardierii",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/82e69509-af63-4502-86f7-43362b777865",
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "ordered_parameters": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/82e69509-af63-4502-86f7-43362b777865\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "fl",
+          "occurrenceID,dataResourceUid,dataResourceName,datasetID,datasetName,eventDate,year,decimalLatitude,decimalLongitude,coordinateUncertaintyInMeters,coordinatePrecision,raw_scientificName,raw_taxonConceptID,scientificName,taxonConceptID,acceptedNameUsage,acceptedNameUsageID,taxonRank,assertions,license"
+        ],
+        [
+          "pageSize",
+          "25"
+        ],
+        [
+          "start",
+          "25"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ],
+        [
+          "sort",
+          "occurrenceID"
+        ],
+        [
+          "dir",
+          "asc"
+        ]
+      ],
+      "canonical_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F82e69509-af63-4502-86f7-43362b777865%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&fl=occurrenceID%2CdataResourceUid%2CdataResourceName%2CdatasetID%2CdatasetName%2CeventDate%2Cyear%2CdecimalLatitude%2CdecimalLongitude%2CcoordinateUncertaintyInMeters%2CcoordinatePrecision%2Craw_scientificName%2Craw_taxonConceptID%2CscientificName%2CtaxonConceptID%2CacceptedNameUsage%2CacceptedNameUsageID%2CtaxonRank%2Cassertions%2Clicense&pageSize=25&start=25&facet=false&disableAllQualityFilters=true&sort=occurrenceID&dir=asc",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-07-23T13:39:53Z",
+      "retrieval_timestamp_basis": "network_response_completed",
+      "attempt_count": 1,
+      "retry_events": [],
+      "returned_rows": 25,
+      "raw_file": "002-parent-thylogale-billardierii-start-025.json",
+      "raw_sha256": "5eee2dc20a4ebbbafec095a11bf2e538d0d08b5ec14cda8866475aef491f8760",
+      "raw_bytes": 20289,
+      "response_controls": {
+        "page_size": 25,
+        "start_index": 25,
+        "total_records": 4525,
+        "expected_returned_rows": 25,
+        "returned_rows_match_expected": true,
+        "sort": "occurrenceID",
+        "direction": "asc",
+        "occurrence_ids_strictly_ascending": true,
+        "facet_result_count": 0
+      },
+      "field_stats": {
+        "occurrenceID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceUid": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "datasetID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "datasetName": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "eventDate": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "year": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "decimalLatitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "decimalLongitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinateUncertaintyInMeters": {
+          "presence_count": 18,
+          "non_null_count": 18,
+          "null_count": 0,
+          "missing_count": 7,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinatePrecision": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "raw_scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "raw_taxonConceptID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "taxonConceptID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "acceptedNameUsage": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "acceptedNameUsageID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "taxonRank": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "assertions": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "array"
+          ]
+        },
+        "license": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        }
+      },
+      "unrequested_field_stats": {
+        "otherProperties": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "types": [
+            "object"
+          ]
+        }
+      },
+      "validation": {
+        "occurrence_id_non_null_count": 25,
+        "occurrence_id_duplicate_count": 0,
+        "critical_identity_ready_count": 25,
+        "date_scope_violation_count": 0,
+        "event_date_unparseable_count": 0,
+        "extra_field_count": 0
+      },
+      "query_binding": {
+        "echoes_checked": 2,
+        "matched_echoes": 2,
+        "q_values_per_echo": 1,
+        "fq_values_per_echo": 2,
+        "quality_values_per_echo": 1
+      }
+    },
+    {
+      "ordinal": 3,
+      "key": "parent__notamacropus_rufogriseus__start_000",
+      "branch": "parent",
+      "focal_species_id": "notamacropus_rufogriseus",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/c4dfafef-5192-4a3d-815c-040c393e9bca",
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "ordered_parameters": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/c4dfafef-5192-4a3d-815c-040c393e9bca\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "fl",
+          "occurrenceID,dataResourceUid,dataResourceName,datasetID,datasetName,eventDate,year,decimalLatitude,decimalLongitude,coordinateUncertaintyInMeters,coordinatePrecision,raw_scientificName,raw_taxonConceptID,scientificName,taxonConceptID,acceptedNameUsage,acceptedNameUsageID,taxonRank,assertions,license"
+        ],
+        [
+          "pageSize",
+          "25"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ],
+        [
+          "sort",
+          "occurrenceID"
+        ],
+        [
+          "dir",
+          "asc"
+        ]
+      ],
+      "canonical_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Fc4dfafef-5192-4a3d-815c-040c393e9bca%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&fl=occurrenceID%2CdataResourceUid%2CdataResourceName%2CdatasetID%2CdatasetName%2CeventDate%2Cyear%2CdecimalLatitude%2CdecimalLongitude%2CcoordinateUncertaintyInMeters%2CcoordinatePrecision%2Craw_scientificName%2Craw_taxonConceptID%2CscientificName%2CtaxonConceptID%2CacceptedNameUsage%2CacceptedNameUsageID%2CtaxonRank%2Cassertions%2Clicense&pageSize=25&start=0&facet=false&disableAllQualityFilters=true&sort=occurrenceID&dir=asc",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-07-23T13:39:54Z",
+      "retrieval_timestamp_basis": "network_response_completed",
+      "attempt_count": 1,
+      "retry_events": [],
+      "returned_rows": 25,
+      "raw_file": "003-parent-notamacropus-rufogriseus-start-000.json",
+      "raw_sha256": "2c979ebdfb45b29995e15d555c7a0c49340aad1b151cd39e3732143b7a6775f0",
+      "raw_bytes": 23548,
+      "response_controls": {
+        "page_size": 25,
+        "start_index": 0,
+        "total_records": 3191,
+        "expected_returned_rows": 25,
+        "returned_rows_match_expected": true,
+        "sort": "occurrenceID",
+        "direction": "asc",
+        "occurrence_ids_strictly_ascending": true,
+        "facet_result_count": 0
+      },
+      "field_stats": {
+        "occurrenceID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceUid": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "datasetID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "datasetName": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "eventDate": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "year": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "decimalLatitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "decimalLongitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinateUncertaintyInMeters": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "coordinatePrecision": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "raw_scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "raw_taxonConceptID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "taxonConceptID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "acceptedNameUsage": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "acceptedNameUsageID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "taxonRank": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "assertions": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "array"
+          ]
+        },
+        "license": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        }
+      },
+      "unrequested_field_stats": {
+        "otherProperties": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "types": [
+            "object"
+          ]
+        }
+      },
+      "validation": {
+        "occurrence_id_non_null_count": 25,
+        "occurrence_id_duplicate_count": 0,
+        "critical_identity_ready_count": 25,
+        "date_scope_violation_count": 0,
+        "event_date_unparseable_count": 0,
+        "extra_field_count": 0
+      },
+      "query_binding": {
+        "echoes_checked": 2,
+        "matched_echoes": 2,
+        "q_values_per_echo": 1,
+        "fq_values_per_echo": 2,
+        "quality_values_per_echo": 1
+      }
+    },
+    {
+      "ordinal": 4,
+      "key": "parent__notamacropus_rufogriseus__start_025",
+      "branch": "parent",
+      "focal_species_id": "notamacropus_rufogriseus",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/c4dfafef-5192-4a3d-815c-040c393e9bca",
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "ordered_parameters": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/c4dfafef-5192-4a3d-815c-040c393e9bca\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "fl",
+          "occurrenceID,dataResourceUid,dataResourceName,datasetID,datasetName,eventDate,year,decimalLatitude,decimalLongitude,coordinateUncertaintyInMeters,coordinatePrecision,raw_scientificName,raw_taxonConceptID,scientificName,taxonConceptID,acceptedNameUsage,acceptedNameUsageID,taxonRank,assertions,license"
+        ],
+        [
+          "pageSize",
+          "25"
+        ],
+        [
+          "start",
+          "25"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ],
+        [
+          "sort",
+          "occurrenceID"
+        ],
+        [
+          "dir",
+          "asc"
+        ]
+      ],
+      "canonical_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Fc4dfafef-5192-4a3d-815c-040c393e9bca%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&fl=occurrenceID%2CdataResourceUid%2CdataResourceName%2CdatasetID%2CdatasetName%2CeventDate%2Cyear%2CdecimalLatitude%2CdecimalLongitude%2CcoordinateUncertaintyInMeters%2CcoordinatePrecision%2Craw_scientificName%2Craw_taxonConceptID%2CscientificName%2CtaxonConceptID%2CacceptedNameUsage%2CacceptedNameUsageID%2CtaxonRank%2Cassertions%2Clicense&pageSize=25&start=25&facet=false&disableAllQualityFilters=true&sort=occurrenceID&dir=asc",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-07-23T13:39:55Z",
+      "retrieval_timestamp_basis": "network_response_completed",
+      "attempt_count": 1,
+      "retry_events": [],
+      "returned_rows": 25,
+      "raw_file": "004-parent-notamacropus-rufogriseus-start-025.json",
+      "raw_sha256": "c007cafc1a07116f4a5d293c57bf216a5097044a95137847f736a645ec273856",
+      "raw_bytes": 21898,
+      "response_controls": {
+        "page_size": 25,
+        "start_index": 25,
+        "total_records": 3191,
+        "expected_returned_rows": 25,
+        "returned_rows_match_expected": true,
+        "sort": "occurrenceID",
+        "direction": "asc",
+        "occurrence_ids_strictly_ascending": true,
+        "facet_result_count": 0
+      },
+      "field_stats": {
+        "occurrenceID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceUid": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "datasetID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "datasetName": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "eventDate": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "year": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "decimalLatitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "decimalLongitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinateUncertaintyInMeters": {
+          "presence_count": 9,
+          "non_null_count": 9,
+          "null_count": 0,
+          "missing_count": 16,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinatePrecision": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "raw_scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "raw_taxonConceptID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "taxonConceptID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "acceptedNameUsage": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "acceptedNameUsageID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "taxonRank": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "assertions": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "array"
+          ]
+        },
+        "license": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        }
+      },
+      "unrequested_field_stats": {
+        "otherProperties": {
+          "presence_count": 22,
+          "non_null_count": 22,
+          "types": [
+            "object"
+          ]
+        }
+      },
+      "validation": {
+        "occurrence_id_non_null_count": 25,
+        "occurrence_id_duplicate_count": 0,
+        "critical_identity_ready_count": 25,
+        "date_scope_violation_count": 0,
+        "event_date_unparseable_count": 0,
+        "extra_field_count": 0
+      },
+      "query_binding": {
+        "echoes_checked": 2,
+        "matched_echoes": 2,
+        "q_values_per_echo": 1,
+        "fq_values_per_echo": 2,
+        "quality_values_per_echo": 1
+      }
+    },
+    {
+      "ordinal": 5,
+      "key": "parent__macropus_giganteus__start_000",
+      "branch": "parent",
+      "focal_species_id": "macropus_giganteus",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/f2f43ef9-89fd-4f89-8b06-0842e86cfe06",
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "ordered_parameters": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/f2f43ef9-89fd-4f89-8b06-0842e86cfe06\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "fl",
+          "occurrenceID,dataResourceUid,dataResourceName,datasetID,datasetName,eventDate,year,decimalLatitude,decimalLongitude,coordinateUncertaintyInMeters,coordinatePrecision,raw_scientificName,raw_taxonConceptID,scientificName,taxonConceptID,acceptedNameUsage,acceptedNameUsageID,taxonRank,assertions,license"
+        ],
+        [
+          "pageSize",
+          "25"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ],
+        [
+          "sort",
+          "occurrenceID"
+        ],
+        [
+          "dir",
+          "asc"
+        ]
+      ],
+      "canonical_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Ff2f43ef9-89fd-4f89-8b06-0842e86cfe06%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&fl=occurrenceID%2CdataResourceUid%2CdataResourceName%2CdatasetID%2CdatasetName%2CeventDate%2Cyear%2CdecimalLatitude%2CdecimalLongitude%2CcoordinateUncertaintyInMeters%2CcoordinatePrecision%2Craw_scientificName%2Craw_taxonConceptID%2CscientificName%2CtaxonConceptID%2CacceptedNameUsage%2CacceptedNameUsageID%2CtaxonRank%2Cassertions%2Clicense&pageSize=25&start=0&facet=false&disableAllQualityFilters=true&sort=occurrenceID&dir=asc",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-07-23T13:39:57Z",
+      "retrieval_timestamp_basis": "network_response_completed",
+      "attempt_count": 1,
+      "retry_events": [],
+      "returned_rows": 25,
+      "raw_file": "005-parent-macropus-giganteus-start-000.json",
+      "raw_sha256": "2b47f2b4b77ed408467a4bd9128d42ba253a79b21c5c4c06da830bfdffe880ee",
+      "raw_bytes": 20330,
+      "response_controls": {
+        "page_size": 25,
+        "start_index": 0,
+        "total_records": 398,
+        "expected_returned_rows": 25,
+        "returned_rows_match_expected": true,
+        "sort": "occurrenceID",
+        "direction": "asc",
+        "occurrence_ids_strictly_ascending": true,
+        "facet_result_count": 0
+      },
+      "field_stats": {
+        "occurrenceID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceUid": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "datasetID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "datasetName": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "eventDate": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "year": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "decimalLatitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "decimalLongitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinateUncertaintyInMeters": {
+          "presence_count": 21,
+          "non_null_count": 21,
+          "null_count": 0,
+          "missing_count": 4,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinatePrecision": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "raw_scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "raw_taxonConceptID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "taxonConceptID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "acceptedNameUsage": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "acceptedNameUsageID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "taxonRank": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "assertions": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "array"
+          ]
+        },
+        "license": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        }
+      },
+      "unrequested_field_stats": {
+        "otherProperties": {
+          "presence_count": 20,
+          "non_null_count": 20,
+          "types": [
+            "object"
+          ]
+        }
+      },
+      "validation": {
+        "occurrence_id_non_null_count": 25,
+        "occurrence_id_duplicate_count": 0,
+        "critical_identity_ready_count": 25,
+        "date_scope_violation_count": 0,
+        "event_date_unparseable_count": 0,
+        "extra_field_count": 0
+      },
+      "query_binding": {
+        "echoes_checked": 2,
+        "matched_echoes": 2,
+        "q_values_per_echo": 1,
+        "fq_values_per_echo": 2,
+        "quality_values_per_echo": 1
+      }
+    },
+    {
+      "ordinal": 6,
+      "key": "parent__macropus_giganteus__start_025",
+      "branch": "parent",
+      "focal_species_id": "macropus_giganteus",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/f2f43ef9-89fd-4f89-8b06-0842e86cfe06",
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "ordered_parameters": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/f2f43ef9-89fd-4f89-8b06-0842e86cfe06\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "fl",
+          "occurrenceID,dataResourceUid,dataResourceName,datasetID,datasetName,eventDate,year,decimalLatitude,decimalLongitude,coordinateUncertaintyInMeters,coordinatePrecision,raw_scientificName,raw_taxonConceptID,scientificName,taxonConceptID,acceptedNameUsage,acceptedNameUsageID,taxonRank,assertions,license"
+        ],
+        [
+          "pageSize",
+          "25"
+        ],
+        [
+          "start",
+          "25"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ],
+        [
+          "sort",
+          "occurrenceID"
+        ],
+        [
+          "dir",
+          "asc"
+        ]
+      ],
+      "canonical_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Ff2f43ef9-89fd-4f89-8b06-0842e86cfe06%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&fl=occurrenceID%2CdataResourceUid%2CdataResourceName%2CdatasetID%2CdatasetName%2CeventDate%2Cyear%2CdecimalLatitude%2CdecimalLongitude%2CcoordinateUncertaintyInMeters%2CcoordinatePrecision%2Craw_scientificName%2Craw_taxonConceptID%2CscientificName%2CtaxonConceptID%2CacceptedNameUsage%2CacceptedNameUsageID%2CtaxonRank%2Cassertions%2Clicense&pageSize=25&start=25&facet=false&disableAllQualityFilters=true&sort=occurrenceID&dir=asc",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-07-23T13:39:57Z",
+      "retrieval_timestamp_basis": "network_response_completed",
+      "attempt_count": 1,
+      "retry_events": [],
+      "returned_rows": 25,
+      "raw_file": "006-parent-macropus-giganteus-start-025.json",
+      "raw_sha256": "dfee11b95896cdec4ac2218be23901f38eff835e6b7d43e812dcd06f590134f5",
+      "raw_bytes": 20366,
+      "response_controls": {
+        "page_size": 25,
+        "start_index": 25,
+        "total_records": 398,
+        "expected_returned_rows": 25,
+        "returned_rows_match_expected": true,
+        "sort": "occurrenceID",
+        "direction": "asc",
+        "occurrence_ids_strictly_ascending": true,
+        "facet_result_count": 0
+      },
+      "field_stats": {
+        "occurrenceID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceUid": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "datasetID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "datasetName": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "eventDate": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "year": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "decimalLatitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "decimalLongitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinateUncertaintyInMeters": {
+          "presence_count": 19,
+          "non_null_count": 19,
+          "null_count": 0,
+          "missing_count": 6,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinatePrecision": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "raw_scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "raw_taxonConceptID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "taxonConceptID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "acceptedNameUsage": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "acceptedNameUsageID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "taxonRank": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "assertions": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "array"
+          ]
+        },
+        "license": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        }
+      },
+      "unrequested_field_stats": {
+        "otherProperties": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "types": [
+            "object"
+          ]
+        }
+      },
+      "validation": {
+        "occurrence_id_non_null_count": 25,
+        "occurrence_id_duplicate_count": 0,
+        "critical_identity_ready_count": 25,
+        "date_scope_violation_count": 0,
+        "event_date_unparseable_count": 0,
+        "extra_field_count": 0
+      },
+      "query_binding": {
+        "echoes_checked": 2,
+        "matched_echoes": 2,
+        "q_values_per_echo": 1,
+        "fq_values_per_echo": 2,
+        "quality_values_per_echo": 1
+      }
+    },
+    {
+      "ordinal": 7,
+      "key": "parent__trichosurus_vulpecula__start_000",
+      "branch": "parent",
+      "focal_species_id": "trichosurus_vulpecula",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/ee2cb6a9-e17c-4ca7-8aef-76d69eb969ed",
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "ordered_parameters": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/ee2cb6a9-e17c-4ca7-8aef-76d69eb969ed\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "fl",
+          "occurrenceID,dataResourceUid,dataResourceName,datasetID,datasetName,eventDate,year,decimalLatitude,decimalLongitude,coordinateUncertaintyInMeters,coordinatePrecision,raw_scientificName,raw_taxonConceptID,scientificName,taxonConceptID,acceptedNameUsage,acceptedNameUsageID,taxonRank,assertions,license"
+        ],
+        [
+          "pageSize",
+          "25"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ],
+        [
+          "sort",
+          "occurrenceID"
+        ],
+        [
+          "dir",
+          "asc"
+        ]
+      ],
+      "canonical_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Fee2cb6a9-e17c-4ca7-8aef-76d69eb969ed%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&fl=occurrenceID%2CdataResourceUid%2CdataResourceName%2CdatasetID%2CdatasetName%2CeventDate%2Cyear%2CdecimalLatitude%2CdecimalLongitude%2CcoordinateUncertaintyInMeters%2CcoordinatePrecision%2Craw_scientificName%2Craw_taxonConceptID%2CscientificName%2CtaxonConceptID%2CacceptedNameUsage%2CacceptedNameUsageID%2CtaxonRank%2Cassertions%2Clicense&pageSize=25&start=0&facet=false&disableAllQualityFilters=true&sort=occurrenceID&dir=asc",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-07-23T13:39:58Z",
+      "retrieval_timestamp_basis": "network_response_completed",
+      "attempt_count": 1,
+      "retry_events": [],
+      "returned_rows": 25,
+      "raw_file": "007-parent-trichosurus-vulpecula-start-000.json",
+      "raw_sha256": "94d535e092a48d6984493cd3bd0c9ed9dd9d9bb98454102ce2bdd58076743341",
+      "raw_bytes": 20701,
+      "response_controls": {
+        "page_size": 25,
+        "start_index": 0,
+        "total_records": 1615,
+        "expected_returned_rows": 25,
+        "returned_rows_match_expected": true,
+        "sort": "occurrenceID",
+        "direction": "asc",
+        "occurrence_ids_strictly_ascending": true,
+        "facet_result_count": 0
+      },
+      "field_stats": {
+        "occurrenceID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceUid": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "datasetID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "datasetName": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "eventDate": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "year": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "decimalLatitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "decimalLongitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinateUncertaintyInMeters": {
+          "presence_count": 16,
+          "non_null_count": 16,
+          "null_count": 0,
+          "missing_count": 9,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinatePrecision": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "raw_scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "raw_taxonConceptID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "taxonConceptID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "acceptedNameUsage": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "acceptedNameUsageID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "taxonRank": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "assertions": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "array"
+          ]
+        },
+        "license": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        }
+      },
+      "unrequested_field_stats": {
+        "otherProperties": {
+          "presence_count": 16,
+          "non_null_count": 16,
+          "types": [
+            "object"
+          ]
+        }
+      },
+      "validation": {
+        "occurrence_id_non_null_count": 25,
+        "occurrence_id_duplicate_count": 0,
+        "critical_identity_ready_count": 25,
+        "date_scope_violation_count": 0,
+        "event_date_unparseable_count": 0,
+        "extra_field_count": 0
+      },
+      "query_binding": {
+        "echoes_checked": 2,
+        "matched_echoes": 2,
+        "q_values_per_echo": 1,
+        "fq_values_per_echo": 2,
+        "quality_values_per_echo": 1
+      }
+    },
+    {
+      "ordinal": 8,
+      "key": "parent__trichosurus_vulpecula__start_025",
+      "branch": "parent",
+      "focal_species_id": "trichosurus_vulpecula",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/ee2cb6a9-e17c-4ca7-8aef-76d69eb969ed",
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "ordered_parameters": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/ee2cb6a9-e17c-4ca7-8aef-76d69eb969ed\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "fl",
+          "occurrenceID,dataResourceUid,dataResourceName,datasetID,datasetName,eventDate,year,decimalLatitude,decimalLongitude,coordinateUncertaintyInMeters,coordinatePrecision,raw_scientificName,raw_taxonConceptID,scientificName,taxonConceptID,acceptedNameUsage,acceptedNameUsageID,taxonRank,assertions,license"
+        ],
+        [
+          "pageSize",
+          "25"
+        ],
+        [
+          "start",
+          "25"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ],
+        [
+          "sort",
+          "occurrenceID"
+        ],
+        [
+          "dir",
+          "asc"
+        ]
+      ],
+      "canonical_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Fee2cb6a9-e17c-4ca7-8aef-76d69eb969ed%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&fl=occurrenceID%2CdataResourceUid%2CdataResourceName%2CdatasetID%2CdatasetName%2CeventDate%2Cyear%2CdecimalLatitude%2CdecimalLongitude%2CcoordinateUncertaintyInMeters%2CcoordinatePrecision%2Craw_scientificName%2Craw_taxonConceptID%2CscientificName%2CtaxonConceptID%2CacceptedNameUsage%2CacceptedNameUsageID%2CtaxonRank%2Cassertions%2Clicense&pageSize=25&start=25&facet=false&disableAllQualityFilters=true&sort=occurrenceID&dir=asc",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-07-23T13:39:59Z",
+      "retrieval_timestamp_basis": "network_response_completed",
+      "attempt_count": 1,
+      "retry_events": [],
+      "returned_rows": 25,
+      "raw_file": "008-parent-trichosurus-vulpecula-start-025.json",
+      "raw_sha256": "6af5d1f7f9a20492906021083c4506b9473a8b149ba375c014cb44ef936fec5a",
+      "raw_bytes": 20095,
+      "response_controls": {
+        "page_size": 25,
+        "start_index": 25,
+        "total_records": 1615,
+        "expected_returned_rows": 25,
+        "returned_rows_match_expected": true,
+        "sort": "occurrenceID",
+        "direction": "asc",
+        "occurrence_ids_strictly_ascending": true,
+        "facet_result_count": 0
+      },
+      "field_stats": {
+        "occurrenceID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceUid": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "datasetID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "datasetName": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "eventDate": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "year": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "decimalLatitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "decimalLongitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinateUncertaintyInMeters": {
+          "presence_count": 22,
+          "non_null_count": 22,
+          "null_count": 0,
+          "missing_count": 3,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinatePrecision": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "raw_scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "raw_taxonConceptID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "taxonConceptID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "acceptedNameUsage": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "acceptedNameUsageID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "taxonRank": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "assertions": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "array"
+          ]
+        },
+        "license": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        }
+      },
+      "unrequested_field_stats": {
+        "otherProperties": {
+          "presence_count": 11,
+          "non_null_count": 11,
+          "types": [
+            "object"
+          ]
+        }
+      },
+      "validation": {
+        "occurrence_id_non_null_count": 25,
+        "occurrence_id_duplicate_count": 0,
+        "critical_identity_ready_count": 25,
+        "date_scope_violation_count": 0,
+        "event_date_unparseable_count": 0,
+        "extra_field_count": 0
+      },
+      "query_binding": {
+        "echoes_checked": 2,
+        "matched_echoes": 2,
+        "q_values_per_echo": 1,
+        "fq_values_per_echo": 2,
+        "quality_values_per_echo": 1
+      }
+    },
+    {
+      "ordinal": 9,
+      "key": "parent__pseudocheirus_peregrinus__start_000",
+      "branch": "parent",
+      "focal_species_id": "pseudocheirus_peregrinus",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/003decd6-ec3d-468e-909d-da396a6dd1f6",
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "ordered_parameters": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/003decd6-ec3d-468e-909d-da396a6dd1f6\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "fl",
+          "occurrenceID,dataResourceUid,dataResourceName,datasetID,datasetName,eventDate,year,decimalLatitude,decimalLongitude,coordinateUncertaintyInMeters,coordinatePrecision,raw_scientificName,raw_taxonConceptID,scientificName,taxonConceptID,acceptedNameUsage,acceptedNameUsageID,taxonRank,assertions,license"
+        ],
+        [
+          "pageSize",
+          "25"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ],
+        [
+          "sort",
+          "occurrenceID"
+        ],
+        [
+          "dir",
+          "asc"
+        ]
+      ],
+      "canonical_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F003decd6-ec3d-468e-909d-da396a6dd1f6%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&fl=occurrenceID%2CdataResourceUid%2CdataResourceName%2CdatasetID%2CdatasetName%2CeventDate%2Cyear%2CdecimalLatitude%2CdecimalLongitude%2CcoordinateUncertaintyInMeters%2CcoordinatePrecision%2Craw_scientificName%2Craw_taxonConceptID%2CscientificName%2CtaxonConceptID%2CacceptedNameUsage%2CacceptedNameUsageID%2CtaxonRank%2Cassertions%2Clicense&pageSize=25&start=0&facet=false&disableAllQualityFilters=true&sort=occurrenceID&dir=asc",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-07-23T13:39:59Z",
+      "retrieval_timestamp_basis": "network_response_completed",
+      "attempt_count": 1,
+      "retry_events": [],
+      "returned_rows": 25,
+      "raw_file": "009-parent-pseudocheirus-peregrinus-start-000.json",
+      "raw_sha256": "7666b630ce15776528080642c4885c899bf508d80861405e81e3bfc61b59daaa",
+      "raw_bytes": 20968,
+      "response_controls": {
+        "page_size": 25,
+        "start_index": 0,
+        "total_records": 367,
+        "expected_returned_rows": 25,
+        "returned_rows_match_expected": true,
+        "sort": "occurrenceID",
+        "direction": "asc",
+        "occurrence_ids_strictly_ascending": true,
+        "facet_result_count": 0
+      },
+      "field_stats": {
+        "occurrenceID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceUid": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "datasetID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "datasetName": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "eventDate": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "year": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "decimalLatitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "decimalLongitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinateUncertaintyInMeters": {
+          "presence_count": 17,
+          "non_null_count": 17,
+          "null_count": 0,
+          "missing_count": 8,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinatePrecision": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "raw_scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "raw_taxonConceptID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "taxonConceptID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "acceptedNameUsage": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "acceptedNameUsageID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "taxonRank": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "assertions": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "array"
+          ]
+        },
+        "license": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        }
+      },
+      "unrequested_field_stats": {
+        "otherProperties": {
+          "presence_count": 22,
+          "non_null_count": 22,
+          "types": [
+            "object"
+          ]
+        }
+      },
+      "validation": {
+        "occurrence_id_non_null_count": 25,
+        "occurrence_id_duplicate_count": 0,
+        "critical_identity_ready_count": 25,
+        "date_scope_violation_count": 0,
+        "event_date_unparseable_count": 0,
+        "extra_field_count": 0
+      },
+      "query_binding": {
+        "echoes_checked": 2,
+        "matched_echoes": 2,
+        "q_values_per_echo": 1,
+        "fq_values_per_echo": 2,
+        "quality_values_per_echo": 1
+      }
+    },
+    {
+      "ordinal": 10,
+      "key": "parent__pseudocheirus_peregrinus__start_025",
+      "branch": "parent",
+      "focal_species_id": "pseudocheirus_peregrinus",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/003decd6-ec3d-468e-909d-da396a6dd1f6",
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "ordered_parameters": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/003decd6-ec3d-468e-909d-da396a6dd1f6\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "fl",
+          "occurrenceID,dataResourceUid,dataResourceName,datasetID,datasetName,eventDate,year,decimalLatitude,decimalLongitude,coordinateUncertaintyInMeters,coordinatePrecision,raw_scientificName,raw_taxonConceptID,scientificName,taxonConceptID,acceptedNameUsage,acceptedNameUsageID,taxonRank,assertions,license"
+        ],
+        [
+          "pageSize",
+          "25"
+        ],
+        [
+          "start",
+          "25"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ],
+        [
+          "sort",
+          "occurrenceID"
+        ],
+        [
+          "dir",
+          "asc"
+        ]
+      ],
+      "canonical_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F003decd6-ec3d-468e-909d-da396a6dd1f6%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&fl=occurrenceID%2CdataResourceUid%2CdataResourceName%2CdatasetID%2CdatasetName%2CeventDate%2Cyear%2CdecimalLatitude%2CdecimalLongitude%2CcoordinateUncertaintyInMeters%2CcoordinatePrecision%2Craw_scientificName%2Craw_taxonConceptID%2CscientificName%2CtaxonConceptID%2CacceptedNameUsage%2CacceptedNameUsageID%2CtaxonRank%2Cassertions%2Clicense&pageSize=25&start=25&facet=false&disableAllQualityFilters=true&sort=occurrenceID&dir=asc",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-07-23T13:40:00Z",
+      "retrieval_timestamp_basis": "network_response_completed",
+      "attempt_count": 1,
+      "retry_events": [],
+      "returned_rows": 25,
+      "raw_file": "010-parent-pseudocheirus-peregrinus-start-025.json",
+      "raw_sha256": "5be5c684f20ef555af7ab967f6315a27099a766ae6b61a2c1bf20cea0f88f217",
+      "raw_bytes": 20568,
+      "response_controls": {
+        "page_size": 25,
+        "start_index": 25,
+        "total_records": 367,
+        "expected_returned_rows": 25,
+        "returned_rows_match_expected": true,
+        "sort": "occurrenceID",
+        "direction": "asc",
+        "occurrence_ids_strictly_ascending": true,
+        "facet_result_count": 0
+      },
+      "field_stats": {
+        "occurrenceID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceUid": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "datasetID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "datasetName": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "eventDate": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "year": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "decimalLatitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "decimalLongitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinateUncertaintyInMeters": {
+          "presence_count": 23,
+          "non_null_count": 23,
+          "null_count": 0,
+          "missing_count": 2,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinatePrecision": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "raw_scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "raw_taxonConceptID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "taxonConceptID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "acceptedNameUsage": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "acceptedNameUsageID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "taxonRank": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "assertions": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "array"
+          ]
+        },
+        "license": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        }
+      },
+      "unrequested_field_stats": {
+        "otherProperties": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "types": [
+            "object"
+          ]
+        }
+      },
+      "validation": {
+        "occurrence_id_non_null_count": 25,
+        "occurrence_id_duplicate_count": 0,
+        "critical_identity_ready_count": 25,
+        "date_scope_violation_count": 0,
+        "event_date_unparseable_count": 0,
+        "extra_field_count": 0
+      },
+      "query_binding": {
+        "echoes_checked": 2,
+        "matched_echoes": 2,
+        "q_values_per_echo": 1,
+        "fq_values_per_echo": 2,
+        "quality_values_per_echo": 1
+      }
+    },
+    {
+      "ordinal": 11,
+      "key": "parent__vombatus_ursinus__start_000",
+      "branch": "parent",
+      "focal_species_id": "vombatus_ursinus",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/66d42847-c556-4fa3-902c-a91d9f517286",
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "ordered_parameters": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/66d42847-c556-4fa3-902c-a91d9f517286\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "fl",
+          "occurrenceID,dataResourceUid,dataResourceName,datasetID,datasetName,eventDate,year,decimalLatitude,decimalLongitude,coordinateUncertaintyInMeters,coordinatePrecision,raw_scientificName,raw_taxonConceptID,scientificName,taxonConceptID,acceptedNameUsage,acceptedNameUsageID,taxonRank,assertions,license"
+        ],
+        [
+          "pageSize",
+          "25"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ],
+        [
+          "sort",
+          "occurrenceID"
+        ],
+        [
+          "dir",
+          "asc"
+        ]
+      ],
+      "canonical_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F66d42847-c556-4fa3-902c-a91d9f517286%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&fl=occurrenceID%2CdataResourceUid%2CdataResourceName%2CdatasetID%2CdatasetName%2CeventDate%2Cyear%2CdecimalLatitude%2CdecimalLongitude%2CcoordinateUncertaintyInMeters%2CcoordinatePrecision%2Craw_scientificName%2Craw_taxonConceptID%2CscientificName%2CtaxonConceptID%2CacceptedNameUsage%2CacceptedNameUsageID%2CtaxonRank%2Cassertions%2Clicense&pageSize=25&start=0&facet=false&disableAllQualityFilters=true&sort=occurrenceID&dir=asc",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-07-23T13:40:00Z",
+      "retrieval_timestamp_basis": "network_response_completed",
+      "attempt_count": 1,
+      "retry_events": [],
+      "returned_rows": 25,
+      "raw_file": "011-parent-vombatus-ursinus-start-000.json",
+      "raw_sha256": "ffe8b0236f71d547e215869732627590d9f50dfb5c51be3dd9c90f550d7a7e02",
+      "raw_bytes": 22665,
+      "response_controls": {
+        "page_size": 25,
+        "start_index": 0,
+        "total_records": 2391,
+        "expected_returned_rows": 25,
+        "returned_rows_match_expected": true,
+        "sort": "occurrenceID",
+        "direction": "asc",
+        "occurrence_ids_strictly_ascending": true,
+        "facet_result_count": 0
+      },
+      "field_stats": {
+        "occurrenceID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceUid": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "datasetID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "datasetName": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "eventDate": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "year": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "decimalLatitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "decimalLongitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinateUncertaintyInMeters": {
+          "presence_count": 1,
+          "non_null_count": 1,
+          "null_count": 0,
+          "missing_count": 24,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinatePrecision": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "raw_scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "raw_taxonConceptID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "taxonConceptID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "acceptedNameUsage": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "acceptedNameUsageID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "taxonRank": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "assertions": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "array"
+          ]
+        },
+        "license": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        }
+      },
+      "unrequested_field_stats": {
+        "otherProperties": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "types": [
+            "object"
+          ]
+        }
+      },
+      "validation": {
+        "occurrence_id_non_null_count": 25,
+        "occurrence_id_duplicate_count": 0,
+        "critical_identity_ready_count": 25,
+        "date_scope_violation_count": 0,
+        "event_date_unparseable_count": 0,
+        "extra_field_count": 0
+      },
+      "query_binding": {
+        "echoes_checked": 2,
+        "matched_echoes": 2,
+        "q_values_per_echo": 1,
+        "fq_values_per_echo": 2,
+        "quality_values_per_echo": 1
+      }
+    },
+    {
+      "ordinal": 12,
+      "key": "parent__vombatus_ursinus__start_025",
+      "branch": "parent",
+      "focal_species_id": "vombatus_ursinus",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/66d42847-c556-4fa3-902c-a91d9f517286",
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "ordered_parameters": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/66d42847-c556-4fa3-902c-a91d9f517286\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "fl",
+          "occurrenceID,dataResourceUid,dataResourceName,datasetID,datasetName,eventDate,year,decimalLatitude,decimalLongitude,coordinateUncertaintyInMeters,coordinatePrecision,raw_scientificName,raw_taxonConceptID,scientificName,taxonConceptID,acceptedNameUsage,acceptedNameUsageID,taxonRank,assertions,license"
+        ],
+        [
+          "pageSize",
+          "25"
+        ],
+        [
+          "start",
+          "25"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ],
+        [
+          "sort",
+          "occurrenceID"
+        ],
+        [
+          "dir",
+          "asc"
+        ]
+      ],
+      "canonical_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F66d42847-c556-4fa3-902c-a91d9f517286%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&fl=occurrenceID%2CdataResourceUid%2CdataResourceName%2CdatasetID%2CdatasetName%2CeventDate%2Cyear%2CdecimalLatitude%2CdecimalLongitude%2CcoordinateUncertaintyInMeters%2CcoordinatePrecision%2Craw_scientificName%2Craw_taxonConceptID%2CscientificName%2CtaxonConceptID%2CacceptedNameUsage%2CacceptedNameUsageID%2CtaxonRank%2Cassertions%2Clicense&pageSize=25&start=25&facet=false&disableAllQualityFilters=true&sort=occurrenceID&dir=asc",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-07-23T13:40:01Z",
+      "retrieval_timestamp_basis": "network_response_completed",
+      "attempt_count": 1,
+      "retry_events": [],
+      "returned_rows": 25,
+      "raw_file": "012-parent-vombatus-ursinus-start-025.json",
+      "raw_sha256": "4a9407b68a68692d529f78ef716868fd251f80d694c154bb4bd56067f56e7a15",
+      "raw_bytes": 20796,
+      "response_controls": {
+        "page_size": 25,
+        "start_index": 25,
+        "total_records": 2391,
+        "expected_returned_rows": 25,
+        "returned_rows_match_expected": true,
+        "sort": "occurrenceID",
+        "direction": "asc",
+        "occurrence_ids_strictly_ascending": true,
+        "facet_result_count": 0
+      },
+      "field_stats": {
+        "occurrenceID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceUid": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "datasetID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "datasetName": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "eventDate": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "year": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "decimalLatitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "decimalLongitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinateUncertaintyInMeters": {
+          "presence_count": 4,
+          "non_null_count": 4,
+          "null_count": 0,
+          "missing_count": 21,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinatePrecision": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "raw_scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "raw_taxonConceptID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "taxonConceptID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "acceptedNameUsage": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "acceptedNameUsageID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "taxonRank": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "assertions": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "array"
+          ]
+        },
+        "license": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        }
+      },
+      "unrequested_field_stats": {
+        "otherProperties": {
+          "presence_count": 13,
+          "non_null_count": 13,
+          "types": [
+            "object"
+          ]
+        }
+      },
+      "validation": {
+        "occurrence_id_non_null_count": 25,
+        "occurrence_id_duplicate_count": 0,
+        "critical_identity_ready_count": 25,
+        "date_scope_violation_count": 0,
+        "event_date_unparseable_count": 0,
+        "extra_field_count": 0
+      },
+      "query_binding": {
+        "echoes_checked": 2,
+        "matched_echoes": 2,
+        "q_values_per_echo": 1,
+        "fq_values_per_echo": 2,
+        "quality_values_per_echo": 1
+      }
+    },
+    {
+      "ordinal": 13,
+      "key": "parent__sarcophilus_harrisii__start_000",
+      "branch": "parent",
+      "focal_species_id": "sarcophilus_harrisii",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/c6b5ff5a-a991-4972-b5b0-4214141d5bd6",
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "ordered_parameters": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/c6b5ff5a-a991-4972-b5b0-4214141d5bd6\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "fl",
+          "occurrenceID,dataResourceUid,dataResourceName,datasetID,datasetName,eventDate,year,decimalLatitude,decimalLongitude,coordinateUncertaintyInMeters,coordinatePrecision,raw_scientificName,raw_taxonConceptID,scientificName,taxonConceptID,acceptedNameUsage,acceptedNameUsageID,taxonRank,assertions,license"
+        ],
+        [
+          "pageSize",
+          "25"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ],
+        [
+          "sort",
+          "occurrenceID"
+        ],
+        [
+          "dir",
+          "asc"
+        ]
+      ],
+      "canonical_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Fc6b5ff5a-a991-4972-b5b0-4214141d5bd6%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&fl=occurrenceID%2CdataResourceUid%2CdataResourceName%2CdatasetID%2CdatasetName%2CeventDate%2Cyear%2CdecimalLatitude%2CdecimalLongitude%2CcoordinateUncertaintyInMeters%2CcoordinatePrecision%2Craw_scientificName%2Craw_taxonConceptID%2CscientificName%2CtaxonConceptID%2CacceptedNameUsage%2CacceptedNameUsageID%2CtaxonRank%2Cassertions%2Clicense&pageSize=25&start=0&facet=false&disableAllQualityFilters=true&sort=occurrenceID&dir=asc",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-07-23T13:40:02Z",
+      "retrieval_timestamp_basis": "network_response_completed",
+      "attempt_count": 1,
+      "retry_events": [],
+      "returned_rows": 25,
+      "raw_file": "013-parent-sarcophilus-harrisii-start-000.json",
+      "raw_sha256": "555649a10cd7b742358b153cb090d92052d8e54e094934230803e427f47f70dd",
+      "raw_bytes": 20380,
+      "response_controls": {
+        "page_size": 25,
+        "start_index": 0,
+        "total_records": 33442,
+        "expected_returned_rows": 25,
+        "returned_rows_match_expected": true,
+        "sort": "occurrenceID",
+        "direction": "asc",
+        "occurrence_ids_strictly_ascending": true,
+        "facet_result_count": 0
+      },
+      "field_stats": {
+        "occurrenceID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceUid": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "datasetID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "datasetName": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "eventDate": {
+          "presence_count": 4,
+          "non_null_count": 4,
+          "null_count": 0,
+          "missing_count": 21,
+          "types": [
+            "integer"
+          ]
+        },
+        "year": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "decimalLatitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "decimalLongitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinateUncertaintyInMeters": {
+          "presence_count": 21,
+          "non_null_count": 21,
+          "null_count": 0,
+          "missing_count": 4,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinatePrecision": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "raw_scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "raw_taxonConceptID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "taxonConceptID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "acceptedNameUsage": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "acceptedNameUsageID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "taxonRank": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "assertions": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "array"
+          ]
+        },
+        "license": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        }
+      },
+      "unrequested_field_stats": {
+        "otherProperties": {
+          "presence_count": 4,
+          "non_null_count": 4,
+          "types": [
+            "object"
+          ]
+        }
+      },
+      "validation": {
+        "occurrence_id_non_null_count": 25,
+        "occurrence_id_duplicate_count": 0,
+        "critical_identity_ready_count": 25,
+        "date_scope_violation_count": 0,
+        "event_date_unparseable_count": 0,
+        "extra_field_count": 0
+      },
+      "query_binding": {
+        "echoes_checked": 2,
+        "matched_echoes": 2,
+        "q_values_per_echo": 1,
+        "fq_values_per_echo": 2,
+        "quality_values_per_echo": 1
+      }
+    },
+    {
+      "ordinal": 14,
+      "key": "parent__sarcophilus_harrisii__start_025",
+      "branch": "parent",
+      "focal_species_id": "sarcophilus_harrisii",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/c6b5ff5a-a991-4972-b5b0-4214141d5bd6",
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "ordered_parameters": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/c6b5ff5a-a991-4972-b5b0-4214141d5bd6\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "fl",
+          "occurrenceID,dataResourceUid,dataResourceName,datasetID,datasetName,eventDate,year,decimalLatitude,decimalLongitude,coordinateUncertaintyInMeters,coordinatePrecision,raw_scientificName,raw_taxonConceptID,scientificName,taxonConceptID,acceptedNameUsage,acceptedNameUsageID,taxonRank,assertions,license"
+        ],
+        [
+          "pageSize",
+          "25"
+        ],
+        [
+          "start",
+          "25"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ],
+        [
+          "sort",
+          "occurrenceID"
+        ],
+        [
+          "dir",
+          "asc"
+        ]
+      ],
+      "canonical_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Fc6b5ff5a-a991-4972-b5b0-4214141d5bd6%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&fl=occurrenceID%2CdataResourceUid%2CdataResourceName%2CdatasetID%2CdatasetName%2CeventDate%2Cyear%2CdecimalLatitude%2CdecimalLongitude%2CcoordinateUncertaintyInMeters%2CcoordinatePrecision%2Craw_scientificName%2Craw_taxonConceptID%2CscientificName%2CtaxonConceptID%2CacceptedNameUsage%2CacceptedNameUsageID%2CtaxonRank%2Cassertions%2Clicense&pageSize=25&start=25&facet=false&disableAllQualityFilters=true&sort=occurrenceID&dir=asc",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-07-23T13:40:03Z",
+      "retrieval_timestamp_basis": "network_response_completed",
+      "attempt_count": 1,
+      "retry_events": [],
+      "returned_rows": 25,
+      "raw_file": "014-parent-sarcophilus-harrisii-start-025.json",
+      "raw_sha256": "f7a4a9b1cffd7ca28fdd24e22109db65d36c04d21fa18f3d2b5769c820644909",
+      "raw_bytes": 19949,
+      "response_controls": {
+        "page_size": 25,
+        "start_index": 25,
+        "total_records": 33442,
+        "expected_returned_rows": 25,
+        "returned_rows_match_expected": true,
+        "sort": "occurrenceID",
+        "direction": "asc",
+        "occurrence_ids_strictly_ascending": true,
+        "facet_result_count": 0
+      },
+      "field_stats": {
+        "occurrenceID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceUid": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "datasetID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "datasetName": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "eventDate": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "year": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "decimalLatitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "decimalLongitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinateUncertaintyInMeters": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinatePrecision": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "raw_scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "raw_taxonConceptID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "taxonConceptID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "acceptedNameUsage": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "acceptedNameUsageID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "taxonRank": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "assertions": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "array"
+          ]
+        },
+        "license": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        }
+      },
+      "unrequested_field_stats": {
+        "otherProperties": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "types": []
+        }
+      },
+      "validation": {
+        "occurrence_id_non_null_count": 25,
+        "occurrence_id_duplicate_count": 0,
+        "critical_identity_ready_count": 25,
+        "date_scope_violation_count": 0,
+        "event_date_unparseable_count": 0,
+        "extra_field_count": 0
+      },
+      "query_binding": {
+        "echoes_checked": 2,
+        "matched_echoes": 2,
+        "q_values_per_echo": 1,
+        "fq_values_per_echo": 2,
+        "quality_values_per_echo": 1
+      }
+    },
+    {
+      "ordinal": 15,
+      "key": "parent__dasyurus_maculatus__start_000",
+      "branch": "parent",
+      "focal_species_id": "dasyurus_maculatus",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/73c23669-c491-42d0-83b3-6fd84a03689a",
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "ordered_parameters": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/73c23669-c491-42d0-83b3-6fd84a03689a\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "fl",
+          "occurrenceID,dataResourceUid,dataResourceName,datasetID,datasetName,eventDate,year,decimalLatitude,decimalLongitude,coordinateUncertaintyInMeters,coordinatePrecision,raw_scientificName,raw_taxonConceptID,scientificName,taxonConceptID,acceptedNameUsage,acceptedNameUsageID,taxonRank,assertions,license"
+        ],
+        [
+          "pageSize",
+          "25"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ],
+        [
+          "sort",
+          "occurrenceID"
+        ],
+        [
+          "dir",
+          "asc"
+        ]
+      ],
+      "canonical_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F73c23669-c491-42d0-83b3-6fd84a03689a%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&fl=occurrenceID%2CdataResourceUid%2CdataResourceName%2CdatasetID%2CdatasetName%2CeventDate%2Cyear%2CdecimalLatitude%2CdecimalLongitude%2CcoordinateUncertaintyInMeters%2CcoordinatePrecision%2Craw_scientificName%2Craw_taxonConceptID%2CscientificName%2CtaxonConceptID%2CacceptedNameUsage%2CacceptedNameUsageID%2CtaxonRank%2Cassertions%2Clicense&pageSize=25&start=0&facet=false&disableAllQualityFilters=true&sort=occurrenceID&dir=asc",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-07-23T13:40:03Z",
+      "retrieval_timestamp_basis": "network_response_completed",
+      "attempt_count": 1,
+      "retry_events": [],
+      "returned_rows": 25,
+      "raw_file": "015-parent-dasyurus-maculatus-start-000.json",
+      "raw_sha256": "3992b36640693a736d31a35b79028fb6fc82d9e25701fd86290150c75716ed1b",
+      "raw_bytes": 20998,
+      "response_controls": {
+        "page_size": 25,
+        "start_index": 0,
+        "total_records": 1169,
+        "expected_returned_rows": 25,
+        "returned_rows_match_expected": true,
+        "sort": "occurrenceID",
+        "direction": "asc",
+        "occurrence_ids_strictly_ascending": true,
+        "facet_result_count": 0
+      },
+      "field_stats": {
+        "occurrenceID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceUid": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "datasetID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "datasetName": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "eventDate": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "year": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "decimalLatitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "decimalLongitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinateUncertaintyInMeters": {
+          "presence_count": 15,
+          "non_null_count": 15,
+          "null_count": 0,
+          "missing_count": 10,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinatePrecision": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "raw_scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "raw_taxonConceptID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "taxonConceptID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "acceptedNameUsage": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "acceptedNameUsageID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "taxonRank": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "assertions": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "array"
+          ]
+        },
+        "license": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        }
+      },
+      "unrequested_field_stats": {
+        "otherProperties": {
+          "presence_count": 16,
+          "non_null_count": 16,
+          "types": [
+            "object"
+          ]
+        }
+      },
+      "validation": {
+        "occurrence_id_non_null_count": 25,
+        "occurrence_id_duplicate_count": 0,
+        "critical_identity_ready_count": 25,
+        "date_scope_violation_count": 0,
+        "event_date_unparseable_count": 0,
+        "extra_field_count": 0
+      },
+      "query_binding": {
+        "echoes_checked": 2,
+        "matched_echoes": 2,
+        "q_values_per_echo": 1,
+        "fq_values_per_echo": 2,
+        "quality_values_per_echo": 1
+      }
+    },
+    {
+      "ordinal": 16,
+      "key": "parent__dasyurus_maculatus__start_025",
+      "branch": "parent",
+      "focal_species_id": "dasyurus_maculatus",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/73c23669-c491-42d0-83b3-6fd84a03689a",
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "ordered_parameters": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/73c23669-c491-42d0-83b3-6fd84a03689a\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "fl",
+          "occurrenceID,dataResourceUid,dataResourceName,datasetID,datasetName,eventDate,year,decimalLatitude,decimalLongitude,coordinateUncertaintyInMeters,coordinatePrecision,raw_scientificName,raw_taxonConceptID,scientificName,taxonConceptID,acceptedNameUsage,acceptedNameUsageID,taxonRank,assertions,license"
+        ],
+        [
+          "pageSize",
+          "25"
+        ],
+        [
+          "start",
+          "25"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ],
+        [
+          "sort",
+          "occurrenceID"
+        ],
+        [
+          "dir",
+          "asc"
+        ]
+      ],
+      "canonical_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F73c23669-c491-42d0-83b3-6fd84a03689a%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&fl=occurrenceID%2CdataResourceUid%2CdataResourceName%2CdatasetID%2CdatasetName%2CeventDate%2Cyear%2CdecimalLatitude%2CdecimalLongitude%2CcoordinateUncertaintyInMeters%2CcoordinatePrecision%2Craw_scientificName%2Craw_taxonConceptID%2CscientificName%2CtaxonConceptID%2CacceptedNameUsage%2CacceptedNameUsageID%2CtaxonRank%2Cassertions%2Clicense&pageSize=25&start=25&facet=false&disableAllQualityFilters=true&sort=occurrenceID&dir=asc",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-07-23T13:40:04Z",
+      "retrieval_timestamp_basis": "network_response_completed",
+      "attempt_count": 1,
+      "retry_events": [],
+      "returned_rows": 25,
+      "raw_file": "016-parent-dasyurus-maculatus-start-025.json",
+      "raw_sha256": "c1c7721a2acc8a7cb1dbd68bb9f8156331acd93fe16653a23d0433e9c1b5bd36",
+      "raw_bytes": 20406,
+      "response_controls": {
+        "page_size": 25,
+        "start_index": 25,
+        "total_records": 1169,
+        "expected_returned_rows": 25,
+        "returned_rows_match_expected": true,
+        "sort": "occurrenceID",
+        "direction": "asc",
+        "occurrence_ids_strictly_ascending": true,
+        "facet_result_count": 0
+      },
+      "field_stats": {
+        "occurrenceID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceUid": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "datasetID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "datasetName": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "eventDate": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "year": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "decimalLatitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "decimalLongitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinateUncertaintyInMeters": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinatePrecision": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "raw_scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "raw_taxonConceptID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "taxonConceptID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "acceptedNameUsage": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "acceptedNameUsageID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "taxonRank": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "assertions": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "array"
+          ]
+        },
+        "license": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        }
+      },
+      "unrequested_field_stats": {
+        "otherProperties": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "types": [
+            "object"
+          ]
+        }
+      },
+      "validation": {
+        "occurrence_id_non_null_count": 25,
+        "occurrence_id_duplicate_count": 0,
+        "critical_identity_ready_count": 25,
+        "date_scope_violation_count": 0,
+        "event_date_unparseable_count": 0,
+        "extra_field_count": 0
+      },
+      "query_binding": {
+        "echoes_checked": 2,
+        "matched_echoes": 2,
+        "q_values_per_echo": 1,
+        "fq_values_per_echo": 2,
+        "quality_values_per_echo": 1
+      }
+    },
+    {
+      "ordinal": 17,
+      "key": "parent__dasyurus_viverrinus__start_000",
+      "branch": "parent",
+      "focal_species_id": "dasyurus_viverrinus",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/1e9f1b49-78b5-409d-91f2-21615ce88e9d",
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "ordered_parameters": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/1e9f1b49-78b5-409d-91f2-21615ce88e9d\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "fl",
+          "occurrenceID,dataResourceUid,dataResourceName,datasetID,datasetName,eventDate,year,decimalLatitude,decimalLongitude,coordinateUncertaintyInMeters,coordinatePrecision,raw_scientificName,raw_taxonConceptID,scientificName,taxonConceptID,acceptedNameUsage,acceptedNameUsageID,taxonRank,assertions,license"
+        ],
+        [
+          "pageSize",
+          "25"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ],
+        [
+          "sort",
+          "occurrenceID"
+        ],
+        [
+          "dir",
+          "asc"
+        ]
+      ],
+      "canonical_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F1e9f1b49-78b5-409d-91f2-21615ce88e9d%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&fl=occurrenceID%2CdataResourceUid%2CdataResourceName%2CdatasetID%2CdatasetName%2CeventDate%2Cyear%2CdecimalLatitude%2CdecimalLongitude%2CcoordinateUncertaintyInMeters%2CcoordinatePrecision%2Craw_scientificName%2Craw_taxonConceptID%2CscientificName%2CtaxonConceptID%2CacceptedNameUsage%2CacceptedNameUsageID%2CtaxonRank%2Cassertions%2Clicense&pageSize=25&start=0&facet=false&disableAllQualityFilters=true&sort=occurrenceID&dir=asc",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-07-23T13:40:04Z",
+      "retrieval_timestamp_basis": "network_response_completed",
+      "attempt_count": 1,
+      "retry_events": [],
+      "returned_rows": 25,
+      "raw_file": "017-parent-dasyurus-viverrinus-start-000.json",
+      "raw_sha256": "4aa5e3bd55f9dce375875705d49fb36133f8fc9b34c73f6c10192806eb3031bd",
+      "raw_bytes": 20729,
+      "response_controls": {
+        "page_size": 25,
+        "start_index": 0,
+        "total_records": 3736,
+        "expected_returned_rows": 25,
+        "returned_rows_match_expected": true,
+        "sort": "occurrenceID",
+        "direction": "asc",
+        "occurrence_ids_strictly_ascending": true,
+        "facet_result_count": 0
+      },
+      "field_stats": {
+        "occurrenceID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceUid": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "datasetID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "datasetName": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "eventDate": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "year": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "decimalLatitude": {
+          "presence_count": 23,
+          "non_null_count": 23,
+          "null_count": 0,
+          "missing_count": 2,
+          "types": [
+            "number"
+          ]
+        },
+        "decimalLongitude": {
+          "presence_count": 23,
+          "non_null_count": 23,
+          "null_count": 0,
+          "missing_count": 2,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinateUncertaintyInMeters": {
+          "presence_count": 13,
+          "non_null_count": 13,
+          "null_count": 0,
+          "missing_count": 12,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinatePrecision": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "raw_scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "raw_taxonConceptID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "taxonConceptID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "acceptedNameUsage": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "acceptedNameUsageID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "taxonRank": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "assertions": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "array"
+          ]
+        },
+        "license": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        }
+      },
+      "unrequested_field_stats": {
+        "otherProperties": {
+          "presence_count": 13,
+          "non_null_count": 13,
+          "types": [
+            "object"
+          ]
+        }
+      },
+      "validation": {
+        "occurrence_id_non_null_count": 25,
+        "occurrence_id_duplicate_count": 0,
+        "critical_identity_ready_count": 25,
+        "date_scope_violation_count": 0,
+        "event_date_unparseable_count": 0,
+        "extra_field_count": 0
+      },
+      "query_binding": {
+        "echoes_checked": 2,
+        "matched_echoes": 2,
+        "q_values_per_echo": 1,
+        "fq_values_per_echo": 2,
+        "quality_values_per_echo": 1
+      }
+    },
+    {
+      "ordinal": 18,
+      "key": "parent__dasyurus_viverrinus__start_025",
+      "branch": "parent",
+      "focal_species_id": "dasyurus_viverrinus",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/1e9f1b49-78b5-409d-91f2-21615ce88e9d",
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "ordered_parameters": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/1e9f1b49-78b5-409d-91f2-21615ce88e9d\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "fl",
+          "occurrenceID,dataResourceUid,dataResourceName,datasetID,datasetName,eventDate,year,decimalLatitude,decimalLongitude,coordinateUncertaintyInMeters,coordinatePrecision,raw_scientificName,raw_taxonConceptID,scientificName,taxonConceptID,acceptedNameUsage,acceptedNameUsageID,taxonRank,assertions,license"
+        ],
+        [
+          "pageSize",
+          "25"
+        ],
+        [
+          "start",
+          "25"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ],
+        [
+          "sort",
+          "occurrenceID"
+        ],
+        [
+          "dir",
+          "asc"
+        ]
+      ],
+      "canonical_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F1e9f1b49-78b5-409d-91f2-21615ce88e9d%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&fl=occurrenceID%2CdataResourceUid%2CdataResourceName%2CdatasetID%2CdatasetName%2CeventDate%2Cyear%2CdecimalLatitude%2CdecimalLongitude%2CcoordinateUncertaintyInMeters%2CcoordinatePrecision%2Craw_scientificName%2Craw_taxonConceptID%2CscientificName%2CtaxonConceptID%2CacceptedNameUsage%2CacceptedNameUsageID%2CtaxonRank%2Cassertions%2Clicense&pageSize=25&start=25&facet=false&disableAllQualityFilters=true&sort=occurrenceID&dir=asc",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-07-23T13:40:05Z",
+      "retrieval_timestamp_basis": "network_response_completed",
+      "attempt_count": 1,
+      "retry_events": [],
+      "returned_rows": 25,
+      "raw_file": "018-parent-dasyurus-viverrinus-start-025.json",
+      "raw_sha256": "6abb1fdccd43fdc9c97b284518d9bd63f9520e253d8caa02cc23fb8344ff1300",
+      "raw_bytes": 20567,
+      "response_controls": {
+        "page_size": 25,
+        "start_index": 25,
+        "total_records": 3736,
+        "expected_returned_rows": 25,
+        "returned_rows_match_expected": true,
+        "sort": "occurrenceID",
+        "direction": "asc",
+        "occurrence_ids_strictly_ascending": true,
+        "facet_result_count": 0
+      },
+      "field_stats": {
+        "occurrenceID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceUid": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "datasetID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "datasetName": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "eventDate": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "year": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "decimalLatitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "decimalLongitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinateUncertaintyInMeters": {
+          "presence_count": 23,
+          "non_null_count": 23,
+          "null_count": 0,
+          "missing_count": 2,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinatePrecision": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "raw_scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "raw_taxonConceptID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "taxonConceptID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "acceptedNameUsage": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "acceptedNameUsageID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "taxonRank": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "assertions": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "array"
+          ]
+        },
+        "license": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        }
+      },
+      "unrequested_field_stats": {
+        "otherProperties": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "types": [
+            "object"
+          ]
+        }
+      },
+      "validation": {
+        "occurrence_id_non_null_count": 25,
+        "occurrence_id_duplicate_count": 0,
+        "critical_identity_ready_count": 25,
+        "date_scope_violation_count": 0,
+        "event_date_unparseable_count": 0,
+        "extra_field_count": 0
+      },
+      "query_binding": {
+        "echoes_checked": 2,
+        "matched_echoes": 2,
+        "q_values_per_echo": 1,
+        "fq_values_per_echo": 2,
+        "quality_values_per_echo": 1
+      }
+    },
+    {
+      "ordinal": 19,
+      "key": "fallback__macropus_synonym_id__start_000",
+      "branch": "fallback_macropus_synonym_id",
+      "focal_species_id": "macropus_giganteus",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/6cfeb6de-600b-425e-9e8d-3cea25f8ef84",
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "ordered_parameters": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/6cfeb6de-600b-425e-9e8d-3cea25f8ef84\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "fl",
+          "occurrenceID,dataResourceUid,dataResourceName,datasetID,datasetName,eventDate,year,decimalLatitude,decimalLongitude,coordinateUncertaintyInMeters,coordinatePrecision,raw_scientificName,raw_taxonConceptID,scientificName,taxonConceptID,acceptedNameUsage,acceptedNameUsageID,taxonRank,assertions,license"
+        ],
+        [
+          "pageSize",
+          "25"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ],
+        [
+          "sort",
+          "occurrenceID"
+        ],
+        [
+          "dir",
+          "asc"
+        ]
+      ],
+      "canonical_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F6cfeb6de-600b-425e-9e8d-3cea25f8ef84%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&fl=occurrenceID%2CdataResourceUid%2CdataResourceName%2CdatasetID%2CdatasetName%2CeventDate%2Cyear%2CdecimalLatitude%2CdecimalLongitude%2CcoordinateUncertaintyInMeters%2CcoordinatePrecision%2Craw_scientificName%2Craw_taxonConceptID%2CscientificName%2CtaxonConceptID%2CacceptedNameUsage%2CacceptedNameUsageID%2CtaxonRank%2Cassertions%2Clicense&pageSize=25&start=0&facet=false&disableAllQualityFilters=true&sort=occurrenceID&dir=asc",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-07-23T13:40:05Z",
+      "retrieval_timestamp_basis": "network_response_completed",
+      "attempt_count": 1,
+      "retry_events": [],
+      "returned_rows": 0,
+      "raw_file": "019-fallback-macropus-synonym-id-start-000.json",
+      "raw_sha256": "ce9e42a5c58fa338de073b704b8b2eb88af04d68ce0de3a2926fb964d3c50dc7",
+      "raw_bytes": 1161,
+      "response_controls": {
+        "page_size": 25,
+        "start_index": 0,
+        "total_records": 0,
+        "expected_returned_rows": 0,
+        "returned_rows_match_expected": true,
+        "sort": "occurrenceID",
+        "direction": "asc",
+        "occurrence_ids_strictly_ascending": true,
+        "facet_result_count": 0
+      },
+      "field_stats": {
+        "occurrenceID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "dataResourceUid": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "dataResourceName": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "datasetID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "datasetName": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "eventDate": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "year": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "decimalLatitude": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "decimalLongitude": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "coordinateUncertaintyInMeters": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "coordinatePrecision": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "raw_scientificName": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "raw_taxonConceptID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "scientificName": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "taxonConceptID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "acceptedNameUsage": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "acceptedNameUsageID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "taxonRank": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "assertions": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "license": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        }
+      },
+      "unrequested_field_stats": {
+        "otherProperties": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "types": []
+        }
+      },
+      "validation": {
+        "occurrence_id_non_null_count": 0,
+        "occurrence_id_duplicate_count": 0,
+        "critical_identity_ready_count": 0,
+        "date_scope_violation_count": 0,
+        "event_date_unparseable_count": 0,
+        "extra_field_count": 0
+      },
+      "query_binding": {
+        "echoes_checked": 2,
+        "matched_echoes": 2,
+        "q_values_per_echo": 1,
+        "fq_values_per_echo": 2,
+        "quality_values_per_echo": 1
+      }
+    },
+    {
+      "ordinal": 20,
+      "key": "fallback__macropus_synonym_name__start_000",
+      "branch": "fallback_macropus_synonym_name",
+      "focal_species_id": "macropus_giganteus",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/6cfeb6de-600b-425e-9e8d-3cea25f8ef84",
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "ordered_parameters": [
+        [
+          "q",
+          "taxa:\"Macropus giganteus tasmaniensis\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "fl",
+          "occurrenceID,dataResourceUid,dataResourceName,datasetID,datasetName,eventDate,year,decimalLatitude,decimalLongitude,coordinateUncertaintyInMeters,coordinatePrecision,raw_scientificName,raw_taxonConceptID,scientificName,taxonConceptID,acceptedNameUsage,acceptedNameUsageID,taxonRank,assertions,license"
+        ],
+        [
+          "pageSize",
+          "25"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ],
+        [
+          "sort",
+          "occurrenceID"
+        ],
+        [
+          "dir",
+          "asc"
+        ]
+      ],
+      "canonical_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxa%3A%22Macropus+giganteus+tasmaniensis%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&fl=occurrenceID%2CdataResourceUid%2CdataResourceName%2CdatasetID%2CdatasetName%2CeventDate%2Cyear%2CdecimalLatitude%2CdecimalLongitude%2CcoordinateUncertaintyInMeters%2CcoordinatePrecision%2Craw_scientificName%2Craw_taxonConceptID%2CscientificName%2CtaxonConceptID%2CacceptedNameUsage%2CacceptedNameUsageID%2CtaxonRank%2Cassertions%2Clicense&pageSize=25&start=0&facet=false&disableAllQualityFilters=true&sort=occurrenceID&dir=asc",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-07-23T13:40:06Z",
+      "retrieval_timestamp_basis": "network_response_completed",
+      "attempt_count": 1,
+      "retry_events": [],
+      "returned_rows": 25,
+      "raw_file": "020-fallback-macropus-synonym-name-start-000.json",
+      "raw_sha256": "3b92d3870cecd0bb57af81bb77159ef4b8c7d49f8dc9b1831902443b7384e669",
+      "raw_bytes": 20210,
+      "response_controls": {
+        "page_size": 25,
+        "start_index": 0,
+        "total_records": 398,
+        "expected_returned_rows": 25,
+        "returned_rows_match_expected": true,
+        "sort": "occurrenceID",
+        "direction": "asc",
+        "occurrence_ids_strictly_ascending": true,
+        "facet_result_count": 0
+      },
+      "field_stats": {
+        "occurrenceID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceUid": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "datasetID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "datasetName": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "eventDate": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "year": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "decimalLatitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "decimalLongitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinateUncertaintyInMeters": {
+          "presence_count": 21,
+          "non_null_count": 21,
+          "null_count": 0,
+          "missing_count": 4,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinatePrecision": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "raw_scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "raw_taxonConceptID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "taxonConceptID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "acceptedNameUsage": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "acceptedNameUsageID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "taxonRank": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "assertions": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "array"
+          ]
+        },
+        "license": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        }
+      },
+      "unrequested_field_stats": {
+        "otherProperties": {
+          "presence_count": 20,
+          "non_null_count": 20,
+          "types": [
+            "object"
+          ]
+        }
+      },
+      "validation": {
+        "occurrence_id_non_null_count": 25,
+        "occurrence_id_duplicate_count": 0,
+        "critical_identity_ready_count": 25,
+        "date_scope_violation_count": 0,
+        "event_date_unparseable_count": 0,
+        "extra_field_count": 0
+      },
+      "query_binding": {
+        "echoes_checked": 2,
+        "matched_echoes": 2,
+        "q_values_per_echo": 1,
+        "fq_values_per_echo": 2,
+        "quality_values_per_echo": 1
+      }
+    },
+    {
+      "ordinal": 21,
+      "key": "fallback__vombatus_ursinus_hirsutus__start_000",
+      "branch": "fallback_vombatus_child",
+      "focal_species_id": "vombatus_ursinus",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/e4b74750-7541-4c67-89d1-5b5718b30ea7",
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "ordered_parameters": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/e4b74750-7541-4c67-89d1-5b5718b30ea7\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "fl",
+          "occurrenceID,dataResourceUid,dataResourceName,datasetID,datasetName,eventDate,year,decimalLatitude,decimalLongitude,coordinateUncertaintyInMeters,coordinatePrecision,raw_scientificName,raw_taxonConceptID,scientificName,taxonConceptID,acceptedNameUsage,acceptedNameUsageID,taxonRank,assertions,license"
+        ],
+        [
+          "pageSize",
+          "25"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ],
+        [
+          "sort",
+          "occurrenceID"
+        ],
+        [
+          "dir",
+          "asc"
+        ]
+      ],
+      "canonical_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Fe4b74750-7541-4c67-89d1-5b5718b30ea7%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&fl=occurrenceID%2CdataResourceUid%2CdataResourceName%2CdatasetID%2CdatasetName%2CeventDate%2Cyear%2CdecimalLatitude%2CdecimalLongitude%2CcoordinateUncertaintyInMeters%2CcoordinatePrecision%2Craw_scientificName%2Craw_taxonConceptID%2CscientificName%2CtaxonConceptID%2CacceptedNameUsage%2CacceptedNameUsageID%2CtaxonRank%2Cassertions%2Clicense&pageSize=25&start=0&facet=false&disableAllQualityFilters=true&sort=occurrenceID&dir=asc",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-07-23T13:40:06Z",
+      "retrieval_timestamp_basis": "network_response_completed",
+      "attempt_count": 1,
+      "retry_events": [],
+      "returned_rows": 0,
+      "raw_file": "021-fallback-vombatus-ursinus-hirsutus-start-000.json",
+      "raw_sha256": "98a7cfd558cf7357dfe49dd6782c862dd9e5a207b32c94c17ce495b68af0d923",
+      "raw_bytes": 1153,
+      "response_controls": {
+        "page_size": 25,
+        "start_index": 0,
+        "total_records": 0,
+        "expected_returned_rows": 0,
+        "returned_rows_match_expected": true,
+        "sort": "occurrenceID",
+        "direction": "asc",
+        "occurrence_ids_strictly_ascending": true,
+        "facet_result_count": 0
+      },
+      "field_stats": {
+        "occurrenceID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "dataResourceUid": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "dataResourceName": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "datasetID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "datasetName": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "eventDate": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "year": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "decimalLatitude": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "decimalLongitude": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "coordinateUncertaintyInMeters": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "coordinatePrecision": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "raw_scientificName": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "raw_taxonConceptID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "scientificName": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "taxonConceptID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "acceptedNameUsage": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "acceptedNameUsageID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "taxonRank": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "assertions": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        },
+        "license": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": []
+        }
+      },
+      "unrequested_field_stats": {
+        "otherProperties": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "types": []
+        }
+      },
+      "validation": {
+        "occurrence_id_non_null_count": 0,
+        "occurrence_id_duplicate_count": 0,
+        "critical_identity_ready_count": 0,
+        "date_scope_violation_count": 0,
+        "event_date_unparseable_count": 0,
+        "extra_field_count": 0
+      },
+      "query_binding": {
+        "echoes_checked": 2,
+        "matched_echoes": 2,
+        "q_values_per_echo": 1,
+        "fq_values_per_echo": 2,
+        "quality_values_per_echo": 1
+      }
+    },
+    {
+      "ordinal": 22,
+      "key": "fallback__vombatus_ursinus_tasmaniensis__start_000",
+      "branch": "fallback_vombatus_child",
+      "focal_species_id": "vombatus_ursinus",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/3e53b354-2b48-4a2a-af29-acd8ecdfe1e6",
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "ordered_parameters": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/3e53b354-2b48-4a2a-af29-acd8ecdfe1e6\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "fl",
+          "occurrenceID,dataResourceUid,dataResourceName,datasetID,datasetName,eventDate,year,decimalLatitude,decimalLongitude,coordinateUncertaintyInMeters,coordinatePrecision,raw_scientificName,raw_taxonConceptID,scientificName,taxonConceptID,acceptedNameUsage,acceptedNameUsageID,taxonRank,assertions,license"
+        ],
+        [
+          "pageSize",
+          "25"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ],
+        [
+          "sort",
+          "occurrenceID"
+        ],
+        [
+          "dir",
+          "asc"
+        ]
+      ],
+      "canonical_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F3e53b354-2b48-4a2a-af29-acd8ecdfe1e6%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&fl=occurrenceID%2CdataResourceUid%2CdataResourceName%2CdatasetID%2CdatasetName%2CeventDate%2Cyear%2CdecimalLatitude%2CdecimalLongitude%2CcoordinateUncertaintyInMeters%2CcoordinatePrecision%2Craw_scientificName%2Craw_taxonConceptID%2CscientificName%2CtaxonConceptID%2CacceptedNameUsage%2CacceptedNameUsageID%2CtaxonRank%2Cassertions%2Clicense&pageSize=25&start=0&facet=false&disableAllQualityFilters=true&sort=occurrenceID&dir=asc",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-07-23T13:40:07Z",
+      "retrieval_timestamp_basis": "network_response_completed",
+      "attempt_count": 1,
+      "retry_events": [],
+      "returned_rows": 25,
+      "raw_file": "022-fallback-vombatus-ursinus-tasmaniensis-start-000.json",
+      "raw_sha256": "e5d7b838e4c21999bc3072c91c52743cf9e7db996f11bea803212371097cecc9",
+      "raw_bytes": 21157,
+      "response_controls": {
+        "page_size": 25,
+        "start_index": 0,
+        "total_records": 1312,
+        "expected_returned_rows": 25,
+        "returned_rows_match_expected": true,
+        "sort": "occurrenceID",
+        "direction": "asc",
+        "occurrence_ids_strictly_ascending": true,
+        "facet_result_count": 0
+      },
+      "field_stats": {
+        "occurrenceID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceUid": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "datasetID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "datasetName": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "eventDate": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "year": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "decimalLatitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "decimalLongitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinateUncertaintyInMeters": {
+          "presence_count": 13,
+          "non_null_count": 13,
+          "null_count": 0,
+          "missing_count": 12,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinatePrecision": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "raw_scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "raw_taxonConceptID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "taxonConceptID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "acceptedNameUsage": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "acceptedNameUsageID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "taxonRank": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "assertions": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "array"
+          ]
+        },
+        "license": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        }
+      },
+      "unrequested_field_stats": {
+        "otherProperties": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "types": [
+            "object"
+          ]
+        }
+      },
+      "validation": {
+        "occurrence_id_non_null_count": 25,
+        "occurrence_id_duplicate_count": 0,
+        "critical_identity_ready_count": 25,
+        "date_scope_violation_count": 0,
+        "event_date_unparseable_count": 0,
+        "extra_field_count": 0
+      },
+      "query_binding": {
+        "echoes_checked": 2,
+        "matched_echoes": 2,
+        "q_values_per_echo": 1,
+        "fq_values_per_echo": 2,
+        "quality_values_per_echo": 1
+      }
+    },
+    {
+      "ordinal": 23,
+      "key": "fallback__vombatus_ursinus_ursinus__start_000",
+      "branch": "fallback_vombatus_child",
+      "focal_species_id": "vombatus_ursinus",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/76b2b77b-6092-47dd-8de1-00e504b1e383",
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "ordered_parameters": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/76b2b77b-6092-47dd-8de1-00e504b1e383\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "fl",
+          "occurrenceID,dataResourceUid,dataResourceName,datasetID,datasetName,eventDate,year,decimalLatitude,decimalLongitude,coordinateUncertaintyInMeters,coordinatePrecision,raw_scientificName,raw_taxonConceptID,scientificName,taxonConceptID,acceptedNameUsage,acceptedNameUsageID,taxonRank,assertions,license"
+        ],
+        [
+          "pageSize",
+          "25"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ],
+        [
+          "sort",
+          "occurrenceID"
+        ],
+        [
+          "dir",
+          "asc"
+        ]
+      ],
+      "canonical_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F76b2b77b-6092-47dd-8de1-00e504b1e383%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&fl=occurrenceID%2CdataResourceUid%2CdataResourceName%2CdatasetID%2CdatasetName%2CeventDate%2Cyear%2CdecimalLatitude%2CdecimalLongitude%2CcoordinateUncertaintyInMeters%2CcoordinatePrecision%2Craw_scientificName%2Craw_taxonConceptID%2CscientificName%2CtaxonConceptID%2CacceptedNameUsage%2CacceptedNameUsageID%2CtaxonRank%2Cassertions%2Clicense&pageSize=25&start=0&facet=false&disableAllQualityFilters=true&sort=occurrenceID&dir=asc",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-07-23T13:40:07Z",
+      "retrieval_timestamp_basis": "network_response_completed",
+      "attempt_count": 1,
+      "retry_events": [],
+      "returned_rows": 25,
+      "raw_file": "023-fallback-vombatus-ursinus-ursinus-start-000.json",
+      "raw_sha256": "5b362dcb3cb2f2c1ff2ddc5da19c0b3994a22fe91ac6d3d65462bf6a5277165c",
+      "raw_bytes": 21966,
+      "response_controls": {
+        "page_size": 25,
+        "start_index": 0,
+        "total_records": 644,
+        "expected_returned_rows": 25,
+        "returned_rows_match_expected": true,
+        "sort": "occurrenceID",
+        "direction": "asc",
+        "occurrence_ids_strictly_ascending": true,
+        "facet_result_count": 0
+      },
+      "field_stats": {
+        "occurrenceID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceUid": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "dataResourceName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "datasetID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "datasetName": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "eventDate": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "year": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "integer"
+          ]
+        },
+        "decimalLatitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "decimalLongitude": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinateUncertaintyInMeters": {
+          "presence_count": 9,
+          "non_null_count": 9,
+          "null_count": 0,
+          "missing_count": 16,
+          "types": [
+            "number"
+          ]
+        },
+        "coordinatePrecision": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "raw_scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "raw_taxonConceptID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "scientificName": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "taxonConceptID": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "acceptedNameUsage": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "acceptedNameUsageID": {
+          "presence_count": 0,
+          "non_null_count": 0,
+          "null_count": 0,
+          "missing_count": 25,
+          "types": []
+        },
+        "taxonRank": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        },
+        "assertions": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "array"
+          ]
+        },
+        "license": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "null_count": 0,
+          "missing_count": 0,
+          "types": [
+            "string"
+          ]
+        }
+      },
+      "unrequested_field_stats": {
+        "otherProperties": {
+          "presence_count": 25,
+          "non_null_count": 25,
+          "types": [
+            "object"
+          ]
+        }
+      },
+      "validation": {
+        "occurrence_id_non_null_count": 25,
+        "occurrence_id_duplicate_count": 0,
+        "critical_identity_ready_count": 25,
+        "date_scope_violation_count": 0,
+        "event_date_unparseable_count": 0,
+        "extra_field_count": 0
+      },
+      "query_binding": {
+        "echoes_checked": 2,
+        "matched_echoes": 2,
+        "q_values_per_echo": 1,
+        "fq_values_per_echo": 2,
+        "quality_values_per_echo": 1
+      }
+    }
+  ]
+}
