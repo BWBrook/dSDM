@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0",
+  "files": [
+    {"path": "contract.json", "sha256": "cc3507e4716d6dd83a247755b5cbe057717162ae1710c69ec1c600ba1d298bbd", "bytes": 1970},
+    {"path": "count_selection.json", "sha256": "b8329a9067ffdc048816e2bee0ece0dfab6213a12737cafe10731799bf34c3b2", "bytes": 967},
+    {"path": "submission.json", "sha256": "b1b530e777846a51af41f39eb6a9e0e2b706cbb929937de7e7835b399f4a8af6", "bytes": 1874},
+    {"path": "review.json", "sha256": "07a2479e1a768c593a1127315bd1dfea10c6e920538d93f8cf2c57307cc82a8a", "bytes": 1298}
+  ]
+}

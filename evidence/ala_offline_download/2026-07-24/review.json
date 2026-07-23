@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "source_type": "review_inference_from_documented_and_observed_facts",
+  "readiness": "blocked_submission_http_403_no_job_handle_observed",
+  "route_above_5000": "documented_architecture_unverified_operability",
+  "production_operability": "unverified_http_403",
+  "selector": {"calls": 1, "selected_count": 17, "within_1_to_100": true},
+  "lifecycle": {"jobs": 0, "polls": 0, "cancellations": 0, "archives": 0, "rows": 0},
+  "archive_inventory": {"downloaded": false, "members": 0, "csv_rows": 0},
+  "raw_replay": "tracked-only returns blocked_package_structurally_valid_selector_raw_replay_required; exact ignored selector replay returns the same blocked HTTP-403 label",
+  "documented_fact": "OpenAPI directs larger queries to asynchronous offline download; search has a 5,000 depth cap; the pinned source default offline maximum is 100,000,000.",
+  "observed_fact": "One operator-reported GET attempt returned HTTP 403; no job/status handle was retained.",
+  "inference": "The architecture is distinct from search, but production operability and deployed maximum remain unverified. The smoke test does not establish a usable full-acquisition route.",
+  "not_complete": ["full nine-species acquisition", "camera data", "normalization", "spatial QA", "modelling"]
+}

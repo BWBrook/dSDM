@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "goal_id": "goal014-ala-offline-download-gate-2026-07-24",
+  "endpoint": "https://api.ala.org.au/occurrences/offline/download",
+  "method": "GET",
+  "selector": {
+    "species_id": "pseudocheirus_peregrinus",
+    "accepted_parent_concept": "https://biodiversity.org.au/afd/taxa/003decd6-ec3d-468e-909d-da396a6dd1f6",
+    "accepted_concept_query": "taxonConceptID:<accepted-parent-concept>",
+    "candidate_years": [2001, 2002, 2003],
+    "max_calls": 3,
+    "pageSize": 0,
+    "start": 0,
+    "facet": false,
+    "disableAllQualityFilters": true
+  },
+  "max_selector_calls": 3,
+  "max_jobs": 1,
+  "scope": {
+    "stateProvince": "Tasmania",
+    "year": {"start": 2001, "end": 2001, "inclusive": true}
+  },
+  "quality": {"disableAllQualityFilters": true, "qa": "none"},
+  "projection": {
+    "fields": ["occurrenceID", "dataResourceUid", "dataResourceName", "datasetID", "datasetName", "eventDate", "year", "decimalLatitude", "decimalLongitude", "coordinateUncertaintyInMeters", "coordinatePrecision", "raw_scientificName", "raw_taxonConceptID", "scientificName", "taxonConceptID", "acceptedNameUsage", "acceptedNameUsageID", "taxonRank", "assertions", "license"],
+    "fl": null,
+    "includeMultivalues": false,
+    "extra": null,
+    "field_semantics": "fields is the download projection; fl is the search-response projection and is omitted to avoid conflicting selectors"
+  },
+  "submission": {
+    "email_runtime_env": "ALA_DOWNLOAD_EMAIL",
+    "emailNotify": false,
+    "mintDoi": false,
+    "dwcHeaders": false,
+    "includeMisc": false,
+    "fileType": "csv",
+    "sep": ",",
+    "reason_code": "scientific-research-validation",
+    "auth": "none",
+    "allow_post": false
+  },
+  "lifecycle": {
+    "status_endpoint_template": "https://api.ala.org.au/occurrences/offline/status/{id}",
+    "terminal_states": ["cancelled", "finished", "tooLarge"],
+    "nonterminal_states": ["inQueue", "running"],
+    "max_polls": 60,
+    "cancel_policy": "do_not_attempt_without_authorized_JWT"
+  },
+  "archive": {
+    "max_bytes": 20971520,
+    "allowed_hosts": ["api.ala.org.au", "www.ala.org.au", "ala.org.au"],
+    "expected_format": "zip-containing-csv",
+    "rows_retained_in_tracked_evidence": 0
+  },
+  "route_cap_evidence": {
+    "status": "documented_architecture_unverified_operability",
+    "search_depth_cap": 5000,
+    "offline_source_default_maximum": 100000000,
+    "production_operability": "unverified_http_403",
+    "deployed_offline_maximum": "unknown",
+    "openapi_source": "https://docs.ala.org.au/openapi/specs/biocache.json",
+    "source_commit": "bcfb37661008dce5d3e532258458eb72d03e7530",
+    "source_anchors": [
+      "https://github.com/AtlasOfLivingAustralia/biocache-service/commit/bcfb37661008dce5d3e532258458eb72d03e7530",
+      "https://raw.githubusercontent.com/AtlasOfLivingAustralia/biocache-service/bcfb37661008dce5d3e532258458eb72d03e7530/src/main/java/au/org/ala/biocache/web/OccurrenceController.java#L874-L900",
+      "https://raw.githubusercontent.com/AtlasOfLivingAustralia/biocache-service/bcfb37661008dce5d3e532258458eb72d03e7530/src/main/java/au/org/ala/biocache/service/DownloadService.java#L232-L239"
+    ],
+    "interpretation": "Official architecture documents larger queries through offline download and a separate source default maximum of 100,000,000; this run verifies neither production operability nor the deployed maximum after HTTP 403."
+  }
+}

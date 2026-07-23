@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "source_type": "documented_fact",
+  "openapi_url": "https://docs.ala.org.au/openapi/specs/biocache.json",
+  "openapi_sha256": "4d90c83d21122c482a5ed97344033e8aaa47e3a3c6315eaeac5303bdecc9407c",
+  "download_endpoint_template": "https://api.ala.org.au/occurrences/offline/download",
+  "download_method": "GET",
+  "documented_security_note": "OpenAPI describes GET as not secured; POST carries JWT security.",
+  "status_endpoint_template": "https://api.ala.org.au/occurrences/offline/status/{id}",
+  "status_schema_fields": ["status", "totalRecords", "records", "queueSize", "message", "error", "startDate"],
+  "terminal_states": ["cancelled", "finished", "tooLarge"],
+  "nonterminal_states": ["inQueue", "running"],
+  "projection_decision": {"fields": "exact frozen 20-field download projection", "fl": "omitted; OpenAPI defines it as search-response fields", "includeMultivalues": false, "extra": "omitted", "qa": "none", "dwcHeaders": false, "includeMisc": false},
+  "route_cap_evidence": {
+    "status": "documented_architecture_unverified_operability",
+    "search_depth_cap": 5000,
+    "offline_source_default_maximum": 100000000,
+    "production_operability": "unverified_http_403",
+    "deployed_offline_maximum": "unknown",
+    "openapi_source": "https://docs.ala.org.au/openapi/specs/biocache.json",
+    "source_commit": "bcfb37661008dce5d3e532258458eb72d03e7530",
+    "source_anchors": ["https://raw.githubusercontent.com/AtlasOfLivingAustralia/biocache-service/bcfb37661008dce5d3e532258458eb72d03e7530/src/main/java/au/org/ala/biocache/web/OccurrenceController.java#L874-L900", "https://raw.githubusercontent.com/AtlasOfLivingAustralia/biocache-service/bcfb37661008dce5d3e532258458eb72d03e7530/src/main/java/au/org/ala/biocache/service/DownloadService.java#L232-L239"],
+    "interpretation": "Offline architecture is documented separately from search, but the deployed maximum and production operability remain unverified."
+  }
+}
