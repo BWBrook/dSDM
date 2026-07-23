@@ -733,5 +733,231 @@ class NormalizedSourceRowGateTests(unittest.TestCase):
         self.assertFalse(missing_camera_path.exists())
 
 
+class Phase1DecisionBundleTests(unittest.TestCase):
+    def load_bundle(self) -> dict:
+        return dsdm_phase1.load_phase1_decision_bundle(
+            ROOT / "config" / "phase1_decision_bundle.json"
+        )
+
+    def test_tracked_bundle_validates_deterministically(self) -> None:
+        bundle = self.load_bundle()
+
+        first = dsdm_phase1.validate_phase1_decision_bundle(bundle)
+        second = dsdm_phase1.validate_phase1_decision_bundle(copy.deepcopy(bundle))
+
+        self.assertEqual(first, second)
+        self.assertEqual(first["decision_consolidation_status"], "complete")
+        self.assertEqual(first["live_acquisition_status"], "blocked")
+        self.assertEqual(
+            first["blocked_prerequisites"],
+            ["P1-D003:ala_taxon_resolution", "P1-D008:camera_source_staging"],
+        )
+
+    def test_all_decisions_are_represented_once(self) -> None:
+        bundle = self.load_bundle()
+        decision_ids = [decision["id"] for decision in bundle["decisions"]]
+
+        self.assertEqual(len(decision_ids), 30)
+        self.assertEqual(set(decision_ids), {f"P1-D{index:03d}" for index in range(1, 31)})
+        self.assertEqual(
+            dsdm_phase1.validate_phase1_decision_bundle(bundle)["decision_count"],
+            30,
+        )
+
+    def test_species_and_thylogale_special_handling_are_preserved(self) -> None:
+        bundle = self.load_bundle()
+        species = bundle["species"]
+
+        self.assertEqual(len(species), 9)
+        thylogale = next(row for row in species if row["scientific_name"] == "Thylogale billardierii")
+        self.assertTrue(thylogale["include_phase1"])
+        self.assertEqual(thylogale["historical_aliases"], [])
+        self.assertEqual(
+            bundle["policies"]["thylogale_edge_case"]["pseudoabsence_generation"],
+            "disabled",
+        )
+        self.assertTrue(
+            bundle["policies"]["thylogale_edge_case"]["prevalence_aware_evaluation"]
+        )
+
+    def test_temporal_uncertainty_and_absence_policies_are_explicit(self) -> None:
+        bundle = self.load_bundle()
+
+        self.assertEqual(
+            bundle["policies"]["temporal"]["primary_window"],
+            {"start": "2001-01-01", "end": "2025-12-31", "inclusive": True},
+        )
+        quality = bundle["policies"]["ala_quality"]
+        self.assertEqual(quality["max_coordinate_uncertainty_m"], 1000)
+        self.assertFalse(quality["missing_uncertainty_excluded"])
+        self.assertEqual(quality["precision_basis"], ["reported", "inferred", "unknown"])
+        self.assertEqual(
+            bundle["policies"]["source_combination"]["absence_label"],
+            "survey_supported_absence",
+        )
+        self.assertNotEqual(
+            bundle["policies"]["source_combination"]["absence_label"],
+            bundle["policies"]["pseudoabsence"]["label"],
+        )
+
+    def test_presence_dominance_and_camera_privacy_are_explicit(self) -> None:
+        bundle = self.load_bundle()
+
+        self.assertEqual(
+            bundle["policies"]["source_combination"]["accepted_presence_dominates"],
+            True,
+        )
+        self.assertEqual(
+            bundle["privacy"]["camera"]["maximum_public_resolution_degree"],
+            0.01,
+        )
+        self.assertIsNone(bundle["operational_prerequisites"][1]["exact_local_source_path"])
+
+    def test_pseudoabsence_and_no_thinning_rules_are_explicit(self) -> None:
+        bundle = self.load_bundle()
+        pseudo = bundle["policies"]["pseudoabsence"]
+        thinning = bundle["policies"]["thinning"]
+
+        self.assertEqual(pseudo["minimum_distinct_non_target_species"], 3)
+        self.assertEqual(pseudo["minimum_distance_km"], 5)
+        self.assertEqual(pseudo["distance_metric"], "projected_metric_crs")
+        self.assertFalse(thinning["human_footprint_thinning"])
+        self.assertFalse(thinning["random_or_kmeans_thinning"])
+
+    def test_spatial_partition_and_predictor_policies_are_explicit(self) -> None:
+        bundle = self.load_bundle()
+        partition = bundle["policies"]["spatial_partition"]
+        predictors = bundle["policies"]["predictors"]
+
+        self.assertEqual(
+            (partition["microcluster_count"], partition["outer_test_cluster_count"],
+             partition["cv_fold_count"], partition["clusters_in_cv"]),
+            (50, 5, 5, 45),
+        )
+        self.assertEqual(predictors["active_predictor_count"], 28)
+        self.assertEqual(
+            predictors["active_predictors"],
+            [
+                "annmeantemp", "meandiurnrange", "isothermality", "tempseason",
+                "maxtempwarmmonth", "mintempcoldmonth", "tempannrange", "meantempwetq",
+                "meantempdryq", "meantempwarmq", "meantempcoldq", "annprecip",
+                "precipwetmonth", "precipdrymonth", "precipseason", "precipwetq",
+                "precipdryq", "precipwarmq", "precipcoldq", "elevation", "top_roughness",
+                "soil_class", "dist_fw", "dist_road", "fpar", "veg_mvg",
+                "landuse_secondary", "human_footprint",
+            ],
+        )
+        self.assertEqual(
+            predictors["excluded_predictors"],
+            ["landuse_primary", "landuse_tertiary", "veg_mvs", "fire_freq"],
+        )
+        self.assertEqual(
+            bundle["policies"]["scaling"]["continuous_scaling_fit"],
+            "training_data_only",
+        )
+
+    def test_approved_offshore_island_matrix_is_exact(self) -> None:
+        matrix = self.load_bundle()["policies"]["island_exclusions"]
+
+        self.assertEqual(
+            matrix["island_codes"],
+            {"KI": "King Island", "FI": "Flinders Island", "CBI": "Cape Barren Island", "CI": "Clarke Island", "THI": "Three Hummock Island", "HI": "Hunter Island", "MI": "Maria Island", "BI": "Bruny Island"},
+        )
+        self.assertEqual(
+            matrix["species_exclusions"],
+            {"thylogale_billardierii": ["KI", "CBI"], "notamacropus_rufogriseus": ["THI", "HI"], "macropus_giganteus": ["KI", "FI", "CBI", "CI", "HI", "BI"], "trichosurus_vulpecula": ["CBI", "CI", "HI"], "pseudocheirus_peregrinus": ["CBI", "CI", "THI", "HI", "BI"], "vombatus_ursinus": ["THI", "HI", "BI"], "sarcophilus_harrisii": ["KI", "FI", "CBI", "CI", "THI", "HI", "BI"], "dasyurus_maculatus": ["KI", "FI", "CBI", "CI", "THI", "HI", "MI", "BI"], "dasyurus_viverrinus": ["KI", "FI", "CBI", "CI", "THI", "HI", "MI"]},
+        )
+
+    def test_live_acquisition_remains_blocked_by_two_prerequisites(self) -> None:
+        bundle = self.load_bundle()
+        summary = dsdm_phase1.build_phase1_decision_readiness_summary(bundle)
+
+        self.assertEqual(summary["decision_consolidation_status"], "complete")
+        self.assertEqual(summary["live_acquisition_status"], "blocked")
+        self.assertEqual(len(summary["blocked_prerequisites"]), 2)
+        self.assertEqual(
+            {item["decision_id"] for item in bundle["operational_prerequisites"]},
+            {"P1-D003", "P1-D008"},
+        )
+
+    def test_missing_or_duplicate_decisions_fail_closed(self) -> None:
+        missing = self.load_bundle()
+        missing["decisions"] = missing["decisions"][:-1]
+        with self.assertRaises(ValidationError):
+            dsdm_phase1.validate_phase1_decision_bundle(missing)
+
+        duplicate = self.load_bundle()
+        duplicate["decisions"].append(copy.deepcopy(duplicate["decisions"][0]))
+        with self.assertRaises(ValidationError):
+            dsdm_phase1.validate_phase1_decision_bundle(duplicate)
+
+    def test_material_contradiction_fails_closed(self) -> None:
+        bundle = self.load_bundle()
+        bundle["policies"]["pseudoabsence"]["minimum_distance_km"] = 0
+
+        with self.assertRaises(ValidationError):
+            dsdm_phase1.validate_phase1_decision_bundle(bundle)
+
+    def test_required_policy_and_reference_mutations_fail_closed(self) -> None:
+        missing_grid = self.load_bundle()
+        del missing_grid["policies"]["grid"]
+        with self.assertRaises(ValidationError):
+            dsdm_phase1.validate_phase1_decision_bundle(missing_grid)
+
+        missing_qa = self.load_bundle()
+        del missing_qa["policies"]["qa"]
+        with self.assertRaises(ValidationError):
+            dsdm_phase1.validate_phase1_decision_bundle(missing_qa)
+
+        bad_ref = self.load_bundle()
+        bad_ref["decisions"][0]["policy_ref"] = "does_not_exist"
+        with self.assertRaises(ValidationError):
+            dsdm_phase1.validate_phase1_decision_bundle(bad_ref)
+
+    def test_status_effort_predictor_and_island_mutations_fail_closed(self) -> None:
+        wrong_status = self.load_bundle()
+        wrong_status["decisions"][2]["status"] = "resolved"
+        with self.assertRaises(ValidationError):
+            dsdm_phase1.validate_phase1_decision_bundle(wrong_status)
+
+        wrong_camera_status = self.load_bundle()
+        wrong_camera_status["decisions"][7]["status"] = "resolved"
+        with self.assertRaises(ValidationError):
+            dsdm_phase1.validate_phase1_decision_bundle(wrong_camera_status)
+
+        effort = self.load_bundle()
+        effort["policies"]["camera"]["effort"]["thresholding"] = "detailed_effort_study"
+        with self.assertRaises(ValidationError):
+            dsdm_phase1.validate_phase1_decision_bundle(effort)
+
+        duplicate_predictor = self.load_bundle()
+        duplicate_predictor["policies"]["predictors"]["active_predictors"][1] = "annmeantemp"
+        with self.assertRaises(ValidationError):
+            dsdm_phase1.validate_phase1_decision_bundle(duplicate_predictor)
+
+        malformed_island = self.load_bundle()
+        del malformed_island["policies"]["island_exclusions"]["species_exclusions"]["dasyurus_viverrinus"]
+        with self.assertRaises(ValidationError):
+            dsdm_phase1.validate_phase1_decision_bundle(malformed_island)
+
+    def test_privacy_mutations_fail_closed(self) -> None:
+        public = self.load_bundle()
+        public["privacy"]["camera"]["release"] = "public_site_coordinates"
+        with self.assertRaises(ValidationError):
+            dsdm_phase1.validate_phase1_decision_bundle(public)
+
+        sensitive_field = self.load_bundle()
+        sensitive_field["privacy"]["camera"]["exact_camera_coordinates"] = []
+        with self.assertRaises(ValidationError):
+            dsdm_phase1.validate_phase1_decision_bundle(sensitive_field)
+
+    def test_bundle_validator_does_not_open_source_payload_paths(self) -> None:
+        bundle = self.load_bundle()
+        bundle["operational_prerequisites"][1]["exact_local_source_path"] = "data/private-camera.csv"
+
+        with self.assertRaises(ValidationError):
+            dsdm_phase1.validate_phase1_decision_bundle(bundle)
+
+
 if __name__ == "__main__":
     unittest.main()
