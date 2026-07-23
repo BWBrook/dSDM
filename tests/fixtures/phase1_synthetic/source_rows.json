@@ -21,7 +21,15 @@
       "pa": 1,
       "pa_type": "presence",
       "decision_manifest_id": "syn_decisions_resolved",
-      "input_manifest_id": "syn_source_manifest"
+      "input_manifest_id": "syn_source_manifest",
+      "ala_taxon_identity": {
+        "submitted_name": "Fictomys contracta minor",
+        "matched_name": "Fictomys contracta minor",
+        "matched_concept_id": "SYN_AFD_MATCHED_SUBSPECIES_001",
+        "accepted_name": "Fictomys contracta minor",
+        "accepted_concept_id": "SYN_AFD_ACCEPTED_SUBSPECIES_001",
+        "accepted_rank": "subspecies"
+      }
     },
     {
       "run_id": "syn_run_001",

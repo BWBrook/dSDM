@@ -1,11 +1,11 @@
 {
   "bundle_id": "dsdm-phase1-decision-bundle",
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "decision_register_version": "2026-07-23",
   "decisions": [
     {"id": "P1-D001", "status": "resolved", "owner": "Barry", "policy_ref": "species"},
     {"id": "P1-D002", "status": "resolved", "owner": "Barry", "policy_ref": "thylogale_edge_case"},
-    {"id": "P1-D003", "status": "resolved_with_prerequisite", "owner": "Barry", "policy_ref": "species.ala_resolution"},
+    {"id": "P1-D003", "status": "resolved", "owner": "Barry", "policy_ref": "species.ala_resolution"},
     {"id": "P1-D004", "status": "resolved", "owner": "Barry", "policy_ref": "temporal"},
     {"id": "P1-D005", "status": "resolved", "owner": "Barry", "policy_ref": "ala_resources"},
     {"id": "P1-D006", "status": "resolved", "owner": "Barry", "policy_ref": "ala_quality"},
@@ -35,19 +35,39 @@
     {"id": "P1-D030", "status": "historical_resolved", "owner": "dSDM", "policy_ref": "initial_scaffold"}
   ],
   "species": [
-    {"species_id": "thylogale_billardierii", "scientific_name": "Thylogale billardierii", "accepted_name": "Thylogale billardierii", "historical_aliases": [], "ala_taxon_concept_id": null, "include_phase1": true},
-    {"species_id": "notamacropus_rufogriseus", "scientific_name": "Notamacropus rufogriseus", "accepted_name": "Notamacropus rufogriseus", "historical_aliases": [], "ala_taxon_concept_id": null, "include_phase1": true},
-    {"species_id": "macropus_giganteus", "scientific_name": "Macropus giganteus", "accepted_name": "Macropus giganteus", "historical_aliases": [], "ala_taxon_concept_id": null, "include_phase1": true},
-    {"species_id": "trichosurus_vulpecula", "scientific_name": "Trichosurus vulpecula", "accepted_name": "Trichosurus vulpecula", "historical_aliases": [], "ala_taxon_concept_id": null, "include_phase1": true},
-    {"species_id": "pseudocheirus_peregrinus", "scientific_name": "Pseudocheirus peregrinus", "accepted_name": "Pseudocheirus peregrinus", "historical_aliases": [], "ala_taxon_concept_id": null, "include_phase1": true},
-    {"species_id": "vombatus_ursinus", "scientific_name": "Vombatus ursinus", "accepted_name": "Vombatus ursinus", "historical_aliases": [], "ala_taxon_concept_id": null, "include_phase1": true},
-    {"species_id": "sarcophilus_harrisii", "scientific_name": "Sarcophilus harrisii", "accepted_name": "Sarcophilus harrisii", "historical_aliases": [], "ala_taxon_concept_id": null, "include_phase1": true},
-    {"species_id": "dasyurus_maculatus", "scientific_name": "Dasyurus maculatus", "accepted_name": "Dasyurus maculatus", "historical_aliases": [], "ala_taxon_concept_id": null, "include_phase1": true},
-    {"species_id": "dasyurus_viverrinus", "scientific_name": "Dasyurus viverrinus", "accepted_name": "Dasyurus viverrinus", "historical_aliases": [], "ala_taxon_concept_id": null, "include_phase1": true}
+    {"species_id": "thylogale_billardierii", "scientific_name": "Thylogale billardierii", "accepted_name": "Thylogale billardierii", "historical_aliases": [], "ala_taxon_concept_id": "https://biodiversity.org.au/afd/taxa/82e69509-af63-4502-86f7-43362b777865", "include_phase1": true},
+    {"species_id": "notamacropus_rufogriseus", "scientific_name": "Notamacropus rufogriseus", "accepted_name": "Notamacropus rufogriseus", "historical_aliases": ["Macropus rufogriseus"], "ala_taxon_concept_id": "https://biodiversity.org.au/afd/taxa/c4dfafef-5192-4a3d-815c-040c393e9bca", "include_phase1": true},
+    {"species_id": "macropus_giganteus", "scientific_name": "Macropus giganteus", "accepted_name": "Macropus giganteus", "historical_aliases": [], "ala_taxon_concept_id": "https://biodiversity.org.au/afd/taxa/f2f43ef9-89fd-4f89-8b06-0842e86cfe06", "include_phase1": true},
+    {"species_id": "trichosurus_vulpecula", "scientific_name": "Trichosurus vulpecula", "accepted_name": "Trichosurus vulpecula", "historical_aliases": [], "ala_taxon_concept_id": "https://biodiversity.org.au/afd/taxa/ee2cb6a9-e17c-4ca7-8aef-76d69eb969ed", "include_phase1": true},
+    {"species_id": "pseudocheirus_peregrinus", "scientific_name": "Pseudocheirus peregrinus", "accepted_name": "Pseudocheirus peregrinus", "historical_aliases": [], "ala_taxon_concept_id": "https://biodiversity.org.au/afd/taxa/003decd6-ec3d-468e-909d-da396a6dd1f6", "include_phase1": true},
+    {"species_id": "vombatus_ursinus", "scientific_name": "Vombatus ursinus", "accepted_name": "Vombatus ursinus", "historical_aliases": [], "ala_taxon_concept_id": "https://biodiversity.org.au/afd/taxa/66d42847-c556-4fa3-902c-a91d9f517286", "include_phase1": true},
+    {"species_id": "sarcophilus_harrisii", "scientific_name": "Sarcophilus harrisii", "accepted_name": "Sarcophilus harrisii", "historical_aliases": [], "ala_taxon_concept_id": "https://biodiversity.org.au/afd/taxa/c6b5ff5a-a991-4972-b5b0-4214141d5bd6", "include_phase1": true},
+    {"species_id": "dasyurus_maculatus", "scientific_name": "Dasyurus maculatus", "accepted_name": "Dasyurus maculatus", "historical_aliases": [], "ala_taxon_concept_id": "https://biodiversity.org.au/afd/taxa/73c23669-c491-42d0-83b3-6fd84a03689a", "include_phase1": true},
+    {"species_id": "dasyurus_viverrinus", "scientific_name": "Dasyurus viverrinus", "accepted_name": "Dasyurus viverrinus", "historical_aliases": [], "ala_taxon_concept_id": "https://biodiversity.org.au/afd/taxa/1e9f1b49-78b5-409d-91f2-21615ce88e9d", "include_phase1": true}
   ],
   "policies": {
     "thylogale_edge_case": {"near_ubiquitous": true, "low_contrast_at_degree_resolution": 0.01, "manufacture_class_balance": false, "prevalence_aware_evaluation": true, "pseudoabsence_generation": "disabled"},
-    "species": {"focal_species_count": 9, "stable_id_field": "species_id", "canonical_name_field": "accepted_name", "historical_aliases_explicit": true, "ala_resolution": "pending_compact_scientific_check"},
+    "species": {
+      "focal_species_count": 9,
+      "stable_id_field": "species_id",
+      "canonical_name_field": "accepted_name",
+      "historical_aliases_explicit": true,
+      "ala_resolution": {
+        "status": "resolved",
+        "evidence_package": "evidence/ala_taxon_resolution/2026-07-23",
+        "approval_date": "2026-07-23",
+        "canonical_query_rank": "species",
+        "synonym_normalization": "in_scope",
+        "accepted_descendants": "in_scope",
+        "pre_acquisition_scope_assertion_required": true,
+        "taxon_identity_retention": {"submitted": true, "matched": true, "accepted": true, "rank": true},
+        "expansion_failure_fallback": "explicit_parent_plus_required_accepted_child_ids",
+        "subtaxon_policy": {
+          "macropus_giganteus": {"synonym_name": "Macropus giganteus tasmaniensis", "name_concept_id": "https://biodiversity.org.au/afd/taxa/6cfeb6de-600b-425e-9e8d-3cea25f8ef84", "resolution": "accepted_parent_species", "accepted_parent_species_ref": "macropus_giganteus", "bie_child_concepts": [], "promote_as_focal_species": false},
+          "vombatus_ursinus": {"accepted_child_concepts": [{"name": "Vombatus ursinus hirsutus", "concept_id": "https://biodiversity.org.au/afd/taxa/e4b74750-7541-4c67-89d1-5b5718b30ea7"}, {"name": "Vombatus ursinus tasmaniensis", "concept_id": "https://biodiversity.org.au/afd/taxa/3e53b354-2b48-4a2a-af29-acd8ecdfe1e6"}, {"name": "Vombatus ursinus ursinus", "concept_id": "https://biodiversity.org.au/afd/taxa/76b2b77b-6092-47dd-8de1-00e504b1e383"}], "promote_as_focal_species": false}
+        }
+      }
+    },
     "temporal": {"primary_window": {"start": "2001-01-01", "end": "2025-12-31", "inclusive": true}, "older_records": "archive_exclude_primary", "missing_defensible_year": "exclude_primary", "retain_date_precision": true},
     "ala_resources": {"scope": "broadly_all_eligible_resources", "resource_ids_retained": true, "documented_versioned_blocklist_only": true},
     "ala_quality": {"hard_exclusions": ["taxon_mismatch", "missing_or_invalid_coordinates", "outside_boundary", "coordinate_uncertainty_over_1000_m"], "max_coordinate_uncertainty_m": 1000, "missing_uncertainty_excluded": false, "precision_basis": ["reported", "inferred", "unknown"], "infer_precision_from_decimal_digit_count": false, "utm_undocumented_resolution": "retain_provisionally_unknown", "duplicate_record_ids": "remove_exact", "repeated_presences": "collapse_later_species_grid_with_counts_provenance", "suspect_assertions": "flag_transparently"},
@@ -73,7 +93,6 @@
     "initial_scaffold": {"status": "historical_resolved", "scope": "minimal_contract_scaffold_complete"}
   },
   "operational_prerequisites": [
-    {"decision_id": "P1-D003", "key": "ala_taxon_resolution", "status": "pending_barry_check", "exact_query_resolution": null, "exact_ala_taxon_concept_ids": null},
     {"decision_id": "P1-D008", "key": "camera_source_staging", "status": "pending_barry_staging", "exact_local_source_path": null, "source_path_tracked": false}
   ],
   "privacy": {"camera": {"maximum_public_resolution_degree": 0.01, "exact_coordinates_and_site_ids": "private_ignored", "deployment_timing_and_current_activity": "do_not_expose", "release": "collapsed_grid_level_evidence_only"}}

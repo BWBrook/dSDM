@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from pathlib import Path
 from typing import Any
 
@@ -43,10 +44,30 @@ PHASE1_POLICY_KEYS = {
 }
 PHASE1_DECISION_STATUSES = {
     **{decision_id: "resolved" for decision_id in PHASE1_DECISION_IDS},
-    "P1-D003": "resolved_with_prerequisite",
+    "P1-D003": "resolved",
     "P1-D008": "resolved_with_prerequisite",
     "P1-D030": "historical_resolved",
 }
+PHASE1_ALA_CONCEPT_RE = re.compile(
+    r"https://biodiversity\.org\.au/afd/taxa/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\Z"
+)
+PHASE1_ALA_CONCEPTS = {
+    "thylogale_billardierii": "https://biodiversity.org.au/afd/taxa/82e69509-af63-4502-86f7-43362b777865",
+    "notamacropus_rufogriseus": "https://biodiversity.org.au/afd/taxa/c4dfafef-5192-4a3d-815c-040c393e9bca",
+    "macropus_giganteus": "https://biodiversity.org.au/afd/taxa/f2f43ef9-89fd-4f89-8b06-0842e86cfe06",
+    "trichosurus_vulpecula": "https://biodiversity.org.au/afd/taxa/ee2cb6a9-e17c-4ca7-8aef-76d69eb969ed",
+    "pseudocheirus_peregrinus": "https://biodiversity.org.au/afd/taxa/003decd6-ec3d-468e-909d-da396a6dd1f6",
+    "vombatus_ursinus": "https://biodiversity.org.au/afd/taxa/66d42847-c556-4fa3-902c-a91d9f517286",
+    "sarcophilus_harrisii": "https://biodiversity.org.au/afd/taxa/c6b5ff5a-a991-4972-b5b0-4214141d5bd6",
+    "dasyurus_maculatus": "https://biodiversity.org.au/afd/taxa/73c23669-c491-42d0-83b3-6fd84a03689a",
+    "dasyurus_viverrinus": "https://biodiversity.org.au/afd/taxa/1e9f1b49-78b5-409d-91f2-21615ce88e9d",
+}
+ALA_TAXON_IDENTITY_FIELDS = (
+    "submitted_name", "matched_name", "matched_concept_id",
+    "accepted_name", "accepted_concept_id", "accepted_rank",
+)
+ALA_ACCEPTED_RANKS = {"species", "subspecies"}
+PHASE1_ALA_EVIDENCE_PACKAGE = "evidence/ala_taxon_resolution/2026-07-23"
 PHASE1_ACTIVE_PREDICTORS = [
     "annmeantemp", "meandiurnrange", "isothermality", "tempseason",
     "maxtempwarmmonth", "mintempcoldmonth", "tempannrange", "meantempwetq",
@@ -274,6 +295,13 @@ def validate_source_rows(
             raise ValidationError(f"source row {index} has presence pa_type but pa != 1")
         if pa_type in {"survey_supported_absence", "pseudoabsence"} and pa != 0:
             raise ValidationError(f"source row {index} has absence pa_type but pa != 0")
+        source_type = row["source_type"]
+        if source_type == "ala_occurrence":
+            _validate_ala_taxon_identity(row, index=index)
+        elif "ala_taxon_identity" in row:
+            raise ValidationError(
+                f"source row {index} non-ALA rows must not contain ala_taxon_identity"
+            )
         if pa_type == "survey_supported_absence":
             if row.get("source_type") != "camera_trap":
                 raise ValidationError(
@@ -304,7 +332,6 @@ def validate_source_rows(
                 )
         if pa_type == "pseudoabsence" and not row.get("pseudoabsence_rule_id"):
             raise ValidationError(f"source row {index} pseudoabsence requires pseudoabsence_rule_id")
-        source_type = row["source_type"]
         source_contract_id = row["source_contract_id"]
         if source_contracts is not None and source_type == "camera_trap":
             contract = contracts_by_id.get(source_contract_id)
@@ -486,8 +513,8 @@ def validate_phase1_decision_bundle(bundle: dict[str, Any]) -> dict[str, Any]:
         raise ValidationError("decision bundle must be an object")
     if set(bundle) != PHASE1_ROOT_KEYS:
         raise ValidationError("decision bundle root shape is not the approved contract")
-    if bundle.get("schema_version") != "1.0":
-        raise ValidationError("decision bundle schema_version must be 1.0")
+    if bundle.get("schema_version") != "1.1":
+        raise ValidationError("decision bundle schema_version must be 1.1")
     if not isinstance(bundle.get("bundle_id"), str) or not bundle["bundle_id"]:
         raise ValidationError("decision bundle requires bundle_id")
 
@@ -532,6 +559,7 @@ def validate_phase1_decision_bundle(bundle: dict[str, Any]) -> dict[str, Any]:
         raise ValidationError("decision bundle must contain exactly nine species")
     expected_species = dict(PHASE1_SPECIES)
     observed_species: dict[str, str] = {}
+    observed_concepts: set[str] = set()
     for index, row in enumerate(species, start=1):
         if not isinstance(row, dict):
             raise ValidationError(f"species {index} must be an object")
@@ -543,15 +571,25 @@ def validate_phase1_decision_bundle(bundle: dict[str, Any]) -> dict[str, Any]:
             raise ValidationError(f"unexpected consolidated species row: {species_id}")
         if row.get("accepted_name") != scientific_name or row.get("include_phase1") is not True:
             raise ValidationError(f"species {species_id} is not canonical and included")
-        if row.get("ala_taxon_concept_id") is not None:
-            raise ValidationError("ALA taxon concept IDs remain pending and must be null")
+        concept_id = row.get("ala_taxon_concept_id")
+        if not isinstance(concept_id, str) or not PHASE1_ALA_CONCEPT_RE.fullmatch(concept_id):
+            raise ValidationError(f"species {species_id} requires a unique HTTPS AFD concept ID")
+        if concept_id != PHASE1_ALA_CONCEPTS[species_id]:
+            raise ValidationError(f"species {species_id} has a non-authoritative AFD concept ID")
+        if concept_id in observed_concepts:
+            raise ValidationError(f"duplicate consolidated ALA taxon concept ID: {concept_id}")
+        observed_concepts.add(concept_id)
         aliases = row.get("historical_aliases")
         if not isinstance(aliases, list) or not all(isinstance(alias, str) and alias for alias in aliases):
             raise ValidationError(f"species {species_id} historical_aliases must be a string list")
+        expected_aliases = ["Macropus rufogriseus"] if species_id == "notamacropus_rufogriseus" else []
+        if aliases != expected_aliases:
+            raise ValidationError(f"species {species_id} has unapproved historical aliases")
         observed_species[species_id] = scientific_name
+    if [row["species_id"] for row in species] != [species_id for species_id, _ in PHASE1_SPECIES]:
+        raise ValidationError("species rows must retain the authoritative nine-row order")
 
-    if policies["species"] != {"focal_species_count": 9, "stable_id_field": "species_id", "canonical_name_field": "accepted_name", "historical_aliases_explicit": True, "ala_resolution": "pending_compact_scientific_check"}:
-        raise ValidationError("species contract policy is incomplete")
+    _validate_ala_resolution_policy(policies["species"])
 
     _require_policy(policies, "thylogale_edge_case")
     thylogale = policies["thylogale_edge_case"]
@@ -674,18 +712,15 @@ def validate_phase1_decision_bundle(bundle: dict[str, Any]) -> dict[str, Any]:
         raise ValidationError("legacy comparison role is incomplete")
 
     prerequisites = bundle.get("operational_prerequisites")
-    if not isinstance(prerequisites, list) or {item.get("decision_id") for item in prerequisites if isinstance(item, dict)} != {"P1-D003", "P1-D008"} or len(prerequisites) != 2:
-        raise ValidationError("exactly the P1-D003 and P1-D008 operational prerequisites are required")
+    if not isinstance(prerequisites, list) or {item.get("decision_id") for item in prerequisites if isinstance(item, dict)} != {"P1-D008"} or len(prerequisites) != 1:
+        raise ValidationError("exactly the P1-D008 operational prerequisite is required")
     for item in prerequisites:
         if not isinstance(item, dict):
             raise ValidationError("live acquisition prerequisites must be objects")
-        expected_keys = {"decision_id", "key", "status", "exact_query_resolution", "exact_ala_taxon_concept_ids"} if item.get("decision_id") == "P1-D003" else {"decision_id", "key", "status", "exact_local_source_path", "source_path_tracked"}
+        expected_keys = {"decision_id", "key", "status", "exact_local_source_path", "source_path_tracked"}
         if set(item) != expected_keys or item.get("status", "").startswith("resolved"):
             raise ValidationError("live acquisition prerequisites must remain pending")
-    ala_prereq = next(item for item in prerequisites if item["decision_id"] == "P1-D003")
-    camera_prereq = next(item for item in prerequisites if item["decision_id"] == "P1-D008")
-    if ala_prereq.get("key") != "ala_taxon_resolution" or ala_prereq.get("status") != "pending_barry_check" or ala_prereq.get("exact_ala_taxon_concept_ids") is not None or ala_prereq.get("exact_query_resolution") is not None:
-        raise ValidationError("exact ALA taxon resolution must remain unset pending Barry check")
+    camera_prereq = prerequisites[0]
     if camera_prereq.get("key") != "camera_source_staging" or camera_prereq.get("status") != "pending_barry_staging" or camera_prereq.get("exact_local_source_path") is not None or camera_prereq.get("source_path_tracked") is not False:
         raise ValidationError("exact camera source path must remain private and unstaged")
 
@@ -694,9 +729,9 @@ def validate_phase1_decision_bundle(bundle: dict[str, Any]) -> dict[str, Any]:
         "schema_version": bundle["schema_version"],
         "decision_count": len(decision_ids),
         "decision_consolidation_status": "complete",
+        "ala_resolution_status": bundle["policies"]["species"]["ala_resolution"]["status"],
         "live_acquisition_status": "blocked",
         "blocked_prerequisites": [
-            "P1-D003:ala_taxon_resolution",
             "P1-D008:camera_source_staging",
         ],
     }
@@ -706,6 +741,90 @@ def build_phase1_decision_readiness_summary(bundle: dict[str, Any]) -> dict[str,
     """Return the deterministic policy/live-readiness split for a valid bundle."""
 
     return dict(validate_phase1_decision_bundle(bundle))
+
+
+def validate_ala_resolution_candidates(
+    bundle: dict[str, Any], candidates: dict[str, Any]
+) -> dict[str, Any]:
+    """Reconcile Goal 010 candidates against the authoritative species rows."""
+
+    validate_phase1_decision_bundle(bundle)
+    if not isinstance(candidates, dict) or candidates.get("bundle_id") != bundle.get("bundle_id"):
+        raise ValidationError("Goal 010 candidate bundle identity mismatch")
+    rows = candidates.get("candidates")
+    if not isinstance(rows, list) or len(rows) != len(PHASE1_SPECIES):
+        raise ValidationError("Goal 010 candidates must contain exactly nine rows")
+    species_rows = bundle["species"]
+    seen_ids: set[str] = set()
+    seen_concepts: set[str] = set()
+    approved_aliases: dict[str, list[str]] = {}
+    for expected, candidate in zip(species_rows, rows):
+        if not isinstance(candidate, dict):
+            raise ValidationError("Goal 010 candidate rows must be objects")
+        if candidate.get("species_id") != expected["species_id"] or candidate.get("query") != expected["scientific_name"]:
+            raise ValidationError("Goal 010 candidate species identity does not reconcile")
+        concept = candidate.get("taxon_concept_id")
+        if concept != expected["ala_taxon_concept_id"] or not isinstance(concept, str) or not PHASE1_ALA_CONCEPT_RE.fullmatch(concept):
+            raise ValidationError(f"Goal 010 candidate concept mismatch for {expected['species_id']}")
+        if candidate.get("returned_scientific_name") != expected["accepted_name"] or candidate.get("rank") != "species" or candidate.get("match_type") != "exactMatch" or candidate.get("issues") != ["noIssue"]:
+            raise ValidationError(f"Goal 010 candidate name/rank/match mismatch for {expected['species_id']}")
+        aliases = candidate.get("evidence_backed_aliases")
+        if aliases != expected["historical_aliases"]:
+            raise ValidationError(f"Goal 010 candidate aliases do not reconcile for {expected['species_id']}")
+        if candidate.get("recommendation") != "recommendable":
+            raise ValidationError(f"Goal 010 candidate is not recommendable for {expected['species_id']}")
+        if expected["species_id"] in seen_ids or concept in seen_concepts:
+            raise ValidationError("Goal 010 candidate species or concept is duplicated")
+        seen_ids.add(expected["species_id"])
+        seen_concepts.add(concept)
+        if aliases:
+            approved_aliases[expected["species_id"]] = list(aliases)
+    return {"species_count": len(rows), "approved_aliases": approved_aliases, "concept_count": len(seen_concepts)}
+
+
+def _validate_ala_resolution_policy(species_policy: dict[str, Any]) -> None:
+    if not isinstance(species_policy, dict):
+        raise ValidationError("species policy must be an object")
+    expected = {
+        "focal_species_count": 9,
+        "stable_id_field": "species_id",
+        "canonical_name_field": "accepted_name",
+        "historical_aliases_explicit": True,
+    }
+    if any(species_policy.get(key) != value for key, value in expected.items()):
+        raise ValidationError("species policy identity fields are incomplete")
+    resolution = species_policy.get("ala_resolution")
+    if not isinstance(resolution, dict):
+        raise ValidationError("ALA resolution policy must be structured")
+    required = {
+        "status", "evidence_package", "approval_date", "canonical_query_rank",
+        "synonym_normalization", "accepted_descendants",
+        "pre_acquisition_scope_assertion_required", "taxon_identity_retention",
+        "expansion_failure_fallback", "subtaxon_policy",
+    }
+    if set(resolution) != required:
+        raise ValidationError("ALA resolution policy shape is incomplete")
+    if resolution["status"] != "resolved" or resolution["evidence_package"] != PHASE1_ALA_EVIDENCE_PACKAGE or resolution["approval_date"] != "2026-07-23" or resolution["canonical_query_rank"] != "species" or resolution["synonym_normalization"] != "in_scope" or resolution["accepted_descendants"] != "in_scope" or resolution["pre_acquisition_scope_assertion_required"] is not True or resolution["expansion_failure_fallback"] != "explicit_parent_plus_required_accepted_child_ids":
+        raise ValidationError("ALA resolution provenance or scope policy is incomplete")
+    if resolution["taxon_identity_retention"] != {"submitted": True, "matched": True, "accepted": True, "rank": True}:
+        raise ValidationError("ALA taxon identity retention policy is incomplete")
+    subtaxa = resolution["subtaxon_policy"]
+    if not isinstance(subtaxa, dict) or set(subtaxa) != {"macropus_giganteus", "vombatus_ursinus"}:
+        raise ValidationError("ALA subtaxon policy must cover the two approved caveats")
+    macropus = subtaxa["macropus_giganteus"]
+    if macropus != {"synonym_name": "Macropus giganteus tasmaniensis", "name_concept_id": "https://biodiversity.org.au/afd/taxa/6cfeb6de-600b-425e-9e8d-3cea25f8ef84", "resolution": "accepted_parent_species", "accepted_parent_species_ref": "macropus_giganteus", "bie_child_concepts": [], "promote_as_focal_species": False}:
+        raise ValidationError("Macropus giganteus subtaxon policy is incomplete")
+    wombat = subtaxa["vombatus_ursinus"]
+    children = wombat.get("accepted_child_concepts") if isinstance(wombat, dict) else None
+    if not isinstance(wombat, dict) or set(wombat) != {"accepted_child_concepts", "promote_as_focal_species"} or wombat["promote_as_focal_species"] is not False or not isinstance(children, list) or len(children) != 3:
+        raise ValidationError("Vombatus ursinus subtaxon policy is incomplete")
+    expected_children = [
+        ("Vombatus ursinus hirsutus", "https://biodiversity.org.au/afd/taxa/e4b74750-7541-4c67-89d1-5b5718b30ea7"),
+        ("Vombatus ursinus tasmaniensis", "https://biodiversity.org.au/afd/taxa/3e53b354-2b48-4a2a-af29-acd8ecdfe1e6"),
+        ("Vombatus ursinus ursinus", "https://biodiversity.org.au/afd/taxa/76b2b77b-6092-47dd-8de1-00e504b1e383"),
+    ]
+    if [(child.get("name"), child.get("concept_id")) for child in children] != expected_children:
+        raise ValidationError("Vombatus ursinus accepted child caveat is malformed")
 
 
 def _require_policy(policies: dict[str, Any], name: str) -> dict[str, Any]:
@@ -748,6 +867,20 @@ def _validate_safe_relative_path(path_text: Any, *, label: str) -> None:
         raise ValidationError(f"{label} path is not a safe relative path: {path_text}")
     if path.parts and path.parts[0] in {"data", "temp"}:
         raise ValidationError(f"{label} path cannot target real payload directory: {path_text}")
+
+
+def _validate_ala_taxon_identity(row: dict[str, Any], *, index: int) -> None:
+    identity = row.get("ala_taxon_identity")
+    if not isinstance(identity, dict) or set(identity) != set(ALA_TAXON_IDENTITY_FIELDS):
+        raise ValidationError(
+            f"source row {index} ALA rows require the complete ala_taxon_identity block"
+        )
+    if not all(isinstance(identity[field], str) and identity[field] for field in ALA_TAXON_IDENTITY_FIELDS):
+        raise ValidationError(f"source row {index} ALA taxon identity values must be non-empty strings")
+    if identity["accepted_rank"] not in ALA_ACCEPTED_RANKS:
+        raise ValidationError(
+            f"source row {index} ALA taxon identity rank must be species or subspecies"
+        )
 
 
 def _validate_checksum_block(block: Any, *, label: str) -> None:

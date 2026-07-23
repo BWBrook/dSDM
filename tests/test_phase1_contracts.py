@@ -12,6 +12,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURE_DIR = ROOT / "tests" / "fixtures" / "phase1_synthetic"
 DECISION_BUNDLE_PATH = ROOT / "config" / "phase1_decision_bundle.json"
+GOAL010_CANDIDATES_PATH = ROOT / "evidence" / "ala_taxon_resolution" / "2026-07-23" / "candidates.json"
+GOAL010_PACKAGE_PATH = ROOT / "evidence" / "ala_taxon_resolution" / "2026-07-23"
 sys.path.insert(0, str(ROOT / "src"))
 
 import dsdm_phase1  # noqa: E402
@@ -22,7 +24,9 @@ from dsdm_phase1.contracts import (  # noqa: E402
     validate_source_contracts,
     validate_source_rows,
     validate_species_contract,
+    validate_ala_resolution_candidates,
 )
+from dsdm_phase1.manifests import _validate_ala_request_intent  # noqa: E402
 
 
 def load_fixture(name: str) -> dict:
@@ -379,6 +383,28 @@ class MockedAcquisitionRequestTests(unittest.TestCase):
                 },
             ],
         }
+        bundle = load_decision_bundle()
+        resolution = bundle["policies"]["species"]["ala_resolution"]
+        expected["requests"][0]["intent"].update(
+            {
+                "query_resolution_status": "resolved",
+                "species_queries": [
+                    {
+                        "species_id": species["species_id"],
+                        "accepted_name": species["accepted_name"],
+                        "ala_taxon_concept_id": species["ala_taxon_concept_id"],
+                        "historical_aliases": list(species["historical_aliases"]),
+                    }
+                    for species in bundle["species"]
+                ],
+                "synonym_normalization": resolution["synonym_normalization"],
+                "accepted_descendants": resolution["accepted_descendants"],
+                "pre_acquisition_scope_assertion_required": resolution["pre_acquisition_scope_assertion_required"],
+                "taxon_identity_retention": dict(resolution["taxon_identity_retention"]),
+                "expansion_failure_fallback": resolution["expansion_failure_fallback"],
+                "subtaxon_policy": copy.deepcopy(resolution["subtaxon_policy"]),
+            }
+        )
         self.assertEqual(first, second)
         for key, value in expected.items():
             self.assertEqual(first[key], value)
@@ -550,6 +576,14 @@ class NormalizedSourceRowGateTests(unittest.TestCase):
                     "pa": 1,
                     "pa_type": "presence",
                     "grid_cell_id": "SYN_GRID_001",
+                    "ala_taxon_identity": {
+                        "submitted_name": "Fictomys contracta minor",
+                        "matched_name": "Fictomys contracta minor",
+                        "matched_concept_id": "SYN_AFD_MATCHED_SUBSPECIES_001",
+                        "accepted_name": "Fictomys contracta minor",
+                        "accepted_concept_id": "SYN_AFD_ACCEPTED_SUBSPECIES_001",
+                        "accepted_rank": "subspecies",
+                    },
                 },
                 {
                     "row_id": "syn_row_pseudoabsence_001",
@@ -584,13 +618,10 @@ class NormalizedSourceRowGateTests(unittest.TestCase):
                 },
             ],
             "decision_bundle_id": "dsdm-phase1-decision-bundle",
-            "decision_bundle_schema_version": "1.0",
+            "decision_bundle_schema_version": "1.1",
             "decision_consolidation_status": "complete",
             "live_acquisition_status": "blocked",
-            "blocked_prerequisites": [
-                "P1-D003:ala_taxon_resolution",
-                "P1-D008:camera_source_staging",
-            ],
+            "blocked_prerequisites": ["P1-D008:camera_source_staging"],
             "policy_provenance": {
                 "accepted_presence_dominates": True,
                 "camera_absence_label": "survey_supported_absence",
@@ -598,6 +629,8 @@ class NormalizedSourceRowGateTests(unittest.TestCase):
                 "nearest_land_cell_rescue": False,
                 "source_collapse_executed": False,
                 "spatial_assignment_executed": False,
+                "ala_resolution_status": "resolved",
+                "ala_resolution_evidence_package": "evidence/ala_taxon_resolution/2026-07-23",
             },
         }
         self.assertEqual(first, second)
@@ -633,10 +666,10 @@ class Goal009CanonicalAlignmentTests(unittest.TestCase):
             **inputs,
         )
         self.assertEqual(summary["decision_bundle_id"], "dsdm-phase1-decision-bundle")
-        self.assertEqual(summary["decision_bundle_schema_version"], "1.0")
+        self.assertEqual(summary["decision_bundle_schema_version"], "1.1")
         self.assertEqual(summary["decision_consolidation_status"], "complete")
         self.assertEqual(summary["live_acquisition_status"], "blocked")
-        self.assertEqual(summary["blocked_prerequisites"], ["P1-D003:ala_taxon_resolution", "P1-D008:camera_source_staging"])
+        self.assertEqual(summary["blocked_prerequisites"], ["P1-D008:camera_source_staging"])
         self.assertTrue(summary["policy_provenance"]["accepted_presence_dominates"])
         self.assertFalse(summary["policy_provenance"]["nearest_land_cell_rescue"])
         self.assertFalse(summary["policy_provenance"]["source_collapse_executed"])
@@ -830,7 +863,7 @@ class Phase1DecisionBundleTests(unittest.TestCase):
         self.assertEqual(first["live_acquisition_status"], "blocked")
         self.assertEqual(
             first["blocked_prerequisites"],
-            ["P1-D003:ala_taxon_resolution", "P1-D008:camera_source_staging"],
+            ["P1-D008:camera_source_staging"],
         )
 
     def test_all_decisions_are_represented_once(self) -> None:
@@ -891,7 +924,7 @@ class Phase1DecisionBundleTests(unittest.TestCase):
             bundle["privacy"]["camera"]["maximum_public_resolution_degree"],
             0.01,
         )
-        self.assertIsNone(bundle["operational_prerequisites"][1]["exact_local_source_path"])
+        self.assertIsNone(bundle["operational_prerequisites"][0]["exact_local_source_path"])
 
     def test_pseudoabsence_and_no_thinning_rules_are_explicit(self) -> None:
         bundle = self.load_bundle()
@@ -954,10 +987,10 @@ class Phase1DecisionBundleTests(unittest.TestCase):
 
         self.assertEqual(summary["decision_consolidation_status"], "complete")
         self.assertEqual(summary["live_acquisition_status"], "blocked")
-        self.assertEqual(len(summary["blocked_prerequisites"]), 2)
+        self.assertEqual(len(summary["blocked_prerequisites"]), 1)
         self.assertEqual(
             {item["decision_id"] for item in bundle["operational_prerequisites"]},
-            {"P1-D003", "P1-D008"},
+            {"P1-D008"},
         )
 
     def test_missing_or_duplicate_decisions_fail_closed(self) -> None:
@@ -996,7 +1029,7 @@ class Phase1DecisionBundleTests(unittest.TestCase):
 
     def test_status_effort_predictor_and_island_mutations_fail_closed(self) -> None:
         wrong_status = self.load_bundle()
-        wrong_status["decisions"][2]["status"] = "resolved"
+        wrong_status["decisions"][2]["status"] = "resolved_with_prerequisite"
         with self.assertRaises(ValidationError):
             dsdm_phase1.validate_phase1_decision_bundle(wrong_status)
 
@@ -1033,10 +1066,185 @@ class Phase1DecisionBundleTests(unittest.TestCase):
 
     def test_bundle_validator_does_not_open_source_payload_paths(self) -> None:
         bundle = self.load_bundle()
-        bundle["operational_prerequisites"][1]["exact_local_source_path"] = "data/private-camera.csv"
+        bundle["operational_prerequisites"][0]["exact_local_source_path"] = "data/private-camera.csv"
 
         with self.assertRaises(ValidationError):
             dsdm_phase1.validate_phase1_decision_bundle(bundle)
+
+
+class Goal011AuthoritativeResolutionTests(unittest.TestCase):
+    def load_bundle(self) -> dict:
+        return dsdm_phase1.load_phase1_decision_bundle(DECISION_BUNDLE_PATH)
+
+    def load_candidates(self) -> dict:
+        return json.loads(GOAL010_CANDIDATES_PATH.read_text(encoding="utf-8"))
+
+    def test_goal010_candidates_reconcile_with_authoritative_rows(self) -> None:
+        bundle = self.load_bundle()
+        candidates = self.load_candidates()
+        result = validate_ala_resolution_candidates(bundle, candidates)
+        self.assertEqual(result["species_count"], 9)
+        self.assertEqual(result["approved_aliases"], {"notamacropus_rufogriseus": ["Macropus rufogriseus"]})
+
+    def test_schema_resolution_and_sole_camera_blocker(self) -> None:
+        bundle = self.load_bundle()
+        summary = dsdm_phase1.build_phase1_decision_readiness_summary(bundle)
+        self.assertEqual(bundle["schema_version"], "1.1")
+        self.assertEqual(summary["ala_resolution_status"], "resolved")
+        self.assertEqual(summary["blocked_prerequisites"], ["P1-D008:camera_source_staging"])
+        self.assertEqual(bundle["decisions"][2]["status"], "resolved")
+        self.assertEqual([item["decision_id"] for item in bundle["operational_prerequisites"]], ["P1-D008"])
+
+    def test_structured_subtaxon_policy_and_resolution_provenance(self) -> None:
+        policy = self.load_bundle()["policies"]["species"]["ala_resolution"]
+        self.assertEqual(policy["status"], "resolved")
+        self.assertEqual(policy["approval_date"], "2026-07-23")
+        self.assertEqual(policy["canonical_query_rank"], "species")
+        self.assertEqual(policy["synonym_normalization"], "in_scope")
+        self.assertEqual(policy["accepted_descendants"], "in_scope")
+        self.assertTrue(policy["pre_acquisition_scope_assertion_required"])
+        self.assertEqual(policy["expansion_failure_fallback"], "explicit_parent_plus_required_accepted_child_ids")
+        self.assertEqual(policy["taxon_identity_retention"], {"submitted": True, "matched": True, "accepted": True, "rank": True})
+        self.assertEqual(policy["subtaxon_policy"]["macropus_giganteus"]["accepted_parent_species_ref"], "macropus_giganteus")
+        self.assertEqual(policy["subtaxon_policy"]["macropus_giganteus"]["name_concept_id"], "https://biodiversity.org.au/afd/taxa/6cfeb6de-600b-425e-9e8d-3cea25f8ef84")
+        self.assertEqual(
+            [child["concept_id"] for child in policy["subtaxon_policy"]["vombatus_ursinus"]["accepted_child_concepts"]],
+            [
+                "https://biodiversity.org.au/afd/taxa/e4b74750-7541-4c67-89d1-5b5718b30ea7",
+                "https://biodiversity.org.au/afd/taxa/3e53b354-2b48-4a2a-af29-acd8ecdfe1e6",
+                "https://biodiversity.org.au/afd/taxa/76b2b77b-6092-47dd-8de1-00e504b1e383",
+            ],
+        )
+        self.assertEqual(len(policy["subtaxon_policy"]["vombatus_ursinus"]["accepted_child_concepts"]), 3)
+
+    def test_resolved_mocked_ala_intent_contains_nine_queries(self) -> None:
+        inputs = {
+            "species_contract": load_fixture("species_contract_resolved.json"),
+            "source_contracts": load_fixture("source_contracts_resolved.json"),
+        }
+        manifest = dsdm_phase1.build_mocked_acquisition_request_manifest(
+            run_id="syn_goal_011", decision_bundle=self.load_bundle(), **inputs
+        )
+        ala = next(item for item in manifest["requests"] if item["source_type"] == "ala_occurrence")
+        self.assertEqual(ala["intent"]["query_resolution_status"], "resolved")
+        self.assertEqual(len(ala["intent"]["species_queries"]), 9)
+        self.assertEqual(ala["intent"]["subtaxon_policy"], self.load_bundle()["policies"]["species"]["ala_resolution"]["subtaxon_policy"])
+        self.assertEqual(manifest["blocked_prerequisites"], ["P1-D008:camera_source_staging"])
+        camera = next(item for item in manifest["requests"] if item["source_type"] == "camera_trap")
+        self.assertEqual(camera["intent"]["authority_status"], "blocked_pending_P1-D008")
+
+    def test_goal010_stored_evidence_validates_against_updated_bundle(self) -> None:
+        from dsdm_phase1.ala_taxon_resolution import validate_evidence_package
+
+        result = validate_evidence_package(GOAL010_PACKAGE_PATH, bundle=self.load_bundle())
+        self.assertEqual(result["recommendable_count"], 9)
+
+    def test_resolution_mutations_fail_closed(self) -> None:
+        mutations = [
+            ("missing_concept", lambda b: b["species"][0].update({"ala_taxon_concept_id": None})),
+            ("duplicate_concept", lambda b: b["species"][1].update({"ala_taxon_concept_id": b["species"][0]["ala_taxon_concept_id"]})),
+            ("malformed_concept", lambda b: b["species"][0].update({"ala_taxon_concept_id": "not-an-afd-id"})),
+            ("swapped_concept", lambda b: b["species"][0].update({"ala_taxon_concept_id": b["species"][1]["ala_taxon_concept_id"]})),
+            ("unique_forged_uuid", lambda b: b["species"][0].update({"ala_taxon_concept_id": "https://biodiversity.org.au/afd/taxa/aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"})),
+            ("unapproved_alias", lambda b: b["species"][0]["historical_aliases"].append("Invented alias")),
+            ("bad_pointer", lambda b: b["policies"]["species"]["ala_resolution"].update({"evidence_package": "wrong"})),
+            ("bad_approval", lambda b: b["policies"]["species"]["ala_resolution"].update({"approval_date": "2026-07-22"})),
+            ("synonym_scope_disabled", lambda b: b["policies"]["species"]["ala_resolution"].update({"synonym_normalization": "out_of_scope"})),
+            ("scope_disabled", lambda b: b["policies"]["species"]["ala_resolution"].update({"accepted_descendants": "out_of_scope"})),
+            ("missing_assertion", lambda b: b["policies"]["species"]["ala_resolution"].pop("pre_acquisition_scope_assertion_required")),
+            ("missing_fallback", lambda b: b["policies"]["species"]["ala_resolution"].pop("expansion_failure_fallback")),
+            ("missing_identity_retention", lambda b: b["policies"]["species"]["ala_resolution"].pop("taxon_identity_retention")),
+            ("p1d003_reverted", lambda b: b["decisions"][2].update({"status": "resolved_with_prerequisite"})),
+            ("extra_camera_prereq", lambda b: b["operational_prerequisites"].append({"decision_id": "P1-D009"})),
+            ("wrong_macropus_name_id", lambda b: b["policies"]["species"]["ala_resolution"]["subtaxon_policy"]["macropus_giganteus"].update({"name_concept_id": "https://biodiversity.org.au/afd/taxa/aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"})),
+            ("wrong_vombatus_child_id", lambda b: b["policies"]["species"]["ala_resolution"]["subtaxon_policy"]["vombatus_ursinus"]["accepted_child_concepts"][0].update({"concept_id": "https://biodiversity.org.au/afd/taxa/aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"})),
+        ]
+        for label, mutate in mutations:
+            with self.subTest(label=label):
+                bundle = self.load_bundle()
+                mutate(bundle)
+                with self.assertRaises(ValidationError):
+                    dsdm_phase1.validate_phase1_decision_bundle(bundle)
+
+    def test_two_way_concept_swap_and_request_builder_fail_closed(self) -> None:
+        bundle = self.load_bundle()
+        first, second = bundle["species"][0], bundle["species"][1]
+        first_id, second_id = first["ala_taxon_concept_id"], second["ala_taxon_concept_id"]
+        first["ala_taxon_concept_id"], second["ala_taxon_concept_id"] = second_id, first_id
+        with self.assertRaises(ValidationError):
+            dsdm_phase1.validate_phase1_decision_bundle(bundle)
+        inputs = {
+            "species_contract": load_fixture("species_contract_resolved.json"),
+            "source_contracts": load_fixture("source_contracts_resolved.json"),
+        }
+        with self.assertRaises(ValidationError):
+            dsdm_phase1.build_mocked_acquisition_request_manifest(
+                run_id="syn_goal_011", decision_bundle=bundle, **inputs
+            )
+
+    def test_unique_forged_uuid_and_request_builder_fail_closed(self) -> None:
+        bundle = self.load_bundle()
+        bundle["species"][0]["ala_taxon_concept_id"] = (
+            "https://biodiversity.org.au/afd/taxa/aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"
+        )
+        with self.assertRaises(ValidationError):
+            dsdm_phase1.validate_phase1_decision_bundle(bundle)
+        inputs = {
+            "species_contract": load_fixture("species_contract_resolved.json"),
+            "source_contracts": load_fixture("source_contracts_resolved.json"),
+        }
+        with self.assertRaises(ValidationError):
+            dsdm_phase1.build_mocked_acquisition_request_manifest(
+                run_id="syn_goal_011", decision_bundle=bundle, **inputs
+            )
+
+    def test_scope_plan_omission_fails_closed(self) -> None:
+        bundle = self.load_bundle()
+        inputs = {
+            "species_contract": load_fixture("species_contract_resolved.json"),
+            "source_contracts": load_fixture("source_contracts_resolved.json"),
+        }
+        manifest = dsdm_phase1.build_mocked_acquisition_request_manifest(
+            run_id="syn_goal_011", decision_bundle=bundle, **inputs
+        )
+        intent = next(item for item in manifest["requests"] if item["source_type"] == "ala_occurrence")["intent"]
+        del intent["subtaxon_policy"]
+        with self.assertRaises(ValidationError):
+            _validate_ala_request_intent(intent, bundle)
+
+    def test_ala_identity_block_is_required_and_non_ala_rows_cannot_leak_it(self) -> None:
+        inputs = {
+            "species_contract": load_fixture("species_contract_resolved.json"),
+            "source_contracts": load_fixture("source_contracts_resolved.json"),
+        }
+        rows = load_fixture("source_rows.json")["rows"]
+        for label, mutate in [
+            ("missing", lambda broken: broken[0].pop("ala_taxon_identity")),
+            ("invalid_rank", lambda broken: broken[0]["ala_taxon_identity"].update({"accepted_rank": "variety"})),
+            ("camera_leak", lambda broken: broken[1].update({"ala_taxon_identity": copy.deepcopy(broken[0]["ala_taxon_identity"])})),
+            ("pseudoabsence_leak", lambda broken: broken[2].update({"ala_taxon_identity": copy.deepcopy(broken[0]["ala_taxon_identity"])})),
+        ]:
+            with self.subTest(label=label):
+                broken = copy.deepcopy(rows)
+                mutate(broken)
+                with self.assertRaises(ValidationError):
+                    dsdm_phase1.build_normalized_source_row_gate_summary(
+                        run_id="syn_goal_011", decision_bundle=self.load_bundle(), source_rows=broken, **inputs
+                    )
+
+    def test_distinct_ala_identity_survives_normalized_summary(self) -> None:
+        inputs = {
+            "species_contract": load_fixture("species_contract_resolved.json"),
+            "source_contracts": load_fixture("source_contracts_resolved.json"),
+        }
+        summary = dsdm_phase1.build_normalized_source_row_gate_summary(
+            run_id="syn_goal_011", decision_bundle=self.load_bundle(),
+            source_rows=load_fixture("source_rows.json")["rows"], **inputs
+        )
+        identity = summary["rows"][0]["ala_taxon_identity"]
+        self.assertEqual(identity["accepted_rank"], "subspecies")
+        self.assertEqual(identity["accepted_name"], "Fictomys contracta minor")
+        self.assertNotEqual(identity["accepted_name"], summary["rows"][0]["scientific_name"])
 
 
 if __name__ == "__main__":

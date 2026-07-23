@@ -6,14 +6,16 @@ Machine-readable authority: `config/phase1_decision_bundle.json`
 This register is the human-readable view of the executable bundle. Every
 decision ID appears once. “Resolved + prerequisite” means the policy is fixed,
 but live acquisition remains blocked until the explicitly listed operational
-check is completed. No exact ALA concept ID, guessed alias, camera path,
-camera coordinate, site ID, or active deployment detail is stored here.
+check is completed. Exact ALA concepts and the approved historical alias are
+authoritative in the bundle and Goal 010 evidence; this register does not
+duplicate the nine IDs. The private camera path, camera coordinates, site IDs,
+and active deployment details remain absent.
 
 | ID | Status | Consolidated decision | Owner | Gate / operational note |
 | --- | --- | --- | --- | --- |
 | P1-D001 | Resolved | Phase 1 has nine focal Tasmanian mammals. | Barry | Species list in bundle; before acquisition. |
 | P1-D002 | Resolved | Include *Thylogale billardierii*; treat as near-ubiquitous, low-contrast at 0.01 degree; do not manufacture class balance; use prevalence-aware evaluation/sensitivity. | Barry | Thylogale pseudoabsence generation disabled. |
-| P1-D003 | Resolved + prerequisite | Stable project IDs, accepted canonical names, explicit historical-alias field, and pinned ALA concept IDs are required. | Barry | Exact ALA query/taxon resolution and Barry compact check pending; blocks live ALA. |
+| P1-D003 | Resolved | Stable project IDs, accepted canonical names, the approved historical alias, and pinned ALA concept IDs are resolved from the Goal 010 evidence gate. | Barry | Goal 010 evidence package; synonym normalization and accepted descendants are in scope, with a pre-acquisition coverage assertion and explicit parent-plus-child fallback. |
 | P1-D004 | Resolved | Primary ALA window is inclusive 2001-01-01 through 2025-12-31; archive older records; exclude records without a defensible year from primary analysis; retain date precision. | Barry | Before live ALA. |
 | P1-D005 | Resolved | Include broadly across eligible ALA resources; retain resource IDs/diagnostics; use only a documented versioned blocklist for demonstrated problems. | Barry | Before live ALA. |
 | P1-D006 | Resolved | Layered quality policy: exclude taxon/coordinate/boundary failures and uncertainty >1000 m; missing uncertainty is not automatic exclusion; precision basis is reported/inferred/unknown; never infer from processed digit counts; retain provisional undocumented UTM precision as unknown; deduplicate IDs and preserve counts/provenance. | Barry | Before ALA normalization. |
@@ -42,16 +44,26 @@ camera coordinate, site ID, or active deployment detail is stored here.
 | P1-D029 | Resolved | Legacy outputs are comparison evidence only, never canonical inputs or automatic gate targets. | dSDM | Diagnostic comparisons only. |
 | P1-D030 | Historical/resolved | Initial minimal Python contract scaffold goal is complete; retain as historical context. | dSDM | Historical/resolved; no live acquisition implied. |
 
+## ALA resolution closure
+
+P1-D003 is complete. Goal 010's nine exact species-rank ALA/AFD concepts
+reconcile one-to-one with the bundle rows. Only `Macropus rufogriseus` is
+promoted as a historical alias for `Notamacropus rufogriseus`; other synonyms,
+misspellings, and infraspecific names remain unpromoted. Later acquisition must
+normalize synonyms, expand accepted descendants, retain submitted/matched/
+accepted taxon identity and rank, and assert coverage before execution. If
+expansion fails, the executor must use the accepted parent plus required
+accepted child IDs and deduplicate. `Macropus giganteus tasmaniensis` resolves
+to its accepted species; the three accepted *Vombatus ursinus* child taxa remain
+subordinate and are not additional focal rows. See
+`evidence/ala_taxon_resolution/2026-07-23/`.
+
 ## Operational prerequisites (separate from resolved policy)
 
-1. **P1-D003 — exact ALA resolution:** Barry’s compact scientific check must
-   resolve exact accepted-name/alias queries and ALA taxon concept IDs. The
-   bundle deliberately stores null placeholders and therefore reports live ALA
-   acquisition as blocked.
-2. **P1-D008 — authoritative camera staging:** Barry must identify/stage the
+1. **P1-D008 — authoritative camera staging:** Barry must identify/stage the
    authoritative local camera source. The exact path is private, untracked, and
    absent from the bundle until that check is complete; camera ingestion remains
    blocked.
 
-The Goal 008 validator checks policy consolidation independently of these two
-prerequisites and never opens `data/`, `temp/`, or source payload paths.
+The Goal 011 validator reports P1-D003 resolved and P1-D008 as the sole
+remaining blocker. It never opens `data/`, `temp/`, or source payload paths.

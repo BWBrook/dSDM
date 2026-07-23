@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import copy
 from typing import Any
 
 from .contracts import (
@@ -196,6 +197,8 @@ def _row_summary(row: dict[str, Any]) -> dict[str, Any]:
         ]
     if "camera_resolution_degree" in row:
         summary["camera_resolution_degree"] = row["camera_resolution_degree"]
+    if row["source_type"] == "ala_occurrence":
+        summary["ala_taxon_identity"] = copy.deepcopy(row["ala_taxon_identity"])
     return summary
 
 
@@ -206,6 +209,7 @@ def _mocked_request_record(
     if source_type == "ala_occurrence":
         decision_references = list(ALA_REQUEST_DECISIONS)
         intent = _ala_request_intent(bundle)
+        _validate_ala_request_intent(intent, bundle)
     elif source_type == "camera_trap":
         decision_references = list(CAMERA_REQUEST_DECISIONS)
         intent = _camera_request_intent(bundle)
@@ -228,12 +232,69 @@ def _mocked_request_record(
 
 
 def _ala_request_intent(bundle: dict[str, Any]) -> dict[str, Any]:
+    resolution = bundle["policies"]["species"]["ala_resolution"]
     return {
         "kind": "synthetic_ala_request",
-        "query_resolution_status": "blocked_pending_P1-D003",
+        "query_resolution_status": "resolved",
         "policy_references": ["P1-D003", "P1-D004", "P1-D005", "P1-D006", "P1-D007"],
         "primary_window": bundle["policies"]["temporal"]["primary_window"],
+        "species_queries": [
+            {
+                "species_id": species["species_id"],
+                "accepted_name": species["accepted_name"],
+                "ala_taxon_concept_id": species["ala_taxon_concept_id"],
+                "historical_aliases": list(species["historical_aliases"]),
+            }
+            for species in bundle["species"]
+        ],
+        "synonym_normalization": resolution["synonym_normalization"],
+        "accepted_descendants": resolution["accepted_descendants"],
+        "pre_acquisition_scope_assertion_required": resolution["pre_acquisition_scope_assertion_required"],
+        "taxon_identity_retention": dict(resolution["taxon_identity_retention"]),
+        "expansion_failure_fallback": resolution["expansion_failure_fallback"],
+        "subtaxon_policy": copy.deepcopy(resolution["subtaxon_policy"]),
     }
+
+
+def _validate_ala_request_intent(intent: dict[str, Any], bundle: dict[str, Any]) -> None:
+    """Fail closed if the executable ALA request plan loses resolved scope metadata."""
+
+    resolution = bundle["policies"]["species"]["ala_resolution"]
+    required = {
+        "kind", "query_resolution_status", "policy_references", "primary_window",
+        "species_queries", "synonym_normalization", "accepted_descendants",
+        "pre_acquisition_scope_assertion_required", "taxon_identity_retention",
+        "expansion_failure_fallback", "subtaxon_policy",
+    }
+    if set(intent) != required:
+        raise ValidationError("ALA request intent scope plan is incomplete")
+    if intent["kind"] != "synthetic_ala_request" or intent["query_resolution_status"] != "resolved":
+        raise ValidationError("ALA request intent is not resolved")
+    if intent["policy_references"] != list(ALA_REQUEST_DECISIONS):
+        raise ValidationError("ALA request intent policy references are incomplete")
+    if intent["primary_window"] != bundle["policies"]["temporal"]["primary_window"]:
+        raise ValidationError("ALA request intent temporal scope does not match bundle")
+    if intent["species_queries"] != [
+        {
+            "species_id": species["species_id"],
+            "accepted_name": species["accepted_name"],
+            "ala_taxon_concept_id": species["ala_taxon_concept_id"],
+            "historical_aliases": list(species["historical_aliases"]),
+        }
+        for species in bundle["species"]
+    ]:
+        raise ValidationError("ALA request intent species scope does not match bundle")
+    expected = {
+        "synonym_normalization": resolution["synonym_normalization"],
+        "accepted_descendants": resolution["accepted_descendants"],
+        "pre_acquisition_scope_assertion_required": resolution["pre_acquisition_scope_assertion_required"],
+        "taxon_identity_retention": resolution["taxon_identity_retention"],
+        "expansion_failure_fallback": resolution["expansion_failure_fallback"],
+        "subtaxon_policy": resolution["subtaxon_policy"],
+    }
+    for key, value in expected.items():
+        if intent.get(key) != value:
+            raise ValidationError(f"ALA request intent {key} does not match bundle")
 
 
 def _camera_request_intent(bundle: dict[str, Any]) -> dict[str, Any]:
@@ -276,5 +337,7 @@ def _bundle_provenance(bundle: dict[str, Any]) -> dict[str, Any]:
             "nearest_land_cell_rescue": bundle["policies"]["coordinate_assignment"]["nearest_land_cell_rescue"],
             "source_collapse_executed": False,
             "spatial_assignment_executed": False,
+            "ala_resolution_status": bundle["policies"]["species"]["ala_resolution"]["status"],
+            "ala_resolution_evidence_package": bundle["policies"]["species"]["ala_resolution"]["evidence_package"],
         },
     }
