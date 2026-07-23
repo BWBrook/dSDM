@@ -63,9 +63,9 @@
       "owner": "Barry",
       "status": "resolved",
       "value": {
-        "true_absence_rule_id": "SYN_TRUE_ABSENCE_RULE"
+        "survey_supported_absence_rule_id": "P1-D009"
       },
-      "notes": "Synthetic camera true-absence decision for tests only."
+      "notes": "Synthetic camera survey-supported-absence decision for tests only."
     },
     {
       "id": "P1-D010",

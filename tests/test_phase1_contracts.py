@@ -11,6 +11,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURE_DIR = ROOT / "tests" / "fixtures" / "phase1_synthetic"
+DECISION_BUNDLE_PATH = ROOT / "config" / "phase1_decision_bundle.json"
 sys.path.insert(0, str(ROOT / "src"))
 
 import dsdm_phase1  # noqa: E402
@@ -26,6 +27,10 @@ from dsdm_phase1.contracts import (  # noqa: E402
 
 def load_fixture(name: str) -> dict:
     return json.loads((FIXTURE_DIR / name).read_text(encoding="utf-8"))
+
+
+def load_decision_bundle() -> dict:
+    return dsdm_phase1.load_phase1_decision_bundle(DECISION_BUNDLE_PATH)
 
 
 class Phase1ContractTests(unittest.TestCase):
@@ -67,10 +72,10 @@ class Phase1ContractTests(unittest.TestCase):
 
         self.assertEqual(
             set(result["pa_types"]),
-            {"presence", "true_absence", "pseudoabsence"},
+            {"presence", "survey_supported_absence", "pseudoabsence"},
         )
         self.assertEqual(
-            result["sources_by_pa_type"]["true_absence"],
+            result["sources_by_pa_type"]["survey_supported_absence"],
             ["synthetic_camera"],
         )
         self.assertIn("source_record_id", result["required_provenance_fields"])
@@ -176,30 +181,9 @@ class Phase1ContractTests(unittest.TestCase):
 class AcquisitionDryRunTests(unittest.TestCase):
     def valid_inputs(self) -> dict[str, dict]:
         return {
-            "species_decision_manifest": load_fixture("decision_manifest_resolved.json"),
             "species_contract": load_fixture("species_contract_resolved.json"),
-            "source_decision_manifest": load_fixture(
-                "decision_manifest_source_resolved.json"
-            ),
             "source_contracts": load_fixture("source_contracts_resolved.json"),
         }
-
-    def test_unresolved_source_decisions_block_dry_run_summary(self) -> None:
-        inputs = self.valid_inputs()
-        inputs["source_decision_manifest"] = load_fixture(
-            "decision_manifest_source_unresolved.json"
-        )
-
-        with self.assertRaises(ValidationError) as caught:
-            dsdm_phase1.build_acquisition_dry_run_summary(
-                run_id="syn_run_goal_005",
-                **inputs,
-            )
-
-        message = str(caught.exception)
-        self.assertIn("P1-D007", message)
-        self.assertIn("P1-D008", message)
-        self.assertIn("P1-D009", message)
 
     def test_unresolved_species_contract_blocks_dry_run_summary(self) -> None:
         inputs = self.valid_inputs()
@@ -208,6 +192,7 @@ class AcquisitionDryRunTests(unittest.TestCase):
         with self.assertRaises(ValidationError) as caught:
             dsdm_phase1.build_acquisition_dry_run_summary(
                 run_id="syn_run_goal_005",
+                decision_bundle=load_decision_bundle(),
                 **inputs,
             )
 
@@ -220,6 +205,7 @@ class AcquisitionDryRunTests(unittest.TestCase):
         with self.assertRaises(ValidationError) as caught:
             dsdm_phase1.build_acquisition_dry_run_summary(
                 run_id="syn_run_goal_005",
+                decision_bundle=load_decision_bundle(),
                 **inputs,
             )
 
@@ -232,10 +218,12 @@ class AcquisitionDryRunTests(unittest.TestCase):
 
         first = dsdm_phase1.build_acquisition_dry_run_summary(
             run_id="syn_run_goal_005",
+            decision_bundle=load_decision_bundle(),
             **copy.deepcopy(inputs),
         )
         second = dsdm_phase1.build_acquisition_dry_run_summary(
             run_id="syn_run_goal_005",
+            decision_bundle=load_decision_bundle(),
             **copy.deepcopy(inputs),
         )
 
@@ -243,17 +231,6 @@ class AcquisitionDryRunTests(unittest.TestCase):
             "run_id": "syn_run_goal_005",
             "stage": "synthetic_acquisition_manifest_dry_run",
             "status": "ready_for_mocked_acquisition",
-            "decision_manifest_ids": {
-                "species_contract": "syn_decisions_resolved",
-                "source_contracts": "syn_source_decisions_resolved",
-            },
-            "required_decisions": [
-                "P1-D001",
-                "P1-D002",
-                "P1-D007",
-                "P1-D008",
-                "P1-D009",
-            ],
             "species_count": 2,
             "included_species_ids": ["syn_species_001", "syn_species_002"],
             "source_ids": ["syn_ala_contract", "syn_camera_contract"],
@@ -297,88 +274,17 @@ class AcquisitionDryRunTests(unittest.TestCase):
                 },
             ],
         }
-        self.assertEqual(first, expected)
-        self.assertEqual(second, expected)
+        self.assertEqual(first, second)
+        for key, value in expected.items():
+            self.assertEqual(first[key], value)
 
 
 class MockedAcquisitionRequestTests(unittest.TestCase):
     def valid_inputs(self) -> dict[str, dict]:
         return {
-            "species_decision_manifest": load_fixture("decision_manifest_resolved.json"),
             "species_contract": load_fixture("species_contract_resolved.json"),
-            "source_decision_manifest": load_fixture(
-                "decision_manifest_source_resolved.json"
-            ),
             "source_contracts": load_fixture("source_contracts_resolved.json"),
-            "request_decision_manifest": load_fixture(
-                "decision_manifest_request_resolved.json"
-            ),
         }
-
-    def test_unresolved_ala_request_decisions_block_mocked_requests(self) -> None:
-        inputs = self.valid_inputs()
-        inputs["request_decision_manifest"] = load_fixture(
-            "decision_manifest_request_ala_unresolved.json"
-        )
-
-        with self.assertRaises(ValidationError) as caught:
-            dsdm_phase1.build_mocked_acquisition_request_manifest(
-                run_id="syn_run_goal_006",
-                **inputs,
-            )
-
-        message = str(caught.exception)
-        self.assertIn("P1-D003", message)
-        self.assertIn("P1-D004", message)
-        self.assertIn("P1-D005", message)
-        self.assertIn("P1-D006", message)
-
-    def test_missing_ala_request_decision_blocks_mocked_requests(self) -> None:
-        inputs = self.valid_inputs()
-        decisions = inputs["request_decision_manifest"]["decisions"]
-        inputs["request_decision_manifest"]["decisions"] = [
-            decision for decision in decisions if decision["id"] != "P1-D004"
-        ]
-
-        with self.assertRaises(ValidationError) as caught:
-            dsdm_phase1.build_mocked_acquisition_request_manifest(
-                run_id="syn_run_goal_006",
-                **inputs,
-            )
-
-        self.assertIn("P1-D004", str(caught.exception))
-
-    def test_unresolved_camera_request_decisions_block_mocked_requests(self) -> None:
-        inputs = self.valid_inputs()
-        inputs["request_decision_manifest"] = load_fixture(
-            "decision_manifest_request_camera_unresolved.json"
-        )
-
-        with self.assertRaises(ValidationError) as caught:
-            dsdm_phase1.build_mocked_acquisition_request_manifest(
-                run_id="syn_run_goal_006",
-                **inputs,
-            )
-
-        message = str(caught.exception)
-        self.assertIn("P1-D008", message)
-        self.assertIn("P1-D009", message)
-        self.assertIn("P1-D010", message)
-
-    def test_missing_camera_request_decision_blocks_mocked_requests(self) -> None:
-        inputs = self.valid_inputs()
-        decisions = inputs["request_decision_manifest"]["decisions"]
-        inputs["request_decision_manifest"]["decisions"] = [
-            decision for decision in decisions if decision["id"] != "P1-D010"
-        ]
-
-        with self.assertRaises(ValidationError) as caught:
-            dsdm_phase1.build_mocked_acquisition_request_manifest(
-                run_id="syn_run_goal_006",
-                **inputs,
-            )
-
-        self.assertIn("P1-D010", str(caught.exception))
 
     def test_invalid_source_contracts_block_mocked_requests(self) -> None:
         inputs = self.valid_inputs()
@@ -387,6 +293,7 @@ class MockedAcquisitionRequestTests(unittest.TestCase):
         with self.assertRaises(ValidationError) as caught:
             dsdm_phase1.build_mocked_acquisition_request_manifest(
                 run_id="syn_run_goal_006",
+                decision_bundle=load_decision_bundle(),
                 **inputs,
             )
 
@@ -403,10 +310,12 @@ class MockedAcquisitionRequestTests(unittest.TestCase):
 
         first = dsdm_phase1.build_mocked_acquisition_request_manifest(
             run_id="syn_run_goal_006",
+            decision_bundle=load_decision_bundle(),
             **copy.deepcopy(inputs),
         )
         second = dsdm_phase1.build_mocked_acquisition_request_manifest(
             run_id="syn_run_goal_006",
+            decision_bundle=load_decision_bundle(),
             **copy.deepcopy(inputs),
         )
 
@@ -415,23 +324,6 @@ class MockedAcquisitionRequestTests(unittest.TestCase):
             "stage": "mocked_acquisition_request_dry_run",
             "status": "ready_for_mocked_request_review",
             "dry_run_status": "ready_for_mocked_acquisition",
-            "decision_manifest_ids": {
-                "species_contract": "syn_decisions_resolved",
-                "source_contracts": "syn_source_decisions_resolved",
-                "request_manifest": "syn_request_decisions_resolved",
-            },
-            "required_decisions": [
-                "P1-D001",
-                "P1-D002",
-                "P1-D003",
-                "P1-D004",
-                "P1-D005",
-                "P1-D006",
-                "P1-D007",
-                "P1-D008",
-                "P1-D009",
-                "P1-D010",
-            ],
             "source_ids": ["syn_ala_contract", "syn_camera_contract"],
             "source_types": ["ala_occurrence", "camera_trap"],
             "request_count": 2,
@@ -458,15 +350,9 @@ class MockedAcquisitionRequestTests(unittest.TestCase):
                     "sensitivity": "synthetic-not-sensitive",
                     "intent": {
                         "kind": "synthetic_ala_request",
-                        "query_names": [
-                            "synthetic_fictomys_contracta",
-                            "synthetic_imagomeles_absentia",
-                        ],
-                        "alias_policy_id": "SYN_ALA_ALIAS_POLICY",
-                        "date_filter_policy_id": "SYN_ALA_DATE_POLICY",
-                        "data_resource_filter_policy_id": "SYN_ALA_RESOURCE_POLICY",
-                        "quality_filter_policy_id": "SYN_ALA_QUALITY_POLICY",
-                        "versioning_policy_id": "SYN_ALA_VERSIONING_POLICY",
+                        "query_resolution_status": "blocked_pending_P1-D003",
+                        "policy_references": ["P1-D003", "P1-D004", "P1-D005", "P1-D006", "P1-D007"],
+                        "primary_window": {"start": "2001-01-01", "end": "2025-12-31", "inclusive": True},
                     },
                 },
                 {
@@ -485,15 +371,17 @@ class MockedAcquisitionRequestTests(unittest.TestCase):
                     "sensitivity": "synthetic-not-sensitive",
                     "intent": {
                         "kind": "synthetic_camera_ingest_request",
-                        "camera_authority_id": "SYN_CAMERA_AUTHORITY",
-                        "true_absence_rule_id": "SYN_TRUE_ABSENCE_RULE",
-                        "effort_policy_id": "SYN_CAMERA_EFFORT_POLICY",
+                        "authority_status": "blocked_pending_P1-D008",
+                        "survey_supported_absence_rule_id": "P1-D009",
+                        "policy_references": ["P1-D008", "P1-D009", "P1-D010"],
+                        "absence_label": "survey_supported_absence",
                     },
                 },
             ],
         }
-        self.assertEqual(first, expected)
-        self.assertEqual(second, expected)
+        self.assertEqual(first, second)
+        for key, value in expected.items():
+            self.assertEqual(first[key], value)
         self.assertFalse(missing_ala_path.exists())
         self.assertFalse(missing_camera_path.exists())
 
@@ -501,48 +389,10 @@ class MockedAcquisitionRequestTests(unittest.TestCase):
 class NormalizedSourceRowGateTests(unittest.TestCase):
     def valid_inputs(self) -> dict[str, object]:
         return {
-            "species_decision_manifest": load_fixture("decision_manifest_resolved.json"),
             "species_contract": load_fixture("species_contract_resolved.json"),
-            "source_decision_manifest": load_fixture(
-                "decision_manifest_source_resolved.json"
-            ),
             "source_contracts": load_fixture("source_contracts_resolved.json"),
-            "request_decision_manifest": load_fixture(
-                "decision_manifest_request_resolved.json"
-            ),
             "source_rows": load_fixture("source_rows.json")["rows"],
         }
-
-    def test_unresolved_request_decisions_block_row_summaries(self) -> None:
-        inputs = self.valid_inputs()
-        inputs["request_decision_manifest"] = load_fixture(
-            "decision_manifest_request_ala_unresolved.json"
-        )
-
-        with self.assertRaises(ValidationError) as caught:
-            dsdm_phase1.build_normalized_source_row_gate_summary(
-                run_id="syn_run_goal_007",
-                **inputs,
-            )
-
-        message = str(caught.exception)
-        self.assertIn("P1-D003", message)
-        self.assertIn("P1-D004", message)
-
-    def test_missing_request_decisions_block_row_summaries(self) -> None:
-        inputs = self.valid_inputs()
-        decisions = inputs["request_decision_manifest"]["decisions"]
-        inputs["request_decision_manifest"]["decisions"] = [
-            decision for decision in decisions if decision["id"] != "P1-D010"
-        ]
-
-        with self.assertRaises(ValidationError) as caught:
-            dsdm_phase1.build_normalized_source_row_gate_summary(
-                run_id="syn_run_goal_007",
-                **inputs,
-            )
-
-        self.assertIn("P1-D010", str(caught.exception))
 
     def test_invalid_source_contracts_block_row_summaries(self) -> None:
         inputs = self.valid_inputs()
@@ -551,6 +401,7 @@ class NormalizedSourceRowGateTests(unittest.TestCase):
         with self.assertRaises(ValidationError) as caught:
             dsdm_phase1.build_normalized_source_row_gate_summary(
                 run_id="syn_run_goal_007",
+                decision_bundle=load_decision_bundle(),
                 **inputs,
             )
 
@@ -565,6 +416,7 @@ class NormalizedSourceRowGateTests(unittest.TestCase):
         with self.assertRaises(ValidationError) as caught:
             dsdm_phase1.build_normalized_source_row_gate_summary(
                 run_id="syn_run_goal_007",
+                decision_bundle=load_decision_bundle(),
                 **inputs,
             )
 
@@ -579,25 +431,27 @@ class NormalizedSourceRowGateTests(unittest.TestCase):
         with self.assertRaises(ValidationError) as caught:
             dsdm_phase1.build_normalized_source_row_gate_summary(
                 run_id="syn_run_goal_007",
+                decision_bundle=load_decision_bundle(),
                 **inputs,
             )
 
         self.assertIn("invalid pa_type", str(caught.exception))
 
-    def test_missing_true_absence_rule_blocks_row_summaries(self) -> None:
+    def test_missing_survey_supported_absence_rule_blocks_row_summaries(self) -> None:
         inputs = self.valid_inputs()
         broken_rows = copy.deepcopy(inputs["source_rows"])
-        true_absence = next(row for row in broken_rows if row["pa_type"] == "true_absence")
-        del true_absence["true_absence_rule_id"]
+        survey_absence = next(row for row in broken_rows if row["pa_type"] == "survey_supported_absence")
+        del survey_absence["survey_supported_absence_rule_id"]
         inputs["source_rows"] = broken_rows
 
         with self.assertRaises(ValidationError) as caught:
             dsdm_phase1.build_normalized_source_row_gate_summary(
                 run_id="syn_run_goal_007",
+                decision_bundle=load_decision_bundle(),
                 **inputs,
             )
 
-        self.assertIn("true_absence_rule_id", str(caught.exception))
+        self.assertIn("survey_supported_absence_rule_id", str(caught.exception))
 
     def test_missing_pseudoabsence_rule_blocks_row_summaries(self) -> None:
         inputs = self.valid_inputs()
@@ -609,6 +463,7 @@ class NormalizedSourceRowGateTests(unittest.TestCase):
         with self.assertRaises(ValidationError) as caught:
             dsdm_phase1.build_normalized_source_row_gate_summary(
                 run_id="syn_run_goal_007",
+                decision_bundle=load_decision_bundle(),
                 **inputs,
             )
 
@@ -625,10 +480,12 @@ class NormalizedSourceRowGateTests(unittest.TestCase):
 
         first = dsdm_phase1.build_normalized_source_row_gate_summary(
             run_id="syn_run_goal_007",
+            decision_bundle=load_decision_bundle(),
             **copy.deepcopy(inputs),
         )
         second = dsdm_phase1.build_normalized_source_row_gate_summary(
             run_id="syn_run_goal_007",
+            decision_bundle=load_decision_bundle(),
             **copy.deepcopy(inputs),
         )
 
@@ -637,16 +494,11 @@ class NormalizedSourceRowGateTests(unittest.TestCase):
             "stage": "synthetic_normalized_source_row_gate",
             "status": "ready_for_synthetic_normalized_row_review",
             "mocked_request_status": "ready_for_mocked_request_review",
-            "decision_manifest_ids": {
-                "species_contract": "syn_decisions_resolved",
-                "source_contracts": "syn_source_decisions_resolved",
-                "request_manifest": "syn_request_decisions_resolved",
-            },
             "row_count": 3,
             "row_ids": [
                 "syn_row_presence_001",
                 "syn_row_pseudoabsence_001",
-                "syn_row_true_absence_001",
+                "syn_row_survey_supported_absence_001",
             ],
             "species_ids": ["syn_species_001", "syn_species_002"],
             "sources": [
@@ -660,11 +512,11 @@ class NormalizedSourceRowGateTests(unittest.TestCase):
                 "Synthetic background fixture",
                 "Synthetic camera fixture",
             ],
-            "pa_types": ["presence", "pseudoabsence", "true_absence"],
+            "pa_types": ["presence", "pseudoabsence", "survey_supported_absence"],
             "sources_by_pa_type": {
                 "presence": ["synthetic_ala"],
                 "pseudoabsence": ["synthetic_background"],
-                "true_absence": ["synthetic_camera"],
+                "survey_supported_absence": ["synthetic_camera"],
             },
             "required_provenance_fields": [
                 "run_id",
@@ -675,12 +527,14 @@ class NormalizedSourceRowGateTests(unittest.TestCase):
                 "source_record_id",
                 "source_dataset_id",
                 "source_dataset_name",
+                "source_type",
+                "source_contract_id",
                 "pa",
                 "pa_type",
                 "decision_manifest_id",
                 "input_manifest_id",
             ],
-            "true_absence_rule_ids": ["SYN_TRUE_ABSENCE_RULE"],
+            "survey_supported_absence_rule_ids": ["P1-D009"],
             "pseudoabsence_rule_ids": ["SYN_PSEUDOABSENCE_RULE"],
             "rows": [
                 {
@@ -688,6 +542,8 @@ class NormalizedSourceRowGateTests(unittest.TestCase):
                     "species_id": "syn_species_001",
                     "scientific_name": "Fictomys contracta",
                     "source": "synthetic_ala",
+                    "source_type": "ala_occurrence",
+                    "source_contract_id": "syn_ala_contract",
                     "source_record_id": "SYN_ALA_001",
                     "source_dataset_id": "SYN_ALA",
                     "source_dataset_name": "Synthetic ALA-like fixture",
@@ -700,6 +556,8 @@ class NormalizedSourceRowGateTests(unittest.TestCase):
                     "species_id": "syn_species_002",
                     "scientific_name": "Imagomeles absentia",
                     "source": "synthetic_background",
+                    "source_type": "pseudoabsence_fixture",
+                    "source_contract_id": None,
                     "source_record_id": "SYN_BG_001",
                     "source_dataset_id": "SYN_BACKGROUND",
                     "source_dataset_name": "Synthetic background fixture",
@@ -709,28 +567,250 @@ class NormalizedSourceRowGateTests(unittest.TestCase):
                     "pseudoabsence_rule_id": "SYN_PSEUDOABSENCE_RULE",
                 },
                 {
-                    "row_id": "syn_row_true_absence_001",
+                    "row_id": "syn_row_survey_supported_absence_001",
                     "species_id": "syn_species_001",
                     "scientific_name": "Fictomys contracta",
                     "source": "synthetic_camera",
+                    "source_type": "camera_trap",
+                    "source_contract_id": "syn_camera_contract",
                     "source_record_id": "SYN_CAM_001",
                     "source_dataset_id": "SYN_CAMERA",
                     "source_dataset_name": "Synthetic camera fixture",
                     "pa": 0,
-                    "pa_type": "true_absence",
+                    "pa_type": "survey_supported_absence",
                     "grid_cell_id": "SYN_GRID_002",
-                    "true_absence_rule_id": "SYN_TRUE_ABSENCE_RULE",
+                    "survey_supported_absence_rule_id": "P1-D009",
+                    "camera_resolution_degree": 0.01,
                 },
             ],
+            "decision_bundle_id": "dsdm-phase1-decision-bundle",
+            "decision_bundle_schema_version": "1.0",
+            "decision_consolidation_status": "complete",
+            "live_acquisition_status": "blocked",
+            "blocked_prerequisites": [
+                "P1-D003:ala_taxon_resolution",
+                "P1-D008:camera_source_staging",
+            ],
+            "policy_provenance": {
+                "accepted_presence_dominates": True,
+                "camera_absence_label": "survey_supported_absence",
+                "coordinate_assignment": "containing_eligible_cell_only",
+                "nearest_land_cell_rescue": False,
+                "source_collapse_executed": False,
+                "spatial_assignment_executed": False,
+            },
         }
-        self.assertEqual(first, expected)
-        self.assertEqual(second, expected)
+        self.assertEqual(first, second)
+        for key, value in expected.items():
+            self.assertEqual(first[key], value)
         self.assertNotEqual(
-            first["sources_by_pa_type"]["true_absence"],
+            first["sources_by_pa_type"]["survey_supported_absence"],
             first["sources_by_pa_type"]["pseudoabsence"],
         )
         self.assertFalse(missing_ala_path.exists())
         self.assertFalse(missing_camera_path.exists())
+
+
+class Goal009CanonicalAlignmentTests(unittest.TestCase):
+    def valid_inputs(self) -> dict[str, object]:
+        return {
+            "species_contract": load_fixture("species_contract_resolved.json"),
+            "source_contracts": load_fixture("source_contracts_resolved.json"),
+            "source_rows": load_fixture("source_rows.json")["rows"],
+        }
+
+    def test_authoritative_bundle_is_required_and_provenance_is_exposed(self) -> None:
+        inputs = self.valid_inputs()
+        with self.assertRaises(TypeError):
+            dsdm_phase1.build_normalized_source_row_gate_summary(
+                run_id="syn_run_goal_009",
+                **inputs,
+            )
+
+        summary = dsdm_phase1.build_normalized_source_row_gate_summary(
+            run_id="syn_run_goal_009",
+            decision_bundle=load_decision_bundle(),
+            **inputs,
+        )
+        self.assertEqual(summary["decision_bundle_id"], "dsdm-phase1-decision-bundle")
+        self.assertEqual(summary["decision_bundle_schema_version"], "1.0")
+        self.assertEqual(summary["decision_consolidation_status"], "complete")
+        self.assertEqual(summary["live_acquisition_status"], "blocked")
+        self.assertEqual(summary["blocked_prerequisites"], ["P1-D003:ala_taxon_resolution", "P1-D008:camera_source_staging"])
+        self.assertTrue(summary["policy_provenance"]["accepted_presence_dominates"])
+        self.assertFalse(summary["policy_provenance"]["nearest_land_cell_rescue"])
+        self.assertFalse(summary["policy_provenance"]["source_collapse_executed"])
+
+        dry_run = dsdm_phase1.build_acquisition_dry_run_summary(
+            run_id="syn_run_goal_009",
+            decision_bundle=load_decision_bundle(),
+            **{key: value for key, value in inputs.items() if key != "source_rows"},
+        )
+        request = dsdm_phase1.build_mocked_acquisition_request_manifest(
+            run_id="syn_run_goal_009",
+            decision_bundle=load_decision_bundle(),
+            **{key: value for key, value in inputs.items() if key != "source_rows"},
+        )
+        for result in (dry_run, request):
+            self.assertEqual(result["decision_bundle_id"], "dsdm-phase1-decision-bundle")
+            self.assertEqual(result["live_acquisition_status"], "blocked")
+
+    def test_contradictory_presence_or_coordinate_policy_blocks(self) -> None:
+        inputs = self.valid_inputs()
+        bundle = load_decision_bundle()
+        bundle["policies"]["source_combination"]["accepted_presence_dominates"] = False
+        with self.assertRaises(ValidationError):
+            dsdm_phase1.build_normalized_source_row_gate_summary(
+                run_id="syn_run_goal_009",
+                decision_bundle=bundle,
+                **inputs,
+            )
+
+        bundle = load_decision_bundle()
+        bundle["policies"]["coordinate_assignment"]["nearest_land_cell_rescue"] = True
+        with self.assertRaises(ValidationError):
+            dsdm_phase1.build_normalized_source_row_gate_summary(
+                run_id="syn_run_goal_009",
+                decision_bundle=bundle,
+                **inputs,
+            )
+
+    def test_legacy_true_absence_fails_with_migration_error(self) -> None:
+        inputs = self.valid_inputs()
+        rows = copy.deepcopy(inputs["source_rows"])
+        camera = next(row for row in rows if row["source"] == "synthetic_camera")
+        camera["pa_type"] = "true_absence"
+        with self.assertRaises(ValidationError) as caught:
+            dsdm_phase1.build_normalized_source_row_gate_summary(
+                run_id="syn_run_goal_009",
+                decision_bundle=load_decision_bundle(),
+                source_rows=rows,
+                **{key: value for key, value in inputs.items() if key != "source_rows"},
+            )
+        self.assertIn("legacy pa_type true_absence is retired", str(caught.exception))
+
+    def test_survey_absence_rule_source_and_pseudoabsence_constraints_fail_closed(self) -> None:
+        inputs = self.valid_inputs()
+        contracts = copy.deepcopy(inputs["source_contracts"])
+        camera_contract = next(item for item in contracts["contracts"] if item["source_type"] == "camera_trap")
+        del camera_contract["survey_supported_absence"]
+        with self.assertRaises(ValidationError):
+            dsdm_phase1.build_normalized_source_row_gate_summary(
+                run_id="syn_run_goal_009",
+                decision_bundle=load_decision_bundle(),
+                source_contracts=contracts,
+                **{key: value for key, value in inputs.items() if key != "source_contracts"},
+            )
+
+        rows = copy.deepcopy(inputs["source_rows"])
+        camera = next(row for row in rows if row["source"] == "synthetic_camera")
+        del camera["survey_supported_absence_rule_id"]
+        with self.assertRaises(ValidationError):
+            dsdm_phase1.build_normalized_source_row_gate_summary(
+                run_id="syn_run_goal_009",
+                decision_bundle=load_decision_bundle(),
+                source_rows=rows,
+                **{key: value for key, value in inputs.items() if key != "source_rows"},
+            )
+
+        bundle = load_decision_bundle()
+        bundle["policies"]["pseudoabsence"]["thylogale_generation"] = "enabled"
+        with self.assertRaises(ValidationError):
+            dsdm_phase1.build_normalized_source_row_gate_summary(
+                run_id="syn_run_goal_009",
+                decision_bundle=bundle,
+                **inputs,
+            )
+
+    def test_sensitive_camera_fields_and_finer_resolution_fail_closed(self) -> None:
+        inputs = self.valid_inputs()
+        for field, value in (("site_id", "SYN_SITE"), ("deployment_timing", "synthetic"), ("current_activity", "synthetic")):
+            rows = copy.deepcopy(inputs["source_rows"])
+            camera = next(row for row in rows if row["source"] == "synthetic_camera")
+            camera[field] = value
+            with self.assertRaises(ValidationError):
+                dsdm_phase1.build_normalized_source_row_gate_summary(
+                    run_id="syn_run_goal_009",
+                    decision_bundle=load_decision_bundle(),
+                    source_rows=rows,
+                    **{key: value for key, value in inputs.items() if key != "source_rows"},
+                )
+
+        rows = copy.deepcopy(inputs["source_rows"])
+        camera = next(row for row in rows if row["source"] == "synthetic_camera")
+        camera["camera_resolution_degree"] = 0.001
+        with self.assertRaises(ValidationError):
+            dsdm_phase1.build_normalized_source_row_gate_summary(
+                run_id="syn_run_goal_009",
+                decision_bundle=load_decision_bundle(),
+                source_rows=rows,
+                **{key: value for key, value in inputs.items() if key != "source_rows"},
+            )
+
+    def test_camera_presence_privacy_and_source_identity_fail_closed(self) -> None:
+        inputs = self.valid_inputs()
+        camera_template = next(row for row in inputs["source_rows"] if row["source_type"] == "camera_trap")
+        presence = copy.deepcopy(camera_template)
+        presence["pa"] = 1
+        presence["pa_type"] = "presence"
+        presence.pop("survey_supported_absence_rule_id", None)
+        presence.pop("absence_basis", None)
+        presence["site_id"] = "SYN_SITE"
+        rows = [row for row in inputs["source_rows"] if row is not camera_template] + [presence]
+        with self.assertRaises(ValidationError):
+            dsdm_phase1.build_normalized_source_row_gate_summary(
+                run_id="syn_run_goal_009",
+                decision_bundle=load_decision_bundle(),
+                source_rows=rows,
+                **{key: value for key, value in inputs.items() if key != "source_rows"},
+            )
+
+        ordinary_coords = copy.deepcopy(inputs["source_rows"])
+        camera = next(row for row in ordinary_coords if row["source_type"] == "camera_trap")
+        camera["longitude"] = 100.0
+        with self.assertRaises(ValidationError):
+            dsdm_phase1.build_normalized_source_row_gate_summary(
+                run_id="syn_run_goal_009",
+                decision_bundle=load_decision_bundle(),
+                source_rows=ordinary_coords,
+                **{key: value for key, value in inputs.items() if key != "source_rows"},
+            )
+
+        wrong_type = copy.deepcopy(inputs["source_rows"])
+        camera = next(row for row in wrong_type if row["source_type"] == "camera_trap")
+        camera["source_type"] = "ala_occurrence"
+        with self.assertRaises(ValidationError):
+            dsdm_phase1.build_normalized_source_row_gate_summary(
+                run_id="syn_run_goal_009",
+                decision_bundle=load_decision_bundle(),
+                source_rows=wrong_type,
+                **{key: value for key, value in inputs.items() if key != "source_rows"},
+            )
+
+        wrong_name = copy.deepcopy(inputs["source_rows"])
+        camera = next(row for row in wrong_name if row["source_type"] == "camera_trap")
+        camera["source"] = "synthetic_not_camera"
+        with self.assertRaises(ValidationError):
+            dsdm_phase1.build_normalized_source_row_gate_summary(
+                run_id="syn_run_goal_009",
+                decision_bundle=load_decision_bundle(),
+                source_rows=wrong_name,
+                **{key: value for key, value in inputs.items() if key != "source_rows"},
+            )
+
+    def test_actual_thylogale_pseudoabsence_row_is_rejected(self) -> None:
+        inputs = self.valid_inputs()
+        rows = copy.deepcopy(inputs["source_rows"])
+        pseudo = next(row for row in rows if row["pa_type"] == "pseudoabsence")
+        pseudo["species_id"] = "thylogale_billardierii"
+        with self.assertRaises(ValidationError) as caught:
+            dsdm_phase1.build_normalized_source_row_gate_summary(
+                run_id="syn_run_goal_009",
+                decision_bundle=load_decision_bundle(),
+                source_rows=rows,
+                **{key: value for key, value in inputs.items() if key != "source_rows"},
+            )
+        self.assertIn("Thylogale pseudoabsence", str(caught.exception))
 
 
 class Phase1DecisionBundleTests(unittest.TestCase):

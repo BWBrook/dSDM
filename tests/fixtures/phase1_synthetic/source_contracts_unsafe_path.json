@@ -17,9 +17,9 @@
         "decision_id": "P1-D008",
         "source_location": "unsafe synthetic fixture path"
       },
-      "true_absence": {
+      "survey_supported_absence": {
         "decision_id": "P1-D009",
-        "rule": "synthetic true-absence placeholder only"
+        "rule": "synthetic survey-supported-absence placeholder only"
       },
       "provenance": {
         "source_system": "synthetic_camera",

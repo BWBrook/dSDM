@@ -112,13 +112,15 @@ REQUIRED_ROW_PROVENANCE_FIELDS = (
     "source_record_id",
     "source_dataset_id",
     "source_dataset_name",
+    "source_type",
+    "source_contract_id",
     "pa",
     "pa_type",
     "decision_manifest_id",
     "input_manifest_id",
 )
 
-ALLOWED_PA_TYPES = {"presence", "true_absence", "pseudoabsence"}
+ALLOWED_PA_TYPES = {"presence", "survey_supported_absence", "pseudoabsence"}
 
 ALLOWED_SOURCE_TYPES = {"ala_occurrence", "camera_trap"}
 
@@ -140,7 +142,7 @@ SOURCE_TYPE_DECISIONS = {
 
 SOURCE_TYPE_REQUIRED_BLOCKS = {
     "ala_occurrence": ("versioning",),
-    "camera_trap": ("authority", "true_absence"),
+    "camera_trap": ("authority", "survey_supported_absence"),
 }
 
 
@@ -229,11 +231,26 @@ def validate_species_contract(contract: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def validate_source_rows(rows: list[dict[str, Any]]) -> dict[str, Any]:
+def validate_source_rows(
+    rows: list[dict[str, Any]],
+    *,
+    source_contracts: dict[str, Any] | None = None,
+    decision_bundle: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     """Validate row-level provenance and presence/absence category separation."""
 
     if not rows:
         raise ValidationError("source row fixture requires at least one row")
+
+    contracts_by_id: dict[str, dict[str, Any]] = {}
+    if source_contracts is not None:
+        validate_source_contracts(source_contracts)
+        contracts_by_id = {
+            contract["source_id"]: contract
+            for contract in source_contracts["contracts"]
+        }
+    if decision_bundle is not None:
+        validate_phase1_decision_bundle(decision_bundle)
 
     pa_types: set[str] = set()
     sources_by_pa_type: dict[str, set[str]] = {}
@@ -245,18 +262,70 @@ def validate_source_rows(rows: list[dict[str, Any]]) -> dict[str, Any]:
                 f"source row {index} missing required fields: {', '.join(missing)}"
             )
         pa_type = row["pa_type"]
+        if pa_type == "true_absence":
+            raise ValidationError(
+                "legacy pa_type true_absence is retired; use survey_supported_absence"
+            )
         if pa_type not in ALLOWED_PA_TYPES:
             allowed = ", ".join(sorted(ALLOWED_PA_TYPES))
             raise ValidationError(f"source row {index} has invalid pa_type {pa_type!r}; allowed: {allowed}")
         pa = row["pa"]
         if pa_type == "presence" and pa != 1:
             raise ValidationError(f"source row {index} has presence pa_type but pa != 1")
-        if pa_type in {"true_absence", "pseudoabsence"} and pa != 0:
+        if pa_type in {"survey_supported_absence", "pseudoabsence"} and pa != 0:
             raise ValidationError(f"source row {index} has absence pa_type but pa != 0")
-        if pa_type == "true_absence" and not row.get("true_absence_rule_id"):
-            raise ValidationError(f"source row {index} true_absence requires true_absence_rule_id")
+        if pa_type == "survey_supported_absence":
+            if row.get("source_type") != "camera_trap":
+                raise ValidationError(
+                    f"source row {index} survey_supported_absence must be camera-derived"
+                )
+            if row.get("survey_supported_absence_rule_id") != "P1-D009":
+                raise ValidationError(
+                    f"source row {index} requires survey_supported_absence_rule_id P1-D009"
+                )
+            if row.get("camera_resolution_degree") != 0.01:
+                raise ValidationError(
+                    f"source row {index} camera resolution must be at most 0.01 degree"
+                )
+        if row.get("source_type") == "camera_trap":
+            allowed_camera_fields = {
+                *REQUIRED_ROW_PROVENANCE_FIELDS,
+                "grid_cell_id", "camera_resolution_degree", "absence_basis",
+                "survey_supported_absence_rule_id",
+            }
+            unexpected = sorted(set(row) - allowed_camera_fields)
+            if unexpected:
+                raise ValidationError(
+                    f"source row {index} contains forbidden camera fields: {', '.join(unexpected)}"
+                )
+            if row.get("camera_resolution_degree") != 0.01:
+                raise ValidationError(
+                    f"source row {index} camera resolution must be exactly 0.01 degree"
+                )
         if pa_type == "pseudoabsence" and not row.get("pseudoabsence_rule_id"):
             raise ValidationError(f"source row {index} pseudoabsence requires pseudoabsence_rule_id")
+        source_type = row["source_type"]
+        source_contract_id = row["source_contract_id"]
+        if source_contracts is not None and source_type == "camera_trap":
+            contract = contracts_by_id.get(source_contract_id)
+            if contract is None or contract.get("source_type") != "camera_trap":
+                raise ValidationError(
+                    f"source row {index} camera source/type does not match validated source contract"
+                )
+            if contract.get("provenance", {}).get("source_system") != row.get("source"):
+                raise ValidationError(
+                    f"source row {index} camera source identity does not match source contract"
+                )
+        elif source_contracts is not None and source_type == "ala_occurrence":
+            contract = contracts_by_id.get(source_contract_id)
+            if contract is None or contract.get("source_type") != "ala_occurrence":
+                raise ValidationError(
+                    f"source row {index} ALA source/type does not match validated source contract"
+                )
+        elif source_contracts is not None and source_type != "pseudoabsence_fixture":
+            raise ValidationError(f"source row {index} has unsupported source_type {source_type!r}")
+        if decision_bundle is not None and row.get("species_id") == "thylogale_billardierii" and pa_type == "pseudoabsence":
+            raise ValidationError("Thylogale pseudoabsence rows are prohibited by P1-D002/P1-D016")
         pa_types.add(pa_type)
         sources_by_pa_type.setdefault(pa_type, set()).add(row["source"])
 
@@ -373,7 +442,7 @@ def validate_source_contracts(bundle: dict[str, Any]) -> dict[str, Any]:
             expected_decision = {
                 "versioning": "P1-D007",
                 "authority": "P1-D008",
-                "true_absence": "P1-D009",
+                "survey_supported_absence": "P1-D009",
             }[block_name]
             if block.get("decision_id") != expected_decision:
                 raise ValidationError(
