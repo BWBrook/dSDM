@@ -1,0 +1,1393 @@
+{
+  "retrieved_at_utc": "2026-07-23T12:27:13Z",
+  "probes": [
+    {
+      "key": "thylogale_billardierii",
+      "kind": "parent",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/82e69509-af63-4502-86f7-43362b777865",
+      "query": "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/82e69509-af63-4502-86f7-43362b777865\"",
+      "extra_fq": [],
+      "scope": "tasmania_2001_2025",
+      "scope_fq": [
+        "stateProvince:Tasmania",
+        "year:[2001 TO 2025]"
+      ],
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "http_status": 200,
+      "request": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/82e69509-af63-4502-86f7-43362b777865\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "pageSize",
+          "0"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ]
+      ],
+      "request_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F82e69509-af63-4502-86f7-43362b777865%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&pageSize=0&start=0&facet=false&disableAllQualityFilters=true",
+      "response": {
+        "status": "OK",
+        "pageSize": 0,
+        "startIndex": 0,
+        "totalRecords": 4525,
+        "occurrences": [],
+        "facetResults": [],
+        "query": "?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F82e69509-af63-4502-86f7-43362b777865%22&disableAllQualityFilters=true&fq=stateProvince%3ATasmania&fq=year%3A%5B2001%20TO%202025%5D"
+      },
+      "total_records": 4525
+    },
+    {
+      "key": "notamacropus_rufogriseus",
+      "kind": "parent",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/c4dfafef-5192-4a3d-815c-040c393e9bca",
+      "query": "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/c4dfafef-5192-4a3d-815c-040c393e9bca\"",
+      "extra_fq": [],
+      "scope": "tasmania_2001_2025",
+      "scope_fq": [
+        "stateProvince:Tasmania",
+        "year:[2001 TO 2025]"
+      ],
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "http_status": 200,
+      "request": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/c4dfafef-5192-4a3d-815c-040c393e9bca\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "pageSize",
+          "0"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ]
+      ],
+      "request_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Fc4dfafef-5192-4a3d-815c-040c393e9bca%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&pageSize=0&start=0&facet=false&disableAllQualityFilters=true",
+      "response": {
+        "status": "OK",
+        "pageSize": 0,
+        "startIndex": 0,
+        "totalRecords": 3191,
+        "occurrences": [],
+        "facetResults": [],
+        "query": "?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Fc4dfafef-5192-4a3d-815c-040c393e9bca%22&disableAllQualityFilters=true&fq=stateProvince%3ATasmania&fq=year%3A%5B2001%20TO%202025%5D"
+      },
+      "total_records": 3191
+    },
+    {
+      "key": "macropus_giganteus",
+      "kind": "parent",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/f2f43ef9-89fd-4f89-8b06-0842e86cfe06",
+      "query": "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/f2f43ef9-89fd-4f89-8b06-0842e86cfe06\"",
+      "extra_fq": [],
+      "scope": "tasmania_2001_2025",
+      "scope_fq": [
+        "stateProvince:Tasmania",
+        "year:[2001 TO 2025]"
+      ],
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "http_status": 200,
+      "request": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/f2f43ef9-89fd-4f89-8b06-0842e86cfe06\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "pageSize",
+          "0"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ]
+      ],
+      "request_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Ff2f43ef9-89fd-4f89-8b06-0842e86cfe06%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&pageSize=0&start=0&facet=false&disableAllQualityFilters=true",
+      "response": {
+        "status": "OK",
+        "pageSize": 0,
+        "startIndex": 0,
+        "totalRecords": 398,
+        "occurrences": [],
+        "facetResults": [],
+        "query": "?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Ff2f43ef9-89fd-4f89-8b06-0842e86cfe06%22&disableAllQualityFilters=true&fq=stateProvince%3ATasmania&fq=year%3A%5B2001%20TO%202025%5D"
+      },
+      "total_records": 398
+    },
+    {
+      "key": "trichosurus_vulpecula",
+      "kind": "parent",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/ee2cb6a9-e17c-4ca7-8aef-76d69eb969ed",
+      "query": "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/ee2cb6a9-e17c-4ca7-8aef-76d69eb969ed\"",
+      "extra_fq": [],
+      "scope": "tasmania_2001_2025",
+      "scope_fq": [
+        "stateProvince:Tasmania",
+        "year:[2001 TO 2025]"
+      ],
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "http_status": 200,
+      "request": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/ee2cb6a9-e17c-4ca7-8aef-76d69eb969ed\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "pageSize",
+          "0"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ]
+      ],
+      "request_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Fee2cb6a9-e17c-4ca7-8aef-76d69eb969ed%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&pageSize=0&start=0&facet=false&disableAllQualityFilters=true",
+      "response": {
+        "status": "OK",
+        "pageSize": 0,
+        "startIndex": 0,
+        "totalRecords": 1615,
+        "occurrences": [],
+        "facetResults": [],
+        "query": "?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Fee2cb6a9-e17c-4ca7-8aef-76d69eb969ed%22&disableAllQualityFilters=true&fq=stateProvince%3ATasmania&fq=year%3A%5B2001%20TO%202025%5D"
+      },
+      "total_records": 1615
+    },
+    {
+      "key": "pseudocheirus_peregrinus",
+      "kind": "parent",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/003decd6-ec3d-468e-909d-da396a6dd1f6",
+      "query": "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/003decd6-ec3d-468e-909d-da396a6dd1f6\"",
+      "extra_fq": [],
+      "scope": "tasmania_2001_2025",
+      "scope_fq": [
+        "stateProvince:Tasmania",
+        "year:[2001 TO 2025]"
+      ],
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "http_status": 200,
+      "request": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/003decd6-ec3d-468e-909d-da396a6dd1f6\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "pageSize",
+          "0"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ]
+      ],
+      "request_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F003decd6-ec3d-468e-909d-da396a6dd1f6%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&pageSize=0&start=0&facet=false&disableAllQualityFilters=true",
+      "response": {
+        "status": "OK",
+        "pageSize": 0,
+        "startIndex": 0,
+        "totalRecords": 367,
+        "occurrences": [],
+        "facetResults": [],
+        "query": "?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F003decd6-ec3d-468e-909d-da396a6dd1f6%22&disableAllQualityFilters=true&fq=stateProvince%3ATasmania&fq=year%3A%5B2001%20TO%202025%5D"
+      },
+      "total_records": 367
+    },
+    {
+      "key": "vombatus_ursinus",
+      "kind": "parent",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/66d42847-c556-4fa3-902c-a91d9f517286",
+      "query": "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/66d42847-c556-4fa3-902c-a91d9f517286\"",
+      "extra_fq": [],
+      "scope": "tasmania_2001_2025",
+      "scope_fq": [
+        "stateProvince:Tasmania",
+        "year:[2001 TO 2025]"
+      ],
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "http_status": 200,
+      "request": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/66d42847-c556-4fa3-902c-a91d9f517286\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "pageSize",
+          "0"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ]
+      ],
+      "request_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F66d42847-c556-4fa3-902c-a91d9f517286%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&pageSize=0&start=0&facet=false&disableAllQualityFilters=true",
+      "response": {
+        "status": "OK",
+        "pageSize": 0,
+        "startIndex": 0,
+        "totalRecords": 2391,
+        "occurrences": [],
+        "facetResults": [],
+        "query": "?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F66d42847-c556-4fa3-902c-a91d9f517286%22&disableAllQualityFilters=true&fq=stateProvince%3ATasmania&fq=year%3A%5B2001%20TO%202025%5D"
+      },
+      "total_records": 2391
+    },
+    {
+      "key": "sarcophilus_harrisii",
+      "kind": "parent",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/c6b5ff5a-a991-4972-b5b0-4214141d5bd6",
+      "query": "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/c6b5ff5a-a991-4972-b5b0-4214141d5bd6\"",
+      "extra_fq": [],
+      "scope": "tasmania_2001_2025",
+      "scope_fq": [
+        "stateProvince:Tasmania",
+        "year:[2001 TO 2025]"
+      ],
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "http_status": 200,
+      "request": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/c6b5ff5a-a991-4972-b5b0-4214141d5bd6\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "pageSize",
+          "0"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ]
+      ],
+      "request_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Fc6b5ff5a-a991-4972-b5b0-4214141d5bd6%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&pageSize=0&start=0&facet=false&disableAllQualityFilters=true",
+      "response": {
+        "status": "OK",
+        "pageSize": 0,
+        "startIndex": 0,
+        "totalRecords": 33442,
+        "occurrences": [],
+        "facetResults": [],
+        "query": "?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Fc6b5ff5a-a991-4972-b5b0-4214141d5bd6%22&disableAllQualityFilters=true&fq=stateProvince%3ATasmania&fq=year%3A%5B2001%20TO%202025%5D"
+      },
+      "total_records": 33442
+    },
+    {
+      "key": "dasyurus_maculatus",
+      "kind": "parent",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/73c23669-c491-42d0-83b3-6fd84a03689a",
+      "query": "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/73c23669-c491-42d0-83b3-6fd84a03689a\"",
+      "extra_fq": [],
+      "scope": "tasmania_2001_2025",
+      "scope_fq": [
+        "stateProvince:Tasmania",
+        "year:[2001 TO 2025]"
+      ],
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "http_status": 200,
+      "request": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/73c23669-c491-42d0-83b3-6fd84a03689a\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "pageSize",
+          "0"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ]
+      ],
+      "request_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F73c23669-c491-42d0-83b3-6fd84a03689a%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&pageSize=0&start=0&facet=false&disableAllQualityFilters=true",
+      "response": {
+        "status": "OK",
+        "pageSize": 0,
+        "startIndex": 0,
+        "totalRecords": 1169,
+        "occurrences": [],
+        "facetResults": [],
+        "query": "?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F73c23669-c491-42d0-83b3-6fd84a03689a%22&disableAllQualityFilters=true&fq=stateProvince%3ATasmania&fq=year%3A%5B2001%20TO%202025%5D"
+      },
+      "total_records": 1169
+    },
+    {
+      "key": "dasyurus_viverrinus",
+      "kind": "parent",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/1e9f1b49-78b5-409d-91f2-21615ce88e9d",
+      "query": "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/1e9f1b49-78b5-409d-91f2-21615ce88e9d\"",
+      "extra_fq": [],
+      "scope": "tasmania_2001_2025",
+      "scope_fq": [
+        "stateProvince:Tasmania",
+        "year:[2001 TO 2025]"
+      ],
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "http_status": 200,
+      "request": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/1e9f1b49-78b5-409d-91f2-21615ce88e9d\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "pageSize",
+          "0"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ]
+      ],
+      "request_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F1e9f1b49-78b5-409d-91f2-21615ce88e9d%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&pageSize=0&start=0&facet=false&disableAllQualityFilters=true",
+      "response": {
+        "status": "OK",
+        "pageSize": 0,
+        "startIndex": 0,
+        "totalRecords": 3736,
+        "occurrences": [],
+        "facetResults": [],
+        "query": "?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F1e9f1b49-78b5-409d-91f2-21615ce88e9d%22&disableAllQualityFilters=true&fq=stateProvince%3ATasmania&fq=year%3A%5B2001%20TO%202025%5D"
+      },
+      "total_records": 3736
+    },
+    {
+      "key": "macropus_giganteus_tasmaniensis_id",
+      "kind": "synonym_id",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/6cfeb6de-600b-425e-9e8d-3cea25f8ef84",
+      "query": "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/6cfeb6de-600b-425e-9e8d-3cea25f8ef84\"",
+      "extra_fq": [],
+      "scope": "tasmania_2001_2025",
+      "scope_fq": [
+        "stateProvince:Tasmania",
+        "year:[2001 TO 2025]"
+      ],
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "http_status": 200,
+      "request": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/6cfeb6de-600b-425e-9e8d-3cea25f8ef84\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "pageSize",
+          "0"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ]
+      ],
+      "request_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F6cfeb6de-600b-425e-9e8d-3cea25f8ef84%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&pageSize=0&start=0&facet=false&disableAllQualityFilters=true",
+      "response": {
+        "status": "OK",
+        "pageSize": 0,
+        "startIndex": 0,
+        "totalRecords": 0,
+        "occurrences": [],
+        "facetResults": [],
+        "query": "?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F6cfeb6de-600b-425e-9e8d-3cea25f8ef84%22&disableAllQualityFilters=true&fq=stateProvince%3ATasmania&fq=year%3A%5B2001%20TO%202025%5D"
+      },
+      "total_records": 0
+    },
+    {
+      "key": "macropus_giganteus_tasmaniensis_name",
+      "kind": "synonym_name",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/6cfeb6de-600b-425e-9e8d-3cea25f8ef84",
+      "query": "taxa:\"Macropus giganteus tasmaniensis\"",
+      "extra_fq": [],
+      "scope": "tasmania_2001_2025",
+      "scope_fq": [
+        "stateProvince:Tasmania",
+        "year:[2001 TO 2025]"
+      ],
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "http_status": 200,
+      "request": [
+        [
+          "q",
+          "taxa:\"Macropus giganteus tasmaniensis\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "pageSize",
+          "0"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ]
+      ],
+      "request_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxa%3A%22Macropus+giganteus+tasmaniensis%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&pageSize=0&start=0&facet=false&disableAllQualityFilters=true",
+      "response": {
+        "status": "OK",
+        "pageSize": 0,
+        "startIndex": 0,
+        "totalRecords": 398,
+        "occurrences": [],
+        "facetResults": [],
+        "query": "?q=taxa%3A%22Macropus%20giganteus%20tasmaniensis%22&disableAllQualityFilters=true&fq=stateProvince%3ATasmania&fq=year%3A%5B2001%20TO%202025%5D"
+      },
+      "total_records": 398
+    },
+    {
+      "key": "vombatus_ursinus_hirsutus",
+      "kind": "child",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/e4b74750-7541-4c67-89d1-5b5718b30ea7",
+      "query": "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/e4b74750-7541-4c67-89d1-5b5718b30ea7\"",
+      "extra_fq": [],
+      "scope": "tasmania_2001_2025",
+      "scope_fq": [
+        "stateProvince:Tasmania",
+        "year:[2001 TO 2025]"
+      ],
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "http_status": 200,
+      "request": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/e4b74750-7541-4c67-89d1-5b5718b30ea7\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "pageSize",
+          "0"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ]
+      ],
+      "request_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Fe4b74750-7541-4c67-89d1-5b5718b30ea7%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&pageSize=0&start=0&facet=false&disableAllQualityFilters=true",
+      "response": {
+        "status": "OK",
+        "pageSize": 0,
+        "startIndex": 0,
+        "totalRecords": 0,
+        "occurrences": [],
+        "facetResults": [],
+        "query": "?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Fe4b74750-7541-4c67-89d1-5b5718b30ea7%22&disableAllQualityFilters=true&fq=stateProvince%3ATasmania&fq=year%3A%5B2001%20TO%202025%5D"
+      },
+      "total_records": 0
+    },
+    {
+      "key": "vombatus_ursinus_tasmaniensis",
+      "kind": "child",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/3e53b354-2b48-4a2a-af29-acd8ecdfe1e6",
+      "query": "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/3e53b354-2b48-4a2a-af29-acd8ecdfe1e6\"",
+      "extra_fq": [],
+      "scope": "tasmania_2001_2025",
+      "scope_fq": [
+        "stateProvince:Tasmania",
+        "year:[2001 TO 2025]"
+      ],
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "http_status": 200,
+      "request": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/3e53b354-2b48-4a2a-af29-acd8ecdfe1e6\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "pageSize",
+          "0"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ]
+      ],
+      "request_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F3e53b354-2b48-4a2a-af29-acd8ecdfe1e6%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&pageSize=0&start=0&facet=false&disableAllQualityFilters=true",
+      "response": {
+        "status": "OK",
+        "pageSize": 0,
+        "startIndex": 0,
+        "totalRecords": 1312,
+        "occurrences": [],
+        "facetResults": [],
+        "query": "?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F3e53b354-2b48-4a2a-af29-acd8ecdfe1e6%22&disableAllQualityFilters=true&fq=stateProvince%3ATasmania&fq=year%3A%5B2001%20TO%202025%5D"
+      },
+      "total_records": 1312
+    },
+    {
+      "key": "vombatus_ursinus_ursinus",
+      "kind": "child",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/76b2b77b-6092-47dd-8de1-00e504b1e383",
+      "query": "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/76b2b77b-6092-47dd-8de1-00e504b1e383\"",
+      "extra_fq": [],
+      "scope": "tasmania_2001_2025",
+      "scope_fq": [
+        "stateProvince:Tasmania",
+        "year:[2001 TO 2025]"
+      ],
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "http_status": 200,
+      "request": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/76b2b77b-6092-47dd-8de1-00e504b1e383\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "pageSize",
+          "0"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ]
+      ],
+      "request_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F76b2b77b-6092-47dd-8de1-00e504b1e383%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&pageSize=0&start=0&facet=false&disableAllQualityFilters=true",
+      "response": {
+        "status": "OK",
+        "pageSize": 0,
+        "startIndex": 0,
+        "totalRecords": 644,
+        "occurrences": [],
+        "facetResults": [],
+        "query": "?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F76b2b77b-6092-47dd-8de1-00e504b1e383%22&disableAllQualityFilters=true&fq=stateProvince%3ATasmania&fq=year%3A%5B2001%20TO%202025%5D"
+      },
+      "total_records": 644
+    },
+    {
+      "key": "macropus_giganteus:macropus_giganteus_tasmaniensis_intersection",
+      "kind": "intersection",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/6cfeb6de-600b-425e-9e8d-3cea25f8ef84",
+      "query": "taxa:\"Macropus giganteus tasmaniensis\"",
+      "extra_fq": [
+        "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/f2f43ef9-89fd-4f89-8b06-0842e86cfe06\""
+      ],
+      "scope": "tasmania_2001_2025",
+      "scope_fq": [
+        "stateProvince:Tasmania",
+        "year:[2001 TO 2025]"
+      ],
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "http_status": 200,
+      "request": [
+        [
+          "q",
+          "taxa:\"Macropus giganteus tasmaniensis\""
+        ],
+        [
+          "fq",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/f2f43ef9-89fd-4f89-8b06-0842e86cfe06\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "pageSize",
+          "0"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ]
+      ],
+      "request_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxa%3A%22Macropus+giganteus+tasmaniensis%22&fq=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Ff2f43ef9-89fd-4f89-8b06-0842e86cfe06%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&pageSize=0&start=0&facet=false&disableAllQualityFilters=true",
+      "response": {
+        "status": "OK",
+        "pageSize": 0,
+        "startIndex": 0,
+        "totalRecords": 398,
+        "occurrences": [],
+        "facetResults": [],
+        "query": "?q=taxa%3A%22Macropus%20giganteus%20tasmaniensis%22&disableAllQualityFilters=true&fq=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Ff2f43ef9-89fd-4f89-8b06-0842e86cfe06%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001%20TO%202025%5D"
+      },
+      "total_records": 398
+    },
+    {
+      "key": "vombatus_ursinus:vombatus_ursinus_hirsutus_intersection",
+      "kind": "intersection",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/e4b74750-7541-4c67-89d1-5b5718b30ea7",
+      "query": "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/e4b74750-7541-4c67-89d1-5b5718b30ea7\"",
+      "extra_fq": [
+        "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/66d42847-c556-4fa3-902c-a91d9f517286\""
+      ],
+      "scope": "tasmania_2001_2025",
+      "scope_fq": [
+        "stateProvince:Tasmania",
+        "year:[2001 TO 2025]"
+      ],
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "http_status": 200,
+      "request": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/e4b74750-7541-4c67-89d1-5b5718b30ea7\""
+        ],
+        [
+          "fq",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/66d42847-c556-4fa3-902c-a91d9f517286\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "pageSize",
+          "0"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ]
+      ],
+      "request_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Fe4b74750-7541-4c67-89d1-5b5718b30ea7%22&fq=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F66d42847-c556-4fa3-902c-a91d9f517286%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&pageSize=0&start=0&facet=false&disableAllQualityFilters=true",
+      "response": {
+        "status": "OK",
+        "pageSize": 0,
+        "startIndex": 0,
+        "totalRecords": 0,
+        "occurrences": [],
+        "facetResults": [],
+        "query": "?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Fe4b74750-7541-4c67-89d1-5b5718b30ea7%22&disableAllQualityFilters=true&fq=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F66d42847-c556-4fa3-902c-a91d9f517286%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001%20TO%202025%5D"
+      },
+      "total_records": 0
+    },
+    {
+      "key": "vombatus_ursinus:vombatus_ursinus_tasmaniensis_intersection",
+      "kind": "intersection",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/3e53b354-2b48-4a2a-af29-acd8ecdfe1e6",
+      "query": "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/3e53b354-2b48-4a2a-af29-acd8ecdfe1e6\"",
+      "extra_fq": [
+        "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/66d42847-c556-4fa3-902c-a91d9f517286\""
+      ],
+      "scope": "tasmania_2001_2025",
+      "scope_fq": [
+        "stateProvince:Tasmania",
+        "year:[2001 TO 2025]"
+      ],
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "http_status": 200,
+      "request": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/3e53b354-2b48-4a2a-af29-acd8ecdfe1e6\""
+        ],
+        [
+          "fq",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/66d42847-c556-4fa3-902c-a91d9f517286\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "pageSize",
+          "0"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ]
+      ],
+      "request_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F3e53b354-2b48-4a2a-af29-acd8ecdfe1e6%22&fq=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F66d42847-c556-4fa3-902c-a91d9f517286%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&pageSize=0&start=0&facet=false&disableAllQualityFilters=true",
+      "response": {
+        "status": "OK",
+        "pageSize": 0,
+        "startIndex": 0,
+        "totalRecords": 1312,
+        "occurrences": [],
+        "facetResults": [],
+        "query": "?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F3e53b354-2b48-4a2a-af29-acd8ecdfe1e6%22&disableAllQualityFilters=true&fq=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F66d42847-c556-4fa3-902c-a91d9f517286%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001%20TO%202025%5D"
+      },
+      "total_records": 1312
+    },
+    {
+      "key": "vombatus_ursinus:vombatus_ursinus_ursinus_intersection",
+      "kind": "intersection",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/76b2b77b-6092-47dd-8de1-00e504b1e383",
+      "query": "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/76b2b77b-6092-47dd-8de1-00e504b1e383\"",
+      "extra_fq": [
+        "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/66d42847-c556-4fa3-902c-a91d9f517286\""
+      ],
+      "scope": "tasmania_2001_2025",
+      "scope_fq": [
+        "stateProvince:Tasmania",
+        "year:[2001 TO 2025]"
+      ],
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "http_status": 200,
+      "request": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/76b2b77b-6092-47dd-8de1-00e504b1e383\""
+        ],
+        [
+          "fq",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/66d42847-c556-4fa3-902c-a91d9f517286\""
+        ],
+        [
+          "fq",
+          "stateProvince:Tasmania"
+        ],
+        [
+          "fq",
+          "year:[2001 TO 2025]"
+        ],
+        [
+          "pageSize",
+          "0"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ]
+      ],
+      "request_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F76b2b77b-6092-47dd-8de1-00e504b1e383%22&fq=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F66d42847-c556-4fa3-902c-a91d9f517286%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001+TO+2025%5D&pageSize=0&start=0&facet=false&disableAllQualityFilters=true",
+      "response": {
+        "status": "OK",
+        "pageSize": 0,
+        "startIndex": 0,
+        "totalRecords": 644,
+        "occurrences": [],
+        "facetResults": [],
+        "query": "?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F76b2b77b-6092-47dd-8de1-00e504b1e383%22&disableAllQualityFilters=true&fq=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F66d42847-c556-4fa3-902c-a91d9f517286%22&fq=stateProvince%3ATasmania&fq=year%3A%5B2001%20TO%202025%5D"
+      },
+      "total_records": 644
+    },
+    {
+      "key": "national:vombatus_ursinus_hirsutus",
+      "kind": "national_control_child",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/e4b74750-7541-4c67-89d1-5b5718b30ea7",
+      "query": "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/e4b74750-7541-4c67-89d1-5b5718b30ea7\"",
+      "extra_fq": [],
+      "scope": "national_control",
+      "scope_fq": [],
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "http_status": 200,
+      "request": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/e4b74750-7541-4c67-89d1-5b5718b30ea7\""
+        ],
+        [
+          "pageSize",
+          "0"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ]
+      ],
+      "request_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Fe4b74750-7541-4c67-89d1-5b5718b30ea7%22&pageSize=0&start=0&facet=false&disableAllQualityFilters=true",
+      "response": {
+        "status": "OK",
+        "pageSize": 0,
+        "startIndex": 0,
+        "totalRecords": 550,
+        "occurrences": [],
+        "facetResults": [],
+        "query": "?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Fe4b74750-7541-4c67-89d1-5b5718b30ea7%22&disableAllQualityFilters=true"
+      },
+      "total_records": 550
+    },
+    {
+      "key": "national:vombatus_ursinus_tasmaniensis",
+      "kind": "national_control_child",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/3e53b354-2b48-4a2a-af29-acd8ecdfe1e6",
+      "query": "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/3e53b354-2b48-4a2a-af29-acd8ecdfe1e6\"",
+      "extra_fq": [],
+      "scope": "national_control",
+      "scope_fq": [],
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "http_status": 200,
+      "request": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/3e53b354-2b48-4a2a-af29-acd8ecdfe1e6\""
+        ],
+        [
+          "pageSize",
+          "0"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ]
+      ],
+      "request_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F3e53b354-2b48-4a2a-af29-acd8ecdfe1e6%22&pageSize=0&start=0&facet=false&disableAllQualityFilters=true",
+      "response": {
+        "status": "OK",
+        "pageSize": 0,
+        "startIndex": 0,
+        "totalRecords": 3302,
+        "occurrences": [],
+        "facetResults": [],
+        "query": "?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F3e53b354-2b48-4a2a-af29-acd8ecdfe1e6%22&disableAllQualityFilters=true"
+      },
+      "total_records": 3302
+    },
+    {
+      "key": "national:vombatus_ursinus_ursinus",
+      "kind": "national_control_child",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/76b2b77b-6092-47dd-8de1-00e504b1e383",
+      "query": "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/76b2b77b-6092-47dd-8de1-00e504b1e383\"",
+      "extra_fq": [],
+      "scope": "national_control",
+      "scope_fq": [],
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "http_status": 200,
+      "request": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/76b2b77b-6092-47dd-8de1-00e504b1e383\""
+        ],
+        [
+          "pageSize",
+          "0"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ]
+      ],
+      "request_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F76b2b77b-6092-47dd-8de1-00e504b1e383%22&pageSize=0&start=0&facet=false&disableAllQualityFilters=true",
+      "response": {
+        "status": "OK",
+        "pageSize": 0,
+        "startIndex": 0,
+        "totalRecords": 868,
+        "occurrences": [],
+        "facetResults": [],
+        "query": "?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F76b2b77b-6092-47dd-8de1-00e504b1e383%22&disableAllQualityFilters=true"
+      },
+      "total_records": 868
+    },
+    {
+      "key": "national:vombatus_ursinus_hirsutus_intersection",
+      "kind": "national_control_intersection",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/e4b74750-7541-4c67-89d1-5b5718b30ea7",
+      "query": "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/e4b74750-7541-4c67-89d1-5b5718b30ea7\"",
+      "extra_fq": [
+        "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/66d42847-c556-4fa3-902c-a91d9f517286\""
+      ],
+      "scope": "national_control",
+      "scope_fq": [],
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "http_status": 200,
+      "request": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/e4b74750-7541-4c67-89d1-5b5718b30ea7\""
+        ],
+        [
+          "fq",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/66d42847-c556-4fa3-902c-a91d9f517286\""
+        ],
+        [
+          "pageSize",
+          "0"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ]
+      ],
+      "request_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Fe4b74750-7541-4c67-89d1-5b5718b30ea7%22&fq=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F66d42847-c556-4fa3-902c-a91d9f517286%22&pageSize=0&start=0&facet=false&disableAllQualityFilters=true",
+      "response": {
+        "status": "OK",
+        "pageSize": 0,
+        "startIndex": 0,
+        "totalRecords": 550,
+        "occurrences": [],
+        "facetResults": [],
+        "query": "?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Fe4b74750-7541-4c67-89d1-5b5718b30ea7%22&disableAllQualityFilters=true&fq=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F66d42847-c556-4fa3-902c-a91d9f517286%22"
+      },
+      "total_records": 550
+    },
+    {
+      "key": "national:vombatus_ursinus_tasmaniensis_intersection",
+      "kind": "national_control_intersection",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/3e53b354-2b48-4a2a-af29-acd8ecdfe1e6",
+      "query": "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/3e53b354-2b48-4a2a-af29-acd8ecdfe1e6\"",
+      "extra_fq": [
+        "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/66d42847-c556-4fa3-902c-a91d9f517286\""
+      ],
+      "scope": "national_control",
+      "scope_fq": [],
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "http_status": 200,
+      "request": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/3e53b354-2b48-4a2a-af29-acd8ecdfe1e6\""
+        ],
+        [
+          "fq",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/66d42847-c556-4fa3-902c-a91d9f517286\""
+        ],
+        [
+          "pageSize",
+          "0"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ]
+      ],
+      "request_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F3e53b354-2b48-4a2a-af29-acd8ecdfe1e6%22&fq=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F66d42847-c556-4fa3-902c-a91d9f517286%22&pageSize=0&start=0&facet=false&disableAllQualityFilters=true",
+      "response": {
+        "status": "OK",
+        "pageSize": 0,
+        "startIndex": 0,
+        "totalRecords": 3302,
+        "occurrences": [],
+        "facetResults": [],
+        "query": "?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F3e53b354-2b48-4a2a-af29-acd8ecdfe1e6%22&disableAllQualityFilters=true&fq=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F66d42847-c556-4fa3-902c-a91d9f517286%22"
+      },
+      "total_records": 3302
+    },
+    {
+      "key": "national:vombatus_ursinus_ursinus_intersection",
+      "kind": "national_control_intersection",
+      "concept_id": "https://biodiversity.org.au/afd/taxa/76b2b77b-6092-47dd-8de1-00e504b1e383",
+      "query": "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/76b2b77b-6092-47dd-8de1-00e504b1e383\"",
+      "extra_fq": [
+        "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/66d42847-c556-4fa3-902c-a91d9f517286\""
+      ],
+      "scope": "national_control",
+      "scope_fq": [],
+      "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+      "method": "GET",
+      "http_status": 200,
+      "request": [
+        [
+          "q",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/76b2b77b-6092-47dd-8de1-00e504b1e383\""
+        ],
+        [
+          "fq",
+          "taxonConceptID:\"https://biodiversity.org.au/afd/taxa/66d42847-c556-4fa3-902c-a91d9f517286\""
+        ],
+        [
+          "pageSize",
+          "0"
+        ],
+        [
+          "start",
+          "0"
+        ],
+        [
+          "facet",
+          "false"
+        ],
+        [
+          "disableAllQualityFilters",
+          "true"
+        ]
+      ],
+      "request_url": "https://api.ala.org.au/occurrences/occurrences/search?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F76b2b77b-6092-47dd-8de1-00e504b1e383%22&fq=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F66d42847-c556-4fa3-902c-a91d9f517286%22&pageSize=0&start=0&facet=false&disableAllQualityFilters=true",
+      "response": {
+        "status": "OK",
+        "pageSize": 0,
+        "startIndex": 0,
+        "totalRecords": 868,
+        "occurrences": [],
+        "facetResults": [],
+        "query": "?q=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F76b2b77b-6092-47dd-8de1-00e504b1e383%22&disableAllQualityFilters=true&fq=taxonConceptID%3A%22https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F66d42847-c556-4fa3-902c-a91d9f517286%22"
+      },
+      "total_records": 868
+    }
+  ],
+  "relations": [
+    {
+      "key": "macropus_giganteus:macropus_giganteus_tasmaniensis",
+      "parent_key": "macropus_giganteus",
+      "descendant_key": "macropus_giganteus_tasmaniensis_name",
+      "direct_count": 398,
+      "intersection_count": 398,
+      "status": "contained_in_scope",
+      "method": "direct_descendant_count_vs_parent_filtered_intersection_count",
+      "national_control_key": null
+    },
+    {
+      "key": "vombatus_ursinus:vombatus_ursinus_hirsutus",
+      "parent_key": "vombatus_ursinus",
+      "descendant_key": "vombatus_ursinus_hirsutus",
+      "direct_count": 0,
+      "intersection_count": 0,
+      "status": "contained_via_national_control",
+      "method": "direct_descendant_count_vs_parent_filtered_intersection_count",
+      "national_control_key": "national:vombatus_ursinus_hirsutus"
+    },
+    {
+      "key": "vombatus_ursinus:vombatus_ursinus_tasmaniensis",
+      "parent_key": "vombatus_ursinus",
+      "descendant_key": "vombatus_ursinus_tasmaniensis",
+      "direct_count": 1312,
+      "intersection_count": 1312,
+      "status": "contained_in_scope",
+      "method": "direct_descendant_count_vs_parent_filtered_intersection_count",
+      "national_control_key": null
+    },
+    {
+      "key": "vombatus_ursinus:vombatus_ursinus_ursinus",
+      "parent_key": "vombatus_ursinus",
+      "descendant_key": "vombatus_ursinus_ursinus",
+      "direct_count": 644,
+      "intersection_count": 644,
+      "status": "contained_in_scope",
+      "method": "direct_descendant_count_vs_parent_filtered_intersection_count",
+      "national_control_key": null
+    }
+  ],
+  "national_relations": [
+    {
+      "key": "national:vombatus_ursinus_hirsutus",
+      "child_key": "vombatus_ursinus_hirsutus",
+      "direct_count": 550,
+      "intersection_count": 550,
+      "status": "contained_in_national_control",
+      "method": "direct_descendant_count_vs_parent_filtered_intersection_count"
+    },
+    {
+      "key": "national:vombatus_ursinus_tasmaniensis",
+      "child_key": "vombatus_ursinus_tasmaniensis",
+      "direct_count": 3302,
+      "intersection_count": 3302,
+      "status": "contained_in_national_control",
+      "method": "direct_descendant_count_vs_parent_filtered_intersection_count"
+    },
+    {
+      "key": "national:vombatus_ursinus_ursinus",
+      "child_key": "vombatus_ursinus_ursinus",
+      "direct_count": 868,
+      "intersection_count": 868,
+      "status": "contained_in_national_control",
+      "method": "direct_descendant_count_vs_parent_filtered_intersection_count"
+    }
+  ]
+}

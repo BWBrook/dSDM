@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0",
+  "profile_id": "ala-tasmania-2001-2025-count-only-preflight",
+  "status": "preflight_ready_pending_live_acquisition",
+  "occurrence_search_endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+  "documented_gateway_endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+  "method": "GET",
+  "page_size": 0,
+  "start": 0,
+  "disable_all_quality_filters": true,
+  "default_query_mode": "parent_species_expansion",
+  "query_template": {
+    "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+    "method": "GET",
+    "q": "<taxon_query>",
+    "fq": ["<extra_parent_filter>", "stateProvince:Tasmania", "year:[2001 TO 2025]"],
+    "pageSize": 0,
+    "start": 0,
+    "facet": false,
+    "disableAllQualityFilters": true
+  },
+  "future_fl": ["occurrenceID", "dataResourceUid", "dataResourceName", "datasetID", "datasetName", "eventDate", "year", "decimalLatitude", "decimalLongitude", "coordinateUncertaintyInMeters", "coordinatePrecision", "raw_scientificName", "raw_taxonConceptID", "scientificName", "taxonConceptID", "acceptedNameUsage", "acceptedNameUsageID", "taxonRank", "assertions", "license"],
+  "scope": {
+    "temporal": {"field": "year", "start": 2001, "end": 2025, "inclusive": true},
+    "spatial": {"field": "stateProvince", "value": "Tasmania", "role": "broad_indexed_prefilter_before_canonical_grid_boundary"}
+  },
+  "focal_species_ids": [
+    "thylogale_billardierii",
+    "notamacropus_rufogriseus",
+    "macropus_giganteus",
+    "trichosurus_vulpecula",
+    "pseudocheirus_peregrinus",
+    "vombatus_ursinus",
+    "sarcophilus_harrisii",
+    "dasyurus_maculatus",
+    "dasyurus_viverrinus"
+  ],
+  "fallback": {
+    "mode": "explicit_parent_plus_required_alias_and_child_union",
+    "deduplication_key": "occurrenceID",
+    "parent_concepts": {
+      "thylogale_billardierii": "https://biodiversity.org.au/afd/taxa/82e69509-af63-4502-86f7-43362b777865",
+      "notamacropus_rufogriseus": "https://biodiversity.org.au/afd/taxa/c4dfafef-5192-4a3d-815c-040c393e9bca",
+      "macropus_giganteus": "https://biodiversity.org.au/afd/taxa/f2f43ef9-89fd-4f89-8b06-0842e86cfe06",
+      "trichosurus_vulpecula": "https://biodiversity.org.au/afd/taxa/ee2cb6a9-e17c-4ca7-8aef-76d69eb969ed",
+      "pseudocheirus_peregrinus": "https://biodiversity.org.au/afd/taxa/003decd6-ec3d-468e-909d-da396a6dd1f6",
+      "vombatus_ursinus": "https://biodiversity.org.au/afd/taxa/66d42847-c556-4fa3-902c-a91d9f517286",
+      "sarcophilus_harrisii": "https://biodiversity.org.au/afd/taxa/c6b5ff5a-a991-4972-b5b0-4214141d5bd6",
+      "dasyurus_maculatus": "https://biodiversity.org.au/afd/taxa/73c23669-c491-42d0-83b3-6fd84a03689a",
+      "dasyurus_viverrinus": "https://biodiversity.org.au/afd/taxa/1e9f1b49-78b5-409d-91f2-21615ce88e9d"
+    },
+    "macropus_synonym": "https://biodiversity.org.au/afd/taxa/6cfeb6de-600b-425e-9e8d-3cea25f8ef84",
+    "macropus_synonym_name": "Macropus giganteus tasmaniensis",
+    "vombatus_children": {
+      "vombatus_ursinus_hirsutus": "https://biodiversity.org.au/afd/taxa/e4b74750-7541-4c67-89d1-5b5718b30ea7",
+      "vombatus_ursinus_tasmaniensis": "https://biodiversity.org.au/afd/taxa/3e53b354-2b48-4a2a-af29-acd8ecdfe1e6",
+      "vombatus_ursinus_ursinus": "https://biodiversity.org.au/afd/taxa/76b2b77b-6092-47dd-8de1-00e504b1e383"
+    }
+  },
+  "containment_rule": {
+    "method": "direct_descendant_count_vs_parent_filtered_intersection_count",
+    "positive_relation_requires_exact_count_equality": true,
+    "zero_scoped_relation_requires_positive_national_control": true,
+    "facets_retained": false
+  },
+  "record_field_mapping": [
+    {"project_field": "occurrence_id", "ala_fields": ["occurrenceID"], "required": true, "derivation": "direct", "null_rule": "reject null because occurrenceID is the deduplication key"},
+    {"project_field": "source_resource_id", "ala_fields": ["dataResourceUid"], "required": true, "derivation": "direct", "null_rule": "retain null only if source is explicitly unavailable"},
+    {"project_field": "source_resource_name", "ala_fields": ["dataResourceName"], "required": false, "derivation": "direct", "null_rule": "preserve null"},
+    {"project_field": "source_dataset_id", "ala_fields": ["datasetID", "dataResourceUid"], "required": false, "derivation": "datasetID then dataResourceUid fallback", "null_rule": "preserve null"},
+    {"project_field": "source_dataset_name", "ala_fields": ["datasetName", "dataResourceName"], "required": false, "derivation": "datasetName then dataResourceName fallback", "null_rule": "preserve null"},
+    {"project_field": "event_date", "ala_fields": ["eventDate"], "required": false, "derivation": "direct", "null_rule": "preserve null; do not fabricate dates"},
+    {"project_field": "year", "ala_fields": ["year", "eventDate"], "required": false, "derivation": "year direct, otherwise parse four-digit eventDate year", "null_rule": "preserve null"},
+    {"project_field": "decimal_latitude", "ala_fields": ["decimalLatitude"], "required": true, "derivation": "direct", "null_rule": "exclude from spatial analysis when null or invalid"},
+    {"project_field": "decimal_longitude", "ala_fields": ["decimalLongitude"], "required": true, "derivation": "direct", "null_rule": "exclude from spatial analysis when null or invalid"},
+    {"project_field": "coordinate_uncertainty_m", "ala_fields": ["coordinateUncertaintyInMeters"], "required": false, "derivation": "direct", "null_rule": "preserve null as unknown"},
+    {"project_field": "coordinate_precision_basis", "ala_fields": ["coordinatePrecision"], "required": false, "derivation": "reported coordinatePrecision only; otherwise unknown", "null_rule": "never infer precision from decimal digits"},
+    {"project_field": "submitted_name", "ala_fields": ["raw_scientificName"], "required": false, "derivation": "direct", "null_rule": "preserve null"},
+    {"project_field": "submitted_concept_id", "ala_fields": ["raw_taxonConceptID"], "required": false, "derivation": "direct", "null_rule": "preserve null"},
+    {"project_field": "matched_name", "ala_fields": ["scientificName"], "required": true, "derivation": "direct", "null_rule": "reject when accepted identity is needed and null"},
+    {"project_field": "matched_concept_id", "ala_fields": ["taxonConceptID"], "required": true, "derivation": "direct", "null_rule": "reject when accepted identity is needed and null"},
+    {"project_field": "accepted_name", "ala_fields": ["acceptedNameUsage", "scientificName"], "required": true, "derivation": "acceptedNameUsage then scientificName fallback", "null_rule": "reject when accepted identity is needed and both null"},
+    {"project_field": "accepted_concept_id", "ala_fields": ["acceptedNameUsageID", "taxonConceptID"], "required": true, "derivation": "acceptedNameUsageID then taxonConceptID fallback", "null_rule": "reject when accepted identity is needed and both null"},
+    {"project_field": "accepted_rank", "ala_fields": ["taxonRank"], "required": true, "derivation": "direct", "null_rule": "reject when accepted identity is needed and null"},
+    {"project_field": "assertions", "ala_fields": ["assertions"], "required": false, "derivation": "direct", "null_rule": "preserve null"},
+    {"project_field": "license", "ala_fields": ["license"], "required": false, "derivation": "direct", "null_rule": "preserve null and record provenance"},
+    {"project_field": "provenance", "ala_fields": [], "required": true, "derivation": "run metadata: retrieval timestamp, profile ID, canonical request, response checksum", "null_rule": "never null"}
+  ]
+}

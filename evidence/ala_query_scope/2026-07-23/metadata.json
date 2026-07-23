@@ -1,0 +1,421 @@
+{
+  "retrieved_at_utc": "2026-07-23T12:46:13Z",
+  "official_sources": {
+    "openapi_spec_url": "https://docs.ala.org.au/openapi/specs/biocache.json",
+    "openapi_http_status": 200,
+    "openapi_title": "Occurrence REST services",
+    "openapi_version": "3.0",
+    "openapi_server_base": "https://api.ala.org.au/occurrences",
+    "openapi_operation_path": "/occurrences/search",
+    "documented_gateway_occurrence_search": "https://api.ala.org.au/occurrences/occurrences/search",
+    "supported_route_probe_status": 200,
+    "legacy_occurrence_search_endpoint": "https://biocache.ala.org.au/ws/occurrences/search",
+    "public_occurrence_search_endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+    "bie_species_endpoint": "https://bie.ala.org.au/ws/species/",
+    "bie_child_concepts_endpoint": "https://bie.ala.org.au/ws/childConcepts/"
+  },
+  "occurrence_search_parameters": [
+    {
+      "name": "q",
+      "in": "query",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "fq",
+      "in": "query",
+      "required": false,
+      "schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "fl",
+      "in": "query",
+      "required": false,
+      "schema": {
+        "type": "string"
+      }
+    },
+    {
+      "name": "start",
+      "in": "query",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "format": "int32"
+      }
+    },
+    {
+      "name": "pageSize",
+      "in": "query",
+      "required": false,
+      "schema": {
+        "type": "integer",
+        "format": "int32"
+      }
+    },
+    {
+      "name": "facet",
+      "in": "query",
+      "required": false,
+      "schema": {
+        "type": "boolean"
+      }
+    },
+    {
+      "name": "disableAllQualityFilters",
+      "in": "query",
+      "required": false,
+      "schema": {
+        "type": "boolean"
+      }
+    }
+  ],
+  "bie_metadata": {
+    "macropus_synonym": {
+      "guid": "https://biodiversity.org.au/afd/taxa/6cfeb6de-600b-425e-9e8d-3cea25f8ef84",
+      "nameString": "Macropus giganteus tasmaniensis",
+      "taxonomicStatus": "synonym",
+      "rankString": "unranked",
+      "acceptedConceptID": "https://biodiversity.org.au/afd/taxa/f2f43ef9-89fd-4f89-8b06-0842e86cfe06",
+      "acceptedConceptName": "Macropus giganteus Shaw, 1790"
+    },
+    "vombatus_children": [
+      {
+        "guid": "https://biodiversity.org.au/afd/taxa/e4b74750-7541-4c67-89d1-5b5718b30ea7",
+        "parentGuid": "https://biodiversity.org.au/afd/taxa/66d42847-c556-4fa3-902c-a91d9f517286",
+        "name": "Vombatus ursinus hirsutus",
+        "rank": "subspecies"
+      },
+      {
+        "guid": "https://biodiversity.org.au/afd/taxa/3e53b354-2b48-4a2a-af29-acd8ecdfe1e6",
+        "parentGuid": "https://biodiversity.org.au/afd/taxa/66d42847-c556-4fa3-902c-a91d9f517286",
+        "name": "Vombatus ursinus tasmaniensis",
+        "rank": "subspecies"
+      },
+      {
+        "guid": "https://biodiversity.org.au/afd/taxa/76b2b77b-6092-47dd-8de1-00e504b1e383",
+        "parentGuid": "https://biodiversity.org.au/afd/taxa/66d42847-c556-4fa3-902c-a91d9f517286",
+        "name": "Vombatus ursinus ursinus",
+        "rank": "subspecies"
+      }
+    ]
+  },
+  "scope": {
+    "temporal_filter": "year:[2001 TO 2025]",
+    "spatial_filter": "stateProvince:Tasmania",
+    "spatial_uncertainty": "stateProvince is a broad indexed prefilter; canonical grid/coast boundary remains a later normalization gate"
+  },
+  "fields_metadata": {
+    "url": "https://api.ala.org.au/occurrences/index/fields",
+    "http_status": 200,
+    "retrieved_at_utc": "2026-07-23T12:46:13Z",
+    "available_fields": {
+      "acceptedNameUsage": {
+        "name": "acceptedNameUsage",
+        "dwcTerm": "acceptedNameUsage",
+        "downloadName": "acceptedNameUsage",
+        "dataType": "string",
+        "classs": "Taxon",
+        "indexed": true,
+        "docvalue": true,
+        "stored": true,
+        "multivalue": false,
+        "description": "Accepted name",
+        "downloadDescription": "Accepted Name Usage",
+        "info": "http://rs.tdwg.org/dwc/terms/acceptedNameUsage"
+      },
+      "acceptedNameUsageID": {
+        "name": "acceptedNameUsageID",
+        "dwcTerm": "acceptedNameUsageID",
+        "downloadName": "acceptedNameUsageID",
+        "dataType": "string",
+        "classs": "Taxon",
+        "indexed": true,
+        "docvalue": true,
+        "stored": true,
+        "multivalue": false,
+        "description": "Accepted name",
+        "downloadDescription": "Accepted Name Usage ID",
+        "info": "http://rs.tdwg.org/dwc/terms/acceptedNameUsageID"
+      },
+      "assertions": {
+        "name": "assertions",
+        "jsonName": "assertions",
+        "downloadName": "assertions",
+        "dataType": "string",
+        "indexed": true,
+        "docvalue": true,
+        "stored": true,
+        "multivalue": true,
+        "i18nValues": true,
+        "description": "Record issues",
+        "info": "A list of all assertions (user and system supplied) for a record resulting from data quality tests",
+        "infoUrl": "https://github.com/AtlasOfLivingAustralia/ala-dataquality/wiki/assertions"
+      },
+      "coordinatePrecision": {
+        "name": "coordinatePrecision",
+        "dwcTerm": "coordinatePrecision",
+        "downloadName": "coordinatePrecision",
+        "dataType": "double",
+        "classs": "Location",
+        "indexed": true,
+        "docvalue": true,
+        "stored": true,
+        "multivalue": false,
+        "description": "Coordinate precision",
+        "downloadDescription": "Coordinate Precision",
+        "info": "http://rs.tdwg.org/dwc/terms/coordinatePrecision"
+      },
+      "coordinateUncertaintyInMeters": {
+        "name": "coordinateUncertaintyInMeters",
+        "jsonName": "coordinateUncertaintyInMeters",
+        "dwcTerm": "coordinateUncertaintyInMeters",
+        "downloadName": "coordinateUncertaintyInMeters",
+        "dataType": "double",
+        "classs": "Location",
+        "indexed": true,
+        "docvalue": true,
+        "stored": true,
+        "multivalue": false,
+        "description": "Coordinate uncertainty (in metres)",
+        "downloadDescription": "Coordinate Uncertainty in Metres",
+        "info": "A radius in metres defining the smallest circle the location could occur within http://rs.tdwg.org/dwc/terms/coordinateUncertaintyInMeters",
+        "infoUrl": "https://github.com/AtlasOfLivingAustralia/ala-dataquality/wiki/coordinateUncertaintyInMeters"
+      },
+      "dataResourceName": {
+        "name": "dataResourceName",
+        "jsonName": "dataResourceName",
+        "downloadName": "dataResourceName",
+        "dataType": "string",
+        "indexed": true,
+        "docvalue": true,
+        "stored": true,
+        "multivalue": false,
+        "description": "Dataset",
+        "downloadDescription": "Data Resource Name",
+        "info": "The data resource that supplies the record. This is typically a CSV or DwCA file, or a webservice."
+      },
+      "dataResourceUid": {
+        "name": "dataResourceUid",
+        "jsonName": "dataResourceUid",
+        "downloadName": "dataResourceUid",
+        "dataType": "string",
+        "indexed": true,
+        "docvalue": true,
+        "stored": true,
+        "multivalue": false,
+        "description": "Dataset",
+        "downloadDescription": "Data Resource ID",
+        "info": "A list (concatenated and separated) of preparations and preservation methods for a specimen."
+      },
+      "datasetID": {
+        "name": "datasetID",
+        "dwcTerm": "datasetID",
+        "downloadName": "datasetID",
+        "dataType": "string",
+        "classs": "Record",
+        "indexed": true,
+        "docvalue": true,
+        "stored": true,
+        "multivalue": true,
+        "description": "Dataset ID",
+        "info": "http://rs.tdwg.org/dwc/terms/datasetID"
+      },
+      "datasetName": {
+        "name": "datasetName",
+        "dwcTerm": "datasetName",
+        "downloadName": "datasetName",
+        "dataType": "string",
+        "classs": "Record",
+        "indexed": true,
+        "docvalue": true,
+        "stored": true,
+        "multivalue": true,
+        "description": "Dataset name / Survey name",
+        "info": "The name of the dataset for this record. Typically used to share the name of the survey when data has been supplied with multiple surveys in a single data resource. http://rs.tdwg.org/dwc/terms/datasetName"
+      },
+      "decimalLatitude": {
+        "name": "decimalLatitude",
+        "jsonName": "decimalLatitude",
+        "dwcTerm": "decimalLatitude",
+        "downloadName": "decimalLatitude",
+        "dataType": "double",
+        "classs": "Location",
+        "indexed": true,
+        "docvalue": true,
+        "stored": true,
+        "multivalue": false,
+        "description": "Latitude",
+        "downloadDescription": "Decimal latitude (WGS84)",
+        "info": "The decimal latitude associated with this record. If the original latitude was supplied in degrees, minutes, seconds, this value represents the converted value. http://rs.tdwg.org/dwc/terms/decimalLatitude",
+        "infoUrl": "https://github.com/AtlasOfLivingAustralia/ala-dataquality/wiki/decimalLatitude",
+        "sensitiveField": "sensitive_decimalLatitude"
+      },
+      "decimalLongitude": {
+        "name": "decimalLongitude",
+        "jsonName": "decimalLongitude",
+        "dwcTerm": "decimalLongitude",
+        "downloadName": "decimalLongitude",
+        "dataType": "double",
+        "classs": "Location",
+        "indexed": true,
+        "docvalue": true,
+        "stored": true,
+        "multivalue": false,
+        "description": "Longitude",
+        "downloadDescription": "Decimal longitude (WGS84)",
+        "info": "The decimal longitude associated with this record. If the original longitude was supplied in degrees, minutes, seconds, this value represents the converted value. http://rs.tdwg.org/dwc/terms/decimalLongitude",
+        "infoUrl": "https://github.com/AtlasOfLivingAustralia/ala-dataquality/wiki/decimalLongitude",
+        "sensitiveField": "sensitive_decimalLongitude"
+      },
+      "eventDate": {
+        "name": "eventDate",
+        "jsonName": "eventDate",
+        "dwcTerm": "eventDate",
+        "downloadName": "eventDate",
+        "dataType": "date",
+        "classs": "Event",
+        "indexed": true,
+        "docvalue": true,
+        "stored": true,
+        "multivalue": false,
+        "description": "Event Date",
+        "downloadDescription": "Event Date",
+        "info": "The ISO formatted date of observation, specimen collection date. http://rs.tdwg.org/dwc/terms/eventDate",
+        "sensitiveField": "sensitive_eventDate"
+      },
+      "license": {
+        "name": "license",
+        "jsonName": "license",
+        "dwcTerm": "dcterms:license",
+        "downloadName": "license",
+        "dataType": "string",
+        "classs": "Record",
+        "indexed": true,
+        "docvalue": true,
+        "stored": true,
+        "multivalue": false,
+        "description": "License",
+        "downloadDescription": "Licence",
+        "info": "The license applying to a record.",
+        "infoUrl": "https://github.com/AtlasOfLivingAustralia/ala-dataquality/wiki/license"
+      },
+      "occurrenceID": {
+        "name": "occurrenceID",
+        "jsonName": "occurrenceID",
+        "dwcTerm": "occurrenceID",
+        "downloadName": "occurrenceID",
+        "dataType": "string",
+        "classs": "Occurrence",
+        "indexed": true,
+        "docvalue": true,
+        "stored": true,
+        "multivalue": false,
+        "description": "Occurrence ID",
+        "info": "http://rs.tdwg.org/dwc/terms/occurrenceID"
+      },
+      "raw_scientificName": {
+        "name": "raw_scientificName",
+        "jsonName": "raw_scientificName",
+        "dwcTerm": "scientificName",
+        "downloadName": "raw_scientificName",
+        "dataType": "string",
+        "classs": "Taxon",
+        "indexed": true,
+        "docvalue": true,
+        "stored": true,
+        "multivalue": false,
+        "description": "Scientific name (unprocessed)",
+        "downloadDescription": "Scientific Name - original",
+        "info": "Original scientific name supplied with the record http://rs.tdwg.org/dwc/terms/scientificName"
+      },
+      "raw_taxonConceptID": {
+        "name": "raw_taxonConceptID",
+        "downloadName": "raw_taxonConceptID",
+        "dataType": "string",
+        "indexed": true,
+        "docvalue": true,
+        "stored": true,
+        "multivalue": false
+      },
+      "scientificName": {
+        "name": "scientificName",
+        "jsonName": "scientificName",
+        "dwcTerm": "scientificName",
+        "downloadName": "scientificName",
+        "dataType": "string",
+        "classs": "Taxon",
+        "indexed": true,
+        "docvalue": true,
+        "stored": true,
+        "multivalue": false,
+        "description": "Scientific name",
+        "downloadDescription": "Scientific Name (intepreted)",
+        "info": "The name the Atlas has matched this record to in the NSL http://rs.tdwg.org/dwc/terms/scientificName"
+      },
+      "taxonConceptID": {
+        "name": "taxonConceptID",
+        "jsonName": "taxonConceptID",
+        "dwcTerm": "taxonConceptID",
+        "downloadName": "taxonConceptID",
+        "dataType": "string",
+        "classs": "Taxon",
+        "indexed": true,
+        "docvalue": true,
+        "stored": true,
+        "multivalue": false,
+        "description": "Taxon Concept ID",
+        "info": "The GUID for the concept in the National Species List (NSL) http://rs.tdwg.org/dwc/terms/taxonConceptID"
+      },
+      "taxonRank": {
+        "name": "taxonRank",
+        "jsonName": "taxonRank",
+        "dwcTerm": "taxonRank",
+        "downloadName": "taxonRank",
+        "dataType": "string",
+        "classs": "Taxon",
+        "indexed": true,
+        "docvalue": true,
+        "stored": true,
+        "multivalue": false,
+        "i18nValues": true,
+        "description": "Identified to rank",
+        "downloadDescription": "Taxon Rank",
+        "info": "http://rs.tdwg.org/dwc/terms/taxonRank"
+      },
+      "year": {
+        "name": "year",
+        "jsonName": "year",
+        "dwcTerm": "year",
+        "downloadName": "year",
+        "dataType": "int",
+        "classs": "Event",
+        "indexed": true,
+        "docvalue": true,
+        "stored": true,
+        "multivalue": false,
+        "description": "Year",
+        "downloadDescription": "Year",
+        "info": "The year in which an occurrence was observed. http://rs.tdwg.org/dwc/terms/year",
+        "infoUrl": "https://github.com/AtlasOfLivingAustralia/ala-dataquality/wiki/year"
+      }
+    }
+  },
+  "biocache_lft_expansion": {
+    "repository": "https://github.com/AtlasOfLivingAustralia/biocache-service",
+    "commit": "bcfb37661008dce5d3e532258458eb72d03e7530",
+    "commit_url": "https://github.com/AtlasOfLivingAustralia/biocache-service/commit/bcfb37661008dce5d3e532258458eb72d03e7530",
+    "source_urls": [
+      "https://raw.githubusercontent.com/AtlasOfLivingAustralia/biocache-service/bcfb37661008dce5d3e532258458eb72d03e7530/src/main/java/au/org/ala/biocache/util/SearchUtils.java",
+      "https://raw.githubusercontent.com/AtlasOfLivingAustralia/biocache-service/bcfb37661008dce5d3e532258458eb72d03e7530/src/main/java/au/org/ala/biocache/util/QueryFormatUtils.java"
+    ],
+    "implementation": "taxonConceptID is expanded through NameUsageMatch lft/rgt subtree as lft:[lft TO rgt], with taxonConceptID fallback when no subtree is available"
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "reviewed_at_utc": "2026-07-23T12:50:00Z",
+  "scope_snapshot": "2026-07-23T12:27:13Z",
+  "query_mode": "parent_species_expansion",
+  "containment_unresolved": false,
+  "deduplication_key": "occurrenceID",
+  "parent_counts": {
+    "thylogale_billardierii": 4525,
+    "notamacropus_rufogriseus": 3191,
+    "macropus_giganteus": 398,
+    "trichosurus_vulpecula": 1615,
+    "pseudocheirus_peregrinus": 367,
+    "vombatus_ursinus": 2391,
+    "sarcophilus_harrisii": 33442,
+    "dasyurus_maculatus": 1169,
+    "dasyurus_viverrinus": 3736
+  },
+  "required_relation_observations": {
+    "macropus_giganteus:macropus_giganteus_tasmaniensis": {
+      "descendant_count": 398,
+      "parent_intersection_count": 398,
+      "status": "contained_in_scope",
+      "national_control_key": null
+    },
+    "vombatus_ursinus:vombatus_ursinus_hirsutus": {
+      "descendant_count": 0,
+      "parent_intersection_count": 0,
+      "status": "contained_via_national_control",
+      "national_control_key": "national:vombatus_ursinus_hirsutus"
+    },
+    "vombatus_ursinus:vombatus_ursinus_tasmaniensis": {
+      "descendant_count": 1312,
+      "parent_intersection_count": 1312,
+      "status": "contained_in_scope",
+      "national_control_key": null
+    },
+    "vombatus_ursinus:vombatus_ursinus_ursinus": {
+      "descendant_count": 644,
+      "parent_intersection_count": 644,
+      "status": "contained_in_scope",
+      "national_control_key": null
+    }
+  },
+  "observations": [
+    "All 24 retained current-route occurrence-search responses were HTTP 200, pageSize=0, facet=false, disableAllQualityFilters=true, and had an empty occurrences array.",
+    "The Vombatus Tasmania direct/intersection counts are 0/0 for hirsutus, 1312/1312 for tasmaniensis, and 644/644 for ursinus; a national control under the same endpoint and quality mode is positive and exact for all three children: 550/550, 3302/3302, and 868/868.",
+    "The Macropus synonym concept-ID query is zero, but the normalized name query taxa:\"Macropus giganteus tasmaniensis\" is 398 and its accepted-parent intersection is 398. This proves name normalization/containment for the current scope without relying on vacuous synonym-ID evidence.",
+    "The documented current route is https://api.ala.org.au/occurrences/occurrences/search (the OpenAPI server base plus /occurrences/search); it accepted the public count-only requests. The legacy biocache route is retained only as a non-authoritative compatibility reference."
+  ],
+  "inference": "Name normalization is established by the 398/398 Macropus name-query intersection. The zero Tasmania hirsutus relation is resolved for containment only through its positive national 550/550 control; it remains an acquisition-time coverage assertion. Parent-species expansion is therefore the default query mode, with an explicit parent-plus-required-alias-and-child union fallback deduplicated by occurrenceID.",
+  "record_rows_retained": 0,
+  "coordinates_retained": false,
+  "facets_retained": false,
+  "readiness_caveat": "Preflight is complete and ready for bounded acquisition design/execution. No occurrence rows, coordinates, facets, or bulk records were retained. P1-D008 remains a separate camera prerequisite; the zero Tasmania hirsutus and synonym-ID probes remain acquisition-time assertions rather than stable ecological results.",
+  "scoped_zero_count_relations": [
+    "vombatus_ursinus:vombatus_ursinus_hirsutus"
+  ],
+  "acquisition_time_assertions": [
+    "vombatus_ursinus_hirsutus_scope_coverage",
+    "macropus_giganteus_tasmaniensis_synonym_id_coverage",
+    "parent_expansion_runtime_coverage",
+    "occurrenceID_deduplication"
+  ],
+  "bulk_execution": false,
+  "readiness_status": "preflight_complete_ready_for_bounded_acquisition_design_execution",
+  "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+  "method": "GET",
+  "disable_all_quality_filters": true,
+  "fallback_mode": "explicit_parent_plus_required_alias_and_child_union",
+  "probe_count": 24,
+  "national_control_observations": {
+    "national:vombatus_ursinus_hirsutus": {
+      "direct_count": 550,
+      "intersection_count": 550,
+      "status": "contained_in_national_control"
+    },
+    "national:vombatus_ursinus_tasmaniensis": {
+      "direct_count": 3302,
+      "intersection_count": 3302,
+      "status": "contained_in_national_control"
+    },
+    "national:vombatus_ursinus_ursinus": {
+      "direct_count": 868,
+      "intersection_count": 868,
+      "status": "contained_in_national_control"
+    }
+  }
+}
