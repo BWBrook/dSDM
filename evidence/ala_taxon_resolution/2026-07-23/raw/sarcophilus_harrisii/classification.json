@@ -1,0 +1,37 @@
+{
+  "classID": "https://biodiversity.org.au/afd/taxa/e9e7db31-04df-41fb-bd8d-e0b0f3c332d6",
+  "classs": "Mammalia",
+  "family": "Dasyuridae",
+  "familyID": "https://biodiversity.org.au/afd/taxa/636b19b2-e505-4214-bd1e-697accdc9478",
+  "genus": "Sarcophilus",
+  "genusID": "https://biodiversity.org.au/afd/taxa/aa40a75d-d499-4339-8a5d-c333a29cea1c",
+  "issues": [
+    "noIssue"
+  ],
+  "kingdom": "Animalia",
+  "kingdomID": "https://biodiversity.org.au/afd/taxa/4647863b-760d-4b59-aaa1-502c8cdf8d3c",
+  "lft": 27025,
+  "matchType": "exactMatch",
+  "nameType": "SCIENTIFIC",
+  "order": "Dasyuromorphia",
+  "orderID": "https://biodiversity.org.au/afd/taxa/2664a357-4e1e-4a79-95f7-4fa48e0f0091",
+  "phylum": "Chordata",
+  "phylumID": "https://biodiversity.org.au/afd/taxa/065f1da4-53cd-40b8-a396-80fa5c74dedd",
+  "rank": "species",
+  "rankID": 7000,
+  "rgt": 27025,
+  "scientificName": "Sarcophilus harrisii",
+  "scientificNameAuthorship": "(Boitard, 1841)",
+  "species": "Sarcophilus harrisii",
+  "speciesGroup": [
+    "Animals",
+    "Mammals"
+  ],
+  "speciesID": "https://biodiversity.org.au/afd/taxa/c6b5ff5a-a991-4972-b5b0-4214141d5bd6",
+  "speciesSubgroup": [
+    "Carnivorous Marsupials"
+  ],
+  "success": true,
+  "taxonConceptID": "https://biodiversity.org.au/afd/taxa/c6b5ff5a-a991-4972-b5b0-4214141d5bd6",
+  "vernacularName": "Tasmanian Devil"
+}

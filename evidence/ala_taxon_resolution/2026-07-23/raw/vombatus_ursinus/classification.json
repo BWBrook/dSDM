@@ -1,0 +1,37 @@
+{
+  "classID": "https://biodiversity.org.au/afd/taxa/e9e7db31-04df-41fb-bd8d-e0b0f3c332d6",
+  "classs": "Mammalia",
+  "family": "Vombatidae",
+  "familyID": "https://biodiversity.org.au/afd/taxa/b642c1b8-dfbd-408a-94e7-6620559ca2d1",
+  "genus": "Vombatus",
+  "genusID": "https://biodiversity.org.au/afd/taxa/ae011935-f205-4c4a-bbf1-5f1e152855f0",
+  "issues": [
+    "noIssue"
+  ],
+  "kingdom": "Animalia",
+  "kingdomID": "https://biodiversity.org.au/afd/taxa/4647863b-760d-4b59-aaa1-502c8cdf8d3c",
+  "lft": 27224,
+  "matchType": "exactMatch",
+  "nameType": "SCIENTIFIC",
+  "order": "Diprotodontia",
+  "orderID": "https://biodiversity.org.au/afd/taxa/bd223248-af12-4ce9-9380-4f9a85be38db",
+  "phylum": "Chordata",
+  "phylumID": "https://biodiversity.org.au/afd/taxa/065f1da4-53cd-40b8-a396-80fa5c74dedd",
+  "rank": "species",
+  "rankID": 7000,
+  "rgt": 27230,
+  "scientificName": "Vombatus ursinus",
+  "scientificNameAuthorship": "(Shaw, 1800)",
+  "species": "Vombatus ursinus",
+  "speciesGroup": [
+    "Animals",
+    "Mammals"
+  ],
+  "speciesID": "https://biodiversity.org.au/afd/taxa/66d42847-c556-4fa3-902c-a91d9f517286",
+  "speciesSubgroup": [
+    "Herbivorous Marsupials"
+  ],
+  "success": true,
+  "taxonConceptID": "https://biodiversity.org.au/afd/taxa/66d42847-c556-4fa3-902c-a91d9f517286",
+  "vernacularName": "Bare-nosed Wombat"
+}

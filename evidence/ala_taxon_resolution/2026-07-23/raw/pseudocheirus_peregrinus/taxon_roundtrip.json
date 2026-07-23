@@ -1,0 +1,36 @@
+{
+  "classID": "https://biodiversity.org.au/afd/taxa/e9e7db31-04df-41fb-bd8d-e0b0f3c332d6",
+  "classs": "Mammalia",
+  "family": "Pseudocheiridae",
+  "familyID": "https://biodiversity.org.au/afd/taxa/e80090ca-67d8-4b3c-aa89-04b641233a41",
+  "genus": "Pseudocheirus",
+  "genusID": "https://biodiversity.org.au/afd/taxa/f15858c0-09b8-4009-a890-e755deb45d20",
+  "issues": [
+    "noIssue"
+  ],
+  "kingdom": "Animalia",
+  "kingdomID": "https://biodiversity.org.au/afd/taxa/4647863b-760d-4b59-aaa1-502c8cdf8d3c",
+  "lft": 27287,
+  "matchType": "taxonIdMatch",
+  "order": "Diprotodontia",
+  "orderID": "https://biodiversity.org.au/afd/taxa/bd223248-af12-4ce9-9380-4f9a85be38db",
+  "phylum": "Chordata",
+  "phylumID": "https://biodiversity.org.au/afd/taxa/065f1da4-53cd-40b8-a396-80fa5c74dedd",
+  "rank": "species",
+  "rankID": 7000,
+  "rgt": 27295,
+  "scientificName": "Pseudocheirus peregrinus",
+  "scientificNameAuthorship": "(Boddaert, 1785)",
+  "species": "Pseudocheirus peregrinus",
+  "speciesGroup": [
+    "Animals",
+    "Mammals"
+  ],
+  "speciesID": "https://biodiversity.org.au/afd/taxa/003decd6-ec3d-468e-909d-da396a6dd1f6",
+  "speciesSubgroup": [
+    "Herbivorous Marsupials"
+  ],
+  "success": true,
+  "taxonConceptID": "https://biodiversity.org.au/afd/taxa/003decd6-ec3d-468e-909d-da396a6dd1f6",
+  "vernacularName": "Common Ringtail Possum"
+}

@@ -1,0 +1,243 @@
+{
+  "bundle_id": "dsdm-phase1-decision-bundle",
+  "candidates": [
+    {
+      "authorship": "(Desmarest, 1822)",
+      "class": "Mammalia",
+      "evidence_backed_aliases": [],
+      "family": "Macropodidae",
+      "flag": null,
+      "issues": [
+        "noIssue"
+      ],
+      "kingdom": "Animalia",
+      "match_type": "exactMatch",
+      "name_type": "SCIENTIFIC",
+      "query": "Thylogale billardierii",
+      "rank": "species",
+      "raw_synonyms": [
+        "Halmaturus brachytarsus",
+        "Halmaturus (Thylogale) tasmanei",
+        "Macropus (Halmaturus) rufiventer",
+        "Kangurus billardierii"
+      ],
+      "recommendation": "recommendable",
+      "returned_scientific_name": "Thylogale billardierii",
+      "species_id": "thylogale_billardierii",
+      "species_id_returned": "https://biodiversity.org.au/afd/taxa/82e69509-af63-4502-86f7-43362b777865",
+      "synonym_type": "accepted",
+      "taxon_concept_id": "https://biodiversity.org.au/afd/taxa/82e69509-af63-4502-86f7-43362b777865"
+    },
+    {
+      "authorship": "(Desmarest, 1817)",
+      "class": "Mammalia",
+      "evidence_backed_aliases": [
+        "Macropus rufogriseus"
+      ],
+      "family": "Macropodidae",
+      "flag": null,
+      "issues": [
+        "noIssue"
+      ],
+      "kingdom": "Animalia",
+      "match_type": "exactMatch",
+      "name_type": "SCIENTIFIC",
+      "query": "Notamacropus rufogriseus",
+      "rank": "species",
+      "raw_synonyms": [
+        "Macropus rufogriseus",
+        "Wallabia rufogrisea",
+        "Notamcropus rufogriseus",
+        "Notamacropus rufogriseue"
+      ],
+      "recommendation": "recommendable",
+      "returned_scientific_name": "Notamacropus rufogriseus",
+      "species_id": "notamacropus_rufogriseus",
+      "species_id_returned": "https://biodiversity.org.au/afd/taxa/c4dfafef-5192-4a3d-815c-040c393e9bca",
+      "synonym_type": "accepted",
+      "taxon_concept_id": "https://biodiversity.org.au/afd/taxa/c4dfafef-5192-4a3d-815c-040c393e9bca"
+    },
+    {
+      "authorship": "Shaw, 1790",
+      "class": "Mammalia",
+      "evidence_backed_aliases": [],
+      "family": "Macropodidae",
+      "flag": null,
+      "issues": [
+        "noIssue"
+      ],
+      "kingdom": "Animalia",
+      "match_type": "exactMatch",
+      "name_type": "SCIENTIFIC",
+      "query": "Macropus giganteus",
+      "rank": "species",
+      "raw_synonyms": [
+        "Macropus titan Owen, 1838",
+        "Macropus giganteus tasmaniensis",
+        "Halmaturus griseofuscus",
+        "Macropus titan",
+        "Macropus (Macropus) titan",
+        "Kangurus labiatus",
+        "Dipus tridactylus",
+        "Macropus titan Owen",
+        "Macropus major"
+      ],
+      "recommendation": "recommendable",
+      "returned_scientific_name": "Macropus giganteus",
+      "species_id": "macropus_giganteus",
+      "species_id_returned": "https://biodiversity.org.au/afd/taxa/f2f43ef9-89fd-4f89-8b06-0842e86cfe06",
+      "synonym_type": "accepted",
+      "taxon_concept_id": "https://biodiversity.org.au/afd/taxa/f2f43ef9-89fd-4f89-8b06-0842e86cfe06"
+    },
+    {
+      "authorship": "(Kerr, 1792)",
+      "class": "Mammalia",
+      "evidence_backed_aliases": [],
+      "family": "Phalangeridae",
+      "flag": null,
+      "issues": [
+        "noIssue"
+      ],
+      "kingdom": "Animalia",
+      "match_type": "exactMatch",
+      "name_type": "SCIENTIFIC",
+      "query": "Trichosurus vulpecula",
+      "rank": "species",
+      "raw_synonyms": [],
+      "recommendation": "recommendable",
+      "returned_scientific_name": "Trichosurus vulpecula",
+      "species_id": "trichosurus_vulpecula",
+      "species_id_returned": "https://biodiversity.org.au/afd/taxa/ee2cb6a9-e17c-4ca7-8aef-76d69eb969ed",
+      "synonym_type": "accepted",
+      "taxon_concept_id": "https://biodiversity.org.au/afd/taxa/ee2cb6a9-e17c-4ca7-8aef-76d69eb969ed"
+    },
+    {
+      "authorship": "(Boddaert, 1785)",
+      "class": "Mammalia",
+      "evidence_backed_aliases": [],
+      "family": "Pseudocheiridae",
+      "flag": null,
+      "issues": [
+        "noIssue"
+      ],
+      "kingdom": "Animalia",
+      "match_type": "exactMatch",
+      "name_type": "SCIENTIFIC",
+      "query": "Pseudocheirus peregrinus",
+      "rank": "species",
+      "raw_synonyms": [],
+      "recommendation": "recommendable",
+      "returned_scientific_name": "Pseudocheirus peregrinus",
+      "species_id": "pseudocheirus_peregrinus",
+      "species_id_returned": "https://biodiversity.org.au/afd/taxa/003decd6-ec3d-468e-909d-da396a6dd1f6",
+      "synonym_type": "accepted",
+      "taxon_concept_id": "https://biodiversity.org.au/afd/taxa/003decd6-ec3d-468e-909d-da396a6dd1f6"
+    },
+    {
+      "authorship": "(Shaw, 1800)",
+      "class": "Mammalia",
+      "evidence_backed_aliases": [],
+      "family": "Vombatidae",
+      "flag": null,
+      "issues": [
+        "noIssue"
+      ],
+      "kingdom": "Animalia",
+      "match_type": "exactMatch",
+      "name_type": "SCIENTIFIC",
+      "query": "Vombatus ursinus",
+      "rank": "species",
+      "raw_synonyms": [
+        "Phascolomys ursinus"
+      ],
+      "recommendation": "recommendable",
+      "returned_scientific_name": "Vombatus ursinus",
+      "species_id": "vombatus_ursinus",
+      "species_id_returned": "https://biodiversity.org.au/afd/taxa/66d42847-c556-4fa3-902c-a91d9f517286",
+      "synonym_type": "accepted",
+      "taxon_concept_id": "https://biodiversity.org.au/afd/taxa/66d42847-c556-4fa3-902c-a91d9f517286"
+    },
+    {
+      "authorship": "(Boitard, 1841)",
+      "class": "Mammalia",
+      "evidence_backed_aliases": [],
+      "family": "Dasyuridae",
+      "flag": null,
+      "issues": [
+        "noIssue"
+      ],
+      "kingdom": "Animalia",
+      "match_type": "exactMatch",
+      "name_type": "SCIENTIFIC",
+      "query": "Sarcophilus harrisii",
+      "rank": "species",
+      "raw_synonyms": [
+        "Didelphis ursina",
+        "Sarcophilus ursinus",
+        "Sarcophilus satanicus",
+        "Ursinus harrisii"
+      ],
+      "recommendation": "recommendable",
+      "returned_scientific_name": "Sarcophilus harrisii",
+      "species_id": "sarcophilus_harrisii",
+      "species_id_returned": "https://biodiversity.org.au/afd/taxa/c6b5ff5a-a991-4972-b5b0-4214141d5bd6",
+      "synonym_type": "accepted",
+      "taxon_concept_id": "https://biodiversity.org.au/afd/taxa/c6b5ff5a-a991-4972-b5b0-4214141d5bd6"
+    },
+    {
+      "authorship": "(Kerr, 1792)",
+      "class": "Mammalia",
+      "evidence_backed_aliases": [],
+      "family": "Dasyuridae",
+      "flag": null,
+      "issues": [
+        "noIssue"
+      ],
+      "kingdom": "Animalia",
+      "match_type": "exactMatch",
+      "name_type": "SCIENTIFIC",
+      "query": "Dasyurus maculatus",
+      "rank": "species",
+      "raw_synonyms": [
+        "Dasyurops maculatus",
+        "Stictophonus maculatus"
+      ],
+      "recommendation": "recommendable",
+      "returned_scientific_name": "Dasyurus maculatus",
+      "species_id": "dasyurus_maculatus",
+      "species_id_returned": "https://biodiversity.org.au/afd/taxa/73c23669-c491-42d0-83b3-6fd84a03689a",
+      "synonym_type": "accepted",
+      "taxon_concept_id": "https://biodiversity.org.au/afd/taxa/73c23669-c491-42d0-83b3-6fd84a03689a"
+    },
+    {
+      "authorship": "(Shaw, 1800)",
+      "class": "Mammalia",
+      "evidence_backed_aliases": [],
+      "family": "Dasyuridae",
+      "flag": null,
+      "issues": [
+        "noIssue"
+      ],
+      "kingdom": "Animalia",
+      "match_type": "exactMatch",
+      "name_type": "SCIENTIFIC",
+      "query": "Dasyurus viverrinus",
+      "rank": "species",
+      "raw_synonyms": [
+        "Didelphis maculata",
+        "Didelphis alboguttata",
+        "Didelphis viverrina",
+        "Dasyurus maugei",
+        "Dasyurus guttatus",
+        "Nasira viverrina"
+      ],
+      "recommendation": "recommendable",
+      "returned_scientific_name": "Dasyurus viverrinus",
+      "species_id": "dasyurus_viverrinus",
+      "species_id_returned": "https://biodiversity.org.au/afd/taxa/1e9f1b49-78b5-409d-91f2-21615ce88e9d",
+      "synonym_type": "accepted",
+      "taxon_concept_id": "https://biodiversity.org.au/afd/taxa/1e9f1b49-78b5-409d-91f2-21615ce88e9d"
+    }
+  ],
+  "contract_version": "1.0"
+}

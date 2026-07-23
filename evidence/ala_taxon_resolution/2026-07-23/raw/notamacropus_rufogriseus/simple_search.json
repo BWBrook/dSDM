@@ -1,0 +1,37 @@
+{
+  "classID": "https://biodiversity.org.au/afd/taxa/e9e7db31-04df-41fb-bd8d-e0b0f3c332d6",
+  "classs": "Mammalia",
+  "family": "Macropodidae",
+  "familyID": "https://biodiversity.org.au/afd/taxa/93df984b-252a-4ffd-b1f3-fc0364371ba9",
+  "genus": "Notamacropus",
+  "genusID": "https://biodiversity.org.au/afd/taxa/1ddcce48-55c5-468b-af7b-897e9261247c",
+  "issues": [
+    "noIssue"
+  ],
+  "kingdom": "Animalia",
+  "kingdomID": "https://biodiversity.org.au/afd/taxa/4647863b-760d-4b59-aaa1-502c8cdf8d3c",
+  "lft": 27470,
+  "matchType": "exactMatch",
+  "nameType": "SCIENTIFIC",
+  "order": "Diprotodontia",
+  "orderID": "https://biodiversity.org.au/afd/taxa/bd223248-af12-4ce9-9380-4f9a85be38db",
+  "phylum": "Chordata",
+  "phylumID": "https://biodiversity.org.au/afd/taxa/065f1da4-53cd-40b8-a396-80fa5c74dedd",
+  "rank": "species",
+  "rankID": 7000,
+  "rgt": 27474,
+  "scientificName": "Notamacropus rufogriseus",
+  "scientificNameAuthorship": "(Desmarest, 1817)",
+  "species": "Notamacropus rufogriseus",
+  "speciesGroup": [
+    "Animals",
+    "Mammals"
+  ],
+  "speciesID": "https://biodiversity.org.au/afd/taxa/c4dfafef-5192-4a3d-815c-040c393e9bca",
+  "speciesSubgroup": [
+    "Herbivorous Marsupials"
+  ],
+  "success": true,
+  "taxonConceptID": "https://biodiversity.org.au/afd/taxa/c4dfafef-5192-4a3d-815c-040c393e9bca",
+  "vernacularName": "Red-necked Wallaby"
+}

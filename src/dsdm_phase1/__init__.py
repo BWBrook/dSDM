@@ -16,6 +16,11 @@ from .manifests import (
     build_mocked_acquisition_request_manifest,
     build_normalized_source_row_gate_summary,
 )
+from .ala_taxon_resolution import (
+    build_candidate_contract,
+    retrieve_ala_taxon_evidence,
+    validate_evidence_package,
+)
 
 __all__ = [
     "ValidationError",
@@ -30,4 +35,7 @@ __all__ = [
     "validate_source_contracts",
     "validate_source_rows",
     "validate_species_contract",
+    "build_candidate_contract",
+    "retrieve_ala_taxon_evidence",
+    "validate_evidence_package",
 ]

@@ -1,0 +1,37 @@
+{
+  "classID": "https://biodiversity.org.au/afd/taxa/e9e7db31-04df-41fb-bd8d-e0b0f3c332d6",
+  "classs": "Mammalia",
+  "family": "Phalangeridae",
+  "familyID": "https://biodiversity.org.au/afd/taxa/d97711e4-ae91-45bf-b03c-e33e71624435",
+  "genus": "Trichosurus",
+  "genusID": "https://biodiversity.org.au/afd/taxa/184bffbd-2ce3-4b12-a25d-46939280c08a",
+  "issues": [
+    "noIssue"
+  ],
+  "kingdom": "Animalia",
+  "kingdomID": "https://biodiversity.org.au/afd/taxa/4647863b-760d-4b59-aaa1-502c8cdf8d3c",
+  "lft": 27645,
+  "matchType": "exactMatch",
+  "nameType": "SCIENTIFIC",
+  "order": "Diprotodontia",
+  "orderID": "https://biodiversity.org.au/afd/taxa/bd223248-af12-4ce9-9380-4f9a85be38db",
+  "phylum": "Chordata",
+  "phylumID": "https://biodiversity.org.au/afd/taxa/065f1da4-53cd-40b8-a396-80fa5c74dedd",
+  "rank": "species",
+  "rankID": 7000,
+  "rgt": 27657,
+  "scientificName": "Trichosurus vulpecula",
+  "scientificNameAuthorship": "(Kerr, 1792)",
+  "species": "Trichosurus vulpecula",
+  "speciesGroup": [
+    "Animals",
+    "Mammals"
+  ],
+  "speciesID": "https://biodiversity.org.au/afd/taxa/ee2cb6a9-e17c-4ca7-8aef-76d69eb969ed",
+  "speciesSubgroup": [
+    "Herbivorous Marsupials"
+  ],
+  "success": true,
+  "taxonConceptID": "https://biodiversity.org.au/afd/taxa/ee2cb6a9-e17c-4ca7-8aef-76d69eb969ed",
+  "vernacularName": "Common Brushtail Possum"
+}

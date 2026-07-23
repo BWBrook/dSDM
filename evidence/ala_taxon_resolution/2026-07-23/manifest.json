@@ -1,0 +1,444 @@
+{
+  "official_surfaces": {
+    "bie": "https://bie-ws.ala.org.au/ws",
+    "name_matching": "https://namematching-ws.ala.org.au"
+  },
+  "openapi": {
+    "content_type": "application/json",
+    "method": "GET",
+    "path": "raw/namematching_openapi.json",
+    "sha256": "f3c5c97934ec62e70f6f47e43371f83f74781b57447cc4802ce7619dbe54918c",
+    "status": 200,
+    "url": "https://docs.ala.org.au/openapi/specs/namematching.json"
+  },
+  "package_id": "ala_taxon_resolution_evidence",
+  "records": [
+    {
+      "alias_evidence": [],
+      "bie_guid_file": {
+        "content_type": "application/json;charset=UTF-8",
+        "method": "GET",
+        "path": "raw/thylogale_billardierii/bie_guid.json",
+        "sha256": "74d1d690e299d8eedd16cbcd01aa4796388f3e8a20bf3f38753ae935e5faf016",
+        "status": 200,
+        "url": "https://bie-ws.ala.org.au/ws/guid/Thylogale%20billardierii"
+      },
+      "bie_species_file": {
+        "content_type": "application/json;charset=UTF-8",
+        "method": "GET",
+        "path": "raw/thylogale_billardierii/bie_species.json",
+        "sha256": "8225356fe6c6cae99fd0552e15b7e69a45d5acbaf61f71c6d96087a349e47620",
+        "status": 200,
+        "url": "https://bie-ws.ala.org.au/ws/species/https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F82e69509-af63-4502-86f7-43362b777865"
+      },
+      "classification_file": {
+        "content_type": "application/json",
+        "method": "GET",
+        "path": "raw/thylogale_billardierii/classification.json",
+        "sha256": "d19ff5cd79d8e4e57b6cf79bf1f92c707dd6ce1fc48454ba20fe9f060df16ff5",
+        "status": 200,
+        "url": "https://namematching-ws.ala.org.au/api/searchByClassification?scientificName=Thylogale+billardierii&kingdom=Animalia&class=Mammalia&rank=species"
+      },
+      "query": "Thylogale billardierii",
+      "retrieved_at": "2026-07-23T10:07:15Z",
+      "simple_search_file": {
+        "content_type": "application/json",
+        "method": "GET",
+        "path": "raw/thylogale_billardierii/simple_search.json",
+        "sha256": "d19ff5cd79d8e4e57b6cf79bf1f92c707dd6ce1fc48454ba20fe9f060df16ff5",
+        "status": 200,
+        "url": "https://namematching-ws.ala.org.au/api/search?q=Thylogale+billardierii"
+      },
+      "species_id": "thylogale_billardierii",
+      "taxon_roundtrip_file": {
+        "content_type": "application/json",
+        "method": "GET",
+        "path": "raw/thylogale_billardierii/taxon_roundtrip.json",
+        "sha256": "5edd3a01366fa3304e3352b9e3465e4cb94a9a380474a192f3328595f32aa536",
+        "status": 200,
+        "url": "https://namematching-ws.ala.org.au/api/getByTaxonID?taxonID=https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F82e69509-af63-4502-86f7-43362b777865"
+      }
+    },
+    {
+      "alias_evidence": [
+        {
+          "accepted_identifier": "https://biodiversity.org.au/afd/taxa/c4dfafef-5192-4a3d-815c-040c393e9bca",
+          "alias": "Macropus rufogriseus",
+          "content_type": "application/json;charset=UTF-8",
+          "method": "GET",
+          "path": "raw/notamacropus_rufogriseus/alias_macropus_rufogriseus.json",
+          "response_sha256": "c13543390f729ad2347de68228330393ecc0dfa33ea56b0fa3d6a84693bcb8c0",
+          "status": 200,
+          "url": "https://bie-ws.ala.org.au/ws/guid/Macropus%20rufogriseus"
+        }
+      ],
+      "bie_guid_file": {
+        "content_type": "application/json;charset=UTF-8",
+        "method": "GET",
+        "path": "raw/notamacropus_rufogriseus/bie_guid.json",
+        "sha256": "f86c6fe78e2ec77f18fa7346c61c26bbbc1b5671ffb4aaa050a7e52204ebe640",
+        "status": 200,
+        "url": "https://bie-ws.ala.org.au/ws/guid/Notamacropus%20rufogriseus"
+      },
+      "bie_species_file": {
+        "content_type": "application/json;charset=UTF-8",
+        "method": "GET",
+        "path": "raw/notamacropus_rufogriseus/bie_species.json",
+        "sha256": "4898b0846148610468db0e74aac82e30d56c28394219743bd29d57ce20e04c83",
+        "status": 200,
+        "url": "https://bie-ws.ala.org.au/ws/species/https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Fc4dfafef-5192-4a3d-815c-040c393e9bca"
+      },
+      "classification_file": {
+        "content_type": "application/json",
+        "method": "GET",
+        "path": "raw/notamacropus_rufogriseus/classification.json",
+        "sha256": "9c55ad594f0d77dc99aab04d28e3987ccd062cebb50405a512dc8112a7140d1f",
+        "status": 200,
+        "url": "https://namematching-ws.ala.org.au/api/searchByClassification?scientificName=Notamacropus+rufogriseus&kingdom=Animalia&class=Mammalia&rank=species"
+      },
+      "query": "Notamacropus rufogriseus",
+      "retrieved_at": "2026-07-23T10:07:15Z",
+      "simple_search_file": {
+        "content_type": "application/json",
+        "method": "GET",
+        "path": "raw/notamacropus_rufogriseus/simple_search.json",
+        "sha256": "9c55ad594f0d77dc99aab04d28e3987ccd062cebb50405a512dc8112a7140d1f",
+        "status": 200,
+        "url": "https://namematching-ws.ala.org.au/api/search?q=Notamacropus+rufogriseus"
+      },
+      "species_id": "notamacropus_rufogriseus",
+      "taxon_roundtrip_file": {
+        "content_type": "application/json",
+        "method": "GET",
+        "path": "raw/notamacropus_rufogriseus/taxon_roundtrip.json",
+        "sha256": "1bc833edc5a0e67a768ff12e0ff78470cf5eb9babf72825d1b154d2eab3e2c2f",
+        "status": 200,
+        "url": "https://namematching-ws.ala.org.au/api/getByTaxonID?taxonID=https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Fc4dfafef-5192-4a3d-815c-040c393e9bca"
+      }
+    },
+    {
+      "alias_evidence": [],
+      "bie_guid_file": {
+        "content_type": "application/json;charset=UTF-8",
+        "method": "GET",
+        "path": "raw/macropus_giganteus/bie_guid.json",
+        "sha256": "62906b57cf95734e58e66039bd73f3a01dbc1a0cce2f508a3c9a2a68186c6a79",
+        "status": 200,
+        "url": "https://bie-ws.ala.org.au/ws/guid/Macropus%20giganteus"
+      },
+      "bie_species_file": {
+        "content_type": "application/json;charset=UTF-8",
+        "method": "GET",
+        "path": "raw/macropus_giganteus/bie_species.json",
+        "sha256": "d34b7062e6bd4886a199fde37d6d22992f74518b47e5d9b3326925b930ed1206",
+        "status": 200,
+        "url": "https://bie-ws.ala.org.au/ws/species/https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Ff2f43ef9-89fd-4f89-8b06-0842e86cfe06"
+      },
+      "classification_file": {
+        "content_type": "application/json",
+        "method": "GET",
+        "path": "raw/macropus_giganteus/classification.json",
+        "sha256": "bccc59902561a1a283138faf89cd332563870ae0f8faa342484c8d075b257984",
+        "status": 200,
+        "url": "https://namematching-ws.ala.org.au/api/searchByClassification?scientificName=Macropus+giganteus&kingdom=Animalia&class=Mammalia&rank=species"
+      },
+      "query": "Macropus giganteus",
+      "retrieved_at": "2026-07-23T10:07:15Z",
+      "simple_search_file": {
+        "content_type": "application/json",
+        "method": "GET",
+        "path": "raw/macropus_giganteus/simple_search.json",
+        "sha256": "bccc59902561a1a283138faf89cd332563870ae0f8faa342484c8d075b257984",
+        "status": 200,
+        "url": "https://namematching-ws.ala.org.au/api/search?q=Macropus+giganteus"
+      },
+      "species_id": "macropus_giganteus",
+      "taxon_roundtrip_file": {
+        "content_type": "application/json",
+        "method": "GET",
+        "path": "raw/macropus_giganteus/taxon_roundtrip.json",
+        "sha256": "30daf9de7b0c42f8830c828a971ba2e09a535ed8adcda7d38b83b3b5d5606395",
+        "status": 200,
+        "url": "https://namematching-ws.ala.org.au/api/getByTaxonID?taxonID=https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Ff2f43ef9-89fd-4f89-8b06-0842e86cfe06"
+      }
+    },
+    {
+      "alias_evidence": [],
+      "bie_guid_file": {
+        "content_type": "application/json;charset=UTF-8",
+        "method": "GET",
+        "path": "raw/trichosurus_vulpecula/bie_guid.json",
+        "sha256": "a211c4120d71b8136b01761961d28ffdce049fd9cd989f3b6adb0bc1b4363861",
+        "status": 200,
+        "url": "https://bie-ws.ala.org.au/ws/guid/Trichosurus%20vulpecula"
+      },
+      "bie_species_file": {
+        "content_type": "application/json;charset=UTF-8",
+        "method": "GET",
+        "path": "raw/trichosurus_vulpecula/bie_species.json",
+        "sha256": "7dd9e419d7e6fc354ecdc6bd1c4e1b642434c96d97951ade6592bbc92875a305",
+        "status": 200,
+        "url": "https://bie-ws.ala.org.au/ws/species/https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Fee2cb6a9-e17c-4ca7-8aef-76d69eb969ed"
+      },
+      "classification_file": {
+        "content_type": "application/json",
+        "method": "GET",
+        "path": "raw/trichosurus_vulpecula/classification.json",
+        "sha256": "f0ee68762814a2caec202d91b728856a55233868ae4d67010140b03976ca479c",
+        "status": 200,
+        "url": "https://namematching-ws.ala.org.au/api/searchByClassification?scientificName=Trichosurus+vulpecula&kingdom=Animalia&class=Mammalia&rank=species"
+      },
+      "query": "Trichosurus vulpecula",
+      "retrieved_at": "2026-07-23T10:07:15Z",
+      "simple_search_file": {
+        "content_type": "application/json",
+        "method": "GET",
+        "path": "raw/trichosurus_vulpecula/simple_search.json",
+        "sha256": "f0ee68762814a2caec202d91b728856a55233868ae4d67010140b03976ca479c",
+        "status": 200,
+        "url": "https://namematching-ws.ala.org.au/api/search?q=Trichosurus+vulpecula"
+      },
+      "species_id": "trichosurus_vulpecula",
+      "taxon_roundtrip_file": {
+        "content_type": "application/json",
+        "method": "GET",
+        "path": "raw/trichosurus_vulpecula/taxon_roundtrip.json",
+        "sha256": "e88c9252bd042bffe8ccd3ee370c18d5db82d686c3d6f08e0c36cd79591dbf38",
+        "status": 200,
+        "url": "https://namematching-ws.ala.org.au/api/getByTaxonID?taxonID=https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Fee2cb6a9-e17c-4ca7-8aef-76d69eb969ed"
+      }
+    },
+    {
+      "alias_evidence": [],
+      "bie_guid_file": {
+        "content_type": "application/json;charset=UTF-8",
+        "method": "GET",
+        "path": "raw/pseudocheirus_peregrinus/bie_guid.json",
+        "sha256": "819ad2c63c2997dbf835cf57307240a92672ac82b0843710cacaa0f4164f121a",
+        "status": 200,
+        "url": "https://bie-ws.ala.org.au/ws/guid/Pseudocheirus%20peregrinus"
+      },
+      "bie_species_file": {
+        "content_type": "application/json;charset=UTF-8",
+        "method": "GET",
+        "path": "raw/pseudocheirus_peregrinus/bie_species.json",
+        "sha256": "1457effccca811ae9d2353e888c7dd3410ff6d49cd3cbaaf20be3b9dff688371",
+        "status": 200,
+        "url": "https://bie-ws.ala.org.au/ws/species/https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F003decd6-ec3d-468e-909d-da396a6dd1f6"
+      },
+      "classification_file": {
+        "content_type": "application/json",
+        "method": "GET",
+        "path": "raw/pseudocheirus_peregrinus/classification.json",
+        "sha256": "30e14772ba884eae8a6866df25c0e953595b250d2245fa52507c89369c09ad9e",
+        "status": 200,
+        "url": "https://namematching-ws.ala.org.au/api/searchByClassification?scientificName=Pseudocheirus+peregrinus&kingdom=Animalia&class=Mammalia&rank=species"
+      },
+      "query": "Pseudocheirus peregrinus",
+      "retrieved_at": "2026-07-23T10:07:15Z",
+      "simple_search_file": {
+        "content_type": "application/json",
+        "method": "GET",
+        "path": "raw/pseudocheirus_peregrinus/simple_search.json",
+        "sha256": "30e14772ba884eae8a6866df25c0e953595b250d2245fa52507c89369c09ad9e",
+        "status": 200,
+        "url": "https://namematching-ws.ala.org.au/api/search?q=Pseudocheirus+peregrinus"
+      },
+      "species_id": "pseudocheirus_peregrinus",
+      "taxon_roundtrip_file": {
+        "content_type": "application/json",
+        "method": "GET",
+        "path": "raw/pseudocheirus_peregrinus/taxon_roundtrip.json",
+        "sha256": "aefb9a0f2b62b439cdb6e6190c1dbaf5710a05bd963cc4a899dbf9467be0d710",
+        "status": 200,
+        "url": "https://namematching-ws.ala.org.au/api/getByTaxonID?taxonID=https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F003decd6-ec3d-468e-909d-da396a6dd1f6"
+      }
+    },
+    {
+      "alias_evidence": [],
+      "bie_guid_file": {
+        "content_type": "application/json;charset=UTF-8",
+        "method": "GET",
+        "path": "raw/vombatus_ursinus/bie_guid.json",
+        "sha256": "0232fedaf619402fe1415beb49f6d532e6fea3b00d50798c7f6f5b983b89dd8f",
+        "status": 200,
+        "url": "https://bie-ws.ala.org.au/ws/guid/Vombatus%20ursinus"
+      },
+      "bie_species_file": {
+        "content_type": "application/json;charset=UTF-8",
+        "method": "GET",
+        "path": "raw/vombatus_ursinus/bie_species.json",
+        "sha256": "fbfe8b3c0b1334581c5f874d617b7b5e50669e69779713450d1e9184ddb025fa",
+        "status": 200,
+        "url": "https://bie-ws.ala.org.au/ws/species/https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F66d42847-c556-4fa3-902c-a91d9f517286"
+      },
+      "classification_file": {
+        "content_type": "application/json",
+        "method": "GET",
+        "path": "raw/vombatus_ursinus/classification.json",
+        "sha256": "60dc68ba60b629f5fb872e7cfd035a288977cad4417a8f9a2477621b0b5952b0",
+        "status": 200,
+        "url": "https://namematching-ws.ala.org.au/api/searchByClassification?scientificName=Vombatus+ursinus&kingdom=Animalia&class=Mammalia&rank=species"
+      },
+      "query": "Vombatus ursinus",
+      "retrieved_at": "2026-07-23T10:07:15Z",
+      "simple_search_file": {
+        "content_type": "application/json",
+        "method": "GET",
+        "path": "raw/vombatus_ursinus/simple_search.json",
+        "sha256": "60dc68ba60b629f5fb872e7cfd035a288977cad4417a8f9a2477621b0b5952b0",
+        "status": 200,
+        "url": "https://namematching-ws.ala.org.au/api/search?q=Vombatus+ursinus"
+      },
+      "species_id": "vombatus_ursinus",
+      "taxon_roundtrip_file": {
+        "content_type": "application/json",
+        "method": "GET",
+        "path": "raw/vombatus_ursinus/taxon_roundtrip.json",
+        "sha256": "0387643ee6809de8ac91786a43f96e7732ce671048b29c8b83cc290e9ea009a2",
+        "status": 200,
+        "url": "https://namematching-ws.ala.org.au/api/getByTaxonID?taxonID=https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F66d42847-c556-4fa3-902c-a91d9f517286"
+      }
+    },
+    {
+      "alias_evidence": [],
+      "bie_guid_file": {
+        "content_type": "application/json;charset=UTF-8",
+        "method": "GET",
+        "path": "raw/sarcophilus_harrisii/bie_guid.json",
+        "sha256": "5170b7bedb7f77697505bdee3edc5d23fb47b3425412b721b2be7d5e9122f867",
+        "status": 200,
+        "url": "https://bie-ws.ala.org.au/ws/guid/Sarcophilus%20harrisii"
+      },
+      "bie_species_file": {
+        "content_type": "application/json;charset=UTF-8",
+        "method": "GET",
+        "path": "raw/sarcophilus_harrisii/bie_species.json",
+        "sha256": "7bb688ad91a0e10bf735dd9591e49c61cd5bbf4d99703d1fdff5fe39af5c317f",
+        "status": 200,
+        "url": "https://bie-ws.ala.org.au/ws/species/https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Fc6b5ff5a-a991-4972-b5b0-4214141d5bd6"
+      },
+      "classification_file": {
+        "content_type": "application/json",
+        "method": "GET",
+        "path": "raw/sarcophilus_harrisii/classification.json",
+        "sha256": "86edaa17844393a59924e86ad45c67c22e1ab9b98eaa97b8b5aec3207fc8a39c",
+        "status": 200,
+        "url": "https://namematching-ws.ala.org.au/api/searchByClassification?scientificName=Sarcophilus+harrisii&kingdom=Animalia&class=Mammalia&rank=species"
+      },
+      "query": "Sarcophilus harrisii",
+      "retrieved_at": "2026-07-23T10:07:15Z",
+      "simple_search_file": {
+        "content_type": "application/json",
+        "method": "GET",
+        "path": "raw/sarcophilus_harrisii/simple_search.json",
+        "sha256": "86edaa17844393a59924e86ad45c67c22e1ab9b98eaa97b8b5aec3207fc8a39c",
+        "status": 200,
+        "url": "https://namematching-ws.ala.org.au/api/search?q=Sarcophilus+harrisii"
+      },
+      "species_id": "sarcophilus_harrisii",
+      "taxon_roundtrip_file": {
+        "content_type": "application/json",
+        "method": "GET",
+        "path": "raw/sarcophilus_harrisii/taxon_roundtrip.json",
+        "sha256": "0635913a39d542da449fab269339ac511931e83b29dbc292bcfc2b32e2b3c371",
+        "status": 200,
+        "url": "https://namematching-ws.ala.org.au/api/getByTaxonID?taxonID=https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2Fc6b5ff5a-a991-4972-b5b0-4214141d5bd6"
+      }
+    },
+    {
+      "alias_evidence": [],
+      "bie_guid_file": {
+        "content_type": "application/json;charset=UTF-8",
+        "method": "GET",
+        "path": "raw/dasyurus_maculatus/bie_guid.json",
+        "sha256": "742be67c25bc5c670fda3fffe1990d44de9874b80a989c1829010a4021c88a86",
+        "status": 200,
+        "url": "https://bie-ws.ala.org.au/ws/guid/Dasyurus%20maculatus"
+      },
+      "bie_species_file": {
+        "content_type": "application/json;charset=UTF-8",
+        "method": "GET",
+        "path": "raw/dasyurus_maculatus/bie_species.json",
+        "sha256": "e7744848d524d13abf8514cce8a533d38c921fad93b3753ee7face2d50d3012b",
+        "status": 200,
+        "url": "https://bie-ws.ala.org.au/ws/species/https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F73c23669-c491-42d0-83b3-6fd84a03689a"
+      },
+      "classification_file": {
+        "content_type": "application/json",
+        "method": "GET",
+        "path": "raw/dasyurus_maculatus/classification.json",
+        "sha256": "f53c250ae8e48ebb480e138b4f05ddd0116cd9b0e5dc203183c10bfba5f38f48",
+        "status": 200,
+        "url": "https://namematching-ws.ala.org.au/api/searchByClassification?scientificName=Dasyurus+maculatus&kingdom=Animalia&class=Mammalia&rank=species"
+      },
+      "query": "Dasyurus maculatus",
+      "retrieved_at": "2026-07-23T10:07:15Z",
+      "simple_search_file": {
+        "content_type": "application/json",
+        "method": "GET",
+        "path": "raw/dasyurus_maculatus/simple_search.json",
+        "sha256": "f53c250ae8e48ebb480e138b4f05ddd0116cd9b0e5dc203183c10bfba5f38f48",
+        "status": 200,
+        "url": "https://namematching-ws.ala.org.au/api/search?q=Dasyurus+maculatus"
+      },
+      "species_id": "dasyurus_maculatus",
+      "taxon_roundtrip_file": {
+        "content_type": "application/json",
+        "method": "GET",
+        "path": "raw/dasyurus_maculatus/taxon_roundtrip.json",
+        "sha256": "7746c1485ae4ec1964f04855a99ba9e02bd1367b948d08e69263ea265e7c6817",
+        "status": 200,
+        "url": "https://namematching-ws.ala.org.au/api/getByTaxonID?taxonID=https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F73c23669-c491-42d0-83b3-6fd84a03689a"
+      }
+    },
+    {
+      "alias_evidence": [],
+      "bie_guid_file": {
+        "content_type": "application/json;charset=UTF-8",
+        "method": "GET",
+        "path": "raw/dasyurus_viverrinus/bie_guid.json",
+        "sha256": "da9053cbc6c9994406694b26196540f0224ee58f3759a121ad409489268829b6",
+        "status": 200,
+        "url": "https://bie-ws.ala.org.au/ws/guid/Dasyurus%20viverrinus"
+      },
+      "bie_species_file": {
+        "content_type": "application/json;charset=UTF-8",
+        "method": "GET",
+        "path": "raw/dasyurus_viverrinus/bie_species.json",
+        "sha256": "862686983237573dfbe05ea2139f332d3265a3d33b61f83959337f44e38ec1db",
+        "status": 200,
+        "url": "https://bie-ws.ala.org.au/ws/species/https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F1e9f1b49-78b5-409d-91f2-21615ce88e9d"
+      },
+      "classification_file": {
+        "content_type": "application/json",
+        "method": "GET",
+        "path": "raw/dasyurus_viverrinus/classification.json",
+        "sha256": "7c81c60d3b87736226084c10585bfc72ba1334652ae4ac3881cb4c0b06133e4a",
+        "status": 200,
+        "url": "https://namematching-ws.ala.org.au/api/searchByClassification?scientificName=Dasyurus+viverrinus&kingdom=Animalia&class=Mammalia&rank=species"
+      },
+      "query": "Dasyurus viverrinus",
+      "retrieved_at": "2026-07-23T10:07:15Z",
+      "simple_search_file": {
+        "content_type": "application/json",
+        "method": "GET",
+        "path": "raw/dasyurus_viverrinus/simple_search.json",
+        "sha256": "7c81c60d3b87736226084c10585bfc72ba1334652ae4ac3881cb4c0b06133e4a",
+        "status": 200,
+        "url": "https://namematching-ws.ala.org.au/api/search?q=Dasyurus+viverrinus"
+      },
+      "species_id": "dasyurus_viverrinus",
+      "taxon_roundtrip_file": {
+        "content_type": "application/json",
+        "method": "GET",
+        "path": "raw/dasyurus_viverrinus/taxon_roundtrip.json",
+        "sha256": "e275a65142f6632d5ed6ea5afdac184424282a24c04d9542c504480ede8753da",
+        "status": 200,
+        "url": "https://namematching-ws.ala.org.au/api/getByTaxonID?taxonID=https%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F1e9f1b49-78b5-409d-91f2-21615ce88e9d"
+      }
+    }
+  ],
+  "retrieved_at": "2026-07-23T10:07:15Z",
+  "species_count": 9
+}

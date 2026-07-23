@@ -1,0 +1,37 @@
+{
+  "classID": "https://biodiversity.org.au/afd/taxa/e9e7db31-04df-41fb-bd8d-e0b0f3c332d6",
+  "classs": "Mammalia",
+  "family": "Dasyuridae",
+  "familyID": "https://biodiversity.org.au/afd/taxa/636b19b2-e505-4214-bd1e-697accdc9478",
+  "genus": "Dasyurus",
+  "genusID": "https://biodiversity.org.au/afd/taxa/b636822b-3684-49ea-9dfa-c53587f47c0f",
+  "issues": [
+    "noIssue"
+  ],
+  "kingdom": "Animalia",
+  "kingdomID": "https://biodiversity.org.au/afd/taxa/4647863b-760d-4b59-aaa1-502c8cdf8d3c",
+  "lft": 27031,
+  "matchType": "exactMatch",
+  "nameType": "SCIENTIFIC",
+  "order": "Dasyuromorphia",
+  "orderID": "https://biodiversity.org.au/afd/taxa/2664a357-4e1e-4a79-95f7-4fa48e0f0091",
+  "phylum": "Chordata",
+  "phylumID": "https://biodiversity.org.au/afd/taxa/065f1da4-53cd-40b8-a396-80fa5c74dedd",
+  "rank": "species",
+  "rankID": 7000,
+  "rgt": 27035,
+  "scientificName": "Dasyurus maculatus",
+  "scientificNameAuthorship": "(Kerr, 1792)",
+  "species": "Dasyurus maculatus",
+  "speciesGroup": [
+    "Animals",
+    "Mammals"
+  ],
+  "speciesID": "https://biodiversity.org.au/afd/taxa/73c23669-c491-42d0-83b3-6fd84a03689a",
+  "speciesSubgroup": [
+    "Carnivorous Marsupials"
+  ],
+  "success": true,
+  "taxonConceptID": "https://biodiversity.org.au/afd/taxa/73c23669-c491-42d0-83b3-6fd84a03689a",
+  "vernacularName": "Bindjulang"
+}
