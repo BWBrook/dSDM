@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "source_type": "goal016_calibrated_field_contract",
+  "contract_id": "ala-occurrence-field-contract-v1",
+  "config_binding": {
+    "path": "config/ala_field_contract.json",
+    "sha256": "98cd67c17dbe5a9c55b4f17c8a4f6e383010d9d8724dff23bc9c3911051b9159"
+  },
+  "record_identity": {
+    "provider_candidates": [
+      "recordID",
+      "occurrenceID"
+    ],
+    "selected_provider_field": null,
+    "provider_identity_status": "unresolved_no_complete_unique_candidate",
+    "recordID_status": "uncalibrated_absent_from_frozen_projection",
+    "snapshot_row_id_scope": "frozen_artifact_only",
+    "content_fingerprint_role": "diagnostic_only_not_identity_or_deduplication"
+  },
+  "canonical_mappings": {
+    "resource_and_dataset_provenance": "separate_without_cross_level_fallback",
+    "event_year": "year_then_eventDate_with_conflict_exclusion_and_flag",
+    "coordinates": "numeric_global_range_for_spatial_eligibility",
+    "uncertainty": "reported_value_over_1000_m_excludes_spatial_use; missing_remains_unknown",
+    "coordinate_precision": "reported_only; no_decimal_place_inference",
+    "accepted_taxon_identity": "pinned_focal_species_and_concept_configuration",
+    "licence": "requested_license_returned_as_dcterms:license",
+    "quality_assertions": "preserve_summary_and_boolean_flags; only_configured_hard_exclusions_reject"
+  },
+  "legacy_request_profile_compatibility": {
+    "path": "config/ala_acquisition_request_profile.json",
+    "sha256": "60082efbebde02558ce3f0ef45b0676f21332e11b16796207e91eee19b18155f",
+    "count_only_query_surface": "usable",
+    "future_full_row_mapping": "incompatible",
+    "material_reasons": [
+      "occurrenceID is required there but empty in the frozen sample",
+      "returned licence uses the explicit dcterms:license alias",
+      "dataset fallback to resource fields conflates provenance levels"
+    ]
+  }
+}

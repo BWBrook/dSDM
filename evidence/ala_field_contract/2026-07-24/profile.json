@@ -1,0 +1,252 @@
+{
+  "schema_version": "1.0",
+  "source_type": "goal016_offline_csv_aggregate_profile",
+  "source_artifact": {
+    "path": "data/raw/ala/goal015-galah-pilot/2026-07-24/galah-occurrences.csv",
+    "sha256": "af89c756dc911602f657cf27622dc1585340983a114c211559fee1762be1dd13",
+    "bytes": 24335,
+    "rows": 17,
+    "columns": 144,
+    "unique_headers": 144
+  },
+  "csv_semantics": {
+    "population_measure": "nonblank_and_blank_serialized_csv_cells",
+    "original_provider_or_pandas_types_recoverable": false,
+    "original_null_distinguishable_from_empty_string": false
+  },
+  "field_population": [
+    {
+      "field": "occurrenceID",
+      "present": true,
+      "nonblank_count": 0,
+      "blank_count": 17,
+      "distinct_nonblank_count": 0,
+      "semantic_type": "text",
+      "format_valid_nonblank_count": 0
+    },
+    {
+      "field": "dataResourceUid",
+      "present": true,
+      "nonblank_count": 17,
+      "blank_count": 0,
+      "distinct_nonblank_count": 1,
+      "semantic_type": "text",
+      "format_valid_nonblank_count": 17
+    },
+    {
+      "field": "dataResourceName",
+      "present": true,
+      "nonblank_count": 17,
+      "blank_count": 0,
+      "distinct_nonblank_count": 1,
+      "semantic_type": "text",
+      "format_valid_nonblank_count": 17
+    },
+    {
+      "field": "datasetID",
+      "present": true,
+      "nonblank_count": 0,
+      "blank_count": 17,
+      "distinct_nonblank_count": 0,
+      "semantic_type": "text",
+      "format_valid_nonblank_count": 0
+    },
+    {
+      "field": "datasetName",
+      "present": true,
+      "nonblank_count": 0,
+      "blank_count": 17,
+      "distinct_nonblank_count": 0,
+      "semantic_type": "text",
+      "format_valid_nonblank_count": 0
+    },
+    {
+      "field": "eventDate",
+      "present": true,
+      "nonblank_count": 17,
+      "blank_count": 0,
+      "distinct_nonblank_count": 16,
+      "semantic_type": "iso_date_or_datetime_text",
+      "format_valid_nonblank_count": 17
+    },
+    {
+      "field": "year",
+      "present": true,
+      "nonblank_count": 17,
+      "blank_count": 0,
+      "distinct_nonblank_count": 1,
+      "semantic_type": "four_digit_year",
+      "format_valid_nonblank_count": 17
+    },
+    {
+      "field": "decimalLatitude",
+      "present": true,
+      "nonblank_count": 17,
+      "blank_count": 0,
+      "distinct_nonblank_count": 17,
+      "semantic_type": "bounded_numeric",
+      "format_valid_nonblank_count": 17
+    },
+    {
+      "field": "decimalLongitude",
+      "present": true,
+      "nonblank_count": 17,
+      "blank_count": 0,
+      "distinct_nonblank_count": 17,
+      "semantic_type": "bounded_numeric",
+      "format_valid_nonblank_count": 17
+    },
+    {
+      "field": "coordinateUncertaintyInMeters",
+      "present": true,
+      "nonblank_count": 17,
+      "blank_count": 0,
+      "distinct_nonblank_count": 4,
+      "semantic_type": "nonnegative_numeric",
+      "format_valid_nonblank_count": 17
+    },
+    {
+      "field": "coordinatePrecision",
+      "present": true,
+      "nonblank_count": 0,
+      "blank_count": 17,
+      "distinct_nonblank_count": 0,
+      "semantic_type": "nonnegative_numeric",
+      "format_valid_nonblank_count": 0
+    },
+    {
+      "field": "raw_scientificName",
+      "present": true,
+      "nonblank_count": 17,
+      "blank_count": 0,
+      "distinct_nonblank_count": 2,
+      "semantic_type": "text",
+      "format_valid_nonblank_count": 17
+    },
+    {
+      "field": "raw_taxonConceptID",
+      "present": true,
+      "nonblank_count": 0,
+      "blank_count": 17,
+      "distinct_nonblank_count": 0,
+      "semantic_type": "uri_text",
+      "format_valid_nonblank_count": 0
+    },
+    {
+      "field": "scientificName",
+      "present": true,
+      "nonblank_count": 17,
+      "blank_count": 0,
+      "distinct_nonblank_count": 1,
+      "semantic_type": "text",
+      "format_valid_nonblank_count": 17
+    },
+    {
+      "field": "taxonConceptID",
+      "present": true,
+      "nonblank_count": 17,
+      "blank_count": 0,
+      "distinct_nonblank_count": 1,
+      "semantic_type": "uri_text",
+      "format_valid_nonblank_count": 17
+    },
+    {
+      "field": "acceptedNameUsage",
+      "present": true,
+      "nonblank_count": 0,
+      "blank_count": 17,
+      "distinct_nonblank_count": 0,
+      "semantic_type": "text",
+      "format_valid_nonblank_count": 0
+    },
+    {
+      "field": "acceptedNameUsageID",
+      "present": true,
+      "nonblank_count": 0,
+      "blank_count": 17,
+      "distinct_nonblank_count": 0,
+      "semantic_type": "uri_text",
+      "format_valid_nonblank_count": 0
+    },
+    {
+      "field": "taxonRank",
+      "present": true,
+      "nonblank_count": 17,
+      "blank_count": 0,
+      "distinct_nonblank_count": 1,
+      "semantic_type": "text",
+      "format_valid_nonblank_count": 17
+    },
+    {
+      "field": "assertions",
+      "present": true,
+      "nonblank_count": 17,
+      "blank_count": 0,
+      "distinct_nonblank_count": 2,
+      "semantic_type": "text",
+      "format_valid_nonblank_count": 17
+    },
+    {
+      "field": "dcterms:license",
+      "present": true,
+      "nonblank_count": 17,
+      "blank_count": 0,
+      "distinct_nonblank_count": 1,
+      "semantic_type": "text",
+      "format_valid_nonblank_count": 17
+    }
+  ],
+  "provider_identity": {
+    "candidates": [
+      {
+        "field": "recordID",
+        "present": false,
+        "nonblank_count": 0,
+        "blank_count": 17,
+        "distinct_nonblank_count": 0,
+        "semantic_type": "text",
+        "format_valid_nonblank_count": 0
+      },
+      {
+        "field": "occurrenceID",
+        "present": true,
+        "nonblank_count": 0,
+        "blank_count": 17,
+        "distinct_nonblank_count": 0,
+        "semantic_type": "text",
+        "format_valid_nonblank_count": 0
+      }
+    ],
+    "selected_field": null,
+    "complete_unique_provider_identity": false,
+    "content_fallback_used": false
+  },
+  "temporal_checks": {
+    "event_date_parseable_nonblank_count": 17,
+    "date_year_consistent_count": 17
+  },
+  "spatial_checks": {
+    "valid_coordinate_pair_count": 17,
+    "reported_uncertainty_over_1000_m_count": 0,
+    "decimal_place_precision_inference_performed": false
+  },
+  "quality_assertions": {
+    "expanded_field_count": 124,
+    "expanded_cell_count": 2108,
+    "boolean_compatible_cell_count": 2108,
+    "always_false_field_count": 114,
+    "always_true_field_count": 8,
+    "mixed_field_count": 2,
+    "minimum_true_flags_per_row": 9,
+    "maximum_true_flags_per_row": 9,
+    "unknown_extra_field_count": 0
+  },
+  "duplicate_diagnostics": {
+    "full_row_distinct_count": 17,
+    "full_row_duplicate_count": 0,
+    "content_fingerprint_component_count": 5,
+    "complete_content_fingerprint_count": 17,
+    "distinct_complete_content_fingerprint_count": 17,
+    "content_fingerprint_used_as_identity": false
+  }
+}

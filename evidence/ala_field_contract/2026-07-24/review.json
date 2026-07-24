@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "source_type": "goal016_field_contract_review",
+  "outcome": "completed",
+  "readiness": "ala_field_contract_tracked_evidence_valid_raw_replay_required",
+  "raw_replay": "required_for_goal016_readiness_decision",
+  "decisions": {
+    "nine_species_2001_2025_count_census": "ready",
+    "full_row_acquisition": "blocked_unresolved_provider_record_identity",
+    "cross_download_deduplication": "blocked_unresolved_provider_record_identity",
+    "branch_count_union_without_provider_identity": "forbidden"
+  },
+  "count_census_estimand": "ALA indexed records matching each separately manifested canonical query at retrieval time",
+  "limitations": [
+    "The sample covers one species, one year, and one source resource; it cannot establish nine-species field completeness.",
+    "recordID is an uncalibrated candidate absent from the frozen projection; occurrenceID is present but empty.",
+    "CSV replay measures serialized nonblank cells and formats, not original provider or pandas types."
+  ],
+  "next_step": "Run separately manifested canonical-query counts for the nine species; calibrate a provider identifier before any full row acquisition or branch union."
+}

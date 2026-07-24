@@ -108,8 +108,10 @@ Build the provenance-rich source layer for the nine Tasmanian mammals:
 - spatial boundary, grid, and predictor source validation.
 
 Goal 015 established that the maintained `galah-python` route is usable for
-later acquisition design. Goal 016 is the offline field-contract calibration
-that precedes the nine-species count census and full acquisition.
+later acquisition design. Goal 016 calibrated the offline field contract and
+cleared separately manifested nine-species counts, while leaving full-row
+acquisition and cross-download deduplication blocked until a provider record
+identifier is calibrated.
 
 ### Phase 2: Tasmanian analysis-ready dataset construction
 
@@ -225,9 +227,11 @@ The programme is near the start of Phase 1 and approximately 10-15% along the
 full two-case-study journey, while being substantially further through the
 conceptual foundations for the Tasmanian prove-out.
 
-The next goal is Goal 016: use the existing frozen 17-row Galah pilot offline
-to calibrate the returned-field contract, quantify privacy-safe field
-population and uniqueness, and decide whether the pipeline is ready for the
-nine-species 2001-2025 count census. The implementation should already
-separate generic acquisition logic from Tasmania-specific configuration so the
-later bird rebuild can reuse the machinery.
+Goal 016 is complete. The frozen Galah sample supports a privacy-safe,
+configuration-driven field contract and the nine-species 2001--2025 count
+census, but it does not establish a provider record identity: `occurrenceID`
+was empty and `recordID` was not projected. Goal 017 should therefore run
+counts only for separately manifested canonical species queries, retain their
+exact provenance, and size the later acquisition without summing fallback
+branches. A bounded provider-identifier calibration remains mandatory before
+full row acquisition.

@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "files": [
+    {
+      "path": "profile.json",
+      "sha256": "67a0161436e4073772f57a298ccc4bc1a402a1e0b55010b5cdbab37e1cfc7d0b",
+      "bytes": 6849
+    },
+    {
+      "path": "contract.json",
+      "sha256": "73dd889f33d4b86ee2b40f68ed218bb3577bbe16ab1d9d14edd0fb3a1b0b9bca",
+      "bytes": 1896
+    },
+    {
+      "path": "review.json",
+      "sha256": "3931d1a5f8a594fd279ac21fe52a6c9ac50c27e9dad0b4b3f626b11e5c8f87a4",
+      "bytes": 1200
+    }
+  ]
+}

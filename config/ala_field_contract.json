@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.0",
+  "contract_id": "ala-occurrence-field-contract-v1",
+  "scope": {
+    "source_namespace": "ala_occurrence",
+    "generic_across_study_regions": true,
+    "normalization_performed": false
+  },
+  "record_identity": {
+    "canonical_field": "provider_record_id",
+    "provider_candidates": [
+      "recordID",
+      "occurrenceID"
+    ],
+    "selection": "first_complete_unique_candidate_in_configured_order",
+    "content_fallback_allowed": false,
+    "snapshot_row_id": "sha256(source_namespace + raw_artifact_sha256 + one_based_row_ordinal)",
+    "snapshot_row_id_scope": "frozen_artifact_only",
+    "content_fingerprint_role": "diagnostic_only_not_identity_or_deduplication"
+  },
+  "provenance": {
+    "resource_id": [
+      "dataResourceUid"
+    ],
+    "resource_name": [
+      "dataResourceName"
+    ],
+    "dataset_id": [
+      "datasetID"
+    ],
+    "dataset_name": [
+      "datasetName"
+    ],
+    "dataset_resource_fallback_allowed": false
+  },
+  "temporal": {
+    "event_date": [
+      "eventDate"
+    ],
+    "year": [
+      "year",
+      "eventDate"
+    ],
+    "primary_window_requires_valid_year": true,
+    "date_year_conflict_action": "exclude_from_primary_window_and_flag"
+  },
+  "spatial": {
+    "latitude": [
+      "decimalLatitude"
+    ],
+    "longitude": [
+      "decimalLongitude"
+    ],
+    "coordinate_uncertainty_m": [
+      "coordinateUncertaintyInMeters"
+    ],
+    "coordinate_precision": [
+      "coordinatePrecision"
+    ],
+    "spatial_eligibility_requires_valid_coordinates": true,
+    "reported_uncertainty_exclusion_threshold_m": 1000,
+    "missing_uncertainty_action": "preserve_unknown_and_retain",
+    "decimal_place_precision_inference": "forbidden"
+  },
+  "taxonomy": {
+    "submitted_name": [
+      "raw_scientificName"
+    ],
+    "submitted_concept_id": [
+      "raw_taxonConceptID"
+    ],
+    "matched_name": [
+      "scientificName"
+    ],
+    "matched_concept_id": [
+      "taxonConceptID"
+    ],
+    "matched_rank": [
+      "taxonRank"
+    ],
+    "provider_accepted_name": [
+      "acceptedNameUsage"
+    ],
+    "provider_accepted_concept_id": [
+      "acceptedNameUsageID"
+    ],
+    "project_accepted_identity_basis": "pinned_focal_species_and_concept_configuration"
+  },
+  "licence": {
+    "requested_field": "license",
+    "returned_candidates": [
+      "dcterms:license",
+      "license"
+    ],
+    "missing_action": "preserve_null_and_flag_provenance"
+  },
+  "quality_assertions": {
+    "summary_field": "assertions",
+    "expanded_field_policy": "configured_boolean_columns",
+    "unknown_extra_field_action": "fail_schema_review",
+    "any_flag_rejects": false,
+    "hard_exclusions_require_explicit_configuration": true
+  },
+  "readiness_gates": {
+    "count_census_requires_provider_identity": false,
+    "full_row_acquisition_requires_provider_identity": true,
+    "branch_count_union_without_provider_identity": "forbidden"
+  }
+}
