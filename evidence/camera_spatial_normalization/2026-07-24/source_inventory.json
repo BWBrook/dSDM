@@ -1,0 +1,41 @@
+{
+  "excluded_downstream_species": "macropus_giganteus",
+  "frozen_bindings": {
+    "coast_dbf": "96859dc4e261fe28c41ba1f10570b9ce0cb3489614a9413c697b0b373bb83adb",
+    "coast_prj": "a02a27b1d1982c8516d83398e85a3c8b1aef1713c13ef4d84d7bde17430c07c4",
+    "coast_shp": "015270fc146045bd78c13586642630d50715fe15c759c817706e398bf0a0a00a",
+    "coast_shx": "3bb02b6e7eaa3535b01c72c2faead97551a76bd5c5b0bf0c40fc85c225c9089d",
+    "decision_bundle": "5af1f76c58bd24fe61a741a42a4df4531ba21e08c0d8ce9b953ba0ff769668ae",
+    "goal018_plan": "6dff937876ea572babdc0f74944edb5d9311af0d6295c58cee1923ace587c5c7",
+    "grid": "91c7e0158ee8a808e9345d4bca28ec3e3fd7468dc3b7b1c1268e33e2da9499da",
+    "offshore_islands": "98ca7bf213f0760894d9ad329681e2f2c9e491a8255577fae20fd31c73685d92"
+  },
+  "goal_id": "goal019-camera-spatial-normalization-2026-07-24",
+  "private_input_roles": {
+    "focal_crosswalk": {
+      "bytes": 921,
+      "mapping_rows": 8,
+      "sha256": "2bd2778bdd2df8dd282b75ef48ba6b0fdc18b90a52263453b9ba95dc68cf4076"
+    },
+    "observations": {
+      "bytes": 66467130,
+      "data_rows": 836548,
+      "schema_sha256": "c3e3f44f43f95529ec90d272961ae55aec3a07975b99e2eda6a5a8d54f88e94e",
+      "sha256": "46898370a27eb3528f722aa911e77b3e905e9d72942ec2fe18ece7720f51e9b2"
+    },
+    "site_locations": {
+      "bytes": 42687,
+      "data_rows": 1388,
+      "schema_sha256": "37f4d3815f42ad077ce41881f1b69d63e2bad8ecfa06b1b1784b090cbc72c7d6",
+      "sha256": "566654a6a3ce6fe004649455b04fe3c1be35df19f208dbe89c29b0a766f8d2e0"
+    },
+    "species_lookup": {
+      "bytes": 2980,
+      "data_rows": 142,
+      "schema_sha256": "167de540612993de9e9db6a85ec44f7ee4a7c5a31abf86982901979b07baa0d2",
+      "sha256": "f2e9cee22a7321e9f5c3985289ffb1876e8396816d4ee63e55e9d0cf0c198d9f"
+    }
+  },
+  "private_source_manifest_sha256": "1c449b94ec1336a645a817efb287d7198c274c9cdd41400b40dadbdd2a5f0bab",
+  "species_count": 8
+}

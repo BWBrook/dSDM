@@ -1,0 +1,29 @@
+{
+  "private_output_roles": {
+    "grid_evidence": {
+      "bytes": 586094,
+      "rows": 6451,
+      "schema_sha256": "3c2fd3780b04aaae5185171e89d2d6957203bd9eb085ce4e1840977278e149d9",
+      "sha256": "aa0cf2ad142812e08f7126f73a3ecb0b16e42b9966b0967c43a5200d95161319"
+    },
+    "observation_audit": {
+      "bytes": 161481506,
+      "rows": 836548,
+      "schema_sha256": "71712d912b044aac43d8f36f5d3bd40e7b67d1fa3bc6cc73f90270b6c2af8d1a",
+      "sha256": "9a8fab53422cf1221aed89f00d91ca22ec971e282b942d2126c2e444f01a134a"
+    },
+    "site_audit": {
+      "bytes": 141032,
+      "rows": 1375,
+      "schema_sha256": "e1f65620f904ebf688f7e8cc57809531781b4ff934d66f131e40c0f645207451",
+      "sha256": "63f6c467ed647de96390fe9176935aa9b9463f1c9d3f708295959bd1fe6b3341"
+    },
+    "site_species": {
+      "bytes": 1100537,
+      "rows": 10456,
+      "schema_sha256": "73f481ceb098182dc61b08f31de3f28b855e4664a10e7f29c37a9cc4e3ff37cc",
+      "sha256": "5f35bd6aadd98b45a0cb92ddc055893f8faed9f7cee6ff6c12827bbabb93d45a"
+    }
+  },
+  "private_outputs_ignored": true
+}

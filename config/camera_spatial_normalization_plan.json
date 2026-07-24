@@ -1,0 +1,166 @@
+{
+  "schema_version": "1.0",
+  "goal_id": "goal019-camera-spatial-normalization-2026-07-24",
+  "bindings": {
+    "goal018_plan": {
+      "path": "config/ala_spatial_normalization_plan.json",
+      "sha256": "6dff937876ea572babdc0f74944edb5d9311af0d6295c58cee1923ace587c5c7"
+    },
+    "decision_bundle": {
+      "path": "config/phase1_decision_bundle.json",
+      "sha256": "5af1f76c58bd24fe61a741a42a4df4531ba21e08c0d8ce9b953ba0ff769668ae"
+    },
+    "grid": {
+      "path": "temp/data/spatial/tasmanian_gridpoints.csv",
+      "sha256": "91c7e0158ee8a808e9345d4bca28ec3e3fd7468dc3b7b1c1268e33e2da9499da"
+    },
+    "coast_shp": {
+      "path": "temp/data/spatial/tasmania_coast.shp",
+      "sha256": "015270fc146045bd78c13586642630d50715fe15c759c817706e398bf0a0a00a"
+    },
+    "coast_shx": {
+      "path": "temp/data/spatial/tasmania_coast.shx",
+      "sha256": "3bb02b6e7eaa3535b01c72c2faead97551a76bd5c5b0bf0c40fc85c225c9089d"
+    },
+    "coast_dbf": {
+      "path": "temp/data/spatial/tasmania_coast.dbf",
+      "sha256": "96859dc4e261fe28c41ba1f10570b9ce0cb3489614a9413c697b0b373bb83adb"
+    },
+    "coast_prj": {
+      "path": "temp/data/spatial/tasmania_coast.prj",
+      "sha256": "a02a27b1d1982c8516d83398e85a3c8b1aef1713c13ef4d84d7bde17430c07c4"
+    },
+    "offshore_islands": {
+      "path": "temp/data/spatial/offshore_islands.kml",
+      "sha256": "98ca7bf213f0760894d9ad329681e2f2c9e491a8255577fae20fd31c73685d92"
+    }
+  },
+  "private_inputs": {
+    "runtime_directory_required": true,
+    "roles": {
+      "site_locations": {
+        "sha256": "566654a6a3ce6fe004649455b04fe3c1be35df19f208dbe89c29b0a766f8d2e0",
+        "bytes": 42687,
+        "data_rows": 1388,
+        "schema_sha256": "37f4d3815f42ad077ce41881f1b69d63e2bad8ecfa06b1b1784b090cbc72c7d6"
+      },
+      "species_lookup": {
+        "sha256": "f2e9cee22a7321e9f5c3985289ffb1876e8396816d4ee63e55e9d0cf0c198d9f",
+        "bytes": 2980,
+        "data_rows": 142,
+        "schema_sha256": "167de540612993de9e9db6a85ec44f7ee4a7c5a31abf86982901979b07baa0d2"
+      },
+      "observations": {
+        "sha256": "46898370a27eb3528f722aa911e77b3e905e9d72942ec2fe18ece7720f51e9b2",
+        "bytes": 66467130,
+        "data_rows": 836548,
+        "schema_sha256": "c3e3f44f43f95529ec90d272961ae55aec3a07975b99e2eda6a5a8d54f88e94e"
+      },
+      "focal_crosswalk": {
+        "sha256": "2bd2778bdd2df8dd282b75ef48ba6b0fdc18b90a52263453b9ba95dc68cf4076",
+        "bytes": 921,
+        "mapping_rows": 8
+      }
+    }
+  },
+  "species_contract": {
+    "active_species_ids": [
+      "thylogale_billardierii",
+      "notamacropus_rufogriseus",
+      "trichosurus_vulpecula",
+      "pseudocheirus_peregrinus",
+      "vombatus_ursinus",
+      "sarcophilus_harrisii",
+      "dasyurus_maculatus",
+      "dasyurus_viverrinus"
+    ],
+    "excluded_downstream": {
+      "species_id": "macropus_giganteus",
+      "reason": "historically_constrained_remnant_contemporary_range",
+      "prior_goal017_goal018_provenance_retained": true
+    }
+  },
+  "source_contract": {
+    "analytical_unit": "stable_camera_site_x_focal_species_whole_dataset",
+    "survey_role": "provenance_only",
+    "temporal_window": {
+      "start_year": 2001,
+      "end_year": 2025,
+      "inclusive": true
+    },
+    "deployment_assertion": "barry_broad_3_to_4_year_near_continuous",
+    "detailed_effort_analysis": false,
+    "nonfocal_rows_are_operational_witnesses": true,
+    "positive_focal_count_is_presence": true
+  },
+  "spatial_contract": {
+    "crs": "EPSG:4326",
+    "grid_rows": 74073,
+    "resolution_degree": 0.01,
+    "origin_lower_edge": [
+      143.84,
+      -43.6425
+    ],
+    "coast_predicate": "covers",
+    "island_predicate": "covers",
+    "island_codes": [
+      "KI",
+      "FI",
+      "CBI",
+      "CI",
+      "THI",
+      "HI",
+      "MI",
+      "BI"
+    ],
+    "assignment": "containing_eligible_cell_only",
+    "nearest_rescue": false,
+    "repeated_site_coordinates": "all_valid_same_cell_and_island_or_exclude_site"
+  },
+  "classification_contract": {
+    "classes": [
+      "presence",
+      "survey_supported_absence"
+    ],
+    "absence_rule_id": "P1-D009",
+    "presence_dominates_within_camera_source": true,
+    "species_island_absence_exclusion": true,
+    "matrix_conflicting_presence": "publication_blocker",
+    "site_species_expansion": "eligible_sites_x_8_before_island_suppression"
+  },
+  "outputs": {
+    "directory": "data/processed/camera/goal019-spatial-normalization/2026-07-24",
+    "files": [
+      "observation_audit.csv",
+      "site_audit.csv",
+      "site_species.csv",
+      "grid_evidence.csv"
+    ],
+    "private_ignored": true
+  },
+  "evidence": {
+    "directory": "evidence/camera_spatial_normalization/2026-07-24",
+    "files": [
+      "source_inventory.json",
+      "normalization_summary.json",
+      "spatial_summary.json",
+      "outputs.json",
+      "review.json",
+      "manifest.json"
+    ],
+    "aggregate_only": true
+  },
+  "privacy": {
+    "tracked_private_paths": false,
+    "tracked_source_codes": false,
+    "tracked_site_or_survey_ids": false,
+    "tracked_coordinates_or_grid_ids": false,
+    "tracked_dates_or_media_ids": false,
+    "tracked_row_values": false
+  },
+  "legacy_comparison": {
+    "runtime_input": false,
+    "gate_target": false
+  },
+  "atomic_publish": true
+}

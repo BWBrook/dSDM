@@ -24,6 +24,9 @@ data-raw/cache/
 inst/extdata/*.zip
 inst/extdata/*.gz
 
+# Authoritative private camera sources and all derived private metadata.
+/tas_cam/
+
 # untracked staging/context material during refactor
 temp/
 

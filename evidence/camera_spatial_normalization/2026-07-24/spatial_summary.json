@@ -1,0 +1,43 @@
+{
+  "ambiguous_site_locations": 0,
+  "canonical_grid_rows": 74073,
+  "eligible_island_site_counts": {
+    "BI": 0,
+    "CBI": 0,
+    "CI": 0,
+    "FI": 60,
+    "HI": 0,
+    "KI": 60,
+    "MI": 0,
+    "THI": 0,
+    "outside": 1187
+  },
+  "eligible_sites": 1307,
+  "location_rows": 1388,
+  "location_sites": 1375,
+  "matrix_conflicting_presences": 0,
+  "max_centroid_distance_m": 687.985365,
+  "observation_bearing_island_site_counts": {
+    "BI": 0,
+    "CBI": 0,
+    "CI": 0,
+    "FI": 60,
+    "HI": 0,
+    "KI": 60,
+    "MI": 0,
+    "THI": 0,
+    "outside": 1254
+  },
+  "repeated_coordinate_rows": 26,
+  "repeated_coordinate_sites": 13,
+  "site_dispositions": {
+    "eligible": 1307,
+    "invalid_site_location": 67,
+    "unreferenced_site": 1
+  },
+  "site_exclusion_reason_counts": {
+    "ineligible_grid_cell": 54,
+    "outside_land_boundary": 13,
+    "unreferenced_site": 1
+  }
+}

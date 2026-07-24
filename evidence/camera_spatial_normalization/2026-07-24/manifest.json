@@ -1,0 +1,30 @@
+{
+  "files": [
+    {
+      "bytes": 1914,
+      "path": "source_inventory.json",
+      "sha256": "b679264e1a8d20e19ac3c91aa7eae03c707c700ee31bf0c4fd2c84191d96e5a3"
+    },
+    {
+      "bytes": 3316,
+      "path": "normalization_summary.json",
+      "sha256": "4a81d80f46ae67b1f011b9f629580fc7f5916b569f63b081cdb6f14311882135"
+    },
+    {
+      "bytes": 884,
+      "path": "spatial_summary.json",
+      "sha256": "46096012ee35bdb634d7e0478fd4fa3b1da3f99f3af225d4f8d193d99733ec6d"
+    },
+    {
+      "bytes": 1065,
+      "path": "outputs.json",
+      "sha256": "080aeb8748fbf402b8fe08ade5f18e82f1171bb2fdb223d35382df91e4fcb95c"
+    },
+    {
+      "bytes": 737,
+      "path": "review.json",
+      "sha256": "bc112002181b26bd94321c0af8c9801b6e973466510cefd7cd65aaf45a1d5c0d"
+    }
+  ],
+  "schema_version": "1.0"
+}

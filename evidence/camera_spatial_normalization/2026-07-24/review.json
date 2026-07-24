@@ -1,0 +1,27 @@
+{
+  "classification": {
+    "absence_rule_id": "P1-D009",
+    "presence_dominates_within_camera_source": true,
+    "presence_first_class": true,
+    "survey_supported_absence_first_class": true
+  },
+  "matrix_conflicting_presences": 0,
+  "privacy": {
+    "coordinates_or_grid_ids_retained": false,
+    "dates_or_media_ids_retained": false,
+    "private_paths_retained": false,
+    "row_values_retained": false,
+    "site_or_survey_ids_retained": false,
+    "source_codes_retained": false
+  },
+  "private_raw_replay_required": true,
+  "readiness": "goal019_camera_spatial_normalization_complete",
+  "stopped_before": [
+    "ala_camera_combination",
+    "pseudoabsence",
+    "predictors",
+    "folds",
+    "mapping",
+    "modelling"
+  ]
+}

@@ -22,7 +22,8 @@ The core scientific and software posture is:
 1. Rebuild from primary data wherever practical.
 2. Treat old processed outputs as comparison and reference artifacts, not
    truth.
-3. Develop and prove the complete workflow on nine Tasmanian mammals first.
+3. Acquire nine Tasmanian mammal candidates, then develop and prove the
+   downstream workflow on the eight-species contract fixed at Goal 019.
 4. Freeze a versioned method after the Tasmanian prove-out.
 5. Rebuild the SE Australia birds case from acquisition and cleanup onward,
    using it as a larger-scale transferability and stress test.
@@ -37,12 +38,13 @@ The core scientific and software posture is:
 
 ### Case study 1: Tasmanian mammals
 
-The nine-species Tasmanian mammals case is the development and prove-out
-surface because it is bounded, ecologically meaningful, and computationally
-tractable:
+The Tasmanian mammals case is the development and prove-out surface because it
+is bounded, ecologically meaningful, and computationally tractable. Goal 017/018
+preserves nine acquisition candidates; Goal 019 fixes eight downstream focal
+species:
 
 - smaller spatial extent;
-- nine focal species;
+- nine immutable acquisition candidates and eight downstream focal species;
 - a mixture of ALA occurrence evidence and camera survey-supported absences;
 - real prevalence imbalance that reflects ecology rather than an artificial
   teaching example.
@@ -99,7 +101,8 @@ evidence to define the rebuild without treating legacy outputs as canonical.
 
 Status: active.
 
-Build the provenance-rich source layer for the nine Tasmanian mammals:
+Build the provenance-rich source layer for the Tasmanian mammal candidates and
+the eight-species downstream contract:
 
 - focal-species and taxon contracts;
 - ALA field calibration, count census, and controlled acquisition;
@@ -230,16 +233,18 @@ two-case-study journey, while being substantially further through the
 conceptual foundations and ALA source reconstruction for the Tasmanian
 prove-out.
 
-Goal 017 and Goal 018 are complete. The frozen 50,834-record ALA snapshot was
-replayed into a provenance-preserving presence layer with 40,263 accepted
-records and 6,629 species-grid cells. Evidence is aggregate-only and private
-row outputs remain ignored. These outputs are presence evidence, not abundance,
-occupancy, prevalence, or absence evidence.
+Goals 017–019 are complete. The frozen 50,834-record ALA snapshot was replayed
+into a provenance-preserving nine-candidate presence layer with 40,263 accepted
+records and 6,629 species-grid cells. The private camera source was independently
+normalised for the eight downstream focal species: 1,307 eligible sites yielded
+10,456 pre-suppression site-species classifications and 6,451 unique final
+species-grid rows after 420 species-island absence suppressions. Camera evidence
+contains 4,278 presence and 2,173 `survey_supported_absence` grid rows. Evidence
+is aggregate-only and private row products remain ignored.
 
-The recommended next tranche is to resolve P1-D008 by privately staging Barry's
-authoritative camera source, then perform privacy-safe camera normalization to
-the same grid and `survey_supported_absence` semantics before any source
-combination or pseudoabsence work. The exact camera path must remain private and
-untracked. Legacy `tascam_grid_pa.csv` is comparison/reference material only;
-it is not the primary source. Do not infer additional Goal019 implementation
-details here.
+The recommended next gate is a bounded ALA-camera combination for the eight
+downstream species. It must retain Goal 017/018 provenance, apply the explicit
+`Macropus giganteus` downstream exclusion, enforce presence dominance, preserve
+source conflicts/counts, and stop again before pseudoabsence, predictors,
+partitions, or modelling. Legacy `tascam_grid_pa.csv` remains comparison-only
+and is not a canonical input or gate target.

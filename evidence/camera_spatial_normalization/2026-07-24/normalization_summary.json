@@ -1,0 +1,105 @@
+{
+  "by_species": {
+    "dasyurus_maculatus": {
+      "detection_sites": 675,
+      "island_absence_suppressions": 120,
+      "presence_grid_rows": 525,
+      "presence_site_species_rows": 675,
+      "survey_supported_absence_grid_rows": 222,
+      "survey_supported_absence_rows": 512
+    },
+    "dasyurus_viverrinus": {
+      "detection_sites": 135,
+      "island_absence_suppressions": 120,
+      "presence_grid_rows": 95,
+      "presence_site_species_rows": 135,
+      "survey_supported_absence_grid_rows": 652,
+      "survey_supported_absence_rows": 1052
+    },
+    "notamacropus_rufogriseus": {
+      "detection_sites": 1006,
+      "island_absence_suppressions": 0,
+      "presence_grid_rows": 703,
+      "presence_site_species_rows": 1006,
+      "survey_supported_absence_grid_rows": 149,
+      "survey_supported_absence_rows": 301
+    },
+    "pseudocheirus_peregrinus": {
+      "detection_sites": 271,
+      "island_absence_suppressions": 0,
+      "presence_grid_rows": 252,
+      "presence_site_species_rows": 271,
+      "survey_supported_absence_grid_rows": 600,
+      "survey_supported_absence_rows": 1036
+    },
+    "sarcophilus_harrisii": {
+      "detection_sites": 988,
+      "island_absence_suppressions": 120,
+      "presence_grid_rows": 642,
+      "presence_site_species_rows": 988,
+      "survey_supported_absence_grid_rows": 105,
+      "survey_supported_absence_rows": 199
+    },
+    "thylogale_billardierii": {
+      "detection_sites": 1115,
+      "island_absence_suppressions": 60,
+      "presence_grid_rows": 722,
+      "presence_site_species_rows": 1115,
+      "survey_supported_absence_grid_rows": 80,
+      "survey_supported_absence_rows": 132
+    },
+    "trichosurus_vulpecula": {
+      "detection_sites": 962,
+      "island_absence_suppressions": 0,
+      "presence_grid_rows": 676,
+      "presence_site_species_rows": 962,
+      "survey_supported_absence_grid_rows": 176,
+      "survey_supported_absence_rows": 345
+    },
+    "vombatus_ursinus": {
+      "detection_sites": 943,
+      "island_absence_suppressions": 0,
+      "presence_grid_rows": 663,
+      "presence_site_species_rows": 943,
+      "survey_supported_absence_grid_rows": 189,
+      "survey_supported_absence_rows": 364
+    }
+  },
+  "classification_counts": {
+    "presence": 6095,
+    "species_island_absence_exclusion": 420,
+    "survey_supported_absence": 3941
+  },
+  "distinct_survey_count": 22,
+  "eligible_sites": 1307,
+  "expected_site_species_rows": 10456,
+  "grid_classification_counts": {
+    "presence": 4278,
+    "survey_supported_absence": 2173
+  },
+  "grid_evidence_rows": 6451,
+  "location_rows": 1388,
+  "location_sites": 1375,
+  "observation_bearing_sites": 1374,
+  "observation_dispositions": {
+    "accepted_focal_presence": 596487,
+    "accepted_operational_witness": 240061
+  },
+  "observation_rows": 836548,
+  "observation_rows_reconciled": 836548,
+  "privacy": {
+    "aggregate_only": true
+  },
+  "retained_site_species_rows": 10036,
+  "site_dispositions": {
+    "eligible": 1307,
+    "invalid_site_location": 67,
+    "unreferenced_site": 1
+  },
+  "site_species_rows_before_suppression": 10456,
+  "species_island_absence_suppressions": 420,
+  "species_lookup_ambiguous_nonfocal_codes": 6,
+  "species_lookup_distinct_codes": 133,
+  "species_lookup_rows": 142,
+  "unique_observation_id_count": 836548
+}

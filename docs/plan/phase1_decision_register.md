@@ -8,8 +8,10 @@ decision ID appears once. “Resolved + prerequisite” means the policy is fixe
 but live acquisition remains blocked until the explicitly listed operational
 check is completed. Exact ALA concepts and the approved historical alias are
 authoritative in the bundle and Goal 010 evidence; this register does not
-duplicate the nine IDs. The private camera path, camera coordinates, site IDs,
-and active deployment details remain absent.
+duplicate the nine IDs. Tracked `.gitignore` names the private `/tas_cam/`
+namespace; the absolute source path, contained filenames and data, private
+mapping, camera coordinates, site IDs, and active deployment details remain
+absent.
 
 | ID | Status | Consolidated decision | Owner | Gate / operational note |
 | --- | --- | --- | --- | --- |
@@ -67,3 +69,22 @@ subordinate and are not additional focal rows. See
 
 The Goal 011 validator reports P1-D003 resolved and P1-D008 as the sole
 remaining blocker. It never opens `data/`, `temp/`, or source payload paths.
+
+## 2026-07-24 operational closure and downstream species contract
+
+Goal 019 closes the P1-D008 operational prerequisite through runtime validation
+of Barry's privately staged authoritative camera source. The repository-relative
+`/tas_cam/` namespace is intentionally named by tracked `.gitignore`; the
+absolute source path, contained filenames and data, private focal source-code
+mapping, coordinates, site/survey identifiers, dates, media identifiers, and
+row-level products remain ignored and untracked.
+The frozen version 1.1 decision bundle is retained unchanged because it is a
+hashed Goal 017/018 provenance input; Goal 019 records operational closure in
+its separately bound plan and evidence.
+
+Barry's downstream decision is now explicit: the nine Goal 017/018 acquisition
+candidates remain immutable provenance, while Goal 019 and later modelling
+substrates use eight focal species. `Macropus giganteus` is excluded before
+camera site-species expansion because its remnant contemporary range is
+historically constrained. This is an explicit downstream exclusion, not a
+rewrite or deletion of prior ALA evidence.
