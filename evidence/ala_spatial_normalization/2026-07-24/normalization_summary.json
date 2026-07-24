@@ -1,0 +1,83 @@
+{
+  "accepted_rows": 40263,
+  "by_reason": {
+    "accepted": 40263,
+    "coordinate_uncertainty_over_1000_m": 9355,
+    "coordinates_missing": 18,
+    "ineligible_grid_cell": 972,
+    "outside_land_boundary": 226
+  },
+  "by_species": {
+    "dasyurus_maculatus": {
+      "accepted_rows": 1005,
+      "excluded_rows": 164,
+      "input_rows": 1169,
+      "presence_cells": 474
+    },
+    "dasyurus_viverrinus": {
+      "accepted_rows": 3578,
+      "excluded_rows": 158,
+      "input_rows": 3736,
+      "presence_cells": 387
+    },
+    "macropus_giganteus": {
+      "accepted_rows": 262,
+      "excluded_rows": 136,
+      "input_rows": 398,
+      "presence_cells": 34
+    },
+    "notamacropus_rufogriseus": {
+      "accepted_rows": 2466,
+      "excluded_rows": 725,
+      "input_rows": 3191,
+      "presence_cells": 688
+    },
+    "pseudocheirus_peregrinus": {
+      "accepted_rows": 324,
+      "excluded_rows": 43,
+      "input_rows": 367,
+      "presence_cells": 136
+    },
+    "sarcophilus_harrisii": {
+      "accepted_rows": 25416,
+      "excluded_rows": 8026,
+      "input_rows": 33442,
+      "presence_cells": 3064
+    },
+    "thylogale_billardierii": {
+      "accepted_rows": 3919,
+      "excluded_rows": 606,
+      "input_rows": 4525,
+      "presence_cells": 764
+    },
+    "trichosurus_vulpecula": {
+      "accepted_rows": 1389,
+      "excluded_rows": 226,
+      "input_rows": 1615,
+      "presence_cells": 568
+    },
+    "vombatus_ursinus": {
+      "accepted_rows": 1904,
+      "excluded_rows": 487,
+      "input_rows": 2391,
+      "presence_cells": 514
+    }
+  },
+  "by_taxon_basis": {
+    "accepted_subspecies_name": 4269,
+    "configured_child_concept": 1956,
+    "pinned_parent_concept": 44609
+  },
+  "by_uncertainty_band": {
+    "0-1000m": 35051,
+    "1000m": 1150,
+    ">1000m": 9355,
+    "unknown": 5278
+  },
+  "excluded_rows": 10571,
+  "input_rows": 50834,
+  "privacy": {
+    "aggregate_only": true
+  },
+  "quarantined_contract": 0
+}

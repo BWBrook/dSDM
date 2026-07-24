@@ -1,0 +1,14 @@
+{
+  "privacy": {
+    "account_values": false,
+    "coordinates": false,
+    "coordinates_retained": false,
+    "dataset_values": false,
+    "dates": false,
+    "record_ids_retained": false,
+    "resource_values": false,
+    "row_values_retained": false
+  },
+  "raw_replay_required": true,
+  "readiness": "goal018_spatial_normalization_complete"
+}

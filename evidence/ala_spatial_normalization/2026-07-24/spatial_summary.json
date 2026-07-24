@@ -1,0 +1,8 @@
+{
+  "accepted_cells": 6629,
+  "centroid_distance_m": {
+    "max": 690.900947,
+    "n": 40263
+  },
+  "low_cell_certainty_rows": 6253
+}

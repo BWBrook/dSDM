@@ -230,18 +230,16 @@ two-case-study journey, while being substantially further through the
 conceptual foundations and ALA source reconstruction for the Tasmanian
 prove-out.
 
-Goal 017 is complete. One bounded live workflow counted and acquired all nine
-canonical parent queries for Tasmania, 2001–2025. Its 17-row canary established
-the actual download route's provider identity, and all nine species files
-passed exact row-count, schema, and within- and cross-species identifier gates.
-The frozen snapshot contains 50,834 ALA-indexed records in 20 ignored raw
-artifacts, with aggregate-only tracked evidence and exact raw-backed replay.
+Goal 017 and Goal 018 are complete. The frozen 50,834-record ALA snapshot was
+replayed into a provenance-preserving presence layer with 40,263 accepted
+records and 6,629 species-grid cells. Evidence is aggregate-only and private
+row outputs remain ignored. These outputs are presence evidence, not abundance,
+occupancy, prevalence, or absence evidence.
 
-The next high-value tranche is Goal 018: turn this raw snapshot into a
-provenance-preserving normalized ALA occurrence layer and assign accepted
-records to the validated 0.01-degree Tasmanian grid. It should implement the
-resolved date, coordinate, uncertainty, boundary, water/lake, taxon, and
-provider-identity rules; preserve every exclusion and conflict as auditable
-reasoned evidence; and collapse accepted presences to species-grid cells while
-retaining source-record counts. It must not yet derive pseudoabsences, ingest
-camera data, construct folds, extract predictors, or fit models.
+The recommended next tranche is to resolve P1-D008 by privately staging Barry's
+authoritative camera source, then perform privacy-safe camera normalization to
+the same grid and `survey_supported_absence` semantics before any source
+combination or pseudoabsence work. The exact camera path must remain private and
+untracked. Legacy `tascam_grid_pa.csv` is comparison/reference material only;
+it is not the primary source. Do not infer additional Goal019 implementation
+details here.

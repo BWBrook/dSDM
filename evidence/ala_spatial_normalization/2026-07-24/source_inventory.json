@@ -1,0 +1,10 @@
+{
+  "goal_id": "goal018-ala-spatial-normalization-2026-07-24",
+  "raw_manifest_sha256": "864680cee693c812f7fe342898fbda5cce8f83e1763a09a208eaf44ccebe90c4",
+  "raw_rows": 50834,
+  "spatial_inputs": {
+    "coast_sha256": "015270fc146045bd78c13586642630d50715fe15c759c817706e398bf0a0a00a",
+    "grid_sha256": "91c7e0158ee8a808e9345d4bca28ec3e3fd7468dc3b7b1c1268e33e2da9499da"
+  },
+  "species_count": 9
+}
