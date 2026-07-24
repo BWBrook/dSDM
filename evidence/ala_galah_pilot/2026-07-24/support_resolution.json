@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "source_type": "user_reported_external_ala_support_reply",
+  "reported_facts": [
+    "A registered account email is sufficient for ordinary occurrence downloads.",
+    "API token, JWT, or Bearer authentication is not required for ordinary occurrence downloads.",
+    "Authentication is relevant only to separately approved sensitive or unobfuscated access.",
+    "The supported occurrence-download endpoint is current.",
+    "ALA support recommended galah-python, and the reply author maintains that client."
+  ],
+  "inference": "Goal 014's malformed single-occurrences URL likely caused its HTTP 403.",
+  "causal_limit": "That route explanation is an inference, not an independently reproduced causal diagnosis of the historical response."
+}

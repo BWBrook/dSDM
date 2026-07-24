@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0",
+  "goal_id": "goal015-ala-galah-route-gate-2026-07-24",
+  "package": {
+    "name": "galah-python",
+    "version": "0.13.3",
+    "download_endpoint": "https://api.ala.org.au/occurrences/occurrences/offline/download"
+  },
+  "query": {
+    "species_id": "pseudocheirus_peregrinus",
+    "scientific_name": "Pseudocheirus peregrinus",
+    "accepted_concept": "https://biodiversity.org.au/afd/taxa/003decd6-ec3d-468e-909d-da396a6dd1f6",
+    "filters": [
+      "stateProvince=Tasmania",
+      "year=2001"
+    ],
+    "use_data_profile": false
+  },
+  "caps": {
+    "max_count_calls": 1,
+    "max_occurrence_calls": 1,
+    "expected_count": 17,
+    "max_records": 100,
+    "occurrence_timeout_seconds": 900
+  },
+  "configuration": {
+    "email_env": "ALA_DOWNLOAD_EMAIL",
+    "atlas": "Australia",
+    "email_notify": false,
+    "reason": 4,
+    "authenticate": false,
+    "data_profile": null,
+    "verbose": false,
+    "timeout": 600,
+    "config_storage": "temporary_explicit_file"
+  },
+  "projection": {
+    "fields": [
+      "occurrenceID",
+      "dataResourceUid",
+      "dataResourceName",
+      "datasetID",
+      "datasetName",
+      "eventDate",
+      "year",
+      "decimalLatitude",
+      "decimalLongitude",
+      "coordinateUncertaintyInMeters",
+      "coordinatePrecision",
+      "raw_scientificName",
+      "raw_taxonConceptID",
+      "scientificName",
+      "taxonConceptID",
+      "acceptedNameUsage",
+      "acceptedNameUsageID",
+      "taxonRank",
+      "assertions",
+      "license"
+    ],
+    "mint_doi": false,
+    "dwc_headers": true,
+    "qa": "includeall_due_to_assertions_request",
+    "returned_field_aliases": {
+      "license": "dcterms:license"
+    },
+    "field_semantics": "galah returns requested license as dcterms:license under dwcHeaders=true, may expand assertion columns, and sets qa=includeall when assertions are requested"
+  },
+  "raw": {
+    "directory": "data/raw/ala/goal015-galah-pilot/2026-07-24",
+    "files": [
+      "galah-count.csv",
+      "galah-occurrences.csv"
+    ],
+    "representation": "immediate_csv_serializations_of_galah_returned_dataframes",
+    "provider_zip_retained": false,
+    "tracked": false
+  },
+  "evidence": {
+    "directory": "evidence/ala_galah_pilot/2026-07-24",
+    "files": [
+      "support_resolution.json",
+      "run_summary.json",
+      "review.json"
+    ],
+    "raw_replay_required_for_pass": true,
+    "tracked_rows": 0
+  }
+}

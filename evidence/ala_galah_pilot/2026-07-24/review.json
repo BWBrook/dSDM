@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "source_type": "goal015_route_gate_review",
+  "outcome": "completed",
+  "readiness": "galah_pilot_tracked_evidence_valid_raw_replay_required",
+  "raw_replay": "required_for_usable_route_decision",
+  "observations": {
+    "count": 17,
+    "returned_rows": 17,
+    "returned_columns": 144,
+    "required_core_fields_present": true,
+    "assertion_information_identifiable": true
+  },
+  "conclusion": "Both permitted live calls completed. The initial schema gate stopped on the exact dwcHeaders license alias; frozen raw replay resolved that false negative without a second live attempt. Exact local raw replay remains required for the usability decision.",
+  "limitations": [
+    "Galah exposes a pandas-parsed table rather than the provider ZIP; the ignored CSV files are the earliest artifacts available to this pilot.",
+    "Requesting assertions sets qa=includeall and may expand assertion columns; galah also sets dwcHeaders=true.",
+    "Under dwcHeaders=true, the requested license field is returned under the one explicit alias dcterms:license."
+  ],
+  "not_complete": [
+    "full nine-species acquisition",
+    "normalization or modelling",
+    "camera-data work",
+    "DOI minting",
+    "sensitive or unobfuscated access"
+  ]
+}
