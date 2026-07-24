@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "goal_id": "goal017-ala-nine-species-acquisition-2026-07-24",
+  "package": {"name": "galah-python", "version": "0.13.3", "download_endpoint": "https://api.ala.org.au/occurrences/occurrences/offline/download"},
+  "scope": {"filters": ["stateProvince=Tasmania", "year>=2001", "year<=2025"], "use_data_profile": false, "canonical_query_only": true},
+  "limits": {"count_calls": 10, "occurrence_calls": 10, "max_species_count": 1000000, "max_total_count": 5000000, "disk_bytes_per_row": 2048, "disk_multiplier": 5, "disk_reserve_bytes": 10000000000, "occurrence_timeout_seconds": 3600},
+  "configuration": {"email_env": "ALA_DOWNLOAD_EMAIL", "atlas": "Australia", "authenticate": false, "email_notify": false, "reason": 4, "verbose": false, "data_profile": null, "timeout": 600},
+  "goal016": {
+    "decision_plan": {"path": "config/ala_field_contract_calibration_plan.json", "sha256": "9693c4ae6ff811f106c9f7b469738630b606134f6b6439cfcf6172fb3b76f94a"},
+    "field_contract": {"path": "config/ala_field_contract.json", "sha256": "98cd67c17dbe5a9c55b4f17c8a4f6e383010d9d8724dff23bc9c3911051b9159"},
+    "required_raw_decision": "count_census_ready_full_row_acquisition_blocked_on_provider_identity"
+  },
+  "decision_bundle": {"path": "config/phase1_decision_bundle.json", "sha256": "5af1f76c58bd24fe61a741a42a4df4531ba21e08c0d8ce9b953ba0ff769668ae"},
+  "species": [
+    {"species_id": "thylogale_billardierii", "scientific_name": "Thylogale billardierii", "accepted_concept": "https://biodiversity.org.au/afd/taxa/82e69509-af63-4502-86f7-43362b777865"},
+    {"species_id": "notamacropus_rufogriseus", "scientific_name": "Notamacropus rufogriseus", "accepted_concept": "https://biodiversity.org.au/afd/taxa/c4dfafef-5192-4a3d-815c-040c393e9bca"},
+    {"species_id": "macropus_giganteus", "scientific_name": "Macropus giganteus", "accepted_concept": "https://biodiversity.org.au/afd/taxa/f2f43ef9-89fd-4f89-8b06-0842e86cfe06"},
+    {"species_id": "trichosurus_vulpecula", "scientific_name": "Trichosurus vulpecula", "accepted_concept": "https://biodiversity.org.au/afd/taxa/ee2cb6a9-e17c-4ca7-8aef-76d69eb969ed"},
+    {"species_id": "pseudocheirus_peregrinus", "scientific_name": "Pseudocheirus peregrinus", "accepted_concept": "https://biodiversity.org.au/afd/taxa/003decd6-ec3d-468e-909d-da396a6dd1f6"},
+    {"species_id": "vombatus_ursinus", "scientific_name": "Vombatus ursinus", "accepted_concept": "https://biodiversity.org.au/afd/taxa/66d42847-c556-4fa3-902c-a91d9f517286"},
+    {"species_id": "sarcophilus_harrisii", "scientific_name": "Sarcophilus harrisii", "accepted_concept": "https://biodiversity.org.au/afd/taxa/c6b5ff5a-a991-4972-b5b0-4214141d5bd6"},
+    {"species_id": "dasyurus_maculatus", "scientific_name": "Dasyurus maculatus", "accepted_concept": "https://biodiversity.org.au/afd/taxa/73c23669-c491-42d0-83b3-6fd84a03689a"},
+    {"species_id": "dasyurus_viverrinus", "scientific_name": "Dasyurus viverrinus", "accepted_concept": "https://biodiversity.org.au/afd/taxa/1e9f1b49-78b5-409d-91f2-21615ce88e9d"}
+  ],
+  "canary": {"species_id": "pseudocheirus_peregrinus", "filters": ["stateProvince=Tasmania", "year=2001"], "min_count": 1, "max_count": 100},
+  "projection": {"fields": ["recordID", "occurrenceID", "dataResourceUid", "dataResourceName", "datasetID", "datasetName", "eventDate", "year", "decimalLatitude", "decimalLongitude", "coordinateUncertaintyInMeters", "coordinatePrecision", "raw_scientificName", "raw_taxonConceptID", "scientificName", "taxonConceptID", "acceptedNameUsage", "acceptedNameUsageID", "taxonRank", "assertions", "license"], "mint_doi": false},
+  "raw": {"relative_directory": "data/raw/ala/goal017-nine-species/2026-07-24", "subdirectories": ["counts", "calibration", "occurrences"]},
+  "evidence": {"filenames": ["counts.json", "identity.json", "acquisition.json", "review.json", "manifest.json"]}
+}

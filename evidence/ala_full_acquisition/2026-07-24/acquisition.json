@@ -1,0 +1,62 @@
+{
+  "occurrence_calls": 10,
+  "outcome": "completed",
+  "schema_version": "1.0",
+  "species": [
+    {
+      "expected_rows": 367,
+      "record_ids_unique": true,
+      "returned_rows": 367,
+      "species_id": "pseudocheirus_peregrinus"
+    },
+    {
+      "expected_rows": 398,
+      "record_ids_unique": true,
+      "returned_rows": 398,
+      "species_id": "macropus_giganteus"
+    },
+    {
+      "expected_rows": 1169,
+      "record_ids_unique": true,
+      "returned_rows": 1169,
+      "species_id": "dasyurus_maculatus"
+    },
+    {
+      "expected_rows": 1615,
+      "record_ids_unique": true,
+      "returned_rows": 1615,
+      "species_id": "trichosurus_vulpecula"
+    },
+    {
+      "expected_rows": 2391,
+      "record_ids_unique": true,
+      "returned_rows": 2391,
+      "species_id": "vombatus_ursinus"
+    },
+    {
+      "expected_rows": 3191,
+      "record_ids_unique": true,
+      "returned_rows": 3191,
+      "species_id": "notamacropus_rufogriseus"
+    },
+    {
+      "expected_rows": 3736,
+      "record_ids_unique": true,
+      "returned_rows": 3736,
+      "species_id": "dasyurus_viverrinus"
+    },
+    {
+      "expected_rows": 4525,
+      "record_ids_unique": true,
+      "returned_rows": 4525,
+      "species_id": "thylogale_billardierii"
+    },
+    {
+      "expected_rows": 33442,
+      "record_ids_unique": true,
+      "returned_rows": 33442,
+      "species_id": "sarcophilus_harrisii"
+    }
+  ],
+  "stop_before_next_species": false
+}

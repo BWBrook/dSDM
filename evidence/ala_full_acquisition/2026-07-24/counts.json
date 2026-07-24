@@ -1,0 +1,54 @@
+{
+  "count_calls": 10,
+  "goal_id": "goal017-ala-nine-species-acquisition-2026-07-24",
+  "outcome": "completed",
+  "schema_version": "1.0",
+  "species": [
+    {
+      "count": 4525,
+      "query": "canonical_parent",
+      "species_id": "thylogale_billardierii"
+    },
+    {
+      "count": 3191,
+      "query": "canonical_parent",
+      "species_id": "notamacropus_rufogriseus"
+    },
+    {
+      "count": 398,
+      "query": "canonical_parent",
+      "species_id": "macropus_giganteus"
+    },
+    {
+      "count": 1615,
+      "query": "canonical_parent",
+      "species_id": "trichosurus_vulpecula"
+    },
+    {
+      "count": 367,
+      "query": "canonical_parent",
+      "species_id": "pseudocheirus_peregrinus"
+    },
+    {
+      "count": 2391,
+      "query": "canonical_parent",
+      "species_id": "vombatus_ursinus"
+    },
+    {
+      "count": 33442,
+      "query": "canonical_parent",
+      "species_id": "sarcophilus_harrisii"
+    },
+    {
+      "count": 1169,
+      "query": "canonical_parent",
+      "species_id": "dasyurus_maculatus"
+    },
+    {
+      "count": 3736,
+      "query": "canonical_parent",
+      "species_id": "dasyurus_viverrinus"
+    }
+  ],
+  "total_count": 50834
+}

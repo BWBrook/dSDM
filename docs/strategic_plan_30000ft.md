@@ -107,11 +107,13 @@ Build the provenance-rich source layer for the nine Tasmanian mammals:
 - raw snapshots, manifests, versions, and checksums;
 - spatial boundary, grid, and predictor source validation.
 
-Goal 015 established that the maintained `galah-python` route is usable for
-later acquisition design. Goal 016 calibrated the offline field contract and
-cleared separately manifested nine-species counts, while leaving full-row
-acquisition and cross-download deduplication blocked until a provider record
-identifier is calibrated.
+Goals 015–017 established the maintained `galah-python` route, calibrated its
+field contract and provider identity, and froze the complete nine-species
+Tasmania 2001–2025 source snapshot. The acquisition contains 50,834
+ALA-indexed records whose per-species files reconcile exactly to their
+pre-download counts; raw-backed replay verifies schema, checksums, and complete
+unique provider identifiers. These are source records, not independent
+observations, abundance, occupancy, or an analysis-ready dataset.
 
 ### Phase 2: Tasmanian analysis-ready dataset construction
 
@@ -223,15 +225,23 @@ and which analyses must be rerun after a change.
 
 ## Current position and next step
 
-The programme is near the start of Phase 1 and approximately 10-15% along the
-full two-case-study journey, while being substantially further through the
-conceptual foundations for the Tasmanian prove-out.
+The programme remains early in Phase 1 and approximately 10–15% along the full
+two-case-study journey, while being substantially further through the
+conceptual foundations and ALA source reconstruction for the Tasmanian
+prove-out.
 
-Goal 016 is complete. The frozen Galah sample supports a privacy-safe,
-configuration-driven field contract and the nine-species 2001--2025 count
-census, but it does not establish a provider record identity: `occurrenceID`
-was empty and `recordID` was not projected. Goal 017 should therefore run
-counts only for separately manifested canonical species queries, retain their
-exact provenance, and size the later acquisition without summing fallback
-branches. A bounded provider-identifier calibration remains mandatory before
-full row acquisition.
+Goal 017 is complete. One bounded live workflow counted and acquired all nine
+canonical parent queries for Tasmania, 2001–2025. Its 17-row canary established
+the actual download route's provider identity, and all nine species files
+passed exact row-count, schema, and within- and cross-species identifier gates.
+The frozen snapshot contains 50,834 ALA-indexed records in 20 ignored raw
+artifacts, with aggregate-only tracked evidence and exact raw-backed replay.
+
+The next high-value tranche is Goal 018: turn this raw snapshot into a
+provenance-preserving normalized ALA occurrence layer and assign accepted
+records to the validated 0.01-degree Tasmanian grid. It should implement the
+resolved date, coordinate, uncertainty, boundary, water/lake, taxon, and
+provider-identity rules; preserve every exclusion and conflict as auditable
+reasoned evidence; and collapse accepted presences to species-grid cells while
+retaining source-record counts. It must not yet derive pseudoabsences, ingest
+camera data, construct folds, extract predictors, or fit models.

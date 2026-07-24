@@ -1,0 +1,127 @@
+{
+  "files": [
+    {
+      "bytes": 1193,
+      "path": "counts.json",
+      "sha256": "a16626181d3e886d9eb02b5d8b8659bcdd7ec4d1adb6272da5932b3e071171d7"
+    },
+    {
+      "bytes": 256,
+      "path": "identity.json",
+      "sha256": "6485784f64746d5e979487ee40f691abe045e6307ba4663cff328794bef5fc48"
+    },
+    {
+      "bytes": 1461,
+      "path": "acquisition.json",
+      "sha256": "8b7b3ad10a301ce97d25c50bbe3e8755f0d3fd8e0f79b0b59df43910efe8e573"
+    },
+    {
+      "bytes": 552,
+      "path": "review.json",
+      "sha256": "0baa5c664db30963e123f5614077f902f9b9bc990520b92e865bb9b9f11520e2"
+    }
+  ],
+  "raw_files": [
+    {
+      "bytes": 16,
+      "path": "calibration/pseudocheirus_peregrinus-2001-count.csv",
+      "sha256": "598449fa07d9cc075eca91dbb51a7efdc06597f2acd5429c588c0cf3336edb2e"
+    },
+    {
+      "bytes": 24973,
+      "path": "calibration/pseudocheirus_peregrinus-2001-occurrences.csv",
+      "sha256": "2fc2e7d167e2a15945765830e6556947a1ea86a3667e2edd207dbcfd5ecdd9ca"
+    },
+    {
+      "bytes": 18,
+      "path": "counts/dasyurus_maculatus.csv",
+      "sha256": "40d8bceabcace75712d35b054a16d322b7edd93537c45b094f4ec64d9bafdd2b"
+    },
+    {
+      "bytes": 18,
+      "path": "counts/dasyurus_viverrinus.csv",
+      "sha256": "42fcea7df63619cdb6d2448ae3739c565660c628c44b9c45ee04d53161c23786"
+    },
+    {
+      "bytes": 17,
+      "path": "counts/macropus_giganteus.csv",
+      "sha256": "e30dce72459428b16efe6c093544a1ba35f613d86e6f0382f229d17845e9a7a8"
+    },
+    {
+      "bytes": 18,
+      "path": "counts/notamacropus_rufogriseus.csv",
+      "sha256": "669c038cad3a35549cb11bdedbd1b6ee109e02cbf8ef96e30acbbac8506ec932"
+    },
+    {
+      "bytes": 17,
+      "path": "counts/pseudocheirus_peregrinus.csv",
+      "sha256": "7d1282fb249b3120a885216146d12f0e0b9c35d2e209d69b9dd9c31b6f7d2223"
+    },
+    {
+      "bytes": 19,
+      "path": "counts/sarcophilus_harrisii.csv",
+      "sha256": "e750b929d6ffdfe7acbaaa89002583500b1fe54b0881e7a52d1a38ef2bb44f45"
+    },
+    {
+      "bytes": 18,
+      "path": "counts/thylogale_billardierii.csv",
+      "sha256": "3d0e6714d3734b9f462876c006a0306a5c47c8f566238d9bc14ae224861ff976"
+    },
+    {
+      "bytes": 18,
+      "path": "counts/trichosurus_vulpecula.csv",
+      "sha256": "58ec053cfd1adfb688256e0cad46e93619579a355a9b12a2a3f728d0709c5269"
+    },
+    {
+      "bytes": 18,
+      "path": "counts/vombatus_ursinus.csv",
+      "sha256": "9be475043a4a708a717f232287fd1d68bd7feae55cf50ff1429d1a05a62ade65"
+    },
+    {
+      "bytes": 1473994,
+      "path": "occurrences/dasyurus_maculatus.csv",
+      "sha256": "2f04e4cf3c90df9620f107c0369f385c6e1157b0c3a1a8f66669d063cbb89cd7"
+    },
+    {
+      "bytes": 4619838,
+      "path": "occurrences/dasyurus_viverrinus.csv",
+      "sha256": "b54c55315e4fb9dc400a0bb9546854f3374d0e0b0fad8945f2dbd66c5ec9416d"
+    },
+    {
+      "bytes": 510418,
+      "path": "occurrences/macropus_giganteus.csv",
+      "sha256": "2e11e0ef2d8f3be7e4460baf508aa0c948f3b1773e1c88e1966b7482e41630eb"
+    },
+    {
+      "bytes": 4178946,
+      "path": "occurrences/notamacropus_rufogriseus.csv",
+      "sha256": "4037bd7bd4b4a798ad6243fcbdd13d6e2255513b17fc11d20304471621fdc8ba"
+    },
+    {
+      "bytes": 473416,
+      "path": "occurrences/pseudocheirus_peregrinus.csv",
+      "sha256": "1874318d69d163dac0d1c2592cf18794eac621a078b4bb9efd134f889bf6fafb"
+    },
+    {
+      "bytes": 41822691,
+      "path": "occurrences/sarcophilus_harrisii.csv",
+      "sha256": "a2aea0d3b89579c4535934255a6286cb36ed764a0df4b34ee8c791ba3c7db11e"
+    },
+    {
+      "bytes": 5787957,
+      "path": "occurrences/thylogale_billardierii.csv",
+      "sha256": "a926e032533385210da94e68a79eadb6d7025539d6447898380ecbeb823aaa90"
+    },
+    {
+      "bytes": 2082539,
+      "path": "occurrences/trichosurus_vulpecula.csv",
+      "sha256": "58c73817ae4557803e6203f6ca0a1767bbb0dcdddc81e04d9be3b293aabb22aa"
+    },
+    {
+      "bytes": 3087232,
+      "path": "occurrences/vombatus_ursinus.csv",
+      "sha256": "84e2619f6e53653d0914b8f8b5b8a6a13bdc564eeb79cad67ff10174a69eb307"
+    }
+  ],
+  "schema_version": "1.0"
+}

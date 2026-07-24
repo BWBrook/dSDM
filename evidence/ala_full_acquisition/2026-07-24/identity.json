@@ -1,0 +1,14 @@
+{
+  "canary": {
+    "attempted": true,
+    "count": 17,
+    "passed": true
+  },
+  "outcome": "completed",
+  "record_id": {
+    "canary_rows": 17,
+    "observed": true,
+    "policy": "recordID_required_unique_control_clean"
+  },
+  "schema_version": "1.0"
+}
