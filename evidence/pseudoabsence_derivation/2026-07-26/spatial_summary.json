@@ -1,0 +1,14 @@
+{
+  "candidate_rows": 2316,
+  "distance_accepted": 587,
+  "distance_crs": "EPSG:7855",
+  "distance_rejected": 900,
+  "distance_sq_threshold": 25000000.0,
+  "distance_tested": 1487,
+  "full_distance_preimage_bytes": 40990,
+  "full_distance_preimage_sha256": "8b0b2ee4a49de6035361268415afa873cae085c5dd8833bf12a0180728e24226",
+  "geodesic_threshold_disagreements": 0,
+  "pipeline": "proj=pipeline step proj=unitconvert xy_in=deg xy_out=rad step proj=utm zone=55 south ellps=GRS80",
+  "portable_accepted_key_sha256": "7fc66053fdd738e3894acfd0b778e3027e10e8493f09f4df852449d2dcaa9166",
+  "projection": "GDA2020/MGA55 EPSG:7855 equivalent"
+}

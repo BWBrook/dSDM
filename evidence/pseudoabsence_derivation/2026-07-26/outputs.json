@@ -1,0 +1,70 @@
+{
+  "private_output_roles": {
+    "pseudoabsence_candidate_audit": {
+      "bytes": 535590,
+      "rows": 2316,
+      "schema": [
+        "species_id",
+        "grid_cell_id",
+        "centroid_lon",
+        "centroid_lat",
+        "pseudoabsence_support_species_count",
+        "pseudoabsence_support_species_ids",
+        "target_pa_type",
+        "target_source_combination",
+        "target_camera_pa_type",
+        "island_code",
+        "island_exclusion_rule_id",
+        "nearest_target_presence_grid_cell_id",
+        "nearest_target_presence_source_combination",
+        "nearest_target_presence_distance_m",
+        "distance_crs",
+        "distance_eligible",
+        "disposition"
+      ],
+      "sha256": "58f3bd193f249b93fb69870e82d557146db5fff29b96703540eb8e2ff778b3ec"
+    },
+    "response_layer": {
+      "bytes": 2096155,
+      "rows": 13455,
+      "schema": [
+        "species_id",
+        "grid_cell_id",
+        "centroid_lon",
+        "centroid_lat",
+        "pa",
+        "pa_type",
+        "survey_supported_absence_rule_id",
+        "source_combination",
+        "cross_source_conflict",
+        "ala_presence",
+        "ala_source_row_count",
+        "ala_unique_provider_record_count",
+        "ala_resource_count",
+        "ala_dataset_count",
+        "ala_unknown_uncertainty_count",
+        "ala_qa_flag_count",
+        "ala_low_cell_certainty_only",
+        "camera_evidence",
+        "camera_pa",
+        "camera_pa_type",
+        "camera_survey_supported_absence_rule_id",
+        "camera_site_count",
+        "camera_presence_site_count",
+        "camera_survey_supported_absence_site_count",
+        "camera_positive_source_row_count",
+        "camera_internal_conflict",
+        "response_origin",
+        "pseudoabsence_rule_id",
+        "pseudoabsence_support_species_count",
+        "pseudoabsence_support_species_ids",
+        "nearest_target_presence_grid_cell_id",
+        "nearest_target_presence_source_combination",
+        "nearest_target_presence_distance_m",
+        "distance_crs"
+      ],
+      "sha256": "e67298d11d7eb29e6bf8ca055cd8b64cfaf119d193ff0675fff09719ce0616a3"
+    }
+  },
+  "private_outputs_ignored": true
+}

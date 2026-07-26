@@ -1,0 +1,21 @@
+{
+  "blockers": [],
+  "classification": "fixed",
+  "distance_crs": "EPSG:7855",
+  "privacy": {
+    "tracked_actual_grid_ids_or_coordinates": false,
+    "tracked_camera_identifiers_or_timing": false,
+    "tracked_private_paths_or_rows": false
+  },
+  "private_replay_required": true,
+  "readiness": "goal021_complete",
+  "stopped_before": [
+    "thinning",
+    "weights",
+    "balancing",
+    "predictors",
+    "partitions",
+    "mapping",
+    "modelling"
+  ]
+}

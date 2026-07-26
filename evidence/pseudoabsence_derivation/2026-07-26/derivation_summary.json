@@ -1,0 +1,124 @@
+{
+  "final_response_by_species": {
+    "dasyurus_maculatus": 1310,
+    "dasyurus_viverrinus": 1305,
+    "notamacropus_rufogriseus": 1561,
+    "pseudocheirus_peregrinus": 1151,
+    "sarcophilus_harrisii": 3723,
+    "thylogale_billardierii": 1601,
+    "trichosurus_vulpecula": 1429,
+    "vombatus_ursinus": 1375
+  },
+  "funnel": {
+    "camera_survey_supported_absence": 17,
+    "distance_rejected": 900,
+    "island_suppressed": 79,
+    "pseudoabsence": 587,
+    "stage_a": 2316,
+    "target_presence": 733
+  },
+  "overall": {
+    "camera_survey_supported_absence": 17,
+    "distance_rejected": 900,
+    "island_suppressed": 79,
+    "pseudoabsence": 587,
+    "stage_a": 2316,
+    "target_presence": 733
+  },
+  "per_species": {
+    "dasyurus_maculatus": {
+      "camera_survey_supported_absence": 4,
+      "distance_rejected": 158,
+      "island_suppressed": 34,
+      "presence": 986,
+      "prevalence": 0.7526717557251908,
+      "pseudoabsence": 103,
+      "survey_supported_absence": 221,
+      "target_presence": 58,
+      "total": 1310
+    },
+    "dasyurus_viverrinus": {
+      "camera_survey_supported_absence": 7,
+      "distance_rejected": 101,
+      "island_suppressed": 24,
+      "presence": 475,
+      "prevalence": 0.36398467432950193,
+      "pseudoabsence": 181,
+      "survey_supported_absence": 649,
+      "target_presence": 49,
+      "total": 1305
+    },
+    "notamacropus_rufogriseus": {
+      "camera_survey_supported_absence": 0,
+      "distance_rejected": 122,
+      "island_suppressed": 0,
+      "presence": 1380,
+      "prevalence": 0.8840486867392697,
+      "pseudoabsence": 34,
+      "survey_supported_absence": 147,
+      "target_presence": 154,
+      "total": 1561
+    },
+    "pseudocheirus_peregrinus": {
+      "camera_survey_supported_absence": 4,
+      "distance_rejected": 150,
+      "island_suppressed": 0,
+      "presence": 388,
+      "prevalence": 0.3370981754995656,
+      "pseudoabsence": 164,
+      "survey_supported_absence": 599,
+      "target_presence": 60,
+      "total": 1151
+    },
+    "sarcophilus_harrisii": {
+      "camera_survey_supported_absence": 0,
+      "distance_rejected": 115,
+      "island_suppressed": 11,
+      "presence": 3607,
+      "prevalence": 0.9688423314531291,
+      "pseudoabsence": 15,
+      "survey_supported_absence": 101,
+      "target_presence": 146,
+      "total": 3723
+    },
+    "thylogale_billardierii": {
+      "camera_survey_supported_absence": 0,
+      "distance_rejected": 0,
+      "island_suppressed": 0,
+      "presence": 1471,
+      "prevalence": 0.9188007495315428,
+      "pseudoabsence": 0,
+      "survey_supported_absence": 130,
+      "target_presence": 0,
+      "total": 1601
+    },
+    "trichosurus_vulpecula": {
+      "camera_survey_supported_absence": 1,
+      "distance_rejected": 114,
+      "island_suppressed": 0,
+      "presence": 1235,
+      "prevalence": 0.8642407277816655,
+      "pseudoabsence": 19,
+      "survey_supported_absence": 175,
+      "target_presence": 149,
+      "total": 1429
+    },
+    "vombatus_ursinus": {
+      "camera_survey_supported_absence": 1,
+      "distance_rejected": 140,
+      "island_suppressed": 10,
+      "presence": 1166,
+      "prevalence": 0.848,
+      "pseudoabsence": 71,
+      "survey_supported_absence": 138,
+      "target_presence": 117,
+      "total": 1375
+    }
+  },
+  "support_distribution": {
+    "3": 385,
+    "4": 128,
+    "5": 54,
+    "6": 20
+  }
+}
