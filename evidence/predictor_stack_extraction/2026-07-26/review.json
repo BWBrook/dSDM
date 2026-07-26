@@ -1,0 +1,17 @@
+{
+  "blockers": [],
+  "classification": "fixed",
+  "privacy": {
+    "tracked_grid_ids_or_coordinates": false,
+    "tracked_private_paths": false,
+    "tracked_response_identifiers": false,
+    "tracked_row_payloads": false
+  },
+  "readiness": "goal022_complete",
+  "stopped_before": [
+    "partitions",
+    "fitted_transformations",
+    "mapping",
+    "modelling"
+  ]
+}

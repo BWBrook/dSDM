@@ -1,0 +1,154 @@
+{
+  "canonical": {
+    "by_predictor": {
+      "annmeantemp": 1,
+      "annprecip": 1,
+      "dist_fw": 1361,
+      "dist_road": 1406,
+      "elevation": 1579,
+      "fpar": 1828,
+      "human_footprint": 954,
+      "isothermality": 1,
+      "landuse_secondary": 102,
+      "maxtempwarmmonth": 1,
+      "meandiurnrange": 1,
+      "meantempcoldq": 1,
+      "meantempdryq": 1,
+      "meantempwarmq": 1,
+      "meantempwetq": 1,
+      "mintempcoldmonth": 1,
+      "precipcoldq": 1,
+      "precipdrymonth": 1,
+      "precipdryq": 1,
+      "precipseason": 1,
+      "precipwarmq": 1,
+      "precipwetmonth": 1,
+      "precipwetq": 1,
+      "soil_class": 1777,
+      "tempannrange": 1,
+      "tempseason": 1,
+      "top_roughness": 1503,
+      "veg_mvg": 398
+    },
+    "complete": 71023,
+    "incomplete": 3050,
+    "rows": 74073
+  },
+  "response_cells": {
+    "by_predictor": {
+      "annmeantemp": 0,
+      "annprecip": 0,
+      "dist_fw": 40,
+      "dist_road": 46,
+      "elevation": 66,
+      "fpar": 112,
+      "human_footprint": 161,
+      "isothermality": 0,
+      "landuse_secondary": 2,
+      "maxtempwarmmonth": 0,
+      "meandiurnrange": 0,
+      "meantempcoldq": 0,
+      "meantempdryq": 0,
+      "meantempwarmq": 0,
+      "meantempwetq": 0,
+      "mintempcoldmonth": 0,
+      "precipcoldq": 0,
+      "precipdrymonth": 0,
+      "precipdryq": 0,
+      "precipseason": 0,
+      "precipwarmq": 0,
+      "precipwetmonth": 0,
+      "precipwetq": 0,
+      "soil_class": 85,
+      "tempannrange": 0,
+      "tempseason": 0,
+      "top_roughness": 50,
+      "veg_mvg": 69
+    },
+    "complete": 5087,
+    "incomplete": 320,
+    "rows": 5407
+  },
+  "response_rows": {
+    "by_predictor": {
+      "annmeantemp": 0,
+      "annprecip": 0,
+      "dist_fw": 97,
+      "dist_road": 109,
+      "elevation": 149,
+      "fpar": 314,
+      "human_footprint": 339,
+      "isothermality": 0,
+      "landuse_secondary": 2,
+      "maxtempwarmmonth": 0,
+      "meandiurnrange": 0,
+      "meantempcoldq": 0,
+      "meantempdryq": 0,
+      "meantempwarmq": 0,
+      "meantempwetq": 0,
+      "mintempcoldmonth": 0,
+      "precipcoldq": 0,
+      "precipdrymonth": 0,
+      "precipdryq": 0,
+      "precipseason": 0,
+      "precipwarmq": 0,
+      "precipwetmonth": 0,
+      "precipwetq": 0,
+      "soil_class": 192,
+      "tempannrange": 0,
+      "tempseason": 0,
+      "top_roughness": 117,
+      "veg_mvg": 124
+    },
+    "complete": 12711,
+    "incomplete": 744,
+    "pa_type_counts": {
+      "presence": 10708,
+      "pseudoabsence": 587,
+      "survey_supported_absence": 2160
+    },
+    "rows": 13455,
+    "species_aggregates": {
+      "dasyurus_maculatus": {
+        "complete": 1258,
+        "incomplete": 52,
+        "rows": 1310
+      },
+      "dasyurus_viverrinus": {
+        "complete": 1244,
+        "incomplete": 61,
+        "rows": 1305
+      },
+      "notamacropus_rufogriseus": {
+        "complete": 1434,
+        "incomplete": 127,
+        "rows": 1561
+      },
+      "pseudocheirus_peregrinus": {
+        "complete": 1083,
+        "incomplete": 68,
+        "rows": 1151
+      },
+      "sarcophilus_harrisii": {
+        "complete": 3573,
+        "incomplete": 150,
+        "rows": 3723
+      },
+      "thylogale_billardierii": {
+        "complete": 1485,
+        "incomplete": 116,
+        "rows": 1601
+      },
+      "trichosurus_vulpecula": {
+        "complete": 1336,
+        "incomplete": 93,
+        "rows": 1429
+      },
+      "vombatus_ursinus": {
+        "complete": 1298,
+        "incomplete": 77,
+        "rows": 1375
+      }
+    }
+  }
+}

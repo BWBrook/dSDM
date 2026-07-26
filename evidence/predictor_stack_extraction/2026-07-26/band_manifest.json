@@ -1,0 +1,232 @@
+{
+  "active_indices": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    26,
+    28,
+    30,
+    32
+  ],
+  "all_bands": [
+    {
+      "index": 1,
+      "name": "annmeantemp",
+      "role": "active",
+      "type": "continuous"
+    },
+    {
+      "index": 2,
+      "name": "meandiurnrange",
+      "role": "active",
+      "type": "continuous"
+    },
+    {
+      "index": 3,
+      "name": "isothermality",
+      "role": "active",
+      "type": "continuous"
+    },
+    {
+      "index": 4,
+      "name": "tempseason",
+      "role": "active",
+      "type": "continuous"
+    },
+    {
+      "index": 5,
+      "name": "maxtempwarmmonth",
+      "role": "active",
+      "type": "continuous"
+    },
+    {
+      "index": 6,
+      "name": "mintempcoldmonth",
+      "role": "active",
+      "type": "continuous"
+    },
+    {
+      "index": 7,
+      "name": "tempannrange",
+      "role": "active",
+      "type": "continuous"
+    },
+    {
+      "index": 8,
+      "name": "meantempwetq",
+      "role": "active",
+      "type": "continuous"
+    },
+    {
+      "index": 9,
+      "name": "meantempdryq",
+      "role": "active",
+      "type": "continuous"
+    },
+    {
+      "index": 10,
+      "name": "meantempwarmq",
+      "role": "active",
+      "type": "continuous"
+    },
+    {
+      "index": 11,
+      "name": "meantempcoldq",
+      "role": "active",
+      "type": "continuous"
+    },
+    {
+      "index": 12,
+      "name": "annprecip",
+      "role": "active",
+      "type": "continuous"
+    },
+    {
+      "index": 13,
+      "name": "precipwetmonth",
+      "role": "active",
+      "type": "continuous"
+    },
+    {
+      "index": 14,
+      "name": "precipdrymonth",
+      "role": "active",
+      "type": "continuous"
+    },
+    {
+      "index": 15,
+      "name": "precipseason",
+      "role": "active",
+      "type": "continuous"
+    },
+    {
+      "index": 16,
+      "name": "precipwetq",
+      "role": "active",
+      "type": "continuous"
+    },
+    {
+      "index": 17,
+      "name": "precipdryq",
+      "role": "active",
+      "type": "continuous"
+    },
+    {
+      "index": 18,
+      "name": "precipwarmq",
+      "role": "active",
+      "type": "continuous"
+    },
+    {
+      "index": 19,
+      "name": "precipcoldq",
+      "role": "active",
+      "type": "continuous"
+    },
+    {
+      "index": 20,
+      "name": "elevation",
+      "role": "active",
+      "type": "continuous"
+    },
+    {
+      "index": 21,
+      "name": "top_roughness",
+      "role": "active",
+      "type": "continuous"
+    },
+    {
+      "index": 22,
+      "name": "soil_class",
+      "role": "active",
+      "type": "categorical"
+    },
+    {
+      "index": 23,
+      "name": "dist_fw",
+      "role": "active",
+      "type": "continuous"
+    },
+    {
+      "index": 24,
+      "name": "dist_road",
+      "role": "active",
+      "type": "continuous"
+    },
+    {
+      "index": 25,
+      "name": "fire_freq",
+      "role": "excluded",
+      "type": "continuous"
+    },
+    {
+      "index": 26,
+      "name": "fpar",
+      "role": "active",
+      "type": "continuous"
+    },
+    {
+      "index": 27,
+      "name": "veg_mvs",
+      "role": "excluded",
+      "type": "continuous"
+    },
+    {
+      "index": 28,
+      "name": "veg_mvg",
+      "role": "active",
+      "type": "categorical"
+    },
+    {
+      "index": 29,
+      "name": "landuse_primary",
+      "role": "excluded",
+      "type": "continuous"
+    },
+    {
+      "index": 30,
+      "name": "landuse_secondary",
+      "role": "active",
+      "type": "categorical"
+    },
+    {
+      "index": 31,
+      "name": "landuse_tertiary",
+      "role": "excluded",
+      "type": "continuous"
+    },
+    {
+      "index": 32,
+      "name": "human_footprint",
+      "role": "active",
+      "type": "continuous"
+    }
+  ],
+  "excluded_indices": [
+    25,
+    27,
+    29,
+    31
+  ]
+}

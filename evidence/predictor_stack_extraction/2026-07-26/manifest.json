@@ -1,0 +1,40 @@
+{
+  "files": [
+    {
+      "bytes": 1391,
+      "path": "source_inventory.json",
+      "sha256": "c102a140898a2ddb63671c008e980624879bb5cae9efe8734da1b2452ca468e0"
+    },
+    {
+      "bytes": 3930,
+      "path": "band_manifest.json",
+      "sha256": "b1fd813bff80aa89ccc18396fce4d3e9c637dd435c73acaa1456c946757bce85"
+    },
+    {
+      "bytes": 3727,
+      "path": "categorical_levels.json",
+      "sha256": "67267857bf1385bccc4d58566f736d4e16926c46cd4130e305fd176ea5be6a24"
+    },
+    {
+      "bytes": 3542,
+      "path": "missingness_summary.json",
+      "sha256": "0d519aa2a11594e70c992096fb22e47b3ca5efeac151212a22a407e3e8c82a66"
+    },
+    {
+      "bytes": 625,
+      "path": "spatial_summary.json",
+      "sha256": "90022c610e364b2b6cdf3af69d807ae9ab7f66889ed5f70113c009372e57be45"
+    },
+    {
+      "bytes": 2115,
+      "path": "outputs.json",
+      "sha256": "72bc6b81a25016fc8ba2bdae677d4f0c35021ce33ba0dfaac3aa4f2fe4c08ff5"
+    },
+    {
+      "bytes": 370,
+      "path": "review.json",
+      "sha256": "f7e0c7f6c37b6074c2dcea2e4d1b5124596347ad0f1aba7ca0efc847a6610a95"
+    }
+  ],
+  "schema_version": "1.0"
+}

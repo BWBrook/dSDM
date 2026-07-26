@@ -1,0 +1,25 @@
+{
+  "alignment": "exact centre indexing; no nearest/rescue/interpolation",
+  "canonical_intersection_complete": 71023,
+  "canonical_unique_cells": 74073,
+  "raster_active_complete": 71057,
+  "raster_complete_outside_canonical": 34,
+  "response_join_audit": {
+    "duplicate_response_rows": 8048,
+    "key_multiplicity_distribution": {
+      "1": 3391,
+      "2": 767,
+      "3": 24,
+      "4": 150,
+      "5": 172,
+      "6": 85,
+      "7": 56,
+      "8": 762
+    },
+    "response_rows": 13455,
+    "unique_predictor_keys": 5407,
+    "unmatched_rows": 0
+  },
+  "response_join_unmatched": 0,
+  "response_unique_cells": 5407
+}

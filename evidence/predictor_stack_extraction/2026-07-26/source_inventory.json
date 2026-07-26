@@ -1,0 +1,36 @@
+{
+  "binding_hashes": {
+    "canonical_grid": "91c7e0158ee8a808e9345d4bca28ec3e3fd7468dc3b7b1c1268e33e2da9499da",
+    "decision_bundle": "ccccbb2e56e101b1a53421f8016699bfb500f4356861e10c1213a398aabe04a2",
+    "goal021_manifest": "bf843690a6071f489b81fb5bdc348bab1c9f2001dfa37ad359ed7dc75d50f875",
+    "goal021_outputs_evidence": "ecf0e6f46b3eec30c4edeff26d02f694be18cbc063268d9e1780f8cca7b5a3d9",
+    "goal021_plan": "75cdc198815d3076af6ee3b6f25bed5ea4e90bf1433c7e9205f8692dfedd95fe",
+    "goal021_response": "e67298d11d7eb29e6bf8ca055cd8b64cfaf119d193ff0675fff09719ce0616a3",
+    "legacy_band_order": "cff353c830fe78e351fc72f2672dd1c73e94930ebf4516b53c5950ec19a4effe",
+    "stack": "e3dd4175688572d9c8afcfb521a5e1083a0f25ba90d4841938a93aa5d6f72088"
+  },
+  "goal_id": "goal022-predictor-stack-extraction-2026-07-26",
+  "privacy": {
+    "tracked_grid_ids_or_coordinates": false,
+    "tracked_private_paths": false,
+    "tracked_response_identifiers": false,
+    "tracked_row_payloads": false
+  },
+  "raster_contract": {
+    "bands": 32,
+    "compression": "LZW",
+    "crs": "EPSG:4326",
+    "height": 455,
+    "interleave": "PIXEL",
+    "nodata": "-3.4e38 Float32",
+    "width": 468
+  },
+  "runtime": {
+    "numpy_by_python": {
+      "python_full_version < '3.12'": "2.4.6",
+      "python_full_version >= '3.12'": "2.5.1"
+    },
+    "python_requires": ">=3.11",
+    "rasterio": "1.4.4"
+  }
+}
