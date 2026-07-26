@@ -1,0 +1,35 @@
+{
+  "barry_decisions_pending": [
+    "prediction target domain",
+    "authority for targeted source-repair exception",
+    "fallback treatment if full-domain prediction is required"
+  ],
+  "decision_readiness": "diagnostic_complete_decision_pending",
+  "downstream_scope_status": "Goal019 eight-species overlay is resolved and bound; nine-candidate acquisition history is preserved; no bundle rewrite",
+  "goal_id": "goal023-predictor-support-map-domain-2026-07-26",
+  "privacy": {
+    "tracked_grid_ids_or_coordinates": false,
+    "tracked_private_observation_timing": false,
+    "tracked_private_paths": false,
+    "tracked_response_identifiers": false,
+    "tracked_row_payloads": false,
+    "tracked_site_or_camera_ids": false
+  },
+  "provisional_recommendation": "source audit/repair first; supported-domain restriction is the clearest fallback; later type-specific training-only treatment remains available; predictor revision follows ecological and held-out evidence",
+  "stopped_before": [
+    "imputation",
+    "fill",
+    "resampling",
+    "encoding",
+    "scaling",
+    "partitions",
+    "mapping",
+    "modelling",
+    "policy_selection"
+  ],
+  "uncertainty": [
+    "native source metadata/build/nodata causes unavailable",
+    "workbook labels are reference lineage only",
+    "environmental support is marginal"
+  ]
+}

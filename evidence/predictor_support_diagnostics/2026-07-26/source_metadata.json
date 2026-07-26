@@ -1,0 +1,2417 @@
+{
+  "bindings": {
+    "canonical_predictor_csv": {
+      "path": "data/processed/predictors/goal022-predictor-stack-extraction/2026-07-26/predictor_cell_map_raw.csv",
+      "sha256": "0e2082671096bbf80745038bad8329d3bb4fd58dc20b8a4adb146c3d62459542"
+    },
+    "decision_bundle": {
+      "path": "config/phase1_decision_bundle.json",
+      "sha256": "ccccbb2e56e101b1a53421f8016699bfb500f4356861e10c1213a398aabe04a2"
+    },
+    "goal021_manifest": {
+      "path": "evidence/pseudoabsence_derivation/2026-07-26/manifest.json",
+      "sha256": "bf843690a6071f489b81fb5bdc348bab1c9f2001dfa37ad359ed7dc75d50f875"
+    },
+    "goal021_outputs": {
+      "path": "evidence/pseudoabsence_derivation/2026-07-26/outputs.json",
+      "sha256": "ecf0e6f46b3eec30c4edeff26d02f694be18cbc063268d9e1780f8cca7b5a3d9"
+    },
+    "goal021_plan": {
+      "path": "config/pseudoabsence_derivation_plan.json",
+      "sha256": "75cdc198815d3076af6ee3b6f25bed5ea4e90bf1433c7e9205f8692dfedd95fe"
+    },
+    "goal021_response": {
+      "path": "data/processed/response/goal021-pseudoabsence-derivation/2026-07-26/response_layer.csv",
+      "sha256": "e67298d11d7eb29e6bf8ca055cd8b64cfaf119d193ff0675fff09719ce0616a3"
+    },
+    "legacy_script": {
+      "path": "temp/src/3_create_sdm_data.R",
+      "sha256": "cff353c830fe78e351fc72f2672dd1c73e94930ebf4516b53c5950ec19a4effe"
+    },
+    "predictor_band_manifest": {
+      "path": "evidence/predictor_stack_extraction/2026-07-26/band_manifest.json",
+      "sha256": "b1fd813bff80aa89ccc18396fce4d3e9c637dd435c73acaa1456c946757bce85"
+    },
+    "predictor_categorical_levels": {
+      "path": "evidence/predictor_stack_extraction/2026-07-26/categorical_levels.json",
+      "sha256": "67267857bf1385bccc4d58566f736d4e16926c46cd4130e305fd176ea5be6a24"
+    },
+    "predictor_manifest": {
+      "path": "evidence/predictor_stack_extraction/2026-07-26/manifest.json",
+      "sha256": "d0c72e0b0fc614813438ae6d554b4522ae65305daf63543aa8b9774b7e891c60"
+    },
+    "predictor_missingness": {
+      "path": "evidence/predictor_stack_extraction/2026-07-26/missingness_summary.json",
+      "sha256": "0d519aa2a11594e70c992096fb22e47b3ca5efeac151212a22a407e3e8c82a66"
+    },
+    "predictor_plan": {
+      "path": "config/predictor_stack_extraction_plan.json",
+      "sha256": "e75af21cf553cd5a10e375a9f3f29ebfc7b574a8684b8f82f830c111c0c34c65"
+    },
+    "predictor_review": {
+      "path": "evidence/predictor_stack_extraction/2026-07-26/review.json",
+      "sha256": "f7e0c7f6c37b6074c2dcea2e4d1b5124596347ad0f1aba7ca0efc847a6610a95"
+    },
+    "predictor_source_inventory": {
+      "path": "evidence/predictor_stack_extraction/2026-07-26/source_inventory.json",
+      "sha256": "c102a140898a2ddb63671c008e980624879bb5cae9efe8734da1b2452ca468e0"
+    },
+    "predictor_spatial": {
+      "path": "evidence/predictor_stack_extraction/2026-07-26/spatial_summary.json",
+      "sha256": "90022c610e364b2b6cdf3af69d807ae9ab7f66889ed5f70113c009372e57be45"
+    },
+    "response_predictor_csv": {
+      "path": "data/processed/predictors/goal022-predictor-stack-extraction/2026-07-26/predictor_response_cells_raw.csv",
+      "sha256": "4438d383c6f63e38b0bf61bcbb3812df4e3a26b9e2185d718d2fc03817bbb92f"
+    },
+    "scoping_review": {
+      "path": "docs/scoping_review_2026-05-27.md",
+      "sha256": "758f2e0acba010f1a1a0f8bf35642bb969aa77b57e6a29ebc9884de035c96f61"
+    },
+    "workbook": {
+      "path": "temp/data/spatial/se_stack_metadata.xlsx",
+      "sha256": "ec460f9a41913f3288ca7dd38b6150b575f9c00b73581b892468cd0577127edd"
+    }
+  },
+  "goal_id": "goal023-predictor-support-map-domain-2026-07-26",
+  "lineage_status": {
+    "geometry": "verified from Goal022 extraction contract",
+    "source_product_windows_allowed": "non-sensitive source-product dates/windows are reference metadata; private observation timing remains excluded",
+    "stack_order": "verified against hashed legacy positional order; native band descriptions unavailable",
+    "units_dates_resampling_nodata": "unavailable in native metadata; not inferred",
+    "workbook_labels_sources": "reference descriptions only; not verified construction lineage"
+  },
+  "privacy": {
+    "tracked_grid_ids_or_coordinates": false,
+    "tracked_private_observation_timing": false,
+    "tracked_private_paths": false,
+    "tracked_response_identifiers": false,
+    "tracked_row_payloads": false,
+    "tracked_site_or_camera_ids": false
+  },
+  "verified_stack": {
+    "active_predictors": [
+      "annmeantemp",
+      "meandiurnrange",
+      "isothermality",
+      "tempseason",
+      "maxtempwarmmonth",
+      "mintempcoldmonth",
+      "tempannrange",
+      "meantempwetq",
+      "meantempdryq",
+      "meantempwarmq",
+      "meantempcoldq",
+      "annprecip",
+      "precipwetmonth",
+      "precipdrymonth",
+      "precipseason",
+      "precipwetq",
+      "precipdryq",
+      "precipwarmq",
+      "precipcoldq",
+      "elevation",
+      "top_roughness",
+      "soil_class",
+      "dist_fw",
+      "dist_road",
+      "fpar",
+      "veg_mvg",
+      "landuse_secondary",
+      "human_footprint"
+    ],
+    "canonical_cells": 74073,
+    "categorical_predictors": [
+      "soil_class",
+      "veg_mvg",
+      "landuse_secondary"
+    ],
+    "geometry": {
+      "alignment": "exact centre indexing",
+      "bands": 32,
+      "crs": "EPSG:4326",
+      "height": 455,
+      "width": 468
+    },
+    "response_cells": 5407
+  },
+  "workbook_reference": {
+    "sheets": {
+      "climate": {
+        "nonempty_rows": [
+          [
+            "layer_name",
+            "description"
+          ],
+          [
+            "annmeantemp",
+            "Annual Mean Temperature"
+          ],
+          [
+            "meandiurnrange",
+            "Mean Diurnal Range (Mean of monthly (max temp - min temp))"
+          ],
+          [
+            "isothermality",
+            "Isothermality (Mean Diurnal Range/Temperature Annual Range) (* 100)"
+          ],
+          [
+            "tempseason",
+            "Temperature Seasonality (standard deviation *100)"
+          ],
+          [
+            "maxtempwarmmonth",
+            "Max Temperature of Warmest Month"
+          ],
+          [
+            "mintempcoldmonth",
+            "Min Temperature of Coldest Month"
+          ],
+          [
+            "tempannrange",
+            "Temperature Annual Range (Max Temperature of Warmest Month - Min Temperature of Coldest Month)"
+          ],
+          [
+            "meantempwetq",
+            "Mean Temperature of Wettest Quarter"
+          ],
+          [
+            "meantempdryq",
+            "Mean Temperature of Driest Quarter"
+          ],
+          [
+            "meantempwarmq",
+            "Mean Temperature of Warmest Quarter"
+          ],
+          [
+            "meantempcoldq",
+            "Mean Temperature of Coldest Quarter"
+          ],
+          [
+            "annprecip",
+            "Annual Precipitation"
+          ],
+          [
+            "precipwetmonth",
+            "Precipitation of Wettest Month"
+          ],
+          [
+            "precipdrymonth",
+            "Precipitation of Driest Month"
+          ],
+          [
+            "precipseason",
+            "Precipitation Seasonality (Coefficient of Variation)"
+          ],
+          [
+            "precipwetq",
+            "Precipitation of Wettest Quarter"
+          ],
+          [
+            "precipdryq",
+            "Precipitation of Driest Quarter"
+          ],
+          [
+            "precipwarmq",
+            "Precipitation of Warmest Quarter"
+          ],
+          [
+            "precipcoldq",
+            "Precipitation of Coldest Quarter"
+          ]
+        ],
+        "range": "A1:B20",
+        "rows": 20
+      },
+      "data_source": {
+        "nonempty_rows": [
+          [
+            "layer(s)",
+            "download_url"
+          ],
+          [
+            "Climate",
+            "https://www.ecocommons.org.au/"
+          ],
+          [
+            "Elevation",
+            "http://data.daff.gov.au/anrdl/metadata_files/pb_mcas09g9ablm03111a01.xml?convertlinks=0"
+          ],
+          [
+            "FPAR",
+            "https://www.ecocommons.org.au/"
+          ],
+          [
+            "Distance to FW",
+            "https://www.ga.gov.au/scientific-topics/national-location-information/national-surface-water-information"
+          ],
+          [
+            "Distance to Road",
+            "https://data.gov.au/dataset/ds-sa-4cc17ac3-ce49-4525-971b-6122023b8937/details?q=roads"
+          ],
+          [
+            "Terrain Ruggedness",
+            "Created by Grant Williamson ([email omitted])"
+          ],
+          [
+            "Fire Frequency",
+            "http://data.auscover.org.au/xwiki/bin/view/Product+pages/FireFreq+AVHRR"
+          ],
+          [
+            "Land use",
+            "https://www.agriculture.gov.au/abares/aclump/land-use/land-use-of-australia-2010-11_2015-16"
+          ],
+          [
+            "Vegetation",
+            "https://www.dcceew.gov.au/environment/land/native-vegetation/national-vegetation-information-system"
+          ],
+          [
+            "Soil",
+            "https://www.asris.csiro.au/themes/NationalGrids.html"
+          ]
+        ],
+        "range": "A1:B11",
+        "rows": 11
+      },
+      "landscape": {
+        "nonempty_rows": [
+          [
+            "layer_name",
+            "description"
+          ],
+          [
+            "elevation",
+            "Elevation (asl) of each 0.01 decimal degree grid cell. "
+          ],
+          [
+            "fpar",
+            "Average proportion of FPAR (Fraction of Photosynthetically Active Radiation) used by the plants and other photosythesising organisms (2000 - 2014). "
+          ],
+          [
+            "dist_fw",
+            "Distance of each cell to the nearest freshwater feature. Created by Stefania Ondei using Surface hydrology layer"
+          ],
+          [
+            "dist_road",
+            "Distance of each cell to the nearest road. Create by Stefania Ondei using statewide road layer."
+          ],
+          [
+            "top_roughness",
+            "Variablity in elevation within each 0.01 decimal degree grid cell."
+          ],
+          [
+            "fire_freq",
+            "Fire Frequency is derived from the whole time series of burnt area maps derived from AVHRR and provides the average number of fires affecting an area between 1997 and 2011."
+          ]
+        ],
+        "range": "A1:B9",
+        "rows": 9
+      },
+      "landuse": {
+        "nonempty_rows": [
+          [
+            "landuse_tertiaryID",
+            "landuse_tertiary",
+            "landuse_secondaryID",
+            "landuse_secondary",
+            "landuse_primaryID",
+            "landuse_primary",
+            "",
+            ""
+          ],
+          [
+            "111",
+            "1.1.1 Strict nature reserves",
+            "1",
+            "Nature conservation",
+            "1",
+            "1 Conservation and natural environments",
+            "",
+            ""
+          ],
+          [
+            "112",
+            "1.1.2 Wilderness area",
+            "1",
+            "Nature conservation",
+            "1",
+            "1 Conservation and natural environments",
+            "",
+            ""
+          ],
+          [
+            "113",
+            "1.1.3 National park",
+            "1",
+            "Nature conservation",
+            "1",
+            "1 Conservation and natural environments",
+            "",
+            ""
+          ],
+          [
+            "114",
+            "1.1.4 Natural feature protection",
+            "1",
+            "Nature conservation",
+            "1",
+            "1 Conservation and natural environments",
+            "",
+            ""
+          ],
+          [
+            "115",
+            "1.1.5 Habitat/species management area",
+            "1",
+            "Nature conservation",
+            "1",
+            "1 Conservation and natural environments",
+            "",
+            ""
+          ],
+          [
+            "116",
+            "1.1.6 Protected landscape",
+            "1",
+            "Nature conservation",
+            "1",
+            "1 Conservation and natural environments",
+            "",
+            ""
+          ],
+          [
+            "117",
+            "1.1.7 Other conserved area",
+            "1",
+            "Nature conservation",
+            "1",
+            "1 Conservation and natural environments",
+            "",
+            ""
+          ],
+          [
+            "120",
+            "1.2.0 Managed resource protection",
+            "2",
+            "Managed resource protection",
+            "1",
+            "1 Conservation and natural environments",
+            "",
+            ""
+          ],
+          [
+            "125",
+            "1.2.5 Traditional indigenous uses",
+            "2",
+            "Managed resource protection",
+            "1",
+            "1 Conservation and natural environments",
+            "",
+            ""
+          ],
+          [
+            "130",
+            "1.3.0 Other minimal use",
+            "3",
+            "Other minimal use",
+            "1",
+            "1 Conservation and natural environments",
+            "",
+            ""
+          ],
+          [
+            "131",
+            "1.3.1 Defence land - natural areas",
+            "3",
+            "Other minimal use",
+            "1",
+            "1 Conservation and natural environments",
+            "",
+            ""
+          ],
+          [
+            "132",
+            "1.3.2 Stock route",
+            "3",
+            "Other minimal use",
+            "1",
+            "1 Conservation and natural environments",
+            "",
+            ""
+          ],
+          [
+            "133",
+            "1.3.3 Residual native cover",
+            "3",
+            "Other minimal use",
+            "1",
+            "1 Conservation and natural environments",
+            "",
+            ""
+          ],
+          [
+            "134",
+            "1.3.4 Rehabilitation",
+            "3",
+            "Other minimal use",
+            "1",
+            "1 Conservation and natural environments",
+            "",
+            ""
+          ],
+          [
+            "210",
+            "2.1.0 Grazing native vegetation",
+            "4",
+            "Grazing native vegetation",
+            "2",
+            "2 Production from relatively natural environments",
+            "",
+            ""
+          ],
+          [
+            "220",
+            "2.2.0 Production native forests",
+            "5",
+            "Production native forests",
+            "2",
+            "2 Production from relatively natural environments",
+            "",
+            ""
+          ],
+          [
+            "310",
+            "3.1.0 Plantation forests",
+            "7",
+            "Plantation forests",
+            "3",
+            "3 Production from dryland agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "311",
+            "3.1.1 Hardwood plantation forestry",
+            "7",
+            "Plantation forests",
+            "3",
+            "3 Production from dryland agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "312",
+            "3.1.2 Softwood plantation forestry",
+            "7",
+            "Plantation forests",
+            "3",
+            "3 Production from dryland agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "313",
+            "3.1.3 Other forest plantation",
+            "7",
+            "Plantation forests",
+            "3",
+            "3 Production from dryland agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "314",
+            "3.1.4 Environmental forest plantation",
+            "7",
+            "Plantation forests",
+            "3",
+            "3 Production from dryland agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "320",
+            "3.2.0 Grazing modified pastures",
+            "6",
+            "Grazing modified pastures",
+            "3",
+            "3 Production from dryland agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "330",
+            "3.3.0 Cropping",
+            "8",
+            "Dryland cropping",
+            "3",
+            "3 Production from dryland agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "331",
+            "3.3.1 Cereals",
+            "8",
+            "Dryland cropping",
+            "3",
+            "3 Production from dryland agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "333",
+            "3.3.3 Hay and silage",
+            "8",
+            "Dryland cropping",
+            "3",
+            "3 Production from dryland agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "334",
+            "3.3.4 Oilseeds",
+            "8",
+            "Dryland cropping",
+            "3",
+            "3 Production from dryland agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "335",
+            "3.3.5 Sugar",
+            "8",
+            "Dryland cropping",
+            "3",
+            "3 Production from dryland agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "336",
+            "3.3.6 Cotton",
+            "8",
+            "Dryland cropping",
+            "3",
+            "3 Production from dryland agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "338",
+            "3.3.8 Pulses",
+            "8",
+            "Dryland cropping",
+            "3",
+            "3 Production from dryland agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "340",
+            "3.4.0 Perennial horticulture",
+            "9",
+            "Dryland horticulture",
+            "3",
+            "3 Production from dryland agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "341",
+            "3.4.1 Tree fruits",
+            "9",
+            "Dryland horticulture",
+            "3",
+            "3 Production from dryland agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "343",
+            "3.4.3 Tree nuts",
+            "9",
+            "Dryland horticulture",
+            "3",
+            "3 Production from dryland agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "345",
+            "3.4.5 Shrub berries and fruits",
+            "9",
+            "Dryland horticulture",
+            "3",
+            "3 Production from dryland agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "348",
+            "3.4.8 Citrus",
+            "9",
+            "Dryland horticulture",
+            "3",
+            "3 Production from dryland agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "349",
+            "3.4.9 Grapes",
+            "9",
+            "Dryland horticulture",
+            "3",
+            "3 Production from dryland agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "354",
+            "3.5.4 Seasonal vegetables and herbs",
+            "9",
+            "Dryland horticulture",
+            "3",
+            "3 Production from dryland agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "410",
+            "4.1.0 Irrigated plantation forests",
+            "7",
+            "Plantation forests",
+            "4",
+            "4 Production from irrigated agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "413",
+            "4.1.3 Irrigated other forest production",
+            "7",
+            "Plantation forests",
+            "4",
+            "4 Production from irrigated agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "414",
+            "4.1.4 Irrigated environmental forest plantation",
+            "7",
+            "Plantation forests",
+            "4",
+            "4 Production from irrigated agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "420",
+            "4.2.0 Grazing irrigated modified pastures",
+            "11",
+            "Irrigated pastures",
+            "4",
+            "4 Production from irrigated agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "430",
+            "4.3.0 Irrigated cropping",
+            "12",
+            "Irrigated cropping",
+            "4",
+            "4 Production from irrigated agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "431",
+            "4.3.1 Irrigated cereals",
+            "12",
+            "Irrigated cropping",
+            "4",
+            "4 Production from irrigated agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "433",
+            "4.3.3 Irrigated hay and silage",
+            "12",
+            "Irrigated cropping",
+            "4",
+            "4 Production from irrigated agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "434",
+            "4.3.4 Irrigated oilseeds",
+            "12",
+            "Irrigated cropping",
+            "4",
+            "4 Production from irrigated agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "435",
+            "4.3.5 Irrigated sugar",
+            "12",
+            "Irrigated cropping",
+            "4",
+            "4 Production from irrigated agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "436",
+            "4.3.6 Irrigated cotton",
+            "12",
+            "Irrigated cropping",
+            "4",
+            "4 Production from irrigated agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "438",
+            "4.3.8 Irrigated pulses",
+            "12",
+            "Irrigated cropping",
+            "4",
+            "4 Production from irrigated agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "439",
+            "4.3.9 Irrigated rice",
+            "12",
+            "Irrigated cropping",
+            "4",
+            "4 Production from irrigated agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "440",
+            "4.4.0 Irrigated perennial horticulture",
+            "13",
+            "Irrigated horticulture",
+            "4",
+            "4 Production from irrigated agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "441",
+            "4.4.1 Irrigated tree fruits",
+            "13",
+            "Irrigated horticulture",
+            "4",
+            "4 Production from irrigated agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "443",
+            "4.4.3 Irrigated tree nuts",
+            "13",
+            "Irrigated horticulture",
+            "4",
+            "4 Production from irrigated agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "445",
+            "4.4.5 Irrigated shrub berries and fruits",
+            "13",
+            "Irrigated horticulture",
+            "4",
+            "4 Production from irrigated agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "448",
+            "4.4.8 Irrigated citrus",
+            "13",
+            "Irrigated horticulture",
+            "4",
+            "4 Production from irrigated agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "449",
+            "4.4.9 Irrigated grapes",
+            "13",
+            "Irrigated horticulture",
+            "4",
+            "4 Production from irrigated agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "453",
+            "4.5.3 Irrigated seasonal vegetables and herbs",
+            "13",
+            "Irrigated horticulture",
+            "4",
+            "4 Production from irrigated agriculture and plantations",
+            "",
+            ""
+          ],
+          [
+            "510",
+            "5.1.0 Intensive horticulture",
+            "15",
+            "Intensive horticulture and animal production",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "511",
+            "5.1.1 Production nurseries",
+            "15",
+            "Intensive horticulture and animal production",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "512",
+            "5.1.2 Shadehouses",
+            "15",
+            "Intensive horticulture and animal production",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "513",
+            "5.1.3 Glasshouses",
+            "15",
+            "Intensive horticulture and animal production",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "514",
+            "5.1.4 Glasshouses (hydroponic)",
+            "15",
+            "Intensive horticulture and animal production",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "520",
+            "5.2.0 Intensive animal production",
+            "15",
+            "Intensive horticulture and animal production",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "521",
+            "5.2.1 Dairy sheds and yards",
+            "15",
+            "Intensive horticulture and animal production",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "522",
+            "5.2.2 Feedlots",
+            "15",
+            "Intensive horticulture and animal production",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "523",
+            "5.2.3 Poultry farms",
+            "15",
+            "Intensive horticulture and animal production",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "524",
+            "5.2.4 Piggeries",
+            "15",
+            "Intensive horticulture and animal production",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "525",
+            "5.2.5 Aquaculture",
+            "15",
+            "Intensive horticulture and animal production",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "526",
+            "5.2.6 Horse studs",
+            "15",
+            "Intensive horticulture and animal production",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "527",
+            "5.2.7 Saleyards/stockyards",
+            "15",
+            "Intensive horticulture and animal production",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "528",
+            "5.2.8 Abandoned intensive animal production",
+            "15",
+            "Intensive horticulture and animal production",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "530",
+            "5.3.0 Manufacturing and industrial",
+            "14",
+            "Urban intensive uses",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "531",
+            "5.3.1 General purpose factory",
+            "14",
+            "Urban intensive uses",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "532",
+            "5.3.2 Food processing factory",
+            "14",
+            "Urban intensive uses",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "533",
+            "5.3.3 Major industrial complex",
+            "14",
+            "Urban intensive uses",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "534",
+            "5.3.4 Bulk grain storage",
+            "14",
+            "Urban intensive uses",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "535",
+            "5.3.5 Abattoirs",
+            "14",
+            "Urban intensive uses",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "536",
+            "5.3.6 Oil refinery",
+            "14",
+            "Urban intensive uses",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "537",
+            "5.3.7 Sawmill",
+            "14",
+            "Urban intensive uses",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "540",
+            "5.4.0 Residential and farm infrastructure",
+            "14",
+            "Urban intensive uses",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "541",
+            "5.4.1 Urban residential",
+            "14",
+            "Urban intensive uses",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "542",
+            "5.4.2 Rural residential with agriculture",
+            "16",
+            "Rural residential and farm infrastructure",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "543",
+            "5.4.3 Rural residential without agriculture",
+            "16",
+            "Rural residential and farm infrastructure",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "544",
+            "5.4.4 Remote communities",
+            "16",
+            "Rural residential and farm infrastructure",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "545",
+            "5.4.5 Farm buildings/infrastructure",
+            "16",
+            "Rural residential and farm infrastructure",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "550",
+            "5.5.0 Services",
+            "14",
+            "Urban intensive uses",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "551",
+            "5.5.1 Commercial services",
+            "14",
+            "Urban intensive uses",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "552",
+            "5.5.2 Public services",
+            "14",
+            "Urban intensive uses",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "553",
+            "5.5.3 Recreation and culture",
+            "14",
+            "Urban intensive uses",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "554",
+            "5.5.4 Defence facilities - urban",
+            "14",
+            "Urban intensive uses",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "555",
+            "5.5.5 Research facilities",
+            "14",
+            "Urban intensive uses",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "560",
+            "5.6.0 Utilities",
+            "14",
+            "Urban intensive uses",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "561",
+            "5.6.1 Fuel powered electricity generation",
+            "14",
+            "Urban intensive uses",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "563",
+            "5.6.3 Wind electricity generation",
+            "14",
+            "Urban intensive uses",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "564",
+            "5.6.4 Solar electricity generation",
+            "14",
+            "Urban intensive uses",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "565",
+            "5.6.5 Electricity substations and transmission",
+            "14",
+            "Urban intensive uses",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "566",
+            "5.6.6 Gas treatment, storage and transmission",
+            "14",
+            "Urban intensive uses",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "567",
+            "5.6.7 Water extraction and transmission",
+            "14",
+            "Urban intensive uses",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "570",
+            "5.7.0 Transport and communication",
+            "14",
+            "Urban intensive uses",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "571",
+            "5.7.1 Airports/aerodromes",
+            "14",
+            "Urban intensive uses",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "572",
+            "5.7.2 Roads",
+            "14",
+            "Urban intensive uses",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "573",
+            "5.7.3 Railways",
+            "14",
+            "Urban intensive uses",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "574",
+            "5.7.4 Ports and water transport",
+            "14",
+            "Urban intensive uses",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "575",
+            "5.7.5 Navigation and communication",
+            "14",
+            "Urban intensive uses",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "580",
+            "5.8.0 Mining",
+            "17",
+            "Mining and waste",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "581",
+            "5.8.1 Mines",
+            "17",
+            "Mining and waste",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "582",
+            "5.8.2 Quarries",
+            "17",
+            "Mining and waste",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "583",
+            "5.8.3 Tailings",
+            "17",
+            "Mining and waste",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "584",
+            "5.8.4 Extractive industry not in use",
+            "17",
+            "Mining and waste",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "590",
+            "5.9.0 Waste treatment and disposal",
+            "17",
+            "Mining and waste",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "591",
+            "5.9.1 Effluent pond",
+            "17",
+            "Mining and waste",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "592",
+            "5.9.2 Landfill",
+            "17",
+            "Mining and waste",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "593",
+            "5.9.3 Solid garbage",
+            "17",
+            "Mining and waste",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "595",
+            "5.9.5 Sewage/sewerage",
+            "17",
+            "Mining and waste",
+            "5",
+            "5 Intensive uses",
+            "",
+            ""
+          ],
+          [
+            "600",
+            "6.0.0 Water",
+            "18",
+            "Water",
+            "6",
+            "6 Water",
+            "",
+            ""
+          ],
+          [
+            "610",
+            "6.1.0 Lake",
+            "18",
+            "Water",
+            "6",
+            "6 Water",
+            "",
+            ""
+          ],
+          [
+            "611",
+            "6.1.1 Lake - conservation",
+            "18",
+            "Water",
+            "6",
+            "6 Water",
+            "",
+            ""
+          ],
+          [
+            "612",
+            "6.1.2 Lake - production",
+            "18",
+            "Water",
+            "6",
+            "6 Water",
+            "",
+            ""
+          ],
+          [
+            "613",
+            "6.1.3 Lake - intensive use",
+            "18",
+            "Water",
+            "6",
+            "6 Water",
+            "",
+            ""
+          ],
+          [
+            "614",
+            "6.1.4 Lake - saline",
+            "18",
+            "Water",
+            "6",
+            "6 Water",
+            "",
+            ""
+          ],
+          [
+            "620",
+            "6.2.0 Reservoir/dam",
+            "18",
+            "Water",
+            "6",
+            "6 Water",
+            "",
+            ""
+          ],
+          [
+            "621",
+            "6.2.1 Reservoir",
+            "18",
+            "Water",
+            "6",
+            "6 Water",
+            "",
+            ""
+          ],
+          [
+            "622",
+            "6.2.2 Water storage - intensive use/farm dams",
+            "18",
+            "Water",
+            "6",
+            "6 Water",
+            "",
+            ""
+          ],
+          [
+            "623",
+            "6.2.3 Evaporation basin",
+            "18",
+            "Water",
+            "6",
+            "6 Water",
+            "",
+            ""
+          ],
+          [
+            "630",
+            "6.3.0 River",
+            "18",
+            "Water",
+            "6",
+            "6 Water",
+            "",
+            ""
+          ],
+          [
+            "631",
+            "6.3.1 River - conservation",
+            "18",
+            "Water",
+            "6",
+            "6 Water",
+            "",
+            ""
+          ],
+          [
+            "632",
+            "6.3.2 River - production",
+            "18",
+            "Water",
+            "6",
+            "6 Water",
+            "",
+            ""
+          ],
+          [
+            "633",
+            "6.3.3 River - intensive use",
+            "18",
+            "Water",
+            "6",
+            "6 Water",
+            "",
+            ""
+          ],
+          [
+            "640",
+            "6.4.0 Channel/aqueduct",
+            "18",
+            "Water",
+            "6",
+            "6 Water",
+            "",
+            ""
+          ],
+          [
+            "641",
+            "6.4.1 Supply channel/aqueduct",
+            "18",
+            "Water",
+            "6",
+            "6 Water",
+            "",
+            ""
+          ],
+          [
+            "642",
+            "6.4.2 Drainage channel/aqueduct",
+            "18",
+            "Water",
+            "6",
+            "6 Water",
+            "",
+            ""
+          ],
+          [
+            "650",
+            "6.5.0 Marsh/wetland",
+            "18",
+            "Water",
+            "6",
+            "6 Water",
+            "",
+            ""
+          ],
+          [
+            "651",
+            "6.5.1 Marsh/wetland - conservation",
+            "18",
+            "Water",
+            "6",
+            "6 Water",
+            "",
+            ""
+          ],
+          [
+            "652",
+            "6.5.2 Marsh/wetland - production",
+            "18",
+            "Water",
+            "6",
+            "6 Water",
+            "",
+            ""
+          ],
+          [
+            "653",
+            "6.5.3 Marsh/wetland - intensive use",
+            "18",
+            "Water",
+            "6",
+            "6 Water",
+            "",
+            ""
+          ],
+          [
+            "654",
+            "6.5.4 Marsh/wetland - saline",
+            "18",
+            "Water",
+            "6",
+            "6 Water",
+            "",
+            ""
+          ],
+          [
+            "660",
+            "6.6.0 Estuary/coastal waters",
+            "18",
+            "Water",
+            "6",
+            "6 Water",
+            "",
+            ""
+          ],
+          [
+            "661",
+            "6.6.1 Estuary/coastal waters - conservation",
+            "18",
+            "Water",
+            "6",
+            "6 Water",
+            "",
+            ""
+          ],
+          [
+            "662",
+            "6.6.2 Estuary/coastal waters - production",
+            "18",
+            "Water",
+            "6",
+            "6 Water",
+            "",
+            ""
+          ],
+          [
+            "663",
+            "6.6.3 Estuary/coastal waters - intensive use",
+            "18",
+            "Water",
+            "6",
+            "6 Water",
+            "",
+            ""
+          ]
+        ],
+        "range": "A1:H140",
+        "rows": 140
+      },
+      "soil": {
+        "nonempty_rows": [
+          [
+            "soil_class",
+            "soil_type"
+          ],
+          [
+            "1",
+            "Anthroposols"
+          ],
+          [
+            "2",
+            "Calcarosols"
+          ],
+          [
+            "3",
+            "Chromosols"
+          ],
+          [
+            "4",
+            "Dermosols"
+          ],
+          [
+            "5",
+            "Ferrosols"
+          ],
+          [
+            "6",
+            "Hydrosols"
+          ],
+          [
+            "7",
+            "Kandosols"
+          ],
+          [
+            "8",
+            "Kurosols"
+          ],
+          [
+            "9",
+            "Organosols"
+          ],
+          [
+            "10",
+            "Podosols"
+          ],
+          [
+            "11",
+            "Rudosols"
+          ],
+          [
+            "12",
+            "Sodosols"
+          ],
+          [
+            "13",
+            "Tenosols"
+          ],
+          [
+            "14",
+            "Vertosols"
+          ]
+        ],
+        "range": "A1:B15",
+        "rows": 15
+      },
+      "veg": {
+        "nonempty_rows": [
+          [
+            "veg_mvg",
+            "mvg_description",
+            "veg_mvs",
+            "mvs_description"
+          ],
+          [
+            "1",
+            "Rainforests and Vine Thickets",
+            "1",
+            "Cool temperate rainforest"
+          ],
+          [
+            "",
+            "",
+            "2",
+            "Tropical or sub-tropical rainforest"
+          ],
+          [
+            "",
+            "",
+            "6",
+            "Warm temperate rainforest"
+          ],
+          [
+            "",
+            "",
+            "62",
+            "Dry rainforest or vine thickets"
+          ],
+          [
+            "2",
+            "Eucalypt Tall Open Forests",
+            "3",
+            "Eucalyptus (+/- tall) open forest with a dense broad-leaved and/or tree-fern understorey (wet sclerophyll)"
+          ],
+          [
+            "",
+            "",
+            "54",
+            "Eucalyptus tall open forest with a fine-leaved shrubby understorey"
+          ],
+          [
+            "",
+            "",
+            "60",
+            "Eucalyptus tall open forests and open forests with ferns, herbs, sedges, rushes or wet tussock grasses"
+          ],
+          [
+            "3",
+            "Eucalypt Open Forests",
+            "4",
+            "Eucalyptus open forests with a shrubby understorey"
+          ],
+          [
+            "",
+            "",
+            "5",
+            "Eucalyptus open forests with a grassy understorey"
+          ],
+          [
+            "",
+            "",
+            "60",
+            "Eucalyptus tall open forests and open forests with ferns, herbs, sedges, rushes or wet tussock grasses"
+          ],
+          [
+            "4",
+            "Eucalypt Low Open Forests",
+            "4",
+            "Eucalyptus open forests with a shrubby understorey"
+          ],
+          [
+            "",
+            "",
+            "5",
+            "Eucalyptus open forests with a grassy understorey"
+          ],
+          [
+            "5",
+            "Eucalypt Woodlands",
+            "8",
+            "Eucalyptus woodlands with a shrubby understorey"
+          ],
+          [
+            "",
+            "",
+            "9",
+            "Eucalyptus woodlands with a tussock grass understorey"
+          ],
+          [
+            "",
+            "",
+            "10",
+            "Eucalyptus woodlands with a hummock grass understorey"
+          ],
+          [
+            "",
+            "",
+            "59",
+            "Eucalyptus woodlands with ferns, herbs, sedges, rushes or wet tussock grassland"
+          ],
+          [
+            "",
+            "",
+            "65",
+            "Eucalyptus woodlands with a chenopod or samphire understorey"
+          ],
+          [
+            "6",
+            "Acacia Forests and Woodlands",
+            "13",
+            "Brigalow (Acacia harpophylla) forests and woodlands"
+          ],
+          [
+            "",
+            "",
+            "14",
+            "Other Acacia forests and woodlands"
+          ],
+          [
+            "",
+            "",
+            "20",
+            "Mulga (Acacia aneura) woodlands +/- tussock grass +/- forbs"
+          ],
+          [
+            "",
+            "",
+            "51",
+            "Mulga (Acacia aneura) woodlands and shrublands with hummock grass"
+          ],
+          [
+            "7",
+            "Callitris Forests and Woodlands ",
+            "12",
+            "Callitris forests and woodlands "
+          ],
+          [
+            "8",
+            "Casuarina Forests and Woodlands",
+            "26",
+            "Casuarina and Allocasuarina forests and woodlands"
+          ],
+          [
+            "9",
+            "Melaleuca Forests and Woodlands ",
+            "15",
+            "Melaleuca open forests and woodlands"
+          ],
+          [
+            "10",
+            "Other Forests and Woodlands",
+            "11",
+            "Tropical mixed spp forests and woodlands"
+          ],
+          [
+            "",
+            "",
+            "16",
+            "Other forests and woodlands"
+          ],
+          [
+            "",
+            "",
+            "48",
+            "Eucalyptus open woodlands with a grassy understorey"
+          ],
+          [
+            "",
+            "",
+            "50",
+            "Banksia woodlands"
+          ],
+          [
+            "",
+            "",
+            "58",
+            "Leptospermum forests and woodlands"
+          ],
+          [
+            "11",
+            "Eucalypt Open Woodlands",
+            "18",
+            "Eucalyptus low open woodlands with hummock grass"
+          ],
+          [
+            "",
+            "",
+            "19",
+            "Eucalyptus low open woodlands with tussock grass"
+          ],
+          [
+            "",
+            "",
+            "47",
+            "Eucalyptus open woodlands with shrubby understorey"
+          ],
+          [
+            "",
+            "",
+            "53",
+            "Eucalyptus low open woodlands with a shrubby understorey"
+          ],
+          [
+            "",
+            "",
+            "56",
+            "Eucalyptus (+/- low) open woodlands with a chenopod or samphire understorey"
+          ],
+          [
+            "12",
+            "Tropical Eucalypt Woodlands/Grasslands",
+            "7",
+            "Tropical Eucalyptus forest and woodlands with a tall annual grassy understorey"
+          ],
+          [
+            "13",
+            "Acacia Open Woodlands",
+            "13",
+            "Brigalow (Acacia harpophylla) forests and woodlands"
+          ],
+          [
+            "",
+            "",
+            "14",
+            "Other Acacia forests and woodlands"
+          ],
+          [
+            "",
+            "",
+            "20",
+            "Mulga (Acacia aneura) woodlands +/- tussock grass +/- forbs"
+          ],
+          [
+            "",
+            "",
+            "21",
+            "Other Acacia tall open shrublands and [tall] shrublands"
+          ],
+          [
+            "",
+            "",
+            "22",
+            "Acacia (+/- low) open woodlands and shrublands with chenopods"
+          ],
+          [
+            "",
+            "",
+            "23",
+            "Acacia (+/- low) open woodlands and shrublands with hummock grass"
+          ],
+          [
+            "",
+            "",
+            "24",
+            "Acacia (+/- low) open woodlands and shrublands +/- tussock grass"
+          ],
+          [
+            "",
+            "",
+            "25",
+            "Acacia (+/- low) open woodlands and sparse shrublands with a shrubby understorey"
+          ],
+          [
+            "",
+            "",
+            "45",
+            "Mulga (Acacia aneura) open woodlands and sparse shrublands +/- tussock grass"
+          ],
+          [
+            "",
+            "",
+            "51",
+            "Mulga (Acacia aneura) woodlands and shrublands with hummock grass"
+          ],
+          [
+            "",
+            "",
+            "52",
+            "Mulga (Acacia aneura) open woodlands and sparse shrublands with hummock grass"
+          ],
+          [
+            "14",
+            "Mallee Woodlands and Shrublands",
+            "27",
+            "Mallee with hummock grass"
+          ],
+          [
+            "",
+            "",
+            "29",
+            "Mallee with a dense shrubby understorey"
+          ],
+          [
+            "",
+            "",
+            "55",
+            "Mallee  with an open shrubby understorey"
+          ],
+          [
+            "",
+            "",
+            "61",
+            "Mallee with a tussock grass understorey"
+          ],
+          [
+            "15",
+            "Low Closed Forests and Tall Closed Shrublands",
+            "28",
+            "Low closed forest or tall closed shrublands (including Acacia, Melaleuca and Banksia)"
+          ],
+          [
+            "16",
+            "Acacia Shrublands",
+            "20",
+            "Mulga (Acacia aneura) woodlands +/- tussock grass +/- forbs"
+          ],
+          [
+            "",
+            "",
+            "21",
+            "Other Acacia tall open shrublands and [tall] shrublands"
+          ],
+          [
+            "",
+            "",
+            "22",
+            "Acacia (+/- low) open woodlands and shrublands with chenopods"
+          ],
+          [
+            "",
+            "",
+            "23",
+            "Acacia (+/- low) open woodlands and shrublands with hummock grass"
+          ],
+          [
+            "",
+            "",
+            "24",
+            "Acacia (+/- low) open woodlands and shrublands +/- tussock grass"
+          ],
+          [
+            "",
+            "",
+            "25",
+            "Acacia (+/- low) open woodlands and sparse shrublands with a shrubby understorey"
+          ],
+          [
+            "",
+            "",
+            "32",
+            "Other shrublands"
+          ],
+          [
+            "",
+            "",
+            "45",
+            "Mulga (Acacia aneura) open woodlands and sparse shrublands +/- tussock grass"
+          ],
+          [
+            "",
+            "",
+            "51",
+            "Mulga (Acacia aneura) woodlands and shrublands with hummock grass"
+          ],
+          [
+            "",
+            "",
+            "52",
+            "Mulga (Acacia aneura) open woodlands and sparse shrublands with hummock grass"
+          ],
+          [
+            "17",
+            "Other Shrublands",
+            "32",
+            "Other shrublands"
+          ],
+          [
+            "",
+            "",
+            "49",
+            "Melaleuca shrublands and open shrublands"
+          ],
+          [
+            "",
+            "",
+            "57",
+            "Lignum shrublands and wetlands"
+          ],
+          [
+            "",
+            "",
+            "80",
+            "Other sparse shrublands and sparse heathlands "
+          ],
+          [
+            "18",
+            "Heathlands",
+            "30",
+            "Heathlands"
+          ],
+          [
+            "19",
+            "Tussock Grasslands",
+            "34",
+            "Mitchell grass (Astrebla) tussock grasslands"
+          ],
+          [
+            "",
+            "",
+            "35",
+            "Blue grass (Dicanthium) and tall bunch grass (Vitiveria syn: Chrysopogon) tussock grasslands"
+          ],
+          [
+            "",
+            "",
+            "36",
+            "Temperate tussock grasslands"
+          ],
+          [
+            "",
+            "",
+            "37",
+            "Other tussock grasslands"
+          ],
+          [
+            "20",
+            "Hummock Grasslands",
+            "23",
+            "Acacia (+/- low) open woodlands and shrublands with hummock grass"
+          ],
+          [
+            "",
+            "",
+            "27",
+            "Mallee with hummock grass"
+          ],
+          [
+            "",
+            "",
+            "33",
+            "Hummock grasslands"
+          ],
+          [
+            "",
+            "",
+            "51",
+            "Mulga (Acacia aneura) woodlands and shrublands with hummock grass"
+          ],
+          [
+            "21",
+            "Other Grasslands, Herblands, Sedgelands and Rushlands",
+            "17",
+            "Boulders/rock with algae, lichen or scattered plants, or alpine fjaeldmarks"
+          ],
+          [
+            "",
+            "",
+            "38",
+            "Wet tussock grassland with herbs, sedges or rushes, herblands or ferns"
+          ],
+          [
+            "",
+            "",
+            "41",
+            "Saline or brackish sedgelands or grasslands"
+          ],
+          [
+            "",
+            "",
+            "63",
+            "Sedgelands, rushes or reeds"
+          ],
+          [
+            "",
+            "",
+            "64",
+            "Other grasslands"
+          ],
+          [
+            "22",
+            "Chenopod Shrublands, Samphire Shrublands and Forblands",
+            "31",
+            "Saltbush and bluebush shrublands"
+          ],
+          [
+            "",
+            "",
+            "39",
+            "Mixed chenopod, samphire +/- forbs"
+          ],
+          [
+            "23",
+            "Mangroves",
+            "40",
+            "Mangroves"
+          ],
+          [
+            "24",
+            "Inland aquatic - freshwater, salt lakes, lagoons",
+            "43",
+            "Salt lakes and lagoons"
+          ],
+          [
+            "",
+            "",
+            "44",
+            "Freshwater, dams, lakes, lagoons or aquatic plants"
+          ],
+          [
+            "25",
+            "Cleared, non-native vegetation, buildings",
+            "98",
+            "Cleared, non-native vegetation, buildings"
+          ],
+          [
+            "26",
+            "Unclassified native vegetation",
+            "97",
+            "Unclassified native vegetation"
+          ],
+          [
+            "27",
+            "Naturally bare - sand, rock, claypan, mudflat",
+            "42",
+            "Naturally bare, sand, rock, claypan, mudflat"
+          ],
+          [
+            "28",
+            "Sea and estuaries",
+            "46",
+            "Sea, estuaries (includes seagrass)"
+          ],
+          [
+            "29",
+            "Regrowth, modified native vegetation",
+            "90",
+            "Regrowth or modified forests and woodlands"
+          ],
+          [
+            "",
+            "",
+            "91",
+            "Regrowth or modified shrublands"
+          ],
+          [
+            "",
+            "",
+            "92",
+            "Regrowth or modified graminoids"
+          ],
+          [
+            "",
+            "",
+            "93",
+            "Regrowth or modified chenopod shrublands, samphire or forblands"
+          ],
+          [
+            "30",
+            "Unclassified forest",
+            "96",
+            "Unclassified forest"
+          ],
+          [
+            "31",
+            "Other Open Woodlands",
+            "70",
+            "Callitris open woodlands"
+          ],
+          [
+            "",
+            "",
+            "71",
+            "Casuarina and Allocasuarina open woodlands with a tussock grass understorey"
+          ],
+          [
+            "",
+            "",
+            "72",
+            "Casuarina and Allocasuarina open woodlands with a hummock grass understorey"
+          ],
+          [
+            "",
+            "",
+            "73",
+            "Casuarina and Allocasuarina open woodlands with a chenopod shrub understorey"
+          ],
+          [
+            "",
+            "",
+            "74",
+            "Casuarina and Allocasuarina open woodlands with a shrubby understorey"
+          ],
+          [
+            "",
+            "",
+            "75",
+            "Melaleuca open woodlands"
+          ],
+          [
+            "",
+            "",
+            "79",
+            "Other Open Woodlands"
+          ],
+          [
+            "32",
+            "Mallee Open Woodlands and Sparse Mallee Shrublands",
+            "66",
+            "Open mallee woodlands and sparse mallee shrublands with a hummock grass understorey"
+          ],
+          [
+            "",
+            "",
+            "67",
+            "Open mallee woodlands and sparse mallee shrublands with a tussock grass understorey"
+          ],
+          [
+            "",
+            "",
+            "68",
+            "Open mallee woodlands and sparse mallee shrublands with an open shrubby understorey"
+          ],
+          [
+            "",
+            "",
+            "69",
+            "Open mallee woodlands and sparse mallee shrublands with a dense shrubby understorey"
+          ],
+          [
+            "99",
+            "Unknown/no data",
+            "99",
+            "Unknown/No data"
+          ]
+        ],
+        "range": "A1:D106",
+        "rows": 106
+      }
+    },
+    "workbook_sha256": "ec460f9a41913f3288ca7dd38b6150b575f9c00b73581b892468cd0577127edd"
+  }
+}

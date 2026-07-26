@@ -1,0 +1,517 @@
+{
+  "by_pa_type": {
+    "pa_type": {
+      "presence": 10708,
+      "pseudoabsence": 587,
+      "survey_supported_absence": 2160
+    }
+  },
+  "by_pa_type_complete": {
+    "presence": {
+      "complete": 10099,
+      "incomplete": 609,
+      "loss_rate": 0.05687336570788196,
+      "rows": 10708
+    },
+    "pseudoabsence": {
+      "complete": 498,
+      "incomplete": 89,
+      "loss_rate": 0.151618398637138,
+      "rows": 587
+    },
+    "survey_supported_absence": {
+      "complete": 2114,
+      "incomplete": 46,
+      "loss_rate": 0.021296296296296296,
+      "rows": 2160
+    }
+  },
+  "by_response_origin": {
+    "derived_pseudoabsence": {
+      "complete": 498,
+      "incomplete": 89,
+      "rows": 587
+    },
+    "goal020": {
+      "complete": 12213,
+      "incomplete": 655,
+      "rows": 12868
+    }
+  },
+  "by_source_combination": {
+    "": {
+      "complete": 498,
+      "incomplete": 89,
+      "rows": 587
+    },
+    "ala_only_presence": {
+      "complete": 5927,
+      "incomplete": 490,
+      "rows": 6417
+    },
+    "ala_overrides_camera_absence": {
+      "complete": 13,
+      "incomplete": 0,
+      "rows": 13
+    },
+    "both_presence": {
+      "complete": 162,
+      "incomplete": 3,
+      "rows": 165
+    },
+    "camera_absence_retained": {
+      "complete": 2114,
+      "incomplete": 46,
+      "rows": 2160
+    },
+    "camera_only_presence": {
+      "complete": 3997,
+      "incomplete": 116,
+      "rows": 4113
+    }
+  },
+  "by_species": {
+    "species_id": {
+      "dasyurus_maculatus": 1310,
+      "dasyurus_viverrinus": 1305,
+      "notamacropus_rufogriseus": 1561,
+      "pseudocheirus_peregrinus": 1151,
+      "sarcophilus_harrisii": 3723,
+      "thylogale_billardierii": 1601,
+      "trichosurus_vulpecula": 1429,
+      "vombatus_ursinus": 1375
+    }
+  },
+  "by_species_complete": {
+    "dasyurus_maculatus": {
+      "complete": 1258,
+      "incomplete": 52,
+      "loss_rate": 0.03969465648854962,
+      "rows": 1310
+    },
+    "dasyurus_viverrinus": {
+      "complete": 1244,
+      "incomplete": 61,
+      "loss_rate": 0.04674329501915709,
+      "rows": 1305
+    },
+    "notamacropus_rufogriseus": {
+      "complete": 1434,
+      "incomplete": 127,
+      "loss_rate": 0.08135810377962845,
+      "rows": 1561
+    },
+    "pseudocheirus_peregrinus": {
+      "complete": 1083,
+      "incomplete": 68,
+      "loss_rate": 0.059079061685490875,
+      "rows": 1151
+    },
+    "sarcophilus_harrisii": {
+      "complete": 3573,
+      "incomplete": 150,
+      "loss_rate": 0.040290088638195005,
+      "rows": 3723
+    },
+    "thylogale_billardierii": {
+      "complete": 1485,
+      "incomplete": 116,
+      "loss_rate": 0.07245471580262336,
+      "rows": 1601
+    },
+    "trichosurus_vulpecula": {
+      "complete": 1336,
+      "incomplete": 93,
+      "loss_rate": 0.06508047585724283,
+      "rows": 1429
+    },
+    "vombatus_ursinus": {
+      "complete": 1298,
+      "incomplete": 77,
+      "loss_rate": 0.056,
+      "rows": 1375
+    }
+  },
+  "complete": 12711,
+  "incomplete": 744,
+  "material_intersections": {
+    "pa_type_x_source_combination": {
+      "presence|ala_only_presence": {
+        "complete": 5927,
+        "incomplete": 490,
+        "rows": 6417
+      },
+      "presence|ala_overrides_camera_absence": {
+        "complete": 13,
+        "incomplete": 0,
+        "rows": 13
+      },
+      "presence|both_presence": {
+        "complete": 162,
+        "incomplete": 3,
+        "rows": 165
+      },
+      "presence|camera_only_presence": {
+        "complete": 3997,
+        "incomplete": 116,
+        "rows": 4113
+      },
+      "pseudoabsence|": {
+        "complete": 498,
+        "incomplete": 89,
+        "rows": 587
+      },
+      "survey_supported_absence|camera_absence_retained": {
+        "complete": 2114,
+        "incomplete": 46,
+        "rows": 2160
+      }
+    },
+    "species_x_pa_type": {
+      "dasyurus_maculatus|presence": {
+        "complete": 949,
+        "incomplete": 37,
+        "rows": 986
+      },
+      "dasyurus_maculatus|pseudoabsence": {
+        "complete": 91,
+        "incomplete": 12,
+        "rows": 103
+      },
+      "dasyurus_maculatus|survey_supported_absence": {
+        "complete": 218,
+        "incomplete": 3,
+        "rows": 221
+      },
+      "dasyurus_viverrinus|presence": {
+        "complete": 461,
+        "incomplete": 14,
+        "rows": 475
+      },
+      "dasyurus_viverrinus|pseudoabsence": {
+        "complete": 150,
+        "incomplete": 31,
+        "rows": 181
+      },
+      "dasyurus_viverrinus|survey_supported_absence": {
+        "complete": 633,
+        "incomplete": 16,
+        "rows": 649
+      },
+      "notamacropus_rufogriseus|presence": {
+        "complete": 1259,
+        "incomplete": 121,
+        "rows": 1380
+      },
+      "notamacropus_rufogriseus|pseudoabsence": {
+        "complete": 30,
+        "incomplete": 4,
+        "rows": 34
+      },
+      "notamacropus_rufogriseus|survey_supported_absence": {
+        "complete": 145,
+        "incomplete": 2,
+        "rows": 147
+      },
+      "pseudocheirus_peregrinus|presence": {
+        "complete": 366,
+        "incomplete": 22,
+        "rows": 388
+      },
+      "pseudocheirus_peregrinus|pseudoabsence": {
+        "complete": 136,
+        "incomplete": 28,
+        "rows": 164
+      },
+      "pseudocheirus_peregrinus|survey_supported_absence": {
+        "complete": 581,
+        "incomplete": 18,
+        "rows": 599
+      },
+      "sarcophilus_harrisii|presence": {
+        "complete": 3460,
+        "incomplete": 147,
+        "rows": 3607
+      },
+      "sarcophilus_harrisii|pseudoabsence": {
+        "complete": 12,
+        "incomplete": 3,
+        "rows": 15
+      },
+      "sarcophilus_harrisii|survey_supported_absence": {
+        "complete": 101,
+        "incomplete": 0,
+        "rows": 101
+      },
+      "thylogale_billardierii|presence": {
+        "complete": 1360,
+        "incomplete": 111,
+        "rows": 1471
+      },
+      "thylogale_billardierii|survey_supported_absence": {
+        "complete": 125,
+        "incomplete": 5,
+        "rows": 130
+      },
+      "trichosurus_vulpecula|presence": {
+        "complete": 1147,
+        "incomplete": 88,
+        "rows": 1235
+      },
+      "trichosurus_vulpecula|pseudoabsence": {
+        "complete": 16,
+        "incomplete": 3,
+        "rows": 19
+      },
+      "trichosurus_vulpecula|survey_supported_absence": {
+        "complete": 173,
+        "incomplete": 2,
+        "rows": 175
+      },
+      "vombatus_ursinus|presence": {
+        "complete": 1097,
+        "incomplete": 69,
+        "rows": 1166
+      },
+      "vombatus_ursinus|pseudoabsence": {
+        "complete": 63,
+        "incomplete": 8,
+        "rows": 71
+      },
+      "vombatus_ursinus|survey_supported_absence": {
+        "complete": 138,
+        "incomplete": 0,
+        "rows": 138
+      }
+    },
+    "species_x_source_combination": {
+      "dasyurus_maculatus|": {
+        "complete": 91,
+        "incomplete": 12,
+        "rows": 103
+      },
+      "dasyurus_maculatus|ala_only_presence": {
+        "complete": 438,
+        "incomplete": 22,
+        "rows": 460
+      },
+      "dasyurus_maculatus|ala_overrides_camera_absence": {
+        "complete": 1,
+        "incomplete": 0,
+        "rows": 1
+      },
+      "dasyurus_maculatus|both_presence": {
+        "complete": 12,
+        "incomplete": 1,
+        "rows": 13
+      },
+      "dasyurus_maculatus|camera_absence_retained": {
+        "complete": 218,
+        "incomplete": 3,
+        "rows": 221
+      },
+      "dasyurus_maculatus|camera_only_presence": {
+        "complete": 498,
+        "incomplete": 14,
+        "rows": 512
+      },
+      "dasyurus_viverrinus|": {
+        "complete": 150,
+        "incomplete": 31,
+        "rows": 181
+      },
+      "dasyurus_viverrinus|ala_only_presence": {
+        "complete": 365,
+        "incomplete": 12,
+        "rows": 377
+      },
+      "dasyurus_viverrinus|ala_overrides_camera_absence": {
+        "complete": 3,
+        "incomplete": 0,
+        "rows": 3
+      },
+      "dasyurus_viverrinus|both_presence": {
+        "complete": 7,
+        "incomplete": 0,
+        "rows": 7
+      },
+      "dasyurus_viverrinus|camera_absence_retained": {
+        "complete": 633,
+        "incomplete": 16,
+        "rows": 649
+      },
+      "dasyurus_viverrinus|camera_only_presence": {
+        "complete": 86,
+        "incomplete": 2,
+        "rows": 88
+      },
+      "notamacropus_rufogriseus|": {
+        "complete": 30,
+        "incomplete": 4,
+        "rows": 34
+      },
+      "notamacropus_rufogriseus|ala_only_presence": {
+        "complete": 575,
+        "incomplete": 100,
+        "rows": 675
+      },
+      "notamacropus_rufogriseus|ala_overrides_camera_absence": {
+        "complete": 2,
+        "incomplete": 0,
+        "rows": 2
+      },
+      "notamacropus_rufogriseus|both_presence": {
+        "complete": 10,
+        "incomplete": 1,
+        "rows": 11
+      },
+      "notamacropus_rufogriseus|camera_absence_retained": {
+        "complete": 145,
+        "incomplete": 2,
+        "rows": 147
+      },
+      "notamacropus_rufogriseus|camera_only_presence": {
+        "complete": 672,
+        "incomplete": 20,
+        "rows": 692
+      },
+      "pseudocheirus_peregrinus|": {
+        "complete": 136,
+        "incomplete": 28,
+        "rows": 164
+      },
+      "pseudocheirus_peregrinus|ala_only_presence": {
+        "complete": 118,
+        "incomplete": 17,
+        "rows": 135
+      },
+      "pseudocheirus_peregrinus|ala_overrides_camera_absence": {
+        "complete": 1,
+        "incomplete": 0,
+        "rows": 1
+      },
+      "pseudocheirus_peregrinus|camera_absence_retained": {
+        "complete": 581,
+        "incomplete": 18,
+        "rows": 599
+      },
+      "pseudocheirus_peregrinus|camera_only_presence": {
+        "complete": 247,
+        "incomplete": 5,
+        "rows": 252
+      },
+      "sarcophilus_harrisii|": {
+        "complete": 12,
+        "incomplete": 3,
+        "rows": 15
+      },
+      "sarcophilus_harrisii|ala_only_presence": {
+        "complete": 2832,
+        "incomplete": 129,
+        "rows": 2961
+      },
+      "sarcophilus_harrisii|ala_overrides_camera_absence": {
+        "complete": 4,
+        "incomplete": 0,
+        "rows": 4
+      },
+      "sarcophilus_harrisii|both_presence": {
+        "complete": 98,
+        "incomplete": 1,
+        "rows": 99
+      },
+      "sarcophilus_harrisii|camera_absence_retained": {
+        "complete": 101,
+        "incomplete": 0,
+        "rows": 101
+      },
+      "sarcophilus_harrisii|camera_only_presence": {
+        "complete": 526,
+        "incomplete": 17,
+        "rows": 543
+      },
+      "thylogale_billardierii|ala_only_presence": {
+        "complete": 656,
+        "incomplete": 93,
+        "rows": 749
+      },
+      "thylogale_billardierii|both_presence": {
+        "complete": 15,
+        "incomplete": 0,
+        "rows": 15
+      },
+      "thylogale_billardierii|camera_absence_retained": {
+        "complete": 125,
+        "incomplete": 5,
+        "rows": 130
+      },
+      "thylogale_billardierii|camera_only_presence": {
+        "complete": 689,
+        "incomplete": 18,
+        "rows": 707
+      },
+      "trichosurus_vulpecula|": {
+        "complete": 16,
+        "incomplete": 3,
+        "rows": 19
+      },
+      "trichosurus_vulpecula|ala_only_presence": {
+        "complete": 491,
+        "incomplete": 67,
+        "rows": 558
+      },
+      "trichosurus_vulpecula|ala_overrides_camera_absence": {
+        "complete": 1,
+        "incomplete": 0,
+        "rows": 1
+      },
+      "trichosurus_vulpecula|both_presence": {
+        "complete": 9,
+        "incomplete": 0,
+        "rows": 9
+      },
+      "trichosurus_vulpecula|camera_absence_retained": {
+        "complete": 173,
+        "incomplete": 2,
+        "rows": 175
+      },
+      "trichosurus_vulpecula|camera_only_presence": {
+        "complete": 646,
+        "incomplete": 21,
+        "rows": 667
+      },
+      "vombatus_ursinus|": {
+        "complete": 63,
+        "incomplete": 8,
+        "rows": 71
+      },
+      "vombatus_ursinus|ala_only_presence": {
+        "complete": 452,
+        "incomplete": 50,
+        "rows": 502
+      },
+      "vombatus_ursinus|ala_overrides_camera_absence": {
+        "complete": 1,
+        "incomplete": 0,
+        "rows": 1
+      },
+      "vombatus_ursinus|both_presence": {
+        "complete": 11,
+        "incomplete": 0,
+        "rows": 11
+      },
+      "vombatus_ursinus|camera_absence_retained": {
+        "complete": 138,
+        "incomplete": 0,
+        "rows": 138
+      },
+      "vombatus_ursinus|camera_only_presence": {
+        "complete": 633,
+        "incomplete": 19,
+        "rows": 652
+      }
+    }
+  },
+  "rows": 13455,
+  "survey_supported_absence_first_class": true
+}

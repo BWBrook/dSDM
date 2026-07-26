@@ -1,0 +1,25 @@
+{
+  "downstream_analysis_species": [
+    "dasyurus_maculatus",
+    "dasyurus_viverrinus",
+    "notamacropus_rufogriseus",
+    "pseudocheirus_peregrinus",
+    "sarcophilus_harrisii",
+    "thylogale_billardierii",
+    "trichosurus_vulpecula",
+    "vombatus_ursinus"
+  ],
+  "excluded_downstream": "macropus_giganteus",
+  "historical_acquisition_provenance_unchanged": true,
+  "immutable_acquisition_candidates": [
+    "dasyurus_maculatus",
+    "dasyurus_viverrinus",
+    "notamacropus_rufogriseus",
+    "pseudocheirus_peregrinus",
+    "sarcophilus_harrisii",
+    "thylogale_billardierii",
+    "trichosurus_vulpecula",
+    "vombatus_ursinus",
+    "macropus_giganteus"
+  ]
+}

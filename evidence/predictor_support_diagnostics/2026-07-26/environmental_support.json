@@ -1,0 +1,564 @@
+{
+  "per_species": {
+    "dasyurus_maculatus": {
+      "complete_map_cells_denominator": 71023,
+      "complete_map_cells_outside_any_marginal_envelope": 5842,
+      "interpretation": "descriptive prepartition optimistic marginal envelope; forbidden as final fold support mask",
+      "rate": 0.0822550441406305,
+      "response_cells": 1310
+    },
+    "dasyurus_viverrinus": {
+      "complete_map_cells_denominator": 71023,
+      "complete_map_cells_outside_any_marginal_envelope": 7302,
+      "interpretation": "descriptive prepartition optimistic marginal envelope; forbidden as final fold support mask",
+      "rate": 0.10281176520282162,
+      "response_cells": 1305
+    },
+    "notamacropus_rufogriseus": {
+      "complete_map_cells_denominator": 71023,
+      "complete_map_cells_outside_any_marginal_envelope": 3749,
+      "interpretation": "descriptive prepartition optimistic marginal envelope; forbidden as final fold support mask",
+      "rate": 0.05278571730284556,
+      "response_cells": 1561
+    },
+    "pseudocheirus_peregrinus": {
+      "complete_map_cells_denominator": 71023,
+      "complete_map_cells_outside_any_marginal_envelope": 5644,
+      "interpretation": "descriptive prepartition optimistic marginal envelope; forbidden as final fold support mask",
+      "rate": 0.07946721484589499,
+      "response_cells": 1151
+    },
+    "sarcophilus_harrisii": {
+      "complete_map_cells_denominator": 71023,
+      "complete_map_cells_outside_any_marginal_envelope": 2584,
+      "interpretation": "descriptive prepartition optimistic marginal envelope; forbidden as final fold support mask",
+      "rate": 0.03638258029089168,
+      "response_cells": 3723
+    },
+    "thylogale_billardierii": {
+      "complete_map_cells_denominator": 71023,
+      "complete_map_cells_outside_any_marginal_envelope": 6334,
+      "interpretation": "descriptive prepartition optimistic marginal envelope; forbidden as final fold support mask",
+      "rate": 0.08918237753967025,
+      "response_cells": 1601
+    },
+    "trichosurus_vulpecula": {
+      "complete_map_cells_denominator": 71023,
+      "complete_map_cells_outside_any_marginal_envelope": 3971,
+      "interpretation": "descriptive prepartition optimistic marginal envelope; forbidden as final fold support mask",
+      "rate": 0.05591146529997325,
+      "response_cells": 1429
+    },
+    "vombatus_ursinus": {
+      "complete_map_cells_denominator": 71023,
+      "complete_map_cells_outside_any_marginal_envelope": 4030,
+      "interpretation": "descriptive prepartition optimistic marginal envelope; forbidden as final fold support mask",
+      "rate": 0.056742182110020696,
+      "response_cells": 1375
+    }
+  },
+  "pooled_complete_map_cells_outside_any_response_envelope": 987,
+  "predictors": {
+    "annmeantemp": {
+      "canonical_above_response_max": 11,
+      "canonical_below_response_min": 0,
+      "canonical_nonmissing": 74072,
+      "canonical_range": {
+        "max": 14.0,
+        "min": 4.0
+      },
+      "interpretation": "marginal envelope only; not multivariate novelty or fitted transformation",
+      "response_cell_nonmissing": 5407,
+      "response_cell_quantiles": {
+        "q01": 5.9,
+        "q05": 7.530000000000001,
+        "q25": 10.0,
+        "q50": 11.4,
+        "q75": 12.350000000000001,
+        "q95": 13.2,
+        "q99": 13.7
+      }
+    },
+    "annprecip": {
+      "canonical_above_response_max": 85,
+      "canonical_below_response_min": 48,
+      "canonical_nonmissing": 74072,
+      "canonical_range": {
+        "max": 3387.0,
+        "min": 443.0
+      },
+      "interpretation": "marginal envelope only; not multivariate novelty or fitted transformation",
+      "response_cell_nonmissing": 5407,
+      "response_cell_quantiles": {
+        "q01": 506.06,
+        "q05": 572.0,
+        "q25": 768.0,
+        "q50": 1046.0,
+        "q75": 1493.5,
+        "q95": 2276.0,
+        "q99": 2856.0
+      }
+    },
+    "dist_fw": {
+      "canonical_above_response_max": 2,
+      "canonical_below_response_min": 0,
+      "canonical_nonmissing": 72712,
+      "canonical_range": {
+        "max": 31035.115,
+        "min": 0.0
+      },
+      "interpretation": "marginal envelope only; not multivariate novelty or fitted transformation",
+      "response_cell_nonmissing": 5367,
+      "response_cell_quantiles": {
+        "q01": 418.93872,
+        "q05": 979.835048,
+        "q25": 2977.7731,
+        "q50": 5970.5996,
+        "q75": 10231.1325,
+        "q95": 19577.551999999992,
+        "q99": 27161.62998
+      }
+    },
+    "dist_road": {
+      "canonical_above_response_max": 509,
+      "canonical_below_response_min": 0,
+      "canonical_nonmissing": 72667,
+      "canonical_range": {
+        "max": 23984.984,
+        "min": 0.0
+      },
+      "interpretation": "marginal envelope only; not multivariate novelty or fitted transformation",
+      "response_cell_nonmissing": 5361,
+      "response_cell_quantiles": {
+        "q01": 0.0,
+        "q05": 0.0,
+        "q25": 0.0,
+        "q50": 0.0,
+        "q75": 13.063474,
+        "q95": 535.8844,
+        "q99": 2578.6236999999887
+      }
+    },
+    "elevation": {
+      "canonical_above_response_max": 0,
+      "canonical_below_response_min": 0,
+      "canonical_nonmissing": 72494,
+      "canonical_range": {
+        "max": 1493.5328,
+        "min": 0.0
+      },
+      "interpretation": "marginal envelope only; not multivariate novelty or fitted transformation",
+      "response_cell_nonmissing": 5341,
+      "response_cell_quantiles": {
+        "q01": 4.7957546,
+        "q05": 15.847655,
+        "q25": 67.54561,
+        "q50": 191.51044,
+        "q75": 421.44226,
+        "q95": 823.8152,
+        "q99": 1142.5750200000002
+      }
+    },
+    "fpar": {
+      "canonical_above_response_max": 53,
+      "canonical_below_response_min": 0,
+      "canonical_nonmissing": 72245,
+      "canonical_range": {
+        "max": 1.0,
+        "min": 0.12952025
+      },
+      "interpretation": "marginal envelope only; not multivariate novelty or fitted transformation",
+      "response_cell_nonmissing": 5295,
+      "response_cell_quantiles": {
+        "q01": 0.16982433279999998,
+        "q05": 0.186511797,
+        "q25": 0.22523259,
+        "q50": 0.27489018,
+        "q75": 0.33562425,
+        "q95": 0.48674910600000015,
+        "q99": 0.6957052990000003
+      }
+    },
+    "human_footprint": {
+      "canonical_above_response_max": 0,
+      "canonical_below_response_min": 0,
+      "canonical_nonmissing": 73119,
+      "canonical_range": {
+        "max": 93.0,
+        "min": 0.0
+      },
+      "interpretation": "marginal envelope only; not multivariate novelty or fitted transformation",
+      "response_cell_nonmissing": 5246,
+      "response_cell_quantiles": {
+        "q01": 6.0,
+        "q05": 7.0,
+        "q25": 12.1,
+        "q50": 15.0,
+        "q75": 23.0,
+        "q95": 48.0,
+        "q99": 71.0
+      }
+    },
+    "isothermality": {
+      "canonical_above_response_max": 2,
+      "canonical_below_response_min": 0,
+      "canonical_nonmissing": 74072,
+      "canonical_range": {
+        "max": 0.54427326,
+        "min": 0.38988712
+      },
+      "interpretation": "marginal envelope only; not multivariate novelty or fitted transformation",
+      "response_cell_nonmissing": 5407,
+      "response_cell_quantiles": {
+        "q01": 0.45529806279999996,
+        "q05": 0.474309865,
+        "q25": 0.49745370499999997,
+        "q50": 0.50958604,
+        "q75": 0.5219563549999999,
+        "q95": 0.534517812,
+        "q99": 0.539501067
+      }
+    },
+    "maxtempwarmmonth": {
+      "canonical_above_response_max": 0,
+      "canonical_below_response_min": 0,
+      "canonical_nonmissing": 74072,
+      "canonical_range": {
+        "max": 24.4,
+        "min": 13.0
+      },
+      "interpretation": "marginal envelope only; not multivariate novelty or fitted transformation",
+      "response_cell_nonmissing": 5407,
+      "response_cell_quantiles": {
+        "q01": 16.1,
+        "q05": 18.0,
+        "q25": 19.8,
+        "q50": 20.7,
+        "q75": 21.6,
+        "q95": 23.1,
+        "q99": 24.0
+      }
+    },
+    "meandiurnrange": {
+      "canonical_above_response_max": 100,
+      "canonical_below_response_min": 5,
+      "canonical_nonmissing": 74072,
+      "canonical_range": {
+        "max": 12.423333,
+        "min": 5.0808334
+      },
+      "interpretation": "marginal envelope only; not multivariate novelty or fitted transformation",
+      "response_cell_nonmissing": 5407,
+      "response_cell_quantiles": {
+        "q01": 6.27176652,
+        "q05": 6.9944169,
+        "q25": 8.00125025,
+        "q50": 8.784166,
+        "q75": 9.68,
+        "q95": 11.2153339,
+        "q99": 11.975766059999994
+      }
+    },
+    "meantempcoldq": {
+      "canonical_above_response_max": 0,
+      "canonical_below_response_min": 0,
+      "canonical_nonmissing": 74072,
+      "canonical_range": {
+        "max": 11.0,
+        "min": 0.2
+      },
+      "interpretation": "marginal envelope only; not multivariate novelty or fitted transformation",
+      "response_cell_nonmissing": 5407,
+      "response_cell_quantiles": {
+        "q01": 1.7,
+        "q05": 3.5,
+        "q25": 6.0,
+        "q50": 7.6,
+        "q75": 8.8,
+        "q95": 9.9,
+        "q99": 10.5
+      }
+    },
+    "meantempdryq": {
+      "canonical_above_response_max": 17,
+      "canonical_below_response_min": 1,
+      "canonical_nonmissing": 74072,
+      "canonical_range": {
+        "max": 17.6,
+        "min": 2.2
+      },
+      "interpretation": "marginal envelope only; not multivariate novelty or fitted transformation",
+      "response_cell_nonmissing": 5407,
+      "response_cell_quantiles": {
+        "q01": 8.106,
+        "q05": 10.1,
+        "q25": 12.8,
+        "q50": 14.6,
+        "q75": 15.6,
+        "q95": 16.7,
+        "q99": 17.3
+      }
+    },
+    "meantempwarmq": {
+      "canonical_above_response_max": 17,
+      "canonical_below_response_min": 1,
+      "canonical_nonmissing": 74072,
+      "canonical_range": {
+        "max": 17.6,
+        "min": 8.1
+      },
+      "interpretation": "marginal envelope only; not multivariate novelty or fitted transformation",
+      "response_cell_nonmissing": 5407,
+      "response_cell_quantiles": {
+        "q01": 10.0,
+        "q05": 11.7,
+        "q25": 13.9,
+        "q50": 15.2,
+        "q75": 16.0,
+        "q95": 16.9,
+        "q99": 17.3
+      }
+    },
+    "meantempwetq": {
+      "canonical_above_response_max": 4,
+      "canonical_below_response_min": 0,
+      "canonical_nonmissing": 74072,
+      "canonical_range": {
+        "max": 16.1,
+        "min": 0.2
+      },
+      "interpretation": "marginal envelope only; not multivariate novelty or fitted transformation",
+      "response_cell_nonmissing": 5407,
+      "response_cell_quantiles": {
+        "q01": 2.1,
+        "q05": 4.2,
+        "q25": 6.7,
+        "q50": 8.4,
+        "q75": 9.5,
+        "q95": 14.8,
+        "q99": 15.8
+      }
+    },
+    "mintempcoldmonth": {
+      "canonical_above_response_max": 0,
+      "canonical_below_response_min": 39,
+      "canonical_nonmissing": 74072,
+      "canonical_range": {
+        "max": 8.0,
+        "min": -2.2
+      },
+      "interpretation": "marginal envelope only; not multivariate novelty or fitted transformation",
+      "response_cell_nonmissing": 5407,
+      "response_cell_quantiles": {
+        "q01": -1.5,
+        "q05": -0.3,
+        "q25": 1.6,
+        "q50": 3.3,
+        "q75": 4.8,
+        "q95": 6.4,
+        "q99": 7.6
+      }
+    },
+    "precipcoldq": {
+      "canonical_above_response_max": 106,
+      "canonical_below_response_min": 44,
+      "canonical_nonmissing": 74072,
+      "canonical_range": {
+        "max": 1044.0,
+        "min": 111.0
+      },
+      "interpretation": "marginal envelope only; not multivariate novelty or fitted transformation",
+      "response_cell_nonmissing": 5407,
+      "response_cell_quantiles": {
+        "q01": 125.0,
+        "q05": 147.0,
+        "q25": 227.0,
+        "q50": 350.0,
+        "q75": 524.5,
+        "q95": 747.0,
+        "q99": 864.8199999999988
+      }
+    },
+    "precipdrymonth": {
+      "canonical_above_response_max": 102,
+      "canonical_below_response_min": 61,
+      "canonical_nonmissing": 74072,
+      "canonical_range": {
+        "max": 164.0,
+        "min": 24.0
+      },
+      "interpretation": "marginal envelope only; not multivariate novelty or fitted transformation",
+      "response_cell_nonmissing": 5407,
+      "response_cell_quantiles": {
+        "q01": 28.0,
+        "q05": 31.0,
+        "q25": 40.0,
+        "q50": 49.0,
+        "q75": 62.5,
+        "q95": 94.0,
+        "q99": 125.0
+      }
+    },
+    "precipdryq": {
+      "canonical_above_response_max": 98,
+      "canonical_below_response_min": 1,
+      "canonical_nonmissing": 74072,
+      "canonical_range": {
+        "max": 596.0,
+        "min": 90.0
+      },
+      "interpretation": "marginal envelope only; not multivariate novelty or fitted transformation",
+      "response_cell_nonmissing": 5407,
+      "response_cell_quantiles": {
+        "q01": 104.0,
+        "q05": 116.0,
+        "q25": 144.0,
+        "q50": 176.0,
+        "q75": 223.0,
+        "q95": 357.6999999999998,
+        "q99": 484.8799999999992
+      }
+    },
+    "precipseason": {
+      "canonical_above_response_max": 15,
+      "canonical_below_response_min": 0,
+      "canonical_nonmissing": 74072,
+      "canonical_range": {
+        "max": 0.41035748,
+        "min": 0.10854754
+      },
+      "interpretation": "marginal envelope only; not multivariate novelty or fitted transformation",
+      "response_cell_nonmissing": 5407,
+      "response_cell_quantiles": {
+        "q01": 0.12904768219999999,
+        "q05": 0.139173095,
+        "q25": 0.184164875,
+        "q50": 0.26348975,
+        "q75": 0.34351842499999996,
+        "q95": 0.371785331,
+        "q99": 0.380430098
+      }
+    },
+    "precipwarmq": {
+      "canonical_above_response_max": 125,
+      "canonical_below_response_min": 2,
+      "canonical_nonmissing": 74072,
+      "canonical_range": {
+        "max": 604.0,
+        "min": 103.0
+      },
+      "interpretation": "marginal envelope only; not multivariate novelty or fitted transformation",
+      "response_cell_nonmissing": 5407,
+      "response_cell_quantiles": {
+        "q01": 117.0,
+        "q05": 126.0,
+        "q25": 153.0,
+        "q50": 182.0,
+        "q75": 227.0,
+        "q95": 372.0,
+        "q99": 517.9399999999996
+      }
+    },
+    "precipwetmonth": {
+      "canonical_above_response_max": 130,
+      "canonical_below_response_min": 51,
+      "canonical_nonmissing": 74072,
+      "canonical_range": {
+        "max": 365.0,
+        "min": 43.0
+      },
+      "interpretation": "marginal envelope only; not multivariate novelty or fitted transformation",
+      "response_cell_nonmissing": 5407,
+      "response_cell_quantiles": {
+        "q01": 53.06,
+        "q05": 61.0,
+        "q25": 85.0,
+        "q50": 126.0,
+        "q75": 187.0,
+        "q95": 266.0,
+        "q99": 307.0
+      }
+    },
+    "precipwetq": {
+      "canonical_above_response_max": 76,
+      "canonical_below_response_min": 58,
+      "canonical_nonmissing": 74072,
+      "canonical_range": {
+        "max": 1044.0,
+        "min": 125.0
+      },
+      "interpretation": "marginal envelope only; not multivariate novelty or fitted transformation",
+      "response_cell_nonmissing": 5407,
+      "response_cell_quantiles": {
+        "q01": 150.0,
+        "q05": 172.0,
+        "q25": 237.0,
+        "q50": 358.0,
+        "q75": 529.0,
+        "q95": 764.6999999999998,
+        "q99": 897.0
+      }
+    },
+    "tempannrange": {
+      "canonical_above_response_max": 85,
+      "canonical_below_response_min": 1,
+      "canonical_nonmissing": 74072,
+      "canonical_range": {
+        "max": 23.3,
+        "min": 11.8
+      },
+      "interpretation": "marginal envelope only; not multivariate novelty or fitted transformation",
+      "response_cell_nonmissing": 5407,
+      "response_cell_quantiles": {
+        "q01": 12.9,
+        "q05": 14.2,
+        "q25": 15.9,
+        "q50": 17.2,
+        "q75": 18.8,
+        "q95": 21.6,
+        "q99": 22.6
+      }
+    },
+    "tempseason": {
+      "canonical_above_response_max": 0,
+      "canonical_below_response_min": 5,
+      "canonical_nonmissing": 74072,
+      "canonical_range": {
+        "max": 3.9,
+        "min": 2.2
+      },
+      "interpretation": "marginal envelope only; not multivariate novelty or fitted transformation",
+      "response_cell_nonmissing": 5407,
+      "response_cell_quantiles": {
+        "q01": 2.3,
+        "q05": 2.5,
+        "q25": 2.8,
+        "q50": 3.1,
+        "q75": 3.3,
+        "q95": 3.7,
+        "q99": 3.8
+      }
+    },
+    "top_roughness": {
+      "canonical_above_response_max": 9,
+      "canonical_below_response_min": 0,
+      "canonical_nonmissing": 72570,
+      "canonical_range": {
+        "max": 489.0,
+        "min": 0.0
+      },
+      "interpretation": "marginal envelope only; not multivariate novelty or fitted transformation",
+      "response_cell_nonmissing": 5357,
+      "response_cell_quantiles": {
+        "q01": 4.0,
+        "q05": 7.0,
+        "q25": 19.0,
+        "q50": 37.0,
+        "q75": 65.0,
+        "q95": 123.0,
+        "q99": 176.4399999999996
+      }
+    }
+  },
+  "support_is_marginal_descriptive": true
+}

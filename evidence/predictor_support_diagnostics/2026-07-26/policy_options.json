@@ -1,0 +1,413 @@
+{
+  "complete_case_losses": {
+    "by_pa_type": {
+      "presence": {
+        "complete_case_rows": 10099,
+        "loss": 609,
+        "rows": 10708
+      },
+      "pseudoabsence": {
+        "complete_case_rows": 498,
+        "loss": 89,
+        "rows": 587
+      },
+      "survey_supported_absence": {
+        "complete_case_rows": 2114,
+        "loss": 46,
+        "rows": 2160
+      }
+    },
+    "by_species": {
+      "dasyurus_maculatus": {
+        "complete_case_rows": 1258,
+        "loss": 52,
+        "rows": 1310
+      },
+      "dasyurus_viverrinus": {
+        "complete_case_rows": 1244,
+        "loss": 61,
+        "rows": 1305
+      },
+      "notamacropus_rufogriseus": {
+        "complete_case_rows": 1434,
+        "loss": 127,
+        "rows": 1561
+      },
+      "pseudocheirus_peregrinus": {
+        "complete_case_rows": 1083,
+        "loss": 68,
+        "rows": 1151
+      },
+      "sarcophilus_harrisii": {
+        "complete_case_rows": 3573,
+        "loss": 150,
+        "rows": 3723
+      },
+      "thylogale_billardierii": {
+        "complete_case_rows": 1485,
+        "loss": 116,
+        "rows": 1601
+      },
+      "trichosurus_vulpecula": {
+        "complete_case_rows": 1336,
+        "loss": 93,
+        "rows": 1429
+      },
+      "vombatus_ursinus": {
+        "complete_case_rows": 1298,
+        "loss": 77,
+        "rows": 1375
+      }
+    }
+  },
+  "complete_case_sensitivity": {
+    "loss": 744,
+    "loss_rate": 0.055295429208472684,
+    "rows": 12711
+  },
+  "options": {
+    "annmeantemp": {
+      "action": "repair_or_drop_candidate_only; no action applied",
+      "if_drop_predictor": {
+        "canonical_cells_retained": 71023,
+        "response_cells_retained": 5087,
+        "response_rows_recovered_vs_whole_stack": 0,
+        "response_rows_retained": 12711
+      },
+      "single_predictor_recovery_rate": 0.0,
+      "single_predictor_recovery_rows": 0
+    },
+    "annprecip": {
+      "action": "repair_or_drop_candidate_only; no action applied",
+      "if_drop_predictor": {
+        "canonical_cells_retained": 71023,
+        "response_cells_retained": 5087,
+        "response_rows_recovered_vs_whole_stack": 0,
+        "response_rows_retained": 12711
+      },
+      "single_predictor_recovery_rate": 0.0,
+      "single_predictor_recovery_rows": 0
+    },
+    "dist_fw": {
+      "action": "repair_or_drop_candidate_only; no action applied",
+      "if_drop_predictor": {
+        "canonical_cells_retained": 71023,
+        "response_cells_retained": 5087,
+        "response_rows_recovered_vs_whole_stack": 0,
+        "response_rows_retained": 12711
+      },
+      "single_predictor_recovery_rate": 0.007209215904868079,
+      "single_predictor_recovery_rows": 97
+    },
+    "dist_road": {
+      "action": "repair_or_drop_candidate_only; no action applied",
+      "if_drop_predictor": {
+        "canonical_cells_retained": 71027,
+        "response_cells_retained": 5087,
+        "response_rows_recovered_vs_whole_stack": 0,
+        "response_rows_retained": 12711
+      },
+      "single_predictor_recovery_rate": 0.008101077666295057,
+      "single_predictor_recovery_rows": 109
+    },
+    "elevation": {
+      "action": "repair_or_drop_candidate_only; no action applied",
+      "if_drop_predictor": {
+        "canonical_cells_retained": 71047,
+        "response_cells_retained": 5092,
+        "response_rows_recovered_vs_whole_stack": 13,
+        "response_rows_retained": 12724
+      },
+      "single_predictor_recovery_rate": 0.011073950204384987,
+      "single_predictor_recovery_rows": 149
+    },
+    "fpar": {
+      "action": "repair_or_drop_candidate_only; no action applied",
+      "if_drop_predictor": {
+        "canonical_cells_retained": 71350,
+        "response_cells_retained": 5144,
+        "response_rows_recovered_vs_whole_stack": 179,
+        "response_rows_retained": 12890
+      },
+      "single_predictor_recovery_rate": 0.023337049424005947,
+      "single_predictor_recovery_rows": 314
+    },
+    "human_footprint": {
+      "action": "repair_or_drop_candidate_only; no action applied",
+      "if_drop_predictor": {
+        "canonical_cells_retained": 71477,
+        "response_cells_retained": 5179,
+        "response_rows_recovered_vs_whole_stack": 208,
+        "response_rows_retained": 12919
+      },
+      "single_predictor_recovery_rate": 0.02519509476031215,
+      "single_predictor_recovery_rows": 339
+    },
+    "isothermality": {
+      "action": "repair_or_drop_candidate_only; no action applied",
+      "if_drop_predictor": {
+        "canonical_cells_retained": 71023,
+        "response_cells_retained": 5087,
+        "response_rows_recovered_vs_whole_stack": 0,
+        "response_rows_retained": 12711
+      },
+      "single_predictor_recovery_rate": 0.0,
+      "single_predictor_recovery_rows": 0
+    },
+    "landuse_secondary": {
+      "action": "repair_or_drop_candidate_only; no action applied",
+      "if_drop_predictor": {
+        "canonical_cells_retained": 71026,
+        "response_cells_retained": 5088,
+        "response_rows_recovered_vs_whole_stack": 1,
+        "response_rows_retained": 12712
+      },
+      "single_predictor_recovery_rate": 0.00014864362690449647,
+      "single_predictor_recovery_rows": 2
+    },
+    "maxtempwarmmonth": {
+      "action": "repair_or_drop_candidate_only; no action applied",
+      "if_drop_predictor": {
+        "canonical_cells_retained": 71023,
+        "response_cells_retained": 5087,
+        "response_rows_recovered_vs_whole_stack": 0,
+        "response_rows_retained": 12711
+      },
+      "single_predictor_recovery_rate": 0.0,
+      "single_predictor_recovery_rows": 0
+    },
+    "meandiurnrange": {
+      "action": "repair_or_drop_candidate_only; no action applied",
+      "if_drop_predictor": {
+        "canonical_cells_retained": 71023,
+        "response_cells_retained": 5087,
+        "response_rows_recovered_vs_whole_stack": 0,
+        "response_rows_retained": 12711
+      },
+      "single_predictor_recovery_rate": 0.0,
+      "single_predictor_recovery_rows": 0
+    },
+    "meantempcoldq": {
+      "action": "repair_or_drop_candidate_only; no action applied",
+      "if_drop_predictor": {
+        "canonical_cells_retained": 71023,
+        "response_cells_retained": 5087,
+        "response_rows_recovered_vs_whole_stack": 0,
+        "response_rows_retained": 12711
+      },
+      "single_predictor_recovery_rate": 0.0,
+      "single_predictor_recovery_rows": 0
+    },
+    "meantempdryq": {
+      "action": "repair_or_drop_candidate_only; no action applied",
+      "if_drop_predictor": {
+        "canonical_cells_retained": 71023,
+        "response_cells_retained": 5087,
+        "response_rows_recovered_vs_whole_stack": 0,
+        "response_rows_retained": 12711
+      },
+      "single_predictor_recovery_rate": 0.0,
+      "single_predictor_recovery_rows": 0
+    },
+    "meantempwarmq": {
+      "action": "repair_or_drop_candidate_only; no action applied",
+      "if_drop_predictor": {
+        "canonical_cells_retained": 71023,
+        "response_cells_retained": 5087,
+        "response_rows_recovered_vs_whole_stack": 0,
+        "response_rows_retained": 12711
+      },
+      "single_predictor_recovery_rate": 0.0,
+      "single_predictor_recovery_rows": 0
+    },
+    "meantempwetq": {
+      "action": "repair_or_drop_candidate_only; no action applied",
+      "if_drop_predictor": {
+        "canonical_cells_retained": 71023,
+        "response_cells_retained": 5087,
+        "response_rows_recovered_vs_whole_stack": 0,
+        "response_rows_retained": 12711
+      },
+      "single_predictor_recovery_rate": 0.0,
+      "single_predictor_recovery_rows": 0
+    },
+    "mintempcoldmonth": {
+      "action": "repair_or_drop_candidate_only; no action applied",
+      "if_drop_predictor": {
+        "canonical_cells_retained": 71023,
+        "response_cells_retained": 5087,
+        "response_rows_recovered_vs_whole_stack": 0,
+        "response_rows_retained": 12711
+      },
+      "single_predictor_recovery_rate": 0.0,
+      "single_predictor_recovery_rows": 0
+    },
+    "precipcoldq": {
+      "action": "repair_or_drop_candidate_only; no action applied",
+      "if_drop_predictor": {
+        "canonical_cells_retained": 71023,
+        "response_cells_retained": 5087,
+        "response_rows_recovered_vs_whole_stack": 0,
+        "response_rows_retained": 12711
+      },
+      "single_predictor_recovery_rate": 0.0,
+      "single_predictor_recovery_rows": 0
+    },
+    "precipdrymonth": {
+      "action": "repair_or_drop_candidate_only; no action applied",
+      "if_drop_predictor": {
+        "canonical_cells_retained": 71023,
+        "response_cells_retained": 5087,
+        "response_rows_recovered_vs_whole_stack": 0,
+        "response_rows_retained": 12711
+      },
+      "single_predictor_recovery_rate": 0.0,
+      "single_predictor_recovery_rows": 0
+    },
+    "precipdryq": {
+      "action": "repair_or_drop_candidate_only; no action applied",
+      "if_drop_predictor": {
+        "canonical_cells_retained": 71023,
+        "response_cells_retained": 5087,
+        "response_rows_recovered_vs_whole_stack": 0,
+        "response_rows_retained": 12711
+      },
+      "single_predictor_recovery_rate": 0.0,
+      "single_predictor_recovery_rows": 0
+    },
+    "precipseason": {
+      "action": "repair_or_drop_candidate_only; no action applied",
+      "if_drop_predictor": {
+        "canonical_cells_retained": 71023,
+        "response_cells_retained": 5087,
+        "response_rows_recovered_vs_whole_stack": 0,
+        "response_rows_retained": 12711
+      },
+      "single_predictor_recovery_rate": 0.0,
+      "single_predictor_recovery_rows": 0
+    },
+    "precipwarmq": {
+      "action": "repair_or_drop_candidate_only; no action applied",
+      "if_drop_predictor": {
+        "canonical_cells_retained": 71023,
+        "response_cells_retained": 5087,
+        "response_rows_recovered_vs_whole_stack": 0,
+        "response_rows_retained": 12711
+      },
+      "single_predictor_recovery_rate": 0.0,
+      "single_predictor_recovery_rows": 0
+    },
+    "precipwetmonth": {
+      "action": "repair_or_drop_candidate_only; no action applied",
+      "if_drop_predictor": {
+        "canonical_cells_retained": 71023,
+        "response_cells_retained": 5087,
+        "response_rows_recovered_vs_whole_stack": 0,
+        "response_rows_retained": 12711
+      },
+      "single_predictor_recovery_rate": 0.0,
+      "single_predictor_recovery_rows": 0
+    },
+    "precipwetq": {
+      "action": "repair_or_drop_candidate_only; no action applied",
+      "if_drop_predictor": {
+        "canonical_cells_retained": 71023,
+        "response_cells_retained": 5087,
+        "response_rows_recovered_vs_whole_stack": 0,
+        "response_rows_retained": 12711
+      },
+      "single_predictor_recovery_rate": 0.0,
+      "single_predictor_recovery_rows": 0
+    },
+    "shared_six": {
+      "dropped_predictors": [
+        "elevation",
+        "top_roughness",
+        "soil_class",
+        "dist_fw",
+        "dist_road",
+        "fpar"
+      ],
+      "if_drop_predictor": {
+        "canonical_cells_retained": 72924,
+        "response_cells_retained": 5212,
+        "response_rows_retained": 13054
+      }
+    },
+    "soil_class": {
+      "action": "repair_or_drop_candidate_only; no action applied",
+      "if_drop_predictor": {
+        "canonical_cells_retained": 71127,
+        "response_cells_retained": 5101,
+        "response_rows_recovered_vs_whole_stack": 23,
+        "response_rows_retained": 12734
+      },
+      "single_predictor_recovery_rate": 0.014269788182831662,
+      "single_predictor_recovery_rows": 192
+    },
+    "tempannrange": {
+      "action": "repair_or_drop_candidate_only; no action applied",
+      "if_drop_predictor": {
+        "canonical_cells_retained": 71023,
+        "response_cells_retained": 5087,
+        "response_rows_recovered_vs_whole_stack": 0,
+        "response_rows_retained": 12711
+      },
+      "single_predictor_recovery_rate": 0.0,
+      "single_predictor_recovery_rows": 0
+    },
+    "tempseason": {
+      "action": "repair_or_drop_candidate_only; no action applied",
+      "if_drop_predictor": {
+        "canonical_cells_retained": 71023,
+        "response_cells_retained": 5087,
+        "response_rows_recovered_vs_whole_stack": 0,
+        "response_rows_retained": 12711
+      },
+      "single_predictor_recovery_rate": 0.0,
+      "single_predictor_recovery_rows": 0
+    },
+    "top_roughness": {
+      "action": "repair_or_drop_candidate_only; no action applied",
+      "if_drop_predictor": {
+        "canonical_cells_retained": 71033,
+        "response_cells_retained": 5087,
+        "response_rows_recovered_vs_whole_stack": 0,
+        "response_rows_retained": 12711
+      },
+      "single_predictor_recovery_rate": 0.008695652173913044,
+      "single_predictor_recovery_rows": 117
+    },
+    "veg_mvg": {
+      "action": "repair_or_drop_candidate_only; no action applied",
+      "if_drop_predictor": {
+        "canonical_cells_retained": 71164,
+        "response_cells_retained": 5115,
+        "response_rows_recovered_vs_whole_stack": 55,
+        "response_rows_retained": 12766
+      },
+      "single_predictor_recovery_rate": 0.009215904868078781,
+      "single_predictor_recovery_rows": 124
+    }
+  },
+  "policy_families": {
+    "A_source_repair": {
+      "consequence": "recover missing values if native source/build metadata support it; currently unverified"
+    },
+    "B_supported_domain_restriction": {
+      "consequence": "restrict prediction cells to supported domain; exact threshold pending Barry"
+    },
+    "C_predictor_revision": {
+      "consequence": "drop/revise unsupported predictors; assess class/species losses above"
+    },
+    "D_training_only_type_specific_missing_treatment": {
+      "consequence": "retain cells and defer type-specific treatment to training only; no imputation now"
+    }
+  },
+  "provisional_ranking": [
+    "A_source_repair",
+    "B_supported_domain_restriction",
+    "D_training_only_type_specific_missing_treatment",
+    "C_predictor_revision"
+  ]
+}

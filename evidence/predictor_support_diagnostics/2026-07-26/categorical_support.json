@@ -1,0 +1,955 @@
+{
+  "per_species": {
+    "dasyurus_maculatus": {
+      "affected_complete_map_cells_any_unseen_level": 161,
+      "denominator_complete_map_cells": 71023,
+      "rate": 0.0022668712952142265,
+      "variables": {
+        "landuse_secondary": {
+          "affected_complete_map_cells": 101,
+          "denominator_complete_map_cells": 71023,
+          "map_codes_absent_from_species_response": [
+            "13",
+            "15",
+            "17",
+            "9"
+          ],
+          "rate": 0.0014220745392337693,
+          "response_cell_codes": [
+            "1",
+            "11",
+            "12",
+            "14",
+            "16",
+            "18",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"
+          ]
+        },
+        "soil_class": {
+          "affected_complete_map_cells": 15,
+          "denominator_complete_map_cells": 71023,
+          "map_codes_absent_from_species_response": [
+            "2"
+          ],
+          "rate": 0.00021119918899511426,
+          "response_cell_codes": [
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
+          ]
+        },
+        "veg_mvg": {
+          "affected_complete_map_cells": 46,
+          "denominator_complete_map_cells": 71023,
+          "map_codes_absent_from_species_response": [
+            "11",
+            "16",
+            "7"
+          ],
+          "rate": 0.0006476775129183504,
+          "response_cell_codes": [
+            "1",
+            "10",
+            "15",
+            "17",
+            "18",
+            "19",
+            "2",
+            "21",
+            "22",
+            "24",
+            "25",
+            "26",
+            "27",
+            "29",
+            "3",
+            "31",
+            "4",
+            "5",
+            "9"
+          ]
+        }
+      }
+    },
+    "dasyurus_viverrinus": {
+      "affected_complete_map_cells_any_unseen_level": 1147,
+      "denominator_complete_map_cells": 71023,
+      "rate": 0.016149697985159736,
+      "variables": {
+        "landuse_secondary": {
+          "affected_complete_map_cells": 651,
+          "denominator_complete_map_cells": 71023,
+          "map_codes_absent_from_species_response": [
+            "15",
+            "17",
+            "8",
+            "9"
+          ],
+          "rate": 0.009166044802387958,
+          "response_cell_codes": [
+            "1",
+            "11",
+            "12",
+            "13",
+            "14",
+            "16",
+            "18",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7"
+          ]
+        },
+        "soil_class": {
+          "affected_complete_map_cells": 448,
+          "denominator_complete_map_cells": 71023,
+          "map_codes_absent_from_species_response": [
+            "14",
+            "2"
+          ],
+          "rate": 0.006307815777987413,
+          "response_cell_codes": [
+            "10",
+            "11",
+            "12",
+            "13",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
+          ]
+        },
+        "veg_mvg": {
+          "affected_complete_map_cells": 77,
+          "denominator_complete_map_cells": 71023,
+          "map_codes_absent_from_species_response": [
+            "11",
+            "16",
+            "26",
+            "7"
+          ],
+          "rate": 0.0010841558368415865,
+          "response_cell_codes": [
+            "1",
+            "10",
+            "15",
+            "17",
+            "18",
+            "19",
+            "2",
+            "21",
+            "22",
+            "24",
+            "25",
+            "27",
+            "29",
+            "3",
+            "31",
+            "4",
+            "5",
+            "9"
+          ]
+        }
+      }
+    },
+    "notamacropus_rufogriseus": {
+      "affected_complete_map_cells_any_unseen_level": 81,
+      "denominator_complete_map_cells": 71023,
+      "rate": 0.001140475620573617,
+      "variables": {
+        "landuse_secondary": {
+          "affected_complete_map_cells": 66,
+          "denominator_complete_map_cells": 71023,
+          "map_codes_absent_from_species_response": [
+            "13",
+            "17",
+            "9"
+          ],
+          "rate": 0.0009292764315785028,
+          "response_cell_codes": [
+            "1",
+            "11",
+            "12",
+            "14",
+            "15",
+            "16",
+            "18",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"
+          ]
+        },
+        "soil_class": {
+          "affected_complete_map_cells": 0,
+          "denominator_complete_map_cells": 71023,
+          "map_codes_absent_from_species_response": [],
+          "rate": 0.0,
+          "response_cell_codes": [
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
+          ]
+        },
+        "veg_mvg": {
+          "affected_complete_map_cells": 15,
+          "denominator_complete_map_cells": 71023,
+          "map_codes_absent_from_species_response": [
+            "16",
+            "7"
+          ],
+          "rate": 0.00021119918899511426,
+          "response_cell_codes": [
+            "1",
+            "10",
+            "11",
+            "15",
+            "17",
+            "18",
+            "19",
+            "2",
+            "21",
+            "22",
+            "24",
+            "25",
+            "26",
+            "27",
+            "29",
+            "3",
+            "31",
+            "4",
+            "5",
+            "9"
+          ]
+        }
+      }
+    },
+    "pseudocheirus_peregrinus": {
+      "affected_complete_map_cells_any_unseen_level": 728,
+      "denominator_complete_map_cells": 71023,
+      "rate": 0.010250200639229545,
+      "variables": {
+        "landuse_secondary": {
+          "affected_complete_map_cells": 66,
+          "denominator_complete_map_cells": 71023,
+          "map_codes_absent_from_species_response": [
+            "13",
+            "17",
+            "9"
+          ],
+          "rate": 0.0009292764315785028,
+          "response_cell_codes": [
+            "1",
+            "11",
+            "12",
+            "14",
+            "15",
+            "16",
+            "18",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"
+          ]
+        },
+        "soil_class": {
+          "affected_complete_map_cells": 433,
+          "denominator_complete_map_cells": 71023,
+          "map_codes_absent_from_species_response": [
+            "14"
+          ],
+          "rate": 0.0060966165889922985,
+          "response_cell_codes": [
+            "10",
+            "11",
+            "12",
+            "13",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
+          ]
+        },
+        "veg_mvg": {
+          "affected_complete_map_cells": 232,
+          "denominator_complete_map_cells": 71023,
+          "map_codes_absent_from_species_response": [
+            "11",
+            "16",
+            "26",
+            "31",
+            "7"
+          ],
+          "rate": 0.0032665474564577673,
+          "response_cell_codes": [
+            "1",
+            "10",
+            "15",
+            "17",
+            "18",
+            "19",
+            "2",
+            "21",
+            "22",
+            "24",
+            "25",
+            "27",
+            "29",
+            "3",
+            "4",
+            "5",
+            "9"
+          ]
+        }
+      }
+    },
+    "sarcophilus_harrisii": {
+      "affected_complete_map_cells_any_unseen_level": 85,
+      "denominator_complete_map_cells": 71023,
+      "rate": 0.0011967954043056474,
+      "variables": {
+        "landuse_secondary": {
+          "affected_complete_map_cells": 66,
+          "denominator_complete_map_cells": 71023,
+          "map_codes_absent_from_species_response": [
+            "13",
+            "17",
+            "9"
+          ],
+          "rate": 0.0009292764315785028,
+          "response_cell_codes": [
+            "1",
+            "11",
+            "12",
+            "14",
+            "15",
+            "16",
+            "18",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"
+          ]
+        },
+        "soil_class": {
+          "affected_complete_map_cells": 15,
+          "denominator_complete_map_cells": 71023,
+          "map_codes_absent_from_species_response": [
+            "2"
+          ],
+          "rate": 0.00021119918899511426,
+          "response_cell_codes": [
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
+          ]
+        },
+        "veg_mvg": {
+          "affected_complete_map_cells": 4,
+          "denominator_complete_map_cells": 71023,
+          "map_codes_absent_from_species_response": [
+            "7"
+          ],
+          "rate": 5.631978373203047e-05,
+          "response_cell_codes": [
+            "1",
+            "10",
+            "11",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "2",
+            "21",
+            "22",
+            "24",
+            "25",
+            "26",
+            "27",
+            "29",
+            "3",
+            "31",
+            "4",
+            "5",
+            "9"
+          ]
+        }
+      }
+    },
+    "thylogale_billardierii": {
+      "affected_complete_map_cells_any_unseen_level": 93,
+      "denominator_complete_map_cells": 71023,
+      "rate": 0.0013094349717697085,
+      "variables": {
+        "landuse_secondary": {
+          "affected_complete_map_cells": 51,
+          "denominator_complete_map_cells": 71023,
+          "map_codes_absent_from_species_response": [
+            "17",
+            "9"
+          ],
+          "rate": 0.0007180772425833885,
+          "response_cell_codes": [
+            "1",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "18",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"
+          ]
+        },
+        "soil_class": {
+          "affected_complete_map_cells": 0,
+          "denominator_complete_map_cells": 71023,
+          "map_codes_absent_from_species_response": [],
+          "rate": 0.0,
+          "response_cell_codes": [
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
+          ]
+        },
+        "veg_mvg": {
+          "affected_complete_map_cells": 42,
+          "denominator_complete_map_cells": 71023,
+          "map_codes_absent_from_species_response": [
+            "11",
+            "16"
+          ],
+          "rate": 0.00059135772918632,
+          "response_cell_codes": [
+            "1",
+            "10",
+            "15",
+            "17",
+            "18",
+            "19",
+            "2",
+            "21",
+            "22",
+            "24",
+            "25",
+            "26",
+            "27",
+            "29",
+            "3",
+            "31",
+            "4",
+            "5",
+            "7",
+            "9"
+          ]
+        }
+      }
+    },
+    "trichosurus_vulpecula": {
+      "affected_complete_map_cells_any_unseen_level": 66,
+      "denominator_complete_map_cells": 71023,
+      "rate": 0.0009292764315785028,
+      "variables": {
+        "landuse_secondary": {
+          "affected_complete_map_cells": 51,
+          "denominator_complete_map_cells": 71023,
+          "map_codes_absent_from_species_response": [
+            "17",
+            "9"
+          ],
+          "rate": 0.0007180772425833885,
+          "response_cell_codes": [
+            "1",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "18",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"
+          ]
+        },
+        "soil_class": {
+          "affected_complete_map_cells": 0,
+          "denominator_complete_map_cells": 71023,
+          "map_codes_absent_from_species_response": [],
+          "rate": 0.0,
+          "response_cell_codes": [
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
+          ]
+        },
+        "veg_mvg": {
+          "affected_complete_map_cells": 15,
+          "denominator_complete_map_cells": 71023,
+          "map_codes_absent_from_species_response": [
+            "16",
+            "7"
+          ],
+          "rate": 0.00021119918899511426,
+          "response_cell_codes": [
+            "1",
+            "10",
+            "11",
+            "15",
+            "17",
+            "18",
+            "19",
+            "2",
+            "21",
+            "22",
+            "24",
+            "25",
+            "26",
+            "27",
+            "29",
+            "3",
+            "31",
+            "4",
+            "5",
+            "9"
+          ]
+        }
+      }
+    },
+    "vombatus_ursinus": {
+      "affected_complete_map_cells_any_unseen_level": 572,
+      "denominator_complete_map_cells": 71023,
+      "rate": 0.008053729073680358,
+      "variables": {
+        "landuse_secondary": {
+          "affected_complete_map_cells": 101,
+          "denominator_complete_map_cells": 71023,
+          "map_codes_absent_from_species_response": [
+            "13",
+            "15",
+            "17",
+            "9"
+          ],
+          "rate": 0.0014220745392337693,
+          "response_cell_codes": [
+            "1",
+            "11",
+            "12",
+            "14",
+            "16",
+            "18",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"
+          ]
+        },
+        "soil_class": {
+          "affected_complete_map_cells": 433,
+          "denominator_complete_map_cells": 71023,
+          "map_codes_absent_from_species_response": [
+            "14"
+          ],
+          "rate": 0.0060966165889922985,
+          "response_cell_codes": [
+            "10",
+            "11",
+            "12",
+            "13",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
+          ]
+        },
+        "veg_mvg": {
+          "affected_complete_map_cells": 42,
+          "denominator_complete_map_cells": 71023,
+          "map_codes_absent_from_species_response": [
+            "16",
+            "26"
+          ],
+          "rate": 0.00059135772918632,
+          "response_cell_codes": [
+            "1",
+            "10",
+            "11",
+            "15",
+            "17",
+            "18",
+            "19",
+            "2",
+            "21",
+            "22",
+            "24",
+            "25",
+            "27",
+            "29",
+            "3",
+            "31",
+            "4",
+            "5",
+            "7",
+            "9"
+          ]
+        }
+      }
+    }
+  },
+  "pooled_unseen_codes_in_fully_complete_map_cells": 51,
+  "pooled_unseen_complete_cells_by_variable": {
+    "landuse_secondary": 51,
+    "soil_class": 0,
+    "veg_mvg": 0
+  },
+  "sparse_threshold_response_cells": 5,
+  "variables": {
+    "landuse_secondary": {
+      "absent_in_response_cells": [
+        "17",
+        "9"
+      ],
+      "canonical_cell_counts": {
+        "1": 24493,
+        "11": 566,
+        "12": 186,
+        "13": 16,
+        "14": 748,
+        "15": 35,
+        "16": 1827,
+        "17": 48,
+        "18": 2736,
+        "2": 8730,
+        "3": 5128,
+        "4": 5035,
+        "5": 12571,
+        "6": 7565,
+        "7": 3712,
+        "8": 571,
+        "9": 4
+      },
+      "observed_codes": [
+        "1",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "reference_labels_status": "workbook reference only; lineage unproven",
+      "response_cell_counts": {
+        "1": 1248,
+        "11": 32,
+        "12": 9,
+        "13": 3,
+        "14": 221,
+        "15": 2,
+        "16": 421,
+        "18": 134,
+        "2": 409,
+        "3": 449,
+        "4": 273,
+        "5": 1280,
+        "6": 466,
+        "7": 428,
+        "8": 30
+      },
+      "response_row_counts": {
+        "1": 3508,
+        "11": 44,
+        "12": 15,
+        "13": 3,
+        "14": 402,
+        "15": 5,
+        "16": 682,
+        "18": 266,
+        "2": 1354,
+        "3": 762,
+        "4": 400,
+        "5": 4435,
+        "6": 791,
+        "7": 752,
+        "8": 34
+      },
+      "sparse_response_codes": [
+        "13",
+        "15"
+      ]
+    },
+    "soil_class": {
+      "absent_in_response_cells": [],
+      "canonical_cell_counts": {
+        "10": 2953,
+        "11": 7053,
+        "12": 3217,
+        "13": 8862,
+        "14": 435,
+        "2": 15,
+        "3": 3920,
+        "4": 18042,
+        "5": 6169,
+        "6": 719,
+        "7": 1440,
+        "8": 7856,
+        "9": 11615
+      },
+      "observed_codes": [
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "reference_labels_status": "workbook reference only; lineage unproven",
+      "response_cell_counts": {
+        "10": 315,
+        "11": 479,
+        "12": 241,
+        "13": 475,
+        "14": 23,
+        "2": 1,
+        "3": 362,
+        "4": 1345,
+        "5": 814,
+        "6": 86,
+        "7": 248,
+        "8": 644,
+        "9": 289
+      },
+      "response_row_counts": {
+        "10": 711,
+        "11": 1141,
+        "12": 358,
+        "13": 1452,
+        "14": 25,
+        "2": 5,
+        "3": 658,
+        "4": 3991,
+        "5": 1505,
+        "6": 234,
+        "7": 475,
+        "8": 1648,
+        "9": 1060
+      },
+      "sparse_response_codes": [
+        "2"
+      ]
+    },
+    "veg_mvg": {
+      "absent_in_response_cells": [],
+      "canonical_cell_counts": {
+        "1": 8901,
+        "10": 981,
+        "11": 32,
+        "15": 3938,
+        "16": 11,
+        "17": 772,
+        "18": 3228,
+        "19": 836,
+        "2": 9067,
+        "21": 5384,
+        "22": 67,
+        "24": 1943,
+        "25": 16021,
+        "26": 31,
+        "27": 222,
+        "29": 507,
+        "3": 10180,
+        "31": 155,
+        "4": 1303,
+        "5": 9957,
+        "7": 6,
+        "9": 133
+      },
+      "observed_codes": [
+        "1",
+        "10",
+        "11",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "2",
+        "21",
+        "22",
+        "24",
+        "25",
+        "26",
+        "27",
+        "29",
+        "3",
+        "31",
+        "4",
+        "5",
+        "7",
+        "9"
+      ],
+      "reference_labels_status": "workbook reference only; lineage unproven",
+      "response_cell_counts": {
+        "1": 462,
+        "10": 45,
+        "11": 3,
+        "15": 269,
+        "16": 3,
+        "17": 40,
+        "18": 102,
+        "19": 31,
+        "2": 857,
+        "21": 271,
+        "22": 10,
+        "24": 88,
+        "25": 1542,
+        "26": 4,
+        "27": 19,
+        "29": 42,
+        "3": 751,
+        "31": 3,
+        "4": 57,
+        "5": 729,
+        "7": 1,
+        "9": 9
+      },
+      "response_row_counts": {
+        "1": 1569,
+        "10": 169,
+        "11": 5,
+        "15": 808,
+        "16": 3,
+        "17": 105,
+        "18": 234,
+        "19": 42,
+        "2": 2715,
+        "21": 877,
+        "22": 22,
+        "24": 157,
+        "25": 2673,
+        "26": 6,
+        "27": 47,
+        "29": 74,
+        "3": 1804,
+        "31": 9,
+        "4": 106,
+        "5": 1886,
+        "7": 2,
+        "9": 18
+      },
+      "sparse_response_codes": [
+        "11",
+        "16",
+        "26",
+        "31",
+        "7"
+      ]
+    }
+  }
+}

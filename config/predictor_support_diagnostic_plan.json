@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "goal_id": "goal023-predictor-support-map-domain-2026-07-26",
+  "bindings": {
+    "decision_bundle": {"path": "config/phase1_decision_bundle.json", "sha256": "ccccbb2e56e101b1a53421f8016699bfb500f4356861e10c1213a398aabe04a2"},
+    "predictor_plan": {"path": "config/predictor_stack_extraction_plan.json", "sha256": "e75af21cf553cd5a10e375a9f3f29ebfc7b574a8684b8f82f830c111c0c34c65"},
+    "predictor_manifest": {"path": "evidence/predictor_stack_extraction/2026-07-26/manifest.json", "sha256": "d0c72e0b0fc614813438ae6d554b4522ae65305daf63543aa8b9774b7e891c60"},
+    "predictor_source_inventory": {"path": "evidence/predictor_stack_extraction/2026-07-26/source_inventory.json", "sha256": "c102a140898a2ddb63671c008e980624879bb5cae9efe8734da1b2452ca468e0"},
+    "predictor_band_manifest": {"path": "evidence/predictor_stack_extraction/2026-07-26/band_manifest.json", "sha256": "b1fd813bff80aa89ccc18396fce4d3e9c637dd435c73acaa1456c946757bce85"},
+    "predictor_categorical": {"path": "evidence/predictor_stack_extraction/2026-07-26/categorical_levels.json", "sha256": "67267857bf1385bccc4d58566f736d4e16926c46cd4130e305fd176ea5be6a24"},
+    "predictor_missingness": {"path": "evidence/predictor_stack_extraction/2026-07-26/missingness_summary.json", "sha256": "0d519aa2a11594e70c992096fb22e47b3ca5efeac151212a22a407e3e8c82a66"},
+    "predictor_spatial": {"path": "evidence/predictor_stack_extraction/2026-07-26/spatial_summary.json", "sha256": "90022c610e364b2b6cdf3af69d807ae9ab7f66889ed5f70113c009372e57be45"},
+    "predictor_outputs": {"path": "evidence/predictor_stack_extraction/2026-07-26/outputs.json", "sha256": "72bc6b81a25016fc8ba2bdae677d4f0c35021ce33ba0dfaac3aa4f2fe4c08ff5"},
+    "goal021_plan": {"path": "config/pseudoabsence_derivation_plan.json", "sha256": "75cdc198815d3076af6ee3b6f25bed5ea4e90bf1433c7e9205f8692dfedd95fe"},
+    "goal021_manifest": {"path": "evidence/pseudoabsence_derivation/2026-07-26/manifest.json", "sha256": "bf843690a6071f489b81fb5bdc348bab1c9f2001dfa37ad359ed7dc75d50f875"},
+    "goal021_outputs": {"path": "evidence/pseudoabsence_derivation/2026-07-26/outputs.json", "sha256": "ecf0e6f46b3eec30c4edeff26d02f694be18cbc063268d9e1780f8cca7b5a3d9"},
+    "goal021_response": {"path": "data/processed/response/goal021-pseudoabsence-derivation/2026-07-26/response_layer.csv", "sha256": "e67298d11d7eb29e6bf8ca055cd8b64cfaf119d193ff0675fff09719ce0616a3"},
+    "predictor_map_csv": {"path": "data/processed/predictors/goal022-predictor-stack-extraction/2026-07-26/predictor_cell_map_raw.csv", "sha256": "0e2082671096bbf80745038bad8329d3bb4fd58dc20b8a4adb146c3d62459542"},
+    "predictor_response_csv": {"path": "data/processed/predictors/goal022-predictor-stack-extraction/2026-07-26/predictor_response_cells_raw.csv", "sha256": "4438d383c6f63e38b0bf61bcbb3812df4e3a26b9e2185d718d2fc03817bbb92f"},
+    "legacy_script": {"path": "temp/src/3_create_sdm_data.R", "sha256": "cff353c830fe78e351fc72f2672dd1c73e94930ebf4516b53c5950ec19a4effe"},
+    "workbook": {"path": "temp/data/spatial/se_stack_metadata.xlsx", "sha256": "ec460f9a41913f3288ca7dd38b6150b575f9c00b73581b892468cd0577127edd"},
+    "scoping_review": {"path": "docs/scoping_review_2026-05-27.md", "sha256": "758f2e0acba010f1a1a0f8bf35642bb969aa77b57e6a29ebc9884de035c96f61"}
+  },
+  "canonical_cells": 74073,
+  "response_cells": 5407,
+  "response_rows": 13455,
+  "active_predictors": ["annmeantemp","meandiurnrange","isothermality","tempseason","maxtempwarmmonth","mintempcoldmonth","tempannrange","meantempwetq","meantempdryq","meantempwarmq","meantempcoldq","annprecip","precipwetmonth","precipdrymonth","precipseason","precipwetq","precipdryq","precipwarmq","precipcoldq","elevation","top_roughness","soil_class","dist_fw","dist_road","fpar","veg_mvg","landuse_secondary","human_footprint"],
+  "categorical_predictors": ["soil_class","veg_mvg","landuse_secondary"],
+  "privacy": {"tracked_grid_ids_or_coordinates": false, "tracked_row_payloads": false, "tracked_private_paths": false, "tracked_response_identifiers": false, "tracked_site_or_camera_ids": false, "tracked_private_observation_timing": false},
+  "stopped_before": ["imputation","fill","resampling","encoding","scaling","partitions","mapping","modelling","policy_selection"],
+  "outputs": {"destination": "evidence/predictor_support_diagnostics/2026-07-26", "tracked": ["source_metadata.json","missingness_patterns.json","response_impact.json","categorical_support.json","environmental_support.json","policy_options.json","analysis_scope.json","review.json","manifest.json"], "private_row_products": false}
+}
