@@ -1,7 +1,7 @@
 # dSDM 30,000-foot strategic plan
 
 Originally framed: 2026-05-27
-Last revised: 2026-07-24
+Last revised: 2026-07-26
 
 This is the canonical living roadmap for the full dSDM research programme. It
 should be revisited at major scientific and implementation gates rather than
@@ -70,7 +70,8 @@ The freeze is a scientific boundary, not a claim that learning must stop. If
 the bird case exposes a material defect or scale limitation, revise the method
 explicitly, increment its version, document the reason, and rerun affected
 Tasmanian analyses. Do not quietly tune on the bird case while describing it as
-an untouched transferability test.
+a predeclared transferability assessment; document adaptation and rerun every
+affected comparison.
 
 ### Case study 2: SE Australia birds
 
@@ -101,6 +102,14 @@ evidence to define the rebuild without treating legacy outputs as canonical.
 
 Status: active.
 
+Goal025 has frozen a deterministic macro-stratified held-patch interpolation
+design for the Goal024 `D_struct` substrate. Geometry and fold allocation are
+response-independent; feasibility and ranking are deliberately
+response/covariate-conditioned but pre-model. The complete prescribed seed
+schedule, training-only support diagnostics, aggregate topology/class audit,
+and SHA-bound private figure passed the dSDM orchestrator review on 2026-07-26.
+The goal still authorises no fitted transformation or model.
+
 Build the provenance-rich source layer for the Tasmanian mammal candidates and
 the eight-species downstream contract:
 
@@ -129,7 +138,8 @@ Convert accepted sources into a frozen modelling substrate:
 - derive pseudoabsences under accepted ecological rules;
 - apply boundary and species-specific island rules;
 - extract and transform predictors;
-- construct leakage-safe outer tests and spatial CV folds;
+- construct pre-model-frozen held-patch outer tests and spatial CV folds with
+  explicit adjacency and buffer diagnostics;
 - run a bounded QA and acceptance gate.
 
 This phase ends with versioned, analysis-ready training, validation, test, and
@@ -142,7 +152,7 @@ Establish credible traditional machine-learning reference models:
 - define a compact, defensible baseline model set;
 - tune without contaminating the frozen outer test;
 - evaluate discrimination, calibration, prevalence effects, and spatial
-  generalisation;
+  held-patch interpolation with spatial-block uncertainty;
 - preserve fitted models, predictions, run manifests, and diagnostics.
 
 These models define the empirical standard the new approach must improve on or
@@ -243,9 +253,13 @@ froze the supported 28-predictor structural domain: 71,023 of 74,073 map cells,
 5,087 of 5,407 response cells, and 12,711 of 13,455 response rows. All excluded
 cells/rows remain auditable and survey-supported absences remain first-class.
 
-The next gate is partition-ready substrate construction. It must preserve the
-Goal024 values and provenance, recompute categorical novelty and continuous
-support within each species and training fold, and define leakage-safe
-partitions before any fitted transformations or modelling. Goal024's pooled or
-species support diagnostics are descriptive only; no repair or imputation is
-authorised. Legacy `tascam_grid_pa.csv` remains comparison-only.
+Goal025 is complete. Its complete prescribed seed schedule selected and froze
+one pre-model held-patch outer/CV design, then recomputed categorical novelty
+and continuous support within each species and training fold. Five dispersed
+outer patches have no buffer, CV folds are scattered and multi-patch, and
+rare-class/support limitations are machine-recorded for downstream
+prevalence-aware and spatial-block uncertainty analysis. The v2 review receipt
+passed against the unchanged frozen SVG and aggregate audit. No fitted
+transformations or modelling were performed. Goal024 diagnostics remain
+descriptive only; no repair or imputation is authorised. Legacy
+`tascam_grid_pa.csv` remains comparison-only.

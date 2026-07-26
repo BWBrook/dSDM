@@ -1,0 +1,71 @@
+{
+  "bindings": {
+    "decision_bundle": {
+      "path": "config/phase1_decision_bundle.json",
+      "role": "decision_bundle",
+      "sha256": "ccccbb2e56e101b1a53421f8016699bfb500f4356861e10c1213a398aabe04a2"
+    },
+    "goal021_all_response": {
+      "path": "data/processed/response/goal021-pseudoabsence-derivation/2026-07-26/response_layer.csv",
+      "role": "goal021_all_response",
+      "sha256": "e67298d11d7eb29e6bf8ca055cd8b64cfaf119d193ff0675fff09719ce0616a3"
+    },
+    "goal022_all_response_cells": {
+      "path": "data/processed/predictors/goal022-predictor-stack-extraction/2026-07-26/predictor_response_cells_raw.csv",
+      "role": "goal022_all_response_cells",
+      "sha256": "4438d383c6f63e38b0bf61bcbb3812df4e3a26b9e2185d718d2fc03817bbb92f"
+    },
+    "goal024_manifest": {
+      "path": "evidence/predictor_source_repair_domain_freeze/2026-07-26/manifest.json",
+      "role": "goal024_manifest",
+      "sha256": "a610752079bd2d1e2be7f84829660bb327a349ad34a3e2844837094b2bef8daa"
+    },
+    "goal024_map": {
+      "path": "data/processed/predictors/goal024-predictor-source-repair-domain-freeze/2026-07-26/predictor_cell_map_canonical.csv",
+      "role": "goal024_map",
+      "sha256": "c27b848bd4db81932553ac801029b8e66cf1a1ecd05271343ee2b4d0a3035cc5"
+    },
+    "goal024_outputs": {
+      "path": "evidence/predictor_source_repair_domain_freeze/2026-07-26/outputs.json",
+      "role": "goal024_outputs",
+      "sha256": "254c058d563fd66dfbfe44f789ecf55494399df6dcef01c01812ba4b7d01ac2f"
+    },
+    "goal024_plan": {
+      "path": "config/predictor_source_repair_domain_freeze_plan.json",
+      "role": "goal024_plan",
+      "sha256": "2debc3d01f93c4734d155af733360ac3b4c98eb0305f6034919947df72127c24"
+    },
+    "goal024_response": {
+      "path": "data/processed/predictors/goal024-predictor-source-repair-domain-freeze/2026-07-26/response_layer_canonical.csv",
+      "role": "goal024_response",
+      "sha256": "e6ee507e225ab024a56b8b505fe0e0402d7dac18c7ae34068c8b8141a21ede27"
+    },
+    "goal024_response_cells": {
+      "path": "data/processed/predictors/goal024-predictor-source-repair-domain-freeze/2026-07-26/predictor_response_cells_canonical.csv",
+      "role": "goal024_response_cells",
+      "sha256": "cf6bd574e3eaa7ed04b6ec6ddbbaa22935b5f03b3fe66bcbdfc4df5691361303"
+    },
+    "goal024_review": {
+      "path": "evidence/predictor_source_repair_domain_freeze/2026-07-26/review.json",
+      "role": "goal024_review",
+      "sha256": "d4001628712baadfe4882c5327a61c62d285503477c90e2347218d3ea4e0e4db"
+    },
+    "goal024_support_contract": {
+      "path": "evidence/predictor_source_repair_domain_freeze/2026-07-26/support_contract.json",
+      "role": "goal024_support_contract",
+      "sha256": "f313dbaf4cf0bdf2048103c4f7677d9b0124df17b48b264cbcf87cb9223e4aaa"
+    },
+    "legacy_partition_comparison": {
+      "path": "temp/src/2_tas_sdm_data_cv_split.r",
+      "role": "legacy_partition_comparison",
+      "sha256": "251bfe8ed2f7394b28a64b0c0bfbdd4f54756ff300f03379c458da89a7f7c6c2"
+    },
+    "legacy_response_comparison": {
+      "path": "temp/src/sdm_data_func.R",
+      "role": "legacy_response_comparison",
+      "sha256": "80aa6392f17d91bedf0919f042f1f1c406d6290b0bb623584a7a7001ff8f5563"
+    }
+  },
+  "goal_id": "goal025-spatial-partition-2026-07-26",
+  "schema_version": "1.0"
+}

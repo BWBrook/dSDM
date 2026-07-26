@@ -1,0 +1,25 @@
+{
+  "files": [
+    {
+      "bytes": 9101,
+      "path": "summary.json",
+      "sha256": "4e851c22d4f9764cd95abc914bc4f0c1a653ac9e07c4e3b2984b91e735e6d703"
+    },
+    {
+      "bytes": 3331,
+      "path": "bindings.json",
+      "sha256": "1c4b1a8bdaecda95698194cf567c3a2853e572b12acb74568d96ccc9428c2ff2"
+    },
+    {
+      "bytes": 8084,
+      "path": "outputs.json",
+      "sha256": "5e72c009fc061d2c27b0ecef782e88189e3ac73127313139f2535add7ea4b3dd"
+    },
+    {
+      "bytes": 763,
+      "path": "review.json",
+      "sha256": "a05b1114414433ab8e6dbe086e6e536468982865e4a09d1782695eb41c0bee5c"
+    }
+  ],
+  "schema_version": "1.0"
+}

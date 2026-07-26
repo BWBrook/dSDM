@@ -1,0 +1,336 @@
+{
+  "action_main_base": "37214228763208b2c262c8feaf117e10bb4c3d6a",
+  "counts": {
+    "excluded_response_cells": 320,
+    "excluded_response_rows": 744,
+    "map_cells": 71023,
+    "predictors": 28,
+    "response_cells": 5087,
+    "response_rows": 12711,
+    "species": 8
+  },
+  "design": {
+    "buffer_m": 0,
+    "design_label": "pre-model-frozen held-patch interpolation",
+    "feasibility_gates_response_conditioned": true,
+    "geometry_and_fold_allocation_response_independent": true,
+    "isolated_regional_extrapolation": false,
+    "prediction_or_performance_input": false,
+    "ranking_response_and_covariate_conditioned": true,
+    "search_scope": {
+      "distinct_outer_tuples_scanned": 3694,
+      "possible_one_per_macro_tuples": 20250,
+      "scheduled_outer_tuple_fraction": 0.18241975308641975,
+      "scheduled_seeds": 4096,
+      "scope": "complete prescribed seed schedule; not combinatorially exhaustive",
+      "seed_schedule": [
+        0,
+        4095
+      ]
+    },
+    "unbiased_confirmatory_transfer": false
+  },
+  "diagnostics": {
+    "distance_thresholds_m": [
+      1000,
+      5000,
+      10000
+    ],
+    "global_categorical_dictionary": true,
+    "out_of_dictionary_count": 0,
+    "species_training_only": true,
+    "splits": 6,
+    "status": "post_freeze_no_reselection"
+  },
+  "estimand": "species-specific pre-model held-patch interpolation assessment within Goal024 D_struct, conditional on the accepted response construction; not unbiased confirmatory transfer, occupancy, prevalence, isolated regional extrapolation, temporal transfer, or outside-domain inference",
+  "exclusions": {
+    "influenced_geometry_gates_ranking_or_diagnostics": false,
+    "response_cells": 320,
+    "response_rows": 744,
+    "role": "nearest_microcluster_audit_only"
+  },
+  "geometry": {
+    "geometry_response_independent": true,
+    "macro_source": "50 canonical microcentres",
+    "macroregions": 5,
+    "map_cells_used_once": 71023,
+    "microclusters": 50,
+    "versions": {
+      "always_xy": true,
+      "dtype": "float64",
+      "input_crs": "EPSG:4326",
+      "numpy": "2.5.1",
+      "proj": "9.5.1",
+      "projected_crs": "EPSG:7855",
+      "pyproj": "3.7.2",
+      "python": "3.14.4"
+    }
+  },
+  "goal_id": "goal025-spatial-partition-2026-07-26",
+  "limitations": {
+    "gate_interpretation": "computability only; not stable discrimination or calibration",
+    "outer_support": {
+      "continuous_out_of_range_instances": 174,
+      "global_dictionary_interpretation": "integrity check only; not evidence of split-specific support",
+      "global_dictionary_out_of_dictionary_count": 0,
+      "training_unseen_categorical_instances": 12
+    },
+    "required_downstream": [
+      "prevalence-aware metrics",
+      "spatial-block uncertainty",
+      "per-cluster and source reporting",
+      "sensitivity interpretation"
+    ],
+    "sarcophilus_harrisii": {
+      "outer_absence_microclusters": 3,
+      "outer_absences": 10,
+      "outer_camera_survey_supported_absences": 9,
+      "outer_pseudoabsences": 1,
+      "overall_presences": 3460,
+      "overall_rows": 3573,
+      "presence_fraction": 0.96837391547719,
+      "presence_percent_2dp": 96.84
+    },
+    "thylogale_billardierii": {
+      "cv_folds_at_minimum_absences": 1,
+      "minimum_cv_validation_absences": 10,
+      "outer_absence_microcluster": "mc49",
+      "outer_absences": 19,
+      "outer_camera_survey_supported_absences": 19,
+      "overall_presences": 1360,
+      "overall_rows": 1485,
+      "presence_fraction": 0.9158249158249159,
+      "presence_percent_2dp": 91.58
+    }
+  },
+  "partitions": {
+    "cv_folds": {
+      "fold00": {
+        "map_cells": 12254,
+        "microclusters": 9,
+        "response_cells": 826,
+        "response_rows": 2192
+      },
+      "fold01": {
+        "map_cells": 11039,
+        "microclusters": 9,
+        "response_cells": 748,
+        "response_rows": 1718
+      },
+      "fold02": {
+        "map_cells": 11773,
+        "microclusters": 9,
+        "response_cells": 922,
+        "response_rows": 1911
+      },
+      "fold03": {
+        "map_cells": 13821,
+        "microclusters": 9,
+        "response_cells": 1035,
+        "response_rows": 2769
+      },
+      "fold04": {
+        "map_cells": 15383,
+        "microclusters": 9,
+        "response_cells": 950,
+        "response_rows": 2449
+      }
+    },
+    "map_cells": {
+      "outer_train": 64270,
+      "test": 6753
+    },
+    "outer_test_microclusters": 5,
+    "outer_train_microclusters": 45,
+    "response_cells": {
+      "outer_train": 4481,
+      "test": 606
+    },
+    "response_rows": {
+      "outer_train": 11039,
+      "test": 1672
+    }
+  },
+  "privacy": {
+    "tracked_grid_ids_or_coordinates": false,
+    "tracked_private_observation_timing": false,
+    "tracked_private_paths": false,
+    "tracked_response_identifiers": false,
+    "tracked_row_payloads": false,
+    "tracked_site_or_camera_ids": false
+  },
+  "schema_version": "1.0",
+  "search": {
+    "corrected_oracle": {
+      "joint_feasible_outer": 6,
+      "outer_hard_gate_viable": 166,
+      "unique_outer_candidates": 3694,
+      "viable_cv_assignments": 9
+    },
+    "cv_generator": "macro-stratified SHA ordering with balanced greedy fold assignment",
+    "fallback_or_relaxation": false,
+    "fold_macroregions": 4,
+    "joint_feasible_outer": 6,
+    "oracle_reconciled": true,
+    "outer_hard_gate_viable": 166,
+    "protocol_correction": "pre-freeze all-five-per-fold gate was impossible under remaining macro counts 8/24/8/4/1; an earlier feasibility probe omitted that gate and its 3/3612 oracle is superseded",
+    "seed_range": [
+      0,
+      4095
+    ],
+    "unique_outer_candidates": 3694,
+    "viable_cv_assignments": 9
+  },
+  "selection": {
+    "cv_folds": [
+      [
+        0,
+        7,
+        21,
+        25,
+        26,
+        31,
+        32,
+        45,
+        46
+      ],
+      [
+        1,
+        5,
+        9,
+        10,
+        13,
+        33,
+        37,
+        41,
+        47
+      ],
+      [
+        2,
+        4,
+        16,
+        17,
+        19,
+        27,
+        39,
+        43,
+        48
+      ],
+      [
+        3,
+        14,
+        18,
+        22,
+        24,
+        29,
+        30,
+        34,
+        44
+      ],
+      [
+        6,
+        11,
+        12,
+        15,
+        23,
+        28,
+        36,
+        38,
+        42
+      ]
+    ],
+    "cv_scores": {
+      "balance_mean_loss": 0.030162653846629896,
+      "balance_midrank_score": 1.0,
+      "balance_worst_fold_loss": 0.18562091503267975,
+      "environment_mean_fold_loss": 0.12993919410379717,
+      "environment_midrank_score": 0.5,
+      "environment_worst_fold_loss": 0.168190802844995,
+      "equal_third_score": 0.8333333333333334,
+      "geography_mean_fold_mean_m": 188754.25065673195,
+      "geography_midrank_score": 1.0,
+      "geography_worst_fold_min_m": 36537.58322181408
+    },
+    "cv_seed": 422,
+    "outer_scores": {
+      "environment_loss": 0.1582596241402164,
+      "environment_map_loss": 0.12598013158618035,
+      "environment_midrank_score": 0.6,
+      "environment_response_loss": 0.19053911669425247,
+      "equal_third_score": 0.7000000000000001,
+      "geography_mean_m": 262164.63903919555,
+      "geography_midrank_score": 0.5,
+      "geography_min_m": 146661.63316417427,
+      "representation_mean_loss": 0.024106780041475533,
+      "representation_midrank_score": 1.0,
+      "representation_worst_loss": 0.05300396059386349
+    },
+    "outer_seed": 1782,
+    "outer_tuple": [
+      8,
+      20,
+      35,
+      40,
+      49
+    ],
+    "performance_input": false
+  },
+  "stopped_before": [
+    "transformations",
+    "imputation",
+    "encoding",
+    "scaling",
+    "mapping",
+    "tuning",
+    "modelling"
+  ],
+  "topology": {
+    "buffer_m": 0,
+    "cv_fold_cluster_adjacency_components": [
+      8,
+      6,
+      7,
+      7,
+      8
+    ],
+    "interpretation": "five dispersed outer held patches and scattered multi-patch CV folds",
+    "microclusters_not_queen_contiguous": 19,
+    "outer_cells": 6753,
+    "outer_cells_rook_touching_training": 484,
+    "outer_rook_touch_share": 0.07167184954834888,
+    "outer_union_queen_components": 11,
+    "selected_outer_microclusters": {
+      "mc08": {
+        "dominant_component_cells": 1522,
+        "dominant_component_share": 0.9075730471079309,
+        "queen_components": 6,
+        "total_cells": 1677
+      },
+      "mc20": {
+        "dominant_component_cells": 2475,
+        "dominant_component_share": 1.0,
+        "queen_components": 1,
+        "total_cells": 2475
+      },
+      "mc35": {
+        "dominant_component_cells": 895,
+        "dominant_component_share": 1.0,
+        "queen_components": 1,
+        "total_cells": 895
+      },
+      "mc40": {
+        "dominant_component_cells": 1167,
+        "dominant_component_share": 0.9991438356164384,
+        "queen_components": 2,
+        "total_cells": 1168
+      },
+      "mc49": {
+        "dominant_component_cells": 538,
+        "dominant_component_share": 1.0,
+        "queen_components": 1,
+        "total_cells": 538
+      }
+    }
+  },
+  "visual_review": "passed"
+}

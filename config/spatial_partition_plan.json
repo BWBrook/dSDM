@@ -1,0 +1,315 @@
+{
+  "schema_version": "2.0",
+  "goal_id": "goal025-spatial-partition-2026-07-26",
+  "action_main_base": "37214228763208b2c262c8feaf117e10bb4c3d6a",
+  "expected_counts": {
+    "map_cells": 71023,
+    "response_cells": 5087,
+    "response_rows": 12711,
+    "species": 8,
+    "predictors": 28,
+    "excluded_response_cells": 320,
+    "excluded_response_rows": 744
+  },
+  "decision_ids": [
+    "P1-D019",
+    "P1-D021",
+    "P1-D022",
+    "P1-D023",
+    "P1-D028"
+  ],
+  "n_microclusters": 50,
+  "n_macroregions": 5,
+  "geometry": {
+    "source": "all D_struct map-cell centroids exactly once",
+    "input_crs": "EPSG:4326",
+    "projected_crs": "EPSG:7855",
+    "always_xy": true,
+    "dtype": "float64",
+    "micro_method": "maximin over all map cells",
+    "macro_method": "maximin over 50 canonical microcentres",
+    "canonical_labels": "south_to_north_then_west_to_east_then_centre_id",
+    "response_independent": true
+  },
+  "sha_serialization": "ascending sha256(UTF-8 f\"{seed}:{zero_based_microcluster_index}\")",
+  "seed_range": [
+    0,
+    4095
+  ],
+  "outer_gates": {
+    "clusters": 5,
+    "one_per_macroregion": true,
+    "map_cell_share": [
+      0.075,
+      0.125
+    ],
+    "response_cell_share": [
+      0.075,
+      0.125
+    ],
+    "minimum_response_cells_per_cluster": 20,
+    "species_binary_test_minimum": 10,
+    "species_binary_complement_minimum": 50,
+    "fallback": false
+  },
+  "cv_gates": {
+    "folds": 5,
+    "clusters_per_fold": 9,
+    "generator": "macro_stratified_balanced_greedy_v1",
+    "macro_process_order": "ascending remaining_count then macro_id",
+    "within_macro_priority": "ascending sha256 UTF-8 f'{seed}:{cluster}' then cluster_id",
+    "fold_priority": "ascending sha256 UTF-8 f'{seed}:fold:{fold}' then fold_id",
+    "assignment_minimization": [
+      "current_same_macro_count",
+      "current_total_fold_size",
+      "fold_priority_hash",
+      "fold_id"
+    ],
+    "maximum_per_macro_fold_count_range": 1,
+    "production_macroregions_per_fold": 4,
+    "literal_all_five_per_fold_feasible": false,
+    "superseded_probe": "earlier 3/3612 oracle omitted the impossible macro gate",
+    "response_cell_share": [
+      0.15,
+      0.25
+    ],
+    "species_binary_validation_minimum": 10,
+    "species_binary_training_minimum": 50,
+    "scan_each_unique_outer_independently": true,
+    "fallback": false
+  },
+  "ranking": {
+    "outer": {
+      "equal_thirds": [
+        "geographic_dispersion",
+        "environmental_similarity",
+        "species_binary_representation"
+      ],
+      "geography": [
+        "minimum_pairwise_projected_microcentre_distance",
+        "mean_pairwise_projected_microcentre_distance"
+      ],
+      "environment": "equal map/response and equal six-family KS/TV loss",
+      "representation": "mean and worst species-binary allocation deviation"
+    },
+    "cv": {
+      "equal_thirds": [
+        "fold_geographic_dispersion",
+        "fold_environmental_similarity",
+        "map_response_species_binary_balance"
+      ],
+      "aggregation": "mean and worst-fold losses",
+      "environment": "same six families relative to outer-training substrate"
+    },
+    "performance_input": false,
+    "tie_policy": [
+      "equal_third_score",
+      "geography",
+      "environment",
+      "representation_or_balance_loss",
+      "lexical_tuple",
+      "seed"
+    ]
+  },
+  "corrected_oracle": {
+    "unique_outer_candidates": 3694,
+    "outer_hard_gate_viable": 166,
+    "joint_feasible_outer": 6,
+    "viable_cv_assignments": 9
+  },
+  "joint_cv_oracle": [
+    {
+      "outer_tuple": [
+        2,
+        16,
+        29,
+        40,
+        49
+      ],
+      "viable_cv_seeds": [
+        3105
+      ]
+    },
+    {
+      "outer_tuple": [
+        2,
+        16,
+        36,
+        40,
+        49
+      ],
+      "viable_cv_seeds": [
+        1092
+      ]
+    },
+    {
+      "outer_tuple": [
+        4,
+        26,
+        28,
+        40,
+        46
+      ],
+      "viable_cv_seeds": [
+        1810
+      ]
+    },
+    {
+      "outer_tuple": [
+        8,
+        20,
+        35,
+        40,
+        49
+      ],
+      "viable_cv_seeds": [
+        422,
+        2831
+      ]
+    },
+    {
+      "outer_tuple": [
+        8,
+        20,
+        40,
+        41,
+        46
+      ],
+      "viable_cv_seeds": [
+        422,
+        2036,
+        2694
+      ]
+    },
+    {
+      "outer_tuple": [
+        8,
+        26,
+        32,
+        42,
+        46
+      ],
+      "viable_cv_seeds": [
+        422
+      ]
+    }
+  ],
+  "active_predictors": [
+    "annmeantemp",
+    "meandiurnrange",
+    "isothermality",
+    "tempseason",
+    "maxtempwarmmonth",
+    "mintempcoldmonth",
+    "tempannrange",
+    "meantempwetq",
+    "meantempdryq",
+    "meantempwarmq",
+    "meantempcoldq",
+    "annprecip",
+    "precipwetmonth",
+    "precipdrymonth",
+    "precipseason",
+    "precipwetq",
+    "precipdryq",
+    "precipwarmq",
+    "precipcoldq",
+    "elevation",
+    "top_roughness",
+    "soil_class",
+    "dist_fw",
+    "dist_road",
+    "fpar",
+    "veg_mvg",
+    "landuse_secondary",
+    "human_footprint"
+  ],
+  "privacy": {
+    "tracked_grid_ids_or_coordinates": false,
+    "tracked_row_payloads": false,
+    "tracked_private_paths": false,
+    "tracked_response_identifiers": false,
+    "tracked_site_or_camera_ids": false,
+    "tracked_private_observation_timing": false
+  },
+  "bindings": {
+    "decision_bundle": {
+      "path": "config/phase1_decision_bundle.json",
+      "sha256": "ccccbb2e56e101b1a53421f8016699bfb500f4356861e10c1213a398aabe04a2"
+    },
+    "goal024_plan": {
+      "path": "config/predictor_source_repair_domain_freeze_plan.json",
+      "sha256": "2debc3d01f93c4734d155af733360ac3b4c98eb0305f6034919947df72127c24"
+    },
+    "goal024_manifest": {
+      "path": "evidence/predictor_source_repair_domain_freeze/2026-07-26/manifest.json",
+      "sha256": "a610752079bd2d1e2be7f84829660bb327a349ad34a3e2844837094b2bef8daa"
+    },
+    "goal024_review": {
+      "path": "evidence/predictor_source_repair_domain_freeze/2026-07-26/review.json",
+      "sha256": "d4001628712baadfe4882c5327a61c62d285503477c90e2347218d3ea4e0e4db"
+    },
+    "goal024_outputs": {
+      "path": "evidence/predictor_source_repair_domain_freeze/2026-07-26/outputs.json",
+      "sha256": "254c058d563fd66dfbfe44f789ecf55494399df6dcef01c01812ba4b7d01ac2f"
+    },
+    "goal024_support_contract": {
+      "path": "evidence/predictor_source_repair_domain_freeze/2026-07-26/support_contract.json",
+      "sha256": "f313dbaf4cf0bdf2048103c4f7677d9b0124df17b48b264cbcf87cb9223e4aaa"
+    },
+    "goal024_map": {
+      "path": "data/processed/predictors/goal024-predictor-source-repair-domain-freeze/2026-07-26/predictor_cell_map_canonical.csv",
+      "sha256": "c27b848bd4db81932553ac801029b8e66cf1a1ecd05271343ee2b4d0a3035cc5"
+    },
+    "goal024_response_cells": {
+      "path": "data/processed/predictors/goal024-predictor-source-repair-domain-freeze/2026-07-26/predictor_response_cells_canonical.csv",
+      "sha256": "cf6bd574e3eaa7ed04b6ec6ddbbaa22935b5f03b3fe66bcbdfc4df5691361303"
+    },
+    "goal024_response": {
+      "path": "data/processed/predictors/goal024-predictor-source-repair-domain-freeze/2026-07-26/response_layer_canonical.csv",
+      "sha256": "e6ee507e225ab024a56b8b505fe0e0402d7dac18c7ae34068c8b8141a21ede27"
+    },
+    "goal022_all_response_cells": {
+      "path": "data/processed/predictors/goal022-predictor-stack-extraction/2026-07-26/predictor_response_cells_raw.csv",
+      "sha256": "4438d383c6f63e38b0bf61bcbb3812df4e3a26b9e2185d718d2fc03817bbb92f"
+    },
+    "goal021_all_response": {
+      "path": "data/processed/response/goal021-pseudoabsence-derivation/2026-07-26/response_layer.csv",
+      "sha256": "e67298d11d7eb29e6bf8ca055cd8b64cfaf119d193ff0675fff09719ce0616a3"
+    },
+    "legacy_partition_comparison": {
+      "path": "temp/src/2_tas_sdm_data_cv_split.r",
+      "sha256": "251bfe8ed2f7394b28a64b0c0bfbdd4f54756ff300f03379c458da89a7f7c6c2"
+    },
+    "legacy_response_comparison": {
+      "path": "temp/src/sdm_data_func.R",
+      "sha256": "80aa6392f17d91bedf0919f042f1f1c406d6290b0bb623584a7a7001ff8f5563"
+    }
+  },
+  "outputs": {
+    "private_destination": "data/processed/partitions/goal025-spatial-partition/2026-07-26",
+    "evidence_destination": "evidence/spatial_partition/2026-07-26",
+    "private_outputs_ignored": true,
+    "private_roles": [
+      "map_assignments.csv",
+      "response_cell_assignments.csv",
+      "response_partitioned.csv",
+      "excluded_cell_audit.csv",
+      "excluded_row_audit.csv",
+      "outer_candidates.csv",
+      "outer_cv_feasibility.csv",
+      "cv_candidates.csv",
+      "support_diagnostics.json",
+      "spatial_partition.svg"
+    ]
+  },
+  "stopped_before": [
+    "transformations",
+    "imputation",
+    "encoding",
+    "scaling",
+    "mapping",
+    "tuning",
+    "modelling"
+  ]
+}

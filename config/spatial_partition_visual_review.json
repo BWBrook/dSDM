@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "goal_id": "goal025-spatial-partition-2026-07-26",
+  "receipt_status": "passed",
+  "criteria_version": "goal025-v2",
+  "svg_path": "data/processed/partitions/goal025-spatial-partition/2026-07-26/spatial_partition.svg",
+  "svg_sha256": "79255a920e75d17f376c9e9ff6aaed0804130fb44e8de4d6f4424fc348709dd5",
+  "checklist": [
+    "dominant components spatially coherent; island and D_struct fragmentation quantified and accepted",
+    "plausible islands/coast",
+    "five-region outer coverage",
+    "no empty/effectively empty test patch",
+    "aggregate class imbalance visible; split-specific source/class concentrations checked from diagnostics",
+    "no site IDs, timing, activity, or finer-than-0.01 source detail"
+  ],
+  "reviewer": "dSDM_orchestrator",
+  "reviewed_at": "2026-07-26",
+  "private_row_or_coordinate_payloads": false
+}
