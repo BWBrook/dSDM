@@ -1,0 +1,22 @@
+{
+  "all_28_predictors_retained": true,
+  "barry_decisions_pending": [],
+  "conditional_inference_statement": true,
+  "decision": "supported_structural_domain_frozen",
+  "domain_policy": "D_struct is the deliberate primary policy choice: high-coverage, provenance-safe, retaining all 28 predictors; it is not uniquely data-determined by the source audit",
+  "future_source_package": "opens a new goal",
+  "goal_id": "goal024-predictor-source-repair-domain-freeze-2026-07-26",
+  "operational_estimand": "species-specific relative response score over canonical cells in D_struct, conditional on the accepted presence/survey-supported-absence/pseudoabsence construction; not detection-corrected occupancy, abundance, population prevalence, or inference outside D_struct",
+  "privacy": {
+    "tracked_grid_ids_or_coordinates": false,
+    "tracked_private_observation_timing": false,
+    "tracked_private_paths": false,
+    "tracked_response_identifiers": false,
+    "tracked_row_payloads": false,
+    "tracked_site_or_camera_ids": false
+  },
+  "pseudoabsence_post_domain_status": "validated; rederivation not required; Goal025 defers per-species/fold adequacy",
+  "repair_status": "repair_not_authorized",
+  "stop_boundary": "before partitions, transformations, imputation, encoding, scaling, mapping, modelling",
+  "zero_repairs": true
+}

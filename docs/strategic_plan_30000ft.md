@@ -233,18 +233,19 @@ two-case-study journey, while being substantially further through the
 conceptual foundations and ALA source reconstruction for the Tasmanian
 prove-out.
 
-Goals 017–019 are complete. The frozen 50,834-record ALA snapshot was replayed
+Goals 017–024 are complete. The frozen 50,834-record ALA snapshot was replayed
 into a provenance-preserving nine-candidate presence layer with 40,263 accepted
 records and 6,629 species-grid cells. The private camera source was independently
-normalised for the eight downstream focal species: 1,307 eligible sites yielded
-10,456 pre-suppression site-species classifications and 6,451 unique final
-species-grid rows after 420 species-island absence suppressions. Camera evidence
-contains 4,278 presence and 2,173 `survey_supported_absence` grid rows. Evidence
-is aggregate-only and private row products remain ignored.
+normalised for the eight downstream focal species, and Goals 020–021 froze the
+combined response and pseudoabsence substrate. Goal 022 froze the 32-band
+predictor extraction; Goal 023 diagnosed support; Goal 024 rejected repair and
+froze the supported 28-predictor structural domain: 71,023 of 74,073 map cells,
+5,087 of 5,407 response cells, and 12,711 of 13,455 response rows. All excluded
+cells/rows remain auditable and survey-supported absences remain first-class.
 
-The recommended next gate is a bounded ALA-camera combination for the eight
-downstream species. It must retain Goal 017/018 provenance, apply the explicit
-`Macropus giganteus` downstream exclusion, enforce presence dominance, preserve
-source conflicts/counts, and stop again before pseudoabsence, predictors,
-partitions, or modelling. Legacy `tascam_grid_pa.csv` remains comparison-only
-and is not a canonical input or gate target.
+The next gate is partition-ready substrate construction. It must preserve the
+Goal024 values and provenance, recompute categorical novelty and continuous
+support within each species and training fold, and define leakage-safe
+partitions before any fitted transformations or modelling. Goal024's pooled or
+species support diagnostics are descriptive only; no repair or imputation is
+authorised. Legacy `tascam_grid_pa.csv` remains comparison-only.

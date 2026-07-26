@@ -1,0 +1,233 @@
+{
+  "candidate_values_used": 0,
+  "predictors": {
+    "annmeantemp": {
+      "candidate_recovered_values": 0,
+      "classification": "legacy_lineage_ambiguous",
+      "missing_cells": 1,
+      "missing_response_cells": 0,
+      "missing_response_rows": 0,
+      "reason": "legacy lineage/build and native source identity are not proved"
+    },
+    "annprecip": {
+      "candidate_recovered_values": 0,
+      "classification": "legacy_lineage_ambiguous",
+      "missing_cells": 1,
+      "missing_response_cells": 0,
+      "missing_response_rows": 0,
+      "reason": "legacy lineage/build and native source identity are not proved"
+    },
+    "dist_fw": {
+      "candidate_recovered_values": 0,
+      "classification": "legacy_lineage_ambiguous",
+      "missing_cells": 1361,
+      "missing_response_cells": 40,
+      "missing_response_rows": 97,
+      "reason": "legacy lineage/build and native source identity are not proved"
+    },
+    "dist_road": {
+      "candidate_recovered_values": 0,
+      "classification": "unavailable",
+      "missing_cells": 1406,
+      "missing_response_cells": 46,
+      "missing_response_rows": 109,
+      "reason": "targeted constituent raster absent"
+    },
+    "elevation": {
+      "candidate_recovered_values": 0,
+      "classification": "legacy_lineage_ambiguous",
+      "missing_cells": 1579,
+      "missing_response_cells": 66,
+      "missing_response_rows": 149,
+      "reason": "legacy lineage/build and native source identity are not proved"
+    },
+    "fpar": {
+      "candidate_recovered_values": 0,
+      "classification": "legacy_lineage_ambiguous",
+      "missing_cells": 1828,
+      "missing_response_cells": 112,
+      "missing_response_rows": 314,
+      "reason": "legacy lineage/build and native source identity are not proved"
+    },
+    "human_footprint": {
+      "candidate": "temp/data/spatial/human_footprint_tas.tif",
+      "candidate_recovered_values": 0,
+      "classification": "exact_local_duplicate_no_recovery",
+      "missing_cells": 954,
+      "missing_response_cells": 161,
+      "missing_response_rows": 339,
+      "reason": "candidate exactly reproduces stack band 32 array and mask on the shared extent; files are not whole-file identical"
+    },
+    "isothermality": {
+      "candidate_recovered_values": 0,
+      "classification": "legacy_lineage_ambiguous",
+      "missing_cells": 1,
+      "missing_response_cells": 0,
+      "missing_response_rows": 0,
+      "reason": "legacy lineage/build and native source identity are not proved"
+    },
+    "landuse_secondary": {
+      "candidate_recovered_values": 0,
+      "classification": "legacy_lineage_ambiguous",
+      "missing_cells": 102,
+      "missing_response_cells": 2,
+      "missing_response_rows": 2,
+      "reason": "legacy lineage/build and native source identity are not proved"
+    },
+    "maxtempwarmmonth": {
+      "candidate_recovered_values": 0,
+      "classification": "legacy_lineage_ambiguous",
+      "missing_cells": 1,
+      "missing_response_cells": 0,
+      "missing_response_rows": 0,
+      "reason": "legacy lineage/build and native source identity are not proved"
+    },
+    "meandiurnrange": {
+      "candidate_recovered_values": 0,
+      "classification": "legacy_lineage_ambiguous",
+      "missing_cells": 1,
+      "missing_response_cells": 0,
+      "missing_response_rows": 0,
+      "reason": "legacy lineage/build and native source identity are not proved"
+    },
+    "meantempcoldq": {
+      "candidate_recovered_values": 0,
+      "classification": "legacy_lineage_ambiguous",
+      "missing_cells": 1,
+      "missing_response_cells": 0,
+      "missing_response_rows": 0,
+      "reason": "legacy lineage/build and native source identity are not proved"
+    },
+    "meantempdryq": {
+      "candidate_recovered_values": 0,
+      "classification": "legacy_lineage_ambiguous",
+      "missing_cells": 1,
+      "missing_response_cells": 0,
+      "missing_response_rows": 0,
+      "reason": "legacy lineage/build and native source identity are not proved"
+    },
+    "meantempwarmq": {
+      "candidate_recovered_values": 0,
+      "classification": "legacy_lineage_ambiguous",
+      "missing_cells": 1,
+      "missing_response_cells": 0,
+      "missing_response_rows": 0,
+      "reason": "legacy lineage/build and native source identity are not proved"
+    },
+    "meantempwetq": {
+      "candidate_recovered_values": 0,
+      "classification": "legacy_lineage_ambiguous",
+      "missing_cells": 1,
+      "missing_response_cells": 0,
+      "missing_response_rows": 0,
+      "reason": "legacy lineage/build and native source identity are not proved"
+    },
+    "mintempcoldmonth": {
+      "candidate_recovered_values": 0,
+      "classification": "legacy_lineage_ambiguous",
+      "missing_cells": 1,
+      "missing_response_cells": 0,
+      "missing_response_rows": 0,
+      "reason": "legacy lineage/build and native source identity are not proved"
+    },
+    "precipcoldq": {
+      "candidate_recovered_values": 0,
+      "classification": "legacy_lineage_ambiguous",
+      "missing_cells": 1,
+      "missing_response_cells": 0,
+      "missing_response_rows": 0,
+      "reason": "legacy lineage/build and native source identity are not proved"
+    },
+    "precipdrymonth": {
+      "candidate_recovered_values": 0,
+      "classification": "legacy_lineage_ambiguous",
+      "missing_cells": 1,
+      "missing_response_cells": 0,
+      "missing_response_rows": 0,
+      "reason": "legacy lineage/build and native source identity are not proved"
+    },
+    "precipdryq": {
+      "candidate_recovered_values": 0,
+      "classification": "legacy_lineage_ambiguous",
+      "missing_cells": 1,
+      "missing_response_cells": 0,
+      "missing_response_rows": 0,
+      "reason": "legacy lineage/build and native source identity are not proved"
+    },
+    "precipseason": {
+      "candidate_recovered_values": 0,
+      "classification": "legacy_lineage_ambiguous",
+      "missing_cells": 1,
+      "missing_response_cells": 0,
+      "missing_response_rows": 0,
+      "reason": "legacy lineage/build and native source identity are not proved"
+    },
+    "precipwarmq": {
+      "candidate_recovered_values": 0,
+      "classification": "legacy_lineage_ambiguous",
+      "missing_cells": 1,
+      "missing_response_cells": 0,
+      "missing_response_rows": 0,
+      "reason": "legacy lineage/build and native source identity are not proved"
+    },
+    "precipwetmonth": {
+      "candidate_recovered_values": 0,
+      "classification": "legacy_lineage_ambiguous",
+      "missing_cells": 1,
+      "missing_response_cells": 0,
+      "missing_response_rows": 0,
+      "reason": "legacy lineage/build and native source identity are not proved"
+    },
+    "precipwetq": {
+      "candidate_recovered_values": 0,
+      "classification": "legacy_lineage_ambiguous",
+      "missing_cells": 1,
+      "missing_response_cells": 0,
+      "missing_response_rows": 0,
+      "reason": "legacy lineage/build and native source identity are not proved"
+    },
+    "soil_class": {
+      "candidate_recovered_values": 0,
+      "classification": "legacy_lineage_ambiguous",
+      "missing_cells": 1777,
+      "missing_response_cells": 85,
+      "missing_response_rows": 192,
+      "reason": "legacy lineage/build and native source identity are not proved"
+    },
+    "tempannrange": {
+      "candidate_recovered_values": 0,
+      "classification": "legacy_lineage_ambiguous",
+      "missing_cells": 1,
+      "missing_response_cells": 0,
+      "missing_response_rows": 0,
+      "reason": "legacy lineage/build and native source identity are not proved"
+    },
+    "tempseason": {
+      "candidate_recovered_values": 0,
+      "classification": "legacy_lineage_ambiguous",
+      "missing_cells": 1,
+      "missing_response_cells": 0,
+      "missing_response_rows": 0,
+      "reason": "legacy lineage/build and native source identity are not proved"
+    },
+    "top_roughness": {
+      "candidate_recovered_values": 0,
+      "classification": "unavailable",
+      "missing_cells": 1503,
+      "missing_response_cells": 50,
+      "missing_response_rows": 117,
+      "reason": "targeted constituent raster absent"
+    },
+    "veg_mvg": {
+      "candidate_recovered_values": 0,
+      "classification": "legacy_lineage_ambiguous",
+      "missing_cells": 398,
+      "missing_response_cells": 69,
+      "missing_response_rows": 124,
+      "reason": "legacy lineage/build and native source identity are not proved"
+    }
+  },
+  "repair_status": "repair_not_authorized",
+  "repaired_values": 0,
+  "source_facts_status": "reference_only_for_official_urls_and_workbook_labels"
+}

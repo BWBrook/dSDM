@@ -1,0 +1,40 @@
+{
+  "files": [
+    {
+      "bytes": 5658,
+      "path": "source_inventory.json",
+      "sha256": "ad279cfafeae11d3d817a5012e24a0952a8a10e4d4fa40ff7543ebead90f4b0e"
+    },
+    {
+      "bytes": 8572,
+      "path": "source_comparison.json",
+      "sha256": "a872d91d476a8e98ed189df23773b5d7031ffc81685b9a58f2f0b89850615616"
+    },
+    {
+      "bytes": 10327,
+      "path": "domain_summary.json",
+      "sha256": "238226bf27ad637305c7e74379b3b485f3d38507327ee5a077f85ae42c4562c6"
+    },
+    {
+      "bytes": 10849,
+      "path": "response_impact.json",
+      "sha256": "5faa219699e7ab85baf751deecebd267b2b1e735e166d83466f962106fa1ed4f"
+    },
+    {
+      "bytes": 2309,
+      "path": "support_contract.json",
+      "sha256": "f313dbaf4cf0bdf2048103c4f7677d9b0124df17b48b264cbcf87cb9223e4aaa"
+    },
+    {
+      "bytes": 4248,
+      "path": "outputs.json",
+      "sha256": "254c058d563fd66dfbfe44f789ecf55494399df6dcef01c01812ba4b7d01ac2f"
+    },
+    {
+      "bytes": 1335,
+      "path": "review.json",
+      "sha256": "d4001628712baadfe4882c5327a61c62d285503477c90e2347218d3ea4e0e4db"
+    }
+  ],
+  "schema_version": "1.0"
+}

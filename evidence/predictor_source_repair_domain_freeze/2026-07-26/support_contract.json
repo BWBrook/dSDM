@@ -1,0 +1,47 @@
+{
+  "conditional_scope_of_inference": "inference is conditional on cells and response rows within D_struct",
+  "domain_policy": {
+    "not_uniquely_data_determined": "D_struct is a policy choice, not the uniquely data-determined consequence of the source audit",
+    "primary": "D_struct is the deliberate primary policy: high-coverage, provenance-safe, retaining all 28 predictors",
+    "sensitivity": "any future full-domain fold-fitted missing-treatment analysis is sensitivity only; excluded cells and rows remain audit/sensitivity material"
+  },
+  "future_repair": "requires a new versioned goal",
+  "goal023_diagnostics": {
+    "pooled_and_species_support": "descriptive prepartition evidence only",
+    "pooled_envelope_cells": 987,
+    "pooled_unseen_category_cells": 51,
+    "structural_filter": false
+  },
+  "later_recompute": {
+    "categorical_novelty": "per species and training fold",
+    "continuous_support": "per species and training fold"
+  },
+  "operational_estimand": "species-specific relative response score over canonical cells in D_struct, conditional on the accepted presence/survey-supported-absence/pseudoabsence construction; not detection-corrected occupancy, abundance, population prevalence, or inference outside D_struct",
+  "primary_structural_domain": "D_struct",
+  "pseudoabsence_post_domain": {
+    "before_rows": 587,
+    "excluded_rows": 89,
+    "goal021_contract": {
+      "quota_contract": false,
+      "stops_before_balancing_thinning": true
+    },
+    "goal025_deferred": "per-species and fold-level adequacy is deferred to Goal025",
+    "preservation_rationale": "Goal024 filtering is cell/predictor-only and preserves the >=3 same-cell support rule, the conservative >=5 km test against the full frozen presence set, provenance/precedence, and the absence of a quota/balancing/thinning contract",
+    "rederivation_required": false,
+    "retained_broken_same_cell_support_presence_links": 0,
+    "retained_distance_below_5000_m": 0,
+    "retained_rows": 498,
+    "retained_support_count_below_3": 0,
+    "retained_support_presence_outside_d_struct": 0,
+    "retained_support_species_distinct_below_3": 0
+  },
+  "stopped_before": [
+    "partitions",
+    "fitted_transformations",
+    "imputation",
+    "encoding",
+    "scaling",
+    "mapping",
+    "modelling"
+  ]
+}

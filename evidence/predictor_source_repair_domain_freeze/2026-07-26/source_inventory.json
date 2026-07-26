@@ -1,0 +1,141 @@
+{
+  "bindings": {
+    "decision_bundle": {
+      "path": "config/phase1_decision_bundle.json",
+      "sha256": "ccccbb2e56e101b1a53421f8016699bfb500f4356861e10c1213a398aabe04a2"
+    },
+    "goal021_manifest": {
+      "path": "evidence/pseudoabsence_derivation/2026-07-26/manifest.json",
+      "sha256": "bf843690a6071f489b81fb5bdc348bab1c9f2001dfa37ad359ed7dc75d50f875"
+    },
+    "goal021_outputs": {
+      "path": "evidence/pseudoabsence_derivation/2026-07-26/outputs.json",
+      "sha256": "ecf0e6f46b3eec30c4edeff26d02f694be18cbc063268d9e1780f8cca7b5a3d9"
+    },
+    "goal021_plan": {
+      "path": "config/pseudoabsence_derivation_plan.json",
+      "sha256": "75cdc198815d3076af6ee3b6f25bed5ea4e90bf1433c7e9205f8692dfedd95fe"
+    },
+    "goal021_response": {
+      "path": "data/processed/response/goal021-pseudoabsence-derivation/2026-07-26/response_layer.csv",
+      "sha256": "e67298d11d7eb29e6bf8ca055cd8b64cfaf119d193ff0675fff09719ce0616a3"
+    },
+    "goal022_manifest": {
+      "path": "evidence/predictor_stack_extraction/2026-07-26/manifest.json",
+      "sha256": "d0c72e0b0fc614813438ae6d554b4522ae65305daf63543aa8b9774b7e891c60"
+    },
+    "goal022_outputs": {
+      "path": "evidence/predictor_stack_extraction/2026-07-26/outputs.json",
+      "sha256": "72bc6b81a25016fc8ba2bdae677d4f0c35021ce33ba0dfaac3aa4f2fe4c08ff5"
+    },
+    "goal022_plan": {
+      "path": "config/predictor_stack_extraction_plan.json",
+      "sha256": "e75af21cf553cd5a10e375a9f3f29ebfc7b574a8684b8f82f830c111c0c34c65"
+    },
+    "goal023_decision": {
+      "path": "docs/goals/023-predictor-support-map-domain/Decision.md",
+      "sha256": "f2b831f7334243d9ea89ed90cf979798055727b3092b0360f8ea9b94f2fd3b08"
+    },
+    "goal023_manifest": {
+      "path": "evidence/predictor_support_diagnostics/2026-07-26/manifest.json",
+      "sha256": "410e442ac462f0b0f56ed1a1009772e145be3045718a251cd1fb257d1391a0c6"
+    },
+    "goal023_plan": {
+      "path": "config/predictor_support_diagnostic_plan.json",
+      "sha256": "b877303de6bcb3292adca93f629897a4542585dd4a9ecc580b75a1726f611e6a"
+    },
+    "hfp_candidate": {
+      "path": "temp/data/spatial/human_footprint_tas.tif",
+      "sha256": "b90197ee093025e79d57aad3e24cfa0d600de5b9ee1d2cd1dce6dfd24dbac469"
+    },
+    "hfp_stack_band": {
+      "path": "temp/data/spatial/tas_stack.tif",
+      "sha256": "e3dd4175688572d9c8afcfb521a5e1083a0f25ba90d4841938a93aa5d6f72088"
+    },
+    "legacy_script": {
+      "path": "temp/src/3_create_sdm_data.R",
+      "sha256": "cff353c830fe78e351fc72f2672dd1c73e94930ebf4516b53c5950ec19a4effe"
+    },
+    "predictor_map_csv": {
+      "path": "data/processed/predictors/goal022-predictor-stack-extraction/2026-07-26/predictor_cell_map_raw.csv",
+      "sha256": "0e2082671096bbf80745038bad8329d3bb4fd58dc20b8a4adb146c3d62459542"
+    },
+    "predictor_response_csv": {
+      "path": "data/processed/predictors/goal022-predictor-stack-extraction/2026-07-26/predictor_response_cells_raw.csv",
+      "sha256": "4438d383c6f63e38b0bf61bcbb3812df4e3a26b9e2185d718d2fc03817bbb92f"
+    },
+    "workbook": {
+      "path": "temp/data/spatial/se_stack_metadata.xlsx",
+      "sha256": "ec460f9a41913f3288ca7dd38b6150b575f9c00b73581b892468cd0577127edd"
+    }
+  },
+  "goal_id": "goal024-predictor-source-repair-domain-freeze-2026-07-26",
+  "immutable_upstream": true,
+  "local_candidate_inventory": {
+    "human_footprint_tas.tif": {
+      "oracle": {
+        "candidate_metadata": {
+          "crs": "EPSG:4326",
+          "dtype": "float32",
+          "height": 454,
+          "nodata": -3.3999999521443642e+38,
+          "transform": [
+            0.009999999999990723,
+            0.0,
+            143.81999999997214,
+            0.0,
+            -0.009999999999990905,
+            -39.20250000000413
+          ],
+          "width": 468
+        },
+        "candidate_recovered_values": 0,
+        "canonical_missing_cells": 954,
+        "exact_array_duplicate": true,
+        "shared_raster_nodata_pixels": 139281,
+        "shared_shape": [
+          454,
+          468
+        ],
+        "stack_metadata": {
+          "crs": "EPSG:4326",
+          "dtype": "float32",
+          "height": 455,
+          "nodata": -3.3999999521443642e+38,
+          "transform": [
+            0.009999999999990723,
+            0.0,
+            143.81999999997214,
+            0.0,
+            -0.009999999999990905,
+            -39.19250000000414
+          ],
+          "width": 468
+        }
+      },
+      "sha256": "b90197ee093025e79d57aad3e24cfa0d600de5b9ee1d2cd1dce6dfd24dbac469",
+      "status": "present_exact_shared_extent_duplicate"
+    }
+  },
+  "official_sources": {
+    "lineage_caveat": "families and URLs do not prove exact stack lineage",
+    "retrieval_date": "2026-07-26",
+    "status": "reference_only",
+    "urls": [
+      "https://www.asris.csiro.au/arcgis/rest/services/ASRIS/ASRIS_ASC_MOB/MapServer/0",
+      "https://www.ga.gov.au/scientific-topics/water/national-surface-water-information",
+      "https://support.ecocommons.org.au/support/solutions/articles/6000261884-current-historic-datasets-available-on-the-ecocommons-for-sdms",
+      "https://www.dcceew.gov.au/environment/environment-information-australia/national-vegetation-information-system/data-products",
+      "https://www.agriculture.gov.au/abares/aclump/land-use/land-use-of-australia-2010-11_2015-16"
+    ]
+  },
+  "privacy": {
+    "tracked_grid_ids_or_coordinates": false,
+    "tracked_private_observation_timing": false,
+    "tracked_private_paths": false,
+    "tracked_response_identifiers": false,
+    "tracked_row_payloads": false,
+    "tracked_site_or_camera_ids": false
+  },
+  "repair_status": "repair_not_authorized"
+}
