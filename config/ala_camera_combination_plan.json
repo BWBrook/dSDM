@@ -1,0 +1,308 @@
+{
+  "schema_version": "1.0",
+  "goal_id": "goal020-ala-camera-combination-2026-07-26",
+  "bindings": {
+    "decision_bundle": {
+      "path": "config/phase1_decision_bundle.json",
+      "sha256": "ccccbb2e56e101b1a53421f8016699bfb500f4356861e10c1213a398aabe04a2"
+    },
+    "goal018_plan": {
+      "path": "config/ala_spatial_normalization_plan.json",
+      "sha256": "516b0bbb089cfcbc6558677ea0f0b4ac2662acb2c79e33308485ae6ff605d75b"
+    },
+    "goal018_evidence_manifest": {
+      "path": "evidence/ala_spatial_normalization/2026-07-24/manifest.json",
+      "sha256": "74766fc49bb809f7af7b9716ce96bbc081d9c0c165f6e304dfbf38bfee19717e"
+    },
+    "goal018_outputs_evidence": {
+      "path": "evidence/ala_spatial_normalization/2026-07-24/outputs.json",
+      "sha256": "5b69b95fef535a63b36a1f6a10c15f5682d8ef073e42579754e2c97f21c3d3e5"
+    },
+    "goal018_presence": {
+      "path": "data/processed/ala/goal018-spatial-normalization/2026-07-24/presence.csv",
+      "sha256": "a41f3570cbc5afaaa15358fe25a011bdf57e3fdb4c9b488ac658e2b774b022d4"
+    },
+    "goal019_plan": {
+      "path": "config/camera_spatial_normalization_plan.json",
+      "sha256": "378333d40cdb8afae07152de2435cff74ebb41be227ac498bdf68bf326a23174"
+    },
+    "goal019_evidence_manifest": {
+      "path": "evidence/camera_spatial_normalization/2026-07-24/manifest.json",
+      "sha256": "5058b60028b0e5185a3994d58243d9aba16681bc21903f4f0447afcb43c010a7"
+    },
+    "goal019_outputs_evidence": {
+      "path": "evidence/camera_spatial_normalization/2026-07-24/outputs.json",
+      "sha256": "491dfe10a50c6e208550919e59fbfd86600e23fb21504bbc4266ebb542464d38"
+    },
+    "goal019_grid_evidence": {
+      "path": "data/processed/camera/goal019-spatial-normalization/2026-07-24/grid_evidence.csv",
+      "sha256": "a16249991384d9b8545aee4027a7ac22a3ae7166bdd7e8a141ae815015021563"
+    },
+    "offshore_islands": {
+      "path": "temp/data/spatial/offshore_islands.kml",
+      "sha256": "98ca7bf213f0760894d9ad329681e2f2c9e491a8255577fae20fd31c73685d92"
+    }
+  },
+  "species_contract": {
+    "active_species_ids": [
+      "thylogale_billardierii",
+      "notamacropus_rufogriseus",
+      "trichosurus_vulpecula",
+      "pseudocheirus_peregrinus",
+      "vombatus_ursinus",
+      "sarcophilus_harrisii",
+      "dasyurus_maculatus",
+      "dasyurus_viverrinus"
+    ],
+    "excluded_downstream": {
+      "species_id": "macropus_giganteus",
+      "expected_ala_rows": 34,
+      "upstream_provenance_unchanged": true
+    }
+  },
+  "combination_contract": {
+    "key": [
+      "species_id",
+      "grid_cell_id"
+    ],
+    "join": "full_outer_union",
+    "accepted_presence_dominates": true,
+    "camera_absence_without_presence_only": true,
+    "absence_label": "survey_supported_absence",
+    "absence_rule_id": "P1-D009",
+    "source_combinations": [
+      "ala_only_presence",
+      "camera_only_presence",
+      "both_presence",
+      "ala_overrides_camera_absence",
+      "camera_absence_retained"
+    ],
+    "camera_internal_conflict_distinct_from_cross_source_conflict": true,
+    "source_absent_provenance": "blank",
+    "sort": [
+      "species_id",
+      "grid_cell_id"
+    ]
+  },
+  "input_contracts": {
+    "ala": {
+      "rows": 6629,
+      "schema": [
+        "species_id",
+        "grid_cell_id",
+        "centroid_lon",
+        "centroid_lat",
+        "presence",
+        "source_row_count",
+        "unique_provider_record_count",
+        "resource_count",
+        "dataset_count",
+        "unknown_uncertainty_count",
+        "qa_flag_count",
+        "low_cell_certainty_only"
+      ]
+    },
+    "camera": {
+      "rows": 6451,
+      "schema": [
+        "species_id",
+        "grid_cell_id",
+        "centroid_lon",
+        "centroid_lat",
+        "pa",
+        "pa_type",
+        "survey_supported_absence_rule_id",
+        "site_count",
+        "presence_site_count",
+        "survey_supported_absence_site_count",
+        "positive_source_row_count",
+        "source_conflict"
+      ]
+    }
+  },
+  "expected_oracle": {
+    "overall": {
+      "active_ala_rows": 6595,
+      "camera_rows": 6451,
+      "overlap_rows": 178,
+      "output_rows": 12868,
+      "ala_only_presence": 6417,
+      "camera_only_presence": 4113,
+      "both_presence": 165,
+      "ala_overrides_camera_absence": 13,
+      "camera_absence_retained": 2160,
+      "final_presence": 10708,
+      "final_survey_supported_absence": 2160,
+      "camera_internal_conflicts": 651,
+      "ala_low_cell_certainty_only": 1221,
+      "unique_physical_cells": 5407,
+      "excluded_macropus_ala_rows": 34
+    },
+    "by_species": {
+      "dasyurus_maculatus": {
+        "ala_only": 460,
+        "override": 1,
+        "both": 13,
+        "camera_only": 512,
+        "absence_retained": 221,
+        "final_presence": 986,
+        "final_absence": 221,
+        "total": 1207,
+        "internal_conflict": 151
+      },
+      "dasyurus_viverrinus": {
+        "ala_only": 377,
+        "override": 3,
+        "both": 7,
+        "camera_only": 88,
+        "absence_retained": 649,
+        "final_presence": 475,
+        "final_absence": 649,
+        "total": 1124,
+        "internal_conflict": 35
+      },
+      "notamacropus_rufogriseus": {
+        "ala_only": 675,
+        "override": 2,
+        "both": 11,
+        "camera_only": 692,
+        "absence_retained": 147,
+        "final_presence": 1380,
+        "final_absence": 147,
+        "total": 1527,
+        "internal_conflict": 86
+      },
+      "pseudocheirus_peregrinus": {
+        "ala_only": 135,
+        "override": 1,
+        "both": 0,
+        "camera_only": 252,
+        "absence_retained": 599,
+        "final_presence": 388,
+        "final_absence": 599,
+        "total": 987,
+        "internal_conflict": 78
+      },
+      "sarcophilus_harrisii": {
+        "ala_only": 2961,
+        "override": 4,
+        "both": 99,
+        "camera_only": 543,
+        "absence_retained": 101,
+        "final_presence": 3607,
+        "final_absence": 101,
+        "total": 3708,
+        "internal_conflict": 83
+      },
+      "thylogale_billardierii": {
+        "ala_only": 749,
+        "override": 0,
+        "both": 15,
+        "camera_only": 707,
+        "absence_retained": 130,
+        "final_presence": 1471,
+        "final_absence": 130,
+        "total": 1601,
+        "internal_conflict": 40
+      },
+      "trichosurus_vulpecula": {
+        "ala_only": 558,
+        "override": 1,
+        "both": 9,
+        "camera_only": 667,
+        "absence_retained": 175,
+        "final_presence": 1235,
+        "final_absence": 175,
+        "total": 1410,
+        "internal_conflict": 95
+      },
+      "vombatus_ursinus": {
+        "ala_only": 502,
+        "override": 1,
+        "both": 11,
+        "camera_only": 652,
+        "absence_retained": 138,
+        "final_presence": 1166,
+        "final_absence": 138,
+        "total": 1304,
+        "internal_conflict": 83
+      }
+    },
+    "centroid_mismatch_rows": 0,
+    "matrix_conflicting_presences": 0
+  },
+  "island_gate": {
+    "decision_id": "P1-D014",
+    "apply_to": "absence_evidence_only",
+    "excluded_combination_presence": "block_and_review",
+    "provisional_exclusions_remain_suppressed": true
+  },
+  "outputs": {
+    "directory": "data/processed/combined/goal020-ala-camera-combination/2026-07-26",
+    "file": "grid_evidence.csv",
+    "schema": [
+      "species_id",
+      "grid_cell_id",
+      "centroid_lon",
+      "centroid_lat",
+      "pa",
+      "pa_type",
+      "survey_supported_absence_rule_id",
+      "source_combination",
+      "cross_source_conflict",
+      "ala_presence",
+      "ala_source_row_count",
+      "ala_unique_provider_record_count",
+      "ala_resource_count",
+      "ala_dataset_count",
+      "ala_unknown_uncertainty_count",
+      "ala_qa_flag_count",
+      "ala_low_cell_certainty_only",
+      "camera_evidence",
+      "camera_pa",
+      "camera_pa_type",
+      "camera_survey_supported_absence_rule_id",
+      "camera_site_count",
+      "camera_presence_site_count",
+      "camera_survey_supported_absence_site_count",
+      "camera_positive_source_row_count",
+      "camera_internal_conflict"
+    ],
+    "private_ignored": true
+  },
+  "evidence": {
+    "directory": "evidence/ala_camera_combination/2026-07-26",
+    "files": [
+      "source_inventory.json",
+      "combination_summary.json",
+      "spatial_summary.json",
+      "outputs.json",
+      "review.json",
+      "manifest.json"
+    ],
+    "aggregate_only": true
+  },
+  "privacy": {
+    "tracked_actual_grid_ids_or_coordinates": false,
+    "tracked_camera_identifiers_or_timing": false,
+    "tracked_private_paths_or_rows": false
+  },
+  "upstream_validation": {
+    "tracked_validators_required": true,
+    "goal020_full_replay_required": true,
+    "goal018_full_replay_at_acceptance": true,
+    "goal019_full_replay_at_acceptance": true
+  },
+  "legacy_comparison": {
+    "runtime_input": false,
+    "gate_target": false
+  },
+  "stopped_before": [
+    "pseudoabsence",
+    "predictors",
+    "partitions",
+    "mapping",
+    "modelling"
+  ],
+  "atomic_publish": true
+}

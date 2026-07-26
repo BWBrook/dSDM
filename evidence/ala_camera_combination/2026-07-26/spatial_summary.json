@@ -1,0 +1,8 @@
+{
+  "centroid_mismatch_rows": 0,
+  "grid_invariant_failures": 0,
+  "matrix_conflicting_presences": 0,
+  "overlap_species_grid_rows": 178,
+  "provisional_exclusion_rules_retained": 2,
+  "unique_physical_cells": 5407
+}

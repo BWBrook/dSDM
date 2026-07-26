@@ -1,0 +1,112 @@
+{
+  "active_species_ids": [
+    "thylogale_billardierii",
+    "notamacropus_rufogriseus",
+    "trichosurus_vulpecula",
+    "pseudocheirus_peregrinus",
+    "vombatus_ursinus",
+    "sarcophilus_harrisii",
+    "dasyurus_maculatus",
+    "dasyurus_viverrinus"
+  ],
+  "excluded_downstream_species": {
+    "excluded_ala_rows": 34,
+    "species_id": "macropus_giganteus",
+    "upstream_provenance_unchanged": true
+  },
+  "frozen_bindings": {
+    "decision_bundle": {
+      "sha256": "ccccbb2e56e101b1a53421f8016699bfb500f4356861e10c1213a398aabe04a2"
+    },
+    "goal018_evidence_manifest": {
+      "sha256": "74766fc49bb809f7af7b9716ce96bbc081d9c0c165f6e304dfbf38bfee19717e"
+    },
+    "goal018_outputs_evidence": {
+      "sha256": "5b69b95fef535a63b36a1f6a10c15f5682d8ef073e42579754e2c97f21c3d3e5"
+    },
+    "goal018_plan": {
+      "sha256": "516b0bbb089cfcbc6558677ea0f0b4ac2662acb2c79e33308485ae6ff605d75b"
+    },
+    "goal018_presence": {
+      "sha256": "a41f3570cbc5afaaa15358fe25a011bdf57e3fdb4c9b488ac658e2b774b022d4"
+    },
+    "goal019_evidence_manifest": {
+      "sha256": "5058b60028b0e5185a3994d58243d9aba16681bc21903f4f0447afcb43c010a7"
+    },
+    "goal019_grid_evidence": {
+      "sha256": "a16249991384d9b8545aee4027a7ac22a3ae7166bdd7e8a141ae815015021563"
+    },
+    "goal019_outputs_evidence": {
+      "sha256": "491dfe10a50c6e208550919e59fbfd86600e23fb21504bbc4266ebb542464d38"
+    },
+    "goal019_plan": {
+      "sha256": "378333d40cdb8afae07152de2435cff74ebb41be227ac498bdf68bf326a23174"
+    },
+    "offshore_islands": {
+      "sha256": "98ca7bf213f0760894d9ad329681e2f2c9e491a8255577fae20fd31c73685d92"
+    }
+  },
+  "goal_id": "goal020-ala-camera-combination-2026-07-26",
+  "ordered_schemas": {
+    "ala_input": [
+      "species_id",
+      "grid_cell_id",
+      "centroid_lon",
+      "centroid_lat",
+      "presence",
+      "source_row_count",
+      "unique_provider_record_count",
+      "resource_count",
+      "dataset_count",
+      "unknown_uncertainty_count",
+      "qa_flag_count",
+      "low_cell_certainty_only"
+    ],
+    "camera_input": [
+      "species_id",
+      "grid_cell_id",
+      "centroid_lon",
+      "centroid_lat",
+      "pa",
+      "pa_type",
+      "survey_supported_absence_rule_id",
+      "site_count",
+      "presence_site_count",
+      "survey_supported_absence_site_count",
+      "positive_source_row_count",
+      "source_conflict"
+    ],
+    "combined_output": [
+      "species_id",
+      "grid_cell_id",
+      "centroid_lon",
+      "centroid_lat",
+      "pa",
+      "pa_type",
+      "survey_supported_absence_rule_id",
+      "source_combination",
+      "cross_source_conflict",
+      "ala_presence",
+      "ala_source_row_count",
+      "ala_unique_provider_record_count",
+      "ala_resource_count",
+      "ala_dataset_count",
+      "ala_unknown_uncertainty_count",
+      "ala_qa_flag_count",
+      "ala_low_cell_certainty_only",
+      "camera_evidence",
+      "camera_pa",
+      "camera_pa_type",
+      "camera_survey_supported_absence_rule_id",
+      "camera_site_count",
+      "camera_presence_site_count",
+      "camera_survey_supported_absence_site_count",
+      "camera_positive_source_row_count",
+      "camera_internal_conflict"
+    ]
+  },
+  "upstream_tracked_validation": {
+    "goal018": "goal018_tracked_evidence_valid_raw_replay_required",
+    "goal019": "goal019_tracked_evidence_valid_private_replay_required"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "classification": {
+    "absence_rule_id": "P1-D009",
+    "presence_dominates_across_sources": true,
+    "source_absent_provenance_blank": true,
+    "survey_supported_absence_first_class": true
+  },
+  "matrix_conflicting_presences": 0,
+  "privacy": {
+    "actual_grid_ids_or_coordinates_retained": false,
+    "camera_identifiers_or_timing_retained": false,
+    "private_paths_or_rows_retained": false
+  },
+  "private_replay_required": true,
+  "readiness": "goal020_ala_camera_combination_complete",
+  "stopped_before": [
+    "pseudoabsence",
+    "predictors",
+    "partitions",
+    "mapping",
+    "modelling"
+  ]
+}

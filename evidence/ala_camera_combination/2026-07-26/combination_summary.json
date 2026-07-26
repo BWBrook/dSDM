@@ -1,0 +1,118 @@
+{
+  "by_species": {
+    "dasyurus_maculatus": {
+      "absence_retained": 221,
+      "ala_only": 460,
+      "both": 13,
+      "camera_only": 512,
+      "final_absence": 221,
+      "final_presence": 986,
+      "internal_conflict": 151,
+      "override": 1,
+      "total": 1207
+    },
+    "dasyurus_viverrinus": {
+      "absence_retained": 649,
+      "ala_only": 377,
+      "both": 7,
+      "camera_only": 88,
+      "final_absence": 649,
+      "final_presence": 475,
+      "internal_conflict": 35,
+      "override": 3,
+      "total": 1124
+    },
+    "notamacropus_rufogriseus": {
+      "absence_retained": 147,
+      "ala_only": 675,
+      "both": 11,
+      "camera_only": 692,
+      "final_absence": 147,
+      "final_presence": 1380,
+      "internal_conflict": 86,
+      "override": 2,
+      "total": 1527
+    },
+    "pseudocheirus_peregrinus": {
+      "absence_retained": 599,
+      "ala_only": 135,
+      "both": 0,
+      "camera_only": 252,
+      "final_absence": 599,
+      "final_presence": 388,
+      "internal_conflict": 78,
+      "override": 1,
+      "total": 987
+    },
+    "sarcophilus_harrisii": {
+      "absence_retained": 101,
+      "ala_only": 2961,
+      "both": 99,
+      "camera_only": 543,
+      "final_absence": 101,
+      "final_presence": 3607,
+      "internal_conflict": 83,
+      "override": 4,
+      "total": 3708
+    },
+    "thylogale_billardierii": {
+      "absence_retained": 130,
+      "ala_only": 749,
+      "both": 15,
+      "camera_only": 707,
+      "final_absence": 130,
+      "final_presence": 1471,
+      "internal_conflict": 40,
+      "override": 0,
+      "total": 1601
+    },
+    "trichosurus_vulpecula": {
+      "absence_retained": 175,
+      "ala_only": 558,
+      "both": 9,
+      "camera_only": 667,
+      "final_absence": 175,
+      "final_presence": 1235,
+      "internal_conflict": 95,
+      "override": 1,
+      "total": 1410
+    },
+    "vombatus_ursinus": {
+      "absence_retained": 138,
+      "ala_only": 502,
+      "both": 11,
+      "camera_only": 652,
+      "final_absence": 138,
+      "final_presence": 1166,
+      "internal_conflict": 83,
+      "override": 1,
+      "total": 1304
+    }
+  },
+  "goal_id": "goal020-ala-camera-combination-2026-07-26",
+  "overall": {
+    "active_ala_rows": 6595,
+    "ala_low_cell_certainty_only": 1221,
+    "ala_only_presence": 6417,
+    "ala_overrides_camera_absence": 13,
+    "both_presence": 165,
+    "camera_absence_retained": 2160,
+    "camera_internal_conflicts": 651,
+    "camera_only_presence": 4113,
+    "camera_rows": 6451,
+    "excluded_macropus_ala_rows": 34,
+    "final_presence": 10708,
+    "final_survey_supported_absence": 2160,
+    "output_rows": 12868,
+    "overlap_rows": 178,
+    "unique_physical_cells": 5407
+  },
+  "reconciliation": {
+    "ala_rows_reconcile": true,
+    "camera_absence_reconciles": true,
+    "camera_presence_reconciles": true,
+    "camera_rows_reconcile": true,
+    "categories_exhaustive": true,
+    "union_reconciles": true
+  }
+}
