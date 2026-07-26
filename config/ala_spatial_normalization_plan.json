@@ -4,15 +4,15 @@
   "expected_input_rows": 50834,
   "bindings": {
     "raw_directory": {"path": "data/raw/ala/goal017-nine-species/2026-07-24", "sha256": ""},
-    "raw_manifest": {"path": "evidence/ala_full_acquisition/2026-07-24/manifest.json", "sha256": "864680cee693c812f7fe342898fbda5cce8f83e1763a09a208eaf44ccebe90c4"},
+    "raw_manifest": {"path": "evidence/ala_full_acquisition/2026-07-24/manifest.json", "sha256": "6abe4520fc8a35fbf94a6cf3c1632079770795cd75253732ab12440b1d16fe33"},
     "grid": {"path": "temp/data/spatial/tasmanian_gridpoints.csv", "sha256": "91c7e0158ee8a808e9345d4bca28ec3e3fd7468dc3b7b1c1268e33e2da9499da"},
     "coast_shp": {"path": "temp/data/spatial/tasmania_coast.shp", "sha256": "015270fc146045bd78c13586642630d50715fe15c759c817706e398bf0a0a00a"},
     "coast_shx": {"path": "temp/data/spatial/tasmania_coast.shx", "sha256": "3bb02b6e7eaa3535b01c72c2faead97551a76bd5c5b0bf0c40fc85c225c9089d"},
     "coast_dbf": {"path": "temp/data/spatial/tasmania_coast.dbf", "sha256": "96859dc4e261fe28c41ba1f10570b9ce0cb3489614a9413c697b0b373bb83adb"},
     "coast_prj": {"path": "temp/data/spatial/tasmania_coast.prj", "sha256": "a02a27b1d1982c8516d83398e85a3c8b1aef1713c13ef4d84d7bde17430c07c4"},
-    "ala_plan": {"path": "config/ala_full_acquisition_plan.json", "sha256": "b363543468916bfa9fd568b15dd293f2eb6ddb21c4f0f378eb0eb7f0148fc5c6"},
+    "ala_plan": {"path": "config/ala_full_acquisition_plan.json", "sha256": "d447e1dfe536f25b1ea0126dbf9e7420024f774491e1670503ed0ea4895df632"},
     "field_contract": {"path": "config/ala_field_contract.json", "sha256": "98cd67c17dbe5a9c55b4f17c8a4f6e383010d9d8724dff23bc9c3911051b9159"},
-    "decision_bundle": {"path": "config/phase1_decision_bundle.json", "sha256": "5af1f76c58bd24fe61a741a42a4df4531ba21e08c0d8ce9b953ba0ff769668ae"}
+    "decision_bundle": {"path": "config/phase1_decision_bundle.json", "sha256": "ccccbb2e56e101b1a53421f8016699bfb500f4356861e10c1213a398aabe04a2"}
   },
   "spatial_bindings": {
     "grid": {"row_count": 74073, "columns": ["lon", "lat"], "crs": "EPSG:4326", "resolution_degree": 0.01, "origin_lower_edge": [143.84, -43.6425]},

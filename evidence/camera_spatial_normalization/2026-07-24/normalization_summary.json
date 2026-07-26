@@ -42,11 +42,11 @@
     },
     "thylogale_billardierii": {
       "detection_sites": 1115,
-      "island_absence_suppressions": 60,
+      "island_absence_suppressions": 0,
       "presence_grid_rows": 722,
       "presence_site_species_rows": 1115,
-      "survey_supported_absence_grid_rows": 80,
-      "survey_supported_absence_rows": 132
+      "survey_supported_absence_grid_rows": 130,
+      "survey_supported_absence_rows": 192
     },
     "trichosurus_vulpecula": {
       "detection_sites": 962,
@@ -58,11 +58,11 @@
     },
     "vombatus_ursinus": {
       "detection_sites": 943,
-      "island_absence_suppressions": 0,
+      "island_absence_suppressions": 60,
       "presence_grid_rows": 663,
       "presence_site_species_rows": 943,
-      "survey_supported_absence_grid_rows": 189,
-      "survey_supported_absence_rows": 364
+      "survey_supported_absence_grid_rows": 139,
+      "survey_supported_absence_rows": 304
     }
   },
   "classification_counts": {

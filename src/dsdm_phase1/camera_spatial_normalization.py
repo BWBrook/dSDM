@@ -224,8 +224,8 @@ OUTPUT_SCHEMAS = {
 }
 
 EXPECTED_BINDING_HASHES = {
-    "goal018_plan": "6dff937876ea572babdc0f74944edb5d9311af0d6295c58cee1923ace587c5c7",
-    "decision_bundle": "5af1f76c58bd24fe61a741a42a4df4531ba21e08c0d8ce9b953ba0ff769668ae",
+    "goal018_plan": "516b0bbb089cfcbc6558677ea0f0b4ac2662acb2c79e33308485ae6ff605d75b",
+    "decision_bundle": "ccccbb2e56e101b1a53421f8016699bfb500f4356861e10c1213a398aabe04a2",
     "grid": "91c7e0158ee8a808e9345d4bca28ec3e3fd7468dc3b7b1c1268e33e2da9499da",
     "coast_shp": "015270fc146045bd78c13586642630d50715fe15c759c817706e398bf0a0a00a",
     "coast_shx": "3bb02b6e7eaa3535b01c72c2faead97551a76bd5c5b0bf0c40fc85c225c9089d",

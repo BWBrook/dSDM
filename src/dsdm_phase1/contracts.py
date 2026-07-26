@@ -86,15 +86,22 @@ PHASE1_ISLAND_CODES = {
     "MI": "Maria Island", "BI": "Bruny Island",
 }
 PHASE1_ISLAND_MATRIX = {
-    "thylogale_billardierii": ["KI", "CBI"],
-    "notamacropus_rufogriseus": ["THI", "HI"],
+    "thylogale_billardierii": ["CBI"],
+    "notamacropus_rufogriseus": ["CI", "THI", "HI"],
     "macropus_giganteus": ["KI", "FI", "CBI", "CI", "HI", "BI"],
     "trichosurus_vulpecula": ["CBI", "CI", "HI"],
-    "pseudocheirus_peregrinus": ["CBI", "CI", "THI", "HI", "BI"],
-    "vombatus_ursinus": ["THI", "HI", "BI"],
+    "pseudocheirus_peregrinus": ["CBI", "CI"],
+    "vombatus_ursinus": ["KI", "CI", "THI", "HI", "BI"],
     "sarcophilus_harrisii": ["KI", "FI", "CBI", "CI", "THI", "HI", "BI"],
     "dasyurus_maculatus": ["KI", "FI", "CBI", "CI", "THI", "HI", "MI", "BI"],
     "dasyurus_viverrinus": ["KI", "FI", "CBI", "CI", "THI", "HI", "MI"],
+}
+PHASE1_PROVISIONAL_ISLAND_EXCLUSIONS = {
+    "policy": "suppress_absence_pending_contemporary_status_resolution",
+    "species_islands": {
+        "thylogale_billardierii": ["CBI"],
+        "pseudocheirus_peregrinus": ["CBI"],
+    },
 }
 
 
@@ -684,12 +691,18 @@ def validate_phase1_decision_bundle(bundle: dict[str, Any]) -> dict[str, Any]:
     if boundary != {"coastline_source": "legacy_tasmania_coast.shp", "broad_filtering": True, "canonical_grid_controls_eligible_cells": True, "island_rules_separate": True}:
         raise ValidationError("boundary contract is incomplete")
     island = _require_policy(policies, "island_exclusions")
-    if set(island) != {"apply_to", "excluded_combination_presence", "island_codes", "species_exclusions"} or island.get("apply_to") != "absence_evidence_only" or island.get("excluded_combination_presence") != "review_not_silent_delete":
+    if set(island) != {"apply_to", "excluded_combination_presence", "island_codes", "species_exclusions", "provisional_exclusions"} or island.get("apply_to") != "absence_evidence_only" or island.get("excluded_combination_presence") != "review_not_silent_delete":
         raise ValidationError("island exclusion semantics are incomplete")
-    if island.get("island_codes") != PHASE1_ISLAND_CODES or island.get("species_exclusions") != PHASE1_ISLAND_MATRIX:
+    if island.get("island_codes") != PHASE1_ISLAND_CODES or island.get("species_exclusions") != PHASE1_ISLAND_MATRIX or island.get("provisional_exclusions") != PHASE1_PROVISIONAL_ISLAND_EXCLUSIONS:
         raise ValidationError("approved species-by-island matrix is incomplete or malformed")
     if set(island["species_exclusions"]) != set(expected_species) or any(code not in PHASE1_ISLAND_CODES for codes in island["species_exclusions"].values() for code in codes):
         raise ValidationError("species-by-island matrix contains unknown species or island code")
+    if any(
+        code not in island["species_exclusions"][species_id]
+        for species_id, codes in island["provisional_exclusions"]["species_islands"].items()
+        for code in codes
+    ):
+        raise ValidationError("provisional island exclusion must remain suppressed")
     coordinate = _require_policy(policies, "coordinate_assignment")
     if coordinate != {"assignment": "containing_eligible_cell_only", "record_centroid_distance": True, "local_half_diagonal_km": 0.7, "nearest_land_cell_rescue": False, "water_lake_ineligible": "flag_or_exclude", "coordinate_uncertainty_separate": True}:
         raise ValidationError("coordinate assignment contract is incomplete")

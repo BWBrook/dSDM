@@ -45,3 +45,25 @@ an ecological abundance or occupancy estimate. No boundary clipping, spatial
 assignment, downstream quality exclusion, biological duplicate resolution,
 pseudoabsence derivation, camera integration, predictor extraction, or
 modelling was performed.
+
+## 2026-07-26 — P1-D014 correction rebinding and reacceptance
+
+Barry approved a correction to the authoritative species-by-island absence
+matrix. This changed policy provenance, not the Goal017 acquisition scope or
+raw observations. The decision bundle moved from
+`5af1f76c58bd24fe61a741a42a4df4531ba21e08c0d8ce9b953ba0ff769668ae`
+to `ccccbb2e56e101b1a53421f8016699bfb500f4356861e10c1213a398aabe04a2`.
+
+The Goal017 plan was rebound from
+`b363543468916bfa9fd568b15dd293f2eb6ddb21c4f0f378eb0eb7f0148fc5c6`
+to `d447e1dfe536f25b1ea0126dbf9e7420024f774491e1670503ed0ea4895df632`.
+The review hash changed from
+`0baa5c664db30963e123f5614077f902f9b9bc990520b92e865bb9b9f11520e2`
+to `c7a03d2fd5365e5d53d9bd9dc9062a31ac6083a1b054c8f16c2ab03ed364c658`;
+the evidence-manifest hash changed from
+`864680cee693c812f7fe342898fbda5cce8f83e1763a09a208eaf44ccebe90c4`
+to `6abe4520fc8a35fbf94a6cf3c1632079770795cd75253732ab12440b1d16fe33`.
+All 20 ignored raw artifacts, 50,834 rows, and 64,062,181 bytes remained
+unchanged; no network call or reacquisition occurred. Full offline checksum,
+footprint, schema, identity, and cross-species semantic replay passed, so
+Goal017 is reaccepted under the corrected policy binding.

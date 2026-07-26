@@ -63,3 +63,77 @@ independent Goal 019 private byte/semantic replay, and unchanged Goal 018 full
 raw replay. JSON parsing, `py_compile`, locked-environment resolution,
 `git diff --check`, exact footprint checks, private ignore checks, tracked-path
 inspection, and aggregate privacy scans also passed.
+
+## 2026-07-26 — corrected P1-D014 matrix and reacceptance
+
+Barry approved correction of four original matrix errors. The authoritative
+exclusions are now *Thylogale billardierii* `["CBI"]`, *Notamacropus
+rufogriseus* `["CI", "THI", "HI"]`, *Pseudocheirus peregrinus* `["CBI",
+"CI"]`, and *Vombatus ursinus* `["KI", "CI", "THI", "HI", "BI"]`; all other
+species rows are unchanged. The *T. billardierii*–CBI and *P. peregrinus*–CBI
+exclusions remain explicitly provisional: absence evidence stays suppressed
+pending contemporary-status resolution. There are no current eligible camera
+sites on CBI, so this caveat does not alter the present output.
+
+Test-first evidence: after changing only the focused matrix regression,
+`PYTHONPATH=src uv run --locked python tests/test_phase1_contracts.py
+Phase1DecisionBundleTests.test_approved_offshore_island_matrix_is_exact`
+failed with the expected old-versus-corrected matrix assertion. The same test
+passed after the minimal bundle and validator change.
+
+The Goal019 plan hash moved from
+`975146412285f53761bdf2878110e2fe1e84cd2aceca9f201af5142727230f0e`
+to `378333d40cdb8afae07152de2435cff74ebb41be227ac498bdf68bf326a23174`.
+Private `observation_audit.csv` and `site_audit.csv` remained byte-identical at
+`9a8fab53422cf1221aed89f00d91ca22ec971e282b942d2126c2e444f01a134a`
+and `63f6c467ed647de96390fe9176935aa9b9463f1c9d3f708295959bd1fe6b3341`.
+As required, `site_species.csv` changed from
+`5f35bd6aadd98b45a0cb92ddc055893f8faed9f7cee6ff6c12827bbabb93d45a`
+to `3bfddb8dc9fcda5da0c9c97cb90d63e86ac2bcc8ad41e3a879cba422423bc0f6`,
+and `grid_evidence.csv` changed from
+`aa0cf2ad142812e08f7126f73a3ecb0b16e42b9966b0967c43a5200d95161319`
+to `a16249991384d9b8545aee4027a7ac22a3ae7166bdd7e8a141ae815015021563`.
+The tracked evidence transitions were: source inventory
+`b679264e1a8d20e19ac3c91aa7eae03c707c700ee31bf0c4fd2c84191d96e5a3`
+to `5ba53a0a611c948fd873f2fa1662774f59efd0e89391d235535ff3d11e82eebb`;
+normalization summary
+`4a81d80f46ae67b1f011b9f629580fc7f5916b569f63b081cdb6f14311882135`
+to `cf287f40cf17496074d5ea98571104b267c8c5db2b00ab58d3824262f3c272dc`;
+outputs
+`080aeb8748fbf402b8fe08ade5f18e82f1171bb2fdb223d35382df91e4fcb95c`
+to `491dfe10a50c6e208550919e59fbfd86600e23fb21504bbc4266ebb542464d38`;
+and manifest
+`a4a59cb476b3b85dc672fbab7f9d21f66f590bdd9add6c2f9a9b70e9a5588891`
+to `5058b60028b0e5185a3994d58243d9aba16681bc21903f4f0447afcb43c010a7`.
+The spatial summary
+`46096012ee35bdb634d7e0478fd4fa3b1da3f99f3af225d4f8d193d99733ec6d`
+and review
+`bc112002181b26bd94321c0af8c9801b6e973466510cefd7cd65aaf45a1d5c0d`
+were unchanged.
+
+The corrected replay retains the accepted overall oracle: 1,307 eligible
+sites; 10,456 pre-suppression rows; 6,095 presences; 3,941 retained
+survey-supported absences; 420 suppressions; 10,036 retained rows; and 6,451
+grid rows comprising 4,278 presences and 2,173 survey-supported absences. It
+contains 651 within-camera conflicts and zero matrix-conflicting presences.
+
+Per species, the
+`presence_sites, absence_site_rows, suppressed, presence_cells,
+absence_cells, internal_conflicts` tuples are:
+
+- *Dasyurus maculatus*: `675, 512, 120, 525, 222, 151`
+- *Dasyurus viverrinus*: `135, 1052, 120, 95, 652, 35`
+- *Notamacropus rufogriseus*: `1006, 301, 0, 703, 149, 86`
+- *Pseudocheirus peregrinus*: `271, 1036, 0, 252, 600, 78`
+- *Sarcophilus harrisii*: `988, 199, 120, 642, 105, 83`
+- *Thylogale billardierii*: `1115, 192, 0, 722, 130, 40`
+- *Trichosurus vulpecula*: `962, 345, 0, 676, 176, 95`
+- *Vombatus ursinus*: `943, 304, 60, 663, 139, 83`
+
+The final suppressions are KI+FI for both quolls and devil, and KI for wombat.
+The correction therefore admits exactly 60 pademelon site rows across 50 cells
+and suppresses exactly 60 wombat site rows across 50 cells. Focused suites
+passed 57/57 contracts, 11/11 Goal017, 23/23 Goal018, and 18/18 Goal019; full
+discovery passed 165/165. Tracked-only gates returned their required replay
+statuses, and the Goal017 raw, Goal018 raw/private, and Goal019 private
+acceptance replays all passed.

@@ -46,7 +46,7 @@ class CameraSpatialNormalizationTests(unittest.TestCase):
         )
         self.assertEqual(
             plan["bindings"]["goal018_plan"]["sha256"],
-            "6dff937876ea572babdc0f74944edb5d9311af0d6295c58cee1923ace587c5c7",
+            "516b0bbb089cfcbc6558677ea0f0b4ac2662acb2c79e33308485ae6ff605d75b",
         )
 
     def test_repeated_coordinates_require_one_cell_and_island_class(self):

@@ -978,7 +978,17 @@ class Phase1DecisionBundleTests(unittest.TestCase):
         )
         self.assertEqual(
             matrix["species_exclusions"],
-            {"thylogale_billardierii": ["KI", "CBI"], "notamacropus_rufogriseus": ["THI", "HI"], "macropus_giganteus": ["KI", "FI", "CBI", "CI", "HI", "BI"], "trichosurus_vulpecula": ["CBI", "CI", "HI"], "pseudocheirus_peregrinus": ["CBI", "CI", "THI", "HI", "BI"], "vombatus_ursinus": ["THI", "HI", "BI"], "sarcophilus_harrisii": ["KI", "FI", "CBI", "CI", "THI", "HI", "BI"], "dasyurus_maculatus": ["KI", "FI", "CBI", "CI", "THI", "HI", "MI", "BI"], "dasyurus_viverrinus": ["KI", "FI", "CBI", "CI", "THI", "HI", "MI"]},
+            {"thylogale_billardierii": ["CBI"], "notamacropus_rufogriseus": ["CI", "THI", "HI"], "macropus_giganteus": ["KI", "FI", "CBI", "CI", "HI", "BI"], "trichosurus_vulpecula": ["CBI", "CI", "HI"], "pseudocheirus_peregrinus": ["CBI", "CI"], "vombatus_ursinus": ["KI", "CI", "THI", "HI", "BI"], "sarcophilus_harrisii": ["KI", "FI", "CBI", "CI", "THI", "HI", "BI"], "dasyurus_maculatus": ["KI", "FI", "CBI", "CI", "THI", "HI", "MI", "BI"], "dasyurus_viverrinus": ["KI", "FI", "CBI", "CI", "THI", "HI", "MI"]},
+        )
+        self.assertEqual(
+            matrix["provisional_exclusions"],
+            {
+                "policy": "suppress_absence_pending_contemporary_status_resolution",
+                "species_islands": {
+                    "thylogale_billardierii": ["CBI"],
+                    "pseudocheirus_peregrinus": ["CBI"],
+                },
+            },
         )
 
     def test_live_acquisition_remains_blocked_by_two_prerequisites(self) -> None:

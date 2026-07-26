@@ -10,7 +10,7 @@
     "field_contract": {"path": "config/ala_field_contract.json", "sha256": "98cd67c17dbe5a9c55b4f17c8a4f6e383010d9d8724dff23bc9c3911051b9159"},
     "required_raw_decision": "count_census_ready_full_row_acquisition_blocked_on_provider_identity"
   },
-  "decision_bundle": {"path": "config/phase1_decision_bundle.json", "sha256": "5af1f76c58bd24fe61a741a42a4df4531ba21e08c0d8ce9b953ba0ff769668ae"},
+  "decision_bundle": {"path": "config/phase1_decision_bundle.json", "sha256": "ccccbb2e56e101b1a53421f8016699bfb500f4356861e10c1213a398aabe04a2"},
   "species": [
     {"species_id": "thylogale_billardierii", "scientific_name": "Thylogale billardierii", "accepted_concept": "https://biodiversity.org.au/afd/taxa/82e69509-af63-4502-86f7-43362b777865"},
     {"species_id": "notamacropus_rufogriseus", "scientific_name": "Notamacropus rufogriseus", "accepted_concept": "https://biodiversity.org.au/afd/taxa/c4dfafef-5192-4a3d-815c-040c393e9bca"},

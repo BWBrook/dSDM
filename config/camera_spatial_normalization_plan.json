@@ -4,11 +4,11 @@
   "bindings": {
     "goal018_plan": {
       "path": "config/ala_spatial_normalization_plan.json",
-      "sha256": "6dff937876ea572babdc0f74944edb5d9311af0d6295c58cee1923ace587c5c7"
+      "sha256": "516b0bbb089cfcbc6558677ea0f0b4ac2662acb2c79e33308485ae6ff605d75b"
     },
     "decision_bundle": {
       "path": "config/phase1_decision_bundle.json",
-      "sha256": "5af1f76c58bd24fe61a741a42a4df4531ba21e08c0d8ce9b953ba0ff769668ae"
+      "sha256": "ccccbb2e56e101b1a53421f8016699bfb500f4356861e10c1213a398aabe04a2"
     },
     "grid": {
       "path": "temp/data/spatial/tasmanian_gridpoints.csv",
