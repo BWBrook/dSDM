@@ -1,0 +1,22 @@
+{
+  "counts": {
+    "map_cells": 71023,
+    "predictors": 28,
+    "response_cells": 5087,
+    "response_rows": 12711,
+    "transforms": 6
+  },
+  "goal_id": "goal026-model-ready-feature-substrate-2026-07-27",
+  "schema_version": "1.0",
+  "stopped_before": [
+    "feature_selection",
+    "model_fitting",
+    "tuning",
+    "resampling_or_class_weighting",
+    "prediction",
+    "performance_comparison",
+    "calibration",
+    "mapping_products",
+    "scientific_synthesis"
+  ]
+}

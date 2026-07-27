@@ -1,0 +1,70 @@
+{
+  "bindings": {
+    "goal024_manifest": {
+      "role": "goal024_manifest",
+      "sha256": "a610752079bd2d1e2be7f84829660bb327a349ad34a3e2844837094b2bef8daa"
+    },
+    "goal024_map": {
+      "role": "goal024_map",
+      "sha256": "c27b848bd4db81932553ac801029b8e66cf1a1ecd05271343ee2b4d0a3035cc5"
+    },
+    "goal024_outputs": {
+      "role": "goal024_outputs",
+      "sha256": "254c058d563fd66dfbfe44f789ecf55494399df6dcef01c01812ba4b7d01ac2f"
+    },
+    "goal024_plan": {
+      "role": "goal024_plan",
+      "sha256": "2debc3d01f93c4734d155af733360ac3b4c98eb0305f6034919947df72127c24"
+    },
+    "goal024_response": {
+      "role": "goal024_response",
+      "sha256": "e6ee507e225ab024a56b8b505fe0e0402d7dac18c7ae34068c8b8141a21ede27"
+    },
+    "goal024_response_cells": {
+      "role": "goal024_response_cells",
+      "sha256": "cf6bd574e3eaa7ed04b6ec6ddbbaa22935b5f03b3fe66bcbdfc4df5691361303"
+    },
+    "goal024_review": {
+      "role": "goal024_review",
+      "sha256": "d4001628712baadfe4882c5327a61c62d285503477c90e2347218d3ea4e0e4db"
+    },
+    "goal024_support_contract": {
+      "role": "goal024_support_contract",
+      "sha256": "f313dbaf4cf0bdf2048103c4f7677d9b0124df17b48b264cbcf87cb9223e4aaa"
+    },
+    "goal025_manifest": {
+      "role": "goal025_manifest",
+      "sha256": "dfab4794756652669160708554a7ac901484e6f0cee94f1c34d15130913d679e"
+    },
+    "goal025_map_assignments": {
+      "role": "goal025_map_assignments",
+      "sha256": "ee5a00731810cdd7eb3a9c764b0314c5a338dcdfa39a8cee1885bdd71f450ec0"
+    },
+    "goal025_outputs": {
+      "role": "goal025_outputs",
+      "sha256": "5e72c009fc061d2c27b0ecef782e88189e3ac73127313139f2535add7ea4b3dd"
+    },
+    "goal025_plan": {
+      "role": "goal025_plan",
+      "sha256": "07ee7ffc88fc2a438ed96cc0bd3190c0b97bc087aed4fd09620a1a8ffa1586dd"
+    },
+    "goal025_response_cell_assignments": {
+      "role": "goal025_response_cell_assignments",
+      "sha256": "f74b1df0ce62b71ee0b0c96b2f51060bfed370eece628dfb1c83d7eea5d6ab84"
+    },
+    "goal025_response_partitioned": {
+      "role": "goal025_response_partitioned",
+      "sha256": "b93fbdfa4df2b2d8617dd890cdb7fc4c3aa54ed10c72eed9c9ebc93df18edafc"
+    },
+    "goal025_review": {
+      "role": "goal025_review",
+      "sha256": "a05b1114414433ab8e6dbe086e6e536468982865e4a09d1782695eb41c0bee5c"
+    },
+    "goal025_support_diagnostics": {
+      "role": "goal025_support_diagnostics",
+      "sha256": "afcb952e603bf8d370845453f697cb93e2092d16d6aaded608af6920cd8a830a"
+    }
+  },
+  "goal_id": "goal026-model-ready-feature-substrate-2026-07-27",
+  "schema_version": "1.0"
+}

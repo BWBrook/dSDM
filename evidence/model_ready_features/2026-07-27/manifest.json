@@ -1,0 +1,42 @@
+{
+  "files": {
+    "bindings.json": {
+      "bytes": 2599,
+      "sha256": "e799070e85d6c59e4963a572eed503042bed02300b358aaef28d016e23ba696b"
+    },
+    "feature_contract.json": {
+      "bytes": 5598,
+      "sha256": "e9a8f9b7bee7dee25905dfa052427f6e0a4f1b5ebd6ed02fcfb1761bbd224d98"
+    },
+    "fit_parameters.json": {
+      "bytes": 30783,
+      "sha256": "608b99f94af49122bf9e252e35ae7c067812762d20ba080c3e7fbd40f35661d0"
+    },
+    "output_metadata.json": {
+      "bytes": 588,
+      "sha256": "f8b128e7360a138ff13a47adeccb41eaf7373f705caad67aeccca94f1edc42e9"
+    },
+    "review.json": {
+      "bytes": 671,
+      "sha256": "e48575ff510adb9e844c62c02124890a41544b1a31d367fc35917428b685afdb"
+    },
+    "summary.json": {
+      "bytes": 478,
+      "sha256": "9ad2add3c1b923f2bb344a51da2e63c2052d0f9bbc564965b53c2a985ccde457"
+    },
+    "support_summary.json": {
+      "bytes": 6203,
+      "sha256": "70b1e958b2d46bfbc7595937dc2ad60a570e246923a8e280107aafbf8e561617"
+    }
+  },
+  "goal_id": "goal026-model-ready-feature-substrate-2026-07-27",
+  "privacy": {
+    "tracked_grid_ids_or_coordinates": false,
+    "tracked_private_observation_timing": false,
+    "tracked_private_paths": false,
+    "tracked_response_identifiers": false,
+    "tracked_row_payloads": false,
+    "tracked_site_or_camera_ids": false
+  },
+  "schema_version": "1.0"
+}

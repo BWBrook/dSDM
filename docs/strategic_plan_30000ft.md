@@ -263,3 +263,13 @@ passed against the unchanged frozen SVG and aggregate audit. No fitted
 transformations or modelling were performed. Goal024 diagnostics remain
 descriptive only; no repair or imputation is authorised. Legacy
 `tascam_grid_pa.csv` remains comparison-only.
+
+Goal026 is complete as the final pre-model feature gate. The six deterministic
+split transforms are fitted from all split-training D_struct map cells (not
+pooled response cells), keeping the substrate species/response neutral and
+aligned with the frozen domain. Continuous predictors use population SD;
+categorical predictors remain nominal and model-family encoding is deferred.
+Identity-bearing lazy materialisation, precise marginal-envelope support
+diagnostics, exact upstream bindings, and replayable aggregate/private
+receipts are frozen. The next action is supervisor Phase 1 review before any
+SDM fitting, tuning, prediction, or performance analysis.

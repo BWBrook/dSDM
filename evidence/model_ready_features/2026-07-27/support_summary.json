@@ -1,0 +1,174 @@
+{
+  "goal_id": "goal026-model-ready-feature-substrate-2026-07-27",
+  "lens": [
+    "split_training_map",
+    "target_species_training_response"
+  ],
+  "membership_unchanged": true,
+  "rows": [
+    {
+      "marginal_envelope_categorical_unsupported": 0,
+      "marginal_envelope_range_unsupported": 0,
+      "marginal_envelope_supported": 11039,
+      "rows": 11039,
+      "target_species_response_marginal_envelope_supported": 11039,
+      "transform_id": "outer",
+      "transform_role": "training"
+    },
+    {
+      "marginal_envelope_categorical_unsupported": 0,
+      "marginal_envelope_range_unsupported": 17,
+      "marginal_envelope_supported": 1655,
+      "rows": 1672,
+      "target_species_response_marginal_envelope_supported": 1582,
+      "transform_id": "outer",
+      "transform_role": "assessment"
+    },
+    {
+      "marginal_envelope_categorical_unsupported": 0,
+      "marginal_envelope_range_unsupported": 0,
+      "marginal_envelope_supported": 0,
+      "rows": 0,
+      "target_species_response_marginal_envelope_supported": 0,
+      "transform_id": "outer",
+      "transform_role": "outer_test_audit"
+    },
+    {
+      "marginal_envelope_categorical_unsupported": 0,
+      "marginal_envelope_range_unsupported": 0,
+      "marginal_envelope_supported": 8847,
+      "rows": 8847,
+      "target_species_response_marginal_envelope_supported": 8847,
+      "transform_id": "cv_fold00",
+      "transform_role": "training"
+    },
+    {
+      "marginal_envelope_categorical_unsupported": 0,
+      "marginal_envelope_range_unsupported": 128,
+      "marginal_envelope_supported": 2064,
+      "rows": 2192,
+      "target_species_response_marginal_envelope_supported": 2026,
+      "transform_id": "cv_fold00",
+      "transform_role": "assessment"
+    },
+    {
+      "marginal_envelope_categorical_unsupported": 0,
+      "marginal_envelope_range_unsupported": 82,
+      "marginal_envelope_supported": 1590,
+      "rows": 1672,
+      "target_species_response_marginal_envelope_supported": 1515,
+      "transform_id": "cv_fold00",
+      "transform_role": "outer_test_audit"
+    },
+    {
+      "marginal_envelope_categorical_unsupported": 0,
+      "marginal_envelope_range_unsupported": 0,
+      "marginal_envelope_supported": 9321,
+      "rows": 9321,
+      "target_species_response_marginal_envelope_supported": 9321,
+      "transform_id": "cv_fold01",
+      "transform_role": "training"
+    },
+    {
+      "marginal_envelope_categorical_unsupported": 5,
+      "marginal_envelope_range_unsupported": 4,
+      "marginal_envelope_supported": 1709,
+      "rows": 1718,
+      "target_species_response_marginal_envelope_supported": 1511,
+      "transform_id": "cv_fold01",
+      "transform_role": "assessment"
+    },
+    {
+      "marginal_envelope_categorical_unsupported": 0,
+      "marginal_envelope_range_unsupported": 19,
+      "marginal_envelope_supported": 1653,
+      "rows": 1672,
+      "target_species_response_marginal_envelope_supported": 1486,
+      "transform_id": "cv_fold01",
+      "transform_role": "outer_test_audit"
+    },
+    {
+      "marginal_envelope_categorical_unsupported": 0,
+      "marginal_envelope_range_unsupported": 0,
+      "marginal_envelope_supported": 9128,
+      "rows": 9128,
+      "target_species_response_marginal_envelope_supported": 9128,
+      "transform_id": "cv_fold02",
+      "transform_role": "training"
+    },
+    {
+      "marginal_envelope_categorical_unsupported": 0,
+      "marginal_envelope_range_unsupported": 5,
+      "marginal_envelope_supported": 1906,
+      "rows": 1911,
+      "target_species_response_marginal_envelope_supported": 1786,
+      "transform_id": "cv_fold02",
+      "transform_role": "assessment"
+    },
+    {
+      "marginal_envelope_categorical_unsupported": 0,
+      "marginal_envelope_range_unsupported": 17,
+      "marginal_envelope_supported": 1655,
+      "rows": 1672,
+      "target_species_response_marginal_envelope_supported": 1567,
+      "transform_id": "cv_fold02",
+      "transform_role": "outer_test_audit"
+    },
+    {
+      "marginal_envelope_categorical_unsupported": 0,
+      "marginal_envelope_range_unsupported": 0,
+      "marginal_envelope_supported": 8270,
+      "rows": 8270,
+      "target_species_response_marginal_envelope_supported": 8270,
+      "transform_id": "cv_fold03",
+      "transform_role": "training"
+    },
+    {
+      "marginal_envelope_categorical_unsupported": 0,
+      "marginal_envelope_range_unsupported": 132,
+      "marginal_envelope_supported": 2637,
+      "rows": 2769,
+      "target_species_response_marginal_envelope_supported": 2557,
+      "transform_id": "cv_fold03",
+      "transform_role": "assessment"
+    },
+    {
+      "marginal_envelope_categorical_unsupported": 0,
+      "marginal_envelope_range_unsupported": 17,
+      "marginal_envelope_supported": 1655,
+      "rows": 1672,
+      "target_species_response_marginal_envelope_supported": 1560,
+      "transform_id": "cv_fold03",
+      "transform_role": "outer_test_audit"
+    },
+    {
+      "marginal_envelope_categorical_unsupported": 0,
+      "marginal_envelope_range_unsupported": 0,
+      "marginal_envelope_supported": 8590,
+      "rows": 8590,
+      "target_species_response_marginal_envelope_supported": 8590,
+      "transform_id": "cv_fold04",
+      "transform_role": "training"
+    },
+    {
+      "marginal_envelope_categorical_unsupported": 0,
+      "marginal_envelope_range_unsupported": 4,
+      "marginal_envelope_supported": 2445,
+      "rows": 2449,
+      "target_species_response_marginal_envelope_supported": 2201,
+      "transform_id": "cv_fold04",
+      "transform_role": "assessment"
+    },
+    {
+      "marginal_envelope_categorical_unsupported": 0,
+      "marginal_envelope_range_unsupported": 17,
+      "marginal_envelope_supported": 1655,
+      "rows": 1672,
+      "target_species_response_marginal_envelope_supported": 1571,
+      "transform_id": "cv_fold04",
+      "transform_role": "outer_test_audit"
+    }
+  ],
+  "schema_version": "1.0",
+  "support_definition": "marginal_envelope_supported is the conjunction of complete-map/training-map categorical membership and all 25 univariate training min/max checks; it is not multivariate environmental, spatial, stationarity, or prediction support"
+}

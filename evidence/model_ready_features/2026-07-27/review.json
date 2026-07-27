@@ -1,0 +1,21 @@
+{
+  "criteria_version": "goal026-v1",
+  "decision": "final_pre_model_feature_gate",
+  "goal_id": "goal026-model-ready-feature-substrate-2026-07-27",
+  "limitations": [
+    "Goal025 computability and support warnings remain in force",
+    "no performance or transfer claim"
+  ],
+  "privacy": {
+    "tracked_grid_ids_or_coordinates": false,
+    "tracked_private_observation_timing": false,
+    "tracked_private_paths": false,
+    "tracked_response_identifiers": false,
+    "tracked_row_payloads": false,
+    "tracked_site_or_camera_ids": false
+  },
+  "receipt_status": "passed",
+  "reviewed_at": "2026-07-27",
+  "reviewer": "dSDM_orchestrator",
+  "schema_version": "1.0"
+}

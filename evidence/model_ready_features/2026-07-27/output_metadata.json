@@ -1,0 +1,21 @@
+{
+  "goal_id": "goal026-model-ready-feature-substrate-2026-07-27",
+  "lazy_materialisation": true,
+  "map_cells": 71023,
+  "private_roles": {
+    "materialisation_receipt.json": {
+      "bytes": 2409,
+      "rows": 1,
+      "sha256": "a0677176cdab15ba3ecdcabbff2102b825d5ca6fa0e0ad773029afa7f73eda44"
+    },
+    "response_support.csv": {
+      "bytes": 8108729,
+      "rows": 76266,
+      "sha256": "6f4b246cf3acd24e164118101b762e506a268a4897b34dd316821c2d3778c3d8"
+    }
+  },
+  "response_cells": 5087,
+  "response_rows": 12711,
+  "schema_version": "1.0",
+  "transformed_map_copies": 0
+}
