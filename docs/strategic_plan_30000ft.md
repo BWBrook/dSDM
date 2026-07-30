@@ -1,7 +1,7 @@
 # dSDM 30,000-foot strategic plan
 
 Originally framed: 2026-05-27
-Last revised: 2026-07-26
+Last revised: 2026-07-30
 
 This is the canonical living roadmap for the full dSDM research programme. It
 should be revisited at major scientific and implementation gates rather than
@@ -100,18 +100,18 @@ evidence to define the rebuild without treating legacy outputs as canonical.
 
 ### Phase 1: Tasmanian source acquisition and reconstruction
 
-Status: active.
+Status: complete.
 
-Goal025 has frozen a deterministic macro-stratified held-patch interpolation
-design for the Goal024 `D_struct` substrate. Geometry and fold allocation are
-response-independent; feasibility and ranking are deliberately
-response/covariate-conditioned but pre-model. The complete prescribed seed
-schedule, training-only support diagnostics, aggregate topology/class audit,
-and SHA-bound private figure passed the dSDM orchestrator review on 2026-07-26.
-The goal still authorises no fitted transformation or model.
+Goals 015–024 completed the provenance-rich source reconstruction and froze
+the eight-species downstream contract, combined response and pseudoabsence
+substrate, predictor stack, and supported 28-predictor `D_struct` domain.
+Goal025 then froze the deterministic macro-stratified held-patch interpolation
+design and five inner CV folds, including its training-only support and
+topology diagnostics. These are canonical inputs to modelling; they are not
+reselected by later phases.
 
-Build the provenance-rich source layer for the Tasmanian mammal candidates and
-the eight-species downstream contract:
+The completed source layer for the Tasmanian mammal candidates and the
+eight-species downstream contract includes:
 
 - focal-species and taxon contracts;
 - ALA field calibration, count census, and controlled acquisition;
@@ -129,7 +129,9 @@ observations, abundance, occupancy, or an analysis-ready dataset.
 
 ### Phase 2: Tasmanian analysis-ready dataset construction
 
-Convert accepted sources into a frozen modelling substrate:
+Status: complete.
+
+The completed analysis-ready substrate converts accepted sources through:
 
 - normalize identifiers, dates, coordinates, uncertainty, and provenance;
 - assign eligible 0.01-degree grid cells;
@@ -142,40 +144,46 @@ Convert accepted sources into a frozen modelling substrate:
   explicit adjacency and buffer diagnostics;
 - run a bounded QA and acceptance gate.
 
-This phase ends with versioned, analysis-ready training, validation, test, and
-mapping products. It does not fit scientific models.
+Goal026 is the final pre-model feature gate: six split-fitted transformations
+are frozen for the Goal025 roles, with nominal dictionaries retained and
+model-family encoding deferred. The versioned substrate and its diagnostics
+are complete; scientific model fitting remains a later phase.
 
 ### Phase 3: Tasmanian conventional SDM baselines
 
-Establish credible traditional machine-learning reference models:
+Status: design governed by Goal027; implementation not begun.
 
-- define a compact, defensible baseline model set;
+Establish the accepted conventional reference set:
+
+- intercept-only null, elastic-net logistic, penalised GAM, random forest,
+  gradient-boosted trees, and shallow one-hidden-layer ANN;
 - tune without contaminating the frozen outer test;
-- evaluate discrimination, calibration, prevalence effects, and spatial
-  held-patch interpolation with spatial-block uncertainty;
-- preserve fitted models, predictions, run manifests, and diagnostics.
+- evaluate continuous suitability first, then the predeclared inner-OOF
+  threshold rule and prevalence-aware/spatial metrics;
+- preserve fitted models, predictions, run manifests, and diagnostics once a
+  separate implementation goal authorises execution.
 
 These models define the empirical standard the new approach must improve on or
 complement.
 
 ### Phase 4: Tasmanian feedforward dSDM development
 
-Develop the proposed feedforward deep neural network as the central
+Status: design governed by Goal027; implementation not begun.
+
+Develop the proposed residual-MLP/shared-trunk dSDM as the central
 methodological contribution:
 
-- implement the model natively in Python and Keras 3, using legacy R-Keras
-  code only as a record of design intent;
-- establish architecture and training behaviour;
-- test no-transfer, paired, sequential, and community transfer strategies;
-- examine augmentation, regularisation, calibration, and class prevalence;
-- run ablations and sensitivity analyses;
-- compare fairly against conventional SDMs;
-- route suitable GPU workloads to Alien or another deliberately selected
-  compute target;
-- iterate until the method is useful, reproducible, and scientifically
-  defensible.
+- compare target-only, pooled legacy pretraining, species-aware masked
+  multi-head frozen-encoder and full-fine-tune ladders, plus `q_linear` and
+  `q_deep` scalar controls;
+- use the shared architecture panel and three nested 25/50/100% target
+  learning-curve ladders, with matched five-seed replication;
+- compare fairly against the accepted conventional set under Goal027's
+  leakage, threshold, aggregation, and null-result rules;
+- defer exact optimiser, batch, candidate-grid, runtime, and compute manifests
+  to a separate implementation goal.
 
-This is expected to be one of the largest and most research-intensive phases.
+No model, prediction, or performance result is implied by this design phase.
 
 ### Phase 5: Tasmanian synthesis and method freeze
 
@@ -238,10 +246,10 @@ and which analyses must be rerun after a change.
 
 ## Current position and next step
 
-The programme remains early in Phase 1 and approximately 10–15% along the full
-two-case-study journey, while being substantially further through the
-conceptual foundations and ALA source reconstruction for the Tasmanian
-prove-out.
+The source and analysis-ready foundations for the Tasmanian prove-out are now
+complete through Goal026, and Goal027 records the supervisor-approved
+modelling design freeze. This is a design boundary, not a fitted result or a
+claim of programme completion.
 
 Goals 017–024 are complete. The frozen 50,834-record ALA snapshot was replayed
 into a provenance-preserving nine-candidate presence layer with 40,263 accepted
@@ -264,12 +272,17 @@ transformations or modelling were performed. Goal024 diagnostics remain
 descriptive only; no repair or imputation is authorised. Legacy
 `tascam_grid_pa.csv` remains comparison-only.
 
-Goal026 is complete as the final pre-model feature gate. The six deterministic
-split transforms are fitted from all split-training D_struct map cells (not
+Goal026 is complete as the final pre-model feature gate. Its six deterministic
+split transforms are fitted from all split-training `D_struct` map cells (not
 pooled response cells), keeping the substrate species/response neutral and
 aligned with the frozen domain. Continuous predictors use population SD;
 categorical predictors remain nominal and model-family encoding is deferred.
-Identity-bearing lazy materialisation, precise marginal-envelope support
-diagnostics, exact upstream bindings, and replayable aggregate/private
-receipts are frozen. The next action is supervisor Phase 1 review before any
-SDM fitting, tuning, prediction, or performance analysis.
+Identity-bearing lazy materialisation, support diagnostics, exact upstream
+bindings, and replayable receipts are frozen.
+
+Goal027 now documents the supervisor-approved Tasmanian modelling protocol:
+the accepted conventional baselines, multi-head and scalar-`q` controls,
+nested target learning curve, shared architecture and replication rules,
+primary contrasts, and cross-case version boundary. The next gate is Barry's
+review of the written protocol, followed by a separate implementation goal;
+no models have been run.
