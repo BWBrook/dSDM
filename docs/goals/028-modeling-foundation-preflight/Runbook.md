@@ -38,6 +38,17 @@ uv run pytest -q tests/test_goal028_preflight.py -m "synthetic or tamper"
 
 The synthetic fake vault may exercise final-score plumbing. Its manifest must
 state `synthetic=true`; it cannot mint or validate a real unlock.
+Synthetic tests must also prove that each assessment fold receives its own
+endpoint, encoder state is fitted once on that complete endpoint and reused,
+assessment batches never enter `fit`, selection never crosses family/seed
+strata, canonical external full identity is only `fraction100/full`, complete
+neural fold receipts preserve matching discovery/replay initial states, and
+serialized models reject feature-schema/order drift.
+
+Model load and `replay_predictions` tests must supply a separately trusted
+lowercase SHA-256 from the frozen manifest, reject missing/self-authorised
+digests, validate the envelope before unpickling, and reject schema,
+candidate, seed, runtime-version, or payload identity drift.
 
 ## Bounded real preflight
 
@@ -56,6 +67,19 @@ pairing, replay, reproducibility, conventional convergence failure, or
 PyTorch hard failure is a hard stop with no partial publication. A finite
 valid neural checkpoint ending with `max_epochs_reached` is a warning, not
 automatic failure.
+
+The real validator must reconstruct split features only through the sole
+private ingestion factory from digest-verified Goal024 raw predictors,
+Goal025 partitions, and Goal026 contract/fit parameters. It must reject any
+injected `private_inputs.features`-style payload. For Goal028 selection, only
+`seed00` contributes to RowKey-aligned fold AUC/TSS; `seed01` remains a paired
+neural replay diagnostic.
+
+Validation must recompute all candidate fold/global metrics from OOF evidence,
+permit residual tuning only within the residual family, reject residuals from
+conventional-baseline competition, require integer completed-epoch receipts,
+and test the upper-score threshold fallback when adjacent scores have no
+representable midpoint.
 
 ## Full local validation
 

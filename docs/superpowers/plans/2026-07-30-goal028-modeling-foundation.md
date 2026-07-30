@@ -110,11 +110,15 @@ Required values:
   `outer_train_value="outer_train"`, folds `fold00`–`fold04`, transforms
   `cv_fold00`–`cv_fold04`, and `outer_vault="sealed"`.
 - `subsets`: fractions with formulas `(N+2)//4`, `(N+1)//2`, `N`; ladders
-  `ladder00`–`ladder02`; deficit algorithm fields and `full_alias=true`.
+  `ladder00`–`ladder02`; deficit algorithm fields; external endpoints
+  fraction25/50 with ladder00/01/02 and fraction100/full; and internal-only
+  full lookup alias `fraction100/ladder00`.
 - `features`: the Goal026 25 continuous and three categorical names in frozen
   order, `continuous_source="goal026_split_transform"`,
   `categorical_fit_scope="cv_training_rows"`,
-  `unknown_category="all_zero_with_count"`, `finite_required=true`.
+  `unknown_category="all_zero_with_count"`, `finite_required=true`, stable
+  per-column kind metadata, `continuous_count=25`, and feature-schema/order
+  digest.
 - `models`: the exact candidate rows from Goal.md and the explicit real
   preflight IDs. Reject extra, missing, duplicate, or reordered IDs.
 - `neural`: backend `torch`, device `cpu`, deterministic algorithms enabled,
@@ -123,18 +127,23 @@ Required values:
   complete-training replay, lower-median full-refit epoch rule,
   epoch/patience budgets, status values `patience_stop` and
   `max_epochs_reached`, and replay tolerances `score_atol=1e-6`,
-  `parameter_atol=1e-6`.
+  `parameter_atol=1e-6`; also the exact batch, row-order, generator, graph,
+  dtype, initialisation, AdamW, epoch, stopping-evaluation, `min_delta`, and
+  patience defaults frozen in Goal.md.
 - `selection`: `mean_fold_roc_auc`,
   `mean_fold_tss_at_oof_threshold`, `canonical_candidate_id`; one threshold
   is derived per candidate from concatenated common-seed-averaged OOF and
-  applied unchanged in each equally weighted fold.
+  applied unchanged in each equally weighted fold. The exact stratum is
+  species/fraction/ladder/model-family/identical-ordered-selection-seeds;
+  Goal028 selection seeds are exactly `["seed00"]`, with `seed01` replay-only.
 - `threshold`: seed-averaged OOF, finite boundaries/midpoints,
   `positive_when="score>=threshold"`, maximise TSS/BA, sorted lower-median
   maximiser `M[(len(M)-1)//2]`, and selected-threshold maximum-TSS replay.
 - `replication`: labels `seed00`–`seed04`; real preflight labels; exact
   canonical tuple order; big-endian first-four-byte SHA-256 derivation.
 - `artifacts`: exact private and aggregate destinations, schemas, manifest
-  names, staging/rollback rules, and forbidden tracked fields/tokens.
+  names, staging/rollback rules, forbidden tracked fields/tokens, and a
+  separately trusted lowercase SHA-256 for every serialized model.
 - `compute`: Mac mini CPU, estimator threads 1, process workers 2, peak-RSS
   budget 12 GiB, per-task wall budget 20 minutes, MPS non-gating.
 - `scope`: two real species and included-row counts, permitted endpoints,
@@ -151,6 +160,8 @@ n_train, n_validation, train_positive, train_zero_survey,
 train_zero_pseudoabsence, validation_positive, validation_zero_survey,
 validation_zero_pseudoabsence, feature_transform_id, transform_digest,
 encoder_digest, unseen_level_counts, stopping_fold, best_epoch,
+initial_state_digest, discovery_initial_state_digest,
+replay_initial_state_digest,
 neural_stop_status, outer_attempted_open_count, outer_open_count,
 convergence_status, epochs_or_iterations, warnings, runtime_seconds, peak_rss_bytes,
 package_versions, python_version, platform, model_path, model_sha256,
@@ -190,7 +201,9 @@ group includes pytest; prohibited packages are absent; all 15 top-level
 configuration sections are exact; every bound
 path is relative, regular, non-symlinked, and matches its SHA-256; candidate
 IDs and preflight IDs exactly match Goal.md; private destinations are ignored;
-and both attempted and successful outer-open limits are zero.
+both attempted and successful outer-open limits are zero; selection strata
+and seed roles are exact; and every neural batch/graph/dtype/init/AdamW/epoch/
+stopping default from Goal.md is explicit rather than library-defaulted.
 
 - [ ] **Step 2: Run the tests and verify red**
 
@@ -282,6 +295,10 @@ class FeatureBatch:
     keys: tuple[RowKey, ...]
     x: np.ndarray
     y: np.ndarray
+    feature_names: tuple[str, ...]
+    feature_kinds: tuple[str, ...]
+    continuous_count: int
+    feature_schema_digest: str
     unseen_level_counts: Mapping[str, int]
     transform_id: str
     transform_digest: str
@@ -320,10 +337,15 @@ def ingest_private_foundation(
 ) -> tuple[SplitBroker, FeatureProvider, OuterVault]
 ```
 
-`ingest_private_foundation` is the only real ingestion path. It loads and
-partitions the combined response internally, constructs `SplitBroker` from
-outer-training rows only, allow-lists those keys in `FeatureProvider`, seals
-outer rows in a private `OuterVault`, and returns exactly those three objects.
+`ingest_private_foundation` is the only real ingestion path. It digest-verifies
+and loads the Goal024 canonical raw predictor map, partitions responses using
+Goal025, loads the tracked Goal026 feature contract and fit parameters, and
+reconstructs requested split transforms internally; Goal026 contains no
+duplicate materialised transformed feature rows. It constructs `SplitBroker`
+from outer-training rows only, stores only outer-training keys/values in
+`FeatureProvider`, seals held response rows exclusively in `OuterVault`, and
+returns exactly those three objects. It accepts no injected feature table or
+`private_inputs.features` argument.
 The broker rejects any row whose role is not `outer_train` and has no combined
 response argument. A real `OuterVault.open()` increments
 `attempted_open_count`, returns no row, and raises
@@ -334,10 +356,15 @@ No config content can unlock it. The synthetic vault opens only when
 - [ ] **Step 1: Add failing tests**
 
 Test canonical JSON/digests; exact seed vector values computed independently
-with `hashlib`; task-ID stability; duplicate species-cell, nonbinary response,
+with `hashlib`; task-ID stability; canonical endpoint identity accepting only
+fraction25/50 with ladder00/01/02 and fraction100/full, while rejecting
+`TaskKey(..., fraction100, ladder00, ...)`; duplicate species-cell, nonbinary response,
 unknown zero source, weight drift, and partition mismatch rejection; factory
-return shape; broker rejection of combined or outer rows; provider rejection
-of non-allow-listed keys; real-vault denial before return; attempted count 1
+return shape and exact Goal024/025/026 digest bindings; absence/rejection of
+any injected feature-payload argument; broker rejection of combined or outer
+rows; provider retention/rejection checks proving no held key/value survives
+outside the vault; stable feature names/kinds, `continuous_count=25`, and
+schema digest; real-vault denial before return; attempted count 1
 and successful count 0 after that deliberate synthetic test attempt;
 synthetic-only open; inner split class checks; and encoder leakage by
 perturbing assessment categories and confirming unchanged training state plus
@@ -358,7 +385,9 @@ read-only, and sort keys canonically. The private factory partitions before
 constructing public objects. `SplitBroker.inner` maps `foldNN` to Goal026
 `cv_foldNN`; it never accepts combined rows or `outer` as a fold argument.
 `FeatureProvider` rejects keys outside its outer-training allow-list. Encoder
-state contains ordered inner-training levels and a canonical digest only.
+state contains ordered endpoint levels and a canonical digest only. Feature
+batches preserve ordered Goal026 continuous columns first, encoded
+categorical-linear columns second, their kinds/count, and schema digest.
 
 - [ ] **Step 4: Verify green**
 
@@ -406,8 +435,10 @@ def validate_ladders(rows: RowSet, endpoints: Mapping[tuple[str, str], SubsetEnd
 Cover `N=1..17` round-half-up sizes, three independent ladders, 25⊂50⊂100,
 exact union, response-source then microcluster proportional-deficit choices,
 input-order invariance, held-validation perturbation invariance, split-specific
-membership, SHA-256 tie determinism, exact full aliases, execute-once identity,
-duplicate keys, missing source/microcluster, and single-class failure.
+membership, SHA-256 tie determinism, internal full lookup aliasing, external
+canonicalisation to `fraction100/full`, rejection of external
+`fraction100/ladder00`, execute-once identity, duplicate keys, missing
+source/microcluster, and single-class failure.
 
 - [ ] **Step 2: Verify red**
 
@@ -470,6 +501,7 @@ class FitReport:
     warnings: tuple[str, ...]
     runtime_seconds: float
     peak_rss_bytes: int
+    initial_state_digest: str | None = None
 
 class FittedAdapter(Protocol):
     def predict_scores(self, batch: FeatureBatch) -> np.ndarray: ...
@@ -483,8 +515,18 @@ class ModelAdapter(Protocol):
 
 def build_adapter(family: str) -> ModelAdapter
 def validate_candidate(family: str, candidate: Mapping[str, Any]) -> None
-def load_fitted_model(path: Path, expected_sha256: str) -> FittedAdapter
+def load_fitted_model(path: Path,
+                      expected_model_sha256: str) -> FittedAdapter
 ```
+
+Every serialized envelope binds and validates
+`feature_schema_digest, transform_digest, encoder_digest, candidate_digest,
+payload_digest`, plus fit seed and runtime versions; prediction rejects any
+feature name/order/kind/count drift. `expected_model_sha256` is a separately
+trusted lowercase 64-character digest read from the frozen manifest. Verify
+whole-file bytes and parse/validate envelope version and identity before
+unpickling. Embedded/self-computed hashes are consistency checks, never
+authority.
 
 Families are `intercept`, `elastic_net`, `gam`, `random_forest`,
 `hist_gradient_boosting`, `shallow_ann`, and `residual_mlp`.
@@ -495,8 +537,17 @@ On a separable and a null synthetic table, test score shape/range/finite
 values, row-order restoration, one-thread estimator settings, no sample/class
 weights, exact candidate validation, deterministic repeat, serialization
 round-trip, tamper rejection, assessment-batch exclusion from `fit`, and
-declared nonconvergence failure. Confirm
-intercept predictions equal the clipped training positive fraction.
+declared logistic/GAM convergence failure. Confirm RF completing exactly 500
+trees and HGB completing exactly 300 fixed rounds are successful rather than
+iteration-exhaustion failures. Confirm intercept predictions equal the clipped
+training positive fraction. For GAM, assert `spline_order=3`, exactly the first
+25 schema-declared continuous columns receive spline terms, all remaining
+categorical indicators receive linear terms, and the candidate `lam` is
+explicitly repeated for every term.
+Test missing, uppercase, malformed, stale, and self-authorised model digests;
+whole-file mismatch; envelope/version/identity mismatch before unpickling;
+and payload/schema/candidate/fit-seed/runtime-version mismatch. Confirm a
+trusted external manifest digest plus valid identity permits loading.
 
 - [ ] **Step 2: Verify red**
 
@@ -508,11 +559,20 @@ Expected: import/adapter failures.
 
 - [ ] **Step 3: Implement conventional adapters**
 
-Wrap conventional estimator warnings; treat a convergence warning or
-iteration-budget hit as `converged=false` and a hard failure. Conventional
-adapters require `stopping=None` and `exact_epochs=None`. Store a versioned
-JSON envelope plus estimator bytes,
-candidate record, feature/encoder digests, and SHA-256. pyGAM failure,
+Wrap warnings; only convergence-controlled elastic-net logistic and GAM treat
+a convergence warning or a nonconverged iteration-budget hit as
+`converged=false` and a hard failure. A GAM reaching exactly its final allowed
+iteration is accepted only when the final finite difference is strictly below
+`tol`; missing/nonfinite traces or coefficients remain hard failures. RF executes its declared 500 trees and HGB its fixed 300 rounds;
+normal budget completion succeeds. Conventional adapters require
+`stopping=None` and `exact_epochs=None`. Build GAM terms from feature-schema
+metadata, with cubic `spline_order=3` for the 25 continuous columns, linear
+terms for encoded categorical columns, and candidate `lam` explicitly supplied
+to each term. Store a versioned JSON envelope plus estimator bytes, candidate,
+feature-schema/order, transform, encoder, payload, fit-seed, and runtime-version
+identity. Require the external manifest digest before loading; never accept an
+embedded self-hash as authority. Validate envelope identity before unpickling.
+pyGAM failure,
 nonfinite coefficients, or nonfinite scores is a hard error. Never silently
 change a candidate.
 
@@ -539,25 +599,35 @@ parallelism, balancing, or hidden early stopping. Do not commit.
 **Interfaces:**
 
 - Uses the Task 4 `ModelAdapter` protocol.
-- Adds `ShallowANN` (one hidden layer) and `ResidualMLP` (input projection,
-  configured residual blocks with bottleneck, GELU, LayerNorm, dropout, scalar
-  logit head). Both use unweighted `BCEWithLogitsLoss`, AdamW, fixed minibatch
-  order derived from the task seed, CPU deterministic algorithms, and
-  stopping-loss epoch discovery. `fit(train, stopping, ..., exact_epochs=None)`
+- Adds the exact shallow graph
+  `Linear(input,width)-GELU-Dropout-Linear(width,1)` without norm and the exact
+  residual graph from Goal.md (pre-norm bottleneck blocks, no post-add
+  dropout, pre-head LayerNorm). Both use float32 computation, unweighted
+  `BCEWithLogitsLoss`, fixed AdamW, deterministic canonical-row minibatches,
+  and stopping-loss epoch discovery. `fit(train, stopping, ..., exact_epochs=None)`
   discovers `best_epoch`; `fit(train, None, ..., exact_epochs=k)` performs a
   fresh exact-`k`-epoch fit and cannot inspect stopping or assessment labels.
 
 - [ ] **Step 1: Write failing neural tests**
 
 Assert module structure and parameter counts, one-hidden-layer shallowness,
-residual block count/width/bottleneck, CPU placement, no TensorFlow/Keras/skorch
-imports, common-seed determinism within `1e-6`, changed-seed allowance,
+residual block order/count/width/bottleneck and absence of post-add dropout,
+CPU placement, no TensorFlow/Keras/skorch imports, common-seed determinism
+within `1e-6`, changed-seed allowance,
 stopping-only epoch discovery, same-seed reinitialisation, exact-epoch replay,
 assessment-batch rejection by `fit`, finite scores, paired task IDs, and
-serialization round-trip. Assert nonfinite loss/gradient/parameters,
+serialization round-trip. Assert each neural `FitReport` carries the
+deterministic `initial_state_digest`, discovery and replay digests match, and
+changed seeds may change the digest. Assert nonfinite loss/gradient/parameters,
 optimiser failure, no valid checkpoint, and replay failure are hard failures.
 Assert `patience_stop` and `max_epochs_reached` are distinct statuses and a
 finite valid maximum-budget checkpoint returns a warning rather than failure.
+Assert batch size/effective size/final partial batch/no accumulation,
+canonical RowKey start order, per-epoch dedicated-CPU-generator permutation
+reset from fit seed, workers 0, float32 internal and float64 score dtypes,
+Xavier/zero and LayerNorm one/zero initialisation, exact AdamW flags, no
+scheduler/clipping, epochs 1–300 with exact completed-pass semantics, and the
+strict-loss/patience boundary including patience reached at epoch 300.
 
 - [ ] **Step 2: Verify red**
 
@@ -571,14 +641,33 @@ Expected: neural tests fail.
 
 Set Python, NumPy, and Torch seeds from the derived seed; call
 `torch.use_deterministic_algorithms(True)` and `torch.set_num_threads(1)`.
+Use batch size `min(128,n)`, retain the final partial batch, no accumulation,
+canonical `RowKey` initial order, and a workers-0 iterator. Initialise/reset a
+dedicated CPU generator once at the start of each fit from the fit seed; each
+epoch advances it with one `torch.randperm` call. Use float32
+features/targets/parameters/logits/loss and emit float64 scores.
+
+Initialise all Linear weights Xavier-uniform gain 1 and biases zero; initialise
+LayerNorm weights one and biases zero. Use AdamW
+`betas=(0.9,0.999), eps=1e-8, amsgrad=false, foreach=false, fused=false` with
+the candidate learning rate/weight decay and no scheduler or clipping.
+Number completed epochs 1–300; exact `k` performs exactly `k` passes.
 Checkpoint the best stopping-loss state only to determine `best_epoch`. The
 OOF caller discards the discovery fit, reinitialises with the identical task
 seed, and calls exact-epoch mode on the complete permitted CV-training
 endpoint. Record stopping fold, best epoch, `patience_stop` or
-`max_epochs_reached`, device, runtime, RSS, and warnings. Never pass the
+`max_epochs_reached`, device, runtime, RSS, and warnings. After each epoch
+evaluate the complete stopping batch with `no_grad` and unweighted BCE;
+`min_delta=0`, only strict loss decrease improves, equal loss retains the
+earliest epoch, improvement resets patience, non-improvement increments it,
+and patience stops at 30. Patience reached at epoch 300 is `patience_stop`;
+otherwise completing 300 is `max_epochs_reached`. Deep-copy only a finite best
+state to obtain its epoch, then discard discovery state. Never pass the
 assessment batch to `fit`. Treat only nonfinite loss/gradient/parameters,
 optimiser failure, no valid checkpoint, or replay failure as neural hard
-failure; maximum-budget status alone is warning-only.
+failure; maximum-budget status alone is warning-only. Compute and record
+`initial_state_digest` immediately after deterministic initialisation and
+before any optimiser step for both discovery and exact replay.
 
 - [ ] **Step 4: Verify green**
 
@@ -609,22 +698,50 @@ Do not commit.
 ```python
 @dataclass(frozen=True)
 class FoldOOF:
-    task: TaskKey
+    fold_id: str
     keys: tuple[RowKey, ...]
     y_true: np.ndarray
-    score: np.ndarray
+    scores_by_seed: Mapping[str, np.ndarray]
+    mean_score: np.ndarray
     roc_auc: float
-    best_epoch: int | None
-    stopping_fold: str | None
     tss_at_oof_threshold: float | None
 
 @dataclass(frozen=True)
-class CandidateOOF:
+class SelectionStratum:
+    species_id: str
+    fraction_id: str
+    ladder_id: str
+    model_family: str
+    ordered_selection_seeds: tuple[str, ...]
+
+@dataclass(frozen=True)
+class NeuralFoldReceipt:
+    task: TaskKey
+    stopping_fold: str
+    best_epoch: int
+    discovery_report: FitReport
+    replay_report: FitReport
+    discovery_initial_state_digest: str
+    replay_initial_state_digest: str
+
+@dataclass(frozen=True)
+class FoldEpochs:
+    stratum: SelectionStratum
     candidate_id: str
-    seed_folds: Mapping[str, tuple[FoldOOF, ...]]
-    oof_threshold: float
+    seed_label: str
+    best_epochs_by_fold: tuple[int, int, int, int, int]
+    receipts: tuple[NeuralFoldReceipt, ...]
+
+@dataclass(frozen=True)
+class CandidateOOF:
+    stratum: SelectionStratum
+    candidate_id: str
+    folds: tuple[FoldOOF, ...]
+    threshold: float
     mean_fold_roc_auc: float
     mean_fold_tss_at_oof_threshold: float
+    neural_epochs_by_seed: Mapping[str, FoldEpochs]
+    neural_receipts: Mapping[str, tuple[NeuralFoldReceipt, ...]]
 
 @dataclass(frozen=True)
 class ThresholdResult:
@@ -633,8 +750,9 @@ class ThresholdResult:
     tss: float
     balanced_accuracy: float
 
-def run_candidate_oof(tasks: Sequence[TaskKey], folds: Sequence[str],
-                      endpoint: SubsetEndpoint, candidate: Mapping[str, Any],
+def run_candidate_oof(stratum: SelectionStratum, folds: Sequence[str],
+                      endpoints_by_fold: Mapping[str, SubsetEndpoint],
+                      candidate: Mapping[str, Any],
                       broker: SplitBroker, provider: FeatureProvider,
                       adapter: ModelAdapter) -> CandidateOOF
 def select_candidate(results: Sequence[CandidateOOF]) -> CandidateOOF
@@ -643,20 +761,29 @@ def refit_outer_training(task: TaskKey, endpoint: SubsetEndpoint,
                          candidate: Mapping[str, Any],
                          broker: SplitBroker, provider: FeatureProvider,
                          adapter: ModelAdapter,
-                         fold_best_epochs: Sequence[int] | None
+                         fold_epochs: FoldEpochs | None
                          ) -> tuple[FittedAdapter, FitReport]
-def replay_predictions(model_path: Path, batch: FeatureBatch, expected: np.ndarray, atol: float) -> None
+def replay_predictions(model_path: Path, batch: FeatureBatch,
+                       expected: np.ndarray, atol: float,
+                       expected_model_sha256: str) -> None
 ```
 
 - [ ] **Step 1: Write failing metric/integrity tests**
 
 Test exactly one OOF score per outer-training key; gap, duplicate, extra, fold
-overlap, and nonfinite rejection; equal fold weighting despite unequal row
-counts; per-candidate threshold from concatenated seed-averaged OOF; that
+overlap, and nonfinite rejection. Assert `endpoints_by_fold` has exactly
+fold00–fold04, each endpoint digest is rebuilt from that fold's permitted
+CV-training rows, and omission, surplus, or reuse of one singular/global
+endpoint fails. Assert public strata/tasks accept only fraction25/50 with
+ladder00/01/02 and fraction100/full; internal fraction100/ladder00 is
+canonicalised before identity creation and rejected if exposed. Test equal
+fold weighting despite unequal row counts;
+per-candidate threshold from concatenated seed-averaged OOF; that
 threshold applied unchanged to every fold; ROC-AUC tie broken by
 `mean_fold_tss_at_oof_threshold` then ID; threshold boundaries and adjacent
 midpoints; `score >= threshold`; lower-median order statistic for odd and even
-maximiser sets; selected-threshold maximum-TSS recheck; seed-score averaging;
+maximiser sets; upper-score fallback when adjacent floats have no representable
+midpoint; selected-threshold maximum-TSS recheck; seed-score averaging;
 class checks; full-endpoint alias execution once; and full-outer-training
 refit that never asks the vault for outer rows.
 
@@ -664,8 +791,34 @@ For each neural assessment fold `v`, spy on adapter calls and assert stopping
 fold `(v+1) mod 5` is used only for epoch discovery, assessment fold `v` is
 never passed to `fit`, the discovery fit is discarded, and the same seed
 reinitialises an exact-`best_epoch` fit on the complete permitted CV-training
-endpoint. Assert full outer-training refit uses sorted
-`E[(len(E)-1)//2]` and no stopping or assessment labels.
+endpoint. Assert the encoder is fitted once on complete `E_v` and the same
+digest/schema is reused for discovery training, stopping, exact replay, and
+assessment. Perturb stopping labels and prove encoder state unchanged; perturb
+stopping covariates and allow it to change. Assert full outer-training refit
+uses a `FoldEpochs` object with exactly five integers for the same
+species/fraction/ladder/family/candidate/seed, rejects mixed provenance, takes
+sorted `E[(len(E)-1)//2]`, and uses no stopping or assessment labels.
+Require five complete, ordered `NeuralFoldReceipt`s carrying matching tasks,
+stopping folds, integer best/completed epochs, discovery/replay `FitReport`s,
+and equal nonmissing initial-state digests. Confirm `FoldEpochs` and
+`CandidateOOF` both persist the receipts. Conventional refit requires
+`fold_epochs=None`.
+
+Construct two candidate sets with identical candidate IDs but different
+species, fractions, ladders, families, or ordered seed sets and prove they
+cannot be pooled. Assert tuning occurs only within family and residual probes
+may compete only within `residual_mlp` but cannot enter the
+conventional-baseline selection. Mutate every stored fold/global metric in
+turn and prove `select_candidate` recomputes and rejects drift from OOF
+evidence. Shuffle rows independently
+within each seed, realign by `RowKey`, and prove fold AUC is computed from the
+seed-averaged scores. Assert Goal028 selection accepts only ordered
+`("seed00",)`; `seed01` can run paired neural replay but cannot enter
+`CandidateOOF`.
+
+For semantic replay, require a separately supplied valid lowercase manifest
+digest; reject missing/malformed/self-derived values and confirm
+`replay_predictions` passes it to `load_fitted_model`.
 
 - [ ] **Step 2: Verify red**
 
@@ -677,21 +830,40 @@ Expected: import failure.
 
 - [ ] **Step 3: Implement exact mechanics**
 
-Compute fold AUC without row pooling. For each candidate, concatenate its
-common-seed-averaged OOF scores, derive one threshold, apply it unchanged to
-each fold, and equal-weight the five resulting TSS values. Use stable sorted
-distinct finite OOF scores; boundary candidates are
+Validate the complete `SelectionStratum` before candidate comparison and tune
+only candidates with the identical stratum. Build `E_v` independently for
+each fold from `endpoints_by_fold`; never accept a global endpoint. Align each
+seed's scores by `RowKey`, average across the stratum's identical ordered
+selection seeds, compute fold AUC from averaged scores, then equal-weight the
+five AUCs. For each candidate, concatenate its averaged OOF scores, derive one
+threshold, apply it unchanged to each fold, and equal-weight the five
+resulting TSS values. Use stable sorted distinct finite OOF scores; boundary candidates are
 `nextafter(min_score,-inf)` and `nextafter(max_score,+inf)`, and internal
 candidates are overflow-safe midpoints `a + (b-a)/2`. Classify with
-`score >= threshold`. Sort all maximisers, select
+`score >= threshold`; if the computed midpoint is not strictly between
+adjacent scores, use the upper score. Sort all maximisers, select
 `M[(len(M)-1)//2]`, and recompute/assert maximum TSS at that exact value.
+Record this as Goal028's executable lower-median clarification of Goal027's
+loose “median”, not as a change to scientific policy.
 
-For neural OOF fold `v`, use stopping fold `(v+1) mod 5` from the endpoint,
-discover `best_epoch` without assessment rows, discard the fitted object,
-reinitialise with the same seed, and exact-epoch fit all endpoint rows outside
-`v` before assessment prediction. Refit with Goal026 `outer` transform, an
-encoder fitted on all outer-training rows, and the lower-median fold-specific
-best epoch; pass no validation batch.
+For neural OOF fold `v`, fit one encoder on complete `E_v` and reuse it
+unchanged throughout. Use stopping fold `(v+1) mod 5` from `E_v`, discover
+`best_epoch` without assessment rows, discard the fitted object, reinitialise
+with the same seed, and exact-epoch fit complete `E_v` before assessment
+prediction. Record `FitReport.stopping_fold`. Refit with Goal026 `outer`
+transform, an encoder fitted on the full outer-training endpoint, and only a
+provenance-matched `FoldEpochs`; take its lower-median epoch and pass no
+validation batch. Persist the complete `NeuralFoldReceipt` with task,
+stopping fold, integer best epoch, discovery/replay reports, and matching
+initial-state digests in both `FoldEpochs` and `CandidateOOF`. Reject bool,
+float, zero, out-of-range, incomplete, or mixed-provenance epoch receipts.
+Conventional refit rejects non-`None` epoch provenance.
+
+`select_candidate` treats every stored metric as untrusted: recompute fold
+mean scores, AUC, TSS, global threshold, and aggregates from OOF keys/labels/
+seed scores before ranking. Tune within one family; residual candidates may
+rank against residual candidates but never join conventional-baseline
+selection.
 
 - [ ] **Step 4: Verify green**
 
@@ -747,11 +919,18 @@ refit, fake-vault scoring, replay, and publication. Assert exact private and
 tracked footprints, aggregate-only tracked JSON, provenance schema, task/pair
 digests, full aliases, both attempted and successful real-open counts zero in
 private provenance, tracked aggregates, and replay, and deterministic rerun.
+Assert every synthetic assessment fold has a distinct split-specific endpoint,
+selection strata cannot mix, and serialized models reject feature-schema/order
+digest drift in addition to transform/encoder/candidate/seed/runtime/payload
+drift. Assert the frozen manifest's external lowercase whole-model SHA-256 is
+required for load/replay and that complete neural fold receipts survive
+private serialization and semantic replay.
 
 - [ ] **Step 2: Add failing tamper/rollback tests**
 
 Mutate config digest, task key, subset row, encoder digest, OOF score, model
-byte, aggregate count, manifest byte count, publication state, and fake-vault
+byte, external model digest, envelope identity, initial-state receipt,
+aggregate count, manifest byte count, publication state, and fake-vault
 flag separately; each must fail semantic replay. Monkeypatch the second rename
 to fail and assert neither destination survives.
 
@@ -799,7 +978,7 @@ rollback branches. Do not commit.
 - `run_real_preflight` accepts no species/candidate override. It reads the
   exact config scope: two species, the 3×3 intercept key path, and all adapters
   at `25%/ladder00` and aliased `100%/full` using
-  `null00, enet03, enet07, gam02, rf03, hgb03, ann03, resmlp01, resmlp02`.
+  `null00, enet03, enet07, gam01, rf03, hgb03, ann03, resmlp01, resmlp02`.
 
 - [ ] **Step 1: Write failing bounded-scope tests**
 
@@ -809,7 +988,11 @@ above two, or wall/RSS budget overrun fails before fitting. Assert both
 species' expected included-row and positive counts are checked and labelled
 `included_row_positive_fraction`. Assert the private ingestion factory is the
 only combined-response consumer, the returned broker/provider expose only
-outer-training keys, and both real outer counts remain zero.
+outer-training keys/values, held response rows exist only in the sealed vault,
+and both real outer counts remain zero. Assert the factory reconstructs
+features from digest-verified Goal024 raw predictors and Goal026 contract/fit
+parameters after Goal025 partitioning, and rejects an injected
+`private_inputs.features` or equivalent argument.
 
 - [ ] **Step 2: Verify red**
 
@@ -823,11 +1006,14 @@ Expected: fail until the real-mode gates exist.
 
 Reuse `model_ready_features.validate_evidence(..., full=True)` and its
 `load_frozen_inputs` only inside `ingest_private_foundation`; do not alter
-Goal026. The factory partitions the combined response internally and returns
-only the outer-training broker, allow-listed provider, and sealed real vault.
-Build every split-specific ladder from that broker and schedule at most two
-independent processes. Terminate staging on the first hard stop. Record poor
-AUC as a value, not a failure.
+Goal026. Digest-verify the Goal024 canonical raw predictor map, Goal025
+partition product, and tracked Goal026 feature contract/fit parameters. The
+factory partitions the combined response and reconstructs requested split
+features internally; it never accepts an injected transformed-feature table.
+Return only the outer-training broker, key/value-restricted provider, and
+sealed vault containing held response rows. Build every split-specific ladder
+from that broker and schedule at most two independent processes. Terminate
+staging on the first hard stop. Record poor AUC as a value, not a failure.
 
 - [ ] **Step 4: Verify mocked real gates**
 
@@ -855,6 +1041,16 @@ and successful real vault count is zero. Do not commit.
 
 - Consumes: green Tasks 1–8 and exact frozen upstream products.
 - Produces: one complete private run and privacy-safe aggregate evidence.
+
+**GAM retry gate after the first fail-closed attempt:** Before any 46-stratum
+real run, execute a private adapter/OOF/refit gate using the real-preflight
+`gam01` representative: the failed pseudocheirus fold twice with identical
+iteration/prediction receipts; all four GAM task strata across five OOF fits;
+and four outer-training refit, serialization, and trusted replay paths. Require
+finite coefficients/scores, final `diff < 1e-5`, no convergence/overflow/divide
+warnings, iterations at most 500, frozen wall/RSS budgets, and vault counts
+`0/0`. Do not publish outputs or report performance metrics or row keys. The
+full 46-stratum run remains a separate executor gate.
 
 - [ ] **Step 1: Run full synthetic replay immediately before real data**
 

@@ -32,6 +32,8 @@ for `outer` and `cv_fold00`–`cv_fold04` are reused exactly. The three nominal
 predictors are encoded within model family from inner-training rows only.
 One-hot encoders use a neutral all-zero representation for a validation level
 unseen in that inner-training set and record per-feature unseen-level counts.
+Every feature batch carries the stable ordered feature names, per-column kind,
+25-continuous-column count, and a feature-schema/order digest.
 
 ## Required implementation
 
@@ -84,8 +86,13 @@ For training size `N`, use exact round-half-up endpoints
 retaining the same algorithm. Within each ladder the 25% prefix is contained
 in 50%, which is contained in 100%. Subsets are generated only from that
 split's training rows; validation rows remain complete and unchanged. The
-three 100% keys alias one canonical endpoint and are fitted only once.
-Single-class training or validation tasks fail.
+canonical external endpoints are `fraction25` and `fraction50` with
+`ladder00`, `ladder01`, or `ladder02`, plus exactly
+`fraction100/ladder=full`. `ladder00` is only the internal lookup alias used
+to construct the full subset. `fraction100/ladder00` must never appear in a
+`TaskKey`, `SelectionStratum`, receipt, manifest task, or fitted-model
+identity. The full endpoint is fitted once. Single-class training or
+validation tasks fail.
 
 ## Randomness
 
@@ -111,7 +118,7 @@ estimator thread.
 |---|---|
 | intercept | `null00`: empirical inner-training positive fraction, clipped to `[1e-7,1-1e-7]` |
 | elastic-net logistic (`saga`, `max_iter=5000`, `tol=1e-6`) | `enet00 C=0.01,l1_ratio=0`; `enet01 0.03,0`; `enet02 0.1,0`; `enet03 0.03,0.5`; `enet04 0.1,0.5`; `enet05 0.3,0.5`; `enet06 0.03,1`; `enet07 0.1,1`; `enet08 0.3,1`; `enet09 1,0.5` |
-| penalised GAM (`max_iter=500`, `tol=1e-5`) | `gam00 n_splines=6,lam=0.1`; `gam01 6,1`; `gam02 8,1`; `gam03 8,10`; `gam04 12,10`; each continuous term is cubic and each encoded categorical indicator is linear |
+| penalised GAM (`max_iter=500`, `tol=1e-5`, `spline_order=3`) | `gam00 n_splines=6,lam=0.1`; `gam01 6,1`; `gam02 8,1`; `gam03 8,10`; `gam04 12,10`; each of the first 25 ordered continuous columns is a cubic spline term and every encoded categorical indicator is a linear term; the candidate `lam` is supplied explicitly to every spline and linear term |
 | random forest (`n_estimators=500`, `bootstrap=true`) | `rf00 max_features=sqrt,min_samples_leaf=1,max_depth=null`; `rf01 sqrt,3,null`; `rf02 sqrt,10,null`; `rf03 0.33,3,null`; `rf04 0.33,10,null`; `rf05 0.67,3,20`; `rf06 0.67,10,20` |
 | histogram gradient boosting (`max_iter=300`, `early_stopping=false`) | `hgb00 learning_rate=0.03,max_leaf_nodes=15,min_samples_leaf=20,l2_regularization=0`; `hgb01 0.03,31,20,1`; `hgb02 0.05,15,20,1`; `hgb03 0.05,31,20,1`; `hgb04 0.05,31,50,1`; `hgb05 0.1,15,20,10`; `hgb06 0.1,31,50,10` |
 | shallow ANN, native PyTorch (`max_epochs=300`, `patience=30`) | `ann00 width=32,dropout=0,weight_decay=0,lr=1e-3`; `ann01 32,0.1,1e-5,1e-3`; `ann02 64,0.1,1e-5,1e-3`; `ann03 64,0.2,1e-4,1e-3`; `ann04 128,0.2,1e-4,5e-4`; `ann05 128,0.3,1e-3,5e-4` |
@@ -132,43 +139,125 @@ with the same task seed, train on the complete permitted CV-training endpoint
 predict assessment fold `v`. The assessment batch is passed only to
 `predict_scores`; it must never be accepted by an adapter `fit` method.
 
+The fraction/ladder endpoint `E_v` is rebuilt from the permitted CV-training
+rows separately for every assessment fold `v`; no singular or global endpoint
+may be reused across folds. Fit the categorical encoder once on complete
+`E_v` and reuse it unchanged for the epoch-discovery rows, stopping rows,
+same-seed exact replay, and assessment prediction. This deliberately permits
+stopping-fold covariates but not stopping labels to influence encoding,
+preserves identical feature dimensions, and matches the frozen Goal026
+`cv_foldVV` transform. Fully nested preprocessing would require new upstream
+transforms and is outside Goal028.
+
 For full outer-training refit, sort the five fold-specific `best_epoch` values
 and use the lower-median order statistic `E[(len(E)-1)//2]`. Reinitialise with
 the same task seed and train on the complete permitted outer-training endpoint
 for exactly that many epochs, without validation or stopping labels.
 
-Conventional convergence warnings or iteration-budget exhaustion are hard
-failures. PyTorch hard failures are nonfinite loss, gradient, parameters, or
-scores; optimiser failure; absence of a valid checkpoint; or replay failure.
+`best_epoch`, completed epoch counts, and exact refit epochs are integers in
+`[1,300]`, never booleans or floats. Every neural fold persists a complete
+`NeuralFoldReceipt`: canonical task identity, stopping fold, best epoch,
+discovery `FitReport`, replay `FitReport`, and both initial-state digests.
+`FitReport.initial_state_digest` records the state immediately after
+deterministic initialisation. Discovery and replay digests must match. The
+five receipts remain attached to the matching `FoldEpochs` and
+`CandidateOOF`; full refit rejects missing, incomplete, or mixed-provenance
+receipts.
+
+For convergence-controlled elastic-net logistic and GAM only, convergence
+warnings or a nonconverged iteration-budget exhaustion are hard failures. A
+GAM that first reaches the final allowed iteration is accepted only when its
+finite final difference is strictly below `tol`; missing/nonfinite traces or
+coefficients remain hard failures. RF always executes its declared 500 trees and HGB its declared fixed 300 rounds; completion of
+those fixed budgets is not iteration exhaustion. PyTorch hard failures are
+nonfinite loss, gradient, parameters, or scores; optimiser failure; absence
+of a valid checkpoint; or replay failure.
 Record `patience_stop` versus `max_epochs_reached`; reaching the maximum epoch
 budget with a valid finite checkpoint is a warning, not itself a failure.
+
+## Exact neural execution contract
+
+Neural inputs, targets, parameters, logits, and loss are `float32`; emitted
+scores and all metrics are `float64`. Batch size is 128, effectively
+`min(128,n)`, retaining the final partial batch with no gradient accumulation.
+Rows start in canonical `RowKey` order. Each epoch uses `torch.randperm` from
+a dedicated CPU `torch.Generator`; initialise/reset that generator once at the
+start of each fit from the fit seed, then advance it with one `randperm` call
+per epoch. Data-loader workers are zero.
+
+The shallow ANN is exactly
+`Linear(input,width) -> GELU -> Dropout(p) -> Linear(width,1)`, with no
+normalisation. The residual MLP is exactly: initialise
+`h=GELU(input_projection(x))`; for each block compute
+`z=LayerNorm(h) -> Linear(width,bottleneck) -> GELU -> Dropout(p) ->
+Linear(bottleneck,width)` and set `h=h+z`; emit
+`Linear(width,1)(LayerNorm(h))`. There is no post-add dropout. Initialise every
+linear weight Xavier-uniform with gain 1 and every linear bias to zero;
+LayerNorm weight is 1 and bias is 0.
+
+Use AdamW with `betas=(0.9,0.999)`, `eps=1e-8`, and
+`amsgrad=false, foreach=false, fused=false`; use no scheduler or gradient
+clipping. Epochs are completed passes numbered 1–300; there is no epoch 0 and
+exact `k` means exactly `k` completed passes. After every discovery epoch,
+evaluate the complete stopping batch under `no_grad` using unweighted BCE.
+Use `min_delta=0`: only strictly lower finite loss improves, equal loss keeps
+the earliest epoch, improvement resets patience, otherwise patience
+increments, and stopping occurs at 30. If patience is reached at epoch 300,
+status is `patience_stop`; otherwise completing epoch 300 is the warning
+`max_epochs_reached`. Deep-copy only a finite best state to obtain
+`best_epoch`, discard the discovery model, and perform a fresh same-seed
+replay. Check every loss, gradient, parameter tensor, and emitted score for
+finiteness.
 
 ## Selection and threshold rules
 
 Each candidate must yield exactly one finite OOF score per inner-training row,
 with no gaps or duplicates. Candidate selection uses equal-weight mean-fold
-ROC AUC. For each candidate, derive one threshold from its concatenated,
-common-seed-averaged OOF scores; apply that threshold unchanged within each
-fold and average the five fold TSS values with equal fold weight. ROC-AUC ties
-use this `mean_fold_tss_at_oof_threshold`, then the lexicographically smallest
-canonical `candidate_id`. Poor AUC is not a failure.
+ROC AUC within the complete selection stratum
+`species × fraction × ladder × model_family × identical ordered
+selection-seed set`; tuning never crosses model families and residual probes
+never compete as conventional baselines. Align scores by `RowKey`, average
+across the identical declared selection seeds, compute each fold AUC from
+those averaged scores, then equal-weight the five fold AUCs. Goal028 selection
+uses only `seed00`; `seed01` is a paired neural replay diagnostic and never a
+selection seed. For each candidate, derive one threshold from its
+concatenated, selection-seed-averaged OOF scores; apply that threshold
+unchanged within each fold and average the five fold TSS values with equal
+fold weight. ROC-AUC ties use this `mean_fold_tss_at_oof_threshold`, then the
+lexicographically smallest canonical `candidate_id`. Poor AUC is not a
+failure.
+
+Candidate selection recomputes every per-fold and aggregate AUC, threshold,
+and TSS value from the stored OOF keys, labels, and per-seed scores; serialized
+metric fields are evidence to verify, not trusted inputs. Residual candidates
+may tune against other residual candidates within the `residual_mlp` family,
+but remain excluded from conventional-baseline competition.
 
 For the selected task, average OOF scores across the available common seeds.
 Threshold candidates are the two finite boundary values and every finite
-midpoint between adjacent distinct scores. A row is predicted positive iff
-`score >= threshold`. Maximise TSS (equivalently BA), sort the finite
+midpoint between adjacent distinct scores. When adjacent finite scores have no
+representable floating-point midpoint strictly between them, use the upper
+score as the candidate. A row is predicted positive iff `score >= threshold`.
+Maximise TSS (equivalently BA), sort the finite
 maximising candidates, and choose the lower-median order statistic
 `M[(len(M)-1)//2]`; never take their arithmetic median. Recompute TSS at the
 selected threshold and assert that it equals the maximum. Thresholding never
-uses outer rows.
+uses outer rows. This lower-median order statistic is Goal028's executable
+clarification of Goal027's loose word “median”; it does not change the
+scientific threshold policy.
 
 ## OuterVault and authorisation boundary
 
-The single private ingestion factory reads and partitions the full upstream
-response internally. Its public return contains only an outer-training
-`SplitBroker`, a `FeatureProvider` restricted to outer-training keys, and a
-sealed `OuterVault`; `SplitBroker` never accepts or retains the combined
-response. Any attempt to open, iterate, score, summarize, or expose real outer
+The single private ingestion factory digest-verifies the Goal024 canonical raw
+predictor map, Goal025 response partition, and tracked Goal026 feature
+contract/fit parameters; after partitioning responses, it reconstructs each
+split-specific transformed feature batch internally. Goal026 did not
+materialise duplicate transformed feature rows. There is no injected
+`private_inputs.features` or equivalent escape hatch. Its public return
+contains only an outer-training `SplitBroker`, a `FeatureProvider` retaining
+only outer-training keys and values, and a sealed `OuterVault` within which
+held response rows exist exclusively; `SplitBroker` never accepts or retains
+the combined response. Any attempt to open, iterate, score, summarize, or expose real outer
 rows increments `outer_attempted_open_count` and raises before returning data.
 Successful opens increment `outer_open_count`. Every private task row, tracked
 aggregate, semantic replay, and acceptance receipt records both counts. Real
@@ -189,13 +278,18 @@ The real preflight is restricted to:
 These ratios are **included-row positive fractions**, not ecological
 prevalence.
 
-For both species, build all three fractions and three ladder keys in every
-permitted split. Exercise the cheap intercept adapter over the complete 3×3
-fraction/ladder key path, aliasing the full endpoint. Exercise every adapter
-on representative `25%/ladder00` and `100%/full` endpoints with this reduced
-preflight registry:
+For both species, internally build the three ladder prefixes in every
+permitted split. Externally schedule only the six
+`fraction25|fraction50 × ladder00|ladder01|ladder02` identities and the single
+`fraction100/full` identity; the cheap intercept adapter exercises all seven
+canonical keys, with the internal `fraction100/ladder00` lookup never exposed
+as a task. Exercise every adapter on representative `fraction25/ladder00` and
+`fraction100/full` endpoints with this reduced preflight registry:
 
-`null00, enet03, enet07, gam02, rf03, hgb03, ann03, resmlp01, resmlp02`.
+`null00, enet03, enet07, gam01, rf03, hgb03, ann03, resmlp01, resmlp02`.
+The real-preflight GAM representative is intentionally `gam01` (6 splines,
+`lam=1`); `gam02` remains registered for synthetic family-plumbing coverage
+only.
 
 Use five inner folds, OOF prediction, candidate selection, thresholding,
 serialization, full-outer-training refit, and replay. Use `seed00`, with
@@ -204,6 +298,21 @@ peak resident memory, and warnings. The Mac mini CPU is canonical.
 Single-thread estimators plus between-task process parallelism are allowed.
 An MPS benchmark is optional and diagnostic only; it cannot gate acceptance.
 No remote job is authorised.
+
+Every serialized model binds the feature-schema/order digest as well as the
+transform, encoder, candidate, and model-payload digests. Neural full-refit
+epoch inputs are exactly five integers per seed and candidate from matching
+species/fraction/ladder/family provenance; they are never mixed across a
+selection stratum. Conventional refits require no epoch input.
+
+The frozen manifest supplies a separately trusted lowercase 64-character
+SHA-256 for every model file. Model loading and semantic replay require that
+external digest, verify the whole-file bytes first, parse and validate
+envelope version and identity before unpickling, and bind payload identity to
+feature schema/order, transform, encoder, candidate, fit seed, and runtime
+versions. Embedded or recomputed self-hashes are consistency checks only and
+are never authority. `replay_predictions` cannot run without the external
+manifest digest.
 
 ## Stop conditions
 

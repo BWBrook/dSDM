@@ -10,13 +10,21 @@ The executor-ready implementation sequence is
 2. Add the exact Goal028 configuration and typed contract validation.
 3. Add deterministic split-specific target subset construction and its
    invariant suite.
-4. Add the sealed outer boundary plus split and feature brokers.
+4. Add the sole digest-verified private ingestion factory, sealed outer
+   boundary, outer-training-only split broker, and feature provider that
+   reconstructs Goal026 split-specific features without injected feature
+   payloads.
 5. Add conventional and native-PyTorch adapters using the explicit candidate
    registry.
 6. Add neural stopping-fold epoch discovery and same-seed complete-training
-   replay, common OOF, candidate-specific OOF-threshold TSS tie-breaking,
-   lower-median threshold selection, full-training refit, serialization,
-   replay, and provenance machinery.
+   replay using a distinct endpoint and one fixed encoder per assessment fold;
+   common RowKey-aligned seed-averaged OOF; family-stratified selection;
+   candidate-specific OOF-threshold TSS tie-breaking; Goal027-consistent
+   lower-median threshold clarification; provenance-safe full-training refit;
+   complete initial-state-bound neural fold receipts; canonical
+   fraction100/full identity; externally manifest-digest-authorised,
+   feature-schema-bound serialization/replay; metric recomputation; and
+   adjacent-score threshold fallback.
 7. Add atomic private/aggregate publication and fail-closed validation.
 8. Pass synthetic end-to-end and tamper tests.
 9. Run the bounded two-species real preflight without opening the outer set.

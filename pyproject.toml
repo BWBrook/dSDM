@@ -2,8 +2,23 @@
 name = "dsdm-phase1-contracts"
 version = "0.0.0"
 description = "Minimal Phase 1 contract validators for the dSDM rebuild."
-requires-python = ">=3.11"
-dependencies = ["galah-python==0.13.3", "geopandas==1.1.4", "pyproj==3.7.2", "shapely==2.1.2", "rasterio==1.4.4"]
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "galah-python==0.13.3",
+  "geopandas==1.1.4",
+  "pyproj==3.7.2",
+  "shapely==2.1.2",
+  "rasterio==1.4.4",
+  "numpy>=2,<3",
+  "scipy>=1.15,<2",
+  "scikit-learn>=1.7,<2",
+  "pygam>=0.10,<0.11",
+  "pyarrow>=20,<22",
+  "torch>=2.7,<3",
+]
+
+[dependency-groups]
+dev = ["pytest>=8,<10"]
 
 [build-system]
 requires = ["setuptools>=68"]

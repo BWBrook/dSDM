@@ -1,0 +1,1162 @@
+{
+  "identity": {
+    "schema_version": "1.0",
+    "goal_id": "goal028-modeling-foundation-preflight-2026-07-30",
+    "protocol_version": "0.1",
+    "master_seed": "dsdm-goal028-v1",
+    "created_at": "2026-07-30"
+  },
+  "bindings": {
+    "required_roles": [
+      "goal021_plan",
+      "goal021_manifest",
+      "goal021_outputs",
+      "goal021_response",
+      "goal024_plan",
+      "goal024_manifest",
+      "goal024_review",
+      "goal024_outputs",
+      "goal024_support",
+      "goal024_map",
+      "goal024_response_cells",
+      "goal024_response",
+      "goal025_plan",
+      "goal025_manifest",
+      "goal025_review",
+      "goal025_outputs",
+      "goal025_assignments",
+      "goal025_response_partitioned",
+      "goal025_support",
+      "goal026_plan",
+      "goal026_manifest",
+      "goal026_review",
+      "goal026_feature_contract",
+      "goal026_fit_parameters",
+      "goal026_support",
+      "goal027_goal",
+      "goal027_decision",
+      "goal027_protocol",
+      "pyproject",
+      "uv_lock"
+    ],
+    "goal021_outputs": {
+      "path": "evidence/pseudoabsence_derivation/2026-07-26/outputs.json",
+      "sha256": "ecf0e6f46b3eec30c4edeff26d02f694be18cbc063268d9e1780f8cca7b5a3d9"
+    },
+    "goal021_response": {
+      "path": "data/processed/response/goal021-pseudoabsence-derivation/2026-07-26/response_layer.csv",
+      "sha256": "e67298d11d7eb29e6bf8ca055cd8b64cfaf119d193ff0675fff09719ce0616a3",
+      "private": true
+    },
+    "goal024_review": {
+      "path": "evidence/predictor_source_repair_domain_freeze/2026-07-26/review.json",
+      "sha256": "d4001628712baadfe4882c5327a61c62d285503477c90e2347218d3ea4e0e4db"
+    },
+    "goal024_outputs": {
+      "path": "evidence/predictor_source_repair_domain_freeze/2026-07-26/outputs.json",
+      "sha256": "254c058d563fd66dfbfe44f789ecf55494399df6dcef01c01812ba4b7d01ac2f"
+    },
+    "goal024_support": {
+      "path": "evidence/predictor_source_repair_domain_freeze/2026-07-26/support_contract.json",
+      "sha256": "f313dbaf4cf0bdf2048103c4f7677d9b0124df17b48b264cbcf87cb9223e4aaa"
+    },
+    "goal024_map": {
+      "path": "data/processed/predictors/goal024-predictor-source-repair-domain-freeze/2026-07-26/predictor_cell_map_canonical.csv",
+      "sha256": "c27b848bd4db81932553ac801029b8e66cf1a1ecd05271343ee2b4d0a3035cc5",
+      "private": true
+    },
+    "goal024_response_cells": {
+      "path": "data/processed/predictors/goal024-predictor-source-repair-domain-freeze/2026-07-26/predictor_response_cells_canonical.csv",
+      "sha256": "cf6bd574e3eaa7ed04b6ec6ddbbaa22935b5f03b3fe66bcbdfc4df5691361303",
+      "private": true
+    },
+    "goal024_response": {
+      "path": "data/processed/predictors/goal024-predictor-source-repair-domain-freeze/2026-07-26/response_layer_canonical.csv",
+      "sha256": "e6ee507e225ab024a56b8b505fe0e0402d7dac18c7ae34068c8b8141a21ede27",
+      "private": true
+    },
+    "goal025_review": {
+      "path": "evidence/spatial_partition/2026-07-26/review.json",
+      "sha256": "a05b1114414433ab8e6dbe086e6e536468982865e4a09d1782695eb41c0bee5c"
+    },
+    "goal025_assignments": {
+      "path": "data/processed/partitions/goal025-spatial-partition/2026-07-26/map_assignments.csv",
+      "sha256": "ee5a00731810cdd7eb3a9c764b0314c5a338dcdfa39a8cee1885bdd71f450ec0",
+      "private": true
+    },
+    "goal025_response_partitioned": {
+      "path": "data/processed/partitions/goal025-spatial-partition/2026-07-26/response_partitioned.csv",
+      "sha256": "b93fbdfa4df2b2d8617dd890cdb7fc4c3aa54ed10c72eed9c9ebc93df18edafc",
+      "private": true
+    },
+    "goal025_support": {
+      "path": "data/processed/partitions/goal025-spatial-partition/2026-07-26/support_diagnostics.json",
+      "sha256": "afcb952e603bf8d370845453f697cb93e2092d16d6aaded608af6920cd8a830a",
+      "private": true
+    },
+    "goal026_review": {
+      "path": "evidence/model_ready_features/2026-07-27/review.json",
+      "sha256": "e48575ff510adb9e844c62c02124890a41544b1a31d367fc35917428b685afdb"
+    },
+    "goal026_support": {
+      "path": "evidence/model_ready_features/2026-07-27/support_summary.json",
+      "sha256": "70b1e958b2d46bfbc7595937dc2ad60a570e246923a8e280107aafbf8e561617"
+    },
+    "goal021_plan": {
+      "path": "config/pseudoabsence_derivation_plan.json",
+      "sha256": "75cdc198815d3076af6ee3b6f25bed5ea4e90bf1433c7e9205f8692dfedd95fe"
+    },
+    "goal021_manifest": {
+      "path": "evidence/pseudoabsence_derivation/2026-07-26/manifest.json",
+      "sha256": "bf843690a6071f489b81fb5bdc348bab1c9f2001dfa37ad359ed7dc75d50f875"
+    },
+    "goal021_private_response": {
+      "path": "data/processed/response/goal021-pseudoabsence-derivation/2026-07-26/response_layer.csv",
+      "sha256": "e67298d11d7eb29e6bf8ca055cd8b64cfaf119d193ff0675fff09719ce0616a3",
+      "private": true
+    },
+    "goal024_plan": {
+      "path": "config/predictor_source_repair_domain_freeze_plan.json",
+      "sha256": "2debc3d01f93c4734d155af733360ac3b4c98eb0305f6034919947df72127c24"
+    },
+    "goal024_manifest": {
+      "path": "evidence/predictor_source_repair_domain_freeze/2026-07-26/manifest.json",
+      "sha256": "a610752079bd2d1e2be7f84829660bb327a349ad34a3e2844837094b2bef8daa"
+    },
+    "goal024_private_map": {
+      "path": "data/processed/predictors/goal024-predictor-source-repair-domain-freeze/2026-07-26/predictor_cell_map_canonical.csv",
+      "sha256": "c27b848bd4db81932553ac801029b8e66cf1a1ecd05271343ee2b4d0a3035cc5",
+      "private": true
+    },
+    "goal025_plan": {
+      "path": "config/spatial_partition_plan.json",
+      "sha256": "07ee7ffc88fc2a438ed96cc0bd3190c0b97bc087aed4fd09620a1a8ffa1586dd"
+    },
+    "goal025_manifest": {
+      "path": "evidence/spatial_partition/2026-07-26/manifest.json",
+      "sha256": "dfab4794756652669160708554a7ac901484e6f0cee94f1c34d15130913d679e"
+    },
+    "goal025_outputs": {
+      "path": "evidence/spatial_partition/2026-07-26/outputs.json",
+      "sha256": "5e72c009fc061d2c27b0ecef782e88189e3ac73127313139f2535add7ea4b3dd"
+    },
+    "goal026_plan": {
+      "path": "config/model_ready_feature_plan.json",
+      "sha256": "7375a6b0382a8d90956c2f58d48860cde4e61b06cc92f9c81f7676d9acb19821"
+    },
+    "goal026_feature_contract": {
+      "path": "evidence/model_ready_features/2026-07-27/feature_contract.json",
+      "sha256": "e9a8f9b7bee7dee25905dfa052427f6e0a4f1b5ebd6ed02fcfb1761bbd224d98"
+    },
+    "goal026_fit_parameters": {
+      "path": "evidence/model_ready_features/2026-07-27/fit_parameters.json",
+      "sha256": "608b99f94af49122bf9e252e35ae7c067812762d20ba080c3e7fbd40f35661d0",
+      "private": false
+    },
+    "goal026_manifest": {
+      "path": "evidence/model_ready_features/2026-07-27/manifest.json",
+      "sha256": "6d0855c168039be45d9e499bf7edfe1b8de25cae66fcd7c287330c3b7534dd18"
+    },
+    "goal027_goal": {
+      "path": "docs/goals/027-tasmanian-modelling-protocol/Goal.md",
+      "sha256": "9283f3e9059988cec2e7013ffa1052579be6ec129c8443e044cc51955ab417a4"
+    },
+    "goal027_decision": {
+      "path": "docs/goals/027-tasmanian-modelling-protocol/Decision.md",
+      "sha256": "c1049ee68aa240889f721b9f4d6e03f8ecc755647286fc87a8d47b9e424843b6"
+    },
+    "goal027_protocol": {
+      "path": "docs/plan/tasmanian_modelling_protocol.md",
+      "sha256": "6609f3ca4f5100c212db83b3f6bffbed49b6685baeac9ff8242f41c94d7875fb"
+    },
+    "pyproject": {
+      "path": "pyproject.toml",
+      "sha256": "29b7c2f9f810ac35357fa9b85189002d92a54a4933cf87746f57ae27cc0a8d08"
+    },
+    "uv_lock": {
+      "path": "uv.lock",
+      "sha256": "39c22925750ac8821f5420bdfe5ca39554b7906d812bd3a94a04e91c469284fd"
+    }
+  },
+  "estimand": {
+    "wording": "species-specific relative habitat-suitability index over D_struct, conditional on the accepted 2001-2025 response construction and modelling design",
+    "goal028_estimates_estimand": false
+  },
+  "response": {
+    "key_fields": [
+      "species_id",
+      "grid_cell_id"
+    ],
+    "binary_field": "pa",
+    "source_fields": [
+      "pa_type",
+      "response_origin",
+      "source_combination"
+    ],
+    "allowed_zero_sources": [
+      "survey_supported_absence",
+      "pseudoabsence"
+    ],
+    "presence_source": "presence",
+    "row_weight": 1,
+    "class_weight": null,
+    "resampling": false
+  },
+  "partitions": {
+    "outer_role_field": "partition",
+    "cv_fold_field": "cv_fold",
+    "outer_train_value": "outer_train",
+    "folds": [
+      "fold00",
+      "fold01",
+      "fold02",
+      "fold03",
+      "fold04"
+    ],
+    "transforms": [
+      "cv_fold00",
+      "cv_fold01",
+      "cv_fold02",
+      "cv_fold03",
+      "cv_fold04"
+    ],
+    "outer_vault": "sealed"
+  },
+  "subsets": {
+    "fractions": {
+      "fraction25": "(N+2)//4",
+      "fraction50": "(N+1)//2",
+      "fraction100": "N"
+    },
+    "ladders": [
+      "ladder00",
+      "ladder01",
+      "ladder02"
+    ],
+    "algorithm": "hierarchical_proportional_deficit_round_robin",
+    "tie_priority": "sha256(master_seed,ladder_id,source,microcluster,row)",
+    "full_alias": true
+  },
+  "features": {
+    "continuous": [
+      "annmeantemp",
+      "meandiurnrange",
+      "isothermality",
+      "tempseason",
+      "maxtempwarmmonth",
+      "mintempcoldmonth",
+      "tempannrange",
+      "meantempwetq",
+      "meantempdryq",
+      "meantempwarmq",
+      "meantempcoldq",
+      "annprecip",
+      "precipwetmonth",
+      "precipdrymonth",
+      "precipseason",
+      "precipwetq",
+      "precipdryq",
+      "precipwarmq",
+      "precipcoldq",
+      "elevation",
+      "top_roughness",
+      "dist_fw",
+      "dist_road",
+      "fpar",
+      "human_footprint"
+    ],
+    "categorical": [
+      "soil_class",
+      "veg_mvg",
+      "landuse_secondary"
+    ],
+    "continuous_source": "goal026_split_transform",
+    "categorical_fit_scope": "cv_training_rows",
+    "unknown_category": "all_zero_with_count",
+    "finite_required": true
+  },
+  "models": {
+    "families": [
+      "intercept",
+      "elastic_net",
+      "gam",
+      "random_forest",
+      "hist_gradient_boosting",
+      "shallow_ann",
+      "residual_mlp"
+    ],
+    "candidates": [
+      {
+        "family": "intercept",
+        "id": "null00",
+        "positive_fraction": "empirical_inner_training_clipped_1e-7"
+      },
+      {
+        "family": "elastic_net",
+        "id": "enet00",
+        "C": 0.01,
+        "l1_ratio": 0,
+        "solver": "saga",
+        "max_iter": 5000,
+        "tol": 1e-06
+      },
+      {
+        "family": "elastic_net",
+        "id": "enet01",
+        "C": 0.03,
+        "l1_ratio": 0,
+        "solver": "saga",
+        "max_iter": 5000,
+        "tol": 1e-06
+      },
+      {
+        "family": "elastic_net",
+        "id": "enet02",
+        "C": 0.1,
+        "l1_ratio": 0,
+        "solver": "saga",
+        "max_iter": 5000,
+        "tol": 1e-06
+      },
+      {
+        "family": "elastic_net",
+        "id": "enet03",
+        "C": 0.03,
+        "l1_ratio": 0.5,
+        "solver": "saga",
+        "max_iter": 5000,
+        "tol": 1e-06
+      },
+      {
+        "family": "elastic_net",
+        "id": "enet04",
+        "C": 0.1,
+        "l1_ratio": 0.5,
+        "solver": "saga",
+        "max_iter": 5000,
+        "tol": 1e-06
+      },
+      {
+        "family": "elastic_net",
+        "id": "enet05",
+        "C": 0.3,
+        "l1_ratio": 0.5,
+        "solver": "saga",
+        "max_iter": 5000,
+        "tol": 1e-06
+      },
+      {
+        "family": "elastic_net",
+        "id": "enet06",
+        "C": 0.03,
+        "l1_ratio": 1,
+        "solver": "saga",
+        "max_iter": 5000,
+        "tol": 1e-06
+      },
+      {
+        "family": "elastic_net",
+        "id": "enet07",
+        "C": 0.1,
+        "l1_ratio": 1,
+        "solver": "saga",
+        "max_iter": 5000,
+        "tol": 1e-06
+      },
+      {
+        "family": "elastic_net",
+        "id": "enet08",
+        "C": 0.3,
+        "l1_ratio": 1,
+        "solver": "saga",
+        "max_iter": 5000,
+        "tol": 1e-06
+      },
+      {
+        "family": "elastic_net",
+        "id": "enet09",
+        "C": 1,
+        "l1_ratio": 0.5,
+        "solver": "saga",
+        "max_iter": 5000,
+        "tol": 1e-06
+      },
+      {
+        "family": "gam",
+        "id": "gam00",
+        "n_splines": 6,
+        "lam": 0.1,
+        "max_iter": 500,
+        "tol": 1e-05
+      },
+      {
+        "family": "gam",
+        "id": "gam01",
+        "n_splines": 6,
+        "lam": 1,
+        "max_iter": 500,
+        "tol": 1e-05
+      },
+      {
+        "family": "gam",
+        "id": "gam02",
+        "n_splines": 8,
+        "lam": 1,
+        "max_iter": 500,
+        "tol": 1e-05
+      },
+      {
+        "family": "gam",
+        "id": "gam03",
+        "n_splines": 8,
+        "lam": 10,
+        "max_iter": 500,
+        "tol": 1e-05
+      },
+      {
+        "family": "gam",
+        "id": "gam04",
+        "n_splines": 12,
+        "lam": 10,
+        "max_iter": 500,
+        "tol": 1e-05
+      },
+      {
+        "family": "random_forest",
+        "id": "rf00",
+        "n_estimators": 500,
+        "bootstrap": true,
+        "max_features": "sqrt",
+        "min_samples_leaf": 1,
+        "max_depth": null
+      },
+      {
+        "family": "random_forest",
+        "id": "rf01",
+        "n_estimators": 500,
+        "bootstrap": true,
+        "max_features": "sqrt",
+        "min_samples_leaf": 3,
+        "max_depth": null
+      },
+      {
+        "family": "random_forest",
+        "id": "rf02",
+        "n_estimators": 500,
+        "bootstrap": true,
+        "max_features": "sqrt",
+        "min_samples_leaf": 10,
+        "max_depth": null
+      },
+      {
+        "family": "random_forest",
+        "id": "rf03",
+        "n_estimators": 500,
+        "bootstrap": true,
+        "max_features": 0.33,
+        "min_samples_leaf": 3,
+        "max_depth": null
+      },
+      {
+        "family": "random_forest",
+        "id": "rf04",
+        "n_estimators": 500,
+        "bootstrap": true,
+        "max_features": 0.33,
+        "min_samples_leaf": 10,
+        "max_depth": null
+      },
+      {
+        "family": "random_forest",
+        "id": "rf05",
+        "n_estimators": 500,
+        "bootstrap": true,
+        "max_features": 0.67,
+        "min_samples_leaf": 3,
+        "max_depth": 20
+      },
+      {
+        "family": "random_forest",
+        "id": "rf06",
+        "n_estimators": 500,
+        "bootstrap": true,
+        "max_features": 0.67,
+        "min_samples_leaf": 10,
+        "max_depth": 20
+      },
+      {
+        "family": "hist_gradient_boosting",
+        "id": "hgb00",
+        "max_iter": 300,
+        "early_stopping": false,
+        "learning_rate": 0.03,
+        "max_leaf_nodes": 15,
+        "min_samples_leaf": 20,
+        "l2_regularization": 0
+      },
+      {
+        "family": "hist_gradient_boosting",
+        "id": "hgb01",
+        "max_iter": 300,
+        "early_stopping": false,
+        "learning_rate": 0.03,
+        "max_leaf_nodes": 31,
+        "min_samples_leaf": 20,
+        "l2_regularization": 1
+      },
+      {
+        "family": "hist_gradient_boosting",
+        "id": "hgb02",
+        "max_iter": 300,
+        "early_stopping": false,
+        "learning_rate": 0.05,
+        "max_leaf_nodes": 15,
+        "min_samples_leaf": 20,
+        "l2_regularization": 1
+      },
+      {
+        "family": "hist_gradient_boosting",
+        "id": "hgb03",
+        "max_iter": 300,
+        "early_stopping": false,
+        "learning_rate": 0.05,
+        "max_leaf_nodes": 31,
+        "min_samples_leaf": 20,
+        "l2_regularization": 1
+      },
+      {
+        "family": "hist_gradient_boosting",
+        "id": "hgb04",
+        "max_iter": 300,
+        "early_stopping": false,
+        "learning_rate": 0.05,
+        "max_leaf_nodes": 31,
+        "min_samples_leaf": 50,
+        "l2_regularization": 1
+      },
+      {
+        "family": "hist_gradient_boosting",
+        "id": "hgb05",
+        "max_iter": 300,
+        "early_stopping": false,
+        "learning_rate": 0.1,
+        "max_leaf_nodes": 15,
+        "min_samples_leaf": 20,
+        "l2_regularization": 10
+      },
+      {
+        "family": "hist_gradient_boosting",
+        "id": "hgb06",
+        "max_iter": 300,
+        "early_stopping": false,
+        "learning_rate": 0.1,
+        "max_leaf_nodes": 31,
+        "min_samples_leaf": 50,
+        "l2_regularization": 10
+      },
+      {
+        "family": "shallow_ann",
+        "id": "ann00",
+        "width": 32,
+        "dropout": 0,
+        "weight_decay": 0,
+        "lr": 0.001,
+        "max_epochs": 300,
+        "patience": 30
+      },
+      {
+        "family": "shallow_ann",
+        "id": "ann01",
+        "width": 32,
+        "dropout": 0.1,
+        "weight_decay": 1e-05,
+        "lr": 0.001,
+        "max_epochs": 300,
+        "patience": 30
+      },
+      {
+        "family": "shallow_ann",
+        "id": "ann02",
+        "width": 64,
+        "dropout": 0.1,
+        "weight_decay": 1e-05,
+        "lr": 0.001,
+        "max_epochs": 300,
+        "patience": 30
+      },
+      {
+        "family": "shallow_ann",
+        "id": "ann03",
+        "width": 64,
+        "dropout": 0.2,
+        "weight_decay": 0.0001,
+        "lr": 0.001,
+        "max_epochs": 300,
+        "patience": 30
+      },
+      {
+        "family": "shallow_ann",
+        "id": "ann04",
+        "width": 128,
+        "dropout": 0.2,
+        "weight_decay": 0.0001,
+        "lr": 0.0005,
+        "max_epochs": 300,
+        "patience": 30
+      },
+      {
+        "family": "shallow_ann",
+        "id": "ann05",
+        "width": 128,
+        "dropout": 0.3,
+        "weight_decay": 0.001,
+        "lr": 0.0005,
+        "max_epochs": 300,
+        "patience": 30
+      },
+      {
+        "family": "residual_mlp",
+        "id": "resmlp00",
+        "blocks": 2,
+        "width": 64,
+        "bottleneck": 32,
+        "dropout": 0.1,
+        "weight_decay": 1e-05,
+        "lr": 0.001,
+        "activation": "GELU",
+        "norm": "LayerNorm",
+        "max_epochs": 300,
+        "patience": 30
+      },
+      {
+        "family": "residual_mlp",
+        "id": "resmlp01",
+        "blocks": 3,
+        "width": 128,
+        "bottleneck": 32,
+        "dropout": 0.2,
+        "weight_decay": 0.0001,
+        "lr": 0.0005,
+        "activation": "GELU",
+        "norm": "LayerNorm",
+        "max_epochs": 300,
+        "patience": 30
+      },
+      {
+        "family": "residual_mlp",
+        "id": "resmlp02",
+        "blocks": 4,
+        "width": 128,
+        "bottleneck": 64,
+        "dropout": 0.3,
+        "weight_decay": 0.001,
+        "lr": 0.0005,
+        "activation": "GELU",
+        "norm": "LayerNorm",
+        "max_epochs": 300,
+        "patience": 30
+      }
+    ],
+    "real_preflight_ids": [
+      "null00",
+      "enet03",
+      "enet07",
+      "gam01",
+      "rf03",
+      "hgb03",
+      "ann03",
+      "resmlp01",
+      "resmlp02"
+    ],
+    "candidate_parameters": {
+      "null00": {
+        "positive_fraction": "empirical_inner_training_clipped_1e-7"
+      },
+      "enet00": {
+        "solver": "saga",
+        "max_iter": 5000,
+        "tol": 1e-06,
+        "C": 0.01,
+        "l1_ratio": 0
+      },
+      "enet01": {
+        "solver": "saga",
+        "max_iter": 5000,
+        "tol": 1e-06,
+        "C": 0.03,
+        "l1_ratio": 0
+      },
+      "enet02": {
+        "solver": "saga",
+        "max_iter": 5000,
+        "tol": 1e-06,
+        "C": 0.1,
+        "l1_ratio": 0
+      },
+      "enet03": {
+        "solver": "saga",
+        "max_iter": 5000,
+        "tol": 1e-06,
+        "C": 0.03,
+        "l1_ratio": 0.5
+      },
+      "enet04": {
+        "solver": "saga",
+        "max_iter": 5000,
+        "tol": 1e-06,
+        "C": 0.1,
+        "l1_ratio": 0.5
+      },
+      "enet05": {
+        "solver": "saga",
+        "max_iter": 5000,
+        "tol": 1e-06,
+        "C": 0.3,
+        "l1_ratio": 0.5
+      },
+      "enet06": {
+        "solver": "saga",
+        "max_iter": 5000,
+        "tol": 1e-06,
+        "C": 0.03,
+        "l1_ratio": 1
+      },
+      "enet07": {
+        "solver": "saga",
+        "max_iter": 5000,
+        "tol": 1e-06,
+        "C": 0.1,
+        "l1_ratio": 1
+      },
+      "enet08": {
+        "solver": "saga",
+        "max_iter": 5000,
+        "tol": 1e-06,
+        "C": 0.3,
+        "l1_ratio": 1
+      },
+      "enet09": {
+        "solver": "saga",
+        "max_iter": 5000,
+        "tol": 1e-06,
+        "C": 1,
+        "l1_ratio": 0.5
+      },
+      "gam00": {
+        "max_iter": 500,
+        "tol": 1e-05,
+        "n_splines": 6,
+        "lam": 0.1
+      },
+      "gam01": {
+        "max_iter": 500,
+        "tol": 1e-05,
+        "n_splines": 6,
+        "lam": 1
+      },
+      "gam02": {
+        "max_iter": 500,
+        "tol": 1e-05,
+        "n_splines": 8,
+        "lam": 1
+      },
+      "gam03": {
+        "max_iter": 500,
+        "tol": 1e-05,
+        "n_splines": 8,
+        "lam": 10
+      },
+      "gam04": {
+        "max_iter": 500,
+        "tol": 1e-05,
+        "n_splines": 12,
+        "lam": 10
+      },
+      "rf00": {
+        "n_estimators": 500,
+        "bootstrap": true,
+        "max_features": "sqrt",
+        "min_samples_leaf": 1,
+        "max_depth": null
+      },
+      "rf01": {
+        "n_estimators": 500,
+        "bootstrap": true,
+        "max_features": "sqrt",
+        "min_samples_leaf": 3,
+        "max_depth": null
+      },
+      "rf02": {
+        "n_estimators": 500,
+        "bootstrap": true,
+        "max_features": "sqrt",
+        "min_samples_leaf": 10,
+        "max_depth": null
+      },
+      "rf03": {
+        "n_estimators": 500,
+        "bootstrap": true,
+        "max_features": 0.33,
+        "min_samples_leaf": 3,
+        "max_depth": null
+      },
+      "rf04": {
+        "n_estimators": 500,
+        "bootstrap": true,
+        "max_features": 0.33,
+        "min_samples_leaf": 10,
+        "max_depth": null
+      },
+      "rf05": {
+        "n_estimators": 500,
+        "bootstrap": true,
+        "max_features": 0.67,
+        "min_samples_leaf": 3,
+        "max_depth": 20
+      },
+      "rf06": {
+        "n_estimators": 500,
+        "bootstrap": true,
+        "max_features": 0.67,
+        "min_samples_leaf": 10,
+        "max_depth": 20
+      },
+      "hgb00": {
+        "max_iter": 300,
+        "early_stopping": false,
+        "learning_rate": 0.03,
+        "max_leaf_nodes": 15,
+        "min_samples_leaf": 20,
+        "l2_regularization": 0
+      },
+      "hgb01": {
+        "max_iter": 300,
+        "early_stopping": false,
+        "learning_rate": 0.03,
+        "max_leaf_nodes": 31,
+        "min_samples_leaf": 20,
+        "l2_regularization": 1
+      },
+      "hgb02": {
+        "max_iter": 300,
+        "early_stopping": false,
+        "learning_rate": 0.05,
+        "max_leaf_nodes": 15,
+        "min_samples_leaf": 20,
+        "l2_regularization": 1
+      },
+      "hgb03": {
+        "max_iter": 300,
+        "early_stopping": false,
+        "learning_rate": 0.05,
+        "max_leaf_nodes": 31,
+        "min_samples_leaf": 20,
+        "l2_regularization": 1
+      },
+      "hgb04": {
+        "max_iter": 300,
+        "early_stopping": false,
+        "learning_rate": 0.05,
+        "max_leaf_nodes": 31,
+        "min_samples_leaf": 50,
+        "l2_regularization": 1
+      },
+      "hgb05": {
+        "max_iter": 300,
+        "early_stopping": false,
+        "learning_rate": 0.1,
+        "max_leaf_nodes": 15,
+        "min_samples_leaf": 20,
+        "l2_regularization": 10
+      },
+      "hgb06": {
+        "max_iter": 300,
+        "early_stopping": false,
+        "learning_rate": 0.1,
+        "max_leaf_nodes": 31,
+        "min_samples_leaf": 50,
+        "l2_regularization": 10
+      },
+      "ann00": {
+        "width": 32,
+        "dropout": 0,
+        "weight_decay": 0,
+        "lr": 0.001,
+        "max_epochs": 300,
+        "patience": 30
+      },
+      "ann01": {
+        "width": 32,
+        "dropout": 0.1,
+        "weight_decay": 1e-05,
+        "lr": 0.001,
+        "max_epochs": 300,
+        "patience": 30
+      },
+      "ann02": {
+        "width": 64,
+        "dropout": 0.1,
+        "weight_decay": 1e-05,
+        "lr": 0.001,
+        "max_epochs": 300,
+        "patience": 30
+      },
+      "ann03": {
+        "width": 64,
+        "dropout": 0.2,
+        "weight_decay": 0.0001,
+        "lr": 0.001,
+        "max_epochs": 300,
+        "patience": 30
+      },
+      "ann04": {
+        "width": 128,
+        "dropout": 0.2,
+        "weight_decay": 0.0001,
+        "lr": 0.0005,
+        "max_epochs": 300,
+        "patience": 30
+      },
+      "ann05": {
+        "width": 128,
+        "dropout": 0.3,
+        "weight_decay": 0.001,
+        "lr": 0.0005,
+        "max_epochs": 300,
+        "patience": 30
+      },
+      "resmlp00": {
+        "blocks": 2,
+        "width": 64,
+        "bottleneck": 32,
+        "dropout": 0.1,
+        "weight_decay": 1e-05,
+        "lr": 0.001,
+        "activation": "GELU",
+        "norm": "LayerNorm",
+        "max_epochs": 300,
+        "patience": 30
+      },
+      "resmlp01": {
+        "blocks": 3,
+        "width": 128,
+        "bottleneck": 32,
+        "dropout": 0.2,
+        "weight_decay": 0.0001,
+        "lr": 0.0005,
+        "activation": "GELU",
+        "norm": "LayerNorm",
+        "max_epochs": 300,
+        "patience": 30
+      },
+      "resmlp02": {
+        "blocks": 4,
+        "width": 128,
+        "bottleneck": 64,
+        "dropout": 0.3,
+        "weight_decay": 0.001,
+        "lr": 0.0005,
+        "activation": "GELU",
+        "norm": "LayerNorm",
+        "max_epochs": 300,
+        "patience": 30
+      }
+    },
+    "gam_defaults": {
+      "spline_order": 3,
+      "lambda_application": "every_continuous_spline_and_categorical_linear_term",
+      "continuous_term": "cubic",
+      "categorical_term": "linear",
+      "max_iter": 500,
+      "tol": 1e-05
+    }
+  },
+  "neural": {
+    "backend": "torch",
+    "device": "cpu",
+    "deterministic_algorithms": true,
+    "threads": 1,
+    "loss": "BCEWithLogitsLoss",
+    "stopping_fold": "(assessment_fold+1) mod 5",
+    "same_seed_reinitialisation": true,
+    "exact_epoch_replay": true,
+    "full_refit_epoch": "lower_median",
+    "max_epochs": 300,
+    "patience": 30,
+    "status": [
+      "patience_stop",
+      "max_epochs_reached"
+    ],
+    "score_atol": 1e-06,
+    "parameter_atol": 1e-06,
+    "batch_size": 128,
+    "effective_batch_size_min": 1,
+    "retain_partial_batch": true,
+    "row_order": "canonical_RowKey_sort",
+    "minibatch_order": "seeded_cpu_randperm_per_epoch",
+    "dtype": "float32",
+    "returned_score_dtype": "float64",
+    "returned_metric_dtype": "float64",
+    "optimizer": {
+      "name": "AdamW",
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "amsgrad": false,
+      "foreach": false,
+      "fused": false
+    },
+    "scheduler": null,
+    "gradient_clipping": false,
+    "initialization": {
+      "linear": "xavier_uniform_gain_1_zero_bias",
+      "layer_norm": "ones_zero_bias"
+    },
+    "residual_topology": "pre_norm",
+    "epoch_range": [
+      1,
+      300
+    ],
+    "stopping_evaluation": "full_batch_loss",
+    "min_delta": 0.0,
+    "patience_semantics": "strict_loss_improvement_earliest_tie",
+    "selection_seed": "seed00",
+    "diagnostic_seed": "seed01_only",
+    "encoder_fit_scope": "complete_E_v",
+    "auc_aggregation": "key_aligned_seed_averaged_scores_equal_fold_mean"
+  },
+  "selection": {
+    "primary": "mean_fold_roc_auc",
+    "tie_break": [
+      "mean_fold_tss_at_oof_threshold",
+      "canonical_candidate_id"
+    ],
+    "oof_threshold": "concatenated_common_seed_average",
+    "equal_fold_weight": true
+  },
+  "threshold": {
+    "scores": "seed_averaged_oof",
+    "candidates": "finite_boundaries_and_adjacent_midpoints",
+    "positive_when": "score>=threshold",
+    "objective": "TSS",
+    "maximise": true,
+    "tie_rule": "sorted_lower_median",
+    "replay_maximum": true
+  },
+  "replication": {
+    "seed_labels": [
+      "seed00",
+      "seed01",
+      "seed02",
+      "seed03",
+      "seed04"
+    ],
+    "real_preflight_labels": [
+      "seed00"
+    ],
+    "canonical_tuple": [
+      "master_seed",
+      "species_id",
+      "transform_id",
+      "fraction_id",
+      "ladder_id",
+      "model_family",
+      "candidate_id",
+      "seed_label",
+      "purpose"
+    ],
+    "hash": "sha256_first_four_bytes_big_endian",
+    "separator": "\\x1f"
+  },
+  "artifacts": {
+    "private_destination": "data/processed/modeling/goal028-modeling-foundation-preflight",
+    "aggregate_destination": "evidence/modeling_foundation_preflight",
+    "private_outputs_ignored": true,
+    "forbidden_tracked_fields": [
+      "grid_cell_id",
+      "coordinates",
+      "row_payloads",
+      "private_paths",
+      "site_ids",
+      "camera_ids",
+      "observation_timing"
+    ],
+    "atomic_publication": true,
+    "private_schemas": {
+      "tasks": "private task provenance rows",
+      "oof": "task_id,row_index,y_true,score",
+      "subsets": "task_id,row_key,rank",
+      "run": "run metadata",
+      "models": "serialized fitted envelope"
+    },
+    "aggregate_schemas": {
+      "bindings": "role,digest,status",
+      "contract": "aggregate contract and privacy flags",
+      "preflight_summary": "counts,ranges,status,outer counts",
+      "runtime_summary": "runtime,memory,warnings,versions",
+      "review": "review status and checks",
+      "manifest": "complete staged pair digests"
+    },
+    "manifest_names": [
+      "run.json",
+      "tasks.parquet",
+      "oof.parquet",
+      "subsets.parquet",
+      "models/<task_id>.model",
+      "bindings.json",
+      "contract.json",
+      "preflight_summary.json",
+      "runtime_summary.json",
+      "review.json",
+      "manifest.json"
+    ],
+    "staging_directory": ".staging",
+    "rollback_on_failure": true,
+    "publication_pair": "private_plus_aggregate"
+  },
+  "compute": {
+    "platform": "Mac mini CPU",
+    "estimator_threads": 1,
+    "process_workers": 2,
+    "peak_rss_budget_bytes": 12884901888,
+    "task_wall_budget_seconds": 1200,
+    "mps_gating": false
+  },
+  "scope": {
+    "real_species": [
+      "sarcophilus_harrisii",
+      "pseudocheirus_peregrinus"
+    ],
+    "included_row_counts": {
+      "sarcophilus_harrisii": {
+        "positive": 3460,
+        "included": 3573
+      },
+      "pseudocheirus_peregrinus": {
+        "positive": 366,
+        "included": 1083
+      }
+    },
+    "permitted_endpoints": [
+      "fraction25/ladder00",
+      "fraction25/ladder01",
+      "fraction25/ladder02",
+      "fraction50/ladder00",
+      "fraction50/ladder01",
+      "fraction50/ladder02",
+      "fraction100/full"
+    ],
+    "real_outer_attempted_open_limit": 0,
+    "real_outer_open_limit": 0,
+    "non_goals": [
+      "real outer prediction or scoring",
+      "q surfaces",
+      "pooled or transfer models",
+      "maps",
+      "headline model selection",
+      "remote compute"
+    ]
+  }
+}
