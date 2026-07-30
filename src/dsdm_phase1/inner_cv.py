@@ -69,6 +69,7 @@ class CandidateOOF:
     mean_fold_tss_at_oof_threshold: float
     neural_epochs_by_seed: Mapping[str, FoldEpochs]
     neural_receipts: Mapping[str, tuple[NeuralFoldReceipt, ...]] = field(default_factory=dict)
+    fit_reports_by_seed: Mapping[str, tuple[FitReport, ...]] = field(default_factory=dict)
 
 
 @dataclass(frozen=True)
@@ -86,7 +87,19 @@ def _rowset_for_keys(rows: RowSet, keys: Sequence[RowKey]) -> RowSet:
 
 
 def _validate_stratum(s: SelectionStratum) -> None:
-    if not isinstance(s, SelectionStratum) or not s.species_id or not s.fraction_id or not s.ladder_id or not s.model_family or tuple(s.ordered_selection_seeds) != ("seed00",):
+    canonical_seeds = tuple(f"seed{i:02d}" for i in range(5))
+    selected_seeds = tuple(s.ordered_selection_seeds) if isinstance(s, SelectionStratum) else ()
+    if (
+        not isinstance(s, SelectionStratum)
+        or not s.species_id
+        or not s.fraction_id
+        or not s.ladder_id
+        or not s.model_family
+        or not selected_seeds
+        or len(set(selected_seeds)) != len(selected_seeds)
+        or any(seed not in canonical_seeds for seed in selected_seeds)
+        or selected_seeds != tuple(seed for seed in canonical_seeds if seed in selected_seeds)
+    ):
         raise InnerCVError("selection_stratum_invalid")
     if s.fraction_id in {"fraction25", "fraction50"} and s.ladder_id not in {"ladder00", "ladder01", "ladder02"}:
         raise InnerCVError("selection_stratum_endpoint_invalid")
@@ -94,7 +107,6 @@ def _validate_stratum(s: SelectionStratum) -> None:
         raise InnerCVError("selection_stratum_endpoint_invalid")
     if s.fraction_id not in {"fraction25", "fraction50", "fraction100"}:
         raise InnerCVError("selection_stratum_endpoint_invalid")
-    if len(set(s.ordered_selection_seeds)) != len(s.ordered_selection_seeds): raise InnerCVError("selection_seed_duplicate")
 
 
 def _canonical_endpoint(endpoints: Mapping[tuple[str, str], SubsetEndpoint], fraction_id: str, ladder_id: str) -> SubsetEndpoint:
@@ -157,7 +169,7 @@ def run_candidate_oof(stratum: SelectionStratum, folds: Sequence[str], endpoints
     if candidate.get("family") != stratum.model_family or getattr(adapter, "family", None) != stratum.model_family: raise InnerCVError("candidate_family_stratum_mismatch")
     try: validate_candidate(stratum.model_family, candidate)
     except ModelAdapterError as exc: raise InnerCVError("candidate_not_canonical") from exc
-    fold_results: list[FoldOOF] = []; epoch_records: dict[str, FoldEpochs] = {}; receipt_records: dict[str, list[NeuralFoldReceipt]] = {}
+    fold_results: list[FoldOOF] = []; epoch_records: dict[str, FoldEpochs] = {}; receipt_records: dict[str, list[NeuralFoldReceipt]] = {}; fit_reports: dict[str, list[FitReport]] = {}
     for fold in folds:
         cv_train, assessment = broker.inner(stratum.species_id, fold)
         endpoint = endpoints_by_fold[fold]
@@ -193,9 +205,11 @@ def run_candidate_oof(stratum: SelectionStratum, folds: Sequence[str], endpoints
                 if replay_report.stopping_fold is not None or replay_report.iterations != int(report.best_epoch) or discovery_initial is None or replay_report.initial_state_digest is None or discovery_initial != replay_report.initial_state_digest:
                     raise InnerCVError("neural_replay_receipt_mismatch")
                 receipt_records.setdefault(seed_label, []).append(NeuralFoldReceipt(task, stop_fold, int(report.best_epoch), report, replay_report, discovery_initial, replay_report.initial_state_digest))
+                fit_reports.setdefault(seed_label, []).extend((report, replay_report))
                 scores_by_seed[seed_label] = replay.predict_scores(assessment_batch)
             else:
-                fitted, _ = adapter.fit(full_batch, None, candidate, seed)
+                fitted, report = adapter.fit(full_batch, None, candidate, seed)
+                fit_reports.setdefault(seed_label, []).append(report)
                 scores_by_seed[seed_label] = fitted.predict_scores(assessment_batch)
         mean_score = np.mean(np.vstack([scores_by_seed[s] for s in stratum.ordered_selection_seeds]), axis=0)
         if not np.isfinite(mean_score).all() or len(mean_score) != len(assessment.keys): raise InnerCVError("oof_score_invalid")
@@ -220,7 +234,17 @@ def run_candidate_oof(stratum: SelectionStratum, folds: Sequence[str], endpoints
     all_y = np.concatenate([f.y_true for f in fold_results]); all_scores = [np.concatenate([f.scores_by_seed[s] for f in fold_results]) for s in stratum.ordered_selection_seeds]
     threshold_result = select_threshold(all_y, all_scores)
     final_folds = tuple(FoldOOF(f.fold_id, f.keys, f.y_true, f.scores_by_seed, f.mean_score, f.roc_auc, _tss(f.y_true, f.mean_score, threshold_result.threshold)) for f in fold_results)
-    return CandidateOOF(stratum, str(candidate["id"]), final_folds, threshold_result.threshold, float(np.mean([f.roc_auc for f in final_folds])), float(np.mean([f.tss_at_oof_threshold for f in final_folds])), epoch_records, {k: tuple(v) for k, v in receipt_records.items()})
+    return CandidateOOF(
+        stratum,
+        str(candidate["id"]),
+        final_folds,
+        threshold_result.threshold,
+        float(np.mean([f.roc_auc for f in final_folds])),
+        float(np.mean([f.tss_at_oof_threshold for f in final_folds])),
+        epoch_records,
+        {k: tuple(v) for k, v in receipt_records.items()},
+        {k: tuple(v) for k, v in fit_reports.items()},
+    )
 
 
 def select_candidate(results: Sequence[CandidateOOF]) -> CandidateOOF:
@@ -269,7 +293,8 @@ def select_candidate(results: Sequence[CandidateOOF]) -> CandidateOOF:
 
 
 def refit_outer_training(task: TaskKey, endpoint: SubsetEndpoint, candidate: Mapping[str, Any], broker: SplitBroker, provider: FeatureProvider, adapter: ModelAdapter, fold_epochs: FoldEpochs | None) -> tuple[FittedAdapter, FitReport]:
-    if task.transform_id != "outer" or task.seed_label != "seed00" or adapter.family != task.model_family: raise InnerCVError("outer_task_binding_mismatch")
+    canonical_seeds = tuple(f"seed{i:02d}" for i in range(5))
+    if task.transform_id != "outer" or task.seed_label not in canonical_seeds or adapter.family != task.model_family: raise InnerCVError("outer_task_binding_mismatch")
     if not isinstance(endpoint, SubsetEndpoint): raise InnerCVError("outer_endpoint_invalid")
     canonical = CANONICAL_CANDIDATES.get(task.candidate_id)
     if canonical is None or canonical.get("family") != task.model_family or dict(candidate) != canonical: raise InnerCVError("outer_candidate_binding_mismatch")
@@ -286,10 +311,10 @@ def refit_outer_training(task: TaskKey, endpoint: SubsetEndpoint, candidate: Map
     encoder = provider.fit_encoder(endpoint_rows, task.model_family, "outer")
     batch = provider.materialize(endpoint_rows, "outer", encoder)
     if task.model_family in {"shallow_ann", "residual_mlp"}:
-        if fold_epochs is None or fold_epochs.stratum.species_id != task.species_id or fold_epochs.stratum.fraction_id != task.fraction_id or fold_epochs.stratum.ladder_id != task.ladder_id or fold_epochs.stratum.model_family != task.model_family or fold_epochs.stratum.ordered_selection_seeds != ("seed00",) or fold_epochs.candidate_id != task.candidate_id or fold_epochs.seed_label != task.seed_label or len(fold_epochs.best_epochs_by_fold) != 5 or any(type(v) is not int or v < 1 or v > 300 for v in fold_epochs.best_epochs_by_fold) or len(fold_epochs.receipts) != 5:
+        if fold_epochs is None or fold_epochs.stratum.species_id != task.species_id or fold_epochs.stratum.fraction_id != task.fraction_id or fold_epochs.stratum.ladder_id != task.ladder_id or fold_epochs.stratum.model_family != task.model_family or fold_epochs.stratum.ordered_selection_seeds != (task.seed_label,) or fold_epochs.candidate_id != task.candidate_id or fold_epochs.seed_label != task.seed_label or len(fold_epochs.best_epochs_by_fold) != 5 or any(type(v) is not int or v < 1 or v > 300 for v in fold_epochs.best_epochs_by_fold) or len(fold_epochs.receipts) != 5:
             raise InnerCVError("fold_epoch_provenance_mismatch")
         for index, receipt in enumerate(fold_epochs.receipts):
-            if receipt.task.species_id != task.species_id or receipt.task.fraction_id != task.fraction_id or receipt.task.ladder_id != task.ladder_id or receipt.task.model_family != task.model_family or receipt.task.candidate_id != task.candidate_id or receipt.task.seed_label != "seed00" or receipt.task.transform_id != f"cv_fold{index:02d}" or receipt.stopping_fold != f"fold{(index + 1) % 5:02d}" or receipt.best_epoch != fold_epochs.best_epochs_by_fold[index] or receipt.discovery_initial_state_digest != receipt.replay_initial_state_digest:
+            if receipt.task.species_id != task.species_id or receipt.task.fraction_id != task.fraction_id or receipt.task.ladder_id != task.ladder_id or receipt.task.model_family != task.model_family or receipt.task.candidate_id != task.candidate_id or receipt.task.seed_label != task.seed_label or receipt.task.transform_id != f"cv_fold{index:02d}" or receipt.stopping_fold != f"fold{(index + 1) % 5:02d}" or receipt.best_epoch != fold_epochs.best_epochs_by_fold[index] or receipt.discovery_initial_state_digest != receipt.replay_initial_state_digest:
                 raise InnerCVError("fold_epoch_receipt_mismatch")
         epochs = sorted(fold_epochs.best_epochs_by_fold)[2]
         return adapter.fit(batch, None, candidate, derive_seed(task, "fit"), exact_epochs=epochs)

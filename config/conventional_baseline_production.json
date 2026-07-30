@@ -1,0 +1,448 @@
+{
+  "identity": {
+    "schema_version": "1.0",
+    "goal_id": "goal029-conventional-baseline-production-2026-07-30",
+    "protocol_version": "0.1",
+    "master_seed": "dsdm-goal028-v1",
+    "created_at": "2026-07-30"
+  },
+  "bindings": {
+    "goal027_decision": {
+      "path": "docs/goals/027-tasmanian-modelling-protocol/Decision.md",
+      "sha256": "c1049ee68aa240889f721b9f4d6e03f8ecc755647286fc87a8d47b9e424843b6"
+    },
+    "goal027_protocol": {
+      "path": "docs/plan/tasmanian_modelling_protocol.md",
+      "sha256": "6609f3ca4f5100c212db83b3f6bffbed49b6685baeac9ff8242f41c94d7875fb"
+    },
+    "goal028_config": {
+      "path": "config/modeling_foundation_preflight.json",
+      "sha256": "35b6ab72ba2b8ba2267dc82179987bfffaa3f339d64272d68012444e46285f00"
+    },
+    "goal028_goal": {
+      "path": "docs/goals/028-modeling-foundation-preflight/Goal.md",
+      "sha256": "5db40ae2637cbd3c1ec9b1466e2df1463b48f6e3f8a3364fdbaa1c11015a59a3"
+    },
+    "goal028_decision": {
+      "path": "docs/goals/028-modeling-foundation-preflight/Decision.md",
+      "sha256": "3eb6e0fbe2ee7eb1db08e75c8b99f7d1fd9760cdbebacd88bbba8ebc1889a50c"
+    },
+    "pyproject": {
+      "path": "pyproject.toml",
+      "sha256": "29b7c2f9f810ac35357fa9b85189002d92a54a4933cf87746f57ae27cc0a8d08"
+    },
+    "uv_lock": {
+      "path": "uv.lock",
+      "sha256": "39c22925750ac8821f5420bdfe5ca39554b7906d812bd3a94a04e91c469284fd"
+    }
+  },
+  "scope": {
+    "species": [
+      "thylogale_billardierii",
+      "notamacropus_rufogriseus",
+      "trichosurus_vulpecula",
+      "pseudocheirus_peregrinus",
+      "vombatus_ursinus",
+      "sarcophilus_harrisii",
+      "dasyurus_maculatus",
+      "dasyurus_viverrinus"
+    ],
+    "excluded_species": [
+      "macropus_giganteus"
+    ],
+    "complete_response_rows": 12711,
+    "outer_training_rows": 11039,
+    "predictor_count": 28,
+    "response_sources": [
+      "presence",
+      "survey_supported_absence",
+      "pseudoabsence"
+    ],
+    "row_weight": 1,
+    "balancing": false,
+    "resampling": false,
+    "imputation": false,
+    "response_driven_feature_selection": false,
+    "real_outer_attempted_open_limit": 0,
+    "real_outer_open_limit": 0
+  },
+  "partitions": {
+    "folds": [
+      "fold00",
+      "fold01",
+      "fold02",
+      "fold03",
+      "fold04"
+    ],
+    "endpoints": [
+      "fraction25/ladder00",
+      "fraction25/ladder01",
+      "fraction25/ladder02",
+      "fraction50/ladder00",
+      "fraction50/ladder01",
+      "fraction50/ladder02",
+      "fraction100/full"
+    ],
+    "outer_vault": "sealed",
+    "subset_membership_storage": "once_per_species_endpoint_split"
+  },
+  "models": {
+    "registry_authority": "config/modeling_foundation_preflight.json",
+    "families": [
+      "intercept",
+      "elastic_net",
+      "gam",
+      "random_forest",
+      "hist_gradient_boosting",
+      "shallow_ann"
+    ],
+    "candidate_ids": {
+      "intercept": [
+        "null00"
+      ],
+      "elastic_net": [
+        "enet00",
+        "enet01",
+        "enet02",
+        "enet03",
+        "enet04",
+        "enet05",
+        "enet06",
+        "enet07",
+        "enet08",
+        "enet09"
+      ],
+      "gam": [
+        "gam00",
+        "gam01",
+        "gam02",
+        "gam03",
+        "gam04"
+      ],
+      "random_forest": [
+        "rf00",
+        "rf01",
+        "rf02",
+        "rf03",
+        "rf04",
+        "rf05",
+        "rf06"
+      ],
+      "hist_gradient_boosting": [
+        "hgb00",
+        "hgb01",
+        "hgb02",
+        "hgb03",
+        "hgb04",
+        "hgb05",
+        "hgb06"
+      ],
+      "shallow_ann": [
+        "ann00",
+        "ann01",
+        "ann02",
+        "ann03",
+        "ann04",
+        "ann05"
+      ]
+    },
+    "seed_labels_by_family": {
+      "intercept": [
+        "seed00"
+      ],
+      "elastic_net": [
+        "seed00",
+        "seed01",
+        "seed02",
+        "seed03",
+        "seed04"
+      ],
+      "gam": [
+        "seed00"
+      ],
+      "random_forest": [
+        "seed00",
+        "seed01",
+        "seed02",
+        "seed03",
+        "seed04"
+      ],
+      "hist_gradient_boosting": [
+        "seed00"
+      ],
+      "shallow_ann": [
+        "seed00",
+        "seed01",
+        "seed02",
+        "seed03",
+        "seed04"
+      ]
+    },
+    "planned_counts": {
+      "species_endpoint_strata": 56,
+      "family_strata": 336,
+      "candidate_strata": 2016,
+      "candidate_seed_leaves": 7168,
+      "oof_producing_fold_units": 35840,
+      "actual_inner_estimator_fits": 44240,
+      "selected_refits_maximum": 1008
+    },
+    "excluded": [
+      "residual_mlp",
+      "q_surfaces",
+      "pooled_or_transfer",
+      "multi_head"
+    ]
+  },
+  "failure_policy": {
+    "mandatory_null": "null00",
+    "anchors": {
+      "elastic_net": "enet00",
+      "gam": "gam01",
+      "random_forest": "rf02",
+      "hist_gradient_boosting": "hgb04",
+      "shallow_ann": "ann01"
+    },
+    "minimum_complete_valid_candidates_by_family": {
+      "intercept": 1,
+      "elastic_net": 2,
+      "gam": 2,
+      "random_forest": 2,
+      "hist_gradient_boosting": 2,
+      "shallow_ann": 2
+    },
+    "candidate_hard_failure_scope": "species_endpoint_family_candidate",
+    "partial_fold_or_seed_scoring": false,
+    "tolerance_or_budget_relaxation": false,
+    "selected_refit_fallback": false,
+    "failed_candidate_public_receipt": "blinded_failure_only",
+    "unknown_warning": "hard_stop",
+    "allowed_informational_warning_substrings": [
+      "Bitwise inversion '~' on bool is deprecated"
+    ],
+    "allowed_soft_warning_codes": [
+      "max_epochs_reached"
+    ]
+  },
+  "execution": {
+    "canonical_host_policy": "one_host_per_run",
+    "per_estimator_threads": 1,
+    "worker_ladder": [
+      1,
+      2,
+      4
+    ],
+    "minimum_free_memory_bytes": 6442450944,
+    "swap_growth_allowed": false,
+    "runtime_source_glob": "src/dsdm_phase1/*.py",
+    "runtime_critical_paths": [
+      "config/conventional_baseline_production.json",
+      "pyproject.toml",
+      "uv.lock"
+    ],
+    "canonical_order": "species_endpoint_family_candidate_seed",
+    "production_requires_completed_calibration": true
+  },
+  "checkpoints": {
+    "unit": "candidate_seed_five_fold_leaf",
+    "content_addressed": true,
+    "write_protocol": [
+      "temporary_sibling",
+      "validate",
+      "fsync_files",
+      "fsync_directory",
+      "atomic_rename",
+      "fsync_parent"
+    ],
+    "identity_fields": [
+      "execution_source_tree_digest",
+      "config_digest",
+      "uv_lock_digest",
+      "runtime_fingerprint",
+      "upstream_binding_digest",
+      "leaf_task",
+      "split_membership_digests",
+      "fold_encoder_digests"
+    ],
+    "reject": [
+      "stale",
+      "tampered",
+      "mixed_host",
+      "mixed_source_tree",
+      "mixed_runtime"
+    ]
+  },
+  "hardening": {
+    "challenge_rows_maximum": 32,
+    "challenge_source": "deterministic_observed_training_feature_support_only",
+    "challenge_row_count": "min(32,n_unique_eligible)",
+    "challenge_canonical_order": "lexicographic_float64_big_endian_bytes",
+    "challenge_for_every_selected_model": true,
+    "challenge_contains_row_ids": false,
+    "challenge_contains_response": false,
+    "selected_bundle_content_addressed": true,
+    "selected_bundle_identity": [
+      "selected_task",
+      "model_sha256",
+      "challenge_digest",
+      "canonical_prediction_bytes_sha256",
+      "feature_schema_digest",
+      "transform_digest",
+      "encoder_digest",
+      "execution_context_digest",
+      "model_envelope_identity_digest",
+      "model_runtime_versions_digest",
+      "model_candidate_digest",
+      "fit_seed_uint32"
+    ],
+    "paired_transaction": true,
+    "publication_graph": [
+      "private_core_manifest",
+      "tracked_core_manifest",
+      "pair_descriptor_with_both_core_digests_and_transaction_id",
+      "final_acceptance_marker_with_pair_descriptor_digest"
+    ],
+    "final_marker_published_last": true,
+    "consumer_rejects_unmarked_or_partial_pair": true
+  },
+  "calibration": {
+    "leaf_count": 30,
+    "coverage": [
+      "all_species",
+      "all_endpoints",
+      "all_families",
+      "light_and_heavy_candidates",
+      "all_seed_labels"
+    ],
+    "leaves": [
+      ["thylogale_billardierii", "fraction25", "ladder00", "intercept", "null00", "seed00"],
+      ["thylogale_billardierii", "fraction100", "full", "elastic_net", "enet00", "seed00"],
+      ["notamacropus_rufogriseus", "fraction25", "ladder00", "elastic_net", "enet09", "seed04"],
+      ["trichosurus_vulpecula", "fraction25", "ladder01", "gam", "gam00", "seed00"],
+      ["pseudocheirus_peregrinus", "fraction100", "full", "gam", "gam04", "seed00"],
+      ["vombatus_ursinus", "fraction25", "ladder02", "random_forest", "rf00", "seed00"],
+      ["sarcophilus_harrisii", "fraction100", "full", "random_forest", "rf06", "seed04"],
+      ["dasyurus_maculatus", "fraction50", "ladder00", "hist_gradient_boosting", "hgb00", "seed00"],
+      ["dasyurus_viverrinus", "fraction100", "full", "hist_gradient_boosting", "hgb06", "seed00"],
+      ["thylogale_billardierii", "fraction50", "ladder01", "shallow_ann", "ann00", "seed00"],
+      ["notamacropus_rufogriseus", "fraction100", "full", "shallow_ann", "ann05", "seed04"],
+      ["trichosurus_vulpecula", "fraction25", "ladder00", "elastic_net", "enet00", "seed01"],
+      ["pseudocheirus_peregrinus", "fraction50", "ladder02", "elastic_net", "enet09", "seed02"],
+      ["vombatus_ursinus", "fraction100", "full", "random_forest", "rf02", "seed03"],
+      ["sarcophilus_harrisii", "fraction25", "ladder01", "random_forest", "rf06", "seed01"],
+      ["dasyurus_maculatus", "fraction50", "ladder01", "shallow_ann", "ann01", "seed02"],
+      ["dasyurus_viverrinus", "fraction25", "ladder02", "shallow_ann", "ann05", "seed03"],
+      ["thylogale_billardierii", "fraction50", "ladder02", "elastic_net", "enet00", "seed04"],
+      ["notamacropus_rufogriseus", "fraction50", "ladder00", "random_forest", "rf02", "seed02"],
+      ["trichosurus_vulpecula", "fraction100", "full", "shallow_ann", "ann01", "seed01"],
+      ["pseudocheirus_peregrinus", "fraction25", "ladder00", "intercept", "null00", "seed00"],
+      ["vombatus_ursinus", "fraction50", "ladder01", "gam", "gam01", "seed00"],
+      ["sarcophilus_harrisii", "fraction25", "ladder02", "hist_gradient_boosting", "hgb04", "seed00"],
+      ["dasyurus_maculatus", "fraction100", "full", "elastic_net", "enet00", "seed03"],
+      ["dasyurus_viverrinus", "fraction50", "ladder02", "random_forest", "rf02", "seed04"],
+      ["thylogale_billardierii", "fraction25", "ladder01", "shallow_ann", "ann01", "seed02"],
+      ["notamacropus_rufogriseus", "fraction25", "ladder02", "hist_gradient_boosting", "hgb04", "seed00"],
+      ["trichosurus_vulpecula", "fraction50", "ladder00", "gam", "gam01", "seed00"],
+      ["pseudocheirus_peregrinus", "fraction50", "ladder01", "shallow_ann", "ann01", "seed03"],
+      ["vombatus_ursinus", "fraction25", "ladder00", "elastic_net", "enet00", "seed04"]
+    ],
+    "preflight_gates": {
+      "class_support_scan": "all_56_species_endpoint_strata",
+      "fragility_stress_candidates": [
+        "gam02",
+        "gam03"
+      ],
+      "fragility_stress_scope": "all_species_fraction25_ladder00_and_fraction100_full"
+    },
+    "worker_trials": [
+      1,
+      2,
+      4
+    ],
+    "trial_isolation": "fresh_process_fresh_destination_no_checkpoint_reuse",
+    "semantic_equality_required": true,
+    "telemetry": [
+      "wall_seconds",
+      "peak_rss_bytes",
+      "free_memory_before_bytes",
+      "free_memory_after_bytes",
+      "swap_before_bytes",
+      "swap_after_bytes"
+    ],
+    "selection_rule": "largest_trial_with_semantic_equality_no_swap_growth_and_minimum_6GiB_headroom_else_next_smaller",
+    "receipt_destination": "evidence/conventional_baseline_calibration",
+    "receipt_schema": "goal029_calibration_receipt_v1"
+  },
+  "validation": {
+    "artifact_only_full_recomputation": true,
+    "source_to_result_audit": {
+      "minimum_fraction": 0.05,
+      "one_leaf_per_family_stratum": true,
+      "augment_every_candidate_id": true,
+      "augment_every_seed_label": true,
+      "selection_salt": "sha256(canonical_plan_plus_execution_source_tree_plus_config_plus_upstream_bindings)",
+      "selection_tuple": [
+        "salt",
+        "species_id",
+        "fraction_id",
+        "ladder_id",
+        "model_family",
+        "candidate_id",
+        "seed_label"
+      ],
+      "selection": "minimum_sha256_per_family_stratum_then_coverage_then_fill_to_ceiling_fraction",
+      "minimum_leaf_count": 359,
+      "fresh_process": true,
+      "cache_disabled": true,
+      "fresh_destination": true
+    },
+    "recompute": [
+      "plan",
+      "seeds",
+      "subsets",
+      "oof_metrics",
+      "selection",
+      "model_digests",
+      "challenge_replays",
+      "transaction",
+      "privacy",
+      "outer_counters"
+    ],
+    "forbidden_tracked_fields": [
+      "grid_cell_id",
+      "coordinates",
+      "row_payloads",
+      "private_paths",
+      "site_ids",
+      "camera_ids",
+      "observation_timing",
+      "roc_auc",
+      "tss",
+      "threshold",
+      "oof_score"
+    ],
+    "tracked_schema_policy": "explicit_key_and_canonical_value_allowlist",
+    "raw_exception_warning_path_hostname_values": false,
+    "three_full_reruns": false
+  },
+  "artifacts": {
+    "private_destination": "data/processed/modeling/goal029-conventional-baseline-production",
+    "tracked_destination": "evidence/conventional_baseline_production",
+    "private_outputs_ignored": true,
+    "checkpoint_directory": "checkpoints",
+    "membership_directory": "memberships",
+    "selected_bundle_directory": "selected",
+    "selection_directory": "selections"
+  },
+  "non_goals": [
+    "real_outer_use_or_scoring",
+    "maps_or_interpretation",
+    "residual_architecture",
+    "community_q_surfaces",
+    "pooled_transfer_or_multi_head_models",
+    "sensitivity_analyses",
+    "south_eastern_birds",
+    "heterogeneous_host_shards",
+    "scientific_performance_synthesis"
+  ]
+}
