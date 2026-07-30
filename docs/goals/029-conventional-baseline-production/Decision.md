@@ -57,3 +57,39 @@ stratum, augments for every candidate and seed, and fills to exactly 359
 leaves. Publication occurs only
 after exact staged inventories, that audit, and a second staged validation
 pass.
+
+## Numerical execution and calibration
+
+Goal029 owns a fail-closed one-thread-per-process policy. The five import-time
+environment caps are assigned by the module before NumPy, scikit-learn, or
+PyTorch is imported. A retained `threadpoolctl` limiter and explicit PyTorch
+intra-op/inter-op setters then enforce the live state. Every reported
+BLAS/OpenMP pool must have at most one thread. Policy and effective-evidence
+digests enter the execution context and leaf checkpoint identity; private
+calibration and source-audit receipts retain normalized pool evidence without
+library paths.
+
+`threadpoolctl==3.6.0` is already locked through the frozen direct
+scikit-learn dependency. Goal029 imports and version-checks it exactly at
+runtime and binds the existing `uv.lock` digest. It is deliberately not added
+as a new direct `pyproject.toml` dependency because doing so would invalidate
+Goal028's frozen dependency provenance. This bounded residual is preferable
+to silently rewriting an accepted upstream authority.
+
+Calibration has distinct roles and no repeated fragility work:
+
+1. a zero-fit audit must start four distinct spawned children under the
+   thread policy;
+2. two frozen valid `gam01` leaves run at workers 1 and 2, must both complete
+   with identical semantics, and stop calibration if workers 2 takes more
+   than `1.25` times the workers-1 wall time;
+3. the frozen 30 representative leaves run at workers 1, 2, and 4 with
+   identical semantics;
+4. among no-swap, minimum-6-GiB trials, select the smallest worker count
+   within `1.10` times the fastest safe representative wall time; and
+5. run the 32 frozen `gam02`/`gam03` fragility leaves once at that selected
+   count.
+
+The class-support scan runs once in calibration. Production recomputes its
+digest, enforces the selected worker count and thread policy, and applies the
+same cap to the fresh source audit.

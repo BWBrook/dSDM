@@ -48,8 +48,11 @@ rename. Resumption loads only an exact identity match; mixed trees, runtimes,
 hosts, or upstream products cannot be combined.
 
 The canonical reducer order is independent of worker completion order.
-Parallel workers share no mutable model state and use one estimator thread.
-One host owns a canonical run.
+Parallel workers share no mutable model state. Import-time environment caps,
+a retained live `threadpoolctl` limiter, and explicit PyTorch intra/inter-op
+limits enforce one numerical thread in every parent and child process. Policy
+and effective evidence are bound into execution/checkpoint provenance. One
+host owns a canonical run.
 
 ## Validation and publication
 
@@ -71,8 +74,16 @@ possible and never deletes the only authoritative copy.
 
 ## Compute decision
 
-The exact 30-leaf calibration panel spans all species, endpoints, families,
-candidate extremes, and seeds. Workers 1, 2, and 4 are compared on the Mac
-mini while requiring 6 GiB free-memory headroom and no swap growth. The
-orchestrator chooses the smallest efficient setting or a larger single host
-without changing task identities or numerical policy.
+Calibration first proves four zero-fit spawned children obey the numerical
+thread policy. Two frozen valid `gam01` leaves then act as a workers-1/2
+canary; semantic disagreement, invalidity, unsafe memory/swap state, or a
+workers-2 slowdown above `1.25` stops the run. The exact 30-leaf
+representative panel then spans all species, endpoints, families, candidate
+extremes, and seeds at workers 1, 2, and 4. Among trials with 6 GiB
+free-memory headroom and no swap growth, the smallest count within `1.10` of
+the fastest safe wall time is selected. The 32-leaf GAM fragility panel runs
+once at that setting.
+
+This is 126 leaf executions and at most 735 estimator fits. Exact
+`threadpoolctl==3.6.0` is runtime-checked from the existing scikit-learn lock
+closure rather than changing Goal028's frozen dependency manifests.

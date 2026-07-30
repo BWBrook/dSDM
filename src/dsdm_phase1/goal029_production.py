@@ -27,9 +27,23 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
+# Spawned workers import numerical libraries before their initializer runs.
+# Force the frozen import-time backstop here rather than trusting the shell.
+_NUMERICAL_THREAD_ENVIRONMENT = {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "VECLIB_MAXIMUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1",
+}
+for _thread_variable, _thread_value in _NUMERICAL_THREAD_ENVIRONMENT.items():
+    os.environ[_thread_variable] = _thread_value
+
 import numpy as np
 import pyarrow as pa
 import pyarrow.parquet as pq
+import threadpoolctl
+import torch
 from sklearn.metrics import roc_auc_score
 
 from .inner_cv import (
@@ -159,7 +173,7 @@ _FORBIDDEN_TRACKED_KEYS = {
     "oof_score",
 }
 _CANONICAL_CONFIG_DIGEST = (
-    "b9c61ea67eac4c7bc5be10c59d789674bf3621d18a65463962838982ae0cce66"
+    "d65dca67662c95ca17fa2a15d46bff3a2bfc1a389dba8c575229eec6c6d84090"
 )
 
 
@@ -209,10 +223,152 @@ class ExecutionContext:
     runtime_fingerprint: str
     host_id: str
     upstream_binding_digest: str
+    thread_policy_digest: str = ""
+    thread_evidence_digest: str = ""
 
 
 def _sha(value: Any) -> str:
     return hashlib.sha256(canonical_json(value).encode("utf-8")).hexdigest()
+
+
+_THREADPOOL_LIMITER: Any = None
+
+
+def numerical_thread_policy(config: Mapping[str, Any]) -> Mapping[str, Any]:
+    expected = {
+        "environment": _NUMERICAL_THREAD_ENVIRONMENT,
+        "threadpoolctl_version": "3.6.0",
+        "threadpoolctl_limit": 1,
+        "maximum_reported_blas_or_openmp_threads": 1,
+        "torch_intraop_threads": 1,
+        "torch_interop_threads": 1,
+    }
+    try:
+        observed = config["execution"]["numerical_thread_policy"]
+        per_estimator = config["execution"]["per_estimator_threads"]
+    except (KeyError, TypeError) as exc:
+        raise Goal029Error("numerical_thread_policy_missing") from exc
+    if observed != expected or per_estimator != 1:
+        raise Goal029Error("numerical_thread_policy_mismatch")
+    try:
+        installed_version = importlib.metadata.version("threadpoolctl")
+    except importlib.metadata.PackageNotFoundError as exc:
+        raise Goal029Error("threadpoolctl_runtime_missing") from exc
+    if installed_version != expected["threadpoolctl_version"]:
+        raise Goal029Error("threadpoolctl_runtime_version_mismatch")
+    return expected
+
+
+def _normalise_thread_pool(record: Mapping[str, Any]) -> Mapping[str, Any]:
+    user_api = str(record.get("user_api", ""))
+    num_threads = record.get("num_threads")
+    if (
+        user_api in {"blas", "openmp"}
+        and (
+            not isinstance(num_threads, int)
+            or isinstance(num_threads, bool)
+            or num_threads < 1
+            or num_threads > 1
+        )
+    ):
+        raise Goal029Error("numerical_thread_pool_limit_failed")
+    return {
+        "user_api": user_api,
+        "internal_api": str(record.get("internal_api", "")),
+        "prefix": str(record.get("prefix", "")),
+        "num_threads": num_threads,
+        "version": str(record.get("version", "")),
+        "threading_layer": str(record.get("threading_layer", "")),
+        "architecture": str(record.get("architecture", "")),
+    }
+
+
+def _validate_thread_evidence(
+    evidence: Mapping[str, Any], config: Mapping[str, Any]
+) -> None:
+    policy = numerical_thread_policy(config)
+    body = dict(evidence)
+    claimed = body.pop("evidence_digest", None)
+    pools = evidence.get("pools")
+    torch_evidence = evidence.get("torch")
+    if (
+        set(evidence)
+        != {
+            "schema_version",
+            "policy_digest",
+            "environment",
+            "pools",
+            "torch",
+            "all_reported_pools_within_limit",
+            "evidence_digest",
+        }
+        or claimed != _sha(body)
+        or evidence.get("schema_version") != "1.0"
+        or evidence.get("policy_digest") != _sha(policy)
+        or evidence.get("environment") != _NUMERICAL_THREAD_ENVIRONMENT
+        or not isinstance(pools, list)
+        or evidence.get("all_reported_pools_within_limit") is not True
+        or torch_evidence != {"intraop_threads": 1, "interop_threads": 1}
+    ):
+        raise Goal029Error("numerical_thread_evidence_invalid")
+    normalised = [_normalise_thread_pool(record) for record in pools]
+    if normalised != pools or normalised != sorted(
+        normalised,
+        key=lambda record: canonical_json(record),
+    ) or not any(
+        record["user_api"] in {"blas", "openmp"} for record in normalised
+    ):
+        raise Goal029Error("numerical_thread_evidence_invalid")
+
+
+def _current_thread_evidence(
+    config: Mapping[str, Any],
+) -> Mapping[str, Any]:
+    policy = numerical_thread_policy(config)
+    environment = {
+        key: os.environ.get(key) for key in _NUMERICAL_THREAD_ENVIRONMENT
+    }
+    if environment != _NUMERICAL_THREAD_ENVIRONMENT:
+        raise Goal029Error("numerical_thread_environment_failed")
+    pools = sorted(
+        (
+            _normalise_thread_pool(record)
+            for record in threadpoolctl.threadpool_info()
+        ),
+        key=lambda record: canonical_json(record),
+    )
+    evidence: dict[str, Any] = {
+        "schema_version": "1.0",
+        "policy_digest": _sha(policy),
+        "environment": environment,
+        "pools": pools,
+        "torch": {
+            "intraop_threads": int(torch.get_num_threads()),
+            "interop_threads": int(torch.get_num_interop_threads()),
+        },
+        "all_reported_pools_within_limit": True,
+    }
+    evidence["evidence_digest"] = _sha(evidence)
+    _validate_thread_evidence(evidence, config)
+    return evidence
+
+
+def enforce_numerical_thread_policy(
+    config: Mapping[str, Any],
+) -> Mapping[str, Any]:
+    global _THREADPOOL_LIMITER
+    numerical_thread_policy(config)
+    for key, value in _NUMERICAL_THREAD_ENVIRONMENT.items():
+        os.environ[key] = value
+    if _THREADPOOL_LIMITER is None:
+        _THREADPOOL_LIMITER = threadpoolctl.threadpool_limits(limits=1)
+    torch.set_num_threads(1)
+    try:
+        torch.set_num_interop_threads(1)
+    except RuntimeError:
+        if torch.get_num_interop_threads() != 1:
+            raise Goal029Error("torch_interop_thread_limit_failed") from None
+    return _current_thread_evidence(config)
 
 
 def _read_json(path: Path) -> Mapping[str, Any]:
@@ -301,6 +457,39 @@ def calibration_plan(config: Mapping[str, Any]) -> tuple[ProductionLeaf, ...]:
     return leaves
 
 
+def calibration_canary_plan(
+    config: Mapping[str, Any],
+) -> tuple[ProductionLeaf, ...]:
+    try:
+        leaves = tuple(
+            ProductionLeaf(*values)
+            for values in config["calibration"]["canary"]["leaves"]
+        )
+    except (KeyError, TypeError) as exc:
+        raise Goal029Error("calibration_canary_plan_invalid") from exc
+    expected = (
+        ProductionLeaf(
+            "trichosurus_vulpecula",
+            "fraction50",
+            "ladder00",
+            "gam",
+            "gam01",
+            "seed00",
+        ),
+        ProductionLeaf(
+            "vombatus_ursinus",
+            "fraction50",
+            "ladder01",
+            "gam",
+            "gam01",
+            "seed00",
+        ),
+    )
+    if leaves != expected or not set(leaves) <= set(calibration_plan(config)):
+        raise Goal029Error("calibration_canary_plan_mismatch")
+    return leaves
+
+
 def load_goal029_config(root: Path, path: Path | None = None) -> Mapping[str, Any]:
     root = Path(root).resolve()
     path = path or root / "config/conventional_baseline_production.json"
@@ -328,7 +517,7 @@ def load_goal029_config(root: Path, path: Path | None = None) -> Mapping[str, An
         raise Goal029Error("config_sections_mismatch")
     identity = config["identity"]
     if identity != {
-        "schema_version": "1.0",
+        "schema_version": "1.1",
         "goal_id": "goal029-conventional-baseline-production-2026-07-30",
         "protocol_version": "0.1",
         "master_seed": "dsdm-goal028-v1",
@@ -387,6 +576,50 @@ def load_goal029_config(root: Path, path: Path | None = None) -> Mapping[str, An
         raise Goal029Error("worker_ladder_mismatch")
     if config["execution"]["minimum_free_memory_bytes"] != 6 * 1024**3:
         raise Goal029Error("memory_headroom_mismatch")
+    numerical_thread_policy(config)
+    calibration = config["calibration"]
+    if (
+        calibration.get("leaf_count") != 30
+        or calibration.get("worker_trials") != [1, 2, 4]
+        or calibration.get("stage_order")
+        != [
+            "thread_spawn_audit",
+            "class_support_scan",
+            "canary",
+            "representative",
+            "fragility",
+        ]
+        or calibration.get("spawn_audit")
+        != {"child_count": 4, "fit_count": 0}
+        or calibration.get("canary", {}).get("leaf_count") != 2
+        or calibration.get("canary", {}).get("worker_trials") != [1, 2]
+        or calibration.get("canary", {}).get(
+            "maximum_workers2_to_workers1_wall_ratio"
+        )
+        != 1.25
+        or calibration.get("canary", {}).get("all_leaves_must_complete")
+        is not True
+        or calibration.get("representative", {}).get("leaf_count") != 30
+        or calibration.get("representative", {}).get("worker_trials")
+        != [1, 2, 4]
+        or calibration.get("representative", {}).get(
+            "near_fastest_wall_time_multiplier"
+        )
+        != 1.10
+        or calibration.get("fragility", {}).get("leaf_count") != 32
+        or calibration.get("fragility", {}).get("worker_trials")
+        != "selected_workers_once"
+        or calibration.get("planned_counts")
+        != {
+            "spawn_audit_children": 4,
+            "canary_leaf_executions": 4,
+            "representative_leaf_executions": 90,
+            "fragility_leaf_executions": 32,
+            "total_leaf_executions": 126,
+            "maximum_estimator_fits": 735,
+        }
+    ):
+        raise Goal029Error("calibration_role_contract_mismatch")
     if config["validation"]["source_to_result_audit"]["minimum_fraction"] != 0.05:
         raise Goal029Error("audit_fraction_mismatch")
     for family, ids in CANDIDATE_IDS.items():
@@ -413,6 +646,9 @@ def load_goal029_config(root: Path, path: Path | None = None) -> Mapping[str, An
     load_run_config(root, root / config["bindings"]["goal028_config"]["path"])
     production_plan(config)
     calibration_plan(config)
+    calibration_canary_plan(config)
+    if len(fragility_stress_plan()) != 32:
+        raise Goal029Error("fragility_stress_plan_mismatch")
     return config
 
 
@@ -445,7 +681,15 @@ def source_tree_digest(root: Path, config: Mapping[str, Any]) -> str:
 
 def runtime_fingerprint() -> str:
     packages = {}
-    for name in ("numpy", "scipy", "scikit-learn", "pygam", "pyarrow", "torch"):
+    for name in (
+        "numpy",
+        "scipy",
+        "scikit-learn",
+        "pygam",
+        "pyarrow",
+        "threadpoolctl",
+        "torch",
+    ):
         try:
             packages[name] = importlib.metadata.version(name)
         except importlib.metadata.PackageNotFoundError as exc:
@@ -463,6 +707,8 @@ def runtime_fingerprint() -> str:
 
 
 def execution_context(root: Path, config: Mapping[str, Any]) -> ExecutionContext:
+    thread_evidence = enforce_numerical_thread_policy(config)
+    policy_digest = _sha(numerical_thread_policy(config))
     bindings = [
         {
             "role": role,
@@ -478,7 +724,21 @@ def execution_context(root: Path, config: Mapping[str, Any]) -> ExecutionContext
         runtime_fingerprint(),
         socket.gethostname(),
         _sha(bindings),
+        policy_digest,
+        thread_evidence["evidence_digest"],
     )
+
+
+def _enforce_context_thread_policy(
+    config: Mapping[str, Any], context: ExecutionContext
+) -> Mapping[str, Any]:
+    evidence = enforce_numerical_thread_policy(config)
+    if (
+        context.thread_policy_digest != _sha(numerical_thread_policy(config))
+        or context.thread_evidence_digest != evidence["evidence_digest"]
+    ):
+        raise Goal029Error("numerical_thread_execution_context_mismatch")
+    return evidence
 
 
 def audit_salt(
@@ -490,6 +750,8 @@ def audit_salt(
             "execution_source_tree_digest": context.source_tree_digest,
             "config_digest": context.config_digest,
             "upstream_binding_digest": context.upstream_binding_digest,
+            "thread_policy_digest": context.thread_policy_digest,
+            "thread_evidence_digest": context.thread_evidence_digest,
         }
     )
 
@@ -691,6 +953,8 @@ def leaf_identity(
         "runtime_fingerprint": context.runtime_fingerprint,
         "host_id": context.host_id,
         "upstream_binding_digest": context.upstream_binding_digest,
+        "thread_policy_digest": context.thread_policy_digest,
+        "thread_evidence_digest": context.thread_evidence_digest,
         "leaf_task": asdict(leaf),
         "split_membership_digests": {
             split: memberships[split]["record_digest"]
@@ -956,13 +1220,15 @@ def _available_memory_bytes() -> int:
     except (OSError, ValueError, KeyError):
         pass
     output = subprocess.check_output(["vm_stat"], text=True)
-    match = re.search(r"page size of (\\d+) bytes", output)
+    match = re.search(r"page size of (\d+) bytes", output)
     if match is None:
         raise Goal029Error("memory_telemetry_unavailable")
     page_size = int(match.group(1))
     pages = 0
     for label in ("Pages free", "Pages inactive", "Pages speculative"):
-        found = re.search(rf"^{re.escape(label)}:\\s+(\\d+)\\.", output, re.MULTILINE)
+        found = re.search(
+            rf"^{re.escape(label)}:\s+(\d+)\.", output, re.MULTILINE
+        )
         if found:
             pages += int(found.group(1))
     if pages <= 0:
@@ -1054,18 +1320,38 @@ _CALIBRATION_CONFIG: Mapping[str, Any] | None = None
 _CALIBRATION_BROKER: SplitBroker | None = None
 _CALIBRATION_PROVIDER: FeatureProvider | None = None
 _CALIBRATION_VAULT: OuterVault | None = None
+_WORKER_THREAD_EVIDENCE: Mapping[str, Any] | None = None
+
+
+def _thread_worker_init(root_value: str) -> None:
+    global _CALIBRATION_ROOT, _CALIBRATION_CONFIG
+    global _WORKER_THREAD_EVIDENCE
+    _CALIBRATION_ROOT = Path(root_value)
+    _CALIBRATION_CONFIG = load_goal029_config(_CALIBRATION_ROOT)
+    _WORKER_THREAD_EVIDENCE = enforce_numerical_thread_policy(
+        _CALIBRATION_CONFIG
+    )
 
 
 def _calibration_worker_init(root_value: str) -> None:
-    global _CALIBRATION_ROOT, _CALIBRATION_CONFIG
     global _CALIBRATION_BROKER, _CALIBRATION_PROVIDER, _CALIBRATION_VAULT
-    _CALIBRATION_ROOT = Path(root_value)
-    _CALIBRATION_CONFIG = load_goal029_config(_CALIBRATION_ROOT)
+    _thread_worker_init(root_value)
+    if _CALIBRATION_ROOT is None or _CALIBRATION_CONFIG is None:
+        raise Goal029Error("calibration_worker_uninitialised")
     (
         _CALIBRATION_BROKER,
         _CALIBRATION_PROVIDER,
         _CALIBRATION_VAULT,
     ) = ingest_production_foundation(_CALIBRATION_ROOT, _CALIBRATION_CONFIG)
+
+
+def _worker_thread_evidence() -> Mapping[str, Any]:
+    if _CALIBRATION_CONFIG is None or _WORKER_THREAD_EVIDENCE is None:
+        raise Goal029Error("numerical_thread_worker_uninitialised")
+    evidence = _current_thread_evidence(_CALIBRATION_CONFIG)
+    if evidence["policy_digest"] != _WORKER_THREAD_EVIDENCE["policy_digest"]:
+        raise Goal029Error("numerical_thread_worker_policy_drift")
+    return evidence
 
 
 def _canonical_failure_code(exc: BaseException) -> str:
@@ -1083,6 +1369,7 @@ def _calibration_worker_leaf(leaf_value: Mapping[str, Any]) -> Mapping[str, Any]
         or _CALIBRATION_VAULT is None
     ):
         raise Goal029Error("calibration_worker_uninitialised")
+    thread_evidence = _worker_thread_evidence()
     leaf = ProductionLeaf(**leaf_value)
     try:
         result = run_leaf(
@@ -1111,9 +1398,132 @@ def _calibration_worker_leaf(leaf_value: Mapping[str, Any]) -> Mapping[str, Any]
         "semantic_result_digest": semantic_digest,
         "failure_code": failure_code,
         "peak_rss_bytes": _peak_rss_bytes_current_process(),
+        "worker_pid": os.getpid(),
+        "thread_evidence": thread_evidence,
         "real_outer_attempted_open_count": 0,
         "real_outer_open_count": 0,
     }
+
+
+def _collect_worker_thread_evidence(
+    results: Sequence[Mapping[str, Any]],
+    config: Mapping[str, Any],
+    expected_workers: int,
+) -> tuple[list[Mapping[str, Any]], list[Mapping[str, Any]]]:
+    by_pid: dict[int, Mapping[str, Any]] = {}
+    cleaned: list[Mapping[str, Any]] = []
+    for record in results:
+        pid = record.get("worker_pid")
+        evidence = record.get("thread_evidence")
+        if (
+            not isinstance(pid, int)
+            or isinstance(pid, bool)
+            or pid < 1
+            or not isinstance(evidence, Mapping)
+        ):
+            raise Goal029Error("numerical_thread_worker_evidence_invalid")
+        _validate_thread_evidence(evidence, config)
+        prior = by_pid.setdefault(pid, evidence)
+        if prior != evidence:
+            raise Goal029Error("numerical_thread_worker_evidence_drift")
+        cleaned.append(
+            {
+                key: value
+                for key, value in record.items()
+                if key != "thread_evidence"
+            }
+        )
+    if len(by_pid) != expected_workers:
+        raise Goal029Error("numerical_thread_worker_count_mismatch")
+    worker_evidence = [
+        {"worker_pid": pid, "evidence": by_pid[pid]}
+        for pid in sorted(by_pid)
+    ]
+    return cleaned, worker_evidence
+
+
+def _thread_spawn_probe(barrier: Any) -> Mapping[str, Any]:
+    evidence = _worker_thread_evidence()
+    try:
+        barrier.wait(timeout=60)
+    except Exception as exc:
+        raise Goal029Error("thread_spawn_audit_barrier_failed") from exc
+    return {
+        "worker_pid": os.getpid(),
+        "thread_evidence": evidence,
+        "fit_count": 0,
+        "real_outer_attempted_open_count": 0,
+        "real_outer_open_count": 0,
+    }
+
+
+def run_thread_spawn_audit(
+    root: Path,
+    config: Mapping[str, Any],
+    destination: Path,
+) -> Mapping[str, Any]:
+    parent_evidence = enforce_numerical_thread_policy(config)
+    children = int(config["calibration"]["spawn_audit"]["child_count"])
+    if children != 4:
+        raise Goal029Error("thread_spawn_audit_child_count_invalid")
+    destination = Path(destination)
+    if destination.exists() or destination.is_symlink():
+        raise Goal029Error("calibration_destination_not_fresh")
+    destination.mkdir(parents=True)
+    free_before = _available_memory_bytes()
+    swap_before = _swap_used_bytes()
+    if free_before < int(config["execution"]["minimum_free_memory_bytes"]):
+        raise Goal029Error("calibration_memory_headroom_failed")
+    started = time.perf_counter()
+    context = multiprocessing.get_context("spawn")
+    with context.Manager() as manager:
+        barrier = manager.Barrier(children)
+        with concurrent.futures.ProcessPoolExecutor(
+            max_workers=children,
+            mp_context=context,
+            initializer=_thread_worker_init,
+            initargs=(str(Path(root).resolve()),),
+        ) as executor:
+            raw_results = list(
+                executor.map(
+                    _thread_spawn_probe,
+                    [barrier] * children,
+                    chunksize=1,
+                )
+            )
+    wall_seconds = time.perf_counter() - started
+    free_after = _available_memory_bytes()
+    swap_after = _swap_used_bytes()
+    results, worker_evidence = _collect_worker_thread_evidence(
+        raw_results, config, children
+    )
+    if (
+        any(record["fit_count"] != 0 for record in results)
+        or any(record["real_outer_attempted_open_count"] != 0 for record in results)
+        or any(record["real_outer_open_count"] != 0 for record in results)
+    ):
+        raise Goal029Error("thread_spawn_audit_scope_failed")
+    receipt: dict[str, Any] = {
+        "schema_version": "goal029_calibration_spawn_audit_v1",
+        "requested_children": children,
+        "actual_host": socket.gethostname(),
+        "parent_thread_evidence": parent_evidence,
+        "children": results,
+        "worker_thread_evidence": worker_evidence,
+        "fit_count": 0,
+        "telemetry": {
+            "wall_seconds": wall_seconds,
+            "free_memory_before_bytes": free_before,
+            "free_memory_after_bytes": free_after,
+            "swap_before_bytes": swap_before,
+            "swap_after_bytes": swap_after,
+        },
+        "real_outer_attempted_open_count": 0,
+        "real_outer_open_count": 0,
+    }
+    receipt["receipt_digest"] = _sha(receipt)
+    _write_canonical_json(destination / "receipt.json", receipt)
+    return receipt
 
 
 def run_calibration_trial(
@@ -1122,9 +1532,28 @@ def run_calibration_trial(
     leaves: Sequence[ProductionLeaf],
     workers: int,
     destination: Path,
+    *,
+    role: str,
 ) -> Mapping[str, Any]:
+    parent_evidence = enforce_numerical_thread_policy(config)
     if workers not in (1, 2, 4):
         raise Goal029Error("calibration_worker_count_invalid")
+    if role not in {"canary", "representative", "fragility"}:
+        raise Goal029Error("calibration_trial_role_invalid")
+    if (
+        role == "canary"
+        and (
+            workers not in (1, 2)
+            or tuple(leaves) != calibration_canary_plan(config)
+        )
+    ) or (
+        role == "representative"
+        and tuple(leaves) != calibration_plan(config)
+    ) or (
+        role == "fragility"
+        and tuple(leaves) != fragility_stress_plan()
+    ):
+        raise Goal029Error("calibration_trial_scope_invalid")
     destination = Path(destination)
     if destination.exists() or destination.is_symlink():
         raise Goal029Error("calibration_destination_not_fresh")
@@ -1140,7 +1569,7 @@ def run_calibration_trial(
         initializer=_calibration_worker_init,
         initargs=(str(Path(root).resolve()),),
     ) as executor:
-        results = list(
+        raw_results = list(
             executor.map(
                 _calibration_worker_leaf,
                 [asdict(leaf) for leaf in leaves],
@@ -1150,14 +1579,21 @@ def run_calibration_trial(
     wall_seconds = time.perf_counter() - started
     free_after = _available_memory_bytes()
     swap_after = _swap_used_bytes()
+    results, worker_evidence = _collect_worker_thread_evidence(
+        raw_results, config, workers
+    )
     leaf_order = {leaf: index for index, leaf in enumerate(leaves)}
     results.sort(
         key=lambda record: leaf_order[ProductionLeaf(**record["leaf"])]
     )
     receipt: dict[str, Any] = {
-        "schema_version": "goal029_calibration_receipt_v1",
+        "schema_version": "goal029_calibration_trial_v2",
+        "role": role,
         "workers": workers,
         "actual_host": socket.gethostname(),
+        "thread_policy_digest": _sha(numerical_thread_policy(config)),
+        "parent_thread_evidence": parent_evidence,
+        "worker_thread_evidence": worker_evidence,
         "fresh_processes": True,
         "checkpoint_reuse": False,
         "fresh_destination": True,
@@ -1211,13 +1647,21 @@ def _validate_tracked_calibration(value: Mapping[str, Any]) -> None:
         "schema_version",
         "goal_id",
         "status",
-        "trial_workers",
+        "thread_policy_digest",
+        "thread_evidence_digest",
+        "spawn_audit_child_count",
+        "canary_workers",
+        "canary_leaf_count",
+        "canary_semantic_digest",
+        "representative_workers",
+        "representative_leaf_count",
+        "representative_semantic_digest",
         "selected_workers",
-        "leaf_count_per_trial",
+        "fragility_workers",
+        "fragility_leaf_count",
+        "fragility_semantic_digest",
         "class_support_strata_count",
-        "fragility_stress_leaf_count",
         "fragility_invalid_candidate_count",
-        "semantic_digest",
         "private_receipt_digest",
         "actual_host_digest",
         "real_outer_attempted_open_count",
@@ -1225,18 +1669,27 @@ def _validate_tracked_calibration(value: Mapping[str, Any]) -> None:
     }
     if (
         set(value) != expected
-        or value["schema_version"] != "goal029_calibration_index_v1"
+        or value["schema_version"] != "goal029_calibration_index_v2"
         or value["status"] != "pass"
-        or value["trial_workers"] != [1, 2, 4]
+        or value["spawn_audit_child_count"] != 4
+        or value["canary_workers"] != [1, 2]
+        or value["canary_leaf_count"] != 2
+        or value["representative_workers"] != [1, 2, 4]
+        or value["representative_leaf_count"] != 30
         or value["selected_workers"] not in (1, 2, 4)
+        or value["fragility_workers"] != value["selected_workers"]
+        or value["fragility_leaf_count"] != 32
         or value["class_support_strata_count"] != 56
-        or value["fragility_stress_leaf_count"] != 32
         or value["real_outer_attempted_open_count"] != 0
         or value["real_outer_open_count"] != 0
         or any(
             _HEX64.fullmatch(str(value[key])) is None
             for key in (
-                "semantic_digest",
+                "thread_policy_digest",
+                "thread_evidence_digest",
+                "canary_semantic_digest",
+                "representative_semantic_digest",
+                "fragility_semantic_digest",
                 "private_receipt_digest",
                 "actual_host_digest",
             )
@@ -1246,17 +1699,151 @@ def _validate_tracked_calibration(value: Mapping[str, Any]) -> None:
     _privacy_walk(value)
 
 
-def _validate_calibration_trial_receipt(
+def _validate_calibration_spawn_audit(
     value: Mapping[str, Any],
     *,
-    workers: int,
-    expected_leaves: Sequence[ProductionLeaf],
+    config: Mapping[str, Any],
     expected_host: str,
+    expected_thread_evidence_digest: str,
 ) -> None:
     expected_keys = {
         "schema_version",
+        "requested_children",
+        "actual_host",
+        "parent_thread_evidence",
+        "children",
+        "worker_thread_evidence",
+        "fit_count",
+        "telemetry",
+        "real_outer_attempted_open_count",
+        "real_outer_open_count",
+        "receipt_digest",
+    }
+    body = dict(value)
+    claimed = body.pop("receipt_digest", None)
+    children = value.get("children")
+    workers = value.get("worker_thread_evidence")
+    telemetry = value.get("telemetry")
+    parent_evidence = value.get("parent_thread_evidence")
+    if not isinstance(parent_evidence, Mapping):
+        raise Goal029Error("calibration_spawn_audit_invalid")
+    _validate_thread_evidence(parent_evidence, config)
+    if (
+        set(value) != expected_keys
+        or claimed != _sha(body)
+        or value.get("schema_version")
+        != "goal029_calibration_spawn_audit_v1"
+        or value.get("requested_children") != 4
+        or value.get("actual_host") != expected_host
+        or parent_evidence.get("evidence_digest")
+        != expected_thread_evidence_digest
+        or value.get("fit_count") != 0
+        or not isinstance(children, list)
+        or len(children) != 4
+        or not isinstance(workers, list)
+        or len(workers) != 4
+        or not isinstance(telemetry, Mapping)
+        or set(telemetry)
+        != {
+            "wall_seconds",
+            "free_memory_before_bytes",
+            "free_memory_after_bytes",
+            "swap_before_bytes",
+            "swap_after_bytes",
+        }
+        or value.get("real_outer_attempted_open_count") != 0
+        or value.get("real_outer_open_count") != 0
+    ):
+        raise Goal029Error("calibration_spawn_audit_invalid")
+    pids = []
+    for child in children:
+        if (
+            not isinstance(child, Mapping)
+            or set(child)
+            != {
+                "worker_pid",
+                "fit_count",
+                "real_outer_attempted_open_count",
+                "real_outer_open_count",
+            }
+            or not isinstance(child.get("worker_pid"), int)
+            or child.get("fit_count") != 0
+            or child.get("real_outer_attempted_open_count") != 0
+            or child.get("real_outer_open_count") != 0
+        ):
+            raise Goal029Error("calibration_spawn_audit_child_invalid")
+        pids.append(child["worker_pid"])
+    if len(set(pids)) != 4:
+        raise Goal029Error("calibration_spawn_audit_child_invalid")
+    _validate_worker_evidence_index(workers, pids, config)
+    _validate_calibration_telemetry(telemetry, include_peak=False)
+    if not _calibration_receipt_safe(value, config):
+        raise Goal029Error("calibration_spawn_audit_unsafe")
+
+
+def _validate_worker_evidence_index(
+    records: Sequence[Mapping[str, Any]],
+    expected_pids: Sequence[int],
+    config: Mapping[str, Any],
+) -> None:
+    observed = []
+    for record in records:
+        if (
+            not isinstance(record, Mapping)
+            or set(record) != {"worker_pid", "evidence"}
+            or not isinstance(record.get("worker_pid"), int)
+            or not isinstance(record.get("evidence"), Mapping)
+        ):
+            raise Goal029Error("numerical_thread_worker_index_invalid")
+        _validate_thread_evidence(record["evidence"], config)
+        observed.append(record["worker_pid"])
+    if observed != sorted(set(expected_pids)):
+        raise Goal029Error("numerical_thread_worker_index_invalid")
+
+
+def _validate_calibration_telemetry(
+    telemetry: Mapping[str, Any], *, include_peak: bool
+) -> None:
+    expected = {
+        "wall_seconds",
+        "free_memory_before_bytes",
+        "free_memory_after_bytes",
+        "swap_before_bytes",
+        "swap_after_bytes",
+    }
+    if include_peak:
+        expected.add("peak_rss_bytes")
+    if set(telemetry) != expected:
+        raise Goal029Error("calibration_trial_telemetry_invalid")
+    for key, number in telemetry.items():
+        if (
+            type(number) not in {int, float}
+            or isinstance(number, bool)
+            or not math.isfinite(float(number))
+            or float(number) < 0
+            or (key == "wall_seconds" and float(number) <= 0)
+        ):
+            raise Goal029Error("calibration_trial_telemetry_invalid")
+
+
+def _validate_calibration_trial_receipt(
+    value: Mapping[str, Any],
+    *,
+    role: str,
+    workers: int,
+    expected_leaves: Sequence[ProductionLeaf],
+    expected_host: str,
+    config: Mapping[str, Any],
+    expected_thread_evidence_digest: str,
+) -> None:
+    expected_keys = {
+        "schema_version",
+        "role",
         "workers",
         "actual_host",
+        "thread_policy_digest",
+        "parent_thread_evidence",
+        "worker_thread_evidence",
         "fresh_processes",
         "checkpoint_reuse",
         "fresh_destination",
@@ -1272,12 +1859,24 @@ def _validate_calibration_trial_receipt(
     claimed = body.pop("receipt_digest", None)
     results = value.get("results")
     telemetry = value.get("telemetry")
+    parent_evidence = value.get("parent_thread_evidence")
+    worker_evidence = value.get("worker_thread_evidence")
+    if not isinstance(parent_evidence, Mapping):
+        raise Goal029Error("calibration_trial_receipt_invalid")
+    _validate_thread_evidence(parent_evidence, config)
     if (
         set(value) != expected_keys
         or claimed != _sha(body)
-        or value.get("schema_version") != "goal029_calibration_receipt_v1"
+        or value.get("schema_version") != "goal029_calibration_trial_v2"
+        or value.get("role") != role
         or value.get("workers") != workers
         or value.get("actual_host") != expected_host
+        or value.get("thread_policy_digest")
+        != _sha(numerical_thread_policy(config))
+        or parent_evidence.get("evidence_digest")
+        != expected_thread_evidence_digest
+        or not isinstance(worker_evidence, list)
+        or len(worker_evidence) != workers
         or value.get("fresh_processes") is not True
         or value.get("checkpoint_reuse") is not False
         or value.get("fresh_destination") is not True
@@ -1285,15 +1884,6 @@ def _validate_calibration_trial_receipt(
         or not isinstance(results, list)
         or len(results) != len(expected_leaves)
         or not isinstance(telemetry, Mapping)
-        or set(telemetry)
-        != {
-            "wall_seconds",
-            "peak_rss_bytes",
-            "free_memory_before_bytes",
-            "free_memory_after_bytes",
-            "swap_before_bytes",
-            "swap_after_bytes",
-        }
         or value.get("real_outer_attempted_open_count") != 0
         or value.get("real_outer_open_count") != 0
     ):
@@ -1310,6 +1900,7 @@ def _validate_calibration_trial_receipt(
                 "semantic_result_digest",
                 "failure_code",
                 "peak_rss_bytes",
+                "worker_pid",
                 "real_outer_attempted_open_count",
                 "real_outer_open_count",
             }
@@ -1338,6 +1929,9 @@ def _validate_calibration_trial_receipt(
             )
             or type(record["peak_rss_bytes"]) is not int
             or record["peak_rss_bytes"] < 0
+            or not isinstance(record["worker_pid"], int)
+            or isinstance(record["worker_pid"], bool)
+            or record["worker_pid"] < 1
             or record["real_outer_attempted_open_count"] != 0
             or record["real_outer_open_count"] != 0
         ):
@@ -1354,37 +1948,100 @@ def _validate_calibration_trial_receipt(
         raise Goal029Error("calibration_trial_leaf_order_mismatch")
     if value["semantic_digest"] != _sha(semantic_rows):
         raise Goal029Error("calibration_trial_semantic_mismatch")
-    if any(
-        type(number) not in {int, float}
-        or isinstance(number, bool)
-        or not math.isfinite(float(number))
-        or float(number) < 0
-        for number in telemetry.values()
+    _validate_worker_evidence_index(
+        worker_evidence,
+        [record["worker_pid"] for record in results],
+        config,
+    )
+    _validate_calibration_telemetry(telemetry, include_peak=True)
+
+
+def _calibration_receipt_safe(
+    receipt: Mapping[str, Any], config: Mapping[str, Any]
+) -> bool:
+    telemetry = receipt["telemetry"]
+    minimum = int(config["execution"]["minimum_free_memory_bytes"])
+    return (
+        telemetry["swap_after_bytes"] <= telemetry["swap_before_bytes"]
+        and telemetry["free_memory_before_bytes"] >= minimum
+        and telemetry["free_memory_after_bytes"] >= minimum
+    )
+
+
+def _validate_canary_gate(
+    trials: Sequence[Mapping[str, Any]], config: Mapping[str, Any]
+) -> str:
+    if [trial["workers"] for trial in trials] != [1, 2]:
+        raise Goal029Error("calibration_canary_trial_set_invalid")
+    if (
+        len({trial["semantic_digest"] for trial in trials}) != 1
+        or any(
+            record["status"] != "complete"
+            for trial in trials
+            for record in trial["results"]
+        )
+        or any(not _calibration_receipt_safe(trial, config) for trial in trials)
     ):
-        raise Goal029Error("calibration_trial_telemetry_invalid")
+        raise Goal029Error("calibration_canary_failed")
+    ratio = (
+        trials[1]["telemetry"]["wall_seconds"]
+        / trials[0]["telemetry"]["wall_seconds"]
+    )
+    if ratio > float(
+        config["calibration"]["canary"][
+            "maximum_workers2_to_workers1_wall_ratio"
+        ]
+    ):
+        raise Goal029Error("calibration_canary_slowdown")
+    return str(trials[0]["semantic_digest"])
+
+
+def _select_representative_workers(
+    trials: Sequence[Mapping[str, Any]], config: Mapping[str, Any]
+) -> int:
+    if [trial["workers"] for trial in trials] != [1, 2, 4]:
+        raise Goal029Error("calibration_representative_trial_set_invalid")
+    if len({trial["semantic_digest"] for trial in trials}) != 1:
+        raise Goal029Error("calibration_representative_semantic_disagreement")
+    safe = [
+        trial for trial in trials if _calibration_receipt_safe(trial, config)
+    ]
+    if not safe:
+        raise Goal029Error("calibration_no_acceptable_worker_trial")
+    fastest = min(trial["telemetry"]["wall_seconds"] for trial in safe)
+    multiplier = float(
+        config["calibration"]["representative"][
+            "near_fastest_wall_time_multiplier"
+        ]
+    )
+    eligible = [
+        trial
+        for trial in safe
+        if trial["telemetry"]["wall_seconds"] <= fastest * multiplier
+    ]
+    return min(trial["workers"] for trial in eligible)
 
 
 def run_calibration(root: Path) -> Mapping[str, Any]:
     root = Path(root).resolve()
     config = load_goal029_config(root)
     context = execution_context(root, config)
-    broker, _, vault = ingest_production_foundation(root, config)
-    support = class_support_scan(broker)
-    if vault.attempted_open_count != 0 or vault.open_count != 0:
-        raise Goal029Error("calibration_outer_access")
-    base_plan = production_plan()
-    order = {leaf: index for index, leaf in enumerate(base_plan)}
-    leaves = tuple(
-        sorted(
-            set(calibration_plan(config)) | set(fragility_stress_plan()),
-            key=order.__getitem__,
-        )
-    )
+    canary_leaves = calibration_canary_plan(config)
+    representative_leaves = calibration_plan(config)
+    fragility_leaves = fragility_stress_plan()
     calibration_id = _sha(
         {
             "execution_context": asdict(context),
-            "leaves": [asdict(leaf) for leaf in leaves],
-            "workers": [1, 2, 4],
+            "stage_order": config["calibration"]["stage_order"],
+            "canary_leaves": [asdict(leaf) for leaf in canary_leaves],
+            "representative_leaves": [
+                asdict(leaf) for leaf in representative_leaves
+            ],
+            "fragility_leaves": [
+                asdict(leaf) for leaf in fragility_leaves
+            ],
+            "canary_workers": [1, 2],
+            "representative_workers": [1, 2, 4],
         }
     )
     private_root = (
@@ -1404,55 +2061,149 @@ def run_calibration(root: Path) -> Mapping[str, Any]:
         raise Goal029Error("calibration_canonical_destination_exists")
     private_root.mkdir(parents=True)
     try:
-        trials = [
+        spawn_audit = run_thread_spawn_audit(
+            root,
+            config,
+            private_root / "spawn-audit",
+        )
+        _validate_calibration_spawn_audit(
+            spawn_audit,
+            config=config,
+            expected_host=socket.gethostname(),
+            expected_thread_evidence_digest=context.thread_evidence_digest,
+        )
+
+        broker, _, vault = ingest_production_foundation(root, config)
+        support = class_support_scan(broker)
+        if vault.attempted_open_count != 0 or vault.open_count != 0:
+            raise Goal029Error("calibration_outer_access")
+
+        canary_trials = [
             run_calibration_trial(
                 root,
                 config,
-                leaves,
+                canary_leaves,
                 workers,
-                private_root / f"workers{workers}",
+                private_root / "canary" / f"workers{workers}",
+                role="canary",
+            )
+            for workers in (1, 2)
+        ]
+        for trial in canary_trials:
+            _validate_calibration_trial_receipt(
+                trial,
+                role="canary",
+                workers=trial["workers"],
+                expected_leaves=canary_leaves,
+                expected_host=socket.gethostname(),
+                config=config,
+                expected_thread_evidence_digest=context.thread_evidence_digest,
+            )
+        canary_semantic_digest = _validate_canary_gate(
+            canary_trials, config
+        )
+
+        representative_trials = [
+            run_calibration_trial(
+                root,
+                config,
+                representative_leaves,
+                workers,
+                private_root / "representative" / f"workers{workers}",
+                role="representative",
             )
             for workers in (1, 2, 4)
         ]
-        semantic = {trial["semantic_digest"] for trial in trials}
-        hosts = {trial["actual_host"] for trial in trials}
-        if len(semantic) != 1 or hosts != {socket.gethostname()}:
-            raise Goal029Error("calibration_semantic_or_host_mismatch")
-        minimum_free = int(config["execution"]["minimum_free_memory_bytes"])
-        acceptable = [
-            trial
-            for trial in trials
-            if trial["telemetry"]["swap_after_bytes"]
-            <= trial["telemetry"]["swap_before_bytes"]
-            and trial["telemetry"]["free_memory_after_bytes"] >= minimum_free
+        for trial in representative_trials:
+            _validate_calibration_trial_receipt(
+                trial,
+                role="representative",
+                workers=trial["workers"],
+                expected_leaves=representative_leaves,
+                expected_host=socket.gethostname(),
+                config=config,
+                expected_thread_evidence_digest=context.thread_evidence_digest,
+            )
+        selected_workers = _select_representative_workers(
+            representative_trials, config
+        )
+        representative_semantic_digest = representative_trials[0][
+            "semantic_digest"
         ]
-        if not acceptable:
-            raise Goal029Error("calibration_no_acceptable_worker_trial")
-        selected_workers = max(trial["workers"] for trial in acceptable)
-        stress_set = set(fragility_stress_plan())
-        representative = trials[0]["results"]
+
+        fragility_trial = run_calibration_trial(
+            root,
+            config,
+            fragility_leaves,
+            selected_workers,
+            private_root / "fragility" / f"workers{selected_workers}",
+            role="fragility",
+        )
+        _validate_calibration_trial_receipt(
+            fragility_trial,
+            role="fragility",
+            workers=selected_workers,
+            expected_leaves=fragility_leaves,
+            expected_host=socket.gethostname(),
+            config=config,
+            expected_thread_evidence_digest=context.thread_evidence_digest,
+        )
+        if not _calibration_receipt_safe(fragility_trial, config):
+            raise Goal029Error("calibration_fragility_trial_unsafe")
         stress_invalid = sum(
             record["status"] == "invalid_candidate"
-            for record in representative
-            if ProductionLeaf(**record["leaf"]) in stress_set
+            for record in fragility_trial["results"]
         )
         private_receipt: dict[str, Any] = {
-            "schema_version": "goal029_calibration_master_v1",
+            "schema_version": "goal029_calibration_master_v2",
             "calibration_id": calibration_id,
             "actual_host": socket.gethostname(),
             "execution_context": asdict(context),
+            "thread_policy_digest": context.thread_policy_digest,
+            "thread_evidence_digest": context.thread_evidence_digest,
             "class_support_scan": list(support),
             "class_support_scan_digest": _sha(support),
-            "trial_receipts": [
+            "spawn_audit_receipt": {
+                "relative_path": "spawn-audit/receipt.json",
+                "receipt_digest": spawn_audit["receipt_digest"],
+            },
+            "canary_receipts": [
                 {
+                    "role": "canary",
                     "workers": trial["workers"],
-                    "relative_path": f"workers{trial['workers']}/receipt.json",
+                    "relative_path": (
+                        f"canary/workers{trial['workers']}/receipt.json"
+                    ),
                     "receipt_digest": trial["receipt_digest"],
                 }
-                for trial in trials
+                for trial in canary_trials
             ],
+            "representative_receipts": [
+                {
+                    "role": "representative",
+                    "workers": trial["workers"],
+                    "relative_path": (
+                        "representative/"
+                        f"workers{trial['workers']}/receipt.json"
+                    ),
+                    "receipt_digest": trial["receipt_digest"],
+                }
+                for trial in representative_trials
+            ],
+            "fragility_receipt": {
+                "role": "fragility",
+                "workers": selected_workers,
+                "relative_path": (
+                    f"fragility/workers{selected_workers}/receipt.json"
+                ),
+                "receipt_digest": fragility_trial["receipt_digest"],
+            },
             "selected_workers": selected_workers,
-            "semantic_digest": trials[0]["semantic_digest"],
+            "canary_semantic_digest": canary_semantic_digest,
+            "representative_semantic_digest": (
+                representative_semantic_digest
+            ),
+            "fragility_semantic_digest": fragility_trial["semantic_digest"],
             "fragility_invalid_candidate_count": stress_invalid,
             "real_outer_attempted_open_count": 0,
             "real_outer_open_count": 0,
@@ -1460,16 +2211,26 @@ def run_calibration(root: Path) -> Mapping[str, Any]:
         private_receipt["receipt_digest"] = _sha(private_receipt)
         _write_canonical_json(private_root / "receipt.json", private_receipt)
         tracked = {
-            "schema_version": "goal029_calibration_index_v1",
+            "schema_version": "goal029_calibration_index_v2",
             "goal_id": config["identity"]["goal_id"],
             "status": "pass",
-            "trial_workers": [1, 2, 4],
+            "thread_policy_digest": context.thread_policy_digest,
+            "thread_evidence_digest": context.thread_evidence_digest,
+            "spawn_audit_child_count": 4,
+            "canary_workers": [1, 2],
+            "canary_leaf_count": len(canary_leaves),
+            "canary_semantic_digest": canary_semantic_digest,
+            "representative_workers": [1, 2, 4],
+            "representative_leaf_count": len(representative_leaves),
+            "representative_semantic_digest": (
+                representative_semantic_digest
+            ),
             "selected_workers": selected_workers,
-            "leaf_count_per_trial": len(leaves),
+            "fragility_workers": selected_workers,
+            "fragility_leaf_count": len(fragility_leaves),
+            "fragility_semantic_digest": fragility_trial["semantic_digest"],
             "class_support_strata_count": 56,
-            "fragility_stress_leaf_count": 32,
             "fragility_invalid_candidate_count": stress_invalid,
-            "semantic_digest": trials[0]["semantic_digest"],
             "private_receipt_digest": private_receipt["receipt_digest"],
             "actual_host_digest": _sha(socket.gethostname()),
             "real_outer_attempted_open_count": 0,
@@ -1485,10 +2246,14 @@ def run_calibration(root: Path) -> Mapping[str, Any]:
     return {
         "status": "pass",
         "selected_workers": selected_workers,
-        "leaf_count_per_trial": len(leaves),
+        "canary_leaf_count": len(canary_leaves),
+        "representative_leaf_count": len(representative_leaves),
+        "fragility_leaf_count": len(fragility_leaves),
         "class_support_strata_count": 56,
         "fragility_invalid_candidate_count": stress_invalid,
-        "semantic_digest": trials[0]["semantic_digest"],
+        "canary_semantic_digest": canary_semantic_digest,
+        "representative_semantic_digest": representative_semantic_digest,
+        "fragility_semantic_digest": fragility_trial["semantic_digest"],
         "private_receipt_digest": private_receipt["receipt_digest"],
         "tracked_receipt_digest": sha256_file(tracked_root / "receipt.json"),
         "outer_attempted_open_count": 0,
@@ -1496,9 +2261,82 @@ def run_calibration(root: Path) -> Mapping[str, Any]:
     }
 
 
+def _class_support_records_valid(records: Sequence[Mapping[str, Any]]) -> bool:
+    expected_strata = [
+        (species_id, fraction_id, ladder_id)
+        for species_id in SPECIES
+        for fraction_id, ladder_id in ENDPOINTS
+    ]
+    if len(records) != len(expected_strata):
+        return False
+    for record, expected in zip(records, expected_strata, strict=True):
+        if (
+            not isinstance(record, Mapping)
+            or set(record)
+            != {
+                "species_id",
+                "fraction_id",
+                "ladder_id",
+                "folds",
+                "outer_endpoint_zero_count",
+                "outer_endpoint_one_count",
+                "status",
+            }
+            or (
+                record["species_id"],
+                record["fraction_id"],
+                record["ladder_id"],
+            )
+            != expected
+            or record["status"] != "pass"
+            or not isinstance(record["folds"], list)
+            or len(record["folds"]) != len(FOLDS)
+        ):
+            return False
+        for fold, fold_id in zip(record["folds"], FOLDS, strict=True):
+            if (
+                not isinstance(fold, Mapping)
+                or set(fold)
+                != {
+                    "fold_id",
+                    "endpoint_zero_count",
+                    "endpoint_one_count",
+                    "assessment_zero_count",
+                    "assessment_one_count",
+                }
+                or fold["fold_id"] != fold_id
+                or any(
+                    type(fold[key]) is not int or fold[key] < 1
+                    for key in (
+                        "endpoint_zero_count",
+                        "endpoint_one_count",
+                        "assessment_zero_count",
+                        "assessment_one_count",
+                    )
+                )
+            ):
+                return False
+        if any(
+            type(record[key]) is not int or record[key] < 1
+            for key in (
+                "outer_endpoint_zero_count",
+                "outer_endpoint_one_count",
+            )
+        ):
+            return False
+    return True
+
+
 def load_calibration_authority(
     root: Path, config: Mapping[str, Any], context: ExecutionContext
 ) -> Mapping[str, Any]:
+    current_thread_evidence = enforce_numerical_thread_policy(config)
+    if (
+        context.thread_policy_digest != _sha(numerical_thread_policy(config))
+        or context.thread_evidence_digest
+        != current_thread_evidence["evidence_digest"]
+    ):
+        raise Goal029Error("calibration_thread_context_mismatch")
     tracked_path = (
         _safe_bound_path(root, config["calibration"]["receipt_destination"])
         / "receipt.json"
@@ -1522,21 +2360,26 @@ def load_calibration_authority(
     private = _read_json(matches[0])
     body = dict(private)
     claimed = body.pop("receipt_digest", None)
-    expected_leaves = tuple(
-        leaf
-        for leaf in production_plan()
-        if leaf in set(calibration_plan(config)) | set(fragility_stress_plan())
-    )
+    canary_leaves = calibration_canary_plan(config)
+    representative_leaves = calibration_plan(config)
+    fragility_leaves = fragility_stress_plan()
     expected_private_keys = {
         "schema_version",
         "calibration_id",
         "actual_host",
         "execution_context",
+        "thread_policy_digest",
+        "thread_evidence_digest",
         "class_support_scan",
         "class_support_scan_digest",
-        "trial_receipts",
+        "spawn_audit_receipt",
+        "canary_receipts",
+        "representative_receipts",
+        "fragility_receipt",
         "selected_workers",
-        "semantic_digest",
+        "canary_semantic_digest",
+        "representative_semantic_digest",
+        "fragility_semantic_digest",
         "fragility_invalid_candidate_count",
         "real_outer_attempted_open_count",
         "real_outer_open_count",
@@ -1546,13 +2389,25 @@ def load_calibration_authority(
         set(private) != expected_private_keys
         or
         claimed != _sha(body)
-        or private.get("schema_version") != "goal029_calibration_master_v1"
+        or private.get("schema_version") != "goal029_calibration_master_v2"
         or private.get("actual_host") != socket.gethostname()
         or tracked.get("actual_host_digest") != _sha(socket.gethostname())
         or tracked.get("goal_id") != config["identity"]["goal_id"]
         or private.get("execution_context") != asdict(context)
+        or private.get("thread_policy_digest") != context.thread_policy_digest
+        or private.get("thread_evidence_digest")
+        != context.thread_evidence_digest
+        or tracked.get("thread_policy_digest")
+        != context.thread_policy_digest
+        or tracked.get("thread_evidence_digest")
+        != context.thread_evidence_digest
         or private.get("selected_workers") != tracked.get("selected_workers")
-        or private.get("semantic_digest") != tracked.get("semantic_digest")
+        or private.get("canary_semantic_digest")
+        != tracked.get("canary_semantic_digest")
+        or private.get("representative_semantic_digest")
+        != tracked.get("representative_semantic_digest")
+        or private.get("fragility_semantic_digest")
+        != tracked.get("fragility_semantic_digest")
         or private.get("real_outer_attempted_open_count") != 0
         or private.get("real_outer_open_count") != 0
     ):
@@ -1560,73 +2415,182 @@ def load_calibration_authority(
     expected_calibration_id = _sha(
         {
             "execution_context": asdict(context),
-            "leaves": [asdict(leaf) for leaf in expected_leaves],
-            "workers": [1, 2, 4],
+            "stage_order": config["calibration"]["stage_order"],
+            "canary_leaves": [asdict(leaf) for leaf in canary_leaves],
+            "representative_leaves": [
+                asdict(leaf) for leaf in representative_leaves
+            ],
+            "fragility_leaves": [
+                asdict(leaf) for leaf in fragility_leaves
+            ],
+            "canary_workers": [1, 2],
+            "representative_workers": [1, 2, 4],
         }
     )
     support = private.get("class_support_scan")
     if (
         private.get("calibration_id") != expected_calibration_id
         or not isinstance(support, list)
-        or len(support) != 56
+        or not _class_support_records_valid(support)
         or private.get("class_support_scan_digest") != _sha(support)
-        or tracked.get("leaf_count_per_trial") != len(expected_leaves)
+        or tracked.get("canary_leaf_count") != len(canary_leaves)
+        or tracked.get("representative_leaf_count")
+        != len(representative_leaves)
+        or tracked.get("fragility_leaf_count") != len(fragility_leaves)
         or tracked.get("fragility_invalid_candidate_count")
         != private.get("fragility_invalid_candidate_count")
     ):
         raise Goal029Error("calibration_authority_scope_mismatch")
-    trial_records = private.get("trial_receipts")
-    if (
-        not isinstance(trial_records, list)
-        or [record.get("workers") for record in trial_records] != [1, 2, 4]
-    ):
-        raise Goal029Error("calibration_trial_index_invalid")
-    trials = []
     private_root = matches[0].parent
-    for index, record in enumerate(trial_records):
-        workers = (1, 2, 4)[index]
+
+    spawn_index = private.get("spawn_audit_receipt")
+    if (
+        not isinstance(spawn_index, Mapping)
+        or set(spawn_index) != {"relative_path", "receipt_digest"}
+        or spawn_index.get("relative_path") != "spawn-audit/receipt.json"
+    ):
+        raise Goal029Error("calibration_spawn_audit_index_invalid")
+    spawn_path = private_root / spawn_index["relative_path"]
+    if spawn_path.is_symlink() or not spawn_path.is_file():
+        raise Goal029Error("calibration_spawn_audit_receipt_missing")
+    spawn_audit = _read_json(spawn_path)
+    _validate_calibration_spawn_audit(
+        spawn_audit,
+        config=config,
+        expected_host=socket.gethostname(),
+        expected_thread_evidence_digest=context.thread_evidence_digest,
+    )
+    if spawn_audit["receipt_digest"] != spawn_index["receipt_digest"]:
+        raise Goal029Error("calibration_spawn_audit_digest_mismatch")
+
+    def load_trials(
+        records: Any,
+        *,
+        role: str,
+        worker_counts: Sequence[int],
+        leaves: Sequence[ProductionLeaf],
+    ) -> list[Mapping[str, Any]]:
         if (
-            set(record) != {"workers", "relative_path", "receipt_digest"}
-            or record["relative_path"] != f"workers{workers}/receipt.json"
+            not isinstance(records, list)
+            or [record.get("workers") for record in records]
+            != list(worker_counts)
         ):
             raise Goal029Error("calibration_trial_index_invalid")
-        path = private_root / record["relative_path"]
-        if path.is_symlink() or not path.is_file():
-            raise Goal029Error("calibration_trial_receipt_missing")
-        trial = _read_json(path)
-        _validate_calibration_trial_receipt(
-            trial,
-            workers=workers,
-            expected_leaves=expected_leaves,
-            expected_host=socket.gethostname(),
-        )
-        if trial["receipt_digest"] != record["receipt_digest"]:
-            raise Goal029Error("calibration_trial_digest_mismatch")
-        trials.append(trial)
-    if len({trial["semantic_digest"] for trial in trials}) != 1:
-        raise Goal029Error("calibration_trial_semantic_disagreement")
-    minimum_free = int(config["execution"]["minimum_free_memory_bytes"])
-    acceptable = [
-        trial
-        for trial in trials
-        if trial["telemetry"]["swap_after_bytes"]
-        <= trial["telemetry"]["swap_before_bytes"]
-        and trial["telemetry"]["free_memory_after_bytes"] >= minimum_free
-    ]
-    selected_workers = max(
-        (trial["workers"] for trial in acceptable), default=None
+        trials = []
+        for workers, record in zip(worker_counts, records, strict=True):
+            relative = f"{role}/workers{workers}/receipt.json"
+            if (
+                set(record)
+                != {"role", "workers", "relative_path", "receipt_digest"}
+                or record["role"] != role
+                or record["relative_path"] != relative
+            ):
+                raise Goal029Error("calibration_trial_index_invalid")
+            path = private_root / relative
+            if path.is_symlink() or not path.is_file():
+                raise Goal029Error("calibration_trial_receipt_missing")
+            trial = _read_json(path)
+            _validate_calibration_trial_receipt(
+                trial,
+                role=role,
+                workers=workers,
+                expected_leaves=leaves,
+                expected_host=socket.gethostname(),
+                config=config,
+                expected_thread_evidence_digest=context.thread_evidence_digest,
+            )
+            if trial["receipt_digest"] != record["receipt_digest"]:
+                raise Goal029Error("calibration_trial_digest_mismatch")
+            trials.append(trial)
+        return trials
+
+    canary_trials = load_trials(
+        private.get("canary_receipts"),
+        role="canary",
+        worker_counts=(1, 2),
+        leaves=canary_leaves,
+    )
+    canary_semantic_digest = _validate_canary_gate(canary_trials, config)
+    representative_trials = load_trials(
+        private.get("representative_receipts"),
+        role="representative",
+        worker_counts=(1, 2, 4),
+        leaves=representative_leaves,
+    )
+    selected_workers = _select_representative_workers(
+        representative_trials, config
+    )
+
+    fragility_index = private.get("fragility_receipt")
+    if (
+        not isinstance(fragility_index, Mapping)
+        or set(fragility_index)
+        != {"role", "workers", "relative_path", "receipt_digest"}
+        or fragility_index.get("role") != "fragility"
+        or fragility_index.get("workers") != selected_workers
+        or fragility_index.get("relative_path")
+        != f"fragility/workers{selected_workers}/receipt.json"
+    ):
+        raise Goal029Error("calibration_fragility_index_invalid")
+    fragility_path = private_root / fragility_index["relative_path"]
+    if fragility_path.is_symlink() or not fragility_path.is_file():
+        raise Goal029Error("calibration_fragility_receipt_missing")
+    fragility_trial = _read_json(fragility_path)
+    _validate_calibration_trial_receipt(
+        fragility_trial,
+        role="fragility",
+        workers=selected_workers,
+        expected_leaves=fragility_leaves,
+        expected_host=socket.gethostname(),
+        config=config,
+        expected_thread_evidence_digest=context.thread_evidence_digest,
     )
     if (
-        selected_workers is None
+        fragility_trial["receipt_digest"]
+        != fragility_index["receipt_digest"]
+        or not _calibration_receipt_safe(fragility_trial, config)
+    ):
+        raise Goal029Error("calibration_fragility_invalid")
+    stress_invalid = sum(
+        record["status"] == "invalid_candidate"
+        for record in fragility_trial["results"]
+    )
+    if (
+        canary_semantic_digest != private["canary_semantic_digest"]
+        or representative_trials[0]["semantic_digest"]
+        != private["representative_semantic_digest"]
+        or fragility_trial["semantic_digest"]
+        != private["fragility_semantic_digest"]
         or selected_workers != private["selected_workers"]
         or selected_workers != tracked["selected_workers"]
-        or trials[0]["semantic_digest"] != private["semantic_digest"]
+        or tracked["fragility_workers"] != selected_workers
+        or stress_invalid != private["fragility_invalid_candidate_count"]
     ):
         raise Goal029Error("calibration_worker_selection_mismatch")
+
+    expected_files = {
+        "receipt.json",
+        "spawn-audit/receipt.json",
+        *(f"canary/workers{workers}/receipt.json" for workers in (1, 2)),
+        *(
+            f"representative/workers{workers}/receipt.json"
+            for workers in (1, 2, 4)
+        ),
+        f"fragility/workers{selected_workers}/receipt.json",
+    }
+    _validate_exact_file_inventory(
+        private_root,
+        expected_files,
+        "calibration_private_file_inventory",
+    )
     return {
         "tracked": tracked,
         "private": private,
-        "trials": trials,
+        "spawn_audit": spawn_audit,
+        "canary_trials": canary_trials,
+        "representative_trials": representative_trials,
+        "fragility_trial": fragility_trial,
+        "trials": representative_trials,
         "private_receipt_path": str(matches[0]),
     }
 
@@ -1829,6 +2793,7 @@ def _production_worker_candidate(
         or _CALIBRATION_VAULT is None
     ):
         raise Goal029Error("production_worker_uninitialised")
+    _worker_thread_evidence()
     checkpoint_root = Path(value["checkpoint_root"])
     leaves = [ProductionLeaf(**record["leaf"]) for record in value["leaves"]]
     identities = [record["identity"] for record in value["leaves"]]
@@ -1871,12 +2836,15 @@ def _production_worker_candidate(
                 }
             )
     except ModelAdapterError as exc:
+        thread_evidence = _worker_thread_evidence()
         return {
             "candidate_stratum": _candidate_stratum_payload(leaves[0]),
             "status": "invalid_candidate",
             "failure_code": _canonical_failure_code(exc),
             "failure_leaf": asdict(leaf),
             "leaves": [],
+            "worker_pid": os.getpid(),
+            "thread_evidence": thread_evidence,
             "real_outer_attempted_open_count": 0,
             "real_outer_open_count": 0,
         }
@@ -1885,12 +2853,15 @@ def _production_worker_candidate(
         or _CALIBRATION_VAULT.open_count != 0
     ):
         raise Goal029Error("production_worker_outer_access")
+    thread_evidence = _worker_thread_evidence()
     return {
         "candidate_stratum": _candidate_stratum_payload(leaves[0]),
         "status": "complete",
         "failure_code": "",
         "failure_leaf": None,
         "leaves": results,
+        "worker_pid": os.getpid(),
+        "thread_evidence": thread_evidence,
         "real_outer_attempted_open_count": 0,
         "real_outer_open_count": 0,
     }
@@ -2685,6 +3656,8 @@ def blinded_failure_receipt(
         "config_digest": context.config_digest,
         "runtime_fingerprint": context.runtime_fingerprint,
         "host_id": context.host_id,
+        "thread_policy_digest": context.thread_policy_digest,
+        "thread_evidence_digest": context.thread_evidence_digest,
     }
     payload["receipt_digest"] = _sha(payload)
     return payload
@@ -3194,6 +4167,7 @@ def _relative_artifact_path(root: Path, raw: str, *, directory: bool) -> Path:
 def _load_candidate_states(
     private_stage: Path,
     plan_record: Mapping[str, Any],
+    config: Mapping[str, Any],
     *,
     require_complete: bool,
 ) -> tuple[Mapping[str, Any], dict[str, Mapping[str, Any]]]:
@@ -3238,15 +4212,28 @@ def _load_candidate_states(
                 "failure_code",
                 "failure_leaf",
                 "leaves",
+                "worker_thread_policy_digest",
+                "worker_thread_evidence",
+                "worker_thread_evidence_digest",
             }:
                 raise Goal029Error("production_complete_state_schema")
             leaves = state.get("leaves")
+            worker_thread_evidence = state.get("worker_thread_evidence")
+            if not isinstance(worker_thread_evidence, Mapping):
+                raise Goal029Error("production_complete_state_invalid")
+            _validate_thread_evidence(worker_thread_evidence, config)
             if (
                 state.get("failure_code") != ""
                 or state.get("failure_leaf") is not None
                 or not isinstance(leaves, list)
                 or tuple(ProductionLeaf(**record["leaf"]) for record in leaves)
                 != expected_leaves
+                or state.get("worker_thread_policy_digest")
+                != plan_record["execution_context"]["thread_policy_digest"]
+                or worker_thread_evidence.get("policy_digest")
+                != state.get("worker_thread_policy_digest")
+                or worker_thread_evidence.get("evidence_digest")
+                != state.get("worker_thread_evidence_digest")
             ):
                 raise Goal029Error("production_complete_state_invalid")
             for leaf_record, expected_record in zip(leaves, expected_records):
@@ -3283,13 +4270,26 @@ def _load_candidate_states(
                 "failure_receipt_digest",
                 "cleanup_complete",
                 "leaves",
+                "worker_thread_policy_digest",
+                "worker_thread_evidence",
+                "worker_thread_evidence_digest",
             }:
                 raise Goal029Error("production_invalid_state_schema")
             failure_leaf = ProductionLeaf(**state["failure_leaf"])
+            worker_thread_evidence = state.get("worker_thread_evidence")
+            if not isinstance(worker_thread_evidence, Mapping):
+                raise Goal029Error("production_invalid_state_invalid")
+            _validate_thread_evidence(worker_thread_evidence, config)
             if (
                 failure_leaf not in expected_leaves
                 or state.get("leaves") != []
                 or type(state.get("cleanup_complete")) is not bool
+                or state.get("worker_thread_policy_digest")
+                != plan_record["execution_context"]["thread_policy_digest"]
+                or worker_thread_evidence.get("policy_digest")
+                != state.get("worker_thread_policy_digest")
+                or worker_thread_evidence.get("evidence_digest")
+                != state.get("worker_thread_evidence_digest")
                 or re.fullmatch(
                     r"[a-z0-9_:-]+", str(state.get("failure_code"))
                 )
@@ -3317,6 +4317,10 @@ def _load_candidate_states(
                 != plan_record["execution_context"]["runtime_fingerprint"]
                 or receipt.get("host_id")
                 != plan_record["execution_context"]["host_id"]
+                or receipt.get("thread_policy_digest")
+                != plan_record["execution_context"]["thread_policy_digest"]
+                or receipt.get("thread_evidence_digest")
+                != plan_record["execution_context"]["thread_evidence_digest"]
             ):
                 raise Goal029Error("production_failure_receipt_invalid")
             if state["cleanup_complete"]:
@@ -3344,15 +4348,30 @@ def _normalize_production_candidate_state(
     checkpoint_root: Path,
     private_stage: Path,
     plan_record: Mapping[str, Any],
+    config: Mapping[str, Any],
 ) -> Mapping[str, Any]:
     reference = ProductionLeaf(**records[0]["leaf"])
+    thread_evidence = result.get("thread_evidence")
     if (
         result.get("candidate_stratum")
         != _candidate_stratum_payload(reference)
+        or not isinstance(result.get("worker_pid"), int)
+        or not isinstance(thread_evidence, Mapping)
         or result.get("real_outer_attempted_open_count") != 0
         or result.get("real_outer_open_count") != 0
     ):
         raise Goal029Error("production_worker_result_scope")
+    _validate_thread_evidence(thread_evidence, config)
+    if (
+        thread_evidence["policy_digest"]
+        != plan_record["execution_context"]["thread_policy_digest"]
+    ):
+        raise Goal029Error("production_worker_thread_policy_mismatch")
+    thread_fields = {
+        "worker_thread_policy_digest": thread_evidence["policy_digest"],
+        "worker_thread_evidence": dict(thread_evidence),
+        "worker_thread_evidence_digest": thread_evidence["evidence_digest"],
+    }
     if result["status"] == "complete":
         normalized_leaves = []
         if len(result["leaves"]) != len(records):
@@ -3378,6 +4397,7 @@ def _normalize_production_candidate_state(
             "failure_code": "",
             "failure_leaf": None,
             "leaves": normalized_leaves,
+            **thread_fields,
         }
     if result["status"] != "invalid_candidate":
         raise Goal029Error("production_worker_status_invalid")
@@ -3401,6 +4421,7 @@ def _normalize_production_candidate_state(
         "failure_receipt_digest": receipt["receipt_digest"],
         "cleanup_complete": False,
         "leaves": [],
+        **thread_fields,
     }
 
 
@@ -3461,10 +4482,18 @@ def execute_production_candidates(
     plan_record: Mapping[str, Any],
     workers: int,
 ) -> Mapping[str, Any]:
+    parent_thread_evidence = enforce_numerical_thread_policy(config)
     if workers not in (1, 2, 4):
         raise Goal029Error("production_worker_count_invalid")
+    if (
+        parent_thread_evidence["policy_digest"]
+        != plan_record["execution_context"]["thread_policy_digest"]
+        or parent_thread_evidence["evidence_digest"]
+        != plan_record["execution_context"]["thread_evidence_digest"]
+    ):
+        raise Goal029Error("production_parent_thread_policy_mismatch")
     _, state_by_key = _load_candidate_states(
-        private_stage, plan_record, require_complete=False
+        private_stage, plan_record, config, require_complete=False
     )
     groups = _production_candidate_groups(plan_record)
     _finish_invalid_candidate_cleanup(
@@ -3502,6 +4531,7 @@ def execute_production_candidates(
                         checkpoint_root,
                         private_stage,
                         plan_record,
+                        config,
                     )
                     _replace_atomic_json_file(
                         Path(private_stage) / "candidate_states.json",
@@ -3513,7 +4543,7 @@ def execute_production_candidates(
                         private_stage, plan_record, groups, state_by_key
                     )
     final, _ = _load_candidate_states(
-        private_stage, plan_record, require_complete=True
+        private_stage, plan_record, config, require_complete=True
     )
     return final
 
@@ -3560,7 +4590,7 @@ def reduce_and_refit_production(
 ) -> Mapping[str, Any]:
     context = ExecutionContext(**plan_record["execution_context"])
     _, states = _load_candidate_states(
-        private_stage, plan_record, require_complete=True
+        private_stage, plan_record, config, require_complete=True
     )
     plan_lookup = {
         ProductionLeaf(**record["leaf"]): record
@@ -3875,9 +4905,10 @@ def validate_production_staged(
     config: Mapping[str, Any],
     require_source_audit: bool,
 ) -> Mapping[str, Any]:
+    _enforce_context_thread_policy(config, context)
     plan_record = _validate_production_plan_artifacts(private_stage, context)
     _, states = _load_candidate_states(
-        private_stage, plan_record, require_complete=True
+        private_stage, plan_record, config, require_complete=True
     )
     selection = _read_json(Path(private_stage) / "selection.json")
     if (
@@ -4103,6 +5134,7 @@ def _production_source_audit_candidate(
         or _CALIBRATION_VAULT is None
     ):
         raise Goal029Error("source_audit_worker_uninitialised")
+    _worker_thread_evidence()
     selected = tuple(ProductionLeaf(**leaf) for leaf in value["selected_leaves"])
     complete_candidate = value["expected_status"] == "complete"
     if complete_candidate:
@@ -4124,11 +5156,17 @@ def _production_source_audit_candidate(
                     }
                 )
         except ModelAdapterError as exc:
+            thread_evidence = _worker_thread_evidence()
             return {
                 "status": "invalid_candidate",
                 "failure_code": _canonical_failure_code(exc),
                 "failure_leaf": asdict(leaf),
                 "results": [],
+                "candidate_stratum": _candidate_stratum_payload(selected[0]),
+                "worker_pid": os.getpid(),
+                "thread_evidence": thread_evidence,
+                "real_outer_attempted_open_count": 0,
+                "real_outer_open_count": 0,
             }
         output = {
             "status": "complete",
@@ -4170,9 +5208,12 @@ def _production_source_audit_candidate(
         or _CALIBRATION_VAULT.open_count != 0
     ):
         raise Goal029Error("source_audit_outer_access")
+    thread_evidence = _worker_thread_evidence()
     return {
         **output,
         "candidate_stratum": _candidate_stratum_payload(selected[0]),
+        "worker_pid": os.getpid(),
+        "thread_evidence": thread_evidence,
         "real_outer_attempted_open_count": 0,
         "real_outer_open_count": 0,
     }
@@ -4230,12 +5271,20 @@ def _validate_production_source_audit(
         "fresh_process",
         "fresh_destination",
         "workers",
+        "thread_policy_digest",
+        "parent_thread_evidence",
+        "worker_thread_evidence",
         "real_outer_attempted_open_count",
         "real_outer_open_count",
         "receipt_digest",
     }
     body = dict(audit)
     claimed = body.pop("receipt_digest", None)
+    parent_evidence = audit.get("parent_thread_evidence")
+    worker_evidence = audit.get("worker_thread_evidence")
+    if not isinstance(parent_evidence, Mapping):
+        raise Goal029Error("production_source_audit_invalid")
+    _validate_thread_evidence(parent_evidence, config)
     plan = production_plan(config)
     salt = audit_salt(plan, context)
     leaves = audit_plan(plan, salt)
@@ -4257,6 +5306,12 @@ def _validate_production_source_audit(
         or audit.get("candidate_states_file_sha256")
         != run.get("candidate_states_file_sha256")
         or audit.get("workers") != run.get("selected_workers")
+        or audit.get("thread_policy_digest")
+        != context.thread_policy_digest
+        or parent_evidence.get("evidence_digest")
+        != context.thread_evidence_digest
+        or not isinstance(worker_evidence, list)
+        or len(worker_evidence) != audit.get("workers")
         or audit.get("cache_disabled") is not True
         or audit.get("fresh_process") is not True
         or audit.get("fresh_destination") is not True
@@ -4264,6 +5319,11 @@ def _validate_production_source_audit(
         or audit.get("real_outer_open_count") != 0
     ):
         raise Goal029Error("production_source_audit_invalid")
+    _validate_worker_evidence_index(
+        worker_evidence,
+        [record["worker_pid"] for record in worker_evidence],
+        config,
+    )
 
 
 def run_fresh_production_source_audit(
@@ -4273,11 +5333,15 @@ def run_fresh_production_source_audit(
     plan_record: Mapping[str, Any],
     workers: int,
 ) -> Mapping[str, Any]:
+    config = load_goal029_config(root)
+    parent_thread_evidence = _enforce_context_thread_policy(config, context)
+    if workers not in config["execution"]["worker_ladder"]:
+        raise Goal029Error("source_audit_worker_count_invalid")
     plan = production_plan()
     salt = audit_salt(plan, context)
     leaves = audit_plan(plan, salt)
     _, states = _load_candidate_states(
-        private_stage, plan_record, require_complete=True
+        private_stage, plan_record, config, require_complete=True
     )
     selected_groups: dict[str, list[ProductionLeaf]] = {}
     for leaf in leaves:
@@ -4301,13 +5365,16 @@ def run_fresh_production_source_audit(
             initializer=_calibration_worker_init,
             initargs=(str(Path(root).resolve()),),
         ) as executor:
-            results = list(
+            raw_results = list(
                 executor.map(
                     _production_source_audit_candidate,
                     payloads,
                     chunksize=1,
                 )
             )
+        results, worker_thread_evidence = _collect_worker_thread_evidence(
+            raw_results, config, workers
+        )
         result_by_key = {
             _candidate_stratum_key(record["candidate_stratum"]): record
             for record in results
@@ -4380,6 +5447,9 @@ def run_fresh_production_source_audit(
             "fresh_process": True,
             "fresh_destination": True,
             "workers": workers,
+            "thread_policy_digest": context.thread_policy_digest,
+            "parent_thread_evidence": parent_thread_evidence,
+            "worker_thread_evidence": worker_thread_evidence,
             "real_outer_attempted_open_count": 0,
             "real_outer_open_count": 0,
         }
@@ -4462,6 +5532,7 @@ def run_production(root: Path) -> Mapping[str, Any]:
     candidate_states = execute_production_candidates(
         root, config, private_stage, plan_record, workers
     )
+    _enforce_context_thread_policy(config, context)
     selection = reduce_and_refit_production(
         private_stage, config, plan_record, broker, provider, vault
     )
@@ -4652,10 +5723,12 @@ def _synthetic_source_audit_worker(
     expected_digests: Mapping[str, str],
     salt: str,
     destination_value: str,
+    parent_thread_evidence: Mapping[str, Any],
 ) -> None:
     root = Path(root_value)
     destination = Path(destination_value)
     config = load_goal029_config(root)
+    _validate_thread_evidence(parent_thread_evidence, config)
     context = execution_context(root, config)
     leaves = tuple(ProductionLeaf(**value) for value in leaf_values)
     if audit_salt(_synthetic_plan(), context) != salt:
@@ -4674,6 +5747,7 @@ def _synthetic_source_audit_worker(
         )
     if vault.attempted_open_count != 0 or vault.open_count != 0:
         raise Goal029Error("source_audit_outer_access")
+    worker_thread_evidence = _enforce_context_thread_policy(config, context)
     receipt = {
         "schema_version": "1.0",
         "selection_salt": salt,
@@ -4682,6 +5756,9 @@ def _synthetic_source_audit_worker(
         "cache_disabled": True,
         "fresh_process": True,
         "fresh_destination": True,
+        "thread_policy_digest": context.thread_policy_digest,
+        "parent_thread_evidence": parent_thread_evidence,
+        "worker_thread_evidence": worker_thread_evidence,
         "real_outer_attempted_open_count": 0,
         "real_outer_open_count": 0,
     }
@@ -4694,6 +5771,8 @@ def run_fresh_synthetic_source_audit(
     context: ExecutionContext,
     leaf_records: Sequence[Mapping[str, Any]],
 ) -> Mapping[str, Any]:
+    config = load_goal029_config(root)
+    parent_thread_evidence = _enforce_context_thread_policy(config, context)
     plan = _synthetic_plan()
     salt = audit_salt(plan, context)
     leaves = audit_plan(plan, salt)
@@ -4710,6 +5789,7 @@ def run_fresh_synthetic_source_audit(
             expected,
             salt,
             str(destination),
+            parent_thread_evidence,
         ),
     )
     try:
@@ -4720,6 +5800,10 @@ def run_fresh_synthetic_source_audit(
         receipt = _read_json(destination / "source_audit.json")
         body = dict(receipt)
         claimed = body.pop("receipt_digest", None)
+        worker_thread_evidence = receipt.get("worker_thread_evidence")
+        if not isinstance(worker_thread_evidence, Mapping):
+            raise Goal029Error("source_audit_receipt_invalid")
+        _validate_thread_evidence(worker_thread_evidence, config)
         if (
             claimed != _sha(body)
             or receipt.get("leaf_count") != len(leaves)
@@ -4727,6 +5811,12 @@ def run_fresh_synthetic_source_audit(
             or receipt.get("cache_disabled") is not True
             or receipt.get("fresh_process") is not True
             or receipt.get("fresh_destination") is not True
+            or receipt.get("thread_policy_digest")
+            != context.thread_policy_digest
+            or receipt.get("parent_thread_evidence")
+            != parent_thread_evidence
+            or worker_thread_evidence.get("policy_digest")
+            != context.thread_policy_digest
             or receipt.get("real_outer_attempted_open_count") != 0
             or receipt.get("real_outer_open_count") != 0
         ):
@@ -4742,6 +5832,7 @@ def run_synthetic(
     root = Path(root).resolve()
     config = load_goal029_config(root)
     context = execution_context(root, config)
+    _enforce_context_thread_policy(config, context)
     output_root = Path(output_root or root / "temp/goal029-synthetic").resolve()
     if output_root.exists() or output_root.is_symlink():
         raise Goal029Error("synthetic_output_exists")
@@ -5003,8 +6094,20 @@ def _validate_synthetic_artifacts(
     broker, provider, vault = _synthetic_foundation()
     context = ExecutionContext(**run["execution_context"])
     synthetic_validation_config = {
+        "execution": {
+            "per_estimator_threads": 1,
+            "numerical_thread_policy": {
+                "environment": _NUMERICAL_THREAD_ENVIRONMENT,
+                "threadpoolctl_version": "3.6.0",
+                "threadpoolctl_limit": 1,
+                "maximum_reported_blas_or_openmp_threads": 1,
+                "torch_intraop_threads": 1,
+                "torch_interop_threads": 1,
+            },
+        },
         "hardening": {"challenge_rows_maximum": 32}
     }
+    _enforce_context_thread_policy(synthetic_validation_config, context)
     summary = _read_json(Path(evidence_directory) / "summary.json")
     _validate_tracked_summary(summary)
     if (
@@ -5133,6 +6236,19 @@ def _validate_synthetic_artifacts(
         audit = _read_json(audit_path)
         body = dict(audit)
         claimed = body.pop("receipt_digest", None)
+        parent_thread_evidence = audit.get("parent_thread_evidence")
+        worker_thread_evidence = audit.get("worker_thread_evidence")
+        if (
+            not isinstance(parent_thread_evidence, Mapping)
+            or not isinstance(worker_thread_evidence, Mapping)
+        ):
+            raise Goal029Error("synthetic_source_audit_reconciliation")
+        _validate_thread_evidence(
+            parent_thread_evidence, synthetic_validation_config
+        )
+        _validate_thread_evidence(
+            worker_thread_evidence, synthetic_validation_config
+        )
         if (
             claimed != _sha(body)
             or run.get("source_audit_receipt_digest") != claimed
@@ -5142,6 +6258,12 @@ def _validate_synthetic_artifacts(
             or audit.get("cache_disabled") is not True
             or audit.get("fresh_process") is not True
             or audit.get("fresh_destination") is not True
+            or audit.get("thread_policy_digest")
+            != context.thread_policy_digest
+            or parent_thread_evidence.get("evidence_digest")
+            != context.thread_evidence_digest
+            or worker_thread_evidence.get("policy_digest")
+            != context.thread_policy_digest
         ):
             raise Goal029Error("synthetic_source_audit_reconciliation")
     elif (

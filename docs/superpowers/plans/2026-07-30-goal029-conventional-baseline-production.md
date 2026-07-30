@@ -13,7 +13,8 @@ Use actual Goal028 adapters and private-ingestion authorities.
 - Add `config/conventional_baseline_production.json`.
 - Add `tests/test_goal029_production.py` plan assertions.
 - Assert ordered species/endpoints/families/candidates/seeds and exact counts.
-- Assert the 30 calibration leaves are a unique subset with declared coverage.
+- Assert the two canary, 30 representative, and 32 fragility leaves have
+  distinct frozen roles and declared coverage.
 
 ## Task 2: Add multi-seed leaf support
 
@@ -86,7 +87,11 @@ Use actual Goal028 adapters and private-ingestion authorities.
 
 - Stop after synthetic readiness unless the orchestrator authorises real
   calibration.
-- Calibrate the exact 30 leaves at workers 1, 2, and 4 within memory policy.
-- Select one canonical host/worker setting.
+- Prove a four-child zero-fit spawn under live one-thread evidence.
+- Run the valid-GAM canary at workers 1/2 and stop above the `1.25` slowdown
+  boundary.
+- Calibrate the exact 30 representative leaves at workers 1, 2, and 4 within
+  memory policy; select the smallest safe setting within `1.10` of fastest.
+- Run the 32 fragility leaves once at the selected setting.
 - Execute/resume the full real plan, validate, publish, and stop before outer
   use.

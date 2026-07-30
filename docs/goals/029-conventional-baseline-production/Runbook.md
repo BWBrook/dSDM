@@ -26,12 +26,26 @@ uv run python -m dsdm_phase1.goal029_production \
   --root . --mode calibration
 ```
 
-The command runs fresh isolated trials at workers 1, 2, and 4, requires
-identical semantic outcomes, and selects the largest trial retaining at least
-6 GiB free-memory headroom without swap growth. The 30 representative leaves,
-all-56 class-support scan, and targeted `gam02`/`gam03` fragility stress are
-frozen. Calibration is runtime evidence, not candidate selection, and cannot
-be combined across hosts.
+The command first proves four distinct spawned children at zero fits under the
+frozen one-thread policy. It then runs the two frozen valid-`gam01` canary
+leaves at workers 1 and 2. Both leaves must complete with identical semantics,
+and workers 2 must not exceed `1.25` times the workers-1 wall time.
+
+Only then does it run the frozen 30-leaf representative panel at workers 1,
+2, and 4. Semantics must match. From trials with at least 6 GiB free memory
+before and after and no swap growth, it selects the smallest worker count
+within `1.10` times the fastest safe wall time. Finally, it runs the frozen
+32-leaf `gam02`/`gam03` fragility panel once at that count. Total calibration
+is 126 leaf executions and at most 735 fits; the 56-stratum class-support scan
+runs once. Calibration is runtime evidence, not candidate selection, and
+cannot be combined across hosts.
+
+The module sets `OMP_NUM_THREADS`, `OPENBLAS_NUM_THREADS`, `MKL_NUM_THREADS`,
+`VECLIB_MAXIMUM_THREADS`, and `NUMEXPR_NUM_THREADS` before numerical imports,
+then verifies live `threadpoolctl==3.6.0` and PyTorch intra/inter-op state in
+parents and children. Do not substitute shell environment settings. The
+runtime package remains transitively locked through scikit-learn so Goal028's
+accepted `pyproject.toml`/`uv.lock` provenance remains unchanged.
 
 ## Real production
 

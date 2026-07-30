@@ -108,3 +108,57 @@
   and outer attempted/open counts `0/0`.
 - No real calibration, production fitting, private-data access, commit, or
   push was performed during this portability repair.
+
+## 2026-07-31 — Concurrency gate diagnosis and bounded repair
+
+- The authorised workers-1 calibration trial completed its then-unioned
+  62-leaf panel in `827.757` seconds: 47 complete and 15 invalid candidates,
+  peak child RSS about 1.144 GB, healthy free memory, no swap growth, and real
+  outer attempted/open counts `0/0`.
+- The workers-2 trial was stopped without a receipt after process inspection
+  showed each child owning 160 native threads and consuming roughly 31 and 23
+  CPU cores. No workers-2 calibration authority, production fit, source
+  audit, or outer access was created.
+- Root cause: estimator-level `n_jobs=1` and ANN-local PyTorch settings did
+  not cap native OpenMP/BLAS pools, while the calibration design repeated the
+  32-leaf GAM fragility panel inside every worker trial.
+- Added a frozen one-thread execution contract. The module force-assigns five
+  environment caps before numerical imports, retains a process-global
+  `threadpoolctl` limiter, sets and verifies PyTorch intra/inter-op threads,
+  rejects every reported BLAS/OpenMP pool above one, and records normalized
+  evidence without library paths.
+- Thread policy and effective-evidence digests now bind the execution context,
+  audit salt, leaf identity/checkpoints, failure receipts, calibration
+  authority, production workers, selected refits, and fresh source audits.
+- Complete and invalid production candidate states persist the normalized
+  worker thread evidence, not only its digest. Resume and publication
+  validation recompute the digest, pool limits, and declared-policy binding;
+  a focused arbitrary-digest tamper test now covers this gate.
+- Replaced the repeated 62-leaf design with distinct stages: four zero-fit
+  spawned children; two valid `gam01` canary leaves at workers 1/2; the frozen
+  30 representative leaves at workers 1/2/4; and the 32 fragility leaves once
+  at the selected workers. The canary stops above a `1.25` workers-2/workers-1
+  wall ratio. Selection chooses the smallest safe count within `1.10` of the
+  fastest representative trial.
+- Revised calibration totals are 126 leaf executions and at most 735
+  estimator fits, versus 186 leaves and 1,035 fits in the unioned design.
+  The 56-stratum class-support scan remains once per calibration.
+- `threadpoolctl==3.6.0` remains in the existing locked scikit-learn closure
+  and is exact-version checked at runtime. `pyproject.toml` and `uv.lock`
+  remain byte-identical to preserve Goal028's frozen dependency provenance.
+- Focused Goal029 tests: `31 passed`, including the live four-child zero-fit
+  spawn proof, oversubscribed-pool rejection, exact canary/selection
+  boundaries, calibration-authority reconstruction, checkpoint tampering,
+  production worker evidence, and source-audit evidence.
+- Shared Goal028/inner-CV regressions: `50 passed`; 16 existing unknown-marker
+  warnings.
+- Static planning passed at 7,168 leaves, 2,016 candidate strata, 336 family
+  strata, 44,240 estimator fits, at most 1,008 refits, 359 source-audit leaves,
+  and outer `0/0`.
+- Fresh synthetic production and independent validation passed with 35 leaves,
+  six families, 18 selected refits, semantic digest
+  `d772edfb23ef67bd5afd68b34e2dea925fe4ea4e417b1acfde7a58af51419c0a`,
+  fresh spawned source audit, and outer attempted/open counts `0/0`.
+- This was an execution-contract repair, not a scientific-policy change. No
+  real calibration rerun, private-data access, production fitting, outer
+  opening/scoring, commit, or push was performed.

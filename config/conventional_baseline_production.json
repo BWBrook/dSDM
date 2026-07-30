@@ -1,6 +1,6 @@
 {
   "identity": {
-    "schema_version": "1.0",
+    "schema_version": "1.1",
     "goal_id": "goal029-conventional-baseline-production-2026-07-30",
     "protocol_version": "0.1",
     "master_seed": "dsdm-goal028-v1",
@@ -227,6 +227,20 @@
   "execution": {
     "canonical_host_policy": "one_host_per_run",
     "per_estimator_threads": 1,
+    "numerical_thread_policy": {
+      "environment": {
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      },
+      "threadpoolctl_version": "3.6.0",
+      "threadpoolctl_limit": 1,
+      "maximum_reported_blas_or_openmp_threads": 1,
+      "torch_intraop_threads": 1,
+      "torch_interop_threads": 1
+    },
     "worker_ladder": [
       1,
       2,
@@ -259,6 +273,8 @@
       "config_digest",
       "uv_lock_digest",
       "runtime_fingerprint",
+      "thread_policy_digest",
+      "thread_evidence_digest",
       "upstream_binding_digest",
       "leaf_task",
       "split_membership_digests",
@@ -306,6 +322,17 @@
     "consumer_rejects_unmarked_or_partial_pair": true
   },
   "calibration": {
+    "stage_order": [
+      "thread_spawn_audit",
+      "class_support_scan",
+      "canary",
+      "representative",
+      "fragility"
+    ],
+    "spawn_audit": {
+      "child_count": 4,
+      "fit_count": 0
+    },
     "leaf_count": 30,
     "coverage": [
       "all_species",
@@ -346,6 +373,32 @@
       ["pseudocheirus_peregrinus", "fraction50", "ladder01", "shallow_ann", "ann01", "seed03"],
       ["vombatus_ursinus", "fraction25", "ladder00", "elastic_net", "enet00", "seed04"]
     ],
+    "canary": {
+      "leaf_count": 2,
+      "leaves": [
+        ["trichosurus_vulpecula", "fraction50", "ladder00", "gam", "gam01", "seed00"],
+        ["vombatus_ursinus", "fraction50", "ladder01", "gam", "gam01", "seed00"]
+      ],
+      "worker_trials": [
+        1,
+        2
+      ],
+      "maximum_workers2_to_workers1_wall_ratio": 1.25,
+      "all_leaves_must_complete": true
+    },
+    "representative": {
+      "leaf_count": 30,
+      "worker_trials": [
+        1,
+        2,
+        4
+      ],
+      "near_fastest_wall_time_multiplier": 1.1
+    },
+    "fragility": {
+      "leaf_count": 32,
+      "worker_trials": "selected_workers_once"
+    },
     "preflight_gates": {
       "class_support_scan": "all_56_species_endpoint_strata",
       "fragility_stress_candidates": [
@@ -369,9 +422,22 @@
       "swap_before_bytes",
       "swap_after_bytes"
     ],
-    "selection_rule": "largest_trial_with_semantic_equality_no_swap_growth_and_minimum_6GiB_headroom_else_next_smaller",
+    "planned_counts": {
+      "spawn_audit_children": 4,
+      "canary_leaf_executions": 4,
+      "representative_leaf_executions": 90,
+      "fragility_leaf_executions": 32,
+      "total_leaf_executions": 126,
+      "maximum_estimator_fits": 735
+    },
+    "selection_rule": "smallest_memory_safe_worker_with_wall_time_at_most_1.10x_fastest_safe_representative_trial",
     "receipt_destination": "evidence/conventional_baseline_calibration",
-    "receipt_schema": "goal029_calibration_receipt_v1"
+    "receipt_schemas": {
+      "spawn_audit": "goal029_calibration_spawn_audit_v1",
+      "trial": "goal029_calibration_trial_v2",
+      "master": "goal029_calibration_master_v2",
+      "tracked_index": "goal029_calibration_index_v2"
+    }
   },
   "validation": {
     "artifact_only_full_recomputation": true,

@@ -68,6 +68,7 @@ def test_exact_production_and_calibration_plans(goal029_config):
         FAMILY_STRATA_COUNT,
         LEAF_COUNT,
         SELECTED_REFIT_MAXIMUM,
+        calibration_canary_plan,
         calibration_plan,
         fragility_stress_plan,
         production_plan,
@@ -86,9 +87,153 @@ def test_exact_production_and_calibration_plans(goal029_config):
     }
     calibration = calibration_plan(goal029_config)
     assert len(calibration) == 30 and set(calibration) <= set(plan)
+    canary = calibration_canary_plan(goal029_config)
+    assert canary == (
+        next(
+            leaf
+            for leaf in calibration
+            if leaf.species_id == "trichosurus_vulpecula"
+            and leaf.fraction_id == "fraction50"
+            and leaf.ladder_id == "ladder00"
+            and leaf.candidate_id == "gam01"
+        ),
+        next(
+            leaf
+            for leaf in calibration
+            if leaf.species_id == "vombatus_ursinus"
+            and leaf.fraction_id == "fraction50"
+            and leaf.ladder_id == "ladder01"
+            and leaf.candidate_id == "gam01"
+        ),
+    )
     stress = fragility_stress_plan()
     assert len(stress) == 32
     assert {leaf.candidate_id for leaf in stress} == {"gam02", "gam03"}
+    assert goal029_config["calibration"]["planned_counts"] == {
+        "spawn_audit_children": 4,
+        "canary_leaf_executions": 4,
+        "representative_leaf_executions": 90,
+        "fragility_leaf_executions": 32,
+        "total_leaf_executions": 126,
+        "maximum_estimator_fits": 735,
+    }
+
+
+def test_numerical_thread_policy_is_live_and_fails_closed(goal029_config):
+    import os
+
+    from dsdm_phase1.goal029_production import (
+        Goal029Error,
+        _NUMERICAL_THREAD_ENVIRONMENT,
+        _normalise_thread_pool,
+        _sha,
+        _validate_thread_evidence,
+        enforce_numerical_thread_policy,
+    )
+
+    assert {
+        key: os.environ.get(key) for key in _NUMERICAL_THREAD_ENVIRONMENT
+    } == _NUMERICAL_THREAD_ENVIRONMENT
+    evidence = enforce_numerical_thread_policy(goal029_config)
+    _validate_thread_evidence(evidence, goal029_config)
+    assert evidence["torch"] == {
+        "intraop_threads": 1,
+        "interop_threads": 1,
+    }
+    assert all(
+        pool["num_threads"] <= 1
+        for pool in evidence["pools"]
+        if pool["user_api"] in {"blas", "openmp"}
+    )
+    with pytest.raises(Goal029Error, match="thread_pool_limit_failed"):
+        _normalise_thread_pool(
+            {
+                "user_api": "openmp",
+                "internal_api": "openmp",
+                "prefix": "libomp",
+                "num_threads": 2,
+            }
+        )
+    empty_pool_evidence = {**evidence, "pools": []}
+    empty_pool_body = dict(empty_pool_evidence)
+    empty_pool_body.pop("evidence_digest")
+    empty_pool_evidence["evidence_digest"] = _sha(empty_pool_body)
+    with pytest.raises(Goal029Error, match="thread_evidence_invalid"):
+        _validate_thread_evidence(empty_pool_evidence, goal029_config)
+
+
+def test_zero_fit_spawn_audit_proves_four_distinct_children(
+    goal029_config, tmp_path
+):
+    from dsdm_phase1.goal029_production import run_thread_spawn_audit
+
+    root = Path(__file__).resolve().parents[1]
+    receipt = run_thread_spawn_audit(
+        root, goal029_config, tmp_path / "spawn-audit"
+    )
+    assert receipt["fit_count"] == 0
+    assert len({record["worker_pid"] for record in receipt["children"]}) == 4
+    assert len(receipt["worker_thread_evidence"]) == 4
+    assert receipt["real_outer_attempted_open_count"] == 0
+    assert receipt["real_outer_open_count"] == 0
+
+
+def test_canary_and_representative_worker_gates(goal029_config):
+    from dsdm_phase1.goal029_production import (
+        Goal029Error,
+        _select_representative_workers,
+        _validate_canary_gate,
+    )
+
+    gib = 1024**3
+
+    def trial(workers, wall, *, status="complete", swap_after=0):
+        return {
+            "workers": workers,
+            "semantic_digest": "a" * 64,
+            "results": [{"status": status}],
+            "telemetry": {
+                "wall_seconds": wall,
+                "free_memory_before_bytes": 12 * gib,
+                "free_memory_after_bytes": 8 * gib,
+                "swap_before_bytes": 0,
+                "swap_after_bytes": swap_after,
+            },
+        }
+
+    assert _validate_canary_gate(
+        [trial(1, 10.0), trial(2, 12.5)], goal029_config
+    ) == "a" * 64
+    with pytest.raises(Goal029Error, match="canary_slowdown"):
+        _validate_canary_gate(
+            [trial(1, 10.0), trial(2, 12.5001)], goal029_config
+        )
+    with pytest.raises(Goal029Error, match="canary_failed"):
+        _validate_canary_gate(
+            [trial(1, 10.0), trial(2, 9.0, status="invalid_candidate")],
+            goal029_config,
+        )
+
+    # 1 worker is exactly within 1.10 of the fastest and is preferred.
+    assert (
+        _select_representative_workers(
+            [trial(1, 11.0), trial(2, 10.5), trial(4, 10.0)],
+            goal029_config,
+        )
+        == 1
+    )
+    # Exclude an unsafe fastest trial, then choose the smallest near-fastest.
+    assert (
+        _select_representative_workers(
+            [
+                trial(1, 12.0),
+                trial(2, 10.0),
+                trial(4, 1.0, swap_after=1),
+            ],
+            goal029_config,
+        )
+        == 2
+    )
 
 
 def test_runtime_sensitive_configuration_is_exactly_frozen(tmp_path):
@@ -319,10 +464,19 @@ def test_source_audit_reconciles_complete_and_invalid_states(goal029_config):
         _validate_production_source_audit,
         audit_plan,
         audit_salt,
+        enforce_numerical_thread_policy,
+        numerical_thread_policy,
         production_plan,
     )
 
-    context = ExecutionContext(*(["1" * 64] * 4), "unit-host", "2" * 64)
+    thread_evidence = enforce_numerical_thread_policy(goal029_config)
+    context = ExecutionContext(
+        *(["1" * 64] * 4),
+        "unit-host",
+        "2" * 64,
+        _sha(numerical_thread_policy(goal029_config)),
+        thread_evidence["evidence_digest"],
+    )
     plan = production_plan(goal029_config)
     salt = audit_salt(plan, context)
     leaves = audit_plan(plan, salt)
@@ -377,6 +531,12 @@ def test_source_audit_reconciles_complete_and_invalid_states(goal029_config):
         "fresh_process": True,
         "fresh_destination": True,
         "workers": 2,
+        "thread_policy_digest": context.thread_policy_digest,
+        "parent_thread_evidence": thread_evidence,
+        "worker_thread_evidence": [
+            {"worker_pid": 1001, "evidence": thread_evidence},
+            {"worker_pid": 1002, "evidence": thread_evidence},
+        ],
         "real_outer_attempted_open_count": 0,
         "real_outer_open_count": 0,
     }
@@ -511,6 +671,10 @@ def test_real_adapter_leaf_checkpoint_resume_and_tamper_rejection(
     wrong["host_id"] = "different-host"
     with pytest.raises(Goal029Error, match="identity"):
         load_leaf_checkpoint(path, wrong)
+    wrong_thread_policy = dict(identity)
+    wrong_thread_policy["thread_policy_digest"] = "f" * 64
+    with pytest.raises(Goal029Error, match="identity"):
+        load_leaf_checkpoint(path, wrong_thread_policy)
 
 
 def test_five_seed_merge_and_anchor_quorum(goal029_config):
@@ -1004,9 +1168,13 @@ def test_candidate_failure_preserves_reused_checkpoint_until_durable_cleanup(
         _candidate_state_value,
         _candidate_stratum_key,
         _finish_invalid_candidate_cleanup,
+        _load_candidate_states,
         _normalize_production_candidate_state,
         _production_worker_candidate,
         _replace_atomic_json_file,
+        _sha,
+        enforce_numerical_thread_policy,
+        numerical_thread_policy,
     )
     from dsdm_phase1.model_adapters import ModelAdapterError
     from dsdm_phase1.modeling_contract import OuterVault
@@ -1035,6 +1203,10 @@ def test_candidate_failure_preserves_reused_checkpoint_until_durable_cleanup(
         json.dumps({"semantic_result_digest": "a" * 64}), encoding="utf-8"
     )
     monkeypatch.setattr(production, "_CALIBRATION_CONFIG", goal029_config)
+    thread_evidence = enforce_numerical_thread_policy(goal029_config)
+    monkeypatch.setattr(
+        production, "_WORKER_THREAD_EVIDENCE", thread_evidence
+    )
     monkeypatch.setattr(production, "_CALIBRATION_BROKER", object())
     monkeypatch.setattr(production, "_CALIBRATION_PROVIDER", object())
     monkeypatch.setattr(
@@ -1052,14 +1224,25 @@ def test_candidate_failure_preserves_reused_checkpoint_until_durable_cleanup(
     assert result["status"] == "invalid_candidate"
     assert reused.is_dir()
 
-    context = ExecutionContext(*(["1" * 64] * 4), "unit-host", "2" * 64)
+    context = ExecutionContext(
+        *(["1" * 64] * 4),
+        "unit-host",
+        "2" * 64,
+        _sha(numerical_thread_policy(goal029_config)),
+        thread_evidence["evidence_digest"],
+    )
     plan_record = {
         "record_digest": "f" * 64,
         "execution_context": asdict(context),
     }
     private_stage = tmp_path / "private"
     state = _normalize_production_candidate_state(
-        result, records, checkpoint_root, private_stage, plan_record
+        result,
+        records,
+        checkpoint_root,
+        private_stage,
+        plan_record,
+        goal029_config,
     )
     assert state["cleanup_complete"] is False and reused.is_dir()
     key = _candidate_stratum_key(ProductionLeaf(**records[0]["leaf"]))
@@ -1077,6 +1260,31 @@ def test_candidate_failure_preserves_reused_checkpoint_until_durable_cleanup(
         (private_stage / "candidate_states.json").read_text(encoding="utf-8")
     )
     assert persisted["candidate_records"][0]["cleanup_complete"] is True
+    assert (
+        persisted["candidate_records"][0]["worker_thread_evidence"]
+        == thread_evidence
+    )
+    monkeypatch.setattr(
+        production, "_production_candidate_groups", lambda _: groups
+    )
+    _load_candidate_states(
+        private_stage, plan_record, goal029_config, require_complete=True
+    )
+    persisted["candidate_records"][0]["worker_thread_evidence_digest"] = (
+        "b" * 64
+    )
+    _replace_atomic_json_file(
+        private_stage / "candidate_states.json", persisted
+    )
+    with pytest.raises(
+        production.Goal029Error, match="production_invalid_state_invalid"
+    ):
+        _load_candidate_states(
+            private_stage,
+            plan_record,
+            goal029_config,
+            require_complete=True,
+        )
 
 
 def test_calibration_authority_revalidates_linked_trials(
@@ -1086,35 +1294,39 @@ def test_calibration_authority_revalidates_linked_trials(
     import socket
 
     from dsdm_phase1.goal029_production import (
-        ExecutionContext,
+        Goal029Error,
         _sha,
+        calibration_canary_plan,
         calibration_plan,
+        execution_context,
         fragility_stress_plan,
         load_calibration_authority,
-        production_plan,
     )
     from dsdm_phase1.modeling_contract import canonical_json
 
-    context = ExecutionContext(*(["1" * 64] * 4), socket.gethostname(), "2" * 64)
-    expected_set = set(calibration_plan(goal029_config)) | set(
-        fragility_stress_plan()
-    )
-    leaves = tuple(leaf for leaf in production_plan() if leaf in expected_set)
-    semantic_rows = [
-        {
-            "leaf": asdict(leaf),
-            "status": "complete",
-            "semantic_result_digest": _sha(asdict(leaf)),
-            "failure_code": "",
-        }
-        for leaf in leaves
-    ]
-    semantic_digest = _sha(semantic_rows)
+    repo_root = Path(__file__).resolve().parents[1]
+    context = execution_context(repo_root, goal029_config)
+    # Authority requires the evidence that was bound into the live context.
+    from dsdm_phase1.goal029_production import enforce_numerical_thread_policy
+
+    thread_evidence = enforce_numerical_thread_policy(goal029_config)
+    assert thread_evidence["evidence_digest"] == context.thread_evidence_digest
+    canary_leaves = calibration_canary_plan(goal029_config)
+    representative_leaves = calibration_plan(goal029_config)
+    fragility_leaves = fragility_stress_plan()
     calibration_id = _sha(
         {
             "execution_context": asdict(context),
-            "leaves": [asdict(leaf) for leaf in leaves],
-            "workers": [1, 2, 4],
+            "stage_order": goal029_config["calibration"]["stage_order"],
+            "canary_leaves": [asdict(leaf) for leaf in canary_leaves],
+            "representative_leaves": [
+                asdict(leaf) for leaf in representative_leaves
+            ],
+            "fragility_leaves": [
+                asdict(leaf) for leaf in fragility_leaves
+            ],
+            "canary_workers": [1, 2],
+            "representative_workers": [1, 2, 4],
         }
     )
     private_root = (
@@ -1122,32 +1334,98 @@ def test_calibration_authority_revalidates_linked_trials(
         / "data/processed/modeling/goal029-conventional-baseline-calibration"
         / calibration_id
     )
-    trial_index = []
-    for workers in (1, 2, 4):
+
+    def write(relative, value):
+        path = private_root / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(canonical_json(value) + "\n", encoding="utf-8")
+
+    gib = 1024**3
+    spawn_children = [
+        {
+            "worker_pid": 1000 + index,
+            "fit_count": 0,
+            "real_outer_attempted_open_count": 0,
+            "real_outer_open_count": 0,
+        }
+        for index in range(4)
+    ]
+    spawn = {
+        "schema_version": "goal029_calibration_spawn_audit_v1",
+        "requested_children": 4,
+        "actual_host": socket.gethostname(),
+        "parent_thread_evidence": thread_evidence,
+        "children": spawn_children,
+        "worker_thread_evidence": [
+            {
+                "worker_pid": record["worker_pid"],
+                "evidence": thread_evidence,
+            }
+            for record in spawn_children
+        ],
+        "fit_count": 0,
+        "telemetry": {
+            "wall_seconds": 1.0,
+            "free_memory_before_bytes": 16 * gib,
+            "free_memory_after_bytes": 15 * gib,
+            "swap_before_bytes": 0,
+            "swap_after_bytes": 0,
+        },
+        "real_outer_attempted_open_count": 0,
+        "real_outer_open_count": 0,
+    }
+    spawn["receipt_digest"] = _sha(spawn)
+    write("spawn-audit/receipt.json", spawn)
+
+    def make_trial(role, leaves, workers, wall_seconds):
+        pids = [2000 + workers * 10 + index for index in range(workers)]
         results = [
             {
-                **row,
+                "leaf": asdict(leaf),
+                "status": "complete",
+                "semantic_result_digest": _sha(asdict(leaf)),
+                "failure_code": "",
                 "peak_rss_bytes": 1024,
+                "worker_pid": pids[index % workers],
                 "real_outer_attempted_open_count": 0,
                 "real_outer_open_count": 0,
             }
-            for row in semantic_rows
+            for index, leaf in enumerate(leaves)
+        ]
+        semantic_rows = [
+            {
+                key: record[key]
+                for key in (
+                    "leaf",
+                    "status",
+                    "semantic_result_digest",
+                    "failure_code",
+                )
+            }
+            for record in results
         ]
         trial = {
-            "schema_version": "goal029_calibration_receipt_v1",
+            "schema_version": "goal029_calibration_trial_v2",
+            "role": role,
             "workers": workers,
             "actual_host": socket.gethostname(),
+            "thread_policy_digest": context.thread_policy_digest,
+            "parent_thread_evidence": thread_evidence,
+            "worker_thread_evidence": [
+                {"worker_pid": pid, "evidence": thread_evidence}
+                for pid in pids
+            ],
             "fresh_processes": True,
             "checkpoint_reuse": False,
             "fresh_destination": True,
-            "leaf_count": len(leaves),
+            "leaf_count": len(results),
             "results": results,
-            "semantic_digest": semantic_digest,
+            "semantic_digest": _sha(semantic_rows),
             "telemetry": {
-                "wall_seconds": 1.0,
+                "wall_seconds": wall_seconds,
                 "peak_rss_bytes": 1024,
-                "free_memory_before_bytes": 16 * 1024**3,
-                "free_memory_after_bytes": 12 * 1024**3,
+                "free_memory_before_bytes": 16 * gib,
+                "free_memory_after_bytes": 12 * gib,
                 "swap_before_bytes": 0,
                 "swap_after_bytes": 0,
             },
@@ -1155,46 +1433,123 @@ def test_calibration_authority_revalidates_linked_trials(
             "real_outer_open_count": 0,
         }
         trial["receipt_digest"] = _sha(trial)
-        path = private_root / f"workers{workers}/receipt.json"
-        path.parent.mkdir(parents=True)
-        path.write_text(canonical_json(trial) + "\n", encoding="utf-8")
-        trial_index.append(
-            {
-                "workers": workers,
-                "relative_path": f"workers{workers}/receipt.json",
-                "receipt_digest": trial["receipt_digest"],
-            }
-        )
-    support = [{"stratum": index, "status": "pass"} for index in range(56)]
+        write(f"{role}/workers{workers}/receipt.json", trial)
+        return trial
+
+    canary_trials = [
+        make_trial("canary", canary_leaves, 1, 10.0),
+        make_trial("canary", canary_leaves, 2, 10.0),
+    ]
+    representative_trials = [
+        make_trial("representative", representative_leaves, 1, 10.0),
+        make_trial("representative", representative_leaves, 2, 9.5),
+        make_trial("representative", representative_leaves, 4, 9.2),
+    ]
+    selected_workers = 1
+    fragility_trial = make_trial(
+        "fragility", fragility_leaves, selected_workers, 8.0
+    )
+
+    support = []
+    for species_id in goal029_config["scope"]["species"]:
+        for endpoint in goal029_config["partitions"]["endpoints"]:
+            fraction_id, ladder_id = endpoint.split("/")
+            support.append(
+                {
+                    "species_id": species_id,
+                    "fraction_id": fraction_id,
+                    "ladder_id": ladder_id,
+                    "folds": [
+                        {
+                            "fold_id": f"fold{index:02d}",
+                            "endpoint_zero_count": 1,
+                            "endpoint_one_count": 1,
+                            "assessment_zero_count": 1,
+                            "assessment_one_count": 1,
+                        }
+                        for index in range(5)
+                    ],
+                    "outer_endpoint_zero_count": 1,
+                    "outer_endpoint_one_count": 1,
+                    "status": "pass",
+                }
+            )
     private = {
-        "schema_version": "goal029_calibration_master_v1",
+        "schema_version": "goal029_calibration_master_v2",
         "calibration_id": calibration_id,
         "actual_host": socket.gethostname(),
         "execution_context": asdict(context),
+        "thread_policy_digest": context.thread_policy_digest,
+        "thread_evidence_digest": context.thread_evidence_digest,
         "class_support_scan": support,
         "class_support_scan_digest": _sha(support),
-        "trial_receipts": trial_index,
-        "selected_workers": 4,
-        "semantic_digest": semantic_digest,
+        "spawn_audit_receipt": {
+            "relative_path": "spawn-audit/receipt.json",
+            "receipt_digest": spawn["receipt_digest"],
+        },
+        "canary_receipts": [
+            {
+                "role": "canary",
+                "workers": trial["workers"],
+                "relative_path": (
+                    f"canary/workers{trial['workers']}/receipt.json"
+                ),
+                "receipt_digest": trial["receipt_digest"],
+            }
+            for trial in canary_trials
+        ],
+        "representative_receipts": [
+            {
+                "role": "representative",
+                "workers": trial["workers"],
+                "relative_path": (
+                    f"representative/workers{trial['workers']}/receipt.json"
+                ),
+                "receipt_digest": trial["receipt_digest"],
+            }
+            for trial in representative_trials
+        ],
+        "fragility_receipt": {
+            "role": "fragility",
+            "workers": selected_workers,
+            "relative_path": (
+                f"fragility/workers{selected_workers}/receipt.json"
+            ),
+            "receipt_digest": fragility_trial["receipt_digest"],
+        },
+        "selected_workers": selected_workers,
+        "canary_semantic_digest": canary_trials[0]["semantic_digest"],
+        "representative_semantic_digest": representative_trials[0][
+            "semantic_digest"
+        ],
+        "fragility_semantic_digest": fragility_trial["semantic_digest"],
         "fragility_invalid_candidate_count": 0,
         "real_outer_attempted_open_count": 0,
         "real_outer_open_count": 0,
     }
     private["receipt_digest"] = _sha(private)
-    (private_root / "receipt.json").write_text(
-        canonical_json(private) + "\n", encoding="utf-8"
-    )
+    write("receipt.json", private)
     tracked = {
-        "schema_version": "goal029_calibration_index_v1",
+        "schema_version": "goal029_calibration_index_v2",
         "goal_id": goal029_config["identity"]["goal_id"],
         "status": "pass",
-        "trial_workers": [1, 2, 4],
-        "selected_workers": 4,
-        "leaf_count_per_trial": len(leaves),
+        "thread_policy_digest": context.thread_policy_digest,
+        "thread_evidence_digest": context.thread_evidence_digest,
+        "spawn_audit_child_count": 4,
+        "canary_workers": [1, 2],
+        "canary_leaf_count": 2,
+        "canary_semantic_digest": canary_trials[0]["semantic_digest"],
+        "representative_workers": [1, 2, 4],
+        "representative_leaf_count": 30,
+        "representative_semantic_digest": representative_trials[0][
+            "semantic_digest"
+        ],
+        "selected_workers": selected_workers,
+        "fragility_workers": selected_workers,
+        "fragility_leaf_count": 32,
+        "fragility_semantic_digest": fragility_trial["semantic_digest"],
         "class_support_strata_count": 56,
-        "fragility_stress_leaf_count": 32,
         "fragility_invalid_candidate_count": 0,
-        "semantic_digest": semantic_digest,
         "private_receipt_digest": private["receipt_digest"],
         "actual_host_digest": _sha(socket.gethostname()),
         "real_outer_attempted_open_count": 0,
@@ -1209,5 +1564,17 @@ def test_calibration_authority_revalidates_linked_trials(
     authority = load_calibration_authority(
         tmp_path, goal029_config, context
     )
-    assert authority["private"]["selected_workers"] == 4
+    assert authority["private"]["selected_workers"] == 1
     assert [trial["workers"] for trial in authority["trials"]] == [1, 2, 4]
+    assert authority["fragility_trial"]["workers"] == 1
+
+    tampered = {
+        **tracked,
+        "selected_workers": 2,
+        "fragility_workers": 2,
+    }
+    tracked_path.write_text(
+        canonical_json(tampered) + "\n", encoding="utf-8"
+    )
+    with pytest.raises(Goal029Error, match="calibration"):
+        load_calibration_authority(tmp_path, goal029_config, context)

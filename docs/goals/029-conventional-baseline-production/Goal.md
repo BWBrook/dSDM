@@ -37,8 +37,13 @@ Goal029 is acceptable when:
 2. the plan, identities, resumable leaf checkpoints, subset membership
    deduplication, failure/quorum policy, warning classification, challenge
    replays, and paired transaction are tested;
-3. a synthetic end-to-end run and bounded calibration gate pass;
-4. the authorised real calibration chooses a safe one-host worker setting;
+3. a synthetic end-to-end run and bounded calibration gate pass, including
+   direct proof that every reported BLAS/OpenMP and PyTorch pool is capped at
+   one thread;
+4. the authorised real calibration passes a zero-fit four-child spawn audit,
+   a two-leaf GAM concurrency canary, the 30-leaf representative panel, and
+   one selected-worker 32-leaf fragility run before choosing a safe one-host
+   worker setting;
 5. the exact real plan completes or fails closed under the predeclared
    candidate policy;
 6. staged artefact-only validation recomputes the full plan and selection,
