@@ -131,6 +131,158 @@ def test_runtime_sensitive_configuration_is_exactly_frozen(tmp_path):
             load_goal029_config(root, path)
 
 
+def test_swap_telemetry_reads_strict_linux_meminfo(monkeypatch):
+    import dsdm_phase1.goal029_production as production
+
+    monkeypatch.setattr(production.platform, "system", lambda: "Linux")
+
+    def read_meminfo(path, *, encoding):
+        assert path == Path("/proc/meminfo")
+        assert encoding == "ascii"
+        return (
+            "MemTotal:       16384000 kB\n"
+            "SwapTotal:       2097152 kB\n"
+            "SwapFree:        1572864 kB\n"
+            "SwapCached:            0 kB\n"
+        )
+
+    monkeypatch.setattr(
+        production.Path,
+        "read_text",
+        read_meminfo,
+    )
+    monkeypatch.setattr(
+        production.subprocess,
+        "check_output",
+        lambda *_args, **_kwargs: pytest.fail("Darwin telemetry called on Linux"),
+    )
+    assert production._swap_used_bytes() == 524288 * 1024
+
+
+def test_swap_telemetry_accepts_zero_linux_swap(monkeypatch):
+    import dsdm_phase1.goal029_production as production
+
+    monkeypatch.setattr(production.platform, "system", lambda: "Linux")
+    monkeypatch.setattr(
+        production.Path,
+        "read_text",
+        lambda self, encoding=None: (
+            "SwapTotal: 0 kB\nSwapFree: 0 kB\n"
+        ),
+    )
+    assert production._swap_used_bytes() == 0
+
+
+@pytest.mark.parametrize(
+    "meminfo",
+    (
+        "SwapTotal: 1024 kB\n",
+        "SwapTotal: 1024 kB\nSwapTotal: 1024 kB\nSwapFree: 512 kB\n",
+        "SwapTotal: 1024 MB\nSwapFree: 512 kB\n",
+        "SwapTotal: -1 kB\nSwapFree: 0 kB\n",
+        "SwapTotal: 512 kB\nSwapFree: 1024 kB\n",
+    ),
+)
+def test_swap_telemetry_rejects_invalid_linux_meminfo(monkeypatch, meminfo):
+    import dsdm_phase1.goal029_production as production
+
+    monkeypatch.setattr(production.platform, "system", lambda: "Linux")
+    monkeypatch.setattr(
+        production.Path,
+        "read_text",
+        lambda self, encoding=None: meminfo,
+    )
+    with pytest.raises(
+        production.Goal029Error, match="^swap_telemetry_unavailable$"
+    ):
+        production._swap_used_bytes()
+
+
+def test_swap_telemetry_rejects_linux_read_failure(monkeypatch):
+    import dsdm_phase1.goal029_production as production
+
+    monkeypatch.setattr(production.platform, "system", lambda: "Linux")
+
+    def failed_read(*_args, **_kwargs):
+        raise OSError("simulated /proc read failure")
+
+    monkeypatch.setattr(production.Path, "read_text", failed_read)
+    with pytest.raises(
+        production.Goal029Error, match="^swap_telemetry_unavailable$"
+    ):
+        production._swap_used_bytes()
+
+
+def test_swap_telemetry_reads_strict_darwin_sysctl(monkeypatch):
+    import dsdm_phase1.goal029_production as production
+
+    monkeypatch.setattr(production.platform, "system", lambda: "Darwin")
+
+    def check_output(command, *, text):
+        assert command == ["sysctl", "-n", "vm.swapusage"]
+        assert text is True
+        return (
+            "total = 4096.00M  used = 128.50M  "
+            "free = 3967.50M  (encrypted)\n"
+        )
+
+    monkeypatch.setattr(production.subprocess, "check_output", check_output)
+    assert production._swap_used_bytes() == int(128.5 * 1024**2)
+
+
+def test_swap_telemetry_rejects_malformed_or_failed_darwin(monkeypatch):
+    import subprocess
+
+    import dsdm_phase1.goal029_production as production
+
+    monkeypatch.setattr(production.platform, "system", lambda: "Darwin")
+    monkeypatch.setattr(
+        production.subprocess,
+        "check_output",
+        lambda *args, **kwargs: "used = 0.00M\n",
+    )
+    with pytest.raises(
+        production.Goal029Error, match="^swap_telemetry_unavailable$"
+    ):
+        production._swap_used_bytes()
+
+    def failed(*_args, **_kwargs):
+        raise subprocess.CalledProcessError(1, "sysctl")
+
+    monkeypatch.setattr(production.subprocess, "check_output", failed)
+    with pytest.raises(
+        production.Goal029Error, match="^swap_telemetry_unavailable$"
+    ):
+        production._swap_used_bytes()
+
+
+def test_swap_telemetry_rejects_incoherent_darwin_record(monkeypatch):
+    import dsdm_phase1.goal029_production as production
+
+    monkeypatch.setattr(production.platform, "system", lambda: "Darwin")
+    monkeypatch.setattr(
+        production.subprocess,
+        "check_output",
+        lambda *args, **kwargs: (
+            "total = 1.00M  used = 1.00T  free = 0.00G\n"
+        ),
+    )
+    with pytest.raises(
+        production.Goal029Error, match="^swap_telemetry_unavailable$"
+    ):
+        production._swap_used_bytes()
+
+
+def test_swap_telemetry_rejects_unsupported_platform(monkeypatch):
+    import dsdm_phase1.goal029_production as production
+
+    monkeypatch.setattr(production.platform, "system", lambda: "Windows")
+    with pytest.raises(
+        production.Goal029Error, match="^swap_telemetry_unavailable$"
+    ):
+        production._swap_used_bytes()
+
+
 def test_deterministic_audit_is_exact_and_complete(goal029_config):
     from dsdm_phase1.goal029_production import (
         FAMILIES,

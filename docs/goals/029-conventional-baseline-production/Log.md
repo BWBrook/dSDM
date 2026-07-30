@@ -76,3 +76,35 @@
   failures.
 - No real calibration, production fitting, outer access, commit, or push was
   performed during this repair pass.
+
+## 2026-07-31 — Portable fail-closed swap telemetry repair
+
+- Canonical calibration on Linux at commit `eb0c085` stopped before its first
+  leaf because the Darwin-only `sysctl -n vm.swapusage` probe failed with
+  `cannot stat /proc/sys/vm/swapusage`. The host reported healthy memory and
+  zero swap use; no calibration receipt or production artefact was created.
+  Calibration leaves completed: zero. Real outer attempted/open counts:
+  `0/0`.
+- Swap telemetry is now platform-bounded and fail-closed. Linux strictly
+  requires exactly one coherent `SwapTotal` and `SwapFree` pair in `kB` from
+  `/proc/meminfo`; Darwin strictly parses one coherent `vm.swapusage` record.
+  Unsupported systems and telemetry read, command, or parse failures raise
+  `Goal029Error("swap_telemetry_unavailable")`.
+- The existing no-swap-growth and minimum-6-GiB calibration acceptance gates,
+  configuration, worker policy, and scientific scope are unchanged.
+- Mocked swap telemetry tests: `12 passed`, covering valid and zero-swap
+  Linux, missing/duplicate/unit/negative/incoherent/read failures, valid
+  Darwin, malformed/command/incoherent Darwin failures, and an unsupported
+  platform.
+- Focused Goal029 tests: `28 passed`.
+- Shared Goal028/inner-CV regressions: `50 passed`; 16 existing unknown-marker
+  warnings.
+- Static plan passed at 7,168 leaves, 2,016 candidate strata, 336 family
+  strata, 44,240 actual inner fits, at most 1,008 refits, exactly 359
+  production source-audit leaves, and outer `0/0`.
+- Fresh synthetic production and independent validation passed with 35 leaves,
+  six families, 18 selected refits, semantic digest
+  `d2848e7831dd0207b47fa55e2ede3a93d7dcf93f7e61bf651358f60465fd2122`,
+  and outer attempted/open counts `0/0`.
+- No real calibration, production fitting, private-data access, commit, or
+  push was performed during this portability repair.

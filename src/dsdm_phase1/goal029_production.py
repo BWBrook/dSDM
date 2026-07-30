@@ -970,15 +970,78 @@ def _available_memory_bytes() -> int:
     return page_size * pages
 
 
-def _swap_used_bytes() -> int:
-    output = subprocess.check_output(
-        ["sysctl", "-n", "vm.swapusage"], text=True
-    ).strip()
-    match = re.search(r"used = ([0-9.]+)([MGT])", output)
+def _linux_swap_used_bytes(meminfo: str) -> int:
+    values: dict[str, int] = {}
+    pattern = re.compile(r"^(SwapTotal|SwapFree):[ \t]+([0-9]+)[ \t]+kB[ \t]*$")
+    for line in meminfo.splitlines():
+        if not line.startswith(("SwapTotal", "SwapFree")):
+            continue
+        match = pattern.fullmatch(line)
+        if match is None or match.group(1) in values:
+            raise ValueError("linux_swap_record_invalid")
+        values[match.group(1)] = int(match.group(2))
+    if set(values) != {"SwapTotal", "SwapFree"}:
+        raise ValueError("linux_swap_record_missing")
+    total = values["SwapTotal"]
+    free = values["SwapFree"]
+    if total < 0 or free < 0 or free > total:
+        raise ValueError("linux_swap_record_incoherent")
+    return (total - free) * 1024
+
+
+def _darwin_swap_used_bytes(output: str) -> int:
+    number = r"([0-9]+(?:\.[0-9]+)?)"
+    match = re.fullmatch(
+        rf"total = {number}([MGT])[ \t]+"
+        rf"used = {number}([MGT])[ \t]+"
+        rf"free = {number}([MGT])"
+        rf"(?:[ \t]+\(encrypted\))?",
+        output.strip(),
+    )
     if match is None:
+        raise ValueError("darwin_swap_record_invalid")
+    units = (match.group(2), match.group(4), match.group(6))
+    if len(set(units)) != 1:
+        raise ValueError("darwin_swap_record_unit_mismatch")
+    total = float(match.group(1))
+    used = float(match.group(3))
+    free = float(match.group(5))
+    if (
+        not all(math.isfinite(value) for value in (total, used, free))
+        or used > total
+        or free > total
+        or abs(total - used - free) > 0.02
+    ):
+        raise ValueError("darwin_swap_record_incoherent")
+    multiplier = {"M": 1024**2, "G": 1024**3, "T": 1024**4}[units[0]]
+    result = int(used * multiplier)
+    return result
+
+
+def _swap_used_bytes() -> int:
+    try:
+        system = platform.system()
+        if system == "Linux":
+            return _linux_swap_used_bytes(
+                Path("/proc/meminfo").read_text(encoding="ascii")
+            )
+        if system == "Darwin":
+            return _darwin_swap_used_bytes(
+                subprocess.check_output(
+                    ["sysctl", "-n", "vm.swapusage"], text=True
+                )
+            )
         raise Goal029Error("swap_telemetry_unavailable")
-    multiplier = {"M": 1024**2, "G": 1024**3, "T": 1024**4}[match.group(2)]
-    return int(float(match.group(1)) * multiplier)
+    except Goal029Error:
+        raise
+    except (
+        OSError,
+        UnicodeError,
+        ValueError,
+        OverflowError,
+        subprocess.SubprocessError,
+    ):
+        raise Goal029Error("swap_telemetry_unavailable") from None
 
 
 def _peak_rss_bytes_current_process() -> int:
