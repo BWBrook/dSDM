@@ -67,6 +67,10 @@ spawned one-worker executor; the private receipt proves that its
 process-instance digest differs from replicate 0. Each stage must have the
 bounded `safe_diagnostics` record. Known fit/convergence/prediction failures
 are candidate-local; unknown, protocol, or candidate-authority errors stop.
+In particular, an exact `pygam.utils.OptimizationError` wrapped by the
+adapter as `gam_fit_failed` is recorded as the bounded
+`OptimizationError/optimization_error` diagnostic. Never retain or classify
+from its raw PIRLS message; an unregistered cause still stops the gate.
 
 Calibration totals are 431 candidate executions and at most 2,597 estimator
 fits. The accepted tracked index is written only after the GAM gate passes.

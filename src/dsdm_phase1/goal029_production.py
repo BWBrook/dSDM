@@ -44,6 +44,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 import threadpoolctl
 import torch
+from pygam.utils import OptimizationError as PyGAMOptimizationError
 from sklearn.metrics import roc_auc_score
 
 from .inner_cv import (
@@ -1327,6 +1328,7 @@ _GAM_GATE_STAGE_IDS = tuple(
 )
 _GAM_GATE_DIAGNOSTIC_CATEGORIES = {
     "strict_nonconvergence",
+    "optimization_error",
     "value_error",
     "type_error",
     "runtime_error",
@@ -1339,6 +1341,7 @@ _GAM_GATE_DIAGNOSTIC_CATEGORIES = {
     "invalid_prediction",
 }
 _GAM_FIT_DIAGNOSTIC_PAIRS = {
+    ("OptimizationError", "optimization_error"),
     ("ValueError", "value_error"),
     ("TypeError", "type_error"),
     ("RuntimeError", "runtime_error"),
@@ -1524,6 +1527,7 @@ def _sanitize_gam_gate_exception(
         OverflowError: "floating_point_error",
         ZeroDivisionError: "floating_point_error",
         np.linalg.LinAlgError: "linear_algebra_error",
+        PyGAMOptimizationError: "optimization_error",
     }
     category = type_categories.get(type(cause))
     if category is None:

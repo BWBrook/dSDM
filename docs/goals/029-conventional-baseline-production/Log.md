@@ -1,5 +1,27 @@
 # Log
 
+## 2026-07-31 — Typed pyGAM divergence classification repair
+
+- The first real amended calibration at commit `1c052cb` stopped during the
+  GAM feasibility gate when pyGAM raised
+  `pygam.utils.OptimizationError` and the adapter correctly wrapped it as
+  `ModelAdapterError("gam_fit_failed")`. The gate's exact-type allowlist did
+  not yet recognize that pyGAM class, so it escalated to
+  `gam_gate_exception_unclassified`.
+- The gate now classifies exactly `pygam.utils.OptimizationError` as the
+  bounded candidate-local `gam_fit_failed` / `optimization_error` diagnostic.
+  It does not match exception text, admit arbitrary subclasses, or retain the
+  PIRLS message. Unknown causes and protocol/authority failures still abort.
+- Worker-level regression proves the failed fold becomes invalid while all
+  later stages and a subsequent candidate continue. The receipt exposes no
+  raw exception text, performance metric, prediction, label, row identifier,
+  or outer payload.
+- Focused new regressions: `2 passed`. Complete Goal029 test file:
+  `38 passed`. `git diff --check` passed.
+- The failed real attempt published no calibration authority and did not
+  access the outer assessment. One clean remote GAM-gate rerun is justified;
+  no grid, fitting limit, dependency, or scientific policy changed.
+
 ## 2026-07-31 — Final sentinel and late-stage resume repair
 
 - Sentinel reproducibility now binds each stage's complete bounded

@@ -435,6 +435,7 @@ def test_gam_fit_exception_diagnostics_are_sanitized_and_classified():
         _sanitize_gam_gate_exception,
     )
     from dsdm_phase1.model_adapters import ModelAdapterError
+    from pygam.utils import OptimizationError
 
     wrapped = ModelAdapterError("gam_fit_failed")
     wrapped.__cause__ = ValueError("row 17 at /private/path")
@@ -442,6 +443,16 @@ def test_gam_fit_exception_diagnostics_are_sanitized_and_classified():
         "failure_code": "gam_fit_failed",
         "exception_class": "ValueError",
         "exception_category": "value_error",
+    }
+
+    diverged = ModelAdapterError("gam_fit_failed")
+    diverged.__cause__ = OptimizationError(
+        "PIRLS optimization has diverged"
+    )
+    assert _sanitize_gam_gate_exception(diverged) == {
+        "failure_code": "gam_fit_failed",
+        "exception_class": "OptimizationError",
+        "exception_category": "optimization_error",
     }
 
     nonconverged = ModelAdapterError("gam_nonconverged")
@@ -471,6 +482,110 @@ def test_gam_fit_exception_diagnostics_are_sanitized_and_classified():
                 "exception_category": "serialization_error",
             }
         )
+
+
+def test_gam_optimization_error_is_candidate_local_and_gate_continues(
+    monkeypatch, goal029_config
+):
+    import dsdm_phase1.goal029_production as production
+    from dsdm_phase1.goal029_production import (
+        _gam_gate_worker_candidate,
+        enforce_numerical_thread_policy,
+        gam_feasibility_execution_plan,
+    )
+    from dsdm_phase1.model_adapters import FitReport, ModelAdapterError
+    from dsdm_phase1.modeling_contract import OuterVault
+    from pygam.utils import OptimizationError
+
+    broker, provider = _foundation(n=80)
+    vault = OuterVault(None, synthetic=False)
+    thread_evidence = enforce_numerical_thread_policy(goal029_config)
+    monkeypatch.setattr(production, "_CALIBRATION_CONFIG", goal029_config)
+    monkeypatch.setattr(production, "_CALIBRATION_BROKER", broker)
+    monkeypatch.setattr(production, "_CALIBRATION_PROVIDER", provider)
+    monkeypatch.setattr(production, "_CALIBRATION_VAULT", vault)
+    monkeypatch.setattr(
+        production, "_WORKER_THREAD_EVIDENCE", thread_evidence
+    )
+    monkeypatch.setattr(
+        production, "_WORKER_PROCESS_INSTANCE_DIGEST", "1" * 64
+    )
+    fit_transforms = []
+
+    class Fitted:
+        def predict_scores(self, batch):
+            return np.full(len(batch.keys), 0.5, dtype=np.float64)
+
+        def serialize(self, path):
+            Path(path).write_bytes(b"status-only-model")
+            return {}
+
+    fitted = Fitted()
+
+    class Adapter:
+        family = "gam"
+
+        def fit(
+            self,
+            train,
+            stopping,
+            candidate,
+            seed,
+            exact_epochs=None,
+        ):
+            assert stopping is None and exact_epochs is None
+            fit_transforms.append(train.transform_id)
+            if len(fit_transforms) == 1:
+                error = ModelAdapterError("gam_fit_failed")
+                error.__cause__ = OptimizationError(
+                    "PIRLS optimization has diverged"
+                )
+                raise error
+            return fitted, FitReport(
+                True, 1, None, None, None, (), 0.0, 1
+            )
+
+    monkeypatch.setattr(production, "build_adapter", lambda _family: Adapter())
+    monkeypatch.setattr(
+        production, "load_fitted_model", lambda _path, _digest: fitted
+    )
+    executions = gam_feasibility_execution_plan(goal029_config)
+    first = _gam_gate_worker_candidate(executions[0])
+    second = _gam_gate_worker_candidate(executions[1])
+
+    assert first["status"] == "invalid_candidate"
+    assert first["stages"][0]["diagnostic"] == {
+        "failure_code": "gam_fit_failed",
+        "exception_class": "OptimizationError",
+        "exception_category": "optimization_error",
+    }
+    assert [stage["status"] for stage in first["stages"]] == [
+        "invalid",
+        "complete",
+        "complete",
+        "complete",
+        "complete",
+        "complete",
+    ]
+    assert second["status"] == "complete"
+    assert len(fit_transforms) == 12
+    serialized = json.dumps(first, sort_keys=True)
+    assert all(
+        token not in serialized
+        for token in (
+            "PIRLS",
+            "diverged",
+            '"roc_auc"',
+            '"tss"',
+            '"threshold"',
+            '"oof_score"',
+            '"grid_cell_id"',
+            '"row_index"',
+            '"y_true"',
+            '"predictions"',
+        )
+    )
+    assert vault.attempted_open_count == vault.open_count == 0
 
 
 def test_gam_gate_worker_uses_status_only_five_folds_and_refit_replay(
