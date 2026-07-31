@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import concurrent.futures
+from contextlib import nullcontext
 import hashlib
 import importlib.metadata
 import json
@@ -63,10 +64,8 @@ from .inner_cv import (
 from .model_adapters import (
     CANONICAL_CANDIDATES,
     FitReport,
-    GOAL029_PSPLINE_CANDIDATES,
     ModelAdapterError,
     build_adapter,
-    goal029_candidate_authority,
     load_fitted_model,
 )
 from .modeling_contract import (
@@ -120,7 +119,6 @@ FOLDS = tuple(f"fold{i:02d}" for i in range(5))
 FAMILIES = (
     "intercept",
     "elastic_net",
-    "gam",
     "random_forest",
     "hist_gradient_boosting",
     "shallow_ann",
@@ -128,7 +126,6 @@ FAMILIES = (
 CANDIDATE_IDS = {
     "intercept": ("null00",),
     "elastic_net": tuple(f"enet{i:02d}" for i in range(10)),
-    "gam": tuple(f"psgam{i:02d}" for i in range(6)),
     "random_forest": tuple(f"rf{i:02d}" for i in range(7)),
     "hist_gradient_boosting": tuple(f"hgb{i:02d}" for i in range(7)),
     "shallow_ann": tuple(f"ann{i:02d}" for i in range(6)),
@@ -136,7 +133,6 @@ CANDIDATE_IDS = {
 SEEDS_BY_FAMILY = {
     "intercept": ("seed00",),
     "elastic_net": tuple(f"seed{i:02d}" for i in range(5)),
-    "gam": ("seed00",),
     "random_forest": tuple(f"seed{i:02d}" for i in range(5)),
     "hist_gradient_boosting": ("seed00",),
     "shallow_ann": tuple(f"seed{i:02d}" for i in range(5)),
@@ -147,7 +143,6 @@ ANCHORS = {
     "hist_gradient_boosting": "hgb04",
     "shallow_ann": "ann01",
 }
-GAM_RECOVERY_CANDIDATE_IDS = CANDIDATE_IDS["gam"]
 FAMILY_STRATA_COUNT = len(SPECIES) * len(ENDPOINTS) * len(FAMILIES)
 CANDIDATE_STRATA_COUNT = len(SPECIES) * len(ENDPOINTS) * sum(
     len(CANDIDATE_IDS[family]) for family in FAMILIES
@@ -175,7 +170,7 @@ _FORBIDDEN_TRACKED_KEYS = {
     "oof_score",
 }
 _CANONICAL_CONFIG_DIGEST = (
-    "e0c65dea8530f814ebc642e3d11e80db587f63c8b081a68db77ef57c08ac4dc3"
+    "3657c599b3c49104b2cefe2c959a86bd3ebe18e6ef9fc909bdd2948204298779"
 )
 
 
@@ -217,36 +212,20 @@ class ProductionLeaf:
         return (*self.family_stratum, self.candidate_id)
 
 
-GAM_GATE_SENTINEL = ProductionLeaf(
-    "thylogale_billardierii",
-    "fraction100",
-    "full",
-    "gam",
-    "psgam05",
-    "seed00",
-)
-
-
 def _goal029_candidate_payload(candidate_id: str) -> Mapping[str, Any]:
-    candidate = GOAL029_PSPLINE_CANDIDATES.get(candidate_id)
-    if candidate is not None:
-        return candidate
     return CANONICAL_CANDIDATES[candidate_id]
 
 
 def _goal029_candidate_context(config: Mapping[str, Any] | None = None):
-    payloads: Mapping[str, Mapping[str, Any]] = GOAL029_PSPLINE_CANDIDATES
     if config is not None:
         models = config.get("models")
-        if isinstance(models, Mapping) and "goal029_pspline_registry" in models:
-            registry = models["goal029_pspline_registry"]
-            if not isinstance(registry, Mapping):
-                raise Goal029Error("goal029_pspline_registry_mismatch")
-            supplied = registry.get("candidate_payloads")
-            if not isinstance(supplied, Mapping):
-                raise Goal029Error("goal029_pspline_registry_mismatch")
-            payloads = supplied
-    return goal029_candidate_authority(payloads)
+        if models is not None and (
+            not isinstance(models, Mapping)
+            or models.get("registry_authority") != "goal028_canonical_only"
+            or "goal029_pspline_registry" in models
+        ):
+            raise Goal029Error("candidate_registry_authority_mismatch")
+    return nullcontext()
 
 
 @dataclass(frozen=True)
@@ -464,7 +443,7 @@ def calibration_plan(config: Mapping[str, Any]) -> tuple[ProductionLeaf, ...]:
         leaves = tuple(ProductionLeaf(*values) for values in config["calibration"]["leaves"])
     except (KeyError, TypeError) as exc:
         raise Goal029Error("calibration_plan_invalid") from exc
-    if len(leaves) != 30 or len(set(leaves)) != 30:
+    if len(leaves) != 28 or len(set(leaves)) != 28:
         raise Goal029Error("calibration_count_or_duplicate")
     full = set(production_plan())
     if not set(leaves) <= full:
@@ -481,7 +460,6 @@ def calibration_plan(config: Mapping[str, Any]) -> tuple[ProductionLeaf, ...]:
         raise Goal029Error("calibration_seed_coverage")
     expected_extremes = {
         "elastic_net": {"enet00", "enet09"},
-        "gam": {"psgam00", "psgam05"},
         "random_forest": {"rf00", "rf06"},
         "hist_gradient_boosting": {"hgb00", "hgb06"},
         "shallow_ann": {"ann00", "ann05"},
@@ -554,9 +532,9 @@ def load_goal029_config(root: Path, path: Path | None = None) -> Mapping[str, An
         raise Goal029Error("config_sections_mismatch")
     identity = config["identity"]
     if identity != {
-        "schema_version": "1.4",
+        "schema_version": "1.5",
         "goal_id": "goal029-conventional-baseline-production-2026-07-30",
-        "protocol_version": "0.4",
+        "protocol_version": "0.5",
         "master_seed": "dsdm-goal028-v1",
         "created_at": "2026-07-31",
     }:
@@ -593,15 +571,10 @@ def load_goal029_config(root: Path, path: Path | None = None) -> Mapping[str, An
         raise Goal029Error("family_contract_mismatch")
     if (
         config["models"].get("registry_authority")
-        != "goal028_canonical_plus_context_scoped_goal029_pspline_registry_v2"
-        or config["models"].get("goal029_pspline_registry")
-        != {
-            "schema_version": "goal029_pspline_registry_v2",
-            "spline_order": 3,
-            "candidate_payloads": GOAL029_PSPLINE_CANDIDATES,
-        }
+        != "goal028_canonical_only"
+        or "goal029_pspline_registry" in config["models"]
     ):
-        raise Goal029Error("goal029_pspline_registry_mismatch")
+        raise Goal029Error("candidate_registry_authority_mismatch")
     if {
         family: tuple(values)
         for family, values in config["models"]["candidate_ids"].items()
@@ -614,11 +587,8 @@ def load_goal029_config(root: Path, path: Path | None = None) -> Mapping[str, An
         raise Goal029Error("seed_registry_mismatch")
     if config["failure_policy"]["anchors"] != ANCHORS:
         raise Goal029Error("anchor_policy_mismatch")
-    if config["failure_policy"].get("gam_viability") != {
-        "minimum_complete_candidates": 2,
-        "mandatory_regularized_candidate_ids": ["psgam02", "psgam05"],
-    }:
-        raise Goal029Error("gam_viability_policy_mismatch")
+    if "gam_viability" in config["failure_policy"]:
+        raise Goal029Error("retired_gam_viability_policy")
     if config["failure_policy"]["mandatory_null"] != "null00":
         raise Goal029Error("mandatory_null_mismatch")
     if config["failure_policy"]["minimum_complete_valid_candidates_by_family"] != {
@@ -632,7 +602,7 @@ def load_goal029_config(root: Path, path: Path | None = None) -> Mapping[str, An
     numerical_thread_policy(config)
     calibration = config["calibration"]
     if (
-        calibration.get("leaf_count") != 30
+        calibration.get("leaf_count") != 28
         or calibration.get("worker_trials") != [1, 2, 4]
         or calibration.get("stage_order")
         != [
@@ -640,7 +610,6 @@ def load_goal029_config(root: Path, path: Path | None = None) -> Mapping[str, An
             "class_support_scan",
             "canary",
             "representative",
-            "gam_feasibility_gate",
         ]
         or calibration.get("spawn_audit")
         != {"child_count": 4, "fit_count": 0}
@@ -652,48 +621,28 @@ def load_goal029_config(root: Path, path: Path | None = None) -> Mapping[str, An
         != 1.25
         or calibration.get("canary", {}).get("all_leaves_must_complete")
         is not True
-        or calibration.get("representative", {}).get("leaf_count") != 30
+        or calibration.get("representative", {}).get("leaf_count") != 28
         or calibration.get("representative", {}).get("worker_trials")
         != [1, 2, 4]
         or calibration.get("representative", {}).get(
             "near_fastest_wall_time_multiplier"
         )
         != 1.10
-        or calibration.get("gam_feasibility_gate")
-        != {
-            "schema_version": "goal029_pspline_feasibility_gate_v2",
-            "candidate_count": 336,
-            "candidate_execution_count": 337,
-            "fit_attempt_count": 2022,
-            "stages_per_execution": list(_GAM_GATE_STAGE_IDS),
-            "worker_trials": "selected_workers_once",
-            "sentinel": list(asdict(GAM_GATE_SENTINEL).values()),
-            "sentinel_replicates": 2,
-            "held_fold_prediction": (
-                "training_fitted_encoder_assessment_features_length_finite_"
-                "unit_interval_digest_only"
-            ),
-            "safe_diagnostics": "pspline_bounded_status_only_v2",
-            "sentinel_executor": (
-                "fresh_separately_spawned_single_worker_process"
-            ),
-            "production_gate_invalid": (
-                "blinded_overlay_no_oof_no_selection"
-            ),
-            "production_gate_complete_invalid": "hard_stop",
-            "status_only": True,
-            "performance_fields_exposed": False,
-            "all_56_strata_must_be_viable": True,
-        }
+        or "gam_feasibility_gate" in calibration
         or calibration.get("planned_counts")
         != {
             "spawn_audit_children": 4,
             "canary_leaf_executions": 4,
-            "representative_leaf_executions": 90,
-            "gam_gate_candidate_executions": 337,
-            "gam_gate_fit_attempts": 2022,
-            "total_candidate_executions": 431,
-            "maximum_estimator_fits": 2597,
+            "representative_leaf_executions": 84,
+            "total_candidate_executions": 88,
+            "maximum_estimator_fits": 545,
+        }
+        or calibration.get("receipt_schemas")
+        != {
+            "spawn_audit": "goal029_calibration_spawn_audit_v1",
+            "trial": "goal029_calibration_trial_v2",
+            "master": "goal029_calibration_master_v4",
+            "tracked_index": "goal029_calibration_index_v4",
         }
     ):
         raise Goal029Error("calibration_role_contract_mismatch")
@@ -724,8 +673,6 @@ def load_goal029_config(root: Path, path: Path | None = None) -> Mapping[str, An
     production_plan(config)
     calibration_plan(config)
     calibration_canary_plan(config)
-    gam_feasibility_plan(config)
-    gam_feasibility_execution_plan(config)
     return config
 
 
@@ -1270,504 +1217,6 @@ def class_support_scan(broker: SplitBroker) -> tuple[Mapping[str, Any], ...]:
     return tuple(records)
 
 
-def gam_feasibility_plan(
-    config: Mapping[str, Any],
-) -> tuple[ProductionLeaf, ...]:
-    if tuple(config["models"]["candidate_ids"]["gam"]) != (
-        GAM_RECOVERY_CANDIDATE_IDS
-    ):
-        raise Goal029Error("gam_feasibility_registry_mismatch")
-    plan = tuple(
-        ProductionLeaf(
-            species_id,
-            fraction_id,
-            ladder_id,
-            "gam",
-            candidate_id,
-            "seed00",
-        )
-        for species_id in SPECIES
-        for fraction_id, ladder_id in ENDPOINTS
-        for candidate_id in GAM_RECOVERY_CANDIDATE_IDS
-    )
-    if (
-        len(plan) != 336
-        or len(set(plan)) != 336
-        or not set(plan) <= set(production_plan())
-    ):
-        raise Goal029Error("gam_feasibility_plan_invalid")
-    return plan
-
-
-def gam_feasibility_execution_plan(
-    config: Mapping[str, Any],
-) -> tuple[Mapping[str, Any], ...]:
-    executions = [
-        {"leaf": asdict(leaf), "replicate_index": 0}
-        for leaf in gam_feasibility_plan(config)
-    ]
-    executions.append(
-        {"leaf": asdict(GAM_GATE_SENTINEL), "replicate_index": 1}
-    )
-    if (
-        len(executions) != 337
-        or sum(
-            record["leaf"] == asdict(GAM_GATE_SENTINEL)
-            for record in executions
-        )
-        != 2
-    ):
-        raise Goal029Error("gam_feasibility_execution_plan_invalid")
-    return tuple(executions)
-
-
-_GAM_GATE_STAGE_IDS = tuple(
-    [f"cv_{fold_id}" for fold_id in FOLDS] + ["outer_refit_replay"]
-)
-_GAM_GATE_DIAGNOSTIC_CATEGORIES = {
-    "basis_error",
-    "optimizer_error",
-    "strict_nonconvergence",
-    "nonfinite_coefficients",
-    "nonfinite_objective",
-    "nonfinite_gradient",
-    "gradient_too_large",
-    "prediction_error",
-    "invalid_prediction",
-}
-_GAM_SAFE_DIAGNOSTIC_KEYS = {
-    "iteration_count",
-    "solver_termination_class",
-    "gradient_norm_class",
-    "basis_status",
-    "coefficient_finiteness",
-    "prediction_finiteness",
-    "prediction_range_status",
-}
-
-
-def _validate_gam_safe_diagnostics(value: Any) -> None:
-    if (
-        not isinstance(value, Mapping)
-        or set(value) != _GAM_SAFE_DIAGNOSTIC_KEYS
-        or (
-            value["iteration_count"] is not None
-            and (
-                type(value["iteration_count"]) is not int
-                or not 0 <= value["iteration_count"] <= 1000
-            )
-        )
-        or value["solver_termination_class"]
-        not in {"success", "nonconverged", "optimizer_failure", "not_attempted"}
-        or value["gradient_norm_class"]
-        not in {"le_1e_5", "gt_1e_5", "nonfinite", "not_evaluated"}
-        or value["basis_status"]
-        not in {
-            "quantile_only",
-            "uniform_fallback",
-            "constant_omitted",
-            "uniform_fallback_and_constant_omitted",
-            "failure",
-            "not_evaluated",
-        }
-        or value["coefficient_finiteness"]
-        not in {"finite", "nonfinite", "not_evaluated"}
-        or value["prediction_finiteness"]
-        not in {
-            "finite",
-            "nonfinite",
-            "failed_validation",
-            "not_evaluated",
-        }
-        or value["prediction_range_status"]
-        not in {
-            "within_0_1",
-            "outside_0_1",
-            "failed_validation",
-            "not_evaluated",
-        }
-    ):
-        raise Goal029Error("gam_gate_safe_diagnostics_invalid")
-
-
-def _gam_default_safe_diagnostics(
-    *,
-    prediction_finiteness: str = "not_evaluated",
-    prediction_range_status: str = "not_evaluated",
-) -> Mapping[str, Any]:
-    value = {
-        "iteration_count": None,
-        "solver_termination_class": "not_attempted",
-        "gradient_norm_class": "not_evaluated",
-        "basis_status": "not_evaluated",
-        "coefficient_finiteness": "not_evaluated",
-        "prediction_finiteness": prediction_finiteness,
-        "prediction_range_status": prediction_range_status,
-    }
-    _validate_gam_safe_diagnostics(value)
-    return value
-
-
-def _gam_safe_diagnostics_from_exception(
-    exc: ModelAdapterError,
-) -> Mapping[str, Any]:
-    raw = getattr(exc, "safe_diagnostics", None)
-    value = (
-        dict(raw)
-        if isinstance(raw, Mapping)
-        else dict(_gam_default_safe_diagnostics())
-    )
-    failure_code = str(exc)
-    if failure_code == "nonfinite_or_invalid_scores":
-        value["prediction_finiteness"] = "failed_validation"
-        value["prediction_range_status"] = "failed_validation"
-    elif failure_code == "pspline_predict_failed":
-        value["prediction_finiteness"] = "not_evaluated"
-        value["prediction_range_status"] = "not_evaluated"
-    _validate_gam_safe_diagnostics(value)
-    return value
-
-
-def _gam_complete_safe_diagnostics(
-    fitted: Any,
-    report: FitReport,
-    config: Mapping[str, Any],
-) -> Mapping[str, Any]:
-    _validate_refit_warnings("gam", report, config)
-    model = getattr(fitted, "model", None)
-    if not hasattr(model, "safe_diagnostics"):
-        raise Goal029Error("gam_gate_model_diagnostics_missing")
-    value = model.safe_diagnostics(
-        prediction_finiteness="finite",
-        prediction_range_status="within_0_1",
-    )
-    if value.get("iteration_count") != int(report.iterations):
-        raise Goal029Error("gam_gate_iteration_diagnostics_mismatch")
-    _validate_gam_safe_diagnostics(value)
-    return value
-
-
-def _sanitize_gam_gate_exception(
-    exc: BaseException,
-) -> Mapping[str, str]:
-    failure_code = str(exc)
-    categories = {
-        "pspline_basis_failed": "basis_error",
-        "pspline_optimizer_failed": "optimizer_error",
-        "pspline_nonconverged": "strict_nonconvergence",
-        "pspline_nonfinite_coefficients": "nonfinite_coefficients",
-        "pspline_nonfinite_objective": "nonfinite_objective",
-        "pspline_nonfinite_gradient": "nonfinite_gradient",
-        "pspline_gradient_too_large": "gradient_too_large",
-        "pspline_predict_failed": "prediction_error",
-        "nonfinite_or_invalid_scores": "invalid_prediction",
-    }
-    category = categories.get(failure_code)
-    if category is None:
-        raise Goal029Error("gam_gate_exception_unclassified")
-    return {
-        "failure_code": failure_code,
-        "exception_class": "ModelAdapterError",
-        "exception_category": category,
-    }
-
-
-def _validate_gam_gate_diagnostic(value: Any) -> None:
-    if (
-        not isinstance(value, Mapping)
-        or set(value)
-        != {
-            "failure_code",
-            "exception_class",
-            "exception_category",
-        }
-        or value.get("failure_code")
-        not in {
-            "pspline_basis_failed",
-            "pspline_optimizer_failed",
-            "pspline_nonconverged",
-            "pspline_nonfinite_coefficients",
-            "pspline_nonfinite_objective",
-            "pspline_nonfinite_gradient",
-            "pspline_gradient_too_large",
-            "pspline_predict_failed",
-            "nonfinite_or_invalid_scores",
-        }
-        or not isinstance(value.get("exception_class"), str)
-        or re.fullmatch(r"[A-Za-z][A-Za-z0-9_]{0,79}", value["exception_class"])
-        is None
-        or value.get("exception_category")
-        not in _GAM_GATE_DIAGNOSTIC_CATEGORIES
-    ):
-        raise Goal029Error("gam_gate_diagnostic_invalid")
-    expected_categories = {
-        "pspline_basis_failed": "basis_error",
-        "pspline_optimizer_failed": "optimizer_error",
-        "pspline_nonconverged": "strict_nonconvergence",
-        "pspline_nonfinite_coefficients": "nonfinite_coefficients",
-        "pspline_nonfinite_objective": "nonfinite_objective",
-        "pspline_nonfinite_gradient": "nonfinite_gradient",
-        "pspline_gradient_too_large": "gradient_too_large",
-        "pspline_predict_failed": "prediction_error",
-        "nonfinite_or_invalid_scores": "invalid_prediction",
-    }
-    fixed = expected_categories.get(value["failure_code"])
-    if (
-        fixed is not None
-        and value["exception_category"] != fixed
-    ) or (
-        value["exception_class"] != "ModelAdapterError"
-    ):
-        raise Goal029Error("gam_gate_diagnostic_invalid")
-
-
-def _validate_gam_candidate_status_record(
-    value: Mapping[str, Any], config: Mapping[str, Any]
-) -> None:
-    expected_keys = {
-        "schema_version",
-        "leaf",
-        "replicate_index",
-        "status",
-        "stages",
-        "fit_attempt_count",
-        "challenge_semantic_digest",
-        "process_instance_digest",
-        "real_outer_attempted_open_count",
-        "real_outer_open_count",
-        "candidate_semantic_digest",
-    }
-    body = dict(value)
-    claimed = body.pop("candidate_semantic_digest", None)
-    if (
-        set(value) != expected_keys
-        or value.get("schema_version")
-        != "goal029_pspline_candidate_status_v2"
-        or claimed != _sha(body)
-        or not isinstance(value.get("leaf"), Mapping)
-        or not isinstance(value.get("replicate_index"), int)
-        or isinstance(value.get("replicate_index"), bool)
-        or value.get("replicate_index") not in (0, 1)
-        or value.get("fit_attempt_count") != 6
-        or _HEX64.fullmatch(str(value.get("process_instance_digest"))) is None
-        or value.get("real_outer_attempted_open_count") != 0
-        or value.get("real_outer_open_count") != 0
-    ):
-        raise Goal029Error("gam_candidate_status_invalid")
-    try:
-        leaf = ProductionLeaf(**value["leaf"])
-    except (TypeError, ValueError) as exc:
-        raise Goal029Error("gam_candidate_status_invalid") from exc
-    if (
-        leaf not in set(gam_feasibility_plan(config))
-        or (
-            value["replicate_index"] == 1
-            and leaf != GAM_GATE_SENTINEL
-        )
-    ):
-        raise Goal029Error("gam_candidate_status_scope_invalid")
-    stages = value.get("stages")
-    if not isinstance(stages, list) or [
-        stage.get("stage_id") if isinstance(stage, Mapping) else None
-        for stage in stages
-    ] != list(_GAM_GATE_STAGE_IDS):
-        raise Goal029Error("gam_candidate_stage_scope_invalid")
-    complete = True
-    for stage in stages:
-        if (
-            set(stage)
-            != {
-                "stage_id",
-                "status",
-                "diagnostic",
-                "safe_diagnostics",
-                "semantic_digest",
-            }
-            or stage["status"] not in {"complete", "invalid"}
-        ):
-            raise Goal029Error("gam_candidate_stage_invalid")
-        if stage["status"] == "complete":
-            if (
-                stage["diagnostic"] is not None
-                or _HEX64.fullmatch(str(stage["semantic_digest"])) is None
-            ):
-                raise Goal029Error("gam_candidate_stage_invalid")
-        else:
-            complete = False
-            _validate_gam_gate_diagnostic(stage["diagnostic"])
-            if stage["semantic_digest"] != "":
-                raise Goal029Error("gam_candidate_stage_invalid")
-        _validate_gam_safe_diagnostics(stage["safe_diagnostics"])
-    outer_complete = stages[-1]["status"] == "complete"
-    challenge_digest = value.get("challenge_semantic_digest")
-    if (
-        (outer_complete and _HEX64.fullmatch(str(challenge_digest)) is None)
-        or (not outer_complete and challenge_digest != "")
-        or value.get("status")
-        != ("complete" if complete else "invalid_candidate")
-    ):
-        raise Goal029Error("gam_candidate_status_invalid")
-
-
-def _gam_gate_reproducibility_signature(
-    value: Mapping[str, Any],
-) -> Mapping[str, Any]:
-    status = value["status"]
-    signature: dict[str, Any] = {
-        "status": status,
-        "stage_statuses": [
-            {
-                "stage_id": stage["stage_id"],
-                "status": stage["status"],
-                "diagnostic": stage["diagnostic"],
-                "safe_diagnostics": stage["safe_diagnostics"],
-            }
-            for stage in value["stages"]
-        ],
-    }
-    if status == "complete":
-        signature["stage_semantic_digests"] = [
-            stage["semantic_digest"] for stage in value["stages"]
-        ]
-        signature["challenge_semantic_digest"] = value[
-            "challenge_semantic_digest"
-        ]
-    return signature
-
-
-def _evaluate_gam_feasibility_records(
-    records: Sequence[Mapping[str, Any]],
-    config: Mapping[str, Any],
-) -> Mapping[str, Any]:
-    expected = gam_feasibility_execution_plan(config)
-    if (
-        not isinstance(records, Sequence)
-        or len(records) != len(expected)
-    ):
-        raise Goal029Error("gam_gate_record_count_invalid")
-    for record, execution in zip(records, expected, strict=True):
-        _validate_gam_candidate_status_record(record, config)
-        if (
-            record["leaf"] != execution["leaf"]
-            or record["replicate_index"] != execution["replicate_index"]
-        ):
-            raise Goal029Error("gam_gate_record_order_invalid")
-    sentinel_records = [
-        record
-        for record in records
-        if record["leaf"] == asdict(GAM_GATE_SENTINEL)
-    ]
-    if (
-        len(sentinel_records) != 2
-        or _gam_gate_reproducibility_signature(sentinel_records[0])
-        != _gam_gate_reproducibility_signature(sentinel_records[1])
-    ):
-        raise Goal029Error("gam_gate_sentinel_disagreement")
-    base_records = [
-        record for record in records if record["replicate_index"] == 0
-    ]
-    viable = 0
-    failed = 0
-    for species_id in SPECIES:
-        for fraction_id, ladder_id in ENDPOINTS:
-            stratum = [
-                record
-                for record in base_records
-                if (
-                    record["leaf"]["species_id"],
-                    record["leaf"]["fraction_id"],
-                    record["leaf"]["ladder_id"],
-                )
-                == (species_id, fraction_id, ladder_id)
-            ]
-            complete_ids = [
-                record["leaf"]["candidate_id"]
-                for record in stratum
-                if record["status"] == "complete"
-            ]
-            is_viable = (
-                len(complete_ids) >= 2
-                and bool({"psgam02", "psgam05"} & set(complete_ids))
-            )
-            viable += int(is_viable)
-            failed += int(not is_viable)
-    semantic_digest = _sha(
-        [
-            {
-                "leaf": record["leaf"],
-                "replicate_index": record["replicate_index"],
-                "candidate_semantic_digest": record[
-                    "candidate_semantic_digest"
-                ],
-            }
-            for record in records
-        ]
-    )
-    return {
-        "status": "pass" if failed == 0 else "fail",
-        "candidate_count": 336,
-        "candidate_execution_count": 337,
-        "fit_attempt_count": 2022,
-        "viable_strata_count": viable,
-        "failed_strata_count": failed,
-        "sentinel_reproducible": True,
-        "semantic_digest": semantic_digest,
-    }
-
-
-def _gam_gate_base_statuses(
-    gam_gate: Mapping[str, Any],
-) -> Mapping[str, str]:
-    gate_records = gam_gate.get("records")
-    if not isinstance(gate_records, list):
-        raise Goal029Error("production_gam_gate_state_invalid")
-    statuses = {
-        _candidate_stratum_key(record["leaf"]): record["status"]
-        for record in gate_records
-        if record.get("replicate_index") == 0
-    }
-    if (
-        len(statuses) != 336
-        or set(statuses.values()) - {"complete", "invalid_candidate"}
-    ):
-        raise Goal029Error("production_gam_gate_state_invalid")
-    return statuses
-
-
-def _validate_production_gam_states_against_gate(
-    candidate_states: Mapping[str, Any],
-    gam_gate: Mapping[str, Any],
-) -> None:
-    records = candidate_states.get("candidate_records")
-    if not isinstance(records, list):
-        raise Goal029Error("production_gam_gate_state_invalid")
-    expected = _gam_gate_base_statuses(gam_gate)
-    observed = {
-        _candidate_stratum_key(record["candidate_stratum"]): record
-        for record in records
-        if record.get("candidate_stratum", {}).get("model_family") == "gam"
-    }
-    if len(observed) != 336 or set(expected) != set(observed):
-        raise Goal029Error("production_gam_gate_status_drift")
-    for key, gate_status in expected.items():
-        record = observed[key]
-        if gate_status == "complete":
-            if (
-                record.get("status") != "complete"
-                or record.get("state_origin") != "production_execution"
-            ):
-                raise Goal029Error(
-                    "production_gam_complete_became_invalid"
-                )
-        elif (
-            record.get("status") != "invalid_candidate"
-            or record.get("state_origin") != "gam_gate_overlay"
-            or record.get("failure_code") != "gam_gate_invalid_candidate"
-            or record.get("leaves") != []
-        ):
-            raise Goal029Error("production_gam_gate_overlay_invalid")
-
-
 def _available_memory_bytes() -> int:
     try:
         page_size = int(os.sysconf("SC_PAGE_SIZE"))
@@ -1966,246 +1415,6 @@ def _calibration_worker_leaf(leaf_value: Mapping[str, Any]) -> Mapping[str, Any]
     }
 
 
-def _gam_gate_prediction_digest(
-    fitted: Any, assessment_batch: FeatureBatch
-) -> str:
-    values = np.asarray(
-        fitted.predict_scores(assessment_batch), dtype=np.float64
-    ).reshape(-1)
-    if (
-        len(values) != int(assessment_batch.x.shape[0])
-        or not np.isfinite(values).all()
-        or np.any(values < 0)
-        or np.any(values > 1)
-    ):
-        raise ModelAdapterError("nonfinite_or_invalid_scores")
-    return canonical_prediction_bytes_sha256(values)
-
-
-def _gam_gate_worker_candidate(
-    execution: Mapping[str, Any],
-) -> Mapping[str, Any]:
-    if (
-        _CALIBRATION_CONFIG is None
-        or _CALIBRATION_BROKER is None
-        or _CALIBRATION_PROVIDER is None
-        or _CALIBRATION_VAULT is None
-    ):
-        raise Goal029Error("gam_gate_worker_uninitialised")
-    config = _CALIBRATION_CONFIG
-    thread_evidence = _worker_thread_evidence()
-    process_instance_digest = _WORKER_PROCESS_INSTANCE_DIGEST
-    if _HEX64.fullmatch(str(process_instance_digest)) is None:
-        raise Goal029Error("gam_gate_process_instance_missing")
-    try:
-        leaf = ProductionLeaf(**execution["leaf"])
-    except (KeyError, TypeError, ValueError) as exc:
-        raise Goal029Error("gam_gate_execution_invalid") from exc
-    replicate_index = execution.get("replicate_index")
-    if execution not in gam_feasibility_execution_plan(config):
-        raise Goal029Error("gam_gate_execution_invalid")
-    candidate = GOAL029_PSPLINE_CANDIDATES[leaf.candidate_id]
-    stages: list[Mapping[str, Any]] = []
-    for fold_id in FOLDS:
-        stage_id = f"cv_{fold_id}"
-        try:
-            training, assessment = _CALIBRATION_BROKER.inner(
-                leaf.species_id, fold_id
-            )
-            endpoint = _endpoint(
-                training, leaf.fraction_id, leaf.ladder_id
-            )
-            rows = _rowset_for_keys(training, endpoint.keys)
-            encoder = _CALIBRATION_PROVIDER.fit_encoder(
-                rows, "gam", stage_id
-            )
-            batch = _CALIBRATION_PROVIDER.materialize(
-                rows, stage_id, encoder
-            )
-            assessment_batch = _CALIBRATION_PROVIDER.materialize(
-                assessment, stage_id, encoder
-            )
-            task = leaf.task(stage_id)
-            with _goal029_candidate_context(config):
-                fitted, report = build_adapter("gam").fit(
-                    batch,
-                    None,
-                    candidate,
-                    derive_seed(task, "fit"),
-                )
-            safe_diagnostics = _gam_complete_safe_diagnostics(
-                fitted, report, config
-            )
-            try:
-                semantic_digest = _gam_gate_prediction_digest(
-                    fitted, assessment_batch
-                )
-            except ModelAdapterError as exc:
-                if not isinstance(
-                    getattr(exc, "safe_diagnostics", None), Mapping
-                ):
-                    failure_diagnostics = dict(safe_diagnostics)
-                    failure_diagnostics["prediction_finiteness"] = (
-                        "failed_validation"
-                        if str(exc) == "nonfinite_or_invalid_scores"
-                        else "not_evaluated"
-                    )
-                    failure_diagnostics["prediction_range_status"] = (
-                        "failed_validation"
-                        if str(exc) == "nonfinite_or_invalid_scores"
-                        else "not_evaluated"
-                    )
-                    setattr(exc, "safe_diagnostics", failure_diagnostics)
-                raise
-            stage = {
-                "stage_id": stage_id,
-                "status": "complete",
-                "diagnostic": None,
-                "safe_diagnostics": safe_diagnostics,
-                "semantic_digest": semantic_digest,
-            }
-        except ModelAdapterError as exc:
-            stage = {
-                "stage_id": stage_id,
-                "status": "invalid",
-                "diagnostic": _sanitize_gam_gate_exception(exc),
-                "safe_diagnostics": _gam_safe_diagnostics_from_exception(
-                    exc
-                ),
-                "semantic_digest": "",
-            }
-        except Goal029Error:
-            raise
-        except Exception as exc:
-            raise Goal029Error("gam_gate_exception_unclassified") from exc
-        stages.append(stage)
-
-    outer_stage: Mapping[str, Any]
-    challenge_semantic_digest = ""
-    task = leaf.task("outer")
-    outer = _CALIBRATION_BROKER.outer_training(leaf.species_id)
-    endpoint = _endpoint(outer, leaf.fraction_id, leaf.ladder_id)
-    try:
-        with _goal029_candidate_context(config):
-            fitted, report = refit_outer_training(
-                task,
-                endpoint,
-                candidate,
-                _CALIBRATION_BROKER,
-                _CALIBRATION_PROVIDER,
-                build_adapter("gam"),
-                None,
-            )
-    except ModelAdapterError as exc:
-        outer_stage = {
-            "stage_id": "outer_refit_replay",
-            "status": "invalid",
-            "diagnostic": _sanitize_gam_gate_exception(exc),
-            "safe_diagnostics": _gam_safe_diagnostics_from_exception(exc),
-            "semantic_digest": "",
-        }
-    except Goal029Error:
-        raise
-    except Exception as exc:
-        raise Goal029Error("gam_gate_exception_unclassified") from exc
-    else:
-        rows = _rowset_for_keys(outer, endpoint.keys)
-        encoder = _CALIBRATION_PROVIDER.fit_encoder(rows, "gam", "outer")
-        batch = _CALIBRATION_PROVIDER.materialize(
-            rows, "outer", encoder
-        )
-        challenge = build_challenge_batch(
-            batch, int(config["hardening"]["challenge_rows_maximum"])
-        )
-        try:
-            original = fitted.predict_scores(challenge)
-            safe_diagnostics = _gam_complete_safe_diagnostics(
-                fitted, report, config
-            )
-        except ModelAdapterError as exc:
-            outer_stage = {
-                "stage_id": "outer_refit_replay",
-                "status": "invalid",
-                "diagnostic": _sanitize_gam_gate_exception(exc),
-                "safe_diagnostics": _gam_safe_diagnostics_from_exception(
-                    exc
-                ),
-                "semantic_digest": "",
-            }
-        except Goal029Error:
-            raise
-        except Exception as exc:
-            raise Goal029Error("gam_gate_exception_unclassified") from exc
-        else:
-            try:
-                with tempfile.TemporaryDirectory(
-                    prefix="goal029-gam-gate-"
-                ) as temporary:
-                    model_path = Path(temporary) / "model.model"
-                    fitted.serialize(model_path)
-                    model_digest = sha256_file(model_path)
-                    with _goal029_candidate_context(config):
-                        loaded = load_fitted_model(model_path, model_digest)
-                    replay = loaded.predict_scores(challenge)
-                if not np.allclose(
-                    original, replay, rtol=0.0, atol=1e-12
-                ):
-                    raise Goal029Error("gam_challenge_replay_mismatch")
-                challenge_semantic_digest = (
-                    canonical_prediction_bytes_sha256(original)
-                )
-                outer_stage = {
-                    "stage_id": "outer_refit_replay",
-                    "status": "complete",
-                    "diagnostic": None,
-                    "safe_diagnostics": safe_diagnostics,
-                    "semantic_digest": challenge_semantic_digest,
-                }
-            except OSError as exc:
-                raise Goal029Error(
-                    "gam_gate_serialization_integrity_failure"
-                ) from exc
-            except ModelAdapterError as exc:
-                raise Goal029Error("gam_gate_replay_integrity_failure") from exc
-            except Goal029Error as exc:
-                raise
-            except (ValueError, TypeError, AttributeError) as exc:
-                raise Goal029Error("gam_gate_replay_integrity_failure") from exc
-            except Exception as exc:
-                raise Goal029Error("gam_gate_exception_unclassified") from exc
-    stages.append(outer_stage)
-    if (
-        _CALIBRATION_VAULT.attempted_open_count != 0
-        or _CALIBRATION_VAULT.open_count != 0
-    ):
-        raise Goal029Error("gam_gate_outer_access")
-    complete = all(stage["status"] == "complete" for stage in stages)
-    body: dict[str, Any] = {
-        "schema_version": "goal029_pspline_candidate_status_v2",
-        "leaf": asdict(leaf),
-        "replicate_index": replicate_index,
-        "status": "complete" if complete else "invalid_candidate",
-        "stages": stages,
-        "fit_attempt_count": 6,
-        "challenge_semantic_digest": (
-            challenge_semantic_digest
-            if outer_stage["status"] == "complete"
-            else ""
-        ),
-        "process_instance_digest": process_instance_digest,
-        "real_outer_attempted_open_count": 0,
-        "real_outer_open_count": 0,
-    }
-    result = {**body, "candidate_semantic_digest": _sha(body)}
-    _validate_gam_candidate_status_record(result, config)
-    return {
-        **result,
-        "worker_pid": os.getpid(),
-        "peak_rss_bytes": _peak_rss_bytes_current_process(),
-        "thread_evidence": thread_evidence,
-    }
-
-
 def _collect_worker_thread_evidence(
     results: Sequence[Mapping[str, Any]],
     config: Mapping[str, Any],
@@ -2241,86 +1450,6 @@ def _collect_worker_thread_evidence(
         for pid in sorted(by_pid)
     ]
     return cleaned, worker_evidence
-
-
-def _enrich_gam_gate_worker_evidence(
-    cleaned: Sequence[Mapping[str, Any]],
-    worker_evidence: Sequence[Mapping[str, Any]],
-) -> list[Mapping[str, Any]]:
-    digest_by_pid: dict[int, str] = {}
-    for record in cleaned:
-        pid = int(record["worker_pid"])
-        digest = str(record.get("process_instance_digest"))
-        if _HEX64.fullmatch(digest) is None:
-            raise Goal029Error("gam_gate_process_instance_invalid")
-        prior = digest_by_pid.setdefault(pid, digest)
-        if prior != digest:
-            raise Goal029Error("gam_gate_process_instance_drift")
-    if set(digest_by_pid) != {
-        int(record["worker_pid"]) for record in worker_evidence
-    }:
-        raise Goal029Error("gam_gate_process_instance_scope")
-    return [
-        {
-            **record,
-            "process_instance_digest": digest_by_pid[
-                int(record["worker_pid"])
-            ],
-        }
-        for record in worker_evidence
-    ]
-
-
-def _validate_gam_gate_worker_evidence(
-    records: Any,
-    candidate_records: Sequence[Mapping[str, Any]],
-    *,
-    expected_main_workers: int,
-    config: Mapping[str, Any],
-) -> None:
-    if (
-        not isinstance(records, list)
-        or len(records) != expected_main_workers + 1
-    ):
-        raise Goal029Error("gam_gate_worker_evidence_invalid")
-    pids: list[int] = []
-    process_digests: list[str] = []
-    for record in records:
-        if (
-            not isinstance(record, Mapping)
-            or set(record)
-            != {"worker_pid", "evidence", "process_instance_digest"}
-            or type(record["worker_pid"]) is not int
-            or record["worker_pid"] < 1
-            or _HEX64.fullmatch(
-                str(record["process_instance_digest"])
-            )
-            is None
-            or not isinstance(record["evidence"], Mapping)
-        ):
-            raise Goal029Error("gam_gate_worker_evidence_invalid")
-        _validate_thread_evidence(record["evidence"], config)
-        pids.append(record["worker_pid"])
-        process_digests.append(record["process_instance_digest"])
-    if (
-        len(set(pids)) != len(pids)
-        or len(set(process_digests)) != len(process_digests)
-    ):
-        raise Goal029Error("gam_gate_process_instance_not_independent")
-    used = {record["process_instance_digest"] for record in candidate_records}
-    if not used <= set(process_digests):
-        raise Goal029Error("gam_gate_process_instance_scope")
-    sentinel = [
-        record
-        for record in candidate_records
-        if record["leaf"] == asdict(GAM_GATE_SENTINEL)
-    ]
-    if (
-        len(sentinel) != 2
-        or sentinel[0]["process_instance_digest"]
-        == sentinel[1]["process_instance_digest"]
-    ):
-        raise Goal029Error("gam_gate_sentinel_process_not_independent")
 
 
 def _thread_spawn_probe(barrier: Any) -> Mapping[str, Any]:
@@ -2535,13 +1664,6 @@ def _validate_tracked_calibration(value: Mapping[str, Any]) -> None:
         "representative_leaf_count",
         "representative_semantic_digest",
         "selected_workers",
-        "gam_gate_status",
-        "gam_gate_candidate_count",
-        "gam_gate_candidate_execution_count",
-        "gam_gate_fit_attempt_count",
-        "gam_gate_viable_strata_count",
-        "gam_gate_semantic_digest",
-        "gam_gate_receipt_digest",
         "class_support_strata_count",
         "private_receipt_digest",
         "actual_host_digest",
@@ -2550,19 +1672,14 @@ def _validate_tracked_calibration(value: Mapping[str, Any]) -> None:
     }
     if (
         set(value) != expected
-        or value["schema_version"] != "goal029_calibration_index_v3"
+        or value["schema_version"] != "goal029_calibration_index_v4"
         or value["status"] != "pass"
         or value["spawn_audit_child_count"] != 4
         or value["canary_workers"] != [1, 2]
         or value["canary_leaf_count"] != 2
         or value["representative_workers"] != [1, 2, 4]
-        or value["representative_leaf_count"] != 30
+        or value["representative_leaf_count"] != 28
         or value["selected_workers"] not in (1, 2, 4)
-        or value["gam_gate_status"] != "pass"
-        or value["gam_gate_candidate_count"] != 336
-        or value["gam_gate_candidate_execution_count"] != 337
-        or value["gam_gate_fit_attempt_count"] != 2022
-        or value["gam_gate_viable_strata_count"] != 56
         or value["class_support_strata_count"] != 56
         or value["real_outer_attempted_open_count"] != 0
         or value["real_outer_open_count"] != 0
@@ -2573,8 +1690,6 @@ def _validate_tracked_calibration(value: Mapping[str, Any]) -> None:
                 "thread_evidence_digest",
                 "canary_semantic_digest",
                 "representative_semantic_digest",
-                "gam_gate_semantic_digest",
-                "gam_gate_receipt_digest",
                 "private_receipt_digest",
                 "actual_host_digest",
             )
@@ -2853,251 +1968,6 @@ def _calibration_receipt_safe(
     )
 
 
-def _reject_gam_gate_performance_fields(value: Any) -> None:
-    forbidden = {
-        "roc_auc",
-        "auc",
-        "tss",
-        "threshold",
-        "oof_score",
-        "score",
-        "scores",
-        "prediction",
-        "predictions",
-        "metric",
-        "metrics",
-    }
-    if isinstance(value, Mapping):
-        for key, item in value.items():
-            if str(key).lower() in forbidden:
-                raise Goal029Error("gam_gate_performance_field_forbidden")
-            _reject_gam_gate_performance_fields(item)
-    elif isinstance(value, (list, tuple)):
-        for item in value:
-            _reject_gam_gate_performance_fields(item)
-
-
-def _validate_gam_feasibility_receipt(
-    value: Mapping[str, Any],
-    *,
-    config: Mapping[str, Any],
-    context: ExecutionContext,
-    expected_host: str,
-    expected_workers: int,
-) -> None:
-    _reject_gam_gate_performance_fields(value)
-    expected_keys = {
-        "schema_version",
-        "status",
-        "actual_host",
-        "execution_context_digest",
-        "pspline_registry_digest",
-        "execution_plan_digest",
-        "workers",
-        "parent_thread_evidence",
-        "worker_thread_evidence",
-        "fresh_processes",
-        "checkpoint_reuse",
-        "fresh_destination",
-        "candidate_count",
-        "candidate_execution_count",
-        "fit_attempt_count",
-        "records",
-        "summary",
-        "performance_fields_exposed",
-        "telemetry",
-        "real_outer_attempted_open_count",
-        "real_outer_open_count",
-        "receipt_digest",
-    }
-    body = dict(value)
-    claimed = body.pop("receipt_digest", None)
-    records = value.get("records")
-    summary = value.get("summary")
-    parent_evidence = value.get("parent_thread_evidence")
-    worker_evidence = value.get("worker_thread_evidence")
-    telemetry = value.get("telemetry")
-    if not isinstance(parent_evidence, Mapping):
-        raise Goal029Error("gam_gate_receipt_invalid")
-    _validate_thread_evidence(parent_evidence, config)
-    if (
-        set(value) != expected_keys
-        or claimed != _sha(body)
-        or value.get("schema_version")
-        != "goal029_pspline_feasibility_gate_v2"
-        or value.get("status") not in {"pass", "fail"}
-        or value.get("actual_host") != expected_host
-        or value.get("execution_context_digest")
-        != _sha(asdict(context))
-        or value.get("pspline_registry_digest")
-        != _sha(config["models"]["goal029_pspline_registry"])
-        or value.get("execution_plan_digest")
-        != _sha(list(gam_feasibility_execution_plan(config)))
-        or value.get("workers") != expected_workers
-        or parent_evidence.get("evidence_digest")
-        != context.thread_evidence_digest
-        or not isinstance(worker_evidence, list)
-        or len(worker_evidence) != expected_workers + 1
-        or value.get("fresh_processes") is not True
-        or value.get("checkpoint_reuse") is not False
-        or value.get("fresh_destination") is not True
-        or value.get("candidate_count") != 336
-        or value.get("candidate_execution_count") != 337
-        or value.get("fit_attempt_count") != 2022
-        or not isinstance(records, list)
-        or len(records) != 337
-        or not isinstance(summary, Mapping)
-        or value.get("performance_fields_exposed") is not False
-        or not isinstance(telemetry, Mapping)
-        or value.get("real_outer_attempted_open_count") != 0
-        or value.get("real_outer_open_count") != 0
-    ):
-        raise Goal029Error("gam_gate_receipt_invalid")
-    expected_summary = _evaluate_gam_feasibility_records(records, config)
-    if (
-        summary != expected_summary
-        or value["status"] != expected_summary["status"]
-    ):
-        raise Goal029Error("gam_gate_receipt_summary_invalid")
-    _validate_gam_gate_worker_evidence(
-        worker_evidence,
-        records,
-        expected_main_workers=expected_workers,
-        config=config,
-    )
-    _validate_calibration_telemetry(telemetry, include_peak=True)
-    if not _calibration_receipt_safe(value, config):
-        raise Goal029Error("gam_gate_receipt_unsafe")
-
-
-def run_gam_feasibility_gate(
-    root: Path,
-    config: Mapping[str, Any],
-    context: ExecutionContext,
-    workers: int,
-    destination: Path,
-) -> Mapping[str, Any]:
-    parent_evidence = _enforce_context_thread_policy(config, context)
-    if workers not in (1, 2, 4):
-        raise Goal029Error("gam_gate_worker_count_invalid")
-    destination = Path(destination)
-    if destination.exists() or destination.is_symlink():
-        raise Goal029Error("gam_gate_destination_not_fresh")
-    destination.mkdir(parents=True)
-    free_before = _available_memory_bytes()
-    swap_before = _swap_used_bytes()
-    if free_before < int(config["execution"]["minimum_free_memory_bytes"]):
-        raise Goal029Error("gam_gate_memory_headroom_failed")
-    executions = gam_feasibility_execution_plan(config)
-    started = time.perf_counter()
-    with concurrent.futures.ProcessPoolExecutor(
-        max_workers=workers,
-        mp_context=multiprocessing.get_context("spawn"),
-        initializer=_calibration_worker_init,
-        initargs=(str(Path(root).resolve()),),
-    ) as executor:
-        raw_main_results = list(
-            executor.map(
-                _gam_gate_worker_candidate,
-                executions[:-1],
-                chunksize=1,
-            )
-        )
-    with concurrent.futures.ProcessPoolExecutor(
-        max_workers=1,
-        mp_context=multiprocessing.get_context("spawn"),
-        initializer=_calibration_worker_init,
-        initargs=(str(Path(root).resolve()),),
-    ) as sentinel_executor:
-        raw_sentinel_results = list(
-            sentinel_executor.map(
-                _gam_gate_worker_candidate,
-                executions[-1:],
-                chunksize=1,
-            )
-        )
-    wall_seconds = time.perf_counter() - started
-    free_after = _available_memory_bytes()
-    swap_after = _swap_used_bytes()
-    main_cleaned, main_evidence = _collect_worker_thread_evidence(
-        raw_main_results, config, workers
-    )
-    sentinel_cleaned, sentinel_evidence = _collect_worker_thread_evidence(
-        raw_sentinel_results, config, 1
-    )
-    if {
-        record["worker_pid"] for record in main_evidence
-    } & {record["worker_pid"] for record in sentinel_evidence}:
-        raise Goal029Error("gam_gate_sentinel_process_not_independent")
-    cleaned = [*main_cleaned, *sentinel_cleaned]
-    worker_evidence = [
-        *_enrich_gam_gate_worker_evidence(main_cleaned, main_evidence),
-        *_enrich_gam_gate_worker_evidence(
-            sentinel_cleaned, sentinel_evidence
-        ),
-    ]
-    peak_rss_bytes = max(
-        int(record["peak_rss_bytes"]) for record in cleaned
-    )
-    records = [
-        {
-            key: item
-            for key, item in record.items()
-            if key not in {"worker_pid", "peak_rss_bytes"}
-        }
-        for record in cleaned
-    ]
-    _validate_gam_gate_worker_evidence(
-        worker_evidence,
-        records,
-        expected_main_workers=workers,
-        config=config,
-    )
-    summary = _evaluate_gam_feasibility_records(records, config)
-    receipt: dict[str, Any] = {
-        "schema_version": "goal029_pspline_feasibility_gate_v2",
-        "status": summary["status"],
-        "actual_host": socket.gethostname(),
-        "execution_context_digest": _sha(asdict(context)),
-        "pspline_registry_digest": _sha(
-            config["models"]["goal029_pspline_registry"]
-        ),
-        "execution_plan_digest": _sha(list(executions)),
-        "workers": workers,
-        "parent_thread_evidence": parent_evidence,
-        "worker_thread_evidence": worker_evidence,
-        "fresh_processes": True,
-        "checkpoint_reuse": False,
-        "fresh_destination": True,
-        "candidate_count": 336,
-        "candidate_execution_count": 337,
-        "fit_attempt_count": 2022,
-        "records": records,
-        "summary": summary,
-        "performance_fields_exposed": False,
-        "telemetry": {
-            "wall_seconds": wall_seconds,
-            "peak_rss_bytes": peak_rss_bytes,
-            "free_memory_before_bytes": free_before,
-            "free_memory_after_bytes": free_after,
-            "swap_before_bytes": swap_before,
-            "swap_after_bytes": swap_after,
-        },
-        "real_outer_attempted_open_count": 0,
-        "real_outer_open_count": 0,
-    }
-    receipt["receipt_digest"] = _sha(receipt)
-    _validate_gam_feasibility_receipt(
-        receipt,
-        config=config,
-        context=context,
-        expected_host=socket.gethostname(),
-        expected_workers=workers,
-    )
-    _write_canonical_json(destination / "receipt.json", receipt)
-    return receipt
-
-
 def _validate_canary_gate(
     trials: Sequence[Mapping[str, Any]], config: Mapping[str, Any]
 ) -> str:
@@ -3158,7 +2028,6 @@ def run_calibration(root: Path) -> Mapping[str, Any]:
     context = execution_context(root, config)
     canary_leaves = calibration_canary_plan(config)
     representative_leaves = calibration_plan(config)
-    gam_gate_executions = gam_feasibility_execution_plan(config)
     calibration_id = _sha(
         {
             "execution_context": asdict(context),
@@ -3167,7 +2036,6 @@ def run_calibration(root: Path) -> Mapping[str, Any]:
             "representative_leaves": [
                 asdict(leaf) for leaf in representative_leaves
             ],
-            "gam_gate_executions": list(gam_gate_executions),
             "canary_workers": [1, 2],
             "representative_workers": [1, 2, 4],
         }
@@ -3259,24 +2127,8 @@ def run_calibration(root: Path) -> Mapping[str, Any]:
             "semantic_digest"
         ]
 
-        gam_gate = run_gam_feasibility_gate(
-            root,
-            config,
-            context,
-            selected_workers,
-            private_root / "gam-feasibility",
-        )
-        _validate_gam_feasibility_receipt(
-            gam_gate,
-            config=config,
-            context=context,
-            expected_host=socket.gethostname(),
-            expected_workers=selected_workers,
-        )
-        if gam_gate["status"] != "pass":
-            raise Goal029Error("gam_feasibility_gate_failed")
         private_receipt: dict[str, Any] = {
-            "schema_version": "goal029_calibration_master_v3",
+            "schema_version": "goal029_calibration_master_v4",
             "calibration_id": calibration_id,
             "actual_host": socket.gethostname(),
             "execution_context": asdict(context),
@@ -3311,26 +2163,18 @@ def run_calibration(root: Path) -> Mapping[str, Any]:
                 }
                 for trial in representative_trials
             ],
-            "gam_feasibility_receipt": {
-                "workers": selected_workers,
-                "relative_path": "gam-feasibility/receipt.json",
-                "receipt_digest": gam_gate["receipt_digest"],
-            },
             "selected_workers": selected_workers,
             "canary_semantic_digest": canary_semantic_digest,
             "representative_semantic_digest": (
                 representative_semantic_digest
             ),
-            "gam_gate_semantic_digest": gam_gate["summary"][
-                "semantic_digest"
-            ],
             "real_outer_attempted_open_count": 0,
             "real_outer_open_count": 0,
         }
         private_receipt["receipt_digest"] = _sha(private_receipt)
         _write_canonical_json(private_root / "receipt.json", private_receipt)
         tracked = {
-            "schema_version": "goal029_calibration_index_v3",
+            "schema_version": "goal029_calibration_index_v4",
             "goal_id": config["identity"]["goal_id"],
             "status": "pass",
             "thread_policy_digest": context.thread_policy_digest,
@@ -3345,19 +2189,6 @@ def run_calibration(root: Path) -> Mapping[str, Any]:
                 representative_semantic_digest
             ),
             "selected_workers": selected_workers,
-            "gam_gate_status": gam_gate["status"],
-            "gam_gate_candidate_count": gam_gate["candidate_count"],
-            "gam_gate_candidate_execution_count": gam_gate[
-                "candidate_execution_count"
-            ],
-            "gam_gate_fit_attempt_count": gam_gate["fit_attempt_count"],
-            "gam_gate_viable_strata_count": gam_gate["summary"][
-                "viable_strata_count"
-            ],
-            "gam_gate_semantic_digest": gam_gate["summary"][
-                "semantic_digest"
-            ],
-            "gam_gate_receipt_digest": gam_gate["receipt_digest"],
             "class_support_strata_count": 56,
             "private_receipt_digest": private_receipt["receipt_digest"],
             "actual_host_digest": _sha(socket.gethostname()),
@@ -3366,14 +2197,8 @@ def run_calibration(root: Path) -> Mapping[str, Any]:
         }
         _validate_tracked_calibration(tracked)
         _write_atomic_json_file(tracked_root / "receipt.json", tracked)
-    except Exception as exc:
-        preserve_failed_gate = (
-            isinstance(exc, Goal029Error)
-            and str(exc) == "gam_feasibility_gate_failed"
-            and (private_root / "gam-feasibility/receipt.json").is_file()
-        )
-        if not preserve_failed_gate:
-            shutil.rmtree(private_root, ignore_errors=True)
+    except Exception:
+        shutil.rmtree(private_root, ignore_errors=True)
         if tracked_root.is_dir() and not tracked_root.is_symlink():
             shutil.rmtree(tracked_root)
         raise
@@ -3383,19 +2208,8 @@ def run_calibration(root: Path) -> Mapping[str, Any]:
         "canary_leaf_count": len(canary_leaves),
         "representative_leaf_count": len(representative_leaves),
         "class_support_strata_count": 56,
-        "gam_gate_candidate_count": gam_gate["candidate_count"],
-        "gam_gate_candidate_execution_count": gam_gate[
-            "candidate_execution_count"
-        ],
-        "gam_gate_fit_attempt_count": gam_gate["fit_attempt_count"],
-        "gam_gate_viable_strata_count": gam_gate["summary"][
-            "viable_strata_count"
-        ],
         "canary_semantic_digest": canary_semantic_digest,
         "representative_semantic_digest": representative_semantic_digest,
-        "gam_gate_semantic_digest": gam_gate["summary"][
-            "semantic_digest"
-        ],
         "private_receipt_digest": private_receipt["receipt_digest"],
         "tracked_receipt_digest": sha256_file(tracked_root / "receipt.json"),
         "outer_attempted_open_count": 0,
@@ -3479,10 +2293,15 @@ def load_calibration_authority(
         != current_thread_evidence["evidence_digest"]
     ):
         raise Goal029Error("calibration_thread_context_mismatch")
-    tracked_path = (
-        _safe_bound_path(root, config["calibration"]["receipt_destination"])
-        / "receipt.json"
+    tracked_root = _safe_bound_path(
+        root, config["calibration"]["receipt_destination"]
     )
+    _validate_exact_file_inventory(
+        tracked_root,
+        {"receipt.json"},
+        "calibration_tracked_file_inventory",
+    )
+    tracked_path = tracked_root / "receipt.json"
     tracked = _read_json(tracked_path)
     _validate_tracked_calibration(tracked)
     candidates = sorted(
@@ -3504,7 +2323,6 @@ def load_calibration_authority(
     claimed = body.pop("receipt_digest", None)
     canary_leaves = calibration_canary_plan(config)
     representative_leaves = calibration_plan(config)
-    gam_gate_executions = gam_feasibility_execution_plan(config)
     expected_private_keys = {
         "schema_version",
         "calibration_id",
@@ -3517,11 +2335,9 @@ def load_calibration_authority(
         "spawn_audit_receipt",
         "canary_receipts",
         "representative_receipts",
-        "gam_feasibility_receipt",
         "selected_workers",
         "canary_semantic_digest",
         "representative_semantic_digest",
-        "gam_gate_semantic_digest",
         "real_outer_attempted_open_count",
         "real_outer_open_count",
         "receipt_digest",
@@ -3530,7 +2346,7 @@ def load_calibration_authority(
         set(private) != expected_private_keys
         or
         claimed != _sha(body)
-        or private.get("schema_version") != "goal029_calibration_master_v3"
+        or private.get("schema_version") != "goal029_calibration_master_v4"
         or private.get("actual_host") != socket.gethostname()
         or tracked.get("actual_host_digest") != _sha(socket.gethostname())
         or tracked.get("goal_id") != config["identity"]["goal_id"]
@@ -3547,8 +2363,6 @@ def load_calibration_authority(
         != tracked.get("canary_semantic_digest")
         or private.get("representative_semantic_digest")
         != tracked.get("representative_semantic_digest")
-        or private.get("gam_gate_semantic_digest")
-        != tracked.get("gam_gate_semantic_digest")
         or private.get("real_outer_attempted_open_count") != 0
         or private.get("real_outer_open_count") != 0
     ):
@@ -3561,7 +2375,6 @@ def load_calibration_authority(
             "representative_leaves": [
                 asdict(leaf) for leaf in representative_leaves
             ],
-            "gam_gate_executions": list(gam_gate_executions),
             "canary_workers": [1, 2],
             "representative_workers": [1, 2, 4],
         }
@@ -3575,9 +2388,6 @@ def load_calibration_authority(
         or tracked.get("canary_leaf_count") != len(canary_leaves)
         or tracked.get("representative_leaf_count")
         != len(representative_leaves)
-        or tracked.get("gam_gate_candidate_count") != 336
-        or tracked.get("gam_gate_candidate_execution_count") != 337
-        or tracked.get("gam_gate_fit_attempt_count") != 2022
     ):
         raise Goal029Error("calibration_authority_scope_mismatch")
     private_root = matches[0].parent
@@ -3660,44 +2470,12 @@ def load_calibration_authority(
         representative_trials, config
     )
 
-    gam_gate_index = private.get("gam_feasibility_receipt")
-    if (
-        not isinstance(gam_gate_index, Mapping)
-        or set(gam_gate_index)
-        != {"workers", "relative_path", "receipt_digest"}
-        or gam_gate_index.get("workers") != selected_workers
-        or gam_gate_index.get("relative_path")
-        != "gam-feasibility/receipt.json"
-    ):
-        raise Goal029Error("calibration_gam_gate_index_invalid")
-    gam_gate_path = private_root / gam_gate_index["relative_path"]
-    if gam_gate_path.is_symlink() or not gam_gate_path.is_file():
-        raise Goal029Error("calibration_gam_gate_receipt_missing")
-    gam_gate = _read_json(gam_gate_path)
-    _validate_gam_feasibility_receipt(
-        gam_gate,
-        config=config,
-        context=context,
-        expected_host=socket.gethostname(),
-        expected_workers=selected_workers,
-    )
-    if (
-        gam_gate["receipt_digest"] != gam_gate_index["receipt_digest"]
-        or gam_gate["status"] != "pass"
-    ):
-        raise Goal029Error("calibration_gam_gate_invalid")
     if (
         canary_semantic_digest != private["canary_semantic_digest"]
         or representative_trials[0]["semantic_digest"]
         != private["representative_semantic_digest"]
-        or gam_gate["summary"]["semantic_digest"]
-        != private["gam_gate_semantic_digest"]
         or selected_workers != private["selected_workers"]
         or selected_workers != tracked["selected_workers"]
-        or tracked["gam_gate_status"] != "pass"
-        or tracked["gam_gate_viable_strata_count"] != 56
-        or tracked["gam_gate_receipt_digest"]
-        != gam_gate["receipt_digest"]
     ):
         raise Goal029Error("calibration_worker_selection_mismatch")
 
@@ -3709,7 +2487,6 @@ def load_calibration_authority(
             f"representative/workers{workers}/receipt.json"
             for workers in (1, 2, 4)
         ),
-        "gam-feasibility/receipt.json",
     }
     _validate_exact_file_inventory(
         private_root,
@@ -3722,7 +2499,6 @@ def load_calibration_authority(
         "spawn_audit": spawn_audit,
         "canary_trials": canary_trials,
         "representative_trials": representative_trials,
-        "gam_feasibility_gate": gam_gate,
         "trials": representative_trials,
         "private_receipt_path": str(matches[0]),
     }
@@ -4762,11 +3538,6 @@ def validate_family_candidates(
     if family == "intercept":
         if "null00" not in complete:
             raise Goal029Error("mandatory_null_failed")
-    elif family == "gam":
-        if len(complete) < 2:
-            raise Goal029Error("family_candidate_quorum_failed:gam")
-        if not {"psgam02", "psgam05"} & set(complete):
-            raise Goal029Error("gam_regularized_tier_failed")
     else:
         anchor = ANCHORS[family]
         if anchor not in complete:
@@ -5455,8 +4226,7 @@ def _load_candidate_states(
             _validate_thread_evidence(worker_thread_evidence, config)
             if (
                 failure_leaf not in expected_leaves
-                or state.get("state_origin")
-                not in {"production_execution", "gam_gate_overlay"}
+                or state.get("state_origin") != "production_execution"
                 or state.get("leaves") != []
                 or type(state.get("cleanup_complete")) is not bool
                 or state.get("worker_thread_policy_digest")
@@ -5469,13 +4239,6 @@ def _load_candidate_states(
                     r"[a-z0-9_:-]+", str(state.get("failure_code"))
                 )
                 is None
-            ):
-                raise Goal029Error("production_invalid_state_invalid")
-            if state.get("state_origin") == "gam_gate_overlay" and (
-                failure_leaf.model_family != "gam"
-                or state.get("failure_code")
-                != "gam_gate_invalid_candidate"
-                or failure_leaf.seed_label != "seed00"
             ):
                 raise Goal029Error("production_invalid_state_invalid")
             receipt_path = _relative_artifact_path(
@@ -5659,52 +4422,12 @@ def _finish_invalid_candidate_cleanup(
         )
 
 
-def _gam_gate_overlay_state(
-    records: Sequence[Mapping[str, Any]],
-    private_stage: Path,
-    plan_record: Mapping[str, Any],
-    thread_evidence: Mapping[str, Any],
-) -> Mapping[str, Any]:
-    reference = ProductionLeaf(**records[0]["leaf"])
-    if (
-        reference.model_family != "gam"
-        or tuple(ProductionLeaf(**record["leaf"]) for record in records)
-        != (reference,)
-    ):
-        raise Goal029Error("production_gam_gate_overlay_scope")
-    receipt = blinded_failure_receipt(
-        ExecutionContext(**plan_record["execution_context"]),
-        reference,
-        "gam_gate_invalid_candidate",
-    )
-    receipt_path = _write_or_validate_content_json(
-        Path(private_stage) / "failures", receipt, "receipt_digest"
-    )
-    return {
-        "candidate_stratum": _candidate_stratum_payload(reference),
-        "status": "invalid_candidate",
-        "state_origin": "gam_gate_overlay",
-        "failure_code": "gam_gate_invalid_candidate",
-        "failure_leaf": asdict(reference),
-        "failure_receipt": str(receipt_path.relative_to(private_stage)),
-        "failure_receipt_digest": receipt["receipt_digest"],
-        "cleanup_complete": False,
-        "leaves": [],
-        "worker_thread_policy_digest": thread_evidence["policy_digest"],
-        "worker_thread_evidence": dict(thread_evidence),
-        "worker_thread_evidence_digest": thread_evidence[
-            "evidence_digest"
-        ],
-    }
-
-
 def execute_production_candidates(
     root: Path,
     config: Mapping[str, Any],
     private_stage: Path,
     plan_record: Mapping[str, Any],
     workers: int,
-    gam_gate: Mapping[str, Any],
 ) -> Mapping[str, Any]:
     parent_thread_evidence = enforce_numerical_thread_policy(config)
     if workers not in (1, 2, 4):
@@ -5720,35 +4443,6 @@ def execute_production_candidates(
         private_stage, plan_record, config, require_complete=False
     )
     groups = _production_candidate_groups(plan_record)
-    gate_statuses = _gam_gate_base_statuses(gam_gate)
-    overlay_changed = False
-    for key, records in groups:
-        reference = ProductionLeaf(**records[0]["leaf"])
-        if reference.model_family != "gam":
-            continue
-        gate_status = gate_statuses.get(key)
-        if gate_status is None:
-            raise Goal029Error("production_gam_gate_state_invalid")
-        existing = state_by_key.get(key)
-        if gate_status == "invalid_candidate":
-            if (
-                existing is None
-                or existing.get("state_origin") != "gam_gate_overlay"
-            ):
-                state_by_key[key] = _gam_gate_overlay_state(
-                    records,
-                    private_stage,
-                    plan_record,
-                    parent_thread_evidence,
-                )
-                overlay_changed = True
-        elif existing is not None and existing.get("status") != "complete":
-            raise Goal029Error("production_gam_complete_became_invalid")
-    if overlay_changed:
-        _replace_atomic_json_file(
-            Path(private_stage) / "candidate_states.json",
-            _candidate_state_value(plan_record, groups, state_by_key),
-        )
     _finish_invalid_candidate_cleanup(
         private_stage, plan_record, groups, state_by_key
     )
@@ -5786,15 +4480,6 @@ def execute_production_candidates(
                         plan_record,
                         config,
                     )
-                    reference = ProductionLeaf(**records[0]["leaf"])
-                    if (
-                        reference.model_family == "gam"
-                        and gate_statuses[key] == "complete"
-                        and normalized["status"] != "complete"
-                    ):
-                        raise Goal029Error(
-                            "production_gam_complete_became_invalid"
-                        )
                     state_by_key[key] = normalized
                     _replace_atomic_json_file(
                         Path(private_stage) / "candidate_states.json",
@@ -6230,11 +4915,7 @@ def validate_production_staged(
             if family == "intercept"
             else (
                 len(complete_ids) >= 2
-                and (
-                    bool({"psgam02", "psgam05"} & complete_ids)
-                    if family == "gam"
-                    else ANCHORS[family] in complete_ids
-                )
+                and ANCHORS[family] in complete_ids
             )
         )
         if (
@@ -6409,25 +5090,6 @@ def _production_source_audit_candidate(
         raise Goal029Error("source_audit_worker_uninitialised")
     _worker_thread_evidence()
     selected = tuple(ProductionLeaf(**leaf) for leaf in value["selected_leaves"])
-    if value.get("state_origin") == "gam_gate_overlay":
-        if (
-            not selected
-            or any(leaf.model_family != "gam" for leaf in selected)
-            or value.get("expected_status") != "invalid_candidate"
-        ):
-            raise Goal029Error("source_audit_gam_overlay_invalid")
-        thread_evidence = _worker_thread_evidence()
-        return {
-            "status": "invalid_candidate",
-            "failure_code": "gam_gate_invalid_candidate",
-            "failure_leaf": asdict(selected[0]),
-            "results": [],
-            "candidate_stratum": _candidate_stratum_payload(selected[0]),
-            "worker_pid": os.getpid(),
-            "thread_evidence": thread_evidence,
-            "real_outer_attempted_open_count": 0,
-            "real_outer_open_count": 0,
-        }
     complete_candidate = value["expected_status"] == "complete"
     if complete_candidate:
         results = []
@@ -6771,17 +5433,11 @@ def validate_production_publication(
         require_source_audit=True,
     )
     run = _read_json(Path(private_directory) / "run.json")
-    candidate_states = _read_json(
-        Path(private_directory) / "candidate_states.json"
-    )
     if (
         run.get("calibration_receipt_digest")
         != calibration["private"]["receipt_digest"]
     ):
         raise Goal029Error("production_calibration_authority_drift")
-    _validate_production_gam_states_against_gate(
-        candidate_states, calibration["gam_feasibility_gate"]
-    )
     if vault.attempted_open_count != 0 or vault.open_count != 0:
         raise Goal029Error("production_validation_outer_access")
     return {**result, "transaction_id": transaction["transaction_id"]}
@@ -6846,10 +5502,6 @@ def run_production(root: Path) -> Mapping[str, Any]:
         private_stage,
         plan_record,
         workers,
-        calibration["gam_feasibility_gate"],
-    )
-    _validate_production_gam_states_against_gate(
-        candidate_states, calibration["gam_feasibility_gate"]
     )
     _enforce_context_thread_policy(config, context)
     selection = reduce_and_refit_production(
@@ -7001,7 +5653,6 @@ def _synthetic_plan() -> tuple[ProductionLeaf, ...]:
     candidates = {
         "intercept": ("null00",),
         "elastic_net": ("enet00", "enet01"),
-        "gam": ("psgam01", "psgam05"),
         "random_forest": ("rf02", "rf00"),
         "hist_gradient_boosting": ("hgb04", "hgb00"),
         "shallow_ann": ("ann01", "ann00"),

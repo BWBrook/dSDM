@@ -9,23 +9,6 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-
-def _gam_safe_diagnostics(*, valid_prediction: bool = True):
-    return {
-        "iteration_count": 1,
-        "solver_termination_class": "success",
-        "gradient_norm_class": "le_1e_5",
-        "basis_status": "quantile_only",
-        "coefficient_finiteness": "finite",
-        "prediction_finiteness": (
-            "finite" if valid_prediction else "not_evaluated"
-        ),
-        "prediction_range_status": (
-            "within_0_1" if valid_prediction else "not_evaluated"
-        ),
-    }
-
-
 def _foundation(species_id: str = "thylogale_billardierii", n: int = 60):
     from dsdm_phase1.modeling_contract import (
         FeatureProvider,
@@ -78,842 +61,163 @@ def goal029_config():
     return load_goal029_config(root)
 
 
-def test_exact_production_and_calibration_plans(goal029_config):
-    from dataclasses import asdict
-
+def test_exact_five_family_production_and_calibration_contract(goal029_config):
     from dsdm_phase1.goal029_production import (
         CANDIDATE_STRATA_COUNT,
+        FAMILIES,
         FAMILY_STRATA_COUNT,
-        GAM_GATE_SENTINEL,
-        GAM_RECOVERY_CANDIDATE_IDS,
         LEAF_COUNT,
         SELECTED_REFIT_MAXIMUM,
+        SEEDS_BY_FAMILY,
+        _synthetic_plan,
+        audit_plan,
+        audit_salt,
         calibration_canary_plan,
         calibration_plan,
-        gam_feasibility_execution_plan,
-        gam_feasibility_plan,
+        execution_context,
         production_plan,
     )
-    from dsdm_phase1.model_adapters import GOAL029_PSPLINE_CANDIDATES
+
+    root = Path(__file__).resolve().parents[1]
+    assert FAMILIES == (
+        "intercept",
+        "elastic_net",
+        "random_forest",
+        "hist_gradient_boosting",
+        "shallow_ann",
+    )
+    active_contract = json.dumps(
+        {
+            "models": goal029_config["models"],
+            "failure_policy": goal029_config["failure_policy"],
+            "calibration": goal029_config["calibration"],
+        },
+        sort_keys=True,
+    )
+    assert all(token not in active_contract for token in ("gam", "psgam", "gamr"))
+    assert goal029_config["models"]["registry_authority"] == (
+        "goal028_canonical_only"
+    )
 
     plan = production_plan(goal029_config)
-    assert len(plan) == LEAF_COUNT == 7224
-    assert len({leaf.family_stratum for leaf in plan}) == FAMILY_STRATA_COUNT == 336
-    assert len({leaf.candidate_stratum for leaf in plan}) == CANDIDATE_STRATA_COUNT == 2072
-    assert SELECTED_REFIT_MAXIMUM == 1008
-    assert goal029_config["models"]["planned_counts"]["oof_producing_fold_units"] == 36120
-    assert goal029_config["models"]["planned_counts"]["actual_inner_estimator_fits"] == 44520
-    assert tuple(goal029_config["models"]["candidate_ids"]["gam"]) == GAM_RECOVERY_CANDIDATE_IDS
-    assert goal029_config["models"]["goal029_pspline_registry"] == {
-        "schema_version": "goal029_pspline_registry_v2",
-        "spline_order": 3,
-        "candidate_payloads": GOAL029_PSPLINE_CANDIDATES,
+    assert len(plan) == LEAF_COUNT == 6888
+    assert len({leaf.family_stratum for leaf in plan}) == (
+        FAMILY_STRATA_COUNT
+    ) == 280
+    assert len({leaf.candidate_stratum for leaf in plan}) == (
+        CANDIDATE_STRATA_COUNT
+    ) == 1736
+    assert SELECTED_REFIT_MAXIMUM == 952
+    assert goal029_config["models"]["planned_counts"] == {
+        "species_endpoint_strata": 56,
+        "family_strata": 280,
+        "candidate_strata": 1736,
+        "candidate_seed_leaves": 6888,
+        "oof_producing_fold_units": 34440,
+        "actual_inner_estimator_fits": 42840,
+        "selected_refits_maximum": 952,
     }
-    assert goal029_config["failure_policy"]["minimum_complete_valid_candidates_by_family"] == {
-        family: (1 if family == "intercept" else 2)
-        for family in goal029_config["models"]["families"]
-    }
+
     calibration = calibration_plan(goal029_config)
-    assert len(calibration) == 30 and set(calibration) <= set(plan)
-    canary = calibration_canary_plan(goal029_config)
-    assert canary == (
-        next(
-            leaf
-            for leaf in calibration
-            if leaf.species_id == "trichosurus_vulpecula"
-            and leaf.fraction_id == "fraction50"
-            and leaf.ladder_id == "ladder00"
-            and leaf.candidate_id == "hgb04"
-        ),
-        next(
-            leaf
-            for leaf in calibration
-            if leaf.species_id == "vombatus_ursinus"
-            and leaf.fraction_id == "fraction50"
-            and leaf.ladder_id == "ladder01"
-            and leaf.candidate_id == "hgb04"
-        ),
+    assert len(calibration) == 28
+    assert set(calibration) <= set(plan)
+    assert {leaf.model_family for leaf in calibration} == set(FAMILIES)
+    assert {leaf.species_id for leaf in calibration} == set(
+        goal029_config["scope"]["species"]
     )
-    gate = gam_feasibility_plan(goal029_config)
-    assert len(gate) == 56 * 6 == 336
-    assert {leaf.candidate_id for leaf in gate} == set(GAM_RECOVERY_CANDIDATE_IDS)
-    executions = gam_feasibility_execution_plan(goal029_config)
-    assert len(executions) == 337
-    assert sum(record["leaf"] == asdict(GAM_GATE_SENTINEL) for record in executions) == 2
-    assert [record["replicate_index"] for record in executions if record["leaf"] == asdict(GAM_GATE_SENTINEL)] == [0, 1]
+    assert {
+        (leaf.fraction_id, leaf.ladder_id) for leaf in calibration
+    } == {
+        tuple(endpoint.split("/"))
+        for endpoint in goal029_config["partitions"]["endpoints"]
+    }
+    assert {leaf.seed_label for leaf in calibration} == {
+        f"seed{index:02d}" for index in range(5)
+    }
+    assert len(calibration_canary_plan(goal029_config)) == 2
     assert goal029_config["calibration"]["planned_counts"] == {
         "spawn_audit_children": 4,
         "canary_leaf_executions": 4,
-        "representative_leaf_executions": 90,
-        "gam_gate_candidate_executions": 337,
-        "gam_gate_fit_attempts": 2022,
-        "total_candidate_executions": 431,
-        "maximum_estimator_fits": 2597,
+        "representative_leaf_executions": 84,
+        "total_candidate_executions": 88,
+        "maximum_estimator_fits": 545,
+    }
+    assert goal029_config["calibration"]["receipt_schemas"] == {
+        "spawn_audit": "goal029_calibration_spawn_audit_v1",
+        "trial": "goal029_calibration_trial_v2",
+        "master": "goal029_calibration_master_v4",
+        "tracked_index": "goal029_calibration_index_v4",
     }
 
+    context = execution_context(root, goal029_config)
+    audit = audit_plan(plan, audit_salt(plan, context))
+    assert len(audit) == 345
+    synthetic_plan = _synthetic_plan()
+    assert len(synthetic_plan) == 33
+    assert len({leaf.model_family for leaf in synthetic_plan}) == 5
+    assert sum(len(SEEDS_BY_FAMILY[family]) for family in FAMILIES) == 17
+    assert len(
+        audit_plan(synthetic_plan, audit_salt(synthetic_plan, context))
+    ) == 11
 
-def test_gam_feasibility_status_gate_semantics_and_privacy(goal029_config):
-    from dataclasses import asdict
 
-    from dsdm_phase1.goal029_production import (
-        GAM_GATE_SENTINEL,
-        Goal029Error,
-        _evaluate_gam_feasibility_records,
-        _sha,
-        _validate_gam_candidate_status_record,
-        gam_feasibility_execution_plan,
-    )
+@pytest.mark.parametrize(
+    "mutation",
+    ("gam_family", "pspline_registry", "gam_gate", "v3_receipt_schema"),
+)
+def test_active_config_rejects_retired_gam_authority(
+    goal029_config, tmp_path, monkeypatch, mutation
+):
+    import copy
 
-    stage_ids = [f"cv_fold{index:02d}" for index in range(5)] + [
-        "outer_refit_replay"
-    ]
+    import dsdm_phase1.goal029_production as production
 
-    def candidate_record(execution, invalid_stages=()):
-        stages = []
-        for index, stage_id in enumerate(stage_ids):
-            invalid = stage_id in invalid_stages
-            stages.append(
-                {
-                    "stage_id": stage_id,
-                    "status": "invalid" if invalid else "complete",
-                    "diagnostic": (
-                        {
-                            "failure_code": "pspline_nonconverged",
-                            "exception_class": "ModelAdapterError",
-                            "exception_category": "strict_nonconvergence",
-                        }
-                        if invalid
-                        else None
-                    ),
-                    "safe_diagnostics": _gam_safe_diagnostics(
-                        valid_prediction=not invalid
-                    ),
-                    "semantic_digest": "" if invalid else f"{index + 1:064x}",
-                }
-            )
-        body = {
-            "schema_version": "goal029_pspline_candidate_status_v2",
-            "leaf": execution["leaf"],
-            "replicate_index": execution["replicate_index"],
-            "status": "invalid_candidate" if invalid_stages else "complete",
-            "stages": stages,
-            "fit_attempt_count": 6,
-            "challenge_semantic_digest": (
-                "" if "outer_refit_replay" in invalid_stages else "a" * 64
-            ),
-            "process_instance_digest": (
-                "2" * 64 if execution["replicate_index"] == 1 else "1" * 64
-            ),
-            "real_outer_attempted_open_count": 0,
-            "real_outer_open_count": 0,
+    root = Path(__file__).resolve().parents[1]
+    tampered = copy.deepcopy(goal029_config)
+    if mutation == "gam_family":
+        tampered["models"]["families"].append("gam")
+        tampered["models"]["candidate_ids"]["gam"] = ["gam00"]
+        tampered["models"]["seed_labels_by_family"]["gam"] = ["seed00"]
+    elif mutation == "pspline_registry":
+        tampered["models"]["goal029_pspline_registry"] = {
+            "schema_version": "goal029_pspline_registry_v2",
+            "candidate_payloads": {},
         }
-        return {**body, "candidate_semantic_digest": _sha(body)}
-
-    executions = gam_feasibility_execution_plan(goal029_config)
-    complete = [candidate_record(execution) for execution in executions]
-    summary = _evaluate_gam_feasibility_records(complete, goal029_config)
-    assert summary == {
-        "status": "pass",
-        "candidate_count": 336,
-        "candidate_execution_count": 337,
-        "fit_attempt_count": 2022,
-        "viable_strata_count": 56,
-        "failed_strata_count": 0,
-        "sentinel_reproducible": True,
-        "semantic_digest": summary["semantic_digest"],
-    }
-    assert len(summary["semantic_digest"]) == 64
-    serialized = json.dumps(complete, sort_keys=True)
-    assert all(
-        token not in serialized
-        for token in ('"roc_auc"', '"tss"', '"threshold"', '"oof_score"', '"predictions"')
-    )
-
-    # An otherwise complete candidate is invalid if its required outer refit,
-    # serialization, or response-free replay stage did not complete.
-    failed_refit = candidate_record(
-        executions[0], invalid_stages={"outer_refit_replay"}
-    )
-    _validate_gam_candidate_status_record(failed_refit, goal029_config)
-    assert failed_refit["status"] == "invalid_candidate"
-    one_outer_invalid = list(complete)
-    one_outer_invalid[0] = failed_refit
-    outer_invalid_summary = _evaluate_gam_feasibility_records(
-        one_outer_invalid, goal029_config
-    )
-    assert outer_invalid_summary["status"] == "pass"
-    assert outer_invalid_summary["viable_strata_count"] == 56
-
-    # Two weakly regularized completions do not satisfy the frozen-tier rule.
-    low_only = []
-    target = (
-        executions[0]["leaf"]["species_id"],
-        executions[0]["leaf"]["fraction_id"],
-        executions[0]["leaf"]["ladder_id"],
-    )
-    for execution in executions:
-        leaf = execution["leaf"]
-        same = (
-            leaf["species_id"],
-            leaf["fraction_id"],
-            leaf["ladder_id"],
-        ) == target
-        invalid = (
-            {"cv_fold00"}
-            if same and leaf["candidate_id"] not in {"psgam00", "psgam03"}
-            else set()
+    elif mutation == "gam_gate":
+        tampered["calibration"]["gam_feasibility_gate"] = {}
+    else:
+        tampered["calibration"]["receipt_schemas"]["master"] = (
+            "goal029_calibration_master_v3"
         )
-        low_only.append(candidate_record(execution, invalid))
-    low_summary = _evaluate_gam_feasibility_records(
-        low_only, goal029_config
-    )
-    assert low_summary["status"] == "fail"
-    assert low_summary["failed_strata_count"] == 1
-
-    # The independently repeated sentinel must agree. A status/diagnostic
-    # disagreement is a hard error, not a failed viability stratum.
-    disagree = list(complete)
-    duplicate_index = next(
-        index
-        for index, record in enumerate(disagree)
-        if record["leaf"] == asdict(GAM_GATE_SENTINEL)
-        and record["replicate_index"] == 1
-    )
-    disagree[duplicate_index] = candidate_record(
-        executions[duplicate_index], invalid_stages={"cv_fold00"}
-    )
-    with pytest.raises(Goal029Error, match="sentinel_disagreement"):
-        _evaluate_gam_feasibility_records(disagree, goal029_config)
-
-    safe_diagnostic_drift = json.loads(json.dumps(complete))
-    safe_diagnostic_drift[duplicate_index]["stages"][0][
-        "safe_diagnostics"
-    ]["iteration_count"] = 2
-    drift_body = {
-        key: value
-        for key, value in safe_diagnostic_drift[duplicate_index].items()
-        if key != "candidate_semantic_digest"
-    }
-    safe_diagnostic_drift[duplicate_index][
-        "candidate_semantic_digest"
-    ] = _sha(drift_body)
-    with pytest.raises(Goal029Error, match="sentinel_disagreement"):
-        _evaluate_gam_feasibility_records(
-            safe_diagnostic_drift, goal029_config
+        tampered["calibration"]["receipt_schemas"]["tracked_index"] = (
+            "goal029_calibration_index_v3"
         )
-
-    unsafe = json.loads(json.dumps(complete[0]))
-    unsafe["status"] = "invalid_candidate"
-    unsafe["stages"][0]["status"] = "invalid"
-    unsafe["stages"][0]["semantic_digest"] = ""
-    unsafe["stages"][0]["diagnostic"] = {
-        "failure_code": "pspline_optimizer_failed",
-        "exception_class": "ModelAdapterError",
-        "exception_category": "optimizer_error",
-        "message": "private path /tmp/secret",
-    }
-    unsafe_body = {
-        key: value
-        for key, value in unsafe.items()
-        if key != "candidate_semantic_digest"
-    }
-    unsafe["candidate_semantic_digest"] = _sha(unsafe_body)
-    with pytest.raises(Goal029Error, match="diagnostic"):
-        _validate_gam_candidate_status_record(unsafe, goal029_config)
+    path = tmp_path / "tampered.json"
+    path.write_text(json.dumps(tampered), encoding="utf-8")
+    monkeypatch.setattr(
+        production, "_CANONICAL_CONFIG_DIGEST", production._sha(tampered)
+    )
+    with pytest.raises(production.Goal029Error):
+        production.load_goal029_config(root, path)
 
 
-def test_production_gam_statuses_must_match_feasibility_gate(
-    monkeypatch, goal029_config
+def test_goal029_runtime_exposes_no_gam_gate_or_overlay_authority(
+    goal029_config,
 ):
     import dsdm_phase1.goal029_production as production
 
-    from dsdm_phase1.goal029_production import (
-        Goal029Error,
-        _validate_production_gam_states_against_gate,
-        gam_feasibility_execution_plan,
-        validate_family_candidates,
-    )
-
-    gate_records = [
-        {
-            "leaf": execution["leaf"],
-            "replicate_index": execution["replicate_index"],
-            "status": "complete",
-        }
-        for execution in gam_feasibility_execution_plan(goal029_config)
-    ]
-    candidate_records = [
-        {
-            "candidate_stratum": {
-                key: record["leaf"][key]
-                for key in (
-                    "species_id",
-                    "fraction_id",
-                    "ladder_id",
-                    "model_family",
-                    "candidate_id",
-                )
-            },
-            "status": record["status"],
-            "state_origin": "production_execution",
-        }
-        for record in gate_records
-        if record["replicate_index"] == 0
-    ]
-    candidate_states = {"candidate_records": candidate_records}
-    gate = {"records": gate_records}
-    _validate_production_gam_states_against_gate(candidate_states, gate)
-
-    drifted = json.loads(json.dumps(candidate_states))
-    drifted["candidate_records"][0]["status"] = "invalid_candidate"
-    with pytest.raises(Goal029Error, match="complete_became_invalid"):
-        _validate_production_gam_states_against_gate(drifted, gate)
-
-    # A candidate invalid only in the gate outer-refit stage is carried into
-    # production as a blinded overlay and is not treated as a production fit.
-    invalid_key = tuple(
-        candidate_records[-1]["candidate_stratum"][key]
-        for key in (
-            "species_id",
-            "fraction_id",
-            "ladder_id",
-            "model_family",
-            "candidate_id",
-        )
-    )
-    for record in gate_records:
-        key = tuple(
-            record["leaf"][field]
-            for field in (
-                "species_id",
-                "fraction_id",
-                "ladder_id",
-                "model_family",
-                "candidate_id",
-            )
-        )
-        if key == invalid_key:
-            record["status"] = "invalid_candidate"
-    overlaid = json.loads(json.dumps(candidate_states))
-    overlaid_record = overlaid["candidate_records"][-1]
-    overlaid_record.update(
-        {
-            "status": "invalid_candidate",
-            "state_origin": "gam_gate_overlay",
-            "failure_code": "gam_gate_invalid_candidate",
-            "leaves": [],
-        }
-    )
-    _validate_production_gam_states_against_gate(overlaid, gate)
-    invalid_candidate_id = overlaid_record["candidate_stratum"][
-        "candidate_id"
-    ]
-    complete_candidates = {
-        candidate_id: object()
-        for candidate_id in goal029_config["models"]["candidate_ids"]["gam"]
-        if candidate_id != invalid_candidate_id
-    }
-    selection_inputs = []
-
-    def record_selection(values):
-        selection_inputs.extend(values)
-        return values[0]
-
-    monkeypatch.setattr(production, "select_candidate", record_selection)
-    selected = validate_family_candidates(
-        "gam", complete_candidates, {invalid_candidate_id}
-    )
-    assert selected in complete_candidates.values()
-    assert selection_inputs == [
-        complete_candidates[candidate_id]
-        for candidate_id in sorted(complete_candidates)
-    ]
-
-
-def test_gam_fit_exception_diagnostics_are_sanitized_and_classified():
-    from dsdm_phase1.goal029_production import (
-        Goal029Error,
-        _sanitize_gam_gate_exception,
-    )
-    from dsdm_phase1.model_adapters import ModelAdapterError
-
-    wrapped = ModelAdapterError("pspline_basis_failed")
-    assert _sanitize_gam_gate_exception(wrapped) == {
-        "failure_code": "pspline_basis_failed",
-        "exception_class": "ModelAdapterError",
-        "exception_category": "basis_error",
-    }
-
-    diverged = ModelAdapterError("pspline_optimizer_failed")
-    assert _sanitize_gam_gate_exception(diverged) == {
-        "failure_code": "pspline_optimizer_failed",
-        "exception_class": "ModelAdapterError",
-        "exception_category": "optimizer_error",
-    }
-
-    nonconverged = ModelAdapterError("pspline_nonconverged")
-    assert _sanitize_gam_gate_exception(nonconverged) == {
-        "failure_code": "pspline_nonconverged",
-        "exception_class": "ModelAdapterError",
-        "exception_category": "strict_nonconvergence",
-    }
-
-    class UnknownFailure(Exception):
-        pass
-
-    unknown = ModelAdapterError("unknown_pspline_failure")
-    unknown.__cause__ = UnknownFailure("secret")
-    with pytest.raises(Goal029Error, match="unclassified"):
-        _sanitize_gam_gate_exception(unknown)
-
-    from dsdm_phase1.goal029_production import (
-        _validate_gam_gate_diagnostic,
-    )
-
-    with pytest.raises(Goal029Error, match="diagnostic_invalid"):
-        _validate_gam_gate_diagnostic(
-            {
-                "failure_code": "pspline_optimizer_failed",
-                "exception_class": "ModelAdapterError",
-                "exception_category": "serialization_error",
-            }
-        )
-
-
-def test_gam_optimization_error_is_candidate_local_and_gate_continues(
-    monkeypatch, goal029_config
-):
-    import dsdm_phase1.goal029_production as production
-    from dsdm_phase1.goal029_production import (
-        _gam_gate_worker_candidate,
-        enforce_numerical_thread_policy,
-        gam_feasibility_execution_plan,
-    )
-    from dsdm_phase1.model_adapters import FitReport, ModelAdapterError
-    from dsdm_phase1.modeling_contract import OuterVault
-
-    broker, provider = _foundation(n=80)
-    vault = OuterVault(None, synthetic=False)
-    thread_evidence = enforce_numerical_thread_policy(goal029_config)
-    monkeypatch.setattr(production, "_CALIBRATION_CONFIG", goal029_config)
-    monkeypatch.setattr(production, "_CALIBRATION_BROKER", broker)
-    monkeypatch.setattr(production, "_CALIBRATION_PROVIDER", provider)
-    monkeypatch.setattr(production, "_CALIBRATION_VAULT", vault)
-    monkeypatch.setattr(
-        production, "_WORKER_THREAD_EVIDENCE", thread_evidence
-    )
-    monkeypatch.setattr(
-        production, "_WORKER_PROCESS_INSTANCE_DIGEST", "1" * 64
-    )
-    fit_transforms = []
-
-    class Fitted:
-        def predict_scores(self, batch):
-            return np.full(len(batch.keys), 0.5, dtype=np.float64)
-
-        def serialize(self, path):
-            Path(path).write_bytes(b"status-only-model")
-            return {}
-
-        def safe_diagnostics(
-            self,
-            *,
-            prediction_finiteness,
-            prediction_range_status,
-        ):
-            return _gam_safe_diagnostics()
-
-    fitted = Fitted()
-    fitted.model = fitted
-
-    class Adapter:
-        family = "gam"
-
-        def fit(
-            self,
-            train,
-            stopping,
-            candidate,
-            seed,
-            exact_epochs=None,
-        ):
-            assert stopping is None and exact_epochs is None
-            fit_transforms.append(train.transform_id)
-            if len(fit_transforms) == 1:
-                error = ModelAdapterError("pspline_optimizer_failed")
-                raise error
-            return fitted, FitReport(
-                True, 1, None, None, None, (), 0.0, 1
-            )
-
-    monkeypatch.setattr(production, "build_adapter", lambda _family: Adapter())
-    monkeypatch.setattr(
-        production, "load_fitted_model", lambda _path, _digest: fitted
-    )
-    executions = gam_feasibility_execution_plan(goal029_config)
-    first = _gam_gate_worker_candidate(executions[0])
-    second = _gam_gate_worker_candidate(executions[1])
-
-    assert first["status"] == "invalid_candidate"
-    assert first["stages"][0]["diagnostic"] == {
-        "failure_code": "pspline_optimizer_failed",
-        "exception_class": "ModelAdapterError",
-        "exception_category": "optimizer_error",
-    }
-    assert [stage["status"] for stage in first["stages"]] == [
-        "invalid",
-        "complete",
-        "complete",
-        "complete",
-        "complete",
-        "complete",
-    ]
-    assert second["status"] == "complete"
-    assert len(fit_transforms) == 12
-    serialized = json.dumps(first, sort_keys=True)
-    assert all(
-        token not in serialized
-        for token in (
-            '"roc_auc"',
-            '"tss"',
-            '"threshold"',
-            '"oof_score"',
-            '"grid_cell_id"',
-            '"row_index"',
-            '"y_true"',
-            '"predictions"',
-        )
-    )
-    assert vault.attempted_open_count == vault.open_count == 0
-
-
-def test_gam_gate_worker_uses_status_only_five_folds_and_refit_replay(
-    monkeypatch, goal029_config
-):
-    from dataclasses import asdict
-
-    import dsdm_phase1.goal029_production as production
-    from dsdm_phase1.goal029_production import (
-        GAM_GATE_SENTINEL,
-        Goal029Error,
-        _gam_gate_worker_candidate,
-        enforce_numerical_thread_policy,
-    )
-    from dsdm_phase1.model_adapters import FitReport
-    from dsdm_phase1.modeling_contract import OuterVault
-
-    broker, provider = _foundation(n=80)
-    vault = OuterVault(None, synthetic=False)
-    thread_evidence = enforce_numerical_thread_policy(goal029_config)
-    monkeypatch.setattr(production, "_CALIBRATION_CONFIG", goal029_config)
-    monkeypatch.setattr(production, "_CALIBRATION_BROKER", broker)
-    monkeypatch.setattr(production, "_CALIBRATION_PROVIDER", provider)
-    monkeypatch.setattr(production, "_CALIBRATION_VAULT", vault)
-    monkeypatch.setattr(
-        production, "_WORKER_THREAD_EVIDENCE", thread_evidence
-    )
-    monkeypatch.setattr(
-        production, "_WORKER_PROCESS_INSTANCE_DIGEST", "1" * 64
-    )
-    fit_transforms = []
-    prediction_rows = []
-
-    class Fitted:
-        def predict_scores(self, batch):
-            prediction_rows.append(len(batch.keys))
-            return np.full(len(batch.keys), 0.5, dtype=np.float64)
-
-        def serialize(self, path):
-            Path(path).write_bytes(b"status-only-model")
-            return {}
-
-        def safe_diagnostics(
-            self,
-            *,
-            prediction_finiteness,
-            prediction_range_status,
-        ):
-            return _gam_safe_diagnostics()
-
-    fitted = Fitted()
-    fitted.model = fitted
-
-    class Adapter:
-        family = "gam"
-
-        def fit(
-            self,
-            train,
-            stopping,
-            candidate,
-            seed,
-            exact_epochs=None,
-        ):
-            assert stopping is None and exact_epochs is None
-            fit_transforms.append(train.transform_id)
-            return fitted, FitReport(
-                True, 1, None, None, None, (), 0.0, 1
-            )
-
-    monkeypatch.setattr(production, "build_adapter", lambda family: Adapter())
-    monkeypatch.setattr(
-        production,
-        "load_fitted_model",
-        lambda path, digest: fitted,
-    )
-    monkeypatch.setattr(
-        production,
-        "roc_auc_score",
-        lambda *_args, **_kwargs: (_ for _ in ()).throw(
-            AssertionError("performance metric called")
-        ),
-    )
-    result = _gam_gate_worker_candidate(
-        {"leaf": asdict(GAM_GATE_SENTINEL), "replicate_index": 0}
-    )
-    assert fit_transforms == [
-        "cv_fold00",
-        "cv_fold01",
-        "cv_fold02",
-        "cv_fold03",
-        "cv_fold04",
-        "outer",
-    ]
-    assert prediction_rows[:5] == [16] * 5
-    assert result["status"] == "complete"
-    assert [stage["status"] for stage in result["stages"]] == [
-        "complete"
-    ] * 6
-    assert result["fit_attempt_count"] == 6
-    assert vault.attempted_open_count == vault.open_count == 0
-    assert all(
-        token not in json.dumps(result, sort_keys=True)
-        for token in ('"roc_auc"', '"tss"', '"threshold"', '"oof_score"')
-    )
-
-    def serialization_failure(_path):
-        raise OSError("private filename omitted")
-
-    monkeypatch.setattr(fitted, "serialize", serialization_failure)
-    with pytest.raises(Goal029Error, match="serialization_integrity"):
-        _gam_gate_worker_candidate(
-            {"leaf": asdict(GAM_GATE_SENTINEL), "replicate_index": 0}
-        )
-
-    monkeypatch.setattr(
-        fitted,
-        "serialize",
-        lambda path: Path(path).write_bytes(b"status-only-model"),
-    )
-
-    class DriftedReplay:
-        def predict_scores(self, batch):
-            return np.full(len(batch.keys), 0.6, dtype=np.float64)
-
-    monkeypatch.setattr(
-        production,
-        "load_fitted_model",
-        lambda path, digest: DriftedReplay(),
-    )
-    with pytest.raises(Goal029Error, match="challenge_replay_mismatch"):
-        _gam_gate_worker_candidate(
-            {"leaf": asdict(GAM_GATE_SENTINEL), "replicate_index": 0}
-        )
-    monkeypatch.setattr(
-        production,
-        "load_fitted_model",
-        lambda path, digest: fitted,
-    )
-    call_count = 0
-
-    def invalid_first_prediction(batch):
-        nonlocal call_count
-        call_count += 1
-        if call_count == 1:
-            from dsdm_phase1.model_adapters import ModelAdapterError
-
-            raise ModelAdapterError("nonfinite_or_invalid_scores")
-        return np.full(len(batch.keys), 0.5, dtype=np.float64)
-
-    monkeypatch.setattr(fitted, "predict_scores", invalid_first_prediction)
-    candidate_local = _gam_gate_worker_candidate(
-        {"leaf": asdict(GAM_GATE_SENTINEL), "replicate_index": 0}
-    )
-    assert candidate_local["status"] == "invalid_candidate"
-    assert candidate_local["stages"][0]["diagnostic"] == {
-        "failure_code": "nonfinite_or_invalid_scores",
-        "exception_class": "ModelAdapterError",
-        "exception_category": "invalid_prediction",
-    }
-    assert candidate_local["stages"][0]["safe_diagnostics"][
-        "prediction_finiteness"
-    ] == "failed_validation"
-    assert candidate_local["stages"][0]["safe_diagnostics"][
-        "iteration_count"
-    ] == 1
-
-
-def test_gam_gate_receipt_binds_context_threads_plan_and_privacy(
-    goal029_config
-):
-    from dataclasses import asdict
-    import socket
-
-    from dsdm_phase1.goal029_production import (
-        ExecutionContext,
-        Goal029Error,
-        _evaluate_gam_feasibility_records,
-        _sha,
-        _validate_gam_feasibility_receipt,
-        enforce_numerical_thread_policy,
-        gam_feasibility_execution_plan,
-        numerical_thread_policy,
-    )
-
-    evidence = enforce_numerical_thread_policy(goal029_config)
-    context = ExecutionContext(
-        *(["1" * 64] * 4),
-        socket.gethostname(),
-        "2" * 64,
-        _sha(numerical_thread_policy(goal029_config)),
-        evidence["evidence_digest"],
-    )
-    executions = gam_feasibility_execution_plan(goal029_config)
-    stages = [f"cv_fold{index:02d}" for index in range(5)] + [
-        "outer_refit_replay"
-    ]
-    records = []
-    for execution in executions:
-        body = {
-            "schema_version": "goal029_pspline_candidate_status_v2",
-            "leaf": execution["leaf"],
-            "replicate_index": execution["replicate_index"],
-            "status": "complete",
-            "stages": [
-                {
-                    "stage_id": stage_id,
-                    "status": "complete",
-                    "diagnostic": None,
-                    "safe_diagnostics": _gam_safe_diagnostics(),
-                    "semantic_digest": f"{index + 1:064x}",
-                }
-                for index, stage_id in enumerate(stages)
-            ],
-            "fit_attempt_count": 6,
-            "challenge_semantic_digest": "a" * 64,
-            "process_instance_digest": (
-                "2" * 64 if execution["replicate_index"] == 1 else "1" * 64
-            ),
-            "real_outer_attempted_open_count": 0,
-            "real_outer_open_count": 0,
-        }
-        records.append(
-            {**body, "candidate_semantic_digest": _sha(body)}
-        )
-    summary = _evaluate_gam_feasibility_records(records, goal029_config)
-    gib = 1024**3
-    receipt_body = {
-        "schema_version": "goal029_pspline_feasibility_gate_v2",
-        "status": "pass",
-        "actual_host": socket.gethostname(),
-        "execution_context_digest": _sha(asdict(context)),
-        "pspline_registry_digest": _sha(
-            goal029_config["models"]["goal029_pspline_registry"]
-        ),
-        "execution_plan_digest": _sha(list(executions)),
-        "workers": 1,
-        "parent_thread_evidence": evidence,
-        "worker_thread_evidence": [
-            {
-                "worker_pid": 1234,
-                "evidence": evidence,
-                "process_instance_digest": "1" * 64,
-            },
-            {
-                "worker_pid": 5678,
-                "evidence": evidence,
-                "process_instance_digest": "2" * 64,
-            },
-        ],
-        "fresh_processes": True,
-        "checkpoint_reuse": False,
-        "fresh_destination": True,
-        "candidate_count": 336,
-        "candidate_execution_count": 337,
-        "fit_attempt_count": 2022,
-        "records": records,
-        "summary": summary,
-        "performance_fields_exposed": False,
-        "telemetry": {
-            "wall_seconds": 1.0,
-            "peak_rss_bytes": 1024,
-            "free_memory_before_bytes": 16 * gib,
-            "free_memory_after_bytes": 15 * gib,
-            "swap_before_bytes": 0,
-            "swap_after_bytes": 0,
-        },
-        "real_outer_attempted_open_count": 0,
-        "real_outer_open_count": 0,
-    }
-    receipt = {**receipt_body, "receipt_digest": _sha(receipt_body)}
-    _validate_gam_feasibility_receipt(
-        receipt,
-        config=goal029_config,
-        context=context,
-        expected_host=socket.gethostname(),
-        expected_workers=1,
-    )
-
-    unsafe = json.loads(json.dumps(receipt))
-    unsafe["summary"]["roc_auc"] = 0.9
-    unsafe_body = {
-        key: value for key, value in unsafe.items() if key != "receipt_digest"
-    }
-    unsafe["receipt_digest"] = _sha(unsafe_body)
-    with pytest.raises(Goal029Error, match="performance"):
-        _validate_gam_feasibility_receipt(
-            unsafe,
-            config=goal029_config,
-            context=context,
-            expected_host=socket.gethostname(),
-            expected_workers=1,
-        )
-
-    same_process = json.loads(json.dumps(receipt))
-    same_process["worker_thread_evidence"][1][
-        "process_instance_digest"
-    ] = "1" * 64
-    same_process_body = {
-        key: value
-        for key, value in same_process.items()
-        if key != "receipt_digest"
-    }
-    same_process["receipt_digest"] = _sha(same_process_body)
-    with pytest.raises(Goal029Error, match="process_instance_not_independent"):
-        _validate_gam_feasibility_receipt(
-            same_process,
-            config=goal029_config,
-            context=context,
-            expected_host=socket.gethostname(),
-            expected_workers=1,
-        )
-
-    drifted = json.loads(json.dumps(receipt))
-    drifted["pspline_registry_digest"] = "b" * 64
-    drifted_body = {
-        key: value
-        for key, value in drifted.items()
-        if key != "receipt_digest"
-    }
-    drifted["receipt_digest"] = _sha(drifted_body)
-    with pytest.raises(Goal029Error, match="receipt"):
-        _validate_gam_feasibility_receipt(
-            drifted,
-            config=goal029_config,
-            context=context,
-            expected_host=socket.gethostname(),
-            expected_workers=1,
-        )
+    for name in (
+        "gam_feasibility_plan",
+        "gam_feasibility_execution_plan",
+        "run_gam_feasibility_gate",
+        "_validate_gam_feasibility_receipt",
+        "_validate_production_gam_states_against_gate",
+        "_gam_gate_overlay_state",
+    ):
+        assert not hasattr(production, name)
+    with production._goal029_candidate_context(goal029_config):
+        with pytest.raises(KeyError):
+            production._goal029_candidate_payload("psgam00")
 
 
 def test_numerical_thread_policy_is_live_and_fails_closed(goal029_config):
@@ -1236,8 +540,8 @@ def test_deterministic_audit_is_exact_and_complete(goal029_config):
     digest = "a" * 64
     audit = audit_plan(plan, digest)
     assert audit == audit_plan(plan, digest)
-    assert len(audit) == 362
-    assert len({leaf.family_stratum for leaf in audit}) == 336
+    assert len(audit) == 345
+    assert len({leaf.family_stratum for leaf in audit}) == 280
     assert {leaf.model_family for leaf in audit} == set(FAMILIES)
     assert {leaf.candidate_id for leaf in audit} == {
         leaf.candidate_id for leaf in plan
@@ -1516,29 +820,6 @@ def test_five_seed_merge_and_anchor_quorum(goal029_config):
             "elastic_net",
             "enet00",
         )
-
-    gam_stratum = replace(
-        results["seed00"].stratum, model_family="gam"
-    )
-    psgam00 = replace(
-        results["seed00"],
-        stratum=gam_stratum,
-        candidate_id="psgam00",
-    )
-    psgam03 = replace(psgam00, candidate_id="psgam03")
-    psgam02 = replace(psgam00, candidate_id="psgam02")
-    with pytest.raises(Goal029Error, match="regularized"):
-        validate_family_candidates(
-            "gam",
-            {"psgam00": psgam00, "psgam03": psgam03},
-            {"psgam01", "psgam02", "psgam04", "psgam05"},
-        )
-    selected_gam = validate_family_candidates(
-        "gam",
-        {"psgam00": psgam00, "psgam02": psgam02},
-        {"psgam01", "psgam03", "psgam04", "psgam05"},
-    )
-    assert selected_gam.candidate_id in {"psgam00", "psgam02"}
 
 
 def test_warning_policy_and_blinded_failure_receipt(goal029_config):
@@ -2089,7 +1370,7 @@ def test_production_scheduler_groups_exact_candidate_seed_strata(goal029_config)
         ],
     }
     groups = _production_candidate_groups(record)
-    assert len(groups) == CANDIDATE_STRATA_COUNT == 2072
+    assert len(groups) == CANDIDATE_STRATA_COUNT == 1736
     assert [key for key, _ in groups] == list(dict.fromkeys(key for key, _ in groups))
     for _, records in groups:
         leaves = [record["leaf"] for record in records]
@@ -2212,6 +1493,23 @@ def test_candidate_failure_preserves_reused_checkpoint_until_durable_cleanup(
     _load_candidate_states(
         private_stage, plan_record, goal029_config, require_complete=True
     )
+    old_overlay = json.loads(json.dumps(persisted))
+    old_overlay["candidate_records"][0]["state_origin"] = "gam_gate_overlay"
+    _replace_atomic_json_file(
+        private_stage / "candidate_states.json", old_overlay
+    )
+    with pytest.raises(
+        production.Goal029Error, match="production_invalid_state_invalid"
+    ):
+        _load_candidate_states(
+            private_stage,
+            plan_record,
+            goal029_config,
+            require_complete=True,
+        )
+    _replace_atomic_json_file(
+        private_stage / "candidate_states.json", persisted
+    )
     persisted["candidate_records"][0]["worker_thread_evidence_digest"] = (
         "b" * 64
     )
@@ -2229,7 +1527,7 @@ def test_candidate_failure_preserves_reused_checkpoint_until_durable_cleanup(
         )
 
 
-def test_calibration_authority_revalidates_linked_trials(
+def test_v4_calibration_authority_roundtrip_and_rejects_stale_inventory(
     goal029_config, tmp_path
 ):
     from dataclasses import asdict
@@ -2238,25 +1536,20 @@ def test_calibration_authority_revalidates_linked_trials(
     from dsdm_phase1.goal029_production import (
         Goal029Error,
         _sha,
-        _evaluate_gam_feasibility_records,
         calibration_canary_plan,
         calibration_plan,
+        enforce_numerical_thread_policy,
         execution_context,
-        gam_feasibility_execution_plan,
         load_calibration_authority,
     )
     from dsdm_phase1.modeling_contract import canonical_json
 
     repo_root = Path(__file__).resolve().parents[1]
     context = execution_context(repo_root, goal029_config)
-    # Authority requires the evidence that was bound into the live context.
-    from dsdm_phase1.goal029_production import enforce_numerical_thread_policy
-
     thread_evidence = enforce_numerical_thread_policy(goal029_config)
     assert thread_evidence["evidence_digest"] == context.thread_evidence_digest
     canary_leaves = calibration_canary_plan(goal029_config)
     representative_leaves = calibration_plan(goal029_config)
-    gam_gate_executions = gam_feasibility_execution_plan(goal029_config)
     calibration_id = _sha(
         {
             "execution_context": asdict(context),
@@ -2265,7 +1558,6 @@ def test_calibration_authority_revalidates_linked_trials(
             "representative_leaves": [
                 asdict(leaf) for leaf in representative_leaves
             ],
-            "gam_gate_executions": list(gam_gate_executions),
             "canary_workers": [1, 2],
             "representative_workers": [1, 2, 4],
         }
@@ -2387,89 +1679,6 @@ def test_calibration_authority_revalidates_linked_trials(
         make_trial("representative", representative_leaves, 4, 9.2),
     ]
     selected_workers = 1
-    stage_ids = [f"cv_fold{index:02d}" for index in range(5)] + [
-        "outer_refit_replay"
-    ]
-    gam_gate_records = []
-    for execution in gam_gate_executions:
-        record_body = {
-            "schema_version": "goal029_pspline_candidate_status_v2",
-            "leaf": execution["leaf"],
-            "replicate_index": execution["replicate_index"],
-            "status": "complete",
-            "stages": [
-                {
-                    "stage_id": stage_id,
-                    "status": "complete",
-                    "diagnostic": None,
-                    "safe_diagnostics": _gam_safe_diagnostics(),
-                    "semantic_digest": f"{index + 1:064x}",
-                }
-                for index, stage_id in enumerate(stage_ids)
-            ],
-            "fit_attempt_count": 6,
-            "challenge_semantic_digest": "a" * 64,
-            "process_instance_digest": (
-                "2" * 64 if execution["replicate_index"] == 1 else "1" * 64
-            ),
-            "real_outer_attempted_open_count": 0,
-            "real_outer_open_count": 0,
-        }
-        gam_gate_records.append(
-            {
-                **record_body,
-                "candidate_semantic_digest": _sha(record_body),
-            }
-        )
-    gam_gate_summary = _evaluate_gam_feasibility_records(
-        gam_gate_records, goal029_config
-    )
-    gate_body = {
-        "schema_version": "goal029_pspline_feasibility_gate_v2",
-        "status": "pass",
-        "actual_host": socket.gethostname(),
-        "execution_context_digest": _sha(asdict(context)),
-        "pspline_registry_digest": _sha(
-            goal029_config["models"]["goal029_pspline_registry"]
-        ),
-        "execution_plan_digest": _sha(list(gam_gate_executions)),
-        "workers": selected_workers,
-        "parent_thread_evidence": thread_evidence,
-        "worker_thread_evidence": [
-            {
-                "worker_pid": 1234,
-                "evidence": thread_evidence,
-                "process_instance_digest": "1" * 64,
-            },
-            {
-                "worker_pid": 5678,
-                "evidence": thread_evidence,
-                "process_instance_digest": "2" * 64,
-            },
-        ],
-        "fresh_processes": True,
-        "checkpoint_reuse": False,
-        "fresh_destination": True,
-        "candidate_count": 336,
-        "candidate_execution_count": 337,
-        "fit_attempt_count": 2022,
-        "records": gam_gate_records,
-        "summary": gam_gate_summary,
-        "performance_fields_exposed": False,
-        "telemetry": {
-            "wall_seconds": 8.0,
-            "peak_rss_bytes": 1024,
-            "free_memory_before_bytes": 16 * gib,
-            "free_memory_after_bytes": 12 * gib,
-            "swap_before_bytes": 0,
-            "swap_after_bytes": 0,
-        },
-        "real_outer_attempted_open_count": 0,
-        "real_outer_open_count": 0,
-    }
-    gam_gate = {**gate_body, "receipt_digest": _sha(gate_body)}
-    write("gam-feasibility/receipt.json", gam_gate)
-
     support = []
     for species_id in goal029_config["scope"]["species"]:
         for endpoint in goal029_config["partitions"]["endpoints"]:
@@ -2495,7 +1704,7 @@ def test_calibration_authority_revalidates_linked_trials(
                 }
             )
     private = {
-        "schema_version": "goal029_calibration_master_v3",
+        "schema_version": "goal029_calibration_master_v4",
         "calibration_id": calibration_id,
         "actual_host": socket.gethostname(),
         "execution_context": asdict(context),
@@ -2529,24 +1738,18 @@ def test_calibration_authority_revalidates_linked_trials(
             }
             for trial in representative_trials
         ],
-        "gam_feasibility_receipt": {
-            "workers": selected_workers,
-            "relative_path": "gam-feasibility/receipt.json",
-            "receipt_digest": gam_gate["receipt_digest"],
-        },
         "selected_workers": selected_workers,
         "canary_semantic_digest": canary_trials[0]["semantic_digest"],
         "representative_semantic_digest": representative_trials[0][
             "semantic_digest"
         ],
-        "gam_gate_semantic_digest": gam_gate_summary["semantic_digest"],
         "real_outer_attempted_open_count": 0,
         "real_outer_open_count": 0,
     }
     private["receipt_digest"] = _sha(private)
     write("receipt.json", private)
     tracked = {
-        "schema_version": "goal029_calibration_index_v3",
+        "schema_version": "goal029_calibration_index_v4",
         "goal_id": goal029_config["identity"]["goal_id"],
         "status": "pass",
         "thread_policy_digest": context.thread_policy_digest,
@@ -2556,18 +1759,11 @@ def test_calibration_authority_revalidates_linked_trials(
         "canary_leaf_count": 2,
         "canary_semantic_digest": canary_trials[0]["semantic_digest"],
         "representative_workers": [1, 2, 4],
-        "representative_leaf_count": 30,
+        "representative_leaf_count": 28,
         "representative_semantic_digest": representative_trials[0][
             "semantic_digest"
         ],
         "selected_workers": selected_workers,
-        "gam_gate_status": "pass",
-        "gam_gate_candidate_count": 336,
-        "gam_gate_candidate_execution_count": 337,
-        "gam_gate_fit_attempt_count": 2022,
-        "gam_gate_viable_strata_count": 56,
-        "gam_gate_semantic_digest": gam_gate_summary["semantic_digest"],
-        "gam_gate_receipt_digest": gam_gate["receipt_digest"],
         "class_support_strata_count": 56,
         "private_receipt_digest": private["receipt_digest"],
         "actual_host_digest": _sha(socket.gethostname()),
@@ -2575,25 +1771,102 @@ def test_calibration_authority_revalidates_linked_trials(
         "real_outer_open_count": 0,
     }
     tracked_path = (
-        tmp_path / goal029_config["calibration"]["receipt_destination"] / "receipt.json"
+        tmp_path
+        / goal029_config["calibration"]["receipt_destination"]
+        / "receipt.json"
     )
     tracked_path.parent.mkdir(parents=True)
-    tracked_path.write_text(canonical_json(tracked) + "\n", encoding="utf-8")
-
-    authority = load_calibration_authority(
-        tmp_path, goal029_config, context
+    tracked_path.write_text(
+        canonical_json(tracked) + "\n", encoding="utf-8"
     )
+
+    authority = load_calibration_authority(tmp_path, goal029_config, context)
     assert authority["private"]["selected_workers"] == 1
     assert [trial["workers"] for trial in authority["trials"]] == [1, 2, 4]
-    assert authority["gam_feasibility_gate"]["workers"] == 1
-    assert authority["gam_feasibility_gate"]["status"] == "pass"
+    assert "gam_feasibility_gate" not in authority
 
-    tampered = {
-        **tracked,
-        "gam_gate_receipt_digest": "b" * 64,
-    }
+    stale_tracked = {**tracked, "schema_version": "goal029_calibration_index_v3"}
     tracked_path.write_text(
-        canonical_json(tampered) + "\n", encoding="utf-8"
+        canonical_json(stale_tracked) + "\n", encoding="utf-8"
     )
     with pytest.raises(Goal029Error, match="calibration"):
         load_calibration_authority(tmp_path, goal029_config, context)
+    tracked_path.write_text(
+        canonical_json(tracked) + "\n", encoding="utf-8"
+    )
+
+    stale_private = {
+        **private,
+        "schema_version": "goal029_calibration_master_v3",
+    }
+    stale_private.pop("receipt_digest")
+    stale_private["receipt_digest"] = _sha(stale_private)
+    write("receipt.json", stale_private)
+    stale_private_tracked = {
+        **tracked,
+        "private_receipt_digest": stale_private["receipt_digest"],
+    }
+    tracked_path.write_text(
+        canonical_json(stale_private_tracked) + "\n", encoding="utf-8"
+    )
+    with pytest.raises(Goal029Error, match="calibration"):
+        load_calibration_authority(tmp_path, goal029_config, context)
+    write("receipt.json", private)
+    tracked_path.write_text(
+        canonical_json(tracked) + "\n", encoding="utf-8"
+    )
+
+    gate_bearing_private = {
+        **private,
+        "gam_feasibility_receipt": {
+            "relative_path": "gam-feasibility/receipt.json"
+        },
+    }
+    gate_bearing_private.pop("receipt_digest")
+    gate_bearing_private["receipt_digest"] = _sha(gate_bearing_private)
+    write("receipt.json", gate_bearing_private)
+    gate_bearing_tracked = {
+        **tracked,
+        "private_receipt_digest": gate_bearing_private["receipt_digest"],
+    }
+    tracked_path.write_text(
+        canonical_json(gate_bearing_tracked) + "\n", encoding="utf-8"
+    )
+    with pytest.raises(Goal029Error, match="calibration"):
+        load_calibration_authority(tmp_path, goal029_config, context)
+    write("receipt.json", private)
+    tracked_path.write_text(
+        canonical_json(tracked) + "\n", encoding="utf-8"
+    )
+
+    write(
+        "gam-feasibility/receipt.json",
+        {"schema_version": "goal029_pspline_feasibility_gate_v2"},
+    )
+    with pytest.raises(Goal029Error, match="file_inventory"):
+        load_calibration_authority(tmp_path, goal029_config, context)
+    shutil.rmtree(private_root / "gam-feasibility")
+
+    write("unexpected.json", {"stale": True})
+    with pytest.raises(Goal029Error, match="file_inventory"):
+        load_calibration_authority(tmp_path, goal029_config, context)
+    (private_root / "unexpected.json").unlink()
+
+    for sibling, payload in (
+        (
+            "receipt-v3.json",
+            {"schema_version": "goal029_calibration_index_v3"},
+        ),
+        (
+            "gam-feasibility.json",
+            {"schema_version": "goal029_pspline_feasibility_gate_v2"},
+        ),
+        ("unexpected.json", {"stale": True}),
+    ):
+        path = tracked_path.parent / sibling
+        path.write_text(canonical_json(payload) + "\n", encoding="utf-8")
+        with pytest.raises(
+            Goal029Error, match="calibration_tracked_file_inventory"
+        ):
+            load_calibration_authority(tmp_path, goal029_config, context)
+        path.unlink()

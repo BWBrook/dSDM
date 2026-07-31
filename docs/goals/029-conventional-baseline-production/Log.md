@@ -339,3 +339,92 @@
 - This was an execution-contract repair, not a scientific-policy change. No
   real calibration rerun, private-data access, production fitting, outer
   opening/scoring, commit, or push was performed.
+
+## 2026-07-31 - Five-family final closure authorised
+
+- The revised pyGAM gate completed 225/336 candidates and made 40/56 strata
+  viable. It was rejected under its prospective all-strata requirement.
+- The final pure-Python penalised-spline gate executed all 336 base candidates
+  plus one sentinel repeat: 337 executions and 2,022 fits. It returned 281
+  complete and 55 invalid candidates, with 52/56 strata viable. The four
+  failures were low-data strata; the sentinel passed and real outer
+  attempted/open counts remained `0/0`.
+- Because the final gate failed the prospective all-56 rule, Barry authorised
+  the declared stop. GAM is removed globally from active Goal029. Successful
+  strata are not retained selectively and there is no third rescue attempt.
+- MARS remains a future ideas-ledger possibility only; it is not substituted
+  into Goal029.
+- The final active families are exactly `intercept`, `elastic_net`,
+  `random_forest`, `hist_gradient_boosting`, and `shallow_ann`.
+- Frozen production arithmetic is 56 species-by-endpoint strata, 280 family
+  strata, 1,736 candidate strata, 6,888 candidate-seed leaves, 34,440 OOF
+  fold units, 42,840 estimator fits, at most 952 selected refits, and 345
+  source-audit leaves.
+- Calibration retains four zero-fit spawn children. Two canary leaves at
+  workers 1 and 2 produce four executions and 20 fits; 28 representative
+  leaves at workers 1, 2, and 4 produce 84 executions and 525 fits. The total
+  is 88 estimator-bearing executions and at most 545 fits, with no GAM gate.
+- The synthetic contract becomes 33 leaves, five selected families, and 17
+  selected refits.
+- Active authority advances to config schema `1.5`, protocol `0.5`, and
+  calibration master/index version `4`. Obsolete GAM gate schema, stages, and
+  fields are removed.
+- Goal028 pyGAM and dormant P-spline code/tests remain historical and
+  compatibility evidence only, never active Goal029 authority.
+- This documentation amendment ran no real calibration, production,
+  private-data processing, remote execution, outer assessment, commit, or
+  push.
+
+## 2026-07-31 - Five-family contract implemented and verified
+
+- Active Goal029 configuration and runtime authority now contain exactly
+  `intercept`, `elastic_net`, `random_forest`, `hist_gradient_boosting`, and
+  `shallow_ann`. The P-spline registry, GAM viability policy, feasibility
+  stage, gate receipt, production overlay, selection exception, source-audit
+  exception, and publication reconciliation have been removed.
+- Config schema `1.5`, protocol `0.5`, and calibration master/index version
+  `4` are live. The v4 calibration ID binds only the execution context, stage
+  order, canary and 28 representative leaves, and worker ladders. Its exact
+  private inventory excludes historical gate receipts.
+- Focused Goal029 tests passed: `37 passed`. They cover exact five-family
+  arithmetic, 28-leaf calibration coverage, 345-leaf production audit, the
+  33-leaf synthetic plan and 12-leaf synthetic audit, v4 authority
+  round-trip, and rejection of v3 receipts, stale gate files, extra files,
+  old overlay origins, reintroduced GAM, and P-spline registry authority.
+- Shared Goal028, inner-CV, model-adapter, and Goal029 regressions passed:
+  `99 passed`; 16 pre-existing unknown-marker warnings remain. Goal028 pyGAM
+  replay and the dormant P-spline numerical evidence therefore remain intact.
+- The first fresh synthetic attempt exposed one material integration defect:
+  its intentionally partial validation config has no model-registry section,
+  while the new canonical-only guard initially required one. The guard was
+  narrowed to reject any explicit noncanonical registry while accepting the
+  partial synthetic validation contract.
+- Before the independent-review repair, fresh synthetic production and
+  independent validation both passed with 33 candidate-seed leaves, five
+  selected families, 17 selected refits, 12 source-audit leaves, semantic digest
+  `cdd92da67003b7973e2ea0abc77031a7f61dcc7e0b70f44f1bf0b8e912b75a00`,
+  transaction ID
+  `7588e4742e9fbf644ab7e37868e6ed3960deb7606d53a29c3c592477a2751ae0`,
+  and real outer attempted/open counts `0/0`.
+- Independent review found one material fail-closed gap: the tracked
+  calibration directory accepted sibling files beside `receipt.json`.
+  Exact-inventory validation now rejects legacy v3 receipts, historical GAM
+  gate artefacts, and arbitrary extra siblings. Post-repair focused tests
+  passed `36` with one live zero-fit spawn test deselected because available
+  host memory was below the frozen 6 GiB gate; that exact test had passed in
+  the earlier `37/37` focused and `99/99` shared runs, and the gate was not
+  weakened or mocked.
+- Final post-repair synthetic production and independent validation both
+  passed with 33 candidate-seed leaves, five selected families, 17 selected
+  refits, 11 source-audit leaves, semantic digest
+  `1bc566b91574938a02dc20ba103e63176f77f599115425052c38e634991bd0c9`,
+  transaction ID
+  `66d4689e5880ef36ef01476f7efcfd9a02e7adbbd0abd6838990f50714b994b7`,
+  and real outer attempted/open counts `0/0`.
+- Final static planning passed at 280 family strata, 1,736 candidate strata,
+  6,888 candidate-seed leaves, 34,440 OOF units, 42,840 estimator fits, at
+  most 952 selected refits, exactly 345 production source-audit leaves, and
+  outer `0/0`. Python compilation, `uv lock --check`, and `git diff --check`
+  also passed.
+- No real calibration, real production, private-data processing, remote
+  execution, outer assessment, commit, or push was performed.

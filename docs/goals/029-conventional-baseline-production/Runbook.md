@@ -19,12 +19,16 @@ uv run python -m dsdm_phase1.goal029_production \
 ```
 
 Synthetic output must use the synthetic vault only. It is disposable and may
-be removed after validation. It exercises candidate failure blinding, family
-quorum, selected refit, deterministic model replay, paired publication,
-source audit, privacy, and partial/unmarked rejection.
+be removed after validation. The exact synthetic plan has 33 candidate-seed
+leaves, five selected families, and 17 selected refits. It exercises
+candidate failure handling, family quorum, selected refit, deterministic model
+replay, paired publication, source audit, privacy, and partial/unmarked
+rejection.
 
-Do not resume or delete either retained pyGAM failure stage. The protocol,
-registry, gate, and receipt versions intentionally prevent their reuse.
+The active synthetic and planning receipts must bind config schema `1.5`,
+protocol `0.5`, and the five-family registry. Historical pyGAM and
+penalised-spline stages are read-only diagnostic evidence: do not resume,
+delete, publish, or use them as calibration or production authority.
 
 ## Real calibration
 
@@ -39,34 +43,27 @@ The command performs:
 
 1. the four-child zero-fit spawn proof under the one-thread policy;
 2. the 56-stratum class-support scan;
-3. the frozen two-leaf `hgb04` canary at workers 1 and 2;
-4. the 30-leaf representative panel at workers 1, 2, and 4; and
-5. the one 337-execution penalised-spline feasibility gate at the selected
-   worker count.
+3. the frozen two-leaf canary at workers 1 and 2, producing four executions
+   and 20 fits; and
+4. the frozen 28-leaf representative panel at workers 1, 2, and 4, producing
+   84 executions and 525 fits.
 
-The worker-selection and memory/swap rules remain frozen. The GAM gate attempts
-five inner fits plus full outer-training refit, serialization, and
-response-free challenge replay for every `psgam*` candidate in every stratum.
-It repeats
-`thylogale_billardierii/fraction100/full/psgam05/seed00` in a separately
-spawned one-worker process.
+The estimator-bearing total is exactly 88 executions and no more than 545
+fits. The four spawn children perform zero fits. There is no GAM feasibility
+stage or candidate gate after worker selection.
 
-The gate stores only status, bounded diagnostics, and semantic hashes. It must
-not retain assessment metrics, thresholds, labels, row identifiers,
-prediction values, private paths, or raw exception messages. Every held fold
-is predicted through its training-fitted encoder, then checked for length,
-finiteness, and `[0,1]` range before only its digest is retained.
+The worker-selection, canary-ratio, memory, swap, process-spawn, and native
+thread-pool rules remain frozen and fail closed. The calibration receipt must
+use master/index version `4`, contain no obsolete gate schema, stage, or
+fields, and report real outer attempted/open counts `0/0`.
 
-All 56 strata require at least two complete candidates including `psgam02` or
-`psgam05`. A failed gate retains its sanitized private receipt but publishes
-no passing calibration authority. Stop after failure: this is the final
-GAM-family attempt, so the next action is global GAM removal rather than a
-rerun, wider panel, looser convergence rule, or alternate language.
+Calibration stores only bounded execution evidence and semantic hashes. It
+must not retain assessment metrics, thresholds, labels, row identifiers,
+prediction values, private paths, or raw exception messages.
 
 ## Real production
 
-Run only after the penalised-spline gate has published accepted calibration
-authority:
+Run only after the five-family calibration has published accepted authority:
 
 ```sh
 uv run python -m dsdm_phase1.goal029_production \
@@ -76,13 +73,14 @@ uv run python -m dsdm_phase1.goal029_production \
 ```
 
 Production rejects missing, failed, stale, modified, or context-incompatible
-calibration evidence. Its 336 GAM candidate statuses must match the accepted
-gate exactly. A gate-invalid candidate is a blinded invalid overlay with no
-OOF checkpoint or selection eligibility. A gate-complete candidate becoming
-invalid is a hard stop.
+calibration evidence. It must plan exactly five families, 280 family strata,
+1,736 candidate strata, 6,888 candidate-seed leaves, 34,440 OOF units, 42,840
+estimator fits, at most 952 selected refits, and 345 source-audit leaves.
 
-The `psgam*` payloads are accepted only by Goal029's exact scoped authority.
-A generic or Goal028 load must reject them, and all `gamr*` IDs are retired.
+Any historical GAM candidate, feasibility-gate receipt, gate overlay, or stale
+schema/protocol appearing in active authority is a hard stop. Goal028's legacy
+replay remains valid only in its own frozen context; dormant penalised-spline
+artifacts are not Goal029 production inputs.
 
 Late-stage restart may regenerate only the explicitly permitted source-audit
 and transaction metadata. It must preserve checkpoints, selections, models,
@@ -91,7 +89,7 @@ entry, provenance drift, or existing final destination remains a hard stop.
 
 Never open, predict, score, summarize, or inspect the real outer vault during
 calibration or conventional production. Publication remains forbidden until
-staged artifact validation, the fresh 362-leaf source audit, paired
+staged artifact validation, the fresh 345-leaf source audit, paired
 transaction validation, and the final marker all pass.
 
 ## Final engineering gate

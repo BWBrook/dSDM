@@ -8,113 +8,96 @@ relative habitat-suitability index, not occupancy probability.
 The exact executable authority is
 [`config/conventional_baseline_production.json`](../../../config/conventional_baseline_production.json).
 
-## Evidence that led to the final GAM attempt
+## Final GAM-family decision
 
-Two pyGAM panels have now been rejected as production authorities:
+Two bounded recovery attempts have now supplied decisive evidence:
 
-- the original panel completed 133/280 candidate strata and left only 32/56
-  species-by-endpoint GAM strata viable; and
-- the revised `gamr00`-`gamr05` gate completed 225/336 candidates and left
-  only 40/56 strata viable.
+- the revised pyGAM gate completed 225 of 336 candidates and made 40 of 56
+  species-by-endpoint strata viable; and
+- the final pure-Python penalised-spline gate ran all 336 candidates plus one
+  sentinel repeat, making 337 executions and 2,022 fits. It returned 281
+  complete and 55 invalid candidates, leaving 52 of 56 strata viable. The
+  four failed strata were low-data cases, the sentinel passed, and real outer
+  attempted/open counts were `0/0`.
 
-Both runs failed closed before conventional-model production. Their real outer
-attempted/open counts remained `0/0`. Their retained receipts are historical
-diagnostic evidence only and must not be cleaned, promoted, resumed, or reused
-under the new registry.
+The final gate therefore failed its prospective requirement that all 56
+strata be viable. The family is rejected globally from active Goal029
+authority. Retaining only successful strata would create a species-dependent
+comparison panel and is not permitted. There is no third GAM rescue,
+alternative language implementation, wider search, or relaxed acceptance
+rule.
 
-Barry authorised one final GAM-family attempt: a bounded, pure-Python
-penalised-spline logistic implementation. This is the second and final recovery
-attempt under the agreed two-attempt stopping rule. If its single real gate
-fails, GAM is removed globally from the conventional comparison. There is no R
-fallback, wider grid, changed optimiser budget, or further GAM search.
+MARS is not a replacement in this goal. It may remain on the future ideas
+ledger for separate scientific consideration after Goal029.
 
-## Frozen penalised-spline model
+The revised pyGAM and final penalised-spline receipts remain historical
+diagnostic evidence. They must not be cleaned, promoted, resumed, or reused.
+Goal028's pyGAM implementation and replay contract remain unchanged. Dormant
+penalised-spline code and tests are retained only to preserve history and
+regression evidence; they carry no active Goal029 authority.
 
-The public family remains `gam`, but the Goal029-only IDs are `psgam00` through
-`psgam05`:
+## Frozen active panel
 
-| ID | base knots | roughness lambda |
-|---|---:|---:|
-| `psgam00` | 4 | 0.01 |
-| `psgam01` | 4 | 0.1 |
-| `psgam02` | 4 | 1.0 |
-| `psgam03` | 6 | 0.01 |
-| `psgam04` | 6 | 0.1 |
-| `psgam05` | 6 | 1.0 |
+The exact active production families are:
 
-Each model has an intercept, one univariate cubic B-spline smooth for each of
-the 25 continuous predictors, and unchanged linear one-hot effects for the
-categorical predictors. It has no interactions. `SplineTransformer` uses
-`degree=3`, `include_bias=False`, and constant extrapolation.
+| Family | Goal029 role |
+|---|---|
+| `intercept` | mandatory prevalence-only null |
+| `elastic_net` | regularised linear baseline |
+| `random_forest` | tree-ensemble baseline |
+| `hist_gradient_boosting` | boosted-tree baseline |
+| `shallow_ann` | conventional single-species neural-network baseline |
 
-Base knots are fitted on training rows only at equally spaced empirical
-quantiles. If those knots are not strictly increasing for a nonconstant
-feature, the model uses a uniform min-to-max basis. An exactly constant
-continuous feature is omitted. No response information enters either choice.
+There are eight species and seven endpoints, hence 56 species-by-endpoint
+strata and 280 family strata. The frozen active workload is:
 
-For response \(y_i\), linear predictor \(\eta_i\), non-intercept coefficients
-\(\beta\), and spline blocks \(b_j\), the fitted objective is
+- 31 active candidates;
+- 1,736 candidate strata;
+- 6,888 candidate-seed leaves;
+- 34,440 OOF fold units;
+- 42,840 estimator fits;
+- at most 952 selected refits; and
+- 345 immutable source-audit leaves.
 
-\[
-\frac{1}{n}\sum_i \{\log(1+\exp(\eta_i))-y_i\eta_i\}
-+\frac{\lambda}{2}\sum_j
-\frac{\|D_2[b_j,0]\|_2^2}{n_{2,j}}
-+\frac{10^{-4}}{2}\|\beta\|_2^2 .
-\]
+`intercept` is mandatory. The frozen anchors for the other families remain
+`enet00`, `rf02`, `hgb04`, and `ann01`, each with at least one additional
+complete candidate required. There is no selected-refit fallback.
 
-The zero appended to each retained `include_bias=False` block is the omitted
-reference coefficient used only to construct the second-difference penalty.
-Each block is normalized by its number of second differences. The objective
-and analytic gradient use float64.
+## Calibration closure
 
-L-BFGS-B starts from the training-prevalence logit with all other coefficients
-zero. The frozen limits are `max_iter=1000`, `gtol=1e-6`, and `ftol=1e-12`.
-A fit is complete only when the optimiser reports success, coefficients,
-objective, gradient, and training scores are finite, scores are in `[0,1]`,
-and the final gradient infinity norm is no greater than `1e-5`.
+Calibration now establishes execution safety and selects a worker count
+without any family-feasibility gate:
 
-The original `gam00`-`gam04` definitions and pyGAM replay path remain unchanged
-for Goal028. The retired `gamr*` IDs are rejected. The exact `psgam*` payloads
-are accepted only inside Goal029's content-bound authority context, including
-deserialization.
+1. four independently spawned zero-fit children prove the one-thread
+   execution contract;
+2. the 56-stratum class-support scan runs once;
+3. two frozen canary leaves run at workers 1 and 2, for four executions and 20
+   fits; and
+4. 28 representative leaves run at workers 1, 2, and 4, for 84 executions and
+   525 fits.
 
-## One-run feasibility gate
-
-The workload is unchanged:
-
-- 56 species-by-endpoint strata;
-- six candidates per stratum;
-- 336 base candidate executions;
-- one separately spawned repeat of the frozen
-  `thylogale_billardierii/fraction100/full/psgam05/seed00` sentinel;
-- 337 total executions and 2,022 fits; and
-- five actual held-fold predictions plus one full outer-training
-  refit/serialization/response-free replay per execution.
-
-A stratum is viable only with at least two complete candidates and at least one
-of `psgam02` or `psgam05`. All 56 strata must be viable. Gate-invalid candidates
-may enter production only as blinded invalid overlays; a gate-complete
-candidate becoming production-invalid is a contradiction and hard stop.
-
-The bounded diagnostic record contains iteration count, solver termination
-class, gradient-norm class, basis status, coefficient finiteness, prediction
-finiteness, and prediction-range status. Recognized basis, optimiser,
-nonconvergence, nonfinite-state, excessive-gradient, and invalid-prediction
-failures are candidate-local. Schema, authority, transform, serialization,
-replay, sentinel, leakage/outer-access, and unknown failures stop the gate.
-No metrics, thresholds, labels, prediction values, row identifiers, paths, or
-raw exception messages are exposed.
-
-## Other production policy
-
-The non-GAM contract remains unchanged. `null00` is mandatory. Elastic net,
-random forest, histogram gradient boosting, and shallow ANN each require their
-frozen anchor plus at least one other complete candidate. There is no
-selected-refit fallback.
-
-Each candidate checkpoint, selected refit, challenge replay, source audit, and
-paired publication remains content addressed and fail closed. Calibration
-retains the zero-fit four-child spawn audit, 56-stratum class-support scan,
-two-leaf HGB canary, 30-leaf representative worker trials, then the one real
-penalised-spline gate at the selected worker count. Calibration is execution
+The estimator-bearing calibration total is exactly 88 executions and no more
+than 545 fits. Worker-selection, memory, swap, thread-pool, canary-ratio, and
+representative-runtime rules remain fail closed. Calibration is engineering
 evidence, not scientific model comparison.
+
+## Authority and production
+
+Config schema `1.5`, protocol `0.5`, and calibration master/index version `4`
+make all prior Goal029 authority stale by construction. Active calibration
+and production have no GAM gate schema, stage, fields, receipt, candidate
+overlay, or viability dependency.
+
+The synthetic lifecycle contains 33 leaves, five selected families, and 17
+selected refits. The real plan contains the exact active counts above.
+Candidate checkpoints, selected refits, challenge replay, the 345-leaf source
+audit, and paired publication remain content addressed and fail closed.
+
+Each non-intercept candidate may fail only under its existing bounded
+candidate-local policy. Schema, authority, transform, serialization/replay
+integrity, thread evidence, leakage or outer access, transaction, inventory,
+and unknown failures remain hard stops.
+
+No calibration or conventional-production path may open, predict, score,
+summarize, or inspect the real outer vault. Every successful receipt must
+report real outer attempted/open counts `0/0`.
