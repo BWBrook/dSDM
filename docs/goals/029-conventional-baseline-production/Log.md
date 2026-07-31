@@ -428,3 +428,49 @@
   also passed.
 - No real calibration, real production, private-data processing, remote
   execution, outer assessment, commit, or push was performed.
+
+## 2026-07-31 - Phase-aware post-publication inventory repair
+
+- The full remote production at producing commit `f85e459` brought all 1,736
+  candidate-stratum executions to terminal states: 1,731 completed and five
+  elastic-net strata produced bounded nonconvergence receipts, with no partial
+  performance exposed. It completed every selected refit and fresh
+  source-audit leaf, then atomically published a coherent `status=pass`
+  transaction with real outer attempted/open counts `0/0`. Its only failure
+  was the subsequent reuse of the staged inventory allowlist against the
+  finalized directories.
+- Supplied remote evidence confirmed the exact publication delta. Private had
+  only `core_manifest.json` as an extra, SHA-256
+  `836384b71fa03797e3fe92052aed2255b737d59a347aaa8614830a28d0851ab6`.
+  Tracked evidence had only `core_manifest.json`, `PAIR.json`, and
+  `FINALIZED.json`, with respective SHA-256 values
+  `07ac142aad2ce63edf69a6b9e1889b280db0b99b201e376ad62166975cc9237f`,
+  `cff5f1baad216522dd024750c81595f2f72c543f9adce8e7e8c0e3cd0e369d9c`,
+  and `152f7cd0f3da5443b793b10ad5f7fe303491828c1a3ae3a9bf47cfa1daf0f84b`.
+  Neither inventory had a missing file, and transaction IDs, manifests, and
+  self-digests were coherent.
+- Production inventory validation now requires an explicit `staged` or
+  `finalized` phase. Staged validation retains the original exact inventory;
+  finalized validation is entered only after transaction validation succeeds
+  and adds exactly the four transaction metadata files above. Unknown files,
+  missing metadata, temporary finalization markers, and symlinks remain hard
+  stops.
+- Test-first regressions passed `15/15` for the new phase boundary. The whole
+  focused Goal029 suite then passed `51` with only the unchanged live 6 GiB
+  spawn proof deselected. Shared Goal028, inner-CV, and adapter checks passed
+  `62/62`; 16 existing unknown-marker warnings remain.
+- Fresh synthetic production and independent validation both passed with 33
+  candidate-seed leaves, five families, 17 selected refits, nine source-audit
+  leaves, semantic digest
+  `c63494f3642a44dd1bcd1dfa4bfb0432a0271d295d45e09dc0e6cf870c22b91b`,
+  transaction ID
+  `86dcb0e428715006d8d0b81cd841c1f1b0ce6571bc0f8a3b1a1e5c135d224e81`,
+  and outer `0/0`. Static planning retained the frozen production arithmetic
+  and 345 source-audit leaves; compilation and lock validation passed.
+- External read-only validation is justified without recomputation only by
+  keeping the producing root immutable at `f85e459`, running the repaired
+  validator from a separately recorded checkout, and confirming the exact
+  four-file finalized delta. Updating the producing root first would change
+  its bound source-tree digest; any additional mismatch requires a stop.
+- This repair performed no model, data, config, calibration, production,
+  private-data, remote, or outer-vault work, and no commit or push.

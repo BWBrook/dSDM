@@ -92,6 +92,22 @@ calibration or conventional production. Publication remains forbidden until
 staged artifact validation, the fresh 345-leaf source audit, paired
 transaction validation, and the final marker all pass.
 
+Inventory phase is always explicit. A staged inventory contains no transaction
+metadata. After `validate_transaction_pair()` succeeds, a finalized inventory
+adds exactly private `core_manifest.json` and tracked `core_manifest.json`,
+`PAIR.json`, and `FINALIZED.json`. Missing metadata, any other file, a lingering
+`.FINALIZED.*.tmp`, or a symlink remains a hard stop.
+
+To recover and validate the production pair created at `f85e459`, keep the
+producing repository root immutable at that commit and run the repaired
+validator from a separate checkout while pointing `--root` at the producing
+root. Record both the producing commit and validator commit. This
+dual-provenance validation avoids recomputation only when transaction
+validation passes and the inventory difference is exactly the four finalized
+metadata files above. Do not update the producing root before validation:
+doing so changes its bound source-tree digest. Any other mismatch requires a
+stop and investigation.
+
 ## Final engineering gate
 
 ```sh

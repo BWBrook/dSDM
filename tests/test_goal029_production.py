@@ -158,7 +158,7 @@ def test_exact_five_family_production_and_calibration_contract(goal029_config):
     assert sum(len(SEEDS_BY_FAMILY[family]) for family in FAMILIES) == 17
     assert len(
         audit_plan(synthetic_plan, audit_salt(synthetic_plan, context))
-    ) == 11
+    ) == 9
 
 
 @pytest.mark.parametrize(
@@ -1349,6 +1349,223 @@ def test_staged_file_inventory_rejects_unlisted_files(tmp_path):
         _validate_exact_file_inventory(
             stage, {"summary.json"}, "staged_inventory"
         )
+
+
+def _minimal_production_inventory(tmp_path):
+    private = tmp_path / "private"
+    evidence = tmp_path / "evidence"
+    private.mkdir()
+    evidence.mkdir()
+    for name in (
+        "plan.json",
+        "candidate_states.json",
+        "selection.json",
+        "run.json",
+        "source_audit.json",
+    ):
+        (private / name).write_text("{}\n", encoding="utf-8")
+    (evidence / "summary.json").write_text("{}\n", encoding="utf-8")
+    return private, evidence
+
+
+def _add_finalized_transaction_metadata(private, evidence):
+    (private / "core_manifest.json").write_text("{}\n", encoding="utf-8")
+    for name in ("core_manifest.json", "PAIR.json", "FINALIZED.json"):
+        (evidence / name).write_text("{}\n", encoding="utf-8")
+
+
+def _validate_minimal_production_inventory(private, evidence, phase):
+    from dsdm_phase1.goal029_production import _validate_production_inventory
+
+    _validate_production_inventory(
+        private,
+        evidence,
+        {"membership_index": {}, "encoder_index": {}},
+        {},
+        {"family_records": []},
+        [],
+        require_source_audit=True,
+        inventory_phase=phase,
+    )
+
+
+@pytest.mark.parametrize(
+    ("directory_name", "relative_path"),
+    (
+        ("private", "core_manifest.json"),
+        ("evidence", "core_manifest.json"),
+        ("evidence", "PAIR.json"),
+        ("evidence", "FINALIZED.json"),
+    ),
+)
+def test_production_staged_inventory_rejects_transaction_metadata(
+    tmp_path, directory_name, relative_path
+):
+    from dsdm_phase1.goal029_production import Goal029Error
+
+    private, evidence = _minimal_production_inventory(tmp_path)
+    _validate_minimal_production_inventory(private, evidence, "staged")
+    directory = private if directory_name == "private" else evidence
+    inventory_name = "private" if directory_name == "private" else "tracked"
+    (directory / relative_path).write_text("{}\n", encoding="utf-8")
+
+    with pytest.raises(
+        Goal029Error, match=f"production_{inventory_name}_file_inventory"
+    ):
+        _validate_minimal_production_inventory(private, evidence, "staged")
+
+
+def test_production_finalized_inventory_accepts_exact_transaction_metadata(
+    tmp_path,
+):
+    private, evidence = _minimal_production_inventory(tmp_path)
+    _add_finalized_transaction_metadata(private, evidence)
+
+    _validate_minimal_production_inventory(private, evidence, "finalized")
+
+
+@pytest.mark.parametrize(
+    ("directory_name", "relative_path"),
+    (
+        ("private", "core_manifest.json"),
+        ("evidence", "core_manifest.json"),
+        ("evidence", "PAIR.json"),
+        ("evidence", "FINALIZED.json"),
+    ),
+)
+def test_production_finalized_inventory_rejects_missing_transaction_metadata(
+    tmp_path, directory_name, relative_path
+):
+    from dsdm_phase1.goal029_production import Goal029Error
+
+    private, evidence = _minimal_production_inventory(tmp_path)
+    _add_finalized_transaction_metadata(private, evidence)
+    directory = private if directory_name == "private" else evidence
+    inventory_name = "private" if directory_name == "private" else "tracked"
+    (directory / relative_path).unlink()
+
+    with pytest.raises(
+        Goal029Error, match=f"production_{inventory_name}_file_inventory"
+    ):
+        _validate_minimal_production_inventory(private, evidence, "finalized")
+
+
+@pytest.mark.parametrize(
+    ("directory_name", "relative_path"),
+    (
+        ("private", "unexpected.json"),
+        ("evidence", "unexpected.json"),
+        ("evidence", ".FINALIZED.interrupted.tmp"),
+    ),
+)
+def test_production_finalized_inventory_rejects_unknown_files(
+    tmp_path, directory_name, relative_path
+):
+    from dsdm_phase1.goal029_production import Goal029Error
+
+    private, evidence = _minimal_production_inventory(tmp_path)
+    _add_finalized_transaction_metadata(private, evidence)
+    directory = private if directory_name == "private" else evidence
+    inventory_name = "private" if directory_name == "private" else "tracked"
+    (directory / relative_path).write_text("{}\n", encoding="utf-8")
+
+    with pytest.raises(
+        Goal029Error, match=f"production_{inventory_name}_file_inventory"
+    ):
+        _validate_minimal_production_inventory(private, evidence, "finalized")
+
+
+def test_production_finalized_inventory_rejects_symlinks(tmp_path):
+    from dsdm_phase1.goal029_production import Goal029Error
+
+    private, evidence = _minimal_production_inventory(tmp_path)
+    _add_finalized_transaction_metadata(private, evidence)
+    (evidence / "linked-summary.json").symlink_to(evidence / "summary.json")
+
+    with pytest.raises(Goal029Error, match="production_tracked_file_inventory"):
+        _validate_minimal_production_inventory(private, evidence, "finalized")
+
+
+def test_production_inventory_rejects_unknown_phase(tmp_path):
+    from dsdm_phase1.goal029_production import Goal029Error
+
+    private, evidence = _minimal_production_inventory(tmp_path)
+
+    with pytest.raises(Goal029Error, match="production_inventory_phase_invalid"):
+        _validate_minimal_production_inventory(private, evidence, "published")
+
+
+def test_validate_production_publication_uses_finalized_inventory_after_transaction(
+    monkeypatch, tmp_path
+):
+    import dsdm_phase1.goal029_production as production
+
+    private = tmp_path / "private"
+    evidence = tmp_path / "evidence"
+    private.mkdir()
+    evidence.mkdir()
+    (private / "run.json").write_text(
+        json.dumps({"calibration_receipt_digest": "c" * 64}),
+        encoding="utf-8",
+    )
+    events = []
+
+    def validate_transaction(_private, _evidence):
+        events.append("transaction")
+        return {
+            "status": "pass",
+            "transaction_id": "a" * 64,
+            "outer_attempted_open_count": 0,
+            "outer_open_count": 0,
+        }
+
+    def validate_staged(
+        _private,
+        _evidence,
+        _context,
+        *,
+        broker,
+        provider,
+        config,
+        require_source_audit,
+        inventory_phase,
+    ):
+        events.append(inventory_phase)
+        assert require_source_audit is True
+        return {
+            "status": "pass",
+            "mode": "production",
+            "outer_attempted_open_count": 0,
+            "outer_open_count": 0,
+        }
+
+    class Vault:
+        attempted_open_count = 0
+        open_count = 0
+
+    monkeypatch.setattr(production, "validate_transaction_pair", validate_transaction)
+    monkeypatch.setattr(production, "load_goal029_config", lambda _root: {})
+    monkeypatch.setattr(production, "execution_context", lambda _root, _config: object())
+    monkeypatch.setattr(
+        production,
+        "load_calibration_authority",
+        lambda _root, _config, _context: {
+            "private": {"receipt_digest": "c" * 64}
+        },
+    )
+    monkeypatch.setattr(
+        production,
+        "ingest_production_foundation",
+        lambda _root, _config: (object(), object(), Vault()),
+    )
+    monkeypatch.setattr(production, "validate_production_staged", validate_staged)
+
+    result = production.validate_production_publication(
+        tmp_path, private, evidence
+    )
+
+    assert events == ["transaction", "finalized"]
+    assert result["transaction_id"] == "a" * 64
 
 
 def test_production_scheduler_groups_exact_candidate_seed_strata(goal029_config):

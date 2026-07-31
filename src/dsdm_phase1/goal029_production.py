@@ -26,7 +26,7 @@ import time
 import uuid
 from dataclasses import asdict, dataclass
 from pathlib import Path
-from typing import Any, Iterable, Mapping, Sequence
+from typing import Any, Iterable, Literal, Mapping, Sequence
 
 # Spawned workers import numerical libraries before their initializer runs.
 # Force the frozen import-time backstop here rather than trusting the shell.
@@ -4792,7 +4792,10 @@ def _validate_production_inventory(
     family_records: Sequence[Mapping[str, Any]],
     *,
     require_source_audit: bool,
+    inventory_phase: Literal["staged", "finalized"],
 ) -> None:
+    if inventory_phase not in {"staged", "finalized"}:
+        raise Goal029Error("production_inventory_phase_invalid")
     expected_private = {
         "plan.json",
         "candidate_states.json",
@@ -4831,6 +4834,12 @@ def _validate_production_inventory(
                 f"{receipt['bundle_path']}/{name}"
                 for name in ("model.model", "challenge.json", "receipt.json")
             )
+    expected_tracked = {"summary.json"}
+    if inventory_phase == "finalized":
+        expected_private.add("core_manifest.json")
+        expected_tracked.update(
+            {"core_manifest.json", "PAIR.json", "FINALIZED.json"}
+        )
     _validate_exact_file_inventory(
         private_stage,
         expected_private,
@@ -4838,7 +4847,7 @@ def _validate_production_inventory(
     )
     _validate_exact_file_inventory(
         evidence_stage,
-        {"summary.json"},
+        expected_tracked,
         "production_tracked_file_inventory",
     )
 
@@ -4852,6 +4861,7 @@ def validate_production_staged(
     provider: FeatureProvider,
     config: Mapping[str, Any],
     require_source_audit: bool,
+    inventory_phase: Literal["staged", "finalized"],
 ) -> Mapping[str, Any]:
     _enforce_context_thread_policy(config, context)
     plan_record = _validate_production_plan_artifacts(private_stage, context)
@@ -5064,6 +5074,7 @@ def validate_production_staged(
         selection,
         family_records,
         require_source_audit=require_source_audit,
+        inventory_phase=inventory_phase,
     )
     return {
         "status": "pass",
@@ -5431,6 +5442,7 @@ def validate_production_publication(
         provider=provider,
         config=config,
         require_source_audit=True,
+        inventory_phase="finalized",
     )
     run = _read_json(Path(private_directory) / "run.json")
     if (
@@ -5564,6 +5576,7 @@ def run_production(root: Path) -> Mapping[str, Any]:
         provider=provider,
         config=config,
         require_source_audit=False,
+        inventory_phase="staged",
     )
     source_audit = run_fresh_production_source_audit(
         root, context, private_stage, plan_record, workers
@@ -5586,6 +5599,7 @@ def run_production(root: Path) -> Mapping[str, Any]:
         provider=provider,
         config=config,
         require_source_audit=True,
+        inventory_phase="staged",
     )
     transaction_id = _sha(
         {
