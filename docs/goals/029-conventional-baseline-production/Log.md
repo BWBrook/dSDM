@@ -1,5 +1,58 @@
 # Log
 
+## 2026-07-31 - Final pure-Python GAM-family fallback implementation
+
+- The full revised pyGAM gate completed 225/336 candidates but made only 40/56
+  species-by-endpoint strata viable. It therefore failed the all-strata gate.
+  Its outer attempted/open counts remained `0/0`; its receipts remain
+  historical diagnostic evidence and are not production authority.
+- Barry activated the predeclared second and final GAM-family attempt. The
+  Goal029-only registry is now `psgam00`-`psgam05`: cubic bases with 4 or 6
+  base knots crossed with roughness lambda 0.01, 0.1, or 1.0.
+- Implemented an additive logistic model with 25 univariate training-fitted
+  smooths, unchanged linear categorical indicators, no interactions, and a
+  relative habitat-suitability interpretation. Exact constants are omitted;
+  repeated quantile knots use a response-free uniform fallback.
+- The float64 objective is mean Bernoulli negative log likelihood plus
+  normalized per-block second-difference roughness and fixed `1e-4` ridge on
+  all non-intercept coefficients. Each omitted spline-basis reference is
+  appended as zero before the second-difference penalty is formed.
+- Deterministic L-BFGS-B uses prevalence-logit initialization,
+  `max_iter=1000`, `gtol=1e-6`, and `ftol=1e-12`. Completion requires solver
+  success, finite coefficients/objective/gradient/training scores, unit-range
+  predictions, and gradient infinity norm at most `1e-5`.
+- Added a dedicated fitted wrapper with exact basis/dimension/schema binding,
+  deterministic byte-identical serialization, and fail-closed replay. The
+  Goal028 `gam00`-`gam04` pyGAM path remains unchanged; retired `gamr*` and
+  unscoped `psgam*` payloads are rejected.
+- Versioned config/protocol/registry/status/gate authority as
+  `1.4`/`0.4`/v2/v2/v2. The gate workload remains 56 strata, 336 base
+  candidates, 337 executions, and 2,022 fits. A stratum requires at least two
+  complete candidates including `psgam02` or `psgam05`.
+- Bounded diagnostics now cover iterations, solver termination, gradient
+  class, basis status, and coefficient/prediction finiteness/range.
+  Recognized basis, optimizer, convergence, nonfinite-state, gradient, and
+  prediction failures are candidate-local. Serialization/replay integrity,
+  schema/authority/transform, class support, sentinel, leakage/outer access,
+  and unknown failures hard-stop.
+- Focused estimator and Goal029 tests passed as `50 passed`. Shared
+  Goal028/inner-CV/model-adapter regression passed as `62 passed`, with 16
+  pre-existing unknown-marker warnings.
+- Static planning passed with 336 family strata, 2,072 candidate strata,
+  7,224 leaves, 36,120 OOF fold units, 44,520 inner fits, at most 1,008
+  refits, a 362-leaf audit, and outer `0/0`.
+- Fresh synthetic production and independent validation passed with 35
+  leaves, six selected families, 18 selected seed refits, 12 audit leaves,
+  semantic digest
+  `bbfafadb374b287b5a5340f07c91b1ea3ce2caa3f51ccd0b28d8c0e8e13605f6`,
+  transaction ID
+  `a15d94c987b92f65f5330e6bb0fb1578d74686568851d0f60618997f11efc2b9`,
+  and real outer attempted/open counts `0/0`.
+- This implementation did not run the real gate, calibration, production,
+  private-data processing, remote execution, or outer assessment, and did not
+  commit or push. If the single real fallback gate fails, GAM is removed
+  globally without another rescue attempt.
+
 ## 2026-07-31 — Typed pyGAM divergence classification repair
 
 - The first real amended calibration at commit `1c052cb` stopped during the

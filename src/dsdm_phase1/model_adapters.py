@@ -26,6 +26,8 @@ from pathlib import Path
 from typing import Any, Mapping, Protocol
 
 import numpy as np
+from scipy.optimize import minimize
+from scipy.special import expit
 
 from .modeling_contract import FeatureBatch, ModelingContractError, canonical_json
 
@@ -33,9 +35,11 @@ try:  # imports are kept local-friendly for contract-only environments
     from sklearn.ensemble import HistGradientBoostingClassifier, RandomForestClassifier
     from sklearn.exceptions import ConvergenceWarning
     from sklearn.linear_model import LogisticRegression
+    from sklearn.preprocessing import SplineTransformer
     from pygam import LogisticGAM, l, s, te
 except Exception:  # pragma: no cover - dependency contract catches this
     HistGradientBoostingClassifier = RandomForestClassifier = LogisticRegression = None
+    SplineTransformer = None
     ConvergenceWarning = RuntimeWarning
     LogisticGAM = l = s = te = None
 
@@ -104,22 +108,36 @@ def _canonical_registry() -> dict[str, dict[str, Any]]:
     return out
 
 
-# Goal029 prospectively adds a conservative pyGAM recovery panel. The original
-# gam00-gam04 payloads remain unchanged for Goal028 replay; only Goal029's
-# independently content-bound config authorizes these additional identifiers.
-GOAL029_GAM_CANDIDATES = {
-    f"gamr{index:02d}": {
+# Goal029's final GAM-family attempt uses an independently implemented
+# penalised-spline logistic model. The original gam00-gam04 payloads and pyGAM
+# replay path remain unchanged for Goal028.
+GOAL029_PSPLINE_CANDIDATES = {
+    f"psgam{index:02d}": {
         "family": "gam",
-        "id": f"gamr{index:02d}",
-        "n_splines": n_splines,
-        "lam": lam,
-        "max_iter": 500,
-        "tol": 1e-5,
+        "id": f"psgam{index:02d}",
+        "implementation": "pspline_logistic_v1",
+        "n_knots": n_knots,
+        "roughness_lambda": roughness_lambda,
+        "spline_degree": 3,
+        "include_bias": False,
+        "extrapolation": "constant",
+        "knot_strategy": "training_quantile_then_uniform_nonconstant_v1",
+        "constant_feature_policy": "omit_exactly_constant",
+        "omitted_basis_reference": "append_zero_before_second_difference",
+        "objective": "mean_logloss_normalized_d2_plus_ridge_v1",
+        "ridge_lambda": 1e-4,
+        "optimizer": "L-BFGS-B",
+        "max_iter": 1000,
+        "gtol": 1e-6,
+        "ftol": 1e-12,
+        "gradient_inf_norm_max": 1e-5,
     }
-    for index, (n_splines, lam) in enumerate(
-        ((4, 10), (4, 100), (4, 1000), (6, 10), (6, 100), (6, 1000))
+    for index, (n_knots, roughness_lambda) in enumerate(
+        ((4, .01), (4, .1), (4, 1.0), (6, .01), (6, .1), (6, 1.0))
     )
 }
+# Backwards import compatibility is intentionally not provided for the retired
+# gamr00-gamr05 registry: those identifiers must fail closed.
 _BASE_CANONICAL_CANDIDATES = _canonical_registry()
 _GOAL029_AUTHORITY = contextvars.ContextVar(
     "dsdm_goal029_candidate_authority", default=False
@@ -129,7 +147,7 @@ _GOAL029_AUTHORITY = contextvars.ContextVar(
 class _CanonicalCandidateRegistry(Mapping[str, Mapping[str, Any]]):
     def _active(self) -> Mapping[str, Mapping[str, Any]]:
         if _GOAL029_AUTHORITY.get():
-            return {**_BASE_CANONICAL_CANDIDATES, **GOAL029_GAM_CANDIDATES}
+            return {**_BASE_CANONICAL_CANDIDATES, **GOAL029_PSPLINE_CANDIDATES}
         return _BASE_CANONICAL_CANDIDATES
 
     def __getitem__(self, key: str) -> Mapping[str, Any]:
@@ -150,7 +168,7 @@ def goal029_candidate_authority(
     candidate_payloads: Mapping[str, Mapping[str, Any]],
 ):
     """Explicitly authorize the exact Goal029-only GAM registry in this context."""
-    if dict(candidate_payloads) != GOAL029_GAM_CANDIDATES:
+    if dict(candidate_payloads) != GOAL029_PSPLINE_CANDIDATES:
         raise ModelAdapterError("goal029_candidate_authority_mismatch")
     token = _GOAL029_AUTHORITY.set(True)
     try:
@@ -207,13 +225,49 @@ def validate_candidate(family: str, candidate: Mapping[str, Any]) -> None:
         "shallow_ann": {"family", "id", "width", "dropout", "weight_decay", "lr", "max_epochs", "patience"},
         "residual_mlp": {"family", "id", "blocks", "width", "bottleneck", "dropout", "weight_decay", "lr", "activation", "norm", "max_epochs", "patience"},
     }[family]
+    is_pspline = c.get("id") in GOAL029_PSPLINE_CANDIDATES
+    if is_pspline:
+        expected = {
+            "family",
+            "id",
+            "implementation",
+            "n_knots",
+            "roughness_lambda",
+            "spline_degree",
+            "include_bias",
+            "extrapolation",
+            "knot_strategy",
+            "constant_feature_policy",
+            "omitted_basis_reference",
+            "objective",
+            "ridge_lambda",
+            "optimizer",
+            "max_iter",
+            "gtol",
+            "ftol",
+            "gradient_inf_norm_max",
+        }
     if set(c) != expected:
         raise ModelAdapterError("candidate_fields_mismatch")
     # Exact type/range checks prevent bool-as-number and silent defaults.
     for key, value in c.items():
-        if key in {"family", "id", "solver", "positive_fraction", "activation", "norm"}:
+        if key in {
+            "family",
+            "id",
+            "solver",
+            "positive_fraction",
+            "activation",
+            "norm",
+            "implementation",
+            "extrapolation",
+            "knot_strategy",
+            "constant_feature_policy",
+            "omitted_basis_reference",
+            "objective",
+            "optimizer",
+        }:
             continue
-        if key in {"bootstrap", "early_stopping"}:
+        if key in {"bootstrap", "early_stopping", "include_bias"}:
             if type(value) is not bool:
                 raise ModelAdapterError("candidate_numeric_invalid")
             continue
@@ -226,9 +280,44 @@ def validate_candidate(family: str, candidate: Mapping[str, Any]) -> None:
         raise ModelAdapterError("candidate_value_drift")
     if family == "elastic_net" and (c["solver"] != "saga" or c["max_iter"] != 5000 or c["tol"] != 1e-6 or not (0 <= c["l1_ratio"] <= 1) or c["C"] <= 0):
         raise ModelAdapterError("candidate_value_drift")
-    if family == "gam" and (c["max_iter"] != 500 or c["tol"] != 1e-5):
+    if family == "gam" and not is_pspline and (c["max_iter"] != 500 or c["tol"] != 1e-5):
         raise ModelAdapterError("candidate_value_drift")
-    if family == "gam" and (c["n_splines"] < 2 or c["lam"] <= 0):
+    if family == "gam" and not is_pspline and (c["n_splines"] < 2 or c["lam"] <= 0):
+        raise ModelAdapterError("candidate_value_drift")
+    if is_pspline and (
+        any(
+            type(c[key]) is not int
+            for key in ("n_knots", "spline_degree", "max_iter")
+        )
+        or any(
+            type(c[key]) is not float
+            for key in (
+                "roughness_lambda",
+                "ridge_lambda",
+                "gtol",
+                "ftol",
+                "gradient_inf_norm_max",
+            )
+        )
+        or c["implementation"] != "pspline_logistic_v1"
+        or c["n_knots"] not in {4, 6}
+        or c["roughness_lambda"] not in {.01, .1, 1.0}
+        or c["spline_degree"] != 3
+        or c["include_bias"] is not False
+        or c["extrapolation"] != "constant"
+        or c["knot_strategy"]
+        != "training_quantile_then_uniform_nonconstant_v1"
+        or c["constant_feature_policy"] != "omit_exactly_constant"
+        or c["omitted_basis_reference"]
+        != "append_zero_before_second_difference"
+        or c["objective"] != "mean_logloss_normalized_d2_plus_ridge_v1"
+        or c["ridge_lambda"] != 1e-4
+        or c["optimizer"] != "L-BFGS-B"
+        or c["max_iter"] != 1000
+        or c["gtol"] != 1e-6
+        or c["ftol"] != 1e-12
+        or c["gradient_inf_norm_max"] != 1e-5
+    ):
         raise ModelAdapterError("candidate_value_drift")
     if family == "random_forest" and (c["n_estimators"] != 500 or c["bootstrap"] is not True):
         raise ModelAdapterError("candidate_value_drift")
@@ -340,6 +429,376 @@ def _attach_gam_safe_diagnostics(
     return error
 
 
+_PSPLINE_SAFE_DIAGNOSTIC_KEYS = {
+    "iteration_count",
+    "solver_termination_class",
+    "gradient_norm_class",
+    "basis_status",
+    "coefficient_finiteness",
+    "prediction_finiteness",
+    "prediction_range_status",
+}
+
+
+def _pspline_safe_diagnostics(
+    *,
+    iteration_count: int | None = None,
+    solver_termination_class: str = "not_attempted",
+    gradient_norm_class: str = "not_evaluated",
+    basis_status: str = "not_evaluated",
+    coefficient_finiteness: str = "not_evaluated",
+    prediction_finiteness: str = "not_evaluated",
+    prediction_range_status: str = "not_evaluated",
+) -> dict[str, Any]:
+    return {
+        "iteration_count": iteration_count,
+        "solver_termination_class": solver_termination_class,
+        "gradient_norm_class": gradient_norm_class,
+        "basis_status": basis_status,
+        "coefficient_finiteness": coefficient_finiteness,
+        "prediction_finiteness": prediction_finiteness,
+        "prediction_range_status": prediction_range_status,
+    }
+
+
+def _pspline_basis_status(
+    knot_modes: tuple[str, ...], constant_indices: tuple[int, ...]
+) -> str:
+    has_uniform = "uniform" in knot_modes
+    has_constant = bool(constant_indices)
+    if has_uniform and has_constant:
+        return "uniform_fallback_and_constant_omitted"
+    if has_uniform:
+        return "uniform_fallback"
+    if has_constant:
+        return "constant_omitted"
+    return "quantile_only"
+
+
+def _fit_pspline_design(
+    x: np.ndarray, continuous_count: int, n_knots: int
+) -> tuple[
+    np.ndarray,
+    tuple[dict[str, Any], ...],
+    tuple[int, ...],
+    tuple[tuple[int, int], ...],
+    str,
+]:
+    values = np.asarray(x, dtype=np.float64)
+    if (
+        values.ndim != 2
+        or not 0 <= continuous_count <= values.shape[1]
+        or type(n_knots) is not int
+        or n_knots < 2
+        or not np.isfinite(values).all()
+    ):
+        raise ValueError("pspline_basis_input_invalid")
+    blocks: list[np.ndarray] = []
+    states: list[dict[str, Any]] = []
+    constant_indices: list[int] = []
+    block_slices: list[tuple[int, int]] = []
+    knot_modes: list[str] = []
+    cursor = 0
+    for feature_index in range(continuous_count):
+        column = values[:, feature_index]
+        if np.all(column == column[0]):
+            constant_indices.append(feature_index)
+            continue
+        probabilities = np.linspace(0.0, 1.0, n_knots, dtype=np.float64)
+        knots = np.asarray(np.quantile(column, probabilities), dtype=np.float64)
+        if np.all(np.diff(knots) > 0):
+            knot_mode = "quantile"
+        else:
+            knots = np.linspace(
+                float(np.min(column)),
+                float(np.max(column)),
+                n_knots,
+                dtype=np.float64,
+            )
+            knot_mode = "uniform"
+        if not np.all(np.diff(knots) > 0):
+            raise ValueError("pspline_knots_not_strictly_increasing")
+        transformer = SplineTransformer(
+            n_knots=n_knots,
+            degree=3,
+            knots=knots.reshape(-1, 1),
+            extrapolation="constant",
+            include_bias=False,
+        )
+        block = np.asarray(
+            transformer.fit_transform(column.reshape(-1, 1)),
+            dtype=np.float64,
+        )
+        if (
+            block.ndim != 2
+            or block.shape[0] != values.shape[0]
+            or block.shape[1] < 2
+            or not np.isfinite(block).all()
+        ):
+            raise ValueError("pspline_basis_output_invalid")
+        width = int(block.shape[1])
+        blocks.append(block)
+        states.append(
+            {
+                "feature_index": feature_index,
+                "transformer": transformer,
+                "width": width,
+                "knot_mode": knot_mode,
+            }
+        )
+        block_slices.append((cursor, cursor + width))
+        cursor += width
+        knot_modes.append(knot_mode)
+    categorical = values[:, continuous_count:]
+    if categorical.shape[1]:
+        blocks.append(categorical)
+    design = (
+        np.column_stack(blocks)
+        if blocks
+        else np.empty((values.shape[0], 0), dtype=np.float64)
+    )
+    if not np.isfinite(design).all():
+        raise ValueError("pspline_design_nonfinite")
+    return (
+        design,
+        tuple(states),
+        tuple(constant_indices),
+        tuple(block_slices),
+        _pspline_basis_status(tuple(knot_modes), tuple(constant_indices)),
+    )
+
+
+def _pspline_roughness_matrix(
+    coefficient_count: int, block_slices: tuple[tuple[int, int], ...]
+) -> np.ndarray:
+    matrix = np.zeros((coefficient_count, coefficient_count), dtype=np.float64)
+    for begin, end in block_slices:
+        width = end - begin
+        full_width = width + 1
+        second_difference = np.diff(np.eye(full_width, dtype=np.float64), n=2, axis=0)
+        n_second = int(second_difference.shape[0])
+        observed = second_difference[:, :width]
+        matrix[begin:end, begin:end] += (
+            observed.T @ observed / float(n_second)
+        )
+    return matrix
+
+
+def _pspline_objective_and_gradient(
+    parameters: np.ndarray,
+    design: np.ndarray,
+    y: np.ndarray,
+    roughness_matrix: np.ndarray,
+    roughness_lambda: float,
+    ridge_lambda: float,
+) -> tuple[float, np.ndarray]:
+    params = np.asarray(parameters, dtype=np.float64)
+    x = np.asarray(design, dtype=np.float64)
+    response = np.asarray(y, dtype=np.float64)
+    if (
+        params.ndim != 1
+        or x.ndim != 2
+        or response.ndim != 1
+        or x.shape[0] != response.shape[0]
+        or params.shape[0] != x.shape[1] + 1
+        or roughness_matrix.shape != (x.shape[1], x.shape[1])
+    ):
+        raise ValueError("pspline_objective_shape_invalid")
+    intercept = params[0]
+    coefficients = params[1:]
+    linear_predictor = intercept + x @ coefficients
+    loss = float(
+        np.mean(np.logaddexp(0.0, linear_predictor) - response * linear_predictor)
+    )
+    roughness = (
+        0.5
+        * float(roughness_lambda)
+        * float(coefficients @ roughness_matrix @ coefficients)
+    )
+    ridge = 0.5 * float(ridge_lambda) * float(coefficients @ coefficients)
+    probabilities = expit(linear_predictor)
+    residual = probabilities - response
+    gradient = np.empty_like(params)
+    gradient[0] = float(np.mean(residual))
+    gradient[1:] = (
+        x.T @ residual / float(len(response))
+        + float(roughness_lambda) * (roughness_matrix @ coefficients)
+        + float(ridge_lambda) * coefficients
+    )
+    return loss + roughness + ridge, gradient
+
+
+class _PenalizedSplineLogisticModel:
+    def __init__(
+        self,
+        *,
+        n_features: int,
+        continuous_count: int,
+        basis_states: tuple[dict[str, Any], ...],
+        constant_indices: tuple[int, ...],
+        block_slices: tuple[tuple[int, int], ...],
+        basis_status: str,
+        n_knots: int,
+        intercept: float,
+        coefficients: np.ndarray,
+        iteration_count: int,
+        gradient_inf_norm: float,
+        objective_value: float,
+    ):
+        self.n_features = int(n_features)
+        self.continuous_count = int(continuous_count)
+        self.basis_states = tuple(basis_states)
+        self.constant_indices = tuple(int(value) for value in constant_indices)
+        self.block_slices = tuple(
+            (int(begin), int(end)) for begin, end in block_slices
+        )
+        self.basis_status = str(basis_status)
+        self.n_knots = int(n_knots)
+        self.intercept_ = float(intercept)
+        self.coef_ = np.asarray(coefficients, dtype=np.float64).copy()
+        self.iteration_count = int(iteration_count)
+        self.gradient_inf_norm = float(gradient_inf_norm)
+        self.objective_value = float(objective_value)
+        self.solver_termination_class = "success"
+        self._validate_state()
+
+    def _validate_state(self) -> None:
+        transformed_indices = tuple(
+            int(state["feature_index"]) for state in self.basis_states
+        )
+        if (
+            self.n_features < 1
+            or type(self.n_features) is not int
+            or type(self.continuous_count) is not int
+            or type(self.n_knots) is not int
+            or type(self.iteration_count) is not int
+            or not 0 <= self.continuous_count <= self.n_features
+            or len(set(transformed_indices)) != len(transformed_indices)
+            or transformed_indices != tuple(sorted(transformed_indices))
+            or len(set(self.constant_indices)) != len(self.constant_indices)
+            or set(transformed_indices) | set(self.constant_indices)
+            != set(range(self.continuous_count))
+            or set(transformed_indices) & set(self.constant_indices)
+            or len(self.block_slices) != len(self.basis_states)
+            or self.basis_status
+            not in {
+                "quantile_only",
+                "uniform_fallback",
+                "constant_omitted",
+                "uniform_fallback_and_constant_omitted",
+            }
+            or not np.isfinite(self.intercept_)
+            or self.coef_.ndim != 1
+            or self.coef_.dtype != np.dtype(np.float64)
+            or not np.isfinite(self.coef_).all()
+            or not 0 <= self.iteration_count <= 1000
+            or not np.isfinite(self.gradient_inf_norm)
+            or self.gradient_inf_norm > 1e-5
+            or not np.isfinite(self.objective_value)
+            or self.n_knots not in {4, 6}
+            or self.solver_termination_class != "success"
+            or self.basis_status
+            != _pspline_basis_status(
+                tuple(state.get("knot_mode") for state in self.basis_states),
+                self.constant_indices,
+            )
+        ):
+            raise ModelAdapterError("pspline_serialized_state_invalid")
+        cursor = 0
+        for state, (begin, end) in zip(
+            self.basis_states, self.block_slices, strict=True
+        ):
+            transformer = state.get("transformer")
+            width = state.get("width")
+            if (
+                set(state)
+                != {"feature_index", "transformer", "width", "knot_mode"}
+                or begin != cursor
+                or type(width) is not int
+                or end - begin != width
+                or state.get("knot_mode") not in {"quantile", "uniform"}
+                or not isinstance(transformer, SplineTransformer)
+                or transformer.degree != 3
+                or transformer.include_bias is not False
+                or transformer.extrapolation != "constant"
+                or getattr(transformer, "n_features_in_", None) != 1
+                or transformer.n_knots != self.n_knots
+                or not isinstance(transformer.knots, np.ndarray)
+                or transformer.knots.shape != (self.n_knots, 1)
+                or not np.isfinite(transformer.knots).all()
+                or not np.all(np.diff(transformer.knots[:, 0]) > 0)
+                or getattr(transformer, "n_features_out_", None) != width
+            ):
+                raise ModelAdapterError("pspline_serialized_basis_invalid")
+            cursor = end
+        expected_coefficients = cursor + (
+            self.n_features - self.continuous_count
+        )
+        if len(self.coef_) != expected_coefficients:
+            raise ModelAdapterError("pspline_serialized_dimension_invalid")
+
+    def design_matrix(self, x: np.ndarray) -> np.ndarray:
+        values = np.asarray(x, dtype=np.float64)
+        if (
+            values.ndim != 2
+            or values.shape[1] != self.n_features
+            or not np.isfinite(values).all()
+        ):
+            raise ValueError("pspline_prediction_input_invalid")
+        blocks: list[np.ndarray] = []
+        for state in self.basis_states:
+            feature_index = int(state["feature_index"])
+            block = np.asarray(
+                state["transformer"].transform(
+                    values[:, feature_index].reshape(-1, 1)
+                ),
+                dtype=np.float64,
+            )
+            if (
+                block.shape != (len(values), int(state["width"]))
+                or not np.isfinite(block).all()
+            ):
+                raise ValueError("pspline_prediction_basis_invalid")
+            blocks.append(block)
+        categorical = values[:, self.continuous_count:]
+        if categorical.shape[1]:
+            blocks.append(categorical)
+        design = (
+            np.column_stack(blocks)
+            if blocks
+            else np.empty((len(values), 0), dtype=np.float64)
+        )
+        if design.shape[1] != len(self.coef_) or not np.isfinite(design).all():
+            raise ValueError("pspline_prediction_design_invalid")
+        return design
+
+    def predict_proba(self, x: np.ndarray) -> np.ndarray:
+        design = self.design_matrix(x)
+        probability = expit(self.intercept_ + design @ self.coef_)
+        return np.column_stack([1.0 - probability, probability])
+
+    def safe_diagnostics(
+        self,
+        *,
+        prediction_finiteness: str = "not_evaluated",
+        prediction_range_status: str = "not_evaluated",
+    ) -> dict[str, Any]:
+        gradient_class = (
+            "le_1e_5"
+            if self.gradient_inf_norm <= 1e-5
+            else "gt_1e_5"
+        )
+        return _pspline_safe_diagnostics(
+            iteration_count=self.iteration_count,
+            solver_termination_class=self.solver_termination_class,
+            gradient_norm_class=gradient_class,
+            basis_status=self.basis_status,
+            coefficient_finiteness="finite",
+            prediction_finiteness=prediction_finiteness,
+            prediction_range_status=prediction_range_status,
+        )
+
+
 class _FittedBase:
     def __init__(self, family: str, model: Any, schema: Mapping[str, Any], candidate: Mapping[str, Any], seed: int, payload: Mapping[str, Any] | None = None):
         self.family, self.model, self.schema = family, model, dict(schema)
@@ -415,6 +874,40 @@ class _FittedBase:
         return envelope
 
 
+class _FittedPSplineGAM(_FittedBase):
+    def predict_scores(self, batch: FeatureBatch) -> np.ndarray:
+        self._check(batch)
+        try:
+            probabilities = self.model.predict_proba(batch.x)
+        except ModelAdapterError:
+            raise
+        except (ValueError, FloatingPointError, np.linalg.LinAlgError) as exc:
+            error = ModelAdapterError("pspline_predict_failed")
+            raise _attach_gam_safe_diagnostics(
+                error, self.model.safe_diagnostics()
+            ) from exc
+        scores = np.asarray(probabilities, dtype=np.float64)
+        scores = scores[:, 1] if scores.ndim == 2 else scores.reshape(-1)
+        finite = bool(np.isfinite(scores).all())
+        within_range = finite and not np.any(scores < 0) and not np.any(scores > 1)
+        if len(scores) != len(batch.keys) or not finite or not within_range:
+            error = ModelAdapterError("nonfinite_or_invalid_scores")
+            raise _attach_gam_safe_diagnostics(
+                error,
+                self.model.safe_diagnostics(
+                    prediction_finiteness=(
+                        "finite" if finite else "nonfinite"
+                    ),
+                    prediction_range_status=(
+                        "within_0_1"
+                        if within_range
+                        else "outside_0_1"
+                    ),
+                ),
+            )
+        return scores
+
+
 class _ConventionalAdapter:
     def __init__(self, family: str):
         self.family = family
@@ -440,6 +933,168 @@ class _ConventionalAdapter:
                 raise ModelAdapterError("elastic_net_nonconverged")
             iterations = int(np.max(model.n_iter_))
         elif self.family == "gam":
+            if candidate["id"] in GOAL029_PSPLINE_CANDIDATES:
+                try:
+                    (
+                        design,
+                        basis_states,
+                        constant_indices,
+                        block_slices,
+                        basis_status,
+                    ) = _fit_pspline_design(
+                        x,
+                        train.continuous_count,
+                        int(candidate["n_knots"]),
+                    )
+                except (ValueError, FloatingPointError, np.linalg.LinAlgError) as exc:
+                    raise _attach_gam_safe_diagnostics(
+                        ModelAdapterError("pspline_basis_failed"),
+                        _pspline_safe_diagnostics(basis_status="failure"),
+                    ) from exc
+                roughness_matrix = _pspline_roughness_matrix(
+                    design.shape[1], block_slices
+                )
+                prevalence = float(np.clip(np.mean(y), 1e-12, 1 - 1e-12))
+                initial = np.zeros(design.shape[1] + 1, dtype=np.float64)
+                initial[0] = float(np.log(prevalence / (1.0 - prevalence)))
+
+                def objective(parameters: np.ndarray):
+                    return _pspline_objective_and_gradient(
+                        parameters,
+                        design,
+                        y,
+                        roughness_matrix,
+                        float(candidate["roughness_lambda"]),
+                        float(candidate["ridge_lambda"]),
+                    )
+
+                try:
+                    result = minimize(
+                        objective,
+                        initial,
+                        method="L-BFGS-B",
+                        jac=True,
+                        options={
+                            "maxiter": int(candidate["max_iter"]),
+                            "gtol": float(candidate["gtol"]),
+                            "ftol": float(candidate["ftol"]),
+                        },
+                    )
+                except (ValueError, FloatingPointError, np.linalg.LinAlgError) as exc:
+                    raise _attach_gam_safe_diagnostics(
+                        ModelAdapterError("pspline_optimizer_failed"),
+                        _pspline_safe_diagnostics(
+                            solver_termination_class="optimizer_failure",
+                            basis_status=basis_status,
+                        ),
+                    ) from exc
+                iterations = int(result.nit)
+                parameters = np.asarray(result.x, dtype=np.float64)
+                if not np.isfinite(parameters).all():
+                    raise _attach_gam_safe_diagnostics(
+                        ModelAdapterError("pspline_nonfinite_coefficients"),
+                        _pspline_safe_diagnostics(
+                            iteration_count=iterations,
+                            solver_termination_class=(
+                                "success" if bool(result.success) else "nonconverged"
+                            ),
+                            basis_status=basis_status,
+                            coefficient_finiteness="nonfinite",
+                        ),
+                    )
+                objective_value, gradient = objective(parameters)
+                result_gradient = np.asarray(result.jac, dtype=np.float64)
+                if not np.isfinite(float(result.fun)) or not np.isfinite(
+                    objective_value
+                ):
+                    raise _attach_gam_safe_diagnostics(
+                        ModelAdapterError("pspline_nonfinite_objective"),
+                        _pspline_safe_diagnostics(
+                            iteration_count=iterations,
+                            solver_termination_class=(
+                                "success" if bool(result.success) else "nonconverged"
+                            ),
+                            basis_status=basis_status,
+                            coefficient_finiteness="finite",
+                        ),
+                    )
+                if not np.isfinite(gradient).all() or not np.isfinite(
+                    result_gradient
+                ).all():
+                    raise _attach_gam_safe_diagnostics(
+                        ModelAdapterError("pspline_nonfinite_gradient"),
+                        _pspline_safe_diagnostics(
+                            iteration_count=iterations,
+                            solver_termination_class=(
+                                "success" if bool(result.success) else "nonconverged"
+                            ),
+                            gradient_norm_class="nonfinite",
+                            basis_status=basis_status,
+                            coefficient_finiteness="finite",
+                        ),
+                    )
+                gradient_inf_norm = float(np.max(np.abs(gradient)))
+                gradient_class = (
+                    "le_1e_5"
+                    if gradient_inf_norm
+                    <= float(candidate["gradient_inf_norm_max"])
+                    else "gt_1e_5"
+                )
+                if not bool(result.success):
+                    raise _attach_gam_safe_diagnostics(
+                        ModelAdapterError("pspline_nonconverged"),
+                        _pspline_safe_diagnostics(
+                            iteration_count=iterations,
+                            solver_termination_class="nonconverged",
+                            gradient_norm_class=gradient_class,
+                            basis_status=basis_status,
+                            coefficient_finiteness="finite",
+                        ),
+                    )
+                if gradient_inf_norm > float(
+                    candidate["gradient_inf_norm_max"]
+                ):
+                    raise _attach_gam_safe_diagnostics(
+                        ModelAdapterError("pspline_gradient_too_large"),
+                        _pspline_safe_diagnostics(
+                            iteration_count=iterations,
+                            solver_termination_class="success",
+                            gradient_norm_class="gt_1e_5",
+                            basis_status=basis_status,
+                            coefficient_finiteness="finite",
+                        ),
+                    )
+                model = _PenalizedSplineLogisticModel(
+                    n_features=x.shape[1],
+                    continuous_count=train.continuous_count,
+                    basis_states=basis_states,
+                    constant_indices=constant_indices,
+                    block_slices=block_slices,
+                    basis_status=basis_status,
+                    n_knots=int(candidate["n_knots"]),
+                    intercept=float(parameters[0]),
+                    coefficients=parameters[1:],
+                    iteration_count=iterations,
+                    gradient_inf_norm=gradient_inf_norm,
+                    objective_value=objective_value,
+                )
+                fitted = _FittedPSplineGAM(
+                    self.family,
+                    model,
+                    _schema_meta(train),
+                    candidate,
+                    seed,
+                )
+                fitted.predict_scores(train)
+                return fitted, _report(
+                    start,
+                    converged=True,
+                    iterations=iterations,
+                    best_epoch=None,
+                    stopping_fold=None,
+                    neural_stop_status=None,
+                    warnings=(),
+                )
             n_cont = train.continuous_count
             terms = None
             for index in range(n_cont):
@@ -695,6 +1350,29 @@ def load_fitted_model(path: Path, expected_sha256: str) -> FittedAdapter:
     model = obj.get("model")
     if family == "intercept" and not isinstance(model, _InterceptModel): raise ModelAdapterError("model_type_mismatch")
     if family == "elastic_net" and not isinstance(model, LogisticRegression): raise ModelAdapterError("model_type_mismatch")
+    if family == "gam" and candidate["id"] in GOAL029_PSPLINE_CANDIDATES:
+        if not isinstance(model, _PenalizedSplineLogisticModel):
+            raise ModelAdapterError("model_type_mismatch")
+        try:
+            model._validate_state()
+        except ModelAdapterError:
+            raise
+        except Exception as exc:
+            raise ModelAdapterError("pspline_serialized_state_invalid") from exc
+        if (
+            model.n_features != len(schema["feature_names"])
+            or model.continuous_count != int(schema["continuous_count"])
+            or model.n_knots != int(candidate["n_knots"])
+        ):
+            raise ModelAdapterError("pspline_serialized_schema_mismatch")
+        return _FittedPSplineGAM(
+            family,
+            model,
+            schema,
+            candidate,
+            int(envelope["fit_seed"]),
+            obj.get("payload", {}),
+        )
     if family == "gam" and not isinstance(model, LogisticGAM): raise ModelAdapterError("model_type_mismatch")
     if family == "random_forest" and not isinstance(model, RandomForestClassifier): raise ModelAdapterError("model_type_mismatch")
     if family == "hist_gradient_boosting" and not isinstance(model, HistGradientBoostingClassifier): raise ModelAdapterError("model_type_mismatch")

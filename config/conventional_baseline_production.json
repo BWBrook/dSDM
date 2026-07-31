@@ -1,10 +1,10 @@
 {
   "identity": {
-    "schema_version": "1.3",
+    "schema_version": "1.4",
     "goal_id": "goal029-conventional-baseline-production-2026-07-30",
-    "protocol_version": "0.3",
+    "protocol_version": "0.4",
     "master_seed": "dsdm-goal028-v1",
-    "created_at": "2026-07-30"
+    "created_at": "2026-07-31"
   },
   "bindings": {
     "goal027_decision": {
@@ -87,7 +87,7 @@
     "subset_membership_storage": "once_per_species_endpoint_split"
   },
   "models": {
-    "registry_authority": "goal028_canonical_plus_context_scoped_goal029_gam_registry_v1",
+    "registry_authority": "goal028_canonical_plus_context_scoped_goal029_pspline_registry_v2",
     "families": [
       "intercept",
       "elastic_net",
@@ -113,12 +113,12 @@
         "enet09"
       ],
       "gam": [
-        "gamr00",
-        "gamr01",
-        "gamr02",
-        "gamr03",
-        "gamr04",
-        "gamr05"
+        "psgam00",
+        "psgam01",
+        "psgam02",
+        "psgam03",
+        "psgam04",
+        "psgam05"
       ],
       "random_forest": [
         "rf00",
@@ -147,57 +147,129 @@
         "ann05"
       ]
     },
-    "goal029_gam_registry": {
-      "schema_version": "goal029_gam_registry_v1",
+    "goal029_pspline_registry": {
+      "schema_version": "goal029_pspline_registry_v2",
       "spline_order": 3,
       "candidate_payloads": {
-        "gamr00": {
+        "psgam00": {
           "family": "gam",
-          "id": "gamr00",
-          "n_splines": 4,
-          "lam": 10,
-          "max_iter": 500,
-          "tol": 0.00001
+          "id": "psgam00",
+          "implementation": "pspline_logistic_v1",
+          "n_knots": 4,
+          "roughness_lambda": 0.01,
+          "spline_degree": 3,
+          "include_bias": false,
+          "extrapolation": "constant",
+          "knot_strategy": "training_quantile_then_uniform_nonconstant_v1",
+          "constant_feature_policy": "omit_exactly_constant",
+          "omitted_basis_reference": "append_zero_before_second_difference",
+          "objective": "mean_logloss_normalized_d2_plus_ridge_v1",
+          "ridge_lambda": 0.0001,
+          "optimizer": "L-BFGS-B",
+          "max_iter": 1000,
+          "gtol": 0.000001,
+          "ftol": 1e-12,
+          "gradient_inf_norm_max": 0.00001
         },
-        "gamr01": {
+        "psgam01": {
           "family": "gam",
-          "id": "gamr01",
-          "n_splines": 4,
-          "lam": 100,
-          "max_iter": 500,
-          "tol": 0.00001
+          "id": "psgam01",
+          "implementation": "pspline_logistic_v1",
+          "n_knots": 4,
+          "roughness_lambda": 0.1,
+          "spline_degree": 3,
+          "include_bias": false,
+          "extrapolation": "constant",
+          "knot_strategy": "training_quantile_then_uniform_nonconstant_v1",
+          "constant_feature_policy": "omit_exactly_constant",
+          "omitted_basis_reference": "append_zero_before_second_difference",
+          "objective": "mean_logloss_normalized_d2_plus_ridge_v1",
+          "ridge_lambda": 0.0001,
+          "optimizer": "L-BFGS-B",
+          "max_iter": 1000,
+          "gtol": 0.000001,
+          "ftol": 1e-12,
+          "gradient_inf_norm_max": 0.00001
         },
-        "gamr02": {
+        "psgam02": {
           "family": "gam",
-          "id": "gamr02",
-          "n_splines": 4,
-          "lam": 1000,
-          "max_iter": 500,
-          "tol": 0.00001
+          "id": "psgam02",
+          "implementation": "pspline_logistic_v1",
+          "n_knots": 4,
+          "roughness_lambda": 1.0,
+          "spline_degree": 3,
+          "include_bias": false,
+          "extrapolation": "constant",
+          "knot_strategy": "training_quantile_then_uniform_nonconstant_v1",
+          "constant_feature_policy": "omit_exactly_constant",
+          "omitted_basis_reference": "append_zero_before_second_difference",
+          "objective": "mean_logloss_normalized_d2_plus_ridge_v1",
+          "ridge_lambda": 0.0001,
+          "optimizer": "L-BFGS-B",
+          "max_iter": 1000,
+          "gtol": 0.000001,
+          "ftol": 1e-12,
+          "gradient_inf_norm_max": 0.00001
         },
-        "gamr03": {
+        "psgam03": {
           "family": "gam",
-          "id": "gamr03",
-          "n_splines": 6,
-          "lam": 10,
-          "max_iter": 500,
-          "tol": 0.00001
+          "id": "psgam03",
+          "implementation": "pspline_logistic_v1",
+          "n_knots": 6,
+          "roughness_lambda": 0.01,
+          "spline_degree": 3,
+          "include_bias": false,
+          "extrapolation": "constant",
+          "knot_strategy": "training_quantile_then_uniform_nonconstant_v1",
+          "constant_feature_policy": "omit_exactly_constant",
+          "omitted_basis_reference": "append_zero_before_second_difference",
+          "objective": "mean_logloss_normalized_d2_plus_ridge_v1",
+          "ridge_lambda": 0.0001,
+          "optimizer": "L-BFGS-B",
+          "max_iter": 1000,
+          "gtol": 0.000001,
+          "ftol": 1e-12,
+          "gradient_inf_norm_max": 0.00001
         },
-        "gamr04": {
+        "psgam04": {
           "family": "gam",
-          "id": "gamr04",
-          "n_splines": 6,
-          "lam": 100,
-          "max_iter": 500,
-          "tol": 0.00001
+          "id": "psgam04",
+          "implementation": "pspline_logistic_v1",
+          "n_knots": 6,
+          "roughness_lambda": 0.1,
+          "spline_degree": 3,
+          "include_bias": false,
+          "extrapolation": "constant",
+          "knot_strategy": "training_quantile_then_uniform_nonconstant_v1",
+          "constant_feature_policy": "omit_exactly_constant",
+          "omitted_basis_reference": "append_zero_before_second_difference",
+          "objective": "mean_logloss_normalized_d2_plus_ridge_v1",
+          "ridge_lambda": 0.0001,
+          "optimizer": "L-BFGS-B",
+          "max_iter": 1000,
+          "gtol": 0.000001,
+          "ftol": 1e-12,
+          "gradient_inf_norm_max": 0.00001
         },
-        "gamr05": {
+        "psgam05": {
           "family": "gam",
-          "id": "gamr05",
-          "n_splines": 6,
-          "lam": 1000,
-          "max_iter": 500,
-          "tol": 0.00001
+          "id": "psgam05",
+          "implementation": "pspline_logistic_v1",
+          "n_knots": 6,
+          "roughness_lambda": 1.0,
+          "spline_degree": 3,
+          "include_bias": false,
+          "extrapolation": "constant",
+          "knot_strategy": "training_quantile_then_uniform_nonconstant_v1",
+          "constant_feature_policy": "omit_exactly_constant",
+          "omitted_basis_reference": "append_zero_before_second_difference",
+          "objective": "mean_logloss_normalized_d2_plus_ridge_v1",
+          "ridge_lambda": 0.0001,
+          "optimizer": "L-BFGS-B",
+          "max_iter": 1000,
+          "gtol": 0.000001,
+          "ftol": 1e-12,
+          "gradient_inf_norm_max": 0.00001
         }
       }
     },
@@ -259,8 +331,10 @@
     },
     "gam_viability": {
       "minimum_complete_candidates": 2,
-      "minimum_conservative_lam": 100,
-      "mandatory_candidate_id": null
+      "mandatory_regularized_candidate_ids": [
+        "psgam02",
+        "psgam05"
+      ]
     },
     "minimum_complete_valid_candidates_by_family": {
       "intercept": 1,
@@ -404,8 +478,8 @@
       ["thylogale_billardierii", "fraction25", "ladder00", "intercept", "null00", "seed00"],
       ["thylogale_billardierii", "fraction100", "full", "elastic_net", "enet00", "seed00"],
       ["notamacropus_rufogriseus", "fraction25", "ladder00", "elastic_net", "enet09", "seed04"],
-      ["trichosurus_vulpecula", "fraction25", "ladder01", "gam", "gamr00", "seed00"],
-      ["pseudocheirus_peregrinus", "fraction100", "full", "gam", "gamr05", "seed00"],
+      ["trichosurus_vulpecula", "fraction25", "ladder01", "gam", "psgam00", "seed00"],
+      ["pseudocheirus_peregrinus", "fraction100", "full", "gam", "psgam05", "seed00"],
       ["vombatus_ursinus", "fraction25", "ladder02", "random_forest", "rf00", "seed00"],
       ["sarcophilus_harrisii", "fraction100", "full", "random_forest", "rf06", "seed04"],
       ["dasyurus_maculatus", "fraction50", "ladder00", "hist_gradient_boosting", "hgb00", "seed00"],
@@ -455,7 +529,7 @@
       "near_fastest_wall_time_multiplier": 1.1
     },
     "gam_feasibility_gate": {
-      "schema_version": "goal029_gam_feasibility_gate_v1",
+      "schema_version": "goal029_pspline_feasibility_gate_v2",
       "candidate_count": 336,
       "candidate_execution_count": 337,
       "fit_attempt_count": 2022,
@@ -473,12 +547,12 @@
         "fraction100",
         "full",
         "gam",
-        "gamr05",
+        "psgam05",
         "seed00"
       ],
       "sentinel_replicates": 2,
       "held_fold_prediction": "training_fitted_encoder_assessment_features_length_finite_unit_interval_digest_only",
-      "safe_diagnostics": "bounded_status_only_v1",
+      "safe_diagnostics": "pspline_bounded_status_only_v2",
       "sentinel_executor": "fresh_separately_spawned_single_worker_process",
       "production_gate_invalid": "blinded_overlay_no_oof_no_selection",
       "production_gate_complete_invalid": "hard_stop",
@@ -488,9 +562,9 @@
     },
     "preflight_gates": {
       "class_support_scan": "all_56_species_endpoint_strata",
-      "gam_feasibility_scope": "all_56_species_endpoint_strata_all_6_goal029_gam_candidates",
+      "gam_feasibility_scope": "all_56_species_endpoint_strata_all_6_goal029_pspline_candidates",
       "gam_candidate_complete": "all_5_inner_fits_plus_outer_refit_serialization_response_free_challenge_replay",
-      "gam_family_viable": "at_least_2_complete_including_at_least_1_lam_gte_100"
+      "gam_family_viable": "at_least_2_complete_including_psgam02_or_psgam05"
     },
     "worker_trials": [
       1,
@@ -521,7 +595,7 @@
     "receipt_schemas": {
       "spawn_audit": "goal029_calibration_spawn_audit_v1",
       "trial": "goal029_calibration_trial_v2",
-      "gam_feasibility_gate": "goal029_gam_feasibility_gate_v1",
+      "gam_feasibility_gate": "goal029_pspline_feasibility_gate_v2",
       "master": "goal029_calibration_master_v3",
       "tracked_index": "goal029_calibration_index_v3"
     }

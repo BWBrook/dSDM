@@ -13,9 +13,10 @@ import pytest
 def _gam_safe_diagnostics(*, valid_prediction: bool = True):
     return {
         "iteration_count": 1,
-        "final_difference_class": "missing",
-        "warning_category": "none",
-        "coefficient_finiteness": "missing",
+        "solver_termination_class": "success",
+        "gradient_norm_class": "le_1e_5",
+        "basis_status": "quantile_only",
+        "coefficient_finiteness": "finite",
         "prediction_finiteness": (
             "finite" if valid_prediction else "not_evaluated"
         ),
@@ -93,7 +94,7 @@ def test_exact_production_and_calibration_plans(goal029_config):
         gam_feasibility_plan,
         production_plan,
     )
-    from dsdm_phase1.model_adapters import GOAL029_GAM_CANDIDATES
+    from dsdm_phase1.model_adapters import GOAL029_PSPLINE_CANDIDATES
 
     plan = production_plan(goal029_config)
     assert len(plan) == LEAF_COUNT == 7224
@@ -103,10 +104,10 @@ def test_exact_production_and_calibration_plans(goal029_config):
     assert goal029_config["models"]["planned_counts"]["oof_producing_fold_units"] == 36120
     assert goal029_config["models"]["planned_counts"]["actual_inner_estimator_fits"] == 44520
     assert tuple(goal029_config["models"]["candidate_ids"]["gam"]) == GAM_RECOVERY_CANDIDATE_IDS
-    assert goal029_config["models"]["goal029_gam_registry"] == {
-        "schema_version": "goal029_gam_registry_v1",
+    assert goal029_config["models"]["goal029_pspline_registry"] == {
+        "schema_version": "goal029_pspline_registry_v2",
         "spline_order": 3,
-        "candidate_payloads": GOAL029_GAM_CANDIDATES,
+        "candidate_payloads": GOAL029_PSPLINE_CANDIDATES,
     }
     assert goal029_config["failure_policy"]["minimum_complete_valid_candidates_by_family"] == {
         family: (1 if family == "intercept" else 2)
@@ -177,7 +178,7 @@ def test_gam_feasibility_status_gate_semantics_and_privacy(goal029_config):
                     "status": "invalid" if invalid else "complete",
                     "diagnostic": (
                         {
-                            "failure_code": "gam_nonconverged",
+                            "failure_code": "pspline_nonconverged",
                             "exception_class": "ModelAdapterError",
                             "exception_category": "strict_nonconvergence",
                         }
@@ -191,7 +192,7 @@ def test_gam_feasibility_status_gate_semantics_and_privacy(goal029_config):
                 }
             )
         body = {
-            "schema_version": "goal029_gam_candidate_status_v1",
+            "schema_version": "goal029_pspline_candidate_status_v2",
             "leaf": execution["leaf"],
             "replicate_index": execution["replicate_index"],
             "status": "invalid_candidate" if invalid_stages else "complete",
@@ -243,7 +244,7 @@ def test_gam_feasibility_status_gate_semantics_and_privacy(goal029_config):
     assert outer_invalid_summary["status"] == "pass"
     assert outer_invalid_summary["viable_strata_count"] == 56
 
-    # Two low-lambda completions do not satisfy the conservative-tier rule.
+    # Two weakly regularized completions do not satisfy the frozen-tier rule.
     low_only = []
     target = (
         executions[0]["leaf"]["species_id"],
@@ -259,7 +260,7 @@ def test_gam_feasibility_status_gate_semantics_and_privacy(goal029_config):
         ) == target
         invalid = (
             {"cv_fold00"}
-            if same and leaf["candidate_id"] not in {"gamr00", "gamr03"}
+            if same and leaf["candidate_id"] not in {"psgam00", "psgam03"}
             else set()
         )
         low_only.append(candidate_record(execution, invalid))
@@ -306,9 +307,9 @@ def test_gam_feasibility_status_gate_semantics_and_privacy(goal029_config):
     unsafe["stages"][0]["status"] = "invalid"
     unsafe["stages"][0]["semantic_digest"] = ""
     unsafe["stages"][0]["diagnostic"] = {
-        "failure_code": "gam_fit_failed",
-        "exception_class": "ValueError",
-        "exception_category": "value_error",
+        "failure_code": "pspline_optimizer_failed",
+        "exception_class": "ModelAdapterError",
+        "exception_category": "optimizer_error",
         "message": "private path /tmp/secret",
     }
     unsafe_body = {
@@ -435,29 +436,24 @@ def test_gam_fit_exception_diagnostics_are_sanitized_and_classified():
         _sanitize_gam_gate_exception,
     )
     from dsdm_phase1.model_adapters import ModelAdapterError
-    from pygam.utils import OptimizationError
 
-    wrapped = ModelAdapterError("gam_fit_failed")
-    wrapped.__cause__ = ValueError("row 17 at /private/path")
+    wrapped = ModelAdapterError("pspline_basis_failed")
     assert _sanitize_gam_gate_exception(wrapped) == {
-        "failure_code": "gam_fit_failed",
-        "exception_class": "ValueError",
-        "exception_category": "value_error",
+        "failure_code": "pspline_basis_failed",
+        "exception_class": "ModelAdapterError",
+        "exception_category": "basis_error",
     }
 
-    diverged = ModelAdapterError("gam_fit_failed")
-    diverged.__cause__ = OptimizationError(
-        "PIRLS optimization has diverged"
-    )
+    diverged = ModelAdapterError("pspline_optimizer_failed")
     assert _sanitize_gam_gate_exception(diverged) == {
-        "failure_code": "gam_fit_failed",
-        "exception_class": "OptimizationError",
-        "exception_category": "optimization_error",
+        "failure_code": "pspline_optimizer_failed",
+        "exception_class": "ModelAdapterError",
+        "exception_category": "optimizer_error",
     }
 
-    nonconverged = ModelAdapterError("gam_nonconverged")
+    nonconverged = ModelAdapterError("pspline_nonconverged")
     assert _sanitize_gam_gate_exception(nonconverged) == {
-        "failure_code": "gam_nonconverged",
+        "failure_code": "pspline_nonconverged",
         "exception_class": "ModelAdapterError",
         "exception_category": "strict_nonconvergence",
     }
@@ -465,7 +461,7 @@ def test_gam_fit_exception_diagnostics_are_sanitized_and_classified():
     class UnknownFailure(Exception):
         pass
 
-    unknown = ModelAdapterError("gam_fit_failed")
+    unknown = ModelAdapterError("unknown_pspline_failure")
     unknown.__cause__ = UnknownFailure("secret")
     with pytest.raises(Goal029Error, match="unclassified"):
         _sanitize_gam_gate_exception(unknown)
@@ -477,8 +473,8 @@ def test_gam_fit_exception_diagnostics_are_sanitized_and_classified():
     with pytest.raises(Goal029Error, match="diagnostic_invalid"):
         _validate_gam_gate_diagnostic(
             {
-                "failure_code": "gam_fit_failed",
-                "exception_class": "ValueError",
+                "failure_code": "pspline_optimizer_failed",
+                "exception_class": "ModelAdapterError",
                 "exception_category": "serialization_error",
             }
         )
@@ -495,7 +491,6 @@ def test_gam_optimization_error_is_candidate_local_and_gate_continues(
     )
     from dsdm_phase1.model_adapters import FitReport, ModelAdapterError
     from dsdm_phase1.modeling_contract import OuterVault
-    from pygam.utils import OptimizationError
 
     broker, provider = _foundation(n=80)
     vault = OuterVault(None, synthetic=False)
@@ -520,7 +515,16 @@ def test_gam_optimization_error_is_candidate_local_and_gate_continues(
             Path(path).write_bytes(b"status-only-model")
             return {}
 
+        def safe_diagnostics(
+            self,
+            *,
+            prediction_finiteness,
+            prediction_range_status,
+        ):
+            return _gam_safe_diagnostics()
+
     fitted = Fitted()
+    fitted.model = fitted
 
     class Adapter:
         family = "gam"
@@ -536,10 +540,7 @@ def test_gam_optimization_error_is_candidate_local_and_gate_continues(
             assert stopping is None and exact_epochs is None
             fit_transforms.append(train.transform_id)
             if len(fit_transforms) == 1:
-                error = ModelAdapterError("gam_fit_failed")
-                error.__cause__ = OptimizationError(
-                    "PIRLS optimization has diverged"
-                )
+                error = ModelAdapterError("pspline_optimizer_failed")
                 raise error
             return fitted, FitReport(
                 True, 1, None, None, None, (), 0.0, 1
@@ -555,9 +556,9 @@ def test_gam_optimization_error_is_candidate_local_and_gate_continues(
 
     assert first["status"] == "invalid_candidate"
     assert first["stages"][0]["diagnostic"] == {
-        "failure_code": "gam_fit_failed",
-        "exception_class": "OptimizationError",
-        "exception_category": "optimization_error",
+        "failure_code": "pspline_optimizer_failed",
+        "exception_class": "ModelAdapterError",
+        "exception_category": "optimizer_error",
     }
     assert [stage["status"] for stage in first["stages"]] == [
         "invalid",
@@ -573,8 +574,6 @@ def test_gam_optimization_error_is_candidate_local_and_gate_continues(
     assert all(
         token not in serialized
         for token in (
-            "PIRLS",
-            "diverged",
             '"roc_auc"',
             '"tss"',
             '"threshold"',
@@ -596,6 +595,7 @@ def test_gam_gate_worker_uses_status_only_five_folds_and_refit_replay(
     import dsdm_phase1.goal029_production as production
     from dsdm_phase1.goal029_production import (
         GAM_GATE_SENTINEL,
+        Goal029Error,
         _gam_gate_worker_candidate,
         enforce_numerical_thread_policy,
     )
@@ -627,7 +627,16 @@ def test_gam_gate_worker_uses_status_only_five_folds_and_refit_replay(
             Path(path).write_bytes(b"status-only-model")
             return {}
 
+        def safe_diagnostics(
+            self,
+            *,
+            prediction_finiteness,
+            prediction_range_status,
+        ):
+            return _gam_safe_diagnostics()
+
     fitted = Fitted()
+    fitted.model = fitted
 
     class Adapter:
         family = "gam"
@@ -686,20 +695,34 @@ def test_gam_gate_worker_uses_status_only_five_folds_and_refit_replay(
         raise OSError("private filename omitted")
 
     monkeypatch.setattr(fitted, "serialize", serialization_failure)
-    failed = _gam_gate_worker_candidate(
-        {"leaf": asdict(GAM_GATE_SENTINEL), "replicate_index": 0}
-    )
-    assert failed["status"] == "invalid_candidate"
-    assert failed["stages"][-1]["diagnostic"] == {
-        "failure_code": "gam_serialization_failed",
-        "exception_class": "OSError",
-        "exception_category": "serialization_error",
-    }
+    with pytest.raises(Goal029Error, match="serialization_integrity"):
+        _gam_gate_worker_candidate(
+            {"leaf": asdict(GAM_GATE_SENTINEL), "replicate_index": 0}
+        )
 
     monkeypatch.setattr(
         fitted,
         "serialize",
         lambda path: Path(path).write_bytes(b"status-only-model"),
+    )
+
+    class DriftedReplay:
+        def predict_scores(self, batch):
+            return np.full(len(batch.keys), 0.6, dtype=np.float64)
+
+    monkeypatch.setattr(
+        production,
+        "load_fitted_model",
+        lambda path, digest: DriftedReplay(),
+    )
+    with pytest.raises(Goal029Error, match="challenge_replay_mismatch"):
+        _gam_gate_worker_candidate(
+            {"leaf": asdict(GAM_GATE_SENTINEL), "replicate_index": 0}
+        )
+    monkeypatch.setattr(
+        production,
+        "load_fitted_model",
+        lambda path, digest: fitted,
     )
     call_count = 0
 
@@ -762,7 +785,7 @@ def test_gam_gate_receipt_binds_context_threads_plan_and_privacy(
     records = []
     for execution in executions:
         body = {
-            "schema_version": "goal029_gam_candidate_status_v1",
+            "schema_version": "goal029_pspline_candidate_status_v2",
             "leaf": execution["leaf"],
             "replicate_index": execution["replicate_index"],
             "status": "complete",
@@ -790,12 +813,12 @@ def test_gam_gate_receipt_binds_context_threads_plan_and_privacy(
     summary = _evaluate_gam_feasibility_records(records, goal029_config)
     gib = 1024**3
     receipt_body = {
-        "schema_version": "goal029_gam_feasibility_gate_v1",
+        "schema_version": "goal029_pspline_feasibility_gate_v2",
         "status": "pass",
         "actual_host": socket.gethostname(),
         "execution_context_digest": _sha(asdict(context)),
-        "gam_registry_digest": _sha(
-            goal029_config["models"]["goal029_gam_registry"]
+        "pspline_registry_digest": _sha(
+            goal029_config["models"]["goal029_pspline_registry"]
         ),
         "execution_plan_digest": _sha(list(executions)),
         "workers": 1,
@@ -876,7 +899,7 @@ def test_gam_gate_receipt_binds_context_threads_plan_and_privacy(
         )
 
     drifted = json.loads(json.dumps(receipt))
-    drifted["gam_registry_digest"] = "b" * 64
+    drifted["pspline_registry_digest"] = "b" * 64
     drifted_body = {
         key: value
         for key, value in drifted.items()
@@ -1497,25 +1520,25 @@ def test_five_seed_merge_and_anchor_quorum(goal029_config):
     gam_stratum = replace(
         results["seed00"].stratum, model_family="gam"
     )
-    gamr00 = replace(
+    psgam00 = replace(
         results["seed00"],
         stratum=gam_stratum,
-        candidate_id="gamr00",
+        candidate_id="psgam00",
     )
-    gamr03 = replace(gamr00, candidate_id="gamr03")
-    gamr01 = replace(gamr00, candidate_id="gamr01")
-    with pytest.raises(Goal029Error, match="conservative"):
+    psgam03 = replace(psgam00, candidate_id="psgam03")
+    psgam02 = replace(psgam00, candidate_id="psgam02")
+    with pytest.raises(Goal029Error, match="regularized"):
         validate_family_candidates(
             "gam",
-            {"gamr00": gamr00, "gamr03": gamr03},
-            {"gamr01", "gamr02", "gamr04", "gamr05"},
+            {"psgam00": psgam00, "psgam03": psgam03},
+            {"psgam01", "psgam02", "psgam04", "psgam05"},
         )
     selected_gam = validate_family_candidates(
         "gam",
-        {"gamr00": gamr00, "gamr01": gamr01},
-        {"gamr02", "gamr03", "gamr04", "gamr05"},
+        {"psgam00": psgam00, "psgam02": psgam02},
+        {"psgam01", "psgam03", "psgam04", "psgam05"},
     )
-    assert selected_gam.candidate_id in {"gamr00", "gamr01"}
+    assert selected_gam.candidate_id in {"psgam00", "psgam02"}
 
 
 def test_warning_policy_and_blinded_failure_receipt(goal029_config):
@@ -2370,7 +2393,7 @@ def test_calibration_authority_revalidates_linked_trials(
     gam_gate_records = []
     for execution in gam_gate_executions:
         record_body = {
-            "schema_version": "goal029_gam_candidate_status_v1",
+            "schema_version": "goal029_pspline_candidate_status_v2",
             "leaf": execution["leaf"],
             "replicate_index": execution["replicate_index"],
             "status": "complete",
@@ -2402,12 +2425,12 @@ def test_calibration_authority_revalidates_linked_trials(
         gam_gate_records, goal029_config
     )
     gate_body = {
-        "schema_version": "goal029_gam_feasibility_gate_v1",
+        "schema_version": "goal029_pspline_feasibility_gate_v2",
         "status": "pass",
         "actual_host": socket.gethostname(),
         "execution_context_digest": _sha(asdict(context)),
-        "gam_registry_digest": _sha(
-            goal029_config["models"]["goal029_gam_registry"]
+        "pspline_registry_digest": _sha(
+            goal029_config["models"]["goal029_pspline_registry"]
         ),
         "execution_plan_digest": _sha(list(gam_gate_executions)),
         "workers": selected_workers,

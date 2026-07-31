@@ -44,7 +44,6 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 import threadpoolctl
 import torch
-from pygam.utils import OptimizationError as PyGAMOptimizationError
 from sklearn.metrics import roc_auc_score
 
 from .inner_cv import (
@@ -64,7 +63,7 @@ from .inner_cv import (
 from .model_adapters import (
     CANONICAL_CANDIDATES,
     FitReport,
-    GOAL029_GAM_CANDIDATES,
+    GOAL029_PSPLINE_CANDIDATES,
     ModelAdapterError,
     build_adapter,
     goal029_candidate_authority,
@@ -129,7 +128,7 @@ FAMILIES = (
 CANDIDATE_IDS = {
     "intercept": ("null00",),
     "elastic_net": tuple(f"enet{i:02d}" for i in range(10)),
-    "gam": tuple(f"gamr{i:02d}" for i in range(6)),
+    "gam": tuple(f"psgam{i:02d}" for i in range(6)),
     "random_forest": tuple(f"rf{i:02d}" for i in range(7)),
     "hist_gradient_boosting": tuple(f"hgb{i:02d}" for i in range(7)),
     "shallow_ann": tuple(f"ann{i:02d}" for i in range(6)),
@@ -176,7 +175,7 @@ _FORBIDDEN_TRACKED_KEYS = {
     "oof_score",
 }
 _CANONICAL_CONFIG_DIGEST = (
-    "681debfefea61500dc3fc87bef49720e8b15976e32777e1cbae064b0f1316632"
+    "e0c65dea8530f814ebc642e3d11e80db587f63c8b081a68db77ef57c08ac4dc3"
 )
 
 
@@ -223,29 +222,29 @@ GAM_GATE_SENTINEL = ProductionLeaf(
     "fraction100",
     "full",
     "gam",
-    "gamr05",
+    "psgam05",
     "seed00",
 )
 
 
 def _goal029_candidate_payload(candidate_id: str) -> Mapping[str, Any]:
-    candidate = GOAL029_GAM_CANDIDATES.get(candidate_id)
+    candidate = GOAL029_PSPLINE_CANDIDATES.get(candidate_id)
     if candidate is not None:
         return candidate
     return CANONICAL_CANDIDATES[candidate_id]
 
 
 def _goal029_candidate_context(config: Mapping[str, Any] | None = None):
-    payloads: Mapping[str, Mapping[str, Any]] = GOAL029_GAM_CANDIDATES
+    payloads: Mapping[str, Mapping[str, Any]] = GOAL029_PSPLINE_CANDIDATES
     if config is not None:
         models = config.get("models")
-        if isinstance(models, Mapping) and "goal029_gam_registry" in models:
-            registry = models["goal029_gam_registry"]
+        if isinstance(models, Mapping) and "goal029_pspline_registry" in models:
+            registry = models["goal029_pspline_registry"]
             if not isinstance(registry, Mapping):
-                raise Goal029Error("goal029_gam_registry_mismatch")
+                raise Goal029Error("goal029_pspline_registry_mismatch")
             supplied = registry.get("candidate_payloads")
             if not isinstance(supplied, Mapping):
-                raise Goal029Error("goal029_gam_registry_mismatch")
+                raise Goal029Error("goal029_pspline_registry_mismatch")
             payloads = supplied
     return goal029_candidate_authority(payloads)
 
@@ -482,7 +481,7 @@ def calibration_plan(config: Mapping[str, Any]) -> tuple[ProductionLeaf, ...]:
         raise Goal029Error("calibration_seed_coverage")
     expected_extremes = {
         "elastic_net": {"enet00", "enet09"},
-        "gam": {"gamr00", "gamr05"},
+        "gam": {"psgam00", "psgam05"},
         "random_forest": {"rf00", "rf06"},
         "hist_gradient_boosting": {"hgb00", "hgb06"},
         "shallow_ann": {"ann00", "ann05"},
@@ -555,11 +554,11 @@ def load_goal029_config(root: Path, path: Path | None = None) -> Mapping[str, An
         raise Goal029Error("config_sections_mismatch")
     identity = config["identity"]
     if identity != {
-        "schema_version": "1.3",
+        "schema_version": "1.4",
         "goal_id": "goal029-conventional-baseline-production-2026-07-30",
-        "protocol_version": "0.3",
+        "protocol_version": "0.4",
         "master_seed": "dsdm-goal028-v1",
-        "created_at": "2026-07-30",
+        "created_at": "2026-07-31",
     }:
         raise Goal029Error("config_identity_mismatch")
     if tuple(config["scope"]["species"]) != SPECIES:
@@ -594,15 +593,15 @@ def load_goal029_config(root: Path, path: Path | None = None) -> Mapping[str, An
         raise Goal029Error("family_contract_mismatch")
     if (
         config["models"].get("registry_authority")
-        != "goal028_canonical_plus_context_scoped_goal029_gam_registry_v1"
-        or config["models"].get("goal029_gam_registry")
+        != "goal028_canonical_plus_context_scoped_goal029_pspline_registry_v2"
+        or config["models"].get("goal029_pspline_registry")
         != {
-            "schema_version": "goal029_gam_registry_v1",
+            "schema_version": "goal029_pspline_registry_v2",
             "spline_order": 3,
-            "candidate_payloads": GOAL029_GAM_CANDIDATES,
+            "candidate_payloads": GOAL029_PSPLINE_CANDIDATES,
         }
     ):
-        raise Goal029Error("goal029_gam_registry_mismatch")
+        raise Goal029Error("goal029_pspline_registry_mismatch")
     if {
         family: tuple(values)
         for family, values in config["models"]["candidate_ids"].items()
@@ -617,8 +616,7 @@ def load_goal029_config(root: Path, path: Path | None = None) -> Mapping[str, An
         raise Goal029Error("anchor_policy_mismatch")
     if config["failure_policy"].get("gam_viability") != {
         "minimum_complete_candidates": 2,
-        "minimum_conservative_lam": 100,
-        "mandatory_candidate_id": None,
+        "mandatory_regularized_candidate_ids": ["psgam02", "psgam05"],
     }:
         raise Goal029Error("gam_viability_policy_mismatch")
     if config["failure_policy"]["mandatory_null"] != "null00":
@@ -663,7 +661,7 @@ def load_goal029_config(root: Path, path: Path | None = None) -> Mapping[str, An
         != 1.10
         or calibration.get("gam_feasibility_gate")
         != {
-            "schema_version": "goal029_gam_feasibility_gate_v1",
+            "schema_version": "goal029_pspline_feasibility_gate_v2",
             "candidate_count": 336,
             "candidate_execution_count": 337,
             "fit_attempt_count": 2022,
@@ -675,7 +673,7 @@ def load_goal029_config(root: Path, path: Path | None = None) -> Mapping[str, An
                 "training_fitted_encoder_assessment_features_length_finite_"
                 "unit_interval_digest_only"
             ),
-            "safe_diagnostics": "bounded_status_only_v1",
+            "safe_diagnostics": "pspline_bounded_status_only_v2",
             "sentinel_executor": (
                 "fresh_separately_spawned_single_worker_process"
             ),
@@ -1327,48 +1325,21 @@ _GAM_GATE_STAGE_IDS = tuple(
     [f"cv_{fold_id}" for fold_id in FOLDS] + ["outer_refit_replay"]
 )
 _GAM_GATE_DIAGNOSTIC_CATEGORIES = {
+    "basis_error",
+    "optimizer_error",
     "strict_nonconvergence",
-    "optimization_error",
-    "value_error",
-    "type_error",
-    "runtime_error",
-    "memory_error",
-    "floating_point_error",
-    "linear_algebra_error",
-    "serialization_error",
-    "challenge_replay_error",
+    "nonfinite_coefficients",
+    "nonfinite_objective",
+    "nonfinite_gradient",
+    "gradient_too_large",
     "prediction_error",
     "invalid_prediction",
 }
-_GAM_FIT_DIAGNOSTIC_PAIRS = {
-    ("OptimizationError", "optimization_error"),
-    ("ValueError", "value_error"),
-    ("TypeError", "type_error"),
-    ("RuntimeError", "runtime_error"),
-    ("MemoryError", "memory_error"),
-    ("FloatingPointError", "floating_point_error"),
-    ("OverflowError", "floating_point_error"),
-    ("ZeroDivisionError", "floating_point_error"),
-    ("LinAlgError", "linear_algebra_error"),
-}
-_GAM_SERIALIZATION_EXCEPTION_CLASSES = {
-    "OSError",
-    "FileNotFoundError",
-    "PermissionError",
-    "IsADirectoryError",
-    "NotADirectoryError",
-}
-_GAM_CHALLENGE_EXCEPTION_CLASSES = {
-    "ModelAdapterError",
-    "Goal029Error",
-    "ValueError",
-    "TypeError",
-    "AttributeError",
-}
 _GAM_SAFE_DIAGNOSTIC_KEYS = {
     "iteration_count",
-    "final_difference_class",
-    "warning_category",
+    "solver_termination_class",
+    "gradient_norm_class",
+    "basis_status",
     "coefficient_finiteness",
     "prediction_finiteness",
     "prediction_range_status",
@@ -1383,28 +1354,30 @@ def _validate_gam_safe_diagnostics(value: Any) -> None:
             value["iteration_count"] is not None
             and (
                 type(value["iteration_count"]) is not int
-                or not 0 <= value["iteration_count"] <= 501
+                or not 0 <= value["iteration_count"] <= 1000
             )
         )
-        or value["final_difference_class"]
-        not in {"lt_tol", "ge_tol", "missing", "nonfinite", "not_applicable"}
-        or value["warning_category"]
+        or value["solver_termination_class"]
+        not in {"success", "nonconverged", "optimizer_failure", "not_attempted"}
+        or value["gradient_norm_class"]
+        not in {"le_1e_5", "gt_1e_5", "nonfinite", "not_evaluated"}
+        or value["basis_status"]
         not in {
-            "none",
-            "informational",
-            "convergence",
-            "numerical",
-            "not_applicable",
+            "quantile_only",
+            "uniform_fallback",
+            "constant_omitted",
+            "uniform_fallback_and_constant_omitted",
+            "failure",
+            "not_evaluated",
         }
         or value["coefficient_finiteness"]
-        not in {"finite", "nonfinite", "missing", "not_applicable"}
+        not in {"finite", "nonfinite", "not_evaluated"}
         or value["prediction_finiteness"]
         not in {
             "finite",
             "nonfinite",
             "failed_validation",
             "not_evaluated",
-            "not_applicable",
         }
         or value["prediction_range_status"]
         not in {
@@ -1412,7 +1385,6 @@ def _validate_gam_safe_diagnostics(value: Any) -> None:
             "outside_0_1",
             "failed_validation",
             "not_evaluated",
-            "not_applicable",
         }
     ):
         raise Goal029Error("gam_gate_safe_diagnostics_invalid")
@@ -1420,14 +1392,15 @@ def _validate_gam_safe_diagnostics(value: Any) -> None:
 
 def _gam_default_safe_diagnostics(
     *,
-    prediction_finiteness: str = "not_applicable",
-    prediction_range_status: str = "not_applicable",
+    prediction_finiteness: str = "not_evaluated",
+    prediction_range_status: str = "not_evaluated",
 ) -> Mapping[str, Any]:
     value = {
         "iteration_count": None,
-        "final_difference_class": "missing",
-        "warning_category": "none",
-        "coefficient_finiteness": "missing",
+        "solver_termination_class": "not_attempted",
+        "gradient_norm_class": "not_evaluated",
+        "basis_status": "not_evaluated",
+        "coefficient_finiteness": "not_evaluated",
         "prediction_finiteness": prediction_finiteness,
         "prediction_range_status": prediction_range_status,
     }
@@ -1448,7 +1421,7 @@ def _gam_safe_diagnostics_from_exception(
     if failure_code == "nonfinite_or_invalid_scores":
         value["prediction_finiteness"] = "failed_validation"
         value["prediction_range_status"] = "failed_validation"
-    elif failure_code == "gam_predict_failed":
+    elif failure_code == "pspline_predict_failed":
         value["prediction_finiteness"] = "not_evaluated"
         value["prediction_range_status"] = "not_evaluated"
     _validate_gam_safe_diagnostics(value)
@@ -1460,35 +1433,16 @@ def _gam_complete_safe_diagnostics(
     report: FitReport,
     config: Mapping[str, Any],
 ) -> Mapping[str, Any]:
-    accepted = _validate_refit_warnings("gam", report, config)
+    _validate_refit_warnings("gam", report, config)
     model = getattr(fitted, "model", None)
-    logs = getattr(model, "logs_", {})
-    diffs = list(logs.get("diffs", ())) if hasattr(logs, "get") else []
-    if not diffs:
-        final_difference_class = "missing"
-    elif not np.isfinite(np.asarray(diffs, dtype=np.float64)).all():
-        final_difference_class = "nonfinite"
-    elif float(diffs[-1]) < 1e-5:
-        final_difference_class = "lt_tol"
-    else:
-        final_difference_class = "ge_tol"
-    coefficients = getattr(model, "coef_", None)
-    value = {
-        "iteration_count": int(report.iterations),
-        "final_difference_class": final_difference_class,
-        "warning_category": "informational" if accepted else "none",
-        "coefficient_finiteness": (
-            "missing"
-            if coefficients is None
-            else (
-                "finite"
-                if np.isfinite(np.asarray(coefficients)).all()
-                else "nonfinite"
-            )
-        ),
-        "prediction_finiteness": "finite",
-        "prediction_range_status": "within_0_1",
-    }
+    if not hasattr(model, "safe_diagnostics"):
+        raise Goal029Error("gam_gate_model_diagnostics_missing")
+    value = model.safe_diagnostics(
+        prediction_finiteness="finite",
+        prediction_range_status="within_0_1",
+    )
+    if value.get("iteration_count") != int(report.iterations):
+        raise Goal029Error("gam_gate_iteration_diagnostics_mismatch")
     _validate_gam_safe_diagnostics(value)
     return value
 
@@ -1497,44 +1451,23 @@ def _sanitize_gam_gate_exception(
     exc: BaseException,
 ) -> Mapping[str, str]:
     failure_code = str(exc)
-    if failure_code == "gam_nonconverged":
-        return {
-            "failure_code": failure_code,
-            "exception_class": "ModelAdapterError",
-            "exception_category": "strict_nonconvergence",
-        }
-    if failure_code == "gam_predict_failed":
-        return {
-            "failure_code": failure_code,
-            "exception_class": "ModelAdapterError",
-            "exception_category": "prediction_error",
-        }
-    if failure_code == "nonfinite_or_invalid_scores":
-        return {
-            "failure_code": failure_code,
-            "exception_class": "ModelAdapterError",
-            "exception_category": "invalid_prediction",
-        }
-    if failure_code != "gam_fit_failed":
-        raise Goal029Error("gam_gate_exception_unclassified")
-    cause = exc.__cause__
-    type_categories = {
-        ValueError: "value_error",
-        TypeError: "type_error",
-        RuntimeError: "runtime_error",
-        MemoryError: "memory_error",
-        FloatingPointError: "floating_point_error",
-        OverflowError: "floating_point_error",
-        ZeroDivisionError: "floating_point_error",
-        np.linalg.LinAlgError: "linear_algebra_error",
-        PyGAMOptimizationError: "optimization_error",
+    categories = {
+        "pspline_basis_failed": "basis_error",
+        "pspline_optimizer_failed": "optimizer_error",
+        "pspline_nonconverged": "strict_nonconvergence",
+        "pspline_nonfinite_coefficients": "nonfinite_coefficients",
+        "pspline_nonfinite_objective": "nonfinite_objective",
+        "pspline_nonfinite_gradient": "nonfinite_gradient",
+        "pspline_gradient_too_large": "gradient_too_large",
+        "pspline_predict_failed": "prediction_error",
+        "nonfinite_or_invalid_scores": "invalid_prediction",
     }
-    category = type_categories.get(type(cause))
+    category = categories.get(failure_code)
     if category is None:
         raise Goal029Error("gam_gate_exception_unclassified")
     return {
         "failure_code": failure_code,
-        "exception_class": type(cause).__name__,
+        "exception_class": "ModelAdapterError",
         "exception_category": category,
     }
 
@@ -1550,12 +1483,15 @@ def _validate_gam_gate_diagnostic(value: Any) -> None:
         }
         or value.get("failure_code")
         not in {
-            "gam_nonconverged",
-            "gam_fit_failed",
-            "gam_predict_failed",
+            "pspline_basis_failed",
+            "pspline_optimizer_failed",
+            "pspline_nonconverged",
+            "pspline_nonfinite_coefficients",
+            "pspline_nonfinite_objective",
+            "pspline_nonfinite_gradient",
+            "pspline_gradient_too_large",
+            "pspline_predict_failed",
             "nonfinite_or_invalid_scores",
-            "gam_serialization_failed",
-            "gam_challenge_replay_failed",
         }
         or not isinstance(value.get("exception_class"), str)
         or re.fullmatch(r"[A-Za-z][A-Za-z0-9_]{0,79}", value["exception_class"])
@@ -1565,10 +1501,14 @@ def _validate_gam_gate_diagnostic(value: Any) -> None:
     ):
         raise Goal029Error("gam_gate_diagnostic_invalid")
     expected_categories = {
-        "gam_nonconverged": "strict_nonconvergence",
-        "gam_serialization_failed": "serialization_error",
-        "gam_challenge_replay_failed": "challenge_replay_error",
-        "gam_predict_failed": "prediction_error",
+        "pspline_basis_failed": "basis_error",
+        "pspline_optimizer_failed": "optimizer_error",
+        "pspline_nonconverged": "strict_nonconvergence",
+        "pspline_nonfinite_coefficients": "nonfinite_coefficients",
+        "pspline_nonfinite_objective": "nonfinite_objective",
+        "pspline_nonfinite_gradient": "nonfinite_gradient",
+        "pspline_gradient_too_large": "gradient_too_large",
+        "pspline_predict_failed": "prediction_error",
         "nonfinite_or_invalid_scores": "invalid_prediction",
     }
     fixed = expected_categories.get(value["failure_code"])
@@ -1576,29 +1516,7 @@ def _validate_gam_gate_diagnostic(value: Any) -> None:
         fixed is not None
         and value["exception_category"] != fixed
     ) or (
-        value["failure_code"] == "gam_nonconverged"
-        and value["exception_class"] != "ModelAdapterError"
-    ) or (
-        value["failure_code"]
-        in {"gam_predict_failed", "nonfinite_or_invalid_scores"}
-        and value["exception_class"] != "ModelAdapterError"
-    ):
-        raise Goal029Error("gam_gate_diagnostic_invalid")
-    if (
-        value["failure_code"] == "gam_fit_failed"
-        and (
-            value["exception_class"],
-            value["exception_category"],
-        )
-        not in _GAM_FIT_DIAGNOSTIC_PAIRS
-    ) or (
-        value["failure_code"] == "gam_serialization_failed"
-        and value["exception_class"]
-        not in _GAM_SERIALIZATION_EXCEPTION_CLASSES
-    ) or (
-        value["failure_code"] == "gam_challenge_replay_failed"
-        and value["exception_class"]
-        not in _GAM_CHALLENGE_EXCEPTION_CLASSES
+        value["exception_class"] != "ModelAdapterError"
     ):
         raise Goal029Error("gam_gate_diagnostic_invalid")
 
@@ -1624,7 +1542,7 @@ def _validate_gam_candidate_status_record(
     if (
         set(value) != expected_keys
         or value.get("schema_version")
-        != "goal029_gam_candidate_status_v1"
+        != "goal029_pspline_candidate_status_v2"
         or claimed != _sha(body)
         or not isinstance(value.get("leaf"), Mapping)
         or not isinstance(value.get("replicate_index"), int)
@@ -1769,10 +1687,7 @@ def _evaluate_gam_feasibility_records(
             ]
             is_viable = (
                 len(complete_ids) >= 2
-                and any(
-                    GOAL029_GAM_CANDIDATES[candidate_id]["lam"] >= 100
-                    for candidate_id in complete_ids
-                )
+                and bool({"psgam02", "psgam05"} & set(complete_ids))
             )
             viable += int(is_viable)
             failed += int(not is_viable)
@@ -2051,30 +1966,6 @@ def _calibration_worker_leaf(leaf_value: Mapping[str, Any]) -> Mapping[str, Any]
     }
 
 
-def _gam_gate_stage_diagnostic(
-    failure_code: str,
-    category: str,
-    exc: BaseException,
-) -> Mapping[str, str]:
-    allowed_types = (
-        OSError,
-        ValueError,
-        TypeError,
-        AttributeError,
-        ModelAdapterError,
-        Goal029Error,
-    )
-    if not isinstance(exc, allowed_types):
-        raise Goal029Error("gam_gate_exception_unclassified")
-    diagnostic = {
-        "failure_code": failure_code,
-        "exception_class": type(exc).__name__,
-        "exception_category": category,
-    }
-    _validate_gam_gate_diagnostic(diagnostic)
-    return diagnostic
-
-
 def _gam_gate_prediction_digest(
     fitted: Any, assessment_batch: FeatureBatch
 ) -> str:
@@ -2113,7 +2004,7 @@ def _gam_gate_worker_candidate(
     replicate_index = execution.get("replicate_index")
     if execution not in gam_feasibility_execution_plan(config):
         raise Goal029Error("gam_gate_execution_invalid")
-    candidate = GOAL029_GAM_CANDIDATES[leaf.candidate_id]
+    candidate = GOAL029_PSPLINE_CANDIDATES[leaf.candidate_id]
     stages: list[Mapping[str, Any]] = []
     for fold_id in FOLDS:
         stage_id = f"cv_{fold_id}"
@@ -2271,60 +2162,15 @@ def _gam_gate_worker_candidate(
                     "semantic_digest": challenge_semantic_digest,
                 }
             except OSError as exc:
-                outer_stage = {
-                    "stage_id": "outer_refit_replay",
-                    "status": "invalid",
-                    "diagnostic": _gam_gate_stage_diagnostic(
-                        "gam_serialization_failed",
-                        "serialization_error",
-                        exc,
-                    ),
-                    "safe_diagnostics": safe_diagnostics,
-                    "semantic_digest": "",
-                }
+                raise Goal029Error(
+                    "gam_gate_serialization_integrity_failure"
+                ) from exc
             except ModelAdapterError as exc:
-                if str(exc) not in {
-                    "gam_predict_failed",
-                    "nonfinite_or_invalid_scores",
-                }:
-                    raise Goal029Error(
-                        "gam_gate_replay_authority_failure"
-                    ) from exc
-                outer_stage = {
-                    "stage_id": "outer_refit_replay",
-                    "status": "invalid",
-                    "diagnostic": _sanitize_gam_gate_exception(exc),
-                    "safe_diagnostics": _gam_safe_diagnostics_from_exception(
-                        exc
-                    ),
-                    "semantic_digest": "",
-                }
+                raise Goal029Error("gam_gate_replay_integrity_failure") from exc
             except Goal029Error as exc:
-                if str(exc) != "gam_challenge_replay_mismatch":
-                    raise
-                outer_stage = {
-                    "stage_id": "outer_refit_replay",
-                    "status": "invalid",
-                    "diagnostic": _gam_gate_stage_diagnostic(
-                        "gam_challenge_replay_failed",
-                        "challenge_replay_error",
-                        exc,
-                    ),
-                    "safe_diagnostics": safe_diagnostics,
-                    "semantic_digest": "",
-                }
+                raise
             except (ValueError, TypeError, AttributeError) as exc:
-                outer_stage = {
-                    "stage_id": "outer_refit_replay",
-                    "status": "invalid",
-                    "diagnostic": _gam_gate_stage_diagnostic(
-                        "gam_challenge_replay_failed",
-                        "challenge_replay_error",
-                        exc,
-                    ),
-                    "safe_diagnostics": safe_diagnostics,
-                    "semantic_digest": "",
-                }
+                raise Goal029Error("gam_gate_replay_integrity_failure") from exc
             except Exception as exc:
                 raise Goal029Error("gam_gate_exception_unclassified") from exc
     stages.append(outer_stage)
@@ -2335,7 +2181,7 @@ def _gam_gate_worker_candidate(
         raise Goal029Error("gam_gate_outer_access")
     complete = all(stage["status"] == "complete" for stage in stages)
     body: dict[str, Any] = {
-        "schema_version": "goal029_gam_candidate_status_v1",
+        "schema_version": "goal029_pspline_candidate_status_v2",
         "leaf": asdict(leaf),
         "replicate_index": replicate_index,
         "status": "complete" if complete else "invalid_candidate",
@@ -3045,7 +2891,7 @@ def _validate_gam_feasibility_receipt(
         "status",
         "actual_host",
         "execution_context_digest",
-        "gam_registry_digest",
+        "pspline_registry_digest",
         "execution_plan_digest",
         "workers",
         "parent_thread_evidence",
@@ -3078,13 +2924,13 @@ def _validate_gam_feasibility_receipt(
         set(value) != expected_keys
         or claimed != _sha(body)
         or value.get("schema_version")
-        != "goal029_gam_feasibility_gate_v1"
+        != "goal029_pspline_feasibility_gate_v2"
         or value.get("status") not in {"pass", "fail"}
         or value.get("actual_host") != expected_host
         or value.get("execution_context_digest")
         != _sha(asdict(context))
-        or value.get("gam_registry_digest")
-        != _sha(config["models"]["goal029_gam_registry"])
+        or value.get("pspline_registry_digest")
+        != _sha(config["models"]["goal029_pspline_registry"])
         or value.get("execution_plan_digest")
         != _sha(list(gam_feasibility_execution_plan(config)))
         or value.get("workers") != expected_workers
@@ -3209,12 +3055,12 @@ def run_gam_feasibility_gate(
     )
     summary = _evaluate_gam_feasibility_records(records, config)
     receipt: dict[str, Any] = {
-        "schema_version": "goal029_gam_feasibility_gate_v1",
+        "schema_version": "goal029_pspline_feasibility_gate_v2",
         "status": summary["status"],
         "actual_host": socket.gethostname(),
         "execution_context_digest": _sha(asdict(context)),
-        "gam_registry_digest": _sha(
-            config["models"]["goal029_gam_registry"]
+        "pspline_registry_digest": _sha(
+            config["models"]["goal029_pspline_registry"]
         ),
         "execution_plan_digest": _sha(list(executions)),
         "workers": workers,
@@ -4919,11 +4765,8 @@ def validate_family_candidates(
     elif family == "gam":
         if len(complete) < 2:
             raise Goal029Error("family_candidate_quorum_failed:gam")
-        if not any(
-            GOAL029_GAM_CANDIDATES[candidate_id]["lam"] >= 100
-            for candidate_id in complete
-        ):
-            raise Goal029Error("gam_conservative_tier_failed")
+        if not {"psgam02", "psgam05"} & set(complete):
+            raise Goal029Error("gam_regularized_tier_failed")
     else:
         anchor = ANCHORS[family]
         if anchor not in complete:
@@ -6388,11 +6231,7 @@ def validate_production_staged(
             else (
                 len(complete_ids) >= 2
                 and (
-                    any(
-                        GOAL029_GAM_CANDIDATES[candidate_id]["lam"]
-                        >= 100
-                        for candidate_id in complete_ids
-                    )
+                    bool({"psgam02", "psgam05"} & complete_ids)
                     if family == "gam"
                     else ANCHORS[family] in complete_ids
                 )
@@ -7162,7 +7001,7 @@ def _synthetic_plan() -> tuple[ProductionLeaf, ...]:
     candidates = {
         "intercept": ("null00",),
         "elastic_net": ("enet00", "enet01"),
-        "gam": ("gamr01", "gamr05"),
+        "gam": ("psgam01", "psgam05"),
         "random_forest": ("rf02", "rf00"),
         "hist_gradient_boosting": ("hgb04", "hgb00"),
         "shallow_ann": ("ann01", "ann00"),
