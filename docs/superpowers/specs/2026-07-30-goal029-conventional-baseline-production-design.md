@@ -2,88 +2,137 @@
 
 ## Purpose
 
-Scale the accepted Goal028 modelling foundation from a bounded engineering
-preflight to the complete conventional Tasmanian panel while retaining a
-sealed outer assessment and making a long run exactly resumable.
+Scale the accepted Goal028 modelling foundation to the complete conventional
+Tasmanian panel while retaining a sealed outer assessment and making a long
+run exactly resumable. This amended design incorporates the bounded pyGAM
+recovery decision made after the first full candidate pass failed closed.
 
-## Architecture
+## Historical diagnosis
 
-The production plan has three layers:
+The old 2,016-candidate pass completed its candidate-state ledger but did not
+produce an accepted production pair. The old GAM panel yielded 133/280
+complete and 147/280 invalid candidate strata (122 nonconverged; 25 fit
+failed), leaving only 32/56 GAM family strata viable. All non-GAM family
+strata remained viable. No selected refit/publication proceeded and real
+outer attempted/open counts remained `0/0`.
+
+That stage remains diagnostic evidence under its old source/config identity.
+The amended registry creates a clean run identity and cannot reuse it.
+
+## Revised registry and gate
+
+Goal029 uses six additive recovery IDs, leaving Goal028's `gam00`–`gam04`
+payloads unchanged. The new IDs are absent from the shared canonical registry
+and are accepted only within Goal029's exact-payload authority context:
+
+- `gamr00`–`gamr02`: `n_splines=4`, `lam=10,100,1000`;
+- `gamr03`–`gamr05`: `n_splines=6`, `lam=10,100,1000`; and
+- all candidates: cubic splines, `max_iter=500`, `tol=1e-5`, `seed00`.
+
+Before production authority can exist, all six candidates run in all 56
+species × endpoint strata. One execution means five independent
+inner-training fits plus a full outer-training refit, serialization, and
+response-free challenge replay. The exact
+`thylogale_billardierii/fraction100/full/gamr05/seed00` sentinel is repeated
+independently, giving 337 candidate executions and 2,022 fit attempts.
+
+Each inner fit predicts its actual held fold with the encoder learned from its
+training fold. Prediction count, finiteness, and `[0,1]` range are validated
+before only a semantic digest is retained. No held labels, metrics,
+thresholds, row IDs, or prediction values enter gate evidence.
+
+The gate is deliberately status-only. It retains sanitized diagnostic class,
+category, and stage plus semantic hashes, but no assessment metrics,
+predictions, thresholds, or partial performance. All 56 strata require at
+least two complete candidates, including one with `lam>=100`; no candidate ID
+is mandatory. Complete sentinel repeats must have identical stage/challenge
+semantic digests. Identically invalid repeats establish only reproducibility,
+not viability. The second sentinel replicate runs in a fresh separately
+spawned single-worker executor with distinct private process-instance
+evidence.
+
+Every stage, complete or invalid, records only the bounded diagnostic fields:
+iteration count, final-difference class, warning category, coefficient
+finiteness, prediction finiteness, and prediction-range status. Known
+fit/convergence/prediction failures are candidate-local; unknown,
+protocol-authority, and schema failures stop.
+
+The gate receipt is part of calibration authority. Production and publication
+validation reject missing, failed, drifted, host/context-incompatible, or
+status-inconsistent authority.
+
+Gate-invalid candidates cross into production as blinded invalid overlays:
+they have no OOF checkpoint, cannot compete in selection, and are audited
+under the same rule. Gate-complete candidates must also complete production;
+a subsequent invalid state is a hard contradiction rather than a permissible
+local failure.
+
+## Production architecture
+
+The revised plan contains 336 family strata, 2,072 candidate strata, 7,224
+candidate-seed leaves, 36,120 OOF fold units, 44,520 actual inner estimator
+fits, and at most 1,008 selected refits.
+
+It has three layers:
 
 1. **Leaf execution.** One leaf is one candidate seed across all five inner
    assessment folds. It produces one complete OOF score per permitted
    outer-training row or one blinded failure receipt.
-2. **Family reduction.** Seed leaves are merged only when their RowKeys,
-   labels, folds, subset/encoder provenance, and required seed set match.
-   Complete candidates compete within one species × endpoint × family.
-3. **Selected refit.** The winning candidate is refit once per required seed
-   on its permitted outer-training endpoint, serialized, and replayed on a
-   response-free challenge matrix. No held row is requested.
+2. **Family reduction.** Seed leaves merge only when RowKeys, labels, folds,
+   memberships, encoders, and required seed sets agree. Complete candidates
+   compete within one species × endpoint × family.
+3. **Selected refit.** The winner is refit once per required seed on permitted
+   outer-training rows, serialized, and replayed on a response-free challenge.
+   No held row is requested.
 
-Subset membership is stored as separate content-addressed records for each
-species × endpoint × split. The five fold-specific `E_v` memberships and the
-outer-training refit membership are not collapsed into a species-endpoint
-bundle. Leaf identity references all six records and family-specific encoder
-digests.
+Subset membership is content addressed separately for every
+species × endpoint × split. The five fold memberships and outer-training
+refit membership are not collapsed.
 
-## Failure model
+## Failure and fallback model
 
-Candidate failures are local but decisive. A single failed fold or seed
-invalidates that candidate and hides all partial performance. The mandatory
-null and conservative anchors prevent a family from surviving only through
-fragile candidates. A tunable family also needs a second complete candidate.
-Once selected, a model cannot silently fall back to the runner-up.
+A failed fold or seed invalidates that candidate locally and hides its partial
+performance. `null00` remains mandatory. Elastic net, random forest, HGB, and
+shallow ANN require their conservative anchor plus one other complete
+candidate. GAM instead uses the two-complete/one-conservative-lambda rule
+already proven by the gate. A selected model cannot silently fall back to a
+runner-up.
 
-Warnings are classified data. Only the named pyGAM deprecation and valid ANN
-maximum-epoch status are accepted. Unknown warning text stops rather than
-being normalised away.
+This is the sole revised pyGAM attempt. If its gate fails, the next separately
+authorized option is one bounded Python-only penalized-spline logistic family.
+Failure there removes GAM globally. R fallback, broader grids, and numerical
+relaxation are excluded.
 
 ## Resumption and provenance
 
-Leaf checkpoints are content addressed from a controlled digest of all
-`src/dsdm_phase1/*.py` modules plus config/lock, runtime/host, upstream
-authority, task, split memberships, and encoder state.
-A temporary sibling is fully written, validated and fsynced before atomic
-rename. Resumption loads only an exact identity match; mixed trees, runtimes,
-hosts, or upstream products cannot be combined.
-
-The canonical reducer order is independent of worker completion order.
-Parallel workers share no mutable model state. Import-time environment caps,
-a retained live `threadpoolctl` limiter, and explicit PyTorch intra/inter-op
-limits enforce one numerical thread in every parent and child process. Policy
-and effective evidence are bound into execution/checkpoint provenance. One
-host owns a canonical run.
+Leaf checkpoints bind the controlled `src/dsdm_phase1/*.py` closure,
+configuration, lock, runtime, host, upstream authorities, task, split
+memberships, encoder state, and thread-policy evidence. A complete temporary
+sibling is validated and fsynced before atomic rename. Resumption accepts only
+an exact identity. Parallel workers share no mutable model state, and one host
+owns a canonical run.
 
 ## Validation and publication
 
-While still staged, artefact-only validation recomputes every plan identity,
-seed set, subset, metric, threshold, selection, model digest, challenge
-replay, privacy rule, and outer counter. A subsequent fresh cache-disabled
-source audit reruns exactly 359 deterministically selected leaves, including
-one per family stratum and coverage of every candidate and seed. Its receipt
-reconciles the exact valid-result or invalid-failure state of every selected
-leaf.
+Staged artefact validation recomputes every plan identity, seed set, subset,
+metric, threshold, selection, model digest, challenge replay, privacy rule,
+and outer counter. A fresh cache-disabled source audit then reruns exactly
+`ceil(0.05 × 7224)=362` leaves while covering every family stratum, candidate,
+and seed.
 
-Private and tracked trees first receive core manifests. One acyclic pair
-descriptor binds both core digests and the transaction ID. Only after staged
-validation and source audit pass are the directories renamed as a pair; the
-final marker binds the pair-descriptor digest and is written last. Consumers
-reject missing, partial, mismatched, unmarked, or extra-file pairs. A failed
-rename or marker write restores the complete trees to their stage paths where
-possible and never deletes the only authoritative copy.
+Private and tracked trees receive core manifests before one acyclic pair
+descriptor binds their digests and transaction ID. The final marker is written
+last. Missing, partial, mismatched, unmarked, or extra-file pairs fail closed.
 
 ## Compute decision
 
-Calibration first proves four zero-fit spawned children obey the numerical
-thread policy. Two frozen valid `gam01` leaves then act as a workers-1/2
-canary; semantic disagreement, invalidity, unsafe memory/swap state, or a
-workers-2 slowdown above `1.25` stops the run. The exact 30-leaf
-representative panel then spans all species, endpoints, families, candidate
-extremes, and seeds at workers 1, 2, and 4. Among trials with 6 GiB
+Calibration proves four zero-fit spawned children and scans class support.
+Two frozen `hgb04` leaves provide the workers-1/2 concurrency canary without
+coupling worker selection to the family under recovery. The 30-leaf
+representative panel then runs at workers 1, 2, and 4. Among trials with 6 GiB
 free-memory headroom and no swap growth, the smallest count within `1.10` of
-the fastest safe wall time is selected. The 32-leaf GAM fragility panel runs
-once at that setting.
+the fastest safe wall time is selected. The GAM gate runs once at that count.
 
-This is 126 leaf executions and at most 735 estimator fits. Exact
-`threadpoolctl==3.6.0` is runtime-checked from the existing scikit-learn lock
-closure rather than changing Goal028's frozen dependency manifests.
+Total calibration is 431 candidate executions and at most 2,597 estimator
+fits. It is feasibility and execution evidence, not candidate selection or
+scientific performance evaluation.

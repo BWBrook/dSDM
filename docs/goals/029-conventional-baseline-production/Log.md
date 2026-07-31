@@ -1,5 +1,107 @@
 # Log
 
+## 2026-07-31 — Final sentinel and late-stage resume repair
+
+- Sentinel reproducibility now binds each stage's complete bounded
+  `safe_diagnostics`, including exact private `iteration_count`. A repeat with
+  otherwise identical status/digests but drifted iteration, warning, or
+  finiteness evidence fails with `gam_gate_sentinel_disagreement`.
+- Production startup now removes only known regular late-phase metadata that
+  is safe to regenerate: the source-audit receipt and transaction
+  manifests/marker metadata. The fresh source audit is rerun. Durable
+  checkpoints, selections, models, memberships, encoders, and failure
+  receipts are preserved.
+- Transaction rollback now removes its generated core manifests, pair
+  descriptor, and final-marker metadata after restoring both stages. Focused
+  failure injection proves both second-rename and marker-rename rollbacks can
+  be published successfully on the next attempt.
+- Symlinked or non-regular late metadata, unknown inventory entries, and any
+  existing final destination remain fail-closed.
+- New focused regressions: `3 passed`. Complete deterministic
+  Goal029/model-adapter suite: `45 passed, 1 deselected`; the deselected test
+  is the separately evidenced live 6-GiB memory-gated spawn probe.
+- Fresh synthetic production and independent validation passed with 35
+  leaves, six selected families, 18 selected seed refits, 13 source-audit
+  leaves, semantic digest
+  `35a773f2f1c5c2974055c44556c757b2fe5f254eb43cfc52e4de5b3e7f4f8596`,
+  transaction ID
+  `440a8f9bafd6fa6839941adf51a921cf28a1ec359a3e56ec1d71c46fb910d168`,
+  and real outer attempted/open counts `0/0`.
+- No real calibration, production, private-data processing, outer access,
+  retained-stage cleanup, commit, or push was performed.
+
+## 2026-07-31 — Failed production diagnosis and bounded GAM recovery amendment
+
+- The old full candidate pass assigned terminal states to all 2,016 planned
+  candidate strata and stopped at family viability before selection
+  publication or selected-model refits.
+- Old GAM evidence was 133/280 complete and 147/280 invalid candidate strata:
+  122 strict nonconvergence failures and 25 fit failures. Only 32/56 GAM
+  species × endpoint strata met the old `gam01` anchor-plus-quorum rule. Every
+  non-GAM family stratum remained viable.
+- Real outer attempted/open counts remained `0/0`. The failed old stage is
+  retained as diagnostic evidence; it was not cleaned, deleted, published, or
+  promoted to authority.
+- Barry authorised one bounded pyGAM recovery panel:
+  `n_splines={4,6}` × `lam={10,100,1000}`, cubic splines,
+  `max_iter=500`, and `tol=1e-5`. New IDs are `gamr00`–`gamr05`.
+- The original `gam00`–`gam04` definitions remain byte-for-byte unchanged for
+  Goal028. Goal029's revised config alone selects the additive recovery IDs.
+- GAM viability no longer requires a named anchor. Every one of the 56 strata
+  requires at least two complete candidates including one with `lam>=100`.
+- Replaced the old 32-leaf fragility stage with a status-only feasibility
+  gate over 336 candidate strata plus one independently repeated sentinel:
+  337 candidate executions and exactly 2,022 fit attempts.
+- A complete candidate requires all five inner fits plus full outer-training
+  refit, serialization, and response-free challenge replay. The gate stores
+  sanitized statuses/diagnostics and semantic hashes, never assessment
+  metrics, predictions, or thresholds.
+- The material review repair now predicts every actual held fold through its
+  training-fitted encoder, validates output count/finiteness/`[0,1]`, and
+  retains only the semantic digest. Each stage carries the exact bounded safe
+  diagnostics; known fit/convergence/prediction failures remain
+  candidate-local while unknown/protocol/authority failures stop.
+- Complete sentinel repeats must have identical stage and challenge semantic
+  digests. Identically invalid repeats can establish reproducibility but do
+  not waive family viability. Replicate 1 now runs in a separately spawned
+  one-worker executor with distinct private process-instance evidence.
+  Unknown diagnostics stop.
+- Production and publication validation now require the accepted gate and
+  exact agreement with its 336 base candidate statuses. Gate-invalid
+  candidates become blinded production/source-audit overlays with no OOF
+  checkpoint or selection eligibility; a gate-complete candidate becoming
+  production-invalid is a hard stop.
+- The additive `gamr00`–`gamr05` registry is now context-scoped to Goal029.
+  Goal028 and generic validation/deserialization do not accept those IDs.
+- Revised full-plan arithmetic is 336 family strata, 2,072 candidate strata,
+  7,224 candidate-seed leaves, 36,120 OOF fold units, 44,520 actual inner
+  fits, at most 1,008 refits, and a 362-leaf source audit.
+- Revised calibration retains spawn/class-support/canary/representative
+  stages, using HGB rather than GAM for the concurrency canary. Total budget
+  is 431 candidate executions and at most 2,597 fits.
+- If this one revised pyGAM gate fails, the next separately authorised choice
+  is one bounded Python-only penalized-spline logistic attempt; if that fails,
+  GAM is removed globally. R fallback and repeated search are excluded.
+- Focused Goal029/model-adapter tests passed as `45 passed` before the final
+  bounded diagnostic-preservation adjustment. The final deterministic rerun
+  was `44 passed, 1 deselected`; the sole live four-child spawn proof was
+  deliberately not bypassed after two rechecks stopped at the frozen 6-GiB
+  free-memory gate. This is an environmental verification limitation, not a
+  relaxed acceptance condition.
+- Goal028/shared compatibility tests: `66 passed`; 16 pre-existing
+  unknown-marker warnings.
+- Revised synthetic production and independent validation passed with 35
+  leaves, six selected families, 18 selected seed refits, semantic digest
+  `fb4a9844307ef44b94606305c084863b66507759ebafcc38bc74d63dcfbe5e94`,
+  12 source-audit leaves,
+  transaction ID
+  `874fa62e167d45b834e395838f346d403228e3b1dbc846aceb967a0a4578b940`,
+  and real outer attempted/open counts `0/0`.
+- The static plan, Python compilation, `uv lock --check`, and
+  `git diff --check` passed.
+- This amendment did not run real calibration, production, private-data
+  processing, outer assessment, commit, or push.
+
 ## 2026-07-30 — Goal contract and implementation start
 
 - Barry authorised Goal029 after accepting the Goal028 foundation.

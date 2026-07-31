@@ -3,95 +3,96 @@
 **Goal:** Produce a resumable, leakage-safe conventional baseline panel and
 seal selected refits without using the real outer assessment.
 
-**Architecture:** Extend the existing inner-CV API only where multi-seed
-production requires it. Keep Goal029 planning, checkpoints, reduction,
-challenge construction, validation, and publication in a dedicated module.
-Use actual Goal028 adapters and private-ingestion authorities.
+**Architecture:** Keep Goal028 behaviour frozen. Add a Goal029-only GAM
+registry and feasibility authority while retaining Goal029 planning,
+checkpoints, reduction, challenge construction, validation, and publication
+in the dedicated production module.
 
-## Task 1: Freeze and test the exact plan
+## Task 1: Preserve the diagnosis
 
-- Add `config/conventional_baseline_production.json`.
-- Add `tests/test_goal029_production.py` plan assertions.
-- Assert ordered species/endpoints/families/candidates/seeds and exact counts.
-- Assert the two canary, 30 representative, and 32 fragility leaves have
-  distinct frozen roles and declared coverage.
+- Retain the failed old stage under its old source/config identity.
+- Record the exact GAM outcomes and outer `0/0` evidence.
+- Prevent old checkpoints from entering the revised run.
 
-## Task 2: Add multi-seed leaf support
+## Task 2: Freeze the revised registry and plan
 
-- Extend `inner_cv.py` to accept canonical ordered seed subsets.
-- Preserve fit reports for warning classification.
-- Generalise selected refit provenance to the task's canonical seed.
-- Run Goal028/inner-CV regressions after every shared change.
+- Add `gamr00`–`gamr05` as
+  `n_splines={4,6}` × `lam={10,100,1000}`, cubic,
+  `max_iter=500`, `tol=1e-5`.
+- Leave `gam00`–`gam04` unchanged for Goal028.
+- Bind Goal029's exact registry in configuration and tests.
+- Assert 2,072 candidate strata, 7,224 leaves, 36,120 OOF units, 44,520
+  actual inner fits, at most 1,008 refits, and 362 audit leaves.
 
-## Task 3: Implement provenance and membership bundles
+## Task 3: Implement the GAM feasibility gate
 
-- Compute a digest of runtime-critical paths and exact bindings.
-- Materialise six separate species × endpoint × split membership records:
-  five fold-specific `E_v` records plus the outer-training refit record.
-- Bind every leaf to config, lock, runtime, host, upstream, membership,
-  subset, and encoder digests.
-- Test path/source/runtime/host/encoder tampering.
+- Generate all 336 GAM species × endpoint × candidate executions.
+- Add one independent repeat of the frozen `gamr05` sentinel.
+- For every execution attempt five inner fits plus full outer-training refit,
+  serialization, and response-free challenge replay.
+- Predict each actual held fold with its training-fitted encoder, validate
+  count/finiteness/`[0,1]`, and retain only a digest.
+- Store status, sanitized diagnostic class/category/stage, the exact bounded
+  safe-diagnostic fields, and semantic digests only.
+- Reject any performance field or unknown diagnostic.
+- Treat known fit/convergence/prediction failures as candidate-local and
+  protocol/authority/unknown failures as hard stops.
+- Require identical sentinel status/diagnostics and, when complete, identical
+  stage/challenge semantic digests.
+- Run sentinel replicate 1 in a fresh separately spawned one-worker executor
+  and prove a distinct process-instance digest in private evidence.
+- Require all 56 strata to have at least two complete candidates including
+  one with `lam>=100`.
 
-## Task 4: Implement atomic leaf checkpoints
+## Task 4: Revise calibration authority
 
-- Serialize a complete leaf into canonical metadata plus private OOF data.
-- Write to a temporary sibling, validate, fsync, and atomically rename.
-- Resume only an exact identity; reject stale or malformed checkpoints.
-- Replace invalid candidates with blinded failures for reduction/publication.
+- Keep the four-child zero-fit spawn audit and class-support scan.
+- Use two frozen `hgb04` leaves for the workers-1/2 canary.
+- Keep the 30-leaf representative panel at workers 1, 2, and 4.
+- Run the 337-execution GAM gate once at the selected count.
+- Publish tracked calibration authority only after a passing gate.
+- Preserve a failed gate's sanitized private receipt and stop.
 
-## Task 5: Implement reduction and validity policy
+## Task 5: Bind gate to production
 
-- Merge required seed leaves by exact RowKey/fold/label evidence.
-- Recompute averaged scores, fold AUC, OOF threshold, and fold TSS.
-- Enforce null, anchor, and two-candidate quorum.
-- Select by the frozen AUC/TSS/candidate-ID rule.
-- Abort rather than use a runner-up after selected refit failure.
+- Include the accepted calibration receipt in the revised run identity.
+- Overlay each gate-invalid GAM candidate into production as blinded invalid,
+  delete/skip its OOF checkpoints, and exclude it from selection.
+- Require every gate-complete candidate to complete production; hard-stop if
+  it becomes invalid.
+- Apply the same overlay semantics in the fresh source audit.
+- Revalidate calibration authority and status agreement when validating a
+  published pair.
+- Reject missing, failed, drifted, or context-incompatible evidence.
 
-## Task 6: Implement selected refits and challenges
+## Task 6: Retain production integrity
 
-- Refit every selected candidate seed on permitted outer-training rows.
-- Build exactly `min(32, n_unique_eligible)` deterministic observed-support
-  feature vectors without row IDs or responses.
-- Serialize model and challenge; record and replay prediction digests.
-- Assert real outer attempted/open counts remain `0/0`.
+- Preserve content-addressed membership bundles and atomic leaf checkpoints.
+- Preserve candidate-local blinded failure handling and family quorum.
+- Preserve selected refits, response-free challenges, and no-runner-up rule.
+- Preserve exact private/tracked inventories and acyclic pair publication.
+- Keep real outer attempted/open limits at `0/0`.
+- Keep `gamr00`–`gamr05` outside the shared candidate registry and authorize
+  them only within Goal029's exact context.
 
-## Task 7: Implement validation and source audit
+## Task 7: Update source audit and documentation
 
-- Recompute the complete artefact contract without fitting.
-- Require exact private and tracked staged-file inventories.
-- Select one source-audit leaf per family stratum by manifest hash.
-- Add missing candidate/seed coverage and fill to exactly
-  `ceil(0.05 * 7168) = 359`.
-- Complete full staged artefact validation first.
-- Rerun the deterministic audit set in a fresh cache-disabled process and
-  destination, reconcile every valid result and invalid failure, then validate
-  the complete staged trees again.
+- Recompute the deterministic audit at 362 leaves.
+- Update Goal, Plan, Decision, Runbook, Log, design, and implementation plan.
+- State the one-attempt pyGAM boundary and the later
+  penalized-spline-or-remove-GAM branch.
 
-## Task 8: Implement paired transaction publication
+## Task 8: Verification
 
-- Build private/tracked core manifests and counterpart digests.
-- Publish only after both validation gates pass.
-- Restore both complete stage trees on rename/marker failure; preserve intact
-  destinations and fail loudly if restoration itself is impossible.
-- Write a final tracked marker last.
-- Reject partial, mismatched, symlinked, existing, or unmarked pairs.
+- Run focused Goal029 and adapter tests.
+- Run Goal028/shared regressions.
+- Run synthetic production and independent validation.
+- Run static plan, compile, lock, and diff checks.
+- Perform one material self-review and stop.
 
-## Task 9: Synthetic and regression gates
+## Task 9: Separate execution authorization
 
-- Run focused Goal029 tests and synthetic end-to-end.
-- Run Goal028 shared-module regressions.
-- Run full tests once, compile, lock check, and `git diff --check`.
-- Record exact commands and outcomes in the Goal029 log.
-
-## Task 10: Calibration and production
-
-- Stop after synthetic readiness unless the orchestrator authorises real
-  calibration.
-- Prove a four-child zero-fit spawn under live one-thread evidence.
-- Run the valid-GAM canary at workers 1/2 and stop above the `1.25` slowdown
-  boundary.
-- Calibrate the exact 30 representative leaves at workers 1, 2, and 4 within
-  memory policy; select the smallest safe setting within `1.10` of fastest.
-- Run the 32 fragility leaves once at the selected setting.
-- Execute/resume the full real plan, validate, publish, and stop before outer
-  use.
+- Do not run real calibration or production in this implementation amendment.
+- When separately authorized, run calibration once.
+- If the GAM gate fails, stop for the predeclared fallback decision.
+- If it passes, run one clean production lifecycle and stop before outer use.

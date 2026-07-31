@@ -1,8 +1,8 @@
 {
   "identity": {
-    "schema_version": "1.1",
+    "schema_version": "1.3",
     "goal_id": "goal029-conventional-baseline-production-2026-07-30",
-    "protocol_version": "0.1",
+    "protocol_version": "0.3",
     "master_seed": "dsdm-goal028-v1",
     "created_at": "2026-07-30"
   },
@@ -87,7 +87,7 @@
     "subset_membership_storage": "once_per_species_endpoint_split"
   },
   "models": {
-    "registry_authority": "config/modeling_foundation_preflight.json",
+    "registry_authority": "goal028_canonical_plus_context_scoped_goal029_gam_registry_v1",
     "families": [
       "intercept",
       "elastic_net",
@@ -113,11 +113,12 @@
         "enet09"
       ],
       "gam": [
-        "gam00",
-        "gam01",
-        "gam02",
-        "gam03",
-        "gam04"
+        "gamr00",
+        "gamr01",
+        "gamr02",
+        "gamr03",
+        "gamr04",
+        "gamr05"
       ],
       "random_forest": [
         "rf00",
@@ -145,6 +146,60 @@
         "ann04",
         "ann05"
       ]
+    },
+    "goal029_gam_registry": {
+      "schema_version": "goal029_gam_registry_v1",
+      "spline_order": 3,
+      "candidate_payloads": {
+        "gamr00": {
+          "family": "gam",
+          "id": "gamr00",
+          "n_splines": 4,
+          "lam": 10,
+          "max_iter": 500,
+          "tol": 0.00001
+        },
+        "gamr01": {
+          "family": "gam",
+          "id": "gamr01",
+          "n_splines": 4,
+          "lam": 100,
+          "max_iter": 500,
+          "tol": 0.00001
+        },
+        "gamr02": {
+          "family": "gam",
+          "id": "gamr02",
+          "n_splines": 4,
+          "lam": 1000,
+          "max_iter": 500,
+          "tol": 0.00001
+        },
+        "gamr03": {
+          "family": "gam",
+          "id": "gamr03",
+          "n_splines": 6,
+          "lam": 10,
+          "max_iter": 500,
+          "tol": 0.00001
+        },
+        "gamr04": {
+          "family": "gam",
+          "id": "gamr04",
+          "n_splines": 6,
+          "lam": 100,
+          "max_iter": 500,
+          "tol": 0.00001
+        },
+        "gamr05": {
+          "family": "gam",
+          "id": "gamr05",
+          "n_splines": 6,
+          "lam": 1000,
+          "max_iter": 500,
+          "tol": 0.00001
+        }
+      }
     },
     "seed_labels_by_family": {
       "intercept": [
@@ -181,10 +236,10 @@
     "planned_counts": {
       "species_endpoint_strata": 56,
       "family_strata": 336,
-      "candidate_strata": 2016,
-      "candidate_seed_leaves": 7168,
-      "oof_producing_fold_units": 35840,
-      "actual_inner_estimator_fits": 44240,
+      "candidate_strata": 2072,
+      "candidate_seed_leaves": 7224,
+      "oof_producing_fold_units": 36120,
+      "actual_inner_estimator_fits": 44520,
       "selected_refits_maximum": 1008
     },
     "excluded": [
@@ -198,10 +253,14 @@
     "mandatory_null": "null00",
     "anchors": {
       "elastic_net": "enet00",
-      "gam": "gam01",
       "random_forest": "rf02",
       "hist_gradient_boosting": "hgb04",
       "shallow_ann": "ann01"
+    },
+    "gam_viability": {
+      "minimum_complete_candidates": 2,
+      "minimum_conservative_lam": 100,
+      "mandatory_candidate_id": null
     },
     "minimum_complete_valid_candidates_by_family": {
       "intercept": 1,
@@ -327,7 +386,7 @@
       "class_support_scan",
       "canary",
       "representative",
-      "fragility"
+      "gam_feasibility_gate"
     ],
     "spawn_audit": {
       "child_count": 4,
@@ -345,8 +404,8 @@
       ["thylogale_billardierii", "fraction25", "ladder00", "intercept", "null00", "seed00"],
       ["thylogale_billardierii", "fraction100", "full", "elastic_net", "enet00", "seed00"],
       ["notamacropus_rufogriseus", "fraction25", "ladder00", "elastic_net", "enet09", "seed04"],
-      ["trichosurus_vulpecula", "fraction25", "ladder01", "gam", "gam00", "seed00"],
-      ["pseudocheirus_peregrinus", "fraction100", "full", "gam", "gam04", "seed00"],
+      ["trichosurus_vulpecula", "fraction25", "ladder01", "gam", "gamr00", "seed00"],
+      ["pseudocheirus_peregrinus", "fraction100", "full", "gam", "gamr05", "seed00"],
       ["vombatus_ursinus", "fraction25", "ladder02", "random_forest", "rf00", "seed00"],
       ["sarcophilus_harrisii", "fraction100", "full", "random_forest", "rf06", "seed04"],
       ["dasyurus_maculatus", "fraction50", "ladder00", "hist_gradient_boosting", "hgb00", "seed00"],
@@ -363,21 +422,21 @@
       ["notamacropus_rufogriseus", "fraction50", "ladder00", "random_forest", "rf02", "seed02"],
       ["trichosurus_vulpecula", "fraction100", "full", "shallow_ann", "ann01", "seed01"],
       ["pseudocheirus_peregrinus", "fraction25", "ladder00", "intercept", "null00", "seed00"],
-      ["vombatus_ursinus", "fraction50", "ladder01", "gam", "gam01", "seed00"],
+      ["vombatus_ursinus", "fraction50", "ladder01", "hist_gradient_boosting", "hgb04", "seed00"],
       ["sarcophilus_harrisii", "fraction25", "ladder02", "hist_gradient_boosting", "hgb04", "seed00"],
       ["dasyurus_maculatus", "fraction100", "full", "elastic_net", "enet00", "seed03"],
       ["dasyurus_viverrinus", "fraction50", "ladder02", "random_forest", "rf02", "seed04"],
       ["thylogale_billardierii", "fraction25", "ladder01", "shallow_ann", "ann01", "seed02"],
       ["notamacropus_rufogriseus", "fraction25", "ladder02", "hist_gradient_boosting", "hgb04", "seed00"],
-      ["trichosurus_vulpecula", "fraction50", "ladder00", "gam", "gam01", "seed00"],
+      ["trichosurus_vulpecula", "fraction50", "ladder00", "hist_gradient_boosting", "hgb04", "seed00"],
       ["pseudocheirus_peregrinus", "fraction50", "ladder01", "shallow_ann", "ann01", "seed03"],
       ["vombatus_ursinus", "fraction25", "ladder00", "elastic_net", "enet00", "seed04"]
     ],
     "canary": {
       "leaf_count": 2,
       "leaves": [
-        ["trichosurus_vulpecula", "fraction50", "ladder00", "gam", "gam01", "seed00"],
-        ["vombatus_ursinus", "fraction50", "ladder01", "gam", "gam01", "seed00"]
+        ["trichosurus_vulpecula", "fraction50", "ladder00", "hist_gradient_boosting", "hgb04", "seed00"],
+        ["vombatus_ursinus", "fraction50", "ladder01", "hist_gradient_boosting", "hgb04", "seed00"]
       ],
       "worker_trials": [
         1,
@@ -395,17 +454,43 @@
       ],
       "near_fastest_wall_time_multiplier": 1.1
     },
-    "fragility": {
-      "leaf_count": 32,
-      "worker_trials": "selected_workers_once"
+    "gam_feasibility_gate": {
+      "schema_version": "goal029_gam_feasibility_gate_v1",
+      "candidate_count": 336,
+      "candidate_execution_count": 337,
+      "fit_attempt_count": 2022,
+      "stages_per_execution": [
+        "cv_fold00",
+        "cv_fold01",
+        "cv_fold02",
+        "cv_fold03",
+        "cv_fold04",
+        "outer_refit_replay"
+      ],
+      "worker_trials": "selected_workers_once",
+      "sentinel": [
+        "thylogale_billardierii",
+        "fraction100",
+        "full",
+        "gam",
+        "gamr05",
+        "seed00"
+      ],
+      "sentinel_replicates": 2,
+      "held_fold_prediction": "training_fitted_encoder_assessment_features_length_finite_unit_interval_digest_only",
+      "safe_diagnostics": "bounded_status_only_v1",
+      "sentinel_executor": "fresh_separately_spawned_single_worker_process",
+      "production_gate_invalid": "blinded_overlay_no_oof_no_selection",
+      "production_gate_complete_invalid": "hard_stop",
+      "status_only": true,
+      "performance_fields_exposed": false,
+      "all_56_strata_must_be_viable": true
     },
     "preflight_gates": {
       "class_support_scan": "all_56_species_endpoint_strata",
-      "fragility_stress_candidates": [
-        "gam02",
-        "gam03"
-      ],
-      "fragility_stress_scope": "all_species_fraction25_ladder00_and_fraction100_full"
+      "gam_feasibility_scope": "all_56_species_endpoint_strata_all_6_goal029_gam_candidates",
+      "gam_candidate_complete": "all_5_inner_fits_plus_outer_refit_serialization_response_free_challenge_replay",
+      "gam_family_viable": "at_least_2_complete_including_at_least_1_lam_gte_100"
     },
     "worker_trials": [
       1,
@@ -426,17 +511,19 @@
       "spawn_audit_children": 4,
       "canary_leaf_executions": 4,
       "representative_leaf_executions": 90,
-      "fragility_leaf_executions": 32,
-      "total_leaf_executions": 126,
-      "maximum_estimator_fits": 735
+      "gam_gate_candidate_executions": 337,
+      "gam_gate_fit_attempts": 2022,
+      "total_candidate_executions": 431,
+      "maximum_estimator_fits": 2597
     },
     "selection_rule": "smallest_memory_safe_worker_with_wall_time_at_most_1.10x_fastest_safe_representative_trial",
     "receipt_destination": "evidence/conventional_baseline_calibration",
     "receipt_schemas": {
       "spawn_audit": "goal029_calibration_spawn_audit_v1",
       "trial": "goal029_calibration_trial_v2",
-      "master": "goal029_calibration_master_v2",
-      "tracked_index": "goal029_calibration_index_v2"
+      "gam_feasibility_gate": "goal029_gam_feasibility_gate_v1",
+      "master": "goal029_calibration_master_v3",
+      "tracked_index": "goal029_calibration_index_v3"
     }
   },
   "validation": {
@@ -457,7 +544,7 @@
         "seed_label"
       ],
       "selection": "minimum_sha256_per_family_stratum_then_coverage_then_fill_to_ceiling_fraction",
-      "minimum_leaf_count": 359,
+      "minimum_leaf_count": 362,
       "fresh_process": true,
       "cache_disabled": true,
       "fresh_destination": true

@@ -9,6 +9,8 @@ adapter accepts assessment data during fitting.
 from __future__ import annotations
 
 import base64
+import contextlib
+import contextvars
 import copy
 import hashlib
 import importlib.metadata
@@ -102,7 +104,59 @@ def _canonical_registry() -> dict[str, dict[str, Any]]:
     return out
 
 
-CANONICAL_CANDIDATES = _canonical_registry()
+# Goal029 prospectively adds a conservative pyGAM recovery panel. The original
+# gam00-gam04 payloads remain unchanged for Goal028 replay; only Goal029's
+# independently content-bound config authorizes these additional identifiers.
+GOAL029_GAM_CANDIDATES = {
+    f"gamr{index:02d}": {
+        "family": "gam",
+        "id": f"gamr{index:02d}",
+        "n_splines": n_splines,
+        "lam": lam,
+        "max_iter": 500,
+        "tol": 1e-5,
+    }
+    for index, (n_splines, lam) in enumerate(
+        ((4, 10), (4, 100), (4, 1000), (6, 10), (6, 100), (6, 1000))
+    )
+}
+_BASE_CANONICAL_CANDIDATES = _canonical_registry()
+_GOAL029_AUTHORITY = contextvars.ContextVar(
+    "dsdm_goal029_candidate_authority", default=False
+)
+
+
+class _CanonicalCandidateRegistry(Mapping[str, Mapping[str, Any]]):
+    def _active(self) -> Mapping[str, Mapping[str, Any]]:
+        if _GOAL029_AUTHORITY.get():
+            return {**_BASE_CANONICAL_CANDIDATES, **GOAL029_GAM_CANDIDATES}
+        return _BASE_CANONICAL_CANDIDATES
+
+    def __getitem__(self, key: str) -> Mapping[str, Any]:
+        return self._active()[key]
+
+    def __iter__(self):
+        return iter(self._active())
+
+    def __len__(self) -> int:
+        return len(self._active())
+
+
+CANONICAL_CANDIDATES = _CanonicalCandidateRegistry()
+
+
+@contextlib.contextmanager
+def goal029_candidate_authority(
+    candidate_payloads: Mapping[str, Mapping[str, Any]],
+):
+    """Explicitly authorize the exact Goal029-only GAM registry in this context."""
+    if dict(candidate_payloads) != GOAL029_GAM_CANDIDATES:
+        raise ModelAdapterError("goal029_candidate_authority_mismatch")
+    token = _GOAL029_AUTHORITY.set(True)
+    try:
+        yield
+    finally:
+        _GOAL029_AUTHORITY.reset(token)
 
 
 def _candidate_payload(candidate: Mapping[str, Any]) -> dict[str, Any]:
@@ -223,6 +277,69 @@ def _report(start: float, **kwargs: Any) -> FitReport:
     return FitReport(runtime_seconds=time.perf_counter() - start, peak_rss_bytes=0, **kwargs)
 
 
+def _gam_safe_diagnostics(
+    model: Any,
+    caught: list[Any] | tuple[Any, ...],
+    tol: float,
+    *,
+    prediction_finiteness: str = "not_applicable",
+    prediction_range_status: str = "not_applicable",
+) -> dict[str, Any]:
+    logs = getattr(model, "logs_", {})
+    diffs = list(logs.get("diffs", ())) if hasattr(logs, "get") else []
+    finite_diffs = bool(diffs) and np.isfinite(
+        np.asarray(diffs, dtype=np.float64)
+    ).all()
+    if not diffs:
+        final_difference_class = "missing"
+    elif not finite_diffs:
+        final_difference_class = "nonfinite"
+    elif float(diffs[-1]) < float(tol):
+        final_difference_class = "lt_tol"
+    else:
+        final_difference_class = "ge_tol"
+    messages = [str(item.message).lower() for item in caught]
+    if any(
+        any(token in message for token in ("overflow", "divide", "invalid"))
+        for message in messages
+    ):
+        warning_category = "numerical"
+    elif any(
+        any(token in message for token in ("converg", "iteration", "maximum"))
+        for message in messages
+    ):
+        warning_category = "convergence"
+    elif messages:
+        warning_category = "informational"
+    else:
+        warning_category = "none"
+    coefficients = getattr(model, "coef_", None)
+    coefficient_finiteness = (
+        "missing"
+        if coefficients is None
+        else (
+            "finite"
+            if np.isfinite(np.asarray(coefficients)).all()
+            else "nonfinite"
+        )
+    )
+    return {
+        "iteration_count": len(diffs) if diffs else None,
+        "final_difference_class": final_difference_class,
+        "warning_category": warning_category,
+        "coefficient_finiteness": coefficient_finiteness,
+        "prediction_finiteness": prediction_finiteness,
+        "prediction_range_status": prediction_range_status,
+    }
+
+
+def _attach_gam_safe_diagnostics(
+    error: ModelAdapterError, diagnostics: Mapping[str, Any]
+) -> ModelAdapterError:
+    error.safe_diagnostics = dict(diagnostics)
+    return error
+
+
 class _FittedBase:
     def __init__(self, family: str, model: Any, schema: Mapping[str, Any], candidate: Mapping[str, Any], seed: int, payload: Mapping[str, Any] | None = None):
         self.family, self.model, self.schema = family, model, dict(schema)
@@ -334,9 +451,15 @@ class _ConventionalAdapter:
             model = LogisticGAM(terms, max_iter=500, tol=1e-5, verbose=False)
             with warnings.catch_warnings(record=True) as caught:
                 warnings.simplefilter("always")
-                try: model.fit(x, y)
+                try:
+                    model.fit(x, y)
                 except ModelAdapterError: raise
-                except Exception as exc: raise ModelAdapterError("gam_fit_failed") from exc
+                except Exception as exc:
+                    error = _attach_gam_safe_diagnostics(
+                        ModelAdapterError("gam_fit_failed"),
+                        _gam_safe_diagnostics(model, caught, candidate["tol"]),
+                    )
+                    raise error from exc
             warnings_out.extend(str(w.message) for w in caught)
             logs = getattr(model, "logs_", {})
             diffs = list(logs.get("diffs", [])) if hasattr(logs, "get") else []
@@ -359,7 +482,10 @@ class _ConventionalAdapter:
                 )
             )
             if convergence_warning or exhausted or not diffs or not np.isfinite(np.asarray(diffs, dtype=np.float64)).all() or float(diffs[-1]) >= float(candidate["tol"]) or not np.isfinite(np.asarray(model.coef_)).all():
-                raise ModelAdapterError("gam_nonconverged")
+                raise _attach_gam_safe_diagnostics(
+                    ModelAdapterError("gam_nonconverged"),
+                    _gam_safe_diagnostics(model, caught, candidate["tol"]),
+                )
             iterations = len(diffs)
         elif self.family == "random_forest":
             model = RandomForestClassifier(n_estimators=500, criterion="gini", bootstrap=True, max_features=candidate["max_features"], min_samples_leaf=candidate["min_samples_leaf"], max_depth=candidate["max_depth"], min_samples_split=2, random_state=seed, n_jobs=1, class_weight=None)
@@ -374,8 +500,26 @@ class _ConventionalAdapter:
             except Exception as exc: raise ModelAdapterError("hist_gradient_boosting_fit_failed") from exc
             iterations = 300
         fitted = _FittedBase(self.family, model, _schema_meta(train), candidate, seed)
-        try: fitted.predict_scores(train)
-        except ModelAdapterError: raise
+        try:
+            fitted.predict_scores(train)
+        except ModelAdapterError as exc:
+            if self.family == "gam" and not hasattr(exc, "safe_diagnostics"):
+                status = (
+                    "failed_validation"
+                    if str(exc) == "nonfinite_or_invalid_scores"
+                    else "not_evaluated"
+                )
+                _attach_gam_safe_diagnostics(
+                    exc,
+                    _gam_safe_diagnostics(
+                        model,
+                        caught,
+                        candidate["tol"],
+                        prediction_finiteness=status,
+                        prediction_range_status=status,
+                    ),
+                )
+            raise
         except Exception as exc: raise ModelAdapterError(f"{self.family}_predict_failed") from exc
         return fitted, _report(start, converged=True, iterations=iterations, best_epoch=None, stopping_fold=None, neural_stop_status=None, warnings=tuple(warnings_out))
 

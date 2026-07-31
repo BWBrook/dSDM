@@ -10,6 +10,21 @@ import numpy as np
 import pytest
 
 
+def _gam_safe_diagnostics(*, valid_prediction: bool = True):
+    return {
+        "iteration_count": 1,
+        "final_difference_class": "missing",
+        "warning_category": "none",
+        "coefficient_finiteness": "missing",
+        "prediction_finiteness": (
+            "finite" if valid_prediction else "not_evaluated"
+        ),
+        "prediction_range_status": (
+            "within_0_1" if valid_prediction else "not_evaluated"
+        ),
+    }
+
+
 def _foundation(species_id: str = "thylogale_billardierii", n: int = 60):
     from dsdm_phase1.modeling_contract import (
         FeatureProvider,
@@ -63,24 +78,36 @@ def goal029_config():
 
 
 def test_exact_production_and_calibration_plans(goal029_config):
+    from dataclasses import asdict
+
     from dsdm_phase1.goal029_production import (
         CANDIDATE_STRATA_COUNT,
         FAMILY_STRATA_COUNT,
+        GAM_GATE_SENTINEL,
+        GAM_RECOVERY_CANDIDATE_IDS,
         LEAF_COUNT,
         SELECTED_REFIT_MAXIMUM,
         calibration_canary_plan,
         calibration_plan,
-        fragility_stress_plan,
+        gam_feasibility_execution_plan,
+        gam_feasibility_plan,
         production_plan,
     )
+    from dsdm_phase1.model_adapters import GOAL029_GAM_CANDIDATES
 
     plan = production_plan(goal029_config)
-    assert len(plan) == LEAF_COUNT == 7168
+    assert len(plan) == LEAF_COUNT == 7224
     assert len({leaf.family_stratum for leaf in plan}) == FAMILY_STRATA_COUNT == 336
-    assert len({leaf.candidate_stratum for leaf in plan}) == CANDIDATE_STRATA_COUNT == 2016
+    assert len({leaf.candidate_stratum for leaf in plan}) == CANDIDATE_STRATA_COUNT == 2072
     assert SELECTED_REFIT_MAXIMUM == 1008
-    assert goal029_config["models"]["planned_counts"]["oof_producing_fold_units"] == 35840
-    assert goal029_config["models"]["planned_counts"]["actual_inner_estimator_fits"] == 44240
+    assert goal029_config["models"]["planned_counts"]["oof_producing_fold_units"] == 36120
+    assert goal029_config["models"]["planned_counts"]["actual_inner_estimator_fits"] == 44520
+    assert tuple(goal029_config["models"]["candidate_ids"]["gam"]) == GAM_RECOVERY_CANDIDATE_IDS
+    assert goal029_config["models"]["goal029_gam_registry"] == {
+        "schema_version": "goal029_gam_registry_v1",
+        "spline_order": 3,
+        "candidate_payloads": GOAL029_GAM_CANDIDATES,
+    }
     assert goal029_config["failure_policy"]["minimum_complete_valid_candidates_by_family"] == {
         family: (1 if family == "intercept" else 2)
         for family in goal029_config["models"]["families"]
@@ -95,7 +122,7 @@ def test_exact_production_and_calibration_plans(goal029_config):
             if leaf.species_id == "trichosurus_vulpecula"
             and leaf.fraction_id == "fraction50"
             and leaf.ladder_id == "ladder00"
-            and leaf.candidate_id == "gam01"
+            and leaf.candidate_id == "hgb04"
         ),
         next(
             leaf
@@ -103,20 +130,652 @@ def test_exact_production_and_calibration_plans(goal029_config):
             if leaf.species_id == "vombatus_ursinus"
             and leaf.fraction_id == "fraction50"
             and leaf.ladder_id == "ladder01"
-            and leaf.candidate_id == "gam01"
+            and leaf.candidate_id == "hgb04"
         ),
     )
-    stress = fragility_stress_plan()
-    assert len(stress) == 32
-    assert {leaf.candidate_id for leaf in stress} == {"gam02", "gam03"}
+    gate = gam_feasibility_plan(goal029_config)
+    assert len(gate) == 56 * 6 == 336
+    assert {leaf.candidate_id for leaf in gate} == set(GAM_RECOVERY_CANDIDATE_IDS)
+    executions = gam_feasibility_execution_plan(goal029_config)
+    assert len(executions) == 337
+    assert sum(record["leaf"] == asdict(GAM_GATE_SENTINEL) for record in executions) == 2
+    assert [record["replicate_index"] for record in executions if record["leaf"] == asdict(GAM_GATE_SENTINEL)] == [0, 1]
     assert goal029_config["calibration"]["planned_counts"] == {
         "spawn_audit_children": 4,
         "canary_leaf_executions": 4,
         "representative_leaf_executions": 90,
-        "fragility_leaf_executions": 32,
-        "total_leaf_executions": 126,
-        "maximum_estimator_fits": 735,
+        "gam_gate_candidate_executions": 337,
+        "gam_gate_fit_attempts": 2022,
+        "total_candidate_executions": 431,
+        "maximum_estimator_fits": 2597,
     }
+
+
+def test_gam_feasibility_status_gate_semantics_and_privacy(goal029_config):
+    from dataclasses import asdict
+
+    from dsdm_phase1.goal029_production import (
+        GAM_GATE_SENTINEL,
+        Goal029Error,
+        _evaluate_gam_feasibility_records,
+        _sha,
+        _validate_gam_candidate_status_record,
+        gam_feasibility_execution_plan,
+    )
+
+    stage_ids = [f"cv_fold{index:02d}" for index in range(5)] + [
+        "outer_refit_replay"
+    ]
+
+    def candidate_record(execution, invalid_stages=()):
+        stages = []
+        for index, stage_id in enumerate(stage_ids):
+            invalid = stage_id in invalid_stages
+            stages.append(
+                {
+                    "stage_id": stage_id,
+                    "status": "invalid" if invalid else "complete",
+                    "diagnostic": (
+                        {
+                            "failure_code": "gam_nonconverged",
+                            "exception_class": "ModelAdapterError",
+                            "exception_category": "strict_nonconvergence",
+                        }
+                        if invalid
+                        else None
+                    ),
+                    "safe_diagnostics": _gam_safe_diagnostics(
+                        valid_prediction=not invalid
+                    ),
+                    "semantic_digest": "" if invalid else f"{index + 1:064x}",
+                }
+            )
+        body = {
+            "schema_version": "goal029_gam_candidate_status_v1",
+            "leaf": execution["leaf"],
+            "replicate_index": execution["replicate_index"],
+            "status": "invalid_candidate" if invalid_stages else "complete",
+            "stages": stages,
+            "fit_attempt_count": 6,
+            "challenge_semantic_digest": (
+                "" if "outer_refit_replay" in invalid_stages else "a" * 64
+            ),
+            "process_instance_digest": (
+                "2" * 64 if execution["replicate_index"] == 1 else "1" * 64
+            ),
+            "real_outer_attempted_open_count": 0,
+            "real_outer_open_count": 0,
+        }
+        return {**body, "candidate_semantic_digest": _sha(body)}
+
+    executions = gam_feasibility_execution_plan(goal029_config)
+    complete = [candidate_record(execution) for execution in executions]
+    summary = _evaluate_gam_feasibility_records(complete, goal029_config)
+    assert summary == {
+        "status": "pass",
+        "candidate_count": 336,
+        "candidate_execution_count": 337,
+        "fit_attempt_count": 2022,
+        "viable_strata_count": 56,
+        "failed_strata_count": 0,
+        "sentinel_reproducible": True,
+        "semantic_digest": summary["semantic_digest"],
+    }
+    assert len(summary["semantic_digest"]) == 64
+    serialized = json.dumps(complete, sort_keys=True)
+    assert all(
+        token not in serialized
+        for token in ('"roc_auc"', '"tss"', '"threshold"', '"oof_score"', '"predictions"')
+    )
+
+    # An otherwise complete candidate is invalid if its required outer refit,
+    # serialization, or response-free replay stage did not complete.
+    failed_refit = candidate_record(
+        executions[0], invalid_stages={"outer_refit_replay"}
+    )
+    _validate_gam_candidate_status_record(failed_refit, goal029_config)
+    assert failed_refit["status"] == "invalid_candidate"
+    one_outer_invalid = list(complete)
+    one_outer_invalid[0] = failed_refit
+    outer_invalid_summary = _evaluate_gam_feasibility_records(
+        one_outer_invalid, goal029_config
+    )
+    assert outer_invalid_summary["status"] == "pass"
+    assert outer_invalid_summary["viable_strata_count"] == 56
+
+    # Two low-lambda completions do not satisfy the conservative-tier rule.
+    low_only = []
+    target = (
+        executions[0]["leaf"]["species_id"],
+        executions[0]["leaf"]["fraction_id"],
+        executions[0]["leaf"]["ladder_id"],
+    )
+    for execution in executions:
+        leaf = execution["leaf"]
+        same = (
+            leaf["species_id"],
+            leaf["fraction_id"],
+            leaf["ladder_id"],
+        ) == target
+        invalid = (
+            {"cv_fold00"}
+            if same and leaf["candidate_id"] not in {"gamr00", "gamr03"}
+            else set()
+        )
+        low_only.append(candidate_record(execution, invalid))
+    low_summary = _evaluate_gam_feasibility_records(
+        low_only, goal029_config
+    )
+    assert low_summary["status"] == "fail"
+    assert low_summary["failed_strata_count"] == 1
+
+    # The independently repeated sentinel must agree. A status/diagnostic
+    # disagreement is a hard error, not a failed viability stratum.
+    disagree = list(complete)
+    duplicate_index = next(
+        index
+        for index, record in enumerate(disagree)
+        if record["leaf"] == asdict(GAM_GATE_SENTINEL)
+        and record["replicate_index"] == 1
+    )
+    disagree[duplicate_index] = candidate_record(
+        executions[duplicate_index], invalid_stages={"cv_fold00"}
+    )
+    with pytest.raises(Goal029Error, match="sentinel_disagreement"):
+        _evaluate_gam_feasibility_records(disagree, goal029_config)
+
+    safe_diagnostic_drift = json.loads(json.dumps(complete))
+    safe_diagnostic_drift[duplicate_index]["stages"][0][
+        "safe_diagnostics"
+    ]["iteration_count"] = 2
+    drift_body = {
+        key: value
+        for key, value in safe_diagnostic_drift[duplicate_index].items()
+        if key != "candidate_semantic_digest"
+    }
+    safe_diagnostic_drift[duplicate_index][
+        "candidate_semantic_digest"
+    ] = _sha(drift_body)
+    with pytest.raises(Goal029Error, match="sentinel_disagreement"):
+        _evaluate_gam_feasibility_records(
+            safe_diagnostic_drift, goal029_config
+        )
+
+    unsafe = json.loads(json.dumps(complete[0]))
+    unsafe["status"] = "invalid_candidate"
+    unsafe["stages"][0]["status"] = "invalid"
+    unsafe["stages"][0]["semantic_digest"] = ""
+    unsafe["stages"][0]["diagnostic"] = {
+        "failure_code": "gam_fit_failed",
+        "exception_class": "ValueError",
+        "exception_category": "value_error",
+        "message": "private path /tmp/secret",
+    }
+    unsafe_body = {
+        key: value
+        for key, value in unsafe.items()
+        if key != "candidate_semantic_digest"
+    }
+    unsafe["candidate_semantic_digest"] = _sha(unsafe_body)
+    with pytest.raises(Goal029Error, match="diagnostic"):
+        _validate_gam_candidate_status_record(unsafe, goal029_config)
+
+
+def test_production_gam_statuses_must_match_feasibility_gate(
+    monkeypatch, goal029_config
+):
+    import dsdm_phase1.goal029_production as production
+
+    from dsdm_phase1.goal029_production import (
+        Goal029Error,
+        _validate_production_gam_states_against_gate,
+        gam_feasibility_execution_plan,
+        validate_family_candidates,
+    )
+
+    gate_records = [
+        {
+            "leaf": execution["leaf"],
+            "replicate_index": execution["replicate_index"],
+            "status": "complete",
+        }
+        for execution in gam_feasibility_execution_plan(goal029_config)
+    ]
+    candidate_records = [
+        {
+            "candidate_stratum": {
+                key: record["leaf"][key]
+                for key in (
+                    "species_id",
+                    "fraction_id",
+                    "ladder_id",
+                    "model_family",
+                    "candidate_id",
+                )
+            },
+            "status": record["status"],
+            "state_origin": "production_execution",
+        }
+        for record in gate_records
+        if record["replicate_index"] == 0
+    ]
+    candidate_states = {"candidate_records": candidate_records}
+    gate = {"records": gate_records}
+    _validate_production_gam_states_against_gate(candidate_states, gate)
+
+    drifted = json.loads(json.dumps(candidate_states))
+    drifted["candidate_records"][0]["status"] = "invalid_candidate"
+    with pytest.raises(Goal029Error, match="complete_became_invalid"):
+        _validate_production_gam_states_against_gate(drifted, gate)
+
+    # A candidate invalid only in the gate outer-refit stage is carried into
+    # production as a blinded overlay and is not treated as a production fit.
+    invalid_key = tuple(
+        candidate_records[-1]["candidate_stratum"][key]
+        for key in (
+            "species_id",
+            "fraction_id",
+            "ladder_id",
+            "model_family",
+            "candidate_id",
+        )
+    )
+    for record in gate_records:
+        key = tuple(
+            record["leaf"][field]
+            for field in (
+                "species_id",
+                "fraction_id",
+                "ladder_id",
+                "model_family",
+                "candidate_id",
+            )
+        )
+        if key == invalid_key:
+            record["status"] = "invalid_candidate"
+    overlaid = json.loads(json.dumps(candidate_states))
+    overlaid_record = overlaid["candidate_records"][-1]
+    overlaid_record.update(
+        {
+            "status": "invalid_candidate",
+            "state_origin": "gam_gate_overlay",
+            "failure_code": "gam_gate_invalid_candidate",
+            "leaves": [],
+        }
+    )
+    _validate_production_gam_states_against_gate(overlaid, gate)
+    invalid_candidate_id = overlaid_record["candidate_stratum"][
+        "candidate_id"
+    ]
+    complete_candidates = {
+        candidate_id: object()
+        for candidate_id in goal029_config["models"]["candidate_ids"]["gam"]
+        if candidate_id != invalid_candidate_id
+    }
+    selection_inputs = []
+
+    def record_selection(values):
+        selection_inputs.extend(values)
+        return values[0]
+
+    monkeypatch.setattr(production, "select_candidate", record_selection)
+    selected = validate_family_candidates(
+        "gam", complete_candidates, {invalid_candidate_id}
+    )
+    assert selected in complete_candidates.values()
+    assert selection_inputs == [
+        complete_candidates[candidate_id]
+        for candidate_id in sorted(complete_candidates)
+    ]
+
+
+def test_gam_fit_exception_diagnostics_are_sanitized_and_classified():
+    from dsdm_phase1.goal029_production import (
+        Goal029Error,
+        _sanitize_gam_gate_exception,
+    )
+    from dsdm_phase1.model_adapters import ModelAdapterError
+
+    wrapped = ModelAdapterError("gam_fit_failed")
+    wrapped.__cause__ = ValueError("row 17 at /private/path")
+    assert _sanitize_gam_gate_exception(wrapped) == {
+        "failure_code": "gam_fit_failed",
+        "exception_class": "ValueError",
+        "exception_category": "value_error",
+    }
+
+    nonconverged = ModelAdapterError("gam_nonconverged")
+    assert _sanitize_gam_gate_exception(nonconverged) == {
+        "failure_code": "gam_nonconverged",
+        "exception_class": "ModelAdapterError",
+        "exception_category": "strict_nonconvergence",
+    }
+
+    class UnknownFailure(Exception):
+        pass
+
+    unknown = ModelAdapterError("gam_fit_failed")
+    unknown.__cause__ = UnknownFailure("secret")
+    with pytest.raises(Goal029Error, match="unclassified"):
+        _sanitize_gam_gate_exception(unknown)
+
+    from dsdm_phase1.goal029_production import (
+        _validate_gam_gate_diagnostic,
+    )
+
+    with pytest.raises(Goal029Error, match="diagnostic_invalid"):
+        _validate_gam_gate_diagnostic(
+            {
+                "failure_code": "gam_fit_failed",
+                "exception_class": "ValueError",
+                "exception_category": "serialization_error",
+            }
+        )
+
+
+def test_gam_gate_worker_uses_status_only_five_folds_and_refit_replay(
+    monkeypatch, goal029_config
+):
+    from dataclasses import asdict
+
+    import dsdm_phase1.goal029_production as production
+    from dsdm_phase1.goal029_production import (
+        GAM_GATE_SENTINEL,
+        _gam_gate_worker_candidate,
+        enforce_numerical_thread_policy,
+    )
+    from dsdm_phase1.model_adapters import FitReport
+    from dsdm_phase1.modeling_contract import OuterVault
+
+    broker, provider = _foundation(n=80)
+    vault = OuterVault(None, synthetic=False)
+    thread_evidence = enforce_numerical_thread_policy(goal029_config)
+    monkeypatch.setattr(production, "_CALIBRATION_CONFIG", goal029_config)
+    monkeypatch.setattr(production, "_CALIBRATION_BROKER", broker)
+    monkeypatch.setattr(production, "_CALIBRATION_PROVIDER", provider)
+    monkeypatch.setattr(production, "_CALIBRATION_VAULT", vault)
+    monkeypatch.setattr(
+        production, "_WORKER_THREAD_EVIDENCE", thread_evidence
+    )
+    monkeypatch.setattr(
+        production, "_WORKER_PROCESS_INSTANCE_DIGEST", "1" * 64
+    )
+    fit_transforms = []
+    prediction_rows = []
+
+    class Fitted:
+        def predict_scores(self, batch):
+            prediction_rows.append(len(batch.keys))
+            return np.full(len(batch.keys), 0.5, dtype=np.float64)
+
+        def serialize(self, path):
+            Path(path).write_bytes(b"status-only-model")
+            return {}
+
+    fitted = Fitted()
+
+    class Adapter:
+        family = "gam"
+
+        def fit(
+            self,
+            train,
+            stopping,
+            candidate,
+            seed,
+            exact_epochs=None,
+        ):
+            assert stopping is None and exact_epochs is None
+            fit_transforms.append(train.transform_id)
+            return fitted, FitReport(
+                True, 1, None, None, None, (), 0.0, 1
+            )
+
+    monkeypatch.setattr(production, "build_adapter", lambda family: Adapter())
+    monkeypatch.setattr(
+        production,
+        "load_fitted_model",
+        lambda path, digest: fitted,
+    )
+    monkeypatch.setattr(
+        production,
+        "roc_auc_score",
+        lambda *_args, **_kwargs: (_ for _ in ()).throw(
+            AssertionError("performance metric called")
+        ),
+    )
+    result = _gam_gate_worker_candidate(
+        {"leaf": asdict(GAM_GATE_SENTINEL), "replicate_index": 0}
+    )
+    assert fit_transforms == [
+        "cv_fold00",
+        "cv_fold01",
+        "cv_fold02",
+        "cv_fold03",
+        "cv_fold04",
+        "outer",
+    ]
+    assert prediction_rows[:5] == [16] * 5
+    assert result["status"] == "complete"
+    assert [stage["status"] for stage in result["stages"]] == [
+        "complete"
+    ] * 6
+    assert result["fit_attempt_count"] == 6
+    assert vault.attempted_open_count == vault.open_count == 0
+    assert all(
+        token not in json.dumps(result, sort_keys=True)
+        for token in ('"roc_auc"', '"tss"', '"threshold"', '"oof_score"')
+    )
+
+    def serialization_failure(_path):
+        raise OSError("private filename omitted")
+
+    monkeypatch.setattr(fitted, "serialize", serialization_failure)
+    failed = _gam_gate_worker_candidate(
+        {"leaf": asdict(GAM_GATE_SENTINEL), "replicate_index": 0}
+    )
+    assert failed["status"] == "invalid_candidate"
+    assert failed["stages"][-1]["diagnostic"] == {
+        "failure_code": "gam_serialization_failed",
+        "exception_class": "OSError",
+        "exception_category": "serialization_error",
+    }
+
+    monkeypatch.setattr(
+        fitted,
+        "serialize",
+        lambda path: Path(path).write_bytes(b"status-only-model"),
+    )
+    call_count = 0
+
+    def invalid_first_prediction(batch):
+        nonlocal call_count
+        call_count += 1
+        if call_count == 1:
+            from dsdm_phase1.model_adapters import ModelAdapterError
+
+            raise ModelAdapterError("nonfinite_or_invalid_scores")
+        return np.full(len(batch.keys), 0.5, dtype=np.float64)
+
+    monkeypatch.setattr(fitted, "predict_scores", invalid_first_prediction)
+    candidate_local = _gam_gate_worker_candidate(
+        {"leaf": asdict(GAM_GATE_SENTINEL), "replicate_index": 0}
+    )
+    assert candidate_local["status"] == "invalid_candidate"
+    assert candidate_local["stages"][0]["diagnostic"] == {
+        "failure_code": "nonfinite_or_invalid_scores",
+        "exception_class": "ModelAdapterError",
+        "exception_category": "invalid_prediction",
+    }
+    assert candidate_local["stages"][0]["safe_diagnostics"][
+        "prediction_finiteness"
+    ] == "failed_validation"
+    assert candidate_local["stages"][0]["safe_diagnostics"][
+        "iteration_count"
+    ] == 1
+
+
+def test_gam_gate_receipt_binds_context_threads_plan_and_privacy(
+    goal029_config
+):
+    from dataclasses import asdict
+    import socket
+
+    from dsdm_phase1.goal029_production import (
+        ExecutionContext,
+        Goal029Error,
+        _evaluate_gam_feasibility_records,
+        _sha,
+        _validate_gam_feasibility_receipt,
+        enforce_numerical_thread_policy,
+        gam_feasibility_execution_plan,
+        numerical_thread_policy,
+    )
+
+    evidence = enforce_numerical_thread_policy(goal029_config)
+    context = ExecutionContext(
+        *(["1" * 64] * 4),
+        socket.gethostname(),
+        "2" * 64,
+        _sha(numerical_thread_policy(goal029_config)),
+        evidence["evidence_digest"],
+    )
+    executions = gam_feasibility_execution_plan(goal029_config)
+    stages = [f"cv_fold{index:02d}" for index in range(5)] + [
+        "outer_refit_replay"
+    ]
+    records = []
+    for execution in executions:
+        body = {
+            "schema_version": "goal029_gam_candidate_status_v1",
+            "leaf": execution["leaf"],
+            "replicate_index": execution["replicate_index"],
+            "status": "complete",
+            "stages": [
+                {
+                    "stage_id": stage_id,
+                    "status": "complete",
+                    "diagnostic": None,
+                    "safe_diagnostics": _gam_safe_diagnostics(),
+                    "semantic_digest": f"{index + 1:064x}",
+                }
+                for index, stage_id in enumerate(stages)
+            ],
+            "fit_attempt_count": 6,
+            "challenge_semantic_digest": "a" * 64,
+            "process_instance_digest": (
+                "2" * 64 if execution["replicate_index"] == 1 else "1" * 64
+            ),
+            "real_outer_attempted_open_count": 0,
+            "real_outer_open_count": 0,
+        }
+        records.append(
+            {**body, "candidate_semantic_digest": _sha(body)}
+        )
+    summary = _evaluate_gam_feasibility_records(records, goal029_config)
+    gib = 1024**3
+    receipt_body = {
+        "schema_version": "goal029_gam_feasibility_gate_v1",
+        "status": "pass",
+        "actual_host": socket.gethostname(),
+        "execution_context_digest": _sha(asdict(context)),
+        "gam_registry_digest": _sha(
+            goal029_config["models"]["goal029_gam_registry"]
+        ),
+        "execution_plan_digest": _sha(list(executions)),
+        "workers": 1,
+        "parent_thread_evidence": evidence,
+        "worker_thread_evidence": [
+            {
+                "worker_pid": 1234,
+                "evidence": evidence,
+                "process_instance_digest": "1" * 64,
+            },
+            {
+                "worker_pid": 5678,
+                "evidence": evidence,
+                "process_instance_digest": "2" * 64,
+            },
+        ],
+        "fresh_processes": True,
+        "checkpoint_reuse": False,
+        "fresh_destination": True,
+        "candidate_count": 336,
+        "candidate_execution_count": 337,
+        "fit_attempt_count": 2022,
+        "records": records,
+        "summary": summary,
+        "performance_fields_exposed": False,
+        "telemetry": {
+            "wall_seconds": 1.0,
+            "peak_rss_bytes": 1024,
+            "free_memory_before_bytes": 16 * gib,
+            "free_memory_after_bytes": 15 * gib,
+            "swap_before_bytes": 0,
+            "swap_after_bytes": 0,
+        },
+        "real_outer_attempted_open_count": 0,
+        "real_outer_open_count": 0,
+    }
+    receipt = {**receipt_body, "receipt_digest": _sha(receipt_body)}
+    _validate_gam_feasibility_receipt(
+        receipt,
+        config=goal029_config,
+        context=context,
+        expected_host=socket.gethostname(),
+        expected_workers=1,
+    )
+
+    unsafe = json.loads(json.dumps(receipt))
+    unsafe["summary"]["roc_auc"] = 0.9
+    unsafe_body = {
+        key: value for key, value in unsafe.items() if key != "receipt_digest"
+    }
+    unsafe["receipt_digest"] = _sha(unsafe_body)
+    with pytest.raises(Goal029Error, match="performance"):
+        _validate_gam_feasibility_receipt(
+            unsafe,
+            config=goal029_config,
+            context=context,
+            expected_host=socket.gethostname(),
+            expected_workers=1,
+        )
+
+    same_process = json.loads(json.dumps(receipt))
+    same_process["worker_thread_evidence"][1][
+        "process_instance_digest"
+    ] = "1" * 64
+    same_process_body = {
+        key: value
+        for key, value in same_process.items()
+        if key != "receipt_digest"
+    }
+    same_process["receipt_digest"] = _sha(same_process_body)
+    with pytest.raises(Goal029Error, match="process_instance_not_independent"):
+        _validate_gam_feasibility_receipt(
+            same_process,
+            config=goal029_config,
+            context=context,
+            expected_host=socket.gethostname(),
+            expected_workers=1,
+        )
+
+    drifted = json.loads(json.dumps(receipt))
+    drifted["gam_registry_digest"] = "b" * 64
+    drifted_body = {
+        key: value
+        for key, value in drifted.items()
+        if key != "receipt_digest"
+    }
+    drifted["receipt_digest"] = _sha(drifted_body)
+    with pytest.raises(Goal029Error, match="receipt"):
+        _validate_gam_feasibility_receipt(
+            drifted,
+            config=goal029_config,
+            context=context,
+            expected_host=socket.gethostname(),
+            expected_workers=1,
+        )
 
 
 def test_numerical_thread_policy_is_live_and_fails_closed(goal029_config):
@@ -439,7 +1098,7 @@ def test_deterministic_audit_is_exact_and_complete(goal029_config):
     digest = "a" * 64
     audit = audit_plan(plan, digest)
     assert audit == audit_plan(plan, digest)
-    assert len(audit) == 359
+    assert len(audit) == 362
     assert len({leaf.family_stratum for leaf in audit}) == 336
     assert {leaf.model_family for leaf in audit} == set(FAMILIES)
     assert {leaf.candidate_id for leaf in audit} == {
@@ -719,6 +1378,29 @@ def test_five_seed_merge_and_anchor_quorum(goal029_config):
             "elastic_net",
             "enet00",
         )
+
+    gam_stratum = replace(
+        results["seed00"].stratum, model_family="gam"
+    )
+    gamr00 = replace(
+        results["seed00"],
+        stratum=gam_stratum,
+        candidate_id="gamr00",
+    )
+    gamr03 = replace(gamr00, candidate_id="gamr03")
+    gamr01 = replace(gamr00, candidate_id="gamr01")
+    with pytest.raises(Goal029Error, match="conservative"):
+        validate_family_candidates(
+            "gam",
+            {"gamr00": gamr00, "gamr03": gamr03},
+            {"gamr01", "gamr02", "gamr04", "gamr05"},
+        )
+    selected_gam = validate_family_candidates(
+        "gam",
+        {"gamr00": gamr00, "gamr01": gamr01},
+        {"gamr02", "gamr03", "gamr04", "gamr05"},
+    )
+    assert selected_gam.candidate_id in {"gamr00", "gamr01"}
 
 
 def test_warning_policy_and_blinded_failure_receipt(goal029_config):
@@ -1064,6 +1746,14 @@ def test_transaction_marker_validation_unmarked_rejection_and_rollback(
     assert not private.exists() and not evidence.exists()
     assert (stage_private / "payload.bin").read_bytes() == b"private"
     assert (stage_evidence / "summary.json").is_file()
+    assert not (stage_private / "core_manifest.json").exists()
+    assert not (stage_evidence / "core_manifest.json").exists()
+    assert not (stage_evidence / "PAIR.json").exists()
+    monkeypatch.setattr(production.os, "rename", real_rename)
+    publish_transaction_pair(
+        stage_private, stage_evidence, private, evidence, "b" * 64
+    )
+    assert validate_transaction_pair(private, evidence)["status"] == "pass"
 
     stage_private = tmp_path / "stage-private-marker"
     stage_evidence = tmp_path / "stage-evidence-marker"
@@ -1090,6 +1780,120 @@ def test_transaction_marker_validation_unmarked_rejection_and_rollback(
     assert (stage_private / "payload.bin").read_bytes() == b"private"
     assert (stage_evidence / "summary.json").is_file()
     assert not (stage_evidence / "FINALIZED.json").exists()
+    assert not (stage_private / "core_manifest.json").exists()
+    assert not (stage_evidence / "core_manifest.json").exists()
+    assert not (stage_evidence / "PAIR.json").exists()
+    monkeypatch.setattr(production.os, "rename", real_rename)
+    publish_transaction_pair(
+        stage_private, stage_evidence, private, evidence, "c" * 64
+    )
+    assert validate_transaction_pair(private, evidence)["status"] == "pass"
+
+
+def test_production_startup_resets_only_regenerable_late_metadata(
+    monkeypatch, tmp_path
+):
+    from dataclasses import asdict
+
+    import dsdm_phase1.goal029_production as production
+    from dsdm_phase1.goal029_production import (
+        ExecutionContext,
+        Goal029Error,
+        _sha,
+        run_production,
+    )
+
+    context = ExecutionContext(
+        "1" * 64,
+        "2" * 64,
+        "3" * 64,
+        "4" * 64,
+        "unit-host",
+        "5" * 64,
+        "6" * 64,
+        "7" * 64,
+    )
+    config = {
+        "artifacts": {
+            "private_destination": "private/final",
+            "tracked_destination": "evidence/final",
+        }
+    }
+    calibration = {"private": {"receipt_digest": "8" * 64}}
+    plan = ()
+    run_id = _sha(
+        {
+            "execution_context": asdict(context),
+            "canonical_plan_digest": _sha([]),
+            "calibration_receipt_digest": "8" * 64,
+        }
+    )
+    private_destination = tmp_path / "private/final"
+    evidence_destination = tmp_path / "evidence/final"
+    private_stage = (
+        private_destination.parent
+        / f".{private_destination.name}.stage-{run_id}"
+    )
+    evidence_stage = (
+        evidence_destination.parent
+        / f".{evidence_destination.name}.stage-{run_id}"
+    )
+    checkpoint = private_stage / "checkpoints/keep/checkpoint.json"
+    checkpoint.parent.mkdir(parents=True)
+    checkpoint.write_text('{"durable":true}\n', encoding="utf-8")
+    evidence_stage.mkdir(parents=True)
+    for path in (
+        private_stage / "source_audit.json",
+        private_stage / "core_manifest.json",
+        evidence_stage / "core_manifest.json",
+        evidence_stage / "PAIR.json",
+        evidence_stage / ".FINALIZED.interrupted.tmp",
+    ):
+        path.write_text("{}\n", encoding="utf-8")
+
+    monkeypatch.setattr(
+        production, "load_goal029_config", lambda _root: config
+    )
+    monkeypatch.setattr(
+        production, "execution_context", lambda _root, _config: context
+    )
+    monkeypatch.setattr(
+        production,
+        "load_calibration_authority",
+        lambda _root, _config, _context: calibration,
+    )
+    monkeypatch.setattr(
+        production, "production_plan", lambda _config: plan
+    )
+    ingest_calls = 0
+
+    def stop_after_reset(_root, _config):
+        nonlocal ingest_calls
+        ingest_calls += 1
+        assert checkpoint.read_text(encoding="utf-8") == '{"durable":true}\n'
+        assert not (private_stage / "source_audit.json").exists()
+        assert not (private_stage / "core_manifest.json").exists()
+        assert not (evidence_stage / "core_manifest.json").exists()
+        assert not (evidence_stage / "PAIR.json").exists()
+        assert not (
+            evidence_stage / ".FINALIZED.interrupted.tmp"
+        ).exists()
+        assert not private_destination.exists()
+        assert not evidence_destination.exists()
+        raise Goal029Error("stop_after_late_reset")
+
+    monkeypatch.setattr(
+        production, "ingest_production_foundation", stop_after_reset
+    )
+    with pytest.raises(Goal029Error, match="stop_after_late_reset"):
+        run_production(tmp_path)
+    assert ingest_calls == 1
+
+    (private_stage / "source_audit.json").symlink_to(checkpoint)
+    with pytest.raises(Goal029Error, match="late_metadata_invalid"):
+        run_production(tmp_path)
+    assert ingest_calls == 1
+    assert checkpoint.is_file()
 
 
 def test_tracked_privacy_walker_rejects_metrics_paths_and_response_ids():
@@ -1147,7 +1951,7 @@ def test_production_scheduler_groups_exact_candidate_seed_strata(goal029_config)
         ],
     }
     groups = _production_candidate_groups(record)
-    assert len(groups) == CANDIDATE_STRATA_COUNT == 2016
+    assert len(groups) == CANDIDATE_STRATA_COUNT == 2072
     assert [key for key, _ in groups] == list(dict.fromkeys(key for key, _ in groups))
     for _, records in groups:
         leaves = [record["leaf"] for record in records]
@@ -1296,10 +2100,11 @@ def test_calibration_authority_revalidates_linked_trials(
     from dsdm_phase1.goal029_production import (
         Goal029Error,
         _sha,
+        _evaluate_gam_feasibility_records,
         calibration_canary_plan,
         calibration_plan,
         execution_context,
-        fragility_stress_plan,
+        gam_feasibility_execution_plan,
         load_calibration_authority,
     )
     from dsdm_phase1.modeling_contract import canonical_json
@@ -1313,7 +2118,7 @@ def test_calibration_authority_revalidates_linked_trials(
     assert thread_evidence["evidence_digest"] == context.thread_evidence_digest
     canary_leaves = calibration_canary_plan(goal029_config)
     representative_leaves = calibration_plan(goal029_config)
-    fragility_leaves = fragility_stress_plan()
+    gam_gate_executions = gam_feasibility_execution_plan(goal029_config)
     calibration_id = _sha(
         {
             "execution_context": asdict(context),
@@ -1322,9 +2127,7 @@ def test_calibration_authority_revalidates_linked_trials(
             "representative_leaves": [
                 asdict(leaf) for leaf in representative_leaves
             ],
-            "fragility_leaves": [
-                asdict(leaf) for leaf in fragility_leaves
-            ],
+            "gam_gate_executions": list(gam_gate_executions),
             "canary_workers": [1, 2],
             "representative_workers": [1, 2, 4],
         }
@@ -1446,9 +2249,88 @@ def test_calibration_authority_revalidates_linked_trials(
         make_trial("representative", representative_leaves, 4, 9.2),
     ]
     selected_workers = 1
-    fragility_trial = make_trial(
-        "fragility", fragility_leaves, selected_workers, 8.0
+    stage_ids = [f"cv_fold{index:02d}" for index in range(5)] + [
+        "outer_refit_replay"
+    ]
+    gam_gate_records = []
+    for execution in gam_gate_executions:
+        record_body = {
+            "schema_version": "goal029_gam_candidate_status_v1",
+            "leaf": execution["leaf"],
+            "replicate_index": execution["replicate_index"],
+            "status": "complete",
+            "stages": [
+                {
+                    "stage_id": stage_id,
+                    "status": "complete",
+                    "diagnostic": None,
+                    "safe_diagnostics": _gam_safe_diagnostics(),
+                    "semantic_digest": f"{index + 1:064x}",
+                }
+                for index, stage_id in enumerate(stage_ids)
+            ],
+            "fit_attempt_count": 6,
+            "challenge_semantic_digest": "a" * 64,
+            "process_instance_digest": (
+                "2" * 64 if execution["replicate_index"] == 1 else "1" * 64
+            ),
+            "real_outer_attempted_open_count": 0,
+            "real_outer_open_count": 0,
+        }
+        gam_gate_records.append(
+            {
+                **record_body,
+                "candidate_semantic_digest": _sha(record_body),
+            }
+        )
+    gam_gate_summary = _evaluate_gam_feasibility_records(
+        gam_gate_records, goal029_config
     )
+    gate_body = {
+        "schema_version": "goal029_gam_feasibility_gate_v1",
+        "status": "pass",
+        "actual_host": socket.gethostname(),
+        "execution_context_digest": _sha(asdict(context)),
+        "gam_registry_digest": _sha(
+            goal029_config["models"]["goal029_gam_registry"]
+        ),
+        "execution_plan_digest": _sha(list(gam_gate_executions)),
+        "workers": selected_workers,
+        "parent_thread_evidence": thread_evidence,
+        "worker_thread_evidence": [
+            {
+                "worker_pid": 1234,
+                "evidence": thread_evidence,
+                "process_instance_digest": "1" * 64,
+            },
+            {
+                "worker_pid": 5678,
+                "evidence": thread_evidence,
+                "process_instance_digest": "2" * 64,
+            },
+        ],
+        "fresh_processes": True,
+        "checkpoint_reuse": False,
+        "fresh_destination": True,
+        "candidate_count": 336,
+        "candidate_execution_count": 337,
+        "fit_attempt_count": 2022,
+        "records": gam_gate_records,
+        "summary": gam_gate_summary,
+        "performance_fields_exposed": False,
+        "telemetry": {
+            "wall_seconds": 8.0,
+            "peak_rss_bytes": 1024,
+            "free_memory_before_bytes": 16 * gib,
+            "free_memory_after_bytes": 12 * gib,
+            "swap_before_bytes": 0,
+            "swap_after_bytes": 0,
+        },
+        "real_outer_attempted_open_count": 0,
+        "real_outer_open_count": 0,
+    }
+    gam_gate = {**gate_body, "receipt_digest": _sha(gate_body)}
+    write("gam-feasibility/receipt.json", gam_gate)
 
     support = []
     for species_id in goal029_config["scope"]["species"]:
@@ -1475,7 +2357,7 @@ def test_calibration_authority_revalidates_linked_trials(
                 }
             )
     private = {
-        "schema_version": "goal029_calibration_master_v2",
+        "schema_version": "goal029_calibration_master_v3",
         "calibration_id": calibration_id,
         "actual_host": socket.gethostname(),
         "execution_context": asdict(context),
@@ -1509,28 +2391,24 @@ def test_calibration_authority_revalidates_linked_trials(
             }
             for trial in representative_trials
         ],
-        "fragility_receipt": {
-            "role": "fragility",
+        "gam_feasibility_receipt": {
             "workers": selected_workers,
-            "relative_path": (
-                f"fragility/workers{selected_workers}/receipt.json"
-            ),
-            "receipt_digest": fragility_trial["receipt_digest"],
+            "relative_path": "gam-feasibility/receipt.json",
+            "receipt_digest": gam_gate["receipt_digest"],
         },
         "selected_workers": selected_workers,
         "canary_semantic_digest": canary_trials[0]["semantic_digest"],
         "representative_semantic_digest": representative_trials[0][
             "semantic_digest"
         ],
-        "fragility_semantic_digest": fragility_trial["semantic_digest"],
-        "fragility_invalid_candidate_count": 0,
+        "gam_gate_semantic_digest": gam_gate_summary["semantic_digest"],
         "real_outer_attempted_open_count": 0,
         "real_outer_open_count": 0,
     }
     private["receipt_digest"] = _sha(private)
     write("receipt.json", private)
     tracked = {
-        "schema_version": "goal029_calibration_index_v2",
+        "schema_version": "goal029_calibration_index_v3",
         "goal_id": goal029_config["identity"]["goal_id"],
         "status": "pass",
         "thread_policy_digest": context.thread_policy_digest,
@@ -1545,11 +2423,14 @@ def test_calibration_authority_revalidates_linked_trials(
             "semantic_digest"
         ],
         "selected_workers": selected_workers,
-        "fragility_workers": selected_workers,
-        "fragility_leaf_count": 32,
-        "fragility_semantic_digest": fragility_trial["semantic_digest"],
+        "gam_gate_status": "pass",
+        "gam_gate_candidate_count": 336,
+        "gam_gate_candidate_execution_count": 337,
+        "gam_gate_fit_attempt_count": 2022,
+        "gam_gate_viable_strata_count": 56,
+        "gam_gate_semantic_digest": gam_gate_summary["semantic_digest"],
+        "gam_gate_receipt_digest": gam_gate["receipt_digest"],
         "class_support_strata_count": 56,
-        "fragility_invalid_candidate_count": 0,
         "private_receipt_digest": private["receipt_digest"],
         "actual_host_digest": _sha(socket.gethostname()),
         "real_outer_attempted_open_count": 0,
@@ -1566,12 +2447,12 @@ def test_calibration_authority_revalidates_linked_trials(
     )
     assert authority["private"]["selected_workers"] == 1
     assert [trial["workers"] for trial in authority["trials"]] == [1, 2, 4]
-    assert authority["fragility_trial"]["workers"] == 1
+    assert authority["gam_feasibility_gate"]["workers"] == 1
+    assert authority["gam_feasibility_gate"]["status"] == "pass"
 
     tampered = {
         **tracked,
-        "selected_workers": 2,
-        "fragility_workers": 2,
+        "gam_gate_receipt_digest": "b" * 64,
     }
     tracked_path.write_text(
         canonical_json(tampered) + "\n", encoding="utf-8"

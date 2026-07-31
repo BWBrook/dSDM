@@ -64,7 +64,51 @@ def test_elastic_gam_and_residual_real_roundtrip(tmp_path):
 
 
 def test_all_canonical_candidates_and_coordinated_tamper_rejected(tmp_path):
-    from dsdm_phase1.model_adapters import CANONICAL_CANDIDATES, ModelAdapterError, build_adapter, load_fitted_model, validate_candidate
+    from dsdm_phase1.model_adapters import (
+        CANONICAL_CANDIDATES,
+        GOAL029_GAM_CANDIDATES,
+        ModelAdapterError,
+        build_adapter,
+        goal029_candidate_authority,
+        load_fitted_model,
+        validate_candidate,
+    )
+    assert {
+        candidate_id: CANONICAL_CANDIDATES[candidate_id]
+        for candidate_id in ("gam00", "gam01", "gam02", "gam03", "gam04")
+    } == {
+        "gam00": {"family": "gam", "id": "gam00", "n_splines": 6, "lam": .1, "max_iter": 500, "tol": 1e-5},
+        "gam01": {"family": "gam", "id": "gam01", "n_splines": 6, "lam": 1, "max_iter": 500, "tol": 1e-5},
+        "gam02": {"family": "gam", "id": "gam02", "n_splines": 8, "lam": 1, "max_iter": 500, "tol": 1e-5},
+        "gam03": {"family": "gam", "id": "gam03", "n_splines": 8, "lam": 10, "max_iter": 500, "tol": 1e-5},
+        "gam04": {"family": "gam", "id": "gam04", "n_splines": 12, "lam": 10, "max_iter": 500, "tol": 1e-5},
+    }
+    assert GOAL029_GAM_CANDIDATES == {
+        "gamr00": {"family": "gam", "id": "gamr00", "n_splines": 4, "lam": 10, "max_iter": 500, "tol": 1e-5},
+        "gamr01": {"family": "gam", "id": "gamr01", "n_splines": 4, "lam": 100, "max_iter": 500, "tol": 1e-5},
+        "gamr02": {"family": "gam", "id": "gamr02", "n_splines": 4, "lam": 1000, "max_iter": 500, "tol": 1e-5},
+        "gamr03": {"family": "gam", "id": "gamr03", "n_splines": 6, "lam": 10, "max_iter": 500, "tol": 1e-5},
+        "gamr04": {"family": "gam", "id": "gamr04", "n_splines": 6, "lam": 100, "max_iter": 500, "tol": 1e-5},
+        "gamr05": {"family": "gam", "id": "gamr05", "n_splines": 6, "lam": 1000, "max_iter": 500, "tol": 1e-5},
+    }
+    assert not any(
+        candidate_id in CANONICAL_CANDIDATES
+        for candidate_id in GOAL029_GAM_CANDIDATES
+    )
+    with pytest.raises(ModelAdapterError, match="candidate_registry_mismatch"):
+        validate_candidate("gam", GOAL029_GAM_CANDIDATES["gamr00"])
+    with goal029_candidate_authority(GOAL029_GAM_CANDIDATES):
+        assert all(
+            CANONICAL_CANDIDATES[candidate_id] == candidate
+            for candidate_id, candidate in GOAL029_GAM_CANDIDATES.items()
+        )
+        for candidate in GOAL029_GAM_CANDIDATES.values():
+            validate_candidate("gam", candidate)
+    with pytest.raises(ModelAdapterError, match="authority_mismatch"):
+        with goal029_candidate_authority(
+            {"gamr00": GOAL029_GAM_CANDIDATES["gamr00"]}
+        ):
+            pass
     for candidate in CANONICAL_CANDIDATES.values():
         validate_candidate(candidate["family"], candidate)
     with pytest.raises(ModelAdapterError): validate_candidate("intercept", {**CANONICAL_CANDIDATES["null00"], "positive_fraction": 0.5})
