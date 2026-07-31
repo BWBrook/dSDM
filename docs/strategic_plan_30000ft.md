@@ -151,11 +151,12 @@ are complete; scientific model fitting remains a later phase.
 
 ### Phase 3: Tasmanian conventional SDM baselines
 
-Status: design governed by Goal027; implementation not begun.
+Status: completed and sealed by Goal029; outer assessment remains unopened and
+is deferred to the method-freeze evaluation.
 
 Establish the accepted conventional reference set:
 
-- intercept-only null, elastic-net logistic, penalised GAM, random forest,
+- intercept-only null, elastic-net logistic, random forest, histogram
   gradient-boosted trees, and shallow one-hidden-layer ANN;
 - tune without contaminating the frozen outer test;
 - evaluate continuous suitability first, then the predeclared inner-OOF
@@ -168,7 +169,8 @@ complement.
 
 ### Phase 4: Tasmanian feedforward dSDM development
 
-Status: design governed by Goal027; implementation not begun.
+Status: not implemented. The next gate is a separate exact execution-contract
+and architecture-search freeze before building the full PyTorch engine.
 
 Develop the proposed residual-MLP/shared-trunk dSDM as the central
 methodological contribution:
@@ -246,10 +248,12 @@ and which analyses must be rerun after a change.
 
 ## Current position and next step
 
-The source and analysis-ready foundations for the Tasmanian prove-out are now
-complete through Goal026, and Goal027 records the supervisor-approved
-modelling design freeze. This is a design boundary, not a fitted result or a
-claim of programme completion.
+The source and analysis-ready foundations and conventional modelling engine
+for the Tasmanian prove-out are now complete through Goal029. Goal027 records
+the supervisor-approved scientific design, Goal028 proved the conventional
+machinery, and Goal029 sealed five-family production engineering and
+provenance. The frozen outer assessment remains unopened, so this is not an
+ecological performance result or a claim of programme completion.
 
 Goals 017–024 are complete. The frozen 50,834-record ALA snapshot was replayed
 into a provenance-preserving nine-candidate presence layer with 40,263 accepted
@@ -280,9 +284,11 @@ categorical predictors remain nominal and model-family encoding is deferred.
 Identity-bearing lazy materialisation, support diagnostics, exact upstream
 bindings, and replayable receipts are frozen.
 
-Goal027 now documents the supervisor-approved Tasmanian modelling protocol:
-the accepted conventional baselines, multi-head and scalar-`q` controls,
-nested target learning curve, shared architecture and replication rules,
-primary contrasts, and cross-case version boundary. The next gate is Barry's
-review of the written protocol, followed by a separate implementation goal;
-no models have been run.
+Goal027 documents the supervisor-approved Tasmanian modelling protocol: the
+accepted conventional baselines, multi-head and scalar-`q` controls, nested
+target learning curve, shared architecture and replication rules, primary
+contrasts, and cross-case version boundary. Goals028--029 implemented and
+sealed the five-family conventional engine without opening the outer
+assessment or publishing performance outcomes. The next project decision is
+Goal030: whether to authorise the separate Phase 4 execution-contract and
+architecture-search freeze before its full implementation.

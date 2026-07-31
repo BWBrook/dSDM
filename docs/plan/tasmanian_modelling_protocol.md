@@ -1,10 +1,10 @@
 # Tasmanian modelling protocol (version 0.1)
 
 **Authority and status.** This is the Barry-approved design freeze dated
-2026-07-30. Goal027 records scientific policy and the implementation-planning
-boundary; it is not a fitted result. Exact implementation grids, runtime
-manifests, and package choices are deferred to a separately accepted
-implementation goal. They may refine execution details, but cannot silently
+2026-07-30. Goal027 records scientific policy; Goals028--029 bind and seal the
+conventional implementation. The frozen outer assessment remains unopened,
+so this engineering/provenance milestone makes no ecological performance
+claim. Later execution details may refine implementation, but cannot silently
 change this protocol.
 
 ## Estimand and response domain
@@ -72,12 +72,15 @@ is prohibited; use regularisation. Correlated importance is grouped or
 conditional. A reduced, ecologically defensible subset is sensitivity-only and
 is allowed only for the leading conventional model and dSDM.
 
-The conventional set is: intercept-only null, elastic-net logistic,
-penalised GAM, random forest, gradient-boosted trees, and a shallow
-one-hidden-layer ANN. A deep single-species residual MLP is a direct
-no-transfer control, not a conventional model. MaxEnt and SVM are omitted
-from primary analyses; BIOCLIM is a possible later historical benchmark. No
-large primary ensemble is planned.
+The final conventional set is: intercept-only null, elastic-net logistic,
+random forest, histogram gradient-boosted trees, and a shallow
+one-hidden-layer ANN. Penalised GAM was prospectively removed after two
+bounded feasibility attempts failed the all-strata rule; successful strata
+were not retained selectively. MARS remains parked as a future idea and was
+not substituted. A deep single-species residual MLP is a direct no-transfer
+control, not a conventional model. MaxEnt and SVM are omitted from primary
+analyses; BIOCLIM is a possible later historical benchmark. No large primary
+ensemble is planned.
 
 ## Community controls and dSDM ladder
 
@@ -179,8 +182,10 @@ only eight species, and architecture-selection uncertainty.
 
 ## Implementation boundary
 
-Goal027 authorises this written protocol only. A later implementation goal
-must bind data products, exact candidate grids, runtime/optimizer/batch
-manifests, deterministic seeds, software versions, and acceptance checks
-without changing the scientific policy above. No model, prediction, metric,
-or fitted transformation is claimed here.
+Goal027 authorises the scientific protocol. Goals028--029 bind the conventional
+data products, exact candidate grids, runtime manifests, deterministic seeds,
+software versions, and acceptance checks without changing that policy. Goal029
+seals conventional engineering and provenance only: its private fitted models
+remain off Git, the frozen outer assessment remains unopened, and no metric or
+ecological performance result is claimed here. Phase 4 requires a separate
+implementation gate.

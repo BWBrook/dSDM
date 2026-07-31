@@ -474,3 +474,28 @@
   its bound source-tree digest; any additional mismatch requires a stop.
 - This repair performed no model, data, config, calibration, production,
   private-data, remote, or outer-vault work, and no commit or push.
+
+## 2026-07-31 - Final acceptance and public evidence
+
+- Goal029 production was produced at
+  `f85e45922e182858fd351fdaf4f1b36b33fb4f2f` and checked by the repaired
+  validator at `e6f07ae8bdb48399af907cf44598cc34d51391f6`. Exactly one external
+  read-only validation completed with exit `0` and `status=pass`.
+- All 1,736 candidate strata reached terminal states: 1,731 completed and five
+  produced bounded `elastic_net_nonconverged` receipts, with no partial
+  performance exposed. The sealed run contains 6,888 candidate-seed leaves,
+  280 family strata, 952 selected refits, and 345 source-audit leaves.
+- Transaction
+  `38abaa77531936e9fe37c15f2ed9f08802f68e0b936ff5b351c0b38b45f83918`
+  binds producer source digest
+  `a49c90cf1bfc184991a774b38706e4ae1c5cc897f583a1b976b5e0092e11b458`.
+  Inventories and hashes were unchanged, no stage remnants remained, and real
+  outer attempted/open counts were `0/0`. No performance values, response
+  identifiers, private paths, or outer outcomes were exposed.
+- Exactly five tracked receipts are accepted into Git: the calibration index
+  plus production `summary.json`, `core_manifest.json`, `PAIR.json`, and
+  `FINALIZED.json`. Private checkpoints, fitted models, and detailed receipts
+  remain off Git on deep-server.
+- The orchestrator accepts Goal029 as engineering and provenance completion
+  only. This acceptance makes no ecological performance claim; outer
+  assessment remains deferred to the method-freeze evaluation.
