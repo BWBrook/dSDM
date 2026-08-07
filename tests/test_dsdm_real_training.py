@@ -10,6 +10,7 @@ from dsdm.real_training import (
     _prepare_cuda,
     _resolve_stopping_status,
     train_case,
+    train_case_with_predictions,
 )
 from dsdm.contracts import ArchitectureSpec
 
@@ -49,6 +50,17 @@ def test_training_is_repeatable():
     assert first.model_digest == second.model_digest
     assert first.prediction_digest == second.prediction_digest
     assert first.bundle_digest == second.bundle_digest
+
+
+def test_training_with_predictions_matches_receipt_only_lifecycle():
+    spec = ArchitectureSpec("resmlp00", 2, 16, 8, "constant", 0.0, 1e-5)
+    receipt, predictions = train_case_with_predictions(_bundle(), spec, seed=31032, max_epochs=3, patience=2)
+    receipt_only = train_case(_bundle(), spec, seed=31032, max_epochs=3, patience=2)
+    assert predictions.dtype == np.float32
+    assert predictions.shape == (_bundle().x_inner_assessment.shape[0],)
+    assert np.isfinite(predictions).all()
+    assert receipt.model_digest == receipt_only.model_digest
+    assert receipt.prediction_digest == receipt_only.prediction_digest
 
 
 def test_cuda_memory_reset_initializes_and_selects_device(monkeypatch):

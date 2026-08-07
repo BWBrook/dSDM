@@ -272,7 +272,7 @@ def _replay(
                 raise TrainingError("non-finite parameter")
 
 
-def train_case(
+def train_case_with_predictions(
     bundle: Any,
     architecture: ArchitectureSpec | str,
     *,
@@ -281,8 +281,13 @@ def train_case(
     max_epochs: int = 300,
     patience: int = 30,
     min_delta: float = 0.0,
-) -> TrainingReceipt:
-    """Train discovery, replay selected epochs, and predict the inner held fold."""
+) -> tuple[TrainingReceipt, np.ndarray]:
+    """Train a case and return its aggregate receipt plus held scores.
+
+    The score vector is returned in the bundle's canonical held-fold order;
+    callers must not reorder it because identifiers are intentionally absent
+    from the deidentified bundle.
+    """
     spec = architecture_by_id(architecture) if isinstance(architecture, str) else architecture
     if not hasattr(bundle, "x_discovery") or bundle.x_discovery.shape[1] != 77:
         raise TrainingError("bundle or seed contract")
@@ -356,7 +361,7 @@ def train_case(
         "cuda": str(torch.version.cuda or "none"),
     }
     runtime = hashlib.sha256(json.dumps(runtime_versions, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
-    return TrainingReceipt(
+    receipt = TrainingReceipt(
         case_id=bundle.case.case_id,
         target=bundle.case.target,
         architecture=spec.id,
@@ -387,6 +392,30 @@ def train_case(
         initial_model_digest=discovery_initial,
         runtime_versions=runtime_versions,
     )
+    return receipt, prediction_array
+
+
+def train_case(
+    bundle: Any,
+    architecture: ArchitectureSpec | str,
+    *,
+    seed: int | None = None,
+    device: str = "cpu",
+    max_epochs: int = 300,
+    patience: int = 30,
+    min_delta: float = 0.0,
+) -> TrainingReceipt:
+    """Receipt-only compatibility wrapper preserving the Goal032 lifecycle."""
+    receipt, _ = train_case_with_predictions(
+        bundle,
+        architecture,
+        seed=seed,
+        device=device,
+        max_epochs=max_epochs,
+        patience=patience,
+        min_delta=min_delta,
+    )
+    return receipt
 
 
 def write_receipt(receipt: TrainingReceipt, path: str) -> None:

@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.0",
+  "goal_id": "goal033-dsdm-architecture-selection",
+  "authorities": {
+    "goal027_protocol": {"path": "docs/plan/tasmanian_modelling_protocol.md", "sha256": "6609f3ca4f5100c212db83b3f6bffbed49b6685baeac9ff8242f41c94d7875fb"},
+    "goal028_decision": {"path": "docs/goals/028-modeling-foundation-preflight/Decision.md", "sha256": "3eb6e0fbe2ee7eb1db08e75c8b99f7d1fd9760cdbebacd88bbba8ebc1889a50c"},
+    "goal031_config": {"path": "config/dsdm_synthetic_vertical.json", "sha256": "ca437e59a72ffd00bd05f2981d087d5af0f884e799cc253c079a3b5137099e93"},
+    "goal031_decision": {"path": "docs/goals/031-dsdm-synthetic-vertical-slice/Decision.md", "sha256": "af0b45998816149111e395a103245aa3a1c7972d633727ab18480f209c763e67"},
+    "goal032_config": {"path": "config/dsdm_real_compute_calibration.json", "sha256": "2f3e1f99f3be42a3c2f7b411aaf825eb83f99e05f7a736adf9f5b55f12ef4849"},
+    "goal032_decision": {"path": "docs/goals/032-dsdm-real-compute-calibration/Decision.md", "sha256": "46b89fb10f2df0bf8e6d268d9a63e6551d189378a3ec2ab0bc39777ff8225709"},
+    "goal032_receipt": {"path": "evidence/dsdm_real_compute_calibration/goal032/receipt.json", "sha256": "f64d33c584fec546ae5d449df72789e27f68d75bdef9d0fc4c100a49ca2b7350"},
+    "contracts": {"path": "src/dsdm/contracts.py", "sha256": "61c89d4ef7ab6895bc5d5c8bd9acabd2be0e73aa5f7fc46bba0eb87378b0d9a2"},
+    "models": {"path": "src/dsdm/models.py", "sha256": "71317e80514eeab68a316066f59382db2c96aa6bffb0dfd524e08895f2f9c6ee"},
+    "real_data": {"path": "src/dsdm/real_data.py", "sha256": "bfbd665792b77e89e638d901cb304ae02eb77bbde4ca89a1447bd95b7ee62970"},
+    "real_training": {"path": "src/dsdm/real_training.py", "sha256": "555871aa6ea007edd717a3e6a33b5e4b32e3831fd324012d414261d07c03941a"},
+    "architecture_selection": {"path": "src/dsdm/architecture_selection.py", "sha256": "c3760a4f3361e6c73f382be3efb64b84122b7aa9f3c5e92380eacf33882bb183"},
+    "architecture_runner": {"path": "src/dsdm/architecture_runner.py", "sha256": "7290e5c79d22d3e2949e53436ac9fce1ae68357e270425e449e040ad961a2048"}
+  },
+  "scope": {
+    "species": ["thylogale_billardierii", "notamacropus_rufogriseus", "trichosurus_vulpecula", "pseudocheirus_peregrinus", "vombatus_ursinus", "sarcophilus_harrisii", "dasyurus_maculatus", "dasyurus_viverrinus"],
+    "folds": ["fold00", "fold01", "fold02", "fold03", "fold04"],
+    "endpoint": "fraction100/full",
+    "predictor_count": 77
+  },
+  "architecture_registry": [
+    {"id":"resmlp00","blocks":2,"width":64,"bottleneck":16,"shape":"constant","dropout":0.0,"weight_decay":0.00001},
+    {"id":"resmlp01","blocks":2,"width":64,"bottleneck":32,"shape":"taper","dropout":0.1,"weight_decay":0.0001},
+    {"id":"resmlp02","blocks":2,"width":64,"bottleneck":64,"shape":"constant","dropout":0.2,"weight_decay":0.001},
+    {"id":"resmlp03","blocks":2,"width":128,"bottleneck":16,"shape":"taper","dropout":0.2,"weight_decay":0.0001},
+    {"id":"resmlp04","blocks":2,"width":128,"bottleneck":32,"shape":"constant","dropout":0.0,"weight_decay":0.001},
+    {"id":"resmlp05","blocks":2,"width":128,"bottleneck":64,"shape":"taper","dropout":0.1,"weight_decay":0.00001},
+    {"id":"resmlp06","blocks":2,"width":256,"bottleneck":16,"shape":"constant","dropout":0.1,"weight_decay":0.001},
+    {"id":"resmlp07","blocks":2,"width":256,"bottleneck":32,"shape":"taper","dropout":0.2,"weight_decay":0.00001},
+    {"id":"resmlp08","blocks":3,"width":64,"bottleneck":16,"shape":"taper","dropout":0.2,"weight_decay":0.001},
+    {"id":"resmlp09","blocks":3,"width":64,"bottleneck":32,"shape":"constant","dropout":0.0,"weight_decay":0.00001},
+    {"id":"resmlp10","blocks":3,"width":64,"bottleneck":64,"shape":"taper","dropout":0.1,"weight_decay":0.0001},
+    {"id":"resmlp11","blocks":3,"width":128,"bottleneck":16,"shape":"constant","dropout":0.1,"weight_decay":0.00001},
+    {"id":"resmlp12","blocks":3,"width":128,"bottleneck":32,"shape":"taper","dropout":0.2,"weight_decay":0.0001},
+    {"id":"resmlp13","blocks":3,"width":128,"bottleneck":64,"shape":"constant","dropout":0.0,"weight_decay":0.001},
+    {"id":"resmlp14","blocks":3,"width":256,"bottleneck":16,"shape":"taper","dropout":0.0,"weight_decay":0.0001},
+    {"id":"resmlp15","blocks":3,"width":256,"bottleneck":64,"shape":"constant","dropout":0.2,"weight_decay":0.00001},
+    {"id":"resmlp16","blocks":4,"width":64,"bottleneck":16,"shape":"constant","dropout":0.1,"weight_decay":0.0001},
+    {"id":"resmlp17","blocks":4,"width":64,"bottleneck":32,"shape":"taper","dropout":0.2,"weight_decay":0.00001},
+    {"id":"resmlp18","blocks":4,"width":64,"bottleneck":64,"shape":"constant","dropout":0.0,"weight_decay":0.001},
+    {"id":"resmlp19","blocks":4,"width":128,"bottleneck":16,"shape":"taper","dropout":0.0,"weight_decay":0.00001},
+    {"id":"resmlp20","blocks":4,"width":128,"bottleneck":32,"shape":"constant","dropout":0.1,"weight_decay":0.001},
+    {"id":"resmlp21","blocks":4,"width":128,"bottleneck":64,"shape":"taper","dropout":0.2,"weight_decay":0.0001},
+    {"id":"resmlp22","blocks":4,"width":256,"bottleneck":32,"shape":"constant","dropout":0.2,"weight_decay":0.0001},
+    {"id":"resmlp23","blocks":4,"width":256,"bottleneck":64,"shape":"taper","dropout":0.0,"weight_decay":0.001}
+  ],
+  "selection": {
+    "method": "target_only_resmlp",
+    "screen_base_seeds": [31031],
+    "shortlist_size": 4,
+    "shortlist_base_seeds": [31031, 31032, 31033],
+    "endpoint": "fraction100/full",
+    "screen_architectures": ["resmlp00", "resmlp01", "resmlp02", "resmlp03", "resmlp04", "resmlp05", "resmlp06", "resmlp07", "resmlp08", "resmlp09", "resmlp10", "resmlp11", "resmlp12", "resmlp13", "resmlp14", "resmlp15", "resmlp16", "resmlp17", "resmlp18", "resmlp19", "resmlp20", "resmlp21", "resmlp22", "resmlp23"]
+  },
+  "training": {
+    "held_fold_rule": "h",
+    "stopping_fold_rule": "(h+1)%5",
+    "discovery_folds": "other_three",
+    "replay_folds": "all_four",
+    "predictor_count": 77,
+    "target_response": ["presence", "survey_supported_absence", "pseudoabsence"],
+    "unknown_masked": true,
+    "row_weights": "equal",
+    "fit_seed_purpose": "fit",
+    "max_epochs": 300,
+    "patience": 30,
+    "min_delta": 0.0
+  },
+  "execution": {
+    "screen_logical_evaluations": 960,
+    "shortlist_logical_evaluations": 480,
+    "physical_fit_multiplier": 2,
+    "workers": 3,
+    "route": "mac_cpu"
+  },
+  "privacy": {
+    "outer_attempted": 0,
+    "outer_opened": 0,
+    "tracked_predictions": false,
+    "tracked_labels": false,
+    "private_inner_labels_allowed": true,
+    "row_identifiers": false,
+    "coordinates": false
+  },
+  "runtime": {
+    "python_major_minor": "3.12",
+    "numpy": "2.2.6",
+    "torch": "2.7.1",
+    "device": "cpu",
+    "threads": 1,
+    "environment_path": "data/processed/dsdm/goal033-architecture-selection/runtime",
+    "export_environment": "repository_locked_uv"
+  },
+  "evidence": {
+    "private_root": "data/processed/dsdm/goal033-architecture-selection/private",
+    "tracked_root": "evidence/dsdm_architecture_selection/goal033",
+    "aggregate_only": true
+  }
+}
