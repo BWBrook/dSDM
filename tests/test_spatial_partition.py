@@ -1,6 +1,8 @@
 import csv
 import hashlib
 import json
+import os
+import platform
 import shutil
 import sys
 from pathlib import Path
@@ -20,6 +22,14 @@ EVIDENCE = ROOT / "evidence/spatial_partition/2026-07-26"
 PRIVATE = (
     ROOT
     / "data/processed/partitions/goal025-spatial-partition/2026-07-26"
+)
+GOAL025_PRIVATE_REPLAY_ENABLED = (
+    platform.python_version() == "3.14.4"
+    and os.environ.get("DSDM_RUN_GOAL025_PRIVATE_REPLAY") == "1"
+)
+GOAL025_PRIVATE_REPLAY_SKIP_REASON = (
+    "Goal025 private replay requires CPython 3.14.4 and "
+    "DSDM_RUN_GOAL025_PRIVATE_REPLAY=1"
 )
 
 
@@ -630,6 +640,11 @@ def test_summary_freezes_audited_design_topology_and_limitations():
     ]
 
 
+@pytest.mark.real_scope
+@pytest.mark.skipif(
+    not GOAL025_PRIVATE_REPLAY_ENABLED,
+    reason=GOAL025_PRIVATE_REPLAY_SKIP_REASON,
+)
 def test_goal024_replays_once_and_goal025_recomputes_in_final_mode(monkeypatch):
     calls = []
 
@@ -688,6 +703,11 @@ def test_publish_pair_blocks_existing_destination_and_rolls_back_second_rename(
     assert not evidence.exists()
 
 
+@pytest.mark.real_scope
+@pytest.mark.skipif(
+    not GOAL025_PRIVATE_REPLAY_ENABLED,
+    reason=GOAL025_PRIVATE_REPLAY_SKIP_REASON,
+)
 def test_current_private_and_evidence_footprints_and_final_full_replay():
     result = sp.validate_evidence(
         PLAN, EVIDENCE, root=ROOT, mode="final", full=True

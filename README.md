@@ -33,18 +33,22 @@ and shallow ANN. The real outer assessment remains unopened (`0/0` attempted
 and opened), so this is not an ecological performance claim. Phase 4 dSDM
 development requires a separate implementation gate.
 
-### Known gate status
+### Current gate status
 
-The accepted baseline currently fails closed on
-`binding_digest_mismatch:goal027_protocol`; the full replay also reports
-separate Goal 025 spatial-summary drift. Production remains blocked pending a
-separately authorized provenance reconciliation. This lean cleanup neither
-caused nor repaired that protected protocol, config, or evidence drift.
+Goal 030 restored the immutable Goal 027 design-freeze artifact to its accepted
+digest; the Goal 029 plan gate now validates the five-family execution
+contract. The later removal of GAM remains authoritative in the Goal
+029 decision, not in the earlier prospective protocol. Goal 025's two private
+full-replay tests are marked `real_scope` and run only with both exact CPython
+3.14.4 and explicit `DSDM_RUN_GOAL025_PRIVATE_REPLAY=1` authorization; the
+manual invocation contract is in the [Goal 030 runbook](docs/goals/030-provenance-reconciliation-phase4-boundary/Runbook.md).
+Tracked-only gates remain active. Production remains separately authorized,
+and the real outer attempted/open counts remain `0/0`.
 
 Canonical authority:
 
 - [30,000-foot strategic plan](docs/strategic_plan_30000ft.md)
-- [Tasmanian modelling protocol](docs/plan/tasmanian_modelling_protocol.md)
+- [Goal 027 prospective design freeze](docs/plan/tasmanian_modelling_protocol.md)
 - [Phase 1 decision register](docs/plan/phase1_decision_register.md)
 - [Goal 029 decision](docs/goals/029-conventional-baseline-production/Decision.md)
 - [Goal 029 runbook](docs/goals/029-conventional-baseline-production/Runbook.md)

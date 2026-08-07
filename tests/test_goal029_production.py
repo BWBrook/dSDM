@@ -711,6 +711,41 @@ def test_source_tree_digest_covers_every_project_module_and_audit_salt_is_preres
     assert audit_salt(plan, changed) != salt
 
 
+def test_goal029_source_digest_isolates_sibling_phase4_namespace(tmp_path):
+    from dsdm_phase1.goal029_production import source_tree_digest
+
+    root = Path(__file__).resolve().parents[1]
+    config = json.loads(
+        (root / "config/conventional_baseline_production.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    for source in (root / "src/dsdm_phase1").glob("*.py"):
+        destination = tmp_path / source.relative_to(root)
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, destination)
+    for raw in config["execution"]["runtime_critical_paths"]:
+        destination = tmp_path / raw
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(root / raw, destination)
+
+    baseline = source_tree_digest(tmp_path, config)
+    phase4 = tmp_path / "src/dsdm"
+    phase4.mkdir()
+    (phase4 / "__init__.py").write_text("", encoding="utf-8")
+    (phase4 / "phase4_future.py").write_text("PHASE4 = True\n", encoding="utf-8")
+    assert source_tree_digest(tmp_path, config) == baseline
+
+    in_namespace = tmp_path / "src/dsdm_phase1/phase4_future.py"
+    in_namespace.write_text("PHASE4 = True\n", encoding="utf-8")
+    assert source_tree_digest(tmp_path, config) != baseline
+    in_namespace.unlink()
+
+    bound = tmp_path / "src/dsdm_phase1/target_subsets.py"
+    bound.write_text(bound.read_text(encoding="utf-8") + "\n# bound change\n")
+    assert source_tree_digest(tmp_path, config) != baseline
+
+
 def test_real_adapter_leaf_checkpoint_resume_and_tamper_rejection(
     goal029_config, tmp_path
 ):
