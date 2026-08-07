@@ -26,24 +26,23 @@ them only under the separate authorization and validation contract in the
 
 ## Current status
 
-Phases 0-2 are complete. Goal 029 sealed the Phase 3 conventional baseline
-engineering and provenance contract at commit `4cab971`, using exactly five
+Phases 0-3 are complete. Goal 029 sealed the conventional baseline using five
 families: intercept, elastic net, random forest, histogram gradient boosting,
-and shallow ANN. The real outer assessment remains unopened (`0/0` attempted
-and opened), so this is not an ecological performance claim. Phase 4 dSDM
-development requires a separate implementation gate.
+and shallow ANN. Goal 031 proved the dSDM engine on synthetic data. Goal 032
+then bound its target-only path to the real eight-species outer-training
+substrate and calibrated Mac CPU, deep-server CPU, and Alien CUDA without
+opening the real outer assessment (`0/0`). This is engineering evidence, not an
+ecological performance claim.
 
 ### Current gate status
 
-Goal 030 restored the immutable Goal 027 design-freeze artifact to its accepted
-digest; the Goal 029 plan gate now validates the five-family execution
-contract. The later removal of GAM remains authoritative in the Goal
-029 decision, not in the earlier prospective protocol. Goal 025's two private
-full-replay tests are marked `real_scope` and run only with both exact CPython
-3.14.4 and explicit `DSDM_RUN_GOAL025_PRIVATE_REPLAY=1` authorization; the
-manual invocation contract is in the [Goal 030 runbook](docs/goals/030-provenance-reconciliation-phase4-boundary/Runbook.md).
-Tracked-only gates remain active. Production remains separately authorized,
-and the real outer attempted/open counts remain `0/0`.
+Goal 032 recommends the Mac CPU with three workers for Goal 033. Its six-task
+panel took 2.70 seconds, projecting about 10.8 minutes centrally and 3.41 hours
+under the deliberately conservative 300-discovery-plus-300-replay ceiling for
+the 1,440-evaluation architecture workload. Goal 033 must separately freeze
+the production runtime and run the architecture screen/shortlist under a
+bounded `tmux` handoff. No architecture search, six-path comparison, `q`
+surface, ecological metric, or outer-assessment access occurred in Goal 032.
 
 Canonical authority:
 
@@ -53,6 +52,9 @@ Canonical authority:
 - [Goal 029 decision](docs/goals/029-conventional-baseline-production/Decision.md)
 - [Goal 029 runbook](docs/goals/029-conventional-baseline-production/Runbook.md)
 - [`config/conventional_baseline_production.json`](config/conventional_baseline_production.json), the exact executable authority
+- [Goal 032 decision](docs/goals/032-dsdm-real-compute-calibration/Decision.md)
+- [Goal 032 runbook](docs/goals/032-dsdm-real-compute-calibration/Runbook.md)
+- [`config/dsdm_real_compute_calibration.json`](config/dsdm_real_compute_calibration.json), the real-binding and compute-calibration authority
 
 ## Data and privacy boundary
 

@@ -1,0 +1,221 @@
+{
+  "schema_version": "1.0",
+  "goal_id": "goal032-dsdm-real-compute-calibration",
+  "bindings": {
+    "goal025_decision": {"path": "docs/goals/025-spatial-partition/Decision.md", "sha256": "793afa7bd8b287aca037af8d64ea393a50eef031d371519fb136e130a21ac0b5"},
+    "goal026_feature_contract": {"path": "evidence/model_ready_features/2026-07-27/feature_contract.json", "sha256": "e9a8f9b7bee7dee25905dfa052427f6e0a4f1b5ebd6ed02fcfb1761bbd224d98"},
+    "goal026_fit_parameters": {"path": "evidence/model_ready_features/2026-07-27/fit_parameters.json", "sha256": "608b99f94af49122bf9e252e35ae7c067812762d20ba080c3e7fbd40f35661d0"},
+    "goal027_protocol": {"path": "docs/plan/tasmanian_modelling_protocol.md", "sha256": "6609f3ca4f5100c212db83b3f6bffbed49b6685baeac9ff8242f41c94d7875fb"},
+    "goal029_config": {"path": "config/conventional_baseline_production.json", "sha256": "62b1c5255c5aa5c74f5ba598818dd13e2f2234c0cb13da58671c3be286ccefae"},
+    "goal029_decision": {"path": "docs/goals/029-conventional-baseline-production/Decision.md", "sha256": "e720f1d07ff73b884c9557ce2b127b329020c000dd242f6b755394d5949a420c"},
+    "goal031_config": {"path": "config/dsdm_synthetic_vertical.json", "sha256": "ca437e59a72ffd00bd05f2981d087d5af0f884e799cc253c079a3b5137099e93"},
+    "goal031_decision": {"path": "docs/goals/031-dsdm-synthetic-vertical-slice/Decision.md", "sha256": "af0b45998816149111e395a103245aa3a1c7972d633727ab18480f209c763e67"},
+    "pyproject": {"path": "pyproject.toml", "sha256": "29b7c2f9f810ac35357fa9b85189002d92a54a4933cf87746f57ae27cc0a8d08"},
+    "uv_lock": {"path": "uv.lock", "sha256": "39c22925750ac8821f5420bdfe5ca39554b7906d812bd3a94a04e91c469284fd"}
+  },
+  "scope": {
+    "species": [
+      "thylogale_billardierii",
+      "notamacropus_rufogriseus",
+      "trichosurus_vulpecula",
+      "pseudocheirus_peregrinus",
+      "vombatus_ursinus",
+      "sarcophilus_harrisii",
+      "dasyurus_maculatus",
+      "dasyurus_viverrinus"
+    ],
+    "complete_response_rows": 12711,
+    "outer_training_rows": 11039,
+    "folds": ["fold00", "fold01", "fold02", "fold03", "fold04"],
+    "endpoint": "fraction100/full",
+    "architecture_selection_method": "target_only_resmlp",
+    "real_outer_attempted_open_limit": 0,
+    "real_outer_open_limit": 0
+  },
+  "binding": {
+    "local_factory": "dsdm_phase1.goal029_production.ingest_production_foundation",
+    "sealed_phase1_modification_allowed": false,
+    "local_adapter_output": "deidentified_case_bundle",
+    "remote_trainer_imports_phase1": false,
+    "remote_trainer_opens_repository_private_data": false,
+    "auxiliary_validation_only": true,
+    "auxiliary_fit_count": 0,
+    "q_fit_count": 0
+  },
+  "features": {
+    "continuous_count": 25,
+    "continuous_transform": "goal026_split_fitted_population_zscore",
+    "categorical_predictors": {
+      "soil_class": 13,
+      "veg_mvg": 22,
+      "landuse_secondary": 17
+    },
+    "categorical_indicator_count": 52,
+    "categorical_encoding": "full_vocabulary_one_hot_no_reference_drop",
+    "categorical_vocabulary_scope": "goal026_complete_response_independent_D_struct_vocabulary",
+    "unseen_level_encoding": "all_zero_and_count",
+    "target_input_columns": 77,
+    "q_scalar_columns_reserved": 1,
+    "target_plus_q_input_columns_reserved": 78,
+    "q_fit_authorized": false
+  },
+  "training": {
+    "device_dtype": "float32",
+    "batch_size": 128,
+    "retain_partial_batch": true,
+    "row_order": "canonical_before_seeded_epoch_permutation",
+    "optimizer": {
+      "name": "AdamW",
+      "learning_rate": 0.001,
+      "betas": [0.9, 0.999],
+      "eps": 1e-8,
+      "amsgrad": false,
+      "foreach": false,
+      "fused": false
+    },
+    "scheduler": null,
+    "gradient_clipping": false,
+    "target_loss": "unweighted_BCEWithLogitsLoss",
+    "class_weighting": false,
+    "resampling": false,
+    "early_stopping": {
+      "held_fold_role": "assessment_only",
+      "stopping_fold": "next_cyclic_fold_modulo_5",
+      "discovery_folds": "three_folds_excluding_held_and_stopping",
+      "transform": "goal026_cv_transform_for_held_fold_reused_for_discovery_stopping_and_replay",
+      "monitor": "full_stopping_batch_BCE",
+      "maximum_epochs": 300,
+      "patience": 30,
+      "min_delta": 0.0,
+      "selection": "earliest_strict_minimum",
+      "replay": "reset_identical_initial_state_then_fit_all_four_training_folds_for_exact_selected_epochs"
+    },
+    "base_seed": 31032,
+    "seed_derivation": "uint32_be_first4_sha256(goal032|base_seed|case_id|purpose)",
+    "same_initial_state_required_for_discovery_and_replay": true,
+    "deterministic_algorithms": true,
+    "dataloader_workers": 0,
+    "per_process_torch_threads_cpu": 1,
+    "cuda_workspace_config": ":4096:8"
+  },
+  "cases": [
+    {
+      "case_id": "light",
+      "architecture": {"id": "resmlp00", "blocks": 2, "width": 64, "bottleneck": 16, "shape": "constant", "dropout": 0.0, "weight_decay": 0.00001},
+      "target": "pseudocheirus_peregrinus",
+      "held_fold": "fold03",
+      "stopping_fold": "fold04",
+      "discovery_folds": ["fold00", "fold01", "fold02"]
+    },
+    {
+      "case_id": "medium",
+      "architecture": {"id": "resmlp12", "blocks": 3, "width": 128, "bottleneck": 32, "shape": "taper", "dropout": 0.2, "weight_decay": 0.0001},
+      "target": "notamacropus_rufogriseus",
+      "held_fold": "fold03",
+      "stopping_fold": "fold04",
+      "discovery_folds": ["fold00", "fold01", "fold02"]
+    },
+    {
+      "case_id": "heavy",
+      "architecture": {"id": "resmlp23", "blocks": 4, "width": 256, "bottleneck": 64, "shape": "taper", "dropout": 0.0, "weight_decay": 0.001},
+      "target": "sarcophilus_harrisii",
+      "held_fold": "fold01",
+      "stopping_fold": "fold02",
+      "discovery_folds": ["fold00", "fold03", "fold04"]
+    }
+  ],
+  "remote_bundle": {
+    "format": "npz_plus_canonical_json_manifest",
+    "allowed_arrays": ["x_discovery", "y_discovery", "x_stopping", "y_stopping", "x_replay", "y_replay", "x_held"],
+    "allowed_metadata": ["schema_version", "goal_id", "case_id", "target", "held_fold", "stopping_fold", "architecture_id", "seed", "base_seed", "transform", "input_columns", "array_shapes", "array_digests", "source_binding_digest", "outer_attempted", "outer_opened", "goal032_config_digest", "authority_digests", "auxiliary_aggregate_digest", "bundle_digest"],
+    "forbidden": ["raw_predictors", "raw_response_rows", "grid_cell_id", "row_id", "site_id", "camera_id", "coordinates", "timestamps", "outer_assessment_labels", "outer_assessment_features", "outer_vault", "absolute_paths"],
+    "row_identifiers_present": false,
+    "coordinates_present": false,
+    "outer_data_present": false,
+    "raw_data_present": false
+  },
+  "hosts": [
+    {"host_id": "mac_cpu", "connection": "local", "hostname": "Barrys-Mac-mini.local", "device": "cpu", "serial_worker_count": 1, "concurrency_worker_cap": 3},
+    {"host_id": "deep_server_cpu", "connection": "deep-server-ts", "hostname": "deep-server", "device": "cpu", "serial_worker_count": 1, "concurrency_worker_cap": 6},
+    {"host_id": "alien_cuda", "connection": "alien-wsl", "hostname": "alienware", "device": "cuda:0", "serial_worker_count": 1, "concurrency_worker_cap": 2, "maximum_workers_per_gpu": 1, "ddp": false}
+  ],
+  "runtime": {
+    "environment": "isolated_goal032_canary_only",
+    "python_major_minor": "3.12",
+    "numpy_version": "2.2.6",
+    "torch_version": "2.7.1",
+    "mac_cpu_wheel": "official_cpu",
+    "deep_server_cpu_wheel": "official_cpu",
+    "alien_cuda_wheel": "official_cu118",
+    "alien_driver_version": "546.01",
+    "repository_lock_used_for_canary_runtime": false,
+    "modify_pyproject_or_uv_lock": false,
+    "goal033_requires_separate_selected_runtime_freeze": true,
+    "purpose": "engineering_calibration_not_production_authority"
+  },
+  "calibration": {
+    "serial": {
+      "case_count": 3,
+      "host_count": 3,
+      "repeats_per_case_host": 2,
+      "logical_evaluations": 18,
+      "physical_fits_per_evaluation": 2,
+      "physical_fit_count": 36,
+      "same_host_repeat_requires_identical_model_digest": true,
+      "same_host_repeat_requires_identical_prediction_digest": true,
+      "cross_host_digest_equality_required": false
+    },
+    "concurrency": {
+      "leading_host_only": true,
+      "task_count": 6,
+      "tasks": ["light_repeat00", "medium_repeat00", "heavy_repeat00", "light_repeat01", "medium_repeat01", "heavy_repeat01"],
+      "physical_fits_per_task": 2,
+      "physical_fit_count": 12,
+      "worker_cap_from_host_registry": true
+    },
+    "total_logical_evaluations": 24,
+    "total_physical_fit_count": 48,
+    "record": ["wall_seconds", "selected_epoch", "discovery_executed_epochs", "replay_epochs", "peak_rss_bytes", "peak_vram_bytes", "model_digest", "prediction_digest", "runtime_fingerprint", "bundle_digest"],
+    "forbid_scientific_metrics": true,
+    "projection": {
+      "architecture_screen_logical_evaluations": 960,
+      "architecture_shortlist_logical_evaluations": 480,
+      "total_logical_evaluations": 1440,
+      "discovery_and_replay_physical_fit_multiplier": 2,
+      "total_physical_fits": 2880,
+      "report_central_and_300_epoch_upper_bound": true
+    },
+    "selection_rule": {
+      "primary": "projected_concurrency_throughput_subject_to_determinism_memory_and_no_swap",
+      "cpu_preferred_when_best_cpu_throughput_at_least_fraction_of_gpu": 0.8,
+      "finalist_concurrency_may_change_recommendation": true
+    }
+  },
+  "evidence": {
+    "tracked_receipt": "evidence/dsdm_real_compute_calibration/goal032/receipt.json",
+    "private_root": "data/processed/dsdm/goal032-real-compute-calibration/final/private",
+    "tracked_row_level_material": false,
+    "tracked_predictions": false,
+    "tracked_losses": false,
+    "tracked_ecological_metrics": false,
+    "real_outer_attempted": 0,
+    "real_outer_opened": 0
+  },
+  "publication": {
+    "worker_commit_allowed": false,
+    "worker_push_allowed": false,
+    "orchestrator_may_commit_and_push_after_acceptance_gates": true
+  },
+  "stop_before": [
+    "architecture_screen",
+    "architecture_shortlist",
+    "long_running_tmux",
+    "outer_assessment_access",
+    "ecological_metric_or_claim",
+    "six_path_real_fit",
+    "q_fit",
+    "dependency_or_lock_change",
+    "worker_commit",
+    "worker_push"
+  ]
+}
