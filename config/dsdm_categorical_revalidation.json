@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "goal_id": "goal035-dsdm-final-inner-lifecycle",
+  "authorities": {
+    "goal028_config": {"path": "config/modeling_foundation_preflight.json", "sha256": "35b6ab72ba2b8ba2267dc82179987bfffaa3f339d64272d68012444e46285f00"},
+    "goal028_decision": {"path": "docs/goals/028-modeling-foundation-preflight/Decision.md", "sha256": "3eb6e0fbe2ee7eb1db08e75c8b99f7d1fd9760cdbebacd88bbba8ebc1889a50c"},
+    "goal033_config": {"path": "config/dsdm_architecture_selection.json", "sha256": "39542d079b3cdc6a11819dea3e1c18b52ec4aa38f530ff218955d7e89775596f"},
+    "goal033_decision": {"path": "docs/goals/033-dsdm-architecture-selection/Decision.md", "sha256": "f9ba7b18498415422aa39618c4d4ec13f20c97be87a694f52d44bc788d6c68fb"},
+    "goal033_aggregate": {"path": "evidence/dsdm_architecture_selection/goal033/aggregate.json", "sha256": "d3bd6ab4ae19c179246b353257bb640eac93a13f4bc01655ebe7c160082cfe06"},
+    "goal034_config": {"path": "config/dsdm_real_six_path_sentinel.json", "sha256": "43f5161850d1c7384af8fe0600ae322c93ca9ccca54a2a878ce13f933c6367a9"},
+    "goal034_decision": {"path": "docs/goals/034-dsdm-real-six-path-sentinel/Decision.md", "sha256": "edfd76dc3a3e94058da11fc5e36f93b40a23458326e04df8ea33a2ba6b386375"}
+  },
+  "execution_sources": {
+    "architecture_mask_revalidation": {"path": "src/dsdm/architecture_mask_revalidation.py", "sha256": "54e87ff9d282b07d95f3d892c5bc03f13168673089762e15a77cf6d0e1fd533a"},
+    "categorical_support": {"path": "src/dsdm/categorical_support.py", "sha256": "90b59bfe6b47628ba6bb36d130fe427c3e5481b6a8b9c1492203f73a1234d959"},
+    "architecture_selection": {"path": "src/dsdm/architecture_selection.py", "sha256": "c3760a4f3361e6c73f382be3efb64b84122b7aa9f3c5e92380eacf33882bb183"},
+    "architecture_runner": {"path": "src/dsdm/architecture_runner.py", "sha256": "7290e5c79d22d3e2949e53436ac9fce1ae68357e270425e449e040ad961a2048"},
+    "real_data": {"path": "src/dsdm/real_data.py", "sha256": "bfbd665792b77e89e638d901cb304ae02eb77bbde4ca89a1447bd95b7ee62970"},
+    "real_training": {"path": "src/dsdm/real_training.py", "sha256": "555871aa6ea007edd717a3e6a33b5e4b32e3831fd324012d414261d07c03941a"},
+    "models": {"path": "src/dsdm/models.py", "sha256": "71317e80514eeab68a316066f59382db2c96aa6bffb0dfd524e08895f2f9c6ee"},
+    "uv_lock": {"path": "uv.lock", "sha256": "39c22925750ac8821f5420bdfe5ca39554b7906d812bd3a94a04e91c469284fd"}
+  },
+  "scope": {
+    "species": ["thylogale_billardierii", "notamacropus_rufogriseus", "trichosurus_vulpecula", "pseudocheirus_peregrinus", "vombatus_ursinus", "sarcophilus_harrisii", "dasyurus_maculatus", "dasyurus_viverrinus"],
+    "folds": ["fold00", "fold01", "fold02", "fold03", "fold04"],
+    "endpoint": "fraction100/full",
+    "predictor_count": 77,
+    "immutable_input_goal": "goal033-private-bundle-v1",
+    "fresh_identity_namespace": "goal035-categorical-mask-revalidation"
+  },
+  "selection": {
+    "method": "target_only_resmlp",
+    "screen_base_seed": 31031,
+    "shortlist_size": 4,
+    "shortlist_base_seeds": [31031, 31032, 31033],
+    "architectures": ["resmlp00", "resmlp01", "resmlp02", "resmlp03", "resmlp04", "resmlp05", "resmlp06", "resmlp07", "resmlp08", "resmlp09", "resmlp10", "resmlp11", "resmlp12", "resmlp13", "resmlp14", "resmlp15", "resmlp16", "resmlp17", "resmlp18", "resmlp19", "resmlp20", "resmlp21", "resmlp22", "resmlp23"]
+  },
+  "runtime": {
+    "python_major_minor": "3.12",
+    "numpy": "2.2.6",
+    "torch": "2.7.1",
+    "device": "cpu",
+    "threads": 1,
+    "route": "mac_cpu"
+  },
+  "privacy": {
+    "outer_attempted": 0,
+    "outer_opened": 0,
+    "tracked_predictions": false,
+    "tracked_labels": false,
+    "row_identifiers": false,
+    "coordinates": false
+  },
+  "evidence": {
+    "private_root": "data/processed/dsdm/goal035-final-inner-lifecycle/private",
+    "tracked_root": "evidence/dsdm_architecture_selection/goal035",
+    "aggregate_only": true,
+    "execution": {"workers": 3, "screen_logical_evaluations": 960, "shortlist_logical_evaluations": 480, "physical_fit_multiplier": 2}
+  }
+}
