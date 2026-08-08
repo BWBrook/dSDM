@@ -33,7 +33,8 @@ then bound its target-only path to the real eight-species outer-training
 substrate and calibrated Mac CPU, deep-server CPU, and Alien CUDA without
 opening the real outer assessment (`0/0`). Goal 033 completed the neutral
 target-only architecture selection and froze `resmlp13` for the later matched
-method comparison.
+method comparison. Goal 034 then proved all six paths on a bounded real-data
+sentinel and froze the three-worker Mac CPU route.
 
 ### Current gate status
 
@@ -42,8 +43,11 @@ Mac CPU / three-worker route, representing 2,880 discovery-plus-replay fits.
 The three-seed shortlist selected `resmlp13`, and all eight leave-one-species-
 out rankings retained it. The result is an inner-CV architecture decision, not
 an outer-performance claim; the real outer assessment remains unopened
-(`0/0`). The real six-path comparison, scalar-`q` controls, learning curves,
-and final outer assessment require later, separately authorised goals.
+(`0/0`). Goal 034 executed two deterministic repeats on each candidate route:
+median wall time was 17.75 seconds on Mac CPU and 186.79 seconds on Alien CUDA.
+This is engineering evidence only. The full six-path comparison, learning
+curves, ecological synthesis, and final outer assessment require later,
+separately authorised goals.
 
 Canonical authority:
 
@@ -60,6 +64,10 @@ Canonical authority:
 - [Goal 033 runbook](docs/goals/033-dsdm-architecture-selection/Runbook.md)
 - [`config/dsdm_architecture_selection.json`](config/dsdm_architecture_selection.json), the frozen architecture-selection authority
 - [`evidence/dsdm_architecture_selection/goal033/aggregate.json`](evidence/dsdm_architecture_selection/goal033/aggregate.json), the aggregate-only selection receipt
+- [Goal 034 decision](docs/goals/034-dsdm-real-six-path-sentinel/Decision.md)
+- [Goal 034 runbook](docs/goals/034-dsdm-real-six-path-sentinel/Runbook.md)
+- [`config/dsdm_real_six_path_sentinel.json`](config/dsdm_real_six_path_sentinel.json), the frozen real six-path sentinel authority
+- [`evidence/dsdm_real_six_path_sentinel/goal034/receipt.json`](evidence/dsdm_real_six_path_sentinel/goal034/receipt.json), the aggregate-only route receipt
 
 ## Data and privacy boundary
 

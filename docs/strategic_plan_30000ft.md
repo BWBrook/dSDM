@@ -171,9 +171,9 @@ complement.
 
 Status: implementation underway. Goal031 proved the PyTorch engine on a
 synthetic vertical slice; Goal032 bound the target-only path to the real
-outer-training substrate and selected the Mac CPU compute route. Goal033 is the
-bounded architecture screen and shortlist; the full six-path experiment
-remains later work.
+outer-training substrate; Goal033 selected `resmlp13`; and Goal034 proved all
+six paths on a bounded real-data sentinel and froze the three-worker Mac CPU
+route. The full six-path experiment remains later work.
 
 Develop the proposed residual-MLP/shared-trunk dSDM as the central
 methodological contribution:
@@ -185,8 +185,8 @@ methodological contribution:
   learning-curve ladders, with matched five-seed replication;
 - compare fairly against the accepted conventional set under Goal027's
   leakage, threshold, aggregation, and null-result rules;
-- defer exact optimiser, batch, candidate-grid, runtime, and compute manifests
-  to a separate implementation goal.
+- retain the frozen optimiser, batch, architecture, runtime, and compute
+  contracts while the production lifecycle is implemented and executed.
 
 No model, prediction, or performance result is implied by this design phase.
 
@@ -291,10 +291,11 @@ Goal027 documents the supervisor-approved Tasmanian modelling protocol: the
 accepted conventional baselines, multi-head and scalar-`q` controls, nested
 target learning curve, shared architecture and replication rules, primary
 contrasts, and cross-case version boundary. Goals028--029 implemented and
-sealed the five-family conventional engine. Goals031--032 established the
+sealed the five-family conventional engine. Goals031--034 established the
 neural engine, exact stopping/replay lifecycle, de-identified real-data
-boundary, and Mac CPU compute route without opening the outer assessment or
-publishing performance outcomes. The next step is Goal033: freeze the selected
-runtime, execute the 960-evaluation neutral target-only architecture screen and
-480-evaluation shortlist under `tmux`, and return the selected shared
-architecture with aggregate engineering evidence.
+boundary, selected `resmlp13`, proved all six paths on a real sentinel, and
+froze a three-worker Mac CPU route without opening the outer assessment or
+publishing performance outcomes. The next tranche is the resumable
+8,840-artifact inner-lifecycle runner and execution. It must preserve the
+frozen Goal034 contracts and stop before ecological synthesis or outer
+assessment.
