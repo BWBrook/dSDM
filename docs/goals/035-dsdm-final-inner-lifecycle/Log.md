@@ -49,3 +49,25 @@
   pycompile, configured digest checks, privacy / whitespace checks, and the
   production plan passed.
 - No real export/fits, outer access, commit, or push was performed.
+
+## 2026-08-09 - authoritative export and canary
+
+- Added the locked `pyarrow==21.0.0` reader to the private Goal034 runtime
+  without changing its attested NumPy/SciPy/scikit-learn/Torch stack.
+- Exported and validated 40 unique target-by-fold bundles: 53 numeric arrays
+  per case, one common source binding, exact 8-by-5 coverage, all three
+  subset-ladder gates true, inventory digest
+  `15454d7710b46dd252ea56f077fcf2d7ef59f63d28f7142301c67dd6cc0f0cc7`,
+  and outer attempted/opened `0/0`.  The 84 MB payload remains ignored and
+  private.
+- The `sarcophilus_harrisii` / `fold00` canary completed two independent
+  repeats.  Each retained 221 logical artifacts / 441 physical fits; model,
+  state, epoch, prediction, transfer, reset, q-initial, and frozen-trunk
+  evidence repeated exactly.  Predictions were finite over
+  `[0.002136, 0.999895]`; q-linear converged in 507 of 5,000 permitted
+  iterations with finite, moderate coefficient and logit ranges.
+- The known Apple scikit-learn matmul warnings recurred, plus one read-only
+  NumPy-to-Torch warning.  They remain a recorded numerical-runtime residual,
+  not a canary blocker: all fitted artifacts and predictions were finite, the
+  q diagnostics were bounded, and the two full repeats were byte-identical.
+- Canary receipt decision: `pass`; outer attempted/opened remained `0/0`.

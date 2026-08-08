@@ -5,6 +5,13 @@ SciPy 1.16.3, scikit-learn 1.9.0, threadpoolctl 3.6.0, Torch 2.7.1; CPU,
 mac_cpu, one Torch and BLAS thread):
 `data/processed/dsdm/goal034-real-six-path-sentinel/runtime/.venv/bin/python`.
 Keep all private bundles/leaves under the configured Goal035 namespace.
+The foundation export also needs the project-locked `pyarrow==21.0.0`; when
+starting from the lean Goal034 fit runtime, add that reader without resolving
+or changing the attested numerical stack:
+
+```bash
+uv pip install --python data/processed/dsdm/goal034-real-six-path-sentinel/runtime/.venv/bin/python --no-deps pyarrow==21.0.0
+```
 
 ```bash
 RUNTIME=data/processed/dsdm/goal034-real-six-path-sentinel/runtime/.venv/bin/python
