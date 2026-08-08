@@ -96,3 +96,23 @@
   and outer `0/0`.  The formerly failing real case exercised the production
   fallback with a `2.3366e-5` downstream probability delta and a valid
   prediction-stability receipt.
+
+## 2026-08-09 - repaired identity export and canary
+
+- Published repair commit `16fe4cf` and regenerated all 40 private case
+  bundles under config digest
+  `87c3afa6fbb9a2177caafc0b2aacb0130c7f6545523839cd0fd030218795d7c2`
+  and source fingerprint
+  `19da36fce7f5370d91ed9ef704440c6b63c4d97fef9fdd35c4ea5eaae3043c07`.
+  The inventory is the exact 8-by-5 cross-product, with 53 numeric arrays per
+  case, one common source binding, and outer attempted/opened `0/0`.
+- Repeated the full `sarcophilus_harrisii` / `fold00` canary twice under the
+  repaired identity.  Both leaves have content digest
+  `5b39637bc1ae49a51ae50175df631e84137e0830d17f138f7dca2b19fb416d60`;
+  their model, state, epoch, prediction, transfer, reset, q-initial, and
+  frozen-trunk evidence is byte-identical.
+- Each repeat retained 221 logical artifacts / 441 physical fits.  All
+  predictions were finite over `[0.002136, 0.999895]`; q-linear converged
+  normally at iteration 507 with finite coefficients, logits, and
+  probabilities.  The canary decision is `pass`, and outer access remains
+  `0/0`.
