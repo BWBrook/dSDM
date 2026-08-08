@@ -11,8 +11,8 @@ uv run --locked python -m dsdm.architecture_runner export --foundation-root /pat
 PYTHONPATH=src data/processed/dsdm/goal033-architecture-selection/runtime/.venv/bin/python -m dsdm.architecture_runner validate-bundles
 PYTHONPATH=src data/processed/dsdm/goal033-architecture-selection/runtime/.venv/bin/python -m dsdm.architecture_runner run
 PYTHONPATH=src data/processed/dsdm/goal033-architecture-selection/runtime/.venv/bin/python -m dsdm.architecture_runner status
-PYTHONPATH=src data/processed/dsdm/goal033-architecture-selection/runtime/.venv/bin/python -m dsdm.architecture_runner validate
 PYTHONPATH=src data/processed/dsdm/goal033-architecture-selection/runtime/.venv/bin/python -m dsdm.architecture_runner finalize
+PYTHONPATH=src data/processed/dsdm/goal033-architecture-selection/runtime/.venv/bin/python -m dsdm.architecture_runner validate
 ```
 
 `run` is private and never writes tracked evidence. It validates the complete
@@ -20,6 +20,7 @@ PYTHONPATH=src data/processed/dsdm/goal033-architecture-selection/runtime/.venv/
 architectures, performs the mandatory 160 seed-31031 replay comparisons, and
 leaves all labels, scores, and receipts under the private root. Resume skips
 only a fully revalidated identity-addressed leaf; partial or tampered leaves
-fail closed. After orchestrator review and wake-up, `finalize` recomputes all
-gates and atomically writes the single aggregate receipt; `validate` is
-read-only and exact-compares that receipt.
+fail closed. `status` is the private pre-finalization validation gate. After
+orchestrator review and wake-up, `finalize` recomputes all gates and atomically
+writes the single aggregate receipt; `validate` is read-only and exact-compares
+that receipt.

@@ -28,3 +28,23 @@
   `resmlp00`, base seed `31031`): 39 discovery epochs, selected/replayed epoch
   9, 216 finite scores, and outer attempted/opened `0/0`.
 - The full three-worker queue remains pending launch under `tmux`.
+
+## 2026-08-08 - completed selection
+
+- The `dsdm-goal033` tmux run completed from commit `862861b` with exit code
+  zero: 960 screen and 480 shortlist logical evaluations, representing 2,880
+  discovery-plus-replay fits.
+- All 1,440 private leaves revalidated with zero invalid or missing leaves.
+  All 160 common-seed screen/shortlist replay pairs were byte-identical, and
+  outer attempted/opened remained `0/0`.
+- The screen advanced `resmlp13`, `resmlp15`, `resmlp19`, and `resmlp22`.
+  The three-seed shortlist selected `resmlp13`; all eight leave-one-species-out
+  rankings agreed.
+- Independent read-only reconstruction exactly reproduced every AUC, TSS,
+  threshold, ranking, and replay check. It supported finalization while noting
+  that the raw advantage over `resmlp22` is small.
+- Finalization wrote the aggregate-only receipt at
+  `evidence/dsdm_architecture_selection/goal033/aggregate.json`; exact receipt
+  validation and the tracked-evidence privacy scan passed.
+- Final focused verification: `uv lock --check`, 27 architecture/training
+  tests, and `git diff --check` passed.

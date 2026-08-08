@@ -19,3 +19,18 @@
 
 LOSO ranking is diagnostic only. Poor metrics are scientific evidence, not an
 execution error.
+
+## Outcome - 2026-08-08
+
+The frozen rule selected `resmlp13`: three constant-width residual blocks,
+width 128, bottleneck 64, no dropout, and weight decay 0.001. The screen top
+four were `resmlp13`, `resmlp15`, `resmlp19`, and `resmlp22`; the fresh
+three-seed shortlist ranked them `resmlp13`, `resmlp22`, `resmlp15`, and
+`resmlp19`.
+
+Across species, `resmlp13` had mean AUC 0.72470 and mean TSS 0.35826. All
+eight leave-one-species-out rankings retained it as the winner. Its raw AUC
+margin over `resmlp22` was small and leave-one-fold-out diagnostics were not
+uniform, so the warranted claim is that `resmlp13` is the predeclared-rule
+winner, not that it is materially superior across all plausible selections.
+The outer assessment remained unopened.
