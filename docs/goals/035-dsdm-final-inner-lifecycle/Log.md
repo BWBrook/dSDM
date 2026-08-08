@@ -116,3 +116,26 @@
   normally at iteration 507 with finite coefficients, logits, and
   probabilities.  The canary decision is `pass`, and outer access remains
   `0/0`.
+
+## 2026-08-09 - final inner-lifecycle completion
+
+- The repaired three-worker Mac CPU run exited `0`.  Exact status was 40/40
+  current-identity leaves complete, zero invalid, zero missing, and outer
+  attempted/opened `0/0`.
+- Independent reconstruction matched all 40 target-by-fold identities to the
+  40 private bundles, verified 8,840 unique artifacts, and recomputed all
+  8,400 retained target prediction digests.  Predictions were float32, finite,
+  bounded in `[0, 1]`, and observed over `[0.000105, 0.999990]`; all transfer,
+  replay-reset, frozen-trunk, seed, and epoch relations held.
+- Observed work was 17,644 physical fits.  Thirty-six q-linear cases converged
+  normally in 441-2,630 iterations.  The four prespecified ceiling cases used
+  one additional fit each; their worst 5,000-versus-10,000 downstream
+  probability delta was `4.3542e-5`, within the `1e-4` gate.
+- The known Apple scikit-learn warning triplets persisted, but there was no
+  traceback, exception, partial directory, invalid leaf, or non-finite output.
+  Across all q fits, coefficients were within `[-3.997, 2.732]`, logits within
+  `[-1.306, 9.498]`, and probabilities within `[0.213, 0.999925]`.
+- Focused and direct regression tests passed (53 tests); pycompile, lock,
+  source/runtime, bundle, canary, status, finalize, and validate gates all
+  passed.  The independently reconstructed tracked aggregate has SHA-256
+  `4eae8cea43643a3a82e14ea546ce89fc60129e443c752599304d80fab0b5f7bf`.

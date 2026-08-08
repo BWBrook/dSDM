@@ -22,5 +22,8 @@ fixed 77-column schema and private-label boundary remain unchanged.
 The final runner prepares 40 target-by-held-fold leaves; each
 leaf contains only `metadata.json` and float32 `predictions.npy`.
 
-Full export/fits remain gated on the corrected two-repeat canary and were not
-launched in this implementation pass.
+Full export and fitting were subsequently authorised by the corrected
+two-repeat canary and completed under the frozen three-worker Mac CPU route.
+The final private inventory contains all 40 target-by-held-fold leaves; the
+tracked aggregate binds 8,840 logical artifacts / 17,644 physical fits and
+outer attempted/opened `0/0`.
