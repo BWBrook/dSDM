@@ -7,7 +7,11 @@
    Preserve training byte identity and keep q inference on the separate raw-x
    auxiliary-mask view.
 3. Run one atomic lifecycle per target-by-held-fold case: 221 logical / 441
-   physical fits, five seeds, seven endpoints, and six frozen method IDs.
+   baseline physical fits, five seeds, seven endpoints, and six frozen method
+   IDs.  A q-linear convergence warning authorises exactly one 10,000-iteration
+   comparison fit, accepted only when all downstream q probabilities remain
+   finite and change by at most `1e-4`; final physical work is reported rather
+   than assumed.
 4. Require a deterministic two-repeat Mac CPU canary before full run; resume
    only missing leaves.  Corrupt existing leaves fail closed and require
    explicit intervention before any case is scheduled.

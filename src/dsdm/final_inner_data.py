@@ -155,9 +155,9 @@ def load_config(path: str | Path, *, root: str | Path | None = None, require_rec
     _require(tuple(raw["seeds"]) == SEEDS, "final-inner seed drift")
     _require(tuple(raw["methods"]) == METHODS, "final-inner method drift")
     _require(isinstance(raw["training"], dict) and set(raw["training"]) == TRAINING_KEYS, "training key set drift")
-    _require(raw["training"] == {"predictor_count": 77, "q_predictor_count": 78, "dtype": "float32", "device": "cpu", "threads": 1, "blas_threads": 1, "max_epochs": 300, "patience": 30, "optimizer": "AdamW", "learning_rate": 0.001, "q_linear": {"penalty": "elasticnet", "solver": "saga", "C": 1.0, "l1_ratio": 0.5, "max_iter": 5000, "tol": 0.00001}}, "training contract drift")
+    _require(raw["training"] == {"predictor_count": 77, "q_predictor_count": 78, "dtype": "float32", "device": "cpu", "threads": 1, "blas_threads": 1, "max_epochs": 300, "patience": 30, "optimizer": "AdamW", "learning_rate": 0.001, "q_linear": {"penalty": "elasticnet", "solver": "saga", "C": 1.0, "l1_ratio": 0.5, "max_iter": 5000, "tol": 0.00001, "stability_max_iter": 10000, "stability_probability_tolerance": 0.0001}}, "training contract drift")
     execution = raw["execution"]
-    _require(execution == {"auxiliary_logical_artifacts_per_case": 11, "target_logical_artifacts_per_case": 210, "logical_artifacts_per_case": 221, "physical_fits_per_case": 441, "logical_artifacts": 8840, "physical_fits": 17640, "workers": 3, "outer_attempted": 0, "outer_opened": 0}, "final-inner execution arithmetic drift")
+    _require(execution == {"auxiliary_logical_artifacts_per_case": 11, "target_logical_artifacts_per_case": 210, "logical_artifacts_per_case": 221, "physical_fits_per_case_minimum": 441, "physical_fits_per_case_maximum": 442, "logical_artifacts": 8840, "physical_fits_minimum": 17640, "physical_fits_maximum": 17680, "workers": 3, "outer_attempted": 0, "outer_opened": 0}, "final-inner execution arithmetic drift")
     _require(raw["privacy"] == {"labels_private": True, "row_identifiers": False, "coordinates": False, "outer_attempted": 0, "outer_opened": 0}, "final-inner privacy drift")
     evidence = raw["evidence"]
     _require(isinstance(evidence, dict) and set(evidence) == EVIDENCE_KEYS, "evidence key set drift")
@@ -208,7 +208,7 @@ ARRAY_KEYS = frozenset({key for endpoint in ENDPOINTS for key in _target_keys(en
 BUNDLE_METADATA_KEYS = frozenset({"schema_version", "goal_id", "case_id", "target", "held_fold", "stopping_fold", "config_digest", "authority_digests", "source_digests", "source_fingerprint", "source_binding_digest", "subset_membership_digests", "subset_nesting_verified", "subset_nesting_by_ladder", "fold_partition", "array_shapes", "array_digests", "auxiliary_audit", "privacy", "outer_attempted", "outer_opened", "bundle_digest"})
 LEAF_METADATA_KEYS = frozenset({"schema_version", "goal_id", "target", "held_fold", "architecture", "config_digest", "bundle_digest", "target_mask_digests", "auxiliary_mask_digest", "support_overlap", "target_support_audits", "auxiliary_support_audits", "q_ranges", "target_plus_q_prediction_ranges", "artifacts", "counts", "runtime", "outer_attempted", "outer_opened", "identity", "shape", "dtype", "prediction_digest"})
 NEURAL_ARTIFACT_KEYS = frozenset({"artifact_id", "kind", "logical_artifacts", "physical_fits", "selected_epoch", "discovery_executed_epochs", "replay_epochs", "stopping_status", "initial_model_digest", "replay_initial_model_digest", "initial_shared_digest", "final_shared_digest", "initial_head_digest", "model_digest", "prediction_digest", "n_iter", "finite", "wall_seconds", "fit_seed", "runtime_digest"})
-Q_ARTIFACT_KEYS = NEURAL_ARTIFACT_KEYS | frozenset({"convergence", "coefficient_range", "logit_range", "probability_range"})
+Q_ARTIFACT_KEYS = NEURAL_ARTIFACT_KEYS | frozenset({"primary_n_iter", "convergence", "termination_status", "stability_accepted", "stability_probability_delta", "stability_probability_tolerance", "coefficient_range", "logit_range", "probability_range"})
 
 
 def _row_counter(x: np.ndarray, y: np.ndarray, species: np.ndarray | None = None) -> Counter[tuple[Any, ...]]:
@@ -380,12 +380,13 @@ def validate_case_payload(identity: Mapping[str, Any], predictions: np.ndarray, 
     _require(metadata.get("outer_attempted") == metadata.get("outer_opened") == 0, "final-inner leaf outer boundary drift")
     artifacts = metadata.get("artifacts")
     _require(isinstance(artifacts, list) and len(artifacts) == 221 and len({item.get("artifact_id") for item in artifacts}) == 221, "final-inner artifact inventory drift")
-    _require(metadata.get("counts") == {"auxiliary_logical_artifacts": 11, "target_logical_artifacts": 210, "logical_artifacts": 221, "physical_fits": 441}, "final-inner count evidence drift")
+    physical_fits = sum(int(item.get("physical_fits", -1)) for item in artifacts)
+    _require(metadata.get("counts") == {"auxiliary_logical_artifacts": 11, "target_logical_artifacts": 210, "logical_artifacts": 221, "physical_fits": physical_fits} and physical_fits in {441, 442}, "final-inner count evidence drift")
     runtime_digest = identity["runtime_digest"]
     def expected_fit_seed(endpoint: str, seed: int, method: str) -> int:
         text = f"goal035-final-inner|{identity['target']}|{identity['held_fold']}|{endpoint}|{seed}|{method}|{identity['architecture']}"
         return int.from_bytes(hashlib.sha256(text.encode()).digest()[:4], "big")
-    _require(sum(int(item.get("physical_fits", -1)) for item in artifacts) == 441 and all(item.get("logical_artifacts") == 1 and item.get("finite") is True and type(item.get("fit_seed")) is int and item.get("runtime_digest") == runtime_digest for item in artifacts), "final-inner physical/artifact schema drift")
+    _require(all(item.get("logical_artifacts") == 1 and item.get("finite") is True and type(item.get("fit_seed")) is int and item.get("runtime_digest") == runtime_digest for item in artifacts), "final-inner physical/artifact schema drift")
     for item in artifacts:
         expected = Q_ARTIFACT_KEYS if item.get("artifact_id") == "aux/q_linear" else NEURAL_ARTIFACT_KEYS
         _require(set(item) == expected, f"final-inner artifact schema drift: {item.get('artifact_id')}")
@@ -394,7 +395,13 @@ def validate_case_payload(identity: Mapping[str, Any], predictions: np.ndarray, 
         if item.get("kind") != "auxiliary" or item.get("artifact_id") != "aux/q_linear":
             _require(item.get("initial_model_digest") == item.get("replay_initial_model_digest"), "final-inner replay reset drift")
     q = next((item for item in artifacts if item.get("artifact_id") == "aux/q_linear"), None)
-    _require(q is not None and q.get("convergence") is True and 0 < int(q.get("n_iter", 0)) < 5000, "final-inner q convergence evidence drift")
+    _require(q is not None and type(q.get("primary_n_iter")) is int and type(q.get("n_iter")) is int and q.get("stability_probability_tolerance") == 1e-4 and isinstance(q.get("stability_probability_delta"), (int, float)) and np.isfinite(float(q["stability_probability_delta"])) and 0.0 <= float(q["stability_probability_delta"]) <= 1e-4, "final-inner q stability evidence drift")
+    if q.get("termination_status") == "converged":
+        _require(q.get("physical_fits") == 1 and q.get("convergence") is True and q.get("stability_accepted") is False and 0 < q["n_iter"] == q["primary_n_iter"] < 5000 and q["stability_probability_delta"] == 0.0, "final-inner q termination evidence drift")
+    elif q.get("termination_status") == "converged_after_extension":
+        _require(q.get("physical_fits") == 2 and q.get("convergence") is True and q.get("stability_accepted") is False and q["primary_n_iter"] == 5000 and 5000 < q["n_iter"] < 10000, "final-inner q termination evidence drift")
+    else:
+        _require(q.get("physical_fits") == 2 and q.get("termination_status") == "prediction_stable_at_iteration_ceiling" and q.get("convergence") is False and q.get("stability_accepted") is True and q["primary_n_iter"] == 5000 and q["n_iter"] == 10000, "final-inner q termination evidence drift")
     _require(q["fit_seed"] == expected_fit_seed("auxiliary", SEEDS[0], "q_linear"), "final-inner q fit-seed derivation drift")
     for key in ("coefficient_range", "logit_range", "probability_range"):
         value = q[key]

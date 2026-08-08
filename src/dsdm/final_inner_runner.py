@@ -88,22 +88,64 @@ def _fit_seed(config: FinalInnerConfig, bundle: CaseBundle, endpoint: str, seed:
     return int.from_bytes(hashlib.sha256(text.encode()).digest()[:4], "big")
 
 
-def _q_fit(x: np.ndarray, y: np.ndarray, species: np.ndarray, seed: int) -> tuple[LogisticRegression, dict[str, Any]]:
-    model = LogisticRegression(penalty="elasticnet", solver="saga", C=1.0, l1_ratio=0.5, max_iter=5000, tol=1e-5, random_state=seed)
+def _q_fit(
+    x: np.ndarray,
+    y: np.ndarray,
+    species: np.ndarray,
+    seed: int,
+    *,
+    stability_x: np.ndarray,
+) -> tuple[LogisticRegression, dict[str, Any]]:
+    """Fit q, extending only warned cases behind a prediction-stability gate."""
     started = time.monotonic()
-    with threadpool_limits(limits=1), warnings.catch_warnings(record=True) as caught:
-        warnings.simplefilter("always")
-        warnings.filterwarnings("ignore", category=FutureWarning)
-        model.fit(x, y, sample_weight=_q_weights(species))
-    _require(not any(issubclass(item.category, ConvergenceWarning) for item in caught), "q_linear convergence warning")
-    n_iter = int(np.max(model.n_iter_))
-    _require(0 < n_iter < model.max_iter, "q_linear did not converge")
+
+    def fit_once(max_iter: int) -> tuple[LogisticRegression, int, bool]:
+        fitted = LogisticRegression(penalty="elasticnet", solver="saga", C=1.0, l1_ratio=0.5, max_iter=max_iter, tol=1e-5, random_state=seed)
+        with threadpool_limits(limits=1), warnings.catch_warnings(record=True) as caught:
+            warnings.simplefilter("always")
+            warnings.filterwarnings("ignore", category=FutureWarning)
+            fitted.fit(x, y, sample_weight=_q_weights(species))
+        iteration = int(np.max(fitted.n_iter_))
+        warned = any(issubclass(item.category, ConvergenceWarning) for item in caught)
+        return fitted, iteration, warned
+
+    primary, primary_n_iter, primary_warned = fit_once(5000)
+    model = primary
+    n_iter = primary_n_iter
+    convergence = not primary_warned
+    termination_status = "converged"
+    stability_accepted = False
+    stability_delta = 0.0
+    _require(0 < primary_n_iter <= 5000, "q_linear primary iteration evidence invalid")
+    if primary_warned:
+        comparison, n_iter, comparison_warned = fit_once(10000)
+        stability_values = np.asarray(stability_x, dtype=np.float32)
+        _require(stability_values.ndim == 2 and stability_values.shape[1] == x.shape[1] and len(stability_values) > 0 and np.isfinite(stability_values).all(), "q_linear stability predictors invalid")
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", RuntimeWarning)
+            primary_probability = primary.predict_proba(stability_values)[:, 1]
+            comparison_probability = comparison.predict_proba(stability_values)[:, 1]
+        _require(np.isfinite(primary_probability).all() and np.isfinite(comparison_probability).all(), "q_linear stability predictions non-finite")
+        stability_delta = float(np.max(np.abs(comparison_probability - primary_probability)))
+        _require(stability_delta <= 1e-4, "q_linear prediction stability gate failed")
+        model = comparison
+        convergence = not comparison_warned
+        if convergence:
+            _require(5000 < n_iter < 10000, "q_linear extended convergence evidence invalid")
+            termination_status = "converged_after_extension"
+        else:
+            _require(n_iter == 10000, "q_linear stability ceiling evidence invalid")
+            termination_status = "prediction_stable_at_iteration_ceiling"
+            stability_accepted = True
     digest = hashlib.sha256()
     for value in (model.classes_, model.coef_, model.intercept_):
         digest.update(np.asarray(value).tobytes(order="C"))
-    logits = model.decision_function(x).astype(np.float32)
-    probabilities = model.predict_proba(x)[:, 1].astype(np.float32)
-    return model, {"artifact_id": "aux/q_linear", "kind": "auxiliary", "logical_artifacts": 1, "physical_fits": 1, "selected_epoch": 0, "discovery_executed_epochs": 0, "replay_epochs": 0, "stopping_status": "not_applicable", "initial_model_digest": "not_applicable", "replay_initial_model_digest": "not_applicable", "initial_shared_digest": "not_applicable", "final_shared_digest": "not_applicable", "initial_head_digest": "not_applicable", "model_digest": digest.hexdigest(), "prediction_digest": array_digest(probabilities), "n_iter": n_iter, "convergence": True, "coefficient_range": {"min": float(np.asarray(model.coef_).min()), "max": float(np.asarray(model.coef_).max())}, "logit_range": {"min": float(logits.min()), "max": float(logits.max())}, "probability_range": {"min": float(probabilities.min()), "max": float(probabilities.max())}, "finite": True, "wall_seconds": round(time.monotonic() - started, 6)}
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore", RuntimeWarning)
+        logits = model.decision_function(x).astype(np.float32)
+        probabilities = model.predict_proba(x)[:, 1].astype(np.float32)
+    _require(np.isfinite(model.coef_).all() and np.isfinite(model.intercept_).all() and np.isfinite(logits).all() and np.isfinite(probabilities).all(), "q_linear selected fit non-finite")
+    return model, {"artifact_id": "aux/q_linear", "kind": "auxiliary", "logical_artifacts": 1, "physical_fits": 2 if primary_warned else 1, "selected_epoch": 0, "discovery_executed_epochs": 0, "replay_epochs": 0, "stopping_status": "not_applicable", "initial_model_digest": "not_applicable", "replay_initial_model_digest": "not_applicable", "initial_shared_digest": "not_applicable", "final_shared_digest": "not_applicable", "initial_head_digest": "not_applicable", "model_digest": digest.hexdigest(), "prediction_digest": array_digest(probabilities), "n_iter": n_iter, "primary_n_iter": primary_n_iter, "convergence": convergence, "termination_status": termination_status, "stability_accepted": stability_accepted, "stability_probability_delta": stability_delta, "stability_probability_tolerance": 1e-4, "coefficient_range": {"min": float(np.asarray(model.coef_).min()), "max": float(np.asarray(model.coef_).max())}, "logit_range": {"min": float(logits.min()), "max": float(logits.max())}, "probability_range": {"min": float(probabilities.min()), "max": float(probabilities.max())}, "finite": True, "wall_seconds": round(time.monotonic() - started, 6)}
 
 
 def _auxiliary_lifecycle(bundle: CaseBundle, prepared: Mapping[str, Any], spec: Any, seed: int, device: torch.device) -> tuple[Any, Any, dict[str, Any], dict[str, Any]]:
@@ -143,7 +185,8 @@ def _case_lifecycle(bundle: CaseBundle, config: FinalInnerConfig, *, device: str
     q_x = prepared["auxiliary"]["replay"]
     q_y = bundle.arrays["aux_y_replay"]
     q_species = bundle.arrays["aux_species_replay"]
-    q_model, q_artifact = _q_fit(q_x, q_y, q_species, _fit_seed(config, bundle, "auxiliary", SEEDS[0], "q_linear"))
+    q_stability_x = np.vstack([q_x, *(prepared["q_inputs"][key] for key in sorted(prepared["q_inputs"]))]).astype(np.float32)
+    q_model, q_artifact = _q_fit(q_x, q_y, q_species, _fit_seed(config, bundle, "auxiliary", SEEDS[0], "q_linear"), stability_x=q_stability_x)
     aux_artifacts.append(_bind_artifact(q_artifact, fit_seed=_fit_seed(config, bundle, "auxiliary", SEEDS[0], "q_linear"), runtime_digest=runtime_digest))
     q_linear_values = {role: _scalar_from_linear(q_model, prepared["q_inputs"][f"{ENDPOINTS[0]}/{role}"]) for role in ("discovery", "stopping", "replay", "held")}
     predictions = np.empty((len(SEEDS), len(ENDPOINTS), len(METHODS), len(bundle.arrays["x_held"])), dtype=np.float32)
@@ -201,7 +244,8 @@ def _case_lifecycle(bundle: CaseBundle, config: FinalInnerConfig, *, device: str
         _require(frozen["initial_shared_digest"] == full["initial_shared_digest"] == aux_multi["final_shared_digest"], "multihead shared transfer mismatch")
         _require(frozen["initial_shared_digest"] == frozen["final_shared_digest"], "frozen trunk changed")
         _require(qlinear["initial_model_digest"] == qdeep["initial_model_digest"], "q method initial mismatch")
-    _require(len(artifacts) == 221 and sum(item["physical_fits"] for item in artifacts) == 441, "case lifecycle arithmetic drift")
+    physical_fits = sum(item["physical_fits"] for item in artifacts)
+    _require(len(artifacts) == 221 and physical_fits in {441, 442}, "case lifecycle arithmetic drift")
     metadata = {
         "schema_version": "goal035-final-inner-case-v1", "goal_id": "goal035-dsdm-final-inner-lifecycle", "target": bundle.target, "held_fold": bundle.held_fold,
         "architecture": config.corrected_winner, "config_digest": config.config_digest, "bundle_digest": bundle.source_digest,
@@ -209,7 +253,7 @@ def _case_lifecycle(bundle: CaseBundle, config: FinalInnerConfig, *, device: str
         "support_overlap": prepared["support_overlap"], "target_support_audits": prepared["target_audits"], "auxiliary_support_audits": prepared["auxiliary_audits"],
         "q_ranges": {"linear": {"coefficient_min": float(np.asarray(q_model.coef_).min()), "coefficient_max": float(np.asarray(q_model.coef_).max()), "probability_min": float(min(value.min() for value in q_linear_values.values())), "probability_max": float(max(value.max() for value in q_linear_values.values()))}, "deep": {"probability_min": float(min(_scalar_from_neural(aux_models[SEEDS[0]][0], prepared["q_inputs"][f"{ENDPOINTS[0]}/{role}"], target_device).min() for role in ("discovery", "stopping", "replay", "held"))), "probability_max": float(max(_scalar_from_neural(aux_models[SEEDS[0]][0], prepared["q_inputs"][f"{ENDPOINTS[0]}/{role}"], target_device).max() for role in ("discovery", "stopping", "replay", "held"))) }},
         "target_plus_q_prediction_ranges": {"linear_min": float(predictions[:, :, METHODS.index("target_plus_q_linear")].min()), "linear_max": float(predictions[:, :, METHODS.index("target_plus_q_linear")].max()), "deep_min": float(predictions[:, :, METHODS.index("target_plus_q_deep")].min()), "deep_max": float(predictions[:, :, METHODS.index("target_plus_q_deep")].max())},
-        "artifacts": artifacts, "counts": {"auxiliary_logical_artifacts": 11, "target_logical_artifacts": 210, "logical_artifacts": 221, "physical_fits": 441},
+        "artifacts": artifacts, "counts": {"auxiliary_logical_artifacts": 11, "target_logical_artifacts": 210, "logical_artifacts": 221, "physical_fits": physical_fits},
         "runtime": runtime, "outer_attempted": 0, "outer_opened": 0,
     }
     return predictions, metadata
@@ -246,10 +290,10 @@ def canary(config: FinalInnerConfig, bundle_root: str | Path, output: str | Path
     _require(np.array_equal(first, second), "canary prediction repeat mismatch")
     deterministic_a, deterministic_b = _without_wall(metadata_a), _without_wall(metadata_b)
     _require(deterministic_a == deterministic_b, "canary deterministic evidence repeat mismatch")
-    fields = ("artifact_id", "selected_epoch", "discovery_executed_epochs", "replay_epochs", "stopping_status", "initial_model_digest", "replay_initial_model_digest", "initial_shared_digest", "final_shared_digest", "initial_head_digest", "model_digest", "prediction_digest", "n_iter", "fit_seed", "runtime_digest")
+    fields = ("artifact_id", "selected_epoch", "discovery_executed_epochs", "replay_epochs", "stopping_status", "initial_model_digest", "replay_initial_model_digest", "initial_shared_digest", "final_shared_digest", "initial_head_digest", "model_digest", "prediction_digest", "n_iter", "primary_n_iter", "termination_status", "stability_accepted", "stability_probability_delta", "fit_seed", "runtime_digest")
     left = [tuple(item.get(field) for field in fields) for item in metadata_a["artifacts"]]
     strict_runtime = runtime_attestation(config, strict=True)
-    receipt = {"schema_version": "goal035-final-inner-canary-v1", "success": True, "decision": "pass", "config_digest": config.config_digest, "corrected_winner": config.corrected_winner, "target": sentinel.target, "held_fold": sentinel.held_fold, "bundle_inventory_digest": _bundle_inventory_digest(bundles), "sentinel_bundle_digest": sentinel.source_digest, "source_fingerprint": config.source_fingerprint, "runtime": strict_runtime, "runtime_digest": digest_value(strict_runtime), "counts": {"logical_artifacts": 221, "physical_fits": 441}, "repeat_a_content_digest": _leaf_content_digest(first_path), "repeat_b_content_digest": _leaf_content_digest(second_path), "prediction_digest": array_digest(first), "artifact_digest": digest_value(left), "deterministic_evidence_digest": digest_value(deterministic_a), "gates": {"transfer": True, "reset": True, "frozen_trunk": True, "q_initial": True, "outer": True}, "outer_attempted": 0, "outer_opened": 0}
+    receipt = {"schema_version": "goal035-final-inner-canary-v1", "success": True, "decision": "pass", "config_digest": config.config_digest, "corrected_winner": config.corrected_winner, "target": sentinel.target, "held_fold": sentinel.held_fold, "bundle_inventory_digest": _bundle_inventory_digest(bundles), "sentinel_bundle_digest": sentinel.source_digest, "source_fingerprint": config.source_fingerprint, "runtime": strict_runtime, "runtime_digest": digest_value(strict_runtime), "counts": dict(metadata_a["counts"]), "repeat_a_content_digest": _leaf_content_digest(first_path), "repeat_b_content_digest": _leaf_content_digest(second_path), "prediction_digest": array_digest(first), "artifact_digest": digest_value(left), "deterministic_evidence_digest": digest_value(deterministic_a), "gates": {"transfer": True, "reset": True, "frozen_trunk": True, "q_initial": True, "outer": True}, "outer_attempted": 0, "outer_opened": 0}
     path = Path(output); path.parent.mkdir(parents=True, exist_ok=True); temporary = path.with_suffix(path.suffix + ".tmp"); temporary.write_text(canonical(receipt).decode() + "\n", encoding="utf-8"); temporary.replace(path)
     return receipt
 
@@ -335,7 +379,7 @@ def validate_canary(config: FinalInnerConfig) -> dict[str, Any]:
     _require(receipt["config_digest"] == config.config_digest and receipt["corrected_winner"] == config.corrected_winner and receipt["source_fingerprint"] == config.source_fingerprint and receipt["target"] == sentinel.target and receipt["held_fold"] == sentinel.held_fold, "canary binding drift")
     _require(receipt["bundle_inventory_digest"] == _bundle_inventory_digest(bundles) and receipt["sentinel_bundle_digest"] == sentinel.source_digest, "canary bundle drift")
     _require(receipt["runtime"] == current_runtime and receipt["runtime_digest"] == digest_value(current_runtime), "canary runtime drift")
-    _require(receipt["counts"] == {"logical_artifacts": 221, "physical_fits": 441} and receipt["gates"] == {"transfer": True, "reset": True, "frozen_trunk": True, "q_initial": True, "outer": True} and receipt["outer_attempted"] == receipt["outer_opened"] == 0, "canary arithmetic/gate drift")
+    _require(receipt["counts"].get("logical_artifacts") == 221 and receipt["counts"].get("physical_fits") in {441, 442} and receipt["gates"] == {"transfer": True, "reset": True, "frozen_trunk": True, "q_initial": True, "outer": True} and receipt["outer_attempted"] == receipt["outer_opened"] == 0, "canary arithmetic/gate drift")
     repeat_root = config.private_root / "canary_repeats"
     prepared = prepare_case(sentinel)
     expected_identity = {"target": sentinel.target, "held_fold": sentinel.held_fold, "held_row_count": int(len(sentinel.arrays["x_held"])), "bundle_digest": sentinel.source_digest, "config_digest": config.config_digest, "runtime_digest": digest_value(current_runtime), "architecture": config.corrected_winner, "mask_digest": digest_value({endpoint: prepared["target_masks"][endpoint].digest for endpoint in ENDPOINTS}), "aux_mask_digest": prepared["auxiliary_mask"].digest}
@@ -348,8 +392,9 @@ def validate_canary(config: FinalInnerConfig) -> dict[str, Any]:
     metadata_a = validate_leaf(repeat_paths[0], identities[0]); metadata_b = validate_leaf(repeat_paths[1], identities[1])
     pred_a = np.load(repeat_paths[0] / "predictions.npy", allow_pickle=False); pred_b = np.load(repeat_paths[1] / "predictions.npy", allow_pickle=False)
     _require(np.array_equal(pred_a, pred_b) and _without_wall(metadata_a) == _without_wall(metadata_b), "canary repeat evidence drift")
+    _require(receipt["counts"] == metadata_a["counts"] == metadata_b["counts"], "canary count evidence drift")
     _require(receipt["repeat_a_content_digest"] == _leaf_content_digest(repeat_paths[0]) and receipt["repeat_b_content_digest"] == _leaf_content_digest(repeat_paths[1]), "canary repeat content drift")
-    fields = ("artifact_id", "selected_epoch", "discovery_executed_epochs", "replay_epochs", "stopping_status", "initial_model_digest", "replay_initial_model_digest", "initial_shared_digest", "final_shared_digest", "initial_head_digest", "model_digest", "prediction_digest", "n_iter", "fit_seed", "runtime_digest")
+    fields = ("artifact_id", "selected_epoch", "discovery_executed_epochs", "replay_epochs", "stopping_status", "initial_model_digest", "replay_initial_model_digest", "initial_shared_digest", "final_shared_digest", "initial_head_digest", "model_digest", "prediction_digest", "n_iter", "primary_n_iter", "termination_status", "stability_accepted", "stability_probability_delta", "fit_seed", "runtime_digest")
     artifact_rows = [tuple(item.get(field) for field in fields) for item in metadata_a["artifacts"]]
     _require(receipt["prediction_digest"] == array_digest(pred_a) and receipt["artifact_digest"] == digest_value(artifact_rows) and receipt["deterministic_evidence_digest"] == digest_value(_without_wall(metadata_a)), "canary deterministic digest drift")
     return receipt
@@ -377,7 +422,7 @@ def run_all(config: FinalInnerConfig, bundle_root: str | Path, leaf_root: str | 
         with ProcessPoolExecutor(max_workers=3, mp_context=mp.get_context("spawn")) as pool:
             for _ in pool.map(_run_case_worker, tasks):
                 complete += 1
-    return {"cases_expected": 40, "cases_complete": complete, "cases_invalid": invalid, "logical_artifacts": 8840, "physical_fits": 17640, "workers": 3, "outer_attempted": 0, "outer_opened": 0}
+    return {"cases_expected": 40, "cases_complete": complete, "cases_invalid": invalid, "logical_artifacts": 8840, "physical_fits_minimum": 17640, "physical_fits_maximum": 17680, "workers": 3, "outer_attempted": 0, "outer_opened": 0}
 
 
 def status(config: FinalInnerConfig, bundle_root: str | Path, leaf_root: str | Path) -> dict[str, Any]:
@@ -398,6 +443,7 @@ def aggregate(config: FinalInnerConfig, bundle_root: str | Path, leaf_root: str 
     validate_canary(config)
     bundles = validate_bundle_inventory(bundle_root, config=config); inventory: list[str] = []
     content_inventory: list[str] = []; mask_inventory: list[str] = []
+    physical_fits = 0
     for bundle in bundles:
         prepared = prepare_case(bundle)
         identity = {"target": bundle.target, "held_fold": bundle.held_fold, "held_row_count": int(len(bundle.arrays["x_held"])), "bundle_digest": bundle.source_digest, "config_digest": config.config_digest, "runtime_digest": digest_value(runtime_attestation(config, strict=True)), "architecture": config.corrected_winner, "mask_digest": digest_value({endpoint: prepared["target_masks"][endpoint].digest for endpoint in ENDPOINTS}), "aux_mask_digest": prepared["auxiliary_mask"].digest}
@@ -405,9 +451,11 @@ def aggregate(config: FinalInnerConfig, bundle_root: str | Path, leaf_root: str 
         inventory.append(leaf_identity(identity)); mask_inventory.append(identity["mask_digest"] + identity["aux_mask_digest"])
         predictions = np.load(path / "predictions.npy", allow_pickle=False)
         content_inventory.append(digest_value({"identity": identity, "metadata": metadata, "predictions": array_digest(predictions)}))
+        physical_fits += int(metadata["counts"]["physical_fits"])
     runtime = runtime_attestation(config, strict=True)
     canary_digest = digest_bytes(config.canary_receipt.read_bytes())
-    return {"schema_version": "goal035-final-inner-aggregate-v1", "success": True, "corrected_winner": config.corrected_winner, "config_digest": config.config_digest, "authority_digests": dict(config.authority_digests), "source_digests": dict(config.source_digests), "source_fingerprint": config.source_fingerprint, "runtime": runtime, "runtime_digest": digest_value(runtime), "canary_receipt_digest": canary_digest, "bundle_inventory_digest": _bundle_inventory_digest(bundles), "mask_inventory_digest": digest_value(sorted(mask_inventory)), "leaf_inventory_digest": digest_value(sorted(inventory)), "leaf_content_inventory_digest": digest_value(sorted(content_inventory)), "cases": 40, "logical_artifacts": 8840, "physical_fits": 17640, "workers": 3, "outer_attempted": 0, "outer_opened": 0}
+    _require(17640 <= physical_fits <= 17680, "aggregate physical-fit arithmetic drift")
+    return {"schema_version": "goal035-final-inner-aggregate-v1", "success": True, "corrected_winner": config.corrected_winner, "config_digest": config.config_digest, "authority_digests": dict(config.authority_digests), "source_digests": dict(config.source_digests), "source_fingerprint": config.source_fingerprint, "runtime": runtime, "runtime_digest": digest_value(runtime), "canary_receipt_digest": canary_digest, "bundle_inventory_digest": _bundle_inventory_digest(bundles), "mask_inventory_digest": digest_value(sorted(mask_inventory)), "leaf_inventory_digest": digest_value(sorted(inventory)), "leaf_content_inventory_digest": digest_value(sorted(content_inventory)), "cases": 40, "logical_artifacts": 8840, "physical_fits": physical_fits, "stability_extension_fits": physical_fits - 17640, "workers": 3, "outer_attempted": 0, "outer_opened": 0}
 
 
 def finalize(config: FinalInnerConfig, bundle_root: str | Path, leaf_root: str | Path, output: str | Path) -> dict[str, Any]:
@@ -437,7 +485,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser_args = parser.parse_args(argv); source = Path(parser_args.config).resolve(); root = source.parents[1]
     config = load_config(source, root=root, require_receipt=parser_args.command not in {"plan", "validate-bundles"})
     if parser_args.command == "plan":
-        _write_json({"schema_version": "goal035-final-inner-plan-v1", "goal_id": config.raw["goal_id"], "config_digest": config.config_digest, "cases": 40, "logical_artifacts": 8840, "physical_fits": 17640, "workers": 3, "outer_attempted": 0, "outer_opened": 0}, None); return 0
+        _write_json({"schema_version": "goal035-final-inner-plan-v1", "goal_id": config.raw["goal_id"], "config_digest": config.config_digest, "cases": 40, "logical_artifacts": 8840, "physical_fits_minimum": 17640, "physical_fits_maximum": 17680, "workers": 3, "outer_attempted": 0, "outer_opened": 0}, None); return 0
     if parser_args.command == "validate-bundles":
         _write_json({"bundles": len(validate_bundle_inventory(config.private_root, config=config)), "outer_attempted": 0, "outer_opened": 0}, None); return 0
     if parser_args.command == "canary":

@@ -27,8 +27,8 @@
     "phase1_modeling_contract": {"path": "src/dsdm_phase1/modeling_contract.py", "sha256": "342bb461ca3e6c6193984e9d0ec22ba3d18ee8a3fcaeaaf84710c72adf5649a9"},
     "phase1_target_subsets": {"path": "src/dsdm_phase1/target_subsets.py", "sha256": "71988214be2108417437261b66fcb79666865df483cdda90daba60576cf49acc"},
     "phase1_goal029_production": {"path": "src/dsdm_phase1/goal029_production.py", "sha256": "4a5fb1451049d88c8ffcc8dacbe74b93569651f34b198a86f88e2ac973d31325"},
-    "final_inner_data": {"path": "src/dsdm/final_inner_data.py", "sha256": "89d3ff3a67f6240733ac5bb1f75c91e54522568c6f467236fb9fa192460b177a"},
-    "final_inner_runner": {"path": "src/dsdm/final_inner_runner.py", "sha256": "0b483617a0416507efc9e8cc4630b5b0af21e101b54e77f435caa7bbad62e1d6"},
+    "final_inner_data": {"path": "src/dsdm/final_inner_data.py", "sha256": "1c20d1b224ee4092e139e7419fa989797aea5afaa45cdec926a5cd3586baad46"},
+    "final_inner_runner": {"path": "src/dsdm/final_inner_runner.py", "sha256": "2b46a96fc5dbe4dbe6a3e1a594eeea48a39f56a9162e0fdd79a5f557968d75dc"},
     "uv_lock": {"path": "uv.lock", "sha256": "39c22925750ac8821f5420bdfe5ca39554b7906d812bd3a94a04e91c469284fd"}
   },
   "scope": {
@@ -51,15 +51,17 @@
     "patience": 30,
     "optimizer": "AdamW",
     "learning_rate": 0.001,
-    "q_linear": {"penalty": "elasticnet", "solver": "saga", "C": 1.0, "l1_ratio": 0.5, "max_iter": 5000, "tol": 0.00001}
+    "q_linear": {"penalty": "elasticnet", "solver": "saga", "C": 1.0, "l1_ratio": 0.5, "max_iter": 5000, "tol": 0.00001, "stability_max_iter": 10000, "stability_probability_tolerance": 0.0001}
   },
   "execution": {
     "auxiliary_logical_artifacts_per_case": 11,
     "target_logical_artifacts_per_case": 210,
     "logical_artifacts_per_case": 221,
-    "physical_fits_per_case": 441,
+    "physical_fits_per_case_minimum": 441,
+    "physical_fits_per_case_maximum": 442,
     "logical_artifacts": 8840,
-    "physical_fits": 17640,
+    "physical_fits_minimum": 17640,
+    "physical_fits_maximum": 17680,
     "workers": 3,
     "outer_attempted": 0,
     "outer_opened": 0

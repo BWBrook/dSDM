@@ -4,12 +4,14 @@ from __future__ import annotations
 
 import hashlib
 import json
+import warnings
 from copy import deepcopy
 from dataclasses import replace
 from pathlib import Path
 
 import numpy as np
 import pytest
+from sklearn.exceptions import ConvergenceWarning
 
 from dsdm.contracts import ENDPOINTS, METHODS, FOLDS, SPECIES
 from dsdm.final_inner_data import (
@@ -94,6 +96,46 @@ def test_nonheld_partition_is_disjoint_and_replays_exact_union():
         assert discovery | {stopping} == replay
 
 
+def test_q_fit_accepts_only_bounded_prediction_stability(monkeypatch):
+    class FakeLogisticRegression:
+        delta = 0.00005
+
+        def __init__(self, *, max_iter, **kwargs):
+            self.max_iter = max_iter
+
+        def fit(self, x, y, sample_weight=None):
+            self.classes_ = np.asarray([0.0, 1.0], dtype=np.float32)
+            self.coef_ = np.zeros((1, x.shape[1]), dtype=np.float32)
+            self.intercept_ = np.zeros(1, dtype=np.float32)
+            self.n_iter_ = np.asarray([self.max_iter], dtype=np.int32)
+            warnings.warn("iteration ceiling", ConvergenceWarning)
+            return self
+
+        def predict_proba(self, x):
+            shift = self.delta if self.max_iter == 10000 else 0.0
+            positive = np.full(len(x), 0.5 + shift, dtype=np.float32)
+            return np.column_stack((1.0 - positive, positive))
+
+        def decision_function(self, x):
+            return np.full(len(x), self.delta if self.max_iter == 10000 else 0.0, dtype=np.float32)
+
+    monkeypatch.setattr(runner, "LogisticRegression", FakeLogisticRegression)
+    x = np.zeros((14, 77), dtype=np.float32)
+    y = np.arange(14, dtype=np.float32) % 2
+    species = np.arange(14, dtype=np.int32) % 7
+    model, artifact = runner._q_fit(x, y, species, 31031, stability_x=x)
+    assert model.max_iter == 10000
+    assert artifact["convergence"] is False
+    assert artifact["termination_status"] == "prediction_stable_at_iteration_ceiling"
+    assert artifact["stability_accepted"] is True
+    assert artifact["stability_probability_delta"] <= 0.0001
+    assert artifact["physical_fits"] == 2
+
+    FakeLogisticRegression.delta = 0.0002
+    with pytest.raises(ValueError, match="prediction stability"):
+        runner._q_fit(x, y, species, 31031, stability_x=x)
+
+
 def test_row_multiset_replay_and_ladder01_02_nesting_fail_closed():
     _, arrays = _case()
     broken_replay = {name: value.copy() for name, value in arrays.items()}
@@ -132,7 +174,7 @@ def test_atomic_leaf_round_trip_and_corruption_is_rejected(tmp_path: Path):
     def q_artifact():
         q_seed = int.from_bytes(hashlib.sha256(f"goal035-final-inner|{bundle.target}|{bundle.held_fold}|auxiliary|{SEEDS[0]}|q_linear|resmlp13".encode()).digest()[:4], "big")
         value = neural("aux/q_linear", physical=1, model="not_applicable", shared="not_applicable", head="not_applicable", epochs=0, fit_seed=q_seed)
-        value.update({"n_iter": 1, "convergence": True, "coefficient_range": {"min": -1.0, "max": 1.0}, "logit_range": {"min": -2.0, "max": 2.0}, "probability_range": {"min": 0.1, "max": 0.9}})
+        value.update({"n_iter": 1, "primary_n_iter": 1, "convergence": True, "termination_status": "converged", "stability_accepted": False, "stability_probability_delta": 0.0, "stability_probability_tolerance": 0.0001, "coefficient_range": {"min": -1.0, "max": 1.0}, "logit_range": {"min": -2.0, "max": 2.0}, "probability_range": {"min": 0.1, "max": 0.9}})
         return value
     for seed in SEEDS:
         artifacts.extend((neural(f"aux/pooled/seed{seed}", fit_seed=seed), neural(f"aux/multihead/seed{seed}", fit_seed=seed)))
@@ -163,7 +205,7 @@ def test_atomic_leaf_round_trip_and_corruption_is_rejected(tmp_path: Path):
     envelope = deepcopy(good_envelope)
     envelope["artifacts"][10]["n_iter"] = 0
     (leaf / "metadata.json").write_text(json.dumps(envelope))
-    with pytest.raises(ValueError, match="q convergence"):
+    with pytest.raises(ValueError, match="q termination"):
         validate_leaf(leaf, identity)
 
 
@@ -171,7 +213,8 @@ def test_config_binds_corrected_winner_and_arithmetic():
     config = load_config("config/dsdm_final_inner_lifecycle.json")
     assert config.corrected_winner == "resmlp13"
     assert config.raw["execution"]["logical_artifacts"] == 8840
-    assert config.raw["execution"]["physical_fits"] == 17640
+    assert config.raw["execution"]["physical_fits_minimum"] == 17640
+    assert config.raw["execution"]["physical_fits_maximum"] == 17680
     assert tuple(config.raw["methods"]) == METHODS
 
 
@@ -205,10 +248,11 @@ def test_canary_inventory_binding_rejects_stale_receipt(tmp_path: Path, monkeypa
         path.mkdir(parents=True)
         (path / "metadata.json").write_text(json.dumps({"identity": repeat_identity}))
         np.save(path / "predictions.npy", np.zeros(1, dtype=np.float32), allow_pickle=False)
-    repeat_metadata = {"identity": repeat_identity, "artifacts": []}
+    counts = {"auxiliary_logical_artifacts": 11, "target_logical_artifacts": 210, "logical_artifacts": 221, "physical_fits": 441}
+    repeat_metadata = {"identity": repeat_identity, "artifacts": [], "counts": counts}
     monkeypatch.setattr(runner, "validate_leaf", lambda path, identity: repeat_metadata)
     monkeypatch.setattr(runner, "_leaf_content_digest", lambda path: "c" * 64)
-    receipt = {"schema_version": "goal035-final-inner-canary-v1", "success": True, "decision": "pass", "config_digest": config.config_digest, "corrected_winner": config.corrected_winner, "target": sentinel.target, "held_fold": sentinel.held_fold, "bundle_inventory_digest": runner._bundle_inventory_digest(bundles), "sentinel_bundle_digest": sentinel.source_digest, "source_fingerprint": config.source_fingerprint, "runtime": runtime, "runtime_digest": runner.digest_value(runtime), "counts": {"logical_artifacts": 221, "physical_fits": 441}, "repeat_a_content_digest": "c" * 64, "repeat_b_content_digest": "c" * 64, "prediction_digest": runner.array_digest(np.zeros(1, dtype=np.float32)), "artifact_digest": runner.digest_value([]), "deterministic_evidence_digest": runner.digest_value(repeat_metadata), "gates": {"transfer": True, "reset": True, "frozen_trunk": True, "q_initial": True, "outer": True}, "outer_attempted": 0, "outer_opened": 0}
+    receipt = {"schema_version": "goal035-final-inner-canary-v1", "success": True, "decision": "pass", "config_digest": config.config_digest, "corrected_winner": config.corrected_winner, "target": sentinel.target, "held_fold": sentinel.held_fold, "bundle_inventory_digest": runner._bundle_inventory_digest(bundles), "sentinel_bundle_digest": sentinel.source_digest, "source_fingerprint": config.source_fingerprint, "runtime": runtime, "runtime_digest": runner.digest_value(runtime), "counts": counts, "repeat_a_content_digest": "c" * 64, "repeat_b_content_digest": "c" * 64, "prediction_digest": runner.array_digest(np.zeros(1, dtype=np.float32)), "artifact_digest": runner.digest_value([]), "deterministic_evidence_digest": runner.digest_value(repeat_metadata), "gates": {"transfer": True, "reset": True, "frozen_trunk": True, "q_initial": True, "outer": True}, "outer_attempted": 0, "outer_opened": 0}
     test_config.canary_receipt.write_text(json.dumps(receipt))
     assert runner.validate_canary(test_config)["decision"] == "pass"
     receipt["bundle_inventory_digest"] = "c" * 64

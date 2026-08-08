@@ -71,3 +71,28 @@
   not a canary blocker: all fitted artifacts and predictions were finite, the
   q diagnostics were bounded, and the two full repeats were byte-identical.
 - Canary receipt decision: `pass`; outer attempted/opened remained `0/0`.
+
+## 2026-08-09 - first production attempt and q stability repair
+
+- The first full run stopped fail-closed after publishing 23 valid atomic
+  leaves because `pseudocheirus_peregrinus/fold01` reached q-linear's 5,000
+  iteration ceiling.  No partial leaf was published for the failed case;
+  status was 23 complete / 17 missing / 0 invalid, outer `0/0`.
+- A q-only diagnostic identified four warned cases.  None formally converged
+  even at 10,000 iterations, while the other 36 cases converged normally.
+  Across every auxiliary and target q input actually consumed downstream,
+  5,000-versus-10,000 fitted probabilities were finite and differed by at
+  most `4.3542e-5`.
+- Replaced the impossible convergence-only gate with a bounded, transparent
+  rule: fit 5,000 normally; on warning only, fit one deterministic 10,000
+  comparison and accept the latter result only when the maximum downstream
+  q-probability change is at most `1e-4`.  Record convergence status,
+  iteration counts, stability delta, and the extra physical fit in every
+  affected leaf.  Logical work remains 8,840; physical work is now an honest
+  observed total in the authorised range 17,640-17,680.
+- GREEN evidence: 53 focused and direct regression tests passed; the exact
+  Goal034 runtime and source gates passed; the production plan reports 40
+  cases, 8,840 logical artifacts, 17,640-17,680 physical fits, three workers,
+  and outer `0/0`.  The formerly failing real case exercised the production
+  fallback with a `2.3366e-5` downstream probability delta and a valid
+  prediction-stability receipt.
