@@ -1,13 +1,26 @@
-# Goal 035 - categorical-mask architecture revalidation
+# Goal 035 - categorical-mask repair and final inner lifecycle
 
-Repair the fixed 77-column encoding without changing its schema.  For each
-immutable Goal033 full-endpoint bundle, fit categorical support from target
-replay covariates only, neutralise unsupported held indicators, and rerun the
-predeclared 24-architecture screen plus four-architecture three-seed
-shortlist under fresh identities.
+## Completed categorical revalidation
 
-This bounded stage records the discovered general defect (238/280 endpoint
-cases; 1,118 held rows) and independently reproduces the full-endpoint
-subset (27/40 cases; 66 rows; 55 case-column occurrences).  It does not run
-the 1,440 corrected fits, export foundation data, open outer data, or publish
-ecological metrics.
+The fixed 77-column encoding was repaired without changing its schema.  For
+each immutable Goal033 full-endpoint bundle, categorical support was fit from
+target replay covariates only and unsupported held indicators were neutralised.
+The predeclared 24-architecture screen plus four-architecture three-seed
+shortlist ran under fresh identities.  The observed defect was 238/280
+endpoint cases and 1,118 held rows (full-endpoint subset: 27/40 cases, 66
+rows, 55 case-column occurrences).
+
+The corrected receipt binds winner `resmlp13`, 1,440 logical / 2,880 physical
+evaluations, 160 replay pairs, and outer 0/0.
+
+## Final-runner tranche
+
+Carry the categorical-support repair through corrected architecture selection,
+a two-repeat Mac CPU canary, and the later six-method inner lifecycle.  The
+fixed 77-column schema and private-label boundary remain unchanged.
+
+The final runner prepares 40 target-by-held-fold leaves; each
+leaf contains only `metadata.json` and float32 `predictions.npy`.
+
+Full export/fits remain gated on the corrected two-repeat canary and were not
+launched in this implementation pass.

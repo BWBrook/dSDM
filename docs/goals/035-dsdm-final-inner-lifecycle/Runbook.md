@@ -1,23 +1,26 @@
 # Runbook
 
-All commands use the isolated Goal033 runtime.  The corrected architecture
-revalidation is the next authorised execution gate; the later full
-inner-lifecycle workload remains downstream of its result and the corrected
-two-repeat Mac canary.
+Use the exact Goal034 runtime (Darwin arm64; Python 3.12.13, NumPy 2.2.6,
+SciPy 1.16.3, scikit-learn 1.9.0, threadpoolctl 3.6.0, Torch 2.7.1; CPU,
+mac_cpu, one Torch and BLAS thread):
+`data/processed/dsdm/goal034-real-six-path-sentinel/runtime/.venv/bin/python`.
+Keep all private bundles/leaves under the configured Goal035 namespace.
 
 ```bash
-PYTHONPATH=src data/processed/dsdm/goal033-architecture-selection/runtime/.venv/bin/python -m dsdm.architecture_mask_revalidation --config config/dsdm_categorical_revalidation.json plan
-PYTHONPATH=src data/processed/dsdm/goal033-architecture-selection/runtime/.venv/bin/python -m dsdm.architecture_mask_revalidation --config config/dsdm_categorical_revalidation.json audit-categories
-PYTHONPATH=src data/processed/dsdm/goal033-architecture-selection/runtime/.venv/bin/python -m dsdm.architecture_mask_revalidation --config config/dsdm_categorical_revalidation.json status
-PYTHONPATH=src data/processed/dsdm/goal033-architecture-selection/runtime/.venv/bin/python -m dsdm.architecture_mask_revalidation --config config/dsdm_categorical_revalidation.json run
-PYTHONPATH=src data/processed/dsdm/goal033-architecture-selection/runtime/.venv/bin/python -m dsdm.architecture_mask_revalidation --config config/dsdm_categorical_revalidation.json finalize
-PYTHONPATH=src data/processed/dsdm/goal033-architecture-selection/runtime/.venv/bin/python -m dsdm.architecture_mask_revalidation --config config/dsdm_categorical_revalidation.json validate
+RUNTIME=data/processed/dsdm/goal034-real-six-path-sentinel/runtime/.venv/bin/python
+PYTHONPATH=src "$RUNTIME" -m dsdm.final_inner_runner --config config/dsdm_final_inner_lifecycle.json plan
+PYTHONPATH=src "$RUNTIME" -m dsdm.final_inner_runner --config config/dsdm_final_inner_lifecycle.json export
+PYTHONPATH=src "$RUNTIME" -m dsdm.final_inner_runner --config config/dsdm_final_inner_lifecycle.json validate-bundles
+PYTHONPATH=src "$RUNTIME" -m dsdm.final_inner_runner --config config/dsdm_final_inner_lifecycle.json canary
+tmux new-session -d -s dsdm035-final-inner 'PYTHONPATH=src data/processed/dsdm/goal034-real-six-path-sentinel/runtime/.venv/bin/python -m dsdm.final_inner_runner --config config/dsdm_final_inner_lifecycle.json run'
+PYTHONPATH=src "$RUNTIME" -m dsdm.final_inner_runner --config config/dsdm_final_inner_lifecycle.json status
+PYTHONPATH=src "$RUNTIME" -m dsdm.final_inner_runner --config config/dsdm_final_inner_lifecycle.json finalize
+PYTHONPATH=src "$RUNTIME" -m dsdm.final_inner_runner --config config/dsdm_final_inner_lifecycle.json validate
 ```
 
-The default bundle root is the immutable Goal033 private bundle directory.
-The default leaf root is the fresh Goal035 namespace.  `run` rejects a
-Goal033 leaf root, runs screen first, derives a fresh top four, then runs the
-shortlist and enforces 160 seed-31031 replay pairs.  It is resumable through
-strict leaf validation.  `finalize` and `validate` perform no fitting and
-write/compare aggregate evidence only after the complete private workload
-exists.
+The order is categorical repair -> corrected selection -> corrected Mac
+canary -> full launch.  `run` rejects missing or failed canary evidence and
+recomputes only incomplete case leaves; corrupt existing leaves fail closed
+before any fit is scheduled.  Finalize/validate are read-only over private
+leaves except for the single tracked aggregate receipt.  Outer access, labels
+in tracked evidence, and model weights are forbidden.

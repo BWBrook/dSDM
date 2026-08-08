@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "goal_id": "goal035-dsdm-final-inner-lifecycle",
+  "authorities": {
+    "goal028_config": {"path": "config/modeling_foundation_preflight.json", "sha256": "35b6ab72ba2b8ba2267dc82179987bfffaa3f339d64272d68012444e46285f00"},
+    "goal028_decision": {"path": "docs/goals/028-modeling-foundation-preflight/Decision.md", "sha256": "3eb6e0fbe2ee7eb1db08e75c8b99f7d1fd9760cdbebacd88bbba8ebc1889a50c"},
+    "goal033_config": {"path": "config/dsdm_architecture_selection.json", "sha256": "39542d079b3cdc6a11819dea3e1c18b52ec4aa38f530ff218955d7e89775596f"},
+    "goal033_decision": {"path": "docs/goals/033-dsdm-architecture-selection/Decision.md", "sha256": "f9ba7b18498415422aa39618c4d4ec13f20c97be87a694f52d44bc788d6c68fb"},
+    "goal034_config": {"path": "config/dsdm_real_six_path_sentinel.json", "sha256": "43f5161850d1c7384af8fe0600ae322c93ca9ccca54a2a878ce13f933c6367a9"},
+    "goal034_decision": {"path": "docs/goals/034-dsdm-real-six-path-sentinel/Decision.md", "sha256": "edfd76dc3a3e94058da11fc5e36f93b40a23458326e04df8ea33a2ba6b386375"},
+    "goal029_config": {"path": "config/conventional_baseline_production.json", "sha256": "62b1c5255c5aa5c74f5ba598818dd13e2f2234c0cb13da58671c3be286ccefae"},
+    "goal026_feature_contract": {"path": "evidence/model_ready_features/2026-07-27/feature_contract.json", "sha256": "e9a8f9b7bee7dee25905dfa052427f6e0a4f1b5ebd6ed02fcfb1761bbd224d98"},
+    "goal026_fit_parameters": {"path": "evidence/model_ready_features/2026-07-27/fit_parameters.json", "sha256": "608b99f94af49122bf9e252e35ae7c067812762d20ba080c3e7fbd40f35661d0"},
+    "corrected_aggregate": {"path": "evidence/dsdm_architecture_selection/goal035/aggregate.json", "sha256": "d80e524245d18f54184433b4fb4e3ba2a4b2c8226452a037d832e14f189e0d43"}
+  },
+  "execution_sources": {
+    "contracts": {"path": "src/dsdm/contracts.py", "sha256": "61c89d4ef7ab6895bc5d5c8bd9acabd2be0e73aa5f7fc46bba0eb87378b0d9a2"},
+    "architecture_mask_revalidation": {"path": "src/dsdm/architecture_mask_revalidation.py", "sha256": "6e4ebfe7a7410619ea5aa72c2201178759f3aad384056d6a9e7946c646547008"},
+    "categorical_support": {"path": "src/dsdm/categorical_support.py", "sha256": "90b59bfe6b47628ba6bb36d130fe427c3e5481b6a8b9c1492203f73a1234d959"},
+    "architecture_selection": {"path": "src/dsdm/architecture_selection.py", "sha256": "c3760a4f3361e6c73f382be3efb64b84122b7aa9f3c5e92380eacf33882bb183"},
+    "architecture_runner": {"path": "src/dsdm/architecture_runner.py", "sha256": "7290e5c79d22d3e2949e53436ac9fce1ae68357e270425e449e040ad961a2048"},
+    "real_data": {"path": "src/dsdm/real_data.py", "sha256": "bfbd665792b77e89e638d901cb304ae02eb77bbde4ca89a1447bd95b7ee62970"},
+    "real_training": {"path": "src/dsdm/real_training.py", "sha256": "555871aa6ea007edd717a3e6a33b5e4b32e3831fd324012d414261d07c03941a"},
+    "models": {"path": "src/dsdm/models.py", "sha256": "71317e80514eeab68a316066f59382db2c96aa6bffb0dfd524e08895f2f9c6ee"},
+    "real_six_path": {"path": "src/dsdm/real_six_path.py", "sha256": "7da430342545403ea8d82deee965ec065178c8660ceccd83a34af68cb9ff2bc0"},
+    "real_six_path_data": {"path": "src/dsdm/real_six_path_data.py", "sha256": "4e728bd9eb70b6f3a7f099f3237077a80ac89c9e8e8748595fdc45a06f29baea"},
+    "phase1_modeling_contract": {"path": "src/dsdm_phase1/modeling_contract.py", "sha256": "342bb461ca3e6c6193984e9d0ec22ba3d18ee8a3fcaeaaf84710c72adf5649a9"},
+    "phase1_target_subsets": {"path": "src/dsdm_phase1/target_subsets.py", "sha256": "71988214be2108417437261b66fcb79666865df483cdda90daba60576cf49acc"},
+    "phase1_goal029_production": {"path": "src/dsdm_phase1/goal029_production.py", "sha256": "4a5fb1451049d88c8ffcc8dacbe74b93569651f34b198a86f88e2ac973d31325"},
+    "final_inner_data": {"path": "src/dsdm/final_inner_data.py", "sha256": "89d3ff3a67f6240733ac5bb1f75c91e54522568c6f467236fb9fa192460b177a"},
+    "final_inner_runner": {"path": "src/dsdm/final_inner_runner.py", "sha256": "0b483617a0416507efc9e8cc4630b5b0af21e101b54e77f435caa7bbad62e1d6"},
+    "uv_lock": {"path": "uv.lock", "sha256": "39c22925750ac8821f5420bdfe5ca39554b7906d812bd3a94a04e91c469284fd"}
+  },
+  "scope": {
+    "species": ["thylogale_billardierii", "notamacropus_rufogriseus", "trichosurus_vulpecula", "pseudocheirus_peregrinus", "vombatus_ursinus", "sarcophilus_harrisii", "dasyurus_maculatus", "dasyurus_viverrinus"],
+    "folds": ["fold00", "fold01", "fold02", "fold03", "fold04"],
+    "endpoints": ["fraction25/ladder00", "fraction25/ladder01", "fraction25/ladder02", "fraction50/ladder00", "fraction50/ladder01", "fraction50/ladder02", "fraction100/full"],
+    "predictor_count": 77,
+    "case_count": 40
+  },
+  "seeds": [31031, 31032, 31033, 31034, 31035],
+  "methods": ["target_only_resmlp", "legacy_pooled_finetune", "multihead_frozen_trunk", "multihead_full_finetune", "target_plus_q_linear", "target_plus_q_deep"],
+  "training": {
+    "predictor_count": 77,
+    "q_predictor_count": 78,
+    "dtype": "float32",
+    "device": "cpu",
+    "threads": 1,
+    "blas_threads": 1,
+    "max_epochs": 300,
+    "patience": 30,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "q_linear": {"penalty": "elasticnet", "solver": "saga", "C": 1.0, "l1_ratio": 0.5, "max_iter": 5000, "tol": 0.00001}
+  },
+  "execution": {
+    "auxiliary_logical_artifacts_per_case": 11,
+    "target_logical_artifacts_per_case": 210,
+    "logical_artifacts_per_case": 221,
+    "physical_fits_per_case": 441,
+    "logical_artifacts": 8840,
+    "physical_fits": 17640,
+    "workers": 3,
+    "outer_attempted": 0,
+    "outer_opened": 0
+  },
+  "privacy": {"labels_private": true, "row_identifiers": false, "coordinates": false, "outer_attempted": 0, "outer_opened": 0},
+  "evidence": {
+    "private_root": "data/processed/dsdm/goal035-final-inner-lifecycle/private",
+    "tracked_root": "evidence/dsdm_final_inner_lifecycle/goal035",
+    "canary_receipt": "evidence/dsdm_final_inner_lifecycle/goal035/canary.json",
+    "aggregate_receipt": "evidence/dsdm_final_inner_lifecycle/goal035/aggregate.json",
+    "aggregate_only": true,
+    "workers": 3,
+    "canary_required": true,
+    "labels_private": true,
+    "outer_attempted": 0,
+    "outer_opened": 0
+  },
+  "runtime": {"system": "Darwin", "machine": "arm64", "python_major_minor": "3.12", "numpy": "2.2.6", "scipy": "1.16.3", "scikit_learn": "1.9.0", "threadpoolctl": "3.6.0", "torch": "2.7.1", "device": "cpu", "route": "mac_cpu", "torch_threads": 1, "blas_threads": 1}
+}
