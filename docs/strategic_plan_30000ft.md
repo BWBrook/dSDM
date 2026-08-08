@@ -169,11 +169,13 @@ complement.
 
 ### Phase 4: Tasmanian feedforward dSDM development
 
-Status: implementation underway. Goal031 proved the PyTorch engine on a
-synthetic vertical slice; Goal032 bound the target-only path to the real
-outer-training substrate; Goal033 selected `resmlp13`; and Goal034 proved all
-six paths on a bounded real-data sentinel and froze the three-worker Mac CPU
-route. The full six-path experiment remains later work.
+Status: full inner prediction substrate completed through Goal035. Goal031
+proved the PyTorch engine on a synthetic vertical slice; Goal032 bound the
+target-only path to the real outer-training substrate; Goal033 selected
+`resmlp13`; Goal034 proved all six paths on a bounded real-data sentinel and
+froze the three-worker Mac CPU route; and Goal035 repaired categorical support,
+confirmed the architecture, and completed the 40-case six-path lifecycle.
+Inner comparative analysis remains before method freeze.
 
 Develop the proposed residual-MLP/shared-trunk dSDM as the central
 methodological contribution:
@@ -188,7 +190,9 @@ methodological contribution:
 - retain the frozen optimiser, batch, architecture, runtime, and compute
   contracts while the production lifecycle is implemented and executed.
 
-No model, prediction, or performance result is implied by this design phase.
+Goal035 retains real inner-OOF predictions privately, but no performance
+comparison or outer-test claim has yet been made. The outer assessment remains
+sealed pending prespecified inner analysis and a method-freeze decision.
 
 ### Phase 5: Tasmanian synthesis and method freeze
 

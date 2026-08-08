@@ -34,7 +34,10 @@ substrate and calibrated Mac CPU, deep-server CPU, and Alien CUDA without
 opening the real outer assessment (`0/0`). Goal 033 completed the neutral
 target-only architecture selection and froze `resmlp13` for the later matched
 method comparison. Goal 034 then proved all six paths on a bounded real-data
-sentinel and froze the three-worker Mac CPU route.
+sentinel and froze the three-worker Mac CPU route. Goal 035 repaired
+split-fitted categorical support, confirmed `resmlp13`, and completed the full
+40-case inner lifecycle for six methods, seven learning endpoints, and five
+matched seeds while keeping the outer assessment sealed.
 
 ### Current gate status
 
@@ -45,9 +48,11 @@ out rankings retained it. The result is an inner-CV architecture decision, not
 an outer-performance claim; the real outer assessment remains unopened
 (`0/0`). Goal 034 executed two deterministic repeats on each candidate route:
 median wall time was 17.75 seconds on Mac CPU and 186.79 seconds on Alien CUDA.
-This is engineering evidence only. The full six-path comparison, learning
-curves, ecological synthesis, and final outer assessment require later,
-separately authorised goals.
+This is engineering evidence only. Goal 035 subsequently completed 8,840
+inner logical artifacts / 17,644 physical fits and retained the prediction
+substrate privately. Comparative metrics, learning-curve interpretation,
+conventional-baseline contrasts, ecological synthesis, and final outer
+assessment require later, separately authorised goals.
 
 Canonical authority:
 
@@ -68,6 +73,9 @@ Canonical authority:
 - [Goal 034 runbook](docs/goals/034-dsdm-real-six-path-sentinel/Runbook.md)
 - [`config/dsdm_real_six_path_sentinel.json`](config/dsdm_real_six_path_sentinel.json), the frozen real six-path sentinel authority
 - [`evidence/dsdm_real_six_path_sentinel/goal034/receipt.json`](evidence/dsdm_real_six_path_sentinel/goal034/receipt.json), the aggregate-only route receipt
+- [Goal 035 decision](docs/goals/035-dsdm-final-inner-lifecycle/Decision.md)
+- [`config/dsdm_final_inner_lifecycle.json`](config/dsdm_final_inner_lifecycle.json), the final inner-lifecycle authority
+- [`evidence/dsdm_final_inner_lifecycle/goal035/aggregate.json`](evidence/dsdm_final_inner_lifecycle/goal035/aggregate.json), the aggregate-only completion receipt
 
 ## Data and privacy boundary
 
