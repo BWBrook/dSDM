@@ -408,7 +408,7 @@ def _aggregate_stage(config: RevalidationConfig, bundle_root: str | Path, leaves
         _require(len(scores) == len(bundle.y_inner_assessment), "score/label alignment mismatch")
         rows.setdefault((task["architecture"], task["target"]), []).append((task["held_fold"], int(task["base_seed"]), scores, bundle.y_inner_assessment))
         envelope = json.loads((leaf / "metadata.json").read_text())
-        inventory.append(_canonical({"identity": identity, "scores_sha256": envelope["scores_sha256"]}).decode())
+        inventory.append(_canonical({"identity": identity, "scores_sha256": envelope["scores_sha256"]}))
     metrics: dict[str, dict[str, dict[str, float]]] = {}
     expected_per = len({int(t["base_seed"]) for t in tasks}) * len(FOLDS)
     for (architecture, target), values in rows.items():

@@ -9,6 +9,7 @@ import pytest
 
 from dsdm.architecture_mask_revalidation import (
     RevalidationError,
+    _aggregate_stage,
     _write_leaf,
     audit_categories,
     expected_tasks,
@@ -121,3 +122,56 @@ def test_config_authority_key_mutation_is_rejected(tmp_path):
     altered.write_text(json.dumps(raw))
     with pytest.raises(RevalidationError):
         load_revalidation_config(altered)
+
+
+def test_aggregate_stage_accepts_canonical_text_inventory(tmp_path, monkeypatch):
+    import dsdm.architecture_mask_revalidation as runner
+
+    config = load_revalidation_config("config/dsdm_categorical_revalidation.json")
+    leaves = tmp_path / "leaves"
+    tasks = []
+    bundles = []
+    scores = np.array([0.2, 0.8], dtype=np.float32)
+    for target in config.species:
+        for held_fold in config.folds:
+            case = CaseSpec("goal035", target, held_fold, "resmlp13", 31031)
+            x = _x(2)
+            y = np.array([0, 1], dtype=np.float32)
+            bundle = RealDataBundle(case, x, y, x.copy(), y.copy(), x.copy(), y.copy(), x.copy(), y.copy(), {})
+            bundles.append((tmp_path / f"{target}-{held_fold}.npz", bundle, {}))
+            identity = {
+                "stage": "screen",
+                "target": target,
+                "held_fold": held_fold,
+                "architecture": "resmlp13",
+                "base_seed": 31031,
+                "fit_seed": 1,
+                "bundle_digest": "a" * 64,
+                "source_bundle_digest": "f" * 64,
+                "config_digest": "b" * 64,
+                "runtime_digest": "c" * 64,
+                "mask_digest": "d" * 64,
+                "held_row_count": 2,
+            }
+            task = {**identity, "leaf_root": str(leaves), "bundle_path": str(tmp_path / "unused.npz")}
+            receipt = {
+                "prediction_digest": hashlib.sha256(scores.tobytes()).hexdigest(),
+                "model_digest": "e" * 64,
+                "training_bundle_digest": identity["bundle_digest"],
+                "runtime_fingerprint": identity["runtime_digest"],
+                "fit_seed": identity["fit_seed"],
+                "selected_epoch": 1,
+                "discovery_executed_epochs": 1,
+                "replay_epochs": 1,
+                "stopping_status": "max_epochs_reached",
+                "outer_attempted": 0,
+                "outer_opened": 0,
+            }
+            _write_leaf(task, scores, receipt)
+            tasks.append(task)
+
+    monkeypatch.setattr(runner, "expected_tasks", lambda *args, **kwargs: tasks)
+    monkeypatch.setattr(runner, "load_corrected_bundles", lambda *args, **kwargs: bundles)
+    result = _aggregate_stage(config, tmp_path, leaves, "screen", ("resmlp13",))
+    assert result["ranking"] == ["resmlp13"]
+    assert len(result["leaf_inventory_digest"]) == 64

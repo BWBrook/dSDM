@@ -11,7 +11,7 @@
     "goal034_decision": {"path": "docs/goals/034-dsdm-real-six-path-sentinel/Decision.md", "sha256": "edfd76dc3a3e94058da11fc5e36f93b40a23458326e04df8ea33a2ba6b386375"}
   },
   "execution_sources": {
-    "architecture_mask_revalidation": {"path": "src/dsdm/architecture_mask_revalidation.py", "sha256": "54e87ff9d282b07d95f3d892c5bc03f13168673089762e15a77cf6d0e1fd533a"},
+    "architecture_mask_revalidation": {"path": "src/dsdm/architecture_mask_revalidation.py", "sha256": "6e4ebfe7a7410619ea5aa72c2201178759f3aad384056d6a9e7946c646547008"},
     "categorical_support": {"path": "src/dsdm/categorical_support.py", "sha256": "90b59bfe6b47628ba6bb36d130fe427c3e5481b6a8b9c1492203f73a1234d959"},
     "architecture_selection": {"path": "src/dsdm/architecture_selection.py", "sha256": "c3760a4f3361e6c73f382be3efb64b84122b7aa9f3c5e92380eacf33882bb183"},
     "architecture_runner": {"path": "src/dsdm/architecture_runner.py", "sha256": "7290e5c79d22d3e2949e53436ac9fce1ae68357e270425e449e040ad961a2048"},
