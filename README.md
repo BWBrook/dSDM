@@ -31,18 +31,19 @@ families: intercept, elastic net, random forest, histogram gradient boosting,
 and shallow ANN. Goal 031 proved the dSDM engine on synthetic data. Goal 032
 then bound its target-only path to the real eight-species outer-training
 substrate and calibrated Mac CPU, deep-server CPU, and Alien CUDA without
-opening the real outer assessment (`0/0`). This is engineering evidence, not an
-ecological performance claim.
+opening the real outer assessment (`0/0`). Goal 033 completed the neutral
+target-only architecture selection and froze `resmlp13` for the later matched
+method comparison.
 
 ### Current gate status
 
-Goal 032 recommends the Mac CPU with three workers for Goal 033. Its six-task
-panel took 2.70 seconds, projecting about 10.8 minutes centrally and 3.41 hours
-under the deliberately conservative 300-discovery-plus-300-replay ceiling for
-the 1,440-evaluation architecture workload. Goal 033 must separately freeze
-the production runtime and run the architecture screen/shortlist under a
-bounded `tmux` handoff. No architecture search, six-path comparison, `q`
-surface, ecological metric, or outer-assessment access occurred in Goal 032.
+Goal 033 ran 960 screen and 480 fresh-shortlist logical evaluations under the
+Mac CPU / three-worker route, representing 2,880 discovery-plus-replay fits.
+The three-seed shortlist selected `resmlp13`, and all eight leave-one-species-
+out rankings retained it. The result is an inner-CV architecture decision, not
+an outer-performance claim; the real outer assessment remains unopened
+(`0/0`). The real six-path comparison, scalar-`q` controls, learning curves,
+and final outer assessment require later, separately authorised goals.
 
 Canonical authority:
 
@@ -55,6 +56,10 @@ Canonical authority:
 - [Goal 032 decision](docs/goals/032-dsdm-real-compute-calibration/Decision.md)
 - [Goal 032 runbook](docs/goals/032-dsdm-real-compute-calibration/Runbook.md)
 - [`config/dsdm_real_compute_calibration.json`](config/dsdm_real_compute_calibration.json), the real-binding and compute-calibration authority
+- [Goal 033 decision](docs/goals/033-dsdm-architecture-selection/Decision.md)
+- [Goal 033 runbook](docs/goals/033-dsdm-architecture-selection/Runbook.md)
+- [`config/dsdm_architecture_selection.json`](config/dsdm_architecture_selection.json), the frozen architecture-selection authority
+- [`evidence/dsdm_architecture_selection/goal033/aggregate.json`](evidence/dsdm_architecture_selection/goal033/aggregate.json), the aggregate-only selection receipt
 
 ## Data and privacy boundary
 
