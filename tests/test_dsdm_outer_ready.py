@@ -8,6 +8,7 @@ import pytest
 import torch
 
 import dsdm.outer_ready as outer_ready_module
+from dsdm.conventional_refit_import import record_producer_validation
 from dsdm.contracts import ArchitectureSpec
 from dsdm.models import ResidualMLP
 from dsdm.outer_ready import (
@@ -62,6 +63,34 @@ def test_production_config_is_strictly_bound() -> None:
     config = load_config(root / "config/dsdm_outer_ready.json")
     assert config.raw["scope"]["methods_total"] == 11
     assert config.raw["privacy"]["outer_opened"] == 0
+
+
+def test_producer_validation_accepts_canonical_goal029_result(
+    tmp_path: Path,
+) -> None:
+    root = Path(__file__).resolve().parents[1]
+    config = load_config(root / "config/dsdm_outer_ready.json")
+    result = {
+        "status": "pass",
+        "mode": "production",
+        "candidate_seed_leaf_count": 6888,
+        "family_count": 280,
+        "selected_model_seed_count": 952,
+        "source_audit_leaf_count": 345,
+        "transaction_id": config.raw["conventional"]["transaction_id"],
+        "semantic_digest": "a" * 64,
+        "outer_attempted_open_count": 0,
+        "outer_open_count": 0,
+    }
+    result_path = tmp_path / "producer-result.json"
+    output_path = tmp_path / "producer-validation.json"
+    result_path.write_text(json.dumps(result), encoding="utf-8")
+
+    receipt = record_producer_validation(result_path, config, output_path)
+
+    assert receipt["success"] is True
+    assert receipt["selected_refits"] == 952
+    assert receipt["outer_attempted"] == receipt["outer_opened"] == 0
 
 
 def test_exact_fit_is_deterministic_and_serialized_model_replays(tmp_path: Path) -> None:

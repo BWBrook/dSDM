@@ -68,7 +68,7 @@ def record_producer_validation(
         result.get("status") == "pass"
         and result.get("transaction_id") == conventional["transaction_id"]
         and result.get("selected_model_seed_count") == 952
-        and result.get("real_outer_attempted_open_count") == result.get("real_outer_open_count") == 0,
+        and result.get("outer_attempted_open_count") == result.get("outer_open_count") == 0,
         "producer validation did not reproduce the frozen publication",
     )
     receipt = {

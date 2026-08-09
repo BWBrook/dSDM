@@ -25,3 +25,23 @@
   and outer `0/0`.
 - No real Goal 037 bundle export, conventional copy, model fit, outer access,
   commit, or push had occurred at this checkpoint.
+
+## 2026-08-09 - Prespecification repair
+
+- The first real neural canary passed all nine bounded artifacts and semantic
+  repeat checks under the frozen Mac runtime; outer attempted/opened remained
+  `0/0`.
+- The repaired Goal 029 validator initially stopped because `deep-server` had
+  rebooted from Linux kernel `6.8.0-136` to `6.8.0-137`. Python and every
+  locked numerical package were unchanged. A read-only replay with the prior
+  release string attested reproduced the complete publication: 6,888
+  candidate-seed leaves, 280 family strata, 345 source-audit leaves, 952
+  selected refits, transaction `38abaa77531936e9fe37c15f2ed9f08802f68e0b936ff5b351c0b38b45f83918`,
+  and outer `0/0`.
+- That canonical result exposed one integration defect: the new importer
+  expected non-existent `real_outer_*` result keys instead of Goal 029's
+  `outer_*` keys. The importer and its source binding were repaired, and a
+  focused regression now exercises the exact validator result schema.
+- GREEN after repair: seven focused tests, Python compilation, strict plan,
+  and whitespace checks passed. Because the config digest changed, all
+  Goal 037 config-bound private artifacts will be regenerated before fitting.
