@@ -45,3 +45,18 @@
 - GREEN after repair: seven focused tests, Python compilation, strict plan,
   and whitespace checks passed. Because the config digest changed, all
   Goal 037 config-bound private artifacts will be regenerated before fitting.
+
+## 2026-08-09 - Cross-platform conventional replay repair
+
+- The exact copied-model replay stopped on the second selected refit, an
+  elastic net. Linux and Mac scores were identical for 31 of 32 challenge
+  rows; the remaining probability differed by approximately `8e-17` because
+  of platform floating-point arithmetic. Model, challenge, and expected
+  prediction digests all remained intact.
+- The import gate now requires a private producer-runtime reference whose 952
+  score vectors first reproduce the original byte digests exactly. The Mac
+  then compares every element at fixed absolute tolerance `1e-12`, records the
+  maximum observed difference and exact-byte count, and still fails on any
+  non-finite, out-of-range, missing, reordered, or identity-mismatched result.
+  This preserves semantic assurance without pretending cross-platform
+  floating-point bytes are portable.

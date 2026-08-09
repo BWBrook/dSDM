@@ -24,7 +24,11 @@ Rerun the immutable Goal 029 validator at producer commit `f85e459` with the
 repaired validator at `e6f07ae`, recording its JSON result privately. Copy only
 `selection.json`, `selections/`, and `selected/` from the producer into
 `data/processed/dsdm/goal037-outer-ready/private/conventional/copy/` using
-Tailscale-backed `rsync`. Then run:
+Tailscale-backed `rsync`. Under the producer's locked Linux runtime, run the
+current Goal 037 importer against that same selected tree to export
+`producer-reference.json`; the command requires all 952 stored prediction
+digests to replay exactly before publishing the private reference. Copy that
+reference locally, then run:
 
 ```sh
 uv run --locked python -m dsdm.conventional_refit_import \
@@ -36,9 +40,15 @@ uv run --locked python -m dsdm.conventional_refit_import \
   --config config/dsdm_outer_ready.json \
   --copied-root data/processed/dsdm/goal037-outer-ready/private/conventional/copy \
   --producer-validation data/processed/dsdm/goal037-outer-ready/private/conventional/producer-validation.json \
+  --producer-reference data/processed/dsdm/goal037-outer-ready/private/conventional/producer-reference.json \
   --output data/processed/dsdm/goal037-outer-ready/private/conventional/import_receipt.json \
   finalize
 ```
+
+The local cross-platform replay requires every score to be finite, bounded,
+and within absolute tolerance `1e-12` of the exact producer reference. Exact
+byte equality is reported separately and is not required across Linux/x86-64
+and macOS/arm64.
 
 Launch the neural production run detached:
 

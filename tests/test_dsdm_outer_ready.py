@@ -8,7 +8,11 @@ import pytest
 import torch
 
 import dsdm.outer_ready as outer_ready_module
-from dsdm.conventional_refit_import import record_producer_validation
+from dsdm.conventional_refit_import import (
+    CROSS_PLATFORM_ATOL,
+    _cross_platform_score_difference,
+    record_producer_validation,
+)
 from dsdm.contracts import ArchitectureSpec
 from dsdm.models import ResidualMLP
 from dsdm.outer_ready import (
@@ -91,6 +95,17 @@ def test_producer_validation_accepts_canonical_goal029_result(
     assert receipt["success"] is True
     assert receipt["selected_refits"] == 952
     assert receipt["outer_attempted"] == receipt["outer_opened"] == 0
+
+
+def test_conventional_cross_platform_score_tolerance_is_bounded() -> None:
+    producer = np.asarray([0.1, 0.5, 0.9], dtype=np.float64)
+    negligible = producer.copy()
+    negligible[0] = np.nextafter(negligible[0], 1.0)
+    material = producer.copy()
+    material[0] += 2 * CROSS_PLATFORM_ATOL
+
+    assert _cross_platform_score_difference(negligible, producer) < CROSS_PLATFORM_ATOL
+    assert _cross_platform_score_difference(material, producer) > CROSS_PLATFORM_ATOL
 
 
 def test_exact_fit_is_deterministic_and_serialized_model_replays(tmp_path: Path) -> None:
