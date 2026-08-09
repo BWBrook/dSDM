@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0",
+  "goal_id": "goal036-dsdm-inner-evaluation",
+  "authorities": {
+    "protocol": {
+      "path": "docs/plan/tasmanian_modelling_protocol.md",
+      "sha256": "6609f3ca4f5100c212db83b3f6bffbed49b6685baeac9ff8242f41c94d7875fb"
+    },
+    "goal028_config": {
+      "path": "config/modeling_foundation_preflight.json",
+      "sha256": "35b6ab72ba2b8ba2267dc82179987bfffaa3f339d64272d68012444e46285f00"
+    },
+    "goal029_config": {
+      "path": "config/conventional_baseline_production.json",
+      "sha256": "62b1c5255c5aa5c74f5ba598818dd13e2f2234c0cb13da58671c3be286ccefae"
+    },
+    "goal029_summary": {
+      "path": "evidence/conventional_baseline_production/summary.json",
+      "sha256": "d3ea01db9d565869fc48df84f54eb4399cf7fa0c00b3cc1605e430906e5b6b61"
+    },
+    "goal029_pair": {
+      "path": "evidence/conventional_baseline_production/PAIR.json",
+      "sha256": "cff5f1baad216522dd024750c81595f2f72c543f9adce8e7e8c0e3cd0e369d9c"
+    },
+    "goal029_finalized": {
+      "path": "evidence/conventional_baseline_production/FINALIZED.json",
+      "sha256": "152f7cd0f3da5443b793b10ad5f7fe303491828c1a3ae3a9bf47cfa1daf0f84b"
+    },
+    "goal035_config": {
+      "path": "config/dsdm_final_inner_lifecycle.json",
+      "sha256": "87c3afa6fbb9a2177caafc0b2aacb0130c7f6545523839cd0fd030218795d7c2"
+    },
+    "goal035_aggregate": {
+      "path": "evidence/dsdm_final_inner_lifecycle/goal035/aggregate.json",
+      "sha256": "4eae8cea43643a3a82e14ea546ce89fc60129e443c752599304d80fab0b5f7bf"
+    }
+  },
+  "scope": {
+    "species": [
+      "thylogale_billardierii",
+      "notamacropus_rufogriseus",
+      "trichosurus_vulpecula",
+      "pseudocheirus_peregrinus",
+      "vombatus_ursinus",
+      "sarcophilus_harrisii",
+      "dasyurus_maculatus",
+      "dasyurus_viverrinus"
+    ],
+    "folds": ["fold00", "fold01", "fold02", "fold03", "fold04"],
+    "endpoints": [
+      "fraction25/ladder00",
+      "fraction25/ladder01",
+      "fraction25/ladder02",
+      "fraction50/ladder00",
+      "fraction50/ladder01",
+      "fraction50/ladder02",
+      "fraction100/full"
+    ],
+    "neural_methods": [
+      "target_only_resmlp",
+      "legacy_pooled_finetune",
+      "multihead_frozen_trunk",
+      "multihead_full_finetune",
+      "target_plus_q_linear",
+      "target_plus_q_deep"
+    ],
+    "conventional_families": [
+      "intercept",
+      "elastic_net",
+      "random_forest",
+      "hist_gradient_boosting",
+      "shallow_ann"
+    ],
+    "neural_seeds": [31031, 31032, 31033, 31034, 31035]
+  },
+  "conventional_export": {
+    "producer_commit": "f85e45922e182858fd351fdaf4f1b36b33fb4f2f",
+    "private_core_manifest_sha256": "836384b71fa03797e3fe92052aed2255b737d59a347aaa8614830a28d0851ab6",
+    "family_strata": 280,
+    "selected_checkpoints": 952,
+    "private_parquet": "data/processed/dsdm/goal036-inner-evaluation/private/conventional_selected_oof.parquet",
+    "private_manifest": "data/processed/dsdm/goal036-inner-evaluation/private/conventional_manifest.json"
+  },
+  "evaluation": {
+    "seed_aggregation": "arithmetic_mean_scores",
+    "threshold_objective": "max_tss_equal_max_balanced_accuracy",
+    "threshold_candidates": "finite_representable_midpoints_plus_extremes",
+    "threshold_tie_rule": "sorted_lower_median",
+    "positive_rule": "score_greater_than_or_equal_threshold",
+    "co_primary_metrics": ["roc_auc", "tss"],
+    "supplementary_metrics": ["average_precision", "mcc", "sensitivity", "specificity", "confusion_counts"],
+    "classless_fold_policy": "metric_na_with_class_counts",
+    "conventional_selection": "highest_mean_fold_roc_auc_then_mean_fold_tss_then_family_id",
+    "primary_contrasts": [
+      "multihead_vs_target_only",
+      "multihead_vs_q_deep",
+      "multihead_vs_best_conventional"
+    ],
+    "replication_unit": "paired_species_by_fold_with_ladders_and_seeds_descriptive_not_independent",
+    "inference": "descriptive_no_naive_p_values_or_row_bootstrap",
+    "threshold_variability": "leave_one_fold_out_diagnostic_only"
+  },
+  "evidence": {
+    "goal035_private_root": "data/processed/dsdm/goal035-final-inner-lifecycle/private",
+    "private_root": "data/processed/dsdm/goal036-inner-evaluation/private",
+    "tracked_root": "evidence/dsdm_inner_evaluation/goal036",
+    "aggregate_only": true,
+    "row_identifiers": false,
+    "coordinates": false,
+    "predictions_tracked": false,
+    "labels_tracked": false,
+    "outer_attempted": 0,
+    "outer_opened": 0
+  }
+}
