@@ -65,3 +65,25 @@
   nets differed by at most `2.78e-16`; shallow ANNs differed by at most
   `1.79e-7`. The frozen `1e-6` bound is therefore conservative while remaining
   immaterial at the habitat-suitability score and threshold decision scale.
+
+## 2026-08-09 - Production and closeout
+
+- The final config-bound canary and all eight full-training bundles passed.
+  The three-worker Mac `tmux` run completed all eight atomic species packages
+  with zero missing or invalid packages.
+- The neural transaction contains 1,768 logical artifacts, 1,769 physical
+  fits, 32,461 epoch passes, and 447,624,304 model bytes. The sole extra
+  physical fit was the prespecified q-linear stability extension for
+  `vombatus_ursinus`.
+- The combined scorer transaction contains 2,720 models across eleven methods.
+  Aggregate receipt `85be4e2b5ea72e8c65c2f767bf31f1b90552e21a9c4e6194a270c3301725a374`
+  binds transaction `677b8706333dd3df30a0c07bec648ab11e591bfe016bde73dc867d9e78af3d9c`.
+- Focused audit GREEN: 158 dSDM tests passed; the conventional receipt
+  recomputed all 952 portable challenge replays; leaf, content, transaction,
+  and receipt digests independently matched; the future scorer returned finite
+  bounded `5 x 6 x 8` output; and the two tracked JSON files total 5,527 bytes
+  and passed semantic privacy checks.
+- The q-linear Apple/BLAS warnings recur but all stored and replayed outputs are
+  finite and deterministic. This remains a documented nonblocking runtime
+  residual. Outer attempted/opened is exactly `0/0`; no ecological assessment,
+  ranking, threshold application, or mapping occurred.
