@@ -173,7 +173,7 @@ def _validate_checkpoint(
         "fraction_id": leaf["fraction_id"],
         "ladder_id": leaf["ladder_id"],
         "model_family": leaf["model_family"],
-        "ordered_selection_seeds": list(SEEDS_BY_FAMILY[leaf["model_family"]]),
+        "ordered_selection_seeds": [leaf["seed_label"]],
     }
     _require(result.get("candidate_id") == leaf["candidate_id"] and result.get("stratum") == expected_stratum, "checkpoint result stratum drift")
     seed_labels = set(table.column("seed_label").to_pylist())
@@ -242,6 +242,8 @@ def export_selected_oof(
     output.mkdir(parents=True, exist_ok=True)
     parquet_path = output / "conventional_selected_oof.parquet"
     temporary = output / ".conventional_selected_oof.parquet.tmp"
+    manifest_path = output / "manifest.json"
+    _require(not parquet_path.exists() and not manifest_path.exists() and not temporary.exists(), "conventional export destination is not fresh")
     writer: pq.ParquetWriter | None = None
     checkpoint_inventory: list[dict[str, Any]] = []
     row_identity_by_species: dict[str, str] = {}
@@ -292,6 +294,12 @@ def export_selected_oof(
                     "row_identity_digest": identity_digest,
                     "rows": n,
                 })
+    except Exception:
+        if writer is not None:
+            writer.close()
+            writer = None
+        temporary.unlink(missing_ok=True)
+        raise
     finally:
         if writer is not None:
             writer.close()
@@ -320,7 +328,6 @@ def export_selected_oof(
         "outer_opened": 0,
     }
     manifest["manifest_digest"] = digest_value(manifest)
-    manifest_path = output / "manifest.json"
     manifest_path.write_text(canonical(manifest).decode() + "\n", encoding="utf-8")
     return manifest
 

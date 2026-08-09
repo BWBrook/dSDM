@@ -1,7 +1,7 @@
 # dSDM 30,000-foot strategic plan
 
 Originally framed: 2026-05-27
-Last revised: 2026-07-30
+Last revised: 2026-08-09
 
 This is the canonical living roadmap for the full dSDM research programme. It
 should be revisited at major scientific and implementation gates rather than
@@ -169,13 +169,18 @@ complement.
 
 ### Phase 4: Tasmanian feedforward dSDM development
 
-Status: full inner prediction substrate completed through Goal035. Goal031
+Status: inner development and prespecified comparison completed through
+Goal036. Goal031
 proved the PyTorch engine on a synthetic vertical slice; Goal032 bound the
 target-only path to the real outer-training substrate; Goal033 selected
 `resmlp13`; Goal034 proved all six paths on a bounded real-data sentinel and
 froze the three-worker Mac CPU route; and Goal035 repaired categorical support,
 confirmed the architecture, and completed the 40-case six-path lifecycle.
-Inner comparative analysis remains before method freeze.
+Goal036 then aligned the neural and conventional OOF products, completed the
+frozen inner analysis, and recommended carrying the complete predeclared panel
+to a no-rescue, one-shot outer assessment. Conventional models were materially
+stronger on the inner surface; multispecies transfer was small, heterogeneous,
+and concentrated in some reduced-data cases.
 
 Develop the proposed residual-MLP/shared-trunk dSDM as the central
 methodological contribution:
@@ -190,9 +195,10 @@ methodological contribution:
 - retain the frozen optimiser, batch, architecture, runtime, and compute
   contracts while the production lifecycle is implemented and executed.
 
-Goal035 retains real inner-OOF predictions privately, but no performance
-comparison or outer-test claim has yet been made. The outer assessment remains
-sealed pending prespecified inner analysis and a method-freeze decision.
+Goal035 retains real inner-OOF predictions privately. Goal036 publishes only
+aggregate inner performance and freezes the next comparison boundary; no outer-
+test claim has yet been made. The outer assessment remains sealed pending
+validated full-training refits and an explicit one-shot opening decision.
 
 ### Phase 5: Tasmanian synthesis and method freeze
 

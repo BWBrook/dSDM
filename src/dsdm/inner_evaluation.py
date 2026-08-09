@@ -16,7 +16,6 @@ import json
 import math
 from pathlib import Path
 import shutil
-import subprocess
 import tempfile
 from typing import Any, Mapping, Sequence
 
@@ -552,11 +551,9 @@ def evaluate(config: EvaluationConfig, output_root: str | Path) -> dict[str, Any
     }
     for name, rows in tables.items():
         _write_csv(output / name, rows)
-    git_head = subprocess.run(["git", "-C", str(config.root), "rev-parse", "HEAD"], check=True, capture_output=True, text=True).stdout.strip()
     receipt = {
         "schema_version": "goal036-inner-evaluation-v1", "success": True,
         "config_digest": sha256_file(config.source_path), "authority_digests": dict(config.authority_digests),
-        "execution_commit": git_head,
         "execution_source_digests": {
             "conventional_oof_export": sha256_file(config.root / "src/dsdm/conventional_oof_export.py"),
             "inner_evaluation": sha256_file(config.root / "src/dsdm/inner_evaluation.py"),

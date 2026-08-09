@@ -37,7 +37,9 @@ method comparison. Goal 034 then proved all six paths on a bounded real-data
 sentinel and froze the three-worker Mac CPU route. Goal 035 repaired
 split-fitted categorical support, confirmed `resmlp13`, and completed the full
 40-case inner lifecycle for six methods, seven learning endpoints, and five
-matched seeds while keeping the outer assessment sealed.
+matched seeds. Goal 036 then completed the prespecified inner comparison
+against all five conventional families while keeping the outer assessment
+sealed.
 
 ### Current gate status
 
@@ -50,9 +52,12 @@ an outer-performance claim; the real outer assessment remains unopened
 median wall time was 17.75 seconds on Mac CPU and 186.79 seconds on Alien CUDA.
 This is engineering evidence only. Goal 035 subsequently completed 8,840
 inner logical artifacts / 17,644 physical fits and retained the prediction
-substrate privately. Comparative metrics, learning-curve interpretation,
-conventional-baseline contrasts, ecological synthesis, and final outer
-assessment require later, separately authorised goals.
+substrate privately. Goal 036 aligned it to 952 selected conventional OOF
+checkpoints and evaluated 616 method strata. Multi-head transfer showed a
+small, heterogeneous reduced-data signal, but selected conventional models
+beat it in 53/56 species-endpoint strata. This is an inner method-freeze result,
+not an outer-performance claim; final refits and outer assessment require
+separately authorised goals.
 
 Canonical authority:
 
@@ -76,6 +81,9 @@ Canonical authority:
 - [Goal 035 decision](docs/goals/035-dsdm-final-inner-lifecycle/Decision.md)
 - [`config/dsdm_final_inner_lifecycle.json`](config/dsdm_final_inner_lifecycle.json), the final inner-lifecycle authority
 - [`evidence/dsdm_final_inner_lifecycle/goal035/aggregate.json`](evidence/dsdm_final_inner_lifecycle/goal035/aggregate.json), the aggregate-only completion receipt
+- [Goal 036 decision](docs/goals/036-dsdm-inner-evaluation/Decision.md)
+- [`config/dsdm_inner_evaluation.json`](config/dsdm_inner_evaluation.json), the frozen inner-comparison authority
+- [`evidence/dsdm_inner_evaluation/goal036/summary.json`](evidence/dsdm_inner_evaluation/goal036/summary.json), the aggregate-only evaluation receipt
 
 ## Data and privacy boundary
 
