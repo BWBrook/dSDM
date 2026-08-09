@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "goal_id": "goal037-dsdm-outer-ready",
+  "authorities": {
+    "goal029_config": {"path": "config/conventional_baseline_production.json", "sha256": "62b1c5255c5aa5c74f5ba598818dd13e2f2234c0cb13da58671c3be286ccefae"},
+    "goal029_summary": {"path": "evidence/conventional_baseline_production/summary.json", "sha256": "d3ea01db9d565869fc48df84f54eb4399cf7fa0c00b3cc1605e430906e5b6b61"},
+    "goal029_core_manifest": {"path": "evidence/conventional_baseline_production/core_manifest.json", "sha256": "07ac142aad2ce63edf69a6b9e1889b280db0b99b201e376ad62166975cc9237f"},
+    "goal029_pair": {"path": "evidence/conventional_baseline_production/PAIR.json", "sha256": "cff5f1baad216522dd024750c81595f2f72c543f9adce8e7e8c0e3cd0e369d9c"},
+    "goal029_finalized": {"path": "evidence/conventional_baseline_production/FINALIZED.json", "sha256": "152f7cd0f3da5443b793b10ad5f7fe303491828c1a3ae3a9bf47cfa1daf0f84b"},
+    "goal035_config": {"path": "config/dsdm_final_inner_lifecycle.json", "sha256": "87c3afa6fbb9a2177caafc0b2aacb0130c7f6545523839cd0fd030218795d7c2"},
+    "goal035_aggregate": {"path": "evidence/dsdm_final_inner_lifecycle/goal035/aggregate.json", "sha256": "4eae8cea43643a3a82e14ea546ce89fc60129e443c752599304d80fab0b5f7bf"},
+    "goal035_canary": {"path": "evidence/dsdm_final_inner_lifecycle/goal035/canary.json", "sha256": "7e38bafd968def0db0009c4537b79234674ccf54537c1129a28a853e0b13061d"},
+    "goal036_config": {"path": "config/dsdm_inner_evaluation.json", "sha256": "f89a3ebd68ede9f54b02c12ac5f36be1abecdc1cce90cb4e18b7008ad53118e1"},
+    "goal036_summary": {"path": "evidence/dsdm_inner_evaluation/goal036/summary.json", "sha256": "9c6f8195d5bc291aa43c8cb2476291af39e7ac0f10613c5f2065200f86ef0c2d"},
+    "goal036_decision": {"path": "docs/goals/036-dsdm-inner-evaluation/Decision.md", "sha256": "d19ec043c6fa9a1ca4329cea5da9433d5b3927112bf386d7e2b2695441114980"},
+    "goal036_stratum_metrics": {"path": "evidence/dsdm_inner_evaluation/goal036/stratum_metrics.csv", "sha256": "2065ca48895af50036da90ad3e945096c6190594000527056309d78c5ee2bdc6"},
+    "goal036_conventional_selection": {"path": "evidence/dsdm_inner_evaluation/goal036/conventional_selection.csv", "sha256": "3e05784670f58e88144dcbda43819c3811e8303c59cd15c36f23fdf38736a561"}
+  },
+  "execution_sources": {
+    "outer_ready": {"path": "src/dsdm/outer_ready.py", "sha256": "8b9cdfbe505f42bc54723b4f4237ad929272ddbfaec517b40e73b9cf073de104"},
+    "conventional_refit_import": {"path": "src/dsdm/conventional_refit_import.py", "sha256": "826f589947d2fb1b13f89363cd4c241b6d755b3122331d374d42f84c669a743e"},
+    "contracts": {"path": "src/dsdm/contracts.py", "sha256": "61c89d4ef7ab6895bc5d5c8bd9acabd2be0e73aa5f7fc46bba0eb87378b0d9a2"},
+    "models": {"path": "src/dsdm/models.py", "sha256": "71317e80514eeab68a316066f59382db2c96aa6bffb0dfd524e08895f2f9c6ee"},
+    "real_six_path": {"path": "src/dsdm/real_six_path.py", "sha256": "7da430342545403ea8d82deee965ec065178c8660ceccd83a34af68cb9ff2bc0"},
+    "categorical_support": {"path": "src/dsdm/categorical_support.py", "sha256": "90b59bfe6b47628ba6bb36d130fe427c3e5481b6a8b9c1492203f73a1234d959"},
+    "final_inner_data": {"path": "src/dsdm/final_inner_data.py", "sha256": "1c20d1b224ee4092e139e7419fa989797aea5afaa45cdec926a5cd3586baad46"},
+    "modeling_contract": {"path": "src/dsdm_phase1/modeling_contract.py", "sha256": "342bb461ca3e6c6193984e9d0ec22ba3d18ee8a3fcaeaaf84710c72adf5649a9"},
+    "target_subsets": {"path": "src/dsdm_phase1/target_subsets.py", "sha256": "71988214be2108417437261b66fcb79666865df483cdda90daba60576cf49acc"},
+    "goal029_production": {"path": "src/dsdm_phase1/goal029_production.py", "sha256": "4a5fb1451049d88c8ffcc8dacbe74b93569651f34b198a86f88e2ac973d31325"},
+    "model_adapters": {"path": "src/dsdm_phase1/model_adapters.py", "sha256": "5aeae21aaeca0502d40db90c732db9c21de3ca72ec2561c77b709738e3a3e35e"},
+    "uv_lock": {"path": "uv.lock", "sha256": "39c22925750ac8821f5420bdfe5ca39554b7906d812bd3a94a04e91c469284fd"}
+  },
+  "scope": {
+    "species": ["thylogale_billardierii", "notamacropus_rufogriseus", "trichosurus_vulpecula", "pseudocheirus_peregrinus", "vombatus_ursinus", "sarcophilus_harrisii", "dasyurus_maculatus", "dasyurus_viverrinus"],
+    "folds": ["fold00", "fold01", "fold02", "fold03", "fold04"],
+    "endpoints": ["fraction25/ladder00", "fraction25/ladder01", "fraction25/ladder02", "fraction50/ladder00", "fraction50/ladder01", "fraction50/ladder02", "fraction100/full"],
+    "neural_methods": ["target_only_resmlp", "legacy_pooled_finetune", "multihead_frozen_trunk", "multihead_full_finetune", "target_plus_q_linear", "target_plus_q_deep"],
+    "conventional_families": ["intercept", "elastic_net", "random_forest", "hist_gradient_boosting", "shallow_ann"],
+    "seeds": [31031, 31032, 31033, 31034, 31035],
+    "predictor_count": 77,
+    "q_predictor_count": 78,
+    "species_packages": 8,
+    "epoch_policy_records": 1760,
+    "neural_logical_artifacts": 1768,
+    "conventional_selected_refits": 952,
+    "methods_total": 11
+  },
+  "neural": {
+    "architecture": "resmlp13",
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "batch_size": 128,
+    "full_training_epoch_policy": "lower_median_of_five_inner_selected_epochs",
+    "workers": 3,
+    "device": "cpu",
+    "torch_threads": 1,
+    "blas_threads": 1,
+    "q_linear": {"penalty": "elasticnet", "solver": "saga", "C": 1.0, "l1_ratio": 0.5, "max_iter": 5000, "tol": 0.00001, "stability_max_iter": 10000, "stability_probability_tolerance": 0.0001}
+  },
+  "epoch_policy": {
+    "rule": "lower_median_of_five_inner_selected_epochs",
+    "records": 1760,
+    "folds": 5,
+    "maximum_epoch": 300,
+    "outer_labels_used": false
+  },
+  "conventional": {
+    "producer_commit": "f85e45922e182858fd351fdaf4f1b36b33fb4f2f",
+    "validator_commit": "e6f07ae8bdb48399af907cf44598cc34d51391f6",
+    "transaction_id": "38abaa77531936e9fe37c15f2ed9f08802f68e0b936ff5b351c0b38b45f83918",
+    "private_core_manifest_sha256": "836384b71fa03797e3fe92052aed2255b737d59a347aaa8614830a28d0851ab6",
+    "selected_refits": 952,
+    "validation": "full_producer_publication_plus_local_challenge_replay"
+  },
+  "runtime": {
+    "neural": {"system": "Darwin", "machine": "arm64", "python_major_minor": "3.12", "numpy": "2.2.6", "scipy": "1.16.3", "scikit_learn": "1.9.0", "threadpoolctl": "3.6.0", "torch": "2.7.1", "device": "cpu", "route": "mac_cpu", "torch_threads": 1, "blas_threads": 1},
+    "conventional_producer": {"numpy": "2.5.1", "pygam": "0.10.1", "python": "3.12.3", "scipy": "1.16.3", "sklearn": "1.9.0", "torch": "2.13.0"},
+    "conventional_scorer": {"python_major_minor": "3.12", "numpy": "2.5.1", "scipy": "1.16.3", "scikit_learn": "1.9.0", "pygam": "0.10.1", "torch": "2.13.0"}
+  },
+  "evidence": {
+    "private_root": "data/processed/dsdm/goal037-outer-ready/private",
+    "tracked_root": "evidence/dsdm_outer_ready/goal037",
+    "goal035_private_root": "data/processed/dsdm/goal035-final-inner-lifecycle/private",
+    "epoch_policy": "data/processed/dsdm/goal037-outer-ready/private/epoch_policy.json",
+    "conventional_import_receipt": "data/processed/dsdm/goal037-outer-ready/private/conventional/import_receipt.json",
+    "canary_receipt": "evidence/dsdm_outer_ready/goal037/canary.json",
+    "aggregate_receipt": "evidence/dsdm_outer_ready/goal037/receipt.json"
+  },
+  "privacy": {"aggregate_only": true, "labels_private": true, "row_identifiers": false, "coordinates": false, "outer_attempted": 0, "outer_opened": 0}
+}
