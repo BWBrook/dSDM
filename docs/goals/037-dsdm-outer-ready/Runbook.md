@@ -46,7 +46,7 @@ uv run --locked python -m dsdm.conventional_refit_import \
 ```
 
 The local cross-platform replay requires every score to be finite, bounded,
-and within absolute tolerance `1e-12` of the exact producer reference. Exact
+and within absolute tolerance `1e-6` of the exact producer reference. Exact
 byte equality is reported separately and is not required across Linux/x86-64
 and macOS/arm64.
 

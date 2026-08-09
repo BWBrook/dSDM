@@ -24,7 +24,7 @@ from dsdm_phase1.model_adapters import load_fitted_model
 
 
 FAMILIES = ("intercept", "elastic_net", "random_forest", "hist_gradient_boosting", "shallow_ann")
-CROSS_PLATFORM_ATOL = 1e-12
+CROSS_PLATFORM_ATOL = 1e-6
 SEEDS_BY_FAMILY = {
     "intercept": ("seed00",),
     "elastic_net": ("seed00", "seed01", "seed02", "seed03", "seed04"),

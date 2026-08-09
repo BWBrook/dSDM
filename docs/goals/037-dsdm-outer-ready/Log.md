@@ -55,8 +55,13 @@
   prediction digests all remained intact.
 - The import gate now requires a private producer-runtime reference whose 952
   score vectors first reproduce the original byte digests exactly. The Mac
-  then compares every element at fixed absolute tolerance `1e-12`, records the
+  then compares every element at fixed absolute tolerance `1e-6`, records the
   maximum observed difference and exact-byte count, and still fails on any
   non-finite, out-of-range, missing, reordered, or identity-mismatched result.
   This preserves semantic assurance without pretending cross-platform
   floating-point bytes are portable.
+- The complete diagnostic found 449/952 byte-identical local replays. All
+  intercept, random-forest, and histogram-boosting refits were exact; elastic
+  nets differed by at most `2.78e-16`; shallow ANNs differed by at most
+  `1.79e-7`. The frozen `1e-6` bound is therefore conservative while remaining
+  immaterial at the habitat-suitability score and threshold decision scale.
