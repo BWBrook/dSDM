@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "goal_id": "goal039-predictor-substrate-sensitivity",
-  "config_digest": "b3805c44b2ee4241539286428af575baea7844c302941b4522167428a8430b2b",
+  "config_digest": "da72d0814c67874f084d5f9c007aa20aafa3ee51690a2034593fedd81d3c2409",
   "authorities": {
     "goal024_map": {"path": "data/processed/predictors/goal024-predictor-source-repair-domain-freeze/2026-07-26/predictor_cell_map_canonical.csv", "sha256": "c27b848bd4db81932553ac801029b8e66cf1a1ecd05271343ee2b4d0a3035cc5"},
     "goal024_decision": {"path": "docs/goals/024-predictor-source-repair-domain-freeze/Decision.md", "sha256": "4ea47c6abc3f67202c4f4b2b4b1d4824f23d34d3d622af65bc35e2c3e6bc2ddf"},
@@ -26,7 +26,12 @@
     "final_inner_data": {"path": "src/dsdm/final_inner_data.py", "sha256": "1c20d1b224ee4092e139e7419fa989797aea5afaa45cdec926a5cd3586baad46"},
     "final_inner_runner": {"path": "src/dsdm/final_inner_runner.py", "sha256": "2b46a96fc5dbe4dbe6a3e1a594eeea48a39f56a9162e0fdd79a5f557968d75dc"},
     "inner_evaluation": {"path": "src/dsdm/inner_evaluation.py", "sha256": "1b2a85aad54871047c31fdabb828cd67744c5a6acbcb5e2cfdafcaaafe0f9360"},
-    "predictor_sensitivity_conventional": {"path": "src/dsdm/predictor_sensitivity_conventional.py", "sha256": "dec5d199def620c11c31e6d6018c408477731cb3ebf9e66dc67ced17e179714a"},
+    "predictor_sensitivity_conventional": {"path": "src/dsdm/predictor_sensitivity_conventional.py", "sha256": "1ef3511afb1563c4d75033bf0a92f4070b580e2e1a286d30f4b36822ae539ba9"},
+    "phase1_goal029_production": {"path": "src/dsdm_phase1/goal029_production.py", "sha256": "4a5fb1451049d88c8ffcc8dacbe74b93569651f34b198a86f88e2ac973d31325"},
+    "phase1_inner_cv": {"path": "src/dsdm_phase1/inner_cv.py", "sha256": "41a5ebd4641f233ea8b9ba5b0941d9f736f7fa73cd73695ecff521b12eec336c"},
+    "phase1_model_adapters": {"path": "src/dsdm_phase1/model_adapters.py", "sha256": "2e6ea5c013a00f07e9dfe9ecc29496785b4579dcbd96af08c90567a5cf63dfd9"},
+    "phase1_modeling_contract": {"path": "src/dsdm_phase1/modeling_contract.py", "sha256": "342bb461ca3e6c6193984e9d0ec22ba3d18ee8a3fcaeaaf84710c72adf5649a9"},
+    "phase1_target_subsets": {"path": "src/dsdm_phase1/target_subsets.py", "sha256": "71988214be2108417437261b66fcb79666865df483cdda90daba60576cf49acc"},
     "models": {"path": "src/dsdm/models.py", "sha256": "71317e80514eeab68a316066f59382db2c96aa6bffb0dfd524e08895f2f9c6ee"},
     "real_six_path": {"path": "src/dsdm/real_six_path.py", "sha256": "7da430342545403ea8d82deee965ec065178c8660ceccd83a34af68cb9ff2bc0"},
     "categorical_support": {"path": "src/dsdm/categorical_support.py", "sha256": "90b59bfe6b47628ba6bb36d130fe427c3e5481b6a8b9c1492203f73a1234d959"},

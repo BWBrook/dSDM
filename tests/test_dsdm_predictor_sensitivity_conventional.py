@@ -3,6 +3,8 @@ from __future__ import annotations
 from dataclasses import replace
 import json
 from pathlib import Path
+import subprocess
+import sys
 from types import SimpleNamespace
 
 import numpy as np
@@ -93,6 +95,41 @@ def test_stage_arithmetic_is_exact():
         "fold_units": 2560,
         "physical_fits": 3360,
     }
+
+
+def test_live_runtime_has_callable_dependencies_for_all_four_families():
+    import dsdm.predictor_sensitivity_conventional as conventional
+
+    receipt = conventional.conventional_runtime_probe()
+
+    assert receipt["families"] == list(conventional.FAMILIES)
+    assert receipt["pygam_required"] is False
+    assert set(receipt["availability"]) == set(conventional.FAMILIES)
+    assert all(
+        all(symbols.values()) for symbols in receipt["availability"].values()
+    )
+
+
+def test_missing_legacy_pygam_does_not_disable_canonical_families():
+    code = """
+import sys
+sys.modules['pygam'] = None
+import dsdm_phase1.model_adapters as adapters
+required = (
+    adapters.LogisticRegression,
+    adapters.RandomForestClassifier,
+    adapters.HistGradientBoostingClassifier,
+    adapters._TorchShallow,
+)
+assert all(callable(value) for value in required)
+assert adapters.LogisticGAM is None
+"""
+    subprocess.run(
+        [sys.executable, "-c", code],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
 
 
 def test_plan_freezes_selected_candidate_per_stratum():

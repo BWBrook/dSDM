@@ -36,11 +36,14 @@ try:  # imports are kept local-friendly for contract-only environments
     from sklearn.exceptions import ConvergenceWarning
     from sklearn.linear_model import LogisticRegression
     from sklearn.preprocessing import SplineTransformer
-    from pygam import LogisticGAM, l, s, te
 except Exception:  # pragma: no cover - dependency contract catches this
     HistGradientBoostingClassifier = RandomForestClassifier = LogisticRegression = None
     SplineTransformer = None
     ConvergenceWarning = RuntimeWarning
+
+try:  # pyGAM is legacy-only and must not disable the canonical Goal029 families
+    from pygam import LogisticGAM, l, s, te
+except Exception:  # pragma: no cover - dependency contract catches this
     LogisticGAM = l = s = te = None
 
 import torch

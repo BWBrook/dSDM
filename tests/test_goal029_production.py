@@ -156,9 +156,18 @@ def test_exact_five_family_production_and_calibration_contract(goal029_config):
     assert len(synthetic_plan) == 33
     assert len({leaf.model_family for leaf in synthetic_plan}) == 5
     assert sum(len(SEEDS_BY_FAMILY[family]) for family in FAMILIES) == 17
-    assert len(
-        audit_plan(synthetic_plan, audit_salt(synthetic_plan, context))
-    ) == 9
+    synthetic_audit = audit_plan(
+        synthetic_plan, audit_salt(synthetic_plan, context)
+    )
+    assert {leaf.family_stratum for leaf in synthetic_audit} == {
+        leaf.family_stratum for leaf in synthetic_plan
+    }
+    assert {leaf.candidate_id for leaf in synthetic_audit} == {
+        leaf.candidate_id for leaf in synthetic_plan
+    }
+    assert {leaf.seed_label for leaf in synthetic_audit} == {
+        leaf.seed_label for leaf in synthetic_plan
+    }
 
 
 @pytest.mark.parametrize(

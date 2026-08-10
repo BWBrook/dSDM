@@ -136,3 +136,10 @@ def test_config_is_self_and_source_bound():
     config = ps.load_config("config/dsdm_predictor_substrate_sensitivity.json")
     assert config.raw["config_digest"] == ps.digest_value({key: value for key, value in config.raw.items() if key != "config_digest"})
     assert config.raw["evidence"]["outer_attempted"] == config.raw["evidence"]["outer_opened"] == 0
+    assert {
+        "phase1_goal029_production",
+        "phase1_inner_cv",
+        "phase1_model_adapters",
+        "phase1_modeling_contract",
+        "phase1_target_subsets",
+    } <= set(config.raw["execution_sources"])

@@ -17,6 +17,7 @@ import numpy as np
 import pyarrow as pa
 import pyarrow.parquet as pq
 
+from dsdm_phase1 import model_adapters as _model_adapters
 from dsdm_phase1.goal029_production import (
     ENDPOINTS,
     FOLDS,
@@ -114,6 +115,37 @@ def _require(condition: bool, message: str) -> None:
 
 def _is_digest(value: Any) -> bool:
     return isinstance(value, str) and len(value) == 64 and set(value) <= _HEX
+
+
+def conventional_runtime_probe() -> dict[str, Any]:
+    """Fail before execution unless all four frozen family adapters are callable."""
+    dependencies = {
+        "elastic_net": ("LogisticRegression",),
+        "random_forest": ("RandomForestClassifier",),
+        "hist_gradient_boosting": ("HistGradientBoostingClassifier",),
+        "shallow_ann": ("_TorchShallow",),
+    }
+    availability: dict[str, dict[str, bool]] = {}
+    for family, symbols in dependencies.items():
+        availability[family] = {
+            symbol: callable(getattr(_model_adapters, symbol, None))
+            for symbol in symbols
+        }
+        adapter = build_adapter(family)
+        availability[family]["adapter_fit"] = callable(getattr(adapter, "fit", None))
+    _require(
+        all(all(values.values()) for values in availability.values()),
+        "conventional_runtime_dependency_unavailable",
+    )
+    return {
+        "schema_version": "goal039-conventional-runtime-probe-v1",
+        "families": list(FAMILIES),
+        "availability": availability,
+        "pygam_required": False,
+    }
+
+
+CONVENTIONAL_RUNTIME = conventional_runtime_probe()
 
 
 def _endpoint_name(endpoint: tuple[str, str]) -> str:
