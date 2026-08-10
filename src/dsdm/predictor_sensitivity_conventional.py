@@ -95,7 +95,7 @@ class ConventionalSensitivityError(ValueError):
 
 
 CONVENTIONAL_RUNTIME_SCHEMA = "goal039-conventional-runtime-v1"
-CONVENTIONAL_WORKER_SCHEMA = "goal039-conventional-worker-v1"
+CONVENTIONAL_WORKER_SCHEMA = "goal039-conventional-worker-v2"
 CONVENTIONAL_WORKER_ENV = "DSDM_GOAL039_CONVENTIONAL_WORKER"
 CONVENTIONAL_RUNTIME_FIELDS = (
     "python_major_minor",
@@ -580,10 +580,13 @@ def stage_counts(stage: str) -> dict[str, int]:
     species_endpoints = len(SPECIES) * endpoints
     leaves = species_endpoints * sum(len(SEEDS_BY_FAMILY[family]) for family in FAMILIES)
     fold_units = leaves * len(FOLDS)
-    physical_fits = species_endpoints * (
+    one_substrate_physical_fits = species_endpoints * (
         sum(len(SEEDS_BY_FAMILY[family]) * len(FOLDS) for family in FAMILIES if family != "shallow_ann")
         + len(SEEDS_BY_FAMILY["shallow_ann"]) * len(FOLDS) * 2
     )
+    # Every conventional leaf now has a contemporaneous full and reduced fit
+    # in the same locked child runtime.  Count both substrates explicitly.
+    physical_fits = 2 * one_substrate_physical_fits
     return {
         "endpoints": endpoints,
         "leaves": leaves,
@@ -689,6 +692,96 @@ def result_row_identity_digest(result: CandidateOOF) -> str:
     )
 
 
+def validate_current_result(result: CandidateOOF) -> dict[str, Any]:
+    """Validate a contemporaneous fit without retaining row-level output.
+
+    This is the current-runtime gate used by Goal039.  It deliberately checks
+    only finite, probability-bounded predictions and the complete fold/label
+    inventory; it does not compare scores with the sealed historical export.
+    """
+    _require(len(result.folds) == len(FOLDS), "current_fit_fold_inventory_drift")
+    rows = 0
+    for fold in result.folds:
+        scores = np.asarray(fold.scores_by_seed[result.stratum.ordered_selection_seeds[0]], dtype=np.float64)
+        y = np.asarray(fold.y_true, dtype=np.int8)
+        _require(
+            fold.fold_id in FOLDS
+            and scores.ndim == 1
+            and scores.shape == y.shape
+            and np.isin(y, (0, 1)).all()
+            and np.isfinite(scores).all()
+            and np.all((scores >= 0.0) & (scores <= 1.0)),
+            "current_fit_prediction_invalid",
+        )
+        rows += int(scores.size)
+    return {
+        "rows": rows,
+        "row_identity_digest": result_row_identity_digest(result),
+        "prediction_digest": result_prediction_digest(result),
+        "finite": True,
+        "bounded": True,
+        "outer_attempted": 0,
+        "outer_opened": 0,
+    }
+
+
+def diagnose_result_against_control(
+    result: CandidateOOF, control: ControlLeaf
+) -> dict[str, Any]:
+    """Record historical-control drift while gating lineage, rows, and labels.
+
+    Goal036 predictions are immutable provenance, not a cross-platform score
+    oracle.  The returned maximum difference is diagnostic only; current-fit
+    validity is enforced independently by :func:`validate_current_result`.
+    """
+    leaf = control.leaf
+    _require(
+        result.candidate_id == leaf.candidate_id
+        and result.stratum
+        == SelectionStratum(
+            leaf.species_id,
+            leaf.fraction_id,
+            leaf.ladder_id,
+            leaf.model_family,
+            (leaf.seed_label,),
+        )
+        and len(result.folds) == len(FOLDS),
+        "historical_control_replay_identity_mismatch",
+    )
+    current = validate_current_result(result)
+    maximum = 0.0
+    rows = 0
+    for observed, expected in zip(result.folds, control.folds, strict=True):
+        tokens = tuple(_row_token(key) for key in observed.keys)
+        scores = np.asarray(observed.scores_by_seed[leaf.seed_label], dtype=np.float64)
+        _require(
+            observed.fold_id == expected.fold_id
+            and tokens == expected.row_tokens
+            and np.array_equal(observed.y_true.astype(np.int8), expected.y_true)
+            and scores.shape == expected.scores.shape,
+            "historical_control_row_identity_mismatch",
+        )
+        maximum = max(maximum, float(np.max(np.abs(scores - expected.scores))))
+        rows += len(scores)
+    receipt = {
+        "schema_version": "goal039-conventional-historical-control-v2",
+        "leaf": asdict(leaf),
+        "observation_count": rows,
+        "maximum_abs_difference": maximum,
+        "drift_observed": bool(maximum > 0.0),
+        "control_row_identity_digest": control.row_identity_digest,
+        "control_value_digest": control.prediction_digest,
+        "current_row_identity_digest": current["row_identity_digest"],
+        "current_value_digest": current["prediction_digest"],
+        "finite": current["finite"],
+        "bounded": current["bounded"],
+        "outer_attempted": 0,
+        "outer_opened": 0,
+    }
+    receipt["receipt_digest"] = digest_value(receipt)
+    return receipt
+
+
 def compare_result_to_control(
     result: CandidateOOF, control: ControlLeaf, *, atol: float = 0.0
 ) -> dict[str, Any]:
@@ -768,7 +861,51 @@ def validate_full28_canary_receipts(receipts: Sequence[Mapping[str, Any]]) -> di
     return output
 
 
+def validate_historical_control_diagnostics(
+    receipts: Sequence[Mapping[str, Any]],
+) -> dict[str, Any]:
+    """Validate aggregate historical-control diagnostics without score gating."""
+    _require(
+        len(receipts) == len(FAMILIES)
+        and {receipt.get("leaf", {}).get("model_family") for receipt in receipts}
+        == set(FAMILIES),
+        "historical_control_family_scope_drift",
+    )
+    maxima: dict[str, float] = {}
+    for receipt in receipts:
+        body = dict(receipt)
+        claimed = body.pop("receipt_digest", None)
+        leaf = receipt.get("leaf", {})
+        _require(
+            receipt.get("schema_version") == "goal039-conventional-historical-control-v2"
+            and claimed == digest_value(body)
+            and leaf.get("model_family") in FAMILIES
+            and receipt.get("finite") is True
+            and receipt.get("bounded") is True
+            and receipt.get("drift_observed") == (float(receipt.get("maximum_abs_difference", 0.0)) > 0.0)
+            and receipt.get("outer_attempted") == receipt.get("outer_opened") == 0
+            and _is_digest(receipt.get("control_row_identity_digest"))
+            and _is_digest(receipt.get("current_row_identity_digest")),
+            "historical_control_diagnostic_invalid",
+        )
+        maximum = float(receipt["maximum_abs_difference"])
+        _require(np.isfinite(maximum) and maximum >= 0.0, "historical_control_diagnostic_value_invalid")
+        maxima[str(leaf["model_family"])] = maximum
+    output = {
+        "schema_version": "goal039-conventional-historical-control-v2",
+        "families": list(FAMILIES),
+        "replays": len(receipts),
+        "maximum_abs_difference_by_family": maxima,
+        "outer_attempted": 0,
+        "outer_opened": 0,
+    }
+    output["receipt_digest"] = digest_value(output)
+    return output
+
+
 def compare_reduced_repeats(first: CandidateOOF, second: CandidateOOF) -> dict[str, Any]:
+    first_current = validate_current_result(first)
+    second_current = validate_current_result(second)
     first_digest = result_prediction_digest(first)
     second_digest = result_prediction_digest(second)
     first_rows = result_row_identity_digest(first)
@@ -783,6 +920,8 @@ def compare_reduced_repeats(first: CandidateOOF, second: CandidateOOF) -> dict[s
         "value_digest": first_digest,
         "observation_digest": first_rows,
         "exact": True,
+        "finite": first_current["finite"] and second_current["finite"],
+        "bounded": first_current["bounded"] and second_current["bounded"],
         "outer_attempted": 0,
         "outer_opened": 0,
     }
@@ -790,16 +929,18 @@ def compare_reduced_repeats(first: CandidateOOF, second: CandidateOOF) -> dict[s
     return receipt
 
 
-def reduced_leaf_identity(
+def _conventional_leaf_identity(
     leaf: ConventionalLeaf,
     *,
+    substrate: str,
     stage: str,
     config_digest: str,
     source_fingerprint: str,
     control_manifest_digest: str,
     mask_digest_by_fold: Mapping[str, str],
 ) -> dict[str, Any]:
-    _require(stage in {"screen", "confirmation"}, "reduced_leaf_stage_invalid")
+    _require(substrate in {"reduced", "full"}, "conventional_leaf_substrate_invalid")
+    _require(stage in {"screen", "confirmation"}, "conventional_leaf_stage_invalid")
     _require(
         all(_is_digest(value) for value in (config_digest, source_fingerprint, control_manifest_digest))
         and set(mask_digest_by_fold) == set(FOLDS)
@@ -807,7 +948,8 @@ def reduced_leaf_identity(
         "reduced_leaf_authority_invalid",
     )
     payload = {
-        "schema_version": "goal039-conventional-reduced-leaf-v1",
+        "schema_version": f"goal039-conventional-{substrate}-leaf-v2",
+        "substrate": substrate,
         "stage": stage,
         "leaf_task": asdict(leaf),
         "fit_seed_by_fold": {
@@ -824,13 +966,22 @@ def reduced_leaf_identity(
     return payload
 
 
-def _validate_reduced_identity(identity: Mapping[str, Any]) -> ConventionalLeaf:
+def reduced_leaf_identity(leaf: ConventionalLeaf, **kwargs: Any) -> dict[str, Any]:
+    return _conventional_leaf_identity(leaf, substrate="reduced", **kwargs)
+
+
+def full_leaf_identity(leaf: ConventionalLeaf, **kwargs: Any) -> dict[str, Any]:
+    return _conventional_leaf_identity(leaf, substrate="full", **kwargs)
+
+
+def _validate_conventional_identity(identity: Mapping[str, Any], substrate: str) -> ConventionalLeaf:
     body = dict(identity)
     claimed = body.pop("identity_digest", None)
     _require(
         _is_digest(claimed)
         and claimed == digest_value(body)
-        and identity.get("schema_version") == "goal039-conventional-reduced-leaf-v1"
+        and identity.get("schema_version") == f"goal039-conventional-{substrate}-leaf-v2"
+        and identity.get("substrate") == substrate
         and identity.get("stage") in {"screen", "confirmation"}
         and identity.get("outer_attempted") == identity.get("outer_opened") == 0,
         "reduced_leaf_identity_invalid",
@@ -846,6 +997,14 @@ def _validate_reduced_identity(identity: Mapping[str, Any]) -> ConventionalLeaf:
         "reduced_leaf_seed_or_mask_drift",
     )
     return leaf
+
+
+def _validate_reduced_identity(identity: Mapping[str, Any]) -> ConventionalLeaf:
+    return _validate_conventional_identity(identity, "reduced")
+
+
+def _validate_full_identity(identity: Mapping[str, Any]) -> ConventionalLeaf:
+    return _validate_conventional_identity(identity, "full")
 
 
 def write_reduced_leaf(
@@ -871,6 +1030,29 @@ def load_reduced_leaf(
     )
 
 
+def write_full_leaf(
+    private_leaf_root: str | Path,
+    identity: Mapping[str, Any],
+    result: CandidateOOF,
+) -> tuple[Path, bool]:
+    leaf = _validate_full_identity(identity)
+    _require(
+        result.candidate_id == leaf.candidate_id
+        and result.stratum.ordered_selection_seeds == (leaf.seed_label,),
+        "full_leaf_result_mismatch",
+    )
+    return write_leaf_checkpoint(Path(private_leaf_root), identity, result)
+
+
+def load_full_leaf(
+    private_leaf_root: str | Path, identity: Mapping[str, Any]
+) -> CandidateOOF:
+    _validate_full_identity(identity)
+    return load_leaf_checkpoint(
+        Path(private_leaf_root) / str(identity["identity_digest"]), identity
+    )
+
+
 def inventory_status(
     private_leaf_root: str | Path,
     identities: Sequence[Mapping[str, Any]],
@@ -881,16 +1063,19 @@ def inventory_status(
     invalid: list[str] = []
     complete: list[str] = []
     for identity in identities:
-        _validate_reduced_identity(identity)
+        substrate = str(identity.get("substrate", ""))
+        _require(substrate in {"reduced", "full"}, "conventional_leaf_substrate_missing")
+        validator = _validate_reduced_identity if substrate == "reduced" else _validate_full_identity
+        validator(identity)
         digest = str(identity["identity_digest"])
-        _require(digest not in digests, "duplicate_reduced_leaf_identity")
+        _require(digest not in digests, f"duplicate_{substrate}_leaf_identity")
         digests.append(digest)
         path = root / digest
         if not path.exists() and not path.is_symlink():
             missing.append(digest)
             continue
         try:
-            load_reduced_leaf(root, identity)
+            (load_reduced_leaf if substrate == "reduced" else load_full_leaf)(root, identity)
         except Exception:
             invalid.append(digest)
         else:
@@ -903,6 +1088,7 @@ def inventory_status(
         "complete_inventory_digest": digest_value(sorted(complete)),
         "missing_identity_digests": sorted(missing),
         "invalid_identity_digests": sorted(invalid),
+        "substrate": substrate,
         "outer_attempted": 0,
         "outer_opened": 0,
     }
@@ -942,8 +1128,9 @@ def aggregate_family_effects(
     reduced_results: Mapping[ConventionalLeaf, CandidateOOF],
     *,
     endpoints: Sequence[tuple[str, str]],
+    full_results: Mapping[ConventionalLeaf, CandidateOOF],
 ) -> dict[str, Any]:
-    """Return aggregate-only reduced-minus-full effects for conventional context."""
+    """Return aggregate-only paired reduced-minus-current-full effects."""
     endpoint_tuple = tuple(endpoints)
     _require(
         len(endpoint_tuple) > 0
@@ -966,6 +1153,7 @@ def aggregate_family_effects(
         for seed in SEEDS_BY_FAMILY[family]
     )
     _require(set(reduced_results) == set(expected_leaves), "conventional_aggregate_leaf_inventory_drift")
+    _require(set(full_results) == set(expected_leaves), "conventional_full_aggregate_leaf_inventory_drift")
     rows: list[dict[str, Any]] = []
     for species in SPECIES:
         for fraction, ladder in endpoint_tuple:
@@ -978,13 +1166,15 @@ def aggregate_family_effects(
                     ]
                     for seed in seeds
                 }
-                control_by_seed = {
-                    seed: load_control_leaf(
-                        catalog,
-                        ConventionalLeaf(species, fraction, ladder, family, candidate, seed),
-                    )
+                full_by_seed = {
+                    seed: full_results[
+                        ConventionalLeaf(species, fraction, ladder, family, candidate, seed)
+                    ]
                     for seed in seeds
                 }
+                for current in full_by_seed.values():
+                    validate_current_result(current)
+                control_by_seed = full_by_seed
                 all_y: list[np.ndarray] = []
                 reduced_scores: list[np.ndarray] = []
                 full_scores: list[np.ndarray] = []
@@ -997,15 +1187,20 @@ def aggregate_family_effects(
                     for seed in seeds:
                         reduced = reduced_by_seed[seed].folds[fold_index]
                         control = control_by_seed[seed].folds[fold_index]
+                        full_scores_for_fold = np.asarray(
+                            control.scores_by_seed[seed], dtype=np.float64
+                        )
+                        control_row_tokens = tuple(_row_token(key) for key in control.keys)
+                        control_y = np.asarray(control.y_true, dtype=np.int8)
                         _require(
                             reduced.fold_id == control.fold_id == fold
-                            and tuple(_row_token(key) for key in reduced.keys) == tokens == control.row_tokens
+                            and tuple(_row_token(key) for key in reduced.keys) == tokens == control_row_tokens
                             and np.array_equal(reduced.y_true.astype(np.int8), y)
-                            and np.array_equal(control.y_true, y),
+                            and np.array_equal(control_y, y),
                             "conventional_reduced_full_row_mismatch",
                         )
                         reduced_stack.append(np.asarray(reduced.scores_by_seed[seed], dtype=np.float64))
-                        full_stack.append(control.scores)
+                        full_stack.append(full_scores_for_fold)
                     all_y.append(y)
                     reduced_scores.append(np.mean(np.vstack(reduced_stack), axis=0))
                     full_scores.append(np.mean(np.vstack(full_stack), axis=0))
@@ -1047,10 +1242,11 @@ def aggregate_family_effects(
                 }
             )
     output = {
-        "schema_version": "goal039-conventional-family-effects-v1",
+        "schema_version": "goal039-conventional-family-effects-v2",
         "endpoints": [_endpoint_name(endpoint) for endpoint in endpoint_tuple],
         "families": list(FAMILIES),
         "aggregation": "common_seed_mean_then_pooled_threshold_then_equal_fold_mean",
+        "baseline": "current_runtime_paired_full",
         "strata": len(rows),
         "leaf_count": len(expected_leaves),
         "species_family_effects": rows,
@@ -1109,9 +1305,9 @@ def validate_worker_receipt(
         "conventional_worker_result_receipt_digest_invalid",
     )
     expected_schema = (
-        "goal039-conventional-canary-v1"
+        "goal039-conventional-canary-v2"
         if operation == "canary"
-        else f"goal039-conventional-{operation}-v1"
+        else f"goal039-conventional-{operation}-v2"
     )
     _require(
         result.get("schema_version") == expected_schema
@@ -1160,25 +1356,33 @@ def _validate_worker_result(result: Mapping[str, Any], operation: str) -> None:
     if operation == "canary":
         expected = {
             "schema_version", "families", "family_count", "full28_replay",
-            "full28_replays", "reduced_repeat_fits", "control_manifest_digest",
+            "full28_replays", "current_full_repeat_fits", "reduced_repeat_fits", "control_manifest_digest",
             "config_digest", "source_fingerprint", "mask_authority",
             "outer_attempted", "outer_opened", "receipt_digest",
         }
         _require(set(result) == expected, "conventional_worker_canary_schema_invalid")
-        _require(result["family_count"] == 4 and result["full28_replays"] == 4 and result["reduced_repeat_fits"] == 8, "conventional_worker_canary_inventory_invalid")
+        _require(result["family_count"] == 4 and result["full28_replays"] == 4 and result["current_full_repeat_fits"] == 8 and result["reduced_repeat_fits"] == 8, "conventional_worker_canary_inventory_invalid")
         _require(len(result["families"]) == 4 and {row.get("family") for row in result["families"]} == set(FAMILIES), "conventional_worker_canary_family_invalid")
         replay = result["full28_replay"]
         replay_body = dict(replay); replay_digest = replay_body.pop("receipt_digest", None)
-        _require(replay_digest == digest_value(replay_body) and replay.get("families") == list(FAMILIES) and replay.get("replays") == 4, "conventional_worker_canary_control_invalid")
+        _require(replay_digest == digest_value(replay_body) and replay.get("schema_version") == "goal039-conventional-historical-control-v2" and replay.get("families") == list(FAMILIES) and replay.get("replays") == 4, "conventional_worker_canary_control_invalid")
         for row in result["families"]:
-            _require(set(row) == {"family", "candidate", "seed", "full28_replay_receipt_digest", "reduced_repeat_receipt_digest", "observation_digest", "reduced_value_digest", "mask_digest_by_fold"}, "conventional_worker_canary_family_schema_invalid")
+            _require(set(row) == {"family", "candidate", "seed", "historical_control_diagnostic", "full_repeat_receipt_digest", "reduced_repeat_receipt_digest", "observation_digest", "reduced_value_digest", "mask_digest_by_fold"}, "conventional_worker_canary_family_schema_invalid")
+            diagnostic = row["historical_control_diagnostic"]
+            diagnostic_body = dict(diagnostic); diagnostic_digest = diagnostic_body.pop("receipt_digest", None)
+            _require(diagnostic_digest == digest_value(diagnostic_body) and diagnostic.get("schema_version") == "goal039-conventional-historical-control-v2", "conventional_worker_historical_diagnostic_invalid")
+            _require(
+                all(_is_digest(row[name]) for name in ("full_repeat_receipt_digest", "reduced_repeat_receipt_digest", "observation_digest", "reduced_value_digest")),
+                "conventional_worker_canary_digest_invalid",
+            )
             _require(set(row["mask_digest_by_fold"]) == set(FOLDS) and all(_is_digest(value) for value in row["mask_digest_by_fold"].values()), "conventional_worker_canary_mask_invalid")
         _require(_is_digest(result["control_manifest_digest"]) and _is_digest(result["source_fingerprint"]) and _is_digest(result["config_digest"]), "conventional_worker_canary_binding_invalid")
     else:
         expected = {
             "schema_version", "stage", "new_stage", "new_leaf_count",
             "reused_screen_full_leaves", "analysis_leaf_count", "analysis_endpoints",
-            "inventory_digest", "content_digest", "context", "context_digest",
+            "inventory_digest", "reduced_inventory_digest", "full_inventory_digest",
+            "paired_inventory_digest", "paired_leaf_count", "content_digest", "context", "context_digest",
             "control_manifest_digest", "mask_authority", "outer_attempted",
             "outer_opened", "receipt_digest",
         }
@@ -1196,13 +1400,23 @@ def _validate_worker_result(result: Mapping[str, Any], operation: str) -> None:
         context_body = dict(context); context_digest = context_body.pop("receipt_digest", None)
         _require(context_digest == digest_value(context_body) and result.get("context_digest") == context.get("receipt_digest"), "conventional_worker_stage_context_invalid")
         _require(
-            context.get("schema_version") == "goal039-conventional-family-effects-v1"
+            context.get("schema_version") == "goal039-conventional-family-effects-v2"
+            and context.get("baseline") == "current_runtime_paired_full"
             and context.get("families") == list(FAMILIES)
             and context.get("endpoints") == expected_endpoints
             and context.get("leaf_count") == result.get("analysis_leaf_count"),
             "conventional_worker_stage_context_scope_invalid",
         )
-        _require(_is_digest(result["control_manifest_digest"]) and _is_digest(result["inventory_digest"]) and _is_digest(result["content_digest"]), "conventional_worker_stage_binding_invalid")
+        _require(
+            _is_digest(result["control_manifest_digest"])
+            and _is_digest(result["inventory_digest"])
+            and _is_digest(result["reduced_inventory_digest"])
+            and _is_digest(result["full_inventory_digest"])
+            and _is_digest(result["paired_inventory_digest"])
+            and _is_digest(result["content_digest"])
+            and result["paired_leaf_count"] == result["analysis_leaf_count"],
+            "conventional_worker_stage_binding_invalid",
+        )
 
 
 def _worker_receipt(
@@ -1266,7 +1480,14 @@ def _run_worker(operation: str, config_path: str | Path, audit_path: str | Path)
         )
     elif operation in {"screen", "confirmation"}:
         result = _run_conventional_stage(
-            config, audit, catalog, operation, goal029, broker, reduced_provider
+            config,
+            audit,
+            catalog,
+            operation,
+            goal029,
+            broker,
+            reduced_provider,
+            provider,
         )
     else:
         raise ConventionalSensitivityError("conventional_worker_operation_invalid")

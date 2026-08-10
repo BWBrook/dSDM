@@ -32,12 +32,17 @@ export VECLIB_MAXIMUM_THREADS=1 PYTHONPATH=src
   --config config/dsdm_predictor_substrate_sensitivity.json
 ```
 
-Run the canary before the screen. Confirmation is forbidden unless at least
-one screen lane earns its gate, and only earned lanes may be interpreted at
-confirmation. The runner must be resumable, identity-addressed, and
-fail closed on corrupt or mismatched leaves. Tracked output is limited to
-aggregate metrics, mask/provenance summaries, digests, and validation receipts;
-row-level labels, predictions, and private leaves remain untracked.
+Run the canary before the screen. The conventional canary treats Goal036 as
+the immutable selection/row/label authority and records historical score drift
+by family; it does not require cross-platform numerical equality. Current full
+and reduced conventional fits must repeat exactly in the locked runtime, and
+all screen/confirmation effects use resumable contemporaneous full/reduced
+pairs. Confirmation is forbidden unless at least one screen lane earns its
+gate, and only earned lanes may be interpreted at confirmation. The runner
+must be resumable, identity-addressed, and fail closed on corrupt or mismatched
+leaves. Tracked output is limited to aggregate metrics, mask/provenance
+summaries, digests, and validation receipts; row-level labels, predictions,
+and private leaves remain untracked.
 
 At every command boundary record source/config hashes, seed scope, mask count,
 inventory, and outer-vault attempted/opened counts. The expected outer receipt

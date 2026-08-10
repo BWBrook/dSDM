@@ -72,12 +72,28 @@ histogram gradient boosting, and shallow ANN. Conventional context is
 descriptive and cannot trigger reduced-panel adoption. For each species,
 endpoint and family, the reduced fit reuses the exact Goal029 selected
 candidate, hyperparameters, response rows, folds, and canonical family seed
-labels; its immutable Goal036 `full28` OOF predictions are the control. Neural
-seeds 31031--31035 apply only to dSDM. Full-28 replay is required in the
-canary.
+labels. Its `full28` comparator is fitted contemporaneously under the same
+locked runtime, rows, folds, and seeds, so reduced-minus-full effects are
+paired within the current numerical environment. The immutable Goal036 OOF
+export remains authoritative for candidate selection, row and label identity,
+and historical provenance; historical score differences are canary
+diagnostics, not equality gates or effect baselines. Neural seeds
+31031--31035 apply only to dSDM.
 
-The canary replays the full-28 sentinel once against its immutable predictions
-and fits the reduced sentinel twice. The screen uses
+This amendment was frozen before the screen after a bounded canary diagnosis
+found exact row, label, candidate, and seed agreement for all four families,
+but a maximum historical-refit difference of `0.00556825` for random forest
+across Linux/x86 and Darwin/arm64. Elastic net, histogram gradient boosting,
+and shallow ANN differed by at most `1.49e-7`. The random-forest tolerance is
+not widened post hoc. Instead, the conventional canary records the historical
+drift by family and requires exact current-runtime repeatability, finite
+predictions, and probability bounds for both full and reduced fits.
+
+The neural canary replays the full-28 sentinel once against its immutable
+predictions and fits the reduced sentinel twice. The conventional canary fits
+both full and reduced sentinels twice in the locked current runtime, validates
+the immutable Goal036 lineage and row/label identities, and reports historical
+score drift without using it as a gate. The screen uses
 `fraction25/ladder00`, `fraction50/ladder00`, and
 `fraction100/full`, with seeds `31031`--`31033`. A lane advances only when it
 is positive in at least 2/3 endpoints, at least 5/8 species, at least 2/3

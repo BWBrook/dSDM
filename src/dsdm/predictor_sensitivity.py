@@ -638,7 +638,6 @@ def load_config(path: str | Path, *, root: str | Path | None = None) -> Sensitiv
         "private_core_manifest_sha256": EXPECTED_PRIVATE_CORE_MANIFEST,
         "manifest_digest": "1bb5bcc7ea450d87a2ddb8b5ea3a11ac96163e8001e0a3cc11d2c6853b09b5bc",
         "parquet_sha256": "250a33d2111fc420e620535be113f14a6bd68ce26ae910b514571f397ebc2001",
-        "full28_replay_atol": 1e-6,
         "runtime": {
             "python_relative": ".venv/bin/python",
             "python_major_minor": "3.12",
@@ -847,10 +846,10 @@ def _run_conventional_canary(
         FAMILIES,
         ConventionalLeaf,
         compare_reduced_repeats,
-        compare_result_to_control,
+        diagnose_result_against_control,
         load_control_leaf,
         run_selected_leaf,
-        validate_full28_canary_receipts,
+        validate_historical_control_diagnostics,
     )
 
     full_receipts = []
@@ -871,8 +870,17 @@ def _run_conventional_canary(
         full = run_selected_leaf(
             catalog, leaf, broker, provider, goal029_config=goal029
         )
-        full_receipt = compare_result_to_control(
-            full, control, atol=float(config.raw["conventional"]["full28_replay_atol"])
+        full_second = run_selected_leaf(
+            catalog, leaf, broker, provider, goal029_config=goal029
+        )
+        # Goal036 remains a sealed lineage/row/label control.  Its numerical
+        # scores are recorded as cross-runtime diagnostics, never as a canary
+        # equality gate or a reduced-minus-full baseline.
+        full_receipt = diagnose_result_against_control(full, control)
+        full_repeat = compare_reduced_repeats(full, full_second)
+        _require(
+            full_repeat["observation_digest"] == control.row_identity_digest,
+            "conventional full canary row identity drift",
         )
         first = run_selected_leaf(
             catalog, leaf, broker, reduced_provider, goal029_config=goal029
@@ -891,20 +899,22 @@ def _run_conventional_canary(
                 "family": family,
                 "candidate": leaf.candidate_id,
                 "seed": leaf.seed_label,
-                "full28_replay_receipt_digest": full_receipt["receipt_digest"],
+                "historical_control_diagnostic": full_receipt,
+                "full_repeat_receipt_digest": full_repeat["receipt_digest"],
                 "reduced_repeat_receipt_digest": repeat["receipt_digest"],
                 "observation_digest": control.row_identity_digest,
                 "reduced_value_digest": repeat["value_digest"],
                 "mask_digest_by_fold": mask_digests,
             }
         )
-    replay = validate_full28_canary_receipts(full_receipts)
+    replay = validate_historical_control_diagnostics(full_receipts)
     receipt = {
-        "schema_version": "goal039-conventional-canary-v1",
+        "schema_version": "goal039-conventional-canary-v2",
         "families": family_receipts,
         "family_count": len(family_receipts),
         "full28_replay": replay,
         "full28_replays": len(full_receipts),
+        "current_full_repeat_fits": 2 * len(family_receipts),
         "reduced_repeat_fits": 2 * len(family_receipts),
         "control_manifest_digest": catalog.manifest_digest,
         "config_digest": config.raw["config_digest"],
@@ -953,6 +963,7 @@ def _run_conventional_stage(
     goal029: Mapping[str, Any],
     broker: Any,
     reduced_provider: Any,
+    provider: Any | None = None,
 ) -> dict[str, Any]:
     from .predictor_sensitivity_conventional import (
         CONFIRMATION_ANALYSIS_ENDPOINTS,
@@ -960,22 +971,42 @@ def _run_conventional_stage(
         aggregate_family_effects,
         build_conventional_analysis_plan,
         inventory_status,
+        load_full_leaf,
         load_reduced_leaf as load_conventional_leaf,
         result_prediction_digest,
         run_selected_leaf,
         stage_counts,
         write_reduced_leaf as write_conventional_leaf,
+        write_full_leaf,
+        validate_current_result,
     )
 
     leaves, identities = _conventional_identities(config, audit, catalog, stage)
+    from .predictor_sensitivity_conventional import full_leaf_identity
+    full_identities = {
+        leaf: full_leaf_identity(
+            leaf,
+            stage=stage,
+            config_digest=config.raw["config_digest"],
+            source_fingerprint=digest_value(config.raw["execution_sources"]),
+            control_manifest_digest=catalog.manifest_digest,
+            mask_digest_by_fold=_conventional_mask_digests(audit),
+        )
+        for leaf in leaves
+    }
     leaf_root = config.private_root / "conventional" / "leaves"
+    reduced_root = leaf_root / "reduced"
+    full_root = leaf_root / "full"
     results: dict[Any, Any] = {}
+    full_results: dict[Any, Any] = {}
+    current_full_provider = provider if provider is not None else reduced_provider
     for leaf in leaves:
         identity = identities[leaf]
-        path = leaf_root / str(identity["identity_digest"])
+        path = reduced_root / str(identity["identity_digest"])
         if path.exists() or path.is_symlink():
             try:
-                results[leaf] = load_conventional_leaf(leaf_root, identity)
+                results[leaf] = load_conventional_leaf(reduced_root, identity)
+                validate_current_result(results[leaf])
             except Exception as exc:
                 raise PredictorSensitivityError(
                     f"corrupt conventional leaf: {identity['identity_digest']}"
@@ -988,12 +1019,30 @@ def _run_conventional_stage(
                 reduced_provider,
                 goal029_config=goal029,
             )
-            write_conventional_leaf(leaf_root, identity, result)
+            write_conventional_leaf(reduced_root, identity, result)
             results[leaf] = result
-    current_status = inventory_status(leaf_root, tuple(identities.values()))
+            validate_current_result(result)
+        full_identity = full_identities[leaf]
+        full_path = full_root / str(full_identity["identity_digest"])
+        if full_path.exists() or full_path.is_symlink():
+            try:
+                full_result = load_full_leaf(full_root, full_identity)
+            except Exception as exc:
+                raise PredictorSensitivityError(
+                    f"corrupt conventional full leaf: {full_identity['identity_digest']}"
+                ) from exc
+        else:
+            full_result = run_selected_leaf(catalog, leaf, broker, current_full_provider, goal029_config=goal029)
+            write_full_leaf(full_root, full_identity, full_result)
+        validate_current_result(full_result)
+        full_results[leaf] = full_result
+    reduced_status = inventory_status(reduced_root, tuple(identities.values()))
+    full_status = inventory_status(full_root, tuple(full_identities.values()))
     _require(
-        current_status["complete"] == len(leaves)
-        and current_status["missing"] == current_status["invalid"] == 0,
+        reduced_status["complete"] == len(leaves)
+        and reduced_status["missing"] == reduced_status["invalid"] == 0
+        and full_status["complete"] == len(leaves)
+        and full_status["missing"] == full_status["invalid"] == 0,
         "conventional stage inventory incomplete",
     )
 
@@ -1009,12 +1058,27 @@ def _run_conventional_stage(
                 continue
             identity = screen_identities[leaf]
             try:
-                reused[leaf] = load_conventional_leaf(leaf_root, identity)
+                reused[leaf] = load_conventional_leaf(reduced_root, identity)
             except Exception as exc:
                 raise PredictorSensitivityError(
                     "confirmation requires complete screen full-endpoint leaves"
                 ) from exc
             reused_identities[leaf] = identity
+            full_identity = full_leaf_identity(
+                leaf,
+                stage="screen",
+                config_digest=config.raw["config_digest"],
+                source_fingerprint=digest_value(config.raw["execution_sources"]),
+                control_manifest_digest=catalog.manifest_digest,
+                mask_digest_by_fold=_conventional_mask_digests(audit),
+            )
+            try:
+                full_results[leaf] = load_full_leaf(full_root, full_identity)
+            except Exception as exc:
+                raise PredictorSensitivityError(
+                    "confirmation requires complete screen full-endpoint leaves"
+                ) from exc
+            full_identities[leaf] = full_identity
         _require(len(reused) == 128, "confirmation screen-full reuse inventory drift")
         results.update(reused)
         identities.update(reused_identities)
@@ -1030,22 +1094,38 @@ def _run_conventional_stage(
     )
 
     context = aggregate_family_effects(
-        catalog, results, endpoints=analysis_endpoints
+        catalog,
+        results,
+        endpoints=analysis_endpoints,
+        full_results=full_results,
     )
     inventory_digest = digest_value(
         sorted(str(identity["identity_digest"]) for identity in identities.values())
+    )
+    full_inventory_digest = digest_value(
+        sorted(str(identity["identity_digest"]) for identity in full_identities.values())
+    )
+    paired_inventory_digest = digest_value(
+        sorted(
+            (
+                str(identities[leaf]["identity_digest"]),
+                str(full_identities[leaf]["identity_digest"]),
+            )
+            for leaf in results
+        )
     )
     content_digest = digest_value(
         sorted(
             (
                 str(identities[leaf]["identity_digest"]),
                 result_prediction_digest(result),
+                result_prediction_digest(full_results[leaf]),
             )
             for leaf, result in results.items()
         )
     )
     receipt = {
-        "schema_version": f"goal039-conventional-{stage}-v1",
+        "schema_version": f"goal039-conventional-{stage}-v2",
         "stage": stage,
         "new_stage": stage_counts(stage),
         "new_leaf_count": len(leaves),
@@ -1053,7 +1133,11 @@ def _run_conventional_stage(
         "analysis_leaf_count": len(results),
         "analysis_endpoints": [f"{a}/{b}" for a, b in analysis_endpoints],
         "inventory_digest": inventory_digest,
+        "reduced_inventory_digest": inventory_digest,
+        "full_inventory_digest": full_inventory_digest,
+        "paired_inventory_digest": paired_inventory_digest,
         "content_digest": content_digest,
+        "paired_leaf_count": len(results),
         "context": context,
         "context_digest": context["receipt_digest"],
         "control_manifest_digest": catalog.manifest_digest,
@@ -1095,18 +1179,98 @@ def canary(config: SensitivityConfig) -> dict[str, Any]:
     return receipt
 
 
+def _validate_canary_stage_gate(
+    config: SensitivityConfig,
+    audit: Mapping[str, Any],
+    receipt: Mapping[str, Any],
+    *,
+    sentinel: Any,
+    runtime_digest: str,
+) -> None:
+    """Reject stale or incomplete canary evidence before model execution."""
+    def is_digest(value: Any) -> bool:
+        return (
+            isinstance(value, str)
+            and len(value) == 64
+            and all(character in "0123456789abcdef" for character in value)
+        )
+
+    conventional = receipt.get("conventional", {})
+    lifecycle = receipt.get("lifecycle", {})
+    _require(
+        receipt.get("decision") == "pass"
+        and receipt.get("deterministic") is True
+        and receipt.get("finite") is True
+        and receipt.get("full_control_replayed") is True
+        and receipt.get("full_control_bitwise_match") is True
+        and receipt.get("reduced_repeats") == 2
+        and receipt.get("reduced_repeats_bitwise_match") is True
+        and receipt.get("config_digest") == config.raw["config_digest"]
+        and receipt.get("source_fingerprint")
+        == digest_value(config.raw["execution_sources"])
+        and receipt.get("runtime_digest") == runtime_digest
+        and receipt.get("mask_digest")
+        == audit["primary"][sentinel.held_fold]["mask_digest"]
+        and receipt.get("sentinel")
+        == {
+            "target": sentinel.target,
+            "held_fold": sentinel.held_fold,
+            "bundle_digest": sentinel.source_digest,
+        }
+        and lifecycle.get("logical_artifacts") == 7
+        and lifecycle.get("physical_fits") == 14
+        and is_digest(lifecycle.get("support_mask_digest"))
+        and is_digest(lifecycle.get("deterministic_metadata_digest"))
+        and conventional.get("schema_version")
+        == "goal039-conventional-canary-v2"
+        and conventional.get("family_count") == 4
+        and conventional.get("full28_replays") == 4
+        and conventional.get("current_full_repeat_fits") == 8
+        and conventional.get("reduced_repeat_fits") == 8
+        and conventional.get("config_digest") == config.raw["config_digest"]
+        and conventional.get("source_fingerprint")
+        == digest_value(config.raw["execution_sources"])
+        and conventional.get("mask_authority") == config.raw["mask_authority"]
+        and conventional.get("outer_attempted")
+        == conventional.get("outer_opened")
+        == 0
+        and receipt.get("conventional_canary_digest")
+        == conventional.get("receipt_digest"),
+        "current complete neural and conventional canary required before model stage",
+    )
+
+
 def _run_stage(config: SensitivityConfig, stage: str) -> dict[str, Any]:
-    mask_path = config.tracked_root / "mask_audit.json"; _require(mask_path.is_file(), "mask audit required before model stage"); audit = load_frozen_mask_audit(config, mask_path); canary_path = config.tracked_root / "canary.json"; _require(canary_path.is_file(), "canary required before model stage"); canary_receipt = json.loads(canary_path.read_text(encoding="utf-8")); _require(canary_receipt.get("decision") == "pass" and canary_receipt.get("conventional", {}).get("family_count") == 4 and canary_receipt.get("conventional_canary_digest") == canary_receipt.get("conventional", {}).get("receipt_digest"), "complete neural and conventional canary required before model stage")
+    mask_path = config.tracked_root / "mask_audit.json"
+    _require(mask_path.is_file(), "mask audit required before model stage")
+    audit = load_frozen_mask_audit(config, mask_path)
+    canary_receipt = _load_receipt(
+        config.tracked_root / "canary.json", "goal039-canary-v2"
+    )
+    goal035, bundles = _goal035_context(config)
+    sentinel = next(
+        bundle
+        for bundle in bundles
+        if bundle.target == "sarcophilus_harrisii" and bundle.held_fold == "fold00"
+    )
+    from .final_inner_data import runtime_attestation
+
+    runtime_digest = digest_value(runtime_attestation(goal035, strict=True))
+    _validate_canary_stage_gate(
+        config,
+        audit,
+        canary_receipt,
+        sentinel=sentinel,
+        runtime_digest=runtime_digest,
+    )
     screen_receipt: Mapping[str, Any] | None = None
     if stage == "confirmation":
         screen_receipt = _load_receipt(
             config.tracked_root / "screen.json", "goal039-screen-v2"
         )
         assert_confirmation_eligible(screen_receipt)
-    endpoints = SCREEN_ENDPOINTS if stage == "screen" else CONFIRMATION_ENDPOINTS; seeds = SCREEN_SEEDS if stage == "screen" else CONFIRMATION_SEEDS; goal035, bundles = _goal035_context(config); cases_for_metrics: list[dict[str, Any]] = []
+    endpoints = SCREEN_ENDPOINTS if stage == "screen" else CONFIRMATION_ENDPOINTS; seeds = SCREEN_SEEDS if stage == "screen" else CONFIRMATION_SEEDS; cases_for_metrics: list[dict[str, Any]] = []
     source_fingerprint = digest_value(config.raw["execution_sources"])
-    from .final_inner_data import runtime_attestation
-    runtime_digest = digest_value(runtime_attestation(goal035, strict=True))
     for bundle in bundles:
         mask = audit["primary"][bundle.held_fold]["encoded_columns"]; leaf_by_seed: dict[int, np.ndarray] = {}; all_present = True
         for seed in seeds:
@@ -1244,11 +1408,13 @@ def _neural_status(config: SensitivityConfig) -> dict[str, Any]:
 
 
 def _conventional_status(config: SensitivityConfig) -> dict[str, Any]:
-    from .predictor_sensitivity_conventional import inventory_status
+    from .predictor_sensitivity_conventional import full_leaf_identity, inventory_status
 
     arithmetic = config.raw["conventional"]["stages"]
     planned = sum(int(arithmetic[stage]["leaves"]) for stage in ("screen", "confirmation"))
     leaf_root = config.private_root / "conventional" / "leaves"
+    reduced_root = leaf_root / "reduced"
+    full_root = leaf_root / "full"
     audit_path = config.tracked_root / "mask_audit.json"
     if not audit_path.is_file():
         existing = list(leaf_root.iterdir()) if leaf_root.is_dir() else []
@@ -1257,6 +1423,8 @@ def _conventional_status(config: SensitivityConfig) -> dict[str, Any]:
             "complete": 0,
             "missing": planned,
             "invalid": len(existing),
+            "reduced": {"complete": 0, "missing": planned, "invalid": len(existing)},
+            "full": {"complete": 0, "missing": planned, "invalid": len(existing)},
             "unexpected": len(existing),
             "stages": {
                 stage: {
@@ -1274,20 +1442,38 @@ def _conventional_status(config: SensitivityConfig) -> dict[str, Any]:
     stage_rows: dict[str, Any] = {}
     expected_digests: set[str] = set()
     for stage in ("screen", "confirmation"):
-        _, identities = _conventional_identities(config, audit, catalog, stage)
-        receipt = inventory_status(leaf_root, tuple(identities.values()))
+        leaves, identities = _conventional_identities(config, audit, catalog, stage)
+        full_identities = {
+            leaf: full_leaf_identity(
+                leaf,
+                stage=stage,
+                config_digest=config.raw["config_digest"],
+                source_fingerprint=digest_value(config.raw["execution_sources"]),
+                control_manifest_digest=catalog.manifest_digest,
+                mask_digest_by_fold=_conventional_mask_digests(audit),
+            )
+            for leaf in leaves
+        }
+        reduced_receipt = inventory_status(reduced_root, tuple(identities.values()))
+        full_receipt = inventory_status(full_root, tuple(full_identities.values()))
         expected_digests.update(str(value["identity_digest"]) for value in identities.values())
+        expected_digests.update(str(value["identity_digest"]) for value in full_identities.values())
         stage_rows[stage] = {
             **arithmetic[stage],
-            "planned": receipt["planned"],
-            "complete": receipt["complete"],
-            "missing": receipt["missing"],
-            "invalid": receipt["invalid"],
-            "inventory_digest": receipt["complete_inventory_digest"],
+            "planned": reduced_receipt["planned"],
+            "complete": min(reduced_receipt["complete"], full_receipt["complete"]),
+            "missing": max(reduced_receipt["missing"], full_receipt["missing"]),
+            "invalid": reduced_receipt["invalid"] + full_receipt["invalid"],
+            "reduced": reduced_receipt,
+            "full": full_receipt,
+            "inventory_digest": digest_value({"reduced": reduced_receipt["complete_inventory_digest"], "full": full_receipt["complete_inventory_digest"]}),
         }
     existing = {
-        path.name for path in leaf_root.iterdir()
-    } if leaf_root.is_dir() else set()
+        path.name
+        for root in (reduced_root, full_root)
+        if root.is_dir()
+        for path in root.iterdir()
+    }
     unexpected = existing - expected_digests
     return {
         "planned": planned,

@@ -87,13 +87,13 @@ def test_stage_arithmetic_is_exact():
         "endpoints": 3,
         "leaves": 384,
         "fold_units": 1920,
-        "physical_fits": 2520,
+        "physical_fits": 5040,
     }
     assert stage_counts("confirmation") == {
         "endpoints": 4,
         "leaves": 512,
         "fold_units": 2560,
-        "physical_fits": 3360,
+        "physical_fits": 6720,
     }
 
 
@@ -188,11 +188,21 @@ def test_integrated_canary_runs_all_four_families_full_and_twice_reduced(
     monkeypatch.setattr(conventional, "load_control_leaf", load_control)
     monkeypatch.setattr(
         conventional,
-        "compare_result_to_control",
-        lambda result, control, *, atol: {
+        "diagnose_result_against_control",
+        lambda result, control: {
             "leaf": {"model_family": result.leaf.model_family},
+            "schema_version": "goal039-conventional-historical-control-v2",
+            "observation_count": 1,
             "maximum_abs_difference": 0.0,
-            "tolerance": atol,
+            "drift_observed": False,
+            "control_row_identity_digest": "c" * 64,
+            "control_value_digest": "d" * 64,
+            "current_row_identity_digest": "c" * 64,
+            "current_value_digest": "e" * 64,
+            "finite": True,
+            "bounded": True,
+            "outer_attempted": 0,
+            "outer_opened": 0,
             "receipt_digest": f"full-{result.leaf.model_family}",
         },
     )
@@ -207,14 +217,14 @@ def test_integrated_canary_runs_all_four_families_full_and_twice_reduced(
     )
     monkeypatch.setattr(
         conventional,
-        "validate_full28_canary_receipts",
+        "validate_historical_control_diagnostics",
         lambda receipts: {"replays": len(receipts), "receipt_digest": "replays"},
     )
     config = SimpleNamespace(
         raw={
             "config_digest": "1" * 64,
             "execution_sources": {"source": {"sha256": "2" * 64}},
-            "conventional": {"full28_replay_atol": 0.0},
+        "conventional": {},
         }
     )
     audit = {
@@ -240,7 +250,7 @@ def test_integrated_canary_runs_all_four_families_full_and_twice_reduced(
     assert {row["family"] for row in receipt["families"]} == set(
         conventional.FAMILIES
     )
-    assert sum(provider is full_provider for _, provider in calls) == 4
+    assert sum(provider is full_provider for _, provider in calls) == 8
     assert sum(provider is reduced_provider for _, provider in calls) == 8
 
 
@@ -419,10 +429,13 @@ def test_atomic_reduced_leaf_resume_and_corruption_fail_closed(tmp_path):
     from dsdm.predictor_sensitivity_conventional import (
         ConventionalLeaf,
         reduced_leaf_identity,
+        full_leaf_identity,
         run_selected_leaf,
         write_reduced_leaf,
         load_reduced_leaf,
         inventory_status,
+        write_full_leaf,
+        load_full_leaf,
     )
 
     broker, provider = _foundation()
@@ -451,6 +464,22 @@ def test_atomic_reduced_leaf_resume_and_corruption_fail_closed(tmp_path):
         load_reduced_leaf(tmp_path, identity)
     status = inventory_status(tmp_path, [identity])
     assert status["invalid"] == 1 and status["complete"] == 0
+
+    full_identity = full_leaf_identity(
+        leaf,
+        stage="screen",
+        config_digest="1" * 64,
+        source_fingerprint="2" * 64,
+        control_manifest_digest="3" * 64,
+        mask_digest_by_fold={f"fold{i:02d}": str(i) * 64 for i in range(5)},
+    )
+    full_path, reused = write_full_leaf(tmp_path / "full", full_identity, result)
+    assert reused is False
+    assert load_full_leaf(tmp_path / "full", full_identity).candidate_id == "hgb00"
+    assert inventory_status(tmp_path / "full", [full_identity])["substrate"] == "full"
+    (full_path / "result.json").write_text("{}\n")
+    with pytest.raises(Exception):
+        load_full_leaf(tmp_path / "full", full_identity)
 
 
 def test_result_control_comparison_rejects_score_drift(tmp_path):
@@ -596,12 +625,21 @@ def test_dispatch_accepts_only_validated_child_aggregate(monkeypatch, tmp_path):
         "goal029_thread_evidence": {"evidence_digest": "d" * 64},
         "goal029_thread_evidence_digest": "d" * 64,
     }
-    replay = {"families": list(conventional.FAMILIES), "replays": 4, "maximum_abs_difference": 0.0, "outer_attempted": 0, "outer_opened": 0}
+    replay = {"schema_version": "goal039-conventional-historical-control-v2", "families": list(conventional.FAMILIES), "replays": 4, "maximum_abs_difference_by_family": {family: 0.0 for family in conventional.FAMILIES}, "outer_attempted": 0, "outer_opened": 0}
     replay["receipt_digest"] = conventional.digest_value(replay)
     family_rows = [
         {
             "family": family, "candidate": f"{family}-00", "seed": "seed00",
-            "full28_replay_receipt_digest": "a" * 64,
+            "historical_control_diagnostic": {
+                "schema_version": "goal039-conventional-historical-control-v2",
+                "leaf": {"model_family": family}, "observation_count": 1,
+                "maximum_abs_difference": 0.0, "drift_observed": False,
+                "control_row_identity_digest": "c" * 64, "control_value_digest": "d" * 64,
+                "current_row_identity_digest": "c" * 64, "current_value_digest": "e" * 64,
+                "finite": True, "bounded": True, "outer_attempted": 0, "outer_opened": 0,
+                "receipt_digest": "0" * 64,
+            },
+            "full_repeat_receipt_digest": "a" * 64,
             "reduced_repeat_receipt_digest": "b" * 64,
             "observation_digest": "c" * 64,
             "reduced_value_digest": "d" * 64,
@@ -609,10 +647,15 @@ def test_dispatch_accepts_only_validated_child_aggregate(monkeypatch, tmp_path):
         }
         for family in conventional.FAMILIES
     ]
+    for row in family_rows:
+        diagnostic = row["historical_control_diagnostic"]
+        diagnostic["receipt_digest"] = conventional.digest_value(
+            {key: value for key, value in diagnostic.items() if key != "receipt_digest"}
+        )
     result = {
-        "schema_version": "goal039-conventional-canary-v1", "families": family_rows,
+        "schema_version": "goal039-conventional-canary-v2", "families": family_rows,
         "family_count": 4, "full28_replay": replay, "full28_replays": 4,
-        "reduced_repeat_fits": 8, "control_manifest_digest": "f" * 64,
+        "current_full_repeat_fits": 8, "reduced_repeat_fits": 8, "control_manifest_digest": "f" * 64,
         "config_digest": "a" * 64, "source_fingerprint": "1" * 64,
         "mask_authority": {"path": "mask.json", "sha256": "2" * 64, "selector_config_digest": "3" * 64},
         "outer_attempted": 0, "outer_opened": 0,
@@ -711,12 +754,8 @@ def test_aggregate_family_effects_is_aggregate_only_and_paired(monkeypatch):
             {},
             {},
         )
-    monkeypatch.setattr(
-        conventional, "load_control_leaf", lambda _catalog, leaf: controls[leaf]
-    )
-
     receipt = conventional.aggregate_family_effects(
-        catalog, reduced, endpoints=[endpoint]
+        catalog, reduced, endpoints=[endpoint], full_results=reduced
     )
     assert receipt["strata"] == 8 * 4
     assert receipt["leaf_count"] == 8 * 16

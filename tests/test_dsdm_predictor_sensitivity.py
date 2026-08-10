@@ -1,5 +1,7 @@
 from pathlib import Path
 from dataclasses import dataclass
+from types import SimpleNamespace
+import json
 
 import numpy as np
 import pytest
@@ -143,6 +145,94 @@ def test_config_is_self_and_source_bound():
         "phase1_modeling_contract",
         "phase1_target_subsets",
     } <= set(config.raw["execution_sources"])
+
+
+def test_stage_canary_gate_rejects_tamper_and_stale_bindings(tmp_path: Path):
+    config = SimpleNamespace(
+        raw={
+            "config_digest": "a" * 64,
+            "execution_sources": {"source": {"sha256": "b" * 64}},
+            "mask_authority": {
+                "path": "mask.json",
+                "sha256": "c" * 64,
+                "selector_config_digest": "d" * 64,
+            },
+        }
+    )
+    audit = {"primary": {"fold00": {"mask_digest": "e" * 64}}}
+    sentinel = SimpleNamespace(
+        target="sarcophilus_harrisii",
+        held_fold="fold00",
+        source_digest="f" * 64,
+    )
+    conventional = {
+        "schema_version": "goal039-conventional-canary-v2",
+        "family_count": 4,
+        "full28_replays": 4,
+        "current_full_repeat_fits": 8,
+        "reduced_repeat_fits": 8,
+        "config_digest": config.raw["config_digest"],
+        "source_fingerprint": ps.digest_value(config.raw["execution_sources"]),
+        "mask_authority": config.raw["mask_authority"],
+        "outer_attempted": 0,
+        "outer_opened": 0,
+        "receipt_digest": "1" * 64,
+    }
+    receipt = {
+        "schema_version": "goal039-canary-v2",
+        "decision": "pass",
+        "deterministic": True,
+        "finite": True,
+        "full_control_replayed": True,
+        "full_control_bitwise_match": True,
+        "reduced_repeats": 2,
+        "reduced_repeats_bitwise_match": True,
+        "config_digest": config.raw["config_digest"],
+        "source_fingerprint": ps.digest_value(config.raw["execution_sources"]),
+        "runtime_digest": "2" * 64,
+        "mask_digest": "e" * 64,
+        "sentinel": {
+            "target": sentinel.target,
+            "held_fold": sentinel.held_fold,
+            "bundle_digest": sentinel.source_digest,
+        },
+        "lifecycle": {
+            "logical_artifacts": 7,
+            "physical_fits": 14,
+            "support_mask_digest": "3" * 64,
+            "deterministic_metadata_digest": "4" * 64,
+        },
+        "conventional": conventional,
+        "conventional_canary_digest": conventional["receipt_digest"],
+        "outer_attempted": 0,
+        "outer_opened": 0,
+    }
+    receipt["receipt_digest"] = ps.digest_value(receipt)
+    path = tmp_path / "canary.json"
+    path.write_text(json.dumps(receipt), encoding="utf-8")
+
+    loaded = ps._load_receipt(path, "goal039-canary-v2")
+    ps._validate_canary_stage_gate(
+        config, audit, loaded, sentinel=sentinel, runtime_digest="2" * 64
+    )
+
+    tampered = dict(receipt)
+    tampered["decision"] = "fail"
+    path.write_text(json.dumps(tampered), encoding="utf-8")
+    with pytest.raises(ps.PredictorSensitivityError, match="receipt integrity"):
+        ps._load_receipt(path, "goal039-canary-v2")
+
+    stale = dict(receipt)
+    stale["config_digest"] = "9" * 64
+    stale["receipt_digest"] = ps.digest_value(
+        {key: value for key, value in stale.items() if key != "receipt_digest"}
+    )
+    path.write_text(json.dumps(stale), encoding="utf-8")
+    loaded = ps._load_receipt(path, "goal039-canary-v2")
+    with pytest.raises(ps.PredictorSensitivityError, match="current complete"):
+        ps._validate_canary_stage_gate(
+            config, audit, loaded, sentinel=sentinel, runtime_digest="2" * 64
+        )
 
 
 def test_public_mask_audit_returns_frozen_receipt_without_rewriting():
