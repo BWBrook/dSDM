@@ -200,8 +200,8 @@ def test_integrated_canary_runs_all_four_families_full_and_twice_reduced(
         conventional,
         "compare_reduced_repeats",
         lambda first, second: {
-            "row_identity_digest": f"rows-{first.leaf.model_family}",
-            "prediction_digest": f"reduced-{first.leaf.model_family}",
+            "observation_digest": f"rows-{first.leaf.model_family}",
+            "value_digest": f"reduced-{first.leaf.model_family}",
             "receipt_digest": f"repeat-{first.leaf.model_family}",
         },
     )
@@ -487,6 +487,179 @@ def test_result_control_comparison_rejects_score_drift(tmp_path):
     changed[0] = replace(changed[0], scores=changed_score)
     with pytest.raises(Exception, match="full28_replay_prediction_mismatch"):
         compare_result_to_control(result, replace(control, folds=tuple(changed)))
+
+
+def test_full28_replay_accepts_goal037_cross_runtime_tolerance_and_rejects_above():
+    from dsdm.predictor_sensitivity_conventional import (
+        ControlFold,
+        ControlLeaf,
+        ConventionalLeaf,
+        compare_result_to_control,
+        run_selected_leaf,
+    )
+
+    broker, provider = _foundation()
+    catalog = _catalog("enet00")
+    leaf = ConventionalLeaf(
+        "thylogale_billardierii", "fraction100", "full", "hist_gradient_boosting", "hgb00", "seed00"
+    )
+    result = run_selected_leaf(catalog, leaf, broker, provider)
+    folds = []
+    for fold in result.folds:
+        scores = np.asarray(fold.scores_by_seed["seed00"], dtype=np.float64).copy()
+        baseline = float(fold.scores_by_seed["seed00"][0])
+        scores[0] = baseline + 1e-6
+        while abs(scores[0] - baseline) > np.nextafter(1e-6, np.inf):
+            scores[0] = np.nextafter(scores[0], baseline)
+        folds.append(
+            ControlFold(
+                fold.fold_id,
+                tuple(json.dumps([key.species_id, key.grid_cell_id], separators=(",", ":")) for key in fold.keys),
+                fold.y_true.astype(np.int8),
+                scores,
+            )
+        )
+    control = ControlLeaf(leaf, tuple(folds), "1" * 64, "2" * 64)
+    receipt = compare_result_to_control(result, control, atol=1e-6)
+    assert receipt["maximum_abs_difference"] <= np.nextafter(1e-6, np.inf)
+    above = list(folds)
+    above_score = above[0].scores.copy()
+    above_score[0] = np.nextafter(above_score[0], np.inf)
+    while abs(above_score[0] - float(result.folds[0].scores_by_seed["seed00"][0])) <= np.nextafter(1e-6, np.inf):
+        above_score[0] = np.nextafter(above_score[0], np.inf)
+    above[0] = replace(above[0], scores=above_score)
+    with pytest.raises(Exception, match="full28_replay_prediction_mismatch"):
+        compare_result_to_control(result, replace(control, folds=tuple(above)), atol=1e-6)
+
+
+def test_full28_canary_aggregate_uses_the_same_representable_bound():
+    from dsdm.predictor_sensitivity_conventional import (
+        FAMILIES,
+        digest_value,
+        validate_full28_canary_receipts,
+    )
+
+    bound = float(np.nextafter(1e-6, np.inf))
+    receipts = []
+    for family in FAMILIES:
+        receipt = {
+            "leaf": {"model_family": family},
+            "maximum_abs_difference": bound,
+            "tolerance": 1e-6,
+            "outer_attempted": 0,
+            "outer_opened": 0,
+        }
+        receipt["receipt_digest"] = digest_value(receipt)
+        receipts.append(receipt)
+
+    assert validate_full28_canary_receipts(receipts)["maximum_abs_difference"] == bound
+    receipts[0]["maximum_abs_difference"] = float(np.nextafter(bound, np.inf))
+    body = {key: value for key, value in receipts[0].items() if key != "receipt_digest"}
+    receipts[0]["receipt_digest"] = digest_value(body)
+    with pytest.raises(Exception, match="full28_canary_receipt_invalid"):
+        validate_full28_canary_receipts(receipts)
+
+
+def test_conventional_runtime_probe_rejects_wrong_runtime():
+    import dsdm.predictor_sensitivity_conventional as conventional
+
+    with pytest.raises(Exception, match="conventional_runtime_numpy_mismatch"):
+        conventional.conventional_runtime_probe({"numpy": "0.0.0"})
+
+
+def test_child_command_binds_locked_runtime_and_disables_recursion(tmp_path):
+    from dsdm import predictor_sensitivity as sensitivity
+
+    audit = tmp_path / "mask_audit.json"
+    audit.write_text("{}\n")
+    config = SimpleNamespace(
+        root=Path.cwd(),
+        source_path=Path.cwd() / "config/dsdm_predictor_substrate_sensitivity.json",
+        raw={"conventional": {"runtime": {"python_relative": ".venv/bin/python"}}},
+    )
+    command, env = sensitivity._conventional_child_command(config, audit, "canary")
+    assert command[:3] == [str(Path.cwd() / ".venv/bin/python"), "-m", "dsdm.predictor_sensitivity_conventional"]
+    assert "--worker-operation" in command and command[command.index("--worker-operation") + 1] == "canary"
+    assert env["DSDM_GOAL039_CONVENTIONAL_WORKER"] == "1"
+    assert all(env[name] == "1" for name in ("OMP_NUM_THREADS", "MKL_NUM_THREADS", "OPENBLAS_NUM_THREADS", "VECLIB_MAXIMUM_THREADS", "NUMEXPR_NUM_THREADS"))
+    assert str(Path.cwd() / "src") in env["PYTHONPATH"]
+
+
+def test_dispatch_accepts_only_validated_child_aggregate(monkeypatch, tmp_path):
+    from dsdm import predictor_sensitivity as sensitivity
+    import dsdm.predictor_sensitivity_conventional as conventional
+
+    audit = tmp_path / "mask_audit.json"
+    audit.write_text("{}\n")
+    runtime = {
+        "python_relative": ".venv/bin/python",
+        "goal029_thread_evidence": {"evidence_digest": "d" * 64},
+        "goal029_thread_evidence_digest": "d" * 64,
+    }
+    replay = {"families": list(conventional.FAMILIES), "replays": 4, "maximum_abs_difference": 0.0, "outer_attempted": 0, "outer_opened": 0}
+    replay["receipt_digest"] = conventional.digest_value(replay)
+    family_rows = [
+        {
+            "family": family, "candidate": f"{family}-00", "seed": "seed00",
+            "full28_replay_receipt_digest": "a" * 64,
+            "reduced_repeat_receipt_digest": "b" * 64,
+            "observation_digest": "c" * 64,
+            "reduced_value_digest": "d" * 64,
+            "mask_digest_by_fold": {fold: "e" * 64 for fold in conventional.FOLDS},
+        }
+        for family in conventional.FAMILIES
+    ]
+    result = {
+        "schema_version": "goal039-conventional-canary-v1", "families": family_rows,
+        "family_count": 4, "full28_replay": replay, "full28_replays": 4,
+        "reduced_repeat_fits": 8, "control_manifest_digest": "f" * 64,
+        "config_digest": "a" * 64, "source_fingerprint": "1" * 64,
+        "mask_authority": {"path": "mask.json", "sha256": "2" * 64, "selector_config_digest": "3" * 64},
+        "outer_attempted": 0, "outer_opened": 0,
+    }
+    result["receipt_digest"] = conventional.digest_value(result)
+    envelope = {
+        "schema_version": conventional.CONVENTIONAL_WORKER_SCHEMA,
+        "operation": "canary",
+        "config_digest": "a" * 64,
+        "runtime": runtime,
+        "result": result,
+        "result_digest": conventional.digest_value(result),
+        "outer_attempted": 0,
+        "outer_opened": 0,
+    }
+    envelope["receipt_digest"] = conventional.digest_value(envelope)
+    config = SimpleNamespace(
+        root=Path.cwd(),
+        source_path=Path.cwd() / "config.json",
+        raw={"config_digest": "a" * 64, "conventional": {"runtime": runtime}},
+    )
+    monkeypatch.setattr(
+        sensitivity.subprocess,
+        "run",
+        lambda *args, **kwargs: SimpleNamespace(returncode=0, stdout=json.dumps(envelope), stderr=""),
+    )
+    accepted = sensitivity._dispatch_conventional(config, audit, "canary")
+    assert accepted["worker_runtime"] == runtime
+    assert accepted["worker_receipt_digest"] == envelope["receipt_digest"]
+    assert accepted["worker_result_digest"] == envelope["result_digest"]
+    assert accepted["child_result_receipt_digest"] == result["receipt_digest"]
+    assert accepted["receipt_digest"] == conventional.digest_value(
+        {key: value for key, value in accepted.items() if key != "receipt_digest"}
+    )
+    mutated = json.loads(json.dumps(envelope))
+    mutated["result"]["receipt_digest"] = "0" * 64
+    mutated["result_digest"] = conventional.digest_value(mutated["result"])
+    mutated["receipt_digest"] = conventional.digest_value(
+        {key: value for key, value in mutated.items() if key != "receipt_digest"}
+    )
+    monkeypatch.setattr(
+        sensitivity.subprocess,
+        "run",
+        lambda *args, **kwargs: SimpleNamespace(returncode=0, stdout=json.dumps(mutated), stderr=""),
+    )
+    with pytest.raises(Exception, match="result_receipt_digest_invalid"):
+        sensitivity._dispatch_conventional(config, audit, "canary")
 
 
 def test_aggregate_family_effects_is_aggregate_only_and_paired(monkeypatch):

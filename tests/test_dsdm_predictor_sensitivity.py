@@ -143,3 +143,12 @@ def test_config_is_self_and_source_bound():
         "phase1_modeling_contract",
         "phase1_target_subsets",
     } <= set(config.raw["execution_sources"])
+
+
+def test_public_mask_audit_returns_frozen_receipt_without_rewriting():
+    config = ps.load_config("config/dsdm_predictor_substrate_sensitivity.json")
+    path = config.root / config.raw["mask_authority"]["path"]
+    before = ps.file_digest(path)
+    receipt = ps.mask_audit(config)
+    assert receipt["config_digest"] == config.raw["mask_authority"]["selector_config_digest"]
+    assert ps.file_digest(path) == before == config.raw["mask_authority"]["sha256"]

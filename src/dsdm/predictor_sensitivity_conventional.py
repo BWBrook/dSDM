@@ -10,7 +10,9 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass, replace
 import hashlib
 import json
+import os
 from pathlib import Path
+import sys
 from typing import Any, Mapping, Sequence
 
 import numpy as np
@@ -92,6 +94,21 @@ class ConventionalSensitivityError(ValueError):
     """Raised when a frozen conventional control or reduced replay drifts."""
 
 
+CONVENTIONAL_RUNTIME_SCHEMA = "goal039-conventional-runtime-v1"
+CONVENTIONAL_WORKER_SCHEMA = "goal039-conventional-worker-v1"
+CONVENTIONAL_WORKER_ENV = "DSDM_GOAL039_CONVENTIONAL_WORKER"
+CONVENTIONAL_RUNTIME_FIELDS = (
+    "python_major_minor",
+    "numpy",
+    "scipy",
+    "scikit_learn",
+    "torch",
+    "device",
+    "threads",
+    "blas_threads",
+)
+
+
 def canonical(value: Any) -> bytes:
     return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=True).encode()
 
@@ -117,8 +134,20 @@ def _is_digest(value: Any) -> bool:
     return isinstance(value, str) and len(value) == 64 and set(value) <= _HEX
 
 
-def conventional_runtime_probe() -> dict[str, Any]:
+def conventional_runtime_probe(
+    expected: Mapping[str, Any] | None = None,
+    *,
+    project_root: str | Path | None = None,
+) -> dict[str, Any]:
     """Fail before execution unless all four frozen family adapters are callable."""
+    expected = dict(expected or {})
+    root = Path(project_root).resolve() if project_root is not None else None
+    executable = Path(sys.executable).absolute()
+    executable_realpath = executable.resolve()
+    try:
+        python_relative = str(executable.relative_to(root)) if root is not None else None
+    except ValueError as exc:
+        raise ConventionalSensitivityError("conventional_runtime_python_outside_project") from exc
     dependencies = {
         "elastic_net": ("LogisticRegression",),
         "random_forest": ("RandomForestClassifier",),
@@ -137,12 +166,33 @@ def conventional_runtime_probe() -> dict[str, Any]:
         all(all(values.values()) for values in availability.values()),
         "conventional_runtime_dependency_unavailable",
     )
-    return {
-        "schema_version": "goal039-conventional-runtime-probe-v1",
+    import scipy
+    import sklearn
+    import torch
+
+    receipt = {
+        "schema_version": CONVENTIONAL_RUNTIME_SCHEMA,
+        "python": str(executable),
+        "python_realpath": str(executable_realpath),
+        "python_relative": python_relative,
+        "python_major_minor": f"{sys.version_info.major}.{sys.version_info.minor}",
+        "numpy": np.__version__,
+        "scipy": scipy.__version__,
+        "scikit_learn": sklearn.__version__,
+        "torch": torch.__version__.split("+", 1)[0],
+        "device": "cpu",
+        "threads": 1,
+        "blas_threads": 1,
         "families": list(FAMILIES),
         "availability": availability,
         "pygam_required": False,
     }
+    for field in CONVENTIONAL_RUNTIME_FIELDS:
+        if field in expected:
+            _require(receipt[field] == expected[field], f"conventional_runtime_{field}_mismatch")
+    if "python_relative" in expected:
+        _require(receipt["python_relative"] == expected["python_relative"], "conventional_runtime_python_path_mismatch")
+    return receipt
 
 
 CONVENTIONAL_RUNTIME = conventional_runtime_probe()
@@ -669,7 +719,9 @@ def compare_result_to_control(
             "full28_replay_row_identity_mismatch",
         )
         difference = float(np.max(np.abs(scores - expected.scores)))
-        _require(np.isfinite(difference) and difference <= atol, "full28_replay_prediction_mismatch")
+        # Permit exactly the declared cross-runtime bound plus one
+        # representable step, while rejecting the next value above it.
+        _require(np.isfinite(difference) and difference <= np.nextafter(float(atol), np.inf), "full28_replay_prediction_mismatch")
         maximum = max(maximum, difference)
         rows += len(scores)
     receipt = {
@@ -679,8 +731,8 @@ def compare_result_to_control(
         "maximum_abs_difference": maximum,
         "tolerance": float(atol),
         "control_row_identity_digest": control.row_identity_digest,
-        "control_prediction_digest": control.prediction_digest,
-        "replay_prediction_digest": result_prediction_digest(result),
+        "control_value_digest": control.prediction_digest,
+        "replay_value_digest": result_prediction_digest(result),
         "outer_attempted": 0,
         "outer_opened": 0,
     }
@@ -700,7 +752,8 @@ def validate_full28_canary_receipts(receipts: Sequence[Mapping[str, Any]]) -> di
         claimed = body.pop("receipt_digest", None)
         _require(
             claimed == digest_value(body)
-            and receipt.get("maximum_abs_difference") <= receipt.get("tolerance")
+            and receipt.get("maximum_abs_difference")
+            <= np.nextafter(float(receipt.get("tolerance")), np.inf)
             and receipt.get("outer_attempted") == receipt.get("outer_opened") == 0,
             "full28_canary_receipt_invalid",
         )
@@ -727,8 +780,8 @@ def compare_reduced_repeats(first: CandidateOOF, second: CandidateOOF) -> dict[s
     receipt = {
         "schema_version": "goal039-conventional-reduced-repeat-v1",
         "candidate_id": first.candidate_id,
-        "prediction_digest": first_digest,
-        "row_identity_digest": first_rows,
+        "value_digest": first_digest,
+        "observation_digest": first_rows,
         "exact": True,
         "outer_attempted": 0,
         "outer_opened": 0,
@@ -1007,3 +1060,235 @@ def aggregate_family_effects(
     }
     output["receipt_digest"] = digest_value(output)
     return output
+
+
+def validate_worker_receipt(
+    receipt: Mapping[str, Any],
+    *,
+    operation: str,
+    config_digest: str,
+    expected_runtime: Mapping[str, Any],
+    goal029_config: Mapping[str, Any] | None = None,
+    expected_mask_authority: Mapping[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Validate the child-process envelope before its aggregate is accepted."""
+    body = dict(receipt)
+    claimed = body.pop("receipt_digest", None)
+    _require(
+        receipt.get("schema_version") == CONVENTIONAL_WORKER_SCHEMA
+        and claimed == digest_value(body)
+        and receipt.get("operation") == operation
+        and receipt.get("config_digest") == config_digest
+        and receipt.get("outer_attempted") == receipt.get("outer_opened") == 0,
+        "conventional_worker_receipt_invalid",
+    )
+    runtime = receipt.get("runtime")
+    _require(isinstance(runtime, Mapping), "conventional_worker_runtime_missing")
+    for field in (*CONVENTIONAL_RUNTIME_FIELDS, "python_relative"):
+        if field in expected_runtime:
+            _require(runtime.get(field) == expected_runtime[field], f"conventional_worker_runtime_{field}_mismatch")
+    thread_evidence = runtime.get("goal029_thread_evidence")
+    _require(
+        isinstance(thread_evidence, Mapping)
+        and runtime.get("goal029_thread_evidence_digest") == thread_evidence.get("evidence_digest"),
+        "conventional_worker_thread_evidence_missing",
+    )
+    if goal029_config is not None:
+        from dsdm_phase1.goal029_production import _validate_thread_evidence
+
+        try:
+            _validate_thread_evidence(thread_evidence, goal029_config)
+        except Exception as exc:
+            raise ConventionalSensitivityError("conventional_worker_thread_evidence_invalid") from exc
+    result = receipt.get("result")
+    _require(isinstance(result, Mapping), "conventional_worker_result_missing")
+    result_body = dict(result)
+    child_result_receipt_digest = result_body.pop("receipt_digest", None)
+    _require(
+        child_result_receipt_digest == digest_value(result_body),
+        "conventional_worker_result_receipt_digest_invalid",
+    )
+    expected_schema = (
+        "goal039-conventional-canary-v1"
+        if operation == "canary"
+        else f"goal039-conventional-{operation}-v1"
+    )
+    _require(
+        result.get("schema_version") == expected_schema
+        and (operation == "canary" or result.get("stage") == operation),
+        "conventional_worker_result_scope_invalid",
+    )
+    _require(
+        receipt.get("result_digest") == digest_value(result)
+        and result.get("outer_attempted") == result.get("outer_opened") == 0,
+        "conventional_worker_result_invalid",
+    )
+    if expected_mask_authority is not None:
+        _require(
+            result.get("mask_authority") == dict(expected_mask_authority),
+            "conventional_worker_mask_authority_drift",
+        )
+    _validate_worker_result(result, operation)
+    return dict(result)
+
+
+def _validate_worker_result(result: Mapping[str, Any], operation: str) -> None:
+    """Enforce strict aggregate-only schemas at the child boundary."""
+    body = dict(result)
+    claimed_receipt_digest = body.pop("receipt_digest", None)
+    _require(
+        claimed_receipt_digest == digest_value(body),
+        "conventional_worker_result_receipt_digest_invalid",
+    )
+    forbidden = {
+        "label", "labels", "score", "scores", "prediction", "predictions",
+        "row", "rows", "rowid", "rowids", "row_id", "row_ids",
+        "coordinate", "coordinates", "x", "y", "y_true", "row_token",
+    }
+
+    def walk(value: Any) -> None:
+        if isinstance(value, Mapping):
+            for key, nested in value.items():
+                normalised = str(key).lower().replace("-", "_")
+                _require(normalised not in forbidden, "conventional_worker_result_contains_row_data")
+                walk(nested)
+        elif isinstance(value, list):
+            for nested in value:
+                walk(nested)
+
+    walk(result)
+    if operation == "canary":
+        expected = {
+            "schema_version", "families", "family_count", "full28_replay",
+            "full28_replays", "reduced_repeat_fits", "control_manifest_digest",
+            "config_digest", "source_fingerprint", "mask_authority",
+            "outer_attempted", "outer_opened", "receipt_digest",
+        }
+        _require(set(result) == expected, "conventional_worker_canary_schema_invalid")
+        _require(result["family_count"] == 4 and result["full28_replays"] == 4 and result["reduced_repeat_fits"] == 8, "conventional_worker_canary_inventory_invalid")
+        _require(len(result["families"]) == 4 and {row.get("family") for row in result["families"]} == set(FAMILIES), "conventional_worker_canary_family_invalid")
+        replay = result["full28_replay"]
+        replay_body = dict(replay); replay_digest = replay_body.pop("receipt_digest", None)
+        _require(replay_digest == digest_value(replay_body) and replay.get("families") == list(FAMILIES) and replay.get("replays") == 4, "conventional_worker_canary_control_invalid")
+        for row in result["families"]:
+            _require(set(row) == {"family", "candidate", "seed", "full28_replay_receipt_digest", "reduced_repeat_receipt_digest", "observation_digest", "reduced_value_digest", "mask_digest_by_fold"}, "conventional_worker_canary_family_schema_invalid")
+            _require(set(row["mask_digest_by_fold"]) == set(FOLDS) and all(_is_digest(value) for value in row["mask_digest_by_fold"].values()), "conventional_worker_canary_mask_invalid")
+        _require(_is_digest(result["control_manifest_digest"]) and _is_digest(result["source_fingerprint"]) and _is_digest(result["config_digest"]), "conventional_worker_canary_binding_invalid")
+    else:
+        expected = {
+            "schema_version", "stage", "new_stage", "new_leaf_count",
+            "reused_screen_full_leaves", "analysis_leaf_count", "analysis_endpoints",
+            "inventory_digest", "content_digest", "context", "context_digest",
+            "control_manifest_digest", "mask_authority", "outer_attempted",
+            "outer_opened", "receipt_digest",
+        }
+        _require(set(result) == expected and result.get("stage") == operation, "conventional_worker_stage_schema_invalid")
+        counts = stage_counts(operation)
+        _require(result.get("new_stage") == counts and result.get("new_leaf_count") == counts["leaves"], "conventional_worker_stage_count_invalid")
+        expected_endpoints = [
+            _endpoint_name(endpoint)
+            for endpoint in (SCREEN_ENDPOINTS if operation == "screen" else CONFIRMATION_ANALYSIS_ENDPOINTS)
+        ]
+        _require(result.get("analysis_endpoints") == expected_endpoints, "conventional_worker_stage_endpoint_invalid")
+        expected_analysis = counts["leaves"] if operation == "screen" else counts["leaves"] + 128
+        _require(result.get("analysis_leaf_count") == expected_analysis and result.get("reused_screen_full_leaves") == (0 if operation == "screen" else 128), "conventional_worker_stage_analysis_inventory_invalid")
+        context = result.get("context", {})
+        context_body = dict(context); context_digest = context_body.pop("receipt_digest", None)
+        _require(context_digest == digest_value(context_body) and result.get("context_digest") == context.get("receipt_digest"), "conventional_worker_stage_context_invalid")
+        _require(
+            context.get("schema_version") == "goal039-conventional-family-effects-v1"
+            and context.get("families") == list(FAMILIES)
+            and context.get("endpoints") == expected_endpoints
+            and context.get("leaf_count") == result.get("analysis_leaf_count"),
+            "conventional_worker_stage_context_scope_invalid",
+        )
+        _require(_is_digest(result["control_manifest_digest"]) and _is_digest(result["inventory_digest"]) and _is_digest(result["content_digest"]), "conventional_worker_stage_binding_invalid")
+
+
+def _worker_receipt(
+    operation: str,
+    config: Any,
+    runtime: Mapping[str, Any],
+    result: Mapping[str, Any],
+) -> dict[str, Any]:
+    aggregate = dict(result)
+    aggregate.pop("receipt_digest", None)
+    aggregate["mask_authority"] = dict(config.raw["mask_authority"])
+    aggregate["receipt_digest"] = digest_value(aggregate)
+    receipt: dict[str, Any] = {
+        "schema_version": CONVENTIONAL_WORKER_SCHEMA,
+        "operation": operation,
+        "config_digest": config.raw["config_digest"],
+        "runtime": dict(runtime),
+        "result": aggregate,
+        "result_digest": digest_value(aggregate),
+        "outer_attempted": 0,
+        "outer_opened": 0,
+    }
+    receipt["receipt_digest"] = digest_value(receipt)
+    return receipt
+
+
+def _run_worker(operation: str, config_path: str | Path, audit_path: str | Path) -> dict[str, Any]:
+    """Execute one conventional lane under the project-locked interpreter."""
+    _require(os.environ.get(CONVENTIONAL_WORKER_ENV) == "1", "conventional_worker_direct_invocation_rejected")
+    from .predictor_sensitivity import (
+        _conventional_foundation,
+        _control_catalog,
+        _run_conventional_canary,
+        _run_conventional_stage,
+        load_config,
+        load_frozen_mask_audit,
+    )
+
+    config = load_config(config_path)
+    from dsdm_phase1.goal029_production import (
+        _validate_thread_evidence,
+        enforce_numerical_thread_policy,
+        load_goal029_config,
+    )
+    goal029_config = load_goal029_config(
+        config.root,
+        config.root / config.raw["authorities"]["goal029_config"]["path"],
+    )
+    thread_evidence = dict(enforce_numerical_thread_policy(goal029_config))
+    _validate_thread_evidence(thread_evidence, goal029_config)
+    expected_runtime = config.raw["conventional"]["runtime"]
+    runtime = conventional_runtime_probe(expected_runtime, project_root=config.root)
+    runtime["goal029_thread_evidence"] = thread_evidence
+    runtime["goal029_thread_evidence_digest"] = thread_evidence["evidence_digest"]
+    audit = load_frozen_mask_audit(config, audit_path)
+    catalog = _control_catalog(config)
+    goal029, broker, provider, reduced_provider = _conventional_foundation(config, audit)
+    if operation == "canary":
+        result = _run_conventional_canary(
+            config, audit, catalog, goal029, broker, provider, reduced_provider
+        )
+    elif operation in {"screen", "confirmation"}:
+        result = _run_conventional_stage(
+            config, audit, catalog, operation, goal029, broker, reduced_provider
+        )
+    else:
+        raise ConventionalSensitivityError("conventional_worker_operation_invalid")
+    return _worker_receipt(operation, config, runtime, result)
+
+
+def worker_main(argv: Sequence[str] | None = None) -> int:
+    import argparse
+
+    parser = argparse.ArgumentParser(prog="dsdm.predictor_sensitivity_conventional")
+    parser.add_argument("--worker-operation", choices=("canary", "screen", "confirmation"), required=True)
+    parser.add_argument("--config", required=True)
+    parser.add_argument("--audit", required=True)
+    args = parser.parse_args(argv)
+    try:
+        value = _run_worker(args.worker_operation, args.config, args.audit)
+    except Exception as exc:
+        print(f"conventional worker failed: {exc}", file=sys.stderr)
+        return 1
+    print(json.dumps(value, sort_keys=True))
+    return 0
+
+
+if __name__ == "__main__":  # pragma: no cover
+    raise SystemExit(worker_main())

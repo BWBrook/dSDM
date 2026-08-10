@@ -15,7 +15,9 @@ import csv
 import hashlib
 import json
 import math
+import os
 from pathlib import Path
+import subprocess
 import tempfile
 from typing import Any, Iterable, Mapping, Sequence
 
@@ -348,6 +350,33 @@ def validate_mask_audit(audit: Mapping[str, Any]) -> dict[str, Any]:
     return dict(audit)
 
 
+def load_frozen_mask_audit(
+    config: SensitivityConfig,
+    audit_path: str | Path | None = None,
+) -> dict[str, Any]:
+    """Load the committed Goal039 mask receipt without recomputing it."""
+    authority = config.raw.get("mask_authority")
+    _require(isinstance(authority, Mapping), "mask authority binding missing")
+    expected = (config.root / str(authority["path"])).resolve()
+    target = expected if audit_path is None else Path(audit_path).resolve()
+    _require(target == expected and target.is_file() and not target.is_symlink(), "mask authority path drift")
+    _require(file_digest(target) == authority.get("sha256"), "mask authority file digest drift")
+    try:
+        receipt = json.loads(target.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise PredictorSensitivityError("mask authority receipt unreadable") from exc
+    _require(
+        receipt.get("config_digest") == authority.get("selector_config_digest"),
+        "mask authority selector digest drift",
+    )
+    expected_sources = {
+        name: config.raw["authorities"][name]["sha256"]
+        for name in ("goal024_map", "goal025_map_assignments")
+    }
+    _require(receipt.get("source_digests") == expected_sources, "mask authority source digest drift")
+    return validate_mask_audit(receipt)
+
+
 def run_neural_stage_case(bundle: Any, mask: Sequence[bool], goal035_config_path: str | Path, *, endpoints: Sequence[str], seeds: Sequence[int], max_epochs: int | None = None, patience: int | None = None) -> dict[str, Any]:
     """Run only declared Goal039 endpoint/seed leaves using Goal038's pattern.
 
@@ -583,7 +612,7 @@ class SensitivityConfig:
 
 def load_config(path: str | Path, *, root: str | Path | None = None) -> SensitivityConfig:
     source = Path(path).resolve(); raw = json.loads(source.read_text(encoding="utf-8")); project_root = Path(root).resolve() if root is not None else source.parents[1]
-    expected = {"schema_version", "goal_id", "config_digest", "authorities", "execution_sources", "scope", "mask", "training", "execution", "conventional", "gates", "evidence", "runtime"}
+    expected = {"schema_version", "goal_id", "config_digest", "authorities", "execution_sources", "scope", "mask", "training", "execution", "conventional", "mask_authority", "gates", "evidence", "runtime"}
     _require(set(raw) == expected and raw["schema_version"] == "1.0" and raw["goal_id"] == "goal039-predictor-substrate-sensitivity", "Goal039 config identity drift")
     body = dict(raw); claimed = body.pop("config_digest"); _require(claimed == digest_value(body), "Goal039 self digest drift")
     _require("goal039_decision" in raw["authorities"], "Goal039 decision authority missing")
@@ -609,7 +638,18 @@ def load_config(path: str | Path, *, root: str | Path | None = None) -> Sensitiv
         "private_core_manifest_sha256": EXPECTED_PRIVATE_CORE_MANIFEST,
         "manifest_digest": "1bb5bcc7ea450d87a2ddb8b5ea3a11ac96163e8001e0a3cc11d2c6853b09b5bc",
         "parquet_sha256": "250a33d2111fc420e620535be113f14a6bd68ce26ae910b514571f397ebc2001",
-        "full28_replay_atol": 0.0,
+        "full28_replay_atol": 1e-6,
+        "runtime": {
+            "python_relative": ".venv/bin/python",
+            "python_major_minor": "3.12",
+            "numpy": "2.5.1",
+            "scipy": "1.16.3",
+            "scikit_learn": "1.9.0",
+            "torch": "2.13.0",
+            "device": "cpu",
+            "threads": 1,
+            "blas_threads": 1,
+        },
         "screen_endpoints": [f"{fraction}/{ladder}" for fraction, ladder in CONVENTIONAL_SCREEN_ENDPOINTS],
         "confirmation_new_endpoints": [f"{fraction}/{ladder}" for fraction, ladder in CONVENTIONAL_CONFIRMATION_NEW_ENDPOINTS],
         "confirmation_analysis_endpoints": [f"{fraction}/{ladder}" for fraction, ladder in CONVENTIONAL_CONFIRMATION_ANALYSIS_ENDPOINTS],
@@ -622,9 +662,7 @@ def load_config(path: str | Path, *, root: str | Path | None = None) -> Sensitiv
 
 
 def mask_audit(config: SensitivityConfig) -> dict[str, Any]:
-    rows = _read_csv(config.root / config.raw["authorities"]["goal024_map"]["path"]); assignments = _read_csv(config.root / config.raw["authorities"]["goal025_map_assignments"]["path"])
-    value = build_masks(rows, assignments); value.update({"schema_version": "goal039-mask-audit-v1", "config_digest": config.raw["config_digest"], "source_digests": {name: binding["sha256"] for name, binding in config.raw["authorities"].items() if name in {"goal024_map", "goal025_map_assignments"}}, "outer_attempted": 0, "outer_opened": 0})
-    _write_json(config.tracked_root / "mask_audit.json", value); return value
+    return load_frozen_mask_audit(config)
 
 
 def _goal035_context(config: SensitivityConfig) -> tuple[Any, list[Any]]:
@@ -694,6 +732,107 @@ def _conventional_mask_digests(audit: Mapping[str, Any]) -> dict[str, str]:
     return values
 
 
+def _conventional_child_command(
+    config: SensitivityConfig,
+    audit_path: Path,
+    operation: str,
+) -> tuple[list[str], dict[str, str]]:
+    """Build the one-way child invocation for the locked conventional lane."""
+    _require(operation in {"canary", "screen", "confirmation"}, "conventional child operation invalid")
+    runtime = config.raw["conventional"].get("runtime")
+    _require(isinstance(runtime, Mapping), "conventional runtime binding missing")
+    python_relative = runtime.get("python_relative")
+    _require(isinstance(python_relative, str) and not Path(python_relative).is_absolute(), "conventional runtime path invalid")
+    executable = (config.root / python_relative).absolute()
+    _require(executable.is_file(), "conventional runtime executable missing")
+    _require(audit_path.is_file() and not audit_path.is_symlink(), "conventional child audit missing")
+    env = dict(os.environ)
+    src = str((config.root / "src").resolve())
+    env["PYTHONPATH"] = src + (os.pathsep + env["PYTHONPATH"] if env.get("PYTHONPATH") else "")
+    env["DSDM_GOAL039_CONVENTIONAL_WORKER"] = "1"
+    for name in (
+        "OMP_NUM_THREADS",
+        "MKL_NUM_THREADS",
+        "OPENBLAS_NUM_THREADS",
+        "VECLIB_MAXIMUM_THREADS",
+        "NUMEXPR_NUM_THREADS",
+    ):
+        env[name] = "1"
+    command = [
+        str(executable),
+        "-m",
+        "dsdm.predictor_sensitivity_conventional",
+        "--worker-operation",
+        operation,
+        "--config",
+        str(config.source_path),
+        "--audit",
+        str(audit_path),
+    ]
+    return command, env
+
+
+def _dispatch_conventional(
+    config: SensitivityConfig,
+    audit_path: Path,
+    operation: str,
+) -> dict[str, Any]:
+    """Run and validate one aggregate conventional child receipt."""
+    from .predictor_sensitivity_conventional import validate_worker_receipt
+    from dsdm_phase1.goal029_production import load_goal029_config
+
+    _require(os.environ.get("DSDM_GOAL039_CONVENTIONAL_WORKER") != "1", "conventional worker recursion blocked")
+    command, env = _conventional_child_command(config, audit_path, operation)
+    try:
+        completed = subprocess.run(
+            command,
+            cwd=config.root,
+            env=env,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+    except OSError as exc:
+        raise PredictorSensitivityError(f"conventional worker launch failed: {exc}") from exc
+    if completed.returncode != 0:
+        detail = completed.stderr.strip() or completed.stdout.strip() or "no child diagnostic"
+        raise PredictorSensitivityError(f"conventional worker failed ({completed.returncode}): {detail[-2000:]}")
+    try:
+        envelope = json.loads(completed.stdout)
+    except json.JSONDecodeError as exc:
+        detail = completed.stdout.strip()[-2000:]
+        raise PredictorSensitivityError(f"conventional worker emitted invalid receipt: {detail}") from exc
+    goal029_config = None
+    if "authorities" in config.raw:
+        goal029_config = load_goal029_config(
+            config.root,
+            config.root / config.raw["authorities"]["goal029_config"]["path"],
+        )
+    result = validate_worker_receipt(
+        envelope,
+        operation=operation,
+        config_digest=config.raw["config_digest"],
+        expected_runtime=config.raw["conventional"]["runtime"],
+        goal029_config=goal029_config,
+        expected_mask_authority=config.raw.get("mask_authority"),
+    )
+    # Preserve the child provenance without treating the child envelope as a
+    # tracked scientific result.  Re-digest the parent-side aggregate after
+    # adding this runtime binding.
+    result = dict(result)
+    child_result_receipt_digest = result.pop("receipt_digest", None)
+    _require(
+        isinstance(child_result_receipt_digest, str) and len(child_result_receipt_digest) == 64,
+        "conventional child result receipt digest missing",
+    )
+    result["worker_runtime"] = dict(envelope["runtime"])
+    result["worker_receipt_digest"] = envelope["receipt_digest"]
+    result["worker_result_digest"] = envelope["result_digest"]
+    result["child_result_receipt_digest"] = child_result_receipt_digest
+    result["receipt_digest"] = digest_value(result)
+    return result
+
+
 def _run_conventional_canary(
     config: SensitivityConfig,
     audit: Mapping[str, Any],
@@ -743,7 +882,7 @@ def _run_conventional_canary(
         )
         repeat = compare_reduced_repeats(first, second)
         _require(
-            repeat["row_identity_digest"] == control.row_identity_digest,
+            repeat["observation_digest"] == control.row_identity_digest,
             "conventional reduced canary row identity drift",
         )
         full_receipts.append(full_receipt)
@@ -754,8 +893,8 @@ def _run_conventional_canary(
                 "seed": leaf.seed_label,
                 "full28_replay_receipt_digest": full_receipt["receipt_digest"],
                 "reduced_repeat_receipt_digest": repeat["receipt_digest"],
-                "row_identity_digest": control.row_identity_digest,
-                "reduced_prediction_digest": repeat["prediction_digest"],
+                "observation_digest": control.row_identity_digest,
+                "reduced_value_digest": repeat["value_digest"],
                 "mask_digest_by_fold": mask_digests,
             }
         )
@@ -927,7 +1066,7 @@ def _run_conventional_stage(
 
 def canary(config: SensitivityConfig) -> dict[str, Any]:
     audit_path = config.tracked_root / "mask_audit.json"; _require(audit_path.is_file(), "mask audit required before canary")
-    audit = validate_mask_audit(json.loads(audit_path.read_text(encoding="utf-8"))); goal035, bundles = _goal035_context(config); sentinel = next(bundle for bundle in bundles if bundle.target == "sarcophilus_harrisii" and bundle.held_fold == "fold00"); mask = np.asarray(audit["primary"][sentinel.held_fold]["encoded_columns"], dtype=bool)
+    audit = load_frozen_mask_audit(config, audit_path); goal035, bundles = _goal035_context(config); sentinel = next(bundle for bundle in bundles if bundle.target == "sarcophilus_harrisii" and bundle.held_fold == "fold00"); mask = np.asarray(audit["primary"][sentinel.held_fold]["encoded_columns"], dtype=bool)
     goal035_path = config.root / config.raw["authorities"]["goal035_config"]["path"]
     # Replay the immutable full-substrate sentinel once with an all-ones mask.
     seed_index = SEEDS.index(31031)
@@ -944,17 +1083,9 @@ def canary(config: SensitivityConfig) -> dict[str, Any]:
     _require(deterministic_a == deterministic_b, "reduced canary metadata repeat mismatch")
     for metadata in (full_replay_result["metadata"], reduced_a_result["metadata"], reduced_b_result["metadata"]):
         _require(metadata["logical_artifacts"] == 7 and metadata["physical_fits"] == 14 and metadata["support_mask_digests"] == metadata["reduced_support_mask_digests"], "canary lifecycle evidence drift")
-    catalog = _control_catalog(config)
-    goal029, broker, provider, reduced_provider = _conventional_foundation(config, audit)
-    conventional = _run_conventional_canary(
-        config,
-        audit,
-        catalog,
-        goal029,
-        broker,
-        provider,
-        reduced_provider,
-    )
+    # Conventional fitting is intentionally isolated in the project-lock
+    # interpreter.  Only its validated aggregate receipt crosses this edge.
+    conventional = _dispatch_conventional(config, audit_path, "canary")
     receipt = canary_compare(full_control, full_replay, reduced_a, reduced_b, mask)
     receipt.update({"config_digest": config.raw["config_digest"], "sentinel": {"target": sentinel.target, "held_fold": sentinel.held_fold, "bundle_digest": sentinel.source_digest}, "source_fingerprint": digest_value(config.raw["execution_sources"]), "mask_digest": audit["primary"][sentinel.held_fold]["mask_digest"], "conventional": conventional, "conventional_canary_digest": conventional["receipt_digest"]})
     receipt["runtime_digest"] = reduced_a_result["metadata"]["runtime_digest"]
@@ -965,8 +1096,7 @@ def canary(config: SensitivityConfig) -> dict[str, Any]:
 
 
 def _run_stage(config: SensitivityConfig, stage: str) -> dict[str, Any]:
-    control_catalog = _control_catalog(config)
-    mask_path = config.tracked_root / "mask_audit.json"; _require(mask_path.is_file(), "mask audit required before model stage"); audit = validate_mask_audit(json.loads(mask_path.read_text(encoding="utf-8"))); canary_path = config.tracked_root / "canary.json"; _require(canary_path.is_file(), "canary required before model stage"); canary_receipt = json.loads(canary_path.read_text(encoding="utf-8")); _require(canary_receipt.get("decision") == "pass" and canary_receipt.get("conventional", {}).get("family_count") == 4 and canary_receipt.get("conventional_canary_digest") == canary_receipt.get("conventional", {}).get("receipt_digest"), "complete neural and conventional canary required before model stage")
+    mask_path = config.tracked_root / "mask_audit.json"; _require(mask_path.is_file(), "mask audit required before model stage"); audit = load_frozen_mask_audit(config, mask_path); canary_path = config.tracked_root / "canary.json"; _require(canary_path.is_file(), "canary required before model stage"); canary_receipt = json.loads(canary_path.read_text(encoding="utf-8")); _require(canary_receipt.get("decision") == "pass" and canary_receipt.get("conventional", {}).get("family_count") == 4 and canary_receipt.get("conventional_canary_digest") == canary_receipt.get("conventional", {}).get("receipt_digest"), "complete neural and conventional canary required before model stage")
     screen_receipt: Mapping[str, Any] | None = None
     if stage == "confirmation":
         screen_receipt = _load_receipt(
@@ -1032,16 +1162,9 @@ def _run_stage(config: SensitivityConfig, stage: str) -> dict[str, Any]:
             screen_eligibility["eligible_delta_i"]
             and raw_delta_i_gate
         )
-    goal029, broker, _, reduced_provider = _conventional_foundation(config, audit)
-    conventional = _run_conventional_stage(
-        config,
-        audit,
-        control_catalog,
-        stage,
-        goal029,
-        broker,
-        reduced_provider,
-    )
+    # Keep all conventional fitting in the project-lock interpreter; the
+    # parent retains authority over neural metrics and Goal039 gates.
+    conventional = _dispatch_conventional(config, mask_path, stage)
     effective_delta_i = bool(i_gate and delta_u_guard)
     summary = {"schema_version": f"goal039-{stage}-v2", "stage": stage, "delta_u": lanes["delta_u"], "delta_i": lanes["delta_i"], "raw_delta_u_gate": bool(raw_delta_u_gate), "raw_delta_i_gate": bool(raw_delta_i_gate), "eligible_delta_u": bool(u_gate), "raw_eligible_delta_i": bool(i_gate), "effective_eligible_delta_i": effective_delta_i, "eligible_delta_i": effective_delta_i, "eligible": bool(u_gate or effective_delta_i), "delta_u_guard_passed": bool(delta_u_guard), "delta_i_rejection_reason": "target_only_degradation_guard_failed" if bool(i_gate) and not delta_u_guard else None, "screen_eligibility": screen_eligibility, "screen_receipt_digest": screen_receipt_digest, "records": len(records), "conventional_context": conventional, "conventional_context_digest": conventional["receipt_digest"], "decision_basis": "neural_only", "outer_attempted": 0, "outer_opened": 0}
     summary["receipt_digest"] = digest_value(summary)
@@ -1067,7 +1190,7 @@ def _neural_status(config: SensitivityConfig) -> dict[str, Any]:
     expected_by_stage: dict[str, set[str]] = {"screen": set(), "confirmation": set()}
     audit_path = config.tracked_root / "mask_audit.json"
     if audit_path.is_file():
-        audit = validate_mask_audit(json.loads(audit_path.read_text(encoding="utf-8")))
+        audit = load_frozen_mask_audit(config, audit_path)
         goal035, bundles = _goal035_context(config)
         from .final_inner_data import runtime_attestation
         runtime_digest = digest_value(runtime_attestation(goal035, strict=True))
@@ -1146,7 +1269,7 @@ def _conventional_status(config: SensitivityConfig) -> dict[str, Any]:
                 for stage in ("screen", "confirmation")
             },
         }
-    audit = validate_mask_audit(json.loads(audit_path.read_text(encoding="utf-8")))
+    audit = load_frozen_mask_audit(config, audit_path)
     catalog = _control_catalog(config)
     stage_rows: dict[str, Any] = {}
     expected_digests: set[str] = set()
