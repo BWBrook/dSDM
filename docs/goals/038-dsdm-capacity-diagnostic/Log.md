@@ -46,3 +46,18 @@
   passed; Python compilation, lock, whitespace, and source self-binding checks
   passed.
 - No Stage 2 fits, canary execution, outer access, commit, or push occurred.
+
+## 2026-08-10 - completed conditional Stage 2 run
+
+- Pre-run commit: `653aab8`. Canary passed deterministic/finite checks with
+  221 logical and 441 physical fits, all substantive gates true, and outer
+  access 0/0.
+- Full run completed 40/40 cases with invalid 0, 8,840 logical artifacts,
+  17,644 physical fits, outer access 0/0, and approximately 36 minutes elapsed.
+  The exact validator exited 0.
+- Final decision: `stop_no_confirmation` (endpoint-positive 1/5,
+  species-positive 3/8, fresh seeds positive 0/2, aggregate D_TSS
+  -0.0132355477). Fresh-seed means were 31034 = -0.0086863564 and 31035 =
+  -0.0114127387. The species means are recorded in `Decision.md`; the
+  dasyurid-positive pattern is exploratory only. Retain `resmlp13`; no
+  alternate rescue was opened and outer access remained sealed.

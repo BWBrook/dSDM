@@ -1,4 +1,4 @@
-# Goal 038 - dSDM capacity diagnostic, Stage 1
+# Goal 038 - dSDM capacity diagnostic (closed)
 
 Test whether a bounded architecture-capacity expansion changes the inner
 multihead lift relative to the frozen Goal035 `resmlp13` control.  The scope
@@ -18,3 +18,8 @@ receives the six-method, seven-endpoint, five-seed Goal035-equivalent lifecycle
 uses fresh seeds 31034--31035 on the five declared reduced-data endpoints; all
 other paths are secondary diagnostics and nested endpoints/folds are not
 independent confirmation units.
+
+Closed with `stop_no_confirmation`: the Stage 1 width signal did not replicate
+on fresh seeds and reduced endpoints. Retain `resmlp13`; the outer seal remains
+intact. See `Decision.md` for the scientific result and `Log.md` for execution
+evidence.

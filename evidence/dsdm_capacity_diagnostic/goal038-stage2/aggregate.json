@@ -1,0 +1,150 @@
+{
+  "atomic_cases": 40,
+  "authority_digests": {
+    "goal035_aggregate": "4eae8cea43643a3a82e14ea546ce89fc60129e443c752599304d80fab0b5f7bf",
+    "goal035_config": "87c3afa6fbb9a2177caafc0b2aacb0130c7f6545523839cd0fd030218795d7c2",
+    "goal036_decision": "d19ec043c6fa9a1ca4329cea5da9433d5b3927112bf386d7e2b2695441114980",
+    "goal036_summary": "9c6f8195d5bc291aa43c8cb2476291af39e7ac0f10613c5f2065200f86ef0c2d",
+    "goal037_config": "762ce12c4937f7eec0e72b4b90f1c7db1246072a9c778cd5c7a4c1b50cdf2f92",
+    "goal037_decision": "534af55668cf6d02736b0b0b319d97080969e4ada2fe560a4b4736cc8c8823fd",
+    "stage1_aggregate": "8b733940c2c112e12154ab264d29a48e4a1e966af07f3d16de529c92b36ddd9d",
+    "stage1_canary": "00cb0d648c8e850b5fc5fad71fbece597485098936da74494d1643ad9604dd4e"
+  },
+  "canary_receipt_digest": "6ecb34942fee1b02404fa11bd875683e41d7f2886b6741b593e165a233f3b569",
+  "candidate": "wide512",
+  "config_digest": "b606d98e1b9d6bc0b56809bcdffdc3c93fefcc7df43ca5f589542f41463abd34",
+  "confirmation": {
+    "aggregate_d_tss": -0.013235547673510891,
+    "aggregate_d_tss_rule": "equal_species_mean_of_equal_endpoint_mean",
+    "d_auc_by_endpoint": {
+      "fraction25/ladder01": -0.017854959450936292,
+      "fraction25/ladder02": -0.021951509337278186,
+      "fraction50/ladder00": -0.0033571381808183975,
+      "fraction50/ladder01": -0.018326218717581777,
+      "fraction50/ladder02": 0.0054861255778083096
+    },
+    "fresh_seed_species_balanced_d_auc": {
+      "31034": -0.008686356372357623,
+      "31035": -0.011412738693843528
+    },
+    "fresh_seed_species_balanced_d_auc_positive": 0,
+    "gate": false,
+    "median_species_d_auc_positive_endpoints": 1,
+    "method_summaries": {
+      "control": {
+        "legacy_pooled_finetune": {
+          "auc": 0.7148274516334681,
+          "mcc": 0.30138206222324715,
+          "tss": 0.37377683582034493
+        },
+        "multihead_frozen_trunk": {
+          "auc": 0.7043036792308627,
+          "mcc": 0.2798057071549662,
+          "tss": 0.341499791746975
+        },
+        "multihead_full_finetune": {
+          "auc": 0.7099206441500304,
+          "mcc": 0.3058266891491768,
+          "tss": 0.3687286044993884
+        },
+        "target_only_resmlp": {
+          "auc": 0.7070264888246776,
+          "mcc": 0.29951105089512364,
+          "tss": 0.35346285201549854
+        },
+        "target_plus_q_deep": {
+          "auc": 0.7083628583805824,
+          "mcc": 0.3005587721396447,
+          "tss": 0.36239749888075934
+        },
+        "target_plus_q_linear": {
+          "auc": 0.7083433467053837,
+          "mcc": 0.29811294576947106,
+          "tss": 0.3623991244908708
+        }
+      },
+      "wide512": {
+        "legacy_pooled_finetune": {
+          "auc": 0.7246637239279275,
+          "mcc": 0.3100036749501312,
+          "tss": 0.39280243136605775
+        },
+        "multihead_frozen_trunk": {
+          "auc": 0.7036485213298806,
+          "mcc": 0.3026585744220318,
+          "tss": 0.35191813078657885
+        },
+        "multihead_full_finetune": {
+          "auc": 0.7209787837229579,
+          "mcc": 0.3226756161021755,
+          "tss": 0.38616580046063603
+        },
+        "target_only_resmlp": {
+          "auc": 0.7162269829522556,
+          "mcc": 0.3008718588047265,
+          "tss": 0.3754544364678119
+        },
+        "target_plus_q_deep": {
+          "auc": 0.7161500522895904,
+          "mcc": 0.31191691409571776,
+          "tss": 0.3795618386368883
+        },
+        "target_plus_q_linear": {
+          "auc": 0.7150314531718633,
+          "mcc": 0.3082613951478332,
+          "tss": 0.3740065085778833
+        }
+      }
+    },
+    "species_five_endpoint_mean_d_auc": {
+      "dasyurus_maculatus": 0.014088892047125223,
+      "dasyurus_viverrinus": 0.015253325600921653,
+      "notamacropus_rufogriseus": -0.0334161887467437,
+      "pseudocheirus_peregrinus": -0.008568553148151947,
+      "sarcophilus_harrisii": 0.0029036258598437613,
+      "thylogale_billardierii": -0.027425979307297822,
+      "trichosurus_vulpecula": -0.026414613994230507,
+      "vombatus_ursinus": -0.03089607192440056
+    },
+    "species_five_endpoint_mean_positive": 3
+  },
+  "decision": "stop_no_confirmation",
+  "execution_source_digests": {
+    "capacity_diagnostic_stage2": "bd3ed355c9c0e3c7916a6bc6dbe04882ae4dd6f486f8c8b5207ed029904ca2e6",
+    "contracts": "61c89d4ef7ab6895bc5d5c8bd9acabd2be0e73aa5f7fc46bba0eb87378b0d9a2",
+    "final_inner_data": "1c20d1b224ee4092e139e7419fa989797aea5afaa45cdec926a5cd3586baad46",
+    "final_inner_runner": "2b46a96fc5dbe4dbe6a3e1a594eeea48a39f56a9162e0fdd79a5f557968d75dc",
+    "inner_evaluation": "1b2a85aad54871047c31fdabb828cd67744c5a6acbcb5e2cfdafcaaafe0f9360",
+    "models": "71317e80514eeab68a316066f59382db2c96aa6bffb0dfd524e08895f2f9c6ee",
+    "real_six_path": "7da430342545403ea8d82deee965ec065178c8660ceccd83a34af68cb9ff2bc0",
+    "uv_lock": "39c22925750ac8821f5420bdfe5ca39554b7906d812bd3a94a04e91c469284fd"
+  },
+  "leaf_content_inventory_digest": "a423ef5a601383853d1967b70d76c94ad951d40a3b89717f2641ead600b29647",
+  "leaf_inventory_digest": "c619c604fde6747f5abc35ec466023ee58823573428fc7f8f8b5ec1f67a36dab",
+  "leaf_metadata_content_digest": "8e50d4f13295cf8b9e5437a2a3850b774e3417c070b4a5a9cf23ca78eed2303f",
+  "logical_artifacts": 8840,
+  "outer_attempted": 0,
+  "outer_opened": 0,
+  "physical_fits_actual": 17644,
+  "physical_fits_maximum": 17680,
+  "physical_fits_minimum": 17640,
+  "receipt_digest": "a299923da66044a475f08bb745832f1533f89d75a7fea840224a059850d5c1c0",
+  "runtime": {
+    "blas_threads": 1,
+    "device": "cpu",
+    "machine": "arm64",
+    "numpy": "2.2.6",
+    "python_major_minor": "3.12",
+    "route": "mac_cpu",
+    "scikit_learn": "1.9.0",
+    "scipy": "1.16.3",
+    "system": "Darwin",
+    "threadpoolctl": "3.6.0",
+    "threads": 1,
+    "torch": "2.7.1"
+  },
+  "schema_version": "goal038-stage2-aggregate-v1",
+  "source_fingerprint": "cb4e5deea34f6bc5e47dec03567dd1ef72cc6887f47f61118dcc354d8272b831",
+  "success": true,
+  "workers": 3
+}

@@ -1,0 +1,48 @@
+{
+  "candidate": "wide512",
+  "config_digest": "b606d98e1b9d6bc0b56809bcdffdc3c93fefcc7df43ca5f589542f41463abd34",
+  "counts": {
+    "auxiliary_logical_artifacts": 11,
+    "logical_artifacts": 221,
+    "physical_fits": 441,
+    "target_logical_artifacts": 210
+  },
+  "decision": "pass",
+  "deterministic": true,
+  "finite": true,
+  "gates": {
+    "frozen_trunk": true,
+    "outer": true,
+    "q_initial": true,
+    "reset": true,
+    "transfer": true
+  },
+  "goal035_config_digest": "87c3afa6fbb9a2177caafc0b2aacb0130c7f6545523839cd0fd030218795d7c2",
+  "held_fold": "fold00",
+  "outer_attempted": 0,
+  "outer_opened": 0,
+  "prediction_digest": "1089d6543b7ee0263958df39eef542505a1d1ff626b52a0bf2f9edc0dee8344b",
+  "receipt_digest": "ac83b144e0182ab025967e90468fa5f8c1a2ecacc0a942c4367d6d818b382565",
+  "repeat_a_content_digest": "b88e5cad9176100516f6e7073032365eaab84957de176ec5fd19c7ade8a129e4",
+  "repeat_b_content_digest": "ce6982937fdd4f5691a7b7358c0f41d55d7d01cb831973d78d7ca2e1a1348474",
+  "runtime": {
+    "blas_threads": 1,
+    "device": "cpu",
+    "machine": "arm64",
+    "numpy": "2.2.6",
+    "python_major_minor": "3.12",
+    "route": "mac_cpu",
+    "scikit_learn": "1.9.0",
+    "scipy": "1.16.3",
+    "system": "Darwin",
+    "threadpoolctl": "3.6.0",
+    "torch": "2.7.1",
+    "torch_threads": 1
+  },
+  "runtime_digest": "1f4691cacc19aea63ffc3d3e6b0b8314e137e97cc3286fccc6dac7c46cebda5b",
+  "schema_version": "goal038-stage2-canary-v1",
+  "sentinel_bundle_digest": "adecc8d6400b88d10c0a3bb795a362932c5a30fff8beaaa36442d1d093b84890",
+  "source_fingerprint": "cb4e5deea34f6bc5e47dec03567dd1ef72cc6887f47f61118dcc354d8272b831",
+  "success": true,
+  "target": "sarcophilus_harrisii"
+}

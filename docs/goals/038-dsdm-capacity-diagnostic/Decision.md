@@ -43,3 +43,21 @@ seeds 31031--31033 remain secondary descriptive evidence.
 The tracked aggregate records all eight species' five-endpoint mean interaction
 AUC values so the 5/8 gate and between-species heterogeneity are independently
 auditable without disclosing row-level labels or predictions.
+
+## Final Stage 2 decision
+
+Stage 2 completed after pre-run commit `653aab8`: canary pass with deterministic
+and finite predictions, 221 logical/441 physical fits, all substantive gates
+true, and outer access 0/0; full run 40/40, invalid 0, 8,840 logical artifacts,
+17,644 physical fits, approximately 36 minutes, outer access 0/0. The exact
+validator exited 0.
+
+Decision: `stop_no_confirmation`. Endpoint-positive was 1/5, species-positive
+3/8, fresh-seed positive 0/2 (31034 = -0.0086863564; 31035 = -0.0114127387),
+and aggregate D_TSS = -0.0132355477. Species mean D_AUC was: thylogale
+-0.027426, notamacropus -0.033416, trichosurus -0.026415, pseudocheirus
+-0.008569, vombatus -0.030896, sarcophilus +0.002904, dasyurus maculatus
++0.014089, and dasyurus viverrinus +0.015253. The Stage 1 width signal did not
+replicate on fresh seeds/reduced endpoints; retain `resmlp13` for subsequent
+work. The dasyurid-positive pattern is exploratory and not inferential. No
+alternate rescue was opened and the outer seal remains intact.

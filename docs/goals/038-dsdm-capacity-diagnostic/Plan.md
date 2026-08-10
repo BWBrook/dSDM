@@ -25,3 +25,5 @@ and `dsdm_capacity_diagnostic_stage2.json`. It reuses Goal035 case preparation,
 the neural lifecycle, and private leaf validation. Its `run` command is
 resumable and atomic; `status`, `finalize`, and `validate` are read-only over
 the private cases except for the aggregate receipt.
+
+Completed with `stop_no_confirmation`; see `Decision.md` and `Log.md`.
