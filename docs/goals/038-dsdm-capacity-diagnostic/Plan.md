@@ -19,3 +19,9 @@ Stage 2 is already frozen in the Goal038 configuration. It is materialized only
 for the single advanced candidate and follows the six-method, seven-endpoint
 workload and fresh-seed confirmation gate recorded in `Decision.md`; no design
 change or alternate rescue is allowed.
+
+The conditional implementation is isolated in `capacity_diagnostic_stage2.py`
+and `dsdm_capacity_diagnostic_stage2.json`. It reuses Goal035 case preparation,
+the neural lifecycle, and private leaf validation. Its `run` command is
+resumable and atomic; `status`, `finalize`, and `validate` are read-only over
+the private cases except for the aggregate receipt.

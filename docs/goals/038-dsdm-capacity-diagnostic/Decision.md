@@ -15,9 +15,9 @@ median species interaction AUC > 0, median species absolute lift > 0,
 interaction AUC > 0 in at least 5/8 species, positive species-balanced
 interaction AUC for at least 2/3 seeds, and median interaction TSS >= 0.
 
-This is a compute gate, not evidence of ecological superiority. Stage 2 is not
-implemented in this tranche; if the gate advances a candidate, it is added and
-executed conditionally within Goal038, with no alternate-candidate rescue. The
+This is a compute gate, not evidence of ecological superiority. Stage 2 is
+implemented conditionally within Goal038 for the sole advanced candidate, with
+no alternate-candidate rescue. The
 frozen Stage 2 lifecycle covers all seven endpoints, five seeds, eight species,
 five folds, and all six canonical methods: 40 atomic cases, 8,840 logical
 artifacts, and 17,640--17,680 physical fits. Its fresh-seed confirmation subset
@@ -27,3 +27,19 @@ least 4/5 endpoints, positive five-endpoint species-average interaction AUC in
 at least 5/8 species, positive aggregate interaction AUC for both fresh seeds,
 and aggregate interaction TSS >= 0. Nested endpoints and folds are not
 independent confirmation units.
+
+The conditional Stage 2 runner is now implemented as a separate module and
+config bound to the accepted Stage 1 aggregate/canary and the existing
+Goal035--037 authorities. It fits only `wide512` when explicitly launched;
+Stage 1 identities and receipts are immutable. No Stage 2 fit or outer access
+was performed during implementation.
+
+Stage 2 aggregate interaction TSS is defined as the mean across species of
+each species' equally weighted mean across the five confirmation endpoints.
+Descriptive six-method summaries cover all seven fitted endpoints; only the
+five-endpoint target-only versus multihead contrast drives the gate. Thresholds,
+endpoint/species contrasts, and aggregate TSS use only fresh seeds 31034--31035;
+seeds 31031--31033 remain secondary descriptive evidence.
+The tracked aggregate records all eight species' five-endpoint mean interaction
+AUC values so the 5/8 gate and between-species heterogeneity are independently
+auditable without disclosing row-level labels or predictions.

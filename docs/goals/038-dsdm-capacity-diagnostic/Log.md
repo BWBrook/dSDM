@@ -31,3 +31,18 @@
 - GREEN after repair: 10 focused Goal038 tests and 16 Goal035/036 regressions
   passed; py_compile, `uv lock --check`, whitespace, and config self-binding
   checks passed. No real fits, canary, outer access, commit, or push occurred.
+
+## 2026-08-10 - conditional Stage 2 implementation
+
+- Stage 1 advanced the sole eligible `wide512` candidate. Added the isolated
+  Stage 2 config/module with accepted Stage 1 aggregate/canary bindings,
+  Goal035 lifecycle reuse, atomic resumable 40-case leaves, status/finalize/
+  validate commands, and the frozen fresh-seed confirmation gate helper.
+- Stage 2 audit repairs added Goal035 deep leaf validation/write semantics, a
+  real two-repeat fixed-budget `wide512` canary, fresh-seed-only confirmation,
+  exact aggregate reconstruction, and species-level aggregate effects needed
+  to audit the 5/8-species gate.
+- GREEN before launch: 11 Stage 2 tests and 28 Stage 1/Goal035/036 regressions
+  passed; Python compilation, lock, whitespace, and source self-binding checks
+  passed.
+- No Stage 2 fits, canary execution, outer access, commit, or push occurred.
