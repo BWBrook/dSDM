@@ -1,0 +1,2520 @@
+{
+  "conventional_context": {
+    "analysis_endpoints": [
+      "fraction25/ladder00",
+      "fraction50/ladder00",
+      "fraction100/full"
+    ],
+    "analysis_leaf_count": 384,
+    "child_result_receipt_digest": "543a028dd98f81e4f0da961bbf639b6f99f14dc849cc514325e2cd4cf5e70abb",
+    "content_digest": "6a3cb95c880ab883e00ccb5e8a40b0f9746872f132ce1c794783ad269c6560e2",
+    "context": {
+      "aggregation": "common_seed_mean_then_pooled_threshold_then_equal_fold_mean",
+      "baseline": "current_runtime_paired_full",
+      "endpoints": [
+        "fraction25/ladder00",
+        "fraction50/ladder00",
+        "fraction100/full"
+      ],
+      "families": [
+        "elastic_net",
+        "random_forest",
+        "hist_gradient_boosting",
+        "shallow_ann"
+      ],
+      "family_endpoint_summaries": [
+        {
+          "endpoint": "fraction25/ladder00",
+          "family": "elastic_net",
+          "mean_delta": {
+            "mcc": -0.0028155372563685253,
+            "roc_auc": -0.005809313624593471,
+            "tss": -0.0015886210696028358
+          },
+          "positive_species": {
+            "mcc": 4,
+            "roc_auc": 2,
+            "tss": 4
+          },
+          "species": 8
+        },
+        {
+          "endpoint": "fraction25/ladder00",
+          "family": "random_forest",
+          "mean_delta": {
+            "mcc": -0.006328271614358599,
+            "roc_auc": -0.004780817464312415,
+            "tss": -0.006369103074729546
+          },
+          "positive_species": {
+            "mcc": 3,
+            "roc_auc": 3,
+            "tss": 4
+          },
+          "species": 8
+        },
+        {
+          "endpoint": "fraction25/ladder00",
+          "family": "hist_gradient_boosting",
+          "mean_delta": {
+            "mcc": 0.004207444421263758,
+            "roc_auc": -0.005003213189469516,
+            "tss": -6.224152993593995e-05
+          },
+          "positive_species": {
+            "mcc": 4,
+            "roc_auc": 3,
+            "tss": 5
+          },
+          "species": 8
+        },
+        {
+          "endpoint": "fraction25/ladder00",
+          "family": "shallow_ann",
+          "mean_delta": {
+            "mcc": 0.00519942241764184,
+            "roc_auc": 0.0005993664558907735,
+            "tss": 0.0031016967496484728
+          },
+          "positive_species": {
+            "mcc": 5,
+            "roc_auc": 2,
+            "tss": 5
+          },
+          "species": 8
+        },
+        {
+          "endpoint": "fraction50/ladder00",
+          "family": "elastic_net",
+          "mean_delta": {
+            "mcc": -0.01220375699515353,
+            "roc_auc": -0.004356826635534591,
+            "tss": -0.011524877075997204
+          },
+          "positive_species": {
+            "mcc": 2,
+            "roc_auc": 2,
+            "tss": 2
+          },
+          "species": 8
+        },
+        {
+          "endpoint": "fraction50/ladder00",
+          "family": "random_forest",
+          "mean_delta": {
+            "mcc": 0.0031734803717547895,
+            "roc_auc": -0.011280849399824017,
+            "tss": -0.0003862907783208046
+          },
+          "positive_species": {
+            "mcc": 5,
+            "roc_auc": 3,
+            "tss": 4
+          },
+          "species": 8
+        },
+        {
+          "endpoint": "fraction50/ladder00",
+          "family": "hist_gradient_boosting",
+          "mean_delta": {
+            "mcc": -0.004479585723332315,
+            "roc_auc": -0.01103838458246309,
+            "tss": -0.009483577365612936
+          },
+          "positive_species": {
+            "mcc": 3,
+            "roc_auc": 1,
+            "tss": 2
+          },
+          "species": 8
+        },
+        {
+          "endpoint": "fraction50/ladder00",
+          "family": "shallow_ann",
+          "mean_delta": {
+            "mcc": -0.0208923650177996,
+            "roc_auc": -0.00747034440059334,
+            "tss": -0.025719527235934604
+          },
+          "positive_species": {
+            "mcc": 2,
+            "roc_auc": 2,
+            "tss": 1
+          },
+          "species": 8
+        },
+        {
+          "endpoint": "fraction100/full",
+          "family": "elastic_net",
+          "mean_delta": {
+            "mcc": -0.0035138681016878073,
+            "roc_auc": -0.008480743522402232,
+            "tss": -0.020309731134702892
+          },
+          "positive_species": {
+            "mcc": 4,
+            "roc_auc": 1,
+            "tss": 2
+          },
+          "species": 8
+        },
+        {
+          "endpoint": "fraction100/full",
+          "family": "random_forest",
+          "mean_delta": {
+            "mcc": -0.01713587784383203,
+            "roc_auc": -0.005318016975060888,
+            "tss": -0.004313301525934902
+          },
+          "positive_species": {
+            "mcc": 4,
+            "roc_auc": 3,
+            "tss": 4
+          },
+          "species": 8
+        },
+        {
+          "endpoint": "fraction100/full",
+          "family": "hist_gradient_boosting",
+          "mean_delta": {
+            "mcc": -0.015285394184918005,
+            "roc_auc": -0.013142521352854583,
+            "tss": -0.02699533217654799
+          },
+          "positive_species": {
+            "mcc": 3,
+            "roc_auc": 1,
+            "tss": 1
+          },
+          "species": 8
+        },
+        {
+          "endpoint": "fraction100/full",
+          "family": "shallow_ann",
+          "mean_delta": {
+            "mcc": -0.002697072219164199,
+            "roc_auc": -0.0044976920311904645,
+            "tss": 0.008523114609993832
+          },
+          "positive_species": {
+            "mcc": 5,
+            "roc_auc": 3,
+            "tss": 5
+          },
+          "species": 8
+        }
+      ],
+      "leaf_count": 384,
+      "outer_attempted": 0,
+      "outer_opened": 0,
+      "receipt_digest": "1b61f6f3a40d5f73026c4d2b8ac65bf56c2f616eeec1bbc55161b22c0a550a7b",
+      "schema_version": "goal039-conventional-family-effects-v2",
+      "species_family_effects": [
+        {
+          "candidate": "enet09",
+          "delta": {
+            "mcc": -0.0015927408123908027,
+            "roc_auc": -0.009863257421472316,
+            "tss": -0.002149151795549864
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "elastic_net",
+          "full": {
+            "mcc": 0.40917885033486556,
+            "roc_auc": 0.7719829962165223,
+            "tss": 0.46713480069742064
+          },
+          "reduced": {
+            "mcc": 0.40758610952247476,
+            "roc_auc": 0.76211973879505,
+            "tss": 0.4649856489018708
+          },
+          "seed_count": 5,
+          "species": "thylogale_billardierii"
+        },
+        {
+          "candidate": "rf05",
+          "delta": {
+            "mcc": 0.07671770641635162,
+            "roc_auc": -0.006674389068870523,
+            "tss": 0.02120243950572165
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "random_forest",
+          "full": {
+            "mcc": 0.4358973528364721,
+            "roc_auc": 0.8375835736121322,
+            "tss": 0.5472138727997303
+          },
+          "reduced": {
+            "mcc": 0.5126150592528237,
+            "roc_auc": 0.8309091845432617,
+            "tss": 0.568416312305452
+          },
+          "seed_count": 5,
+          "species": "thylogale_billardierii"
+        },
+        {
+          "candidate": "hgb00",
+          "delta": {
+            "mcc": 0.12106035638685647,
+            "roc_auc": -0.011524521124122611,
+            "tss": 0.019110086018183314
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "hist_gradient_boosting",
+          "full": {
+            "mcc": 0.2897803480193991,
+            "roc_auc": 0.768909940099354,
+            "tss": 0.4380512720001379
+          },
+          "reduced": {
+            "mcc": 0.4108407044062556,
+            "roc_auc": 0.7573854189752314,
+            "tss": 0.4571613580183212
+          },
+          "seed_count": 1,
+          "species": "thylogale_billardierii"
+        },
+        {
+          "candidate": "ann01",
+          "delta": {
+            "mcc": 0.04791984214574413,
+            "roc_auc": 0.08180534903027381,
+            "tss": 0.03177197259738007
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "shallow_ann",
+          "full": {
+            "mcc": 0.38033221468629413,
+            "roc_auc": 0.7038918893607526,
+            "tss": 0.3950350679652018
+          },
+          "reduced": {
+            "mcc": 0.42825205683203826,
+            "roc_auc": 0.7856972383910265,
+            "tss": 0.4268070405625819
+          },
+          "seed_count": 5,
+          "species": "thylogale_billardierii"
+        },
+        {
+          "candidate": "enet09",
+          "delta": {
+            "mcc": -0.05816506082003842,
+            "roc_auc": -0.01200627009607047,
+            "tss": -0.034581402737464906
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "elastic_net",
+          "full": {
+            "mcc": 0.4153995977828021,
+            "roc_auc": 0.7947114421597963,
+            "tss": 0.519276967326836
+          },
+          "reduced": {
+            "mcc": 0.3572345369627637,
+            "roc_auc": 0.7827051720637258,
+            "tss": 0.48469556458937113
+          },
+          "seed_count": 5,
+          "species": "thylogale_billardierii"
+        },
+        {
+          "candidate": "rf04",
+          "delta": {
+            "mcc": 0.04070166373100648,
+            "roc_auc": -0.01987279930520469,
+            "tss": 0.012461569993851174
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "random_forest",
+          "full": {
+            "mcc": 0.5047253268859715,
+            "roc_auc": 0.8228663900752412,
+            "tss": 0.5712161802200975
+          },
+          "reduced": {
+            "mcc": 0.545426990616978,
+            "roc_auc": 0.8029935907700365,
+            "tss": 0.5836777502139486
+          },
+          "seed_count": 5,
+          "species": "thylogale_billardierii"
+        },
+        {
+          "candidate": "hgb04",
+          "delta": {
+            "mcc": 0.007035201704092775,
+            "roc_auc": -0.009646189568361496,
+            "tss": -0.008540365638361913
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "hist_gradient_boosting",
+          "full": {
+            "mcc": 0.4310959599560961,
+            "roc_auc": 0.8255027116588167,
+            "tss": 0.5420461145539329
+          },
+          "reduced": {
+            "mcc": 0.4381311616601889,
+            "roc_auc": 0.8158565220904552,
+            "tss": 0.533505748915571
+          },
+          "seed_count": 1,
+          "species": "thylogale_billardierii"
+        },
+        {
+          "candidate": "ann00",
+          "delta": {
+            "mcc": 0.020828085910396588,
+            "roc_auc": 0.024558486265104706,
+            "tss": -0.005229609893659615
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "shallow_ann",
+          "full": {
+            "mcc": 0.32443111653339474,
+            "roc_auc": 0.7513926882352291,
+            "tss": 0.4736815368604093
+          },
+          "reduced": {
+            "mcc": 0.3452592024437913,
+            "roc_auc": 0.7759511745003338,
+            "tss": 0.4684519269667497
+          },
+          "seed_count": 5,
+          "species": "thylogale_billardierii"
+        },
+        {
+          "candidate": "enet02",
+          "delta": {
+            "mcc": 0.032066521385662405,
+            "roc_auc": -0.016368037496455767,
+            "tss": -0.06236549254934631
+          },
+          "endpoint": "fraction100/full",
+          "family": "elastic_net",
+          "full": {
+            "mcc": 0.4293700271293582,
+            "roc_auc": 0.8020972684446159,
+            "tss": 0.5639997699821504
+          },
+          "reduced": {
+            "mcc": 0.4614365485150206,
+            "roc_auc": 0.7857292309481602,
+            "tss": 0.5016342774328041
+          },
+          "seed_count": 5,
+          "species": "thylogale_billardierii"
+        },
+        {
+          "candidate": "rf02",
+          "delta": {
+            "mcc": 0.05518092405296138,
+            "roc_auc": 0.012165562360378024,
+            "tss": -0.032984854441135636
+          },
+          "endpoint": "fraction100/full",
+          "family": "random_forest",
+          "full": {
+            "mcc": 0.4930863975155395,
+            "roc_auc": 0.8309788218487553,
+            "tss": 0.616906267984444
+          },
+          "reduced": {
+            "mcc": 0.5482673215685009,
+            "roc_auc": 0.8431443842091333,
+            "tss": 0.5839214135433084
+          },
+          "seed_count": 5,
+          "species": "thylogale_billardierii"
+        },
+        {
+          "candidate": "hgb00",
+          "delta": {
+            "mcc": 0.006267197057122587,
+            "roc_auc": -0.005407579059600431,
+            "tss": -0.0008280471482718932
+          },
+          "endpoint": "fraction100/full",
+          "family": "hist_gradient_boosting",
+          "full": {
+            "mcc": 0.4149469166722439,
+            "roc_auc": 0.8577125240164403,
+            "tss": 0.5741426342550744
+          },
+          "reduced": {
+            "mcc": 0.4212141137293665,
+            "roc_auc": 0.8523049449568398,
+            "tss": 0.5733145871068025
+          },
+          "seed_count": 1,
+          "species": "thylogale_billardierii"
+        },
+        {
+          "candidate": "ann02",
+          "delta": {
+            "mcc": 0.003255726493199995,
+            "roc_auc": 0.029626894065801657,
+            "tss": 0.03256585688170488
+          },
+          "endpoint": "fraction100/full",
+          "family": "shallow_ann",
+          "full": {
+            "mcc": 0.3663924358861191,
+            "roc_auc": 0.7181306150434544,
+            "tss": 0.38266316051676263
+          },
+          "reduced": {
+            "mcc": 0.3696481623793191,
+            "roc_auc": 0.7477575091092561,
+            "tss": 0.4152290173984675
+          },
+          "seed_count": 5,
+          "species": "thylogale_billardierii"
+        },
+        {
+          "candidate": "enet09",
+          "delta": {
+            "mcc": 0.006938380926895166,
+            "roc_auc": -0.0008564908102445257,
+            "tss": 0.003461954125524247
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "elastic_net",
+          "full": {
+            "mcc": 0.23089250915442658,
+            "roc_auc": 0.6837169970168727,
+            "tss": 0.3087249921332935
+          },
+          "reduced": {
+            "mcc": 0.23783089008132174,
+            "roc_auc": 0.6828605062066282,
+            "tss": 0.31218694625881777
+          },
+          "seed_count": 5,
+          "species": "notamacropus_rufogriseus"
+        },
+        {
+          "candidate": "rf01",
+          "delta": {
+            "mcc": -0.01608597964184827,
+            "roc_auc": 0.006043858159041071,
+            "tss": 0.02035993372184436
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "random_forest",
+          "full": {
+            "mcc": 0.25771079758782633,
+            "roc_auc": 0.6897166293825739,
+            "tss": 0.3171833222460126
+          },
+          "reduced": {
+            "mcc": 0.24162481794597807,
+            "roc_auc": 0.695760487541615,
+            "tss": 0.33754325596785695
+          },
+          "seed_count": 5,
+          "species": "notamacropus_rufogriseus"
+        },
+        {
+          "candidate": "hgb05",
+          "delta": {
+            "mcc": -0.03207567205587439,
+            "roc_auc": -0.026267413884648705,
+            "tss": -0.035686225946991806
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "hist_gradient_boosting",
+          "full": {
+            "mcc": 0.19006846379553388,
+            "roc_auc": 0.6530661184933984,
+            "tss": 0.2657078284538735
+          },
+          "reduced": {
+            "mcc": 0.1579927917396595,
+            "roc_auc": 0.6267987046087496,
+            "tss": 0.23002160250688167
+          },
+          "seed_count": 1,
+          "species": "notamacropus_rufogriseus"
+        },
+        {
+          "candidate": "ann03",
+          "delta": {
+            "mcc": -0.01762011688148593,
+            "roc_auc": -0.012544422942023181,
+            "tss": 0.0054618869685955085
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "shallow_ann",
+          "full": {
+            "mcc": 0.2545230415341638,
+            "roc_auc": 0.6927832844262825,
+            "tss": 0.33268475083405613
+          },
+          "reduced": {
+            "mcc": 0.23690292465267784,
+            "roc_auc": 0.6802388614842593,
+            "tss": 0.33814663780265164
+          },
+          "seed_count": 5,
+          "species": "notamacropus_rufogriseus"
+        },
+        {
+          "candidate": "enet05",
+          "delta": {
+            "mcc": -0.012414380735972896,
+            "roc_auc": -0.0027066212935142886,
+            "tss": -0.007114034518076517
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "elastic_net",
+          "full": {
+            "mcc": 0.23127888210732178,
+            "roc_auc": 0.677056659857628,
+            "tss": 0.24468939932053857
+          },
+          "reduced": {
+            "mcc": 0.21886450137134889,
+            "roc_auc": 0.6743500385641137,
+            "tss": 0.23757536480246205
+          },
+          "seed_count": 5,
+          "species": "notamacropus_rufogriseus"
+        },
+        {
+          "candidate": "rf02",
+          "delta": {
+            "mcc": 0.04484267192651831,
+            "roc_auc": 0.012643740064725018,
+            "tss": 0.04971674698904621
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "random_forest",
+          "full": {
+            "mcc": 0.19552425621364805,
+            "roc_auc": 0.6838698638700418,
+            "tss": 0.28129777334662676
+          },
+          "reduced": {
+            "mcc": 0.24036692814016636,
+            "roc_auc": 0.6965136039347668,
+            "tss": 0.33101452033567297
+          },
+          "seed_count": 5,
+          "species": "notamacropus_rufogriseus"
+        },
+        {
+          "candidate": "hgb00",
+          "delta": {
+            "mcc": 0.017480288002990008,
+            "roc_auc": 0.00796663454519242,
+            "tss": 0.05057637841332485
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "hist_gradient_boosting",
+          "full": {
+            "mcc": 0.19919302784311885,
+            "roc_auc": 0.6513826461759221,
+            "tss": 0.23105989471989297
+          },
+          "reduced": {
+            "mcc": 0.21667331584610885,
+            "roc_auc": 0.6593492807211145,
+            "tss": 0.2816362731332178
+          },
+          "seed_count": 1,
+          "species": "notamacropus_rufogriseus"
+        },
+        {
+          "candidate": "ann05",
+          "delta": {
+            "mcc": -0.030248925569290513,
+            "roc_auc": -0.01692060385612526,
+            "tss": -0.034323941135584235
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "shallow_ann",
+          "full": {
+            "mcc": 0.23870351921908659,
+            "roc_auc": 0.7051011752724176,
+            "tss": 0.33796528355988087
+          },
+          "reduced": {
+            "mcc": 0.20845459364979607,
+            "roc_auc": 0.6881805714162923,
+            "tss": 0.30364134242429663
+          },
+          "seed_count": 5,
+          "species": "notamacropus_rufogriseus"
+        },
+        {
+          "candidate": "enet02",
+          "delta": {
+            "mcc": -0.007711900074155509,
+            "roc_auc": -0.003102969748475237,
+            "tss": -0.011608690759682405
+          },
+          "endpoint": "fraction100/full",
+          "family": "elastic_net",
+          "full": {
+            "mcc": 0.2211998384669907,
+            "roc_auc": 0.6800235779220537,
+            "tss": 0.2615723476389898
+          },
+          "reduced": {
+            "mcc": 0.2134879383928352,
+            "roc_auc": 0.6769206081735785,
+            "tss": 0.24996365687930738
+          },
+          "seed_count": 5,
+          "species": "notamacropus_rufogriseus"
+        },
+        {
+          "candidate": "rf02",
+          "delta": {
+            "mcc": -0.0671613820583222,
+            "roc_auc": 0.02659522403540604,
+            "tss": 0.07666813572981279
+          },
+          "endpoint": "fraction100/full",
+          "family": "random_forest",
+          "full": {
+            "mcc": 0.3046000865634866,
+            "roc_auc": 0.6704099938960552,
+            "tss": 0.24857142602391974
+          },
+          "reduced": {
+            "mcc": 0.23743870450516438,
+            "roc_auc": 0.6970052179314612,
+            "tss": 0.32523956175373253
+          },
+          "seed_count": 5,
+          "species": "notamacropus_rufogriseus"
+        },
+        {
+          "candidate": "hgb00",
+          "delta": {
+            "mcc": 0.015971699670853684,
+            "roc_auc": -0.0017589807318161288,
+            "tss": -0.017788858902525073
+          },
+          "endpoint": "fraction100/full",
+          "family": "hist_gradient_boosting",
+          "full": {
+            "mcc": 0.22281171723201415,
+            "roc_auc": 0.7035145973051122,
+            "tss": 0.32531260934971756
+          },
+          "reduced": {
+            "mcc": 0.23878341690286783,
+            "roc_auc": 0.7017556165732961,
+            "tss": 0.3075237504471925
+          },
+          "seed_count": 1,
+          "species": "notamacropus_rufogriseus"
+        },
+        {
+          "candidate": "ann01",
+          "delta": {
+            "mcc": 0.007098970856728004,
+            "roc_auc": -0.00720457891059989,
+            "tss": 0.006156415944074678
+          },
+          "endpoint": "fraction100/full",
+          "family": "shallow_ann",
+          "full": {
+            "mcc": 0.23187057647979525,
+            "roc_auc": 0.6963852222962046,
+            "tss": 0.2786611718371684
+          },
+          "reduced": {
+            "mcc": 0.23896954733652326,
+            "roc_auc": 0.6891806433856047,
+            "tss": 0.28481758778124305
+          },
+          "seed_count": 5,
+          "species": "notamacropus_rufogriseus"
+        },
+        {
+          "candidate": "enet01",
+          "delta": {
+            "mcc": -0.036441157361974064,
+            "roc_auc": -0.03328908018972254,
+            "tss": -0.027397468952273296
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "elastic_net",
+          "full": {
+            "mcc": 0.35952732866445614,
+            "roc_auc": 0.7795678209443854,
+            "tss": 0.4832669912811152
+          },
+          "reduced": {
+            "mcc": 0.3230861713024821,
+            "roc_auc": 0.7462787407546628,
+            "tss": 0.4558695223288419
+          },
+          "seed_count": 5,
+          "species": "trichosurus_vulpecula"
+        },
+        {
+          "candidate": "rf00",
+          "delta": {
+            "mcc": -0.10370314156654753,
+            "roc_auc": -0.020934148748722792,
+            "tss": -0.06291728347133918
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "random_forest",
+          "full": {
+            "mcc": 0.43638437595225393,
+            "roc_auc": 0.7972274316184093,
+            "tss": 0.5293903805348237
+          },
+          "reduced": {
+            "mcc": 0.3326812343857064,
+            "roc_auc": 0.7762932828696865,
+            "tss": 0.4664730970634845
+          },
+          "seed_count": 5,
+          "species": "trichosurus_vulpecula"
+        },
+        {
+          "candidate": "hgb00",
+          "delta": {
+            "mcc": -0.047539602858458485,
+            "roc_auc": -0.0167228075344642,
+            "tss": -0.044225641420070516
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "hist_gradient_boosting",
+          "full": {
+            "mcc": 0.3181896701447197,
+            "roc_auc": 0.7474558335011048,
+            "tss": 0.4235352010840604
+          },
+          "reduced": {
+            "mcc": 0.27065006728626123,
+            "roc_auc": 0.7307330259666406,
+            "tss": 0.3793095596639899
+          },
+          "seed_count": 1,
+          "species": "trichosurus_vulpecula"
+        },
+        {
+          "candidate": "ann03",
+          "delta": {
+            "mcc": -0.009798907301663051,
+            "roc_auc": -0.021753743231569866,
+            "tss": 0.010936774623018342
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "shallow_ann",
+          "full": {
+            "mcc": 0.3663956358269759,
+            "roc_auc": 0.7484663177867399,
+            "tss": 0.4179038542712387
+          },
+          "reduced": {
+            "mcc": 0.3565967285253128,
+            "roc_auc": 0.72671257455517,
+            "tss": 0.42884062889425706
+          },
+          "seed_count": 5,
+          "species": "trichosurus_vulpecula"
+        },
+        {
+          "candidate": "enet08",
+          "delta": {
+            "mcc": -0.021495109243389376,
+            "roc_auc": -0.012334658717705893,
+            "tss": -0.025459778747388584
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "elastic_net",
+          "full": {
+            "mcc": 0.36441008768205524,
+            "roc_auc": 0.7806922379697501,
+            "tss": 0.4646069525989365
+          },
+          "reduced": {
+            "mcc": 0.34291497843866586,
+            "roc_auc": 0.7683575792520442,
+            "tss": 0.4391471738515479
+          },
+          "seed_count": 5,
+          "species": "trichosurus_vulpecula"
+        },
+        {
+          "candidate": "rf00",
+          "delta": {
+            "mcc": -0.029027585350145102,
+            "roc_auc": -0.015175748120261234,
+            "tss": -0.03444323597088739
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "random_forest",
+          "full": {
+            "mcc": 0.4416443185492304,
+            "roc_auc": 0.8141377407641951,
+            "tss": 0.5488264489491236
+          },
+          "reduced": {
+            "mcc": 0.4126167331990853,
+            "roc_auc": 0.7989619926439339,
+            "tss": 0.5143832129782362
+          },
+          "seed_count": 5,
+          "species": "trichosurus_vulpecula"
+        },
+        {
+          "candidate": "hgb00",
+          "delta": {
+            "mcc": -0.000588869208836218,
+            "roc_auc": -0.005408582277217855,
+            "tss": -0.01791742606125668
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "hist_gradient_boosting",
+          "full": {
+            "mcc": 0.32263656338887886,
+            "roc_auc": 0.7726478535554472,
+            "tss": 0.41126001782220456
+          },
+          "reduced": {
+            "mcc": 0.32204769418004264,
+            "roc_auc": 0.7672392712782293,
+            "tss": 0.3933425917609479
+          },
+          "seed_count": 1,
+          "species": "trichosurus_vulpecula"
+        },
+        {
+          "candidate": "ann03",
+          "delta": {
+            "mcc": -0.028320920012406325,
+            "roc_auc": -0.01545875069465974,
+            "tss": -0.03023108460298307
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "shallow_ann",
+          "full": {
+            "mcc": 0.4064197851691871,
+            "roc_auc": 0.7754990885087005,
+            "tss": 0.49720932534590095
+          },
+          "reduced": {
+            "mcc": 0.37809886515678076,
+            "roc_auc": 0.7600403378140408,
+            "tss": 0.4669782407429179
+          },
+          "seed_count": 5,
+          "species": "trichosurus_vulpecula"
+        },
+        {
+          "candidate": "enet00",
+          "delta": {
+            "mcc": -0.02659410721345712,
+            "roc_auc": -0.03011439291307083,
+            "tss": -0.02208827479584835
+          },
+          "endpoint": "fraction100/full",
+          "family": "elastic_net",
+          "full": {
+            "mcc": 0.33545462552761474,
+            "roc_auc": 0.7674098285994599,
+            "tss": 0.45169332606759804
+          },
+          "reduced": {
+            "mcc": 0.3088605183141576,
+            "roc_auc": 0.7372954356863891,
+            "tss": 0.4296050512717497
+          },
+          "seed_count": 5,
+          "species": "trichosurus_vulpecula"
+        },
+        {
+          "candidate": "rf00",
+          "delta": {
+            "mcc": -0.0502918970056182,
+            "roc_auc": -0.018845395917167274,
+            "tss": -0.03924869342118614
+          },
+          "endpoint": "fraction100/full",
+          "family": "random_forest",
+          "full": {
+            "mcc": 0.4256687753184242,
+            "roc_auc": 0.8160396257639603,
+            "tss": 0.5340957705829349
+          },
+          "reduced": {
+            "mcc": 0.375376878312806,
+            "roc_auc": 0.797194229846793,
+            "tss": 0.49484707716174875
+          },
+          "seed_count": 5,
+          "species": "trichosurus_vulpecula"
+        },
+        {
+          "candidate": "hgb04",
+          "delta": {
+            "mcc": -0.05475464602036223,
+            "roc_auc": -0.01907236981441518,
+            "tss": -0.07054242741677824
+          },
+          "endpoint": "fraction100/full",
+          "family": "hist_gradient_boosting",
+          "full": {
+            "mcc": 0.3600382436367729,
+            "roc_auc": 0.7673543748427618,
+            "tss": 0.47772581840220274
+          },
+          "reduced": {
+            "mcc": 0.30528359761641066,
+            "roc_auc": 0.7482820050283466,
+            "tss": 0.4071833909854245
+          },
+          "seed_count": 1,
+          "species": "trichosurus_vulpecula"
+        },
+        {
+          "candidate": "ann00",
+          "delta": {
+            "mcc": -0.028720893281912463,
+            "roc_auc": -0.02089756860113201,
+            "tss": -0.007773693197815845
+          },
+          "endpoint": "fraction100/full",
+          "family": "shallow_ann",
+          "full": {
+            "mcc": 0.39491149586623414,
+            "roc_auc": 0.779330886579579,
+            "tss": 0.47970067333536726
+          },
+          "reduced": {
+            "mcc": 0.3661906025843217,
+            "roc_auc": 0.758433317978447,
+            "tss": 0.4719269801375514
+          },
+          "seed_count": 5,
+          "species": "trichosurus_vulpecula"
+        },
+        {
+          "candidate": "enet01",
+          "delta": {
+            "mcc": 0.004597296808769691,
+            "roc_auc": -0.0016314550927909455,
+            "tss": 0.010054131265443522
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "elastic_net",
+          "full": {
+            "mcc": 0.20312198146275745,
+            "roc_auc": 0.6628422207090852,
+            "tss": 0.19756695829331933
+          },
+          "reduced": {
+            "mcc": 0.20771927827152714,
+            "roc_auc": 0.6612107656162942,
+            "tss": 0.20762108955876285
+          },
+          "seed_count": 5,
+          "species": "pseudocheirus_peregrinus"
+        },
+        {
+          "candidate": "rf02",
+          "delta": {
+            "mcc": 0.016456019768535224,
+            "roc_auc": 0.0105808401415316,
+            "tss": 0.03483300122491692
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "random_forest",
+          "full": {
+            "mcc": 0.20544380021981784,
+            "roc_auc": 0.6522715760752679,
+            "tss": 0.1943358905214136
+          },
+          "reduced": {
+            "mcc": 0.22189981998835306,
+            "roc_auc": 0.6628524162167995,
+            "tss": 0.2291688917463305
+          },
+          "seed_count": 5,
+          "species": "pseudocheirus_peregrinus"
+        },
+        {
+          "candidate": "hgb06",
+          "delta": {
+            "mcc": -0.006697233599630287,
+            "roc_auc": 0.014103846446928636,
+            "tss": 0.014849783202336791
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "hist_gradient_boosting",
+          "full": {
+            "mcc": 0.16003551373745234,
+            "roc_auc": 0.5883954820770653,
+            "tss": 0.14541233176779572
+          },
+          "reduced": {
+            "mcc": 0.15333828013782205,
+            "roc_auc": 0.6024993285239939,
+            "tss": 0.1602621149701325
+          },
+          "seed_count": 1,
+          "species": "pseudocheirus_peregrinus"
+        },
+        {
+          "candidate": "ann04",
+          "delta": {
+            "mcc": 0.0029762909676304683,
+            "roc_auc": -0.005031363296799762,
+            "tss": -0.00019622582608794237
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "shallow_ann",
+          "full": {
+            "mcc": 0.23763148059683714,
+            "roc_auc": 0.6631217314047545,
+            "tss": 0.2480103257800938
+          },
+          "reduced": {
+            "mcc": 0.2406077715644676,
+            "roc_auc": 0.6580903681079547,
+            "tss": 0.24781409995400586
+          },
+          "seed_count": 5,
+          "species": "pseudocheirus_peregrinus"
+        },
+        {
+          "candidate": "enet02",
+          "delta": {
+            "mcc": 0.003156956654583709,
+            "roc_auc": -0.0007354189155521773,
+            "tss": 0.004250441075820899
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "elastic_net",
+          "full": {
+            "mcc": 0.23169335595469925,
+            "roc_auc": 0.6742688319213511,
+            "tss": 0.24079565344336923
+          },
+          "reduced": {
+            "mcc": 0.23485031260928296,
+            "roc_auc": 0.6735334130057989,
+            "tss": 0.24504609451919013
+          },
+          "seed_count": 5,
+          "species": "pseudocheirus_peregrinus"
+        },
+        {
+          "candidate": "rf02",
+          "delta": {
+            "mcc": 0.015292945753984905,
+            "roc_auc": 0.0051174815712047295,
+            "tss": 0.01986299043102424
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "random_forest",
+          "full": {
+            "mcc": 0.22313043104606994,
+            "roc_auc": 0.6616286516216794,
+            "tss": 0.22149967084282912
+          },
+          "reduced": {
+            "mcc": 0.23842337680005485,
+            "roc_auc": 0.6667461331928841,
+            "tss": 0.24136266127385336
+          },
+          "seed_count": 5,
+          "species": "pseudocheirus_peregrinus"
+        },
+        {
+          "candidate": "hgb00",
+          "delta": {
+            "mcc": -0.01481594673779571,
+            "roc_auc": -0.020735663490215606,
+            "tss": -0.007642943942704761
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "hist_gradient_boosting",
+          "full": {
+            "mcc": 0.16876123795156922,
+            "roc_auc": 0.6101760177082918,
+            "tss": 0.1642816060224537
+          },
+          "reduced": {
+            "mcc": 0.1539452912137735,
+            "roc_auc": 0.5894403542180762,
+            "tss": 0.15663866207974894
+          },
+          "seed_count": 1,
+          "species": "pseudocheirus_peregrinus"
+        },
+        {
+          "candidate": "ann03",
+          "delta": {
+            "mcc": -0.014450191895789888,
+            "roc_auc": -0.0066475816513429375,
+            "tss": -0.028190924001721518
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "shallow_ann",
+          "full": {
+            "mcc": 0.28363269597426927,
+            "roc_auc": 0.6912857740480701,
+            "tss": 0.29572726947242384
+          },
+          "reduced": {
+            "mcc": 0.2691825040784794,
+            "roc_auc": 0.6846381923967272,
+            "tss": 0.2675363454707023
+          },
+          "seed_count": 5,
+          "species": "pseudocheirus_peregrinus"
+        },
+        {
+          "candidate": "enet02",
+          "delta": {
+            "mcc": 0.006055111821750364,
+            "roc_auc": -0.002751842326004339,
+            "tss": 0.005519602669253221
+          },
+          "endpoint": "fraction100/full",
+          "family": "elastic_net",
+          "full": {
+            "mcc": 0.242478449959314,
+            "roc_auc": 0.6762530276355644,
+            "tss": 0.23367356761846442
+          },
+          "reduced": {
+            "mcc": 0.24853356178106437,
+            "roc_auc": 0.67350118530956,
+            "tss": 0.23919317028771764
+          },
+          "seed_count": 5,
+          "species": "pseudocheirus_peregrinus"
+        },
+        {
+          "candidate": "rf02",
+          "delta": {
+            "mcc": 0.011834718842754832,
+            "roc_auc": 0.008635194881626007,
+            "tss": 0.017545557984834398
+          },
+          "endpoint": "fraction100/full",
+          "family": "random_forest",
+          "full": {
+            "mcc": 0.21864559375319823,
+            "roc_auc": 0.6536266666515747,
+            "tss": 0.2158350177915637
+          },
+          "reduced": {
+            "mcc": 0.23048031259595306,
+            "roc_auc": 0.6622618615332007,
+            "tss": 0.2333805757763981
+          },
+          "seed_count": 5,
+          "species": "pseudocheirus_peregrinus"
+        },
+        {
+          "candidate": "hgb01",
+          "delta": {
+            "mcc": -0.020941796937880508,
+            "roc_auc": -0.004786895680233494,
+            "tss": -0.018082380657363117
+          },
+          "endpoint": "fraction100/full",
+          "family": "hist_gradient_boosting",
+          "full": {
+            "mcc": 0.2140824027279271,
+            "roc_auc": 0.630479444104868,
+            "tss": 0.22293500569236083
+          },
+          "reduced": {
+            "mcc": 0.1931406057900466,
+            "roc_auc": 0.6256925484246345,
+            "tss": 0.2048526250349977
+          },
+          "seed_count": 1,
+          "species": "pseudocheirus_peregrinus"
+        },
+        {
+          "candidate": "ann04",
+          "delta": {
+            "mcc": -0.02056574455093743,
+            "roc_auc": 0.00013469966575607728,
+            "tss": -0.006948892806046991
+          },
+          "endpoint": "fraction100/full",
+          "family": "shallow_ann",
+          "full": {
+            "mcc": 0.2704913062825894,
+            "roc_auc": 0.6862922048338953,
+            "tss": 0.264912889551612
+          },
+          "reduced": {
+            "mcc": 0.24992556173165195,
+            "roc_auc": 0.6864269044996514,
+            "tss": 0.257963996745565
+          },
+          "seed_count": 5,
+          "species": "pseudocheirus_peregrinus"
+        },
+        {
+          "candidate": "enet02",
+          "delta": {
+            "mcc": 0.010633219390762144,
+            "roc_auc": 0.003001747112005959,
+            "tss": 0.00949843689701313
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "elastic_net",
+          "full": {
+            "mcc": 0.2391309716871816,
+            "roc_auc": 0.7171700345342314,
+            "tss": 0.32850338704877413
+          },
+          "reduced": {
+            "mcc": 0.24976419107794373,
+            "roc_auc": 0.7201717816462374,
+            "tss": 0.33800182394578726
+          },
+          "seed_count": 5,
+          "species": "vombatus_ursinus"
+        },
+        {
+          "candidate": "rf02",
+          "delta": {
+            "mcc": 0.012015307976180056,
+            "roc_auc": 0.0046955927333796055,
+            "tss": 0.014689606912116626
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "random_forest",
+          "full": {
+            "mcc": 0.25021211433518625,
+            "roc_auc": 0.6908911443687271,
+            "tss": 0.33207751414717346
+          },
+          "reduced": {
+            "mcc": 0.2622274223113663,
+            "roc_auc": 0.6955867371021067,
+            "tss": 0.3467671210592901
+          },
+          "seed_count": 5,
+          "species": "vombatus_ursinus"
+        },
+        {
+          "candidate": "hgb06",
+          "delta": {
+            "mcc": 0.008770985092107414,
+            "roc_auc": -0.003092232551532681,
+            "tss": 0.014831640978730076
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "hist_gradient_boosting",
+          "full": {
+            "mcc": 0.1848867257308367,
+            "roc_auc": 0.6534349713820143,
+            "tss": 0.24487529079566633
+          },
+          "reduced": {
+            "mcc": 0.1936577108229441,
+            "roc_auc": 0.6503427388304817,
+            "tss": 0.2597069317743964
+          },
+          "seed_count": 1,
+          "species": "vombatus_ursinus"
+        },
+        {
+          "candidate": "ann05",
+          "delta": {
+            "mcc": 0.01686925748623197,
+            "roc_auc": 0.008591681603380974,
+            "tss": 0.016368383832104094
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "shallow_ann",
+          "full": {
+            "mcc": 0.2727900855463853,
+            "roc_auc": 0.7207225089573677,
+            "tss": 0.3688676540338553
+          },
+          "reduced": {
+            "mcc": 0.28965934303261726,
+            "roc_auc": 0.7293141905607486,
+            "tss": 0.3852360378659594
+          },
+          "seed_count": 5,
+          "species": "vombatus_ursinus"
+        },
+        {
+          "candidate": "enet02",
+          "delta": {
+            "mcc": 0.011946956563256395,
+            "roc_auc": 0.0009887228195050168,
+            "tss": 0.015911685275522947
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "elastic_net",
+          "full": {
+            "mcc": 0.22649763922705818,
+            "roc_auc": 0.7159937217290413,
+            "tss": 0.30757800812681213
+          },
+          "reduced": {
+            "mcc": 0.23844459579031457,
+            "roc_auc": 0.7169824445485463,
+            "tss": 0.3234896934023351
+          },
+          "seed_count": 5,
+          "species": "vombatus_ursinus"
+        },
+        {
+          "candidate": "rf01",
+          "delta": {
+            "mcc": 0.03298581477966092,
+            "roc_auc": 0.003959711364092677,
+            "tss": 0.04142008694609206
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "random_forest",
+          "full": {
+            "mcc": 0.2429275005386143,
+            "roc_auc": 0.7085957057397003,
+            "tss": 0.3241989594036382
+          },
+          "reduced": {
+            "mcc": 0.27591331531827523,
+            "roc_auc": 0.712555417103793,
+            "tss": 0.36561904634973025
+          },
+          "seed_count": 5,
+          "species": "vombatus_ursinus"
+        },
+        {
+          "candidate": "hgb05",
+          "delta": {
+            "mcc": -0.014042498491265487,
+            "roc_auc": -0.0077454008631508975,
+            "tss": -0.017174246229155754
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "hist_gradient_boosting",
+          "full": {
+            "mcc": 0.2216423176972818,
+            "roc_auc": 0.6848222663416849,
+            "tss": 0.3043932294143522
+          },
+          "reduced": {
+            "mcc": 0.2075998192060163,
+            "roc_auc": 0.677076865478534,
+            "tss": 0.28721898318519645
+          },
+          "seed_count": 1,
+          "species": "vombatus_ursinus"
+        },
+        {
+          "candidate": "ann04",
+          "delta": {
+            "mcc": 0.02383320582400275,
+            "roc_auc": 0.004339601438664187,
+            "tss": 0.019480832217095678
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "shallow_ann",
+          "full": {
+            "mcc": 0.24588909606710443,
+            "roc_auc": 0.7215353648762056,
+            "tss": 0.3054171382376619
+          },
+          "reduced": {
+            "mcc": 0.2697223018911072,
+            "roc_auc": 0.7258749663148698,
+            "tss": 0.3248979704547576
+          },
+          "seed_count": 5,
+          "species": "vombatus_ursinus"
+        },
+        {
+          "candidate": "enet01",
+          "delta": {
+            "mcc": 8.060226987727237e-05,
+            "roc_auc": 0.0014320497506183916,
+            "tss": 0.02266975696896517
+          },
+          "endpoint": "fraction100/full",
+          "family": "elastic_net",
+          "full": {
+            "mcc": 0.22892049925195407,
+            "roc_auc": 0.7151021356388676,
+            "tss": 0.2887328448924598
+          },
+          "reduced": {
+            "mcc": 0.22900110152183134,
+            "roc_auc": 0.716534185389486,
+            "tss": 0.311402601861425
+          },
+          "seed_count": 5,
+          "species": "vombatus_ursinus"
+        },
+        {
+          "candidate": "rf02",
+          "delta": {
+            "mcc": 0.02934278608089491,
+            "roc_auc": -0.0012154715056568177,
+            "tss": 0.03844239964772589
+          },
+          "endpoint": "fraction100/full",
+          "family": "random_forest",
+          "full": {
+            "mcc": 0.23713464484873192,
+            "roc_auc": 0.7229287650722767,
+            "tss": 0.3148005987575054
+          },
+          "reduced": {
+            "mcc": 0.26647743092962684,
+            "roc_auc": 0.7217132935666198,
+            "tss": 0.35324299840523127
+          },
+          "seed_count": 5,
+          "species": "vombatus_ursinus"
+        },
+        {
+          "candidate": "hgb03",
+          "delta": {
+            "mcc": -0.008928906472958797,
+            "roc_auc": -0.019253980963828243,
+            "tss": -0.010883811435187296
+          },
+          "endpoint": "fraction100/full",
+          "family": "hist_gradient_boosting",
+          "full": {
+            "mcc": 0.2507972973104713,
+            "roc_auc": 0.7159416779006011,
+            "tss": 0.3428618113663741
+          },
+          "reduced": {
+            "mcc": 0.2418683908375125,
+            "roc_auc": 0.6966876969367729,
+            "tss": 0.3319779999311868
+          },
+          "seed_count": 1,
+          "species": "vombatus_ursinus"
+        },
+        {
+          "candidate": "ann04",
+          "delta": {
+            "mcc": 0.01723183276295087,
+            "roc_auc": -0.001240565316255604,
+            "tss": 0.02392918958932816
+          },
+          "endpoint": "fraction100/full",
+          "family": "shallow_ann",
+          "full": {
+            "mcc": 0.2532046186452989,
+            "roc_auc": 0.7303195550129639,
+            "tss": 0.32601091639799656
+          },
+          "reduced": {
+            "mcc": 0.2704364514082498,
+            "roc_auc": 0.7290789896967083,
+            "tss": 0.3499401059873247
+          },
+          "seed_count": 5,
+          "species": "vombatus_ursinus"
+        },
+        {
+          "candidate": "enet09",
+          "delta": {
+            "mcc": -0.002649412028872214,
+            "roc_auc": -0.006301666069355227,
+            "tss": -0.004108885674316498
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "elastic_net",
+          "full": {
+            "mcc": 0.12294442813119266,
+            "roc_auc": 0.7191445814738314,
+            "tss": 0.348690050223804
+          },
+          "reduced": {
+            "mcc": 0.12029501610232045,
+            "roc_auc": 0.7128429154044762,
+            "tss": 0.3445811645494875
+          },
+          "seed_count": 5,
+          "species": "sarcophilus_harrisii"
+        },
+        {
+          "candidate": "rf00",
+          "delta": {
+            "mcc": -0.01816139528991037,
+            "roc_auc": -0.020306446025565195,
+            "tss": -0.04864021265674978
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "random_forest",
+          "full": {
+            "mcc": 0.15577618414159583,
+            "roc_auc": 0.7729842291764493,
+            "tss": 0.44035474131124663
+          },
+          "reduced": {
+            "mcc": 0.13761478885168546,
+            "roc_auc": 0.7526777831508841,
+            "tss": 0.39171452865449685
+          },
+          "seed_count": 5,
+          "species": "sarcophilus_harrisii"
+        },
+        {
+          "candidate": "hgb06",
+          "delta": {
+            "mcc": 0.015832580862903706,
+            "roc_auc": 0.0024766597431551407,
+            "tss": 0.050040885446193895
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "hist_gradient_boosting",
+          "full": {
+            "mcc": 0.10304158626357159,
+            "roc_auc": 0.6745986204910073,
+            "tss": 0.29857765667937075
+          },
+          "reduced": {
+            "mcc": 0.11887416712647529,
+            "roc_auc": 0.6770752802341624,
+            "tss": 0.34861854212556465
+          },
+          "seed_count": 1,
+          "species": "sarcophilus_harrisii"
+        },
+        {
+          "candidate": "ann04",
+          "delta": {
+            "mcc": -0.016448798876834897,
+            "roc_auc": -0.010425402617271318,
+            "tss": -0.04170994425460939
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "shallow_ann",
+          "full": {
+            "mcc": 0.16517472073273967,
+            "roc_auc": 0.7435022355386515,
+            "tss": 0.43748489882455005
+          },
+          "reduced": {
+            "mcc": 0.14872592185590477,
+            "roc_auc": 0.7330768329213802,
+            "tss": 0.39577495456994066
+          },
+          "seed_count": 5,
+          "species": "sarcophilus_harrisii"
+        },
+        {
+          "candidate": "enet09",
+          "delta": {
+            "mcc": -0.01179638203322951,
+            "roc_auc": -0.011550411078497858,
+            "tss": -0.03194967110027902
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "elastic_net",
+          "full": {
+            "mcc": 0.1280428419674328,
+            "roc_auc": 0.758059458942884,
+            "tss": 0.3787491865734712
+          },
+          "reduced": {
+            "mcc": 0.11624645993420328,
+            "roc_auc": 0.7465090478643861,
+            "tss": 0.34679951547319215
+          },
+          "seed_count": 5,
+          "species": "sarcophilus_harrisii"
+        },
+        {
+          "candidate": "rf00",
+          "delta": {
+            "mcc": 0.013451009781260737,
+            "roc_auc": -0.010197216427640932,
+            "tss": -0.0007811484675864788
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "random_forest",
+          "full": {
+            "mcc": 0.15165179659057865,
+            "roc_auc": 0.7915261893247438,
+            "tss": 0.43450325677759033
+          },
+          "reduced": {
+            "mcc": 0.16510280637183938,
+            "roc_auc": 0.7813289728971029,
+            "tss": 0.43372210831000385
+          },
+          "seed_count": 5,
+          "species": "sarcophilus_harrisii"
+        },
+        {
+          "candidate": "hgb06",
+          "delta": {
+            "mcc": -0.0016147789092735843,
+            "roc_auc": -0.02797091973105914,
+            "tss": -0.03045372969181781
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "hist_gradient_boosting",
+          "full": {
+            "mcc": 0.1494961904285228,
+            "roc_auc": 0.7673029983366533,
+            "tss": 0.43231665653435647
+          },
+          "reduced": {
+            "mcc": 0.14788141151924922,
+            "roc_auc": 0.7393320786055941,
+            "tss": 0.40186292684253866
+          },
+          "seed_count": 1,
+          "species": "sarcophilus_harrisii"
+        },
+        {
+          "candidate": "ann03",
+          "delta": {
+            "mcc": -0.010116666273682351,
+            "roc_auc": -0.0004475298605958189,
+            "tss": -0.007575475306351942
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "shallow_ann",
+          "full": {
+            "mcc": 0.1549238578543223,
+            "roc_auc": 0.757166204090469,
+            "tss": 0.4045429722871767
+          },
+          "reduced": {
+            "mcc": 0.14480719158063995,
+            "roc_auc": 0.7567186742298732,
+            "tss": 0.3969674969808248
+          },
+          "seed_count": 5,
+          "species": "sarcophilus_harrisii"
+        },
+        {
+          "candidate": "enet02",
+          "delta": {
+            "mcc": 0.01776030097708728,
+            "roc_auc": -0.011661931534626468,
+            "tss": -0.035054371668583106
+          },
+          "endpoint": "fraction100/full",
+          "family": "elastic_net",
+          "full": {
+            "mcc": 0.1312680907262319,
+            "roc_auc": 0.7424437596782523,
+            "tss": 0.3824867903562309
+          },
+          "reduced": {
+            "mcc": 0.1490283917033192,
+            "roc_auc": 0.7307818281436258,
+            "tss": 0.3474324186876478
+          },
+          "seed_count": 5,
+          "species": "sarcophilus_harrisii"
+        },
+        {
+          "candidate": "rf01",
+          "delta": {
+            "mcc": 0.0031910810638933473,
+            "roc_auc": -0.020486536577461467,
+            "tss": 0.010689423912862706
+          },
+          "endpoint": "fraction100/full",
+          "family": "random_forest",
+          "full": {
+            "mcc": 0.16145118842092204,
+            "roc_auc": 0.836571586194571,
+            "tss": 0.46016273483199405
+          },
+          "reduced": {
+            "mcc": 0.1646422694848154,
+            "roc_auc": 0.8160850496171095,
+            "tss": 0.47085215874485675
+          },
+          "seed_count": 5,
+          "species": "sarcophilus_harrisii"
+        },
+        {
+          "candidate": "hgb04",
+          "delta": {
+            "mcc": -0.03235463986980783,
+            "roc_auc": -0.03777986559930835,
+            "tss": -0.07381052957281903
+          },
+          "endpoint": "fraction100/full",
+          "family": "hist_gradient_boosting",
+          "full": {
+            "mcc": 0.18151323710629358,
+            "roc_auc": 0.8130022407071372,
+            "tss": 0.5036131616592615
+          },
+          "reduced": {
+            "mcc": 0.14915859723648575,
+            "roc_auc": 0.7752223751078289,
+            "tss": 0.4298026320864425
+          },
+          "seed_count": 1,
+          "species": "sarcophilus_harrisii"
+        },
+        {
+          "candidate": "ann01",
+          "delta": {
+            "mcc": 0.009648304237226152,
+            "roc_auc": 0.0044467135306303085,
+            "tss": 0.021979125687688617
+          },
+          "endpoint": "fraction100/full",
+          "family": "shallow_ann",
+          "full": {
+            "mcc": 0.14477978797471333,
+            "roc_auc": 0.7529531942414316,
+            "tss": 0.38678361474880396
+          },
+          "reduced": {
+            "mcc": 0.15442809221193948,
+            "roc_auc": 0.7573999077720619,
+            "tss": 0.4087627404364926
+          },
+          "seed_count": 5,
+          "species": "sarcophilus_harrisii"
+        },
+        {
+          "candidate": "enet04",
+          "delta": {
+            "mcc": 0.0026771925834338517,
+            "roc_auc": -0.000874296388945095,
+            "tss": 0.0022047338699988095
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "elastic_net",
+          "full": {
+            "mcc": 0.16429716180981166,
+            "roc_auc": 0.620003199602393,
+            "tss": 0.19212303721516505
+          },
+          "reduced": {
+            "mcc": 0.1669743543932455,
+            "roc_auc": 0.6191289032134479,
+            "tss": 0.19432777108516386
+          },
+          "seed_count": 5,
+          "species": "dasyurus_maculatus"
+        },
+        {
+          "candidate": "rf06",
+          "delta": {
+            "mcc": -0.014988259131171078,
+            "roc_auc": -0.00027142845132233084,
+            "tss": -0.030318187577641875
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "random_forest",
+          "full": {
+            "mcc": 0.19188795044033566,
+            "roc_auc": 0.634461546607894,
+            "tss": 0.2403521300887621
+          },
+          "reduced": {
+            "mcc": 0.17689969130916458,
+            "roc_auc": 0.6341901181565717,
+            "tss": 0.21003394251112023
+          },
+          "seed_count": 5,
+          "species": "dasyurus_maculatus"
+        },
+        {
+          "candidate": "hgb04",
+          "delta": {
+            "mcc": 0.009765199071662567,
+            "roc_auc": 0.008581665392420224,
+            "tss": 0.021260773676425704
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "hist_gradient_boosting",
+          "full": {
+            "mcc": 0.17157328946279013,
+            "roc_auc": 0.6261562354929031,
+            "tss": 0.1949077100384565
+          },
+          "reduced": {
+            "mcc": 0.1813384885344527,
+            "roc_auc": 0.6347379008853233,
+            "tss": 0.2161684837148822
+          },
+          "seed_count": 1,
+          "species": "dasyurus_maculatus"
+        },
+        {
+          "candidate": "ann03",
+          "delta": {
+            "mcc": 0.003032333594322534,
+            "roc_auc": -0.01220411976527902,
+            "tss": -0.0025085157605360675
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "shallow_ann",
+          "full": {
+            "mcc": 0.2030914508354776,
+            "roc_auc": 0.6289475955712894,
+            "tss": 0.24072584843048786
+          },
+          "reduced": {
+            "mcc": 0.20612378442980014,
+            "roc_auc": 0.6167434758060104,
+            "tss": 0.2382173326699518
+          },
+          "seed_count": 5,
+          "species": "dasyurus_maculatus"
+        },
+        {
+          "candidate": "enet03",
+          "delta": {
+            "mcc": 0.0,
+            "roc_auc": 0.0,
+            "tss": 0.0
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "elastic_net",
+          "full": {
+            "mcc": 0.1740828906418837,
+            "roc_auc": 0.6266128521028338,
+            "tss": 0.19830980304256246
+          },
+          "reduced": {
+            "mcc": 0.1740828906418837,
+            "roc_auc": 0.6266128521028338,
+            "tss": 0.19830980304256246
+          },
+          "seed_count": 5,
+          "species": "dasyurus_maculatus"
+        },
+        {
+          "candidate": "rf04",
+          "delta": {
+            "mcc": -0.0334747424883344,
+            "roc_auc": -0.0385848054587985,
+            "tss": -0.05214779970886971
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "random_forest",
+          "full": {
+            "mcc": 0.19171348906587546,
+            "roc_auc": 0.6457334393463329,
+            "tss": 0.22922049307669132
+          },
+          "reduced": {
+            "mcc": 0.15823874657754106,
+            "roc_auc": 0.6071486338875344,
+            "tss": 0.1770726933678216
+          },
+          "seed_count": 5,
+          "species": "dasyurus_maculatus"
+        },
+        {
+          "candidate": "hgb04",
+          "delta": {
+            "mcc": 0.030548480703072367,
+            "roc_auc": -0.0015589175166864644,
+            "tss": 0.020635283024327156
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "hist_gradient_boosting",
+          "full": {
+            "mcc": 0.08347185143526736,
+            "roc_auc": 0.5683092173513578,
+            "tss": 0.10030653334710153
+          },
+          "reduced": {
+            "mcc": 0.11402033213833973,
+            "roc_auc": 0.5667502998346713,
+            "tss": 0.12094181637142869
+          },
+          "seed_count": 1,
+          "species": "dasyurus_maculatus"
+        },
+        {
+          "candidate": "ann01",
+          "delta": {
+            "mcc": -0.0321776699380901,
+            "roc_auc": -0.028560865780345557,
+            "tss": -0.02478416121176935
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "shallow_ann",
+          "full": {
+            "mcc": 0.19330900835429848,
+            "roc_auc": 0.6346100597370574,
+            "tss": 0.23127569162902092
+          },
+          "reduced": {
+            "mcc": 0.1611313384162084,
+            "roc_auc": 0.6060491939567119,
+            "tss": 0.20649153041725157
+          },
+          "seed_count": 5,
+          "species": "dasyurus_maculatus"
+        },
+        {
+          "candidate": "enet06",
+          "delta": {
+            "mcc": 0.0,
+            "roc_auc": 0.0,
+            "tss": 0.0
+          },
+          "endpoint": "fraction100/full",
+          "family": "elastic_net",
+          "full": {
+            "mcc": 0.17446269693794877,
+            "roc_auc": 0.633212054783175,
+            "tss": 0.1971730292949454
+          },
+          "reduced": {
+            "mcc": 0.17446269693794877,
+            "roc_auc": 0.633212054783175,
+            "tss": 0.1971730292949454
+          },
+          "seed_count": 5,
+          "species": "dasyurus_maculatus"
+        },
+        {
+          "candidate": "rf02",
+          "delta": {
+            "mcc": -0.026727625344013267,
+            "roc_auc": -0.03097474395630495,
+            "tss": -0.032994965551834954
+          },
+          "endpoint": "fraction100/full",
+          "family": "random_forest",
+          "full": {
+            "mcc": 0.23836355515967034,
+            "roc_auc": 0.6601760289313604,
+            "tss": 0.26700074508987304
+          },
+          "reduced": {
+            "mcc": 0.21163592981565707,
+            "roc_auc": 0.6292012849750555,
+            "tss": 0.23400577953803808
+          },
+          "seed_count": 5,
+          "species": "dasyurus_maculatus"
+        },
+        {
+          "candidate": "hgb00",
+          "delta": {
+            "mcc": 0.004379802441395131,
+            "roc_auc": 0.001021818194563151,
+            "tss": 0.004434373894414478
+          },
+          "endpoint": "fraction100/full",
+          "family": "hist_gradient_boosting",
+          "full": {
+            "mcc": 0.16466959826516628,
+            "roc_auc": 0.6305507501663937,
+            "tss": 0.1880036741404934
+          },
+          "reduced": {
+            "mcc": 0.1690494007065614,
+            "roc_auc": 0.6315725683609569,
+            "tss": 0.19243804803490788
+          },
+          "seed_count": 1,
+          "species": "dasyurus_maculatus"
+        },
+        {
+          "candidate": "ann00",
+          "delta": {
+            "mcc": -0.03092969463749992,
+            "roc_auc": -0.026958134500160935,
+            "tss": -0.020204614896815742
+          },
+          "endpoint": "fraction100/full",
+          "family": "shallow_ann",
+          "full": {
+            "mcc": 0.23614353271745242,
+            "roc_auc": 0.6458025383622175,
+            "tss": 0.25205381586472597
+          },
+          "reduced": {
+            "mcc": 0.2052138380799525,
+            "roc_auc": 0.6188444038620565,
+            "tss": 0.23184920096791023
+          },
+          "seed_count": 5,
+          "species": "dasyurus_maculatus"
+        },
+        {
+          "candidate": "enet07",
+          "delta": {
+            "mcc": -0.006687077557571974,
+            "roc_auc": 0.0033399898637769265,
+            "tss": -0.004272718292662736
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "elastic_net",
+          "full": {
+            "mcc": 0.40010080641697393,
+            "roc_auc": 0.7003213798586949,
+            "tss": 0.40649605656516685
+          },
+          "reduced": {
+            "mcc": 0.39341372885940196,
+            "roc_auc": 0.7036613697224718,
+            "tss": 0.4022233382725041
+          },
+          "seed_count": 5,
+          "species": "dasyurus_viverrinus"
+        },
+        {
+          "candidate": "rf05",
+          "delta": {
+            "mcc": -0.0028764314464584384,
+            "roc_auc": -0.011380418453970753,
+            "tss": -0.0001621222567050884
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "random_forest",
+          "full": {
+            "mcc": 0.5246927236773166,
+            "roc_auc": 0.8087083501798755,
+            "tss": 0.516994515978721
+          },
+          "reduced": {
+            "mcc": 0.5218162922308581,
+            "roc_auc": 0.7973279317259048,
+            "tss": 0.516832393722016
+          },
+          "seed_count": 5,
+          "species": "dasyurus_viverrinus"
+        },
+        {
+          "candidate": "hgb05",
+          "delta": {
+            "mcc": -0.03545705752945694,
+            "roc_auc": -0.0075809020034919294,
+            "tss": -0.04067923419429498
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "hist_gradient_boosting",
+          "full": {
+            "mcc": 0.46499659756438483,
+            "roc_auc": 0.787185635441322,
+            "tss": 0.4806153600718998
+          },
+          "reduced": {
+            "mcc": 0.4295395400349279,
+            "roc_auc": 0.7796047334378301,
+            "tss": 0.43993612587760483
+          },
+          "seed_count": 1,
+          "species": "dasyurus_viverrinus"
+        },
+        {
+          "candidate": "ann00",
+          "delta": {
+            "mcc": 0.014665478207189497,
+            "roc_auc": -0.02364304713358545,
+            "tss": 0.004689241817323164
+          },
+          "endpoint": "fraction25/ladder00",
+          "family": "shallow_ann",
+          "full": {
+            "mcc": 0.36211635954483007,
+            "roc_auc": 0.7704467405598657,
+            "tss": 0.36814631877171483
+          },
+          "reduced": {
+            "mcc": 0.37678183775201957,
+            "roc_auc": 0.7468036934262803,
+            "tss": 0.372835560589038
+          },
+          "seed_count": 5,
+          "species": "dasyurus_viverrinus"
+        },
+        {
+          "candidate": "enet03",
+          "delta": {
+            "mcc": -0.008863036346438147,
+            "roc_auc": 0.003490044197558939,
+            "tss": -0.013256255856112453
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "elastic_net",
+          "full": {
+            "mcc": 0.40134965687520135,
+            "roc_auc": 0.7000363239239247,
+            "tss": 0.4104142402337666
+          },
+          "reduced": {
+            "mcc": 0.3924866205287632,
+            "roc_auc": 0.7035263681214836,
+            "tss": 0.39715798437765415
+          },
+          "seed_count": 5,
+          "species": "dasyurus_viverrinus"
+        },
+        {
+          "candidate": "rf01",
+          "delta": {
+            "mcc": -0.059383935159913526,
+            "roc_auc": -0.0281371588867092,
+            "tss": -0.03917953643923655
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "random_forest",
+          "full": {
+            "mcc": 0.5100123234476118,
+            "roc_auc": 0.7953041972988049,
+            "tss": 0.5065103909988213
+          },
+          "reduced": {
+            "mcc": 0.4506283882876983,
+            "roc_auc": 0.7671670384120957,
+            "tss": 0.4673308545595848
+          },
+          "seed_count": 5,
+          "species": "dasyurus_viverrinus"
+        },
+        {
+          "candidate": "hgb06",
+          "delta": {
+            "mcc": -0.059838562849642674,
+            "roc_auc": -0.02320803775820568,
+            "tss": -0.06535156879925857
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "hist_gradient_boosting",
+          "full": {
+            "mcc": 0.48406797354046177,
+            "roc_auc": 0.809926461815506,
+            "tss": 0.5049861143962001
+          },
+          "reduced": {
+            "mcc": 0.4242294106908191,
+            "roc_auc": 0.7867184240573003,
+            "tss": 0.43963454559694154
+          },
+          "seed_count": 1,
+          "species": "dasyurus_viverrinus"
+        },
+        {
+          "candidate": "ann00",
+          "delta": {
+            "mcc": -0.09648583818753698,
+            "roc_auc": -0.0206255110654463,
+            "tss": -0.09490185395250278
+          },
+          "endpoint": "fraction50/ladder00",
+          "family": "shallow_ann",
+          "full": {
+            "mcc": 0.3994167695027485,
+            "roc_auc": 0.7547298108043947,
+            "tss": 0.4166031376493334
+          },
+          "reduced": {
+            "mcc": 0.30293093131521154,
+            "roc_auc": 0.7341042997389484,
+            "tss": 0.3217012836968306
+          },
+          "seed_count": 5,
+          "species": "dasyurus_viverrinus"
+        },
+        {
+          "candidate": "enet00",
+          "delta": {
+            "mcc": -0.04976747398026715,
+            "roc_auc": -0.005278823911203601,
+            "tss": -0.059550378942381355
+          },
+          "endpoint": "fraction100/full",
+          "family": "elastic_net",
+          "full": {
+            "mcc": 0.40121690061784687,
+            "roc_auc": 0.697154825734633,
+            "tss": 0.4144388900248188
+          },
+          "reduced": {
+            "mcc": 0.3514494266375797,
+            "roc_auc": 0.6918760018234295,
+            "tss": 0.35488851108243746
+          },
+          "seed_count": 5,
+          "species": "dasyurus_viverrinus"
+        },
+        {
+          "candidate": "rf00",
+          "delta": {
+            "mcc": -0.09245562838320703,
+            "roc_auc": -0.018417969121306665,
+            "tss": -0.07262341606855827
+          },
+          "endpoint": "fraction100/full",
+          "family": "random_forest",
+          "full": {
+            "mcc": 0.5264098040021576,
+            "roc_auc": 0.8141144960415707,
+            "tss": 0.519068138364869
+          },
+          "reduced": {
+            "mcc": 0.4339541756189506,
+            "roc_auc": 0.795696526920264,
+            "tss": 0.4464447222963107
+          },
+          "seed_count": 5,
+          "species": "dasyurus_viverrinus"
+        },
+        {
+          "candidate": "hgb05",
+          "delta": {
+            "mcc": -0.03192186334770608,
+            "roc_auc": -0.01810231716819799,
+            "tss": -0.028460976173853736
+          },
+          "endpoint": "fraction100/full",
+          "family": "hist_gradient_boosting",
+          "full": {
+            "mcc": 0.4250471097212998,
+            "roc_auc": 0.8021515560973045,
+            "tss": 0.43537499886104997
+          },
+          "reduced": {
+            "mcc": 0.3931252463735937,
+            "roc_auc": 0.7840492389291065,
+            "tss": 0.40691402268719623
+          },
+          "seed_count": 1,
+          "species": "dasyurus_viverrinus"
+        },
+        {
+          "candidate": "ann03",
+          "delta": {
+            "mcc": 0.0214049203669312,
+            "roc_auc": -0.013888996183563318,
+            "tss": 0.018481529677832897
+          },
+          "endpoint": "fraction100/full",
+          "family": "shallow_ann",
+          "full": {
+            "mcc": 0.38902468420704267,
+            "roc_auc": 0.7552129968060008,
+            "tss": 0.4102208289489978
+          },
+          "reduced": {
+            "mcc": 0.41042960457397387,
+            "roc_auc": 0.7413240006224375,
+            "tss": 0.4287023586268307
+          },
+          "seed_count": 5,
+          "species": "dasyurus_viverrinus"
+        }
+      ],
+      "strata": 96
+    },
+    "context_digest": "1b61f6f3a40d5f73026c4d2b8ac65bf56c2f616eeec1bbc55161b22c0a550a7b",
+    "control_manifest_digest": "1bb5bcc7ea450d87a2ddb8b5ea3a11ac96163e8001e0a3cc11d2c6853b09b5bc",
+    "full_inventory_digest": "ad87097d214f47b66a6642283f07585c77e3da53782072a58ca8df9a43fd8ba9",
+    "inventory_digest": "9dde700df8c2e16d17b2342b8eae89b6b8d2a464ae2764d5043093ea9a5df9e6",
+    "mask_authority": {
+      "path": "evidence/dsdm_predictor_substrate_sensitivity/goal039/mask_audit.json",
+      "selector_config_digest": "da72d0814c67874f084d5f9c007aa20aafa3ee51690a2034593fedd81d3c2409",
+      "sha256": "80b9da8746727bde9f53947699d878a2b55fdc5cca825d6c11e111d2b15e0216"
+    },
+    "new_leaf_count": 384,
+    "new_stage": {
+      "endpoints": 3,
+      "fold_units": 1920,
+      "leaves": 384,
+      "physical_fits": 5040
+    },
+    "outer_attempted": 0,
+    "outer_opened": 0,
+    "paired_inventory_digest": "34465688ac0a4a59db3d4118ad88e3bee94b2af488f22e813ef3b2496189fa52",
+    "paired_leaf_count": 384,
+    "receipt_digest": "c8a39eb169b2dba5d751be19724903ba176f63eeab0251e388cdca7b2b41bc12",
+    "reduced_inventory_digest": "9dde700df8c2e16d17b2342b8eae89b6b8d2a464ae2764d5043093ea9a5df9e6",
+    "reused_screen_full_leaves": 0,
+    "schema_version": "goal039-conventional-screen-v2",
+    "stage": "screen",
+    "worker_receipt_digest": "a1bd0392f8e84581c5e0be060d85f951998cf3163fb67f414eb2ab51868ea28f",
+    "worker_result_digest": "94e47c9da3fb6dbd651160aede240e5987b1392e280b7d5a0922ef2f502fa59b",
+    "worker_runtime": {
+      "availability": {
+        "elastic_net": {
+          "LogisticRegression": true,
+          "adapter_fit": true
+        },
+        "hist_gradient_boosting": {
+          "HistGradientBoostingClassifier": true,
+          "adapter_fit": true
+        },
+        "random_forest": {
+          "RandomForestClassifier": true,
+          "adapter_fit": true
+        },
+        "shallow_ann": {
+          "_TorchShallow": true,
+          "adapter_fit": true
+        }
+      },
+      "blas_threads": 1,
+      "device": "cpu",
+      "families": [
+        "elastic_net",
+        "random_forest",
+        "hist_gradient_boosting",
+        "shallow_ann"
+      ],
+      "goal029_thread_evidence": {
+        "all_reported_pools_within_limit": true,
+        "environment": {
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1"
+        },
+        "evidence_digest": "71784fdc78900c693952705562b04583852865dfdd2e9799fd09879d371afc9a",
+        "policy_digest": "07cf775706d78aaf4c67412f07a2cff5ef6f0b675fcb2285f1fa177e2e779278",
+        "pools": [
+          {
+            "architecture": "",
+            "internal_api": "openmp",
+            "num_threads": 1,
+            "prefix": "libomp",
+            "threading_layer": "",
+            "user_api": "openmp",
+            "version": "None"
+          },
+          {
+            "architecture": "",
+            "internal_api": "openmp",
+            "num_threads": 1,
+            "prefix": "libomp",
+            "threading_layer": "",
+            "user_api": "openmp",
+            "version": "None"
+          }
+        ],
+        "schema_version": "1.0",
+        "torch": {
+          "interop_threads": 1,
+          "intraop_threads": 1
+        }
+      },
+      "goal029_thread_evidence_digest": "71784fdc78900c693952705562b04583852865dfdd2e9799fd09879d371afc9a",
+      "numpy": "2.5.1",
+      "pygam_required": false,
+      "python": "/Users/bwbrook/papers/dSDM/.venv/bin/python",
+      "python_major_minor": "3.12",
+      "python_realpath": "/Users/bwbrook/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/bin/python3.12",
+      "python_relative": ".venv/bin/python",
+      "schema_version": "goal039-conventional-runtime-v1",
+      "scikit_learn": "1.9.0",
+      "scipy": "1.16.3",
+      "threads": 1,
+      "torch": "2.13.0"
+    }
+  },
+  "conventional_context_digest": "c8a39eb169b2dba5d751be19724903ba176f63eeab0251e388cdca7b2b41bc12",
+  "decision_basis": "neural_only",
+  "delta_i": {
+    "aggregate_auc": 0.003613948864582594,
+    "aggregate_tss": -0.0011454915530457407,
+    "aggregate_tss_value": -0.0011454915530457407,
+    "endpoint_means": {
+      "fraction100/full": 0.02094293828725759,
+      "fraction25/ladder00": 0.0067295900218506295,
+      "fraction50/ladder00": -0.016830681715360438
+    },
+    "positive_endpoints": 2,
+    "positive_reserved_seeds": 0,
+    "positive_seeds": 1,
+    "positive_species": 6,
+    "seed_means": {
+      "31031": 0.017006510028705978,
+      "31032": -0.003726139389427979,
+      "31033": -0.007339588434095099
+    },
+    "seed_tss_means": {
+      "31031": 0.004630423139061123,
+      "31032": 0.001712775526263687,
+      "31033": -0.028592091925039927
+    },
+    "species_means": {
+      "dasyurus_maculatus": 0.0009872056956167473,
+      "dasyurus_viverrinus": 5.730483610018785e-05,
+      "notamacropus_rufogriseus": -0.022405117959995547,
+      "pseudocheirus_peregrinus": 0.0019439217765727143,
+      "sarcophilus_harrisii": 0.003920037461917447,
+      "thylogale_billardierii": 0.054397224105611854,
+      "trichosurus_vulpecula": 0.005067463985303214,
+      "vombatus_ursinus": -0.015056448984465868
+    }
+  },
+  "delta_i_rejection_reason": null,
+  "delta_u": {
+    "aggregate_auc": -0.0010864352006824405,
+    "aggregate_tss": -0.007970869546768585,
+    "aggregate_tss_value": -0.007970869546768585,
+    "endpoint_means": {
+      "fraction100/full": 0.008011408252422364,
+      "fraction25/ladder00": 0.00279017195522574,
+      "fraction50/ladder00": -0.014060885809695424
+    },
+    "positive_endpoints": 2,
+    "positive_reserved_seeds": 0,
+    "positive_seeds": 1,
+    "positive_species": 4,
+    "seed_means": {
+      "31031": 0.0008115303173640352,
+      "31032": -0.004224110911934415,
+      "31033": -0.009770296243993188
+    },
+    "seed_tss_means": {
+      "31031": -0.0045613416892541035,
+      "31032": -0.009917033553394643,
+      "31033": -0.02327191714051972
+    },
+    "species_means": {
+      "dasyurus_maculatus": -0.0060092039611521104,
+      "dasyurus_viverrinus": 0.01488931166846356,
+      "notamacropus_rufogriseus": -0.030920420166489434,
+      "pseudocheirus_peregrinus": 0.006096545474000203,
+      "sarcophilus_harrisii": -0.013684197030211183,
+      "thylogale_billardierii": 0.024684049010030542,
+      "trichosurus_vulpecula": -0.014369553997318927,
+      "vombatus_ursinus": 0.010621987397217819
+    }
+  },
+  "delta_u_guard_passed": true,
+  "effective_eligible_delta_i": false,
+  "eligible": false,
+  "eligible_delta_i": false,
+  "eligible_delta_u": false,
+  "outer_attempted": 0,
+  "outer_opened": 0,
+  "raw_delta_i_gate": false,
+  "raw_delta_u_gate": false,
+  "raw_eligible_delta_i": false,
+  "receipt_digest": "680af38694f163f47426b6c917e43a0f885f1b102ddb512558e75e92413a6ef5",
+  "records": 120,
+  "schema_version": "goal039-screen-v2",
+  "screen_eligibility": null,
+  "screen_receipt_digest": null,
+  "stage": "screen"
+}
