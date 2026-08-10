@@ -164,6 +164,11 @@ def choose_tss_threshold(y: Sequence[int], score: Sequence[float]) -> float:
     return winners[(len(winners) - 1) // 2]
 
 
+def _prediction_field(method: str) -> str:
+    """Map canonical method IDs to compact cell-record prediction fields."""
+    return "multihead" if method == "multihead_full_finetune" else "target_only"
+
+
 def eligibility_gate(row: Mapping[str, Any]) -> bool:
     return (float(row["median_species_d_auc"]) > 0 and float(row["median_species_l_auc"]) > 0 and int(row["species_d_auc_positive"]) >= 5 and int(row["seed_d_auc_positive"]) >= 2 and float(row["median_species_d_tss"]) >= 0)
 
@@ -442,7 +447,7 @@ def _stage_metrics(config: CapacityConfig) -> list[dict[str, Any]]:
             for fold in FOLDS:
                 fold_rows = [record for record in control_rows if record["species"] == species_name and record["fold"] == fold]
                 if fold_rows:
-                    pooled_y.extend(fold_rows[0]["y"]); pooled_scores.extend(average_common_seed_predictions(np.asarray([record[method] for record in fold_rows])))
+                    pooled_y.extend(fold_rows[0]["y"]); pooled_scores.extend(average_common_seed_predictions(np.asarray([record[_prediction_field(method)] for record in fold_rows])))
             control_thresholds[("control", species_name, method)] = choose_tss_threshold(pooled_y, pooled_scores)
     control_lifts = aggregate_species_lifts(control_rows, threshold=control_thresholds)
     out: list[dict[str, Any]] = []

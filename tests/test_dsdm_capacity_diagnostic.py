@@ -113,3 +113,8 @@ def test_lifecycle_digest_tamper_fails_even_when_boolean_claim_stays_true():
     diagnostics[2]["initial_shared_digest"] = "b" * 64
     with pytest.raises(ValueError, match="transfer checks"):
         cd._validate_lifecycle_diagnostics(diagnostics, checks, identity)
+
+
+def test_control_threshold_postprocessing_maps_canonical_method_field():
+    assert cd._prediction_field("target_only") == "target_only"
+    assert cd._prediction_field("multihead_full_finetune") == "multihead"
