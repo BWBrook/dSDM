@@ -1,0 +1,314 @@
+{
+  "config_digest": "979a3767412254456eab7435913f6655fdb108bccfc1d5a1c1169e88b46ab74e",
+  "conventional": {
+    "child_result_receipt_digest": "001155477396da60962a1ef229231d3efc99f579e94640b93e80030c3cc02eb8",
+    "config_digest": "979a3767412254456eab7435913f6655fdb108bccfc1d5a1c1169e88b46ab74e",
+    "control_manifest_digest": "1bb5bcc7ea450d87a2ddb8b5ea3a11ac96163e8001e0a3cc11d2c6853b09b5bc",
+    "current_full_repeat_fits": 8,
+    "families": [
+      {
+        "candidate": "enet02",
+        "family": "elastic_net",
+        "full_repeat_receipt_digest": "d94798311763663011b442f47b2fa3f170e5dc3b2eb787990215c91043c788e7",
+        "historical_control_diagnostic": {
+          "bounded": true,
+          "control_row_identity_digest": "b8c77ea083a841fc6faf6e92d227520cded9c55e31ff61110f187f06a9c38377",
+          "control_value_digest": "b2ac1a4ad7224e4481ca869c47666fb6349f726631041a4f3cf535013527974e",
+          "current_row_identity_digest": "b8c77ea083a841fc6faf6e92d227520cded9c55e31ff61110f187f06a9c38377",
+          "current_value_digest": "b628276e63b4ba1f8ebe40fcde5698e461cbe10196a46a380217eef228982181",
+          "drift_observed": true,
+          "finite": true,
+          "leaf": {
+            "candidate_id": "enet02",
+            "fraction_id": "fraction100",
+            "ladder_id": "full",
+            "model_family": "elastic_net",
+            "seed_label": "seed00",
+            "species_id": "sarcophilus_harrisii"
+          },
+          "maximum_abs_difference": 1.1102230246251565e-15,
+          "observation_count": 3186,
+          "outer_attempted": 0,
+          "outer_opened": 0,
+          "receipt_digest": "24c529bcfb6e219bbcd0f2ce6289570819cae61208ee71a5eebbca7ea2348560",
+          "schema_version": "goal039-conventional-historical-control-v2"
+        },
+        "mask_digest_by_fold": {
+          "fold00": "1ead268a1c349edbbd42c37ff5b3dd62607bbc621b73e3a10b37b63a5cbb78ce",
+          "fold01": "7af954b08fc9cf84f8b63d6e54d3c9da397304b66ae904ef8cc2f0638f341cdf",
+          "fold02": "14c602077d32ccd98076af1008e1e9ad5218b1fd6bcb9e6d09aecb2073944821",
+          "fold03": "7af954b08fc9cf84f8b63d6e54d3c9da397304b66ae904ef8cc2f0638f341cdf",
+          "fold04": "f8c0d1a8175545bcada2c0df16ec52908cf92223c40740bb526f8de5755cb4d2"
+        },
+        "observation_digest": "b8c77ea083a841fc6faf6e92d227520cded9c55e31ff61110f187f06a9c38377",
+        "reduced_repeat_receipt_digest": "4098f561b2254d28fae2d9ecb9ac06b5d5a3ea379f38d14875bb244824b1f547",
+        "reduced_value_digest": "68897daf0e8593bcac9f7c36bd60877ec3124df95ea8008552e75ee525367e59",
+        "seed": "seed00"
+      },
+      {
+        "candidate": "rf01",
+        "family": "random_forest",
+        "full_repeat_receipt_digest": "01398378a7f98487aadd14497251f6e70f84258159b7c02ddbe6d7242d156add",
+        "historical_control_diagnostic": {
+          "bounded": true,
+          "control_row_identity_digest": "b8c77ea083a841fc6faf6e92d227520cded9c55e31ff61110f187f06a9c38377",
+          "control_value_digest": "27dd9deea4ffb5a394d270a0c3ef8519f3e67c2660c681db849329618ac3f6e7",
+          "current_row_identity_digest": "b8c77ea083a841fc6faf6e92d227520cded9c55e31ff61110f187f06a9c38377",
+          "current_value_digest": "17702a7ce22a1b4db17c538248b05121bb12c247d3c0418c60127a92137f96cf",
+          "drift_observed": true,
+          "finite": true,
+          "leaf": {
+            "candidate_id": "rf01",
+            "fraction_id": "fraction100",
+            "ladder_id": "full",
+            "model_family": "random_forest",
+            "seed_label": "seed00",
+            "species_id": "sarcophilus_harrisii"
+          },
+          "maximum_abs_difference": 0.005568253968253889,
+          "observation_count": 3186,
+          "outer_attempted": 0,
+          "outer_opened": 0,
+          "receipt_digest": "85b45d77144c159f8c6e05f917bf56bbac415a34e4beed9d51eb473f36f6768f",
+          "schema_version": "goal039-conventional-historical-control-v2"
+        },
+        "mask_digest_by_fold": {
+          "fold00": "1ead268a1c349edbbd42c37ff5b3dd62607bbc621b73e3a10b37b63a5cbb78ce",
+          "fold01": "7af954b08fc9cf84f8b63d6e54d3c9da397304b66ae904ef8cc2f0638f341cdf",
+          "fold02": "14c602077d32ccd98076af1008e1e9ad5218b1fd6bcb9e6d09aecb2073944821",
+          "fold03": "7af954b08fc9cf84f8b63d6e54d3c9da397304b66ae904ef8cc2f0638f341cdf",
+          "fold04": "f8c0d1a8175545bcada2c0df16ec52908cf92223c40740bb526f8de5755cb4d2"
+        },
+        "observation_digest": "b8c77ea083a841fc6faf6e92d227520cded9c55e31ff61110f187f06a9c38377",
+        "reduced_repeat_receipt_digest": "0290b709a63b7af02ccaa16e026d19648bb3da83aa08191e2d5923d039deb870",
+        "reduced_value_digest": "0d18baf4f69d4b6c1a43f02235e0947130777d5a9dfff50d8f30d2941a6b351b",
+        "seed": "seed00"
+      },
+      {
+        "candidate": "hgb04",
+        "family": "hist_gradient_boosting",
+        "full_repeat_receipt_digest": "d2c2bbcbfe3f8625b98d0a92918045fe6487c1ee79457b4360ae147447784d32",
+        "historical_control_diagnostic": {
+          "bounded": true,
+          "control_row_identity_digest": "b8c77ea083a841fc6faf6e92d227520cded9c55e31ff61110f187f06a9c38377",
+          "control_value_digest": "45d57b2cd47a4aed52865abce3f3e1c0b480b4d76a2f126c0b7ea8c47953f257",
+          "current_row_identity_digest": "b8c77ea083a841fc6faf6e92d227520cded9c55e31ff61110f187f06a9c38377",
+          "current_value_digest": "a5cff59f22666f65ed9e9b7df890d59f77fd7f178217a8feb4aaed4c510a6050",
+          "drift_observed": false,
+          "finite": true,
+          "leaf": {
+            "candidate_id": "hgb04",
+            "fraction_id": "fraction100",
+            "ladder_id": "full",
+            "model_family": "hist_gradient_boosting",
+            "seed_label": "seed00",
+            "species_id": "sarcophilus_harrisii"
+          },
+          "maximum_abs_difference": 0.0,
+          "observation_count": 3186,
+          "outer_attempted": 0,
+          "outer_opened": 0,
+          "receipt_digest": "88d6721ca169e19093cde0847c95a2abbc2f40ef14421b059938d9f6fc95d7ee",
+          "schema_version": "goal039-conventional-historical-control-v2"
+        },
+        "mask_digest_by_fold": {
+          "fold00": "1ead268a1c349edbbd42c37ff5b3dd62607bbc621b73e3a10b37b63a5cbb78ce",
+          "fold01": "7af954b08fc9cf84f8b63d6e54d3c9da397304b66ae904ef8cc2f0638f341cdf",
+          "fold02": "14c602077d32ccd98076af1008e1e9ad5218b1fd6bcb9e6d09aecb2073944821",
+          "fold03": "7af954b08fc9cf84f8b63d6e54d3c9da397304b66ae904ef8cc2f0638f341cdf",
+          "fold04": "f8c0d1a8175545bcada2c0df16ec52908cf92223c40740bb526f8de5755cb4d2"
+        },
+        "observation_digest": "b8c77ea083a841fc6faf6e92d227520cded9c55e31ff61110f187f06a9c38377",
+        "reduced_repeat_receipt_digest": "0dce8b041e957682093b5940ae1c23c80f6c6ce3b6b4824c1af92dc1d4725373",
+        "reduced_value_digest": "b7c93a2dc7c0896cde2f0ee34d7ce5a1708915d4a1d9631f3952f8b7926ff901",
+        "seed": "seed00"
+      },
+      {
+        "candidate": "ann01",
+        "family": "shallow_ann",
+        "full_repeat_receipt_digest": "f38909d44b250e3ffdd258431fdfa9949f91db701c493ddbbd67cbf5d989cb12",
+        "historical_control_diagnostic": {
+          "bounded": true,
+          "control_row_identity_digest": "b8c77ea083a841fc6faf6e92d227520cded9c55e31ff61110f187f06a9c38377",
+          "control_value_digest": "6b2a122d3da2e05642f9d1e3d5df67158ffb6b39afabdad838c46a96d2008ce3",
+          "current_row_identity_digest": "b8c77ea083a841fc6faf6e92d227520cded9c55e31ff61110f187f06a9c38377",
+          "current_value_digest": "f1d021ceb871317133f2b73585bd9f2ea9486645fc7e8e0c3466bf5623056e95",
+          "drift_observed": true,
+          "finite": true,
+          "leaf": {
+            "candidate_id": "ann01",
+            "fraction_id": "fraction100",
+            "ladder_id": "full",
+            "model_family": "shallow_ann",
+            "seed_label": "seed00",
+            "species_id": "sarcophilus_harrisii"
+          },
+          "maximum_abs_difference": 1.4901161193847656e-07,
+          "observation_count": 3186,
+          "outer_attempted": 0,
+          "outer_opened": 0,
+          "receipt_digest": "ee10d940fdfddde73196aa1befbe0f1b64bc5452e645cb32221860b163258c9e",
+          "schema_version": "goal039-conventional-historical-control-v2"
+        },
+        "mask_digest_by_fold": {
+          "fold00": "1ead268a1c349edbbd42c37ff5b3dd62607bbc621b73e3a10b37b63a5cbb78ce",
+          "fold01": "7af954b08fc9cf84f8b63d6e54d3c9da397304b66ae904ef8cc2f0638f341cdf",
+          "fold02": "14c602077d32ccd98076af1008e1e9ad5218b1fd6bcb9e6d09aecb2073944821",
+          "fold03": "7af954b08fc9cf84f8b63d6e54d3c9da397304b66ae904ef8cc2f0638f341cdf",
+          "fold04": "f8c0d1a8175545bcada2c0df16ec52908cf92223c40740bb526f8de5755cb4d2"
+        },
+        "observation_digest": "b8c77ea083a841fc6faf6e92d227520cded9c55e31ff61110f187f06a9c38377",
+        "reduced_repeat_receipt_digest": "0bfa319320b581000659d7ec739ea0f55de62f20ad1c30e68d0804991b02f364",
+        "reduced_value_digest": "29a0089638c3260dcea4f70551342df2d8e386a1771ac3c367538b073cfd0a7f",
+        "seed": "seed00"
+      }
+    ],
+    "family_count": 4,
+    "full28_replay": {
+      "families": [
+        "elastic_net",
+        "random_forest",
+        "hist_gradient_boosting",
+        "shallow_ann"
+      ],
+      "maximum_abs_difference_by_family": {
+        "elastic_net": 1.1102230246251565e-15,
+        "hist_gradient_boosting": 0.0,
+        "random_forest": 0.005568253968253889,
+        "shallow_ann": 1.4901161193847656e-07
+      },
+      "outer_attempted": 0,
+      "outer_opened": 0,
+      "receipt_digest": "7b47f505b483367da0157e8d6e800e4e195744c6f5bf4d9d32f17756e8dbffb1",
+      "replays": 4,
+      "schema_version": "goal039-conventional-historical-control-v2"
+    },
+    "full28_replays": 4,
+    "mask_authority": {
+      "path": "evidence/dsdm_predictor_substrate_sensitivity/goal039/mask_audit.json",
+      "selector_config_digest": "da72d0814c67874f084d5f9c007aa20aafa3ee51690a2034593fedd81d3c2409",
+      "sha256": "80b9da8746727bde9f53947699d878a2b55fdc5cca825d6c11e111d2b15e0216"
+    },
+    "outer_attempted": 0,
+    "outer_opened": 0,
+    "receipt_digest": "05124d455bcfe8928ed12deae65eb613b8aeb47acce264b49d1846311c336e36",
+    "reduced_repeat_fits": 8,
+    "schema_version": "goal039-conventional-canary-v2",
+    "source_fingerprint": "b475ce6c695434aefa1f3d5fd5fdfe6e82091204e8a43079ffa0e2c97b5ec032",
+    "worker_receipt_digest": "8208c245e5aa6198076b067adb3bcf0a62283cf10ff6bb988440e13b55dc1cea",
+    "worker_result_digest": "1286456dd745fed97d452584a0b6d073f1c7e044c82644568dc16163b11637e8",
+    "worker_runtime": {
+      "availability": {
+        "elastic_net": {
+          "LogisticRegression": true,
+          "adapter_fit": true
+        },
+        "hist_gradient_boosting": {
+          "HistGradientBoostingClassifier": true,
+          "adapter_fit": true
+        },
+        "random_forest": {
+          "RandomForestClassifier": true,
+          "adapter_fit": true
+        },
+        "shallow_ann": {
+          "_TorchShallow": true,
+          "adapter_fit": true
+        }
+      },
+      "blas_threads": 1,
+      "device": "cpu",
+      "families": [
+        "elastic_net",
+        "random_forest",
+        "hist_gradient_boosting",
+        "shallow_ann"
+      ],
+      "goal029_thread_evidence": {
+        "all_reported_pools_within_limit": true,
+        "environment": {
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1"
+        },
+        "evidence_digest": "71784fdc78900c693952705562b04583852865dfdd2e9799fd09879d371afc9a",
+        "policy_digest": "07cf775706d78aaf4c67412f07a2cff5ef6f0b675fcb2285f1fa177e2e779278",
+        "pools": [
+          {
+            "architecture": "",
+            "internal_api": "openmp",
+            "num_threads": 1,
+            "prefix": "libomp",
+            "threading_layer": "",
+            "user_api": "openmp",
+            "version": "None"
+          },
+          {
+            "architecture": "",
+            "internal_api": "openmp",
+            "num_threads": 1,
+            "prefix": "libomp",
+            "threading_layer": "",
+            "user_api": "openmp",
+            "version": "None"
+          }
+        ],
+        "schema_version": "1.0",
+        "torch": {
+          "interop_threads": 1,
+          "intraop_threads": 1
+        }
+      },
+      "goal029_thread_evidence_digest": "71784fdc78900c693952705562b04583852865dfdd2e9799fd09879d371afc9a",
+      "numpy": "2.5.1",
+      "pygam_required": false,
+      "python": "/Users/bwbrook/papers/dSDM/.venv/bin/python",
+      "python_major_minor": "3.12",
+      "python_realpath": "/Users/bwbrook/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/bin/python3.12",
+      "python_relative": ".venv/bin/python",
+      "schema_version": "goal039-conventional-runtime-v1",
+      "scikit_learn": "1.9.0",
+      "scipy": "1.16.3",
+      "threads": 1,
+      "torch": "2.13.0"
+    }
+  },
+  "conventional_canary_digest": "05124d455bcfe8928ed12deae65eb613b8aeb47acce264b49d1846311c336e36",
+  "decision": "pass",
+  "deterministic": true,
+  "finite": true,
+  "full_control_bitwise_match": true,
+  "full_control_replayed": true,
+  "full_control_shape": [
+    3,
+    2,
+    552
+  ],
+  "lifecycle": {
+    "deterministic_metadata_digest": "c8ae79d3ae793ecc9975b5aa09b5ae098600bacee286e717ad6ddcb2d0873421",
+    "logical_artifacts": 7,
+    "physical_fits": 14,
+    "support_mask_digest": "48bbfa7bcb601053e5ea4e861e300ad413d023730545ffed1d4051a153547cc4"
+  },
+  "mask_digest": "1ead268a1c349edbbd42c37ff5b3dd62607bbc621b73e3a10b37b63a5cbb78ce",
+  "outer_attempted": 0,
+  "outer_opened": 0,
+  "receipt_digest": "770a3d273cbf7b317670903415f0a6f5e7ac144c753884d9beb4f483317c7584",
+  "reduced_repeats": 2,
+  "reduced_repeats_bitwise_match": true,
+  "reduced_shape": [
+    3,
+    2,
+    552
+  ],
+  "runtime_digest": "1f4691cacc19aea63ffc3d3e6b0b8314e137e97cc3286fccc6dac7c46cebda5b",
+  "schema_version": "goal039-canary-v2",
+  "sentinel": {
+    "bundle_digest": "adecc8d6400b88d10c0a3bb795a362932c5a30fff8beaaa36442d1d093b84890",
+    "held_fold": "fold00",
+    "target": "sarcophilus_harrisii"
+  },
+  "source_fingerprint": "b475ce6c695434aefa1f3d5fd5fdfe6e82091204e8a43079ffa0e2c97b5ec032"
+}
