@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "goal_id": "goal039-predictor-substrate-sensitivity",
+  "config_digest": "b3805c44b2ee4241539286428af575baea7844c302941b4522167428a8430b2b",
+  "authorities": {
+    "goal024_map": {"path": "data/processed/predictors/goal024-predictor-source-repair-domain-freeze/2026-07-26/predictor_cell_map_canonical.csv", "sha256": "c27b848bd4db81932553ac801029b8e66cf1a1ecd05271343ee2b4d0a3035cc5"},
+    "goal024_decision": {"path": "docs/goals/024-predictor-source-repair-domain-freeze/Decision.md", "sha256": "4ea47c6abc3f67202c4f4b2b4b1d4824f23d34d3d622af65bc35e2c3e6bc2ddf"},
+    "goal025_map_assignments": {"path": "data/processed/partitions/goal025-spatial-partition/2026-07-26/map_assignments.csv", "sha256": "ee5a00731810cdd7eb3a9c764b0314c5a338dcdfa39a8cee1885bdd71f450ec0"},
+    "goal025_decision": {"path": "docs/goals/025-spatial-partition/Decision.md", "sha256": "793afa7bd8b287aca037af8d64ea393a50eef031d371519fb136e130a21ac0b5"},
+    "goal029_config": {"path": "config/conventional_baseline_production.json", "sha256": "62b1c5255c5aa5c74f5ba598818dd13e2f2234c0cb13da58671c3be286ccefae"},
+    "goal035_config": {"path": "config/dsdm_final_inner_lifecycle.json", "sha256": "87c3afa6fbb9a2177caafc0b2aacb0130c7f6545523839cd0fd030218795d7c2"},
+    "goal035_decision": {"path": "docs/goals/035-dsdm-final-inner-lifecycle/Decision.md", "sha256": "8214ba20665e3e18e001daef5e2c84c8cefc6a937ec46c9d8cb1dfba6e0e0030"},
+    "goal036_config": {"path": "config/dsdm_inner_evaluation.json", "sha256": "f89a3ebd68ede9f54b02c12ac5f36be1abecdc1cce90cb4e18b7008ad53118e1"},
+    "goal036_private_manifest": {"path": "data/processed/dsdm/goal036-inner-evaluation/private/conventional_manifest.json", "sha256": "98771a834391e3c3c9f3e0f40939707cfc55c4bd94ba4fe855e246947b1a3d09"},
+    "goal036_private_parquet": {"path": "data/processed/dsdm/goal036-inner-evaluation/private/conventional_selected_oof.parquet", "sha256": "250a33d2111fc420e620535be113f14a6bd68ce26ae910b514571f397ebc2001"},
+    "goal036_decision": {"path": "docs/goals/036-dsdm-inner-evaluation/Decision.md", "sha256": "d19ec043c6fa9a1ca4329cea5da9433d5b3927112bf386d7e2b2695441114980"},
+    "goal037_config": {"path": "config/dsdm_outer_ready.json", "sha256": "762ce12c4937f7eec0e72b4b90f1c7db1246072a9c778cd5c7a4c1b50cdf2f92"},
+    "goal037_decision": {"path": "docs/goals/037-dsdm-outer-ready/Decision.md", "sha256": "534af55668cf6d02736b0b0b319d97080969e4ada2fe560a4b4736cc8c8823fd"},
+    "goal038_config": {"path": "config/dsdm_capacity_diagnostic_stage2.json", "sha256": "b606d98e1b9d6bc0b56809bcdffdc3c93fefcc7df43ca5f589542f41463abd34"},
+    "goal038_decision": {"path": "docs/goals/038-dsdm-capacity-diagnostic/Decision.md", "sha256": "fc04d533cbc1efe6d7c7e7c565abfc2c05caa5861ec8bd21de157ec099df032b"},
+    "goal039_decision": {"path": "docs/goals/039-predictor-substrate-sensitivity/Decision.md", "sha256": "bf147f2ffe73786bd05dce56f4a4e44d5de208f43555cf3976360ce983c39383"}
+  },
+  "execution_sources": {
+    "predictor_sensitivity": {"path": "src/dsdm/predictor_sensitivity.py", "sha256": "0bf82bdfcab35d246f2523af33204511e26ef911aff7b471fb0c134925aeb0cb"},
+    "contracts": {"path": "src/dsdm/contracts.py", "sha256": "61c89d4ef7ab6895bc5d5c8bd9acabd2be0e73aa5f7fc46bba0eb87378b0d9a2"},
+    "final_inner_data": {"path": "src/dsdm/final_inner_data.py", "sha256": "1c20d1b224ee4092e139e7419fa989797aea5afaa45cdec926a5cd3586baad46"},
+    "final_inner_runner": {"path": "src/dsdm/final_inner_runner.py", "sha256": "2b46a96fc5dbe4dbe6a3e1a594eeea48a39f56a9162e0fdd79a5f557968d75dc"},
+    "inner_evaluation": {"path": "src/dsdm/inner_evaluation.py", "sha256": "1b2a85aad54871047c31fdabb828cd67744c5a6acbcb5e2cfdafcaaafe0f9360"},
+    "predictor_sensitivity_conventional": {"path": "src/dsdm/predictor_sensitivity_conventional.py", "sha256": "dec5d199def620c11c31e6d6018c408477731cb3ebf9e66dc67ced17e179714a"},
+    "models": {"path": "src/dsdm/models.py", "sha256": "71317e80514eeab68a316066f59382db2c96aa6bffb0dfd524e08895f2f9c6ee"},
+    "real_six_path": {"path": "src/dsdm/real_six_path.py", "sha256": "7da430342545403ea8d82deee965ec065178c8660ceccd83a34af68cb9ff2bc0"},
+    "categorical_support": {"path": "src/dsdm/categorical_support.py", "sha256": "90b59bfe6b47628ba6bb36d130fe427c3e5481b6a8b9c1492203f73a1234d959"},
+    "uv_lock": {"path": "uv.lock", "sha256": "39c22925750ac8821f5420bdfe5ca39554b7906d812bd3a94a04e91c469284fd"}
+  },
+  "scope": {"species": ["thylogale_billardierii", "notamacropus_rufogriseus", "trichosurus_vulpecula", "pseudocheirus_peregrinus", "vombatus_ursinus", "sarcophilus_harrisii", "dasyurus_maculatus", "dasyurus_viverrinus"], "folds": ["fold00", "fold01", "fold02", "fold03", "fold04"], "endpoints": ["fraction25/ladder00", "fraction25/ladder01", "fraction25/ladder02", "fraction50/ladder00", "fraction50/ladder01", "fraction50/ladder02", "fraction100/full"], "predictor_count": 77, "architecture": "resmlp13"},
+  "mask": {"primary_threshold": 0.85, "diagnostic_thresholds": [0.8, 0.9], "blocks": {"BIO1_8_11": ["annmeantemp", "meantempwetq", "meantempdryq", "meantempwarmq", "meantempcoldq"], "BIO5_7": ["maxtempwarmmonth", "mintempcoldmonth", "tempannrange"], "BIO2_4": ["meandiurnrange", "isothermality", "tempseason"], "BIO12_14_16_19": ["annprecip", "precipwetmonth", "precipdrymonth", "precipwetq", "precipdryq", "precipwarmq", "precipcoldq"], "BIO15": ["precipseason"]}, "mandatory_continuous": ["elevation", "top_roughness", "dist_fw", "dist_road", "fpar", "human_footprint"], "categorical": ["soil_class", "veg_mvg", "landuse_secondary"], "shape_preserving": true, "complete_linkage": true, "medoid_tie_rule": "frozen_predictor_order"},
+  "training": {"architecture": "resmlp13", "methods": ["target_only_resmlp", "multihead_full_finetune"], "seeds": [31031, 31032, 31033, 31034, 31035], "same_goal035_lifecycle": true, "predictor_count": 77, "device": "cpu", "threads": 1, "max_epochs": 300, "patience": 30},
+  "execution": {"screen_cases": 120, "screen_logical_artifacts": 840, "screen_physical_fits": 1680, "confirmation_cases": 80, "confirmation_logical_artifacts": 880, "confirmation_physical_fits": 1760, "workers": 3, "outer_attempted": 0, "outer_opened": 0},
+  "conventional": {
+    "families": ["elastic_net", "random_forest", "hist_gradient_boosting", "shallow_ann"],
+    "producer_commit": "f85e45922e182858fd351fdaf4f1b36b33fb4f2f",
+    "private_core_manifest_sha256": "836384b71fa03797e3fe92052aed2255b737d59a347aaa8614830a28d0851ab6",
+    "manifest_digest": "1bb5bcc7ea450d87a2ddb8b5ea3a11ac96163e8001e0a3cc11d2c6853b09b5bc",
+    "parquet_sha256": "250a33d2111fc420e620535be113f14a6bd68ce26ae910b514571f397ebc2001",
+    "full28_replay_atol": 0.0,
+    "screen_endpoints": ["fraction25/ladder00", "fraction50/ladder00", "fraction100/full"],
+    "confirmation_new_endpoints": ["fraction25/ladder01", "fraction25/ladder02", "fraction50/ladder01", "fraction50/ladder02"],
+    "confirmation_analysis_endpoints": ["fraction25/ladder01", "fraction25/ladder02", "fraction50/ladder01", "fraction50/ladder02", "fraction100/full"],
+    "stages": {
+      "screen": {"endpoints": 3, "leaves": 384, "fold_units": 1920, "physical_fits": 2520},
+      "confirmation": {"endpoints": 4, "leaves": 512, "fold_units": 2560, "physical_fits": 3360}
+    },
+    "decision_authority": false
+  },
+  "gates": {"screen_positive_endpoints_min": 2, "screen_positive_species_min": 5, "screen_positive_seeds_min": 2, "confirmation_positive_endpoints_min": 4, "confirmation_positive_species_min": 5, "confirmation_positive_reserved_seeds_min": 2, "aggregate_tss_min": 0.0, "delta_i_requires_delta_u_nonnegative": true},
+  "evidence": {"private_root": "data/processed/dsdm/goal039-predictor-substrate-sensitivity/private", "tracked_root": "evidence/dsdm_predictor_substrate_sensitivity/goal039", "aggregate_only": true, "predictions_tracked": false, "labels_tracked": false, "outer_attempted": 0, "outer_opened": 0},
+  "runtime": {"system": "Darwin", "machine": "arm64", "python_major_minor": "3.12", "numpy": "2.2.6", "scipy": "1.16.3", "scikit_learn": "1.9.0", "torch": "2.7.1", "device": "cpu", "route": "mac_cpu", "threads": 1, "blas_threads": 1}
+}
