@@ -1,0 +1,3512 @@
+{
+  "config_digest": "b3805c44b2ee4241539286428af575baea7844c302941b4522167428a8430b2b",
+  "diagnostic": {
+    "fold00@0.80": {
+      "blocks": {
+        "BIO12_14_16_19": {
+          "clusters": [
+            [
+              "annprecip",
+              "precipwetmonth",
+              "precipdrymonth",
+              "precipwetq",
+              "precipdryq",
+              "precipwarmq",
+              "precipcoldq"
+            ]
+          ],
+          "medoids": [
+            "annprecip"
+          ],
+          "predictors": [
+            "annprecip",
+            "precipwetmonth",
+            "precipdrymonth",
+            "precipwetq",
+            "precipdryq",
+            "precipwarmq",
+            "precipcoldq"
+          ]
+        },
+        "BIO15": {
+          "clusters": [
+            [
+              "precipseason"
+            ]
+          ],
+          "medoids": [
+            "precipseason"
+          ],
+          "predictors": [
+            "precipseason"
+          ]
+        },
+        "BIO1_8_11": {
+          "clusters": [
+            [
+              "annmeantemp",
+              "meantempwarmq",
+              "meantempcoldq"
+            ],
+            [
+              "meantempwetq"
+            ],
+            [
+              "meantempdryq"
+            ]
+          ],
+          "medoids": [
+            "annmeantemp",
+            "meantempwetq",
+            "meantempdryq"
+          ],
+          "predictors": [
+            "annmeantemp",
+            "meantempwetq",
+            "meantempdryq",
+            "meantempwarmq",
+            "meantempcoldq"
+          ]
+        },
+        "BIO2_4": {
+          "clusters": [
+            [
+              "meandiurnrange",
+              "tempseason"
+            ],
+            [
+              "isothermality"
+            ]
+          ],
+          "medoids": [
+            "meandiurnrange",
+            "isothermality"
+          ],
+          "predictors": [
+            "meandiurnrange",
+            "isothermality",
+            "tempseason"
+          ]
+        },
+        "BIO5_7": {
+          "clusters": [
+            [
+              "maxtempwarmmonth"
+            ],
+            [
+              "mintempcoldmonth"
+            ],
+            [
+              "tempannrange"
+            ]
+          ],
+          "medoids": [
+            "maxtempwarmmonth",
+            "mintempcoldmonth",
+            "tempannrange"
+          ],
+          "predictors": [
+            "maxtempwarmmonth",
+            "mintempcoldmonth",
+            "tempannrange"
+          ]
+        }
+      },
+      "encoded_column_count": 68,
+      "encoded_columns": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "excluded_raw": [
+        "tempseason",
+        "meantempwarmq",
+        "meantempcoldq",
+        "precipwetmonth",
+        "precipdrymonth",
+        "precipwetq",
+        "precipdryq",
+        "precipwarmq",
+        "precipcoldq"
+      ],
+      "kept_raw": [
+        "annmeantemp",
+        "meandiurnrange",
+        "isothermality",
+        "maxtempwarmmonth",
+        "mintempcoldmonth",
+        "tempannrange",
+        "meantempwetq",
+        "meantempdryq",
+        "annprecip",
+        "precipseason",
+        "elevation",
+        "top_roughness",
+        "soil_class",
+        "dist_fw",
+        "dist_road",
+        "fpar",
+        "veg_mvg",
+        "landuse_secondary",
+        "human_footprint"
+      ],
+      "mask_digest": "145e444459d4cb8a6d069f40687d56d386a3384b45ce8ea5a946a1cadc5b9496",
+      "outer_attempted": 0,
+      "outer_opened": 0,
+      "threshold": 0.8
+    },
+    "fold00@0.90": {
+      "blocks": {
+        "BIO12_14_16_19": {
+          "clusters": [
+            [
+              "annprecip",
+              "precipwetmonth",
+              "precipwetq",
+              "precipcoldq"
+            ],
+            [
+              "precipdrymonth",
+              "precipdryq",
+              "precipwarmq"
+            ]
+          ],
+          "medoids": [
+            "precipwetq",
+            "precipdryq"
+          ],
+          "predictors": [
+            "annprecip",
+            "precipwetmonth",
+            "precipdrymonth",
+            "precipwetq",
+            "precipdryq",
+            "precipwarmq",
+            "precipcoldq"
+          ]
+        },
+        "BIO15": {
+          "clusters": [
+            [
+              "precipseason"
+            ]
+          ],
+          "medoids": [
+            "precipseason"
+          ],
+          "predictors": [
+            "precipseason"
+          ]
+        },
+        "BIO1_8_11": {
+          "clusters": [
+            [
+              "annmeantemp",
+              "meantempwarmq"
+            ],
+            [
+              "meantempwetq"
+            ],
+            [
+              "meantempdryq"
+            ],
+            [
+              "meantempcoldq"
+            ]
+          ],
+          "medoids": [
+            "annmeantemp",
+            "meantempwetq",
+            "meantempdryq",
+            "meantempcoldq"
+          ],
+          "predictors": [
+            "annmeantemp",
+            "meantempwetq",
+            "meantempdryq",
+            "meantempwarmq",
+            "meantempcoldq"
+          ]
+        },
+        "BIO2_4": {
+          "clusters": [
+            [
+              "meandiurnrange"
+            ],
+            [
+              "isothermality"
+            ],
+            [
+              "tempseason"
+            ]
+          ],
+          "medoids": [
+            "meandiurnrange",
+            "isothermality",
+            "tempseason"
+          ],
+          "predictors": [
+            "meandiurnrange",
+            "isothermality",
+            "tempseason"
+          ]
+        },
+        "BIO5_7": {
+          "clusters": [
+            [
+              "maxtempwarmmonth"
+            ],
+            [
+              "mintempcoldmonth"
+            ],
+            [
+              "tempannrange"
+            ]
+          ],
+          "medoids": [
+            "maxtempwarmmonth",
+            "mintempcoldmonth",
+            "tempannrange"
+          ],
+          "predictors": [
+            "maxtempwarmmonth",
+            "mintempcoldmonth",
+            "tempannrange"
+          ]
+        }
+      },
+      "encoded_column_count": 71,
+      "encoded_columns": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "excluded_raw": [
+        "meantempwarmq",
+        "annprecip",
+        "precipwetmonth",
+        "precipdrymonth",
+        "precipwarmq",
+        "precipcoldq"
+      ],
+      "kept_raw": [
+        "annmeantemp",
+        "meandiurnrange",
+        "isothermality",
+        "tempseason",
+        "maxtempwarmmonth",
+        "mintempcoldmonth",
+        "tempannrange",
+        "meantempwetq",
+        "meantempdryq",
+        "meantempcoldq",
+        "precipseason",
+        "precipwetq",
+        "precipdryq",
+        "elevation",
+        "top_roughness",
+        "soil_class",
+        "dist_fw",
+        "dist_road",
+        "fpar",
+        "veg_mvg",
+        "landuse_secondary",
+        "human_footprint"
+      ],
+      "mask_digest": "39f4da06aab3de4adb12917bc6e69a74d228055480c9719c440e364e499407a4",
+      "outer_attempted": 0,
+      "outer_opened": 0,
+      "threshold": 0.9
+    },
+    "fold01@0.80": {
+      "blocks": {
+        "BIO12_14_16_19": {
+          "clusters": [
+            [
+              "annprecip",
+              "precipwetmonth",
+              "precipdrymonth",
+              "precipwetq",
+              "precipdryq",
+              "precipwarmq",
+              "precipcoldq"
+            ]
+          ],
+          "medoids": [
+            "annprecip"
+          ],
+          "predictors": [
+            "annprecip",
+            "precipwetmonth",
+            "precipdrymonth",
+            "precipwetq",
+            "precipdryq",
+            "precipwarmq",
+            "precipcoldq"
+          ]
+        },
+        "BIO15": {
+          "clusters": [
+            [
+              "precipseason"
+            ]
+          ],
+          "medoids": [
+            "precipseason"
+          ],
+          "predictors": [
+            "precipseason"
+          ]
+        },
+        "BIO1_8_11": {
+          "clusters": [
+            [
+              "annmeantemp",
+              "meantempwarmq",
+              "meantempcoldq"
+            ],
+            [
+              "meantempwetq"
+            ],
+            [
+              "meantempdryq"
+            ]
+          ],
+          "medoids": [
+            "annmeantemp",
+            "meantempwetq",
+            "meantempdryq"
+          ],
+          "predictors": [
+            "annmeantemp",
+            "meantempwetq",
+            "meantempdryq",
+            "meantempwarmq",
+            "meantempcoldq"
+          ]
+        },
+        "BIO2_4": {
+          "clusters": [
+            [
+              "meandiurnrange",
+              "tempseason"
+            ],
+            [
+              "isothermality"
+            ]
+          ],
+          "medoids": [
+            "meandiurnrange",
+            "isothermality"
+          ],
+          "predictors": [
+            "meandiurnrange",
+            "isothermality",
+            "tempseason"
+          ]
+        },
+        "BIO5_7": {
+          "clusters": [
+            [
+              "maxtempwarmmonth"
+            ],
+            [
+              "mintempcoldmonth"
+            ],
+            [
+              "tempannrange"
+            ]
+          ],
+          "medoids": [
+            "maxtempwarmmonth",
+            "mintempcoldmonth",
+            "tempannrange"
+          ],
+          "predictors": [
+            "maxtempwarmmonth",
+            "mintempcoldmonth",
+            "tempannrange"
+          ]
+        }
+      },
+      "encoded_column_count": 68,
+      "encoded_columns": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "excluded_raw": [
+        "tempseason",
+        "meantempwarmq",
+        "meantempcoldq",
+        "precipwetmonth",
+        "precipdrymonth",
+        "precipwetq",
+        "precipdryq",
+        "precipwarmq",
+        "precipcoldq"
+      ],
+      "kept_raw": [
+        "annmeantemp",
+        "meandiurnrange",
+        "isothermality",
+        "maxtempwarmmonth",
+        "mintempcoldmonth",
+        "tempannrange",
+        "meantempwetq",
+        "meantempdryq",
+        "annprecip",
+        "precipseason",
+        "elevation",
+        "top_roughness",
+        "soil_class",
+        "dist_fw",
+        "dist_road",
+        "fpar",
+        "veg_mvg",
+        "landuse_secondary",
+        "human_footprint"
+      ],
+      "mask_digest": "145e444459d4cb8a6d069f40687d56d386a3384b45ce8ea5a946a1cadc5b9496",
+      "outer_attempted": 0,
+      "outer_opened": 0,
+      "threshold": 0.8
+    },
+    "fold01@0.90": {
+      "blocks": {
+        "BIO12_14_16_19": {
+          "clusters": [
+            [
+              "annprecip",
+              "precipwetmonth",
+              "precipwetq",
+              "precipcoldq"
+            ],
+            [
+              "precipdrymonth",
+              "precipdryq",
+              "precipwarmq"
+            ]
+          ],
+          "medoids": [
+            "precipwetq",
+            "precipdryq"
+          ],
+          "predictors": [
+            "annprecip",
+            "precipwetmonth",
+            "precipdrymonth",
+            "precipwetq",
+            "precipdryq",
+            "precipwarmq",
+            "precipcoldq"
+          ]
+        },
+        "BIO15": {
+          "clusters": [
+            [
+              "precipseason"
+            ]
+          ],
+          "medoids": [
+            "precipseason"
+          ],
+          "predictors": [
+            "precipseason"
+          ]
+        },
+        "BIO1_8_11": {
+          "clusters": [
+            [
+              "annmeantemp",
+              "meantempcoldq"
+            ],
+            [
+              "meantempwetq"
+            ],
+            [
+              "meantempdryq"
+            ],
+            [
+              "meantempwarmq"
+            ]
+          ],
+          "medoids": [
+            "annmeantemp",
+            "meantempwetq",
+            "meantempdryq",
+            "meantempwarmq"
+          ],
+          "predictors": [
+            "annmeantemp",
+            "meantempwetq",
+            "meantempdryq",
+            "meantempwarmq",
+            "meantempcoldq"
+          ]
+        },
+        "BIO2_4": {
+          "clusters": [
+            [
+              "meandiurnrange"
+            ],
+            [
+              "isothermality"
+            ],
+            [
+              "tempseason"
+            ]
+          ],
+          "medoids": [
+            "meandiurnrange",
+            "isothermality",
+            "tempseason"
+          ],
+          "predictors": [
+            "meandiurnrange",
+            "isothermality",
+            "tempseason"
+          ]
+        },
+        "BIO5_7": {
+          "clusters": [
+            [
+              "maxtempwarmmonth"
+            ],
+            [
+              "mintempcoldmonth"
+            ],
+            [
+              "tempannrange"
+            ]
+          ],
+          "medoids": [
+            "maxtempwarmmonth",
+            "mintempcoldmonth",
+            "tempannrange"
+          ],
+          "predictors": [
+            "maxtempwarmmonth",
+            "mintempcoldmonth",
+            "tempannrange"
+          ]
+        }
+      },
+      "encoded_column_count": 71,
+      "encoded_columns": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "excluded_raw": [
+        "meantempcoldq",
+        "annprecip",
+        "precipwetmonth",
+        "precipdrymonth",
+        "precipwarmq",
+        "precipcoldq"
+      ],
+      "kept_raw": [
+        "annmeantemp",
+        "meandiurnrange",
+        "isothermality",
+        "tempseason",
+        "maxtempwarmmonth",
+        "mintempcoldmonth",
+        "tempannrange",
+        "meantempwetq",
+        "meantempdryq",
+        "meantempwarmq",
+        "precipseason",
+        "precipwetq",
+        "precipdryq",
+        "elevation",
+        "top_roughness",
+        "soil_class",
+        "dist_fw",
+        "dist_road",
+        "fpar",
+        "veg_mvg",
+        "landuse_secondary",
+        "human_footprint"
+      ],
+      "mask_digest": "1237b28647be6458dab181d90044ca5d685a76a1547c7c262da83a96175de0d5",
+      "outer_attempted": 0,
+      "outer_opened": 0,
+      "threshold": 0.9
+    },
+    "fold02@0.80": {
+      "blocks": {
+        "BIO12_14_16_19": {
+          "clusters": [
+            [
+              "annprecip",
+              "precipwetmonth",
+              "precipdrymonth",
+              "precipwetq",
+              "precipdryq",
+              "precipwarmq",
+              "precipcoldq"
+            ]
+          ],
+          "medoids": [
+            "annprecip"
+          ],
+          "predictors": [
+            "annprecip",
+            "precipwetmonth",
+            "precipdrymonth",
+            "precipwetq",
+            "precipdryq",
+            "precipwarmq",
+            "precipcoldq"
+          ]
+        },
+        "BIO15": {
+          "clusters": [
+            [
+              "precipseason"
+            ]
+          ],
+          "medoids": [
+            "precipseason"
+          ],
+          "predictors": [
+            "precipseason"
+          ]
+        },
+        "BIO1_8_11": {
+          "clusters": [
+            [
+              "annmeantemp",
+              "meantempdryq",
+              "meantempwarmq",
+              "meantempcoldq"
+            ],
+            [
+              "meantempwetq"
+            ]
+          ],
+          "medoids": [
+            "annmeantemp",
+            "meantempwetq"
+          ],
+          "predictors": [
+            "annmeantemp",
+            "meantempwetq",
+            "meantempdryq",
+            "meantempwarmq",
+            "meantempcoldq"
+          ]
+        },
+        "BIO2_4": {
+          "clusters": [
+            [
+              "meandiurnrange",
+              "tempseason"
+            ],
+            [
+              "isothermality"
+            ]
+          ],
+          "medoids": [
+            "meandiurnrange",
+            "isothermality"
+          ],
+          "predictors": [
+            "meandiurnrange",
+            "isothermality",
+            "tempseason"
+          ]
+        },
+        "BIO5_7": {
+          "clusters": [
+            [
+              "maxtempwarmmonth"
+            ],
+            [
+              "mintempcoldmonth"
+            ],
+            [
+              "tempannrange"
+            ]
+          ],
+          "medoids": [
+            "maxtempwarmmonth",
+            "mintempcoldmonth",
+            "tempannrange"
+          ],
+          "predictors": [
+            "maxtempwarmmonth",
+            "mintempcoldmonth",
+            "tempannrange"
+          ]
+        }
+      },
+      "encoded_column_count": 67,
+      "encoded_columns": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "excluded_raw": [
+        "tempseason",
+        "meantempdryq",
+        "meantempwarmq",
+        "meantempcoldq",
+        "precipwetmonth",
+        "precipdrymonth",
+        "precipwetq",
+        "precipdryq",
+        "precipwarmq",
+        "precipcoldq"
+      ],
+      "kept_raw": [
+        "annmeantemp",
+        "meandiurnrange",
+        "isothermality",
+        "maxtempwarmmonth",
+        "mintempcoldmonth",
+        "tempannrange",
+        "meantempwetq",
+        "annprecip",
+        "precipseason",
+        "elevation",
+        "top_roughness",
+        "soil_class",
+        "dist_fw",
+        "dist_road",
+        "fpar",
+        "veg_mvg",
+        "landuse_secondary",
+        "human_footprint"
+      ],
+      "mask_digest": "591724d618bb7437317a84b3cd261ffecf39006139dc561942edca8dc7177c02",
+      "outer_attempted": 0,
+      "outer_opened": 0,
+      "threshold": 0.8
+    },
+    "fold02@0.90": {
+      "blocks": {
+        "BIO12_14_16_19": {
+          "clusters": [
+            [
+              "annprecip",
+              "precipwetmonth",
+              "precipwetq",
+              "precipcoldq"
+            ],
+            [
+              "precipdrymonth",
+              "precipdryq",
+              "precipwarmq"
+            ]
+          ],
+          "medoids": [
+            "precipwetq",
+            "precipdryq"
+          ],
+          "predictors": [
+            "annprecip",
+            "precipwetmonth",
+            "precipdrymonth",
+            "precipwetq",
+            "precipdryq",
+            "precipwarmq",
+            "precipcoldq"
+          ]
+        },
+        "BIO15": {
+          "clusters": [
+            [
+              "precipseason"
+            ]
+          ],
+          "medoids": [
+            "precipseason"
+          ],
+          "predictors": [
+            "precipseason"
+          ]
+        },
+        "BIO1_8_11": {
+          "clusters": [
+            [
+              "annmeantemp",
+              "meantempcoldq"
+            ],
+            [
+              "meantempwetq"
+            ],
+            [
+              "meantempdryq"
+            ],
+            [
+              "meantempwarmq"
+            ]
+          ],
+          "medoids": [
+            "annmeantemp",
+            "meantempwetq",
+            "meantempdryq",
+            "meantempwarmq"
+          ],
+          "predictors": [
+            "annmeantemp",
+            "meantempwetq",
+            "meantempdryq",
+            "meantempwarmq",
+            "meantempcoldq"
+          ]
+        },
+        "BIO2_4": {
+          "clusters": [
+            [
+              "meandiurnrange"
+            ],
+            [
+              "isothermality"
+            ],
+            [
+              "tempseason"
+            ]
+          ],
+          "medoids": [
+            "meandiurnrange",
+            "isothermality",
+            "tempseason"
+          ],
+          "predictors": [
+            "meandiurnrange",
+            "isothermality",
+            "tempseason"
+          ]
+        },
+        "BIO5_7": {
+          "clusters": [
+            [
+              "maxtempwarmmonth"
+            ],
+            [
+              "mintempcoldmonth"
+            ],
+            [
+              "tempannrange"
+            ]
+          ],
+          "medoids": [
+            "maxtempwarmmonth",
+            "mintempcoldmonth",
+            "tempannrange"
+          ],
+          "predictors": [
+            "maxtempwarmmonth",
+            "mintempcoldmonth",
+            "tempannrange"
+          ]
+        }
+      },
+      "encoded_column_count": 71,
+      "encoded_columns": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "excluded_raw": [
+        "meantempcoldq",
+        "annprecip",
+        "precipwetmonth",
+        "precipdrymonth",
+        "precipwarmq",
+        "precipcoldq"
+      ],
+      "kept_raw": [
+        "annmeantemp",
+        "meandiurnrange",
+        "isothermality",
+        "tempseason",
+        "maxtempwarmmonth",
+        "mintempcoldmonth",
+        "tempannrange",
+        "meantempwetq",
+        "meantempdryq",
+        "meantempwarmq",
+        "precipseason",
+        "precipwetq",
+        "precipdryq",
+        "elevation",
+        "top_roughness",
+        "soil_class",
+        "dist_fw",
+        "dist_road",
+        "fpar",
+        "veg_mvg",
+        "landuse_secondary",
+        "human_footprint"
+      ],
+      "mask_digest": "1237b28647be6458dab181d90044ca5d685a76a1547c7c262da83a96175de0d5",
+      "outer_attempted": 0,
+      "outer_opened": 0,
+      "threshold": 0.9
+    },
+    "fold03@0.80": {
+      "blocks": {
+        "BIO12_14_16_19": {
+          "clusters": [
+            [
+              "annprecip",
+              "precipwetmonth",
+              "precipdrymonth",
+              "precipwetq",
+              "precipdryq",
+              "precipwarmq",
+              "precipcoldq"
+            ]
+          ],
+          "medoids": [
+            "annprecip"
+          ],
+          "predictors": [
+            "annprecip",
+            "precipwetmonth",
+            "precipdrymonth",
+            "precipwetq",
+            "precipdryq",
+            "precipwarmq",
+            "precipcoldq"
+          ]
+        },
+        "BIO15": {
+          "clusters": [
+            [
+              "precipseason"
+            ]
+          ],
+          "medoids": [
+            "precipseason"
+          ],
+          "predictors": [
+            "precipseason"
+          ]
+        },
+        "BIO1_8_11": {
+          "clusters": [
+            [
+              "annmeantemp",
+              "meantempwarmq",
+              "meantempcoldq"
+            ],
+            [
+              "meantempwetq"
+            ],
+            [
+              "meantempdryq"
+            ]
+          ],
+          "medoids": [
+            "annmeantemp",
+            "meantempwetq",
+            "meantempdryq"
+          ],
+          "predictors": [
+            "annmeantemp",
+            "meantempwetq",
+            "meantempdryq",
+            "meantempwarmq",
+            "meantempcoldq"
+          ]
+        },
+        "BIO2_4": {
+          "clusters": [
+            [
+              "meandiurnrange",
+              "tempseason"
+            ],
+            [
+              "isothermality"
+            ]
+          ],
+          "medoids": [
+            "meandiurnrange",
+            "isothermality"
+          ],
+          "predictors": [
+            "meandiurnrange",
+            "isothermality",
+            "tempseason"
+          ]
+        },
+        "BIO5_7": {
+          "clusters": [
+            [
+              "maxtempwarmmonth"
+            ],
+            [
+              "mintempcoldmonth"
+            ],
+            [
+              "tempannrange"
+            ]
+          ],
+          "medoids": [
+            "maxtempwarmmonth",
+            "mintempcoldmonth",
+            "tempannrange"
+          ],
+          "predictors": [
+            "maxtempwarmmonth",
+            "mintempcoldmonth",
+            "tempannrange"
+          ]
+        }
+      },
+      "encoded_column_count": 68,
+      "encoded_columns": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "excluded_raw": [
+        "tempseason",
+        "meantempwarmq",
+        "meantempcoldq",
+        "precipwetmonth",
+        "precipdrymonth",
+        "precipwetq",
+        "precipdryq",
+        "precipwarmq",
+        "precipcoldq"
+      ],
+      "kept_raw": [
+        "annmeantemp",
+        "meandiurnrange",
+        "isothermality",
+        "maxtempwarmmonth",
+        "mintempcoldmonth",
+        "tempannrange",
+        "meantempwetq",
+        "meantempdryq",
+        "annprecip",
+        "precipseason",
+        "elevation",
+        "top_roughness",
+        "soil_class",
+        "dist_fw",
+        "dist_road",
+        "fpar",
+        "veg_mvg",
+        "landuse_secondary",
+        "human_footprint"
+      ],
+      "mask_digest": "145e444459d4cb8a6d069f40687d56d386a3384b45ce8ea5a946a1cadc5b9496",
+      "outer_attempted": 0,
+      "outer_opened": 0,
+      "threshold": 0.8
+    },
+    "fold03@0.90": {
+      "blocks": {
+        "BIO12_14_16_19": {
+          "clusters": [
+            [
+              "annprecip",
+              "precipwetmonth",
+              "precipwetq",
+              "precipcoldq"
+            ],
+            [
+              "precipdrymonth",
+              "precipdryq",
+              "precipwarmq"
+            ]
+          ],
+          "medoids": [
+            "precipwetq",
+            "precipdryq"
+          ],
+          "predictors": [
+            "annprecip",
+            "precipwetmonth",
+            "precipdrymonth",
+            "precipwetq",
+            "precipdryq",
+            "precipwarmq",
+            "precipcoldq"
+          ]
+        },
+        "BIO15": {
+          "clusters": [
+            [
+              "precipseason"
+            ]
+          ],
+          "medoids": [
+            "precipseason"
+          ],
+          "predictors": [
+            "precipseason"
+          ]
+        },
+        "BIO1_8_11": {
+          "clusters": [
+            [
+              "annmeantemp",
+              "meantempcoldq"
+            ],
+            [
+              "meantempwetq"
+            ],
+            [
+              "meantempdryq"
+            ],
+            [
+              "meantempwarmq"
+            ]
+          ],
+          "medoids": [
+            "annmeantemp",
+            "meantempwetq",
+            "meantempdryq",
+            "meantempwarmq"
+          ],
+          "predictors": [
+            "annmeantemp",
+            "meantempwetq",
+            "meantempdryq",
+            "meantempwarmq",
+            "meantempcoldq"
+          ]
+        },
+        "BIO2_4": {
+          "clusters": [
+            [
+              "meandiurnrange"
+            ],
+            [
+              "isothermality"
+            ],
+            [
+              "tempseason"
+            ]
+          ],
+          "medoids": [
+            "meandiurnrange",
+            "isothermality",
+            "tempseason"
+          ],
+          "predictors": [
+            "meandiurnrange",
+            "isothermality",
+            "tempseason"
+          ]
+        },
+        "BIO5_7": {
+          "clusters": [
+            [
+              "maxtempwarmmonth"
+            ],
+            [
+              "mintempcoldmonth"
+            ],
+            [
+              "tempannrange"
+            ]
+          ],
+          "medoids": [
+            "maxtempwarmmonth",
+            "mintempcoldmonth",
+            "tempannrange"
+          ],
+          "predictors": [
+            "maxtempwarmmonth",
+            "mintempcoldmonth",
+            "tempannrange"
+          ]
+        }
+      },
+      "encoded_column_count": 71,
+      "encoded_columns": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "excluded_raw": [
+        "meantempcoldq",
+        "annprecip",
+        "precipwetmonth",
+        "precipdrymonth",
+        "precipwarmq",
+        "precipcoldq"
+      ],
+      "kept_raw": [
+        "annmeantemp",
+        "meandiurnrange",
+        "isothermality",
+        "tempseason",
+        "maxtempwarmmonth",
+        "mintempcoldmonth",
+        "tempannrange",
+        "meantempwetq",
+        "meantempdryq",
+        "meantempwarmq",
+        "precipseason",
+        "precipwetq",
+        "precipdryq",
+        "elevation",
+        "top_roughness",
+        "soil_class",
+        "dist_fw",
+        "dist_road",
+        "fpar",
+        "veg_mvg",
+        "landuse_secondary",
+        "human_footprint"
+      ],
+      "mask_digest": "1237b28647be6458dab181d90044ca5d685a76a1547c7c262da83a96175de0d5",
+      "outer_attempted": 0,
+      "outer_opened": 0,
+      "threshold": 0.9
+    },
+    "fold04@0.80": {
+      "blocks": {
+        "BIO12_14_16_19": {
+          "clusters": [
+            [
+              "annprecip",
+              "precipwetmonth",
+              "precipdrymonth",
+              "precipwetq",
+              "precipdryq",
+              "precipwarmq",
+              "precipcoldq"
+            ]
+          ],
+          "medoids": [
+            "annprecip"
+          ],
+          "predictors": [
+            "annprecip",
+            "precipwetmonth",
+            "precipdrymonth",
+            "precipwetq",
+            "precipdryq",
+            "precipwarmq",
+            "precipcoldq"
+          ]
+        },
+        "BIO15": {
+          "clusters": [
+            [
+              "precipseason"
+            ]
+          ],
+          "medoids": [
+            "precipseason"
+          ],
+          "predictors": [
+            "precipseason"
+          ]
+        },
+        "BIO1_8_11": {
+          "clusters": [
+            [
+              "annmeantemp",
+              "meantempwetq",
+              "meantempcoldq"
+            ],
+            [
+              "meantempdryq",
+              "meantempwarmq"
+            ]
+          ],
+          "medoids": [
+            "annmeantemp",
+            "meantempdryq"
+          ],
+          "predictors": [
+            "annmeantemp",
+            "meantempwetq",
+            "meantempdryq",
+            "meantempwarmq",
+            "meantempcoldq"
+          ]
+        },
+        "BIO2_4": {
+          "clusters": [
+            [
+              "meandiurnrange",
+              "tempseason"
+            ],
+            [
+              "isothermality"
+            ]
+          ],
+          "medoids": [
+            "meandiurnrange",
+            "isothermality"
+          ],
+          "predictors": [
+            "meandiurnrange",
+            "isothermality",
+            "tempseason"
+          ]
+        },
+        "BIO5_7": {
+          "clusters": [
+            [
+              "maxtempwarmmonth"
+            ],
+            [
+              "mintempcoldmonth"
+            ],
+            [
+              "tempannrange"
+            ]
+          ],
+          "medoids": [
+            "maxtempwarmmonth",
+            "mintempcoldmonth",
+            "tempannrange"
+          ],
+          "predictors": [
+            "maxtempwarmmonth",
+            "mintempcoldmonth",
+            "tempannrange"
+          ]
+        }
+      },
+      "encoded_column_count": 67,
+      "encoded_columns": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "excluded_raw": [
+        "tempseason",
+        "meantempwetq",
+        "meantempwarmq",
+        "meantempcoldq",
+        "precipwetmonth",
+        "precipdrymonth",
+        "precipwetq",
+        "precipdryq",
+        "precipwarmq",
+        "precipcoldq"
+      ],
+      "kept_raw": [
+        "annmeantemp",
+        "meandiurnrange",
+        "isothermality",
+        "maxtempwarmmonth",
+        "mintempcoldmonth",
+        "tempannrange",
+        "meantempdryq",
+        "annprecip",
+        "precipseason",
+        "elevation",
+        "top_roughness",
+        "soil_class",
+        "dist_fw",
+        "dist_road",
+        "fpar",
+        "veg_mvg",
+        "landuse_secondary",
+        "human_footprint"
+      ],
+      "mask_digest": "044cf44f60d5ebac71797f875982fc770a329765d101acaec17904d37a7555b5",
+      "outer_attempted": 0,
+      "outer_opened": 0,
+      "threshold": 0.8
+    },
+    "fold04@0.90": {
+      "blocks": {
+        "BIO12_14_16_19": {
+          "clusters": [
+            [
+              "annprecip",
+              "precipwetmonth",
+              "precipwetq",
+              "precipcoldq"
+            ],
+            [
+              "precipdrymonth",
+              "precipdryq",
+              "precipwarmq"
+            ]
+          ],
+          "medoids": [
+            "precipwetq",
+            "precipdryq"
+          ],
+          "predictors": [
+            "annprecip",
+            "precipwetmonth",
+            "precipdrymonth",
+            "precipwetq",
+            "precipdryq",
+            "precipwarmq",
+            "precipcoldq"
+          ]
+        },
+        "BIO15": {
+          "clusters": [
+            [
+              "precipseason"
+            ]
+          ],
+          "medoids": [
+            "precipseason"
+          ],
+          "predictors": [
+            "precipseason"
+          ]
+        },
+        "BIO1_8_11": {
+          "clusters": [
+            [
+              "annmeantemp",
+              "meantempcoldq"
+            ],
+            [
+              "meantempwetq"
+            ],
+            [
+              "meantempdryq"
+            ],
+            [
+              "meantempwarmq"
+            ]
+          ],
+          "medoids": [
+            "annmeantemp",
+            "meantempwetq",
+            "meantempdryq",
+            "meantempwarmq"
+          ],
+          "predictors": [
+            "annmeantemp",
+            "meantempwetq",
+            "meantempdryq",
+            "meantempwarmq",
+            "meantempcoldq"
+          ]
+        },
+        "BIO2_4": {
+          "clusters": [
+            [
+              "meandiurnrange"
+            ],
+            [
+              "isothermality"
+            ],
+            [
+              "tempseason"
+            ]
+          ],
+          "medoids": [
+            "meandiurnrange",
+            "isothermality",
+            "tempseason"
+          ],
+          "predictors": [
+            "meandiurnrange",
+            "isothermality",
+            "tempseason"
+          ]
+        },
+        "BIO5_7": {
+          "clusters": [
+            [
+              "maxtempwarmmonth"
+            ],
+            [
+              "mintempcoldmonth"
+            ],
+            [
+              "tempannrange"
+            ]
+          ],
+          "medoids": [
+            "maxtempwarmmonth",
+            "mintempcoldmonth",
+            "tempannrange"
+          ],
+          "predictors": [
+            "maxtempwarmmonth",
+            "mintempcoldmonth",
+            "tempannrange"
+          ]
+        }
+      },
+      "encoded_column_count": 71,
+      "encoded_columns": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "excluded_raw": [
+        "meantempcoldq",
+        "annprecip",
+        "precipwetmonth",
+        "precipdrymonth",
+        "precipwarmq",
+        "precipcoldq"
+      ],
+      "kept_raw": [
+        "annmeantemp",
+        "meandiurnrange",
+        "isothermality",
+        "tempseason",
+        "maxtempwarmmonth",
+        "mintempcoldmonth",
+        "tempannrange",
+        "meantempwetq",
+        "meantempdryq",
+        "meantempwarmq",
+        "precipseason",
+        "precipwetq",
+        "precipdryq",
+        "elevation",
+        "top_roughness",
+        "soil_class",
+        "dist_fw",
+        "dist_road",
+        "fpar",
+        "veg_mvg",
+        "landuse_secondary",
+        "human_footprint"
+      ],
+      "mask_digest": "1237b28647be6458dab181d90044ca5d685a76a1547c7c262da83a96175de0d5",
+      "outer_attempted": 0,
+      "outer_opened": 0,
+      "threshold": 0.9
+    }
+  },
+  "jaccard": {
+    "fold00__fold01": 0.9178082191780822,
+    "fold00__fold02": 0.9305555555555556,
+    "fold00__fold03": 0.9178082191780822,
+    "fold00__fold04": 0.9305555555555556,
+    "fold01__fold02": 0.9857142857142858,
+    "fold01__fold03": 1.0,
+    "fold01__fold04": 0.9857142857142858,
+    "fold02__fold03": 0.9857142857142858,
+    "fold02__fold04": 0.9714285714285714,
+    "fold03__fold04": 0.9857142857142858
+  },
+  "mask_count": 5,
+  "outer_attempted": 0,
+  "outer_opened": 0,
+  "primary": {
+    "fold00": {
+      "blocks": {
+        "BIO12_14_16_19": {
+          "clusters": [
+            [
+              "annprecip",
+              "precipwetmonth",
+              "precipwetq",
+              "precipcoldq"
+            ],
+            [
+              "precipdrymonth",
+              "precipdryq",
+              "precipwarmq"
+            ]
+          ],
+          "medoids": [
+            "precipwetq",
+            "precipdryq"
+          ],
+          "predictors": [
+            "annprecip",
+            "precipwetmonth",
+            "precipdrymonth",
+            "precipwetq",
+            "precipdryq",
+            "precipwarmq",
+            "precipcoldq"
+          ]
+        },
+        "BIO15": {
+          "clusters": [
+            [
+              "precipseason"
+            ]
+          ],
+          "medoids": [
+            "precipseason"
+          ],
+          "predictors": [
+            "precipseason"
+          ]
+        },
+        "BIO1_8_11": {
+          "clusters": [
+            [
+              "annmeantemp",
+              "meantempwarmq"
+            ],
+            [
+              "meantempwetq"
+            ],
+            [
+              "meantempdryq"
+            ],
+            [
+              "meantempcoldq"
+            ]
+          ],
+          "medoids": [
+            "annmeantemp",
+            "meantempwetq",
+            "meantempdryq",
+            "meantempcoldq"
+          ],
+          "predictors": [
+            "annmeantemp",
+            "meantempwetq",
+            "meantempdryq",
+            "meantempwarmq",
+            "meantempcoldq"
+          ]
+        },
+        "BIO2_4": {
+          "clusters": [
+            [
+              "meandiurnrange",
+              "tempseason"
+            ],
+            [
+              "isothermality"
+            ]
+          ],
+          "medoids": [
+            "meandiurnrange",
+            "isothermality"
+          ],
+          "predictors": [
+            "meandiurnrange",
+            "isothermality",
+            "tempseason"
+          ]
+        },
+        "BIO5_7": {
+          "clusters": [
+            [
+              "maxtempwarmmonth"
+            ],
+            [
+              "mintempcoldmonth"
+            ],
+            [
+              "tempannrange"
+            ]
+          ],
+          "medoids": [
+            "maxtempwarmmonth",
+            "mintempcoldmonth",
+            "tempannrange"
+          ],
+          "predictors": [
+            "maxtempwarmmonth",
+            "mintempcoldmonth",
+            "tempannrange"
+          ]
+        }
+      },
+      "encoded_column_count": 70,
+      "encoded_columns": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "excluded_raw": [
+        "tempseason",
+        "meantempwarmq",
+        "annprecip",
+        "precipwetmonth",
+        "precipdrymonth",
+        "precipwarmq",
+        "precipcoldq"
+      ],
+      "kept_raw": [
+        "annmeantemp",
+        "meandiurnrange",
+        "isothermality",
+        "maxtempwarmmonth",
+        "mintempcoldmonth",
+        "tempannrange",
+        "meantempwetq",
+        "meantempdryq",
+        "meantempcoldq",
+        "precipseason",
+        "precipwetq",
+        "precipdryq",
+        "elevation",
+        "top_roughness",
+        "soil_class",
+        "dist_fw",
+        "dist_road",
+        "fpar",
+        "veg_mvg",
+        "landuse_secondary",
+        "human_footprint"
+      ],
+      "mask_digest": "1ead268a1c349edbbd42c37ff5b3dd62607bbc621b73e3a10b37b63a5cbb78ce",
+      "outer_attempted": 0,
+      "outer_opened": 0,
+      "threshold": 0.85
+    },
+    "fold01": {
+      "blocks": {
+        "BIO12_14_16_19": {
+          "clusters": [
+            [
+              "annprecip",
+              "precipwetmonth",
+              "precipdrymonth",
+              "precipwetq",
+              "precipdryq",
+              "precipwarmq",
+              "precipcoldq"
+            ]
+          ],
+          "medoids": [
+            "annprecip"
+          ],
+          "predictors": [
+            "annprecip",
+            "precipwetmonth",
+            "precipdrymonth",
+            "precipwetq",
+            "precipdryq",
+            "precipwarmq",
+            "precipcoldq"
+          ]
+        },
+        "BIO15": {
+          "clusters": [
+            [
+              "precipseason"
+            ]
+          ],
+          "medoids": [
+            "precipseason"
+          ],
+          "predictors": [
+            "precipseason"
+          ]
+        },
+        "BIO1_8_11": {
+          "clusters": [
+            [
+              "annmeantemp",
+              "meantempcoldq"
+            ],
+            [
+              "meantempwetq"
+            ],
+            [
+              "meantempdryq"
+            ],
+            [
+              "meantempwarmq"
+            ]
+          ],
+          "medoids": [
+            "annmeantemp",
+            "meantempwetq",
+            "meantempdryq",
+            "meantempwarmq"
+          ],
+          "predictors": [
+            "annmeantemp",
+            "meantempwetq",
+            "meantempdryq",
+            "meantempwarmq",
+            "meantempcoldq"
+          ]
+        },
+        "BIO2_4": {
+          "clusters": [
+            [
+              "meandiurnrange"
+            ],
+            [
+              "isothermality"
+            ],
+            [
+              "tempseason"
+            ]
+          ],
+          "medoids": [
+            "meandiurnrange",
+            "isothermality",
+            "tempseason"
+          ],
+          "predictors": [
+            "meandiurnrange",
+            "isothermality",
+            "tempseason"
+          ]
+        },
+        "BIO5_7": {
+          "clusters": [
+            [
+              "maxtempwarmmonth"
+            ],
+            [
+              "mintempcoldmonth"
+            ],
+            [
+              "tempannrange"
+            ]
+          ],
+          "medoids": [
+            "maxtempwarmmonth",
+            "mintempcoldmonth",
+            "tempannrange"
+          ],
+          "predictors": [
+            "maxtempwarmmonth",
+            "mintempcoldmonth",
+            "tempannrange"
+          ]
+        }
+      },
+      "encoded_column_count": 70,
+      "encoded_columns": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "excluded_raw": [
+        "meantempcoldq",
+        "precipwetmonth",
+        "precipdrymonth",
+        "precipwetq",
+        "precipdryq",
+        "precipwarmq",
+        "precipcoldq"
+      ],
+      "kept_raw": [
+        "annmeantemp",
+        "meandiurnrange",
+        "isothermality",
+        "tempseason",
+        "maxtempwarmmonth",
+        "mintempcoldmonth",
+        "tempannrange",
+        "meantempwetq",
+        "meantempdryq",
+        "meantempwarmq",
+        "annprecip",
+        "precipseason",
+        "elevation",
+        "top_roughness",
+        "soil_class",
+        "dist_fw",
+        "dist_road",
+        "fpar",
+        "veg_mvg",
+        "landuse_secondary",
+        "human_footprint"
+      ],
+      "mask_digest": "7af954b08fc9cf84f8b63d6e54d3c9da397304b66ae904ef8cc2f0638f341cdf",
+      "outer_attempted": 0,
+      "outer_opened": 0,
+      "threshold": 0.85
+    },
+    "fold02": {
+      "blocks": {
+        "BIO12_14_16_19": {
+          "clusters": [
+            [
+              "annprecip",
+              "precipwetmonth",
+              "precipdrymonth",
+              "precipwetq",
+              "precipdryq",
+              "precipwarmq",
+              "precipcoldq"
+            ]
+          ],
+          "medoids": [
+            "annprecip"
+          ],
+          "predictors": [
+            "annprecip",
+            "precipwetmonth",
+            "precipdrymonth",
+            "precipwetq",
+            "precipdryq",
+            "precipwarmq",
+            "precipcoldq"
+          ]
+        },
+        "BIO15": {
+          "clusters": [
+            [
+              "precipseason"
+            ]
+          ],
+          "medoids": [
+            "precipseason"
+          ],
+          "predictors": [
+            "precipseason"
+          ]
+        },
+        "BIO1_8_11": {
+          "clusters": [
+            [
+              "annmeantemp",
+              "meantempcoldq"
+            ],
+            [
+              "meantempwetq"
+            ],
+            [
+              "meantempdryq",
+              "meantempwarmq"
+            ]
+          ],
+          "medoids": [
+            "annmeantemp",
+            "meantempwetq",
+            "meantempdryq"
+          ],
+          "predictors": [
+            "annmeantemp",
+            "meantempwetq",
+            "meantempdryq",
+            "meantempwarmq",
+            "meantempcoldq"
+          ]
+        },
+        "BIO2_4": {
+          "clusters": [
+            [
+              "meandiurnrange"
+            ],
+            [
+              "isothermality"
+            ],
+            [
+              "tempseason"
+            ]
+          ],
+          "medoids": [
+            "meandiurnrange",
+            "isothermality",
+            "tempseason"
+          ],
+          "predictors": [
+            "meandiurnrange",
+            "isothermality",
+            "tempseason"
+          ]
+        },
+        "BIO5_7": {
+          "clusters": [
+            [
+              "maxtempwarmmonth"
+            ],
+            [
+              "mintempcoldmonth"
+            ],
+            [
+              "tempannrange"
+            ]
+          ],
+          "medoids": [
+            "maxtempwarmmonth",
+            "mintempcoldmonth",
+            "tempannrange"
+          ],
+          "predictors": [
+            "maxtempwarmmonth",
+            "mintempcoldmonth",
+            "tempannrange"
+          ]
+        }
+      },
+      "encoded_column_count": 69,
+      "encoded_columns": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "excluded_raw": [
+        "meantempwarmq",
+        "meantempcoldq",
+        "precipwetmonth",
+        "precipdrymonth",
+        "precipwetq",
+        "precipdryq",
+        "precipwarmq",
+        "precipcoldq"
+      ],
+      "kept_raw": [
+        "annmeantemp",
+        "meandiurnrange",
+        "isothermality",
+        "tempseason",
+        "maxtempwarmmonth",
+        "mintempcoldmonth",
+        "tempannrange",
+        "meantempwetq",
+        "meantempdryq",
+        "annprecip",
+        "precipseason",
+        "elevation",
+        "top_roughness",
+        "soil_class",
+        "dist_fw",
+        "dist_road",
+        "fpar",
+        "veg_mvg",
+        "landuse_secondary",
+        "human_footprint"
+      ],
+      "mask_digest": "14c602077d32ccd98076af1008e1e9ad5218b1fd6bcb9e6d09aecb2073944821",
+      "outer_attempted": 0,
+      "outer_opened": 0,
+      "threshold": 0.85
+    },
+    "fold03": {
+      "blocks": {
+        "BIO12_14_16_19": {
+          "clusters": [
+            [
+              "annprecip",
+              "precipwetmonth",
+              "precipdrymonth",
+              "precipwetq",
+              "precipdryq",
+              "precipwarmq",
+              "precipcoldq"
+            ]
+          ],
+          "medoids": [
+            "annprecip"
+          ],
+          "predictors": [
+            "annprecip",
+            "precipwetmonth",
+            "precipdrymonth",
+            "precipwetq",
+            "precipdryq",
+            "precipwarmq",
+            "precipcoldq"
+          ]
+        },
+        "BIO15": {
+          "clusters": [
+            [
+              "precipseason"
+            ]
+          ],
+          "medoids": [
+            "precipseason"
+          ],
+          "predictors": [
+            "precipseason"
+          ]
+        },
+        "BIO1_8_11": {
+          "clusters": [
+            [
+              "annmeantemp",
+              "meantempcoldq"
+            ],
+            [
+              "meantempwetq"
+            ],
+            [
+              "meantempdryq"
+            ],
+            [
+              "meantempwarmq"
+            ]
+          ],
+          "medoids": [
+            "annmeantemp",
+            "meantempwetq",
+            "meantempdryq",
+            "meantempwarmq"
+          ],
+          "predictors": [
+            "annmeantemp",
+            "meantempwetq",
+            "meantempdryq",
+            "meantempwarmq",
+            "meantempcoldq"
+          ]
+        },
+        "BIO2_4": {
+          "clusters": [
+            [
+              "meandiurnrange"
+            ],
+            [
+              "isothermality"
+            ],
+            [
+              "tempseason"
+            ]
+          ],
+          "medoids": [
+            "meandiurnrange",
+            "isothermality",
+            "tempseason"
+          ],
+          "predictors": [
+            "meandiurnrange",
+            "isothermality",
+            "tempseason"
+          ]
+        },
+        "BIO5_7": {
+          "clusters": [
+            [
+              "maxtempwarmmonth"
+            ],
+            [
+              "mintempcoldmonth"
+            ],
+            [
+              "tempannrange"
+            ]
+          ],
+          "medoids": [
+            "maxtempwarmmonth",
+            "mintempcoldmonth",
+            "tempannrange"
+          ],
+          "predictors": [
+            "maxtempwarmmonth",
+            "mintempcoldmonth",
+            "tempannrange"
+          ]
+        }
+      },
+      "encoded_column_count": 70,
+      "encoded_columns": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "excluded_raw": [
+        "meantempcoldq",
+        "precipwetmonth",
+        "precipdrymonth",
+        "precipwetq",
+        "precipdryq",
+        "precipwarmq",
+        "precipcoldq"
+      ],
+      "kept_raw": [
+        "annmeantemp",
+        "meandiurnrange",
+        "isothermality",
+        "tempseason",
+        "maxtempwarmmonth",
+        "mintempcoldmonth",
+        "tempannrange",
+        "meantempwetq",
+        "meantempdryq",
+        "meantempwarmq",
+        "annprecip",
+        "precipseason",
+        "elevation",
+        "top_roughness",
+        "soil_class",
+        "dist_fw",
+        "dist_road",
+        "fpar",
+        "veg_mvg",
+        "landuse_secondary",
+        "human_footprint"
+      ],
+      "mask_digest": "7af954b08fc9cf84f8b63d6e54d3c9da397304b66ae904ef8cc2f0638f341cdf",
+      "outer_attempted": 0,
+      "outer_opened": 0,
+      "threshold": 0.85
+    },
+    "fold04": {
+      "blocks": {
+        "BIO12_14_16_19": {
+          "clusters": [
+            [
+              "annprecip",
+              "precipwetmonth",
+              "precipdrymonth",
+              "precipwetq",
+              "precipdryq",
+              "precipwarmq",
+              "precipcoldq"
+            ]
+          ],
+          "medoids": [
+            "annprecip"
+          ],
+          "predictors": [
+            "annprecip",
+            "precipwetmonth",
+            "precipdrymonth",
+            "precipwetq",
+            "precipdryq",
+            "precipwarmq",
+            "precipcoldq"
+          ]
+        },
+        "BIO15": {
+          "clusters": [
+            [
+              "precipseason"
+            ]
+          ],
+          "medoids": [
+            "precipseason"
+          ],
+          "predictors": [
+            "precipseason"
+          ]
+        },
+        "BIO1_8_11": {
+          "clusters": [
+            [
+              "annmeantemp",
+              "meantempcoldq"
+            ],
+            [
+              "meantempwetq"
+            ],
+            [
+              "meantempdryq"
+            ],
+            [
+              "meantempwarmq"
+            ]
+          ],
+          "medoids": [
+            "annmeantemp",
+            "meantempwetq",
+            "meantempdryq",
+            "meantempwarmq"
+          ],
+          "predictors": [
+            "annmeantemp",
+            "meantempwetq",
+            "meantempdryq",
+            "meantempwarmq",
+            "meantempcoldq"
+          ]
+        },
+        "BIO2_4": {
+          "clusters": [
+            [
+              "meandiurnrange",
+              "tempseason"
+            ],
+            [
+              "isothermality"
+            ]
+          ],
+          "medoids": [
+            "meandiurnrange",
+            "isothermality"
+          ],
+          "predictors": [
+            "meandiurnrange",
+            "isothermality",
+            "tempseason"
+          ]
+        },
+        "BIO5_7": {
+          "clusters": [
+            [
+              "maxtempwarmmonth"
+            ],
+            [
+              "mintempcoldmonth"
+            ],
+            [
+              "tempannrange"
+            ]
+          ],
+          "medoids": [
+            "maxtempwarmmonth",
+            "mintempcoldmonth",
+            "tempannrange"
+          ],
+          "predictors": [
+            "maxtempwarmmonth",
+            "mintempcoldmonth",
+            "tempannrange"
+          ]
+        }
+      },
+      "encoded_column_count": 69,
+      "encoded_columns": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "excluded_raw": [
+        "tempseason",
+        "meantempcoldq",
+        "precipwetmonth",
+        "precipdrymonth",
+        "precipwetq",
+        "precipdryq",
+        "precipwarmq",
+        "precipcoldq"
+      ],
+      "kept_raw": [
+        "annmeantemp",
+        "meandiurnrange",
+        "isothermality",
+        "maxtempwarmmonth",
+        "mintempcoldmonth",
+        "tempannrange",
+        "meantempwetq",
+        "meantempdryq",
+        "meantempwarmq",
+        "annprecip",
+        "precipseason",
+        "elevation",
+        "top_roughness",
+        "soil_class",
+        "dist_fw",
+        "dist_road",
+        "fpar",
+        "veg_mvg",
+        "landuse_secondary",
+        "human_footprint"
+      ],
+      "mask_digest": "f8c0d1a8175545bcada2c0df16ec52908cf92223c40740bb526f8de5755cb4d2",
+      "outer_attempted": 0,
+      "outer_opened": 0,
+      "threshold": 0.85
+    }
+  },
+  "schema_version": "goal039-mask-audit-v1",
+  "source_digests": {
+    "goal024_map": "c27b848bd4db81932553ac801029b8e66cf1a1ecd05271343ee2b4d0a3035cc5",
+    "goal025_map_assignments": "ee5a00731810cdd7eb3a9c764b0314c5a338dcdfa39a8cee1885bdd71f450ec0"
+  },
+  "source_rows_response_blind": true,
+  "threshold": 0.85
+}
