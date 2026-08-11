@@ -1,0 +1,341 @@
+{
+  "bindings": {
+    "contract": {
+      "path": "config/goal040_se_mammal_feasibility.json",
+      "sha256": "6170690f2a6023e3149048980d83db323409a3f644c9b8da206be5d1393b3bea"
+    },
+    "count_manifest": {
+      "path": "metadata/goal040_count_census_manifest.json",
+      "sha256": "5cfad0bd5444a35af708253fe3b0fd01408bd275e3ef9eb03c101b572904113f"
+    },
+    "domain_manifest": {
+      "path": "metadata/goal040_domain_boundary_manifest.json",
+      "sha256": "44435b4bd890fab04d5eba8b29801a0d1a7c509043c4ff51d25b429e488dd999"
+    },
+    "ordered_taxon_union_matrix_sha256": "803618d2be05868a915953b127766cef8adbb890d4e31f4e9ab15ecad004872c",
+    "taxon_ledger": {
+      "path": "metadata/goal040_taxon_query_ledger.csv",
+      "sha256": "b84e633951c4923463a5f8a384510629a218ffe0a8375e108d7a1aca821d98e2"
+    }
+  },
+  "completed_at": "2026-08-11T06:27:38Z",
+  "goal_id": "goal040-se-mammal-acquisition-feasibility",
+  "package": {
+    "name": "galah-python",
+    "version": "0.13.3"
+  },
+  "privacy": {
+    "coordinates_retained": false,
+    "event_dates_retained": false,
+    "raw_files_tracked": false,
+    "recordID_values_retained": false,
+    "runtime_contact_retained": false,
+    "tracked_row_payload": false
+  },
+  "projection": {
+    "expanded_assertions_required": true,
+    "identical_actual_header_sha256": "512beb518ee2099f1449fbd169698ad303d6d4201a136246cf213be344065ee0",
+    "request_fields_sha256": "14c334ca53ef7f937cb8690d03a68e18ad918df57083673fcfa1fa6349e26373"
+  },
+  "schema_version": "1.0",
+  "scope": {
+    "alias_downloads": 0,
+    "bbox_prefilter_sha256": "4a498437278fb4c1da9b615d243ee403c6f27cbde0f251fd859e459b36247992",
+    "mint_doi": false,
+    "one_worker_sequential": true,
+    "sampling_or_additional_taxon_screen": false,
+    "taxa": 21,
+    "taxon_order": "ascending_frozen_count_then_taxon",
+    "use_data_profile": false,
+    "years_inclusive": [
+      2001,
+      2025
+    ]
+  },
+  "stage": "occurrence-acquisition",
+  "status": "complete_raw_replay_required",
+  "summary": {
+    "cross_union_duplicate_recordID_distinct": 0,
+    "files": 21,
+    "occurrenceID_blank": 56414,
+    "occurrenceID_populated": 1202469,
+    "recordID_distinct": 1258883,
+    "recordID_populated": 1258883,
+    "rows": 1258883
+  },
+  "taxon_downloads": [
+    {
+      "actual_rows": 1007,
+      "expected_rows": 1007,
+      "header_sha256": "512beb518ee2099f1449fbd169698ad303d6d4201a136246cf213be344065ee0",
+      "occurrenceID_populated": 809,
+      "query_id": "pseudomys_shortridgei__taxon_union",
+      "query_identity_sha256": "73dd3e8eae283c8b17136cf7f8bb4446a4d19443e318733ae9bd7fd1708d6fc2",
+      "raw_bytes": 1247812,
+      "raw_path": "data/raw/goal040/acquisition/pseudomys_shortridgei.csv",
+      "raw_sha256": "cd9c7f07ca686d9796fdc040c165b0813542fefacda3812797ebbf2ff58b9774",
+      "recordID_populated": 1007,
+      "taxon": "Pseudomys shortridgei"
+    },
+    {
+      "actual_rows": 1022,
+      "expected_rows": 1022,
+      "header_sha256": "512beb518ee2099f1449fbd169698ad303d6d4201a136246cf213be344065ee0",
+      "occurrenceID_populated": 1018,
+      "query_id": "burramys_parvus__taxon_union",
+      "query_identity_sha256": "9f18a97c480c4cd66588699e7c82239f81baa6a58765a479ad92483ba56218cc",
+      "raw_bytes": 1307012,
+      "raw_path": "data/raw/goal040/acquisition/burramys_parvus.csv",
+      "raw_sha256": "1692074dbefac5cd235303068d13d8e1d8b039c5ea567ae32f06575e7a1568f8",
+      "recordID_populated": 1022,
+      "taxon": "Burramys parvus"
+    },
+    {
+      "actual_rows": 2504,
+      "expected_rows": 2504,
+      "header_sha256": "512beb518ee2099f1449fbd169698ad303d6d4201a136246cf213be344065ee0",
+      "occurrenceID_populated": 2503,
+      "query_id": "pseudomys_fumeus__taxon_union",
+      "query_identity_sha256": "df7c733269e49b4f7885cac725b697f1e989a316e7a3a63511ee9f219304eef4",
+      "raw_bytes": 3162663,
+      "raw_path": "data/raw/goal040/acquisition/pseudomys_fumeus.csv",
+      "raw_sha256": "f248bb744b3fa678daa74fe753d6417ce9947ff3490e47d4d9bc143de365d07c",
+      "recordID_populated": 2504,
+      "taxon": "Pseudomys fumeus"
+    },
+    {
+      "actual_rows": 2582,
+      "expected_rows": 2582,
+      "header_sha256": "512beb518ee2099f1449fbd169698ad303d6d4201a136246cf213be344065ee0",
+      "occurrenceID_populated": 2573,
+      "query_id": "mastacomys_fuscus__taxon_union",
+      "query_identity_sha256": "933f01028e95341514821f1d5adb5ea2f8e4cd59f82a7e9de7dcf93172ab4b72",
+      "raw_bytes": 3376648,
+      "raw_path": "data/raw/goal040/acquisition/mastacomys_fuscus.csv",
+      "raw_sha256": "cd60ddd00eae570040cabea48df0d6b6e0271321ade06f543c5b404b33d4c9b4",
+      "recordID_populated": 2582,
+      "taxon": "Mastacomys fuscus"
+    },
+    {
+      "actual_rows": 2612,
+      "expected_rows": 2612,
+      "header_sha256": "512beb518ee2099f1449fbd169698ad303d6d4201a136246cf213be344065ee0",
+      "occurrenceID_populated": 2588,
+      "query_id": "pseudomys_novaehollandiae__taxon_union",
+      "query_identity_sha256": "f36871850004e31fe675f868e45b86868c1738b048840954f211d7ad2ceeb1a2",
+      "raw_bytes": 3371963,
+      "raw_path": "data/raw/goal040/acquisition/pseudomys_novaehollandiae.csv",
+      "raw_sha256": "a3e238a152829e2e1fd276e17b3a5b98b014a2045aad6d80015a75f10b6eb090",
+      "recordID_populated": 2612,
+      "taxon": "Pseudomys novaehollandiae"
+    },
+    {
+      "actual_rows": 3017,
+      "expected_rows": 3017,
+      "header_sha256": "512beb518ee2099f1449fbd169698ad303d6d4201a136246cf213be344065ee0",
+      "occurrenceID_populated": 3015,
+      "query_id": "gymnobelideus_leadbeateri__taxon_union",
+      "query_identity_sha256": "44c28072388c06c75389e37001044399c3e3e08efa87dc3d561fab148458fecc",
+      "raw_bytes": 3755539,
+      "raw_path": "data/raw/goal040/acquisition/gymnobelideus_leadbeateri.csv",
+      "raw_sha256": "8e722e3e7821866f98fc7b1bb0693d9cbc776883e92664d3524f56208bc69c01",
+      "recordID_populated": 3017,
+      "taxon": "Gymnobelideus leadbeateri"
+    },
+    {
+      "actual_rows": 3463,
+      "expected_rows": 3463,
+      "header_sha256": "512beb518ee2099f1449fbd169698ad303d6d4201a136246cf213be344065ee0",
+      "occurrenceID_populated": 3458,
+      "query_id": "sminthopsis_leucopus__taxon_union",
+      "query_identity_sha256": "9729366c4f2fabaf630985b719c81d1b38f45721c32f814de4ca517c0fa4bd3b",
+      "raw_bytes": 4332326,
+      "raw_path": "data/raw/goal040/acquisition/sminthopsis_leucopus.csv",
+      "raw_sha256": "5f718c7cf221fd62fac7d7e32831c72ef9367e3bf9a4fadf2966b0b6720ffcef",
+      "recordID_populated": 3463,
+      "taxon": "Sminthopsis leucopus"
+    },
+    {
+      "actual_rows": 3695,
+      "expected_rows": 3695,
+      "header_sha256": "512beb518ee2099f1449fbd169698ad303d6d4201a136246cf213be344065ee0",
+      "occurrenceID_populated": 3693,
+      "query_id": "potorous_longipes__taxon_union",
+      "query_identity_sha256": "b29a10ea463c318b3591bf77efc92ab879d5ebcacd6eaa789c2c994895d231fb",
+      "raw_bytes": 4526857,
+      "raw_path": "data/raw/goal040/acquisition/potorous_longipes.csv",
+      "raw_sha256": "451b5989577b47e899ce1d0e5364ac34dc617672d5ad2c0a0aac4fc400cb1e89",
+      "recordID_populated": 3695,
+      "taxon": "Potorous longipes"
+    },
+    {
+      "actual_rows": 3780,
+      "expected_rows": 3780,
+      "header_sha256": "512beb518ee2099f1449fbd169698ad303d6d4201a136246cf213be344065ee0",
+      "occurrenceID_populated": 2119,
+      "query_id": "sminthopsis_crassicaudata__taxon_union",
+      "query_identity_sha256": "c78ff996d80c7a917aa9aac44549bb28c031960e42fcaac1f07c8b3400877353",
+      "raw_bytes": 4858765,
+      "raw_path": "data/raw/goal040/acquisition/sminthopsis_crassicaudata.csv",
+      "raw_sha256": "b822f1d717ddc35730950a87e169a0dc90b4fc3cb37fae95eb17acbbb8b335c0",
+      "recordID_populated": 3780,
+      "taxon": "Sminthopsis crassicaudata"
+    },
+    {
+      "actual_rows": 5952,
+      "expected_rows": 5952,
+      "header_sha256": "512beb518ee2099f1449fbd169698ad303d6d4201a136246cf213be344065ee0",
+      "occurrenceID_populated": 5870,
+      "query_id": "phascogale_tapoatafa__taxon_union",
+      "query_identity_sha256": "4a213b10edbd9fc608e0649f4b0a72880f6097bb01593d9cd733ada7c178e083",
+      "raw_bytes": 7731799,
+      "raw_path": "data/raw/goal040/acquisition/phascogale_tapoatafa.csv",
+      "raw_sha256": "b4fd58731b9e7a91b2624a73a68815073fb32b1b1a575f4499654fc8e91283fa",
+      "recordID_populated": 5952,
+      "taxon": "Phascogale tapoatafa"
+    },
+    {
+      "actual_rows": 6491,
+      "expected_rows": 6491,
+      "header_sha256": "512beb518ee2099f1449fbd169698ad303d6d4201a136246cf213be344065ee0",
+      "occurrenceID_populated": 6414,
+      "query_id": "petrogale_penicillata__taxon_union",
+      "query_identity_sha256": "1b79a9d9341be965bc4caef6cca8a2b9c780029cecc1028f87be3787911b43cf",
+      "raw_bytes": 8441503,
+      "raw_path": "data/raw/goal040/acquisition/petrogale_penicillata.csv",
+      "raw_sha256": "f0a6460fd8d1a2fdfc0644bbfbad50fd68fc177edfb87bb06501aff5edb2b527",
+      "recordID_populated": 6491,
+      "taxon": "Petrogale penicillata"
+    },
+    {
+      "actual_rows": 8281,
+      "expected_rows": 8281,
+      "header_sha256": "512beb518ee2099f1449fbd169698ad303d6d4201a136246cf213be344065ee0",
+      "occurrenceID_populated": 8141,
+      "query_id": "petaurus_norfolcensis__taxon_union",
+      "query_identity_sha256": "4fec3450aa4e99621d47e38a11546fa783f0ef8c2be545f11958c6adbea76c3c",
+      "raw_bytes": 11027025,
+      "raw_path": "data/raw/goal040/acquisition/petaurus_norfolcensis.csv",
+      "raw_sha256": "620874b44a3eb669af3bcb645f5447ea5bcb5b29c22b811ecfc8032b450bf01b",
+      "recordID_populated": 8281,
+      "taxon": "Petaurus norfolcensis"
+    },
+    {
+      "actual_rows": 12641,
+      "expected_rows": 12641,
+      "header_sha256": "512beb518ee2099f1449fbd169698ad303d6d4201a136246cf213be344065ee0",
+      "occurrenceID_populated": 11453,
+      "query_id": "dasyurus_maculatus__taxon_union",
+      "query_identity_sha256": "21f93a51172cc69672e5a6effc46d87e9946b779a5c89248d50e712bbacd2c61",
+      "raw_bytes": 16655480,
+      "raw_path": "data/raw/goal040/acquisition/dasyurus_maculatus.csv",
+      "raw_sha256": "715ba4ba5e51d80fc37a54bde424226c745546e855c1fa0c0f6fde6d2bb763b3",
+      "recordID_populated": 12641,
+      "taxon": "Dasyurus maculatus"
+    },
+    {
+      "actual_rows": 20059,
+      "expected_rows": 20059,
+      "header_sha256": "512beb518ee2099f1449fbd169698ad303d6d4201a136246cf213be344065ee0",
+      "occurrenceID_populated": 20005,
+      "query_id": "petaurus_australis__taxon_union",
+      "query_identity_sha256": "c5558caf404b688aeabfc9b35ca49c01a80496bb4a94cf50a313e06ede367911",
+      "raw_bytes": 25963492,
+      "raw_path": "data/raw/goal040/acquisition/petaurus_australis.csv",
+      "raw_sha256": "cf422ef28e3299592825289f0552cd0ce7c57f0dbefd1e25ac9d595019ce33db",
+      "recordID_populated": 20059,
+      "taxon": "Petaurus australis"
+    },
+    {
+      "actual_rows": 34208,
+      "expected_rows": 34208,
+      "header_sha256": "512beb518ee2099f1449fbd169698ad303d6d4201a136246cf213be344065ee0",
+      "occurrenceID_populated": 34095,
+      "query_id": "petauroides_volans__taxon_union",
+      "query_identity_sha256": "ab08fc929052152c3fa9f49c899dcd19afe894ff8b16163924f97450a51252c9",
+      "raw_bytes": 43984524,
+      "raw_path": "data/raw/goal040/acquisition/petauroides_volans.csv",
+      "raw_sha256": "b1e591c08224f5214b934261d2b8a64de5b0927750712fc39089cfe2addb0cdd",
+      "recordID_populated": 34208,
+      "taxon": "Petauroides volans"
+    },
+    {
+      "actual_rows": 94282,
+      "expected_rows": 94282,
+      "header_sha256": "512beb518ee2099f1449fbd169698ad303d6d4201a136246cf213be344065ee0",
+      "occurrenceID_populated": 93439,
+      "query_id": "notamacropus_rufogriseus__taxon_union",
+      "query_identity_sha256": "7be3942743fd41435b562f2726a8dc0baa8ac435c5fdcdb8098dd5944c146575",
+      "raw_bytes": 123654736,
+      "raw_path": "data/raw/goal040/acquisition/notamacropus_rufogriseus.csv",
+      "raw_sha256": "aec6bd16cc4d4102b41bc596d7952be8774f55b8cd8ae38ddb4ed38d6c54651d",
+      "recordID_populated": 94282,
+      "taxon": "Notamacropus rufogriseus"
+    },
+    {
+      "actual_rows": 114907,
+      "expected_rows": 114907,
+      "header_sha256": "512beb518ee2099f1449fbd169698ad303d6d4201a136246cf213be344065ee0",
+      "occurrenceID_populated": 114234,
+      "query_id": "vombatus_ursinus__taxon_union",
+      "query_identity_sha256": "919ae21070071cb3d6f3b47520c6773ab5d001919492962ab2e017260532e52a",
+      "raw_bytes": 148675720,
+      "raw_path": "data/raw/goal040/acquisition/vombatus_ursinus.csv",
+      "raw_sha256": "938347e95f0f52e570c675b05eec764552524c2573f33827090346a29387798b",
+      "recordID_populated": 114907,
+      "taxon": "Vombatus ursinus"
+    },
+    {
+      "actual_rows": 134748,
+      "expected_rows": 134748,
+      "header_sha256": "512beb518ee2099f1449fbd169698ad303d6d4201a136246cf213be344065ee0",
+      "occurrenceID_populated": 133206,
+      "query_id": "pseudocheirus_peregrinus__taxon_union",
+      "query_identity_sha256": "35d86bf2142fde8b58b2950018eecb9579bbb6539514b29fc48b4b443b1a0efb",
+      "raw_bytes": 175561803,
+      "raw_path": "data/raw/goal040/acquisition/pseudocheirus_peregrinus.csv",
+      "raw_sha256": "5391b5b3456c6115ab228cfabd91395ff949c67f8b709395f2087b385000c882",
+      "recordID_populated": 134748,
+      "taxon": "Pseudocheirus peregrinus"
+    },
+    {
+      "actual_rows": 221222,
+      "expected_rows": 221222,
+      "header_sha256": "512beb518ee2099f1449fbd169698ad303d6d4201a136246cf213be344065ee0",
+      "occurrenceID_populated": 219323,
+      "query_id": "macropus_giganteus__taxon_union",
+      "query_identity_sha256": "282b758f344894a35feafb7aaf460162efa763f567285a494993dfaade0f9f3a",
+      "raw_bytes": 287162219,
+      "raw_path": "data/raw/goal040/acquisition/macropus_giganteus.csv",
+      "raw_sha256": "c98123215ed17ae484759cf250683bd34f1294813f6827a8da8609ff22422b4d",
+      "recordID_populated": 221222,
+      "taxon": "Macropus giganteus"
+    },
+    {
+      "actual_rows": 258744,
+      "expected_rows": 258744,
+      "header_sha256": "512beb518ee2099f1449fbd169698ad303d6d4201a136246cf213be344065ee0",
+      "occurrenceID_populated": 238204,
+      "query_id": "trichosurus_vulpecula__taxon_union",
+      "query_identity_sha256": "7398c4170e0b7479c77627f0219a6606572149b79b1796f9d92ccc48365beb4e",
+      "raw_bytes": 335106382,
+      "raw_path": "data/raw/goal040/acquisition/trichosurus_vulpecula.csv",
+      "raw_sha256": "a7e245aa1fd754a75b56ca27cf7523b4412839720057c93b304d51434c3e3abf",
+      "recordID_populated": 258744,
+      "taxon": "Trichosurus vulpecula"
+    },
+    {
+      "actual_rows": 323666,
+      "expected_rows": 323666,
+      "header_sha256": "512beb518ee2099f1449fbd169698ad303d6d4201a136246cf213be344065ee0",
+      "occurrenceID_populated": 296309,
+      "query_id": "phascolarctos_cinereus__taxon_union",
+      "query_identity_sha256": "1eb984a1c90505dca8daed2519a0bd92c279e3892f242f9840aa4db2bc8a6768",
+      "raw_bytes": 430086815,
+      "raw_path": "data/raw/goal040/acquisition/phascolarctos_cinereus.csv",
+      "raw_sha256": "2aae6288d6ca7497e5cb2abf50460e4e0f72179e5ccce3cf8067728f7a74ef4a",
+      "recordID_populated": 323666,
+      "taxon": "Phascolarctos cinereus"
+    }
+  ]
+}

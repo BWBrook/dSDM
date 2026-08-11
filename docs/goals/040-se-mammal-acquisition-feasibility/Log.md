@@ -124,3 +124,16 @@
   because galah 0.13.3 requires the temporary configuration file to exist.
   The runner now creates that empty ephemeral file before configuration, with
   the precondition covered by the synthetic fake.
+
+## 2026-08-11 — live occurrence acquisition checkpoint
+
+- Completed the frozen 21-taxon acquisition and raw replay: 1,258,883 rows,
+  all `recordID` values populated and distinct, 56,414 blank `occurrenceID`
+  values, and one identical 148-column schema across all downloads. The
+  tracked aggregate manifest and all 21 ignored completion receipts agree with
+  the raw files and hashes; raw replay validation passed.
+- The ignored raw footprint is approximately 1.64 GB (21 CSVs plus 21
+  receipts, with no partial files). No camera/private data, spatial or taxon
+  QC, normalisation, support, predictor extraction, or modelling work was
+  performed. This checkpoint closes acquisition only; it does not close Goal
+  040 or authorise stage 6.
