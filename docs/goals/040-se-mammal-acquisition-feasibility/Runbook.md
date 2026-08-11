@@ -139,3 +139,26 @@ contain coordinates, grid or record IDs, donor identities, camera/site IDs,
 private paths, row payloads, predictions, or outer content.
 The cohort/taxon query ledger is tracked; only donor-to-cell associations and
 cell-level donor identities are forbidden.
+
+## Offline QC and species-cell normalisation
+
+After the acquisition raw-replay gate passes, run the offline streaming stage
+and its independent raw replay:
+
+```sh
+PYTHONPATH=src uv run --locked pytest -q tests/test_goal040_normalisation.py
+PYTHONPATH=src uv run --locked python -m dsdm_phase1.goal040_freeze normalise --root .
+PYTHONPATH=src uv run --locked python -m dsdm_phase1.goal040_freeze validate-normalisation --root . --raw-replay
+```
+
+This stage makes no network call and reads every frozen CSV sequentially. It
+binds the contract, taxon ledger, domain/acquisition manifests, and ignored
+eligible-cell ledger; accepts only exact reviewed parent/descendant identities;
+requires clean `recordID`; performs global attributed-ID deduplication; applies
+the prespecified temporal, coordinate, uncertainty, and exact-evidence gates;
+and assigns only half-open decimal grid tiles that join the frozen eligible-cell
+ledger. Assertion columns are diagnostics only. Private row audit,
+species-cell rows, and value-frequency census remain under ignored
+`data/raw/goal040/normalisation/`; the transient SQLite identity store is
+deleted after materialisation. The tracked manifest binds the exact three-file
+private footprint with aggregate hashes, sizes, row counts, and schema digests.

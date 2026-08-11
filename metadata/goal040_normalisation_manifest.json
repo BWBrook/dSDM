@@ -1,0 +1,289 @@
+{
+  "anchors_reported": {
+    "Dasyurus maculatus": {
+      "mainland": 2619,
+      "mainland_pretraining_candidate": true,
+      "shared_evaluation_candidate": true,
+      "support_observed": true,
+      "tasmania": 466,
+      "total": 3085
+    },
+    "Notamacropus rufogriseus": {
+      "mainland": 11575,
+      "mainland_pretraining_candidate": true,
+      "shared_evaluation_candidate": true,
+      "support_observed": true,
+      "tasmania": 678,
+      "total": 12253
+    },
+    "Pseudocheirus peregrinus": {
+      "mainland": 15990,
+      "mainland_pretraining_candidate": true,
+      "shared_evaluation_candidate": true,
+      "support_observed": true,
+      "tasmania": 130,
+      "total": 16120
+    },
+    "Trichosurus vulpecula": {
+      "mainland": 23789,
+      "mainland_pretraining_candidate": true,
+      "shared_evaluation_candidate": true,
+      "support_observed": true,
+      "tasmania": 565,
+      "total": 24354
+    },
+    "Vombatus ursinus": {
+      "mainland": 16443,
+      "mainland_pretraining_candidate": true,
+      "shared_evaluation_candidate": true,
+      "support_observed": true,
+      "tasmania": 502,
+      "total": 16945
+    }
+  },
+  "bindings": {
+    "acquisition_manifest_sha256": "281371f28ef7d2d20917729db5686de00206214aac7634243ccac8db320517b8",
+    "contract_sha256": "6170690f2a6023e3149048980d83db323409a3f644c9b8da206be5d1393b3bea",
+    "domain_manifest_sha256": "44435b4bd890fab04d5eba8b29801a0d1a7c509043c4ff51d25b429e488dd999",
+    "eligible_cell_ledger_sha256": "0d55fd068449a854bfd1f4e91dabdb2da6265d4706d31038b8dfec26c674eda1",
+    "taxon_ledger_sha256": "b84e633951c4923463a5f8a384510629a218ffe0a8375e108d7a1aca821d98e2"
+  },
+  "completed_at": "2026-08-11T14:22:36Z",
+  "goal_id": "goal040-se-mammal-acquisition-feasibility",
+  "outputs": {
+    "private_footprint": [
+      "qa_value_frequency_census.json",
+      "row_audit.csv",
+      "species_cells.csv"
+    ],
+    "qa_value_frequency_census": {
+      "bytes": 407,
+      "content_sha256": "ad4884f99e7f9df437f351a0339dbdc78a5c081cf0091f45a302d8e4f7802d5b",
+      "rows": 1258883,
+      "schema_sha256": "714b3608b89f6d2fa36c24bb2130dc596ffdb9de580b17573659c3a8f7e1a35a",
+      "sha256": "379bafaf64fa9a70ac2cd46946e9c3f0dceafc440aee7687429d9900676412b4"
+    },
+    "row_audit": {
+      "bytes": 141037286,
+      "content_sha256": "818385761f5d31531ea0392efb60352863ea7ea24e4d62c1f9beae3d93e94ee3",
+      "header_sha256": "de1d7bad6080d025e73b5ba33efaedc6d89c51cd88a14dba740791bd999dc708",
+      "rows": 1258883,
+      "sha256": "0908241b6f75c3b5374714bd3ff6a75fbf60b2267c17556ff4a2545f0d138ba9"
+    },
+    "species_cells": {
+      "bytes": 7745510,
+      "content_sha256": "5570624bf19be13828356cc79c0c818744b942a04428a05299a246f67686ba01",
+      "header_sha256": "b8cec2b8de59f0e1237d57cfea6a9d474c696ff464d496eeb80314d4c3481412",
+      "rows": 145862,
+      "sha256": "24e13ef0a048893c82a02046e3f7edfada5118a439176ce16f92bcd3ba01e871"
+    }
+  },
+  "privacy": {
+    "coordinates_retained": false,
+    "donor_cell_associations_retained": false,
+    "event_dates_retained": false,
+    "private_paths_retained": false,
+    "record_ids_retained": false,
+    "tracked_row_payload": false
+  },
+  "rules": {
+    "assertions": "diagnostics_only",
+    "cell_assignment": "exact_decimal_half_open_0.01_degree_tiles_joined_to_frozen_eligible_cell_ledger",
+    "record_id": "control_clean_required_global_dedup_after_attribution",
+    "shared_qualification": "frozen_shared_evaluation_eligible_and_100_mainland_and_30_tasmania",
+    "uncertainty": "missing_retained_flagged; invalid_or_over_1000m_excluded"
+  },
+  "schema_version": "1.0",
+  "stage": "qc-species-cell-normalisation",
+  "status": "complete_raw_replay_required",
+  "summary": {
+    "accepted_species_cells": 145862,
+    "diagnostic_flags": {
+      "uncertainty_missing": 88169
+    },
+    "dispositions": {
+      "accepted_presence": 1120459,
+      "coordinates_invalid_or_outside_grid": 72,
+      "fossil_or_subfossil": 38,
+      "identity_unresolved": 7,
+      "occurrence_status_absent": 1259,
+      "outside_eligible_cell": 25431,
+      "uncertainty_invalid_or_over_1000m": 111617
+    },
+    "identity_rows": 1258876,
+    "input_rows": 1258883,
+    "mainland_pretraining_taxa": 20,
+    "shared_evaluation_taxa": 5,
+    "support_observed_taxa": 21
+  },
+  "taxon_tiers": {
+    "Burramys parvus": {
+      "mainland": 87,
+      "mainland_pretraining_candidate": false,
+      "shared_evaluation_candidate": false,
+      "support_observed": true,
+      "tasmania": 0,
+      "total": 87
+    },
+    "Dasyurus maculatus": {
+      "mainland": 2619,
+      "mainland_pretraining_candidate": true,
+      "shared_evaluation_candidate": true,
+      "support_observed": true,
+      "tasmania": 466,
+      "total": 3085
+    },
+    "Gymnobelideus leadbeateri": {
+      "mainland": 813,
+      "mainland_pretraining_candidate": true,
+      "shared_evaluation_candidate": false,
+      "support_observed": true,
+      "tasmania": 0,
+      "total": 813
+    },
+    "Macropus giganteus": {
+      "mainland": 26758,
+      "mainland_pretraining_candidate": true,
+      "shared_evaluation_candidate": false,
+      "support_observed": true,
+      "tasmania": 34,
+      "total": 26792
+    },
+    "Mastacomys fuscus": {
+      "mainland": 542,
+      "mainland_pretraining_candidate": true,
+      "shared_evaluation_candidate": false,
+      "support_observed": true,
+      "tasmania": 8,
+      "total": 550
+    },
+    "Notamacropus rufogriseus": {
+      "mainland": 11575,
+      "mainland_pretraining_candidate": true,
+      "shared_evaluation_candidate": true,
+      "support_observed": true,
+      "tasmania": 678,
+      "total": 12253
+    },
+    "Petauroides volans": {
+      "mainland": 6650,
+      "mainland_pretraining_candidate": true,
+      "shared_evaluation_candidate": false,
+      "support_observed": true,
+      "tasmania": 0,
+      "total": 6650
+    },
+    "Petaurus australis": {
+      "mainland": 5534,
+      "mainland_pretraining_candidate": true,
+      "shared_evaluation_candidate": false,
+      "support_observed": true,
+      "tasmania": 0,
+      "total": 5534
+    },
+    "Petaurus norfolcensis": {
+      "mainland": 3038,
+      "mainland_pretraining_candidate": true,
+      "shared_evaluation_candidate": false,
+      "support_observed": true,
+      "tasmania": 0,
+      "total": 3038
+    },
+    "Petrogale penicillata": {
+      "mainland": 883,
+      "mainland_pretraining_candidate": true,
+      "shared_evaluation_candidate": false,
+      "support_observed": true,
+      "tasmania": 0,
+      "total": 883
+    },
+    "Phascogale tapoatafa": {
+      "mainland": 1962,
+      "mainland_pretraining_candidate": true,
+      "shared_evaluation_candidate": false,
+      "support_observed": true,
+      "tasmania": 0,
+      "total": 1962
+    },
+    "Phascolarctos cinereus": {
+      "mainland": 23512,
+      "mainland_pretraining_candidate": true,
+      "shared_evaluation_candidate": false,
+      "support_observed": true,
+      "tasmania": 0,
+      "total": 23512
+    },
+    "Potorous longipes": {
+      "mainland": 972,
+      "mainland_pretraining_candidate": true,
+      "shared_evaluation_candidate": false,
+      "support_observed": true,
+      "tasmania": 0,
+      "total": 972
+    },
+    "Pseudocheirus peregrinus": {
+      "mainland": 15990,
+      "mainland_pretraining_candidate": true,
+      "shared_evaluation_candidate": true,
+      "support_observed": true,
+      "tasmania": 130,
+      "total": 16120
+    },
+    "Pseudomys fumeus": {
+      "mainland": 210,
+      "mainland_pretraining_candidate": true,
+      "shared_evaluation_candidate": false,
+      "support_observed": true,
+      "tasmania": 0,
+      "total": 210
+    },
+    "Pseudomys novaehollandiae": {
+      "mainland": 343,
+      "mainland_pretraining_candidate": true,
+      "shared_evaluation_candidate": false,
+      "support_observed": true,
+      "tasmania": 7,
+      "total": 350
+    },
+    "Pseudomys shortridgei": {
+      "mainland": 212,
+      "mainland_pretraining_candidate": true,
+      "shared_evaluation_candidate": false,
+      "support_observed": true,
+      "tasmania": 0,
+      "total": 212
+    },
+    "Sminthopsis crassicaudata": {
+      "mainland": 333,
+      "mainland_pretraining_candidate": true,
+      "shared_evaluation_candidate": false,
+      "support_observed": true,
+      "tasmania": 0,
+      "total": 333
+    },
+    "Sminthopsis leucopus": {
+      "mainland": 1202,
+      "mainland_pretraining_candidate": true,
+      "shared_evaluation_candidate": false,
+      "support_observed": true,
+      "tasmania": 5,
+      "total": 1207
+    },
+    "Trichosurus vulpecula": {
+      "mainland": 23789,
+      "mainland_pretraining_candidate": true,
+      "shared_evaluation_candidate": true,
+      "support_observed": true,
+      "tasmania": 565,
+      "total": 24354
+    },
+    "Vombatus ursinus": {
+      "mainland": 16443,
+      "mainland_pretraining_candidate": true,
+      "shared_evaluation_candidate": true,
+      "support_observed": true,
+      "tasmania": 502,
+      "total": 16945
+    }
+  }
+}

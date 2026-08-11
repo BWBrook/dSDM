@@ -55,8 +55,9 @@ Tiers are assigned from distinct post-QC species × land cells, never raw rows:
 - `support_observed`: at least one cell anywhere in the domain; retained as a
   potential target-group donor even when not target-eligible;
 - `mainland_pretraining_candidate`: at least 100 southeast-mainland cells; and
-- `shared_evaluation_candidate`: at least 100 southeast-mainland cells and 30
-  Tasmania cells.
+- `shared_evaluation_candidate`: a taxon already marked
+  `shared_evaluation_eligible=true` in the frozen ledger, with at least 100
+  southeast-mainland cells and 30 Tasmania cells.
 
 These are simple acquisition-feasibility screens, not effective sample sizes
 or guarantees of model adequacy. Sparse frozen taxa remain visible in the
@@ -64,8 +65,8 @@ ledger and aggregate census. No taxon is pruned for later model performance,
 and later results cannot be generalised to all southeastern mammals.
 The expected shared anchors are *Notamacropus rufogriseus*, *Trichosurus
 vulpecula*, *Pseudocheirus peregrinus*, *Vombatus ursinus*, and *Dasyurus
-maculatus*. They must earn the same tiers as all other taxa; additional shared
-taxa qualify objectively.
+maculatus*. They must earn the same tiers as all other frozen shared-eligible
+taxa; the thresholds do not promote a mainland-only taxon into the shared frame.
 
 ## Acquisition and QA
 

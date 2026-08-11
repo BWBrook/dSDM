@@ -137,3 +137,30 @@
   QC, normalisation, support, predictor extraction, or modelling work was
   performed. This checkpoint closes acquisition only; it does not close Goal
   040 or authorise stage 6.
+
+## 2026-08-12 — offline QC and species-cell normalisation
+
+- Ran the new offline sequential normaliser over the complete replay-validated
+  21-file acquisition. It binds the frozen contract, taxon ledger, domain and
+  acquisition manifests, and the ignored eligible-cell ledger, with no network
+  call or camera/private response access.
+- Of 1,258,883 input rows, 1,120,459 passed QC. They collapse to 145,862
+  distinct species-by-eligible-cell presences. The exact disposition funnel is
+  1,259 explicit absences, 38 fossil/subfossil records, 111,617 invalid or
+  over-1-km uncertainty reports, 72 invalid/outside-grid coordinates, 25,431
+  non-eligible cells, and seven unresolved exact identities. There were no
+  duplicate `recordID` dispositions or cross-taxon conflicts.
+- Missing uncertainty was retained and flagged for 88,169 rows. ALA assertion
+  columns were retained as diagnostics only; no nearest-land rescue or spatial
+  geometry recomputation was used.
+- All 21 taxa have at least one eligible cell; 20 meet the mainland 100-cell
+  screen. All five frozen shared anchors meet their shared thresholds. The
+  deliberately mainland-only *Macropus giganteus* has 26,758 mainland and 34
+  Tasmania cells but remains ineligible for shared evaluation under its frozen
+  ledger flag.
+- The tracked aggregate manifest replayed exactly from raw inputs, including
+  the private species-cell digest. Private row audit and species-cell table
+  remain ignored; the transient SQLite identity state is deleted after
+  materialisation. This closes Stage 6 only; no
+  target-group support, predictors, models, maps, manuscript work, commit, or
+  push was performed.
