@@ -42,7 +42,14 @@ def test_domain_taxonomy_and_count_blind_tiers_are_frozen():
     taxonomy = CONTRACT["taxonomy"]
     assert taxonomy["tracked_ledger"] == "metadata/goal040_taxon_query_ledger.csv"
     assert taxonomy["raw_discovery_responses_tracked"] is False
-    assert {"source_citations", "query_roles", "descendant_concepts", "synonyms"} <= set(taxonomy["required_ledger_fields"])
+    assert {
+        "global_extant_status", "current_native_extant_mainland_status",
+        "current_native_extant_tasmania_status", "query_roles", "query_concepts",
+        "accepted_descendants", "evidence_backed_aliases",
+    } <= set(taxonomy["required_ledger_fields"])
+    assert taxonomy["candidate_frame"] == "AMTC Australian Mammal Species List v5.0"
+    assert taxonomy["query_cohort_scope"] == "conservative_nonrepresentative_feasibility_subset"
+    assert taxonomy["broad_cohort_representativeness"] == "unproven"
     assert taxonomy["occurrences_establish_eligibility"] is False
     assert taxonomy["performance_based_pruning"] is False
     assert set(taxonomy["expected_shared_anchors"]) == {

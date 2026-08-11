@@ -2,9 +2,11 @@
 
 ## Scientific objective
 
-Determine whether real 2001–2025 evidence can support a defensible broad
-southeastern-Australian native mammal cohort, a target-group observation-support
-substrate, and a genuinely common mainland-plus-Tasmania predictor panel. The
+Determine whether real 2001–2025 evidence can support acquisition and
+observation-support feasibility for a frozen, conservative 21-taxon
+southeastern-Australian mammal subset, plus a genuinely common
+mainland-plus-Tasmania predictor panel. The subset is nonrepresentative, so the
+decision does not estimate feasibility for all southeastern mammals. The
 decision authorises or refuses a later mainland-to-Tasmania dSDM experiment; it
 does not fit a model or assert that a binary response stack is pretraining-ready.
 
@@ -22,9 +24,10 @@ restricted to the frozen frame and integrated 2001–2025 period.
    inclusion/exclusion reasons, source citations, accepted ALA and AFD
    identities, reviewed descendants/synonyms, and query roles. The final ledger
    is tracked canonical provenance; raw discovery responses stay ignored.
-2. Freeze a versioned authoritative Australian land/state boundary manifest
-   before count inspection and derive deterministic centroid-in-polygon land
-   eligibility and Tasmania/mainland classification.
+2. Freeze the exact 163-subregion IBRA7.1 selector, explicitly excluding the
+   partial `MDD01` sliver, and intersect it with versioned ASGS land/state and
+   Geofabric lake/reservoir authorities before count inspection. Derive
+   deterministic eligible cells and Tasmania/mainland classification.
 3. Census and, within the declared resource ceiling, fully acquire immutable
    2001–2025 queries; apply the inherited coordinate, uncertainty, provider-ID,
    deduplication, land-cell, and species-cell QA.

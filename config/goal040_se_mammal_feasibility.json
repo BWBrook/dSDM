@@ -22,8 +22,9 @@
   },
   "time": {"start_year": 2001, "end_year": 2025, "inclusive": true},
   "taxonomy": {
+    "candidate_frame": "AMTC Australian Mammal Species List v5.0",
     "primary_cohort": "native_extant_terrestrial_or_arboreal_non_volant_non_marine_non_strongly_aquatic_mammals",
-    "required_ledger_fields": ["scientific_name", "decision", "decision_reason", "native_status_basis", "extant_status_basis", "ecology_basis", "ala_accepted_name", "ala_accepted_concept_id", "afd_accepted_name", "afd_accepted_concept_id", "source_citations", "query_concepts", "descendant_concepts", "synonyms", "query_roles", "review_status"],
+    "required_ledger_fields": ["scientific_name", "global_extant_status", "global_extant_basis", "current_native_extant_mainland_status", "mainland_status_basis", "current_native_extant_tasmania_status", "tasmania_status_basis", "primary_cohort_decision", "decision_reason", "ala_discovery_crosscheck", "ala_accepted_name", "ala_accepted_concept_id", "query_roles", "shared_evaluation_eligible", "query_strategy", "query_concepts", "accepted_descendants", "evidence_backed_aliases", "provider_record_deduplication", "regional_evidence_ids", "review_status"],
     "tracked_ledger": "metadata/goal040_taxon_query_ledger.csv",
     "tracked_ledger_role": "canonical_privacy_safe_scientific_provenance",
     "raw_discovery_responses_tracked": false,
@@ -31,7 +32,10 @@
     "occurrences_establish_eligibility": false,
     "performance_based_pruning": false,
     "expected_shared_anchors": ["Notamacropus rufogriseus", "Trichosurus vulpecula", "Pseudocheirus peregrinus", "Vombatus ursinus", "Dasyurus maculatus"],
-    "additional_shared_taxa": "qualify_by_same_rules"
+    "additional_shared_taxa": "qualify_by_same_rules",
+    "query_cohort_scope": "conservative_nonrepresentative_feasibility_subset",
+    "broad_cohort_representativeness": "unproven",
+    "ready_claim_scope": "operational_acquisition_and_support_feasibility_for_frozen_subset_only"
   },
   "data_sufficiency_tiers": {
     "support_observed": {"minimum_distinct_post_qc_cells_any_region": 1, "role": "target_group_support_only_unless_higher_tier_earned"},
@@ -45,7 +49,7 @@
     "email_env": "ALA_DOWNLOAD_EMAIL",
     "store_email": false,
     "authenticate": false,
-    "query_scope": "accepted_concepts_plus_reviewed_descendants_and_synonyms",
+    "query_scope": "accepted_parent_concepts_plus_reviewed_domain_descendants_and_evidence_backed_aliases",
     "manifests": ["taxonomy", "query", "count", "download"],
     "manifest_policy": "immutable_identity_addressed",
     "raw_and_row_level_root": "data/",
@@ -62,6 +66,7 @@
     "qa": {
       "provider_record_identity_required": true,
       "deduplicate_by_provider_record_identity": true,
+      "provider_record_deduplication_key": "occurrenceID_required",
       "valid_coordinates_required": true,
       "reported_uncertainty_exclusion_threshold_m": 1000,
       "missing_uncertainty_action": "retain_flagged_unknown",

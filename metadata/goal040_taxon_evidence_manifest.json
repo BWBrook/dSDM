@@ -1,0 +1,315 @@
+{
+  "ala_discovery_crosscheck": {
+    "amtc_without_exact_discovery_hit": 152,
+    "discovery_names_absent_from_amtc": [
+      "Bos (Bos) taurus",
+      "Cavia porcellus",
+      "Equus (Asinus) asinus",
+      "Equus (Equus) caballus",
+      "Lepus capensis",
+      "Mustela furo",
+      "Mustela putorius",
+      "Onychogalea fraenata",
+      "Rattus lutreolus",
+      "Tursiops australis"
+    ],
+    "exact_name_overlap": 264,
+    "role": "cross-check_only_not_completeness_or_eligibility"
+  },
+  "candidate_frame": {
+    "download_sha256": "c2d0ffe8e12901655017a238fd8593cea3bd9c5641871906d961b5ab16b513a6",
+    "globally_extinct_rows": 40,
+    "product": "AMTC Australian Mammal Species List",
+    "source_url": "https://australianmammals.org.au/publications/amtc-species-list/",
+    "species_rows": 416,
+    "version": "5.0 (February 2026)"
+  },
+  "mainland_donor_bie_evidence": {
+    "Burramys parvus": {
+      "accepted_concept_id": "https://biodiversity.org.au/afd/taxa/027e288a-6cdd-4ff8-9ef5-4d4b5690783d",
+      "afd_response_sha256": "76f8afcd74ea433d29774ba4ae3b872969667f7911918a22e4eb1f931ea53ab5",
+      "basis": "AMTC native/extant frame plus current ALA BIE-aggregated VIC/ACT legal status, with AFD IBRA text used only to corroborate intersection with the selected domain (not contemporary status)",
+      "bie_response_sha256": "26ca95ddff9b2c9ac6d9dc4130e65d1a221299c90c45c683d0eaa3ce2ed2345a",
+      "current_jurisdiction_statuses": {
+        "VIC": "Endangered"
+      },
+      "selected_ibra_region_token_parsed_from_afd": "Australian Alps"
+    },
+    "Gymnobelideus leadbeateri": {
+      "accepted_concept_id": "https://biodiversity.org.au/afd/taxa/d051536b-5b94-4317-a2b0-344a2ef25616",
+      "afd_response_sha256": "ca1af80914a2119b71b41bb23303f578668994290fb39c8c873d1b8481a884fa",
+      "basis": "AMTC native/extant frame plus current ALA BIE-aggregated VIC/ACT legal status, with AFD IBRA text used only to corroborate intersection with the selected domain (not contemporary status)",
+      "bie_response_sha256": "3acfc7e18b2b2d315e9d18b2922f860c3e0dca21a4d1063814ea3fb9fe32b06f",
+      "current_jurisdiction_statuses": {
+        "VIC": "Critically Endangered"
+      },
+      "selected_ibra_region_token_parsed_from_afd": "South Eastern Highlands"
+    },
+    "Mastacomys fuscus": {
+      "accepted_concept_id": "https://biodiversity.org.au/afd/taxa/6a5c25e0-3b06-4ae2-8069-b4c1350c4365",
+      "afd_response_sha256": "a6944151c5a25169b5a463183e2c1d850e367f84c2f5aeb4d7d35e25a08ad583",
+      "basis": "AMTC native/extant frame plus current ALA BIE-aggregated VIC/ACT legal status, with AFD IBRA text used only to corroborate intersection with the selected domain (not contemporary status)",
+      "bie_response_sha256": "a5a464ac39460355187223b379f32fa6efc7157a7058e6ff8e9da47086d6e41e",
+      "current_jurisdiction_statuses": {
+        "ACT": "Endangered"
+      },
+      "selected_ibra_region_token_parsed_from_afd": "Australian Alps"
+    },
+    "Petauroides volans": {
+      "accepted_concept_id": "https://biodiversity.org.au/afd/taxa/5e2dc7c9-4cff-485b-9f71-5ed99c0c8d3e",
+      "afd_response_sha256": "e68b909a5968c7a337dd55b3b80219ecb9e5340d691323ece4eb337a53459717",
+      "basis": "AMTC native/extant frame plus current ALA BIE-aggregated VIC/ACT legal status, with AFD IBRA text used only to corroborate intersection with the selected domain (not contemporary status)",
+      "bie_response_sha256": "befba3d6b9a57670fda0cec18d3c4c7c08e7df65500e8131ad8e0161d3a0d3e5",
+      "current_jurisdiction_statuses": {
+        "ACT": "Endangered",
+        "VIC": "Endangered"
+      },
+      "selected_ibra_region_token_parsed_from_afd": "South Eastern Highlands"
+    },
+    "Petaurus australis": {
+      "accepted_concept_id": "https://biodiversity.org.au/afd/taxa/61e18b9c-9fda-4cf2-9b9d-996e67cbae38",
+      "afd_response_sha256": "f08e6e42a59b77d4e35275abac60d2dd5f95e0c3e48122a6ade001724cd09629",
+      "basis": "AMTC native/extant frame plus current ALA BIE-aggregated VIC/ACT legal status, with AFD IBRA text used only to corroborate intersection with the selected domain (not contemporary status)",
+      "bie_response_sha256": "ee966113290dcfc8a3dd847f679f3eb140b25ce49b044c40809ae9ad4ccdb346",
+      "current_jurisdiction_statuses": {
+        "ACT": "Vulnerable",
+        "VIC": "Vulnerable"
+      },
+      "selected_ibra_region_token_parsed_from_afd": "South Eastern Highlands"
+    },
+    "Petaurus norfolcensis": {
+      "accepted_concept_id": "https://biodiversity.org.au/afd/taxa/2c8ae25f-5e6e-4a8e-8980-33cfc58ad7c8",
+      "afd_response_sha256": "7950af7a9f92244b839693aaf972346646ec89c5f06d84bc0990015437392872",
+      "basis": "AMTC native/extant frame plus current ALA BIE-aggregated VIC/ACT legal status, with AFD IBRA text used only to corroborate intersection with the selected domain (not contemporary status)",
+      "bie_response_sha256": "be80f3f67196c93b5ca505cbacb872f5808a92dc1d1e74d3f696f7059ea779ec",
+      "current_jurisdiction_statuses": {
+        "VIC": "Vulnerable"
+      },
+      "selected_ibra_region_token_parsed_from_afd": "Victorian Midlands"
+    },
+    "Petrogale penicillata": {
+      "accepted_concept_id": "https://biodiversity.org.au/afd/taxa/9605957e-396d-43b5-9025-997e1fee039a",
+      "afd_response_sha256": "a008d5268daa4c7b814a6e25094fa520fe21a76dd42ed936143e52c8e2678610",
+      "basis": "AMTC native/extant frame plus current ALA BIE-aggregated VIC/ACT legal status, with AFD IBRA text used only to corroborate intersection with the selected domain (not contemporary status)",
+      "bie_response_sha256": "2e825f0ac1b1125638f2e1d641c8e200094326602c40d517931f1ff406f049f4",
+      "current_jurisdiction_statuses": {
+        "ACT": "Endangered",
+        "VIC": "Critically Endangered"
+      },
+      "selected_ibra_region_token_parsed_from_afd": "South East Corner"
+    },
+    "Phascogale tapoatafa": {
+      "accepted_concept_id": "https://biodiversity.org.au/afd/taxa/d9dbc62d-9e1b-48a2-8613-1b70f771954e",
+      "afd_response_sha256": "6cd2a5233a2e1014a8c4669e633b2e2de90412aa7358cf1cd5dc7fba375f4e4d",
+      "basis": "AMTC native/extant frame plus current ALA BIE-aggregated VIC/ACT legal status, with AFD IBRA text used only to corroborate intersection with the selected domain (not contemporary status)",
+      "bie_response_sha256": "c3baf4aa82c218b114987d0a157412354ad4132600e1a220db1e74a8516725a7",
+      "current_jurisdiction_statuses": {
+        "VIC": "Vulnerable"
+      },
+      "selected_ibra_region_token_parsed_from_afd": "Australian Alps"
+    },
+    "Phascolarctos cinereus": {
+      "accepted_concept_id": "https://biodiversity.org.au/afd/taxa/e9d6fbbd-1505-4073-990a-dc66c930dad6",
+      "afd_response_sha256": "023b1e5a5ce2db8a2630c265ac5d3267f6eea69e2d00ba300ea9acda15c5132a",
+      "basis": "AMTC native/extant frame plus current ALA BIE-aggregated VIC/ACT legal status, with AFD IBRA text used only to corroborate intersection with the selected domain (not contemporary status)",
+      "bie_response_sha256": "986dbcfb227430355c8067e7c2f920dfe5874564bda71c52cf01bd3f2e1d70d9",
+      "current_jurisdiction_statuses": {
+        "ACT": "Endangered"
+      },
+      "selected_ibra_region_token_parsed_from_afd": "Australian Alps"
+    },
+    "Potorous longipes": {
+      "accepted_concept_id": "https://biodiversity.org.au/afd/taxa/19ef682c-bb52-4f0f-962e-391fffc4f984",
+      "afd_response_sha256": "46fffa25d53482ebe15969ddd764cd1c33857bb792e3a20cc6a08092cab2e235",
+      "basis": "AMTC native/extant frame plus current ALA BIE-aggregated VIC/ACT legal status, with AFD IBRA text used only to corroborate intersection with the selected domain (not contemporary status)",
+      "bie_response_sha256": "c203f73962eb1d05b60a856e821aaa3553dc680130937be241111769da9fe959",
+      "current_jurisdiction_statuses": {
+        "VIC": "Endangered"
+      },
+      "selected_ibra_region_token_parsed_from_afd": "South East Corner"
+    },
+    "Pseudomys fumeus": {
+      "accepted_concept_id": "https://biodiversity.org.au/afd/taxa/fffbb38d-6da5-4f88-bb1e-6bf0ef6af1b6",
+      "afd_response_sha256": "0eca7f9816198f1a0bdae5a867c4e2e7262f055f15066f901bf36804ad72f6fa",
+      "basis": "AMTC native/extant frame plus current ALA BIE-aggregated VIC/ACT legal status, with AFD IBRA text used only to corroborate intersection with the selected domain (not contemporary status)",
+      "bie_response_sha256": "80b5988481a103422d9a5db14897b2c05025327b0c63af605cc31e0f91c88ff4",
+      "current_jurisdiction_statuses": {
+        "ACT": "Endangered",
+        "VIC": "Endangered"
+      },
+      "selected_ibra_region_token_parsed_from_afd": "South Eastern Highlands"
+    },
+    "Pseudomys novaehollandiae": {
+      "accepted_concept_id": "https://biodiversity.org.au/afd/taxa/0058f9b2-a9c1-49a2-811b-9b2efcc8e279",
+      "afd_response_sha256": "a16fbaff26bf5ef6a30966b972a0789d48662f8b586e6721f3783e4d141e44d9",
+      "basis": "AMTC native/extant frame plus current ALA BIE-aggregated VIC/ACT legal status, with AFD IBRA text used only to corroborate intersection with the selected domain (not contemporary status)",
+      "bie_response_sha256": "a56b9f0ddea96a05c58601f9220ed5402c7a4828f883d6381ca63080e79b99bc",
+      "current_jurisdiction_statuses": {
+        "ACT": "Vulnerable",
+        "VIC": "Vulnerable"
+      },
+      "selected_ibra_region_token_parsed_from_afd": "South East Coastal Plain"
+    },
+    "Pseudomys shortridgei": {
+      "accepted_concept_id": "https://biodiversity.org.au/afd/taxa/bd9486ed-bdba-45b4-ab1c-73cc2c7a6edf",
+      "afd_response_sha256": "845f050c4d9262559ad9fe3b7287a40eb7f1350d79f7542ef07efc783f2dc5c4",
+      "basis": "AMTC native/extant frame plus current ALA BIE-aggregated VIC/ACT legal status, with AFD IBRA text used only to corroborate intersection with the selected domain (not contemporary status)",
+      "bie_response_sha256": "fb54b1f7f583f14b401ccf2ac9858cf2aa81da3540bd7e7177a4d015be892929",
+      "current_jurisdiction_statuses": {
+        "VIC": "Endangered"
+      },
+      "selected_ibra_region_token_parsed_from_afd": "Victorian Midlands"
+    },
+    "Sminthopsis crassicaudata": {
+      "accepted_concept_id": "https://biodiversity.org.au/afd/taxa/c21b2a38-f95b-4d4d-9fa2-4b8cb6aab36d",
+      "afd_response_sha256": "5fe63d7efc5bedf671ce3b63d3fff4aed9a03359f5093329a4385a77a66cdc08",
+      "basis": "AMTC native/extant frame plus current ALA BIE-aggregated VIC/ACT legal status, with AFD IBRA text used only to corroborate intersection with the selected domain (not contemporary status)",
+      "bie_response_sha256": "eb7360a2ec428e10bf792ae887f5f75caaa4e2075a033ae24b751903678712d6",
+      "current_jurisdiction_statuses": {
+        "VIC": "Vulnerable"
+      },
+      "selected_ibra_region_token_parsed_from_afd": "Australian Alps"
+    },
+    "Sminthopsis leucopus": {
+      "accepted_concept_id": "https://biodiversity.org.au/afd/taxa/b7bbccef-e789-41ac-81d9-9be9390d0b0e",
+      "afd_response_sha256": "55e767e24e4a4c59362ad955995da17fa0857d4b900125923a7333ca123face3",
+      "basis": "AMTC native/extant frame plus current ALA BIE-aggregated VIC/ACT legal status, with AFD IBRA text used only to corroborate intersection with the selected domain (not contemporary status)",
+      "bie_response_sha256": "3c64bf9c1084343cd3423a465d5f8a5d7e4cb47a0eaf5687eeeca2967b70ed73",
+      "current_jurisdiction_statuses": {
+        "VIC": "Vulnerable"
+      },
+      "selected_ibra_region_token_parsed_from_afd": "Australian Alps"
+    }
+  },
+  "query_policy": {
+    "aliases": "raw synonym strings are not query-ready; only the Goal012-evidenced Macropus normalized-name path is promoted",
+    "authority": "Goal011 accepted-concept round-trip plus Goal012 explicit reviewed-union fallback",
+    "parent_expansion_assumed": false,
+    "provider_record_deduplication": "occurrenceID required, matching Goal012"
+  },
+  "regional_evidence": {
+    "brushtail": {
+      "claim": "Australian Museum gives current mainland-state and Tasmania distribution.",
+      "parsed_tokens": [
+        "Trichosurus vulpecula",
+        "New South Wales",
+        "Tasmania"
+      ],
+      "sha256": "ffca4879f3e2a371b02f5518241faf0b344d989e1d9651f6270915bcce4f0ddb",
+      "url": "https://australian.museum/learn/animals/mammals/common-brushtail-possum/"
+    },
+    "coolah": {
+      "claim": "Australian Museum reports both species currently observed at Coolah Tops in the selected mainland domain.",
+      "parsed_tokens": [
+        "Notamacropus rufogriseus",
+        "Macropus giganteus",
+        "Coolah Tops"
+      ],
+      "sha256": "53b05c15b71db4bcfeab947ad0c477d3d1172651a0692f50e20fd0fce3dc0a4c",
+      "url": "https://australian.museum/learn/news/blog/islands-in-the-sky-sampling-the-fauna-of-coolah-tops/"
+    },
+    "eastern_quoll": {
+      "claim": "DCCEEW distinguishes the remaining native wild Tasmanian population from mainland reintroductions.",
+      "parsed_tokens": [
+        "Dasyurus viverrinus",
+        "disappeared from the Australian mainland",
+        "remain only in Tasmania"
+      ],
+      "sha256": "96f43024e2e992d29108836b29ba2308e14370755bf039406d4cff1333045c9d",
+      "url": "https://www.dcceew.gov.au/environment/biodiversity/threatened/species/20-mammals-by-2020/eastern-quoll"
+    },
+    "forester": {
+      "claim": "NRE Tasmania states current mainland and restricted Tasmanian populations.",
+      "parsed_tokens": [
+        "Macropus giganteus",
+        "common on mainland Australia",
+        "currently restricted"
+      ],
+      "sha256": "cfea827c685fc29b0aa98062651022176d462950215779dbcee86e1a343f790b",
+      "url": "https://nre.tas.gov.au/wildlife-site/Pages/Forester-Kangaroo.aspx"
+    },
+    "glider_introduction": {
+      "claim": "Peer-reviewed research metadata supports a recent Tasmanian introduction under the pre-split name.",
+      "parsed_tokens": [
+        "Petaurus breviceps",
+        "recent introduction",
+        "Tasmania"
+      ],
+      "sha256": "281bc23f4b71d07a508552f9666f6cb463e1697c074c129fc9d9c3a7f307aef3",
+      "url": "https://researchprofiles.canberra.edu.au/en/publications/when-is-a-native-species-invasive-incursion-of-a-novel-predatory-"
+    },
+    "pademelon": {
+      "claim": "NRE Tasmania reports the pademelon as extant in Tasmania and no longer extant on the mainland.",
+      "parsed_tokens": [
+        "Thylogale billardierii",
+        "now restricted to Tasmania"
+      ],
+      "sha256": "e94df3096cdfa42aff8979c37ea78a9d8e1c082faf0d39fc46201d3238b59666",
+      "url": "https://nre.tas.gov.au/Documents/Effects%20of%20Hunting%20and%20Rainfall%20on%20Bennetts%20Wallaby%20and%20Tasmanian%20Pademelon%20Populations.pdf"
+    },
+    "ringtail": {
+      "claim": "Australian Museum gives current mainland-state and Tasmania distribution.",
+      "parsed_tokens": [
+        "Pseudocheirus peregrinus",
+        "New South Wales",
+        "Tasmania"
+      ],
+      "sha256": "cd112815d8089610b236da13fe0979f02f362e99877fcd1b6e75b51fded42f21",
+      "url": "https://australian.museum/learn/animals/mammals/common-ringtail-possum/"
+    },
+    "spotted_quoll": {
+      "claim": "DCCEEW separately identifies current southeastern-mainland and Tasmanian populations.",
+      "parsed_tokens": [
+        "Dasyurus maculatus",
+        "southeastern mainland",
+        "Tasmanian population"
+      ],
+      "sha256": "e13daa4f4445fc4540964585385aae5c2a3c7ec4b036632592b7b8a19da23618",
+      "url": "https://www.dcceew.gov.au/environment/biodiversity/threatened/assessments/dasyurus-maculatus"
+    },
+    "tas_macropods": {
+      "claim": "Tasmania Parks lists Bennett's wallaby and Forester kangaroo among Tasmania's five macropods.",
+      "parsed_tokens": [
+        "Notamacropus rufogriseus",
+        "Macropus giganteus",
+        "Tasmania has five species"
+      ],
+      "sha256": "2b838d2e96dacba1d6be01a9452ee88839089442bf3d1f6de6aeb9bb2ea4cb1d",
+      "url": "https://parks.tas.gov.au/discovery-and-learning/wildlife/land-mammals/kangaroos-and-wallabies"
+    },
+    "tas_mammals": {
+      "claim": "NRE Tasmania lists the Tasmanian devil as a current Tasmanian mammal; AMTC extant status and known mainland loss preclude shared use.",
+      "parsed_tokens": [
+        "Sarcophilus harrisii",
+        "Tasmanian devil"
+      ],
+      "sha256": "fa3ebcc0f3e3a9dfd9a929ded356a41f16123f050ba1fd280d8e852f4a2f5b6c",
+      "url": "https://nre.tas.gov.au/wildlife-management/fauna-of-tasmania/mammals/complete-listing-of-tasmanias-mammals"
+    },
+    "wombat": {
+      "claim": "Australian Museum describes the fragmented current southeastern-mainland and Tasmanian distribution.",
+      "parsed_tokens": [
+        "Vombatus ursinus",
+        "southeastern Australia",
+        "Tasmania"
+      ],
+      "sha256": "e86b02c4b81c6ced5f5b6543a23be6ecd93884a3778bbf21cc47f2b62e4af5b9",
+      "url": "https://australian.museum/learn/animals/mammals/bare-nosed-wombat/"
+    }
+  },
+  "summary": {
+    "broad_cohort_representativeness": "unproven",
+    "decisions": {
+      "exclude": 177,
+      "include": 21,
+      "nonquery": 218
+    },
+    "known_selection_bias": "current legal-status evidence preferentially identifies threatened/listed taxa and omits many common plausible donors",
+    "permitted_future_claim": "operational acquisition/support feasibility for the frozen subset only, not all southeastern mammals",
+    "query_cohort_scope": "conservative_nonrepresentative_feasibility_subset",
+    "query_role_taxa": 21,
+    "rows": 416,
+    "selection_mechanism": "five approved shared anchors plus Macropus mainland control plus taxa with parsed current VIC/ACT legal-status evidence and selected-IBRA corroboration",
+    "shared_evaluation_taxa": 5
+  }
+}

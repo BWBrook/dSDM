@@ -1,25 +1,44 @@
 # Runbook
 
-## Prespecification-only commands
+## Count-free taxonomy and ledger/domain freeze
 
-The present review authorises only the offline contract test:
+The first two execution stages are resumable and remain strictly count-free:
 
 ```sh
+PYTHONPATH=src uv run --locked python -m dsdm_phase1.goal040_freeze taxonomy --root .
+PYTHONPATH=src uv run --locked python -m dsdm_phase1.goal040_freeze freeze-ledger --root .
+PYTHONPATH=src uv run --locked python -m dsdm_phase1.goal040_freeze validate --root .
 PYTHONPATH=src uv run --locked pytest -q tests/test_goal040_contract.py
+PYTHONPATH=src uv run --locked pytest -q tests/test_goal040_freeze.py
 git diff --check
 ```
 
-Do not set or print `ALA_DOWNLOAD_EMAIL` during prespecification. Do not call an
-ALA endpoint, inspect occurrence responses, open outer material, or read
-row-level/private data.
+The `taxonomy` stage prepares a `counts=False` ALA name cross-check; it requires
+`ALA_DOWNLOAD_EMAIL` only when that ignored raw response is absent, and never
+records the email. The `freeze-ledger` stage reads the complete AMTC v5.0
+species frame and uses the prepared ALA evidence only for name resolution. It
+resolves query-role taxa to accepted AFD concepts and explicit reviewed
+accepted descendants without making a count or occurrence request. The
+exact-domain stage reconciles the archived
+IBRA7.0 design polygon to a frozen 163-subregion IBRA7.1 allowlist, then writes
+the ordered eligible-cell ledger under ignored raw storage. Re-running the
+freeze must reproduce both the allowlist and cell-ID digests recorded in the
+tracked manifest.
+
+The frozen 21-taxon query set is a conservative, nonrepresentative feasibility
+subset. Its regional evidence establishes an eligibility prior only; it does
+not establish contemporary occurrence or support. Stop after `validate` unless
+the count-census stage is separately authorised. Do not inspect occurrence
+responses, open outer material, or read row-level/private data.
 
 ## Staged execution after explicit review
 
-Implementation must expose separate, resumable commands for `taxonomy`,
+Later implementation must expose separate, resumable commands for `taxonomy`,
 `freeze-ledger`, `count-census`, `acquire`, `normalise`, `support`,
 `predictor-pilot`, `validate`, and `finalise`. `taxonomy` must not call a count
 or occurrence endpoint. `freeze-ledger` publishes the tracked taxon/query
-ledger and freezes the authoritative land/state boundary manifest.
+ledger and freezes the exact IBRA7.1/domain-grid plus authoritative land/state
+and open-water manifests.
 `count-census` requires both frozen manifests. `acquire`
 requires a complete count manifest and all resource ceilings to pass; if they
 do, it downloads every frozen query without an additional discretionary

@@ -3,20 +3,22 @@
 ## Domain, sampling process, and scale of inference
 
 The domain is the established future SE-bird WGS84 0.01-degree cell-centroid
-frame: longitude 135.375–153.625 and latitude -43.6275–-23.7775, land cells
-only. Every cell is classified as `southeast_mainland` or `tasmania`; the
-regional distinction must survive aggregation. Earlier processed SE files are
-archaeological checks only and cannot become canonical inputs. The inclusive
+frame: longitude 135.375–153.625 and latitude -43.6275–-23.7775. Its canonical
+ecological selector is the frozen allowlist of 163 whole IBRA7.1 subregions
+reconciled from the archived study polygon. The 2.15% archived `MDD01` sliver
+is explicitly excluded because admitting it would widen the domain to the
+whole subregion. A cell is eligible only when its centroid is covered by the
+IBRA7.1 selector and ABS ASGS land, and is not covered by a Geofabric type-25
+reservoir or type-26 lake. Northern Territory and Other Territories are
+excluded. Every eligible cell is classified as `southeast_mainland` or
+`tasmania`; the regional distinction must survive aggregation. The inclusive
 response period is 2001–2025.
 
-Before any count query, freeze a tracked manifest for a versioned authoritative
-Australian land and state boundary product. Record its product/version,
-publisher, source URL, retrieval time, stable identity, checksum, CRS, and
-licence. Deterministically clip the centroid frame to the bbox; a cell is
-eligible only when its centroid is in the land polygon, and is `tasmania` only
-when its centroid is in the Tasmania state polygon, otherwise
-`southeast_mainland`. The exact public product may be selected during the
-count-free taxonomy/domain stage, but its manifest must precede counts.
+Before any count query, freeze the tracked exact-domain manifest, including the
+IBRA7.1, ASGS land/state, and Geofabric authorities; the 163-code allowlist;
+the MDD01 reconciliation; ordered cell identity; product/version, publisher,
+source URL, retrieval time, checksum, CRS, licence, and deterministic spatial
+rules. Earlier processed SE files remain archaeological design evidence only.
 
 ALA records arise from a changing, opportunistic observation and reporting
 process. Record volume therefore measures indexed records, not sampling effort,
@@ -29,8 +31,16 @@ independent experimental units or donor observations.
 
 ## Taxon ledger and count-blind tiers
 
-The primary support cohort comprises native, extant, terrestrial or arboreal,
-non-volant, non-marine, non-strongly-aquatic mammals. Exclude introduced,
+The frozen acquisition cohort is a conservative, nonrepresentative 21-taxon
+feasibility subset drawn from the complete AMTC v5.0 species frame. It contains
+16 mainland-only donors plus five approved anchors with mainland-donor,
+Tasmania-support, and shared-evaluation roles. Selection is biased toward taxa
+with available current VIC/ACT legal-status evidence and is not a census of
+southeastern mammals. The permitted inference is operational acquisition and
+support feasibility for this frozen subset only.
+
+Eligibility comprises native, extant, terrestrial or arboreal, non-volant,
+non-marine, non-strongly-aquatic mammals. Exclude introduced,
 captive, fossil, subfossil, and extralimital records; bats; marine mammals;
 platypus; and other strongly aquatic specialists. ALA occurrence records alone
 cannot establish native/extant/ecological eligibility. Before any count query,
@@ -49,8 +59,9 @@ Tiers are assigned from distinct post-QC species × land cells, never raw rows:
   Tasmania cells.
 
 These are simple acquisition-feasibility screens, not effective sample sizes
-or guarantees of model adequacy. Sparse eligible taxa remain visible in the
-ledger and aggregate census. No taxon is pruned for later model performance.
+or guarantees of model adequacy. Sparse frozen taxa remain visible in the
+ledger and aggregate census. No taxon is pruned for later model performance,
+and later results cannot be generalised to all southeastern mammals.
 The expected shared anchors are *Notamacropus rufogriseus*, *Trichosurus
 vulpecula*, *Pseudocheirus peregrinus*, *Vombatus ursinus*, and *Dasyurus
 maculatus*. They must earn the same tiers as all other taxa; additional shared
