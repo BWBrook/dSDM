@@ -120,3 +120,7 @@
 - This entry records implementation readiness only. No live ALA occurrence
   call, raw occurrence acquisition, camera/private access, normalisation, QA,
   support calculation, modelling, commit, or push was performed.
+- Readiness repair: the first invocation stopped safely before an ALA call
+  because galah 0.13.3 requires the temporary configuration file to exist.
+  The runner now creates that empty ephemeral file before configuration, with
+  the precondition covered by the synthetic fake.

@@ -47,6 +47,7 @@ class FakeGalah:
 
     def galah_config(self, **kwargs):
         self.config_paths.append(Path(kwargs["config_file"]))
+        assert Path(kwargs["config_file"]).is_file()
         Path(kwargs["config_file"]).write_text("[galahSettings]\n", encoding="utf-8")
         assert kwargs["authenticate"] is False
 

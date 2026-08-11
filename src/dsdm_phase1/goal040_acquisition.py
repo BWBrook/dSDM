@@ -501,6 +501,7 @@ def run_acquisition(
         _require(getattr(galah_module, "__version__", None) == PACKAGE["version"], "galah_version_drift")
         with tempfile.TemporaryDirectory(prefix="dsdm-goal040-galah-") as temporary:
             config_path = Path(temporary) / "config.ini"
+            config_path.touch()
             try:
                 galah_module.galah_config(
                     atlas="Australia", email=contact, email_notify=False, reason=4,
