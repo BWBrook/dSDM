@@ -23,6 +23,7 @@ from .goal040_domain import build_domain_freeze, validate_domain_manifest
 from .goal040_count_census import run_count_census, validate_count_census
 from .goal040_acquisition import run_acquisition, validate_acquisition
 from .goal040_normalisation import run_normalisation, validate_normalisation
+from .goal040_support import run_support, validate_support
 from .goal040_taxonomy import QUERY_TAXA, validate_taxon_freeze, write_taxon_freeze
 
 
@@ -273,7 +274,7 @@ def main() -> None:
         "stage",
         choices=[
             "taxonomy", "freeze-ledger", "count-census", "validate-count-census",
-            "acquire", "validate-acquisition", "normalise", "validate-normalisation", "validate",
+            "acquire", "validate-acquisition", "normalise", "validate-normalisation", "support", "validate-support", "validate",
         ],
     )
     parser.add_argument("--root", type=Path, default=Path("."))
@@ -299,6 +300,10 @@ def main() -> None:
         result = run_normalisation(root)
     elif args.stage == "validate-normalisation":
         result = validate_normalisation(root, require_raw=args.raw_replay)
+    elif args.stage == "support":
+        result = run_support(root)
+    elif args.stage == "validate-support":
+        result = validate_support(root, require_raw=args.raw_replay)
     else:
         result = validate(root)
     print(json.dumps(result, indent=2, sort_keys=True))

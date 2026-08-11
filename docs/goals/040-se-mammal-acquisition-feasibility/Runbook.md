@@ -162,3 +162,38 @@ species-cell rows, and value-frequency census remain under ignored
 `data/raw/goal040/normalisation/`; the transient SQLite identity store is
 deleted after materialisation. The tracked manifest binds the exact three-file
 private footprint with aggregate hashes, sizes, row counts, and schema digests.
+
+## Stage 7 target-group observation-support feasibility
+
+Run only after the normalisation raw replay has passed:
+
+```sh
+PYTHONPATH=src uv run --locked pytest -q tests/test_goal040_support.py
+PYTHONPATH=src uv run --locked python -m dsdm_phase1.goal040_freeze support --root .
+PYTHONPATH=src uv run --locked python -m dsdm_phase1.goal040_freeze validate-support --root . --raw-replay
+git diff --check
+```
+
+This offline stage binds the frozen Goal 040 domain and Stage 6 species-cell
+manifest, then the Goal 019 `outputs.json` receipt and its exact camera grid
+digest. It re-keys only camera rows exactly aligned to the eligible-cell ledger;
+out-of-domain rows are rejected in aggregate. Camera detections can augment a
+target's presence precedence and distance only; they are never donors. Donors
+are distinct other taxa from Stage 6 ALA species cells only.
+
+The ignored output directory contains exactly one sparse CSV for cells with a
+positive donor count or a target/camera state. The tracked support manifest
+contains no cells, coordinates, donor identities, camera identifiers, or paths:
+only its footprint/digests and target-by-region aggregates. The complete zero
+bin is derived from the exact eligible-cell denominator without materialising a
+zero-row lattice. The >=5 km comparison is inclusive, restricted to the same
+region, and uses a conservative adaptive EPSG:3577 search radius followed by
+WGS84 geodesic refinement.
+This is a full-data feasibility diagnostic, not a bound on future split
+candidate counts.
+
+Tracked-only validation is explicitly structural. It verifies tracked input
+bindings, aggregate arithmetic, privacy declarations, receipt shape, and digest
+format, but cannot authenticate an opaque private-output digest without the
+ignored file. Git supplies provenance for the tracked manifest;
+`validate-support --raw-replay` authenticates the private content and digest.

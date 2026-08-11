@@ -113,6 +113,14 @@ and X=5 (`X5 ⊂ X3 ⊂ X2`). Preserve the inherited inclusive >=5 km distance
 from the nearest target presence. Camera concordance is an aggregate diagnostic
 only and cannot select X or rescue a failed substrate.
 
+Stage 7 may add Goal 019 camera detections for the target only, so that they
+participate in target-presence precedence and the nearest-target distance. They
+never provide donor support: every donor count comes only from the frozen Goal
+040 ALA species-cell table. The result is a full-data feasibility diagnostic,
+not a bound on future split candidate counts. Future splits must recompute both
+donor support and distance from split-authorised records before materialising a
+shared response universe.
+
 Future split materialisation must recompute support and distance from records
 allowed for that split. Goal 040 must not freeze globally final binary labels.
 Within any future comparison, conventional and dSDM methods receive the same

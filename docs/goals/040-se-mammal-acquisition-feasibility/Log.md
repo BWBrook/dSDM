@@ -164,3 +164,35 @@
   materialisation. This closes Stage 6 only; no
   target-group support, predictors, models, maps, manuscript work, commit, or
   push was performed.
+
+## 2026-08-12 — Stage 7 target-group observation-support feasibility
+
+- Bound the frozen Goal 040 domain and Stage 6 exact species-cell footprint to
+  Goal 019's hashed camera-grid receipt. Of 4,105 target-specific camera grid
+  rows, 4,082 re-keyed exactly to the later exact domain and 23 older-frame
+  out-of-domain rows were rejected; no camera row was used as donor support.
+- Donor support is the threshold-neutral count of distinct other species from
+  the 21-taxon Stage 6 ALA species-cell table. Target ALA presences plus
+  re-keyed camera detections set target presence and same-region distance only;
+  precedence is presence, camera survey-supported absence, candidate, unknown.
+- Raw semantic replay passed with nested X=5, X=3, X=2 sets and the inclusive
+  WGS84-refined 5-km safeguard. X=3 final-candidate counts
+  (mainland; Tasmania) were: *Dasyurus maculatus* 10,752; 47,
+  *Notamacropus rufogriseus* 4,761; 4, *Pseudocheirus peregrinus* 2,031; 36,
+  *Trichosurus vulpecula* 396; 2, and *Vombatus ursinus* 4,751; 17.
+- Tasmania camera-absence X=3 support concordance before/after distance was
+  2/0, 0/0, 3/1, 0/0, and 0/0 respectively in that target order. It is an
+  aggregate diagnostic only and did not choose a threshold.
+- The result is a full-data feasibility diagnostic, not a bound on future split
+  candidate counts. Future splits must recompute donor support and target
+  distance from split-authorised records; it creates no final binary labels,
+  models, maps, predictors, or validation.
+- Audit repair made the tracked-only gate independent of ignored inputs by
+  resolving private digests and regional denominators from tracked upstream
+  manifests. It now validates exact structure, arithmetic, nesting, ratios,
+  privacy, and receipts without imposing an outcome-dependent X=3 minimum.
+  The distance search now expands adaptively from the projected nearest using
+  a conservative frozen-domain scale bound before WGS84 geodesic refinement.
+- Clarified that tracked-only validation is structural: it validates opaque
+  digest format but cannot authenticate private content. Git supplies tracked
+  provenance; `--raw-replay` authenticates the sparse output and its digests.
