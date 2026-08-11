@@ -185,7 +185,8 @@
     "aliases": "raw synonym strings are not query-ready; only the Goal012-evidenced Macropus normalized-name path is promoted",
     "authority": "Goal011 accepted-concept round-trip plus Goal012 explicit reviewed-union fallback",
     "parent_expansion_assumed": false,
-    "provider_record_deduplication": "occurrenceID required, matching Goal012"
+    "provider_record_deduplication": "recordID required for canonical cross-union deduplication; occurrenceID retained as optional auxiliary provenance",
+    "provider_record_identity_evidence": "Goal017 public ALA snapshot: recordID complete and unique in 50,834/50,834 rows; occurrenceID materially incomplete, including 10,240/33,442 populated devil rows"
   },
   "regional_evidence": {
     "brushtail": {

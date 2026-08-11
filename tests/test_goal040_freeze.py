@@ -68,7 +68,8 @@ def test_amtc_frame_and_decisions_are_count_free_and_conservative():
         assert row["ala_accepted_concept_id"].startswith("https://biodiversity.org.au/afd/taxa/")
         assert row["query_strategy"] == "explicit_reviewed_parent_plus_domain_relevant_accepted_descendants_union"
         assert json.loads(row["query_concepts"])
-        assert row["provider_record_deduplication"].startswith("occurrenceID required")
+        assert row["provider_record_deduplication"].startswith("recordID required")
+        assert "occurrenceID retained as an optional auxiliary field" in row["provider_record_deduplication"]
 
     for row in rows:
         if row["current_native_extant_tasmania_status"] == "not_assessed_nonquery":
@@ -118,7 +119,8 @@ def test_authority_manifests_freeze_candidate_frame_and_query_limits():
     assert frame["download_sha256"] == "c2d0ffe8e12901655017a238fd8593cea3bd9c5641871906d961b5ab16b513a6"
     assert evidence["ala_discovery_crosscheck"]["role"] == "cross-check_only_not_completeness_or_eligibility"
     assert evidence["query_policy"]["parent_expansion_assumed"] is False
-    assert evidence["query_policy"]["provider_record_deduplication"].startswith("occurrenceID required")
+    assert evidence["query_policy"]["provider_record_deduplication"].startswith("recordID required")
+    assert "50,834/50,834" in evidence["query_policy"]["provider_record_identity_evidence"]
     assert evidence["summary"]["query_cohort_scope"] == "conservative_nonrepresentative_feasibility_subset"
     assert evidence["summary"]["broad_cohort_representativeness"] == "unproven"
     assert "subset only" in evidence["summary"]["permitted_future_claim"]

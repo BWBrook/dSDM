@@ -387,7 +387,7 @@ def build_taxon_freeze(root: Path) -> tuple[list[dict[str, str]], dict]:
             "shared_override_basis": override,
             "query_strategy": query_strategy, "query_concepts": _json(query_concepts),
             "accepted_descendants": _json(descendants), "evidence_backed_aliases": _json(aliases),
-            "provider_record_deduplication": "occurrenceID required; identical occurrenceID retained once across parent, descendant, and approved-alias branches" if roles else "not_applicable",
+            "provider_record_deduplication": "recordID required; identical recordID retained once across parent, descendant, and approved-alias branches; occurrenceID retained as an optional auxiliary field" if roles else "not_applicable",
             "regional_evidence_ids": _json(evidence_ids),
         })
     manifest = {
@@ -409,7 +409,8 @@ def build_taxon_freeze(root: Path) -> tuple[list[dict[str, str]], dict]:
             "authority": "Goal011 accepted-concept round-trip plus Goal012 explicit reviewed-union fallback",
             "parent_expansion_assumed": False,
             "aliases": "raw synonym strings are not query-ready; only the Goal012-evidenced Macropus normalized-name path is promoted",
-            "provider_record_deduplication": "occurrenceID required, matching Goal012",
+            "provider_record_deduplication": "recordID required for canonical cross-union deduplication; occurrenceID retained as optional auxiliary provenance",
+            "provider_record_identity_evidence": "Goal017 public ALA snapshot: recordID complete and unique in 50,834/50,834 rows; occurrenceID materially incomplete, including 10,240/33,442 populated devil rows",
         },
         "summary": {
             "rows": len(output),
@@ -473,6 +474,12 @@ def validate_taxon_freeze(root: Path) -> dict:
             concepts = json.loads(row["query_concepts"])
             if not concepts or row["query_strategy"] != "explicit_reviewed_parent_plus_domain_relevant_accepted_descendants_union":
                 raise ValueError("query-role taxon lacks reviewed union strategy")
+            if row["provider_record_deduplication"] != (
+                "recordID required; identical recordID retained once across parent, "
+                "descendant, and approved-alias branches; occurrenceID retained as an "
+                "optional auxiliary field"
+            ):
+                raise ValueError("query-role taxon recordID deduplication contract drifted")
     if sum(bool(row["query_roles"]) for row in rows) != 21:
         raise ValueError("frozen query-role taxon count drift")
     if sum(row["shared_evaluation_eligible"] == "true" for row in rows) != 5:

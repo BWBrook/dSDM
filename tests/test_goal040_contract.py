@@ -76,6 +76,8 @@ def test_acquisition_response_and_support_boundaries_are_frozen():
     assert acquisition["resource_ceiling"]["outside_ceiling_action"] == "stop_for_resource_route_decision_without_sampling"
     assert acquisition["qa"]["reported_uncertainty_exclusion_threshold_m"] == 1000
     assert acquisition["qa"]["deduplicate_by_provider_record_identity"] is True
+    assert acquisition["qa"]["provider_record_deduplication_key"] == "recordID_required"
+    assert acquisition["qa"]["provider_record_auxiliary_identity_field"] == "occurrenceID_optional_not_a_deduplication_key"
 
     states = ["presence", "camera_survey_supported_absence", "target_group_background_candidate", "unknown"]
     response = CONTRACT["response"]

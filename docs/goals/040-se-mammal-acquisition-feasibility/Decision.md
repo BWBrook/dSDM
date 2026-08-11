@@ -83,8 +83,14 @@ sampling or silently narrowing the cohort. Raw downloads, row audit, taxon
 ledger working material, and normalised row/cell products stay under ignored
 `data/`.
 
-Retain the established QA: stable provider record identity is required for
-deduplication; coordinates must be finite and valid; reported uncertainty over
+Retain the established QA: ALA `recordID` is required as the canonical
+deduplication key, and duplicate `recordID` values across materialised parent,
+descendant, and alias query unions collapse once. Preserve `occurrenceID` as an
+optional auxiliary provenance field, never as the required deduplication key.
+This follows the Goal 017 public snapshot, where `recordID` was complete and
+unique in all 50,834 rows while `occurrenceID` was materially incomplete
+(including only 10,240 of 33,442 devil rows populated). Coordinates must be
+finite and valid; reported uncertainty over
 1,000 m is excluded; missing uncertainty is retained but explicitly flagged;
 there is no nearest-land rescue; and accepted records collapse to one presence
 per species × eligible cell. Submitted, matched, and accepted taxon identities,

@@ -20,6 +20,7 @@ import galah
 import geopandas as gpd
 
 from .goal040_domain import build_domain_freeze, validate_domain_manifest
+from .goal040_count_census import run_count_census, validate_count_census
 from .goal040_taxonomy import QUERY_TAXA, validate_taxon_freeze, write_taxon_freeze
 
 
@@ -266,7 +267,10 @@ def validate(root: Path) -> dict[str, Any]:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("stage", choices=["taxonomy", "freeze-ledger", "validate"])
+    parser.add_argument(
+        "stage",
+        choices=["taxonomy", "freeze-ledger", "count-census", "validate-count-census", "validate"],
+    )
     parser.add_argument("--root", type=Path, default=Path("."))
     args = parser.parse_args()
     root = args.root.resolve()
@@ -274,6 +278,10 @@ def main() -> None:
         result = run_taxonomy(root)
     elif args.stage == "freeze-ledger":
         result = freeze_ledger(root)
+    elif args.stage == "count-census":
+        result = run_count_census(root)
+    elif args.stage == "validate-count-census":
+        result = validate_count_census(root)
     else:
         result = validate(root)
     print(json.dumps(result, indent=2, sort_keys=True))

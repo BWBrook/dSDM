@@ -33,7 +33,8 @@
   anchors, *Macropus giganteus* as a mainland control, and 15 additional
   mainland donors. Every query uses an accepted AFD parent plus an explicitly
   reviewed, domain-relevant accepted-descendant union; parent expansion is not
-  assumed and provider rows must deduplicate by `occurrenceID`.
+  assumed and provider rows must deduplicate by canonical ALA `recordID`;
+  `occurrenceID` is retained only as an optional auxiliary field.
 - The added-donor mechanism preferentially finds VIC/ACT listed taxa. This is
   therefore a conservative, nonrepresentative feasibility subset, not a
   representative census of southeastern mammals. Legal listing plus AFD range
@@ -55,3 +56,51 @@
   `022a83b2762b886f455406a96cb48a91d612e1b08d6d1cad00eb5db7070a2b06`.
 - No occurrence count, occurrence payload, camera/private response data,
   model, map, outer material, commit, or push was accessed or produced.
+
+## 2026-08-11 — live count-only census and resource gate
+
+- Ran `galah-python==0.13.3` `atlas_counts()` over all 45 frozen logical query
+  branches: 21 accepted parents, 23 reviewed descendants, and one
+  evidence-backed alias. The package combined each taxon's accepted parent and
+  descendants into one OR-LSID count, giving 21 taxon-union requests; a 22nd
+  request verified that the Macropus alias resolves to its already-counted
+  accepted-parent LSID. Every request used 2001--2025 inclusive, the frozen
+  bbox, `pageSize=0`, and `disableAllQualityFilters=true`. Service responses
+  contained zero occurrence rows and empty facet payloads. No email was
+  transmitted or retained.
+- The initial 45 per-branch calls included the Macropus alias that remains part
+  of the canonical evidence. The later pass added 21 taxon-union calls. The
+  tracked provenance therefore distinguishes 22 canonical retained estimates,
+  44 superseded exploratory estimates, and 66 unique live metadata-only
+  requests. Every call used `pageSize=0` and returned no occurrence rows; the
+  superseded counts do not enter the resource arithmetic.
+- Counts are unique within each OR-LSID taxon query. They remain conservative
+  bbox-prefilter indexed-row counts, not exact IBRA-domain or post-QC counts;
+  cross-materialised-branch `recordID` deduplication remains mandatory after
+  acquisition.
+- Corrected the pre-acquisition identity contract using Goal 017 public
+  evidence: `recordID` was complete and unique across 50,834/50,834 rows,
+  whereas `occurrenceID` was materially incomplete, including only
+  10,240/33,442 devil rows populated. Duplicate `recordID` values across every
+  materialised parent, descendant, and alias union must collapse once.
+- Conservative per-taxon totals were: *Burramys parvus* 1,022; *Dasyurus
+  maculatus* 12,641; *Gymnobelideus leadbeateri* 3,017; *Macropus giganteus*
+  221,222; *Mastacomys fuscus* 2,582; *Notamacropus rufogriseus* 94,282;
+  *Petauroides volans* 34,208; *Petaurus australis* 20,059; *Petaurus
+  norfolcensis* 8,281; *Petrogale penicillata* 6,491; *Phascogale tapoatafa*
+  5,952; *Phascolarctos cinereus* 323,666; *Potorous longipes* 3,695;
+  *Pseudocheirus peregrinus* 134,748; *Pseudomys fumeus* 2,504; *Pseudomys
+  novaehollandiae* 2,612; *Pseudomys shortridgei* 1,007; *Sminthopsis
+  crassicaudata* 3,780; *Sminthopsis leucopus* 3,463; *Trichosurus vulpecula*
+  258,744; and *Vombatus ursinus* 114,907. The Macropus alias probe also
+  returned 221,222 after resolving to the same accepted-parent LSID and was not
+  added twice.
+- The conservative total is 1,258,883 rows, below 2,000,000; the maximum taxon
+  is 323,666, below 500,000. Projected working space is 12,890,961,920 bytes
+  (`rows * 2048 * 5`). From 299,638,341,632 free bytes at the gate,
+  286,747,379,712 remain after projection, above 30 GiB. Decision:
+  `pass_acquisition_authorised`.
+- Retained only ignored raw count request/projection receipts and a tracked
+  privacy-safe manifest. No occurrence row acquisition/export, camera/private
+  access, normalisation, support/predictor work, map, model, outer access,
+  commit, or push was performed.

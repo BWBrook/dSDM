@@ -1,0 +1,754 @@
+{
+  "alias_probes": [
+    {
+      "branch_id": "macropus_giganteus__evidence_alias_01",
+      "deduplication": "not_added_to_taxon_union_because_galah_resolved_the_alias_to_the_same_accepted_parent_LSID",
+      "query_identity_sha256": "3788a259cfd8d3624c61d22604c672ed0ddec122f41b4327c855514552858ca9",
+      "raw_request_sha256": "118cdea07d6f0a5d4f05139184c39de5e0d3394d4f60e762c190699a1a2f400f",
+      "raw_response_sha256": "eed0b708eb74583938b1cd22e9960929321edd2dbb13da1cc30a18419a3e4407",
+      "resolved_parent_bbox_prefilter_rows": 221222,
+      "service_envelope_sha256": "de1d5d883925be2c54bb100dc922796bc5ae750ec2d7ab09d76be6a41a15aee5",
+      "taxon": "Macropus giganteus"
+    }
+  ],
+  "bindings": {
+    "contract": {
+      "path": "config/goal040_se_mammal_feasibility.json",
+      "sha256": "6170690f2a6023e3149048980d83db323409a3f644c9b8da206be5d1393b3bea"
+    },
+    "domain_manifest": {
+      "path": "metadata/goal040_domain_boundary_manifest.json",
+      "sha256": "44435b4bd890fab04d5eba8b29801a0d1a7c509043c4ff51d25b429e488dd999"
+    },
+    "ordered_branch_matrix_sha256": "7d04f2ef327b1f2bc403a53c4326b18c8fc5b43e27ab74e922942042c0fbbcd7",
+    "ordered_taxon_union_matrix_sha256": "803618d2be05868a915953b127766cef8adbb890d4e31f4e9ab15ecad004872c",
+    "taxon_ledger": {
+      "path": "metadata/goal040_taxon_query_ledger.csv",
+      "sha256": "b84e633951c4923463a5f8a384510629a218ffe0a8375e108d7a1aca821d98e2"
+    }
+  },
+  "branch_coverage": [
+    {
+      "branch_id": "dasyurus_maculatus__parent_00",
+      "branch_kind": "parent",
+      "query_identity_sha256": "6397cd501357afc057098e8d893c024ee091bc60148cea2668b1878360df756f",
+      "taxon": "Dasyurus maculatus"
+    },
+    {
+      "branch_id": "dasyurus_maculatus__reviewed_descendant_01",
+      "branch_kind": "reviewed_descendant",
+      "query_identity_sha256": "cc44d9195df354c3588ecaed7b9e68f01b50d733828ca4df5cf4a0e758bc19c7",
+      "taxon": "Dasyurus maculatus"
+    },
+    {
+      "branch_id": "phascogale_tapoatafa__parent_00",
+      "branch_kind": "parent",
+      "query_identity_sha256": "289e8bf04631d0921c0c9e918c62d2713ecc2087e85327236feb0142bc2b9bdb",
+      "taxon": "Phascogale tapoatafa"
+    },
+    {
+      "branch_id": "phascogale_tapoatafa__reviewed_descendant_01",
+      "branch_kind": "reviewed_descendant",
+      "query_identity_sha256": "402783bd1edc553d789e9b77f9892e7131f5a791fdbf2e21ef52c2430b2f46bd",
+      "taxon": "Phascogale tapoatafa"
+    },
+    {
+      "branch_id": "sminthopsis_crassicaudata__parent_00",
+      "branch_kind": "parent",
+      "query_identity_sha256": "787b37e25a983f3d390fa21673163176b04c5e2e76fbc4df7e86954e215b1329",
+      "taxon": "Sminthopsis crassicaudata"
+    },
+    {
+      "branch_id": "sminthopsis_crassicaudata__reviewed_descendant_01",
+      "branch_kind": "reviewed_descendant",
+      "query_identity_sha256": "146337c3a85187555735c8d34ebfd3c55b0297e59bccd4b8bc83e98e34c14ab6",
+      "taxon": "Sminthopsis crassicaudata"
+    },
+    {
+      "branch_id": "sminthopsis_leucopus__parent_00",
+      "branch_kind": "parent",
+      "query_identity_sha256": "3fd59bce47518b39096d86133ee230fc7ef7e10eb76211f308aa93cd7b2be7aa",
+      "taxon": "Sminthopsis leucopus"
+    },
+    {
+      "branch_id": "sminthopsis_leucopus__reviewed_descendant_01",
+      "branch_kind": "reviewed_descendant",
+      "query_identity_sha256": "2ad70a1f9d9294fb76e8f52e5afaf2e495fe57b3efdea981881ccf90a0320f40",
+      "taxon": "Sminthopsis leucopus"
+    },
+    {
+      "branch_id": "sminthopsis_leucopus__reviewed_descendant_02",
+      "branch_kind": "reviewed_descendant",
+      "query_identity_sha256": "da00ecc602cd6129b42f4d39faf92a9586d7a4db329781a12801aed751b644cf",
+      "taxon": "Sminthopsis leucopus"
+    },
+    {
+      "branch_id": "phascolarctos_cinereus__parent_00",
+      "branch_kind": "parent",
+      "query_identity_sha256": "de3a9feb42f89e6ffeeab54c69990b2192f798cd4cbd1713af2db853800af1a1",
+      "taxon": "Phascolarctos cinereus"
+    },
+    {
+      "branch_id": "phascolarctos_cinereus__reviewed_descendant_01",
+      "branch_kind": "reviewed_descendant",
+      "query_identity_sha256": "2155ccbfc213ad58125c35918d832a7766a30e6d844211347b74f0c376ac950f",
+      "taxon": "Phascolarctos cinereus"
+    },
+    {
+      "branch_id": "phascolarctos_cinereus__reviewed_descendant_02",
+      "branch_kind": "reviewed_descendant",
+      "query_identity_sha256": "a02948cc8a4d5045b851af011528fe9490342adf75f401a6d225f3c682450011",
+      "taxon": "Phascolarctos cinereus"
+    },
+    {
+      "branch_id": "phascolarctos_cinereus__reviewed_descendant_03",
+      "branch_kind": "reviewed_descendant",
+      "query_identity_sha256": "62ca69d6a9758119b120d8d5dc633c72412ebf74ac0dea4c70c4b2dc9ee2dc5c",
+      "taxon": "Phascolarctos cinereus"
+    },
+    {
+      "branch_id": "vombatus_ursinus__parent_00",
+      "branch_kind": "parent",
+      "query_identity_sha256": "1b9d8f82230ff8db02891884053dcf20573cbaa6d6bd6be8db09fd43f307996c",
+      "taxon": "Vombatus ursinus"
+    },
+    {
+      "branch_id": "vombatus_ursinus__reviewed_descendant_01",
+      "branch_kind": "reviewed_descendant",
+      "query_identity_sha256": "460a9e7093194a7064ef9608723528754912cbdcfcee6e62e894292cbaba61d0",
+      "taxon": "Vombatus ursinus"
+    },
+    {
+      "branch_id": "vombatus_ursinus__reviewed_descendant_02",
+      "branch_kind": "reviewed_descendant",
+      "query_identity_sha256": "734f0dce18eb007734fa2409cfe6d76467de2fd8eb87c8d5db22db292183ff66",
+      "taxon": "Vombatus ursinus"
+    },
+    {
+      "branch_id": "vombatus_ursinus__reviewed_descendant_03",
+      "branch_kind": "reviewed_descendant",
+      "query_identity_sha256": "8d13c5c9f3accef40c63e854945bb88803997201b60ed09ae75cd22a87553f54",
+      "taxon": "Vombatus ursinus"
+    },
+    {
+      "branch_id": "burramys_parvus__parent_00",
+      "branch_kind": "parent",
+      "query_identity_sha256": "9603a60afe8e84b3438c9085f9993bcce12a5961018e7d65268b504bb3f51006",
+      "taxon": "Burramys parvus"
+    },
+    {
+      "branch_id": "gymnobelideus_leadbeateri__parent_00",
+      "branch_kind": "parent",
+      "query_identity_sha256": "ea6bd07a11fe0fdde070998909811ffa2aba82e0fc5208a22f7ca7dc6d5ca660",
+      "taxon": "Gymnobelideus leadbeateri"
+    },
+    {
+      "branch_id": "petaurus_australis__parent_00",
+      "branch_kind": "parent",
+      "query_identity_sha256": "29e26da042afb3de23d83ea71db0231e0f6a900f0e45d0432adbb859e2ee4174",
+      "taxon": "Petaurus australis"
+    },
+    {
+      "branch_id": "petaurus_australis__reviewed_descendant_01",
+      "branch_kind": "reviewed_descendant",
+      "query_identity_sha256": "bd50676bdc1f73101c3db81c45b8e171dbaa62be9f7b5bc97b5db65ad161b080",
+      "taxon": "Petaurus australis"
+    },
+    {
+      "branch_id": "petaurus_australis__reviewed_descendant_02",
+      "branch_kind": "reviewed_descendant",
+      "query_identity_sha256": "7125708f40d1c51367d845dfabf735f12b5abec73d76cc1a974e9cae2e0259a3",
+      "taxon": "Petaurus australis"
+    },
+    {
+      "branch_id": "petaurus_norfolcensis__parent_00",
+      "branch_kind": "parent",
+      "query_identity_sha256": "f7a8734f191ca2bfaca7e29fabc4243315f86e57791a3473a346228780cbb419",
+      "taxon": "Petaurus norfolcensis"
+    },
+    {
+      "branch_id": "petauroides_volans__parent_00",
+      "branch_kind": "parent",
+      "query_identity_sha256": "ec4589d9e561e1d1fc17d53b8994fb5c49cf803ed6d61b34a35e0f601f3fff42",
+      "taxon": "Petauroides volans"
+    },
+    {
+      "branch_id": "pseudocheirus_peregrinus__parent_00",
+      "branch_kind": "parent",
+      "query_identity_sha256": "b99530b990d3aad6068380e6f26d858ece43b64e3622c357a22ca06af1621426",
+      "taxon": "Pseudocheirus peregrinus"
+    },
+    {
+      "branch_id": "pseudocheirus_peregrinus__reviewed_descendant_01",
+      "branch_kind": "reviewed_descendant",
+      "query_identity_sha256": "567d9d38887135d3db91b1e9665e9ca08765f33cf101abf55439a7123d5e517e",
+      "taxon": "Pseudocheirus peregrinus"
+    },
+    {
+      "branch_id": "pseudocheirus_peregrinus__reviewed_descendant_02",
+      "branch_kind": "reviewed_descendant",
+      "query_identity_sha256": "74a907034f726b474c1801b6884c923078ca8a198ee40885a23fe4bb612b71e5",
+      "taxon": "Pseudocheirus peregrinus"
+    },
+    {
+      "branch_id": "pseudocheirus_peregrinus__reviewed_descendant_03",
+      "branch_kind": "reviewed_descendant",
+      "query_identity_sha256": "9684b0770f4bd71e248799c8283e05f055024c97490f642dbf2935f07a1de9b3",
+      "taxon": "Pseudocheirus peregrinus"
+    },
+    {
+      "branch_id": "pseudocheirus_peregrinus__reviewed_descendant_04",
+      "branch_kind": "reviewed_descendant",
+      "query_identity_sha256": "75115298dc8081f95de27e973c73a55ac1b196780fa532f734facf14e2e47bb4",
+      "taxon": "Pseudocheirus peregrinus"
+    },
+    {
+      "branch_id": "trichosurus_vulpecula__parent_00",
+      "branch_kind": "parent",
+      "query_identity_sha256": "8bd89c34709a80ae040cb54902ddc28521d99bd0ca478201e500f727cbb4559e",
+      "taxon": "Trichosurus vulpecula"
+    },
+    {
+      "branch_id": "trichosurus_vulpecula__reviewed_descendant_01",
+      "branch_kind": "reviewed_descendant",
+      "query_identity_sha256": "c142e02ddca15b5a6a7a533af0be3ef184af2d24405719ba1c27c699b5d47459",
+      "taxon": "Trichosurus vulpecula"
+    },
+    {
+      "branch_id": "trichosurus_vulpecula__reviewed_descendant_02",
+      "branch_kind": "reviewed_descendant",
+      "query_identity_sha256": "36680d63c52617c8566f930ed0d3b6d37c2eecec2706528f0964ebe76815540c",
+      "taxon": "Trichosurus vulpecula"
+    },
+    {
+      "branch_id": "potorous_longipes__parent_00",
+      "branch_kind": "parent",
+      "query_identity_sha256": "edff76926ed7b7147124a0215d7dace5856115aa31d5a41ad453c6825d3bb25e",
+      "taxon": "Potorous longipes"
+    },
+    {
+      "branch_id": "petrogale_penicillata__parent_00",
+      "branch_kind": "parent",
+      "query_identity_sha256": "298a833dda0b2c00438e05f7c56e8c93e9171b632c8b175e338365b09a9282af",
+      "taxon": "Petrogale penicillata"
+    },
+    {
+      "branch_id": "macropus_giganteus__parent_00",
+      "branch_kind": "parent",
+      "query_identity_sha256": "b05c90d8b8a8706a3eb17b88ba50c9edeedaaec8db1a1ef1f1694349a9e08d34",
+      "taxon": "Macropus giganteus"
+    },
+    {
+      "branch_id": "macropus_giganteus__evidence_alias_01",
+      "branch_kind": "evidence_backed_alias",
+      "query_identity_sha256": "3788a259cfd8d3624c61d22604c672ed0ddec122f41b4327c855514552858ca9",
+      "taxon": "Macropus giganteus"
+    },
+    {
+      "branch_id": "notamacropus_rufogriseus__parent_00",
+      "branch_kind": "parent",
+      "query_identity_sha256": "61325ce20f7503571a3636d1eed6f1ab5de1f64dff65dee324484a782b9bdcb9",
+      "taxon": "Notamacropus rufogriseus"
+    },
+    {
+      "branch_id": "notamacropus_rufogriseus__reviewed_descendant_01",
+      "branch_kind": "reviewed_descendant",
+      "query_identity_sha256": "480bdce306c2c17b8818f128194a12707f4a1b63d23f5b147ab8c235eef22bdb",
+      "taxon": "Notamacropus rufogriseus"
+    },
+    {
+      "branch_id": "notamacropus_rufogriseus__reviewed_descendant_02",
+      "branch_kind": "reviewed_descendant",
+      "query_identity_sha256": "2c6b4f33d43d6a64b86626c7ef4e229e0aeeaae16b39c6b83250e14b6db2728c",
+      "taxon": "Notamacropus rufogriseus"
+    },
+    {
+      "branch_id": "mastacomys_fuscus__parent_00",
+      "branch_kind": "parent",
+      "query_identity_sha256": "cb02aa790613ec905b6deb1e2cc1ddf0169a4fb88471b83fe10e295b055a4795",
+      "taxon": "Mastacomys fuscus"
+    },
+    {
+      "branch_id": "mastacomys_fuscus__reviewed_descendant_01",
+      "branch_kind": "reviewed_descendant",
+      "query_identity_sha256": "ddc7a891c36432fcafad024f0e2de6342b6720587387609fd860f35299f0ad81",
+      "taxon": "Mastacomys fuscus"
+    },
+    {
+      "branch_id": "mastacomys_fuscus__reviewed_descendant_02",
+      "branch_kind": "reviewed_descendant",
+      "query_identity_sha256": "ea95f053300f15e7a072712f844fed42aa42b1863d895757b9e21af47ee4023e",
+      "taxon": "Mastacomys fuscus"
+    },
+    {
+      "branch_id": "pseudomys_fumeus__parent_00",
+      "branch_kind": "parent",
+      "query_identity_sha256": "fb4e94231f0983f4baca4c9a4676e74e783b6cf2a49e6c46bf74c04833771928",
+      "taxon": "Pseudomys fumeus"
+    },
+    {
+      "branch_id": "pseudomys_novaehollandiae__parent_00",
+      "branch_kind": "parent",
+      "query_identity_sha256": "63ede6a3940c50768d506b17894cbfe202b38497f8f12b75187639273d6518ef",
+      "taxon": "Pseudomys novaehollandiae"
+    },
+    {
+      "branch_id": "pseudomys_shortridgei__parent_00",
+      "branch_kind": "parent",
+      "query_identity_sha256": "032f62a5605837ecc0200faf2dcc6ee6c5c10213d13b11b865fa418d305fcc2f",
+      "taxon": "Pseudomys shortridgei"
+    }
+  ],
+  "count_interpretation": "bbox_prefilter_unique_indexed_rows_from_each_taxon_OR_union_before_exact_IBRA_ASGS_Geofabric_mask_and_local_QA",
+  "goal_id": "goal040-se-mammal-acquisition-feasibility",
+  "package": {
+    "name": "galah-python",
+    "version": "0.13.3"
+  },
+  "privacy": {
+    "coordinates_retained": 0,
+    "email_retained": false,
+    "facets_retained": 0,
+    "occurrence_rows_retained": 0,
+    "raw_files_tracked": false,
+    "record_ids_retained": 0
+  },
+  "record_identity_policy": {
+    "auxiliary_field": "occurrenceID_optional_not_a_deduplication_key",
+    "canonical_deduplication_key": "recordID_required",
+    "cross_union_rule": "duplicate_recordID_values_across_materialised_parent_descendant_alias_queries_collapse_once",
+    "evidence": "Goal017 public ALA snapshot had recordID complete and unique in 50,834/50,834 rows while occurrenceID was materially incomplete, including 10,240/33,442 populated devil rows"
+  },
+  "request_accounting": {
+    "accounting_note": "45 initial branch calls included the Macropus alias retained canonically; adding 21 taxon-union calls yields 22 canonical estimates, 44 superseded estimates, and 66 unique live requests",
+    "canonical_retained_count_estimates": 22,
+    "occurrence_rows_returned_across_all_requests": 0,
+    "pageSize_for_every_request": 0,
+    "superseded_exploratory_branch_estimates": 44,
+    "superseded_receipts_retained_ignored": true,
+    "total_unique_live_metadata_only_count_requests": 66
+  },
+  "resource_criteria": {
+    "free_bytes_after_projection": {
+      "free_bytes_at_gate": 299638341632,
+      "minimum": 32212254720,
+      "observed": 286747379712,
+      "pass": true,
+      "projected_working_bytes": 12890961920
+    },
+    "projected_working_bytes": {
+      "bytes_per_row": 2048,
+      "observed": 12890961920,
+      "pass": true,
+      "rows": 1258883,
+      "working_space_multiplier": 5
+    },
+    "single_taxon_rows": {
+      "maximum": 500000,
+      "maximum_observed": 323666,
+      "pass": true
+    },
+    "total_rows": {
+      "maximum": 2000000,
+      "observed": 1258883,
+      "pass": true
+    }
+  },
+  "result": "pass_acquisition_authorised",
+  "retrieved_at": "2026-08-11T05:37:22Z",
+  "schema_version": "1.0",
+  "scope": {
+    "bbox_prefilter": {
+      "xmax": 153.625,
+      "xmin": 135.375,
+      "ymax": -23.7775,
+      "ymin": -43.6275
+    },
+    "disableAllQualityFilters": true,
+    "exact_domain_cell_id_sha256": "022a83b2762b886f455406a96cb48a91d612e1b08d6d1cad00eb5db7070a2b06",
+    "local_QA_after_acquisition": true,
+    "years_inclusive": [
+      2001,
+      2025
+    ]
+  },
+  "service": {
+    "endpoint": "https://api.ala.org.au/occurrences/occurrences/search",
+    "name": "ALA Occurrence REST services",
+    "version": "3.0",
+    "version_basis": "Goal012 official OpenAPI preflight"
+  },
+  "stage": "count-census",
+  "summary": {
+    "branches": 45,
+    "conservative_bbox_prefilter_rows": 1258883,
+    "maximum_single_taxon_rows": 323666,
+    "service_count_requests": 22,
+    "taxa": 21
+  },
+  "taxa": [
+    {
+      "conservative_bbox_prefilter_rows": 1022,
+      "taxon": "Burramys parvus"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 12641,
+      "taxon": "Dasyurus maculatus"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 3017,
+      "taxon": "Gymnobelideus leadbeateri"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 221222,
+      "taxon": "Macropus giganteus"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 2582,
+      "taxon": "Mastacomys fuscus"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 94282,
+      "taxon": "Notamacropus rufogriseus"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 34208,
+      "taxon": "Petauroides volans"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 20059,
+      "taxon": "Petaurus australis"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 8281,
+      "taxon": "Petaurus norfolcensis"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 6491,
+      "taxon": "Petrogale penicillata"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 5952,
+      "taxon": "Phascogale tapoatafa"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 323666,
+      "taxon": "Phascolarctos cinereus"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 3695,
+      "taxon": "Potorous longipes"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 134748,
+      "taxon": "Pseudocheirus peregrinus"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 2504,
+      "taxon": "Pseudomys fumeus"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 2612,
+      "taxon": "Pseudomys novaehollandiae"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 1007,
+      "taxon": "Pseudomys shortridgei"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 3780,
+      "taxon": "Sminthopsis crassicaudata"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 3463,
+      "taxon": "Sminthopsis leucopus"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 258744,
+      "taxon": "Trichosurus vulpecula"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 114907,
+      "taxon": "Vombatus ursinus"
+    }
+  ],
+  "taxon_queries": [
+    {
+      "conservative_bbox_prefilter_rows": 1022,
+      "logical_branch_ids": [
+        "burramys_parvus__parent_00"
+      ],
+      "query_id": "burramys_parvus__taxon_union",
+      "query_identity_sha256": "9f18a97c480c4cd66588699e7c82239f81baa6a58765a479ad92483ba56218cc",
+      "raw_request_sha256": "afe3e383e2eb2779f76b1c860da7440503b4fa432a9c410b5cc6748ff40c10c1",
+      "raw_response_sha256": "25b69814261fbc9fd69e442f6cc8f3d04d22c28a9650d27d9164420833707854",
+      "service_envelope_sha256": "37c4eeda7fe6a1c292fdd373379699249adce5fa071007525298c8131dfd3ea1",
+      "taxon": "Burramys parvus"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 12641,
+      "logical_branch_ids": [
+        "dasyurus_maculatus__parent_00",
+        "dasyurus_maculatus__reviewed_descendant_01"
+      ],
+      "query_id": "dasyurus_maculatus__taxon_union",
+      "query_identity_sha256": "21f93a51172cc69672e5a6effc46d87e9946b779a5c89248d50e712bbacd2c61",
+      "raw_request_sha256": "e6c61144a628aed0514e315aec8e69e4fc9ffa52204eb2688298ff250c29f273",
+      "raw_response_sha256": "5818a9b30af66804e604465a4e5386d482973044050b10088512e6049fdfba68",
+      "service_envelope_sha256": "f7868b2d7a0e389b12f7b3213188b29cdd85185633acfa7d449017c426f7991c",
+      "taxon": "Dasyurus maculatus"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 3017,
+      "logical_branch_ids": [
+        "gymnobelideus_leadbeateri__parent_00"
+      ],
+      "query_id": "gymnobelideus_leadbeateri__taxon_union",
+      "query_identity_sha256": "44c28072388c06c75389e37001044399c3e3e08efa87dc3d561fab148458fecc",
+      "raw_request_sha256": "bd71d54a5a59b0b8606337aac90d99811670d0dd9aa7d44369cffe926b00e4cd",
+      "raw_response_sha256": "ca9da51ad4774e0709094de4173d8550b257e387e3d8e4dd5c85852d94d6c24e",
+      "service_envelope_sha256": "bba70b43436dfadba6417b3b40ecb8cfac173753be6eeb7dab9152c97c80a81e",
+      "taxon": "Gymnobelideus leadbeateri"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 221222,
+      "logical_branch_ids": [
+        "macropus_giganteus__parent_00",
+        "macropus_giganteus__evidence_alias_01"
+      ],
+      "query_id": "macropus_giganteus__taxon_union",
+      "query_identity_sha256": "282b758f344894a35feafb7aaf460162efa763f567285a494993dfaade0f9f3a",
+      "raw_request_sha256": "7257d47056114cca2f7ed75ec2639b3bb32bc011a646f88a863569c9491ce8fd",
+      "raw_response_sha256": "eed0b708eb74583938b1cd22e9960929321edd2dbb13da1cc30a18419a3e4407",
+      "service_envelope_sha256": "de1d5d883925be2c54bb100dc922796bc5ae750ec2d7ab09d76be6a41a15aee5",
+      "taxon": "Macropus giganteus"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 2582,
+      "logical_branch_ids": [
+        "mastacomys_fuscus__parent_00",
+        "mastacomys_fuscus__reviewed_descendant_01",
+        "mastacomys_fuscus__reviewed_descendant_02"
+      ],
+      "query_id": "mastacomys_fuscus__taxon_union",
+      "query_identity_sha256": "933f01028e95341514821f1d5adb5ea2f8e4cd59f82a7e9de7dcf93172ab4b72",
+      "raw_request_sha256": "67418f7168131d02aa9aafbc9ad3498a34d1edfa722c0e7e321fc92ddcbe4e3a",
+      "raw_response_sha256": "abc8ce576b92d2ef1838d82508b500dc0b6616598a2e9577cf2a3a076f3fa4cc",
+      "service_envelope_sha256": "05117cc670f0047008419eaf8914e87e0d6ea8cff4838b05075a8c341ca8153e",
+      "taxon": "Mastacomys fuscus"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 94282,
+      "logical_branch_ids": [
+        "notamacropus_rufogriseus__parent_00",
+        "notamacropus_rufogriseus__reviewed_descendant_01",
+        "notamacropus_rufogriseus__reviewed_descendant_02"
+      ],
+      "query_id": "notamacropus_rufogriseus__taxon_union",
+      "query_identity_sha256": "7be3942743fd41435b562f2726a8dc0baa8ac435c5fdcdb8098dd5944c146575",
+      "raw_request_sha256": "f349c79c5bea2ffdd11eae55bcdb92469f9617063f2d2195d9b88286b4ab70cc",
+      "raw_response_sha256": "42b335b89b19e5ff76378b41ec55209384528035ecbeb89ba626dfd6c63ced66",
+      "service_envelope_sha256": "261235230d95fd7a023218b6b40208f57ff68b2ccade345f69204ff3aa96daeb",
+      "taxon": "Notamacropus rufogriseus"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 34208,
+      "logical_branch_ids": [
+        "petauroides_volans__parent_00"
+      ],
+      "query_id": "petauroides_volans__taxon_union",
+      "query_identity_sha256": "ab08fc929052152c3fa9f49c899dcd19afe894ff8b16163924f97450a51252c9",
+      "raw_request_sha256": "df198b32485e87ea2640df44b2694fc76fedec8a65398479ae231cd83ea25a4f",
+      "raw_response_sha256": "c286d57ae11c550629f2a94f8c65dc5d1392ae8f1132717a4606fd3a31709446",
+      "service_envelope_sha256": "4c1e61d88a81087dee0d89c99207bff1ba07a2911305fcfe8e75989c89640463",
+      "taxon": "Petauroides volans"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 20059,
+      "logical_branch_ids": [
+        "petaurus_australis__parent_00",
+        "petaurus_australis__reviewed_descendant_01",
+        "petaurus_australis__reviewed_descendant_02"
+      ],
+      "query_id": "petaurus_australis__taxon_union",
+      "query_identity_sha256": "c5558caf404b688aeabfc9b35ca49c01a80496bb4a94cf50a313e06ede367911",
+      "raw_request_sha256": "2bf5589316c661499db52cb1af465b7684d415eead4ae145e5d4d5eb1b18bd3a",
+      "raw_response_sha256": "03d857c99470b9fa461910eea5b7c5b2d8c6a60b84ec95de2be8c5b97fc37df4",
+      "service_envelope_sha256": "655f178370c9d838f38ae87e6a8598ec6d40897e9bfe20413f818706a2266f77",
+      "taxon": "Petaurus australis"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 8281,
+      "logical_branch_ids": [
+        "petaurus_norfolcensis__parent_00"
+      ],
+      "query_id": "petaurus_norfolcensis__taxon_union",
+      "query_identity_sha256": "4fec3450aa4e99621d47e38a11546fa783f0ef8c2be545f11958c6adbea76c3c",
+      "raw_request_sha256": "a8209195c5844cdafcddedff73dbd595739a9340de502cd0136583e8c2cfeb5a",
+      "raw_response_sha256": "88610a39ca87a270d399419a2053db755b5e448c2af6878f46d4fe58b80c45ce",
+      "service_envelope_sha256": "2c4afa98f93a70d72dc99c84f526c5b54c3d970c4bda326eea3472ad51b6dba1",
+      "taxon": "Petaurus norfolcensis"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 6491,
+      "logical_branch_ids": [
+        "petrogale_penicillata__parent_00"
+      ],
+      "query_id": "petrogale_penicillata__taxon_union",
+      "query_identity_sha256": "1b79a9d9341be965bc4caef6cca8a2b9c780029cecc1028f87be3787911b43cf",
+      "raw_request_sha256": "fbe3fc9caef82b9ce4d9780ccab92e12e9666406baea3e2389e4c377bab49841",
+      "raw_response_sha256": "0a36b575bf35bb589c2bd75805cc483f7b7367e5abf2e88c19a538be042276f1",
+      "service_envelope_sha256": "61d55e7b5620466ae8b05206c7bf5fbcfbfc33d2910b72b62cca86aafd1d5557",
+      "taxon": "Petrogale penicillata"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 5952,
+      "logical_branch_ids": [
+        "phascogale_tapoatafa__parent_00",
+        "phascogale_tapoatafa__reviewed_descendant_01"
+      ],
+      "query_id": "phascogale_tapoatafa__taxon_union",
+      "query_identity_sha256": "4a213b10edbd9fc608e0649f4b0a72880f6097bb01593d9cd733ada7c178e083",
+      "raw_request_sha256": "b364270e6036446e85f2c119dd1d2af6ac08af25f793d5d5922e603947fb6650",
+      "raw_response_sha256": "e5adef4bcc9c1701ae3404799f8891ad07ca39b9d5f26980bc21aa1887652194",
+      "service_envelope_sha256": "acb6aab6d0ec123c1a13deea41e635ae9578279c243dbac975e7a8dbe791c90c",
+      "taxon": "Phascogale tapoatafa"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 323666,
+      "logical_branch_ids": [
+        "phascolarctos_cinereus__parent_00",
+        "phascolarctos_cinereus__reviewed_descendant_01",
+        "phascolarctos_cinereus__reviewed_descendant_02",
+        "phascolarctos_cinereus__reviewed_descendant_03"
+      ],
+      "query_id": "phascolarctos_cinereus__taxon_union",
+      "query_identity_sha256": "1eb984a1c90505dca8daed2519a0bd92c279e3892f242f9840aa4db2bc8a6768",
+      "raw_request_sha256": "fa09f36fa294b7daafac3e17097e47a522ac746be48f90a33034fc2a2e31db59",
+      "raw_response_sha256": "b23c99334370b5a453b1653f994fc7a6f00519c4f06b7398845c893ca9ebc2ae",
+      "service_envelope_sha256": "4014b443b159c2f110ce99a4c2a4dbd4a960e7a2f1193a9a208f0fcfe3c41ab9",
+      "taxon": "Phascolarctos cinereus"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 3695,
+      "logical_branch_ids": [
+        "potorous_longipes__parent_00"
+      ],
+      "query_id": "potorous_longipes__taxon_union",
+      "query_identity_sha256": "b29a10ea463c318b3591bf77efc92ab879d5ebcacd6eaa789c2c994895d231fb",
+      "raw_request_sha256": "b00462b07e320dd4c87639489ea274c550006085d260a8c3fed1309fb1fac6f3",
+      "raw_response_sha256": "592f409368c57df1ea904e332277f51ab48a0cc88700ab38992ffd770646c958",
+      "service_envelope_sha256": "17fdf903b47ad0670b53900cccdfe836d46a9f309cec7ea8b9af14b6b6e16e6b",
+      "taxon": "Potorous longipes"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 134748,
+      "logical_branch_ids": [
+        "pseudocheirus_peregrinus__parent_00",
+        "pseudocheirus_peregrinus__reviewed_descendant_01",
+        "pseudocheirus_peregrinus__reviewed_descendant_02",
+        "pseudocheirus_peregrinus__reviewed_descendant_03",
+        "pseudocheirus_peregrinus__reviewed_descendant_04"
+      ],
+      "query_id": "pseudocheirus_peregrinus__taxon_union",
+      "query_identity_sha256": "35d86bf2142fde8b58b2950018eecb9579bbb6539514b29fc48b4b443b1a0efb",
+      "raw_request_sha256": "43f684c7d40d7c0b21eaa22fe010246e4850051b874bc52dc433ece570906389",
+      "raw_response_sha256": "fe558358b18d04831a1c6849fb9152f0ee99c05c2bd39d53a36b7a6471da0e74",
+      "service_envelope_sha256": "00bf20f0b35dfe9dd67b5dcab2db458fd9091386cdce5ef3cbc7924aa65945ae",
+      "taxon": "Pseudocheirus peregrinus"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 2504,
+      "logical_branch_ids": [
+        "pseudomys_fumeus__parent_00"
+      ],
+      "query_id": "pseudomys_fumeus__taxon_union",
+      "query_identity_sha256": "df7c733269e49b4f7885cac725b697f1e989a316e7a3a63511ee9f219304eef4",
+      "raw_request_sha256": "5110e52e957bc63602c4c2a0866adfe027d61c54b21ef54eb927349cc7f0b788",
+      "raw_response_sha256": "ae01ed11e84ff4452e8b859ac039b9f61145d371ffb70b3e33a8a26e6b4bd9e4",
+      "service_envelope_sha256": "f0677573b7c4e4c0b82227c2146e25039a0e6f65cc85e6494259fc0499921b4a",
+      "taxon": "Pseudomys fumeus"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 2612,
+      "logical_branch_ids": [
+        "pseudomys_novaehollandiae__parent_00"
+      ],
+      "query_id": "pseudomys_novaehollandiae__taxon_union",
+      "query_identity_sha256": "f36871850004e31fe675f868e45b86868c1738b048840954f211d7ad2ceeb1a2",
+      "raw_request_sha256": "1a6c542deb1421886f6a1a49af26e81f2cea7adc7d57013c443b72c4710b6b3e",
+      "raw_response_sha256": "03a8015a260ea4ae36a9847f8017942fbf9312778e1f42bd5446f0734fdf8dfc",
+      "service_envelope_sha256": "9212a2a0786df64c293762a8c0729471391d16de88662ca4979f1855702cbf90",
+      "taxon": "Pseudomys novaehollandiae"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 1007,
+      "logical_branch_ids": [
+        "pseudomys_shortridgei__parent_00"
+      ],
+      "query_id": "pseudomys_shortridgei__taxon_union",
+      "query_identity_sha256": "73dd3e8eae283c8b17136cf7f8bb4446a4d19443e318733ae9bd7fd1708d6fc2",
+      "raw_request_sha256": "8ad901911dca255410a0b1150106c9e1502b67d208de6623b2d97328fc058735",
+      "raw_response_sha256": "a39c5b8fe46498facc0c9288bf32d3bee5258b5b04df1925b0370792cff29722",
+      "service_envelope_sha256": "c31ae268bf1d6ee4c79bbf5e7a3b8bc13bec578d4cf1693c55a973dcc22a8c10",
+      "taxon": "Pseudomys shortridgei"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 3780,
+      "logical_branch_ids": [
+        "sminthopsis_crassicaudata__parent_00",
+        "sminthopsis_crassicaudata__reviewed_descendant_01"
+      ],
+      "query_id": "sminthopsis_crassicaudata__taxon_union",
+      "query_identity_sha256": "c78ff996d80c7a917aa9aac44549bb28c031960e42fcaac1f07c8b3400877353",
+      "raw_request_sha256": "a6a10dec7bfb2371c6e4a91ecae0f011552fca21830a625faded7eb85d04086c",
+      "raw_response_sha256": "bc548b5ec4dfdb3474bf3ed582fc925137548bc473f37fed9634b7410b752372",
+      "service_envelope_sha256": "bf809be17d70d630eb74a35f185b8b43fc3a3dfc3d1c747fbe479689c1db42f1",
+      "taxon": "Sminthopsis crassicaudata"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 3463,
+      "logical_branch_ids": [
+        "sminthopsis_leucopus__parent_00",
+        "sminthopsis_leucopus__reviewed_descendant_01",
+        "sminthopsis_leucopus__reviewed_descendant_02"
+      ],
+      "query_id": "sminthopsis_leucopus__taxon_union",
+      "query_identity_sha256": "9729366c4f2fabaf630985b719c81d1b38f45721c32f814de4ca517c0fa4bd3b",
+      "raw_request_sha256": "5096a158a1a7f2708a6851c2ab265866e036abb084a9b6f9ae4abb4897657397",
+      "raw_response_sha256": "ec0b6132691bfb8f23d1e665c44f2c9d259f7f617b9c6755f9e4be34da496774",
+      "service_envelope_sha256": "22be15ec72574dac019e644882425266c0796afdd0ec026ae8f012b442de6620",
+      "taxon": "Sminthopsis leucopus"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 258744,
+      "logical_branch_ids": [
+        "trichosurus_vulpecula__parent_00",
+        "trichosurus_vulpecula__reviewed_descendant_01",
+        "trichosurus_vulpecula__reviewed_descendant_02"
+      ],
+      "query_id": "trichosurus_vulpecula__taxon_union",
+      "query_identity_sha256": "7398c4170e0b7479c77627f0219a6606572149b79b1796f9d92ccc48365beb4e",
+      "raw_request_sha256": "9f9c6f7b59ceb8626a0523b7c28def21212384ee37dec0386ff10ae796894536",
+      "raw_response_sha256": "51494f4c27c01242de6bf62d443af233a7f9b0ce2bdd5c1670d0bf3bf332e615",
+      "service_envelope_sha256": "f0e1b1e342d362f2459569d0baad86aee35cdde695ce893db2a7b746dc493315",
+      "taxon": "Trichosurus vulpecula"
+    },
+    {
+      "conservative_bbox_prefilter_rows": 114907,
+      "logical_branch_ids": [
+        "vombatus_ursinus__parent_00",
+        "vombatus_ursinus__reviewed_descendant_01",
+        "vombatus_ursinus__reviewed_descendant_02",
+        "vombatus_ursinus__reviewed_descendant_03"
+      ],
+      "query_id": "vombatus_ursinus__taxon_union",
+      "query_identity_sha256": "919ae21070071cb3d6f3b47520c6773ab5d001919492962ab2e017260532e52a",
+      "raw_request_sha256": "2b494c8d91b2297d1457e2fcfb16de48768425c847380fc9e77600c90f301e9a",
+      "raw_response_sha256": "26c9830fc11f60a96ab84e425049204b40587529e837fa6643c4bdbb5b660eef",
+      "service_envelope_sha256": "d9bd31271f941350755d1069213177cb1e6e104551b5fbf4bab4d5fe35d90b8c",
+      "taxon": "Vombatus ursinus"
+    }
+  ],
+  "union_policy": "one_galah_OR_LSID_count_per_taxon_for_parent_plus_reviewed_descendants; verified_alias_resolving_to_same_parent_not_double_added"
+}

@@ -66,7 +66,8 @@
     "qa": {
       "provider_record_identity_required": true,
       "deduplicate_by_provider_record_identity": true,
-      "provider_record_deduplication_key": "occurrenceID_required",
+      "provider_record_deduplication_key": "recordID_required",
+      "provider_record_auxiliary_identity_field": "occurrenceID_optional_not_a_deduplication_key",
       "valid_coordinates_required": true,
       "reported_uncertainty_exclusion_threshold_m": 1000,
       "missing_uncertainty_action": "retain_flagged_unknown",
