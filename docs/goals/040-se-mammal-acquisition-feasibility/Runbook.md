@@ -82,6 +82,36 @@ least 30 GiB free after projection. Even when the receipt says
 `pass_acquisition_authorised`, stop before occurrence acquisition unless that
 next stage is separately authorised.
 
+## Resumable full occurrence acquisition
+
+After separate acquisition authorisation, confirm the runtime contact is
+already present in the environment and run the sequential checkpointed stage:
+
+```sh
+test -n "${ALA_DOWNLOAD_EMAIL:-}"
+PYTHONPATH=src uv run --locked python -m dsdm_phase1.goal040_freeze acquire --root .
+PYTHONPATH=src uv run --locked python -m dsdm_phase1.goal040_freeze validate-acquisition --root . --raw-replay
+```
+
+For a detached terminal, start tmux from the same environment and run the same
+commands inside it:
+
+```sh
+test -n "${ALA_DOWNLOAD_EMAIL:-}"
+tmux new-session -s goal040-acquire
+PYTHONPATH=src uv run --locked python -m dsdm_phase1.goal040_freeze acquire --root .
+PYTHONPATH=src uv run --locked python -m dsdm_phase1.goal040_freeze validate-acquisition --root . --raw-replay
+```
+
+The runner processes the 21 taxon unions sequentially in ascending frozen
+count. A completed CSV/receipt pair is validated and skipped on restart. A lone
+named `.partial.csv` is disposable and removed before that taxon is called
+again; orphaned or altered completed state fails closed. The tracked-only
+validator intentionally returns `raw_replay_required`; use `--raw-replay` for
+the completion gate. This stage preserves raw rows and reports identity
+duplication only. It does not deduplicate, spatially QA, normalise, calculate
+support, or access camera/private data.
+
 ## Staged execution after explicit review
 
 Later implementation must expose separate, resumable commands for `taxonomy`,

@@ -104,3 +104,19 @@
   privacy-safe manifest. No occurrence row acquisition/export, camera/private
   access, normalisation, support/predictor work, map, model, outer access,
   commit, or push was performed.
+
+## 2026-08-11 — acquisition runner implementation ready
+
+- Added a resumable, one-worker Goal 040 acquisition runner bound to the
+  published contract, taxon ledger, domain manifest, count manifest, and exact
+  21-taxon union matrix. It is prepared to call each frozen OR-LSID query once
+  in ascending count order, with no alias-only download, sampling, or further
+  taxon screen.
+- The runner requires the download contact only from the runtime environment,
+  uses an ephemeral unauthenticated galah configuration, retains the expanded
+  assertion diagnostics, and checkpoints each validated raw CSV with a compact
+  ignored completion receipt. Only after all 21 pairs validate will it publish
+  the privacy-safe tracked aggregate manifest.
+- This entry records implementation readiness only. No live ALA occurrence
+  call, raw occurrence acquisition, camera/private access, normalisation, QA,
+  support calculation, modelling, commit, or push was performed.

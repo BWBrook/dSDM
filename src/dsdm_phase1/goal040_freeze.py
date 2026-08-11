@@ -21,6 +21,7 @@ import geopandas as gpd
 
 from .goal040_domain import build_domain_freeze, validate_domain_manifest
 from .goal040_count_census import run_count_census, validate_count_census
+from .goal040_acquisition import run_acquisition, validate_acquisition
 from .goal040_taxonomy import QUERY_TAXA, validate_taxon_freeze, write_taxon_freeze
 
 
@@ -269,9 +270,16 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "stage",
-        choices=["taxonomy", "freeze-ledger", "count-census", "validate-count-census", "validate"],
+        choices=[
+            "taxonomy", "freeze-ledger", "count-census", "validate-count-census",
+            "acquire", "validate-acquisition", "validate",
+        ],
     )
     parser.add_argument("--root", type=Path, default=Path("."))
+    parser.add_argument(
+        "--raw-replay", action="store_true",
+        help="replay ignored raw acquisition CSV/receipt pairs during validation",
+    )
     args = parser.parse_args()
     root = args.root.resolve()
     if args.stage == "taxonomy":
@@ -282,6 +290,10 @@ def main() -> None:
         result = run_count_census(root)
     elif args.stage == "validate-count-census":
         result = validate_count_census(root)
+    elif args.stage == "acquire":
+        result = run_acquisition(root)
+    elif args.stage == "validate-acquisition":
+        result = validate_acquisition(root, require_raw=args.raw_replay)
     else:
         result = validate(root)
     print(json.dumps(result, indent=2, sort_keys=True))
