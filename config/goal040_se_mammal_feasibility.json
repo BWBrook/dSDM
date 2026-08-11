@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.0",
+  "goal_id": "goal040-se-mammal-acquisition-feasibility",
+  "stage": "prespecified_pending_review",
+  "domain": {
+    "frame_authority": "future_se_bird_0p01_wgs84_frame",
+    "crs": "EPSG:4326",
+    "resolution_degree": 0.01,
+    "cell_centroid_bbox": {"longitude_min": 135.375, "longitude_max": 153.625, "latitude_min": -43.6275, "latitude_max": -23.7775},
+    "eligible_cells": "land_only",
+    "regions": ["southeast_mainland", "tasmania"],
+    "historical_se_files_role": "archaeological_check_only_not_input",
+    "boundary_authority": {
+      "selection_stage": "count_free_taxonomy_and_domain_freeze",
+      "tracked_manifest": "metadata/goal040_domain_boundary_manifest.json",
+      "required_product_scope": "authoritative_Australian_land_and_state_boundaries",
+      "required_manifest_fields": ["product_name", "product_version", "publisher", "source_url", "retrieved_at", "source_identity", "sha256", "crs", "licence"],
+      "cell_eligibility": "centroid_in_land_polygon_after_deterministic_bbox_clip",
+      "region_classification": "centroid_in_tasmania_state_polygon_else_southeast_mainland",
+      "must_be_frozen_before_count_query": true
+    }
+  },
+  "time": {"start_year": 2001, "end_year": 2025, "inclusive": true},
+  "taxonomy": {
+    "primary_cohort": "native_extant_terrestrial_or_arboreal_non_volant_non_marine_non_strongly_aquatic_mammals",
+    "required_ledger_fields": ["scientific_name", "decision", "decision_reason", "native_status_basis", "extant_status_basis", "ecology_basis", "ala_accepted_name", "ala_accepted_concept_id", "afd_accepted_name", "afd_accepted_concept_id", "source_citations", "query_concepts", "descendant_concepts", "synonyms", "query_roles", "review_status"],
+    "tracked_ledger": "metadata/goal040_taxon_query_ledger.csv",
+    "tracked_ledger_role": "canonical_privacy_safe_scientific_provenance",
+    "raw_discovery_responses_tracked": false,
+    "excluded_primary_groups": ["introduced", "captive", "fossil", "subfossil", "extralimital", "bats", "marine_mammals", "platypus", "other_strongly_aquatic_specialists"],
+    "occurrences_establish_eligibility": false,
+    "performance_based_pruning": false,
+    "expected_shared_anchors": ["Notamacropus rufogriseus", "Trichosurus vulpecula", "Pseudocheirus peregrinus", "Vombatus ursinus", "Dasyurus maculatus"],
+    "additional_shared_taxa": "qualify_by_same_rules"
+  },
+  "data_sufficiency_tiers": {
+    "support_observed": {"minimum_distinct_post_qc_cells_any_region": 1, "role": "target_group_support_only_unless_higher_tier_earned"},
+    "mainland_pretraining_candidate": {"minimum_distinct_post_qc_mainland_cells": 100},
+    "shared_evaluation_candidate": {"minimum_distinct_post_qc_mainland_cells": 100, "minimum_distinct_post_qc_tasmania_cells": 30},
+    "basis": "distinct_species_by_eligible_cell_after_qc_not_raw_occurrence_rows",
+    "frozen_before_count_inspection": true
+  },
+  "acquisition": {
+    "package": {"name": "galah-python", "version": "0.13.3"},
+    "email_env": "ALA_DOWNLOAD_EMAIL",
+    "store_email": false,
+    "authenticate": false,
+    "query_scope": "accepted_concepts_plus_reviewed_descendants_and_synonyms",
+    "manifests": ["taxonomy", "query", "count", "download"],
+    "manifest_policy": "immutable_identity_addressed",
+    "raw_and_row_level_root": "data/",
+    "raw_and_row_level_tracked": false,
+    "resource_ceiling": {
+      "maximum_total_count_rows": 2000000,
+      "maximum_single_taxon_count_rows": 500000,
+      "projected_bytes_per_row": 2048,
+      "working_space_multiplier": 5,
+      "minimum_free_bytes_after_projection": 32212254720,
+      "within_ceiling_action": "acquire_full_frozen_queries_automatically",
+      "outside_ceiling_action": "stop_for_resource_route_decision_without_sampling"
+    },
+    "qa": {
+      "provider_record_identity_required": true,
+      "deduplicate_by_provider_record_identity": true,
+      "valid_coordinates_required": true,
+      "reported_uncertainty_exclusion_threshold_m": 1000,
+      "missing_uncertainty_action": "retain_flagged_unknown",
+      "no_nearest_land_rescue": true,
+      "collapse_to_one_presence_per_species_cell": true
+    }
+  },
+  "response": {
+    "states": ["presence", "camera_survey_supported_absence", "target_group_background_candidate", "unknown"],
+    "precedence": ["presence", "camera_survey_supported_absence", "target_group_background_candidate", "unknown"],
+    "camera_absence_region": "tasmania",
+    "camera_absence_provenance_distinct": true,
+    "camera_absence_contributes_donor_support": false,
+    "target_group_is_true_absence": false,
+    "target_group_is_occupancy_nondetection": false,
+    "labels_materialised_per_split": true,
+    "global_final_binary_labels": false,
+    "shared_materialised_universe_across_methods": true
+  },
+  "target_group_support": {
+    "fact": "distinct_other_eligible_native_support_species_per_target_cell",
+    "exclude_target": true,
+    "preserve_threshold_neutral_facts": true,
+    "primary_threshold": 3,
+    "sensitivity_thresholds": [2, 5],
+    "required_nesting": "X5_subset_X3_subset_X2",
+    "minimum_nearest_target_presence_distance_m": 5000,
+    "distance_comparison": "greater_than_or_equal",
+    "split_allowed_records_only": true,
+    "camera_absence_is_donor": false,
+    "camera_concordance_role": "aggregate_diagnostic_only_not_threshold_selection"
+  },
+  "future_estimands": {
+    "cross_species_transfer": "target_excluded_entirely_from_mainland_multispecies_pretraining",
+    "same_species_geographic_transfer": "target_mainland_data_used",
+    "target_only_mainland_control": "target_mainland_data_only",
+    "claims_conflated": false
+  },
+  "predictors": {
+    "selection": "largest_defensible_common_panel",
+    "tasmania_full28_is_automatically_portable": false,
+    "historical_se_maps_are_automatically_portable": false,
+    "region_specific_fallback": false,
+    "required_matrix_fields": ["layer_id", "source_product", "source_version", "definition", "units", "reference_period", "native_resolution", "extraction_resolution", "alignment_and_resampling", "nodata_policy", "categorical_ontology", "mainland_identity", "tasmania_identity", "decision", "decision_reason"],
+    "pilot": {"response_neutral": true, "selection_inputs": ["frozen_land_mask", "region", "cell_geometry"], "selection_method": "systematic_spatial_strata", "land_cells_per_region": 64, "row_level_output_tracked": false},
+    "diagnostics": {
+      "continuous": ["missingness", "finite_range", "tasmania_outside_mainland_range_fraction", "standardised_cross_domain_support"],
+      "categorical": ["missingness", "level_support_by_region", "tasmania_novel_level_fraction"]
+    },
+    "unproven_common_source_action": "repair_or_blocked"
+  },
+  "tracked_evidence": {
+    "aggregate_and_privacy_safe_only": true,
+    "taxon_query_ledger_is_tracked": true,
+    "donor_identity_ban_scope": "no_donor_to_cell_associations_or_cell_level_donor_identity_disclosure",
+    "forbidden": ["coordinates", "grid_ids", "record_ids", "donor_to_cell_identities", "camera_or_site_identifiers", "private_paths", "row_payloads", "predictions", "outer_content"]
+  },
+  "decision": {
+    "allowed": ["ready", "repair", "blocked"],
+    "ready_requires": ["taxonomy_ledger_frozen", "boundary_manifest_frozen", "full_acquisition_and_qc_complete", "at_least_15_support_observed_species", "at_least_10_mainland_pretraining_candidates", "all_five_expected_anchors_evaluated_and_tiers_reported", "at_least_5_shared_evaluation_candidates", "X3_support_diagnostics_complete", "common_predictor_panel_retained", "continuous_and_categorical_novelty_reported", "privacy_and_manifest_validation_pass"],
+    "repair": "bounded_correctable_contract_source_or_coverage_failure",
+    "blocked": "no_defensible_in_scope_repair_or_required_source_unavailable"
+  },
+  "forbidden_work": ["model_fitting", "architecture_work", "performance_based_selection", "maps", "manuscript_claims", "full_regional_model_execution", "outer_access", "pretraining_ready_binary_response_claim"]
+}

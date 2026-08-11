@@ -41,6 +41,10 @@ matched seeds. Goal 036 then completed the prespecified inner comparison
 against all five conventional families while keeping the outer assessment
 sealed.
 
+Goal 040 is prespecified, pending review, as a real southeastern-Australian
+mammal acquisition and common-substrate feasibility gate. It remains strictly
+pre-modelling and has not queried occurrence counts or downloaded data.
+
 ### Current gate status
 
 Goal 033 ran 960 screen and 480 fresh-shortlist logical evaluations under the
