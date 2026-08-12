@@ -196,3 +196,27 @@
 - Clarified that tracked-only validation is structural: it validates opaque
   digest format but cannot authenticate private content. Git supplies tracked
   provenance; `--raw-replay` authenticates the sparse output and its digests.
+
+## 2026-08-12 — Stage 8 predictor portability pilot
+
+- Added the frozen source-definition matrix and idempotent sequential pilot CLI.
+  Selection uses only the eligible-cell ledger and geometry: 8 equal-count
+  projected easting strata by 8 equal-count projected northing strata, 64
+  deterministic cells per region.
+- Completed the live 128-cell pilot with one WorldClim call per cell, native
+  36x36 GA WCS DEM extraction, NVIS raster identify, TERN soil identify, and
+  verified ABARES NLUM/ALUM archive and modal secondary classes. Blank ALA
+  values remain missing; no imputation, rescue, response, camera, model, map,
+  or outer access occurred. Checkpointed private values permit bounded replay.
+- BIO1--BIO19, DEM mean/SD, NVIS MVG, Soil Order, and ALUM secondary class
+  passed the prespecified pilot gates (24 retained). A bounded parser repair
+  reads TERN's authoritative `estimated soil class` property and validates
+  codes 1--14 against official labels; only the existing soil values were
+  refreshed. The final tracked Stage 8 receipt is `ready`; raw rows, selected
+  cells, and archive remain ignored.
+- Audit repair changed selection to direct projected x/y medians and pruned
+  stale checkpoint IDs before fetching only newly selected cells. ALUM was
+  recomputed for all 128 selected cells from the verified local archive using
+  inverse-transformed pixel centres and numeric code ties. WorldClim's
+  1970--2000 baseline versus 2001--2025 occurrence period remains an explicit
+  accepted limitation.

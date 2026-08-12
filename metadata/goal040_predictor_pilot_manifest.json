@@ -1,0 +1,660 @@
+{
+  "aggregate": {
+    "categorical": {
+      "alum_secondary": {
+        "counts": {
+          "mainland": {
+            "11:1.1 Nature conservation": 6,
+            "13:1.3 Other minimal use": 4,
+            "21:2.1 Grazing native vegetation": 12,
+            "22:2.2 Production native forests": 1,
+            "32:3.2 Grazing modified pastures": 23,
+            "33:3.3 Cropping": 14,
+            "42:4.2 Grazing irrigated modified pastures": 1,
+            "43:4.3 Irrigated cropping": 1,
+            "45:4.5 Irrigated seasonal horticulture": 1,
+            "55:5.5 Services": 1
+          },
+          "tasmania": {
+            "11:1.1 Nature conservation": 25,
+            "12:1.2 Managed resource protection": 8,
+            "13:1.3 Other minimal use": 2,
+            "21:2.1 Grazing native vegetation": 6,
+            "22:2.2 Production native forests": 8,
+            "31:3.1 Plantation forests": 4,
+            "32:3.2 Grazing modified pastures": 8,
+            "54:5.4.0; 5.4.1 Urban residential": 1,
+            "62:6.2 Reservoir/dam": 1,
+            "70:5.4.2; 5.4.3; 5.4.4; 5.4.5 Rural residential and farm infrastructure": 1
+          }
+        },
+        "levels": {
+          "mainland": [
+            "11:1.1 Nature conservation",
+            "13:1.3 Other minimal use",
+            "21:2.1 Grazing native vegetation",
+            "22:2.2 Production native forests",
+            "32:3.2 Grazing modified pastures",
+            "33:3.3 Cropping",
+            "42:4.2 Grazing irrigated modified pastures",
+            "43:4.3 Irrigated cropping",
+            "45:4.5 Irrigated seasonal horticulture",
+            "55:5.5 Services"
+          ],
+          "tasmania": [
+            "11:1.1 Nature conservation",
+            "12:1.2 Managed resource protection",
+            "13:1.3 Other minimal use",
+            "21:2.1 Grazing native vegetation",
+            "22:2.2 Production native forests",
+            "31:3.1 Plantation forests",
+            "32:3.2 Grazing modified pastures",
+            "54:5.4.0; 5.4.1 Urban residential",
+            "62:6.2 Reservoir/dam",
+            "70:5.4.2; 5.4.3; 5.4.4; 5.4.5 Rural residential and farm infrastructure"
+          ]
+        },
+        "missing_fraction": {
+          "mainland": 0.0,
+          "tasmania": 0.0
+        },
+        "official_codes_only": true,
+        "tasmania_novel_level_fraction": 0.234375
+      },
+      "nvis_mvg": {
+        "counts": {
+          "mainland": {
+            "Cleared, non-native vegetation, buildings": 43,
+            "Eucalypt Open Forests": 5,
+            "Eucalypt Tall Open Forests": 6,
+            "Eucalypt Woodlands": 5,
+            "Heathlands": 1,
+            "Inland aquatic - freshwater, salt lakes, lagoons": 1,
+            "Mallee Open Woodlands and Sparse Mallee Shrublands": 1,
+            "Other Forests and Woodlands": 1,
+            "Other Shrublands": 1
+          },
+          "tasmania": {
+            "Cleared, non-native vegetation, buildings": 15,
+            "Eucalypt Low Open Forests": 1,
+            "Eucalypt Open Forests": 8,
+            "Eucalypt Tall Open Forests": 5,
+            "Eucalypt Woodlands": 9,
+            "Heathlands": 4,
+            "Inland aquatic - freshwater, salt lakes, lagoons": 1,
+            "Low Closed Forests and Tall Closed Shrublands": 2,
+            "Other Forests and Woodlands": 1,
+            "Other Grasslands, Herblands, Sedgelands and Rushlands": 5,
+            "Other Shrublands": 1,
+            "Rainforests and Vine Thickets": 10,
+            "Tussock Grasslands": 1
+          }
+        },
+        "levels": {
+          "mainland": [
+            "Cleared, non-native vegetation, buildings",
+            "Eucalypt Open Forests",
+            "Eucalypt Tall Open Forests",
+            "Eucalypt Woodlands",
+            "Heathlands",
+            "Inland aquatic - freshwater, salt lakes, lagoons",
+            "Mallee Open Woodlands and Sparse Mallee Shrublands",
+            "Other Forests and Woodlands",
+            "Other Shrublands"
+          ],
+          "tasmania": [
+            "Cleared, non-native vegetation, buildings",
+            "Eucalypt Low Open Forests",
+            "Eucalypt Open Forests",
+            "Eucalypt Tall Open Forests",
+            "Eucalypt Woodlands",
+            "Heathlands",
+            "Inland aquatic - freshwater, salt lakes, lagoons",
+            "Low Closed Forests and Tall Closed Shrublands",
+            "Other Forests and Woodlands",
+            "Other Grasslands, Herblands, Sedgelands and Rushlands",
+            "Other Shrublands",
+            "Rainforests and Vine Thickets",
+            "Tussock Grasslands"
+          ]
+        },
+        "missing_fraction": {
+          "mainland": 0.0,
+          "tasmania": 0.015625
+        },
+        "official_codes_only": true,
+        "tasmania_novel_level_fraction": 0.30158730158730157
+      },
+      "soil_order": {
+        "counts": {
+          "mainland": {
+            "11:Rudosol": 1,
+            "12:Calcarasol": 3,
+            "1:Vertosol": 10,
+            "2:Sodosol": 9,
+            "3:Dermosol": 19,
+            "4:Chromosol": 16,
+            "7:Tenosol": 3,
+            "8:Kandosol": 3
+          },
+          "tasmania": {
+            "10:Podosol": 4,
+            "13:Organosol": 12,
+            "1:Vertosol": 2,
+            "2:Sodosol": 1,
+            "3:Dermosol": 26,
+            "4:Chromosol": 5,
+            "5:Ferrosol": 7,
+            "6:Kurosol": 4,
+            "8:Kandosol": 2,
+            "9:Hydrosol": 1
+          }
+        },
+        "levels": {
+          "mainland": [
+            "11:Rudosol",
+            "12:Calcarasol",
+            "1:Vertosol",
+            "2:Sodosol",
+            "3:Dermosol",
+            "4:Chromosol",
+            "7:Tenosol",
+            "8:Kandosol"
+          ],
+          "tasmania": [
+            "10:Podosol",
+            "13:Organosol",
+            "1:Vertosol",
+            "2:Sodosol",
+            "3:Dermosol",
+            "4:Chromosol",
+            "5:Ferrosol",
+            "6:Kurosol",
+            "8:Kandosol",
+            "9:Hydrosol"
+          ]
+        },
+        "missing_fraction": {
+          "mainland": 0.0,
+          "tasmania": 0.0
+        },
+        "official_codes_only": true,
+        "tasmania_novel_level_fraction": 0.4375
+      }
+    },
+    "continuous": {
+      "bio01": {
+        "finite": true,
+        "mainland_range": [
+          10.358334,
+          21.862501
+        ],
+        "missing_fraction": {
+          "mainland": 0.0,
+          "tasmania": 0.015625
+        },
+        "nonconstant": true,
+        "tasmania_outside_mainland_range_fraction": 0.4444444444444444,
+        "tasmania_z": {
+          "iqr": [
+            -2.6082477032694573,
+            -1.7516374138000708
+          ],
+          "max_abs": 3.85258763701115,
+          "median": -2.082258827790874
+        }
+      },
+      "bio02": {
+        "finite": true,
+        "mainland_range": [
+          9.05,
+          16.191666
+        ],
+        "missing_fraction": {
+          "mainland": 0.0,
+          "tasmania": 0.015625
+        },
+        "nonconstant": true,
+        "tasmania_outside_mainland_range_fraction": 0.6507936507936508,
+        "tasmania_z": {
+          "iqr": [
+            -3.102533951717346,
+            -1.8382485547574796
+          ],
+          "max_abs": 4.012072920116803,
+          "median": -2.7371184573956673
+        }
+      },
+      "bio03": {
+        "finite": true,
+        "mainland_range": [
+          41.898148,
+          54.061623
+        ],
+        "missing_fraction": {
+          "mainland": 0.0,
+          "tasmania": 0.015625
+        },
+        "nonconstant": true,
+        "tasmania_outside_mainland_range_fraction": 0.0,
+        "tasmania_z": {
+          "iqr": [
+            -0.3366997490534621,
+            0.6951342112029444
+          ],
+          "max_abs": 1.6851220660195125,
+          "median": 0.14442478310852191
+        }
+      },
+      "bio04": {
+        "finite": true,
+        "mainland_range": [
+          352.81873,
+          610.0161
+        ],
+        "missing_fraction": {
+          "mainland": 0.0,
+          "tasmania": 0.015625
+        },
+        "nonconstant": true,
+        "tasmania_outside_mainland_range_fraction": 0.8095238095238095,
+        "tasmania_z": {
+          "iqr": [
+            -2.736238752002895,
+            -2.0821699535211566
+          ],
+          "max_abs": 3.435794833667948,
+          "median": -2.4483270499566663
+        }
+      },
+      "bio05": {
+        "finite": true,
+        "mainland_range": [
+          22.8,
+          34.8
+        ],
+        "missing_fraction": {
+          "mainland": 0.0,
+          "tasmania": 0.015625
+        },
+        "nonconstant": true,
+        "tasmania_outside_mainland_range_fraction": 0.9206349206349206,
+        "tasmania_z": {
+          "iqr": [
+            -3.4509962919613417,
+            -2.629354021275453
+          ],
+          "max_abs": 4.4622483174208964,
+          "median": -3.1665816598008423
+        }
+      },
+      "bio06": {
+        "finite": true,
+        "mainland_range": [
+          -1.6,
+          7.4
+        ],
+        "missing_fraction": {
+          "mainland": 0.0,
+          "tasmania": 0.015625
+        },
+        "nonconstant": true,
+        "tasmania_outside_mainland_range_fraction": 0.015873015873015872,
+        "tasmania_z": {
+          "iqr": [
+            -1.5280746337806528,
+            -0.0767526071761968
+          ],
+          "max_abs": 2.8677565044924584,
+          "median": -0.7465935425320996
+        }
+      },
+      "bio07": {
+        "finite": true,
+        "mainland_range": [
+          20.2,
+          31.599998
+        ],
+        "missing_fraction": {
+          "mainland": 0.0,
+          "tasmania": 0.015625
+        },
+        "nonconstant": true,
+        "tasmania_outside_mainland_range_fraction": 0.873015873015873,
+        "tasmania_z": {
+          "iqr": [
+            -3.240577672259878,
+            -2.169482231158917
+          ],
+          "max_abs": 4.113932147817746,
+          "median": -2.8286180139778647
+        }
+      },
+      "bio08": {
+        "finite": true,
+        "mainland_range": [
+          5.45,
+          27.033333
+        ],
+        "missing_fraction": {
+          "mainland": 0.0,
+          "tasmania": 0.015625
+        },
+        "nonconstant": true,
+        "tasmania_outside_mainland_range_fraction": 0.2222222222222222,
+        "tasmania_z": {
+          "iqr": [
+            -1.6566326054996334,
+            -1.2681996025946112
+          ],
+          "max_abs": 2.1808399985742057,
+          "median": -1.46064520396341
+        }
+      },
+      "bio09": {
+        "finite": true,
+        "mainland_range": [
+          5.766667,
+          23.316668
+        ],
+        "missing_fraction": {
+          "mainland": 0.0,
+          "tasmania": 0.015625
+        },
+        "nonconstant": true,
+        "tasmania_outside_mainland_range_fraction": 0.0,
+        "tasmania_z": {
+          "iqr": [
+            -0.6738438738876131,
+            -0.13622047744640503
+          ],
+          "max_abs": 1.559892140715824,
+          "median": -0.40596898898787226
+        }
+      },
+      "bio10": {
+        "finite": true,
+        "mainland_range": [
+          15.816667,
+          27.033333
+        ],
+        "missing_fraction": {
+          "mainland": 0.0,
+          "tasmania": 0.015625
+        },
+        "nonconstant": true,
+        "tasmania_outside_mainland_range_fraction": 0.7936507936507936,
+        "tasmania_z": {
+          "iqr": [
+            -3.1301994001380224,
+            -2.2486865260163107
+          ],
+          "max_abs": 4.147117119883948,
+          "median": -2.588580349244732
+        }
+      },
+      "bio11": {
+        "finite": true,
+        "mainland_range": [
+          4.8,
+          15.616667
+        ],
+        "missing_fraction": {
+          "mainland": 0.0,
+          "tasmania": 0.015625
+        },
+        "nonconstant": true,
+        "tasmania_outside_mainland_range_fraction": 0.2222222222222222,
+        "tasmania_z": {
+          "iqr": [
+            -1.9943603726162265,
+            -0.996168859053836
+          ],
+          "max_abs": 3.4047744657040933,
+          "median": -1.442459111550406
+        }
+      },
+      "bio12": {
+        "finite": true,
+        "mainland_range": [
+          319.0,
+          1526.0
+        ],
+        "missing_fraction": {
+          "mainland": 0.0,
+          "tasmania": 0.015625
+        },
+        "nonconstant": true,
+        "tasmania_outside_mainland_range_fraction": 0.3492063492063492,
+        "tasmania_z": {
+          "iqr": [
+            0.4045815364668759,
+            4.2156309657894155
+          ],
+          "max_abs": 7.911423074740772,
+          "median": 1.7857799166526847
+        }
+      },
+      "bio13": {
+        "finite": true,
+        "mainland_range": [
+          33.0,
+          216.0
+        ],
+        "missing_fraction": {
+          "mainland": 0.0,
+          "tasmania": 0.015625
+        },
+        "nonconstant": true,
+        "tasmania_outside_mainland_range_fraction": 0.2222222222222222,
+        "tasmania_z": {
+          "iqr": [
+            -0.17962972372024172,
+            2.8736892790427486
+          ],
+          "max_abs": 5.2965658966198585,
+          "median": 1.1677863544221305
+        }
+      },
+      "bio14": {
+        "finite": true,
+        "mainland_range": [
+          15.0,
+          58.0
+        ],
+        "missing_fraction": {
+          "mainland": 0.0,
+          "tasmania": 0.015625
+        },
+        "nonconstant": true,
+        "tasmania_outside_mainland_range_fraction": 0.4126984126984127,
+        "tasmania_z": {
+          "iqr": [
+            0.6262605553906687,
+            5.005937022228722
+          ],
+          "max_abs": 8.102677958376841,
+          "median": 1.6437611486964792
+        }
+      },
+      "bio15": {
+        "finite": true,
+        "mainland_range": [
+          10.734559,
+          53.597855
+        ],
+        "missing_fraction": {
+          "mainland": 0.0,
+          "tasmania": 0.015625
+        },
+        "nonconstant": true,
+        "tasmania_outside_mainland_range_fraction": 0.0,
+        "tasmania_z": {
+          "iqr": [
+            -0.9751057395121018,
+            -0.19701485152215384
+          ],
+          "max_abs": 1.3762572935430726,
+          "median": -0.6968820305340538
+        }
+      },
+      "bio16": {
+        "finite": true,
+        "mainland_range": [
+          97.0,
+          629.0
+        ],
+        "missing_fraction": {
+          "mainland": 0.0,
+          "tasmania": 0.015625
+        },
+        "nonconstant": true,
+        "tasmania_outside_mainland_range_fraction": 0.2222222222222222,
+        "tasmania_z": {
+          "iqr": [
+            -0.08295773327603499,
+            3.0953337426305136
+          ],
+          "max_abs": 5.850156583495072,
+          "median": 1.3149441049808566
+        }
+      },
+      "bio17": {
+        "finite": true,
+        "mainland_range": [
+          49.0,
+          214.0
+        ],
+        "missing_fraction": {
+          "mainland": 0.0,
+          "tasmania": 0.015625
+        },
+        "nonconstant": true,
+        "tasmania_outside_mainland_range_fraction": 0.4126984126984127,
+        "tasmania_z": {
+          "iqr": [
+            0.9643217276469411,
+            4.905291080421015
+          ],
+          "max_abs": 9.023098801588796,
+          "median": 2.050614562065436
+        }
+      },
+      "bio18": {
+        "finite": true,
+        "mainland_range": [
+          49.0,
+          565.0
+        ],
+        "missing_fraction": {
+          "mainland": 0.0,
+          "tasmania": 0.015625
+        },
+        "nonconstant": true,
+        "tasmania_outside_mainland_range_fraction": 0.0,
+        "tasmania_z": {
+          "iqr": [
+            -0.34370726058587386,
+            0.9199466550348889
+          ],
+          "max_abs": 2.3553166079699714,
+          "median": -0.07512576632501486
+        }
+      },
+      "bio19": {
+        "finite": true,
+        "mainland_range": [
+          67.0,
+          520.0
+        ],
+        "missing_fraction": {
+          "mainland": 0.0,
+          "tasmania": 0.015625
+        },
+        "nonconstant": true,
+        "tasmania_outside_mainland_range_fraction": 0.3333333333333333,
+        "tasmania_z": {
+          "iqr": [
+            0.9576456161859296,
+            5.3036605005350665
+          ],
+          "max_abs": 8.697632294998332,
+          "median": 2.8493675999851273
+        }
+      },
+      "elevation_mean": {
+        "finite": true,
+        "mainland_range": [
+          32.81185213283256,
+          989.3536549791878
+        ],
+        "missing_fraction": {
+          "mainland": 0.0,
+          "tasmania": 0.0
+        },
+        "nonconstant": true,
+        "tasmania_outside_mainland_range_fraction": 0.140625,
+        "tasmania_z": {
+          "iqr": [
+            -0.9941848013281784,
+            0.539838307496699
+          ],
+          "max_abs": 3.680160306775817,
+          "median": -0.14686564059260865
+        }
+      },
+      "elevation_sd": {
+        "finite": true,
+        "mainland_range": [
+          1.0172823424544857,
+          102.26451737793425
+        ],
+        "missing_fraction": {
+          "mainland": 0.0,
+          "tasmania": 0.0
+        },
+        "nonconstant": true,
+        "tasmania_outside_mainland_range_fraction": 0.015625,
+        "tasmania_z": {
+          "iqr": [
+            -0.1213344759450482,
+            1.0710680607422924
+          ],
+          "max_abs": 4.81140172586082,
+          "median": 0.2623698094311663
+        }
+      }
+    }
+  },
+  "goal_id": "goal040-se-mammal-acquisition-feasibility",
+  "model_fits": 0,
+  "outer_access": 0,
+  "privacy": {
+    "tracked_cell_ids": false,
+    "tracked_coordinates": false,
+    "tracked_private_paths": false,
+    "tracked_row_values": false
+  },
+  "private_outputs": {
+    "selection": {
+      "bytes": 7123,
+      "rows": 128,
+      "sha256": "77ebb055b3cb7b944cd67b82e63057f2cc17f65fae780cb1c2538e2ce63a6084"
+    },
+    "values": {
+      "bytes": 76540,
+      "rows": 128,
+      "sha256": "5af9decbf14a1790c01ca25b18083228d43c5d837f528a5ddeb4b9d10ee20168"
+    }
+  },
+  "response_access": 0,
+  "retrieved_at": "2026-08-12T06:49:42Z",
+  "schema_version": "goal040-stage8-predictor-pilot-v1",
+  "selection": {
+    "cells_per_region": 64,
+    "method": "8 equal-count easting strata x 8 equal-count northing strata; bivariate projected median nearest; deterministic identity tie",
+    "selection_digest": "2cda1c20abf0422c4b96eea897d859a81ed99ab4226e61aaa49bdaeed47ceef9"
+  },
+  "source_matrix_sha256": "7076dc97d2cf2307b5c1f43d37e1e34b549a89ad44a517c185137e4c9ef7f1f4",
+  "status": "complete_raw_replay_required"
+}

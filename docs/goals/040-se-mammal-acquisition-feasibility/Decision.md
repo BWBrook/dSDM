@@ -159,6 +159,37 @@ source identity is `repair` or `blocked`, never readiness.
 
 ## Final decision
 
+### Stage 8 predictor portability receipt (2026-08-12)
+
+The response-neutral pilot selected exactly 64 eligible cells per region using
+eight equal-count EPSG:3577 easting strata crossed with eight equal-count
+northing strata, choosing the projected bivariate-median-nearest cell with a
+deterministic identity tie. The ALUM modal extractor transforms native pixel
+centres back to WGS84 before applying exact cell bounds and breaks modal ties
+by numeric source code. WorldClim 2.1 BIO1--BIO19, GA 1 arc-second DEM
+mean and within-cell SD, NVIS 7.0 extant MVG, SLGA Soil Order, and ABARES NLUM
+v7/ALUM v8 secondary class were tested against the frozen common-source
+matrix. The 128-cell selected cells and row-level values are private/ignored;
+the privacy-safe aggregate manifest and decision receipt are tracked at
+`metadata/goal040_predictor_pilot_manifest.json` and
+`metadata/goal040_decision_receipt.json`.
+
+All 19 climate variables, both terrain summaries, NVIS MVG, Soil Order, and
+ALUM secondary class passed the prespecified missingness/finite/nonconstant or
+source-ontology gates (24 retained). The TERN parser was repaired to read the
+authoritative `estimated soil class` property and validate codes 1--14 against
+the official ASC labels; the existing 128-cell private values were refreshed
+without refetching other layers. The climate, terrain, vegetation, soil, and
+land-use panel is coherent, so Stage 8 is `ready` for
+the later experiment, subject to full-domain extraction and validation. This
+pilot does not establish full-domain absence, performance, or extrapolation
+safety.
+
+WorldClim represents a 1970--2000 long-term climate baseline whereas the
+occurrence evidence spans 2001--2025. This accepted portability limitation
+means later claims concern contemporary occurrence relative to baseline
+climate, not contemporary climate.
+
 `ready` requires frozen taxonomy and boundary manifests; complete full
 acquisition and QC; at least 15 observed support species, 10 mainland
 pretraining candidates, and five shared evaluation candidates; complete X=3
