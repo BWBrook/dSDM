@@ -1,0 +1,12 @@
+{
+  "cells": 128,
+  "correction_receipt_sha256": {
+    "nvis_mvg": "692b41a2f2affab3ed7430084d345cda3293785d5f6678b7077518948b7e7079",
+    "soil_order": "b7e627f6cea11c8918ce8c1215f03b7d37a6819fcbc4a42081ece706391cb33b"
+  },
+  "exact": 128,
+  "failed": 0,
+  "mismatch_count": 0,
+  "run_identity": "86d6617d5d20f858847484a8aa8cef9cf8755430d539f71f264d3ef1c64dc07a",
+  "status": "validated"
+}

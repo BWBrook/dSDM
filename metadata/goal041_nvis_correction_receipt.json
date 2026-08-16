@@ -1,0 +1,14 @@
+{
+  "baseline_sha256": "f626b003fae043e795a493ad9b31bb3c6daedc18a4967d60f4e5bf7810b690fd",
+  "equivalence_rule": "fresh replay must exactly match the independently frozen official-source centroid baseline",
+  "legacy_discrepancies": 10,
+  "legacy_discrepancies_by_region": {
+    "southeast_mainland": 2,
+    "tasmania": 8
+  },
+  "legacy_exact": 118,
+  "predictor": "nvis_mvg",
+  "schema_version": "goal041-pilot-correction-v2",
+  "source": "NVIS_7_OFFICIAL_GEOTIFF",
+  "source_sha256": "17c87c6cf48c380659500c5369013056bdf86a2c32b52c0fb8ee92a8c9c016ad"
+}

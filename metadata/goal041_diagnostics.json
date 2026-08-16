@@ -1,0 +1,958 @@
+{
+  "regions": {
+    "southeast_mainland": {
+      "cells": 1053032,
+      "predictors": {
+        "alum_secondary": {
+          "levels": {
+            "11:1.1 Nature conservation": 127286,
+            "12:1.2 Managed resource protection": 6932,
+            "13:1.3 Other minimal use": 61809,
+            "21:2.1 Grazing native vegetation": 245246,
+            "22:2.2 Production native forests": 59082,
+            "31:3.1 Plantation forests": 15034,
+            "32:3.2 Grazing modified pastures": 295633,
+            "33:3.3 Cropping": 188180,
+            "34:3.4 Perennial horticulture": 166,
+            "35:3.5 Seasonal horticulture": 53,
+            "41:4.1 Irrigated plantation forests": 13,
+            "42:4.2 Grazing irrigated modified pastures": 4831,
+            "43:4.3 Irrigated cropping": 4969,
+            "44:4.4 Irrigated perennial horticulture": 3815,
+            "45:4.5 Irrigated seasonal horticulture": 1040,
+            "51:5.1 Intensive horticulture": 56,
+            "52:5.2 Intensive animal production": 715,
+            "53:5.3 Manufacturing and industrial": 828,
+            "54:5.4.0; 5.4.1 Urban residential": 13310,
+            "55:5.5 Services": 3093,
+            "56:5.6 Utilities": 203,
+            "57:5.7 Transport and communication": 572,
+            "58:5.8 Mining": 1374,
+            "59:5.9 Waste treatment and disposal": 230,
+            "61:6.1 Lake": 481,
+            "62:6.0 Water": 2,
+            "62:6.2 Reservoir/dam": 905,
+            "63:6.3 River": 896,
+            "64:6.4 Channel/aqueduct": 14,
+            "65:6.5 Marsh/wetland": 3532,
+            "66:6.6 Estuary/coastal waters": 350,
+            "70:5.4.2; 5.4.3; 5.4.4; 5.4.5 Rural residential and farm infrastructure": 12382
+          },
+          "missing": 0,
+          "missing_fraction": 0.0,
+          "valid": 1053032
+        },
+        "bio01": {
+          "missing": 1128,
+          "missing_fraction": 0.0010711925183660136,
+          "quantiles": {
+            "0.01": 9.129166603088379,
+            "0.25": 14.625,
+            "0.5": 16.575000762939453,
+            "0.75": 18.804166793823242,
+            "0.99": 21.679166793823242
+          },
+          "range": [
+            3.7666666507720947,
+            22.941667556762695
+          ],
+          "valid": 1051904
+        },
+        "bio02": {
+          "missing": 1128,
+          "missing_fraction": 0.0010711925183660136,
+          "quantiles": {
+            "0.01": 7.974999904632568,
+            "0.25": 11.425000190734863,
+            "0.5": 13.033333778381348,
+            "0.75": 13.866666793823242,
+            "0.99": 15.550000190734863
+          },
+          "range": [
+            4.974999904632568,
+            16.95833396911621
+          ],
+          "valid": 1051904
+        },
+        "bio03": {
+          "missing": 1128,
+          "missing_fraction": 0.0010711925183660136,
+          "quantiles": {
+            "0.01": 41.74528503417969,
+            "0.25": 46.83600616455078,
+            "0.5": 48.568490982055664,
+            "0.75": 50.4844970703125,
+            "0.99": 54.135101318359375
+          },
+          "range": [
+            34.1194953918457,
+            56.36666488647461
+          ],
+          "valid": 1051904
+        },
+        "bio04": {
+          "missing": 1128,
+          "missing_fraction": 0.0010711925183660136,
+          "quantiles": {
+            "0.01": 316.5079620361328,
+            "0.25": 431.1366271972656,
+            "0.5": 500.7107849121094,
+            "0.75": 560.9238433837891,
+            "0.99": 617.4998760986329
+          },
+          "range": [
+            240.6509552001953,
+            631.2473754882812
+          ],
+          "valid": 1051904
+        },
+        "bio05": {
+          "missing": 1128,
+          "missing_fraction": 0.0010711925183660136,
+          "quantiles": {
+            "0.01": 21.5,
+            "0.25": 27.399999618530273,
+            "0.5": 30.600000381469727,
+            "0.75": 32.400001525878906,
+            "0.99": 35.099998474121094
+          },
+          "range": [
+            16.700000762939453,
+            36.0
+          ],
+          "valid": 1051904
+        },
+        "bio06": {
+          "missing": 1128,
+          "missing_fraction": 0.0010711925183660136,
+          "quantiles": {
+            "0.01": -2.0,
+            "0.25": 3.0,
+            "0.5": 3.9000000953674316,
+            "0.75": 5.099999904632568,
+            "0.99": 9.300000190734863
+          },
+          "range": [
+            -7.699999809265137,
+            15.5
+          ],
+          "valid": 1051904
+        },
+        "bio07": {
+          "missing": 1128,
+          "missing_fraction": 0.0010711925183660136,
+          "quantiles": {
+            "0.01": 17.100000381469727,
+            "0.25": 23.30000114440918,
+            "0.5": 26.599998474121094,
+            "0.75": 28.89999771118164,
+            "0.99": 31.10000228881836
+          },
+          "range": [
+            12.000000953674316,
+            32.400001525878906
+          ],
+          "valid": 1051904
+        },
+        "bio08": {
+          "missing": 1128,
+          "missing_fraction": 0.0010711925183660136,
+          "quantiles": {
+            "0.01": 4.866666793823242,
+            "0.25": 11.283333778381348,
+            "0.5": 18.383333206176758,
+            "0.75": 24.600000381469727,
+            "0.99": 27.133333206176758
+          },
+          "range": [
+            -0.6333333253860474,
+            28.166667938232422
+          ],
+          "valid": 1051904
+        },
+        "bio09": {
+          "missing": 1128,
+          "missing_fraction": 0.0010711925183660136,
+          "quantiles": {
+            "0.01": 5.833333492279053,
+            "0.25": 12.133333206176758,
+            "0.5": 14.883333206176758,
+            "0.75": 19.933332443237305,
+            "0.99": 23.41666603088379
+          },
+          "range": [
+            2.4166667461395264,
+            24.516666412353516
+          ],
+          "valid": 1051904
+        },
+        "bio10": {
+          "missing": 1128,
+          "missing_fraction": 0.0010711925183660136,
+          "quantiles": {
+            "0.01": 14.933333396911621,
+            "0.25": 20.183334350585938,
+            "0.5": 22.816665649414062,
+            "0.75": 24.866666793823242,
+            "0.99": 27.25
+          },
+          "range": [
+            10.066666603088379,
+            28.166667938232422
+          ],
+          "valid": 1051904
+        },
+        "bio11": {
+          "missing": 1128,
+          "missing_fraction": 0.0010711925183660136,
+          "quantiles": {
+            "0.01": 3.183333396911621,
+            "0.25": 8.883333206176758,
+            "0.5": 10.166666030883789,
+            "0.75": 11.949999809265137,
+            "0.99": 16.100000381469727
+          },
+          "range": [
+            -2.5333333015441895,
+            18.683334350585938
+          ],
+          "valid": 1051904
+        },
+        "bio12": {
+          "missing": 1128,
+          "missing_fraction": 0.0010711925183660136,
+          "quantiles": {
+            "0.01": 283.0,
+            "0.25": 489.0,
+            "0.5": 639.0,
+            "0.75": 810.0,
+            "0.99": 1537.0
+          },
+          "range": [
+            231.0,
+            2242.0
+          ],
+          "valid": 1051904
+        },
+        "bio13": {
+          "missing": 1128,
+          "missing_fraction": 0.0010711925183660136,
+          "quantiles": {
+            "0.01": 32.0,
+            "0.25": 59.0,
+            "0.5": 86.0,
+            "0.75": 107.0,
+            "0.99": 219.0
+          },
+          "range": [
+            26.0,
+            345.0
+          ],
+          "valid": 1051904
+        },
+        "bio14": {
+          "missing": 1128,
+          "missing_fraction": 0.0010711925183660136,
+          "quantiles": {
+            "0.01": 12.0,
+            "0.25": 23.0,
+            "0.5": 29.0,
+            "0.75": 39.0,
+            "0.99": 65.0
+          },
+          "range": [
+            5.0,
+            103.0
+          ],
+          "valid": 1051904
+        },
+        "bio15": {
+          "missing": 1128,
+          "missing_fraction": 0.0010711925183660136,
+          "quantiles": {
+            "0.01": 11.342242240905762,
+            "0.25": 20.185895919799805,
+            "0.5": 31.184640884399414,
+            "0.75": 42.31730651855469,
+            "0.99": 58.520088729858394
+          },
+          "range": [
+            8.012189865112305,
+            94.83012390136719
+          ],
+          "valid": 1051904
+        },
+        "bio16": {
+          "missing": 1128,
+          "missing_fraction": 0.0010711925183660136,
+          "quantiles": {
+            "0.01": 90.0,
+            "0.25": 159.0,
+            "0.5": 228.0,
+            "0.75": 288.0,
+            "0.99": 590.0
+          },
+          "range": [
+            69.0,
+            932.0
+          ],
+          "valid": 1051904
+        },
+        "bio17": {
+          "missing": 1128,
+          "missing_fraction": 0.0010711925183660136,
+          "quantiles": {
+            "0.01": 44.0,
+            "0.25": 80.0,
+            "0.5": 100.0,
+            "0.75": 137.0,
+            "0.99": 230.0
+          },
+          "range": [
+            28.0,
+            347.0
+          ],
+          "valid": 1051904
+        },
+        "bio18": {
+          "missing": 1128,
+          "missing_fraction": 0.0010711925183660136,
+          "quantiles": {
+            "0.01": 47.0,
+            "0.25": 101.0,
+            "0.5": 192.0,
+            "0.75": 263.0,
+            "0.99": 549.0
+          },
+          "range": [
+            28.0,
+            871.0
+          ],
+          "valid": 1051904
+        },
+        "bio19": {
+          "missing": 1128,
+          "missing_fraction": 0.0010711925183660136,
+          "quantiles": {
+            "0.01": 70.0,
+            "0.25": 96.0,
+            "0.5": 128.0,
+            "0.75": 180.0,
+            "0.99": 433.0
+          },
+          "range": [
+            50.0,
+            677.0
+          ],
+          "valid": 1051904
+        },
+        "elevation_mean": {
+          "missing": 0,
+          "missing_fraction": 0.0,
+          "quantiles": {
+            "0.01": 6.096497813308673,
+            "0.25": 116.70142041459496,
+            "0.5": 241.07623260992546,
+            "0.75": 431.6978851188848,
+            "0.99": 1237.7485061447708
+          },
+          "range": [
+            -40.348907554433765,
+            2136.769290123457
+          ],
+          "valid": 1053032
+        },
+        "elevation_sd": {
+          "missing": 0,
+          "missing_fraction": 0.0,
+          "quantiles": {
+            "0.01": 1.1142942383074705,
+            "0.25": 2.5650373926583505,
+            "0.5": 6.227674334342704,
+            "0.75": 17.291870837235884,
+            "0.99": 94.95759311401665
+          },
+          "range": [
+            0.0,
+            214.75224697883846
+          ],
+          "valid": 1053032
+        },
+        "nvis_mvg": {
+          "levels": {
+            "10:Other Forests and Woodlands": 3648,
+            "11:Eucalypt Open Woodlands": 9249,
+            "13:Acacia Open Woodlands": 9,
+            "14:Mallee Woodlands and Shrublands": 31588,
+            "15:Low Closed Forests and Tall Closed Shrublands": 169,
+            "16:Acacia Shrublands": 726,
+            "17:Other Shrublands": 2876,
+            "18:Heathlands": 5800,
+            "19:Tussock Grasslands": 15252,
+            "1:Rainforests and Vine Thickets": 6471,
+            "20:Hummock Grasslands": 102,
+            "21:Other Grasslands, Herblands, Sedgelands and Rushlands": 1917,
+            "22:Chenopod Shrublands, Samphire Shrublands and Forblands": 11557,
+            "23:Mangroves": 516,
+            "24:Inland aquatic - freshwater, salt lakes, lagoons": 1645,
+            "25:Cleared, non-native vegetation, buildings": 651059,
+            "26:Unclassified native vegetation": 25,
+            "27:Naturally bare - sand, rock, claypan, mudflat": 321,
+            "28:Sea and estuaries": 249,
+            "29:Regrowth, modified native vegetation": 2063,
+            "2:Eucalypt Tall Open Forests": 67592,
+            "31:Other Open Woodlands": 3232,
+            "32:Mallee Open Woodlands and Sparse Mallee Shrublands": 2032,
+            "3:Eucalypt Open Forests": 91356,
+            "4:Eucalypt Low Open Forests": 8879,
+            "5:Eucalypt Woodlands": 114026,
+            "6:Acacia Forests and Woodlands": 5064,
+            "7:Callitris Forests and Woodlands": 10882,
+            "8:Casuarina Forests and Woodlands": 1689,
+            "9:Melaleuca Forests and Woodlands": 1224
+          },
+          "missing": 1814,
+          "missing_fraction": 0.0017226447059538552,
+          "valid": 1051218
+        },
+        "soil_order": {
+          "levels": {
+            "10:Podosol": 9559,
+            "11:Rudosol": 8360,
+            "12:Calcarasol": 62940,
+            "13:Organosol": 833,
+            "14:Anthroposol": 43,
+            "1:Vertosol": 193158,
+            "2:Sodosol": 182795,
+            "3:Dermosol": 156728,
+            "4:Chromosol": 252729,
+            "5:Ferrosol": 3181,
+            "6:Kurosol": 22110,
+            "7:Tenosol": 94266,
+            "8:Kandosol": 51399,
+            "9:Hydrosol": 14890
+          },
+          "missing": 41,
+          "missing_fraction": 3.893518905408383e-05,
+          "valid": 1052991
+        }
+      }
+    },
+    "tasmania": {
+      "cells": 72293,
+      "predictors": {
+        "alum_secondary": {
+          "levels": {
+            "11:1.1 Nature conservation": 26584,
+            "12:1.2 Managed resource protection": 8877,
+            "13:1.3 Other minimal use": 3954,
+            "21:2.1 Grazing native vegetation": 6312,
+            "22:2.2 Production native forests": 10165,
+            "31:3.1 Plantation forests": 3486,
+            "32:3.2 Grazing modified pastures": 9048,
+            "33:3.3 Cropping": 167,
+            "34:3.4 Perennial horticulture": 20,
+            "35:3.5 Seasonal horticulture": 5,
+            "42:4.2 Grazing irrigated modified pastures": 566,
+            "43:4.3 Irrigated cropping": 117,
+            "44:4.4 Irrigated perennial horticulture": 26,
+            "45:4.5 Irrigated seasonal horticulture": 6,
+            "51:5.1 Intensive horticulture": 2,
+            "52:5.2 Intensive animal production": 19,
+            "53:5.3 Manufacturing and industrial": 31,
+            "54:5.4.0; 5.4.1 Urban residential": 533,
+            "55:5.5 Services": 136,
+            "57:5.7 Transport and communication": 21,
+            "58:5.8 Mining": 25,
+            "59:5.9 Waste treatment and disposal": 2,
+            "61:6.1 Lake": 40,
+            "62:6.0 Water": 1,
+            "62:6.2 Reservoir/dam": 125,
+            "63:6.3 River": 12,
+            "65:6.5 Marsh/wetland": 340,
+            "66:6.6 Estuary/coastal waters": 25,
+            "70:5.4.2; 5.4.3; 5.4.4; 5.4.5 Rural residential and farm infrastructure": 1648
+          },
+          "mainland_absent_valid_levels": [],
+          "missing": 0,
+          "missing_fraction": 0.0,
+          "valid": 72293
+        },
+        "bio01": {
+          "above_mainland_range": 0,
+          "above_mainland_range_fraction": 0.0,
+          "below_mainland_range": 0,
+          "below_mainland_range_fraction": 0.0,
+          "missing": 395,
+          "missing_fraction": 0.005463876170583597,
+          "quantiles": {
+            "0.01": 5.808333396911621,
+            "0.25": 9.162500381469727,
+            "0.5": 10.654167175292969,
+            "0.75": 11.783332824707031,
+            "0.99": 13.75
+          },
+          "range": [
+            4.7208333015441895,
+            14.612500190734863
+          ],
+          "valid": 71898
+        },
+        "bio02": {
+          "above_mainland_range": 0,
+          "above_mainland_range_fraction": 0.0,
+          "below_mainland_range": 11,
+          "below_mainland_range_fraction": 0.00015299452001446494,
+          "missing": 395,
+          "missing_fraction": 0.005463876170583597,
+          "quantiles": {
+            "0.01": 6.300000190734863,
+            "0.25": 7.8416666984558105,
+            "0.5": 8.574999809265137,
+            "0.75": 9.491666793823242,
+            "0.99": 11.975000381469727
+          },
+          "range": [
+            4.700000286102295,
+            12.425000190734863
+          ],
+          "valid": 71898
+        },
+        "bio03": {
+          "above_mainland_range": 0,
+          "above_mainland_range_fraction": 0.0,
+          "below_mainland_range": 0,
+          "below_mainland_range_fraction": 0.0,
+          "missing": 395,
+          "missing_fraction": 0.005463876170583597,
+          "quantiles": {
+            "0.01": 45.588233947753906,
+            "0.25": 48.31406784057617,
+            "0.5": 49.41983413696289,
+            "0.75": 50.82897186279297,
+            "0.99": 53.373016357421875
+          },
+          "range": [
+            39.65053939819336,
+            55.05318832397461
+          ],
+          "valid": 71898
+        },
+        "bio04": {
+          "above_mainland_range": 0,
+          "above_mainland_range_fraction": 0.0,
+          "below_mainland_range": 286,
+          "below_mainland_range_fraction": 0.003977857520376088,
+          "missing": 395,
+          "missing_fraction": 0.005463876170583597,
+          "quantiles": {
+            "0.01": 248.45078704833983,
+            "0.25": 293.31463623046875,
+            "0.5": 316.855712890625,
+            "0.75": 336.13951110839844,
+            "0.99": 382.6426901245117
+          },
+          "range": [
+            198.9532470703125,
+            395.28948974609375
+          ],
+          "valid": 71898
+        },
+        "bio05": {
+          "above_mainland_range": 0,
+          "above_mainland_range_fraction": 0.0,
+          "below_mainland_range": 1928,
+          "below_mainland_range_fraction": 0.026815766780717128,
+          "missing": 395,
+          "missing_fraction": 0.005463876170583597,
+          "quantiles": {
+            "0.01": 16.200000762939453,
+            "0.25": 18.899999618530273,
+            "0.5": 20.100000381469727,
+            "0.75": 21.5,
+            "0.99": 24.200000762939453
+          },
+          "range": [
+            14.600000381469727,
+            25.0
+          ],
+          "valid": 71898
+        },
+        "bio06": {
+          "above_mainland_range": 0,
+          "above_mainland_range_fraction": 0.0,
+          "below_mainland_range": 0,
+          "below_mainland_range_fraction": 0.0,
+          "missing": 395,
+          "missing_fraction": 0.005463876170583597,
+          "quantiles": {
+            "0.01": -1.7999999523162842,
+            "0.25": 1.2000000476837158,
+            "0.5": 2.5,
+            "0.75": 3.9000000953674316,
+            "0.99": 7.599999904632568
+          },
+          "range": [
+            -2.700000047683716,
+            9.800000190734863
+          ],
+          "valid": 71898
+        },
+        "bio07": {
+          "above_mainland_range": 0,
+          "above_mainland_range_fraction": 0.0,
+          "below_mainland_range": 98,
+          "below_mainland_range_fraction": 0.0013630420874015967,
+          "missing": 395,
+          "missing_fraction": 0.005463876170583597,
+          "quantiles": {
+            "0.01": 13.40000057220459,
+            "0.25": 16.19999885559082,
+            "0.5": 17.5,
+            "0.75": 18.799999237060547,
+            "0.99": 22.700000762939453
+          },
+          "range": [
+            10.300000190734863,
+            23.399999618530273
+          ],
+          "valid": 71898
+        },
+        "bio08": {
+          "above_mainland_range": 0,
+          "above_mainland_range_fraction": 0.0,
+          "below_mainland_range": 0,
+          "below_mainland_range_fraction": 0.0,
+          "missing": 395,
+          "missing_fraction": 0.005463876170583597,
+          "quantiles": {
+            "0.01": 1.8833333253860474,
+            "0.25": 5.699999809265137,
+            "0.5": 7.4666666984558105,
+            "0.75": 8.800000190734863,
+            "0.99": 15.350000381469727
+          },
+          "range": [
+            0.38333332538604736,
+            16.066665649414062
+          ],
+          "valid": 71898
+        },
+        "bio09": {
+          "above_mainland_range": 0,
+          "above_mainland_range_fraction": 0.0,
+          "below_mainland_range": 0,
+          "below_mainland_range_fraction": 0.0,
+          "missing": 395,
+          "missing_fraction": 0.005463876170583597,
+          "quantiles": {
+            "0.01": 9.633333206176758,
+            "0.25": 12.699999809265137,
+            "0.5": 14.033333778381348,
+            "0.75": 15.266666412353516,
+            "0.99": 17.533832817077617
+          },
+          "range": [
+            8.199999809265137,
+            18.116666793823242
+          ],
+          "valid": 71898
+        },
+        "bio10": {
+          "above_mainland_range": 0,
+          "above_mainland_range_fraction": 0.0,
+          "below_mainland_range": 542,
+          "below_mainland_range_fraction": 0.007538457258894545,
+          "missing": 395,
+          "missing_fraction": 0.005463876170583597,
+          "quantiles": {
+            "0.01": 10.149999618530273,
+            "0.25": 13.049999237060547,
+            "0.5": 14.433333396911621,
+            "0.75": 15.75,
+            "0.99": 17.549999237060547
+          },
+          "range": [
+            8.949999809265137,
+            18.116666793823242
+          ],
+          "valid": 71898
+        },
+        "bio11": {
+          "above_mainland_range": 0,
+          "above_mainland_range_fraction": 0.0,
+          "below_mainland_range": 0,
+          "below_mainland_range_fraction": 0.0,
+          "missing": 395,
+          "missing_fraction": 0.005463876170583597,
+          "quantiles": {
+            "0.01": 1.5,
+            "0.25": 5.233333110809326,
+            "0.5": 6.766666412353516,
+            "0.75": 7.883333206176758,
+            "0.99": 10.466666221618652
+          },
+          "range": [
+            0.38333332538604736,
+            12.133333206176758
+          ],
+          "valid": 71898
+        },
+        "bio12": {
+          "above_mainland_range": 7302,
+          "above_mainland_range_fraction": 0.10156054410414754,
+          "below_mainland_range": 0,
+          "below_mainland_range_fraction": 0.0,
+          "missing": 395,
+          "missing_fraction": 0.005463876170583597,
+          "quantiles": {
+            "0.01": 522.0,
+            "0.25": 797.0,
+            "0.5": 1117.0,
+            "0.75": 1821.0,
+            "0.99": 2664.0
+          },
+          "range": [
+            474.0,
+            2919.0
+          ],
+          "valid": 71898
+        },
+        "bio13": {
+          "above_mainland_range": 0,
+          "above_mainland_range_fraction": 0.0,
+          "below_mainland_range": 0,
+          "below_mainland_range_fraction": 0.0,
+          "missing": 395,
+          "missing_fraction": 0.005463876170583597,
+          "quantiles": {
+            "0.01": 54.0,
+            "0.25": 86.0,
+            "0.5": 135.0,
+            "0.75": 209.0,
+            "0.99": 296.0
+          },
+          "range": [
+            49.0,
+            316.0
+          ],
+          "valid": 71898
+        },
+        "bio14": {
+          "above_mainland_range": 8082,
+          "above_mainland_range_fraction": 0.11240924643244596,
+          "below_mainland_range": 0,
+          "below_mainland_range_fraction": 0.0,
+          "missing": 395,
+          "missing_fraction": 0.005463876170583597,
+          "quantiles": {
+            "0.01": 29.0,
+            "0.25": 40.0,
+            "0.5": 51.0,
+            "0.75": 85.0,
+            "0.99": 121.0
+          },
+          "range": [
+            25.0,
+            133.0
+          ],
+          "valid": 71898
+        },
+        "bio15": {
+          "above_mainland_range": 0,
+          "above_mainland_range_fraction": 0.0,
+          "below_mainland_range": 0,
+          "below_mainland_range_fraction": 0.0,
+          "missing": 395,
+          "missing_fraction": 0.005463876170583597,
+          "quantiles": {
+            "0.01": 13.79487455368042,
+            "0.25": 18.988990306854248,
+            "0.5": 23.010957717895508,
+            "0.75": 29.691262245178223,
+            "0.99": 38.56829574584961
+          },
+          "range": [
+            11.246848106384277,
+            40.00358963012695
+          ],
+          "valid": 71898
+        },
+        "bio16": {
+          "above_mainland_range": 0,
+          "above_mainland_range_fraction": 0.0,
+          "below_mainland_range": 0,
+          "below_mainland_range_fraction": 0.0,
+          "missing": 395,
+          "missing_fraction": 0.005463876170583597,
+          "quantiles": {
+            "0.01": 152.0,
+            "0.25": 240.0,
+            "0.5": 376.0,
+            "0.75": 596.0,
+            "0.99": 862.0
+          },
+          "range": [
+            140.0,
+            910.0
+          ],
+          "valid": 71898
+        },
+        "bio17": {
+          "above_mainland_range": 11262,
+          "above_mainland_range_fraction": 0.1566385713093549,
+          "below_mainland_range": 0,
+          "below_mainland_range_fraction": 0.0,
+          "missing": 395,
+          "missing_fraction": 0.005463876170583597,
+          "quantiles": {
+            "0.01": 110.0,
+            "0.25": 148.0,
+            "0.5": 186.0,
+            "0.75": 294.0,
+            "0.99": 438.0
+          },
+          "range": [
+            102.0,
+            495.0
+          ],
+          "valid": 71898
+        },
+        "bio18": {
+          "above_mainland_range": 0,
+          "above_mainland_range_fraction": 0.0,
+          "below_mainland_range": 0,
+          "below_mainland_range_fraction": 0.0,
+          "missing": 395,
+          "missing_fraction": 0.005463876170583597,
+          "quantiles": {
+            "0.01": 119.0,
+            "0.25": 155.0,
+            "0.5": 188.0,
+            "0.75": 296.0,
+            "0.99": 440.0
+          },
+          "range": [
+            111.0,
+            495.0
+          ],
+          "valid": 71898
+        },
+        "bio19": {
+          "above_mainland_range": 8936,
+          "above_mainland_range_fraction": 0.12428718462265988,
+          "below_mainland_range": 0,
+          "below_mainland_range_fraction": 0.0,
+          "missing": 395,
+          "missing_fraction": 0.005463876170583597,
+          "quantiles": {
+            "0.01": 130.0,
+            "0.25": 234.0,
+            "0.5": 370.0,
+            "0.75": 581.0,
+            "0.99": 832.0
+          },
+          "range": [
+            115.0,
+            886.0
+          ],
+          "valid": 71898
+        },
+        "elevation_mean": {
+          "above_mainland_range": 0,
+          "above_mainland_range_fraction": 0.0,
+          "below_mainland_range": 0,
+          "below_mainland_range_fraction": 0.0,
+          "missing": 0,
+          "missing_fraction": 0.0,
+          "quantiles": {
+            "0.01": 5.186035278183753,
+            "0.25": 129.528663776539,
+            "0.5": 282.7460564625116,
+            "0.75": 531.1223414150285,
+            "0.99": 1197.955215698996
+          },
+          "range": [
+            -3.334578069685786,
+            1502.9608130749361
+          ],
+          "valid": 72293
+        },
+        "elevation_sd": {
+          "above_mainland_range": 2,
+          "above_mainland_range_fraction": 2.766519580042328e-05,
+          "below_mainland_range": 0,
+          "below_mainland_range_fraction": 0.0,
+          "missing": 0,
+          "missing_fraction": 0.0,
+          "quantiles": {
+            "0.01": 1.870712795321827,
+            "0.25": 12.200627358918913,
+            "0.5": 25.00989226311045,
+            "0.75": 45.12785370761922,
+            "0.99": 114.93827746326454
+          },
+          "range": [
+            0.7688092351518753,
+            219.0596190597669
+          ],
+          "valid": 72293
+        },
+        "nvis_mvg": {
+          "levels": {
+            "10:Other Forests and Woodlands": 607,
+            "11:Eucalypt Open Woodlands": 10,
+            "15:Low Closed Forests and Tall Closed Shrublands": 2158,
+            "17:Other Shrublands": 77,
+            "18:Heathlands": 4467,
+            "19:Tussock Grasslands": 737,
+            "1:Rainforests and Vine Thickets": 8860,
+            "21:Other Grasslands, Herblands, Sedgelands and Rushlands": 6273,
+            "22:Chenopod Shrublands, Samphire Shrublands and Forblands": 18,
+            "24:Inland aquatic - freshwater, salt lakes, lagoons": 328,
+            "25:Cleared, non-native vegetation, buildings": 18886,
+            "26:Unclassified native vegetation": 1,
+            "27:Naturally bare - sand, rock, claypan, mudflat": 64,
+            "29:Regrowth, modified native vegetation": 493,
+            "2:Eucalypt Tall Open Forests": 9805,
+            "31:Other Open Woodlands": 41,
+            "3:Eucalypt Open Forests": 10002,
+            "4:Eucalypt Low Open Forests": 1322,
+            "5:Eucalypt Woodlands": 7995,
+            "7:Callitris Forests and Woodlands": 5,
+            "8:Casuarina Forests and Woodlands": 86,
+            "9:Melaleuca Forests and Woodlands": 58
+          },
+          "mainland_absent_valid_levels": [],
+          "missing": 0,
+          "missing_fraction": 0.0,
+          "valid": 72293
+        },
+        "soil_order": {
+          "levels": {
+            "10:Podosol": 8823,
+            "11:Rudosol": 16,
+            "12:Calcarasol": 8,
+            "13:Organosol": 11034,
+            "1:Vertosol": 557,
+            "2:Sodosol": 872,
+            "3:Dermosol": 33185,
+            "4:Chromosol": 4347,
+            "5:Ferrosol": 6290,
+            "6:Kurosol": 4018,
+            "7:Tenosol": 1262,
+            "8:Kandosol": 916,
+            "9:Hydrosol": 965
+          },
+          "mainland_absent_valid_levels": [],
+          "missing": 0,
+          "missing_fraction": 0.0,
+          "valid": 72293
+        }
+      }
+    }
+  },
+  "run_identity": "86d6617d5d20f858847484a8aa8cef9cf8755430d539f71f264d3ef1c64dc07a",
+  "schema_version": "goal041-diagnostics-v3",
+  "table_sha256": "3a271c63a5b706c97330aaf8656528f17f62aa3a896d9035ab6a264f1ab86e3e"
+}

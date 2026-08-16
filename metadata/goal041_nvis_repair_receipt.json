@@ -1,0 +1,40 @@
+{
+  "mapping": {
+    "mapping_digest": "0a4bd83f8e47dda4b22e1c4aab7da8902424d8e355a5062a85ae758aabc496c8",
+    "repair_script_sha256": "a42c14161aeeb43956777243e4b613c9c061645ecef397f712acf14b59f87579",
+    "source": "NVIS 7.0 extant Major Vegetation Group raster attribute table",
+    "source_sha256": "9f5fb97802b10639f5e61e189652a15f02a391bed72c69569451159a9f85fe31",
+    "valid_rule": "canonical numeric code mapped to official code:MVG_NAME",
+    "value_99_rule": "official Unknown/no data recoded to missing"
+  },
+  "reason": "The derived GeoTIFF retained numeric codes but not its File Geodatabase raster attribute table.",
+  "repaired": {
+    "changed_rows": 1125322,
+    "chunks": 40,
+    "environment": {
+      "gdal": "3.10.3",
+      "numpy": "2.5.1",
+      "platform": "Linux-6.8.0-137-generic-x86_64-with-glibc2.39",
+      "pyarrow": "21.0.0",
+      "python": "3.12.3",
+      "rasterio": "1.4.4"
+    },
+    "final_sha256": "3a271c63a5b706c97330aaf8656528f17f62aa3a896d9035ab6a264f1ab86e3e",
+    "missing_after": 1814,
+    "missing_before": 3,
+    "relabelled_valid_rows": 1123511,
+    "rows": 1125325,
+    "run_identity": "86d6617d5d20f858847484a8aa8cef9cf8755430d539f71f264d3ef1c64dc07a",
+    "table_manifest_sha256": "fa18a25ba1992fc7a3b28edb6d78ceb2fc84b269486f968165ffd56fbcc5e3c1",
+    "unknown_to_missing_rows": 1811
+  },
+  "repair_scope": "NVIS labels only; ordered rows and the other 23 predictor columns were preserved.",
+  "schema_version": "goal041-nvis-repair-v1",
+  "upstream": {
+    "elevation_tile_manifest_sha256": "bb99e95418f6ceb7f62cb3074f479351fca9be832d2b29087eca837447f98669",
+    "environment": "Linux-6.8.0-137-generic-x86_64-with-glibc2.39",
+    "final_sha256": "e9ac1514ab820fc00e9609219a9699eb1fa0eda3732a81c35198b49287c69fdd",
+    "run_identity": "28b33508453325a19add880b73d20c7312fbd7835a169d370983ca7a98096944",
+    "table_manifest_sha256": "97f59a600bd5af92e5de46298d91d892e8f16ab474f3fdf76a47a39f90153bf5"
+  }
+}

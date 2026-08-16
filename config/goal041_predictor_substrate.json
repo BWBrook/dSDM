@@ -1,0 +1,114 @@
+{
+  "schema_version": "goal041-predictor-substrate-v1",
+  "goal_id": "goal041-portable-predictor-substrate",
+  "domain": "metadata/goal040_domain_boundary_manifest.json",
+  "cell_ledger": "data/raw/goal040/domain/eligible_cells.csv",
+  "raw_root": "data/raw/goal041",
+  "output": "data/raw/goal041/predictor_substrate.parquet",
+  "grid": {
+    "origin": {"longitude": 135.37, "latitude": -43.6325},
+    "cell_degree": 0.01,
+    "source_block_cells": 50,
+    "source_block_degree": 0.5,
+    "occupied_blocks": 592,
+    "mainland_blocks": 536,
+    "tasmania_blocks": 56,
+    "eligible_cells": 1125325
+  },
+  "processing": {
+    "latitude_band_rows": 50,
+    "cache_namespace": "cache_v3",
+    "cache_atomic": true,
+    "cache_verify": ["shape", "crs", "sha256", "source_identity"],
+    "max_in_memory_tiles": 2,
+    "chunk_limit": 40,
+    "canonical_order": "cell_id"
+  },
+  "predictors": {
+    "continuous": [
+      "bio01", "bio02", "bio03", "bio04", "bio05", "bio06", "bio07",
+      "bio08", "bio09", "bio10", "bio11", "bio12", "bio13", "bio14",
+      "bio15", "bio16", "bio17", "bio18", "bio19",
+      "elevation_mean", "elevation_sd"
+    ],
+    "categorical": ["nvis_mvg", "soil_order", "alum_secondary"]
+  },
+  "tolerances": {
+    "worldclim": "float32_one_ulp_plus_serialization",
+    "elevation": 0.001,
+    "categorical": "exact"
+  },
+  "sources": {
+    "worldclim": {
+      "url": "https://spatial.ala.org.au/geoserver/ALA/wcs",
+      "coverages": ["ALA__worldclim21_bio1", "ALA__worldclim21_bio2", "ALA__worldclim21_bio3", "ALA__worldclim21_bio4", "ALA__worldclim21_bio5", "ALA__worldclim21_bio6", "ALA__worldclim21_bio7", "ALA__worldclim21_bio8", "ALA__worldclim21_bio9", "ALA__worldclim21_bio10", "ALA__worldclim21_bio11", "ALA__worldclim21_bio12", "ALA__worldclim21_bio13", "ALA__worldclim21_bio14", "ALA__worldclim21_bio15", "ALA__worldclim21_bio16", "ALA__worldclim21_bio17", "ALA__worldclim21_bio18", "ALA__worldclim21_bio19"],
+      "semantics": "centroid",
+      "product": "WorldClim 2.1",
+      "version": "2.1",
+      "crs": "EPSG:4326",
+      "resolution": "30 arc-sec",
+      "nodata": "source-defined",
+      "retrieval": "local_bio01_to_bio19_geotiff_crops_or_aligned_wcs_tiles",
+      "licence": "CC BY 4.0",
+      "request_semantics": "19 centroid samples per occupied 0.5-degree block"
+    },
+    "elevation": {
+      "url": "https://services.ga.gov.au/gis/services/DEM_SRTM_1Second_2024/MapServer/WCSServer",
+      "coverage": "1",
+      "semantics": "exact_bbox_mean_sample_sd",
+      "product": "SRTM-derived 1 Second DEM",
+      "version": "1.0 / 2024",
+      "crs": "EPSG:4326",
+      "resolution": "1 arc-sec",
+      "nodata": "source-defined",
+      "licence": "CC BY 4.0",
+      "wcs": {"version": "1.0.0", "pixels_per_cell": 36, "block_shape": [1800, 1800]}
+    },
+    "nvis": {
+      "url": "https://www.arcgis.com/sharing/rest/content/items/5e70b5afc36a4c458a2cceb313eb3889/data",
+      "filename": "nvis_7_extant_mvg.gdb.zip",
+      "sha256": "9f5fb97802b10639f5e61e189652a15f02a391bed72c69569451159a9f85fe31",
+      "semantics": "native_pixel_centres_modal_low_code",
+      "product": "NVIS Major Vegetation Group extant",
+      "version": "7.0",
+      "crs": "EPSG:9473",
+      "resolution": "100 m",
+      "nodata": "source-defined",
+      "licence": "CC BY 4.0",
+      "rat": "Value:MVG_NAME; official code:label"
+    },
+    "soil_order": {
+      "url": "https://data.csiro.au/dap/ws/v2/collections/63386/data/64191223",
+      "legend_url": "https://data.csiro.au/dap/ws/v2/collections/63386/data/64191225",
+      "file_id": "64191223",
+      "legend_file_id": "64191225",
+      "sha256": "9173818d114ee4abc36673eed8636ba0eab2b08d03cdaeccf859593fa4d64d77",
+      "legend_sha256": "ada1879f472e04cd1ab2f83c293075ad53b626d623246ba1da24572327eb2132",
+      "bytes": 125391148,
+      "legend_bytes": 524,
+      "semantics": "native_pixel_centres_modal_low_code",
+      "product": "Australian Soil Classification Soil Order",
+      "version": "SLGA Release 1 collection v4",
+      "crs": "EPSG:4326",
+      "resolution": "3 arc-sec",
+      "nodata": "0",
+      "licence": "CC BY 4.0",
+      "bulk_format": "COG",
+      "bulk_shape": [40800, 49200],
+      "legend": "official code:label; includes 12:Calcarasol"
+    },
+    "alum_secondary": {
+      "url": "https://www.agriculture.gov.au/sites/default/files/documents/NLUM_v7_250_ALUMV8_2020_21_alb_package_20241128.zip",
+      "filename": "NLUM_v7_250_ALUMV8_2020_21_alb_package_20241128.zip",
+      "sha256": "39c05943f10ecd3e13abd8e9d0339c4576220b564883b7d7cf1769525ebf021f",
+      "semantics": "native_pixel_centres_modal_low_code",
+      "product": "Land Use of Australia",
+      "version": "NLUM v7 / ALUM v8 2020-21",
+      "crs": "EPSG:3577",
+      "resolution": "250 m",
+      "nodata": "0",
+      "licence": "CC BY 4.0",
+      "aggregation": "raw tertiary modal with numeric-low tie, then SECV8N:SECV8"
+    }
+  }
+}

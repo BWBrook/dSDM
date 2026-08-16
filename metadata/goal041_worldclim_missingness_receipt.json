@@ -1,0 +1,41 @@
+{
+  "classification": "dispersed_source_centroid_nodata",
+  "components": {
+    "southeast_mainland": {
+      "components": 886,
+      "largest": 22,
+      "largest_fraction": 0.01950354609929078,
+      "singletons": 735
+    },
+    "tasmania": {
+      "components": 317,
+      "largest": 16,
+      "largest_fraction": 0.04050632911392405,
+      "singletons": 267
+    }
+  },
+  "joint_missing_all_bio": {
+    "southeast_mainland": 1128,
+    "tasmania": 395
+  },
+  "method": "four-neighbour components among exact eligible cells jointly missing BIO1-BIO19; dispersed requires largest component below 5% and more than 50% singletons in each region",
+  "other_predictor_missing_within_footprint": {
+    "southeast_mainland": {
+      "alum_secondary": 0,
+      "elevation_mean": 0,
+      "elevation_sd": 0,
+      "nvis_mvg": 6,
+      "soil_order": 10
+    },
+    "tasmania": {
+      "alum_secondary": 0,
+      "elevation_mean": 0,
+      "elevation_sd": 0,
+      "nvis_mvg": 0,
+      "soil_order": 0
+    }
+  },
+  "run_identity": "86d6617d5d20f858847484a8aa8cef9cf8755430d539f71f264d3ef1c64dc07a",
+  "schema_version": "goal041-worldclim-missingness-v1",
+  "table_sha256": "3a271c63a5b706c97330aaf8656528f17f62aa3a896d9035ab6a264f1ab86e3e"
+}

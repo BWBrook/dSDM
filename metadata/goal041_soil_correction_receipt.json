@@ -1,0 +1,14 @@
+{
+  "baseline_sha256": "551ae45ef7dc2d30f9f8234e363435d1f5ff0998abb59f246b000709f1a3fd00",
+  "equivalence_rule": "fresh replay must exactly match the independently frozen official-source centroid baseline",
+  "legacy_discrepancies": 31,
+  "legacy_discrepancies_by_region": {
+    "southeast_mainland": 12,
+    "tasmania": 19
+  },
+  "legacy_exact": 97,
+  "predictor": "soil_order",
+  "schema_version": "goal041-pilot-correction-v2",
+  "source": "CSIRO_DAP_COG",
+  "source_sha256": "9173818d114ee4abc36673eed8636ba0eab2b08d03cdaeccf859593fa4d64d77"
+}

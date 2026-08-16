@@ -1,0 +1,124 @@
+{
+  "diagnostics_sha256": "c53c95421c55166c016f00958bdd18ccc488e34b3e3cd71f4179f67f5c49cc37",
+  "evidence_receipt_sha256": {
+    "elevation_tiles": "bb99e95418f6ceb7f62cb3074f479351fca9be832d2b29087eca837447f98669",
+    "nvis_repair": "4a1c493995e1417e669008dce9b1134e162aae76528641dcec57bfadd7fa7e7f",
+    "worldclim_missingness": "1226827f9c4af1149178a8f57f20dcc12a8cc1d22b9d4cb10d17da6a6de2de83"
+  },
+  "gates": {
+    "benchmark": "validated",
+    "diagnostics": "validated",
+    "pilot": "validated",
+    "provenance": "validated",
+    "sources": "validated",
+    "table": "validated"
+  },
+  "limitations": [
+    "Tasmania extrapolation is descriptive and not an automatic failure",
+    "WorldClim nodata is a dispersed coastal centroid/source-mask footprint, not a coherent unexplained gap",
+    "ALUM source-native code 62 maps to both 6.0 Water and 6.2 Reservoir/dam labels; full code:label strings remain distinct"
+  ],
+  "per_predictor": {
+    "alum_secondary": {
+      "reasons": [],
+      "status": "ready"
+    },
+    "bio01": {
+      "reasons": [],
+      "status": "ready"
+    },
+    "bio02": {
+      "reasons": [],
+      "status": "ready"
+    },
+    "bio03": {
+      "reasons": [],
+      "status": "ready"
+    },
+    "bio04": {
+      "reasons": [],
+      "status": "ready"
+    },
+    "bio05": {
+      "reasons": [],
+      "status": "ready"
+    },
+    "bio06": {
+      "reasons": [],
+      "status": "ready"
+    },
+    "bio07": {
+      "reasons": [],
+      "status": "ready"
+    },
+    "bio08": {
+      "reasons": [],
+      "status": "ready"
+    },
+    "bio09": {
+      "reasons": [],
+      "status": "ready"
+    },
+    "bio10": {
+      "reasons": [],
+      "status": "ready"
+    },
+    "bio11": {
+      "reasons": [],
+      "status": "ready"
+    },
+    "bio12": {
+      "reasons": [],
+      "status": "ready"
+    },
+    "bio13": {
+      "reasons": [],
+      "status": "ready"
+    },
+    "bio14": {
+      "reasons": [],
+      "status": "ready"
+    },
+    "bio15": {
+      "reasons": [],
+      "status": "ready"
+    },
+    "bio16": {
+      "reasons": [],
+      "status": "ready"
+    },
+    "bio17": {
+      "reasons": [],
+      "status": "ready"
+    },
+    "bio18": {
+      "reasons": [],
+      "status": "ready"
+    },
+    "bio19": {
+      "reasons": [],
+      "status": "ready"
+    },
+    "elevation_mean": {
+      "reasons": [],
+      "status": "ready"
+    },
+    "elevation_sd": {
+      "reasons": [],
+      "status": "ready"
+    },
+    "nvis_mvg": {
+      "reasons": [],
+      "status": "ready"
+    },
+    "soil_order": {
+      "reasons": [],
+      "status": "ready"
+    }
+  },
+  "reasons": [],
+  "run_identity": "86d6617d5d20f858847484a8aa8cef9cf8755430d539f71f264d3ef1c64dc07a",
+  "schema_version": "goal041-decision-v2",
+  "status": "ready",
+  "table_sha256": "3a271c63a5b706c97330aaf8656528f17f62aa3a896d9035ab6a264f1ab86e3e"
+}

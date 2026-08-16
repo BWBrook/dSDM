@@ -1,0 +1,28 @@
+{
+  "benchmark": {
+    "blocks": 4,
+    "cache_bytes": 56569134,
+    "cells": 9297,
+    "max_rss_bytes": 1877213184,
+    "projected_seconds": 2224.867719996022,
+    "seconds": 15.032889999973122
+  },
+  "benchmark_manifest_sha256": "39159fb648e896aaa3debb55efeba0257889e58643337592eb98d8a4dd482018",
+  "decision_timestamp": "2026-08-16T07:51:14Z",
+  "route_selected": "deep-server-ts",
+  "run_identity": "86d6617d5d20f858847484a8aa8cef9cf8755430d539f71f264d3ef1c64dc07a",
+  "schema_version": "goal041-compute-manifest-v2",
+  "selection_gate": {
+    "cpus": 64,
+    "data_free": "4.4T",
+    "data_total": "13T",
+    "ram_available_kb": 128391024,
+    "ram_total_kb": 131902860,
+    "routes": [
+      "deep-server-ts",
+      "deep-server"
+    ],
+    "tmux": "3.4",
+    "uv": "0.11.14"
+  }
+}

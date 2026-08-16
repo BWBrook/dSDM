@@ -1,0 +1,21 @@
+{
+  "blocks": 4,
+  "blocks_per_second": 0.2660832348275782,
+  "cache_bytes": 56569134,
+  "cache_temperature": "cold",
+  "cells": 9297,
+  "max_rss_bytes": 1877213184,
+  "max_rss_unit": "bytes",
+  "output_bytes": 0,
+  "platform": "macOS-26.6.1-arm64-arm-64bit",
+  "projected_basis": "592 occupied block rate",
+  "projected_full_run_seconds": 2224.867719996022,
+  "regions": [
+    "southeast_mainland",
+    "tasmania"
+  ],
+  "route_recommendation": "deep-server-ts",
+  "run_identity": "86d6617d5d20f858847484a8aa8cef9cf8755430d539f71f264d3ef1c64dc07a",
+  "seconds": 15.032889999973122,
+  "status": "validated"
+}

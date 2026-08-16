@@ -1,0 +1,8 @@
+{
+  "ordered_request_tile_digest": "1a89e58a83df2984c1de0ef1c434c62d8f7b7441986148f36c7bcfe7b1d0700e",
+  "schema_version": "goal041-elevation-tile-manifest-v1",
+  "source_manifest_sha256": "8eb7ada9a14996b45af299ee88b2102e6a2c108d77f315548f47f69dbf0ee604",
+  "tiles": 592,
+  "upstream_run_identity": "28b33508453325a19add880b73d20c7312fbd7835a169d370983ca7a98096944",
+  "validation_rule": "592 sorted block/request identities with each cached payload SHA-256 rechecked"
+}
