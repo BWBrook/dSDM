@@ -1,0 +1,61 @@
+{
+  "schema_version": "goal042-contract-v1",
+  "goal_id": "goal042-mainland-tasmania-response-substrate",
+  "cohort": {
+    "support_tier": "support_observed",
+    "response_head_tier": "mainland_pretraining_candidate",
+    "expected_support_taxa": 21,
+    "expected_response_heads": 20,
+    "shared_targets": [
+      "Dasyurus maculatus",
+      "Notamacropus rufogriseus",
+      "Pseudocheirus peregrinus",
+      "Trichosurus vulpecula",
+      "Vombatus ursinus"
+    ]
+  },
+  "mainland_response": {
+    "region": "southeast_mainland",
+    "support_fact": "distinct_other_support_taxa_in_cell",
+    "target_excluded_from_support": true,
+    "primary_support_threshold": 3,
+    "sensitivity_support_thresholds": [2, 5],
+    "minimum_nearest_target_presence_distance_m": 5000,
+    "distance_comparison": "greater_than_or_equal",
+    "full_data_output_role": "reference_only_not_split_authorised",
+    "split_rule": "recompute_support_and_distance_from_records_authorised_for_that_split"
+  },
+  "tasmania_evaluation": {
+    "region": "tasmania",
+    "presence_sources": ["goal040_ala", "goal019_camera"],
+    "absence_source": "goal019_camera_survey_supported_absence",
+    "presence_precedence": true,
+    "target_group_backgrounds_permitted": false
+  },
+  "transfer_firewall": {
+    "mainland_only_for_pretraining_and_fine_tuning": true,
+    "tasmania_only_for_evaluation": true,
+    "target_excluded_from_cross_species_pretraining": true,
+    "expected_cross_species_heads_per_target": 19
+  },
+  "predictor_binding": {
+    "authority": "goal041_portable_predictor_substrate",
+    "join_key": "cell_id",
+    "copy_predictor_values_into_response_outputs": false
+  },
+  "privacy": {
+    "cell_level_outputs_tracked": false,
+    "coordinates_tracked": false,
+    "camera_identifiers_tracked": false,
+    "aggregate_species_counts_tracked": true
+  },
+  "stopping_boundary": [
+    "spatial_partitioning",
+    "split_fitted_transformations",
+    "model_fitting",
+    "architecture_selection",
+    "performance_evaluation",
+    "maps",
+    "manuscript_claims"
+  ]
+}

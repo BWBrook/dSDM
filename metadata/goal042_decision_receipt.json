@@ -1,0 +1,30 @@
+{
+  "bindings": {
+    "config_sha256": "7cbaef4bf993b1813eb7175d38581d0d782706cb91d00358644b14133acb71c1",
+    "goal019_camera_grid_sha256": "a16249991384d9b8545aee4027a7ac22a3ae7166bdd7e8a141ae815015021563",
+    "goal019_camera_outputs_sha256": "491dfe10a50c6e208550919e59fbfd86600e23fb21504bbc4266ebb542464d38",
+    "goal040_normalisation_manifest_sha256": "a26bb4cf86dc72de52990fcb0471a0526e2fa55753f66626baee81b1702b058a",
+    "goal040_species_cells_sha256": "24e13ef0a048893c82a02046e3f7edfada5118a439176ce16f92bcd3ba01e871",
+    "goal040_support_manifest_sha256": "a0a41f2320b6ac7512b821aeaf5cf231e487cbc974e31b34990ff609986201a6",
+    "goal041_predictor_table_sha256": "3a271c63a5b706c97330aaf8656528f17f62aa3a896d9035ab6a264f1ab86e3e",
+    "goal041_table_manifest_sha256": "fa18a25ba1992fc7a3b28edb6d78ceb2fc84b269486f968165ffd56fbcc5e3c1"
+  },
+  "gates": {
+    "cohort": "validated",
+    "mainland_reference": "validated_not_split_authorised",
+    "predictor_identity": "validated",
+    "privacy": "validated",
+    "tasmania_evaluation": "validated",
+    "transfer_firewall": "validated"
+  },
+  "limitations": [
+    "Mainland reference backgrounds must be recomputed from split-authorised records before model fitting",
+    "Target-group backgrounds are effort-supported candidates, not true absences or occupancy non-detections",
+    "Tasmania camera absences are survey-supported at sampled cells and do not imply island-wide detection certainty",
+    "The frozen 21-taxon cohort is a feasibility subset, not a representative census of southeastern mammals"
+  ],
+  "next_boundary": "spatial_partitions_and_split_fitted_predictor_transformations_without_opening_tasmania",
+  "response_manifest_sha256": "dc67d68962f931a6dbeb103a742103a1ba59d9f22445377eabf0bf3c8bb806bc",
+  "schema_version": "goal042-decision-v1",
+  "status": "ready"
+}

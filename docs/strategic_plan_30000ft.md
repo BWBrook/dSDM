@@ -1,7 +1,7 @@
 # dSDM 30,000-foot strategic plan
 
 Originally framed: 2026-05-27
-Last revised: 2026-08-09
+Last revised: 2026-08-20
 
 This is the canonical living roadmap for the full dSDM research programme. It
 should be revisited at major scientific and implementation gates rather than
@@ -24,14 +24,18 @@ The core scientific and software posture is:
    truth.
 3. Acquire nine Tasmanian mammal candidates, then develop and prove the
    downstream workflow on the eight-species contract fixed at Goal 019.
-4. Freeze a versioned method after the Tasmanian prove-out.
-5. Rebuild the SE Australia birds case from acquisition and cleanup onward,
+4. Use a southeastern-mainland-to-Tasmania mammal transfer experiment to test
+   the method with more pretraining species, broader target ranges, and a hard
+   island holdout supported by camera absences.
+5. Freeze a versioned method after the Tasmanian prove-out and mammal transfer
+   bridge.
+6. Rebuild the SE Australia birds case from acquisition and cleanup onward,
    using it as a larger-scale transferability and stress test.
-6. Version any method changes forced by the bird case and propagate them back
+7. Version any method changes forced by the bird case and propagate them back
    through the Tasmanian case before making cross-case claims.
-7. Substantially revise the manuscript only after both case studies and their
+8. Substantially revise the manuscript only after all case studies and their
    synthesis are complete.
-8. Keep code, data provenance, results generation, and scientific claims
+9. Keep code, data provenance, results generation, and scientific claims
    coupled throughout.
 
 ## Case-study sequence
@@ -52,6 +56,26 @@ species:
 The complete sequence should be developed here: acquisition, cleanup,
 analysis-ready dataset construction, conventional SDM baselines, feedforward
 dSDM development, evaluation, and case-study synthesis.
+
+### Geographic-transfer bridge: southeastern mammals to Tasmania
+
+The original Tasmanian case is a deliberately hard development surface: only
+seven other focal species are available for pretraining, most targets have high
+island prevalence, and the island represents only the southern part of several
+species' wider ranges. Before scaling to birds, run a cleaner geographic-
+transfer experiment:
+
+- use 21 observed southeastern mammal taxa as the target-group support cohort
+  and 20 sufficiently observed taxa as potential response heads;
+- for each of five shared targets, pretrain dSDM on the exact other 19 heads,
+  fine-tune on the target's mainland response, and predict to Tasmania;
+- fit conventional comparators on the target's mainland response only;
+- use target-group backgrounds on the mainland, but only ALA/camera presence
+  and camera survey-supported absence for Tasmania evaluation; and
+- use one 24-predictor source and ontology across Bass Strait.
+
+This is a mechanistically sharper transfer test and an intermediate scale
+between the eight-species island prove-out and the many-species bird case.
 
 ### Method-freeze checkpoint
 
@@ -200,16 +224,44 @@ aggregate inner performance and freezes the next comparison boundary; no outer-
 test claim has yet been made. The outer assessment remains sealed pending
 validated full-training refits and an explicit one-shot opening decision.
 
-### Phase 5: Tasmanian synthesis and method freeze
+### Phase 5: Tasmanian synthesis and stress diagnosis
 
-Interpret the first case study, identify limitations, and freeze the first
-transferable method version. Produce a concise case-study synthesis and claim
-map, but do not substantially rewrite the manuscript as though the research
-programme were complete.
+Interpret the first case study and identify its limitations before broadening
+the pretraining surface. Goals 036-039 found no convincing inner benefit from
+the original multispecies transfer, larger networks, or a reduced BIOCLIM
+panel. Retain that null result and the selected `resmlp13`/full-predictor
+method; do not tune it away or open the original outer assessment merely to
+seek a positive result.
 
-### Phase 6: SE Australia birds acquisition and dataset construction
+### Phase 6: Southeastern mammals geographic-transfer substrate
 
-Repeat Phases 1 and 2 for the larger bird case:
+Status: response and predictor substrate complete through Goal 042.
+
+Goals 040-042 froze the 21-taxon cohort, acquired and normalised 2001-2025 ALA
+evidence, established the mainland X=3 target-group convention with X=2/X=5
+sensitivities, built a common 24-predictor table for 1,125,325 cells, and
+separated five Tasmania evaluation targets from mainland development. The next
+step is mainland spatial partitioning and split-fitted transformation; Tasmania
+must remain unopened and cannot inform training or tuning.
+
+### Phase 7: Southeastern mammals modelling and bridge synthesis
+
+Fit strong conventional target-only models and the prespecified dSDM transfer
+arms, evaluate once in Tasmania, and determine whether additional pretraining
+species and full-range mainland evidence materially alter transfer behaviour.
+Retain the original Tasmanian result as the compact hard case, not a result to
+be tuned away.
+
+### Phase 8: Method-freeze checkpoint
+
+Freeze the version that emerges from the original Tasmanian prove-out and the
+southeastern-mammal geographic-transfer bridge. Record any null results and
+limitations explicitly before birds.
+
+### Phase 9: SE Australia birds acquisition and dataset construction
+
+Repeat the source-acquisition and analysis-ready construction sequence for the
+larger bird case:
 
 - reacquire and clean primary occurrence data reproducibly;
 - rebuild source and normalized contracts;
@@ -218,7 +270,7 @@ Repeat Phases 1 and 2 for the larger bird case:
 - keep region and species details in configuration rather than Tasmanian
   hard-coding.
 
-### Phase 7: SE Australia birds modelling and case synthesis
+### Phase 10: SE Australia birds modelling and case synthesis
 
 Apply the frozen method first, then evaluate its limits:
 
@@ -229,9 +281,9 @@ Apply the frozen method first, then evaluate its limits:
 - version and propagate any justified method revisions;
 - complete a second case-study synthesis.
 
-### Phase 8: Cross-case synthesis, manuscript, and closure
+### Phase 11: Cross-case synthesis, manuscript, and closure
 
-Only after both case studies:
+Only after all three experimental stages:
 
 - compare ecological and methodological results across cases;
 - decide which claims are general, conditional, or case-specific;
@@ -304,8 +356,16 @@ contrasts, and cross-case version boundary. Goals028--029 implemented and
 sealed the five-family conventional engine. Goals031--034 established the
 neural engine, exact stopping/replay lifecycle, de-identified real-data
 boundary, selected `resmlp13`, proved all six paths on a real sentinel, and
-froze a three-worker Mac CPU route without opening the outer assessment or
-publishing performance outcomes. The next tranche is the resumable
-8,840-artifact inner-lifecycle runner and execution. It must preserve the
-frozen Goal034 contracts and stop before ecological synthesis or outer
-assessment.
+froze a three-worker Mac CPU route without opening the outer assessment.
+Goals035--039 then completed the full inner lifecycle and comparison, rejected
+wide-network confirmation, and retained the full predictor panel. The small,
+heterogeneous original multispecies signal did not become a convincing
+Tasmanian transfer benefit; the outer assessment remains sealed.
+
+The programme is now in the southeastern-mammal geographic-transfer bridge.
+Goal040 froze and acquired a 21-taxon southeastern cohort, Goal041 built the
+common 24-predictor mainland/Tasmania table, and Goal042 froze 20 mainland
+response heads plus camera-supported Tasmania evaluation for five shared
+targets. The next tranche is mainland spatial partitioning and split-fitted
+transformation. Tasmania must remain unopened until model development and
+selection are complete.

@@ -1,0 +1,711 @@
+{
+  "bindings": {
+    "config_sha256": "7cbaef4bf993b1813eb7175d38581d0d782706cb91d00358644b14133acb71c1",
+    "goal019_camera_grid_sha256": "a16249991384d9b8545aee4027a7ac22a3ae7166bdd7e8a141ae815015021563",
+    "goal019_camera_outputs_sha256": "491dfe10a50c6e208550919e59fbfd86600e23fb21504bbc4266ebb542464d38",
+    "goal040_normalisation_manifest_sha256": "a26bb4cf86dc72de52990fcb0471a0526e2fa55753f66626baee81b1702b058a",
+    "goal040_species_cells_sha256": "24e13ef0a048893c82a02046e3f7edfada5118a439176ce16f92bcd3ba01e871",
+    "goal040_support_manifest_sha256": "a0a41f2320b6ac7512b821aeaf5cf231e487cbc974e31b34990ff609986201a6",
+    "goal041_predictor_table_sha256": "3a271c63a5b706c97330aaf8656528f17f62aa3a896d9035ab6a264f1ab86e3e",
+    "goal041_table_manifest_sha256": "fa18a25ba1992fc7a3b28edb6d78ceb2fc84b269486f968165ffd56fbcc5e3c1"
+  },
+  "completed_at": "2026-08-20T01:22:16Z",
+  "goal_id": "goal042-mainland-tasmania-response-substrate",
+  "outputs": {
+    "private_output_roles": {
+      "mainland_response_reference": {
+        "bytes": 8615944,
+        "content_sha256": "d6dcd28b4f643b8b954b1c8420cd2713397ad8b81034bd0dafbea8d25a71b732",
+        "rows": 755077,
+        "schema_sha256": "e5361ad2c062f0d3ad9fa43f96f7eb36c2eb042eeb0cf6a144ed458fa7e42f75",
+        "sha256": "ea32cef365630d4c7738056ab58c0fb3f5524990f7335601574873f3224da151"
+      },
+      "tasmania_evaluation_response": {
+        "bytes": 33083,
+        "content_sha256": "4c4e3dec4eb26910c8089f22dd56c2f90a3c7ff5b23a7c9d938169169f7d0074",
+        "rows": 6373,
+        "schema_sha256": "3c750751ca6b6072c6959c7e50875f885fa110a02e079525e900970478d7c22c",
+        "sha256": "da33ad9b82b40ce7dd0890ffd481f8a660e2165323cd0a26554ce1626c0b555c"
+      }
+    },
+    "private_outputs_ignored": true
+  },
+  "privacy": {
+    "tracked_camera_identifiers": false,
+    "tracked_cell_ids": false,
+    "tracked_coordinates": false,
+    "tracked_donor_to_cell_associations": false,
+    "tracked_private_paths": false,
+    "tracked_row_payload": false
+  },
+  "rules": {
+    "cross_species_target_exclusion": true,
+    "mainland_minimum_distance_m": 5000,
+    "mainland_primary_threshold": 3,
+    "mainland_reference_role": "full_data_reference_not_split_authorised",
+    "mainland_sensitivity_thresholds": [
+      2,
+      5
+    ],
+    "split_rule": "recompute_support_and_distance_from_split_authorised_records",
+    "tasmania_response_sources": "ALA_or_camera_presence_with_presence_precedence; otherwise_camera_survey_supported_absence",
+    "tasmania_target_group_backgrounds": false
+  },
+  "schema_version": "goal042-response-manifest-v1",
+  "status": "complete_raw_replay_required",
+  "summary": {
+    "camera_alignment": {
+      "outside_exact_domain_rows": 23,
+      "rekeyed_rows": 4082,
+      "target_rows": 4105
+    },
+    "cohort": {
+      "cross_species_pretraining_heads_by_target": {
+        "Dasyurus maculatus": [
+          "Gymnobelideus leadbeateri",
+          "Macropus giganteus",
+          "Mastacomys fuscus",
+          "Notamacropus rufogriseus",
+          "Petauroides volans",
+          "Petaurus australis",
+          "Petaurus norfolcensis",
+          "Petrogale penicillata",
+          "Phascogale tapoatafa",
+          "Phascolarctos cinereus",
+          "Potorous longipes",
+          "Pseudocheirus peregrinus",
+          "Pseudomys fumeus",
+          "Pseudomys novaehollandiae",
+          "Pseudomys shortridgei",
+          "Sminthopsis crassicaudata",
+          "Sminthopsis leucopus",
+          "Trichosurus vulpecula",
+          "Vombatus ursinus"
+        ],
+        "Notamacropus rufogriseus": [
+          "Dasyurus maculatus",
+          "Gymnobelideus leadbeateri",
+          "Macropus giganteus",
+          "Mastacomys fuscus",
+          "Petauroides volans",
+          "Petaurus australis",
+          "Petaurus norfolcensis",
+          "Petrogale penicillata",
+          "Phascogale tapoatafa",
+          "Phascolarctos cinereus",
+          "Potorous longipes",
+          "Pseudocheirus peregrinus",
+          "Pseudomys fumeus",
+          "Pseudomys novaehollandiae",
+          "Pseudomys shortridgei",
+          "Sminthopsis crassicaudata",
+          "Sminthopsis leucopus",
+          "Trichosurus vulpecula",
+          "Vombatus ursinus"
+        ],
+        "Pseudocheirus peregrinus": [
+          "Dasyurus maculatus",
+          "Gymnobelideus leadbeateri",
+          "Macropus giganteus",
+          "Mastacomys fuscus",
+          "Notamacropus rufogriseus",
+          "Petauroides volans",
+          "Petaurus australis",
+          "Petaurus norfolcensis",
+          "Petrogale penicillata",
+          "Phascogale tapoatafa",
+          "Phascolarctos cinereus",
+          "Potorous longipes",
+          "Pseudomys fumeus",
+          "Pseudomys novaehollandiae",
+          "Pseudomys shortridgei",
+          "Sminthopsis crassicaudata",
+          "Sminthopsis leucopus",
+          "Trichosurus vulpecula",
+          "Vombatus ursinus"
+        ],
+        "Trichosurus vulpecula": [
+          "Dasyurus maculatus",
+          "Gymnobelideus leadbeateri",
+          "Macropus giganteus",
+          "Mastacomys fuscus",
+          "Notamacropus rufogriseus",
+          "Petauroides volans",
+          "Petaurus australis",
+          "Petaurus norfolcensis",
+          "Petrogale penicillata",
+          "Phascogale tapoatafa",
+          "Phascolarctos cinereus",
+          "Potorous longipes",
+          "Pseudocheirus peregrinus",
+          "Pseudomys fumeus",
+          "Pseudomys novaehollandiae",
+          "Pseudomys shortridgei",
+          "Sminthopsis crassicaudata",
+          "Sminthopsis leucopus",
+          "Vombatus ursinus"
+        ],
+        "Vombatus ursinus": [
+          "Dasyurus maculatus",
+          "Gymnobelideus leadbeateri",
+          "Macropus giganteus",
+          "Mastacomys fuscus",
+          "Notamacropus rufogriseus",
+          "Petauroides volans",
+          "Petaurus australis",
+          "Petaurus norfolcensis",
+          "Petrogale penicillata",
+          "Phascogale tapoatafa",
+          "Phascolarctos cinereus",
+          "Potorous longipes",
+          "Pseudocheirus peregrinus",
+          "Pseudomys fumeus",
+          "Pseudomys novaehollandiae",
+          "Pseudomys shortridgei",
+          "Sminthopsis crassicaudata",
+          "Sminthopsis leucopus",
+          "Trichosurus vulpecula"
+        ]
+      },
+      "response_heads": [
+        "Dasyurus maculatus",
+        "Gymnobelideus leadbeateri",
+        "Macropus giganteus",
+        "Mastacomys fuscus",
+        "Notamacropus rufogriseus",
+        "Petauroides volans",
+        "Petaurus australis",
+        "Petaurus norfolcensis",
+        "Petrogale penicillata",
+        "Phascogale tapoatafa",
+        "Phascolarctos cinereus",
+        "Potorous longipes",
+        "Pseudocheirus peregrinus",
+        "Pseudomys fumeus",
+        "Pseudomys novaehollandiae",
+        "Pseudomys shortridgei",
+        "Sminthopsis crassicaudata",
+        "Sminthopsis leucopus",
+        "Trichosurus vulpecula",
+        "Vombatus ursinus"
+      ],
+      "shared_targets": [
+        "Dasyurus maculatus",
+        "Notamacropus rufogriseus",
+        "Pseudocheirus peregrinus",
+        "Trichosurus vulpecula",
+        "Vombatus ursinus"
+      ],
+      "support_only_taxa": [
+        "Burramys parvus"
+      ],
+      "support_taxa": [
+        "Burramys parvus",
+        "Dasyurus maculatus",
+        "Gymnobelideus leadbeateri",
+        "Macropus giganteus",
+        "Mastacomys fuscus",
+        "Notamacropus rufogriseus",
+        "Petauroides volans",
+        "Petaurus australis",
+        "Petaurus norfolcensis",
+        "Petrogale penicillata",
+        "Phascogale tapoatafa",
+        "Phascolarctos cinereus",
+        "Potorous longipes",
+        "Pseudocheirus peregrinus",
+        "Pseudomys fumeus",
+        "Pseudomys novaehollandiae",
+        "Pseudomys shortridgei",
+        "Sminthopsis crassicaudata",
+        "Sminthopsis leucopus",
+        "Trichosurus vulpecula",
+        "Vombatus ursinus"
+      ]
+    },
+    "firewall": {
+      "cross_species_heads_per_target": 19,
+      "mainland_output_is_split_authorised": false,
+      "mainland_reference_region": "southeast_mainland",
+      "mainland_rows_in_tasmania_output": 0,
+      "predictor_cell_binding_complete": true,
+      "target_group_background_rows_in_tasmania_output": 0,
+      "tasmania_evaluation_region": "tasmania",
+      "tasmania_rows_in_mainland_output": 0
+    },
+    "mainland_reference": {
+      "Dasyurus maculatus": {
+        "distance_rejected_under_5000m": {
+          "2": 9673,
+          "3": 4871,
+          "5": 891
+        },
+        "presence_cells": 2619,
+        "primary_x3_presence_fraction": 0.19587166255328697,
+        "primary_x3_response_cells": 13371,
+        "reference_background_cells": {
+          "2": 24264,
+          "3": 10752,
+          "5": 1504
+        },
+        "reference_rows": 36556,
+        "support_cells_before_distance": {
+          "2": 33937,
+          "3": 15623,
+          "5": 2395
+        }
+      },
+      "Gymnobelideus leadbeateri": {
+        "distance_rejected_under_5000m": {
+          "2": 578,
+          "3": 262,
+          "5": 22
+        },
+        "presence_cells": 813,
+        "primary_x3_presence_fraction": 0.048055325688615674,
+        "primary_x3_response_cells": 16918,
+        "reference_background_cells": {
+          "2": 34340,
+          "3": 16105,
+          "5": 2643
+        },
+        "reference_rows": 35731,
+        "support_cells_before_distance": {
+          "2": 34918,
+          "3": 16367,
+          "5": 2665
+        }
+      },
+      "Macropus giganteus": {
+        "distance_rejected_under_5000m": {
+          "2": 14193,
+          "3": 5202,
+          "5": 377
+        },
+        "presence_cells": 26758,
+        "primary_x3_presence_fraction": 0.9373314183627001,
+        "primary_x3_response_cells": 28547,
+        "reference_background_cells": {
+          "2": 4782,
+          "3": 1789,
+          "5": 125
+        },
+        "reference_rows": 45733,
+        "support_cells_before_distance": {
+          "2": 18975,
+          "3": 6991,
+          "5": 502
+        }
+      },
+      "Mastacomys fuscus": {
+        "distance_rejected_under_5000m": {
+          "2": 953,
+          "3": 455,
+          "5": 61
+        },
+        "presence_cells": 542,
+        "primary_x3_presence_fraction": 0.032536919197982954,
+        "primary_x3_response_cells": 16658,
+        "reference_background_cells": {
+          "2": 34339,
+          "3": 16116,
+          "5": 2645
+        },
+        "reference_rows": 35834,
+        "support_cells_before_distance": {
+          "2": 35292,
+          "3": 16571,
+          "5": 2706
+        }
+      },
+      "Notamacropus rufogriseus": {
+        "distance_rejected_under_5000m": {
+          "2": 14547,
+          "3": 5645,
+          "5": 443
+        },
+        "presence_cells": 11575,
+        "primary_x3_presence_fraction": 0.7085577864838394,
+        "primary_x3_response_cells": 16336,
+        "reference_background_cells": {
+          "2": 11812,
+          "3": 4761,
+          "5": 526
+        },
+        "reference_rows": 37934,
+        "support_cells_before_distance": {
+          "2": 26359,
+          "3": 10406,
+          "5": 969
+        }
+      },
+      "Petauroides volans": {
+        "distance_rejected_under_5000m": {
+          "2": 10098,
+          "3": 4704,
+          "5": 659
+        },
+        "presence_cells": 6650,
+        "primary_x3_presence_fraction": 0.42448614834673815,
+        "primary_x3_response_cells": 15666,
+        "reference_background_cells": {
+          "2": 20525,
+          "3": 9016,
+          "5": 1237
+        },
+        "reference_rows": 37273,
+        "support_cells_before_distance": {
+          "2": 30623,
+          "3": 13720,
+          "5": 1896
+        }
+      },
+      "Petaurus australis": {
+        "distance_rejected_under_5000m": {
+          "2": 9774,
+          "3": 4719,
+          "5": 676
+        },
+        "presence_cells": 5534,
+        "primary_x3_presence_fraction": 0.36809897565518157,
+        "primary_x3_response_cells": 15034,
+        "reference_background_cells": {
+          "2": 21727,
+          "3": 9500,
+          "5": 1418
+        },
+        "reference_rows": 37035,
+        "support_cells_before_distance": {
+          "2": 31501,
+          "3": 14219,
+          "5": 2094
+        }
+      },
+      "Petaurus norfolcensis": {
+        "distance_rejected_under_5000m": {
+          "2": 9683,
+          "3": 4454,
+          "5": 642
+        },
+        "presence_cells": 3038,
+        "primary_x3_presence_fraction": 0.22428940568475453,
+        "primary_x3_response_cells": 13545,
+        "reference_background_cells": {
+          "2": 23401,
+          "3": 10507,
+          "5": 1564
+        },
+        "reference_rows": 36122,
+        "support_cells_before_distance": {
+          "2": 33084,
+          "3": 14961,
+          "5": 2206
+        }
+      },
+      "Petrogale penicillata": {
+        "distance_rejected_under_5000m": {
+          "2": 2274,
+          "3": 1192,
+          "5": 229
+        },
+        "presence_cells": 883,
+        "primary_x3_presence_fraction": 0.05450617283950617,
+        "primary_x3_response_cells": 16200,
+        "reference_background_cells": {
+          "2": 32930,
+          "3": 15317,
+          "5": 2442
+        },
+        "reference_rows": 36087,
+        "support_cells_before_distance": {
+          "2": 35204,
+          "3": 16509,
+          "5": 2671
+        }
+      },
+      "Phascogale tapoatafa": {
+        "distance_rejected_under_5000m": {
+          "2": 5025,
+          "3": 2368,
+          "5": 404
+        },
+        "presence_cells": 1962,
+        "primary_x3_presence_fraction": 0.12768449824287387,
+        "primary_x3_response_cells": 15366,
+        "reference_background_cells": {
+          "2": 29147,
+          "3": 13404,
+          "5": 2017
+        },
+        "reference_rows": 36134,
+        "support_cells_before_distance": {
+          "2": 34172,
+          "3": 15772,
+          "5": 2421
+        }
+      },
+      "Phascolarctos cinereus": {
+        "distance_rejected_under_5000m": {
+          "2": 14082,
+          "3": 5963,
+          "5": 685
+        },
+        "presence_cells": 23512,
+        "primary_x3_presence_fraction": 0.8280039442174955,
+        "primary_x3_response_cells": 28396,
+        "reference_background_cells": {
+          "2": 10876,
+          "3": 4884,
+          "5": 665
+        },
+        "reference_rows": 48470,
+        "support_cells_before_distance": {
+          "2": 24958,
+          "3": 10847,
+          "5": 1350
+        }
+      },
+      "Potorous longipes": {
+        "distance_rejected_under_5000m": {
+          "2": 638,
+          "3": 290,
+          "5": 41
+        },
+        "presence_cells": 972,
+        "primary_x3_presence_fraction": 0.05768888361327082,
+        "primary_x3_response_cells": 16849,
+        "reference_background_cells": {
+          "2": 34115,
+          "3": 15877,
+          "5": 2612
+        },
+        "reference_rows": 35725,
+        "support_cells_before_distance": {
+          "2": 34753,
+          "3": 16167,
+          "5": 2653
+        }
+      },
+      "Pseudocheirus peregrinus": {
+        "distance_rejected_under_5000m": {
+          "2": 16094,
+          "3": 6184,
+          "5": 478
+        },
+        "presence_cells": 15990,
+        "primary_x3_presence_fraction": 0.8872981521558182,
+        "primary_x3_response_cells": 18021,
+        "reference_background_cells": {
+          "2": 6012,
+          "3": 2031,
+          "5": 134
+        },
+        "reference_rows": 38096,
+        "support_cells_before_distance": {
+          "2": 22106,
+          "3": 8215,
+          "5": 612
+        }
+      },
+      "Pseudomys fumeus": {
+        "distance_rejected_under_5000m": {
+          "2": 823,
+          "3": 395,
+          "5": 55
+        },
+        "presence_cells": 210,
+        "primary_x3_presence_fraction": 0.012800975312404754,
+        "primary_x3_response_cells": 16405,
+        "reference_background_cells": {
+          "2": 34546,
+          "3": 16195,
+          "5": 2640
+        },
+        "reference_rows": 35579,
+        "support_cells_before_distance": {
+          "2": 35369,
+          "3": 16590,
+          "5": 2695
+        }
+      },
+      "Pseudomys novaehollandiae": {
+        "distance_rejected_under_5000m": {
+          "2": 2009,
+          "3": 1015,
+          "5": 209
+        },
+        "presence_cells": 343,
+        "primary_x3_presence_fraction": 0.021677305188649434,
+        "primary_x3_response_cells": 15823,
+        "reference_background_cells": {
+          "2": 33243,
+          "3": 15480,
+          "5": 2443
+        },
+        "reference_rows": 35595,
+        "support_cells_before_distance": {
+          "2": 35252,
+          "3": 16495,
+          "5": 2652
+        }
+      },
+      "Pseudomys shortridgei": {
+        "distance_rejected_under_5000m": {
+          "2": 400,
+          "3": 261,
+          "5": 127
+        },
+        "presence_cells": 212,
+        "primary_x3_presence_fraction": 0.01281586265264176,
+        "primary_x3_response_cells": 16542,
+        "reference_background_cells": {
+          "2": 34977,
+          "3": 16330,
+          "5": 2544
+        },
+        "reference_rows": 35589,
+        "support_cells_before_distance": {
+          "2": 35377,
+          "3": 16591,
+          "5": 2671
+        }
+      },
+      "Sminthopsis crassicaudata": {
+        "distance_rejected_under_5000m": {
+          "2": 139,
+          "3": 49,
+          "5": 7
+        },
+        "presence_cells": 333,
+        "primary_x3_presence_fraction": 0.019643699858423784,
+        "primary_x3_response_cells": 16952,
+        "reference_background_cells": {
+          "2": 35320,
+          "3": 16619,
+          "5": 2712
+        },
+        "reference_rows": 35792,
+        "support_cells_before_distance": {
+          "2": 35459,
+          "3": 16668,
+          "5": 2719
+        }
+      },
+      "Sminthopsis leucopus": {
+        "distance_rejected_under_5000m": {
+          "2": 3144,
+          "3": 1625,
+          "5": 227
+        },
+        "presence_cells": 1202,
+        "primary_x3_presence_fraction": 0.07782957782957783,
+        "primary_x3_response_cells": 15444,
+        "reference_background_cells": {
+          "2": 31339,
+          "3": 14242,
+          "5": 2284
+        },
+        "reference_rows": 35685,
+        "support_cells_before_distance": {
+          "2": 34483,
+          "3": 15867,
+          "5": 2511
+        }
+      },
+      "Trichosurus vulpecula": {
+        "distance_rejected_under_5000m": {
+          "2": 14635,
+          "3": 4476,
+          "5": 328
+        },
+        "presence_cells": 23789,
+        "primary_x3_presence_fraction": 0.9836262145958239,
+        "primary_x3_response_cells": 24185,
+        "reference_background_cells": {
+          "2": 1666,
+          "3": 396,
+          "5": 17
+        },
+        "reference_rows": 40090,
+        "support_cells_before_distance": {
+          "2": 16301,
+          "3": 4872,
+          "5": 345
+        }
+      },
+      "Vombatus ursinus": {
+        "distance_rejected_under_5000m": {
+          "2": 11474,
+          "3": 4490,
+          "5": 423
+        },
+        "presence_cells": 16443,
+        "primary_x3_presence_fraction": 0.7758327828630744,
+        "primary_x3_response_cells": 21194,
+        "reference_background_cells": {
+          "2": 12100,
+          "3": 4751,
+          "5": 691
+        },
+        "reference_rows": 40017,
+        "support_cells_before_distance": {
+          "2": 23574,
+          "3": 9241,
+          "5": 1114
+        }
+      }
+    },
+    "tasmania_evaluation": {
+      "Dasyurus maculatus": {
+        "ala_camera_presence_overlap_cells": 13,
+        "ala_presence_cells": 466,
+        "camera_presence_cells": 521,
+        "presence_cells": 974,
+        "presence_fraction": 0.8150627615062761,
+        "presence_over_camera_absence_conflict_cells": 1,
+        "response_cells": 1195,
+        "survey_supported_absence_cells": 221
+      },
+      "Notamacropus rufogriseus": {
+        "ala_camera_presence_overlap_cells": 11,
+        "ala_presence_cells": 678,
+        "camera_presence_cells": 699,
+        "presence_cells": 1366,
+        "presence_fraction": 0.9034391534391535,
+        "presence_over_camera_absence_conflict_cells": 2,
+        "response_cells": 1512,
+        "survey_supported_absence_cells": 146
+      },
+      "Pseudocheirus peregrinus": {
+        "ala_camera_presence_overlap_cells": 0,
+        "ala_presence_cells": 130,
+        "camera_presence_cells": 250,
+        "presence_cells": 380,
+        "presence_fraction": 0.38934426229508196,
+        "presence_over_camera_absence_conflict_cells": 1,
+        "response_cells": 976,
+        "survey_supported_absence_cells": 596
+      },
+      "Trichosurus vulpecula": {
+        "ala_camera_presence_overlap_cells": 9,
+        "ala_presence_cells": 565,
+        "camera_presence_cells": 672,
+        "presence_cells": 1228,
+        "presence_fraction": 0.8758915834522111,
+        "presence_over_camera_absence_conflict_cells": 1,
+        "response_cells": 1402,
+        "survey_supported_absence_cells": 174
+      },
+      "Vombatus ursinus": {
+        "ala_camera_presence_overlap_cells": 11,
+        "ala_presence_cells": 502,
+        "camera_presence_cells": 659,
+        "presence_cells": 1150,
+        "presence_fraction": 0.8928571428571429,
+        "presence_over_camera_absence_conflict_cells": 1,
+        "response_cells": 1288,
+        "survey_supported_absence_cells": 138
+      }
+    }
+  }
+}

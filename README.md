@@ -41,9 +41,13 @@ matched seeds. Goal 036 then completed the prespecified inner comparison
 against all five conventional families while keeping the outer assessment
 sealed.
 
-Goal 040 is prespecified, pending review, as a real southeastern-Australian
-mammal acquisition and common-substrate feasibility gate. It remains strictly
-pre-modelling and has not queried occurrence counts or downloaded data.
+Goals 040-042 establish the southeastern-mammal geographic-transfer substrate.
+Goal 040 acquired and normalised the frozen 21-taxon feasibility cohort;
+Goal 041 built one portable 24-predictor table for all 1,125,325 mainland and
+Tasmania cells; and Goal 042 froze 20 mainland response heads plus a separate
+camera-supported Tasmania evaluation for five shared targets. This tranche is
+strictly pre-modelling. Its mainland full-data responses are reference evidence
+only and must be rematerialised within the spatial partitions created next.
 
 ### Current gate status
 
@@ -88,6 +92,9 @@ Canonical authority:
 - [Goal 036 decision](docs/goals/036-dsdm-inner-evaluation/Decision.md)
 - [`config/dsdm_inner_evaluation.json`](config/dsdm_inner_evaluation.json), the frozen inner-comparison authority
 - [`evidence/dsdm_inner_evaluation/goal036/summary.json`](evidence/dsdm_inner_evaluation/goal036/summary.json), the aggregate-only evaluation receipt
+- [Goal 042 decision](docs/goals/042-mainland-tasmania-response-substrate/Decision.md)
+- [`config/goal042_transfer_response.json`](config/goal042_transfer_response.json), the response and transfer-firewall authority
+- [`metadata/goal042_response_manifest.json`](metadata/goal042_response_manifest.json), the privacy-safe response receipt
 
 ## Data and privacy boundary
 
