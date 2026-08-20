@@ -235,14 +235,17 @@ seek a positive result.
 
 ### Phase 6: Southeastern mammals geographic-transfer substrate
 
-Status: response and predictor substrate complete through Goal 042.
+Status: mainland development substrate complete through Goal 043.
 
 Goals 040-042 froze the 21-taxon cohort, acquired and normalised 2001-2025 ALA
 evidence, established the mainland X=3 target-group convention with X=2/X=5
 sensitivities, built a common 24-predictor table for 1,125,325 cells, and
 separated five Tasmania evaluation targets from mainland development. The next
-step is mainland spatial partitioning and split-fitted transformation; Tasmania
-must remain unopened and cannot inform training or tuning.
+Goal 043 then selected a 50 km five-fold mainland block design, rematerialised
+all responses within split-authorised records, and froze five fold-specific
+plus one reserved full-mainland predictor transform. The next step is a
+mainland-only modelling protocol and compute preflight; Tasmania must remain
+unopened and cannot inform training or tuning.
 
 ### Phase 7: Southeastern mammals modelling and bridge synthesis
 
@@ -364,8 +367,9 @@ Tasmanian transfer benefit; the outer assessment remains sealed.
 
 The programme is now in the southeastern-mammal geographic-transfer bridge.
 Goal040 froze and acquired a 21-taxon southeastern cohort, Goal041 built the
-common 24-predictor mainland/Tasmania table, and Goal042 froze 20 mainland
-response heads plus camera-supported Tasmania evaluation for five shared
-targets. The next tranche is mainland spatial partitioning and split-fitted
-transformation. Tasmania must remain unopened until model development and
-selection are complete.
+common 24-predictor mainland/Tasmania table, Goal042 froze 20 mainland response
+heads plus camera-supported Tasmania evaluation for five shared targets, and
+Goal043 completed mainland partitions, split-authorised responses, and
+split-fitted transformations. The next tranche is the mainland-only modelling
+protocol and compute preflight. Tasmania must remain unopened until model
+development and selection are complete.

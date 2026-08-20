@@ -1,0 +1,210 @@
+{
+  "bindings": {
+    "config_sha256": "71ec29d5e9e171f206f82b28b7a2cd8cd7e9fb7659ee772cda4511842e9eea12",
+    "goal040_normalisation_manifest_sha256": "a26bb4cf86dc72de52990fcb0471a0526e2fa55753f66626baee81b1702b058a",
+    "goal040_support_manifest_sha256": "a0a41f2320b6ac7512b821aeaf5cf231e487cbc974e31b34990ff609986201a6",
+    "goal041_predictor_table_sha256": "3a271c63a5b706c97330aaf8656528f17f62aa3a896d9035ab6a264f1ab86e3e",
+    "goal041_table_manifest_sha256": "fa18a25ba1992fc7a3b28edb6d78ceb2fc84b269486f968165ffd56fbcc5e3c1",
+    "goal042_mainland_reference_sha256": "ea32cef365630d4c7738056ab58c0fb3f5524990f7335601574873f3224da151",
+    "goal042_response_manifest_sha256": "dc67d68962f931a6dbeb103a742103a1ba59d9f22445377eabf0bf3c8bb806bc"
+  },
+  "completed_at": "2026-08-20T03:07:03Z",
+  "goal_id": "goal043-mainland-spatial-development-substrate",
+  "outputs": {
+    "private_output_roles": {
+      "diagnostics": {
+        "bytes": 74837,
+        "sha256": "5a400b1d1c9ad79fffc4c1d2201a290fe63331d4edca62664eaa58944fc87b0e"
+      },
+      "mainland_cell_partitions": {
+        "bytes": 1190176,
+        "rows": 1053032,
+        "schema_sha256": "2b6e555abaa5ff7cfa00a1036b8e5ba37a9d582411f9e2518a639f77d6cf3c3a",
+        "sha256": "6ebf237c61c9fbb613f9c556a08c29e7a3ebaad184b09407026e8c1ad7901462"
+      },
+      "split_responses": {
+        "bytes": 43150455,
+        "rows": 3775385,
+        "schema_sha256": "a80ac39686a8689628d23c4a55503c19e0f89a4a40f2100b140cb3fe57913e31",
+        "sha256": "9243660bcaf4a32ede2cfd2a75164dc7ed1a59bc9aacc8ad952006a1cd49b157"
+      }
+    },
+    "private_outputs_ignored": true
+  },
+  "privacy": {
+    "tracked_camera_identifiers": false,
+    "tracked_cell_ids": false,
+    "tracked_coordinates": false,
+    "tracked_donor_to_cell_associations": false,
+    "tracked_private_paths": false,
+    "tracked_row_payloads": false
+  },
+  "schema_version": "goal043-manifest-v1",
+  "status": "complete_private_replay_required",
+  "summary": {
+    "firewall": {
+      "tasmania_in_partition_selection": false,
+      "tasmania_in_transform_fitting": false,
+      "tasmania_predictor_rows_used": 0,
+      "tasmania_response_rows_read": 0
+    },
+    "maximum_cv_categorical_unseen_cells": {
+      "cells": 0,
+      "fit_id": "fold00",
+      "predictor": "nvis_mvg"
+    },
+    "maximum_split_class_exclusion_descriptive": {
+      "exclusion_fraction": 0.022222222222222223,
+      "fold": 3,
+      "response_class": "presence",
+      "role": "validation",
+      "target": "Pseudomys novaehollandiae"
+    },
+    "partition": {
+      "candidate_scales": {
+        "100": {
+          "assignments_evaluated": 64,
+          "best_feasible": null,
+          "block_count": 161,
+          "failure_counts": {
+            "Gymnobelideus leadbeateri:training_presence": 7,
+            "Potorous longipes:training_presence": 1,
+            "Pseudomys fumeus:training_presence": 29,
+            "Pseudomys shortridgei:training_presence": 19,
+            "Trichosurus vulpecula:validation_background": 2,
+            "map_share": 32
+          },
+          "feasible_assignments": 0,
+          "map_balanced_assignments": 32
+        },
+        "25": {
+          "assignments_evaluated": 64,
+          "best_feasible": {
+            "hard_gate_minima": {
+              "all_head_training_background": 291,
+              "all_head_training_presence": 135,
+              "shared_validation_background": 69,
+              "shared_validation_presence": 494
+            },
+            "map_fold_counts": [
+              199351,
+              215995,
+              204885,
+              232106,
+              200695
+            ],
+            "map_fold_shares": [
+              0.18931143592977231,
+              0.2051172234082155,
+              0.1945667368133162,
+              0.22041685342895562,
+              0.19058775041974033
+            ],
+            "seed": 45,
+            "worst_map_fold_deviation": 0.020416853428955606,
+            "worst_response_fold_deviation": 0.16226415094339625
+          },
+          "block_count": 2031,
+          "failure_counts": {
+            "Pseudomys fumeus:training_presence": 1,
+            "Pseudomys shortridgei:training_presence": 3
+          },
+          "feasible_assignments": 60,
+          "map_balanced_assignments": 64
+        },
+        "50": {
+          "assignments_evaluated": 64,
+          "best_feasible": {
+            "hard_gate_minima": {
+              "all_head_training_background": 295,
+              "all_head_training_presence": 106,
+              "shared_validation_background": 67,
+              "shared_validation_presence": 183
+            },
+            "map_fold_counts": [
+              207366,
+              208375,
+              207079,
+              216124,
+              214088
+            ],
+            "map_fold_shares": [
+              0.196922790570467,
+              0.1978809760767004,
+              0.1966502442470884,
+              0.20523972680792227,
+              0.20330626229782192
+            ],
+            "seed": 0,
+            "worst_map_fold_deviation": 0.005239726807922257,
+            "worst_response_fold_deviation": 0.32275522755227554
+          },
+          "block_count": 558,
+          "failure_counts": {
+            "Pseudomys fumeus:training_presence": 12,
+            "Pseudomys shortridgei:training_presence": 47,
+            "Trichosurus vulpecula:validation_background": 2,
+            "map_share": 1
+          },
+          "feasible_assignments": 12,
+          "map_balanced_assignments": 63
+        }
+      },
+      "hard_gate_minima": {
+        "all_head_training_background": 295,
+        "all_head_training_presence": 106,
+        "shared_validation_background": 67,
+        "shared_validation_presence": 183
+      },
+      "map_fold_counts": [
+        207366,
+        208375,
+        207079,
+        216124,
+        214088
+      ],
+      "map_fold_shares": [
+        0.196922790570467,
+        0.1978809760767004,
+        0.1966502442470884,
+        0.20523972680792227,
+        0.20330626229782192
+      ],
+      "seed": 0,
+      "selected_block_count": 558,
+      "selected_scale_km": 50,
+      "selected_seed": 0,
+      "worst_map_fold_deviation": 0.005239726807922257,
+      "worst_response_fold_deviation": 0.32275522755227554
+    },
+    "reference_continuous_nodata_guard": {
+      "maximum_allowed_fraction": 0.02,
+      "worst_observed": {
+        "continuous_nodata_rows": 5,
+        "exclusion_fraction": 0.014577259475218658,
+        "response_class": "presence",
+        "rows": 343,
+        "target": "Pseudomys novaehollandiae"
+      }
+    },
+    "response_hard_gate_minima": {
+      "all_head_training_background_x3": 311,
+      "all_head_training_presence": 106,
+      "shared_validation_background_x3": 75,
+      "shared_validation_presence": 183
+    },
+    "transform_fit_ids": [
+      "fold00",
+      "fold01",
+      "fold02",
+      "fold03",
+      "fold04",
+      "mainland_full"
+    ],
+    "transform_training_cell_range": [
+      835989,
+      1051904
+    ]
+  },
+  "transform_parameters_sha256": "97883416552ae6338cfcf22d8858852fcd9e4637d81bf4fb9239c0fdb3295677"
+}

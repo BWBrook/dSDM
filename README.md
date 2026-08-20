@@ -41,13 +41,14 @@ matched seeds. Goal 036 then completed the prespecified inner comparison
 against all five conventional families while keeping the outer assessment
 sealed.
 
-Goals 040-042 establish the southeastern-mammal geographic-transfer substrate.
+Goals 040-043 establish the southeastern-mammal geographic-transfer substrate.
 Goal 040 acquired and normalised the frozen 21-taxon feasibility cohort;
 Goal 041 built one portable 24-predictor table for all 1,125,325 mainland and
-Tasmania cells; and Goal 042 froze 20 mainland response heads plus a separate
-camera-supported Tasmania evaluation for five shared targets. This tranche is
-strictly pre-modelling. Its mainland full-data responses are reference evidence
-only and must be rematerialised within the spatial partitions created next.
+Tasmania cells; Goal 042 froze 20 mainland response heads plus a separate
+camera-supported Tasmania evaluation for five shared targets; and Goal 043
+selected 50 km five-fold mainland blocks, rematerialised split-authorised
+responses, and fitted mainland-only predictor transformations. This tranche
+remains strictly pre-modelling, and Tasmania remains sealed.
 
 ### Current gate status
 
@@ -95,6 +96,9 @@ Canonical authority:
 - [Goal 042 decision](docs/goals/042-mainland-tasmania-response-substrate/Decision.md)
 - [`config/goal042_transfer_response.json`](config/goal042_transfer_response.json), the response and transfer-firewall authority
 - [`metadata/goal042_response_manifest.json`](metadata/goal042_response_manifest.json), the privacy-safe response receipt
+- [Goal 043 decision](docs/goals/043-mainland-spatial-development-substrate/Decision.md)
+- [`config/goal043_mainland_partitions.json`](config/goal043_mainland_partitions.json), the partition and transformation authority
+- [`metadata/goal043_manifest.json`](metadata/goal043_manifest.json), the privacy-safe mainland development receipt
 
 ## Data and privacy boundary
 

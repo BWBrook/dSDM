@@ -1,0 +1,64 @@
+{
+  "schema_version": "goal043-contract-v1",
+  "goal_id": "goal043-mainland-spatial-development-substrate",
+  "partition": {
+    "region": "southeast_mainland",
+    "projected_crs": "EPSG:3577",
+    "candidate_block_sizes_km": [100, 50, 25],
+    "folds": 5,
+    "assignment_seeds": 64,
+    "assignment_hash": "sha256(seed:block_size_km:block_x:block_y)_uint64_mod_5",
+    "fold_map_share_minimum": 0.15,
+    "fold_map_share_maximum": 0.25,
+    "shared_target_validation_minimum_per_class": 30,
+    "all_head_training_minimum_per_class": 100,
+    "selection": "largest_feasible_block_then_minimum_worst_response_deviation_then_map_deviation_then_seed",
+    "performance_inputs_permitted": false
+  },
+  "response": {
+    "heads": "goal042_mainland_response_heads",
+    "primary_support_threshold": 3,
+    "sensitivity_support_thresholds": [2, 5],
+    "minimum_nearest_target_presence_distance_m": 5000,
+    "materialise_separately_for_each_fold_role": true,
+    "authorised_records_only": true,
+    "full_goal042_reference_is_model_input": false
+  },
+  "transformation": {
+    "continuous": [
+      "bio01", "bio02", "bio03", "bio04", "bio05", "bio06", "bio07",
+      "bio08", "bio09", "bio10", "bio11", "bio12", "bio13", "bio14",
+      "bio15", "bio16", "bio17", "bio18", "bio19", "elevation_mean",
+      "elevation_sd"
+    ],
+    "categorical": ["nvis_mvg", "soil_order", "alum_secondary"],
+    "continuous_formula": "z=(x-training_mean)/training_population_sd",
+    "continuous_nodata": "exclude_from_modelable_rows_without_imputation",
+    "maximum_whole_target_class_exclusion_fraction": 0.02,
+    "categorical_missing_token": "__MISSING__",
+    "categorical_unseen_token": "__UNSEEN__",
+    "fit_from": "continuous_complete_training_map_cells_only",
+    "fit_ids": ["fold00", "fold01", "fold02", "fold03", "fold04", "mainland_full"]
+  },
+  "firewall": {
+    "tasmania_response_rows_read": 0,
+    "tasmania_predictor_rows_used": 0,
+    "tasmania_in_partition_selection": false,
+    "tasmania_in_transform_fitting": false
+  },
+  "privacy": {
+    "cell_assignments_tracked": false,
+    "split_response_rows_tracked": false,
+    "coordinates_tracked": false,
+    "aggregate_diagnostics_tracked": true
+  },
+  "stopping_boundary": [
+    "model_fitting",
+    "architecture_selection",
+    "hyperparameter_selection",
+    "performance_evaluation",
+    "tasmania_evaluation_access",
+    "mapping",
+    "manuscript_claims"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "gates": {
+    "bounded_partition_search": "validated",
+    "continuous_nodata": "validated_complete_case",
+    "privacy": "validated",
+    "split_authorised_responses": "validated",
+    "split_fitted_transforms": "validated",
+    "tasmania_firewall": "validated_zero_access"
+  },
+  "limitations": [
+    "Spatial folds are scattered held blocks rather than five contiguous biogeographic regions",
+    "Target-group backgrounds remain effort-supported candidates rather than true absences",
+    "Continuous source-nodata cells are excluded rather than imputed",
+    "The mainland_full transform is reserved for a later final refit after model development is frozen"
+  ],
+  "manifest_sha256": "d1876995cba15bfccaf92a33ec299e7224fefd7e2d9dc4abb264bf8c901d67f7",
+  "next_boundary": "mainland_only_modeling_protocol_and_compute_preflight_without_tasmania_access",
+  "schema_version": "goal043-decision-v1",
+  "selected_partition": {
+    "block_size_km": 50,
+    "folds": 5,
+    "seed": 0
+  },
+  "status": "ready",
+  "transform_parameters_sha256": "97883416552ae6338cfcf22d8858852fcd9e4637d81bf4fb9239c0fdb3295677"
+}
