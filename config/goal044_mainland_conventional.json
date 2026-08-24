@@ -1,0 +1,256 @@
+{
+  "schema_version": "goal044-contract-v1",
+  "goal_id": "goal044-mainland-conventional-benchmark",
+  "bindings": {
+    "goal041_table_manifest": {
+      "path": "metadata/goal041_table_manifest.json",
+      "sha256": "fa18a25ba1992fc7a3b28edb6d78ceb2fc84b269486f968165ffd56fbcc5e3c1"
+    },
+    "goal043_config": {
+      "path": "config/goal043_mainland_partitions.json",
+      "sha256": "71ec29d5e9e171f206f82b28b7a2cd8cd7e9fb7659ee772cda4511842e9eea12"
+    },
+    "goal043_manifest": {
+      "path": "metadata/goal043_manifest.json",
+      "sha256": "d1876995cba15bfccaf92a33ec299e7224fefd7e2d9dc4abb264bf8c901d67f7"
+    },
+    "goal043_transforms": {
+      "path": "metadata/goal043_transforms.json",
+      "sha256": "97883416552ae6338cfcf22d8858852fcd9e4637d81bf4fb9239c0fdb3295677"
+    },
+    "model_adapters": {
+      "path": "src/dsdm_phase1/model_adapters.py",
+      "sha256": "2e6ea5c013a00f07e9dfe9ecc29496785b4579dcbd96af08c90567a5cf63dfd9"
+    },
+    "pyproject": {
+      "path": "pyproject.toml",
+      "sha256": "29b7c2f9f810ac35357fa9b85189002d92a54a4933cf87746f57ae27cc0a8d08"
+    },
+    "uv_lock": {
+      "path": "uv.lock",
+      "sha256": "39c22925750ac8821f5420bdfe5ca39554b7906d812bd3a94a04e91c469284fd"
+    }
+  },
+  "scope": {
+    "region": "southeast_mainland",
+    "targets": [
+      "Dasyurus maculatus",
+      "Notamacropus rufogriseus",
+      "Pseudocheirus peregrinus",
+      "Trichosurus vulpecula",
+      "Vombatus ursinus"
+    ],
+    "response_heads": [
+      "Dasyurus maculatus",
+      "Gymnobelideus leadbeateri",
+      "Macropus giganteus",
+      "Mastacomys fuscus",
+      "Notamacropus rufogriseus",
+      "Petauroides volans",
+      "Petaurus australis",
+      "Petaurus norfolcensis",
+      "Petrogale penicillata",
+      "Phascogale tapoatafa",
+      "Phascolarctos cinereus",
+      "Potorous longipes",
+      "Pseudocheirus peregrinus",
+      "Pseudomys fumeus",
+      "Pseudomys novaehollandiae",
+      "Pseudomys shortridgei",
+      "Sminthopsis crassicaudata",
+      "Sminthopsis leucopus",
+      "Trichosurus vulpecula",
+      "Vombatus ursinus"
+    ],
+    "folds": [0, 1, 2, 3, 4],
+    "primary_background": "eligible_x3",
+    "sensitivity_backgrounds_deferred": ["eligible_x2", "eligible_x5"],
+    "tasmania_evaluation": "sealed"
+  },
+  "target_subsets": {
+    "fractions": [25, 50, 100],
+    "ladders": ["ladder00", "ladder01", "ladder02"],
+    "full_alias": "full",
+    "nested": true,
+    "strata": ["response_class", "source_partition_fold"],
+    "ordering": "proportional_deficit_then_seeded_sha256",
+    "master_seed": "dsdm-goal044-v1"
+  },
+  "features": {
+    "transform_authority": "metadata/goal043_transforms.json",
+    "continuous_count": 21,
+    "categorical_count": 3,
+    "continuous_nodata": "exclude_without_imputation",
+    "categorical_encoding": "frozen_one_hot_with_distinct_missing_and_unseen",
+    "fit_scope": "goal043_mainland_map_training_cells",
+    "row_weight": 1,
+    "class_balancing": false,
+    "resampling": false
+  },
+  "conventional": {
+    "families": [
+      "intercept",
+      "elastic_net",
+      "random_forest",
+      "hist_gradient_boosting",
+      "shallow_ann"
+    ],
+    "candidate_ids": {
+      "intercept": ["null00"],
+      "elastic_net": ["enet00", "enet04", "enet08", "enet09"],
+      "random_forest": ["rf00", "rf02", "rf03", "rf05"],
+      "hist_gradient_boosting": ["hgb00", "hgb02", "hgb04", "hgb05"],
+      "shallow_ann": ["ann00", "ann02", "ann04"]
+    },
+    "screen_seed_labels": {
+      "intercept": ["seed00"],
+      "elastic_net": ["seed00"],
+      "random_forest": ["seed00"],
+      "hist_gradient_boosting": ["seed00"],
+      "shallow_ann": ["seed00", "seed01", "seed02"]
+    },
+    "selected_seed_labels": {
+      "intercept": ["seed00"],
+      "elastic_net": ["seed00"],
+      "random_forest": ["seed00", "seed01", "seed02", "seed03", "seed04"],
+      "hist_gradient_boosting": ["seed00"],
+      "shallow_ann": ["seed00", "seed01", "seed02", "seed03", "seed04"]
+    },
+    "minimum_complete_candidates": {
+      "intercept": 1,
+      "elastic_net": 2,
+      "random_forest": 2,
+      "hist_gradient_boosting": 2,
+      "shallow_ann": 2
+    },
+    "candidate_selection": [
+      "mean_fold_roc_auc_desc",
+      "pooled_oof_tss_desc",
+      "candidate_id_asc"
+    ],
+    "best_family_selection": [
+      "mean_fold_roc_auc_desc",
+      "pooled_oof_tss_desc",
+      "family_asc"
+    ],
+    "neural_stopping_fold": "(held_fold+1)%5",
+    "neural_discovery_folds": "other_three",
+    "neural_replay": "all_four_at_selected_epoch"
+  },
+  "community_control": {
+    "id": "q_linear",
+    "model": "pooled_elastic_net_logistic",
+    "candidate_id": "enet04",
+    "target_excluded": true,
+    "auxiliary_heads_per_target": 19,
+    "training_rows": "fold_training_role_presence_or_eligible_x3",
+    "species_identity_predictor": false,
+    "head_weighting": "equal_total_weight_per_auxiliary_head_mean_row_weight_one",
+    "within_head_class_balancing": false,
+    "fit_per": ["target", "held_fold"],
+    "output": "continuous_0_1_score",
+    "downstream_control": "refit_selected_best_non_null_target_family_and_candidate_with_q_appended",
+    "downstream_candidate_retuning": false
+  },
+  "metrics": {
+    "primary": "roc_auc",
+    "threshold_objective": "tss_equivalently_balanced_accuracy",
+    "threshold_source": "concatenated_mainland_oof_predictions",
+    "threshold_tie": "median_finite_maximizer",
+    "supplementary": ["tss", "balanced_accuracy", "mcc", "sensitivity", "specificity"],
+    "fold_aggregation": "equal_fold_mean",
+    "prevalence_reporting": true,
+    "suitability_interpretation": "relative_habitat_suitability_not_occupancy_probability"
+  },
+  "goal045_frozen_design": {
+    "status": "prespecified_before_goal044_results",
+    "arms": [
+      "target_only_random_init_resmlp",
+      "target_plus_q_linear_resmlp",
+      "multihead_frozen_trunk",
+      "multihead_full_finetune"
+    ],
+    "primary_arm": "multihead_full_finetune",
+    "pretraining_heads": "exact_other_19",
+    "target_excluded_from_pretraining": true,
+    "pretraining_head_weighting": "equal_total_contribution_per_head",
+    "within_head_class_balancing": false,
+    "architecture_candidates": [
+      {
+        "id": "bridge_control",
+        "blocks": 3,
+        "width": 128,
+        "bottleneck": 64,
+        "dropout": 0.0,
+        "weight_decay": 0.001
+      },
+      {
+        "id": "bridge_wide",
+        "blocks": 3,
+        "width": 256,
+        "bottleneck": 64,
+        "dropout": 0.0,
+        "weight_decay": 0.001
+      },
+      {
+        "id": "bridge_deep",
+        "blocks": 6,
+        "width": 128,
+        "bottleneck": 64,
+        "dropout": 0.0,
+        "weight_decay": 0.001
+      }
+    ],
+    "architecture_constants": {
+      "activation": "GELU",
+      "normalization": "LayerNorm",
+      "shape": "constant",
+      "optimizer": "AdamW",
+      "learning_rate": 0.001,
+      "batch_size": 128,
+      "max_epochs": 300,
+      "patience": 30
+    },
+    "architecture_selection": "shared_across_targets_by_species_balanced_mainland_cv_rank",
+    "learning_ladder": "same_goal044_25_50_100_nested_subsets",
+    "seed_labels": ["seed00", "seed01", "seed02", "seed03", "seed04"],
+    "primary_contrasts": [
+      "multihead_full_finetune_minus_target_only_random_init_resmlp",
+      "multihead_full_finetune_minus_target_plus_q_linear_resmlp",
+      "multihead_full_finetune_minus_best_goal044_conventional",
+      "multihead_full_finetune_minus_goal044_q_augmented_conventional"
+    ],
+    "amendment_rule": "scientific_changes_require_explicit_versioned_decision_before_any_goal045_fit"
+  },
+  "execution": {
+    "per_estimator_threads": 1,
+    "default_workers": 3,
+    "canary": {
+      "target": "Dasyurus maculatus",
+      "fold": 0,
+      "endpoint": "fraction100/full",
+      "candidate_ids": ["null00", "enet04", "rf02", "hgb04", "ann02"]
+    },
+    "private_root": "data/processed/dsdm/goal044-mainland-conventional",
+    "tracked_summary": "evidence/mainland_conventional/goal044/summary.json",
+    "checkpoint_unit": "target_endpoint",
+    "atomic_checkpoint_writes": true
+  },
+  "privacy": {
+    "tracked_predictions": false,
+    "tracked_cell_ids": false,
+    "tracked_coordinates": false,
+    "tracked_response_rows": false,
+    "tasmania_response_rows_read": 0,
+    "tasmania_predictor_rows_used": 0
+  },
+  "stopping_boundary": [
+    "dsdm_model_fitting",
+    "goal045_architecture_selection",
+    "mainland_full_refit",
+    "x2_x5_sensitivity",
+    "tasmania_evaluation_access",
+    "mapping",
+    "manuscript_claims"
+  ]
+}

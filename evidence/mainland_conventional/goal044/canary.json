@@ -1,0 +1,101 @@
+{
+  "candidate_results": [
+    {
+      "candidate_id": "null00",
+      "family": "intercept",
+      "physical_fits": 1,
+      "prediction_count": 2450,
+      "prediction_range": [
+        0.18508363038113518,
+        0.18508363038113518
+      ],
+      "runtime_seconds": 0.0005394170293584466
+    },
+    {
+      "candidate_id": "enet04",
+      "family": "elastic_net",
+      "physical_fits": 1,
+      "prediction_count": 2450,
+      "prediction_range": [
+        0.000180423733591257,
+        0.9792456722628086
+      ],
+      "runtime_seconds": 1.3227738750283606
+    },
+    {
+      "candidate_id": "rf02",
+      "family": "random_forest",
+      "physical_fits": 1,
+      "prediction_count": 2450,
+      "prediction_range": [
+        0.002419254596579564,
+        0.9869918695654246
+      ],
+      "runtime_seconds": 3.551391582994256
+    },
+    {
+      "candidate_id": "hgb04",
+      "family": "hist_gradient_boosting",
+      "physical_fits": 1,
+      "prediction_count": 2450,
+      "prediction_range": [
+        0.0005036988685571647,
+        0.9979596529817713
+      ],
+      "runtime_seconds": 1.3324053749674931
+    },
+    {
+      "candidate_id": "ann02",
+      "family": "shallow_ann",
+      "physical_fits": 2,
+      "prediction_count": 2450,
+      "prediction_range": [
+        0.0007895180024206638,
+        0.9894779324531555
+      ],
+      "runtime_seconds": 1.1735496660112403
+    }
+  ],
+  "fold": 0,
+  "host": {
+    "machine": "arm64",
+    "system": "Darwin"
+  },
+  "identity": {
+    "config_sha256": "66350f80d58e58eb1c55fa95cc9e4c899d8792404b09acc26d40c71715828a68",
+    "goal043_manifest_sha256": "d1876995cba15bfccaf92a33ec299e7224fefd7e2d9dc4abb264bf8c901d67f7",
+    "source_sha256": "4544ac77e5d4710acb9a2fcfd9acf605ce715ebc4c22582a7f4674050e1f97f6"
+  },
+  "inputs": {
+    "identity": {
+      "config_sha256": "66350f80d58e58eb1c55fa95cc9e4c899d8792404b09acc26d40c71715828a68",
+      "goal043_manifest_sha256": "d1876995cba15bfccaf92a33ec299e7224fefd7e2d9dc4abb264bf8c901d67f7",
+      "source_sha256": "4544ac77e5d4710acb9a2fcfd9acf605ce715ebc4c22582a7f4674050e1f97f6"
+    },
+    "mainland_assignment_rows": 1053032,
+    "response_heads": 20,
+    "split_response_rows": 3775385,
+    "status": "goal044_inputs_valid",
+    "targets": 5,
+    "tasmania_predictor_rows_used": 0,
+    "tasmania_response_rows_read": 0
+  },
+  "performance_metrics_computed": false,
+  "q_augmented_result": {
+    "candidate_id": "hgb04",
+    "family": "hist_gradient_boosting",
+    "physical_fits": 1,
+    "prediction_count": 2450,
+    "prediction_range": [
+      0.0003988254855815479,
+      0.9973650659173837
+    ],
+    "runtime_seconds": 1.344532084011007
+  },
+  "q_fit_runtime_seconds": 23.45786466600839,
+  "schema_version": "goal044-canary-v1",
+  "status": "pass",
+  "target": "Dasyurus maculatus",
+  "tasmania_predictor_rows_used": 0,
+  "tasmania_response_rows_read": 0
+}
