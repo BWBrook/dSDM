@@ -1,7 +1,7 @@
 # dSDM 30,000-foot strategic plan
 
 Originally framed: 2026-05-27
-Last revised: 2026-08-20
+Last revised: 2026-08-29
 
 This is the canonical living roadmap for the full dSDM research programme. It
 should be revisited at major scientific and implementation gates rather than
@@ -249,11 +249,23 @@ unopened and cannot inform training or tuning.
 
 ### Phase 7: Southeastern mammals modelling and bridge synthesis
 
+Status: conventional mainland development benchmark complete through Goal 044;
+dSDM execution and Tasmania transfer evaluation remain pending.
+
 Fit strong conventional target-only models and the prespecified dSDM transfer
 arms, evaluate once in Tasmania, and determine whether additional pretraining
 species and full-range mainland evidence materially alter transfer behaviour.
 Retain the original Tasmanian result as the compact hard case, not a result to
 be tuned away.
+
+Goal 044 completed five-family mainland CV for the five transfer targets over
+the frozen 25/50/100% learning ladder. Random forest was selected in 27/35
+target-endpoint strata, histogram boosting in six, and elastic net in two.
+The target-excluded `q_linear` community scalar supplied a small positive mean
+AUC change (+0.00111 across strata), establishing a useful but modest scalar
+community-information control. The separate Goal 045 dSDM arms and three-
+architecture panel were frozen before these outcomes and must not be revised
+post hoc to chase the conventional benchmark.
 
 ### Phase 8: Method-freeze checkpoint
 

@@ -47,8 +47,10 @@ Goal 041 built one portable 24-predictor table for all 1,125,325 mainland and
 Tasmania cells; Goal 042 froze 20 mainland response heads plus a separate
 camera-supported Tasmania evaluation for five shared targets; and Goal 043
 selected 50 km five-fold mainland blocks, rematerialised split-authorised
-responses, and fitted mainland-only predictor transformations. This tranche
-remains strictly pre-modelling, and Tasmania remains sealed.
+responses, and fitted mainland-only predictor transformations. Goal 044 then
+completed the five-family mainland conventional benchmark and leave-target-out
+`q_linear` control while prospectively freezing the separate Goal 045 dSDM
+experiment. Tasmania remains sealed.
 
 ### Current gate status
 
@@ -99,6 +101,9 @@ Canonical authority:
 - [Goal 043 decision](docs/goals/043-mainland-spatial-development-substrate/Decision.md)
 - [`config/goal043_mainland_partitions.json`](config/goal043_mainland_partitions.json), the partition and transformation authority
 - [`metadata/goal043_manifest.json`](metadata/goal043_manifest.json), the privacy-safe mainland development receipt
+- [Goal 044 decision](docs/goals/044-mainland-conventional-benchmark/Decision.md)
+- [`config/goal044_mainland_conventional.json`](config/goal044_mainland_conventional.json), the conventional benchmark and Goal 045 design freeze
+- [`evidence/mainland_conventional/goal044/summary.json`](evidence/mainland_conventional/goal044/summary.json), the aggregate-only mainland benchmark evidence
 
 ## Data and privacy boundary
 
