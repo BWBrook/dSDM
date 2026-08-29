@@ -1,0 +1,229 @@
+{
+  "arms": {
+    "multihead_frozen_trunk": {
+      "fit": {
+        "best_stopping_loss": 0.2792181949482781,
+        "discovery_completed_epochs": 2,
+        "discovery_rows": 8210,
+        "freeze_trunk": true,
+        "held_rows": 2450,
+        "model_digest": "94322f34cbe5aab9e8d3884ffc0052390af2a93ec5c9d7afebe63906cfd5e574",
+        "replay_rows": 10941,
+        "runtime_seconds": 0.08808745804708451,
+        "selected_epoch": 2,
+        "stopping_rows": 2731,
+        "transferred": true
+      },
+      "score_count": 2450,
+      "score_range": [
+        0.007925023324787617,
+        0.9255894422531128
+      ]
+    },
+    "multihead_full_finetune": {
+      "fit": {
+        "best_stopping_loss": 0.25275609048894365,
+        "discovery_completed_epochs": 2,
+        "discovery_rows": 8210,
+        "freeze_trunk": false,
+        "held_rows": 2450,
+        "model_digest": "0d2f185ef373c4142cd67d3790ba0aecfd0b2455210ae46e4104d22f8d5f9a26",
+        "replay_rows": 10941,
+        "runtime_seconds": 0.23416391701903194,
+        "selected_epoch": 2,
+        "stopping_rows": 2731,
+        "transferred": true
+      },
+      "score_count": 2450,
+      "score_range": [
+        0.005179387982934713,
+        0.9845889210700989
+      ]
+    },
+    "target_only_random_init_resmlp": {
+      "fit": {
+        "best_stopping_loss": 0.2674360318918972,
+        "discovery_completed_epochs": 2,
+        "discovery_rows": 8210,
+        "freeze_trunk": false,
+        "held_rows": 2450,
+        "model_digest": "903daedc50438b684dbe65946143ba192e2dc898acad6e6ae093c7ef112a46a2",
+        "replay_rows": 10941,
+        "runtime_seconds": 0.17154424998443574,
+        "selected_epoch": 1,
+        "stopping_rows": 2731,
+        "transferred": false
+      },
+      "score_count": 2450,
+      "score_range": [
+        0.007985066622495651,
+        0.9844974279403687
+      ]
+    },
+    "target_plus_q_linear_resmlp": {
+      "fit": {
+        "best_stopping_loss": 0.2782634700536291,
+        "discovery_completed_epochs": 2,
+        "discovery_rows": 8210,
+        "freeze_trunk": false,
+        "held_rows": 2450,
+        "model_digest": "ca19477e1cd48ea23285a1b9bfd5114dc02c023e4f4040d93609ddea06147e5e",
+        "replay_rows": 10941,
+        "runtime_seconds": 0.23263912496622652,
+        "selected_epoch": 2,
+        "stopping_rows": 2731,
+        "transferred": false
+      },
+      "score_count": 2450,
+      "score_range": [
+        0.006841541267931461,
+        0.9888389110565186
+      ]
+    }
+  },
+  "case": {
+    "architecture": "bridge_control",
+    "endpoint": "fraction100/full",
+    "held_fold": 0,
+    "max_epochs": 2,
+    "patience": 1,
+    "seed_label": "seed00",
+    "target": "Dasyurus maculatus"
+  },
+  "device": "cpu",
+  "gate": {
+    "architectures": 3,
+    "goal044_gate": {
+      "identity": {
+        "config_sha256": "66350f80d58e58eb1c55fa95cc9e4c899d8792404b09acc26d40c71715828a68",
+        "goal043_manifest_sha256": "d1876995cba15bfccaf92a33ec299e7224fefd7e2d9dc4abb264bf8c901d67f7",
+        "source_sha256": "4544ac77e5d4710acb9a2fcfd9acf605ce715ebc4c22582a7f4674050e1f97f6"
+      },
+      "mainland_assignment_rows": 1053032,
+      "response_heads": 20,
+      "split_response_rows": 3775385,
+      "status": "goal044_inputs_valid",
+      "targets": 5,
+      "tasmania_predictor_rows_used": 0,
+      "tasmania_response_rows_read": 0
+    },
+    "response_heads": 20,
+    "status": "goal045_inputs_ready",
+    "targets": 5,
+    "tasmania_predictor_rows_used": 0,
+    "tasmania_response_rows_read": 0
+  },
+  "identity": {
+    "config_sha256": "4f7668d4e3fadee54c86ded37e7cdc4680e792de9b8bac87331a9a48ca3adfbd",
+    "goal044_summary_sha256": "3bd0b89c107a62ee5ea53aac204dcdabc0b19670aeb2a360c6674bfac69f8a89",
+    "source_sha256": "b3cba6120693bcd1e0682096d444519eef357ba14cdd618b73c7a928c86a6892",
+    "training_source_sha256": "0fe5fe6fd8734ef595fc3599fcac14be841de2f58890377dfb4b4e956b948ba7"
+  },
+  "pretraining": {
+    "fit": {
+      "auxiliary_head_count": 19,
+      "auxiliary_heads": [
+        "Gymnobelideus leadbeateri",
+        "Macropus giganteus",
+        "Mastacomys fuscus",
+        "Notamacropus rufogriseus",
+        "Petauroides volans",
+        "Petaurus australis",
+        "Petaurus norfolcensis",
+        "Petrogale penicillata",
+        "Phascogale tapoatafa",
+        "Phascolarctos cinereus",
+        "Potorous longipes",
+        "Pseudocheirus peregrinus",
+        "Pseudomys fumeus",
+        "Pseudomys novaehollandiae",
+        "Pseudomys shortridgei",
+        "Sminthopsis crassicaudata",
+        "Sminthopsis leucopus",
+        "Trichosurus vulpecula",
+        "Vombatus ursinus"
+      ],
+      "best_stopping_loss": 0.14563017984061524,
+      "discovery_completed_epochs": 2,
+      "discovery_rows": 208224,
+      "mean_discovery_weight": 1.0,
+      "mean_replay_weight": 1.0,
+      "mean_stopping_weight": 1.0,
+      "replay_rows": 277571,
+      "runtime_seconds": 9.228275791974738,
+      "selected_epoch": 2,
+      "shared_state_digest": "c1de854bab1f387784699f97af12ccdbe33dc14dc952eb2075f62ad4ddc99ee2",
+      "stopping_rows": 69347,
+      "within_head_class_balancing": false
+    },
+    "fit_seed": 3570594342,
+    "key": {
+      "architecture": "bridge_control",
+      "held_fold": 0,
+      "identity": {
+        "config_sha256": "4f7668d4e3fadee54c86ded37e7cdc4680e792de9b8bac87331a9a48ca3adfbd",
+        "goal044_summary_sha256": "3bd0b89c107a62ee5ea53aac204dcdabc0b19670aeb2a360c6674bfac69f8a89",
+        "source_sha256": "b3cba6120693bcd1e0682096d444519eef357ba14cdd618b73c7a928c86a6892",
+        "training_source_sha256": "0fe5fe6fd8734ef595fc3599fcac14be841de2f58890377dfb4b4e956b948ba7"
+      },
+      "seed_label": "seed00",
+      "target": "Dasyurus maculatus"
+    },
+    "meta": {
+      "auxiliary_heads": [
+        "Gymnobelideus leadbeateri",
+        "Macropus giganteus",
+        "Mastacomys fuscus",
+        "Notamacropus rufogriseus",
+        "Petauroides volans",
+        "Petaurus australis",
+        "Petaurus norfolcensis",
+        "Petrogale penicillata",
+        "Phascogale tapoatafa",
+        "Phascolarctos cinereus",
+        "Potorous longipes",
+        "Pseudocheirus peregrinus",
+        "Pseudomys fumeus",
+        "Pseudomys novaehollandiae",
+        "Pseudomys shortridgei",
+        "Sminthopsis crassicaudata",
+        "Sminthopsis leucopus",
+        "Trichosurus vulpecula",
+        "Vombatus ursinus"
+      ],
+      "excluded_target": true,
+      "feature_width": 103,
+      "held_fold": 0,
+      "rows_by_head": {
+        "Gymnobelideus leadbeateri": 13807,
+        "Macropus giganteus": 22939,
+        "Mastacomys fuscus": 13494,
+        "Notamacropus rufogriseus": 12621,
+        "Petauroides volans": 12683,
+        "Petaurus australis": 12269,
+        "Petaurus norfolcensis": 11028,
+        "Petrogale penicillata": 13113,
+        "Phascogale tapoatafa": 12583,
+        "Phascolarctos cinereus": 21254,
+        "Potorous longipes": 13718,
+        "Pseudocheirus peregrinus": 14700,
+        "Pseudomys fumeus": 13322,
+        "Pseudomys novaehollandiae": 12904,
+        "Pseudomys shortridgei": 13542,
+        "Sminthopsis crassicaudata": 13781,
+        "Sminthopsis leucopus": 12526,
+        "Trichosurus vulpecula": 19602,
+        "Vombatus ursinus": 17685
+      },
+      "stopping_fold": 1,
+      "target": "Dasyurus maculatus"
+    },
+    "schema_version": "goal045-pretraining-v1",
+    "shared_state_digest": "c1de854bab1f387784699f97af12ccdbe33dc14dc952eb2075f62ad4ddc99ee2"
+  },
+  "runtime_seconds": 11.755597916897386,
+  "schema_version": "goal045-canary-v1",
+  "status": "goal045_canary_ready",
+  "tasmania_predictor_rows_used": 0,
+  "tasmania_response_rows_read": 0
+}

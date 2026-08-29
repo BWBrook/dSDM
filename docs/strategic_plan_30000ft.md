@@ -250,7 +250,8 @@ unopened and cannot inform training or tuning.
 ### Phase 7: Southeastern mammals modelling and bridge synthesis
 
 Status: conventional mainland development benchmark complete through Goal 044;
-dSDM execution and Tasmania transfer evaluation remain pending.
+Goal 045 dSDM production calibrated and pending detached execution; Tasmania
+transfer evaluation remains pending.
 
 Fit strong conventional target-only models and the prespecified dSDM transfer
 arms, evaluate once in Tasmania, and determine whether additional pretraining
@@ -266,6 +267,13 @@ AUC change (+0.00111 across strata), establishing a useful but modest scalar
 community-information control. The separate Goal 045 dSDM arms and three-
 architecture panel were frozen before these outcomes and must not be revised
 post hoc to chase the conventional benchmark.
+
+Goal 045 now binds those frozen arms to an executable mainland-only lifecycle.
+Alien was unavailable at preflight, but a complete two-epoch Mac CPU canary
+exercised all 277,571 leave-target-out auxiliary rows and all four target arms
+in 11.76 seconds. The three-worker Mac CPU route is therefore adequate for the
+resumable production run. This is compute evidence only; architecture and model
+performance remain unresolved until production completes.
 
 ### Phase 8: Method-freeze checkpoint
 
