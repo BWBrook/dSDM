@@ -249,9 +249,8 @@ unopened and cannot inform training or tuning.
 
 ### Phase 7: Southeastern mammals modelling and bridge synthesis
 
-Status: conventional mainland development benchmark complete through Goal 044;
-Goal 045 dSDM production calibrated and pending detached execution; Tasmania
-transfer evaluation remains pending.
+Status: conventional and dSDM mainland development complete through Goal 045;
+Tasmania transfer evaluation remains pending and sealed.
 
 Fit strong conventional target-only models and the prespecified dSDM transfer
 arms, evaluate once in Tasmania, and determine whether additional pretraining
@@ -268,12 +267,15 @@ community-information control. The separate Goal 045 dSDM arms and three-
 architecture panel were frozen before these outcomes and must not be revised
 post hoc to chase the conventional benchmark.
 
-Goal 045 now binds those frozen arms to an executable mainland-only lifecycle.
-Alien was unavailable at preflight, but a complete two-epoch Mac CPU canary
-exercised all 277,571 leave-target-out auxiliary rows and all four target arms
-in 11.76 seconds. The three-worker Mac CPU route is therefore adequate for the
-resumable production run. This is compute evidence only; architecture and model
-performance remain unresolved until production completes.
+Goal 045 selected the shared `bridge_control` architecture and completed all 35
+target-endpoint strata with five paired seeds. Full fine-tuning improved mean
+mainland-CV AUC by 0.0094 over the matched target-only neural model and by
+0.0035 over the strongest Goal 044 conventional model; these contrasts were
+positive in 34/35 and 30/35 strata. At the full-target endpoint it beat the
+best conventional AUC for all five targets, with a mean change of 0.0038.
+This is a small but repeatable mainland development signal, not geographic-
+transfer evidence. Tasmania remained sealed at `0/0` and must be evaluated
+only once under a separately frozen goal.
 
 ### Phase 8: Method-freeze checkpoint
 
@@ -390,6 +392,7 @@ Goal040 froze and acquired a 21-taxon southeastern cohort, Goal041 built the
 common 24-predictor mainland/Tasmania table, Goal042 froze 20 mainland response
 heads plus camera-supported Tasmania evaluation for five shared targets, and
 Goal043 completed mainland partitions, split-authorised responses, and
-split-fitted transformations. The next tranche is the mainland-only modelling
-protocol and compute preflight. Tasmania must remain unopened until model
-development and selection are complete.
+split-fitted transformations. Goals044-045 then completed the conventional and
+dSDM mainland development experiments. The next scientific boundary is a
+prospectively frozen, one-shot Tasmania transfer assessment; Tasmania must not
+inform any further development or selection.

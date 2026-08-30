@@ -37,3 +37,22 @@
   seconds for pretraining.
 - The prior checkpoints will be recomputed under the repaired source identity;
   they are not being relabelled or treated as current evidence.
+
+## 2026-08-30 - production complete and accepted
+
+- The repaired detached run exited `0` after 7,987 seconds. It completed 175
+  pretraining receipts, 75 architecture-selection receipts, and 875 final
+  fold-seed receipts.
+- The shared mainland screen selected `bridge_control` with equal-species mean
+  rank 1.4 and first place for four of five targets.
+- Across 35 target-endpoint strata, full fine-tuning improved mean AUC by
+  0.0094 over matched target-only learning and by 0.0035 over the strongest
+  Goal 044 conventional model. The contrasts were positive in 34/35 and 30/35
+  strata, respectively.
+- At the full-target endpoint, full fine-tuning beat the best conventional AUC
+  for all five species; the mean change was 0.0038. The gain is small and is
+  retained as mainland development evidence, not geographic-transfer proof.
+- The independent validator reconstructed all 35 endpoints and 875 final
+  tasks. Seven focused tests passed. Tasmania remained sealed at `0/0`, and
+  the tracked aggregate contains no row-level locations, responses, or
+  predictions.

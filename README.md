@@ -50,9 +50,11 @@ selected 50 km five-fold mainland blocks, rematerialised split-authorised
 responses, and fitted mainland-only predictor transformations. Goal 044 then
 completed the five-family mainland conventional benchmark and leave-target-out
 `q_linear` control while prospectively freezing the separate Goal 045 dSDM
-experiment. Goal 045 is now implemented and its bounded Mac CPU canary has
-passed; the detached mainland production run is the next execution boundary.
-Tasmania remains sealed.
+experiment. Goal 045 then selected `bridge_control` and completed all 35
+mainland development strata. Full fine-tuning produced a small, consistent AUC
+advantage over matched target-only learning and the strongest conventional
+benchmark. This is mainland-CV evidence only; Tasmania remains sealed for a
+separately authorised one-shot transfer assessment.
 
 ### Current gate status
 
@@ -110,6 +112,7 @@ Canonical authority:
 - [Goal 045 runbook](docs/goals/045-mainland-dsdm-experiment/Runbook.md)
 - [`config/goal045_mainland_dsdm.json`](config/goal045_mainland_dsdm.json), the frozen mainland dSDM execution authority
 - [`metadata/goal045_canary.json`](metadata/goal045_canary.json), the aggregate-only Mac CPU canary receipt
+- [`evidence/mainland_dsdm/goal045/summary.json`](evidence/mainland_dsdm/goal045/summary.json), the aggregate-only mainland dSDM evidence
 
 ## Data and privacy boundary
 
