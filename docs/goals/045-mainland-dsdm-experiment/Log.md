@@ -20,3 +20,20 @@
   failures are the already documented Goal 037 `model_adapters.py` digest
   mismatch introduced by Goal 039; Goal 045 does not touch that historical
   config or module.
+
+## 2026-08-30 - production guard repair
+
+- The first detached production launch exited `1` during architecture
+  pretraining after writing 72/75 checkpoints. The failure was an absolute
+  `1e-8` equality assertion on mathematically equal per-head weights, not a
+  model-fit or data-integrity failure.
+- The worst observed relative head-total range across all 75 target-fold-role
+  combinations was `1.105e-7`, below two float32 machine epsilons
+  (`2.384e-7`). The guard now checks the actual float32 training weights at
+  that precision. The weight values and scientific objective are unchanged.
+- Added the exact production-scale failure pattern as a regression test. Seven
+  focused tests, all 75 live weight patterns, and a repeated real-data canary
+  passed. The repaired canary completed in 10.91 seconds, including 8.42
+  seconds for pretraining.
+- The prior checkpoints will be recomputed under the repaired source identity;
+  they are not being relabelled or treated as current evidence.

@@ -24,3 +24,9 @@ explicit one-shot transfer-evaluation goal.
 The focused Goal 045 tests pass. The repository-wide suite reports 687 passed,
 2 failed, and 2 skipped; the two failures are the pre-existing Goal 037 binding
 drift already recorded at Goal 044 closeout, not a Goal 045 regression.
+
+The first production launch exposed a non-scientific float32 assertion that
+was slightly stricter than machine precision. The repaired guard has been
+checked against every live head-count pattern and does not change any training
+weight. Production should restart from the committed repair and recompute the
+stale pre-repair checkpoints for clean provenance.

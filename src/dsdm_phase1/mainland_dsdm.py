@@ -112,11 +112,12 @@ def equal_head_weights(head_index: np.ndarray, head_count: int) -> np.ndarray:
     index = np.asarray(head_index, dtype=np.int64)
     _require(index.ndim == 1 and len(index) > 0 and set(index.tolist()) == set(range(head_count)), "head_set_invalid")
     counts = np.bincount(index, minlength=head_count).astype(np.float64)
-    weights = len(index) / (head_count * counts[index])
-    totals = np.bincount(index, weights=weights, minlength=head_count)
-    _require(np.allclose(totals, totals[0], rtol=0, atol=1e-8), "head_weight_balance_failed")
-    _require(np.isclose(np.mean(weights), 1.0, rtol=0, atol=1e-12), "head_weight_mean_failed")
-    return weights.astype(np.float32)
+    weights = (len(index) / (head_count * counts[index])).astype(np.float32)
+    totals = np.bincount(index, weights=weights.astype(np.float64), minlength=head_count)
+    tolerance = 2 * np.finfo(np.float32).eps
+    _require(np.allclose(totals, totals[0], rtol=tolerance, atol=0), "head_weight_balance_failed")
+    _require(np.isclose(np.mean(weights, dtype=np.float64), 1.0, rtol=tolerance, atol=0), "head_weight_mean_failed")
+    return weights
 
 
 def _tensor_dataset(dataset: NeuralDataset, device: torch.device) -> tuple[torch.Tensor, ...]:

@@ -64,6 +64,19 @@ def test_equal_head_weights_equalize_heads_without_using_response_class():
     assert weights[0] == weights[1] == weights[2]
 
 
+def test_equal_head_weights_accepts_float32_roundoff_at_production_scale():
+    counts = np.asarray([
+        14393, 24361, 14289, 14234, 13478, 12742, 11466, 13771, 13125,
+        24901, 14347, 15322, 13988, 13425, 14085, 14425, 13268, 20724, 17847,
+    ])
+    head = np.repeat(np.arange(len(counts)), counts)
+    weights = equal_head_weights(head, len(counts))
+    totals = np.bincount(head, weights=weights.astype(np.float64))
+
+    assert weights.dtype == np.float32
+    assert (totals.max() - totals.min()) / totals.mean() < 2 * np.finfo(np.float32).eps
+
+
 def test_neural_dataset_rejects_nonpositive_weights():
     x, y = _binary(1, 8, 3)
     with pytest.raises(MainlandDsdmError, match="dataset_weights_invalid"):

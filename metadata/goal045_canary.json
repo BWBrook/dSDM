@@ -9,7 +9,7 @@
         "held_rows": 2450,
         "model_digest": "94322f34cbe5aab9e8d3884ffc0052390af2a93ec5c9d7afebe63906cfd5e574",
         "replay_rows": 10941,
-        "runtime_seconds": 0.08808745804708451,
+        "runtime_seconds": 0.08770908298902214,
         "selected_epoch": 2,
         "stopping_rows": 2731,
         "transferred": true
@@ -29,7 +29,7 @@
         "held_rows": 2450,
         "model_digest": "0d2f185ef373c4142cd67d3790ba0aecfd0b2455210ae46e4104d22f8d5f9a26",
         "replay_rows": 10941,
-        "runtime_seconds": 0.23416391701903194,
+        "runtime_seconds": 0.21588533301837742,
         "selected_epoch": 2,
         "stopping_rows": 2731,
         "transferred": true
@@ -49,7 +49,7 @@
         "held_rows": 2450,
         "model_digest": "903daedc50438b684dbe65946143ba192e2dc898acad6e6ae093c7ef112a46a2",
         "replay_rows": 10941,
-        "runtime_seconds": 0.17154424998443574,
+        "runtime_seconds": 0.1642284169793129,
         "selected_epoch": 1,
         "stopping_rows": 2731,
         "transferred": false
@@ -69,7 +69,7 @@
         "held_rows": 2450,
         "model_digest": "ca19477e1cd48ea23285a1b9bfd5114dc02c023e4f4040d93609ddea06147e5e",
         "replay_rows": 10941,
-        "runtime_seconds": 0.23263912496622652,
+        "runtime_seconds": 0.21632295800372958,
         "selected_epoch": 2,
         "stopping_rows": 2731,
         "transferred": false
@@ -117,7 +117,7 @@
     "config_sha256": "4f7668d4e3fadee54c86ded37e7cdc4680e792de9b8bac87331a9a48ca3adfbd",
     "goal044_summary_sha256": "3bd0b89c107a62ee5ea53aac204dcdabc0b19670aeb2a360c6674bfac69f8a89",
     "source_sha256": "b3cba6120693bcd1e0682096d444519eef357ba14cdd618b73c7a928c86a6892",
-    "training_source_sha256": "0fe5fe6fd8734ef595fc3599fcac14be841de2f58890377dfb4b4e956b948ba7"
+    "training_source_sha256": "60bf28f7f9eaa6f4ea4805ba1d4f7acd2ca7e7d7050dd575959b91eb26838453"
   },
   "pretraining": {
     "fit": {
@@ -150,7 +150,7 @@
       "mean_replay_weight": 1.0,
       "mean_stopping_weight": 1.0,
       "replay_rows": 277571,
-      "runtime_seconds": 9.228275791974738,
+      "runtime_seconds": 8.41694349993486,
       "selected_epoch": 2,
       "shared_state_digest": "c1de854bab1f387784699f97af12ccdbe33dc14dc952eb2075f62ad4ddc99ee2",
       "stopping_rows": 69347,
@@ -164,7 +164,7 @@
         "config_sha256": "4f7668d4e3fadee54c86ded37e7cdc4680e792de9b8bac87331a9a48ca3adfbd",
         "goal044_summary_sha256": "3bd0b89c107a62ee5ea53aac204dcdabc0b19670aeb2a360c6674bfac69f8a89",
         "source_sha256": "b3cba6120693bcd1e0682096d444519eef357ba14cdd618b73c7a928c86a6892",
-        "training_source_sha256": "0fe5fe6fd8734ef595fc3599fcac14be841de2f58890377dfb4b4e956b948ba7"
+        "training_source_sha256": "60bf28f7f9eaa6f4ea4805ba1d4f7acd2ca7e7d7050dd575959b91eb26838453"
       },
       "seed_label": "seed00",
       "target": "Dasyurus maculatus"
@@ -221,7 +221,7 @@
     "schema_version": "goal045-pretraining-v1",
     "shared_state_digest": "c1de854bab1f387784699f97af12ccdbe33dc14dc952eb2075f62ad4ddc99ee2"
   },
-  "runtime_seconds": 11.755597916897386,
+  "runtime_seconds": 10.913913334021345,
   "schema_version": "goal045-canary-v1",
   "status": "goal045_canary_ready",
   "tasmania_predictor_rows_used": 0,
