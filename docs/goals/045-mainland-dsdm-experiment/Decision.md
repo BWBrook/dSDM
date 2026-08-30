@@ -2,10 +2,12 @@
 
 ## Status
 
-Goal 045 is complete and accepted. The detached production run exited `0`, the
-independent validator reconstructed every expected checkpoint, and the tracked
-aggregate contains no cell identifiers, coordinates, predictions, or response
-rows. Tasmania access remained `0/0`.
+Goal 045 is retained as a historical execution record, not as the current
+scientific authority for the fraction100/full endpoint. Its detached
+production run completed and its aggregate was independently validated, but a
+later audit found that the auxiliary `X=3` support was not strict
+leave-target-out. Goal 046 corrected that defect and supersedes Goal 045's
+fraction100/full scientific result. Tasmania access remained `0/0`.
 
 ## Compute route
 
@@ -53,10 +55,13 @@ metrics were directionally consistent: mean pooled TSS exceeded the best
 conventional model by `+0.0044` across all strata and `+0.0064` at the
 full-target endpoint. Frozen-trunk transfer was weaker than full fine-tuning.
 
-This is credible evidence of a small, repeatable mainland development signal,
-not yet evidence of geographic transfer. Architecture selection and every
-reported contrast used mainland CV; the camera-supported Tasmania evaluation
-remains sealed for a separately authorised one-shot assessment.
+These are historical Goal 045 results only. The 25/50 learning-ladder records
+remain useful exploratory evidence, but they are not strict leave-target-out
+evidence and must not underpin current scientific claims. For the corrected
+fraction100/full result, use Goal 046, which preserves the paired design while
+removing each focal target's support contribution before the `X=3` rule. The
+camera-supported Tasmania evaluation remains sealed for a separately
+authorised one-shot assessment.
 
 ## Verification
 

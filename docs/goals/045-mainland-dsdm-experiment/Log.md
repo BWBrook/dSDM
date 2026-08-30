@@ -56,3 +56,12 @@
   tasks. Seven focused tests passed. Tasmania remained sealed at `0/0`, and
   the tracked aggregate contains no row-level locations, responses, or
   predictions.
+
+## 2026-08-31 - superseded by strict correction
+
+- Goal 046 independently corrected and revalidated the fraction100/full
+  mainland endpoint. The Goal 045 auxiliary `X=3` support had included each
+  focal target's own contribution, so Goal 045 is now historical rather than
+  current scientific authority for that endpoint.
+- Goal 045's 25/50 learning-ladder outputs remain exploratory records, but are
+  not strict leave-target-out evidence and must not underpin current claims.

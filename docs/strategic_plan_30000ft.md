@@ -1,7 +1,7 @@
 # dSDM 30,000-foot strategic plan
 
 Originally framed: 2026-05-27
-Last revised: 2026-08-29
+Last revised: 2026-08-31
 
 This is the canonical living roadmap for the full dSDM research programme. It
 should be revisited at major scientific and implementation gates rather than
@@ -249,8 +249,8 @@ unopened and cannot inform training or tuning.
 
 ### Phase 7: Southeastern mammals modelling and bridge synthesis
 
-Status: conventional and dSDM mainland development complete through Goal 045;
-Tasmania transfer evaluation remains pending and sealed.
+Status: conventional and corrected dSDM mainland development complete through
+Goal 046; Tasmania transfer evaluation remains pending and sealed.
 
 Fit strong conventional target-only models and the prespecified dSDM transfer
 arms, evaluate once in Tasmania, and determine whether additional pretraining
@@ -267,15 +267,17 @@ community-information control. The separate Goal 045 dSDM arms and three-
 architecture panel were frozen before these outcomes and must not be revised
 post hoc to chase the conventional benchmark.
 
-Goal 045 selected the shared `bridge_control` architecture and completed all 35
-target-endpoint strata with five paired seeds. Full fine-tuning improved mean
-mainland-CV AUC by 0.0094 over the matched target-only neural model and by
-0.0035 over the strongest Goal 044 conventional model; these contrasts were
-positive in 34/35 and 30/35 strata. At the full-target endpoint it beat the
-best conventional AUC for all five targets, with a mean change of 0.0038.
-This is a small but repeatable mainland development signal, not geographic-
-transfer evidence. Tasmania remained sealed at `0/0` and must be evaluated
-only once under a separately frozen goal.
+Goal 045's execution is retained as historical evidence, but its auxiliary
+`X=3` support was not strict leave-target-out. Goal 046 corrected that defect
+and supersedes Goal 045's fraction100/full scientific result. The corrected
+run reselected `bridge_control` (mean rank 1.4) and completed 25 strict q
+surfaces, 175 pretraining receipts, 75 selection receipts, 125 final
+fold-seed receipts, and 500 target fits. At the full endpoint, full fine-
+tuning improved mean AUC by 0.008745 over target-only learning and by 0.003950
+over the best conventional model across the five targets. This remains a
+small mainland development signal, not geographic-transfer evidence; Tasmania
+remained sealed at `0/0` and must be evaluated only once under a separately
+frozen goal.
 
 ### Phase 8: Method-freeze checkpoint
 
@@ -392,7 +394,9 @@ Goal040 froze and acquired a 21-taxon southeastern cohort, Goal041 built the
 common 24-predictor mainland/Tasmania table, Goal042 froze 20 mainland response
 heads plus camera-supported Tasmania evaluation for five shared targets, and
 Goal043 completed mainland partitions, split-authorised responses, and
-split-fitted transformations. Goals044-045 then completed the conventional and
-dSDM mainland development experiments. The next scientific boundary is a
-prospectively frozen, one-shot Tasmania transfer assessment; Tasmania must not
-inform any further development or selection.
+split-fitted transformations. Goals044-046 then completed the conventional and
+corrected dSDM mainland development experiments; Goal046 supersedes the Goal
+045 full-endpoint claim because it enforces strict leave-target-out support.
+The next scientific boundary is a prospectively frozen, one-shot Tasmania
+transfer assessment; Tasmania must not inform any further development or
+selection.

@@ -50,11 +50,12 @@ selected 50 km five-fold mainland blocks, rematerialised split-authorised
 responses, and fitted mainland-only predictor transformations. Goal 044 then
 completed the five-family mainland conventional benchmark and leave-target-out
 `q_linear` control while prospectively freezing the separate Goal 045 dSDM
-experiment. Goal 045 then selected `bridge_control` and completed all 35
-mainland development strata. Full fine-tuning produced a small, consistent AUC
-advantage over matched target-only learning and the strongest conventional
-benchmark. This is mainland-CV evidence only; Tasmania remains sealed for a
-separately authorised one-shot transfer assessment.
+experiment. Goal 045 completed its mainland run, but a later audit found that
+its auxiliary `X=3` support was not strict leave-target-out. Goal 046 corrected
+that defect and supersedes Goal 045's fraction100/full scientific result:
+`bridge_control` remained selected and full fine-tuning retained a small,
+consistent mainland-CV advantage. This is mainland-CV evidence only; Tasmania
+remains sealed for a separately authorised one-shot transfer assessment.
 
 ### Current gate status
 
@@ -113,6 +114,11 @@ Canonical authority:
 - [`config/goal045_mainland_dsdm.json`](config/goal045_mainland_dsdm.json), the frozen mainland dSDM execution authority
 - [`metadata/goal045_canary.json`](metadata/goal045_canary.json), the aggregate-only Mac CPU canary receipt
 - [`evidence/mainland_dsdm/goal045/summary.json`](evidence/mainland_dsdm/goal045/summary.json), the aggregate-only mainland dSDM evidence
+- [Goal 046 decision](docs/goals/046-strict-mainland-dsdm-correction/Decision.md)
+- [Goal 046 runbook](docs/goals/046-strict-mainland-dsdm-correction/Runbook.md)
+- [`config/goal046_mainland_dsdm.json`](config/goal046_mainland_dsdm.json), the strict mainland correction authority
+- [`metadata/goal046_canary.json`](metadata/goal046_canary.json), the aggregate-only mainland canary receipt
+- [`evidence/mainland_dsdm/goal046/summary.json`](evidence/mainland_dsdm/goal046/summary.json), the independently validated corrected evidence
 
 ## Data and privacy boundary
 

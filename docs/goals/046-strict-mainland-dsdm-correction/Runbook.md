@@ -11,4 +11,8 @@ uv run --locked python -m dsdm_phase1.goal046_mainland_dsdm run --root . --devic
 uv run --locked python -m dsdm_phase1.goal046_mainland_dsdm validate --root .
 ```
 
-The canary is the bounded pre-production gate. Once the focused tests, input validation, and canary pass, production may be launched under explicit orchestration, preferably detached in a named tmux session. Never open the Tasmania response or predictor tables.
+The bounded canary preceded the authorised production run, which has now
+completed and passed independent aggregate replay. The detached wrapper did
+not leave a `run.exit` marker; the completion log and validator are
+authoritative. Any rerun requires explicit orchestration, preferably detached
+in a named tmux session. Never open the Tasmania response or predictor tables.
