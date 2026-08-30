@@ -1,0 +1,215 @@
+{
+  "schema_version": "goal046-contract-v1",
+  "goal_id": "goal046-strict-mainland-dsdm-correction",
+  "bindings": {
+    "goal044_config": {
+      "path": "config/goal044_mainland_conventional.json",
+      "sha256": "66350f80d58e58eb1c55fa95cc9e4c899d8792404b09acc26d40c71715828a68"
+    },
+    "goal044_summary": {
+      "path": "evidence/mainland_conventional/goal044/summary.json",
+      "sha256": "3bd0b89c107a62ee5ea53aac204dcdabc0b19670aeb2a360c6674bfac69f8a89"
+    },
+    "goal044_source": {
+      "path": "src/dsdm_phase1/goal044_mainland_conventional.py",
+      "sha256": "5f1d56ede8db3a008ed8a60e2a7fc24c589c7d03bbcd4cac3f0bae637cd88c63"
+    },
+    "goal043_manifest": {
+      "path": "metadata/goal043_manifest.json",
+      "sha256": "d1876995cba15bfccaf92a33ec299e7224fefd7e2d9dc4abb264bf8c901d67f7"
+    },
+    "goal043_transforms": {
+      "path": "metadata/goal043_transforms.json",
+      "sha256": "97883416552ae6338cfcf22d8858852fcd9e4637d81bf4fb9239c0fdb3295677"
+    },
+    "models": {
+      "path": "src/dsdm/models.py",
+      "sha256": "71317e80514eeab68a316066f59382db2c96aa6bffb0dfd524e08895f2f9c6ee"
+    },
+    "mainland_modeling": {
+      "path": "src/dsdm_phase1/mainland_modeling.py",
+      "sha256": "7a133232d84fe5a363252fbda772535d8262557c3b82f16a05c9831000577597"
+    },
+    "pyproject": {
+      "path": "pyproject.toml",
+      "sha256": "29b7c2f9f810ac35357fa9b85189002d92a54a4933cf87746f57ae27cc0a8d08"
+    },
+    "uv_lock": {
+      "path": "uv.lock",
+      "sha256": "39c22925750ac8821f5420bdfe5ca39554b7906d812bd3a94a04e91c469284fd"
+    },
+    "goal045_config": {
+      "path": "config/goal045_mainland_dsdm.json",
+      "sha256": "4f7668d4e3fadee54c86ded37e7cdc4680e792de9b8bac87331a9a48ca3adfbd"
+    },
+    "goal045_summary": {
+      "path": "evidence/mainland_dsdm/goal045/summary.json",
+      "sha256": "f4ff55b94d776654e6949578501017da0dfea2ec8ef851d4a3ddc7cce375d042"
+    },
+    "goal045_source": {
+      "path": "src/dsdm_phase1/goal045_mainland_dsdm.py",
+      "sha256": "b3cba6120693bcd1e0682096d444519eef357ba14cdd618b73c7a928c86a6892"
+    },
+    "goal045_training_source": {
+      "path": "src/dsdm_phase1/mainland_dsdm.py",
+      "sha256": "60bf28f7f9eaa6f4ea4805ba1d4f7acd2ca7e7d7050dd575959b91eb26838453"
+    }
+  },
+  "scope": {
+    "region": "southeast_mainland",
+    "targets": [
+      "Dasyurus maculatus",
+      "Notamacropus rufogriseus",
+      "Pseudocheirus peregrinus",
+      "Trichosurus vulpecula",
+      "Vombatus ursinus"
+    ],
+    "response_heads": [
+      "Dasyurus maculatus",
+      "Gymnobelideus leadbeateri",
+      "Macropus giganteus",
+      "Mastacomys fuscus",
+      "Notamacropus rufogriseus",
+      "Petauroides volans",
+      "Petaurus australis",
+      "Petaurus norfolcensis",
+      "Petrogale penicillata",
+      "Phascogale tapoatafa",
+      "Phascolarctos cinereus",
+      "Potorous longipes",
+      "Pseudocheirus peregrinus",
+      "Pseudomys fumeus",
+      "Pseudomys novaehollandiae",
+      "Pseudomys shortridgei",
+      "Sminthopsis crassicaudata",
+      "Sminthopsis leucopus",
+      "Trichosurus vulpecula",
+      "Vombatus ursinus"
+    ],
+    "folds": [0, 1, 2, 3, 4],
+    "primary_background": "eligible_x3",
+    "tasmania_evaluation": "sealed"
+  },
+  "target_subsets": {
+    "fractions": [100],
+    "ladders": [],
+    "full_alias": "full",
+    "master_seed": "dsdm-goal044-v1"
+  },
+  "design": {
+    "status": "corrected_goal045_pairwise_reanalysis",
+    "arms": [
+      "target_only_random_init_resmlp",
+      "target_plus_q_linear_resmlp",
+      "multihead_frozen_trunk",
+      "multihead_full_finetune"
+    ],
+    "primary_arm": "multihead_full_finetune",
+    "pretraining_heads": "exact_other_19",
+    "target_excluded_from_pretraining": true,
+    "target_support_removed_before_x3": true,
+    "strict_support_rule": "subtract_one_for_focal_target_presence_then_retain_presence_or_adjusted_x3",
+    "pretraining_head_weighting": "equal_total_contribution_per_head",
+    "within_head_class_balancing": false,
+    "architecture_candidates": [
+      {
+        "id": "bridge_control",
+        "blocks": 3,
+        "width": 128,
+        "bottleneck": 64,
+        "dropout": 0.0,
+        "weight_decay": 0.001
+      },
+      {
+        "id": "bridge_wide",
+        "blocks": 3,
+        "width": 256,
+        "bottleneck": 64,
+        "dropout": 0.0,
+        "weight_decay": 0.001
+      },
+      {
+        "id": "bridge_deep",
+        "blocks": 6,
+        "width": 128,
+        "bottleneck": 64,
+        "dropout": 0.0,
+        "weight_decay": 0.001
+      }
+    ],
+    "architecture_constants": {
+      "activation": "GELU",
+      "normalization": "LayerNorm",
+      "shape": "constant",
+      "optimizer": "AdamW",
+      "learning_rate": 0.001,
+      "batch_size": 128,
+      "max_epochs": 300,
+      "patience": 30
+    },
+    "architecture_selection": "shared_across_targets_by_species_balanced_mainland_cv_rank",
+    "learning_ladder": "fraction100_full_only_pairwise_correction",
+    "seed_labels": ["seed00", "seed01", "seed02", "seed03", "seed04"],
+    "primary_contrasts": [
+      "multihead_full_finetune_minus_target_only_random_init_resmlp",
+      "multihead_full_finetune_minus_target_plus_q_linear_resmlp",
+      "multihead_full_finetune_minus_best_goal044_conventional",
+      "multihead_full_finetune_minus_strict_q_conventional"
+    ],
+    "amendment_rule": "no_architecture_or_rescue_changes_after_correction"
+  },
+  "lifecycle": {
+    "stopping_fold": "(held_fold+1)%5",
+    "discovery_folds": "other_three",
+    "replay_folds": "all_four_nonheld_at_selected_epoch",
+    "stopping_metric": "natural_prevalence_binary_cross_entropy",
+    "stopping_min_delta": 0.00001,
+    "pretraining_sampling": "all_rows_weighted_to_equal_total_head_contribution",
+    "target_sampling": "all_rows_natural_prevalence",
+    "q_linear_scaling": "zscore_over_full_target_training_rows_within_held_fold",
+    "architecture_selection_arm": "multihead_full_finetune",
+    "architecture_selection_endpoint": "fraction100/full",
+    "architecture_selection_seed_labels": ["seed00"],
+    "architecture_ranking": [
+      "within_target_mean_fold_roc_auc_rank",
+      "within_target_pooled_tss_tie_break",
+      "mean_rank_across_targets",
+      "architecture_id"
+    ]
+  },
+  "execution": {
+    "default_device": "cpu",
+    "per_estimator_threads": 1,
+    "default_workers": 3,
+    "private_root": "data/processed/dsdm/goal046-strict-mainland-dsdm",
+    "tracked_summary": "evidence/mainland_dsdm/goal046/summary.json",
+    "canary_receipt": "metadata/goal046_canary.json",
+    "checkpoint_unit": "target_endpoint_seed_fold",
+    "atomic_checkpoint_writes": true,
+    "canary": {
+      "target": "Dasyurus maculatus",
+      "held_fold": 0,
+      "architecture": "bridge_control",
+      "seed_label": "seed00",
+      "endpoint": "fraction100/full",
+      "max_epochs": 2,
+      "patience": 1,
+      "bounded": true
+    }
+  },
+  "privacy": {
+    "tracked_predictions": false,
+    "tracked_cell_ids": false,
+    "tracked_coordinates": false,
+    "tracked_response_rows": false,
+    "tasmania_response_rows_read": 0,
+    "tasmania_predictor_rows_used": 0
+  },
+  "stopping_boundary": [
+    "mainland_full_refit",
+    "x2_x5_sensitivity",
+    "tasmania_evaluation_access",
+    "mapping",
+    "manuscript_claims"
+  ]
+}

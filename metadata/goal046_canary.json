@@ -1,0 +1,468 @@
+{
+  "arms": {
+    "multihead_frozen_trunk": {
+      "fit": {
+        "best_stopping_loss": 0.2769701893798426,
+        "discovery_completed_epochs": 2,
+        "discovery_rows": 8210,
+        "freeze_trunk": true,
+        "held_rows": 2450,
+        "model_digest": "9811ad64ba8dd684eb00cf97c13e3df3f2f224c37bb6a9c27b19dfa1ceb6a43b",
+        "replay_rows": 10941,
+        "runtime_seconds": 0.0850352089619264,
+        "selected_epoch": 2,
+        "stopping_rows": 2731,
+        "transferred": true
+      },
+      "score_count": 2450,
+      "score_range": [
+        0.008922357112169266,
+        0.9485350847244263
+      ]
+    },
+    "multihead_full_finetune": {
+      "fit": {
+        "best_stopping_loss": 0.2543407521899128,
+        "discovery_completed_epochs": 2,
+        "discovery_rows": 8210,
+        "freeze_trunk": false,
+        "held_rows": 2450,
+        "model_digest": "601c175d94bf2bc6ad98d8f40cade7a624fbf6e3bf44fa3fef21449e14d0a7ef",
+        "replay_rows": 10941,
+        "runtime_seconds": 0.15529804199468344,
+        "selected_epoch": 1,
+        "stopping_rows": 2731,
+        "transferred": true
+      },
+      "score_count": 2450,
+      "score_range": [
+        0.0060851918533444405,
+        0.9916136264801025
+      ]
+    },
+    "target_only_random_init_resmlp": {
+      "fit": {
+        "best_stopping_loss": 0.2674360318918972,
+        "discovery_completed_epochs": 2,
+        "discovery_rows": 8210,
+        "freeze_trunk": false,
+        "held_rows": 2450,
+        "model_digest": "903daedc50438b684dbe65946143ba192e2dc898acad6e6ae093c7ef112a46a2",
+        "replay_rows": 10941,
+        "runtime_seconds": 0.15588579105678946,
+        "selected_epoch": 1,
+        "stopping_rows": 2731,
+        "transferred": false
+      },
+      "score_count": 2450,
+      "score_range": [
+        0.007985066622495651,
+        0.9844974279403687
+      ]
+    },
+    "target_plus_q_linear_resmlp": {
+      "fit": {
+        "best_stopping_loss": 0.2793170271754396,
+        "discovery_completed_epochs": 2,
+        "discovery_rows": 8210,
+        "freeze_trunk": false,
+        "held_rows": 2450,
+        "model_digest": "445d8386d268803e5d613aa1a839e4e91a0ce9b720f84f85f6140678546cade6",
+        "replay_rows": 10941,
+        "runtime_seconds": 0.15548841701820493,
+        "selected_epoch": 1,
+        "stopping_rows": 2731,
+        "transferred": false
+      },
+      "score_count": 2450,
+      "score_range": [
+        0.00669976556673646,
+        0.986359179019928
+      ]
+    }
+  },
+  "case": {
+    "architecture": "bridge_control",
+    "bounded": true,
+    "endpoint": "fraction100/full",
+    "held_fold": 0,
+    "max_epochs": 2,
+    "patience": 1,
+    "seed_label": "seed00",
+    "target": "Dasyurus maculatus"
+  },
+  "device": "cpu",
+  "gate": {
+    "architectures": 3,
+    "goal044_gate": {
+      "identity": {
+        "config_sha256": "66350f80d58e58eb1c55fa95cc9e4c899d8792404b09acc26d40c71715828a68",
+        "goal043_manifest_sha256": "d1876995cba15bfccaf92a33ec299e7224fefd7e2d9dc4abb264bf8c901d67f7",
+        "source_sha256": "4544ac77e5d4710acb9a2fcfd9acf605ce715ebc4c22582a7f4674050e1f97f6"
+      },
+      "mainland_assignment_rows": 1053032,
+      "response_heads": 20,
+      "split_response_rows": 3775385,
+      "status": "goal044_inputs_valid",
+      "targets": 5,
+      "tasmania_predictor_rows_used": 0,
+      "tasmania_response_rows_read": 0
+    },
+    "response_heads": 20,
+    "status": "goal046_inputs_ready",
+    "targets": 5,
+    "tasmania_predictor_rows_used": 0,
+    "tasmania_response_rows_read": 0
+  },
+  "identity": {
+    "config_sha256": "b3f3005a0777330e28ff88a11497d76013fec8000bfee5451328b3278621afd2",
+    "goal044_source_sha256": "5f1d56ede8db3a008ed8a60e2a7fc24c589c7d03bbcd4cac3f0bae637cd88c63",
+    "goal045_config_sha256": "4f7668d4e3fadee54c86ded37e7cdc4680e792de9b8bac87331a9a48ca3adfbd",
+    "goal045_source_sha256": "b3cba6120693bcd1e0682096d444519eef357ba14cdd618b73c7a928c86a6892",
+    "goal045_summary_sha256": "f4ff55b94d776654e6949578501017da0dfea2ec8ef851d4a3ddc7cce375d042",
+    "source_sha256": "5d44f8f5ca7509ff36a4b0da9c497ca2347303031081675729358cd8daaa851a",
+    "training_source_sha256": "60bf28f7f9eaa6f4ea4805ba1d4f7acd2ca7e7d7050dd575959b91eb26838453"
+  },
+  "pretraining": {
+    "fit": {
+      "auxiliary_head_count": 19,
+      "auxiliary_heads": [
+        "Gymnobelideus leadbeateri",
+        "Macropus giganteus",
+        "Mastacomys fuscus",
+        "Notamacropus rufogriseus",
+        "Petauroides volans",
+        "Petaurus australis",
+        "Petaurus norfolcensis",
+        "Petrogale penicillata",
+        "Phascogale tapoatafa",
+        "Phascolarctos cinereus",
+        "Potorous longipes",
+        "Pseudocheirus peregrinus",
+        "Pseudomys fumeus",
+        "Pseudomys novaehollandiae",
+        "Pseudomys shortridgei",
+        "Sminthopsis crassicaudata",
+        "Sminthopsis leucopus",
+        "Trichosurus vulpecula",
+        "Vombatus ursinus"
+      ],
+      "best_stopping_loss": 0.1549634821525141,
+      "discovery_completed_epochs": 2,
+      "discovery_rows": 205132,
+      "mean_discovery_weight": 1.0,
+      "mean_replay_weight": 1.0,
+      "mean_stopping_weight": 1.0,
+      "replay_rows": 273589,
+      "runtime_seconds": 8.279839499969967,
+      "selected_epoch": 2,
+      "shared_state_digest": "f6d4c4276817390f1eaa93603e7c3d5993c90c70b1f2aecc0cd8826369e15680",
+      "stopping_rows": 68457,
+      "within_head_class_balancing": false
+    },
+    "fit_seed": 3570594342,
+    "key": {
+      "architecture": "bridge_control",
+      "held_fold": 0,
+      "identity": {
+        "config_sha256": "b3f3005a0777330e28ff88a11497d76013fec8000bfee5451328b3278621afd2",
+        "goal044_source_sha256": "5f1d56ede8db3a008ed8a60e2a7fc24c589c7d03bbcd4cac3f0bae637cd88c63",
+        "goal045_config_sha256": "4f7668d4e3fadee54c86ded37e7cdc4680e792de9b8bac87331a9a48ca3adfbd",
+        "goal045_source_sha256": "b3cba6120693bcd1e0682096d444519eef357ba14cdd618b73c7a928c86a6892",
+        "goal045_summary_sha256": "f4ff55b94d776654e6949578501017da0dfea2ec8ef851d4a3ddc7cce375d042",
+        "source_sha256": "5d44f8f5ca7509ff36a4b0da9c497ca2347303031081675729358cd8daaa851a",
+        "training_source_sha256": "60bf28f7f9eaa6f4ea4805ba1d4f7acd2ca7e7d7050dd575959b91eb26838453"
+      },
+      "seed_label": "seed00",
+      "target": "Dasyurus maculatus"
+    },
+    "meta": {
+      "auxiliary_heads": [
+        "Gymnobelideus leadbeateri",
+        "Macropus giganteus",
+        "Mastacomys fuscus",
+        "Notamacropus rufogriseus",
+        "Petauroides volans",
+        "Petaurus australis",
+        "Petaurus norfolcensis",
+        "Petrogale penicillata",
+        "Phascogale tapoatafa",
+        "Phascolarctos cinereus",
+        "Potorous longipes",
+        "Pseudocheirus peregrinus",
+        "Pseudomys fumeus",
+        "Pseudomys novaehollandiae",
+        "Pseudomys shortridgei",
+        "Sminthopsis crassicaudata",
+        "Sminthopsis leucopus",
+        "Trichosurus vulpecula",
+        "Vombatus ursinus"
+      ],
+      "excluded_target": true,
+      "feature_width": 103,
+      "held_fold": 0,
+      "rows_by_head": {
+        "Gymnobelideus leadbeateri": 13485,
+        "Macropus giganteus": 22878,
+        "Mastacomys fuscus": 13176,
+        "Notamacropus rufogriseus": 12561,
+        "Petauroides volans": 12576,
+        "Petaurus australis": 12071,
+        "Petaurus norfolcensis": 10795,
+        "Petrogale penicillata": 12855,
+        "Phascogale tapoatafa": 12329,
+        "Phascolarctos cinereus": 21167,
+        "Potorous longipes": 13395,
+        "Pseudocheirus peregrinus": 14649,
+        "Pseudomys fumeus": 12998,
+        "Pseudomys novaehollandiae": 12624,
+        "Pseudomys shortridgei": 13218,
+        "Sminthopsis crassicaudata": 13457,
+        "Sminthopsis leucopus": 12207,
+        "Trichosurus vulpecula": 19585,
+        "Vombatus ursinus": 17563
+      },
+      "stopping_fold": 1,
+      "strict_support_diagnostics": {
+        "Gymnobelideus leadbeateri": {
+          "adjusted_support_min": 0,
+          "dropped_backgrounds_adjusted_below_x3": 322,
+          "focal_target_overlap_backgrounds": 810,
+          "focal_target_presence_cells": 2025,
+          "original_backgrounds": 13015,
+          "original_presences": 792,
+          "original_rows": 13807,
+          "retained_backgrounds": 12693,
+          "retained_presences": 792,
+          "retained_rows": 13485
+        },
+        "Macropus giganteus": {
+          "adjusted_support_min": 0,
+          "dropped_backgrounds_adjusted_below_x3": 61,
+          "focal_target_overlap_backgrounds": 92,
+          "focal_target_presence_cells": 2025,
+          "original_backgrounds": 1599,
+          "original_presences": 21340,
+          "original_rows": 22939,
+          "retained_backgrounds": 1538,
+          "retained_presences": 21340,
+          "retained_rows": 22878
+        },
+        "Mastacomys fuscus": {
+          "adjusted_support_min": 0,
+          "dropped_backgrounds_adjusted_below_x3": 318,
+          "focal_target_overlap_backgrounds": 800,
+          "focal_target_presence_cells": 2025,
+          "original_backgrounds": 13115,
+          "original_presences": 379,
+          "original_rows": 13494,
+          "retained_backgrounds": 12797,
+          "retained_presences": 379,
+          "retained_rows": 13176
+        },
+        "Notamacropus rufogriseus": {
+          "adjusted_support_min": 0,
+          "dropped_backgrounds_adjusted_below_x3": 60,
+          "focal_target_overlap_backgrounds": 105,
+          "focal_target_presence_cells": 2025,
+          "original_backgrounds": 4032,
+          "original_presences": 8589,
+          "original_rows": 12621,
+          "retained_backgrounds": 3972,
+          "retained_presences": 8589,
+          "retained_rows": 12561
+        },
+        "Petauroides volans": {
+          "adjusted_support_min": 0,
+          "dropped_backgrounds_adjusted_below_x3": 107,
+          "focal_target_overlap_backgrounds": 254,
+          "focal_target_presence_cells": 2025,
+          "original_backgrounds": 7028,
+          "original_presences": 5655,
+          "original_rows": 12683,
+          "retained_backgrounds": 6921,
+          "retained_presences": 5655,
+          "retained_rows": 12576
+        },
+        "Petaurus australis": {
+          "adjusted_support_min": 0,
+          "dropped_backgrounds_adjusted_below_x3": 198,
+          "focal_target_overlap_backgrounds": 508,
+          "focal_target_presence_cells": 2025,
+          "original_backgrounds": 7585,
+          "original_presences": 4684,
+          "original_rows": 12269,
+          "retained_backgrounds": 7387,
+          "retained_presences": 4684,
+          "retained_rows": 12071
+        },
+        "Petaurus norfolcensis": {
+          "adjusted_support_min": 0,
+          "dropped_backgrounds_adjusted_below_x3": 233,
+          "focal_target_overlap_backgrounds": 587,
+          "focal_target_presence_cells": 2025,
+          "original_backgrounds": 8671,
+          "original_presences": 2357,
+          "original_rows": 11028,
+          "retained_backgrounds": 8438,
+          "retained_presences": 2357,
+          "retained_rows": 10795
+        },
+        "Petrogale penicillata": {
+          "adjusted_support_min": 0,
+          "dropped_backgrounds_adjusted_below_x3": 258,
+          "focal_target_overlap_backgrounds": 582,
+          "focal_target_presence_cells": 2025,
+          "original_backgrounds": 12382,
+          "original_presences": 731,
+          "original_rows": 13113,
+          "retained_backgrounds": 12124,
+          "retained_presences": 731,
+          "retained_rows": 12855
+        },
+        "Phascogale tapoatafa": {
+          "adjusted_support_min": 0,
+          "dropped_backgrounds_adjusted_below_x3": 254,
+          "focal_target_overlap_backgrounds": 619,
+          "focal_target_presence_cells": 2025,
+          "original_backgrounds": 11253,
+          "original_presences": 1330,
+          "original_rows": 12583,
+          "retained_backgrounds": 10999,
+          "retained_presences": 1330,
+          "retained_rows": 12329
+        },
+        "Phascolarctos cinereus": {
+          "adjusted_support_min": 0,
+          "dropped_backgrounds_adjusted_below_x3": 87,
+          "focal_target_overlap_backgrounds": 214,
+          "focal_target_presence_cells": 2025,
+          "original_backgrounds": 4188,
+          "original_presences": 17066,
+          "original_rows": 21254,
+          "retained_backgrounds": 4101,
+          "retained_presences": 17066,
+          "retained_rows": 21167
+        },
+        "Potorous longipes": {
+          "adjusted_support_min": 0,
+          "dropped_backgrounds_adjusted_below_x3": 323,
+          "focal_target_overlap_backgrounds": 809,
+          "focal_target_presence_cells": 2025,
+          "original_backgrounds": 12749,
+          "original_presences": 969,
+          "original_rows": 13718,
+          "retained_backgrounds": 12426,
+          "retained_presences": 969,
+          "retained_rows": 13395
+        },
+        "Pseudocheirus peregrinus": {
+          "adjusted_support_min": 0,
+          "dropped_backgrounds_adjusted_below_x3": 51,
+          "focal_target_overlap_backgrounds": 130,
+          "focal_target_presence_cells": 2025,
+          "original_backgrounds": 1515,
+          "original_presences": 13185,
+          "original_rows": 14700,
+          "retained_backgrounds": 1464,
+          "retained_presences": 13185,
+          "retained_rows": 14649
+        },
+        "Pseudomys fumeus": {
+          "adjusted_support_min": 0,
+          "dropped_backgrounds_adjusted_below_x3": 324,
+          "focal_target_overlap_backgrounds": 810,
+          "focal_target_presence_cells": 2025,
+          "original_backgrounds": 13129,
+          "original_presences": 193,
+          "original_rows": 13322,
+          "retained_backgrounds": 12805,
+          "retained_presences": 193,
+          "retained_rows": 12998
+        },
+        "Pseudomys novaehollandiae": {
+          "adjusted_support_min": 0,
+          "dropped_backgrounds_adjusted_below_x3": 280,
+          "focal_target_overlap_backgrounds": 730,
+          "focal_target_presence_cells": 2025,
+          "original_backgrounds": 12617,
+          "original_presences": 287,
+          "original_rows": 12904,
+          "retained_backgrounds": 12337,
+          "retained_presences": 287,
+          "retained_rows": 12624
+        },
+        "Pseudomys shortridgei": {
+          "adjusted_support_min": 0,
+          "dropped_backgrounds_adjusted_below_x3": 324,
+          "focal_target_overlap_backgrounds": 813,
+          "focal_target_presence_cells": 2025,
+          "original_backgrounds": 13394,
+          "original_presences": 148,
+          "original_rows": 13542,
+          "retained_backgrounds": 13070,
+          "retained_presences": 148,
+          "retained_rows": 13218
+        },
+        "Sminthopsis crassicaudata": {
+          "adjusted_support_min": 0,
+          "dropped_backgrounds_adjusted_below_x3": 324,
+          "focal_target_overlap_backgrounds": 811,
+          "focal_target_presence_cells": 2025,
+          "original_backgrounds": 13495,
+          "original_presences": 286,
+          "original_rows": 13781,
+          "retained_backgrounds": 13171,
+          "retained_presences": 286,
+          "retained_rows": 13457
+        },
+        "Sminthopsis leucopus": {
+          "adjusted_support_min": 0,
+          "dropped_backgrounds_adjusted_below_x3": 319,
+          "focal_target_overlap_backgrounds": 797,
+          "focal_target_presence_cells": 2025,
+          "original_backgrounds": 11408,
+          "original_presences": 1118,
+          "original_rows": 12526,
+          "retained_backgrounds": 11089,
+          "retained_presences": 1118,
+          "retained_rows": 12207
+        },
+        "Trichosurus vulpecula": {
+          "adjusted_support_min": 0,
+          "dropped_backgrounds_adjusted_below_x3": 17,
+          "focal_target_overlap_backgrounds": 26,
+          "focal_target_presence_cells": 2025,
+          "original_backgrounds": 325,
+          "original_presences": 19277,
+          "original_rows": 19602,
+          "retained_backgrounds": 308,
+          "retained_presences": 19277,
+          "retained_rows": 19585
+        },
+        "Vombatus ursinus": {
+          "adjusted_support_min": 0,
+          "dropped_backgrounds_adjusted_below_x3": 122,
+          "focal_target_overlap_backgrounds": 298,
+          "focal_target_presence_cells": 2025,
+          "original_backgrounds": 3502,
+          "original_presences": 14183,
+          "original_rows": 17685,
+          "retained_backgrounds": 3380,
+          "retained_presences": 14183,
+          "retained_rows": 17563
+        }
+      },
+      "strict_target_absent_as_head": true,
+      "strict_target_presence_cells_removed_from_support": 3982,
+      "target": "Dasyurus maculatus"
+    },
+    "schema_version": "goal046-pretraining-v1",
+    "shared_state_digest": "f6d4c4276817390f1eaa93603e7c3d5993c90c70b1f2aecc0cd8826369e15680"
+  },
+  "runtime_seconds": 10.438115542056039,
+  "schema_version": "goal046-canary-v1",
+  "status": "goal046_canary_ready",
+  "tasmania_predictor_rows_used": 0,
+  "tasmania_response_rows_read": 0
+}
