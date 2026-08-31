@@ -110,3 +110,32 @@
   hash to `2e6ea5c0...`. The third is the expected Goal 047 clean-worktree gate
   (`opening_worktree_not_clean`) during this uncommitted review. No historical
   authority hash was changed to make these pass.
+
+## 2026-08-31 - resumable census implementation
+
+- Added a single-purpose sequential census runner for the 96 effort-eligible members of the
+  preserved 100-name ledger without making a live count. Its
+  preflight validates all frozen authorities, exact ordered query fingerprints,
+  canary reuse, resume checkpoints, disk, RAM, and galah 0.13.6 isolation.
+- Each completed species writes an atomic ignored cell receipt and private
+  checkpoint; resume accepts only a contiguous checksum-valid prefix. Tracked
+  progress contains only cumulative aggregates and a checkpoint-inventory
+  digest. Coordinate facet strings and occurrence rows are never persisted.
+- Enforced 750,000 groups per taxon, 10,000,000 observed cumulative groups,
+  4 GiB private disk, 8 GiB peak RAM, concurrency one, exact count
+  conservation, and fail-closed handling of malformed/missing facets,
+  incomplete atomic writes, authority drift, and transport errors.
+- Added compact `status` and private `run.exit` surfaces plus an exact
+  local Mac `tmux` command. No ALA access, scoring, ranking, selection, model,
+  prediction, threshold, commit, or push occurred.
+
+## 2026-08-31 - effort-role census scope correction
+
+- Bound the sequential census to the 96 `effort=true` members of the frozen
+  100-name role ledger, preserving original ledger order and the canary.
+- The four frozen role exclusions are reported as
+  `not_queried_frozen_role_exclusion` with their existing reasons; no taxon was
+  pruned or reclassified.
+- Reused the loaded domain frame and immutable cell-ID set across all species,
+  deriving canonical cell IDs directly instead of rebuilding a million-cell
+  coordinate set per taxon. No occurrence access occurred.

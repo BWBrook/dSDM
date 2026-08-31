@@ -55,8 +55,11 @@ Aggregate species-cell evidence may only pass or fail the prespecified
 remain entirely response-free.
 
 The 100-name ledger is a mandatory, response-blind feasibility seed, not the
-final pretraining-universe ceiling. Goal 048 uses eligible seed members for a
-conservative support and common-target screen. Goal 049 may expand all bird
+final pretraining-universe ceiling. The sequential transport census queries
+the 96 effort-eligible members in frozen order; Ceyx azureus, Fulica atra,
+Haliaeetus leucogaster, and Spilopelia chinensis remain in the ledger with
+status `not_queried_frozen_role_exclusion` and their frozen exclusion reasons.
+Goal 048 uses eligible seed members for a conservative support and common-target screen. Goal 049 may expand all bird
 universes under the same frozen taxonomic/ecological rules before canonical
 acquisition and before holdout outcome access, but cannot change, substitute,
 or re-rank the Goal 048 regions. More eligible donors can only relax support;
@@ -66,8 +69,9 @@ canonical Goal 049 data reconstruct final exact labels and panels.
 
 The four count-free freezes, offline serializer proof, and one aggregate
 canary are complete. This checkpoint authorises no further occurrence access.
-A separately reviewed next tranche must implement and test sequential census
-restart/failure recovery before dispatch, enforce the observed 10,000,000-group
+The sequential census runner and restart/failure-recovery checks are now
+implemented but have not been executed. A separately authorised live run must
+use the explicit galah 0.13.6 overlay, enforce the observed 10,000,000-group
 ceiling cumulatively, and still stop before scoring if transport conservation
 fails for any species.
 
@@ -80,8 +84,9 @@ peak process RAM was at most 508,329,984 bytes, and private Goal 048 disk use
 was 94,763,052 bytes. The canary therefore passed the per-taxon, conservation,
 RAM, disk, missing-coordinate, and runtime gates.
 
-The conservative linear 100-seed projection is 13,682,900 groups. It is a
-capacity-planning diagnostic, not a prespecified ecological or transport gate;
+The conservative linear 100-seed projection is 13,682,900 groups; the
+role-filtered 96-seed projection is 13,135,584 groups. Both are
+capacity-planning diagnostics, not prespecified ecological or transport gates;
 the 10,000,000 ceiling applies to the observed cumulative full census. The
 canary therefore passes. The next tranche should run the sequential census on
 `deep-server` under `tmux`, stopping immediately if the observed cumulative

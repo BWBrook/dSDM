@@ -1,7 +1,7 @@
 {
   "schema_version": "goal048-seawfb-bioregional-freeze-v1.1",
   "goal_id": "goal048-seawfb-bioregional-design-freeze",
-  "status": "aggregate_canary_passed_compute_checkpoint",
+  "status": "sequential_census_implementation_ready_not_executed",
   "protocol_incident": {
     "receipt": "evidence/seawfb_bioregional_freeze/goal048/protocol_incident.json",
     "formal_use": "prohibited",
@@ -395,9 +395,24 @@
     "metadata/goal048_prerequisite_freeze.json",
     "evidence/seawfb_bioregional_freeze/goal048/aggregate_canary.json"
   ],
+  "sequential_census_outputs": {
+    "runner": "scripts/goal048_aggregate_census.py",
+    "queried_species_count": 96,
+    "preserved_ledger_species_count": 100,
+    "role_receipt": "data/processed/dsdm/goal048-seawfb-bioregional-freeze/role_freeze.json",
+    "not_queried_frozen_role_exclusions": [
+      {"name": "Ceyx azureus", "reason": "introduced_or_obligate_aquatic_scale_mismatch"},
+      {"name": "Fulica atra", "reason": "introduced_or_obligate_aquatic_scale_mismatch"},
+      {"name": "Haliaeetus leucogaster", "reason": "introduced_or_obligate_aquatic_scale_mismatch"},
+      {"name": "Spilopelia chinensis", "reason": "introduced_or_obligate_aquatic_scale_mismatch"}
+    ],
+    "tracked_aggregate_progress": "evidence/seawfb_bioregional_freeze/goal048/aggregate_census_progress.json",
+    "private_checkpoint_root": "data/processed/dsdm/goal048-seawfb-bioregional-freeze/census",
+    "private_terminal_receipt": "data/processed/dsdm/goal048-seawfb-bioregional-freeze/census/run.exit"
+  },
   "future_private_root": "data/processed/dsdm/goal048-seawfb-bioregional-freeze",
   "forbidden_work": [
-    "occurrence_counts_beyond_single_authorized_canary_in_this_tranche",
+    "occurrence_counts_without_explicit_census_authorization_and_galah_0_13_6_overlay",
     "occurrence_or_raw_row_download",
     "provider_or_event_row_acquisition",
     "canonical_or_bulk_bird_acquisition",

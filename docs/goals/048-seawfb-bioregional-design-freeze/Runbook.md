@@ -127,6 +127,42 @@ provider/event IDs, observer data, email/contact value, or canonical payload
 may be requested or retained. These ceilings concern transport only and cannot
 rank regions or taxa.
 
+## Sequential census execution
+
+Run the offline preflight before creating a session:
+
+```sh
+cd /Users/bwbrook/papers/dSDM
+uv run --with galah-python==0.13.6 python scripts/goal048_aggregate_census.py preflight --root .
+```
+
+After review and explicit live-run authorisation, dispatch locally on the Mac
+mini with one taxon at a time:
+
+```sh
+tmux new-session -d -s dsdm-goal048 'cd /Users/bwbrook/papers/dSDM && mkdir -p data/processed/dsdm/goal048-seawfb-bioregional-freeze/census && uv run --with galah-python==0.13.6 python scripts/goal048_aggregate_census.py run --root . > data/processed/dsdm/goal048-seawfb-bioregional-freeze/census/run.log 2>&1'
+```
+
+Check without opening any occurrence endpoint:
+
+```sh
+tmux has-session -t dsdm-goal048
+uv run python scripts/goal048_aggregate_census.py status --root .
+tail -n 40 data/processed/dsdm/goal048-seawfb-bioregional-freeze/census/run.log
+```
+
+Resume with the same `tmux new-session` command after a stopped session. The
+runner queries the 96 effort-eligible members of the preserved 100-name role
+ledger in frozen order; four exclusions are reported as
+`not_queried_frozen_role_exclusion` with their frozen reasons. It accepts only
+a contiguous checksum-valid checkpoint prefix, reuses the
+validated *Acanthiza pusilla* canary when its frozen position is reached, and
+never re-queries a valid completed species. A `.tmp` file, checkpoint gap,
+authority drift, conservation failure, malformed/missing coordinate, timeout,
+or resource ceiling stops fail-closed. `run.exit` is private and terminal;
+tracked progress contains aggregate totals and checkpoint inventory hashes
+only.
+
 ## Gates and response-free selection
 
 For each target, donor richness counts distinct frozen effort-universe species
@@ -135,7 +171,8 @@ other than that target. Species-cell evidence may only pass or fail the frozen
 candidate role score, ranking margin, target-role decision, or predictor.
 
 The 100-name seed ledger supplies an intentionally conservative Goal 048
-screen: any later expansion of the eligible donor universe can only relax
+screen; only its 96 effort-eligible members are transported in this census.
+Any later expansion of the eligible donor universe can only relax
 `X=10`/`X=20` support. Goal 049 may expand effort, auxiliary, and target
 universes under the same frozen taxonomic/ecological rules before canonical
 acquisition and before any holdout outcome access. It may not change,
