@@ -1829,7 +1829,7 @@
       "goal046_config": "b3f3005a0777330e28ff88a11497d76013fec8000bfee5451328b3278621afd2",
       "goal046_source": "5d44f8f5ca7509ff36a4b0da9c497ca2347303031081675729358cd8daaa851a",
       "goal046_summary": "868a2083036d7b5f14cde9137621977e06405033252551b80fd0d5107627c10b",
-      "goal047_source": "917d41d08b38e563505126a46afda0c8bd9a795cd861f22c134ccd14c0231f76",
+      "goal047_source": "6ceaa4affb897f20dad1c05b3a052c72517d1dab617cf4a8bbdbd9ec14f6235d",
       "mainland_modeling_source": "7a133232d84fe5a363252fbda772535d8262557c3b82f16a05c9831000577597",
       "mainland_training_source": "60bf28f7f9eaa6f4ea4805ba1d4f7acd2ca7e7d7050dd575959b91eb26838453",
       "model_adapters_source": "2e6ea5c013a00f07e9dfe9ecc29496785b4579dcbd96af08c90567a5cf63dfd9",
@@ -1838,8 +1838,8 @@
       "pyproject": "29b7c2f9f810ac35357fa9b85189002d92a54a4933cf87746f57ae27cc0a8d08",
       "uv_lock": "39c22925750ac8821f5420bdfe5ca39554b7906d812bd3a94a04e91c469284fd"
     },
-    "config_sha256": "9dd51f7268f8029551e8a053506adfeea897fa9bb7a354ac462ea9bf758324eb",
-    "source_sha256": "917d41d08b38e563505126a46afda0c8bd9a795cd861f22c134ccd14c0231f76"
+    "config_sha256": "f5aa391349d56af860ad6a33c8c0265164155e7c4fd6bf81971cf45dfc625c4c",
+    "source_sha256": "6ceaa4affb897f20dad1c05b3a052c72517d1dab617cf4a8bbdbd9ec14f6235d"
   },
   "predictor_authority": {
     "categorical_vocabulary": {

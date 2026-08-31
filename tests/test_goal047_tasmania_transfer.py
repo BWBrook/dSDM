@@ -227,6 +227,37 @@ def test_goal042_materialiser_synthetic_rows_are_unique_and_full_data():
     assert rows[0]["eligible_x3"] is True
 
 
+def test_live_mainland_replay_summary_exactly_matches_goal042_manifest():
+    cells, species_cells, diagnostics = goal047._load_mainland_authorities(ROOT)
+    config = json.loads((ROOT / goal047.CONFIG_PATH).read_text())
+    manifest = json.loads(
+        (ROOT / config["bindings"]["goal042_response_manifest"]["path"]).read_text()
+    )
+    donor_members = {}
+    for species in manifest["summary"]["cohort"]["support_taxa"]:
+        for cell in species_cells[species]:
+            donor_members.setdefault(cell, set()).add(species)
+    rows = goal042.materialise_mainland_rows(
+        TARGET,
+        cells,
+        donor_members,
+        species_cells[TARGET],
+    )
+    observed = goal047._mainland_response_summary(rows)
+    expected = manifest["summary"]["mainland_reference"][TARGET]
+    assert set(observed) == {
+        "reference_rows",
+        "presence_cells",
+        "support_cells_before_distance",
+        "distance_rejected_under_5000m",
+        "reference_background_cells",
+        "primary_x3_response_cells",
+        "primary_x3_presence_fraction",
+    }
+    assert observed == expected
+    assert diagnostics["tasmania_rows_retained"] == 0
+
+
 def test_lower_median_and_goal046_receipt_provenance_reject_fabrication():
     assert goal047.lower_median([9, 2, 8, 4, 6]) == 6
     with pytest.raises(goal047.Goal047Error, match="epoch_value_invalid"):

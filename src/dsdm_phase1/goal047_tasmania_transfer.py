@@ -615,16 +615,8 @@ def _load_mainland_authorities(root: Path) -> tuple[dict[str, tuple[Decimal, Dec
     return cells, dict(species_cells), diagnostics
 
 
-def _mainland_response_summary(rows: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
-    presences = sum(bool(row["is_presence"]) for row in rows)
-    backgrounds = {str(level): sum(bool(row[f"eligible_x{level}"]) for row in rows) for level in (2, 3, 5)}
-    total = presences + backgrounds["3"]
-    return {
-        "presence_cells": presences,
-        "reference_background_cells": backgrounds,
-        "primary_x3_response_cells": total,
-        "primary_x3_presence_fraction": presences / total,
-    }
+def _mainland_response_summary(rows: list[dict[str, Any]]) -> dict[str, Any]:
+    return goal042._summarise_mainland(rows)
 
 
 def _response_paths(root: Path) -> tuple[Path, Path]:
