@@ -1,0 +1,180 @@
+{
+  "schema_version": "goal047-contract-v2",
+  "goal_id": "goal047-tasmania-transfer-assessment",
+  "bindings": {
+    "goal046_config": {
+      "path": "config/goal046_mainland_dsdm.json",
+      "sha256": "b3f3005a0777330e28ff88a11497d76013fec8000bfee5451328b3278621afd2"
+    },
+    "goal046_summary": {
+      "path": "evidence/mainland_dsdm/goal046/summary.json",
+      "sha256": "868a2083036d7b5f14cde9137621977e06405033252551b80fd0d5107627c10b"
+    },
+    "goal046_source": {
+      "path": "src/dsdm_phase1/goal046_mainland_dsdm.py",
+      "sha256": "5d44f8f5ca7509ff36a4b0da9c497ca2347303031081675729358cd8daaa851a"
+    },
+    "goal042_config": {
+      "path": "config/goal042_transfer_response.json",
+      "sha256": "7cbaef4bf993b1813eb7175d38581d0d782706cb91d00358644b14133acb71c1"
+    },
+    "goal042_source": {
+      "path": "src/dsdm_phase1/goal042_transfer_response.py",
+      "sha256": "d000fd755375ac4702f55bbc5b51f967cff4b57ce2c9fa1335a4801a06e9d4c5"
+    },
+    "goal042_response_manifest": {
+      "path": "metadata/goal042_response_manifest.json",
+      "sha256": "dc67d68962f931a6dbeb103a742103a1ba59d9f22445377eabf0bf3c8bb806bc"
+    },
+    "goal040_domain_manifest": {
+      "path": "metadata/goal040_domain_boundary_manifest.json",
+      "sha256": "44435b4bd890fab04d5eba8b29801a0d1a7c509043c4ff51d25b429e488dd999"
+    },
+    "goal040_normalisation_manifest": {
+      "path": "metadata/goal040_normalisation_manifest.json",
+      "sha256": "a26bb4cf86dc72de52990fcb0471a0526e2fa55753f66626baee81b1702b058a"
+    },
+    "goal040_normalisation_source": {
+      "path": "src/dsdm_phase1/goal040_normalisation.py",
+      "sha256": "5ab227853bad07fedfe8618305611ca3b29228f0fa81d0229df5b2669e95279a"
+    },
+    "goal040_support_manifest": {
+      "path": "metadata/goal040_support_manifest.json",
+      "sha256": "a0a41f2320b6ac7512b821aeaf5cf231e487cbc974e31b34990ff609986201a6"
+    },
+    "goal040_support_source": {
+      "path": "src/dsdm_phase1/goal040_support.py",
+      "sha256": "fca254c6c4f8a5ee868a636393188648c20000df63894e283bbc307a5b4129ad"
+    },
+    "goal041_table_manifest": {
+      "path": "metadata/goal041_table_manifest.json",
+      "sha256": "fa18a25ba1992fc7a3b28edb6d78ceb2fc84b269486f968165ffd56fbcc5e3c1"
+    },
+    "goal041_source": {
+      "path": "src/dsdm_phase1/goal041_predictor_substrate.py",
+      "sha256": "984b01d18a4cc0c15b2e7d5f3d838598cf1fd63067922ed080fa7ede7cbc370d"
+    },
+    "goal044_config": {
+      "path": "config/goal044_mainland_conventional.json",
+      "sha256": "66350f80d58e58eb1c55fa95cc9e4c899d8792404b09acc26d40c71715828a68"
+    },
+    "goal044_summary": {
+      "path": "evidence/mainland_conventional/goal044/summary.json",
+      "sha256": "3bd0b89c107a62ee5ea53aac204dcdabc0b19670aeb2a360c6674bfac69f8a89"
+    },
+    "goal044_source": {
+      "path": "src/dsdm_phase1/goal044_mainland_conventional.py",
+      "sha256": "5f1d56ede8db3a008ed8a60e2a7fc24c589c7d03bbcd4cac3f0bae637cd88c63"
+    },
+    "models_source": {
+      "path": "src/dsdm/models.py",
+      "sha256": "71317e80514eeab68a316066f59382db2c96aa6bffb0dfd524e08895f2f9c6ee"
+    },
+    "mainland_training_source": {
+      "path": "src/dsdm_phase1/mainland_dsdm.py",
+      "sha256": "60bf28f7f9eaa6f4ea4805ba1d4f7acd2ca7e7d7050dd575959b91eb26838453"
+    },
+    "mainland_modeling_source": {
+      "path": "src/dsdm_phase1/mainland_modeling.py",
+      "sha256": "7a133232d84fe5a363252fbda772535d8262557c3b82f16a05c9831000577597"
+    },
+    "model_adapters_source": {
+      "path": "src/dsdm_phase1/model_adapters.py",
+      "sha256": "2e6ea5c013a00f07e9dfe9ecc29496785b4579dcbd96af08c90567a5cf63dfd9"
+    },
+    "modeling_contract_source": {
+      "path": "src/dsdm_phase1/modeling_contract.py",
+      "sha256": "342bb461ca3e6c6193984e9d0ec22ba3d18ee8a3fcaeaaf84710c72adf5649a9"
+    },
+    "goal043_manifest": {
+      "path": "metadata/goal043_manifest.json",
+      "sha256": "d1876995cba15bfccaf92a33ec299e7224fefd7e2d9dc4abb264bf8c901d67f7"
+    },
+    "goal043_transforms": {
+      "path": "metadata/goal043_transforms.json",
+      "sha256": "97883416552ae6338cfcf22d8858852fcd9e4637d81bf4fb9239c0fdb3295677"
+    },
+    "pyproject": {
+      "path": "pyproject.toml",
+      "sha256": "29b7c2f9f810ac35357fa9b85189002d92a54a4933cf87746f57ae27cc0a8d08"
+    },
+    "uv_lock": {
+      "path": "uv.lock",
+      "sha256": "39c22925750ac8821f5420bdfe5ca39554b7906d812bd3a94a04e91c469284fd"
+    },
+    "goal047_source": {
+      "path": "src/dsdm_phase1/goal047_tasmania_transfer.py",
+      "sha256": "917d41d08b38e563505126a46afda0c8bd9a795cd861f22c134ccd14c0231f76"
+    }
+  },
+  "scope": {
+    "region": "tasmania",
+    "targets": [
+      "Dasyurus maculatus",
+      "Notamacropus rufogriseus",
+      "Pseudocheirus peregrinus",
+      "Trichosurus vulpecula",
+      "Vombatus ursinus"
+    ],
+    "response_heads": [
+      "Dasyurus maculatus", "Gymnobelideus leadbeateri", "Macropus giganteus",
+      "Mastacomys fuscus", "Notamacropus rufogriseus", "Petauroides volans",
+      "Petaurus australis", "Petaurus norfolcensis", "Petrogale penicillata",
+      "Phascogale tapoatafa", "Phascolarctos cinereus", "Potorous longipes",
+      "Pseudocheirus peregrinus", "Pseudomys fumeus", "Pseudomys novaehollandiae",
+      "Pseudomys shortridgei", "Sminthopsis crassicaudata", "Sminthopsis leucopus",
+      "Trichosurus vulpecula", "Vombatus ursinus"
+    ],
+    "folds": [0, 1, 2, 3, 4],
+    "primary_surface": "camera_presence_or_camera_survey_supported_absence",
+    "secondary_surface": "all_goal042_tasmania_rows",
+    "response_precedence": "ala_or_camera_presence_over_camera_absence"
+  },
+  "design": {
+    "architecture": "bridge_control",
+    "arms": [
+      "target_only_random_init_resmlp",
+      "target_plus_q_linear_resmlp",
+      "multihead_frozen_trunk",
+      "multihead_full_finetune"
+    ],
+    "seed_labels": ["seed00", "seed01", "seed02", "seed03", "seed04"],
+    "methods": [
+      "target_only_random_init_resmlp",
+      "target_plus_q_linear_resmlp",
+      "multihead_frozen_trunk",
+      "multihead_full_finetune",
+      "selected_conventional",
+      "strict_q_conventional"
+    ],
+    "selected_conventional_candidates": {
+      "Dasyurus maculatus": {"family": "random_forest", "candidate_id": "rf00"},
+      "Notamacropus rufogriseus": {"family": "random_forest", "candidate_id": "rf00"},
+      "Pseudocheirus peregrinus": {"family": "hist_gradient_boosting", "candidate_id": "hgb04"},
+      "Trichosurus vulpecula": {"family": "random_forest", "candidate_id": "rf02"},
+      "Vombatus ursinus": {"family": "random_forest", "candidate_id": "rf00"}
+    },
+    "epoch_rule": "lower_median_of_five_matching_goal046_fold_selected_epoch_integers",
+    "threshold_rule": "frozen_mainland_oof_thresholds_no_tasmania_tuning",
+    "primary_metric": "roc_auc",
+    "secondary_metrics": ["tss", "balanced_accuracy", "mcc", "sensitivity", "specificity"]
+  },
+  "execution": {
+    "private_root": "data/processed/dsdm/goal047-tasmania-transfer",
+    "tracked_summary": "evidence/tasmania_transfer/goal047/summary.json",
+    "freeze_receipt": "evidence/tasmania_transfer/goal047/freeze.json",
+    "opening_receipt": "metadata/goal047_opening_receipt.json",
+    "validated_inventory": "data/processed/dsdm/goal047-tasmania-transfer/validated_inventory.json",
+    "canary": {"target": "Dasyurus maculatus", "held_fold": 0, "max_epochs": 2, "patience": 1}
+  },
+  "privacy": {
+    "tracked_predictions": false,
+    "tracked_cell_ids": false,
+    "tracked_coordinates": false,
+    "tracked_camera_identifiers": false,
+    "tracked_row_payload": false,
+    "preopening_tasmania_response_rows_read": 0,
+    "preopening_tasmania_predictor_rows_read": 0
+  },
+  "status": "preopening_only_production_not_run"
+}
