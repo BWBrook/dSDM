@@ -1,0 +1,395 @@
+{
+  "candidate_gate_aggregate": {
+    "candidate_x10_minimum": 1000,
+    "candidate_x10_minimum_observed": 937,
+    "candidate_x10_passing_region_count": 14,
+    "region_count": 15
+  },
+  "census": {
+    "completed_species": 96,
+    "cumulative_facet_groups": 7211394,
+    "cumulative_retained_species_cells": 2620016,
+    "cumulative_total_count": 30496223,
+    "frozen_role_exclusion_count": 4,
+    "model_outcome_counter": 0,
+    "occurrence_rows_downloaded": 0,
+    "planned_species": 96
+  },
+  "final_resolution": {
+    "alternatives_validated": [
+      {
+        "immutable_rank": 3,
+        "regions": [
+          "NCP",
+          "NET",
+          "SEH"
+        ],
+        "roles": {
+          "edge": "NET",
+          "mosaic": "SEH",
+          "supported": "NCP"
+        }
+      },
+      {
+        "immutable_rank": 4,
+        "regions": [
+          "NCP",
+          "NNC",
+          "SEH"
+        ],
+        "roles": {
+          "edge": "SEH",
+          "mosaic": "NNC",
+          "supported": "NCP"
+        }
+      }
+    ],
+    "authority": "Barry / Lab Lead",
+    "comparison_to_rank_3": {
+      "edge_score_gain": 0.0080645161,
+      "mosaic_score_gain": 0.0714285714,
+      "shared_supported_score_loss": 0.0054985337
+    },
+    "decision_date": "2026-08-31",
+    "pre_resolution_ambiguity_preserved": true,
+    "reason": "Select rank 4 because it gains 0.0080645161 on the environmental-edge role and 0.0714285714 on the fragmented/land-use-mosaic role versus rank 3, for a 0.0054985337 loss on the shared supported-transfer role. This transparent human resolution uses no occurrence magnitudes and was made before any model outcomes or model fitting.",
+    "role_assignment": {
+      "edge": "SEH",
+      "mosaic": "NNC",
+      "supported": "NCP"
+    },
+    "schema_version": "goal048-design-resolution-v1",
+    "selected_immutable_rank": 4,
+    "selected_regions": [
+      "NCP",
+      "SEH",
+      "NNC"
+    ]
+  },
+  "input_sha256": {
+    "candidate_metrics": "9465184a4c81346be9cf59f52c88f5bd244bc9a1869f7040824d9911e5126ede",
+    "census_progress": "3674ce31e3d5220ef3ae736b68f6c1fd8570bde71a3cadf45ef8a355ae8d7a93",
+    "config": "08726d899a5af331639e4e0144f8e34bae1d1e93108c766cdb66d1b2136ffc47",
+    "design_resolution": "70e3b68b58c3ae637774254d3f094e9a18e2c62b8463c94ee2727827615801f8",
+    "domain_cells": "3555b7895dc0ae913714c04cdd7bcf6a17a8a0bde33e6d36de041ba8346b2e9b",
+    "ibra": "bff6feea4da7e456e461149e454a83db3dcbfda090d295af4ec5bb4c0a7c06b4",
+    "ledger": "0c14fcc5c9d39c1c1a6587c52f41deb69d5ecb7cbc86225ec170127dda63d890",
+    "ledger_receipt": "34e60f0bd52370879b43613420eb529da6da02308eaa4d83c6631b502657787b",
+    "nvis": "5eca488f0c523dea1434d95695c1faa4752dd3862836bfd3717fbaabdd0c7a78",
+    "predictors": "ff7c43ceaf1abd1b56acb7f909d8d30852b99e466551449fb123f99e4204531e",
+    "ranked_sets": "c4675c19aaf1613cd6ae08b9589b2e59484c27902430bde7731c2e38d1c6c12f",
+    "role_freeze": "a74de4e81e36236199bd8f3a50079eb696fcc868f95126bd55855bc998ffe350",
+    "selected_holdouts_svg": "dd9733564f7ba3a0072bcce0da87b5cf3dbe30b55828c06e997e10736905a587"
+  },
+  "privacy": {
+    "coordinates_written": false,
+    "model_outcomes": 0,
+    "private_cell_lists_written": false,
+    "raw_occurrence_rows": 0
+  },
+  "ranking": {
+    "action": "selected_after_explicit_resolution",
+    "different_top_two_region_identity": true,
+    "estimable_set_count": 109,
+    "final_ambiguity_under_frozen_and_rule": true,
+    "first_feasible": {
+      "candidate_gate": {
+        "NCP": {
+          "eligible_land_cells": 24321,
+          "passes": true,
+          "predictor_complete_fraction": 0.9836355413017557,
+          "x10_effort_cells": 1614
+        },
+        "NET": {
+          "eligible_land_cells": 28038,
+          "passes": true,
+          "predictor_complete_fraction": 1.0,
+          "x10_effort_cells": 2367
+        },
+        "SEH": {
+          "eligible_land_cells": 83029,
+          "passes": true,
+          "predictor_complete_fraction": 0.9998916041383131,
+          "x10_effort_cells": 10692
+        }
+      },
+      "common_x10_panel": [
+        "Acanthiza lineata",
+        "Acanthiza pusilla",
+        "Acanthiza reguloides",
+        "Acanthorhynchus tenuirostris",
+        "Anthochaera carunculata",
+        "Anthochaera chrysoptera",
+        "Artamus cyanopterus",
+        "Cacatua galerita",
+        "Cacomantis flabelliformis",
+        "Caligavis chrysops",
+        "Chalcites lucidus",
+        "Climacteris picumnus",
+        "Colluricincla harmonica",
+        "Coracina novaehollandiae",
+        "Corcorax melanorhamphos",
+        "Cormobates leucophaea",
+        "Cracticus torquatus",
+        "Dacelo novaeguineae",
+        "Eopsaltria australis",
+        "Malurus cyaneus",
+        "Malurus lamberti",
+        "Manorina melanocephala",
+        "Melithreptus lunatus",
+        "Nesoptilotis leucotis",
+        "Pachycephala olivacea",
+        "Pachycephala pectoralis",
+        "Pardalotus punctatus",
+        "Pardalotus striatus",
+        "Petroica boodang",
+        "Petroica phoenicea",
+        "Phaps chalcoptera",
+        "Phylidonyris novaehollandiae",
+        "Platycercus elegans",
+        "Platycercus eximius",
+        "Rhipidura albiscapa",
+        "Strepera graculina",
+        "Zanda funerea",
+        "Zoothera lunulata",
+        "Zosterops lateralis"
+      ],
+      "common_x10_panel_count": 39,
+      "evaluation_training_gate_aggregate": {
+        "evaluation_presence_min": 37,
+        "evaluation_presence_tiles_min": 8,
+        "evaluation_x10_background_min": 156,
+        "evaluation_x10_background_tiles_min": 11,
+        "panel_target_region_count": 117,
+        "training_presence_min": 1913,
+        "training_presence_tiles_min": 50,
+        "training_x10_background_min": 16340,
+        "training_x10_background_tiles_min": 80
+      },
+      "immutable_rank": 3,
+      "minimum_role_score": 0.6906158357771262,
+      "regions": [
+        "NCP",
+        "NET",
+        "SEH"
+      ],
+      "roles": {
+        "edge": "NET",
+        "mosaic": "SEH",
+        "supported": "NCP"
+      },
+      "sum_role_scores": 2.288332635106829,
+      "x20_evaluation_only_diagnostic": {
+        "common_x10_panel_target_region_count": 117,
+        "common_x10_panel_x20_background_cells_max": 6033,
+        "common_x10_panel_x20_background_cells_min": 13,
+        "common_x10_panel_x20_diagnostic_pass_count": 33
+      }
+    },
+    "immutable_ranked_set_count": 147,
+    "pre_resolution_status": "ambiguous_stop",
+    "second_feasible": {
+      "candidate_gate": {
+        "NCP": {
+          "eligible_land_cells": 24321,
+          "passes": true,
+          "predictor_complete_fraction": 0.9836355413017557,
+          "x10_effort_cells": 1614
+        },
+        "NNC": {
+          "eligible_land_cells": 37510,
+          "passes": true,
+          "predictor_complete_fraction": 0.9966675553185818,
+          "x10_effort_cells": 5655
+        },
+        "SEH": {
+          "eligible_land_cells": 83029,
+          "passes": true,
+          "predictor_complete_fraction": 0.9998916041383131,
+          "x10_effort_cells": 10692
+        }
+      },
+      "common_x10_panel": [
+        "Acanthiza lineata",
+        "Acanthiza pusilla",
+        "Acanthiza reguloides",
+        "Acanthorhynchus tenuirostris",
+        "Anthochaera carunculata",
+        "Anthochaera chrysoptera",
+        "Artamus cyanopterus",
+        "Cacatua galerita",
+        "Cacomantis flabelliformis",
+        "Caligavis chrysops",
+        "Chalcites lucidus",
+        "Climacteris picumnus",
+        "Colluricincla harmonica",
+        "Coracina novaehollandiae",
+        "Corcorax melanorhamphos",
+        "Cormobates leucophaea",
+        "Cracticus torquatus",
+        "Dacelo novaeguineae",
+        "Eopsaltria australis",
+        "Malurus cyaneus",
+        "Malurus lamberti",
+        "Manorina melanocephala",
+        "Melithreptus lunatus",
+        "Nesoptilotis leucotis",
+        "Pachycephala olivacea",
+        "Pachycephala pectoralis",
+        "Pardalotus punctatus",
+        "Pardalotus striatus",
+        "Petroica boodang",
+        "Petroica phoenicea",
+        "Phaps chalcoptera",
+        "Phylidonyris novaehollandiae",
+        "Phylidonyris pyrrhopterus",
+        "Platycercus elegans",
+        "Platycercus eximius",
+        "Rhipidura albiscapa",
+        "Strepera graculina",
+        "Zanda funerea",
+        "Zoothera lunulata",
+        "Zosterops lateralis"
+      ],
+      "common_x10_panel_count": 40,
+      "evaluation_training_gate_aggregate": {
+        "evaluation_presence_min": 41,
+        "evaluation_presence_tiles_min": 6,
+        "evaluation_x10_background_min": 156,
+        "evaluation_x10_background_tiles_min": 11,
+        "panel_target_region_count": 120,
+        "training_presence_min": 1861,
+        "training_presence_tiles_min": 40,
+        "training_x10_background_min": 15442,
+        "training_x10_background_tiles_min": 80
+      },
+      "immutable_rank": 4,
+      "minimum_role_score": 0.6851173020527859,
+      "regions": [
+        "NCP",
+        "NNC",
+        "SEH"
+      ],
+      "roles": {
+        "edge": "SEH",
+        "mosaic": "NNC",
+        "supported": "NCP"
+      },
+      "sum_role_scores": 2.362327188940092,
+      "x20_evaluation_only_diagnostic": {
+        "common_x10_panel_target_region_count": 120,
+        "common_x10_panel_x20_background_cells_max": 6033,
+        "common_x10_panel_x20_background_cells_min": 13,
+        "common_x10_panel_x20_diagnostic_pass_count": 34
+      }
+    },
+    "signed_top_minus_runner_up_minimum_role_score": 0.005498533724340282,
+    "signed_top_minus_runner_up_sum_role_scores": -0.07399455383326314
+  },
+  "run_identity": "1d8691ebf23737e3dd1616215bb2b08bb0ec98239c7ae841567d19435fd2a4f3",
+  "schema_version": "goal048-estimability-selection-v1",
+  "selected_design": {
+    "boundary_map": {
+      "display_only_simplification_m": 3000,
+      "path": "evidence/seawfb_bioregional_freeze/goal048/selected_holdouts.svg",
+      "sha256": "dd9733564f7ba3a0072bcce0da87b5cf3dbe30b55828c06e997e10736905a587",
+      "source_ibra_sha256": "bff6feea4da7e456e461149e454a83db3dcbfda090d295af4ec5bb4c0a7c06b4"
+    },
+    "common_x10_panel": [
+      "Acanthiza lineata",
+      "Acanthiza pusilla",
+      "Acanthiza reguloides",
+      "Acanthorhynchus tenuirostris",
+      "Anthochaera carunculata",
+      "Anthochaera chrysoptera",
+      "Artamus cyanopterus",
+      "Cacatua galerita",
+      "Cacomantis flabelliformis",
+      "Caligavis chrysops",
+      "Chalcites lucidus",
+      "Climacteris picumnus",
+      "Colluricincla harmonica",
+      "Coracina novaehollandiae",
+      "Corcorax melanorhamphos",
+      "Cormobates leucophaea",
+      "Cracticus torquatus",
+      "Dacelo novaeguineae",
+      "Eopsaltria australis",
+      "Malurus cyaneus",
+      "Malurus lamberti",
+      "Manorina melanocephala",
+      "Melithreptus lunatus",
+      "Nesoptilotis leucotis",
+      "Pachycephala olivacea",
+      "Pachycephala pectoralis",
+      "Pardalotus punctatus",
+      "Pardalotus striatus",
+      "Petroica boodang",
+      "Petroica phoenicea",
+      "Phaps chalcoptera",
+      "Phylidonyris novaehollandiae",
+      "Phylidonyris pyrrhopterus",
+      "Platycercus elegans",
+      "Platycercus eximius",
+      "Rhipidura albiscapa",
+      "Strepera graculina",
+      "Zanda funerea",
+      "Zoothera lunulata",
+      "Zosterops lateralis"
+    ],
+    "common_x10_panel_count": 40,
+    "evaluation": {
+      "aggregate_support_used_for_estimability_gates_only": true,
+      "diagnostics": [
+        "balanced_accuracy",
+        "TSS",
+        "MCC",
+        "sensitivity",
+        "specificity"
+      ],
+      "outer_model_outcomes_unopened": true,
+      "primary_metric": "AUC",
+      "threshold_source": "training-only OOF predictions",
+      "thresholds_from_training_only": true
+    },
+    "firewall": {
+      "future_holdout_outcomes_opened": false,
+      "holdout_and_buffer_excluded_from": [
+        "model fitting",
+        "predictor transforms",
+        "pseudoabsence construction",
+        "inner spatial CV",
+        "tuning",
+        "threshold selection",
+        "architecture selection",
+        "predictor subset selection",
+        "stopping decisions"
+      ],
+      "training_only_tuning_thresholds_cv": true
+    },
+    "immutable_rank": 4,
+    "regions": [
+      "NCP",
+      "SEH",
+      "NNC"
+    ],
+    "roles": {
+      "edge": "SEH",
+      "mosaic": "NNC",
+      "supported": "NCP"
+    },
+    "simultaneous_50km_buffer": {
+      "applies_to_all_three_holdouts": true,
+      "distance_km": 50,
+      "excluded_from_training": true
+    },
+    "species_panel_policy": "conservative 40-species seed screen; Goal049 may expand the universe but cannot rerank or substitute these regions",
+    "training_and_inner_cv": "training uses the simultaneous-buffer complement; tuning, thresholds, architecture, predictor choices, stopping, and inner spatial CV use retained geography only",
+    "weighting": {
+      "equal_regions": true,
+      "equal_species_within_region": true
+    }
+  },
+  "selection_only": true,
+  "status": "selected_after_explicit_resolution"
+}

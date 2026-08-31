@@ -1,5 +1,34 @@
 # Plan
 
+## Completed v1.3 freeze
+
+The four count-free prerequisite freezes, aggregate census, portable predictor
+extension, response-free scoring, hard-gate filtering, ambiguity escalation,
+scientific resolution, and compact design freeze are complete. The selected
+simultaneous outer assessment is NCP (supported), SEH (edge), and NNC (mosaic),
+with complete regions and their external 50 km buffers excluded from all model
+development. No model prediction or future holdout performance outcome was
+opened.
+
+The aggregate census completed for all 96 effort species with 7,211,394 facet
+groups, 2,620,016 retained species-cell memberships, and 30,496,223 total
+occurrences. It retained no occurrence rows and produced no model outcomes.
+Peak RAM was 937,869,312 bytes and private disk use was 141,123,472 bytes.
+The four frozen role exclusions remain unchanged.
+
+The predictor extension completed with exactly 1,144,286 rows, including the
+1,125,325 preserved Goal 041 rows and 18,961 BBS additions. The private
+manifest reports missingness of 1,523 rows for each BIO layer, 1,814 for NVIS,
+41 for soil, and zero for ALUM and elevation; the extension read zero response
+inputs.
+
+The immutable ranking contained 147 sets and 109 were feasible. Ranks 1-2
+failed only AUA's frozen `X=10` candidate gate. The ambiguity rule fired
+between feasible ranks 3 and 4. Barry explicitly selected rank 4 after an
+independent scientific audit found a materially stronger edge/mosaic challenge
+for a small supported-role loss. The conservative primary panel is 40 seed
+targets; `X=20` is diagnostic and passes for 34.
+
 ## V1.1 repair step
 
 1. Record the premature two-identifier union/species-facet probe as a protocol
@@ -11,7 +40,7 @@
 4. Stop before taxonomy/BIE lookup, occurrence access, route implementation,
    predictor scoring, or candidate selection.
 
-## Prospective execution after separate authorisation
+## Completed execution sequence
 
 1. **Preflight.** Confirm the supported checkout and validate the v1.1 packet
    offline.
@@ -34,18 +63,24 @@
    time under its exact ordered identifier union; enforce all
    group/disk/RAM ceilings, snap and collapse groups to species-cells, checksum
    the private receipt, and discard coordinates.
-8. **Response-free predictor census.** Verify the portable ontology and derive
+8. **Response-free predictor census.** Extend the Goal 041 substrate to the
+   complete domain, prove old-row preservation and source overlap, then derive
    environmental, fragmentation, and land-use diagnostics without responses.
+   Use the fixed robust-scaling/full-SVD PCA basis, global ALUM level universe,
+   complete-cell rook graph, and anchored 50 km tile geometry.
 9. **Hard gates and joint selection.** Use species-cell evidence only for
    `X=10`, `X=20`, and estimability pass/fail gates; enumerate and rank the
    frozen simultaneous three-region solutions response-free.
-10. **Audit and freeze.** Perform one focused scientific audit, make at most one
-    material repair, and publish the compact freeze only if every fixed gate
-    passes. Otherwise stop with exact aggregate evidence.
+10. **Audit and freeze.** A focused scientific audit confirmed the frozen
+    ambiguity and recommended rank 4 on the prospective role trade-off. Barry
+    resolved the ambiguity explicitly; the ranking and occurrence gates were
+    not changed.
 11. **Closeout.** Validate privacy, provenance, deterministic replay, and zero
-    model outcomes. Stop before canonical acquisition or modelling.
+    model outcomes. Stop before canonical acquisition or modelling. Publish
+    only compact aggregate/score receipts and a boundary-only map; private
+    predictor, cell, and census payloads remain ignored.
 
 Goal 048 uses the mandatory 100-name seed ledger as a conservative feasibility
 screen. Goal 049 may expand all bird universes under the frozen rules, but may
-not change, substitute, or re-rank the selected regions; it reconstructs final
+not change, substitute, or re-rank NCP, SEH, or NNC; it reconstructs final
 labels and panels from canonical data before any holdout outcome access.

@@ -1,0 +1,22 @@
+{
+  "authority": "Barry / Lab Lead",
+  "comparison_to_rank_3": {
+    "edge_score_gain": 0.0080645161,
+    "mosaic_score_gain": 0.0714285714,
+    "shared_supported_score_loss": 0.0054985337
+  },
+  "decision_date": "2026-08-31",
+  "reason": "Select rank 4 because it gains 0.0080645161 on the environmental-edge role and 0.0714285714 on the fragmented/land-use-mosaic role versus rank 3, for a 0.0054985337 loss on the shared supported-transfer role. This transparent human resolution uses no occurrence magnitudes and was made before any model outcomes or model fitting.",
+  "role_assignment": {
+    "edge": "SEH",
+    "mosaic": "NNC",
+    "supported": "NCP"
+  },
+  "schema_version": "goal048-design-resolution-v1",
+  "selected_immutable_rank": 4,
+  "selected_regions": [
+    "NCP",
+    "SEH",
+    "NNC"
+  ]
+}

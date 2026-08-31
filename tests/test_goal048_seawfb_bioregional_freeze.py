@@ -14,6 +14,8 @@ SCRIPTS = Path(__file__).parents[1] / "scripts"
 sys.path.insert(0, str(SCRIPTS))
 goal048 = import_module("goal048_seawfb_bioregional_freeze")
 census = import_module("goal048_aggregate_census")
+predictor_extension = import_module("goal048_predictor_extension")
+response_free_scoring = import_module("goal048_response_free_scoring")
 Goal048Error = goal048.Goal048Error
 compile_query = goal048.compile_query
 validate_freezes = goal048.validate_freezes
@@ -23,6 +25,94 @@ FILTERS = [
     "decimalLongitude>=135.375", "decimalLongitude<=153.625",
     "decimalLatitude>=-43.6275", "decimalLatitude<=-22.7575",
 ]
+
+
+def test_goal048_final_design_resolution_is_frozen():
+    root = Path(__file__).parents[1]
+    evidence = root / "evidence/seawfb_bioregional_freeze/goal048"
+    resolution_path = evidence / "design_resolution.json"
+    receipt_path = evidence / "estimability_selection_receipt.json"
+    map_path = evidence / "selected_holdouts.svg"
+
+    assert resolution_path.is_file()
+    assert receipt_path.is_file()
+    assert map_path.is_file()
+
+    resolution = json.loads(resolution_path.read_text())
+    receipt = json.loads(receipt_path.read_text())
+    ranking = receipt["ranking"]
+    selected = ranking["second_feasible"]
+
+    assert resolution["authority"] == "Barry / Lab Lead"
+    assert resolution["decision_date"] == "2026-08-31"
+    assert resolution["selected_immutable_rank"] == 4
+    assert set(resolution["selected_regions"]) == {"NCP", "SEH", "NNC"}
+    assert resolution["role_assignment"] == {
+        "supported": "NCP", "edge": "SEH", "mosaic": "NNC"
+    }
+    assert receipt["status"] == "selected_after_explicit_resolution"
+    assert ranking["pre_resolution_status"] == "ambiguous_stop"
+    assert ranking["final_ambiguity_under_frozen_and_rule"] is True
+    assert ranking["estimable_set_count"] == 109
+    assert ranking["immutable_ranked_set_count"] == 147
+    assert ranking["first_feasible"]["immutable_rank"] == 3
+    assert ranking["first_feasible"]["common_x10_panel_count"] == 39
+    assert selected["immutable_rank"] == 4
+    assert selected["roles"] == resolution["role_assignment"]
+    assert selected["common_x10_panel_count"] == 40
+    assert selected["x20_evaluation_only_diagnostic"][
+        "common_x10_panel_x20_diagnostic_pass_count"
+    ] == 34
+    assert ranking["signed_top_minus_runner_up_minimum_role_score"] == pytest.approx(
+        0.005498533724340282
+    )
+    assert ranking["signed_top_minus_runner_up_sum_role_scores"] == pytest.approx(
+        -0.07399455383326314
+    )
+    assert receipt["privacy"] == {
+        "coordinates_written": False,
+        "model_outcomes": 0,
+        "private_cell_lists_written": False,
+        "raw_occurrence_rows": 0,
+    }
+
+    svg = map_path.read_text()
+    assert "Goal 048 IBRA7.1 outer-assessment design" in svg
+    for label in ("Naracoorte Coastal Plain", "South Eastern Highlands", "NSW North Coast"):
+        assert label in svg
+
+
+def test_goal048_response_free_contract_and_output_surfaces_are_frozen():
+    config = json.loads((Path(__file__).parents[1] / "config/goal048_seawfb_bioregional_freeze.json").read_text())
+    predictor = config["predictor_census"]
+    scoring = config["response_free_scoring"]
+    joint = config["joint_selection"]
+
+    assert predictor["starting_config"] == "config/goal041_predictor_substrate.json"
+    assert predictor["continuous_environmental_scoring"] == [
+        *(f"bio{i:02d}" for i in range(1, 20)), "elevation_mean", "elevation_sd"
+    ]
+    assert predictor["categorical_portability"] == ["nvis_mvg", "soil_order", "alum_secondary"]
+    assert scoring["systematic_sample_max_domain_cells"] == 100_000
+    assert scoring["systematic_sample_max_cells_per_region"] == 2_000
+    assert scoring["environment"]["pca_variance_retained_minimum"] == 0.90
+    assert scoring["mosaic_native_woody_fraction_minimum"] == 0.20
+    assert scoring["mosaic_native_woody_fraction_maximum"] == 0.80
+    assert joint["minimum_pairwise_centroid_distance_km"] == 250.0
+    assert config["buffer"]["external_training_exclusion_km"] == 50.0
+    assert predictor_extension.OUTPUT_NAME == "predictor_substrate.parquet"
+    assert str(response_free_scoring.OUTPUT_DIR) == "data/processed/dsdm/goal048-seawfb-bioregional-freeze/response_free"
+
+
+def test_goal048_response_free_contract_has_no_response_inputs():
+    source = Path(response_free_scoring.__file__).read_text()
+    assert "galah" not in source.lower()
+    assert "occurrence" not in source.lower()
+    assert "model_outcome" not in source.lower()
+    assert "selection_only" in source
+    assert predictor_extension.EXPECTED_OLD_ROWS == 1_125_325
+    assert predictor_extension.EXPECTED_ADDED_ROWS == 18_961
+    assert predictor_extension.EXPECTED_NEW_TOTAL == 1_144_286
 
 
 def test_query_object_is_identical_except_for_facet():

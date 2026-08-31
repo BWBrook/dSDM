@@ -139,3 +139,54 @@
 - Reused the loaded domain frame and immutable cell-ID set across all species,
   deriving canonical cell IDs directly instead of rebuilding a million-cell
   coordinate set per taxon. No occurrence access occurred.
+
+## 2026-08-31 - aggregate census and predictor extension checkpoint
+
+- Completed the bounded aggregate census for 96/96 effort-eligible species.
+  The high-level receipt records 7,211,394 facet groups, 2,620,016 retained
+  species-cell memberships, and 30,496,223 total occurrence counts. It retains
+  zero occurrence rows and records zero model outcomes. Peak RAM was
+  937,869,312 bytes and private disk use was 141,123,472 bytes. The four
+  frozen role exclusions remain unchanged and unqueried.
+- Completed the response-free predictor extension to exactly 1,144,286 rows:
+  1,125,325 preserved Goal 041 rows plus 18,961 BBS additions. Local
+  categorical sources, an aligned native-grid ALA WCS WorldClim crop for the
+  northern gap, and 29 exact GA elevation blocks were used. Old-row identity,
+  schema, overlap, and private receipts validated; response inputs read: 0.
+  Missingness was 1,523 rows for each BIO layer, 1,814 for NVIS, 41 for soil,
+  and zero for ALUM/elevation.
+- Made the response-free scoring contract explicit: continuous-complete
+  sorted-cell sampling, robust median/IQR plus deterministic full-SVD PCA,
+  all 455 unordered triples and 1,365 context-member values, average-tie
+  percentiles, simultaneous retained complements after three 50 km buffers,
+  mapped-mapped rook-edge fragmentation, global-level ALUM entropy, and
+  EPSG:3577 tiles anchored at `(0,0)`. No region selection or model outcome
+  was produced.
+
+## 2026-08-31 - response-free selection and final v1.3 freeze
+
+- Scored all 455 unordered triples and reduced them to 147 immutable ranked
+  sets after structural rules. Occurrence evidence was then used only for hard
+  pass/fail gates; 109 sets were feasible. Ranks 1 and 2 failed only because
+  AUA supplied 937 `X=10` cells, below the frozen 1,000-cell minimum.
+- The first feasible set was immutable rank 3, NCP/NET/SEH, with minimum role
+  score 0.6906158357771262, score sum 2.288332635106829, and 39 conservative
+  common targets. Rank 4, NCP/NNC/SEH, had minimum score
+  0.6851173020527859, score sum 2.362327188940092, and 40 targets. Signed
+  rank-3-minus-rank-4 margins were +0.005498533724340282 for the minimum and
+  -0.07399455383326314 for the sum, triggering the frozen ambiguity stop.
+- An independent scientific audit recommended rank 4 because its edge and
+  mosaic scores improved by 0.0080645161290322 and 0.0714285714285715 for a
+  supported-role loss of 0.005498533724340282. Barry explicitly resolved the
+  ambiguity on 2026-08-31 by selecting rank 4. No rule changed and occurrence
+  magnitudes were not used as a tie-break.
+- Frozen NCP (Naracoorte Coastal Plain) as supported transfer, SEH (South
+  Eastern Highlands) as environmental edge, and NNC (NSW North Coast) as
+  fragmented/land-use mosaic. All three complete regions and their external
+  50 km buffers are excluded simultaneously from development; Tasmania is
+  ordinary training geography.
+- Froze the conservative common primary panel at 40 seed targets; `X=20`
+  passes for 34 and remains evaluation-only. Goal 049 may expand the eligible
+  species universe but cannot rerank or substitute regions.
+- No occurrence row, model fit, prediction, threshold, holdout outcome,
+  performance result, manuscript change, or publication claim was produced.

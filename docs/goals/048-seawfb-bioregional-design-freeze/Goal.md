@@ -1,4 +1,4 @@
-# Goal 048 - SEAWFB bioregional outer-design freeze (v1.1)
+# Goal 048 - SEAWFB bioregional outer-design freeze (v1.3)
 
 ## Scientific objective
 
@@ -15,11 +15,24 @@ Tasmania is ordinary training geography and is not a holdout candidate. The
 selected regions are fixed challenge environments, not a random or replicated
 sample of south-east Australia.
 
-Version 1.1 repairs only the feasibility transport and prospective ordering.
-It does not change the response-blind 100-name feasibility seed ledger, species
-roles, seasonal policy, 15-region prospective rule, response-free scores,
-three-region joint selector, 50 km buffers, estimability thresholds, or
-development firewall.
+Version 1.3 completes the prospective design freeze. The simultaneous outer
+assessment is:
+
+1. **NCP - Naracoorte Coastal Plain:** environmentally supported geographic
+   transfer;
+2. **SEH - South Eastern Highlands:** environmental-edge transfer; and
+3. **NNC - NSW North Coast:** fragmented/land-use-mosaic transfer.
+
+Each complete region and its external 50 km buffer is excluded from every
+development operation. Tasmania remains ordinary retained training geography.
+The freeze changes none of the response-blind seed ledger, ecological roles,
+seasonal policy, candidate rule, response-free score, hard estimability gates,
+or development firewall.
+
+The frozen selector first returned a prespecified ambiguity stop. Barry then
+resolved that scientific ambiguity explicitly by choosing immutable
+response-free rank 4. This was not a changed ranking rule and occurrence
+support remained pass/fail only; occurrence magnitudes did not break the tie.
 
 ## Question, estimand, and observation process
 
@@ -101,8 +114,50 @@ They are transport ceilings, not ecological gates.
   estimability gates.
 - Select all three regions jointly against one simultaneous retained-training
   complement. Apply the fixed 50 km external buffers and every strict leakage
-  rule in the v1.1 config.
+  rule in the frozen config.
 - Richness and effort summaries remain prohibited as model predictors.
+
+## Completed response-free substrate
+
+The predictor extension produces the private
+`data/processed/dsdm/goal048-seawfb-bioregional-freeze/predictors/predictor_substrate.parquet`
+with exactly 1,144,286 rows: the 1,125,325 Goal 041 rows plus 18,961 complete
+BBS additions. It preserves the Goal 041 schema and old-row values, uses the
+local categorical sources, an aligned native-grid ALA WCS WorldClim crop for
+the northern gap, and 29 exact GA elevation blocks. Its overlap proof and manifest
+are checksum-bound; no response input is permitted.
+
+The response-free score stage uses continuous-complete cells in sorted
+`cell_id` order. Its full-domain PCA basis is sampled with endpoint-inclusive
+indices `floor(j*(n-1)/(m-1))`, capped at 100,000 domain cells (and 2,000 per
+region), scaled by median/IQR with exact-zero-IQR dimensions removed, centred
+by the arithmetic mean after scaling, and fitted by deterministic full SVD
+without whitening. The smallest component count retaining at least 0.90
+variance is selected. This basis is selection-only and must not be reused for
+Goal 049 or model fitting.
+
+For each of all 455 unordered triples, the simultaneous retained complement
+after the three 50 km buffers supplies the fixed, response-free reference
+before structural or occurrence gates. It contains at most 100,000 evenly
+sampled continuous-complete cells. The 1,365 context-member values use
+average-tie percentiles `(rank-1)/(n-1)`. Region environmental novelty is the
+p90 nearest retained-training distance in PCA space; geographic isolation is
+the median nearest retained-training distance in EPSG:3577 kilometres.
+
+Fragmentation uses the complete eligible-cell east/north rook graph, with
+mapped-to-mapped edges as denominator and discordant native-woody/non-woody
+edges as numerator; missing NVIS cells are excluded. The mosaic woody-fraction
+gate is inclusive at 0.20 and 0.80 and applies only to the mosaic role. ALUM
+uses `H=-sum(p ln p)` normalized by `log(K_global)`, never by a region-specific
+number of levels. Fixed EPSG:3577 50 km tiles are anchored at `(0,0)`.
+
+Structural validity requires distinct regions, official geometry intersection,
+touch, or overlap to count as adjacency, and every pairwise centroid distance
+to be at least 250 km. Each unordered set receives its best role permutation
+by descending minimum score, descending score sum, and ascending role tuple;
+sets are ranked by the same deterministic order. Ambiguity is assessed only
+between two different top sets and requires both frozen margins to be below
+their thresholds.
 
 The embedded 100-name list is a mandatory, response-blind feasibility seed,
 not the final ceiling on the bird pretraining universe. Goal 048 uses eligible
@@ -113,6 +168,35 @@ acquisition and before any holdout outcome access. It cannot change,
 substitute, or re-rank the three selected regions. Expanding donors can only
 relax support relative to this seed screen; final exact labels and panels are
 reconstructed from canonical Goal 049 data.
+
+## Frozen outer-assessment design
+
+Response-free scoring produced 147 immutable ranked sets, of which 109 passed
+the occurrence-based hard gates. Ranks 1 and 2 failed only because AUA had 937
+`X=10` effort-supported cells, below the frozen 1,000-cell minimum. The first
+feasible set was rank 3, NCP/NET/SEH, with minimum role score
+0.6906158357771262, score sum 2.288332635106829, and 39 conservative common
+targets. The selected rank-4 set, NCP/NNC/SEH, has minimum role score
+0.6851173020527859, score sum 2.362327188940092, and 40 conservative common
+targets.
+
+The signed rank-3-minus-rank-4 margins are +0.005498533724340282 for the
+minimum role score and -0.07399455383326314 for the sum. The frozen ambiguity
+rule therefore fired. The independent audit recommended rank 4 because it
+gains 0.0080645161290322 in environmental-edge score and
+0.0714285714285715 in mosaic score for a 0.005498533724340282 supported-role
+loss. Barry accepted that substantive trade-off. The conservative common
+primary panel contains 40 seed targets; `X=20` is an evaluation-only
+sensitivity and passes for 34 of those 40 targets.
+
+In later modelling, all transforms, feature handling, pseudo-background
+construction, spatial folds, tuning, stopping, thresholds, target subsampling,
+architecture decisions, and fits use only retained training geography. The
+training spatial-fold support gate means distinct EPSG:3577 50 km anchored
+support tiles per class, not records or cells treated as independent
+replicates. ROC AUC is primary. Balanced accuracy, TSS, MCC, sensitivity, and
+specificity are diagnostics using thresholds frozen from training-only OOF
+predictions.
 
 ## Acceptance criteria
 
@@ -128,9 +212,10 @@ Goal 048 is complete only when all of the following hold:
    `X=20`, coverage, and estimability gates.
 5. The portable predictor census supplies response-free environmental,
    fragmentation, and land-use scores without material ontology failure.
-6. The joint deterministic selector returns one feasible, stable,
-   scientifically coherent, nonadjacent and separated triple satisfying every
-   fixed gate and 50 km buffer.
+6. The joint deterministic selector returns feasible, scientifically coherent,
+   nonadjacent and separated triples satisfying every fixed gate and 50 km
+   buffer; any frozen ambiguity is escalated and resolved transparently without
+   changing the rank or using occurrence magnitudes.
 7. At least 20 target species form a common primary panel estimable in retained
    training geography and all three holdouts.
 8. A compact receipt and boundary-only map freeze the selected design, source
@@ -139,9 +224,11 @@ Goal 048 is complete only when all of the following hold:
    proves outcome counters remain zero, and passes one focused audit.
 
 Stop rather than weakening the contract if any transport result is
-unreconciled, fewer than three whole-region solutions exist, ranking is
-ambiguous or unstable, predictor portability materially fails, or the top
-triple is scientifically incoherent.
+unreconciled, fewer than three whole-region solutions exist, predictor
+portability materially fails, or the selected triple is scientifically
+incoherent. The ranking ambiguity did stop execution and was resolved by Barry
+as the prespecified scientific decision-maker; it was not silently weakened or
+resolved from occurrence magnitudes.
 
 ## Later evaluation contract
 
@@ -159,5 +246,7 @@ prohibited.
 This goal does not authorise occurrence-row download, canonical or bulk bird
 acquisition, final response/predictor tables, model scaffolding or fitting,
 prediction, thresholds, architecture revision, method rescue, manuscript
-revision, or publication claims. This v1.1 repair step also does not authorise
-implementation or execution of the aggregate route.
+revision, or publication claims. No model was fitted, no future holdout outcome
+was opened, and no prediction, threshold, or performance result was produced.
+Goal 049 may expand the species universe under the frozen rules, but it cannot
+rerank, substitute, or change NCP, SEH, or NNC.

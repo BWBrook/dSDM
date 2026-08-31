@@ -1,0 +1,37 @@
+{
+  "checkpoint_inventory_sha256": "218cb90d346de252a67826bff2cb4837ac663e679687015f7a2de4cace15f59f",
+  "completed_species": 96,
+  "cumulative_facet_groups": 7211394,
+  "cumulative_retained_species_cells": 2620016,
+  "cumulative_total_count": 30496223,
+  "frozen_role_exclusions": [
+    {
+      "name": "Ceyx azureus",
+      "reason": "introduced_or_obligate_aquatic_scale_mismatch",
+      "status": "not_queried_frozen_role_exclusion"
+    },
+    {
+      "name": "Fulica atra",
+      "reason": "introduced_or_obligate_aquatic_scale_mismatch",
+      "status": "not_queried_frozen_role_exclusion"
+    },
+    {
+      "name": "Haliaeetus leucogaster",
+      "reason": "introduced_or_obligate_aquatic_scale_mismatch",
+      "status": "not_queried_frozen_role_exclusion"
+    },
+    {
+      "name": "Spilopelia chinensis",
+      "reason": "introduced_or_obligate_aquatic_scale_mismatch",
+      "status": "not_queried_frozen_role_exclusion"
+    }
+  ],
+  "model_outcome_counter": 0,
+  "next_index": null,
+  "occurrence_rows_downloaded": 0,
+  "peak_ram_bytes_upper_bound": 937869312,
+  "planned_species": 96,
+  "private_disk_bytes": 141123472,
+  "schema_version": "goal048-aggregate-census-progress-v1",
+  "status": "complete"
+}

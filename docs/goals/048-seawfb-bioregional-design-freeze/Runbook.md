@@ -22,11 +22,22 @@ uv sync --locked
 Stop on unexplained Goal 048 changes or a broken locked environment. Never
 clean or revert unrelated work.
 
-## V1.1 restart boundary
+## V1.3 frozen boundary
 
-The current repair ends after packet/config/incident checks. It authorises no
-live occurrence count and no implementation module. A later executor must
-complete these count-free prerequisites in order:
+The count-free prerequisite freezes are complete and the sequential census has
+completed. The high-level census receipt records 96/96 effort species,
+7,211,394 facet groups, 2,620,016 retained species-cell memberships, and
+30,496,223 total occurrences, with zero occurrence rows and zero model
+outcomes. Peak RAM was 937,869,312 bytes and private disk use was
+141,123,472 bytes. Four frozen role exclusions remain unqueried.
+
+Response-free scoring and hard-gate filtering are complete. The frozen design
+is NCP (Naracoorte Coastal Plain, supported transfer), SEH (South Eastern
+Highlands, environmental edge), and NNC (NSW North Coast, mosaic). Treat all
+three whole regions and their external 50 km buffers as one simultaneous
+development exclusion. Tasmania remains ordinary training geography.
+
+The following count-free prerequisites were completed before the census:
 
 1. authenticate and checksum literal whole IBRA7.1 regions, the exact domain,
    the corrected 15-region prospective universe, and required BBS completion;
@@ -36,9 +47,29 @@ complete these count-free prerequisites in order:
 4. bind the complete official NVIS 7 code-label authority and checksum the
    native-woody/non-woody/missing mapping.
 
-No occurrence count may begin until a validator proves all four receipts are
-complete and mutually checksum-bound. Counts cannot resolve ambiguous taxonomy
-or ecology. The two taxa exposed in the v1.0 incident remain unaltered.
+At the original pre-count boundary, no occurrence count could begin until a
+validator proved all four receipts were complete and mutually checksum-bound.
+Counts could not resolve ambiguous taxonomy or ecology. The two taxa exposed
+in the v1.0 incident remain unaltered.
+
+## Predictor extension
+
+The private extension output is
+`data/processed/dsdm/goal048-seawfb-bioregional-freeze/predictors/predictor_substrate.parquet`.
+It contains exactly 1,144,286 rows: 1,125,325 preserved Goal 041 rows and
+18,961 BBS additions. The extension uses local categorical sources, an aligned
+native-grid ALA WCS WorldClim crop for the northern gap, and 29 exact GA elevation
+blocks. Its source overlap proof, block receipts, output manifest, and old-row
+identity are validated without reading response data. The completed extension
+reported BIO-layer missingness of 1,523 rows each, NVIS 1,814, soil 41, and
+zero for ALUM/elevation.
+
+The extension and score code are `scripts/goal048_predictor_extension.py` and
+`scripts/goal048_response_free_scoring.py`; their focused tests are
+`tests/test_goal048_predictor_extension.py` and
+`tests/test_goal048_response_free_scoring.py`. Generated predictor caches,
+private receipts, score ledgers, and progress files remain under the ignored
+Goal 048 private root.
 
 ## Whole-region and domain proof
 
@@ -179,20 +210,60 @@ acquisition and before any holdout outcome access. It may not change,
 substitute, or re-rank the Goal 048 regions. Canonical Goal 049 data reconstruct
 the final exact labels and panels.
 
-The response-free predictor and joint-selector contract remains unchanged:
-BIO1-BIO19 plus elevation drive environmental novelty; mapped NVIS drives
-fragmentation; ALUM drives land-use entropy. Score all ordered three-region
-solutions against their simultaneous retained complement, enforce distinct
-nonadjacent regions, 250 km centroid separation, fixed external 50 km buffers,
-the exact tie-breaks and ambiguity thresholds in config, and every strict
-development-firewall exclusion. Do not select manually from a failed list.
+The response-free predictor and joint-selector contract is now explicit:
+continuous-complete cells are ordered by `cell_id` and sampled with
+`floor(j*(n-1)/(m-1))`; domain and regional caps are 100,000 and 2,000. The
+PCA uses median/IQR scaling, exact-zero-IQR removal, arithmetic post-scaling
+centering, deterministic full SVD without whitening, and the smallest k at
+least 0.90 cumulative variance. This selection-only basis is not reused by
+Goal 049 or model fitting.
+
+All 455 unordered triples and their 1,365 member values are scored against the
+evenly sampled continuous-complete simultaneous retained complement after all
+three 50 km buffers. Percentiles use average ties `(rank-1)/(n-1)` before
+structural or occurrence gates. Environmental novelty is p90 nearest retained
+training distance in PCA space; geographic isolation is median nearest
+retained distance in EPSG:3577 kilometres. Fragmentation is the complete
+eligible-cell east/north rook graph using mapped-mapped edges and discordant
+native-woody/non-woody edges, excluding missing NVIS. ALUM is
+`H=-sum(p ln p)` normalized by `log(K_global)`. Fixed 50 km tiles use EPSG:3577
+with origin `(0,0)`.
+
+The completed selector enforced distinct, nonadjacent official regions, where geometry intersections,
+touches, and overlaps are adjacency, and require every centroid pair to be at
+least 250 km apart. Choose one best role permutation per unordered set by
+minimum score, score sum, and ascending role tuple; rank unique sets by the
+same order and stop only if the top two different sets fall below both frozen
+ambiguity margins. The candidate geometry invariants are 756,836 candidate
+cells, 387,450 other-domain cells, and 149 structurally valid sets. Occurrence
+evidence remains pass/fail only for support and estimability gates and must not
+score or rank regions.
+
+The ambiguity rule did stop between feasible ranks 3 and 4. Barry resolved it
+explicitly in favour of rank 4 after an independent audit of the response-free
+role trade-off. Do not reinterpret this as a changed rank rule or an
+occurrence-based tie-break. The primary panel is the 40 conservative seed
+targets estimable across retained training and all three regions. `X=20`
+passes for 34 and remains an evaluation-only sensitivity.
+
+For Goal 049 and later modelling, every transform, pseudo-background rule,
+fold assignment, tuning operation, early-stopping decision, threshold,
+architecture choice, target subsample, and fit is learned only inside retained
+training geography. The spatial-fold support gate means distinct anchored
+EPSG:3577 50 km support tiles per class. Holdout label memberships were used
+only for frozen pass/fail estimability gates; no model prediction or
+performance outcome may be opened until the final frozen model is evaluated.
+AUC is primary; BA, TSS, MCC, sensitivity, and specificity are diagnostics
+with training-only OOF thresholds.
 
 ## Evidence and privacy
 
-The v1.1 repair tracks only the packet/config, Log/Decision, and compact
-protocol-incident receipt. Future execution may add one aggregate freeze
-receipt and one boundary-only map. Raw coordinates, species-cell lists, and
-candidate-cell tables remain ignored under
+Tracked outputs include the packet/config, Goal048 docs, compact incident
+receipt, aggregate progress, predictor/score scripts and focused tests,
+`estimability_selection_receipt.json`, `design_resolution.json`, and the
+boundary-only `selected_holdouts.svg`.
+Raw coordinates, species-cell lists, predictor caches, and candidate-cell
+tables remain ignored under
 `data/processed/dsdm/goal048-seawfb-bioregional-freeze/` and must be removed if
 the goal stops before they become a valid checksum-bound receipt.
 
@@ -208,7 +279,11 @@ Run:
 ```sh
 jq empty config/goal048_seawfb_bioregional_freeze.json
 jq empty evidence/seawfb_bioregional_freeze/goal048/protocol_incident.json
+jq empty evidence/seawfb_bioregional_freeze/goal048/estimability_selection_receipt.json
+jq empty evidence/seawfb_bioregional_freeze/goal048/design_resolution.json
 uv run --with galah-python==0.13.6 pytest -q tests/test_goal048_seawfb_bioregional_freeze.py
+uv run --with galah-python==0.13.6 pytest -q tests/test_goal048_predictor_extension.py tests/test_goal048_response_free_scoring.py tests/test_goal048_estimability_selection.py
+uv run python -m py_compile scripts/goal048_predictor_extension.py scripts/goal048_response_free_scoring.py scripts/goal048_estimability_selection.py
 uv run --with galah-python==0.13.6 python scripts/goal048_seawfb_bioregional_freeze.py validate-freezes --root .
 uv run --with galah-python==0.13.6 python scripts/goal048_seawfb_bioregional_freeze.py validate --root .
 uv run pytest -q
@@ -218,12 +293,14 @@ git status --short --branch
 
 Also scan changed Goal 048 files for email/contact values, query URLs,
 coordinates, provider/event IDs, occurrence rows, model outcomes, and selected
-region claims. Do not rerun live ALA access or the aggregate canary, and do not
-run scoring.
+region claims inconsistent with NCP/SEH/NNC. Do not rerun live ALA access, the aggregate census, or predictor
+acquisition merely to validate this delivery. Do not open private occurrence
+payloads.
 
 ## Stop and report
 
-Report changed/deleted paths, validation results, incident exclusions, and the
-exact prospective restart boundary. Do not stage, commit, push, acquire rows,
-score candidates, select regions, construct models, predict, threshold, or
-edit the manuscript.
+Report the frozen regions and roles, signed ambiguity margins, hard-gate
+results, primary/sensitivity panel sizes, validation, privacy, and zero outcome
+counters. Do not acquire rows, construct models, predict, threshold, or edit
+the manuscript. Goal 049 may expand the species universe under the frozen
+rules but cannot rerank or change NCP, SEH, or NNC.
