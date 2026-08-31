@@ -1,0 +1,217 @@
+{
+  "schema_version": "goal048-seawfb-bioregional-freeze-v1",
+  "goal_id": "goal048-seawfb-bioregional-design-freeze",
+  "status": "prespecified_not_implemented",
+  "time": {
+    "start_year": 2001,
+    "end_year": 2025,
+    "interpretation": "integrated_contemporary_relative_habitat_suitability"
+  },
+  "ibra_authority": {
+    "version": "7.1",
+    "publisher": "Australian Government Department of Climate Change, Energy, the Environment and Water",
+    "source_url": "https://gis.environment.gov.au/gispubmap/rest/services/ogc_services/IBRA7_Subregions/FeatureServer/0",
+    "expected_region_count": 89,
+    "expected_subregion_count": 419,
+    "holdout_unit": "complete_official_bioregion_dissolved_from_all_official_subregions",
+    "reject_clipped_holdout": true
+  },
+  "domain": {
+    "crs": "EPSG:4326",
+    "resolution_degree": 0.01,
+    "starting_authority": "metadata/goal040_domain_boundary_manifest.json",
+    "candidate_region_rule": "mainland_ibra7_1_region_with_at_least_0_80_official_land_area_overlap_with_goal040_exact_domain",
+    "prospective_expansion_rule": "before_occurrence_counts_expand_to_complete_official_geometry_of_every_candidate_region",
+    "cell_assignment": "centroid_in_complete_region_after_authoritative_land_and_open_water_masks",
+    "tasmania_role": "ordinary_training_geography_not_holdout_candidate",
+    "selected_holdout_count": 3
+  },
+  "species_universes": {
+    "freeze_before_counts": true,
+    "effort": "accepted_native_terrestrial_nonmarine_birds_used_only_for_observation_effort",
+    "auxiliary": "reviewed_southeast_woodland_or_forest_birds_eligible_as_pretraining_heads",
+    "target": "reviewed_focal_woodland_or_forest_birds_compatible_with_static_integrated_2001_2025_suitability",
+    "required_exclusions": [
+      "introduced",
+      "captive",
+      "fossil_or_subfossil",
+      "marine_or_pelagic",
+      "obligate_aquatic",
+      "unresolved_species_concept"
+    ],
+    "seasonality_policy": {
+      "effort": "include_regularly_recorded_native_terrestrial_birds_regardless_of_seasonal_use",
+      "auxiliary_and_target": "include_residents_and_regularly_recurring_seasonal_migrants_under_integrated_2001_2025_habitat_use",
+      "exclude": "strongly_nomadic_or_irruptive_taxa_without_a_stable_static_pooled_distribution",
+      "authority": "literature_or_authoritative_ecological_source_with_reason_frozen_before_counts",
+      "ambiguous_action": "stop_for_scientific_review_never_select_by_support"
+    }
+  },
+  "bounded_census": {
+    "unit": "unique_accepted_species_by_0_01_degree_cell",
+    "minimum_fields_only": true,
+    "provider_id_deduplication_required": true,
+    "count_before_rows": true,
+    "resource_ceiling": {
+      "maximum_total_indexed_rows": 5000000,
+      "maximum_rows_per_taxon": 500000,
+      "bytes_per_row_working_projection": 2048,
+      "working_multiplier": 5,
+      "minimum_free_bytes_after_projection": 32212254720
+    },
+    "purpose": "bounded_disposable_feasibility_snapshot_only",
+    "raw_and_cell_level_storage": "ignored",
+    "canonical_bulk_acquisition": false
+  },
+  "effort_support": {
+    "donor_definition": "distinct_accepted_effort_universe_species_in_cell_excluding_focal_target",
+    "background_definition": "focal_target_not_recorded_in_cell_and_donor_count_at_least_x",
+    "primary_x": 10,
+    "evaluation_only_sensitivity_x": 20,
+    "require_x20_subset_of_x10": true,
+    "labels": "effort_supported_target_group_background_not_true_absence",
+    "richness_or_effort_as_model_predictor": false
+  },
+  "predictor_census": {
+    "starting_config": "config/goal041_predictor_substrate.json",
+    "continuous_environmental_scoring": [
+      "bio01", "bio02", "bio03", "bio04", "bio05", "bio06", "bio07",
+      "bio08", "bio09", "bio10", "bio11", "bio12", "bio13", "bio14",
+      "bio15", "bio16", "bio17", "bio18", "bio19", "elevation_mean",
+      "elevation_sd"
+    ],
+    "categorical_portability": ["nvis_mvg", "soil_order", "alum_secondary"],
+    "native_woody_ontology": {
+      "freeze_before_counts_and_scoring": true,
+      "authority": "checksum_bound_official_nvis_7_mvg_code_label_authority",
+      "classes": ["native_woody", "non_woody", "missing"],
+      "ambiguous_unknown_or_no_data": "missing",
+      "classification_from_candidate_results": false,
+      "freeze_receipt_requires": ["authority_sha256", "ordered_code_label_mapping", "mapping_sha256", "missing_codes"]
+    },
+    "region_specific_substitution": false,
+    "material_portability_defect_action": "stop"
+  },
+  "response_free_scoring": {
+    "systematic_sample_max_cells_per_region": 2000,
+    "systematic_sample_max_domain_cells": 100000,
+    "sample_order": "sorted_cell_id_evenly_spaced",
+    "environment": {
+      "scaling": "domain_sample_median_and_iqr_remove_zero_iqr_only",
+      "pca_variance_retained_minimum": 0.90,
+      "novelty_statistic": "p90_euclidean_nearest_joint_retained_training_distance_in_pc_space"
+    },
+    "geographic_isolation": "median_nearest_joint_retained_training_distance_km_after_buffer",
+    "fragmentation": "full_grid_native_woody_non_woody_edge_density_over_mapped_nvis7_cells_only",
+    "landuse_mosaic": "shannon_entropy_alum_secondary",
+    "mosaic_native_woody_fraction_minimum": 0.20,
+    "mosaic_native_woody_fraction_maximum": 0.80,
+    "response_fields_prohibited_from_scores": [
+      "species_identity",
+      "presence_count",
+      "background_count",
+      "prevalence",
+      "expected_modelability",
+      "response_predictor_association",
+      "model_outcome"
+    ]
+  },
+  "joint_selection": {
+    "roles": ["environmentally_supported_geographic_transfer", "environmental_edge", "fragmented_landuse_mosaic"],
+    "simultaneous_complement": true,
+    "regions_must_be_distinct": true,
+    "regions_must_be_nonadjacent": true,
+    "minimum_pairwise_centroid_distance_km": 250.0,
+    "supported_score": "mean(one_minus_environmental_novelty_percentile,geographic_isolation_percentile)",
+    "edge_score": "environmental_novelty_percentile",
+    "mosaic_score": "mean(fragmentation_percentile,landuse_entropy_percentile)",
+    "ranking": [
+      "descending_minimum_role_score",
+      "descending_sum_role_scores",
+      "ascending_concatenated_official_region_codes"
+    ],
+    "ambiguity": {
+      "requires_different_top_two_region_identity": true,
+      "minimum_role_score_margin_below": 0.01,
+      "summed_role_score_margin_below": 0.02,
+      "action": "stop_and_escalate"
+    }
+  },
+  "buffer": {
+    "external_training_exclusion_km": 50.0,
+    "applies_to_all_three_holdouts_simultaneously": true,
+    "evaluation_region_is_unbuffered_complete_region": true,
+    "interpretation": "pragmatic_immediate_boundary_guardrail_not_full_spatial_decorrelation",
+    "infeasible_action": "reject_triple_never_shrink_post_hoc"
+  },
+  "estimability": {
+    "candidate_region_minimum_predictor_complete_fraction": 0.95,
+    "candidate_region_minimum_eligible_land_cells": 5000,
+    "candidate_region_minimum_x10_effort_cells": 1000,
+    "evaluation_minimum_presence_cells_per_target_region": 30,
+    "evaluation_minimum_x10_background_cells_per_target_region": 100,
+    "evaluation_minimum_50km_tiles_per_class": 4,
+    "training_minimum_presence_cells_per_target": 200,
+    "training_minimum_x10_background_cells_per_target": 500,
+    "training_minimum_spatial_folds_per_class": 4,
+    "common_primary_target_panel_minimum": 20,
+    "gate_use": "pass_fail_only_never_score_margin"
+  },
+  "development_firewall": {
+    "excluded_geography": "all_selected_holdout_regions_plus_all_external_50km_buffers",
+    "prohibited_uses": [
+      "auxiliary_pretraining",
+      "target_fitting",
+      "transforms",
+      "categorical_vocabularies",
+      "pseudoabsence_training_or_support",
+      "internal_cross_validation",
+      "tuning",
+      "early_stopping",
+      "thresholds",
+      "architecture_selection",
+      "model_family_selection",
+      "target_subset_selection",
+      "auxiliary_species_learning_curve_decisions"
+    ],
+    "internal_cv_geography": "retained_training_only"
+  },
+  "future_evaluation": {
+    "primary_metric": "roc_auc",
+    "diagnostic_metrics": ["balanced_accuracy", "tss", "mcc", "sensitivity", "specificity"],
+    "threshold_source": "training_only_out_of_fold_predictions",
+    "primary_comparators": ["matched_target_only_neural", "selected_conventional"],
+    "primary_tasks": "common_target_species_by_region_paired_method_contrasts",
+    "aggregation": ["equal_species_weight_within_region", "equal_region_weight_across_three_regions"],
+    "naive_independent_replicates": false,
+    "occupancy_probability_claim": false
+  },
+  "tracked_outputs": [
+    "metadata/goal048_bioregional_freeze.json",
+    "evidence/seawfb_bioregional_freeze/goal048/candidate_summary.json",
+    "evidence/seawfb_bioregional_freeze/goal048/selected_regions.svg"
+  ],
+  "private_root": "data/processed/dsdm/goal048-seawfb-bioregional-freeze",
+  "forbidden_work": [
+    "canonical_or_bulk_bird_acquisition",
+    "final_response_or_predictor_table_construction",
+    "model_scaffolding",
+    "model_fitting",
+    "prediction",
+    "threshold_estimation",
+    "architecture_or_family_revision",
+    "manuscript_revision",
+    "commit_or_push_before_orchestrator_acceptance"
+  ],
+  "completion": {
+    "automatic_freeze_if_top_triple_passes_all_gates_and_role_coherence": true,
+    "stop_conditions": [
+      "fewer_than_three_complete_region_solutions",
+      "unstable_or_ambiguous_ranking",
+      "material_predictor_portability_defect",
+      "scientifically_incoherent_top_triple",
+      "model_outcome_counter_nonzero"
+    ],
+    "model_outcome_counter_required": 0
+  }
+}

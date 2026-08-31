@@ -112,6 +112,16 @@ The bird pipeline should restart from reproducible acquisition and data cleanup,
 then repeat analysis-ready dataset construction, conventional modelling,
 feedforward dSDM evaluation, and case-study synthesis.
 
+The bird outer assessment will not repeat the mammal island-transfer design.
+Tasmania is ordinary training geography. Before bird acquisition or modelling
+outcomes are inspected, Goal 048 will prospectively select and freeze three
+complete IBRA7.1 bioregions as simultaneous outer holdouts: an environmentally
+supported geographic-transfer region, an environmental-edge region, and a
+fragmented or land-use-mosaic region. All holdouts and their external training
+buffers remain outside every development decision. This tests transfer across
+contrasting ecological settings without treating the fixed regions as random
+or independent replicates of south-east Australia.
+
 ## Phased programme
 
 ### Phase 0: Preserve, inventory, and orient
@@ -249,8 +259,7 @@ unopened and cannot inform training or tuning.
 
 ### Phase 7: Southeastern mammals modelling and bridge synthesis
 
-Status: conventional and corrected dSDM mainland development complete through
-Goal 046; Tasmania transfer evaluation remains pending and sealed.
+Status: complete through the one-shot Goal 047 Tasmania transfer assessment.
 
 Fit strong conventional target-only models and the prespecified dSDM transfer
 arms, evaluate once in Tasmania, and determine whether additional pretraining
@@ -278,6 +287,13 @@ over the best conventional model across the five targets. This remains a
 small mainland development signal, not geographic-transfer evidence; Tasmania
 remained sealed at `0/0` and must be evaluated only once under a separately
 frozen goal.
+
+Goal 047 then opened the frozen Tasmania assessment once. Full dSDM did not
+show a transferable advantage over target-only neural or conventional models
+for the five shared mammals. The result is a descriptive null for this compact,
+high-prevalence, environmentally difficult test; it is retained without
+post-hoc refitting or rescue and does not decide the species-rich bird
+pretraining hypothesis.
 
 ### Phase 8: Method-freeze checkpoint
 
@@ -389,7 +405,7 @@ wide-network confirmation, and retained the full predictor panel. The small,
 heterogeneous original multispecies signal did not become a convincing
 Tasmanian transfer benefit; the outer assessment remains sealed.
 
-The programme is now in the southeastern-mammal geographic-transfer bridge.
+The southeastern-mammal geographic-transfer bridge is now complete.
 Goal040 froze and acquired a 21-taxon southeastern cohort, Goal041 built the
 common 24-predictor mainland/Tasmania table, Goal042 froze 20 mainland response
 heads plus camera-supported Tasmania evaluation for five shared targets, and
@@ -397,6 +413,7 @@ Goal043 completed mainland partitions, split-authorised responses, and
 split-fitted transformations. Goals044-046 then completed the conventional and
 corrected dSDM mainland development experiments; Goal046 supersedes the Goal
 045 full-endpoint claim because it enforces strict leave-target-out support.
-The next scientific boundary is a prospectively frozen, one-shot Tasmania
-transfer assessment; Tasmania must not inform any further development or
-selection.
+Goal047 completed the prospectively frozen, one-shot Tasmania transfer and
+found no transferable dSDM advantage for these five mammals. The programme now
+moves to Goal048: a prospective three-whole-IBRA7.1-region outer-design freeze
+for the SEAWFB case, with Tasmania retained as ordinary training geography.
