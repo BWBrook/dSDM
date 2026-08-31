@@ -1,0 +1,55 @@
+{
+  "schema_version": "goal048-protocol-incident-v1.1",
+  "goal_id": "goal048-seawfb-bioregional-design-freeze",
+  "incident_date": "2026-08-31",
+  "incident": "premature_two_identifier_union_and_species_facet_probe",
+  "prospective_order_valid": false,
+  "observed_aggregates": {
+    "two_identifier_union_total": 1300399,
+    "species_facets": [
+      {
+        "taxon": "Acanthiza pusilla",
+        "count": 709742
+      },
+      {
+        "taxon": "Pardalotus punctatus",
+        "count": 615459
+      }
+    ],
+    "species_facet_sum": 1325201,
+    "facet_sum_minus_union_total": 24802,
+    "separate_individual_taxon_queries_completed": 0
+  },
+  "evidence_limitations": [
+    "no_raw_service_envelope",
+    "no_serialized_request_receipt",
+    "no_response_digest",
+    "no_independent_requery",
+    "union_and_facet_semantics_not_reconstructable"
+  ],
+  "formal_exclusions": [
+    "transport_or_resource_gate",
+    "taxon_inclusion_exclusion_or_role",
+    "seasonal_classification",
+    "region_score_or_ranking",
+    "x10_or_x20_support_gate",
+    "estimability_gate",
+    "scientific_interpretation"
+  ],
+  "prospective_query_correction": "one_biological_species_per_query_under_its_exact_ordered_parent_descendant_subspecies_and_necessary_historical_alias_identifier_union_cross_species_unions_forbidden",
+  "exposed_taxa_disposition": "preserve_as_mandatory_feasibility_seeds_without_pruning_or_reclassification",
+  "forbidden_work_counters": {
+    "occurrence_rows_retained": 0,
+    "coordinates_retained": 0,
+    "provider_or_event_identifiers_retained": 0,
+    "email_or_contact_values_retained": 0,
+    "candidate_scores": 0,
+    "ranked_triples": 0,
+    "selected_regions": 0,
+    "models": 0,
+    "predictions": 0,
+    "thresholds": 0,
+    "model_outcomes": 0
+  },
+  "disposition": "exclude_incident_counts_and_restart_prospectively_under_v1_1"
+}

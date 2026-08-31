@@ -1,48 +1,49 @@
 # Plan
 
-1. **Preflight and bind.** Confirm a clean supported checkout; read the exact
-   authorities listed in the runbook; validate the Goal 048 packet offline.
-2. **Whole-region authority.** Retrieve or replay the official IBRA7.1
-   geometry, prove 89 regions/419 subregions, dissolve by official region code,
-   and reconcile the old frame without using occurrence evidence.
-3. **Prospective domain.** Build the candidate universe from complete mainland
-   regions satisfying the frozen overlap rule. Expand the grid to the complete
-   geometry of every candidate region before any response census. Tasmania
-   remains in training and outside the candidate universe.
-4. **Count-free species-role freeze.** Resolve and review the effort,
-   auxiliary, and target universes, including habitat, nativeness, marine/
-   aquatic exclusions, and literature-based seasonal ecology. Permit regularly
-   recurring seasonal migrants under the integrated habitat-use estimand;
-   exclude strongly nomadic/irruptive static targets and stop on ambiguity.
-5. **Count-free vegetation ontology.** Bind the official NVIS 7 code-label
-   authority by checksum and freeze every code as native woody, non-woody, or
-   missing. Keep ambiguous, unknown, and no-data codes missing and record the
-   mapping digest before counts or candidate scoring.
-6. **Bounded count/resource gate.** Request counts only, project minimal-field
-   rows, disk, and runtime, and stop if the frozen ceiling fails. Do not sample
-   a failed census into apparent feasibility.
-7. **Minimal-field feasibility census.** Materialise only the fields required for
-   accepted taxon identity, date, coordinate/uncertainty QA, provider-ID
-   deduplication, and species-cell collapse. Keep raw and cell-level evidence
-   ignored. This is a bounded, disposable feasibility snapshot, not canonical
-   or bulk acquisition. Report `X=10` and `X=20` support and 50 km tile
-   coverage only in aggregate.
-8. **Response-free predictor census.** Verify the portable predictor ontology
-   across the prospectively expanded domain, build deterministic sampled
-   environmental summaries, and calculate complete-region fragmentation and
-   land-use summaries. Do not join responses to predictors.
-9. **Joint selection.** Apply hard feasibility gates without adding their
-   margins to the score. Enumerate ordered triples, recompute every role score
-   against the joint holdout-plus-buffer complement, enforce nonadjacency and
-   separation, and apply exact deterministic tie-breaking.
-10. **Focused audit.** Inspect the candidate map and aggregate scores for whole-
-   region coverage, role fidelity, ranking stability, source artefacts,
-   observation-process confounding, and firewall violations. Perform at most
-   one material repair pass.
-11. **Freeze or stop.** Publish the compact freeze only if one top triple passes
-    every gate. Otherwise publish a blocked aggregate receipt and escalate the
-    specific scientific defect without relaxing thresholds or selecting a
-    convenient alternative.
-12. **Closeout.** Run the full validation ladder, report residual limitations,
-    and stop before canonical acquisition or modelling. Commit and push only
-    after orchestrator acceptance.
+## V1.1 repair step
+
+1. Record the premature two-identifier union/species-facet probe as a protocol
+   incident and exclude its counts from all formal decisions and gates.
+2. Replace the row/index transport contract with the server-side aggregate
+   route and fixed group/disk/RAM ceilings.
+3. Remove the blocked-only implementation, provisional manifest, tests, and
+   private scaffolding. Run JSON, diff, and privacy checks only.
+4. Stop before taxonomy/BIE lookup, occurrence access, route implementation,
+   predictor scoring, or candidate selection.
+
+## Prospective execution after separate authorisation
+
+1. **Preflight.** Confirm the supported checkout and validate the v1.1 packet
+   offline.
+2. **Whole-region/domain freeze.** Authenticate IBRA7.1, reconcile 89 regions
+   and 419 subregions, retain the existing 16-region rule, and complete BBS.
+3. **Exact concept freeze.** For every mandatory feasibility seed species,
+   freeze an ordered union containing its accepted parent, every reviewed
+   accepted descendant/subspecies, and necessary reviewed historical aliases,
+   using count-free taxonomy/BIE lookups.
+4. **Ecological-role freeze.** Freeze effort, auxiliary, and target roles,
+   reasons, habitat, and seasonal classification without occurrence evidence.
+5. **NVIS freeze.** Bind the official code-label authority and complete
+   native-woody/non-woody/missing mapping by checksum.
+6. **Aggregate canary.** Only after steps 2-5, freeze the aggregate ceilings,
+   verify disk/RAM capacity, then implement and validate the separate-total
+   plus `lat_long`-facet conservation route without retaining occurrence rows.
+7. **Sequential feasibility census.** Process one biological species at a
+   time under its exact ordered identifier union; enforce all
+   group/disk/RAM ceilings, snap and collapse groups to species-cells, checksum
+   the private receipt, and discard coordinates.
+8. **Response-free predictor census.** Verify the portable ontology and derive
+   environmental, fragmentation, and land-use diagnostics without responses.
+9. **Hard gates and joint selection.** Use species-cell evidence only for
+   `X=10`, `X=20`, and estimability pass/fail gates; enumerate and rank the
+   frozen simultaneous three-region solutions response-free.
+10. **Audit and freeze.** Perform one focused scientific audit, make at most one
+    material repair, and publish the compact freeze only if every fixed gate
+    passes. Otherwise stop with exact aggregate evidence.
+11. **Closeout.** Validate privacy, provenance, deterministic replay, and zero
+    model outcomes. Stop before canonical acquisition or modelling.
+
+Goal 048 uses the mandatory 100-name seed ledger as a conservative feasibility
+screen. Goal 049 may expand all bird universes under the frozen rules, but may
+not change, substitute, or re-rank the selected regions; it reconstructs final
+labels and panels from canonical data before any holdout outcome access.
