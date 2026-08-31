@@ -1,0 +1,1773 @@
+{
+  "postopening_access_counters": {
+    "predictor_file_opens": 1,
+    "predictor_rows_read": 72293,
+    "predictor_rows_used": 2538,
+    "response_file_opens": 1,
+    "response_rows_read": 6373
+  },
+  "postopening_predictor_diagnostics": {
+    "categorical_unseen": {
+      "alum_secondary": {
+        "missing": 0,
+        "unseen_nonmissing": 0
+      },
+      "nvis_mvg": {
+        "missing": 0,
+        "unseen_nonmissing": 0
+      },
+      "soil_order": {
+        "missing": 0,
+        "unseen_nonmissing": 0
+      }
+    },
+    "continuous_out_of_mainland_range": {
+      "bio01": {
+        "above_mainland_maximum": 0,
+        "below_mainland_minimum": 0,
+        "missing": 395
+      },
+      "bio02": {
+        "above_mainland_maximum": 0,
+        "below_mainland_minimum": 11,
+        "missing": 395
+      },
+      "bio03": {
+        "above_mainland_maximum": 0,
+        "below_mainland_minimum": 0,
+        "missing": 395
+      },
+      "bio04": {
+        "above_mainland_maximum": 0,
+        "below_mainland_minimum": 286,
+        "missing": 395
+      },
+      "bio05": {
+        "above_mainland_maximum": 0,
+        "below_mainland_minimum": 1928,
+        "missing": 395
+      },
+      "bio06": {
+        "above_mainland_maximum": 0,
+        "below_mainland_minimum": 0,
+        "missing": 395
+      },
+      "bio07": {
+        "above_mainland_maximum": 0,
+        "below_mainland_minimum": 98,
+        "missing": 395
+      },
+      "bio08": {
+        "above_mainland_maximum": 0,
+        "below_mainland_minimum": 0,
+        "missing": 395
+      },
+      "bio09": {
+        "above_mainland_maximum": 0,
+        "below_mainland_minimum": 0,
+        "missing": 395
+      },
+      "bio10": {
+        "above_mainland_maximum": 0,
+        "below_mainland_minimum": 542,
+        "missing": 395
+      },
+      "bio11": {
+        "above_mainland_maximum": 0,
+        "below_mainland_minimum": 0,
+        "missing": 395
+      },
+      "bio12": {
+        "above_mainland_maximum": 7302,
+        "below_mainland_minimum": 0,
+        "missing": 395
+      },
+      "bio13": {
+        "above_mainland_maximum": 0,
+        "below_mainland_minimum": 0,
+        "missing": 395
+      },
+      "bio14": {
+        "above_mainland_maximum": 8082,
+        "below_mainland_minimum": 0,
+        "missing": 395
+      },
+      "bio15": {
+        "above_mainland_maximum": 0,
+        "below_mainland_minimum": 0,
+        "missing": 395
+      },
+      "bio16": {
+        "above_mainland_maximum": 0,
+        "below_mainland_minimum": 0,
+        "missing": 395
+      },
+      "bio17": {
+        "above_mainland_maximum": 11262,
+        "below_mainland_minimum": 0,
+        "missing": 395
+      },
+      "bio18": {
+        "above_mainland_maximum": 0,
+        "below_mainland_minimum": 0,
+        "missing": 395
+      },
+      "bio19": {
+        "above_mainland_maximum": 8936,
+        "below_mainland_minimum": 0,
+        "missing": 395
+      },
+      "elevation_mean": {
+        "above_mainland_maximum": 0,
+        "below_mainland_minimum": 0,
+        "missing": 0
+      },
+      "elevation_sd": {
+        "above_mainland_maximum": 2,
+        "below_mainland_minimum": 0,
+        "missing": 0
+      }
+    },
+    "descriptive_only_no_model_changes": true
+  },
+  "preopening_access_counters": {
+    "predictor_rows_read": 0,
+    "response_rows_read": 0
+  },
+  "privacy": {
+    "camera_identifiers_tracked": false,
+    "cell_level_outputs_tracked": false,
+    "coordinates_tracked": false,
+    "row_payload_tracked": false
+  },
+  "schema_version": "goal047-transfer-result-v2",
+  "status": "production_complete",
+  "surfaces": {
+    "primary": {
+      "common_complete_cells": 4077,
+      "contrasts": {
+        "multihead_full_finetune_minus_multihead_frozen_trunk": {
+          "equal_species_mean": -0.017897890174023257,
+          "equal_species_median": -0.015928296610243087,
+          "nonnull_species_count": 5,
+          "null_species_count": 0,
+          "nulls_ignored_in_equal_species_summary": true,
+          "per_species": {
+            "Dasyurus maculatus": -0.015928296610243087,
+            "Notamacropus rufogriseus": -0.0450782778864971,
+            "Pseudocheirus peregrinus": 0.007720378988248622,
+            "Trichosurus vulpecula": -0.02399767378215656,
+            "Vombatus ursinus": -0.012205581579468161
+          }
+        },
+        "multihead_full_finetune_minus_selected_conventional": {
+          "equal_species_mean": -0.02773293862642805,
+          "equal_species_median": -0.022426381649842675,
+          "nonnull_species_count": 5,
+          "null_species_count": 0,
+          "nulls_ignored_in_equal_species_summary": true,
+          "per_species": {
+            "Dasyurus maculatus": -0.019193857965451033,
+            "Notamacropus rufogriseus": 0.06469667318982386,
+            "Pseudocheirus peregrinus": -0.04455790284241201,
+            "Trichosurus vulpecula": -0.11718322386425839,
+            "Vombatus ursinus": -0.022426381649842675
+          }
+        },
+        "multihead_full_finetune_minus_strict_q_conventional": {
+          "equal_species_mean": -0.0227928873436545,
+          "equal_species_median": -0.024064788546546034,
+          "nonnull_species_count": 5,
+          "null_species_count": 0,
+          "nulls_ignored_in_equal_species_summary": true,
+          "per_species": {
+            "Dasyurus maculatus": -0.017678324836504777,
+            "Notamacropus rufogriseus": 0.07624266144814085,
+            "Pseudocheirus peregrinus": -0.03767785998861706,
+            "Trichosurus vulpecula": -0.11078612479474548,
+            "Vombatus ursinus": -0.024064788546546034
+          }
+        },
+        "multihead_full_finetune_minus_target_only_random_init_resmlp": {
+          "equal_species_mean": -0.015513059220361924,
+          "equal_species_median": 0.026863275494271144,
+          "nonnull_species_count": 5,
+          "null_species_count": 0,
+          "nulls_ignored_in_equal_species_summary": true,
+          "per_species": {
+            "Dasyurus maculatus": 0.02719274628498969,
+            "Notamacropus rufogriseus": -0.08301369863013697,
+            "Pseudocheirus peregrinus": 0.09646456192038555,
+            "Trichosurus vulpecula": -0.14507218117131904,
+            "Vombatus ursinus": 0.026863275494271144
+          }
+        },
+        "multihead_full_finetune_minus_target_plus_q_linear_resmlp": {
+          "equal_species_mean": -0.0227864573237321,
+          "equal_species_median": 0.015955224208836438,
+          "nonnull_species_count": 5,
+          "null_species_count": 0,
+          "nulls_ignored_in_equal_species_summary": true,
+          "per_species": {
+            "Dasyurus maculatus": 0.05891906445141171,
+            "Notamacropus rufogriseus": -0.06141878669275924,
+            "Pseudocheirus peregrinus": 0.024175566640998958,
+            "Trichosurus vulpecula": -0.15156335522714837,
+            "Vombatus ursinus": 0.015955224208836438
+          }
+        }
+      },
+      "equal_species_summaries": {
+        "multihead_frozen_trunk": {
+          "balanced_accuracy": {
+            "mean": 0.4851060352093242,
+            "median": 0.502182709859031,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "mcc": {
+            "mean": -0.028416042456152018,
+            "median": 0.009298103866480233,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "roc_auc": {
+            "mean": 0.5738564210998591,
+            "median": 0.5826160967856802,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "sensitivity": {
+            "mean": 0.42340726727878153,
+            "median": 0.08779761904761904,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "specificity": {
+            "mean": 0.5468048031398669,
+            "median": 0.7126436781609196,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "tss": {
+            "mean": -0.02978792958135159,
+            "median": 0.004365419718062036,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          }
+        },
+        "multihead_full_finetune": {
+          "balanced_accuracy": {
+            "mean": 0.49406456804773385,
+            "median": 0.5,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "mcc": {
+            "mean": -0.026215565229629017,
+            "median": 0.0,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "roc_auc": {
+            "mean": 0.5559585309258359,
+            "median": 0.5666878001754371,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "sensitivity": {
+            "mean": 0.4036816292169281,
+            "median": 0.12428571428571429,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "specificity": {
+            "mean": 0.5844475068785395,
+            "median": 0.8390804597701149,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "tss": {
+            "mean": -0.011870863904532358,
+            "median": 0.0,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          }
+        },
+        "selected_conventional": {
+          "balanced_accuracy": {
+            "mean": 0.5145904293316278,
+            "median": 0.5156066536203523,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "mcc": {
+            "mean": 0.02373966140212792,
+            "median": 0.05571187086481465,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "roc_auc": {
+            "mean": 0.5836914695522639,
+            "median": 0.5849167601328319,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "sensitivity": {
+            "mean": 0.3408441989653707,
+            "median": 0.22306525037936267,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "specificity": {
+            "mean": 0.6883366596978847,
+            "median": 0.8768115942028986,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "tss": {
+            "mean": 0.029180858663255614,
+            "median": 0.03121330724070459,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          }
+        },
+        "strict_q_conventional": {
+          "balanced_accuracy": {
+            "mean": 0.5164532845162014,
+            "median": 0.5141780821917808,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "mcc": {
+            "mean": 0.016874586117132998,
+            "median": 0.04476641616889962,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "roc_auc": {
+            "mean": 0.5787514182694904,
+            "median": 0.5843661250119419,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "sensitivity": {
+            "mean": 0.36147725398152236,
+            "median": 0.2488619119878604,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "specificity": {
+            "mean": 0.6714293150508805,
+            "median": 0.8405797101449275,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "tss": {
+            "mean": 0.032906569032402896,
+            "median": 0.0283561643835617,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          }
+        },
+        "target_only_random_init_resmlp": {
+          "balanced_accuracy": {
+            "mean": 0.5060517763539354,
+            "median": 0.5037965783923131,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "mcc": {
+            "mean": 0.015074340003626424,
+            "median": 0.02403622662013741,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "roc_auc": {
+            "mean": 0.5714715901461979,
+            "median": 0.5394950538904474,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "sensitivity": {
+            "mean": 0.4451753568541458,
+            "median": 0.28,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "specificity": {
+            "mean": 0.566928195853725,
+            "median": 0.7701149425287356,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "tss": {
+            "mean": 0.012103552707870757,
+            "median": 0.007593156784626132,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          }
+        },
+        "target_plus_q_linear_resmlp": {
+          "balanced_accuracy": {
+            "mean": 0.5123366313293272,
+            "median": 0.5,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "mcc": {
+            "mean": 0.01914510800966134,
+            "median": 0.0,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "roc_auc": {
+            "mean": 0.5787449882495681,
+            "median": 0.5843681581828134,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "sensitivity": {
+            "mean": 0.42503058025863166,
+            "median": 0.24714285714285714,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "specificity": {
+            "mean": 0.5996426824000226,
+            "median": 0.8735632183908046,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "tss": {
+            "mean": 0.02467326265865417,
+            "median": 0.0,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          }
+        }
+      },
+      "privacy": {
+        "camera_identifiers_tracked": false,
+        "cell_level_outputs_tracked": false,
+        "coordinates_tracked": false,
+        "row_payload_tracked": false
+      },
+      "results": [
+        {
+          "counts": {
+            "background_n": 221,
+            "common_complete_cells": 742,
+            "missing_method_prediction": 0,
+            "predictor_incomplete": 1,
+            "presence_n": 521,
+            "surface_rows": 743
+          },
+          "methods": {
+            "multihead_frozen_trunk": {
+              "metrics": {
+                "balanced_accuracy": 0.5002735776135347,
+                "mcc": 0.002588408762792116,
+                "null_reason": null,
+                "roc_auc": 0.5826160967856802,
+                "sensitivity": 0.009596928982725527,
+                "specificity": 0.9909502262443439,
+                "tss": 0.0005471552270694957
+              },
+              "seed_count": 5,
+              "threshold": 0.2528041124343872
+            },
+            "multihead_full_finetune": {
+              "metrics": {
+                "balanced_accuracy": 0.5,
+                "mcc": 0.0,
+                "null_reason": null,
+                "roc_auc": 0.5666878001754371,
+                "sensitivity": 0.0,
+                "specificity": 1.0,
+                "tss": 0.0
+              },
+              "seed_count": 5,
+              "threshold": 0.19805894494056703
+            },
+            "selected_conventional": {
+              "metrics": {
+                "balanced_accuracy": 0.5291121320815348,
+                "mcc": 0.05571187086481465,
+                "null_reason": null,
+                "roc_auc": 0.5858816581408881,
+                "sensitivity": 0.3704414587332054,
+                "specificity": 0.6877828054298643,
+                "tss": 0.058224264163069694
+              },
+              "seed_count": 5,
+              "threshold": 0.2896
+            },
+            "strict_q_conventional": {
+              "metrics": {
+                "balanced_accuracy": 0.545765626492735,
+                "mcc": 0.08442598443808975,
+                "null_reason": null,
+                "roc_auc": 0.5843661250119419,
+                "sensitivity": 0.46257197696737046,
+                "specificity": 0.6289592760180995,
+                "tss": 0.09153125298546994
+              },
+              "seed_count": 5,
+              "threshold": 0.2548
+            },
+            "target_only_random_init_resmlp": {
+              "metrics": {
+                "balanced_accuracy": 0.5047984644913628,
+                "mcc": 0.05364491153399629,
+                "null_reason": null,
+                "roc_auc": 0.5394950538904474,
+                "sensitivity": 0.009596928982725527,
+                "specificity": 1.0,
+                "tss": 0.009596928982725572
+              },
+              "seed_count": 5,
+              "threshold": 0.2410335510969162
+            },
+            "target_plus_q_linear_resmlp": {
+              "metrics": {
+                "balanced_accuracy": 0.5,
+                "mcc": 0.0,
+                "null_reason": null,
+                "roc_auc": 0.5077687357240254,
+                "sensitivity": 0.0,
+                "specificity": 1.0,
+                "tss": 0.0
+              },
+              "seed_count": 5,
+              "threshold": 0.2661109983921051
+            }
+          },
+          "target": "Dasyurus maculatus"
+        },
+        {
+          "counts": {
+            "background_n": 146,
+            "common_complete_cells": 846,
+            "missing_method_prediction": 0,
+            "predictor_incomplete": 1,
+            "presence_n": 700,
+            "surface_rows": 847
+          },
+          "methods": {
+            "multihead_frozen_trunk": {
+              "metrics": {
+                "balanced_accuracy": 0.5151663405088063,
+                "mcc": 0.04610294694351006,
+                "null_reason": null,
+                "roc_auc": 0.6523385518590998,
+                "sensitivity": 0.07142857142857142,
+                "specificity": 0.958904109589041,
+                "tss": 0.03033268101761255
+              },
+              "seed_count": 5,
+              "threshold": 0.6772815704345703
+            },
+            "multihead_full_finetune": {
+              "metrics": {
+                "balanced_accuracy": 0.5278962818003914,
+                "mcc": 0.06617211092579234,
+                "null_reason": null,
+                "roc_auc": 0.6072602739726027,
+                "sensitivity": 0.12428571428571429,
+                "specificity": 0.9315068493150684,
+                "tss": 0.055792563600782774
+              },
+              "seed_count": 5,
+              "threshold": 0.6740138918161392
+            },
+            "selected_conventional": {
+              "metrics": {
+                "balanced_accuracy": 0.5156066536203523,
+                "mcc": 0.04174848548250284,
+                "null_reason": null,
+                "roc_auc": 0.5425636007827789,
+                "sensitivity": 0.09285714285714286,
+                "specificity": 0.9383561643835616,
+                "tss": 0.03121330724070459
+              },
+              "seed_count": 5,
+              "threshold": 0.636
+            },
+            "strict_q_conventional": {
+              "metrics": {
+                "balanced_accuracy": 0.5141780821917808,
+                "mcc": 0.038400440357993275,
+                "null_reason": null,
+                "roc_auc": 0.5310176125244619,
+                "sensitivity": 0.09,
+                "specificity": 0.9383561643835616,
+                "tss": 0.0283561643835617
+              },
+              "seed_count": 5,
+              "threshold": 0.6324
+            },
+            "target_only_random_init_resmlp": {
+              "metrics": {
+                "balanced_accuracy": 0.5989041095890411,
+                "mcc": 0.17359122750623557,
+                "null_reason": null,
+                "roc_auc": 0.6902739726027397,
+                "sensitivity": 0.28,
+                "specificity": 0.9178082191780822,
+                "tss": 0.1978082191780821
+              },
+              "seed_count": 5,
+              "threshold": 0.7445951282978058
+            },
+            "target_plus_q_linear_resmlp": {
+              "metrics": {
+                "balanced_accuracy": 0.5893248532289628,
+                "mcc": 0.16396284515395035,
+                "null_reason": null,
+                "roc_auc": 0.668679060665362,
+                "sensitivity": 0.24714285714285714,
+                "specificity": 0.9315068493150684,
+                "tss": 0.17864970645792555
+              },
+              "seed_count": 5,
+              "threshold": 0.7171572327613831
+            }
+          },
+          "target": "Notamacropus rufogriseus"
+        },
+        {
+          "counts": {
+            "background_n": 595,
+            "common_complete_cells": 846,
+            "missing_method_prediction": 0,
+            "predictor_incomplete": 1,
+            "presence_n": 251,
+            "surface_rows": 847
+          },
+          "methods": {
+            "multihead_frozen_trunk": {
+              "metrics": {
+                "balanced_accuracy": 0.5076868994609797,
+                "mcc": 0.04068955497303087,
+                "null_reason": null,
+                "roc_auc": 0.6028290200542368,
+                "sensitivity": 0.9800796812749004,
+                "specificity": 0.03529411764705882,
+                "tss": 0.015373798921959336
+              },
+              "seed_count": 5,
+              "threshold": 0.8581528902053833
+            },
+            "multihead_full_finetune": {
+              "metrics": {
+                "balanced_accuracy": 0.4993772807927952,
+                "mcc": -0.00677957285902512,
+                "null_reason": null,
+                "roc_auc": 0.6105493990424854,
+                "sensitivity": 0.9920318725099602,
+                "specificity": 0.0067226890756302525,
+                "tss": -0.0012454384144096053
+              },
+              "seed_count": 5,
+              "threshold": 0.876939594745636
+            },
+            "selected_conventional": {
+              "metrics": {
+                "balanced_accuracy": 0.5067226890756302,
+                "mcc": 0.06346018912498216,
+                "null_reason": null,
+                "roc_auc": 0.6551073018848974,
+                "sensitivity": 1.0,
+                "specificity": 0.013445378151260505,
+                "tss": 0.013445378151260456
+              },
+              "seed_count": 1,
+              "threshold": 0.9336680962051864
+            },
+            "strict_q_conventional": {
+              "metrics": {
+                "balanced_accuracy": 0.5033613445378151,
+                "mcc": 0.04476641616889962,
+                "null_reason": null,
+                "roc_auc": 0.6482272590311025,
+                "sensitivity": 1.0,
+                "specificity": 0.0067226890756302525,
+                "tss": 0.006722689075630228
+              },
+              "seed_count": 1,
+              "threshold": 0.9217647486215976
+            },
+            "target_only_random_init_resmlp": {
+              "metrics": {
+                "balanced_accuracy": 0.5037965783923131,
+                "mcc": 0.02403622662013741,
+                "null_reason": null,
+                "roc_auc": 0.5140848371220998,
+                "sensitivity": 0.9840637450199203,
+                "specificity": 0.023529411764705882,
+                "tss": 0.007593156784626132
+              },
+              "seed_count": 5,
+              "threshold": 0.8844978451728821
+            },
+            "target_plus_q_linear_resmlp": {
+              "metrics": {
+                "balanced_accuracy": 0.515778901201915,
+                "mcc": 0.06874371927458041,
+                "null_reason": null,
+                "roc_auc": 0.5863738324014864,
+                "sensitivity": 0.9760956175298805,
+                "specificity": 0.05546218487394958,
+                "tss": 0.031557802403830104
+              },
+              "seed_count": 5,
+              "threshold": 0.8864576935768127
+            }
+          },
+          "target": "Pseudocheirus peregrinus"
+        },
+        {
+          "counts": {
+            "background_n": 174,
+            "common_complete_cells": 846,
+            "missing_method_prediction": 0,
+            "predictor_incomplete": 1,
+            "presence_n": 672,
+            "surface_rows": 847
+          },
+          "methods": {
+            "multihead_frozen_trunk": {
+              "metrics": {
+                "balanced_accuracy": 0.4002206486042693,
+                "mcc": -0.24075922682657336,
+                "null_reason": null,
+                "roc_auc": 0.4568024767378216,
+                "sensitivity": 0.08779761904761904,
+                "specificity": 0.7126436781609196,
+                "tss": -0.19955870279146137
+              },
+              "seed_count": 5,
+              "threshold": 0.9827600955963135
+            },
+            "multihead_full_finetune": {
+              "metrics": {
+                "balanced_accuracy": 0.43962951559934316,
+                "mcc": -0.19794490622145813,
+                "null_reason": null,
+                "roc_auc": 0.43280480295566504,
+                "sensitivity": 0.04017857142857143,
+                "specificity": 0.8390804597701149,
+                "tss": -0.12074096880131369
+              },
+              "seed_count": 5,
+              "threshold": 0.9810212254524231
+            },
+            "selected_conventional": {
+              "metrics": {
+                "balanced_accuracy": 0.471572249589491,
+                "mcc": -0.13570322449386765,
+                "null_reason": null,
+                "roc_auc": 0.5499880268199234,
+                "sensitivity": 0.017857142857142856,
+                "specificity": 0.9252873563218391,
+                "tss": -0.05685550082101798
+              },
+              "seed_count": 5,
+              "threshold": 0.9733583633054164
+            },
+            "strict_q_conventional": {
+              "metrics": {
+                "balanced_accuracy": 0.4742405582922824,
+                "mcc": -0.1632300153777113,
+                "null_reason": null,
+                "roc_auc": 0.5435909277504105,
+                "sensitivity": 0.005952380952380952,
+                "specificity": 0.9425287356321839,
+                "tss": -0.0515188834154352
+              },
+              "seed_count": 5,
+              "threshold": 0.9765752018464744
+            },
+            "target_only_random_init_resmlp": {
+              "metrics": {
+                "balanced_accuracy": 0.4423491379310345,
+                "mcc": -0.13500142948004926,
+                "null_reason": null,
+                "roc_auc": 0.5778769841269841,
+                "sensitivity": 0.11458333333333333,
+                "specificity": 0.7701149425287356,
+                "tss": -0.11530172413793105
+              },
+              "seed_count": 5,
+              "threshold": 0.9820661425590516
+            },
+            "target_plus_q_linear_resmlp": {
+              "metrics": {
+                "balanced_accuracy": 0.4613351806239738,
+                "mcc": -0.12677559442232783,
+                "null_reason": null,
+                "roc_auc": 0.5843681581828134,
+                "sensitivity": 0.049107142857142856,
+                "specificity": 0.8735632183908046,
+                "tss": -0.07732963875205245
+              },
+              "seed_count": 5,
+              "threshold": 0.9851567506790161
+            }
+          },
+          "target": "Trichosurus vulpecula"
+        },
+        {
+          "counts": {
+            "background_n": 138,
+            "common_complete_cells": 797,
+            "missing_method_prediction": 0,
+            "predictor_incomplete": 1,
+            "presence_n": 659,
+            "surface_rows": 798
+          },
+          "methods": {
+            "multihead_frozen_trunk": {
+              "metrics": {
+                "balanced_accuracy": 0.502182709859031,
+                "mcc": 0.009298103866480233,
+                "null_reason": null,
+                "roc_auc": 0.5746959600624574,
+                "sensitivity": 0.9681335356600911,
+                "specificity": 0.036231884057971016,
+                "tss": 0.004365419718062036
+              },
+              "seed_count": 5,
+              "threshold": 0.7621071755886077
+            },
+            "multihead_full_finetune": {
+              "metrics": {
+                "balanced_accuracy": 0.5034197620461394,
+                "mcc": 0.007474542006545824,
+                "null_reason": null,
+                "roc_auc": 0.5624903784829892,
+                "sensitivity": 0.8619119878603946,
+                "specificity": 0.14492753623188406,
+                "tss": 0.006839524092278726
+              },
+              "seed_count": 5,
+              "threshold": 0.7574150368571282
+            },
+            "selected_conventional": {
+              "metrics": {
+                "balanced_accuracy": 0.5499384222911307,
+                "mcc": 0.09348098603220761,
+                "null_reason": null,
+                "roc_auc": 0.5849167601328319,
+                "sensitivity": 0.22306525037936267,
+                "specificity": 0.8768115942028986,
+                "tss": 0.09987684458226131
+              },
+              "seed_count": 5,
+              "threshold": 0.7464000000000001
+            },
+            "strict_q_conventional": {
+              "metrics": {
+                "balanced_accuracy": 0.5447208110663939,
+                "mcc": 0.08001010499839366,
+                "null_reason": null,
+                "roc_auc": 0.5865551670295353,
+                "sensitivity": 0.2488619119878604,
+                "specificity": 0.8405797101449275,
+                "tss": 0.08944162213278783
+              },
+              "seed_count": 5,
+              "threshold": 0.7176
+            },
+            "target_only_random_init_resmlp": {
+              "metrics": {
+                "balanced_accuracy": 0.4804105913659255,
+                "mcc": -0.04089923616218789,
+                "null_reason": null,
+                "roc_auc": 0.5356271029887181,
+                "sensitivity": 0.8376327769347496,
+                "specificity": 0.12318840579710146,
+                "tss": -0.03917881726814898
+              },
+              "seed_count": 5,
+              "threshold": 0.7603634238243103
+            },
+            "target_plus_q_linear_resmlp": {
+              "metrics": {
+                "balanced_accuracy": 0.49524422159178383,
+                "mcc": -0.010205429957896249,
+                "null_reason": null,
+                "roc_auc": 0.5465351542741528,
+                "sensitivity": 0.8528072837632777,
+                "specificity": 0.13768115942028986,
+                "tss": -0.009511556816432343
+              },
+              "seed_count": 5,
+              "threshold": 0.7435207486152648
+            }
+          },
+          "target": "Vombatus ursinus"
+        }
+      ],
+      "schema_version": "goal047-surface-result-v2",
+      "surface": "primary",
+      "targets": [
+        "Dasyurus maculatus",
+        "Notamacropus rufogriseus",
+        "Pseudocheirus peregrinus",
+        "Trichosurus vulpecula",
+        "Vombatus ursinus"
+      ]
+    },
+    "secondary": {
+      "common_complete_cells": 6302,
+      "contrasts": {
+        "multihead_full_finetune_minus_multihead_frozen_trunk": {
+          "equal_species_mean": -0.008308007559662434,
+          "equal_species_median": -0.014541036665812523,
+          "nonnull_species_count": 5,
+          "null_species_count": 0,
+          "nulls_ignored_in_equal_species_summary": true,
+          "per_species": {
+            "Dasyurus maculatus": 0.03267089987693428,
+            "Notamacropus rufogriseus": -0.03732595373771053,
+            "Pseudocheirus peregrinus": -0.005316872057133826,
+            "Trichosurus vulpecula": -0.014541036665812523,
+            "Vombatus ursinus": -0.01702707521458957
+          }
+        },
+        "multihead_full_finetune_minus_selected_conventional": {
+          "equal_species_mean": -0.02679367883898117,
+          "equal_species_median": -0.03082893966022271,
+          "nonnull_species_count": 5,
+          "null_species_count": 0,
+          "nulls_ignored_in_equal_species_summary": true,
+          "per_species": {
+            "Dasyurus maculatus": -0.022264127988320503,
+            "Notamacropus rufogriseus": 0.07099194860200309,
+            "Pseudocheirus peregrinus": -0.08260752021988427,
+            "Trichosurus vulpecula": -0.06925975492848147,
+            "Vombatus ursinus": -0.03082893966022271
+          }
+        },
+        "multihead_full_finetune_minus_strict_q_conventional": {
+          "equal_species_mean": -0.024425686410614267,
+          "equal_species_median": -0.03296846743587789,
+          "nonnull_species_count": 5,
+          "null_species_count": 0,
+          "nulls_ignored_in_equal_species_summary": true,
+          "per_species": {
+            "Dasyurus maculatus": -0.02358135203807088,
+            "Notamacropus rufogriseus": 0.07861878113906307,
+            "Pseudocheirus peregrinus": -0.07678374298781176,
+            "Trichosurus vulpecula": -0.06741365073037386,
+            "Vombatus ursinus": -0.03296846743587789
+          }
+        },
+        "multihead_full_finetune_minus_target_only_random_init_resmlp": {
+          "equal_species_mean": -0.028462934281842524,
+          "equal_species_median": -0.0038276972987586477,
+          "nonnull_species_count": 5,
+          "null_species_count": 0,
+          "nulls_ignored_in_equal_species_summary": true,
+          "per_species": {
+            "Dasyurus maculatus": 0.01748187939562107,
+            "Notamacropus rufogriseus": -0.07743971681995365,
+            "Pseudocheirus peregrinus": -0.0038276972987586477,
+            "Trichosurus vulpecula": -0.12074660440217544,
+            "Vombatus ursinus": 0.04221746771605406
+          }
+        },
+        "multihead_full_finetune_minus_target_plus_q_linear_resmlp": {
+          "equal_species_mean": -0.033562530210553596,
+          "equal_species_median": -0.048606573996890945,
+          "nonnull_species_count": 5,
+          "null_species_count": 0,
+          "nulls_ignored_in_equal_species_summary": true,
+          "per_species": {
+            "Dasyurus maculatus": 0.035965129827286835,
+            "Notamacropus rufogriseus": -0.06321421629308321,
+            "Pseudocheirus peregrinus": -0.048606573996890945,
+            "Trichosurus vulpecula": -0.12451474510473903,
+            "Vombatus ursinus": 0.032557754514658366
+          }
+        }
+      },
+      "equal_species_summaries": {
+        "multihead_frozen_trunk": {
+          "balanced_accuracy": {
+            "mean": 0.49144547645158704,
+            "median": 0.49909455469404373,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "mcc": {
+            "mean": -0.010385306620674998,
+            "median": -0.007961777063138631,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "roc_auc": {
+            "mean": 0.5486159357807627,
+            "median": 0.536452252816614,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "sensitivity": {
+            "mean": 0.43608614976330706,
+            "median": 0.17588769611891,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "specificity": {
+            "mean": 0.5468048031398669,
+            "median": 0.7126436781609196,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "tss": {
+            "mean": -0.01710904709682608,
+            "median": -0.00181089061191253,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          }
+        },
+        "multihead_full_finetune": {
+          "balanced_accuracy": {
+            "mean": 0.4931288402005567,
+            "median": 0.4993398968166355,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "mcc": {
+            "mean": -0.020997060414689128,
+            "median": -0.0075830515393456,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "roc_auc": {
+            "mean": 0.5403079282211003,
+            "median": 0.5219112161508015,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "sensitivity": {
+            "mean": 0.40181017352257375,
+            "median": 0.1157580283793876,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "specificity": {
+            "mean": 0.5844475068785395,
+            "median": 0.8390804597701149,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "tss": {
+            "mean": -0.01374231959888672,
+            "median": -0.0013202063667290265,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          }
+        },
+        "selected_conventional": {
+          "balanced_accuracy": {
+            "mean": 0.5011825598691952,
+            "median": 0.5053822065019037,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "mcc": {
+            "mean": -0.005393697050722119,
+            "median": 0.013293775645207277,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "roc_auc": {
+            "mean": 0.5671016070600815,
+            "median": 0.591170971079283,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "sensitivity": {
+            "mean": 0.3140284600405056,
+            "median": 0.23637961335676624,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "specificity": {
+            "mean": 0.6883366596978847,
+            "median": 0.8768115942028986,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "tss": {
+            "mean": 0.0023651197383904423,
+            "median": 0.010764413003807372,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          }
+        },
+        "strict_q_conventional": {
+          "balanced_accuracy": {
+            "mean": 0.501779280089558,
+            "median": 0.500680379390362,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "mcc": {
+            "mean": -0.01393983056572023,
+            "median": 0.008437832170804715,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "roc_auc": {
+            "mean": 0.5647336146317146,
+            "median": 0.5893248668811754,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "sensitivity": {
+            "mean": 0.3321292451282352,
+            "median": 0.2671353251318102,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "specificity": {
+            "mean": 0.6714293150508805,
+            "median": 0.8405797101449275,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "tss": {
+            "mean": 0.003558560179115755,
+            "median": 0.0013607587807240584,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          }
+        },
+        "target_only_random_init_resmlp": {
+          "balanced_accuracy": {
+            "mean": 0.5296872400848996,
+            "median": 0.5035545810909574,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "mcc": {
+            "mean": 0.04216921864911065,
+            "median": 0.006797859248800049,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "roc_auc": {
+            "mean": 0.5687708625029428,
+            "median": 0.5189672651902584,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "sensitivity": {
+            "mean": 0.49244628431607423,
+            "median": 0.42718446601941745,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "specificity": {
+            "mean": 0.566928195853725,
+            "median": 0.7701149425287356,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "tss": {
+            "mean": 0.059374480169799224,
+            "median": 0.007109162181914819,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          }
+        },
+        "target_plus_q_linear_resmlp": {
+          "balanced_accuracy": {
+            "mean": 0.5298445997755639,
+            "median": 0.5040813614662528,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "mcc": {
+            "mean": 0.05135541923561153,
+            "median": 0.019631593514753926,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "roc_auc": {
+            "mean": 0.573870458431654,
+            "median": 0.5637461418883907,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "sensitivity": {
+            "mean": 0.4600465171511051,
+            "median": 0.36519790888722925,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "specificity": {
+            "mean": 0.5996426824000226,
+            "median": 0.8735632183908046,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          },
+          "tss": {
+            "mean": 0.059689199551127635,
+            "median": 0.00816272293250564,
+            "nonnull_species_count": 5,
+            "null_species_count": 0,
+            "nulls_ignored": true
+          }
+        }
+      },
+      "privacy": {
+        "camera_identifiers_tracked": false,
+        "cell_level_outputs_tracked": false,
+        "coordinates_tracked": false,
+        "row_payload_tracked": false
+      },
+      "results": [
+        {
+          "counts": {
+            "background_n": 221,
+            "common_complete_cells": 1188,
+            "missing_method_prediction": 0,
+            "predictor_incomplete": 7,
+            "presence_n": 967,
+            "surface_rows": 1195
+          },
+          "methods": {
+            "multihead_frozen_trunk": {
+              "metrics": {
+                "balanced_accuracy": 0.49909455469404373,
+                "mcc": -0.008126872267470013,
+                "null_reason": null,
+                "roc_auc": 0.4180958040681868,
+                "sensitivity": 0.007238883143743537,
+                "specificity": 0.9909502262443439,
+                "tss": -0.00181089061191253
+              },
+              "seed_count": 5,
+              "threshold": 0.2528041124343872
+            },
+            "multihead_full_finetune": {
+              "metrics": {
+                "balanced_accuracy": 0.5,
+                "mcc": 0.0,
+                "null_reason": null,
+                "roc_auc": 0.4507667039451211,
+                "sensitivity": 0.0,
+                "specificity": 1.0,
+                "tss": 0.0
+              },
+              "seed_count": 5,
+              "threshold": 0.19805894494056703
+            },
+            "selected_conventional": {
+              "metrics": {
+                "balanced_accuracy": 0.4664353530768763,
+                "mcc": -0.059734666974373955,
+                "null_reason": null,
+                "roc_auc": 0.4730308319334416,
+                "sensitivity": 0.2450879007238883,
+                "specificity": 0.6877828054298643,
+                "tss": -0.06712929384624744
+              },
+              "seed_count": 5,
+              "threshold": 0.2896
+            },
+            "strict_q_conventional": {
+              "metrics": {
+                "balanced_accuracy": 0.47270094100801563,
+                "mcc": -0.04530291946841062,
+                "null_reason": null,
+                "roc_auc": 0.47434805598319196,
+                "sensitivity": 0.3164426059979317,
+                "specificity": 0.6289592760180995,
+                "tss": -0.05459811798396874
+              },
+              "seed_count": 5,
+              "threshold": 0.2548
+            },
+            "target_only_random_init_resmlp": {
+              "metrics": {
+                "balanced_accuracy": 0.5046535677352637,
+                "mcc": 0.041768343514206344,
+                "null_reason": null,
+                "roc_auc": 0.4332848245495,
+                "sensitivity": 0.009307135470527405,
+                "specificity": 1.0,
+                "tss": 0.009307135470527417
+              },
+              "seed_count": 5,
+              "threshold": 0.2410335510969162
+            },
+            "target_plus_q_linear_resmlp": {
+              "metrics": {
+                "balanced_accuracy": 0.5010341261633919,
+                "mcc": 0.019631593514753926,
+                "null_reason": null,
+                "roc_auc": 0.41480157411783425,
+                "sensitivity": 0.002068252326783868,
+                "specificity": 1.0,
+                "tss": 0.0020682523267838704
+              },
+              "seed_count": 5,
+              "threshold": 0.2661109983921051
+            }
+          },
+          "target": "Dasyurus maculatus"
+        },
+        {
+          "counts": {
+            "background_n": 146,
+            "common_complete_cells": 1485,
+            "missing_method_prediction": 0,
+            "predictor_incomplete": 27,
+            "presence_n": 1339,
+            "surface_rows": 1512
+          },
+          "methods": {
+            "multihead_frozen_trunk": {
+              "metrics": {
+                "balanced_accuracy": 0.5108187463553868,
+                "mcc": 0.027000095013855994,
+                "null_reason": null,
+                "roc_auc": 0.7228712901674731,
+                "sensitivity": 0.06273338312173264,
+                "specificity": 0.958904109589041,
+                "tss": 0.021637492710773643
+              },
+              "seed_count": 5,
+              "threshold": 0.6772815704345703
+            },
+            "multihead_full_finetune": {
+              "metrics": {
+                "balanced_accuracy": 0.523632438847228,
+                "mcc": 0.04477919862460441,
+                "null_reason": null,
+                "roc_auc": 0.6855453364297626,
+                "sensitivity": 0.1157580283793876,
+                "specificity": 0.9315068493150684,
+                "tss": 0.047264877694455976
+              },
+              "seed_count": 5,
+              "threshold": 0.6740138918161392
+            },
+            "selected_conventional": {
+              "metrics": {
+                "balanced_accuracy": 0.5057725556794582,
+                "mcc": 0.013293775645207277,
+                "null_reason": null,
+                "roc_auc": 0.6145533878277595,
+                "sensitivity": 0.07318894697535475,
+                "specificity": 0.9383561643835616,
+                "tss": 0.011545111358916449
+              },
+              "seed_count": 5,
+              "threshold": 0.636
+            },
+            "strict_q_conventional": {
+              "metrics": {
+                "balanced_accuracy": 0.5050257296899138,
+                "mcc": 0.011675127863857099,
+                "null_reason": null,
+                "roc_auc": 0.6069265552906995,
+                "sensitivity": 0.07169529499626587,
+                "specificity": 0.9383561643835616,
+                "tss": 0.010051459379827543
+              },
+              "seed_count": 5,
+              "threshold": 0.6324
+            },
+            "target_only_random_init_resmlp": {
+              "metrics": {
+                "balanced_accuracy": 0.6724963425987498,
+                "mcc": 0.2102847528045263,
+                "null_reason": null,
+                "roc_auc": 0.7629850532497162,
+                "sensitivity": 0.42718446601941745,
+                "specificity": 0.9178082191780822,
+                "tss": 0.3449926851974996
+              },
+              "seed_count": 5,
+              "threshold": 0.7445951282978058
+            },
+            "target_plus_q_linear_resmlp": {
+              "metrics": {
+                "balanced_accuracy": 0.6483523791011488,
+                "mcc": 0.1870262203448412,
+                "null_reason": null,
+                "roc_auc": 0.7487595527228458,
+                "sensitivity": 0.36519790888722925,
+                "specificity": 0.9315068493150684,
+                "tss": 0.2967047582022977
+              },
+              "seed_count": 5,
+              "threshold": 0.7171572327613831
+            }
+          },
+          "target": "Notamacropus rufogriseus"
+        },
+        {
+          "counts": {
+            "background_n": 595,
+            "common_complete_cells": 968,
+            "missing_method_prediction": 0,
+            "predictor_incomplete": 8,
+            "presence_n": 373,
+            "surface_rows": 976
+          },
+          "methods": {
+            "multihead_frozen_trunk": {
+              "metrics": {
+                "balanced_accuracy": 0.5055827156599906,
+                "mcc": 0.03135641161027455,
+                "null_reason": null,
+                "roc_auc": 0.5204564399486336,
+                "sensitivity": 0.9758713136729222,
+                "specificity": 0.03529411764705882,
+                "tss": 0.011165431319981156
+              },
+              "seed_count": 5,
+              "threshold": 0.8581528902053833
+            },
+            "multihead_full_finetune": {
+              "metrics": {
+                "balanced_accuracy": 0.4993398968166355,
+                "mcc": -0.0075830515393456,
+                "null_reason": null,
+                "roc_auc": 0.5151395678914997,
+                "sensitivity": 0.9919571045576407,
+                "specificity": 0.0067226890756302525,
+                "tss": -0.0013202063667290265
+              },
+              "seed_count": 5,
+              "threshold": 0.876939594745636
+            },
+            "selected_conventional": {
+              "metrics": {
+                "balanced_accuracy": 0.5053822065019037,
+                "mcc": 0.05458492182730337,
+                "null_reason": null,
+                "roc_auc": 0.597747088111384,
+                "sensitivity": 0.9973190348525469,
+                "specificity": 0.013445378151260505,
+                "tss": 0.010764413003807372
+              },
+              "seed_count": 1,
+              "threshold": 0.9336680962051864
+            },
+            "strict_q_conventional": {
+              "metrics": {
+                "balanced_accuracy": 0.500680379390362,
+                "mcc": 0.008437832170804715,
+                "null_reason": null,
+                "roc_auc": 0.5919233108793115,
+                "sensitivity": 0.9946380697050938,
+                "specificity": 0.0067226890756302525,
+                "tss": 0.0013607587807240584
+              },
+              "seed_count": 1,
+              "threshold": 0.9217647486215976
+            },
+            "target_only_random_init_resmlp": {
+              "metrics": {
+                "balanced_accuracy": 0.5010408452925406,
+                "mcc": 0.006797859248800049,
+                "null_reason": null,
+                "roc_auc": 0.5189672651902584,
+                "sensitivity": 0.9785522788203753,
+                "specificity": 0.023529411764705882,
+                "tss": 0.0020816905850811196
+              },
+              "seed_count": 5,
+              "threshold": 0.8844978451728821
+            },
+            "target_plus_q_linear_resmlp": {
+              "metrics": {
+                "balanced_accuracy": 0.5156667492734359,
+                "mcc": 0.07484997317562184,
+                "null_reason": null,
+                "roc_auc": 0.5637461418883907,
+                "sensitivity": 0.9758713136729222,
+                "specificity": 0.05546218487394958,
+                "tss": 0.03133349854687184
+              },
+              "seed_count": 5,
+              "threshold": 0.8864576935768127
+            }
+          },
+          "target": "Pseudocheirus peregrinus"
+        },
+        {
+          "counts": {
+            "background_n": 174,
+            "common_complete_cells": 1385,
+            "missing_method_prediction": 0,
+            "predictor_incomplete": 17,
+            "presence_n": 1211,
+            "surface_rows": 1402
+          },
+          "methods": {
+            "multihead_frozen_trunk": {
+              "metrics": {
+                "balanced_accuracy": 0.44426568713991477,
+                "mcc": -0.0941943903968969,
+                "null_reason": null,
+                "roc_auc": 0.536452252816614,
+                "sensitivity": 0.17588769611891,
+                "specificity": 0.7126436781609196,
+                "tss": -0.11146862572017047
+              },
+              "seed_count": 5,
+              "threshold": 0.9827600955963135
+            },
+            "multihead_full_finetune": {
+              "metrics": {
+                "balanced_accuracy": 0.4488548459048758,
+                "mcc": -0.13159612501580262,
+                "null_reason": null,
+                "roc_auc": 0.5219112161508015,
+                "sensitivity": 0.058629232039636665,
+                "specificity": 0.8390804597701149,
+                "tss": -0.10229030819024842
+              },
+              "seed_count": 5,
+              "threshold": 0.9810212254524231
+            },
+            "selected_conventional": {
+              "metrics": {
+                "balanced_accuracy": 0.4717270803079055,
+                "mcc": -0.1194115799390802,
+                "null_reason": null,
+                "roc_auc": 0.591170971079283,
+                "sensitivity": 0.018166804293971925,
+                "specificity": 0.9252873563218391,
+                "tss": -0.056545839384189
+              },
+              "seed_count": 5,
+              "threshold": 0.9733583633054164
+            },
+            "strict_q_conventional": {
+              "metrics": {
+                "balanced_accuracy": 0.4766318327211291,
+                "mcc": -0.1212129085489528,
+                "null_reason": null,
+                "roc_auc": 0.5893248668811754,
+                "sensitivity": 0.010734929810074319,
+                "specificity": 0.9425287356321839,
+                "tss": -0.04673633455774184
+              },
+              "seed_count": 5,
+              "threshold": 0.9765752018464744
+            },
+            "target_only_random_init_resmlp": {
+              "metrics": {
+                "balanced_accuracy": 0.5035545810909574,
+                "mcc": 0.0055481527250335555,
+                "null_reason": null,
+                "roc_auc": 0.6426578205529769,
+                "sensitivity": 0.23699421965317918,
+                "specificity": 0.7701149425287356,
+                "tss": 0.007109162181914819
+              },
+              "seed_count": 5,
+              "threshold": 0.9820661425590516
+            },
+            "target_plus_q_linear_resmlp": {
+              "metrics": {
+                "balanced_accuracy": 0.5040813614662528,
+                "mcc": 0.00795252904526665,
+                "null_reason": null,
+                "roc_auc": 0.6464259612555405,
+                "sensitivity": 0.13459950454170108,
+                "specificity": 0.8735632183908046,
+                "tss": 0.00816272293250564
+              },
+              "seed_count": 5,
+              "threshold": 0.9851567506790161
+            }
+          },
+          "target": "Trichosurus vulpecula"
+        },
+        {
+          "counts": {
+            "background_n": 138,
+            "common_complete_cells": 1276,
+            "missing_method_prediction": 0,
+            "predictor_incomplete": 12,
+            "presence_n": 1138,
+            "surface_rows": 1288
+          },
+          "methods": {
+            "multihead_frozen_trunk": {
+              "metrics": {
+                "balanced_accuracy": 0.4974656784085989,
+                "mcc": -0.007961777063138631,
+                "null_reason": null,
+                "roc_auc": 0.5452038919029062,
+                "sensitivity": 0.9586994727592267,
+                "specificity": 0.036231884057971016,
+                "tss": -0.005068643182802202
+              },
+              "seed_count": 5,
+              "threshold": 0.7621071755886077
+            },
+            "multihead_full_finetune": {
+              "metrics": {
+                "balanced_accuracy": 0.49381701943404394,
+                "mcc": -0.01058532414290184,
+                "null_reason": null,
+                "roc_auc": 0.5281768166883166,
+                "sensitivity": 0.8427065026362038,
+                "specificity": 0.14492753623188406,
+                "tss": -0.012365961131912129
+              },
+              "seed_count": 5,
+              "threshold": 0.7574150368571282
+            },
+            "selected_conventional": {
+              "metrics": {
+                "balanced_accuracy": 0.5565956037798324,
+                "mcc": 0.08429906418733292,
+                "null_reason": null,
+                "roc_auc": 0.5590057563485393,
+                "sensitivity": 0.23637961335676624,
+                "specificity": 0.8768115942028986,
+                "tss": 0.11319120755966483
+              },
+              "seed_count": 5,
+              "threshold": 0.7464000000000001
+            },
+            "strict_q_conventional": {
+              "metrics": {
+                "balanced_accuracy": 0.5538575176383689,
+                "mcc": 0.07670371515410046,
+                "null_reason": null,
+                "roc_auc": 0.5611452841241945,
+                "sensitivity": 0.2671353251318102,
+                "specificity": 0.8405797101449275,
+                "tss": 0.10771503527673776
+              },
+              "seed_count": 5,
+              "threshold": 0.7176
+            },
+            "target_only_random_init_resmlp": {
+              "metrics": {
+                "balanced_accuracy": 0.4666908637069866,
+                "mcc": -0.05355301504701299,
+                "null_reason": null,
+                "roc_auc": 0.48595934897226256,
+                "sensitivity": 0.8101933216168717,
+                "specificity": 0.12318840579710146,
+                "tss": -0.06661827258602682
+              },
+              "seed_count": 5,
+              "threshold": 0.7603634238243103
+            },
+            "target_plus_q_linear_resmlp": {
+              "metrics": {
+                "balanced_accuracy": 0.48008838287358957,
+                "mcc": -0.032683219902425946,
+                "null_reason": null,
+                "roc_auc": 0.49561906217365825,
+                "sensitivity": 0.8224956063268892,
+                "specificity": 0.13768115942028986,
+                "tss": -0.03982323425282086
+              },
+              "seed_count": 5,
+              "threshold": 0.7435207486152648
+            }
+          },
+          "target": "Vombatus ursinus"
+        }
+      ],
+      "schema_version": "goal047-surface-result-v2",
+      "surface": "secondary",
+      "targets": [
+        "Dasyurus maculatus",
+        "Notamacropus rufogriseus",
+        "Pseudocheirus peregrinus",
+        "Trichosurus vulpecula",
+        "Vombatus ursinus"
+      ]
+    }
+  }
+}

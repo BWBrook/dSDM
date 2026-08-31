@@ -1,6 +1,6 @@
 # Runbook
 
-From the dSDM repository root:
+From the dSDM repository root, the prospective sequence was:
 
 ```sh
 uv run --locked pytest -q tests/test_goal047_tasmania_transfer.py
@@ -21,17 +21,15 @@ uv run --locked python -m dsdm_phase1.goal047_tasmania_transfer validate-result 
 uv run --locked python -m dsdm_phase1.goal047_tasmania_transfer status --root .
 ```
 
-The `canary`, `run-full-refits`, and `validate-full-refits` commands read
-mainland sources only. The full stage requires the committed freeze and a
-clean worktree, and writes only ignored private response/model/receipt files.
-Workers operate by target and are useful when memory permits; `--workers 1`
-is the bounded sequential fallback.
+The first refit attempt failed safely before any fitting or Tasmania access
+because replay validation expected a different summary-key shape. After the
+repair, all 20 canonical Goal 042 mainland summaries reproduced exactly.
+Production then exited `0` with five q fits, 25 pretraining fits, and 142
+models. The implementation/fix history is `f46659d` followed by `37a5ec3`;
+the committed opening receipt is `20897ec`.
 
-The opening receipt is created only after every exact private artifact key and
-digest validates. It must be committed before the gate is checked. The
-one-shot opening writes and fsyncs an exclusive private start marker before
-its first Tasmania read and refuses every retry, including after a crash.
-
-Only the final `evaluate` command opens the two bound Tasmania inputs. Do not
-run it during pre-opening implementation or validation. No command directly
-opens camera source data.
+The opening gate and independent final audit passed. The exclusive opening
+marker was written before the single response and predictor reads. The
+production result is aggregate-only: do not recover, publish, or add cell-level
+payloads to Git. Continuous extrapolation and categorical unseen diagnostics
+are descriptive and must not trigger post hoc model changes.
