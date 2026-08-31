@@ -2,11 +2,11 @@
 
 ## Status
 
-**Goal 048 v1.1 transport repair is prespecified but not implemented. No
-bioregional holdout has been selected.**
+**Goal 048 v1.1 reached and passed the aggregate-canary compute checkpoint.
+No bioregional holdout has been selected.**
 
 The three-region SEAWFB design remains scientifically unchanged. The existing
-16-region prospective rule, required complete BBS geometry, Tasmania training
+15-region prospective rule, required complete BBS geometry, Tasmania training
 role, species ecology, seasonal policy, response-free roles and scores, 50 km
 buffers, joint selector, `X=10`/`X=20` rules, estimability thresholds, leakage
 firewall, and evaluation metrics all remain frozen as specified.
@@ -25,6 +25,18 @@ the two taxa were not separately queried and the exact request/response
 envelopes were not retained. No occurrence row or model outcome was produced.
 
 ## V1.1 engineering decision
+
+The literal official-land overlap rule admits AUA, BBS, KAN, NAN, NCP, NET,
+NNC, NSS, SCP, SEC, SEH, SEQ, SVP, SYB, and VIM. EYB is excluded at
+approximately 0.6678 overlap, below 0.80; this corrects the expected count
+without changing the selector. BBS01, BBS03, and BBS28 remain the sole
+admitted-region completion.
+
+The Rainbow Lorikeet feasibility seed uses current accepted
+*Trichoglossus moluccanus*. The obsolete submitted name *T. haematodus* is
+retained as provenance, while the composite pre-split alias
+*T. moluccanus/rubritorquis* is excluded because it is not attributable to one
+biological species.
 
 The feasibility route will use only server-side aggregates, one biological
 species at a time. Its exact frozen ordered identifier union includes the
@@ -50,13 +62,27 @@ acquisition and before holdout outcome access, but cannot change, substitute,
 or re-rank the Goal 048 regions. More eligible donors can only relax support;
 canonical Goal 049 data reconstruct final exact labels and panels.
 
-## Prospective restart boundary
+## Checkpoint boundary
 
-This repair authorises no occurrence access or aggregate implementation. The
-next authorised execution must first freeze, in order: (1) literal whole-region
-and exact-domain authority; (2) exact current ALA concept mapping for the fixed
-seed ledger; (3) every species role, reason, and seasonal classification;
-and (4) the complete checksum-bound NVIS mapping. Only after a validator proves
-all four complete may implementation begin with an offline filter-serialization
-test and then one aggregate canary taxon. No scoring occurs until the complete
-sequential aggregate census has passed conservation and transport gates.
+The four count-free freezes, offline serializer proof, and one aggregate
+canary are complete. This checkpoint authorises no further occurrence access.
+A separately reviewed next tranche must implement and test sequential census
+restart/failure recovery before dispatch, enforce the observed 10,000,000-group
+ceiling cumulatively, and still stop before scoring if transport conservation
+fails for any species.
+
+## Aggregate-canary decision
+
+After all four count-free freezes validated, the formal *Acanthiza pusilla*
+canary conserved 649,432 records exactly across 136,829 `lat_long` groups and
+collapsed to 50,736 exact-domain species-cells. Runtime was 13.454 seconds,
+peak process RAM was at most 508,329,984 bytes, and private Goal 048 disk use
+was 94,763,052 bytes. The canary therefore passed the per-taxon, conservation,
+RAM, disk, missing-coordinate, and runtime gates.
+
+The conservative linear 100-seed projection is 13,682,900 groups. It is a
+capacity-planning diagnostic, not a prespecified ecological or transport gate;
+the 10,000,000 ceiling applies to the observed cumulative full census. The
+canary therefore passes. The next tranche should run the sequential census on
+`deep-server` under `tmux`, stopping immediately if the observed cumulative
+group count reaches 10,000,000.

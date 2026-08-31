@@ -16,7 +16,9 @@
 1. **Preflight.** Confirm the supported checkout and validate the v1.1 packet
    offline.
 2. **Whole-region/domain freeze.** Authenticate IBRA7.1, reconcile 89 regions
-   and 419 subregions, retain the existing 16-region rule, and complete BBS.
+   and 419 subregions, apply the literal overlap rule yielding 15 regions, and
+   complete BBS. Exclude EYB at approximately 0.6678 rather than relaxing the
+   threshold.
 3. **Exact concept freeze.** For every mandatory feasibility seed species,
    freeze an ordered union containing its accepted parent, every reviewed
    accepted descendant/subspecies, and necessary reviewed historical aliases,

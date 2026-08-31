@@ -29,7 +29,7 @@ live occurrence count and no implementation module. A later executor must
 complete these count-free prerequisites in order:
 
 1. authenticate and checksum literal whole IBRA7.1 regions, the exact domain,
-   the unchanged 16-region prospective universe, and required BBS completion;
+   the corrected 15-region prospective universe, and required BBS completion;
 2. map every mandatory feasibility seed species to an exact ordered union of
    current/reviewed ALA concepts using taxonomy/BIE lookups only;
 3. freeze effort, auxiliary, and target roles, reason, habitat, and seasonality;
@@ -45,8 +45,10 @@ or ecology. The two taxa exposed in the v1.0 incident remain unaltered.
 Authenticate the DCCEEW IBRA7.1 FeatureServer authority and prove exactly 419
 unique subregions map to 89 unique regions. Dissolve all official subregions by
 region code and reconcile geometry before masks. Candidate holdouts use whole
-regions, never clipped bundles. Retain the existing response-blind 16-region
-prospective rule and include complete `BBS01`, `BBS03`, and `BBS28` for BBS.
+regions, never clipped bundles. Apply the response-blind 15-region prospective
+rule and include complete `BBS01`, `BBS03`, and `BBS28` for BBS. EYB is
+excluded because its approximately 0.6678 official-land overlap is below the
+literal 0.80 threshold.
 The final 0.01-degree grid uses centroid assignment after authoritative land
 and open-water masks. Tasmania remains training geography and is not a
 candidate.
@@ -70,6 +72,21 @@ Before any occurrence count or predictor scoring, checksum the official NVIS
 results may not determine classifications.
 
 ## Aggregate feasibility transport
+
+Goal 048 is isolated from the historically bound project environment. The
+repository manifest and lock remain pinned to galah 0.13.3 for replay of prior
+goals; every Goal 048 live or focused-test invocation must overlay the repaired
+release explicitly:
+
+```sh
+uv run --with galah-python==0.13.6 python scripts/goal048_seawfb_bioregional_freeze.py validate-freezes --root .
+uv run --with galah-python==0.13.6 pytest -q tests/test_goal048_seawfb_bioregional_freeze.py
+```
+
+The runner fails closed if a freeze or count stage sees any galah version other
+than 0.13.6. It lives under `scripts/` so adding this one-off feasibility route
+does not alter the frozen `src/dsdm_phase1` source authority. Do not rerun the
+completed canary merely to validate this delivery repair.
 
 Implement the route only after the four prerequisites pass. Process one
 biological species per query, sequentially, using `galah.atlas_counts()` under
@@ -147,21 +164,25 @@ the discrepancy, exclusions, and zero forbidden-work counters. It contains no
 URL, query string, email/contact value, occurrence row, coordinate, provider or
 event identifier, private cell, model result, or selected region.
 
-## Repair validation
+## Checkpoint validation
 
-Run only:
+Run:
 
 ```sh
 jq empty config/goal048_seawfb_bioregional_freeze.json
 jq empty evidence/seawfb_bioregional_freeze/goal048/protocol_incident.json
+uv run --with galah-python==0.13.6 pytest -q tests/test_goal048_seawfb_bioregional_freeze.py
+uv run --with galah-python==0.13.6 python scripts/goal048_seawfb_bioregional_freeze.py validate-freezes --root .
+uv run --with galah-python==0.13.6 python scripts/goal048_seawfb_bioregional_freeze.py validate --root .
+uv run pytest -q
 git diff --check
 git status --short --branch
 ```
 
 Also scan changed Goal 048 files for email/contact values, query URLs,
 coordinates, provider/event IDs, occurrence rows, model outcomes, and selected
-region claims. Do not run live ALA access, the aggregate route, scoring, or the
-full suite during this repair.
+region claims. Do not rerun live ALA access or the aggregate canary, and do not
+run scoring.
 
 ## Stop and report
 

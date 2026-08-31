@@ -1,0 +1,50 @@
+{
+  "domain": {
+    "added_complete_bbs_cells": 18961,
+    "cell_count": 1144286,
+    "excluded_eyb_overlap_fraction": 0.667781036484,
+    "private_receipt": "data/processed/dsdm/goal048-seawfb-bioregional-freeze/domain_freeze.json",
+    "private_receipt_sha256": "6de281570cc6b7e2984ba8f2c55b6f0ceb250138ab6b51769004e2a621ad2e88",
+    "region_count": 15,
+    "semantic_sha256": "4d27512c3fa38f9d26fd864616689ebd13f9a35999278c9bc4ef648f3a4d4cce",
+    "status": "frozen_count_free"
+  },
+  "joint_sha256": "0695a7f5e313088177334890f728b144a04f27fe83e90ce18a9eb63d1609186f",
+  "nvis": {
+    "mapping_sha256": "e600d9f1d3e5781a290982ba3066af1fa62f954ade378565cbaf07f4376612cb",
+    "missing_codes": [
+      22,
+      24,
+      26,
+      28,
+      29,
+      99
+    ],
+    "private_receipt": "data/processed/dsdm/goal048-seawfb-bioregional-freeze/nvis_freeze.json",
+    "private_receipt_sha256": "5eca488f0c523dea1434d95695c1faa4752dd3862836bfd3717fbaabdd0c7a78",
+    "semantic_sha256": "37eb68a905e2b4dd860ec29f99348d62ae017b38bb95241b4b0240a716a6fe78",
+    "status": "frozen_count_free"
+  },
+  "roles": {
+    "excluded_target_count": 29,
+    "private_receipt": "data/processed/dsdm/goal048-seawfb-bioregional-freeze/role_freeze.json",
+    "private_receipt_sha256": "a74de4e81e36236199bd8f3a50079eb696fcc868f95126bd55855bc998ffe350",
+    "role_counts": {
+      "auxiliary": 71,
+      "effort": 96,
+      "target": 71
+    },
+    "semantic_sha256": "8266c0d7dfb5c77b2da3e5ef176e9ea00c5fd3e7867839128c27103f9315762a",
+    "status": "frozen_response_blind"
+  },
+  "taxonomy": {
+    "alias_count": 179,
+    "descendant_count": 247,
+    "parent_count": 100,
+    "private_receipt": "data/processed/dsdm/goal048-seawfb-bioregional-freeze/taxonomy_freeze.json",
+    "private_receipt_sha256": "3c45107e3d5366f95716d4f3b73b61a1536a2e063196213c4af36c27ef32d9d2",
+    "semantic_sha256": "9a192aa2565e40756813db65164a769aaed42d128d66b6ff53602d44b2c0509b",
+    "species_count": 100,
+    "status": "frozen_count_free"
+  }
+}

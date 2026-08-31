@@ -1,0 +1,22 @@
+{
+  "facet_count_sum": 649432,
+  "facet_group_count": 136829,
+  "count_conservation_sha256": "8bb31b1c1826564d2c03e03a28848240f60d675947e3ca1f1b5ca9a6a9ebf631",
+  "full_100_seed_group_projection": 13682900,
+  "full_100_seed_projection_role": "planning_diagnostic_not_transport_gate",
+  "identifier_count": 8,
+  "model_outcome_counter": 0,
+  "occurrence_rows_downloaded": 0,
+  "peak_ram_bytes_upper_bound": 508329984,
+  "prerequisite_joint_sha256": "0695a7f5e313088177334890f728b144a04f27fe83e90ce18a9eb63d1609186f",
+  "prerequisite_joint_sha256_at_live_run": "fb7632ae4f7cdb93f4515bc79a9493254f985e0868c7b0f9315110a79a730e6c",
+  "post_run_prerequisite_change": "count_free_overlap_table_audit_enrichment_only_query_and_domain_cells_unchanged",
+  "private_disk_bytes": 94763052,
+  "private_species_cell_sha256": "d1cbc9ad861aca5c0b85582266e7c5481259183dde82682cbdece2d4d4dc7706",
+  "query_fingerprint": "89eb3f170ef89a03eed3d77bf6d0f0360ef172dd465a3388e67780a354b24fe5",
+  "retained_species_cell_count": 50736,
+  "runtime_seconds": 13.454,
+  "species": "Acanthiza pusilla",
+  "status": "passed",
+  "total_count": 649432
+}

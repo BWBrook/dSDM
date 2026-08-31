@@ -1,7 +1,7 @@
 {
   "schema_version": "goal048-seawfb-bioregional-freeze-v1.1",
   "goal_id": "goal048-seawfb-bioregional-design-freeze",
-  "status": "transport_repair_prespecified_not_implemented",
+  "status": "aggregate_canary_passed_compute_checkpoint",
   "protocol_incident": {
     "receipt": "evidence/seawfb_bioregional_freeze/goal048/protocol_incident.json",
     "formal_use": "prohibited",
@@ -38,7 +38,13 @@
     "starting_authority": "metadata/goal040_domain_boundary_manifest.json",
     "candidate_region_rule": "mainland_ibra7_1_region_with_at_least_0_80_official_land_area_overlap_with_goal040_exact_domain",
     "prospective_expansion_rule": "before_occurrence_counts_expand_to_complete_official_geometry_of_every_candidate_region",
-    "prospective_region_count": 16,
+    "prospective_region_count": 15,
+    "prospective_region_codes": ["AUA", "BBS", "KAN", "NAN", "NCP", "NET", "NNC", "NSS", "SCP", "SEC", "SEH", "SEQ", "SVP", "SYB", "VIM"],
+    "excluded_rule_mismatch": {
+      "region_code": "EYB",
+      "official_land_overlap_fraction": 0.6678,
+      "reason": "below_literal_0_80_overlap_threshold"
+    },
     "required_completion": {
       "region_code": "BBS",
       "subregion_codes": ["BBS01", "BBS03", "BBS28"]
@@ -156,7 +162,7 @@
       "Strepera fuliginosa",
       "Strepera graculina",
       "Strepera versicolor",
-      "Trichoglossus haematodus",
+      "Trichoglossus moluccanus",
       "Vanellus miles",
       "Zanda funerea",
       "Zoothera heinei",
@@ -164,6 +170,11 @@
       "Zosterops lateralis"
     ],
     "exact_current_ala_concept_required": true,
+    "accepted_name_transitions": {
+      "Trichoglossus haematodus": "Trichoglossus moluccanus",
+      "Pyrrholaemus sagittata": "Pyrrholaemus sagittatus"
+    },
+    "excluded_ambiguous_aliases": ["Trichoglossus moluccanus/rubritorquis"],
     "effort": "accepted_native_terrestrial_nonmarine_birds_used_only_for_observation_effort",
     "auxiliary": "reviewed_southeast_woodland_or_forest_birds_eligible_as_pretraining_heads",
     "target": "reviewed_focal_woodland_or_forest_birds_compatible_with_static_integrated_2001_2025_suitability",
@@ -185,7 +196,9 @@
   },
   "aggregate_feasibility": {
     "purpose": "bounded_disposable_feasibility_snapshot_only",
-    "package": "galah-python",
+    "package": "galah-python==0.13.6",
+    "delivery": "explicit_uv_with_overlay_without_changing_historical_project_lock",
+    "runner": "scripts/goal048_seawfb_bioregional_freeze.py",
     "function": "atlas_counts",
     "processing": "sequential_one_biological_species_per_query",
     "query_identity": {
@@ -200,7 +213,7 @@
     },
     "filters": {
       "years_inclusive": [2001, 2025],
-      "geography": "frozen_prospective_bbox_with_exact_frozen_domain_applied_after_snap",
+      "geography": "frozen_prospective_bbox_serialized_as_explicit_decimal_coordinate_filters_with_exact_frozen_domain_applied_after_snap",
       "occurrence_status": "present",
       "spatial_validity": "valid_coordinate_required",
       "identical_between_total_and_facet_calls": true,
@@ -378,9 +391,13 @@
     "docs/goals/048-seawfb-bioregional-design-freeze/Log.md",
     "docs/goals/048-seawfb-bioregional-design-freeze/Decision.md"
   ],
+  "aggregate_canary_tracked_outputs": [
+    "metadata/goal048_prerequisite_freeze.json",
+    "evidence/seawfb_bioregional_freeze/goal048/aggregate_canary.json"
+  ],
   "future_private_root": "data/processed/dsdm/goal048-seawfb-bioregional-freeze",
   "forbidden_work": [
-    "occurrence_counts_during_v1_1_repair",
+    "occurrence_counts_beyond_single_authorized_canary_in_this_tranche",
     "occurrence_or_raw_row_download",
     "provider_or_event_row_acquisition",
     "canonical_or_bulk_bird_acquisition",

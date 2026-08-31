@@ -17,7 +17,7 @@ sample of south-east Australia.
 
 Version 1.1 repairs only the feasibility transport and prospective ordering.
 It does not change the response-blind 100-name feasibility seed ledger, species
-roles, seasonal policy, 16-region prospective rule, response-free scores,
+roles, seasonal policy, 15-region prospective rule, response-free scores,
 three-region joint selector, 50 km buffers, estimability thresholds, or
 development firewall.
 
@@ -88,8 +88,9 @@ They are transport ceilings, not ecological gates.
 - A holdout is the complete dissolved geometry of one official IBRA7.1
   bioregion. The official authority must reconcile to 89 regions and 419
   subregions.
-- The existing 16-region prospective rule and required Brigalow Belt South
-  completion remain unchanged. Tasmania remains training geography.
+- The literal 0.80 official-land overlap rule yields 15 prospective regions;
+  EYB is excluded at approximately 0.6678. Required Brigalow Belt South
+  completion remains unchanged. Tasmania remains training geography.
 - Separate observation-effort donors, auxiliary pretraining heads, and focal
   evaluation targets. Every role and exclusion reason remains explicit.
 - Regularly recurring seasonal migrants remain eligible under the integrated
