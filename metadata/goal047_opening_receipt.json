@@ -1,0 +1,3217 @@
+{
+  "authorities": {
+    "bindings": {
+      "goal040_domain_manifest": {
+        "path": "metadata/goal040_domain_boundary_manifest.json",
+        "sha256": "44435b4bd890fab04d5eba8b29801a0d1a7c509043c4ff51d25b429e488dd999"
+      },
+      "goal040_normalisation_manifest": {
+        "path": "metadata/goal040_normalisation_manifest.json",
+        "sha256": "a26bb4cf86dc72de52990fcb0471a0526e2fa55753f66626baee81b1702b058a"
+      },
+      "goal040_normalisation_source": {
+        "path": "src/dsdm_phase1/goal040_normalisation.py",
+        "sha256": "5ab227853bad07fedfe8618305611ca3b29228f0fa81d0229df5b2669e95279a"
+      },
+      "goal040_support_manifest": {
+        "path": "metadata/goal040_support_manifest.json",
+        "sha256": "a0a41f2320b6ac7512b821aeaf5cf231e487cbc974e31b34990ff609986201a6"
+      },
+      "goal040_support_source": {
+        "path": "src/dsdm_phase1/goal040_support.py",
+        "sha256": "fca254c6c4f8a5ee868a636393188648c20000df63894e283bbc307a5b4129ad"
+      },
+      "goal041_source": {
+        "path": "src/dsdm_phase1/goal041_predictor_substrate.py",
+        "sha256": "984b01d18a4cc0c15b2e7d5f3d838598cf1fd63067922ed080fa7ede7cbc370d"
+      },
+      "goal041_table_manifest": {
+        "path": "metadata/goal041_table_manifest.json",
+        "sha256": "fa18a25ba1992fc7a3b28edb6d78ceb2fc84b269486f968165ffd56fbcc5e3c1"
+      },
+      "goal042_config": {
+        "path": "config/goal042_transfer_response.json",
+        "sha256": "7cbaef4bf993b1813eb7175d38581d0d782706cb91d00358644b14133acb71c1"
+      },
+      "goal042_response_manifest": {
+        "path": "metadata/goal042_response_manifest.json",
+        "sha256": "dc67d68962f931a6dbeb103a742103a1ba59d9f22445377eabf0bf3c8bb806bc"
+      },
+      "goal042_source": {
+        "path": "src/dsdm_phase1/goal042_transfer_response.py",
+        "sha256": "d000fd755375ac4702f55bbc5b51f967cff4b57ce2c9fa1335a4801a06e9d4c5"
+      },
+      "goal043_manifest": {
+        "path": "metadata/goal043_manifest.json",
+        "sha256": "d1876995cba15bfccaf92a33ec299e7224fefd7e2d9dc4abb264bf8c901d67f7"
+      },
+      "goal043_transforms": {
+        "path": "metadata/goal043_transforms.json",
+        "sha256": "97883416552ae6338cfcf22d8858852fcd9e4637d81bf4fb9239c0fdb3295677"
+      },
+      "goal044_config": {
+        "path": "config/goal044_mainland_conventional.json",
+        "sha256": "66350f80d58e58eb1c55fa95cc9e4c899d8792404b09acc26d40c71715828a68"
+      },
+      "goal044_source": {
+        "path": "src/dsdm_phase1/goal044_mainland_conventional.py",
+        "sha256": "5f1d56ede8db3a008ed8a60e2a7fc24c589c7d03bbcd4cac3f0bae637cd88c63"
+      },
+      "goal044_summary": {
+        "path": "evidence/mainland_conventional/goal044/summary.json",
+        "sha256": "3bd0b89c107a62ee5ea53aac204dcdabc0b19670aeb2a360c6674bfac69f8a89"
+      },
+      "goal046_config": {
+        "path": "config/goal046_mainland_dsdm.json",
+        "sha256": "b3f3005a0777330e28ff88a11497d76013fec8000bfee5451328b3278621afd2"
+      },
+      "goal046_source": {
+        "path": "src/dsdm_phase1/goal046_mainland_dsdm.py",
+        "sha256": "5d44f8f5ca7509ff36a4b0da9c497ca2347303031081675729358cd8daaa851a"
+      },
+      "goal046_summary": {
+        "path": "evidence/mainland_dsdm/goal046/summary.json",
+        "sha256": "868a2083036d7b5f14cde9137621977e06405033252551b80fd0d5107627c10b"
+      },
+      "goal047_source": {
+        "path": "src/dsdm_phase1/goal047_tasmania_transfer.py",
+        "sha256": "6ceaa4affb897f20dad1c05b3a052c72517d1dab617cf4a8bbdbd9ec14f6235d"
+      },
+      "mainland_modeling_source": {
+        "path": "src/dsdm_phase1/mainland_modeling.py",
+        "sha256": "7a133232d84fe5a363252fbda772535d8262557c3b82f16a05c9831000577597"
+      },
+      "mainland_training_source": {
+        "path": "src/dsdm_phase1/mainland_dsdm.py",
+        "sha256": "60bf28f7f9eaa6f4ea4805ba1d4f7acd2ca7e7d7050dd575959b91eb26838453"
+      },
+      "model_adapters_source": {
+        "path": "src/dsdm_phase1/model_adapters.py",
+        "sha256": "2e6ea5c013a00f07e9dfe9ecc29496785b4579dcbd96af08c90567a5cf63dfd9"
+      },
+      "modeling_contract_source": {
+        "path": "src/dsdm_phase1/modeling_contract.py",
+        "sha256": "342bb461ca3e6c6193984e9d0ec22ba3d18ee8a3fcaeaaf84710c72adf5649a9"
+      },
+      "models_source": {
+        "path": "src/dsdm/models.py",
+        "sha256": "71317e80514eeab68a316066f59382db2c96aa6bffb0dfd524e08895f2f9c6ee"
+      },
+      "pyproject": {
+        "path": "pyproject.toml",
+        "sha256": "29b7c2f9f810ac35357fa9b85189002d92a54a4933cf87746f57ae27cc0a8d08"
+      },
+      "uv_lock": {
+        "path": "uv.lock",
+        "sha256": "39c22925750ac8821f5420bdfe5ca39554b7906d812bd3a94a04e91c469284fd"
+      }
+    },
+    "freeze_sha256": "3d2629973b477446840b577a03b2e49956956d72552be4301d790db17e450e69",
+    "goal047_identity": {
+      "bindings": {
+        "goal040_domain_manifest": "44435b4bd890fab04d5eba8b29801a0d1a7c509043c4ff51d25b429e488dd999",
+        "goal040_normalisation_manifest": "a26bb4cf86dc72de52990fcb0471a0526e2fa55753f66626baee81b1702b058a",
+        "goal040_normalisation_source": "5ab227853bad07fedfe8618305611ca3b29228f0fa81d0229df5b2669e95279a",
+        "goal040_support_manifest": "a0a41f2320b6ac7512b821aeaf5cf231e487cbc974e31b34990ff609986201a6",
+        "goal040_support_source": "fca254c6c4f8a5ee868a636393188648c20000df63894e283bbc307a5b4129ad",
+        "goal041_source": "984b01d18a4cc0c15b2e7d5f3d838598cf1fd63067922ed080fa7ede7cbc370d",
+        "goal041_table_manifest": "fa18a25ba1992fc7a3b28edb6d78ceb2fc84b269486f968165ffd56fbcc5e3c1",
+        "goal042_config": "7cbaef4bf993b1813eb7175d38581d0d782706cb91d00358644b14133acb71c1",
+        "goal042_response_manifest": "dc67d68962f931a6dbeb103a742103a1ba59d9f22445377eabf0bf3c8bb806bc",
+        "goal042_source": "d000fd755375ac4702f55bbc5b51f967cff4b57ce2c9fa1335a4801a06e9d4c5",
+        "goal043_manifest": "d1876995cba15bfccaf92a33ec299e7224fefd7e2d9dc4abb264bf8c901d67f7",
+        "goal043_transforms": "97883416552ae6338cfcf22d8858852fcd9e4637d81bf4fb9239c0fdb3295677",
+        "goal044_config": "66350f80d58e58eb1c55fa95cc9e4c899d8792404b09acc26d40c71715828a68",
+        "goal044_source": "5f1d56ede8db3a008ed8a60e2a7fc24c589c7d03bbcd4cac3f0bae637cd88c63",
+        "goal044_summary": "3bd0b89c107a62ee5ea53aac204dcdabc0b19670aeb2a360c6674bfac69f8a89",
+        "goal046_config": "b3f3005a0777330e28ff88a11497d76013fec8000bfee5451328b3278621afd2",
+        "goal046_source": "5d44f8f5ca7509ff36a4b0da9c497ca2347303031081675729358cd8daaa851a",
+        "goal046_summary": "868a2083036d7b5f14cde9137621977e06405033252551b80fd0d5107627c10b",
+        "goal047_source": "6ceaa4affb897f20dad1c05b3a052c72517d1dab617cf4a8bbdbd9ec14f6235d",
+        "mainland_modeling_source": "7a133232d84fe5a363252fbda772535d8262557c3b82f16a05c9831000577597",
+        "mainland_training_source": "60bf28f7f9eaa6f4ea4805ba1d4f7acd2ca7e7d7050dd575959b91eb26838453",
+        "model_adapters_source": "2e6ea5c013a00f07e9dfe9ecc29496785b4579dcbd96af08c90567a5cf63dfd9",
+        "modeling_contract_source": "342bb461ca3e6c6193984e9d0ec22ba3d18ee8a3fcaeaaf84710c72adf5649a9",
+        "models_source": "71317e80514eeab68a316066f59382db2c96aa6bffb0dfd524e08895f2f9c6ee",
+        "pyproject": "29b7c2f9f810ac35357fa9b85189002d92a54a4933cf87746f57ae27cc0a8d08",
+        "uv_lock": "39c22925750ac8821f5420bdfe5ca39554b7906d812bd3a94a04e91c469284fd"
+      },
+      "config_sha256": "f5aa391349d56af860ad6a33c8c0265164155e7c4fd6bf81971cf45dfc625c4c",
+      "source_sha256": "6ceaa4affb897f20dad1c05b3a052c72517d1dab617cf4a8bbdbd9ec14f6235d"
+    }
+  },
+  "conventional_specs": {
+    "Dasyurus maculatus": {
+      "candidate_id": "rf00",
+      "family": "random_forest",
+      "seed_labels": [
+        "seed00",
+        "seed01",
+        "seed02",
+        "seed03",
+        "seed04"
+      ]
+    },
+    "Notamacropus rufogriseus": {
+      "candidate_id": "rf00",
+      "family": "random_forest",
+      "seed_labels": [
+        "seed00",
+        "seed01",
+        "seed02",
+        "seed03",
+        "seed04"
+      ]
+    },
+    "Pseudocheirus peregrinus": {
+      "candidate_id": "hgb04",
+      "family": "hist_gradient_boosting",
+      "seed_labels": [
+        "seed00"
+      ]
+    },
+    "Trichosurus vulpecula": {
+      "candidate_id": "rf02",
+      "family": "random_forest",
+      "seed_labels": [
+        "seed00",
+        "seed01",
+        "seed02",
+        "seed03",
+        "seed04"
+      ]
+    },
+    "Vombatus ursinus": {
+      "candidate_id": "rf00",
+      "family": "random_forest",
+      "seed_labels": [
+        "seed00",
+        "seed01",
+        "seed02",
+        "seed03",
+        "seed04"
+      ]
+    }
+  },
+  "epoch_table": {
+    "architecture": "bridge_control",
+    "rows": [
+      {
+        "arm": "shared_trunk",
+        "fold_selected_epochs": [
+          3,
+          5,
+          2,
+          8,
+          4
+        ],
+        "lifecycle": "pretraining",
+        "seed_label": "seed00",
+        "selected_epoch": 4,
+        "target": "Dasyurus maculatus"
+      },
+      {
+        "arm": "target_only_random_init_resmlp",
+        "fold_selected_epochs": [
+          3,
+          8,
+          4,
+          1,
+          8
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed00",
+        "selected_epoch": 4,
+        "target": "Dasyurus maculatus"
+      },
+      {
+        "arm": "target_plus_q_linear_resmlp",
+        "fold_selected_epochs": [
+          3,
+          6,
+          4,
+          1,
+          4
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed00",
+        "selected_epoch": 4,
+        "target": "Dasyurus maculatus"
+      },
+      {
+        "arm": "multihead_frozen_trunk",
+        "fold_selected_epochs": [
+          11,
+          118,
+          44,
+          3,
+          157
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed00",
+        "selected_epoch": 44,
+        "target": "Dasyurus maculatus"
+      },
+      {
+        "arm": "multihead_full_finetune",
+        "fold_selected_epochs": [
+          2,
+          3,
+          2,
+          1,
+          11
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed00",
+        "selected_epoch": 2,
+        "target": "Dasyurus maculatus"
+      },
+      {
+        "arm": "shared_trunk",
+        "fold_selected_epochs": [
+          3,
+          2,
+          5,
+          11,
+          4
+        ],
+        "lifecycle": "pretraining",
+        "seed_label": "seed01",
+        "selected_epoch": 4,
+        "target": "Dasyurus maculatus"
+      },
+      {
+        "arm": "target_only_random_init_resmlp",
+        "fold_selected_epochs": [
+          7,
+          11,
+          3,
+          1,
+          5
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed01",
+        "selected_epoch": 5,
+        "target": "Dasyurus maculatus"
+      },
+      {
+        "arm": "target_plus_q_linear_resmlp",
+        "fold_selected_epochs": [
+          11,
+          5,
+          3,
+          1,
+          6
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed01",
+        "selected_epoch": 5,
+        "target": "Dasyurus maculatus"
+      },
+      {
+        "arm": "multihead_frozen_trunk",
+        "fold_selected_epochs": [
+          3,
+          18,
+          158,
+          4,
+          73
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed01",
+        "selected_epoch": 18,
+        "target": "Dasyurus maculatus"
+      },
+      {
+        "arm": "multihead_full_finetune",
+        "fold_selected_epochs": [
+          3,
+          1,
+          1,
+          1,
+          6
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed01",
+        "selected_epoch": 1,
+        "target": "Dasyurus maculatus"
+      },
+      {
+        "arm": "shared_trunk",
+        "fold_selected_epochs": [
+          4,
+          3,
+          5,
+          4,
+          4
+        ],
+        "lifecycle": "pretraining",
+        "seed_label": "seed02",
+        "selected_epoch": 4,
+        "target": "Dasyurus maculatus"
+      },
+      {
+        "arm": "target_only_random_init_resmlp",
+        "fold_selected_epochs": [
+          3,
+          2,
+          2,
+          1,
+          9
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed02",
+        "selected_epoch": 2,
+        "target": "Dasyurus maculatus"
+      },
+      {
+        "arm": "target_plus_q_linear_resmlp",
+        "fold_selected_epochs": [
+          6,
+          8,
+          2,
+          2,
+          4
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed02",
+        "selected_epoch": 4,
+        "target": "Dasyurus maculatus"
+      },
+      {
+        "arm": "multihead_frozen_trunk",
+        "fold_selected_epochs": [
+          15,
+          40,
+          126,
+          3,
+          203
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed02",
+        "selected_epoch": 40,
+        "target": "Dasyurus maculatus"
+      },
+      {
+        "arm": "multihead_full_finetune",
+        "fold_selected_epochs": [
+          1,
+          2,
+          3,
+          2,
+          5
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed02",
+        "selected_epoch": 2,
+        "target": "Dasyurus maculatus"
+      },
+      {
+        "arm": "shared_trunk",
+        "fold_selected_epochs": [
+          4,
+          3,
+          5,
+          3,
+          9
+        ],
+        "lifecycle": "pretraining",
+        "seed_label": "seed03",
+        "selected_epoch": 4,
+        "target": "Dasyurus maculatus"
+      },
+      {
+        "arm": "target_only_random_init_resmlp",
+        "fold_selected_epochs": [
+          5,
+          5,
+          6,
+          1,
+          10
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed03",
+        "selected_epoch": 5,
+        "target": "Dasyurus maculatus"
+      },
+      {
+        "arm": "target_plus_q_linear_resmlp",
+        "fold_selected_epochs": [
+          5,
+          5,
+          6,
+          1,
+          12
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed03",
+        "selected_epoch": 5,
+        "target": "Dasyurus maculatus"
+      },
+      {
+        "arm": "multihead_frozen_trunk",
+        "fold_selected_epochs": [
+          5,
+          68,
+          100,
+          2,
+          93
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed03",
+        "selected_epoch": 68,
+        "target": "Dasyurus maculatus"
+      },
+      {
+        "arm": "multihead_full_finetune",
+        "fold_selected_epochs": [
+          1,
+          1,
+          2,
+          1,
+          3
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed03",
+        "selected_epoch": 1,
+        "target": "Dasyurus maculatus"
+      },
+      {
+        "arm": "shared_trunk",
+        "fold_selected_epochs": [
+          3,
+          9,
+          4,
+          3,
+          1
+        ],
+        "lifecycle": "pretraining",
+        "seed_label": "seed04",
+        "selected_epoch": 3,
+        "target": "Dasyurus maculatus"
+      },
+      {
+        "arm": "target_only_random_init_resmlp",
+        "fold_selected_epochs": [
+          5,
+          1,
+          1,
+          1,
+          6
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed04",
+        "selected_epoch": 1,
+        "target": "Dasyurus maculatus"
+      },
+      {
+        "arm": "target_plus_q_linear_resmlp",
+        "fold_selected_epochs": [
+          1,
+          6,
+          1,
+          1,
+          6
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed04",
+        "selected_epoch": 1,
+        "target": "Dasyurus maculatus"
+      },
+      {
+        "arm": "multihead_frozen_trunk",
+        "fold_selected_epochs": [
+          38,
+          54,
+          6,
+          3,
+          39
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed04",
+        "selected_epoch": 38,
+        "target": "Dasyurus maculatus"
+      },
+      {
+        "arm": "multihead_full_finetune",
+        "fold_selected_epochs": [
+          1,
+          1,
+          1,
+          1,
+          6
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed04",
+        "selected_epoch": 1,
+        "target": "Dasyurus maculatus"
+      },
+      {
+        "arm": "shared_trunk",
+        "fold_selected_epochs": [
+          4,
+          3,
+          4,
+          4,
+          2
+        ],
+        "lifecycle": "pretraining",
+        "seed_label": "seed00",
+        "selected_epoch": 4,
+        "target": "Notamacropus rufogriseus"
+      },
+      {
+        "arm": "target_only_random_init_resmlp",
+        "fold_selected_epochs": [
+          11,
+          4,
+          4,
+          3,
+          6
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed00",
+        "selected_epoch": 4,
+        "target": "Notamacropus rufogriseus"
+      },
+      {
+        "arm": "target_plus_q_linear_resmlp",
+        "fold_selected_epochs": [
+          9,
+          4,
+          7,
+          1,
+          4
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed00",
+        "selected_epoch": 4,
+        "target": "Notamacropus rufogriseus"
+      },
+      {
+        "arm": "multihead_frozen_trunk",
+        "fold_selected_epochs": [
+          42,
+          6,
+          103,
+          7,
+          32
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed00",
+        "selected_epoch": 32,
+        "target": "Notamacropus rufogriseus"
+      },
+      {
+        "arm": "multihead_full_finetune",
+        "fold_selected_epochs": [
+          3,
+          2,
+          3,
+          2,
+          1
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed00",
+        "selected_epoch": 2,
+        "target": "Notamacropus rufogriseus"
+      },
+      {
+        "arm": "shared_trunk",
+        "fold_selected_epochs": [
+          10,
+          1,
+          7,
+          2,
+          1
+        ],
+        "lifecycle": "pretraining",
+        "seed_label": "seed01",
+        "selected_epoch": 2,
+        "target": "Notamacropus rufogriseus"
+      },
+      {
+        "arm": "target_only_random_init_resmlp",
+        "fold_selected_epochs": [
+          7,
+          8,
+          6,
+          11,
+          6
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed01",
+        "selected_epoch": 7,
+        "target": "Notamacropus rufogriseus"
+      },
+      {
+        "arm": "target_plus_q_linear_resmlp",
+        "fold_selected_epochs": [
+          12,
+          2,
+          6,
+          5,
+          6
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed01",
+        "selected_epoch": 6,
+        "target": "Notamacropus rufogriseus"
+      },
+      {
+        "arm": "multihead_frozen_trunk",
+        "fold_selected_epochs": [
+          29,
+          34,
+          136,
+          23,
+          141
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed01",
+        "selected_epoch": 34,
+        "target": "Notamacropus rufogriseus"
+      },
+      {
+        "arm": "multihead_full_finetune",
+        "fold_selected_epochs": [
+          4,
+          3,
+          2,
+          11,
+          6
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed01",
+        "selected_epoch": 4,
+        "target": "Notamacropus rufogriseus"
+      },
+      {
+        "arm": "shared_trunk",
+        "fold_selected_epochs": [
+          2,
+          4,
+          3,
+          7,
+          6
+        ],
+        "lifecycle": "pretraining",
+        "seed_label": "seed02",
+        "selected_epoch": 4,
+        "target": "Notamacropus rufogriseus"
+      },
+      {
+        "arm": "target_only_random_init_resmlp",
+        "fold_selected_epochs": [
+          5,
+          6,
+          14,
+          6,
+          6
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed02",
+        "selected_epoch": 6,
+        "target": "Notamacropus rufogriseus"
+      },
+      {
+        "arm": "target_plus_q_linear_resmlp",
+        "fold_selected_epochs": [
+          7,
+          3,
+          14,
+          3,
+          17
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed02",
+        "selected_epoch": 7,
+        "target": "Notamacropus rufogriseus"
+      },
+      {
+        "arm": "multihead_frozen_trunk",
+        "fold_selected_epochs": [
+          77,
+          35,
+          259,
+          158,
+          33
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed02",
+        "selected_epoch": 77,
+        "target": "Notamacropus rufogriseus"
+      },
+      {
+        "arm": "multihead_full_finetune",
+        "fold_selected_epochs": [
+          5,
+          1,
+          3,
+          5,
+          2
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed02",
+        "selected_epoch": 3,
+        "target": "Notamacropus rufogriseus"
+      },
+      {
+        "arm": "shared_trunk",
+        "fold_selected_epochs": [
+          7,
+          2,
+          5,
+          5,
+          1
+        ],
+        "lifecycle": "pretraining",
+        "seed_label": "seed03",
+        "selected_epoch": 5,
+        "target": "Notamacropus rufogriseus"
+      },
+      {
+        "arm": "target_only_random_init_resmlp",
+        "fold_selected_epochs": [
+          9,
+          2,
+          5,
+          8,
+          6
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed03",
+        "selected_epoch": 6,
+        "target": "Notamacropus rufogriseus"
+      },
+      {
+        "arm": "target_plus_q_linear_resmlp",
+        "fold_selected_epochs": [
+          8,
+          2,
+          9,
+          8,
+          6
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed03",
+        "selected_epoch": 8,
+        "target": "Notamacropus rufogriseus"
+      },
+      {
+        "arm": "multihead_frozen_trunk",
+        "fold_selected_epochs": [
+          91,
+          39,
+          10,
+          102,
+          124
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed03",
+        "selected_epoch": 91,
+        "target": "Notamacropus rufogriseus"
+      },
+      {
+        "arm": "multihead_full_finetune",
+        "fold_selected_epochs": [
+          2,
+          1,
+          1,
+          4,
+          3
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed03",
+        "selected_epoch": 2,
+        "target": "Notamacropus rufogriseus"
+      },
+      {
+        "arm": "shared_trunk",
+        "fold_selected_epochs": [
+          9,
+          6,
+          3,
+          6,
+          2
+        ],
+        "lifecycle": "pretraining",
+        "seed_label": "seed04",
+        "selected_epoch": 6,
+        "target": "Notamacropus rufogriseus"
+      },
+      {
+        "arm": "target_only_random_init_resmlp",
+        "fold_selected_epochs": [
+          4,
+          1,
+          6,
+          10,
+          4
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed04",
+        "selected_epoch": 4,
+        "target": "Notamacropus rufogriseus"
+      },
+      {
+        "arm": "target_plus_q_linear_resmlp",
+        "fold_selected_epochs": [
+          7,
+          2,
+          6,
+          2,
+          4
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed04",
+        "selected_epoch": 4,
+        "target": "Notamacropus rufogriseus"
+      },
+      {
+        "arm": "multihead_frozen_trunk",
+        "fold_selected_epochs": [
+          141,
+          2,
+          98,
+          7,
+          160
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed04",
+        "selected_epoch": 98,
+        "target": "Notamacropus rufogriseus"
+      },
+      {
+        "arm": "multihead_full_finetune",
+        "fold_selected_epochs": [
+          3,
+          1,
+          2,
+          2,
+          2
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed04",
+        "selected_epoch": 2,
+        "target": "Notamacropus rufogriseus"
+      },
+      {
+        "arm": "shared_trunk",
+        "fold_selected_epochs": [
+          3,
+          1,
+          5,
+          6,
+          1
+        ],
+        "lifecycle": "pretraining",
+        "seed_label": "seed00",
+        "selected_epoch": 3,
+        "target": "Pseudocheirus peregrinus"
+      },
+      {
+        "arm": "target_only_random_init_resmlp",
+        "fold_selected_epochs": [
+          10,
+          6,
+          2,
+          6,
+          12
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed00",
+        "selected_epoch": 6,
+        "target": "Pseudocheirus peregrinus"
+      },
+      {
+        "arm": "target_plus_q_linear_resmlp",
+        "fold_selected_epochs": [
+          3,
+          4,
+          2,
+          4,
+          9
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed00",
+        "selected_epoch": 4,
+        "target": "Pseudocheirus peregrinus"
+      },
+      {
+        "arm": "multihead_frozen_trunk",
+        "fold_selected_epochs": [
+          43,
+          11,
+          119,
+          213,
+          65
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed00",
+        "selected_epoch": 65,
+        "target": "Pseudocheirus peregrinus"
+      },
+      {
+        "arm": "multihead_full_finetune",
+        "fold_selected_epochs": [
+          1,
+          4,
+          2,
+          2,
+          2
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed00",
+        "selected_epoch": 2,
+        "target": "Pseudocheirus peregrinus"
+      },
+      {
+        "arm": "shared_trunk",
+        "fold_selected_epochs": [
+          4,
+          2,
+          2,
+          6,
+          1
+        ],
+        "lifecycle": "pretraining",
+        "seed_label": "seed01",
+        "selected_epoch": 2,
+        "target": "Pseudocheirus peregrinus"
+      },
+      {
+        "arm": "target_only_random_init_resmlp",
+        "fold_selected_epochs": [
+          5,
+          5,
+          2,
+          3,
+          13
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed01",
+        "selected_epoch": 5,
+        "target": "Pseudocheirus peregrinus"
+      },
+      {
+        "arm": "target_plus_q_linear_resmlp",
+        "fold_selected_epochs": [
+          3,
+          10,
+          4,
+          5,
+          7
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed01",
+        "selected_epoch": 5,
+        "target": "Pseudocheirus peregrinus"
+      },
+      {
+        "arm": "multihead_frozen_trunk",
+        "fold_selected_epochs": [
+          143,
+          23,
+          95,
+          299,
+          31
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed01",
+        "selected_epoch": 95,
+        "target": "Pseudocheirus peregrinus"
+      },
+      {
+        "arm": "multihead_full_finetune",
+        "fold_selected_epochs": [
+          3,
+          2,
+          1,
+          2,
+          2
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed01",
+        "selected_epoch": 2,
+        "target": "Pseudocheirus peregrinus"
+      },
+      {
+        "arm": "shared_trunk",
+        "fold_selected_epochs": [
+          3,
+          1,
+          4,
+          6,
+          4
+        ],
+        "lifecycle": "pretraining",
+        "seed_label": "seed02",
+        "selected_epoch": 4,
+        "target": "Pseudocheirus peregrinus"
+      },
+      {
+        "arm": "target_only_random_init_resmlp",
+        "fold_selected_epochs": [
+          7,
+          5,
+          4,
+          5,
+          8
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed02",
+        "selected_epoch": 5,
+        "target": "Pseudocheirus peregrinus"
+      },
+      {
+        "arm": "target_plus_q_linear_resmlp",
+        "fold_selected_epochs": [
+          3,
+          5,
+          2,
+          5,
+          2
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed02",
+        "selected_epoch": 3,
+        "target": "Pseudocheirus peregrinus"
+      },
+      {
+        "arm": "multihead_frozen_trunk",
+        "fold_selected_epochs": [
+          81,
+          7,
+          130,
+          83,
+          45
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed02",
+        "selected_epoch": 81,
+        "target": "Pseudocheirus peregrinus"
+      },
+      {
+        "arm": "multihead_full_finetune",
+        "fold_selected_epochs": [
+          5,
+          3,
+          2,
+          5,
+          3
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed02",
+        "selected_epoch": 3,
+        "target": "Pseudocheirus peregrinus"
+      },
+      {
+        "arm": "shared_trunk",
+        "fold_selected_epochs": [
+          8,
+          3,
+          9,
+          3,
+          4
+        ],
+        "lifecycle": "pretraining",
+        "seed_label": "seed03",
+        "selected_epoch": 4,
+        "target": "Pseudocheirus peregrinus"
+      },
+      {
+        "arm": "target_only_random_init_resmlp",
+        "fold_selected_epochs": [
+          9,
+          6,
+          1,
+          2,
+          13
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed03",
+        "selected_epoch": 6,
+        "target": "Pseudocheirus peregrinus"
+      },
+      {
+        "arm": "target_plus_q_linear_resmlp",
+        "fold_selected_epochs": [
+          2,
+          4,
+          7,
+          2,
+          10
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed03",
+        "selected_epoch": 4,
+        "target": "Pseudocheirus peregrinus"
+      },
+      {
+        "arm": "multihead_frozen_trunk",
+        "fold_selected_epochs": [
+          71,
+          11,
+          97,
+          218,
+          110
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed03",
+        "selected_epoch": 97,
+        "target": "Pseudocheirus peregrinus"
+      },
+      {
+        "arm": "multihead_full_finetune",
+        "fold_selected_epochs": [
+          2,
+          2,
+          1,
+          2,
+          5
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed03",
+        "selected_epoch": 2,
+        "target": "Pseudocheirus peregrinus"
+      },
+      {
+        "arm": "shared_trunk",
+        "fold_selected_epochs": [
+          4,
+          2,
+          5,
+          4,
+          2
+        ],
+        "lifecycle": "pretraining",
+        "seed_label": "seed04",
+        "selected_epoch": 4,
+        "target": "Pseudocheirus peregrinus"
+      },
+      {
+        "arm": "target_only_random_init_resmlp",
+        "fold_selected_epochs": [
+          4,
+          1,
+          1,
+          5,
+          10
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed04",
+        "selected_epoch": 4,
+        "target": "Pseudocheirus peregrinus"
+      },
+      {
+        "arm": "target_plus_q_linear_resmlp",
+        "fold_selected_epochs": [
+          7,
+          2,
+          1,
+          3,
+          1
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed04",
+        "selected_epoch": 2,
+        "target": "Pseudocheirus peregrinus"
+      },
+      {
+        "arm": "multihead_frozen_trunk",
+        "fold_selected_epochs": [
+          36,
+          33,
+          52,
+          109,
+          18
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed04",
+        "selected_epoch": 36,
+        "target": "Pseudocheirus peregrinus"
+      },
+      {
+        "arm": "multihead_full_finetune",
+        "fold_selected_epochs": [
+          2,
+          1,
+          1,
+          3,
+          5
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed04",
+        "selected_epoch": 2,
+        "target": "Pseudocheirus peregrinus"
+      },
+      {
+        "arm": "shared_trunk",
+        "fold_selected_epochs": [
+          7,
+          1,
+          4,
+          5,
+          5
+        ],
+        "lifecycle": "pretraining",
+        "seed_label": "seed00",
+        "selected_epoch": 5,
+        "target": "Trichosurus vulpecula"
+      },
+      {
+        "arm": "target_only_random_init_resmlp",
+        "fold_selected_epochs": [
+          10,
+          6,
+          1,
+          7,
+          1
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed00",
+        "selected_epoch": 6,
+        "target": "Trichosurus vulpecula"
+      },
+      {
+        "arm": "target_plus_q_linear_resmlp",
+        "fold_selected_epochs": [
+          10,
+          6,
+          1,
+          6,
+          2
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed00",
+        "selected_epoch": 6,
+        "target": "Trichosurus vulpecula"
+      },
+      {
+        "arm": "multihead_frozen_trunk",
+        "fold_selected_epochs": [
+          22,
+          24,
+          12,
+          103,
+          6
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed00",
+        "selected_epoch": 22,
+        "target": "Trichosurus vulpecula"
+      },
+      {
+        "arm": "multihead_full_finetune",
+        "fold_selected_epochs": [
+          10,
+          6,
+          3,
+          4,
+          3
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed00",
+        "selected_epoch": 4,
+        "target": "Trichosurus vulpecula"
+      },
+      {
+        "arm": "shared_trunk",
+        "fold_selected_epochs": [
+          2,
+          9,
+          6,
+          5,
+          3
+        ],
+        "lifecycle": "pretraining",
+        "seed_label": "seed01",
+        "selected_epoch": 5,
+        "target": "Trichosurus vulpecula"
+      },
+      {
+        "arm": "target_only_random_init_resmlp",
+        "fold_selected_epochs": [
+          5,
+          10,
+          2,
+          7,
+          1
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed01",
+        "selected_epoch": 5,
+        "target": "Trichosurus vulpecula"
+      },
+      {
+        "arm": "target_plus_q_linear_resmlp",
+        "fold_selected_epochs": [
+          5,
+          9,
+          2,
+          9,
+          1
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed01",
+        "selected_epoch": 5,
+        "target": "Trichosurus vulpecula"
+      },
+      {
+        "arm": "multihead_frozen_trunk",
+        "fold_selected_epochs": [
+          51,
+          49,
+          5,
+          11,
+          21
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed01",
+        "selected_epoch": 21,
+        "target": "Trichosurus vulpecula"
+      },
+      {
+        "arm": "multihead_full_finetune",
+        "fold_selected_epochs": [
+          5,
+          3,
+          1,
+          3,
+          1
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed01",
+        "selected_epoch": 3,
+        "target": "Trichosurus vulpecula"
+      },
+      {
+        "arm": "shared_trunk",
+        "fold_selected_epochs": [
+          4,
+          5,
+          4,
+          3,
+          2
+        ],
+        "lifecycle": "pretraining",
+        "seed_label": "seed02",
+        "selected_epoch": 4,
+        "target": "Trichosurus vulpecula"
+      },
+      {
+        "arm": "target_only_random_init_resmlp",
+        "fold_selected_epochs": [
+          1,
+          8,
+          2,
+          4,
+          1
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed02",
+        "selected_epoch": 2,
+        "target": "Trichosurus vulpecula"
+      },
+      {
+        "arm": "target_plus_q_linear_resmlp",
+        "fold_selected_epochs": [
+          14,
+          4,
+          1,
+          4,
+          1
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed02",
+        "selected_epoch": 4,
+        "target": "Trichosurus vulpecula"
+      },
+      {
+        "arm": "multihead_frozen_trunk",
+        "fold_selected_epochs": [
+          24,
+          38,
+          38,
+          44,
+          47
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed02",
+        "selected_epoch": 38,
+        "target": "Trichosurus vulpecula"
+      },
+      {
+        "arm": "multihead_full_finetune",
+        "fold_selected_epochs": [
+          4,
+          3,
+          1,
+          7,
+          4
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed02",
+        "selected_epoch": 4,
+        "target": "Trichosurus vulpecula"
+      },
+      {
+        "arm": "shared_trunk",
+        "fold_selected_epochs": [
+          2,
+          1,
+          7,
+          3,
+          8
+        ],
+        "lifecycle": "pretraining",
+        "seed_label": "seed03",
+        "selected_epoch": 3,
+        "target": "Trichosurus vulpecula"
+      },
+      {
+        "arm": "target_only_random_init_resmlp",
+        "fold_selected_epochs": [
+          2,
+          7,
+          1,
+          4,
+          1
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed03",
+        "selected_epoch": 2,
+        "target": "Trichosurus vulpecula"
+      },
+      {
+        "arm": "target_plus_q_linear_resmlp",
+        "fold_selected_epochs": [
+          18,
+          3,
+          1,
+          4,
+          3
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed03",
+        "selected_epoch": 3,
+        "target": "Trichosurus vulpecula"
+      },
+      {
+        "arm": "multihead_frozen_trunk",
+        "fold_selected_epochs": [
+          24,
+          59,
+          10,
+          76,
+          21
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed03",
+        "selected_epoch": 24,
+        "target": "Trichosurus vulpecula"
+      },
+      {
+        "arm": "multihead_full_finetune",
+        "fold_selected_epochs": [
+          5,
+          3,
+          1,
+          4,
+          3
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed03",
+        "selected_epoch": 3,
+        "target": "Trichosurus vulpecula"
+      },
+      {
+        "arm": "shared_trunk",
+        "fold_selected_epochs": [
+          4,
+          2,
+          9,
+          8,
+          9
+        ],
+        "lifecycle": "pretraining",
+        "seed_label": "seed04",
+        "selected_epoch": 8,
+        "target": "Trichosurus vulpecula"
+      },
+      {
+        "arm": "target_only_random_init_resmlp",
+        "fold_selected_epochs": [
+          6,
+          11,
+          1,
+          4,
+          4
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed04",
+        "selected_epoch": 4,
+        "target": "Trichosurus vulpecula"
+      },
+      {
+        "arm": "target_plus_q_linear_resmlp",
+        "fold_selected_epochs": [
+          6,
+          4,
+          1,
+          3,
+          1
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed04",
+        "selected_epoch": 3,
+        "target": "Trichosurus vulpecula"
+      },
+      {
+        "arm": "multihead_frozen_trunk",
+        "fold_selected_epochs": [
+          133,
+          56,
+          6,
+          22,
+          10
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed04",
+        "selected_epoch": 22,
+        "target": "Trichosurus vulpecula"
+      },
+      {
+        "arm": "multihead_full_finetune",
+        "fold_selected_epochs": [
+          4,
+          7,
+          2,
+          3,
+          4
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed04",
+        "selected_epoch": 4,
+        "target": "Trichosurus vulpecula"
+      },
+      {
+        "arm": "shared_trunk",
+        "fold_selected_epochs": [
+          6,
+          1,
+          3,
+          3,
+          5
+        ],
+        "lifecycle": "pretraining",
+        "seed_label": "seed00",
+        "selected_epoch": 3,
+        "target": "Vombatus ursinus"
+      },
+      {
+        "arm": "target_only_random_init_resmlp",
+        "fold_selected_epochs": [
+          5,
+          2,
+          10,
+          19,
+          16
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed00",
+        "selected_epoch": 10,
+        "target": "Vombatus ursinus"
+      },
+      {
+        "arm": "target_plus_q_linear_resmlp",
+        "fold_selected_epochs": [
+          15,
+          9,
+          5,
+          7,
+          11
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed00",
+        "selected_epoch": 9,
+        "target": "Vombatus ursinus"
+      },
+      {
+        "arm": "multihead_frozen_trunk",
+        "fold_selected_epochs": [
+          23,
+          163,
+          193,
+          144,
+          59
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed00",
+        "selected_epoch": 144,
+        "target": "Vombatus ursinus"
+      },
+      {
+        "arm": "multihead_full_finetune",
+        "fold_selected_epochs": [
+          7,
+          3,
+          5,
+          7,
+          1
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed00",
+        "selected_epoch": 5,
+        "target": "Vombatus ursinus"
+      },
+      {
+        "arm": "shared_trunk",
+        "fold_selected_epochs": [
+          4,
+          1,
+          4,
+          2,
+          5
+        ],
+        "lifecycle": "pretraining",
+        "seed_label": "seed01",
+        "selected_epoch": 4,
+        "target": "Vombatus ursinus"
+      },
+      {
+        "arm": "target_only_random_init_resmlp",
+        "fold_selected_epochs": [
+          11,
+          5,
+          16,
+          5,
+          11
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed01",
+        "selected_epoch": 11,
+        "target": "Vombatus ursinus"
+      },
+      {
+        "arm": "target_plus_q_linear_resmlp",
+        "fold_selected_epochs": [
+          8,
+          5,
+          14,
+          12,
+          11
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed01",
+        "selected_epoch": 11,
+        "target": "Vombatus ursinus"
+      },
+      {
+        "arm": "multihead_frozen_trunk",
+        "fold_selected_epochs": [
+          34,
+          150,
+          90,
+          291,
+          57
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed01",
+        "selected_epoch": 90,
+        "target": "Vombatus ursinus"
+      },
+      {
+        "arm": "multihead_full_finetune",
+        "fold_selected_epochs": [
+          3,
+          4,
+          12,
+          8,
+          2
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed01",
+        "selected_epoch": 4,
+        "target": "Vombatus ursinus"
+      },
+      {
+        "arm": "shared_trunk",
+        "fold_selected_epochs": [
+          13,
+          2,
+          3,
+          10,
+          4
+        ],
+        "lifecycle": "pretraining",
+        "seed_label": "seed02",
+        "selected_epoch": 4,
+        "target": "Vombatus ursinus"
+      },
+      {
+        "arm": "target_only_random_init_resmlp",
+        "fold_selected_epochs": [
+          14,
+          2,
+          11,
+          11,
+          14
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed02",
+        "selected_epoch": 11,
+        "target": "Vombatus ursinus"
+      },
+      {
+        "arm": "target_plus_q_linear_resmlp",
+        "fold_selected_epochs": [
+          9,
+          3,
+          4,
+          11,
+          2
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed02",
+        "selected_epoch": 4,
+        "target": "Vombatus ursinus"
+      },
+      {
+        "arm": "multihead_frozen_trunk",
+        "fold_selected_epochs": [
+          298,
+          30,
+          56,
+          201,
+          25
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed02",
+        "selected_epoch": 56,
+        "target": "Vombatus ursinus"
+      },
+      {
+        "arm": "multihead_full_finetune",
+        "fold_selected_epochs": [
+          3,
+          3,
+          3,
+          9,
+          2
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed02",
+        "selected_epoch": 3,
+        "target": "Vombatus ursinus"
+      },
+      {
+        "arm": "shared_trunk",
+        "fold_selected_epochs": [
+          2,
+          3,
+          6,
+          1,
+          3
+        ],
+        "lifecycle": "pretraining",
+        "seed_label": "seed03",
+        "selected_epoch": 3,
+        "target": "Vombatus ursinus"
+      },
+      {
+        "arm": "target_only_random_init_resmlp",
+        "fold_selected_epochs": [
+          7,
+          3,
+          3,
+          13,
+          1
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed03",
+        "selected_epoch": 3,
+        "target": "Vombatus ursinus"
+      },
+      {
+        "arm": "target_plus_q_linear_resmlp",
+        "fold_selected_epochs": [
+          8,
+          6,
+          6,
+          21,
+          9
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed03",
+        "selected_epoch": 8,
+        "target": "Vombatus ursinus"
+      },
+      {
+        "arm": "multihead_frozen_trunk",
+        "fold_selected_epochs": [
+          12,
+          23,
+          174,
+          111,
+          172
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed03",
+        "selected_epoch": 111,
+        "target": "Vombatus ursinus"
+      },
+      {
+        "arm": "multihead_full_finetune",
+        "fold_selected_epochs": [
+          10,
+          2,
+          3,
+          1,
+          4
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed03",
+        "selected_epoch": 3,
+        "target": "Vombatus ursinus"
+      },
+      {
+        "arm": "shared_trunk",
+        "fold_selected_epochs": [
+          8,
+          2,
+          3,
+          8,
+          5
+        ],
+        "lifecycle": "pretraining",
+        "seed_label": "seed04",
+        "selected_epoch": 5,
+        "target": "Vombatus ursinus"
+      },
+      {
+        "arm": "target_only_random_init_resmlp",
+        "fold_selected_epochs": [
+          13,
+          7,
+          9,
+          11,
+          5
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed04",
+        "selected_epoch": 9,
+        "target": "Vombatus ursinus"
+      },
+      {
+        "arm": "target_plus_q_linear_resmlp",
+        "fold_selected_epochs": [
+          11,
+          4,
+          16,
+          8,
+          9
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed04",
+        "selected_epoch": 9,
+        "target": "Vombatus ursinus"
+      },
+      {
+        "arm": "multihead_frozen_trunk",
+        "fold_selected_epochs": [
+          107,
+          53,
+          172,
+          57,
+          215
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed04",
+        "selected_epoch": 107,
+        "target": "Vombatus ursinus"
+      },
+      {
+        "arm": "multihead_full_finetune",
+        "fold_selected_epochs": [
+          3,
+          4,
+          4,
+          4,
+          2
+        ],
+        "lifecycle": "target",
+        "seed_label": "seed04",
+        "selected_epoch": 4,
+        "target": "Vombatus ursinus"
+      }
+    ],
+    "rule": "lower_median_of_five_matching_goal046_fold_selected_epoch_integers",
+    "schema_version": "goal047-epoch-table-v2"
+  },
+  "expected_coverage": {
+    "method_seed_table": {
+      "Dasyurus maculatus": {
+        "multihead_frozen_trunk": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "multihead_full_finetune": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "selected_conventional": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "strict_q_conventional": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "target_only_random_init_resmlp": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "target_plus_q_linear_resmlp": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ]
+      },
+      "Notamacropus rufogriseus": {
+        "multihead_frozen_trunk": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "multihead_full_finetune": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "selected_conventional": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "strict_q_conventional": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "target_only_random_init_resmlp": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "target_plus_q_linear_resmlp": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ]
+      },
+      "Pseudocheirus peregrinus": {
+        "multihead_frozen_trunk": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "multihead_full_finetune": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "selected_conventional": [
+          "seed00"
+        ],
+        "strict_q_conventional": [
+          "seed00"
+        ],
+        "target_only_random_init_resmlp": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "target_plus_q_linear_resmlp": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ]
+      },
+      "Trichosurus vulpecula": {
+        "multihead_frozen_trunk": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "multihead_full_finetune": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "selected_conventional": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "strict_q_conventional": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "target_only_random_init_resmlp": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "target_plus_q_linear_resmlp": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ]
+      },
+      "Vombatus ursinus": {
+        "multihead_frozen_trunk": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "multihead_full_finetune": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "selected_conventional": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "strict_q_conventional": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "target_only_random_init_resmlp": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "target_plus_q_linear_resmlp": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ]
+      }
+    },
+    "methods": [
+      "target_only_random_init_resmlp",
+      "target_plus_q_linear_resmlp",
+      "multihead_frozen_trunk",
+      "multihead_full_finetune",
+      "selected_conventional",
+      "strict_q_conventional"
+    ],
+    "neural_seed_labels": [
+      "seed00",
+      "seed01",
+      "seed02",
+      "seed03",
+      "seed04"
+    ],
+    "targets": [
+      "Dasyurus maculatus",
+      "Notamacropus rufogriseus",
+      "Pseudocheirus peregrinus",
+      "Trichosurus vulpecula",
+      "Vombatus ursinus"
+    ]
+  },
+  "git": {
+    "clean_worktree_before_receipt": true,
+    "implementation_commit": "37a5ec39a33c9685795a2961509f3babfd508e03"
+  },
+  "model_inventory": {
+    "Dasyurus maculatus|multihead_frozen_trunk|seed00": {
+      "artifact_sha256": "a2e0ddd5313d531375431c3d6f82a51c15022594a0840b6d3f1a333038528b88",
+      "receipt_sha256": "6180ea1fc0dc2e6da92de5fa37f8d8a4d68d54208e2042f024196585bd2df6ad"
+    },
+    "Dasyurus maculatus|multihead_frozen_trunk|seed01": {
+      "artifact_sha256": "938bfae8a79c5e8e46f3b77048e02d5cb48f98eebb6c3f6b396c70b6dc9f0103",
+      "receipt_sha256": "ace177e799de8de0976291445e1bbf010302fc0d00cbaacea3bd26bce21fa71b"
+    },
+    "Dasyurus maculatus|multihead_frozen_trunk|seed02": {
+      "artifact_sha256": "8a5480c716a063a4989b60f5faa300734f9d2679a7d646f45efb9ca8c9ba7309",
+      "receipt_sha256": "88d003e2b11e9b45d3120c83fe31161b256d3a650d84e7d3a515518e211e2fde"
+    },
+    "Dasyurus maculatus|multihead_frozen_trunk|seed03": {
+      "artifact_sha256": "8685ae2196c62987351b78f4f598f156496a566832bad53a80319c5719794942",
+      "receipt_sha256": "a54e1d213f0825daf5ac6ee3f65c220c8f9278d952c0e3b02871429a1a583a18"
+    },
+    "Dasyurus maculatus|multihead_frozen_trunk|seed04": {
+      "artifact_sha256": "4fbe7fefcf43c9c89a38f6806f38f320c51ef59f8de17af8e4f13cf947603e5d",
+      "receipt_sha256": "29ba7a490e66f1118c0a1104d9ce71f653495a72201acd05f3e00f68192eb5cf"
+    },
+    "Dasyurus maculatus|multihead_full_finetune|seed00": {
+      "artifact_sha256": "e0721b6c9d274feca0a417b40d0e75a07aeeb8d5d986196e58ffc0a975582f99",
+      "receipt_sha256": "803c448eb7a412f4251e80bb3fb02ca20858de3f77b16dd7a8b492af1cc15e3c"
+    },
+    "Dasyurus maculatus|multihead_full_finetune|seed01": {
+      "artifact_sha256": "e998dab4eabd5c86e0c89b051c587615a220b32ce74c24677d1c0c4c49f71495",
+      "receipt_sha256": "518adff5913c1f2b517dd1de664d1d2e318618ea82cac4fb7eabd4789659a0de"
+    },
+    "Dasyurus maculatus|multihead_full_finetune|seed02": {
+      "artifact_sha256": "65cea67d3ff6e11488817ef42548067da8d7786612162642b13368c8716490ee",
+      "receipt_sha256": "a23c079ce299a04d9c139a45fada370b2e7cd51c7f1c04a934de83e228a340c4"
+    },
+    "Dasyurus maculatus|multihead_full_finetune|seed03": {
+      "artifact_sha256": "460db6ca5e1eabcf3197f7ff07bfc59ecbd2d945cf995de0142e45d1e1641d97",
+      "receipt_sha256": "0682921108f55c04921e01b0864dfaee3c8d89e1fdf47c351ab89b5eddb5afb9"
+    },
+    "Dasyurus maculatus|multihead_full_finetune|seed04": {
+      "artifact_sha256": "086bdeb52a1226c969ddaa493201206b3b488163b9b20200aad00f38f9e4e3bf",
+      "receipt_sha256": "ff07b919c433f750ef62ded9b2ff2e0feea1b8f8e2a1195b62df8954999b8523"
+    },
+    "Dasyurus maculatus|selected_conventional|seed00": {
+      "artifact_sha256": "3b06af9773c1cfa6e6c09a9fb6e902d37cc3198862187b4e5034876885f0ac90",
+      "receipt_sha256": "9553724d783ed4a4d8a60f9ab3a9adb85150d623a37469a544e48e808d9b4a40"
+    },
+    "Dasyurus maculatus|selected_conventional|seed01": {
+      "artifact_sha256": "de414232d9ee8d77e86aed6eb48af73a03f2572beb68ebf6e2b19a82e9f1d5f9",
+      "receipt_sha256": "0e4dfeb1dc7f0dd2b4d6f294277e562dba251130c659e24decea93dd9dbbaa30"
+    },
+    "Dasyurus maculatus|selected_conventional|seed02": {
+      "artifact_sha256": "b0b6836f47527e33a6c74f5ce0e3245b708990de3e01b1997e93857edc3f4831",
+      "receipt_sha256": "2db6aeaf12dab3a96cdd88cdb10a5a6e06beda7bcdceb646c032a8a3367c43a6"
+    },
+    "Dasyurus maculatus|selected_conventional|seed03": {
+      "artifact_sha256": "d6689f8e184b1871db7cbcdfb4d1c06641b66cb3b44837118d13ea5894e1c65e",
+      "receipt_sha256": "c02c07b6de375991b114d109ed50032da26dcc845484832fbb728a4039bb1245"
+    },
+    "Dasyurus maculatus|selected_conventional|seed04": {
+      "artifact_sha256": "98162c05e47fd33cf3b46f1fdfe487fc3a75c3f7a1771b59b1f15fce52d99cfd",
+      "receipt_sha256": "89d03b576ba6870bfa42e1c23ef972e5e0da4ca6d24a412ef4f180835ffb75c4"
+    },
+    "Dasyurus maculatus|strict_q_conventional|seed00": {
+      "artifact_sha256": "ecdec1f49142a6929085c43a5cc36eaaa4978060e8b45c80993c9c00b08689e6",
+      "receipt_sha256": "202d5f6218f20eae95a51072b69eeb074ddc51333dde369aec424fe010f75b46"
+    },
+    "Dasyurus maculatus|strict_q_conventional|seed01": {
+      "artifact_sha256": "2a672b79edde56789eee877c2ff7893ccc78a80a80a409ec7f8d47c96021ee8b",
+      "receipt_sha256": "5be3a3eb772697a8cd1d9acfb2529dba77df7d200f0e04ddf79947b6ec851126"
+    },
+    "Dasyurus maculatus|strict_q_conventional|seed02": {
+      "artifact_sha256": "99ab43ee495a09e556a27dc712f27b3f908516083270539b4911ad097a48657e",
+      "receipt_sha256": "c77998e9172f5ffdd6acd22ddc97742dbd1117c51c24a68fa7413c9c28aaa7a9"
+    },
+    "Dasyurus maculatus|strict_q_conventional|seed03": {
+      "artifact_sha256": "30bbeb1a3762d0aa0c2c8f737916fd6387593da6b7ca10874e37d10e4e14202e",
+      "receipt_sha256": "c15b73392527d387a9e5e2c818956014aa1460b02369077e70f0b23f97706de2"
+    },
+    "Dasyurus maculatus|strict_q_conventional|seed04": {
+      "artifact_sha256": "a98817e9a8c82c90a43eddc0c213c056ca6491fb81497c8dad392e756bc279f0",
+      "receipt_sha256": "e57dd74850bd70b647051169d752dc37fbdef20f5a76f0547df8c13bf51355c5"
+    },
+    "Dasyurus maculatus|target_only_random_init_resmlp|seed00": {
+      "artifact_sha256": "6cc66a92059cfb1d1506af2536ac51a7301467ff8a127a8b18b930f49c2e914c",
+      "receipt_sha256": "2b37c9c51600df8e7d335e04783f99dc30ff3e93529ce28eeafa53e4877c8e32"
+    },
+    "Dasyurus maculatus|target_only_random_init_resmlp|seed01": {
+      "artifact_sha256": "5536d8139eccab0aca33199a33599cd863ffd3c9355071009e3ffaa35ac791f4",
+      "receipt_sha256": "3633e1f8403d3fa573bfc80404e060e388975206fca5fa43b89e6d108da2da7b"
+    },
+    "Dasyurus maculatus|target_only_random_init_resmlp|seed02": {
+      "artifact_sha256": "8689aebabc5e6794ca15b04e885f7d09cb3629f16346f17604fda5b0e5e36e86",
+      "receipt_sha256": "996a3177c29d1715016c6348cdf0fc9e8fd8d644458214eceef06e244152558f"
+    },
+    "Dasyurus maculatus|target_only_random_init_resmlp|seed03": {
+      "artifact_sha256": "fff8d8d9615f3e970ee067813c26d3b2f3b95d6a58b9206636c54827af80732a",
+      "receipt_sha256": "785d181e04b93c966cde8c85e7a0a413bbaa4411e11e4090c9f82844bffb04fe"
+    },
+    "Dasyurus maculatus|target_only_random_init_resmlp|seed04": {
+      "artifact_sha256": "dc603164bb58b44df6c646f2f0a5d39a9208eb6407d912d4de43c8f728896c15",
+      "receipt_sha256": "2fdaed446d87c00a16e6906d606fe7f38f9465d4b8be1de3065d452026d33bed"
+    },
+    "Dasyurus maculatus|target_plus_q_linear_resmlp|seed00": {
+      "artifact_sha256": "ffbbf3d425688619b167d7f81a4734e97ebd8a53f7f5b5c5b217c33a5aeb5cef",
+      "receipt_sha256": "4fbe363ca8a677c4bdd3f6efc120d1c28fb934ca53c62cf77345aae3cb664175"
+    },
+    "Dasyurus maculatus|target_plus_q_linear_resmlp|seed01": {
+      "artifact_sha256": "2288ad35c837534306356cf70ba415ef5684a75f797659c8ea4f4401b40a4615",
+      "receipt_sha256": "cd600752568bf384b343f97b0649f36dcf97a0da168c6564712c8824f15d9048"
+    },
+    "Dasyurus maculatus|target_plus_q_linear_resmlp|seed02": {
+      "artifact_sha256": "881fdfaf93c3ddffcfaea4bb848fd62f1ccfca17279c562bf0fb60d73a517924",
+      "receipt_sha256": "7bbd03c7bf45a5e82597a621229619180d597a27de71a929bd122b0709383cc4"
+    },
+    "Dasyurus maculatus|target_plus_q_linear_resmlp|seed03": {
+      "artifact_sha256": "9a16f78d4135f7c1e7d2beeafa7d6f743ed645c92819d15159078b18402d2fed",
+      "receipt_sha256": "8aac2b90f06235460722502eedd86fffaaf0b6d764af294d24626fe118acfd5e"
+    },
+    "Dasyurus maculatus|target_plus_q_linear_resmlp|seed04": {
+      "artifact_sha256": "ffbb61cc68752d812273ea0bfe40f54455c8494ca571f50794b4792d20707401",
+      "receipt_sha256": "40a9ab85a8d2ea2f0c5a85e4435027de8ae1fcfd41fb8997507662397c9f3ba5"
+    },
+    "Notamacropus rufogriseus|multihead_frozen_trunk|seed00": {
+      "artifact_sha256": "01425d5e110eb0aa3bcbfb29d87cbf6730ce73c0045515bc71e967e200c51ada",
+      "receipt_sha256": "d4ec7637c0a781b5ff670dd8867f31788be7489a56b003776739b7bcc1cf2330"
+    },
+    "Notamacropus rufogriseus|multihead_frozen_trunk|seed01": {
+      "artifact_sha256": "b5d45a4d433505209503df492ceabd6d506a14c7044512729e30b2f029a4464f",
+      "receipt_sha256": "0fb4dda85f34193cde08f98fb03d976e6930870d801440b877f9fe163e3cd81f"
+    },
+    "Notamacropus rufogriseus|multihead_frozen_trunk|seed02": {
+      "artifact_sha256": "49ed52ed900c954754bc6abcba23cf802b636f37623d95ee3831fca40d2265e9",
+      "receipt_sha256": "4161d4e32a64ffbf2e6c255337d33b2a889206f0810e32ce94f004a35e001482"
+    },
+    "Notamacropus rufogriseus|multihead_frozen_trunk|seed03": {
+      "artifact_sha256": "d1199459ac29116db8da4fbddcaa8479aebf422c7ccd4610049921022c93ef1d",
+      "receipt_sha256": "e5cfae020b9d104edd0b05afb0e2bf9c05f59ed771a313ddc4543f46c23a43ec"
+    },
+    "Notamacropus rufogriseus|multihead_frozen_trunk|seed04": {
+      "artifact_sha256": "3e56400d92dae4048b962f2d929e5c35ac966f6704402df48c63c1396d717ce3",
+      "receipt_sha256": "29ad1b990d32e2f4eef1994dd1992e1b252686aff4bf337feea58eb0eb047cd0"
+    },
+    "Notamacropus rufogriseus|multihead_full_finetune|seed00": {
+      "artifact_sha256": "ea106feece5d07da2b751f7ad54618f11abb7f68d49d52f410f5ab988561d56c",
+      "receipt_sha256": "fc1e3475b34b8ee5a49b856168b43fabb7689b76c20d4fd1d974b2c3a65e7c8e"
+    },
+    "Notamacropus rufogriseus|multihead_full_finetune|seed01": {
+      "artifact_sha256": "377f9f3f9e7504fcec0f4e076d706eb7b98dcd541fc0c5ab37a3509e5a0bd68d",
+      "receipt_sha256": "d1da8f283977698b9c555e824439426f699cdb88981f309dadbbadad47003e88"
+    },
+    "Notamacropus rufogriseus|multihead_full_finetune|seed02": {
+      "artifact_sha256": "c10301217230c805406a05985205952795dec8a7b9e0eec5d73883317010537b",
+      "receipt_sha256": "9d8e90c2da9317a0736f9cfb7ab97088acf34de2ecf7feaa23a80790bc43a9bc"
+    },
+    "Notamacropus rufogriseus|multihead_full_finetune|seed03": {
+      "artifact_sha256": "e85a9e6637774de08eb5e29628d93ac8115064e75450e02c9252e6688d8b27d7",
+      "receipt_sha256": "48b284735f24df35a19af532a5d922ec921f1b1d0344a6a719d4bc4ca9b485db"
+    },
+    "Notamacropus rufogriseus|multihead_full_finetune|seed04": {
+      "artifact_sha256": "c409684a712f9dc3a75b3a90952bc1eb6568d6e721c7cef7af7bbb478724254d",
+      "receipt_sha256": "5a0bd3c161e63c662f9cc93819a3c9158f901b111a66d1c7d4f22fbe6cdd50f0"
+    },
+    "Notamacropus rufogriseus|selected_conventional|seed00": {
+      "artifact_sha256": "a948ef3659255e79134a192b69fc0eeee2201b0d83729a33bed4b3b87307f5b7",
+      "receipt_sha256": "a25ee1f4825809d3e52fa73570ee32cc5fdbbb391bf4a8a86013d465cb87ba4c"
+    },
+    "Notamacropus rufogriseus|selected_conventional|seed01": {
+      "artifact_sha256": "fa7782395cf2b5ce11d8c720b8f6ffd3eabe056bebb50711ac17399f24e2ddb2",
+      "receipt_sha256": "3539529299100f0c9d710d29546878d60a2460a1ac11e731bb57996190ad8274"
+    },
+    "Notamacropus rufogriseus|selected_conventional|seed02": {
+      "artifact_sha256": "9a917c265329f30fd4eb8b26245dab2b90afa6cdc45dfae9c3cef0b394b6a3e3",
+      "receipt_sha256": "50c7d9d2fd23a64a6c29fc5fca3383c6984499e7bcb152a9393b8374914b4563"
+    },
+    "Notamacropus rufogriseus|selected_conventional|seed03": {
+      "artifact_sha256": "ba712a951b92e2c1866805b8898cf327516c8cf9d09c0f02382c3fa0fa7cb6e5",
+      "receipt_sha256": "0e422a8985784a54688ce840677e16b333121e9f4c68e668ca5707cbda7f0785"
+    },
+    "Notamacropus rufogriseus|selected_conventional|seed04": {
+      "artifact_sha256": "34f2964b66124b9f81db1ff08efdd4fa1ffb1cd5e14aa253d352ac078c5c1e6c",
+      "receipt_sha256": "ceda35053e059f6775180e0a51f0b497131e291f036d5454e71031de20259b23"
+    },
+    "Notamacropus rufogriseus|strict_q_conventional|seed00": {
+      "artifact_sha256": "5f6fcddca72ab54002c4ca8f75def6d97ea3424da25d4703490883de5584e301",
+      "receipt_sha256": "99e0a5a5681e0b29891421166bf12712620b1495f5b93e396268b7ed715e58c4"
+    },
+    "Notamacropus rufogriseus|strict_q_conventional|seed01": {
+      "artifact_sha256": "6d90ede0566382217be9ad76df2aa0e244a78b08ae0d1b8d3eaffaa91fa58879",
+      "receipt_sha256": "61af1a33bc1c2bee51d8d7e78841d349059f33db97b52610857ea02dbb592cf2"
+    },
+    "Notamacropus rufogriseus|strict_q_conventional|seed02": {
+      "artifact_sha256": "6b882ed836768b6e07ef35139054b139f26bd303390bedaffbafc4b11a3bffc1",
+      "receipt_sha256": "bf653adf9548747d2d2dbe7bad65e3c202aa77f88da992ff477fbc46b7e5a39d"
+    },
+    "Notamacropus rufogriseus|strict_q_conventional|seed03": {
+      "artifact_sha256": "e402cdb4d6189a0a932b543445a4eea73bf8125d12338a1b5ff8d70da5031acf",
+      "receipt_sha256": "b3f99da3aecc8f476f686235305f0bfed093e4aa82076be1efa8790582ebcb18"
+    },
+    "Notamacropus rufogriseus|strict_q_conventional|seed04": {
+      "artifact_sha256": "b2081ef18d374632862bb56cbdf9093888766310f7bc933421ae5180f62c330a",
+      "receipt_sha256": "35e882918e373f0c746971cdcd79c6d64ca02b3954a6781e0dedd6285c56c1c4"
+    },
+    "Notamacropus rufogriseus|target_only_random_init_resmlp|seed00": {
+      "artifact_sha256": "e030d0afd4cd84ecf54f40feffd3fb5fc0da588f8e40213a3bd2801bc3fe1b7d",
+      "receipt_sha256": "ecad5bb8008dba520e7c8ca8d7947bf17bf37bdc5a426772754cca87616cbba5"
+    },
+    "Notamacropus rufogriseus|target_only_random_init_resmlp|seed01": {
+      "artifact_sha256": "7cc85aa09ad2f1c309455ae978ad6124589c9c7c9651dfc2f8d0db63def938e6",
+      "receipt_sha256": "b8f3adc393a0cd3e453b95af26422f66d39547f993678761c34b96e7e0d61815"
+    },
+    "Notamacropus rufogriseus|target_only_random_init_resmlp|seed02": {
+      "artifact_sha256": "1244f6aab0913be253d646f2ff06aef0d49d3523fa2c890276bf71ca5b957956",
+      "receipt_sha256": "ddc9a36e950f62c779425ccceefed839a63be9911ef11c70d500c58730b93a22"
+    },
+    "Notamacropus rufogriseus|target_only_random_init_resmlp|seed03": {
+      "artifact_sha256": "b6c8935f82120724de97737e65917d62625b7bc068c707696de6af64edf7058f",
+      "receipt_sha256": "e808e2419b07d130c550b68944fde0c0d10e26cb060681d3d31830f4703c4722"
+    },
+    "Notamacropus rufogriseus|target_only_random_init_resmlp|seed04": {
+      "artifact_sha256": "87b0f5ab574178b4e3f59c50a6b2559a9c750d324b1c4f36e33b356944b6c164",
+      "receipt_sha256": "5c20e22b96c22673803f2c30257714b2d801ea3a2f0a96712fed13d8e9970843"
+    },
+    "Notamacropus rufogriseus|target_plus_q_linear_resmlp|seed00": {
+      "artifact_sha256": "5e65ff4080af6442cdaf46493bd063657d5c972aa76c0e3fe0d40733b1f39542",
+      "receipt_sha256": "dc7ceab6f4ef6860c538f31021d4e88d63f75eb7b6b08b6eb4662a9eb33b030b"
+    },
+    "Notamacropus rufogriseus|target_plus_q_linear_resmlp|seed01": {
+      "artifact_sha256": "94adfb2f6419f7d89522733258a7f679ae6960c05398257f330914bfa8306198",
+      "receipt_sha256": "e5536cbd8a3b26fa9245ee929b565387edb379d7b04222670cda37d22217d9e5"
+    },
+    "Notamacropus rufogriseus|target_plus_q_linear_resmlp|seed02": {
+      "artifact_sha256": "4cec5cdae85337a7e8d6c5f2ec8a3606d74026b6f75cd0502204f0ad64412fbd",
+      "receipt_sha256": "0fd2e1e063bd9daa31ee8ab94f6fe697cfd79179d6519b1d02f2cd07daad7746"
+    },
+    "Notamacropus rufogriseus|target_plus_q_linear_resmlp|seed03": {
+      "artifact_sha256": "c8012f95c2767c311f630b4c5b7cd20e06edd945536687696f962016e1b7aa46",
+      "receipt_sha256": "23255da11471240cc9e26342eecfb314a9feb3d262e507bf07bdf889cf514e76"
+    },
+    "Notamacropus rufogriseus|target_plus_q_linear_resmlp|seed04": {
+      "artifact_sha256": "6818e252338742ec714d72b06cfeaf24c3a9428f18d2140f2e1e33836a23c901",
+      "receipt_sha256": "138b993fc8e7556bc1b512b36e1fd150d257fc79257fc738027e0d20dd93ffe2"
+    },
+    "Pseudocheirus peregrinus|multihead_frozen_trunk|seed00": {
+      "artifact_sha256": "304ec1b6776e28e2e67185f04a0015f9a99458e52bdbfaee86882417ba35126b",
+      "receipt_sha256": "303a49bd088b601923d440bff0f0fc707fd5acc89cf320290174d01c7302bc5c"
+    },
+    "Pseudocheirus peregrinus|multihead_frozen_trunk|seed01": {
+      "artifact_sha256": "0ecdb338dc702966571352f1bff3ca42ad5dc7b33f790e2f4e43b0c95330f083",
+      "receipt_sha256": "ab040bf964b9e0d0e7ed488441b85a5067db2230e67f4b9192378caa87f56a5c"
+    },
+    "Pseudocheirus peregrinus|multihead_frozen_trunk|seed02": {
+      "artifact_sha256": "984c4d0450894f47351a454a91f50911bd88cf22968ecb96f8d548b7bd7f6927",
+      "receipt_sha256": "fecf33edde19e8d63e0467f95610057ed8c0ec7ac00d0625b5f65838a2377b77"
+    },
+    "Pseudocheirus peregrinus|multihead_frozen_trunk|seed03": {
+      "artifact_sha256": "e5dfbbb32d7f8b2e871b5fc13e35e28937c5e0dd508a3474d85578dd9bcbd701",
+      "receipt_sha256": "064564bd7c0d7fe151f713f6df19185eea56d6b190b494c82ac073a5f9760c3c"
+    },
+    "Pseudocheirus peregrinus|multihead_frozen_trunk|seed04": {
+      "artifact_sha256": "562bc1b5b3593b535661386129fc220e21c86ef637e664b7b6a26861879260a3",
+      "receipt_sha256": "057040b2817aca1143c10ff1a6d8f1ff581415a82b8f70dcdcd430b596d09c35"
+    },
+    "Pseudocheirus peregrinus|multihead_full_finetune|seed00": {
+      "artifact_sha256": "28b37eda1eee8779e92fd6813808d7dbf47ed37d3c4f9308bbc1ade5ba21a85c",
+      "receipt_sha256": "100ad74c1a3522de9933e603b9d8122c6e2974044aacfe95e0dd082166e8711d"
+    },
+    "Pseudocheirus peregrinus|multihead_full_finetune|seed01": {
+      "artifact_sha256": "d861fcb1a45badfb090bb41608ed97d5c33cc3d7aafaa5603c96436e471208e5",
+      "receipt_sha256": "dbc76e07db5522ec3b9f94977acf7a0d227194298125d881bbf9677ce5a48a17"
+    },
+    "Pseudocheirus peregrinus|multihead_full_finetune|seed02": {
+      "artifact_sha256": "32aad3b4115c6ba4218996bd4dc97befb7367e7f4929db3371579a823e4b57d7",
+      "receipt_sha256": "1eca399f649181bc1dba7e9091bead68f049921459eb7f5a41c101c04f58eb42"
+    },
+    "Pseudocheirus peregrinus|multihead_full_finetune|seed03": {
+      "artifact_sha256": "8a4a22eda30b010c87e046374bb8507b978ceed33a2718c4e89695092aefc265",
+      "receipt_sha256": "44b69177b757b45bb8ac4fdbbebcf5b78d7e5c0c7a9a3b047b08dd61b8354c8e"
+    },
+    "Pseudocheirus peregrinus|multihead_full_finetune|seed04": {
+      "artifact_sha256": "9f4fbde7e1a467714a84678d833127b8a25dd91255b887ea169e96799ca48b30",
+      "receipt_sha256": "2b275b34f7fcdbeef31fe4ad1d0ded1a02734e41975a300ca11d7ecd4bd90277"
+    },
+    "Pseudocheirus peregrinus|selected_conventional|seed00": {
+      "artifact_sha256": "49fe30bdf8dc0841849f05082cc63ecae1a8bc53945464d01fd51002ff82752e",
+      "receipt_sha256": "7fe68295f148d892f8335217eac9602dcef9e7dbca6eee707e379429541744f2"
+    },
+    "Pseudocheirus peregrinus|strict_q_conventional|seed00": {
+      "artifact_sha256": "77d3eeffa1e98d02264882288d9d993ac64957dd63c170457c453290883541c5",
+      "receipt_sha256": "f97aac7d1686e28e88f5fcd21d85b7b30d65c3e2681e121c034d87c234470751"
+    },
+    "Pseudocheirus peregrinus|target_only_random_init_resmlp|seed00": {
+      "artifact_sha256": "ca57ec8b0311eb207ad218000868065e79daa1f2b2576ab85b315d36091e5a13",
+      "receipt_sha256": "561c92ba824c179dc1287ecf58eb7faee9e0dac9450e931a10f922557d88f2d2"
+    },
+    "Pseudocheirus peregrinus|target_only_random_init_resmlp|seed01": {
+      "artifact_sha256": "e0d22f1945f83cd04e9370a7bc51a5339d3b192ad1ed31d778772e536fa469f8",
+      "receipt_sha256": "ece24658ca08ff538f4bbbddc737a226456f211bb10360ae802dda5ac6cfde48"
+    },
+    "Pseudocheirus peregrinus|target_only_random_init_resmlp|seed02": {
+      "artifact_sha256": "0048376282d84237f399617163f1a39aad03a10670ac175f02b57c3ca0df3622",
+      "receipt_sha256": "05a7b199af76a0372f85939a9091244b42c03c5afd7c20ef01b17facca120edf"
+    },
+    "Pseudocheirus peregrinus|target_only_random_init_resmlp|seed03": {
+      "artifact_sha256": "d993929cd8729770f64cd316065b41a5070b49686dd16fcd881771ae3b38531f",
+      "receipt_sha256": "151972d9277d7230648c4d5018db39512e9dbc5718433175bbe8e1a1653f7f73"
+    },
+    "Pseudocheirus peregrinus|target_only_random_init_resmlp|seed04": {
+      "artifact_sha256": "d21893ebdf702e868ee3f310adff154f598fe5ddb6d55e7f4d197d2ca10ac6cb",
+      "receipt_sha256": "e1c7d1cdda3d4753c4c16ef8946d630ed602286fe729c1441c8f48953dbd7c29"
+    },
+    "Pseudocheirus peregrinus|target_plus_q_linear_resmlp|seed00": {
+      "artifact_sha256": "d09e8062afe53ee301957c4819b649fa17b89ec4f7b9aeb0c848a42d2bb0135a",
+      "receipt_sha256": "dec0c96429fa201eeac256620d498cecd22db8228b110a4d7b5719472c785b2e"
+    },
+    "Pseudocheirus peregrinus|target_plus_q_linear_resmlp|seed01": {
+      "artifact_sha256": "1e3ad72ec1cf424b2d301fde3d8694a196c78d862683f105f7deac6c6bab5807",
+      "receipt_sha256": "37c4c3465b4efc41c588fee6c8c9f96f7cd872eff255358bb5dbe61d9a05a133"
+    },
+    "Pseudocheirus peregrinus|target_plus_q_linear_resmlp|seed02": {
+      "artifact_sha256": "2a5bf141bd6960c8bbd9a09a6a947fb41723207db46b1f491dfaa967e1fac460",
+      "receipt_sha256": "ef280a28e6e66cf77cf3cf607b09682c648ff378456c34904787a445745aa91a"
+    },
+    "Pseudocheirus peregrinus|target_plus_q_linear_resmlp|seed03": {
+      "artifact_sha256": "f8177f30b5c3820038f7ea0531aeac748e9855e00697d4644434560d9de33847",
+      "receipt_sha256": "c3c7ff79851f2d486332b26af7699b0a6b32f9ef04a6c8351e3b4ddf3251b011"
+    },
+    "Pseudocheirus peregrinus|target_plus_q_linear_resmlp|seed04": {
+      "artifact_sha256": "07f32a8a64d7afe4dd89e45386c983383295031783fa845f69058285fb64a3f9",
+      "receipt_sha256": "351db4dba10e965e8d0d11957d2fdeb56eea067c287a50b7707b084ed6001c39"
+    },
+    "Trichosurus vulpecula|multihead_frozen_trunk|seed00": {
+      "artifact_sha256": "ecee2d22aa5fb7b7d5d8d15e597db13d472995d405ed9c363bff42e2888b2b10",
+      "receipt_sha256": "75fcc9c0442d5a3d3bcc99a458523bdc8254cba8743b766b70905471f31919cc"
+    },
+    "Trichosurus vulpecula|multihead_frozen_trunk|seed01": {
+      "artifact_sha256": "5d7ab71447f4f7bf0cb3ed6f0f91d8a4b50c8e1d625898de1baa5f7d0a09bbdd",
+      "receipt_sha256": "086ee6b0f1b5de2b80ea5744c5a7b7cb3966e9780f93270843855a0098c00a1c"
+    },
+    "Trichosurus vulpecula|multihead_frozen_trunk|seed02": {
+      "artifact_sha256": "e42c534314e57af66f0a42dd6945d4d03af67f310905eb45fe1ebb1784e63d10",
+      "receipt_sha256": "d5e5517a9218ca4a42b769ab74fa0fa0f093988833dedb0b04f959109d6a7f47"
+    },
+    "Trichosurus vulpecula|multihead_frozen_trunk|seed03": {
+      "artifact_sha256": "adf671f26c98a0c26c4f505215af9e5beafe35d30ea220138137f3a3661acdef",
+      "receipt_sha256": "333d7884e2a30e338336dda2f09af0c077020346c7b8256619bb0df4eb484e87"
+    },
+    "Trichosurus vulpecula|multihead_frozen_trunk|seed04": {
+      "artifact_sha256": "92dad690081a3f911e0fbd8ac0640fd6151acf77097b8eeb8a66d1edd2af6f5c",
+      "receipt_sha256": "2f188ec6118980f1294d503c71ff2b774762a162dcc4b6b6d9987476e77e38f5"
+    },
+    "Trichosurus vulpecula|multihead_full_finetune|seed00": {
+      "artifact_sha256": "23806c395e877f67b575445abbd76078e67069c528b87e96e28147ef38403974",
+      "receipt_sha256": "95046de7e875e0a362ce5163f7aab9145cf2d9aab53aee80f011b0105fdc1be9"
+    },
+    "Trichosurus vulpecula|multihead_full_finetune|seed01": {
+      "artifact_sha256": "1ca480e86e638834ddb0a1870a9a06d60f773123b107bc11615bb56a54a29574",
+      "receipt_sha256": "b8490a314e6105b54f1531ed11899d35452f387eba71ee87be3dc6a706918b2a"
+    },
+    "Trichosurus vulpecula|multihead_full_finetune|seed02": {
+      "artifact_sha256": "c13a883c384ba4afe0ad18cae81760d65dd311e482761c2d58e2bb9065f49833",
+      "receipt_sha256": "98a27650d70673196e5ee5eba2aad7118ff3ce91ff21a2be7fcb139f9db5a6e6"
+    },
+    "Trichosurus vulpecula|multihead_full_finetune|seed03": {
+      "artifact_sha256": "ec2421ff9cf7e0f6ebec99cc7dcab4d711555119e650928d174233d0c70c665b",
+      "receipt_sha256": "5d6b380dbbb87c5e0d38f538c79ac0ffe0bca06b03ba148d6de083f8b0c92d12"
+    },
+    "Trichosurus vulpecula|multihead_full_finetune|seed04": {
+      "artifact_sha256": "010d6dd06fc2ce3bc29e8dc2a48048b1e8efa8f2f6f9ac84465af2298b0d2d7a",
+      "receipt_sha256": "f0b5ed2d25b85480bcb1630a84d11ff7ce300328b8563e5d421c8c8ec94d8a2a"
+    },
+    "Trichosurus vulpecula|selected_conventional|seed00": {
+      "artifact_sha256": "0937ed6b22f414aa35a38091b9f3ce5682fb61943e2e25156a941633ef147305",
+      "receipt_sha256": "5355cf1e78fc4da4f07aed005c494225c1819433b603d3bba8829974038a857a"
+    },
+    "Trichosurus vulpecula|selected_conventional|seed01": {
+      "artifact_sha256": "64a20b1cd19d1697dd6a201d567f49464acfb090c30b67d973e223dfc368b502",
+      "receipt_sha256": "e59b41525e0f24df4b1ccaa0bc70756c05c11a1135d20d8729beac32d67486e4"
+    },
+    "Trichosurus vulpecula|selected_conventional|seed02": {
+      "artifact_sha256": "e3e7f1c11c55d401ac5f212e664d58515d36d778e4141a46fcebba73a70ff451",
+      "receipt_sha256": "a6dbce6fdfbb45d705602a7651a9d3aa5f9d8df1fe5d2ef315ab051e993d2eac"
+    },
+    "Trichosurus vulpecula|selected_conventional|seed03": {
+      "artifact_sha256": "3dbcb5472e827c990529cb4c2e40eb54a92325e71f9387583cb43ecff20e63e3",
+      "receipt_sha256": "555ee570e102cae2b0d8cfcef3510d47e5d2ed164cdc8f6e67314139976874e0"
+    },
+    "Trichosurus vulpecula|selected_conventional|seed04": {
+      "artifact_sha256": "187bf3a77d49e046c5efca15146ad1c7dc7f1d96afc3d53af961a62891d7cb47",
+      "receipt_sha256": "f2133bb5e58f5eb692e837a47b3f3673d6af61920754bd71f486a12ac4b68d7c"
+    },
+    "Trichosurus vulpecula|strict_q_conventional|seed00": {
+      "artifact_sha256": "03516c99f17bb41509ee0b148d323b959c4810b3599bcb7c11a57c2ec0f31799",
+      "receipt_sha256": "37a50c576f429c87c8a5f895408aeb94d3b04a7af17411686d380c734faa4b05"
+    },
+    "Trichosurus vulpecula|strict_q_conventional|seed01": {
+      "artifact_sha256": "bef99a23e0a781f03aa924c553590b4deffa954a8b9b49934337c5da8be152c9",
+      "receipt_sha256": "e588cb610f10aa68ee720c0cd32a0207997e841d242eb9d81fb9aa670a2edfce"
+    },
+    "Trichosurus vulpecula|strict_q_conventional|seed02": {
+      "artifact_sha256": "ddfb90464144f1ce5678bfd1f7b4301c3915c2234a8b124f66cf81b7f031b476",
+      "receipt_sha256": "d533e4043e8362e6fbf0bf1ad96de868f43dcfbd5c975e7760f3f1ef0060e850"
+    },
+    "Trichosurus vulpecula|strict_q_conventional|seed03": {
+      "artifact_sha256": "3de377cea55da22aefae5c21c22acf55b1a22cdadd71f192cfb7764e22004dd5",
+      "receipt_sha256": "af461fbc8d82cfa6e357d0273fcfa8daa8ab5e83b84948bcef6fabf0e7bf046e"
+    },
+    "Trichosurus vulpecula|strict_q_conventional|seed04": {
+      "artifact_sha256": "fca47f6a421498a698883a2bd8d7015889d1645d65a556d404da0cc2232f1c4c",
+      "receipt_sha256": "ab761044f6b51e7bac8e2a1bc36956e5e15d4d8a44c51ac1a1ab3543e3bd8035"
+    },
+    "Trichosurus vulpecula|target_only_random_init_resmlp|seed00": {
+      "artifact_sha256": "720581f0c9ef1805fecb542c94a9b0dde175506ae7a8b953e7633c764b52ca89",
+      "receipt_sha256": "810f4ea3d5cf17468c63475a23467430f7163d9c69efbf891f80ce2f646cdeea"
+    },
+    "Trichosurus vulpecula|target_only_random_init_resmlp|seed01": {
+      "artifact_sha256": "a6f854adc5438472476a33aef8527f3b802277bbca72f7703dfa3f3f7cdaa611",
+      "receipt_sha256": "f64d14bfb03cec758a1d50f09c64f3459632f417859e94c2567bb64d696db8fb"
+    },
+    "Trichosurus vulpecula|target_only_random_init_resmlp|seed02": {
+      "artifact_sha256": "dc867683b7f7e00b4ecf7a1ad89f7cd053ae98c557a568bac14242169dd6f3cc",
+      "receipt_sha256": "2e3ad3ee48ed2d2876c8df4bd42572d3b37e53f243b7165a6a1629b406a60458"
+    },
+    "Trichosurus vulpecula|target_only_random_init_resmlp|seed03": {
+      "artifact_sha256": "032bf26607b02db2d8a12cdde69946702342866f3f2047fbabd727c13da093ce",
+      "receipt_sha256": "8c1d99fb29a6a02b9820054c1b60279137722fa6ea4e481b301ae23189c46fe5"
+    },
+    "Trichosurus vulpecula|target_only_random_init_resmlp|seed04": {
+      "artifact_sha256": "5cd6caefd09b203d7ed1cd992a714f14b9396de9e7ade681f494fe4d32766d01",
+      "receipt_sha256": "340eac8659f43e331569bd5b10e9383d24feb7bf1f492ab8505c590f68877c7d"
+    },
+    "Trichosurus vulpecula|target_plus_q_linear_resmlp|seed00": {
+      "artifact_sha256": "5cb7f5a7b9c8ea8960a46a8e10c4cd03aa10438708fb4ab546d908ca11810c02",
+      "receipt_sha256": "bcf9ac80758808f78073f5533ab453b5d5495dca922cb8527454574cac7f7475"
+    },
+    "Trichosurus vulpecula|target_plus_q_linear_resmlp|seed01": {
+      "artifact_sha256": "428de8457e226b76ed0c68d8a35b45bf208dd3ef9430e7103414221c65cbcabd",
+      "receipt_sha256": "1efc0825918f1cb9cd295570d7d34ccd4153719f85737d664f9a13ed8f22d66d"
+    },
+    "Trichosurus vulpecula|target_plus_q_linear_resmlp|seed02": {
+      "artifact_sha256": "bf35f9f7390dd9dea4f90ea97a27f43be60dcbe1c4a0a89f8eecadd2ec0b969d",
+      "receipt_sha256": "7ff48d7ab4b22c33b9df4d62377a45bfbeb7c0519e308f405170ad76f903cab3"
+    },
+    "Trichosurus vulpecula|target_plus_q_linear_resmlp|seed03": {
+      "artifact_sha256": "9c00584943cb3deabf70419cb20d73f66de19aae13bad4daa3526d41ac122a51",
+      "receipt_sha256": "6f64f11eaf7209b2a45f4b6c5f5a2fb1778004017bafb3822474ab738cf88105"
+    },
+    "Trichosurus vulpecula|target_plus_q_linear_resmlp|seed04": {
+      "artifact_sha256": "4986d577f6fdef1831c0d368d99c404d98fd0534f15fa6b199c1a37108eb6476",
+      "receipt_sha256": "d2f61dc0044548e9184cbf4d49fff0b87821c520fd62b0fbc19ce3410d334f91"
+    },
+    "Vombatus ursinus|multihead_frozen_trunk|seed00": {
+      "artifact_sha256": "bc0b675b75a0702a67af48e51b513d442187942dbf8393c9e59c01f580ad3e08",
+      "receipt_sha256": "a0b06b3c2c157753279d1f07a882f18b242142a8c6c10be7b430d39880bc4591"
+    },
+    "Vombatus ursinus|multihead_frozen_trunk|seed01": {
+      "artifact_sha256": "71551ee9ea09f14aaa743a086b54ff1370ab9921ec68cb111ecc4470c6a88fdb",
+      "receipt_sha256": "f562f8bd631f5ace9cf63595f635a78df659ec8aa87f6c8b0c3b68f5dd75a009"
+    },
+    "Vombatus ursinus|multihead_frozen_trunk|seed02": {
+      "artifact_sha256": "247fdc7c6ee7b5751ad58d87d1b3ef18fdc13f44f81f9208a06d809b6213cbd3",
+      "receipt_sha256": "961c157d9cc12a7302684dc688dbb0bc1d5d3db7f31193915e41e74c9c6a3415"
+    },
+    "Vombatus ursinus|multihead_frozen_trunk|seed03": {
+      "artifact_sha256": "98163cfc636370bd820b8dc767e3e84401d096117500a1e765f93700ff4eb4c1",
+      "receipt_sha256": "568bf10bbb9b763c35eef3119a156794641c7be3603d6d3865b0e7dd1431ec37"
+    },
+    "Vombatus ursinus|multihead_frozen_trunk|seed04": {
+      "artifact_sha256": "000564e69abefd78a17708a5048047d9e3099b79606cbc02020ba4eebd9f71fd",
+      "receipt_sha256": "aaa7456c9569b256e069700c1536ce318875037aecf84285a1cb4641f95fc36c"
+    },
+    "Vombatus ursinus|multihead_full_finetune|seed00": {
+      "artifact_sha256": "d9232cc9f8cd487ecfcc690119a4ce328870e22c379ac179e2561153b9a83b9a",
+      "receipt_sha256": "3cc523cac60266288fa9c4756a92d6769a20e38ddae3946ef14657a79077e4b5"
+    },
+    "Vombatus ursinus|multihead_full_finetune|seed01": {
+      "artifact_sha256": "4f0bea3e1b9d0c8ca008b322eb41646a2ca5131288aa4ecf928d1c3d1c50007a",
+      "receipt_sha256": "ac92668e695f1a20b016802225b80a256c7f16ae6d2a35757419e0094ebb924d"
+    },
+    "Vombatus ursinus|multihead_full_finetune|seed02": {
+      "artifact_sha256": "1ed31c907543a9d483f3baa6409912fa5cd56863839c6f5efc0baa061cefe23d",
+      "receipt_sha256": "7b01de35dc4056399c94ac4e88109da468e8ef2d726fec7f417105192329f17c"
+    },
+    "Vombatus ursinus|multihead_full_finetune|seed03": {
+      "artifact_sha256": "05055607b62e8a4960eacab60f1eebb2e7f285335d712a075d9c71cc0f5651a0",
+      "receipt_sha256": "9a536d344fcacbc3500d45c8e34c41b84710252774de388026f56840fe8bf38f"
+    },
+    "Vombatus ursinus|multihead_full_finetune|seed04": {
+      "artifact_sha256": "09503856960429708e1dc27a32c30067d284a803f1db7f53be23d30ebc6cf710",
+      "receipt_sha256": "7bc0e7e6c77df64f7c23a1bfb3f327f3f585b039a87b74bbc9c44b26750e0346"
+    },
+    "Vombatus ursinus|selected_conventional|seed00": {
+      "artifact_sha256": "7c57c38200cfed9ecd3b0aee71660a824b250a26afe33bf299a4eadf409d1eab",
+      "receipt_sha256": "db8cc4ac0953606cae264cec9697fff96f3ea8c3f06d9b016e0a5fe21f1e6bd5"
+    },
+    "Vombatus ursinus|selected_conventional|seed01": {
+      "artifact_sha256": "0d6356d1eb3be69afdf6bc10a0f466d487c3c04920aabaa3624d819f2989e5d1",
+      "receipt_sha256": "6316ffc527f82c7c18ee0f679c9ff7a6ef3e8a5eed4c920ed23b1e14c68724de"
+    },
+    "Vombatus ursinus|selected_conventional|seed02": {
+      "artifact_sha256": "41ad28502bd54ae0c7446f2d044a8bd8bbde31df0765efa4673b3536e961e6e9",
+      "receipt_sha256": "5550b13f5e972a46bfd7ccc241b56f5a62349a8cc90a86aa53133fe92d5a90b1"
+    },
+    "Vombatus ursinus|selected_conventional|seed03": {
+      "artifact_sha256": "3fb50ad9c9b3080077e48e5a74dee86482272d4387d08939d81868bfc16f8130",
+      "receipt_sha256": "f42daab6d7d689d61d53d1b6504136a7e2970705339faa400d5c2b06a8f8f9dc"
+    },
+    "Vombatus ursinus|selected_conventional|seed04": {
+      "artifact_sha256": "d8a13f7df47ad4d2f246b21bc624dd2e37327a3c819ae5f6280dce13ffea2fe0",
+      "receipt_sha256": "527487683dce152c4012f2705a2d4abaf32ef4005d3291588ddc75eaa86e7222"
+    },
+    "Vombatus ursinus|strict_q_conventional|seed00": {
+      "artifact_sha256": "d6d0df4d7bf26184686912c824aabbf6a489f1541d9cae668792a1ecbb05c7f4",
+      "receipt_sha256": "6940a19fb0169ee4e560621f1ad3c13b3ea688b4dbe99e64b51aed0b76c5601f"
+    },
+    "Vombatus ursinus|strict_q_conventional|seed01": {
+      "artifact_sha256": "df55acb3844e6e8f7d904fbf527027ff009fe936ee6b4b603bc6a5a4875b6947",
+      "receipt_sha256": "cc978959a0b27bfce8df328c195b2168743c0c2a8d97dcdf4e965a989db5fd4c"
+    },
+    "Vombatus ursinus|strict_q_conventional|seed02": {
+      "artifact_sha256": "fefc89945897707282051594c076d283fd03599c7d7aaa088d9c13106c997693",
+      "receipt_sha256": "32fdaa8616cab8a11a3228001da41cc85342b2292615aeb838302e060e5e2bf4"
+    },
+    "Vombatus ursinus|strict_q_conventional|seed03": {
+      "artifact_sha256": "34c947fbeb0b1b853c43de5db44c11d15cb345537222813a97bda6a15385dc97",
+      "receipt_sha256": "77582a1532cae4ec7a1f75f6a068b732f03cc4e087cdf6d82dc36d9a0ff60e80"
+    },
+    "Vombatus ursinus|strict_q_conventional|seed04": {
+      "artifact_sha256": "2ae2626345315c73913676458a8a54d98b8f34555cce5ea361544ba7cdc4546e",
+      "receipt_sha256": "c55792de85b7405340bac341574ba1d1123aaf519b92e20e61abb252b2ae19e1"
+    },
+    "Vombatus ursinus|target_only_random_init_resmlp|seed00": {
+      "artifact_sha256": "11c1f9c85bc8e8a65c76834b19a2dd8db50d321af1ec9f1cce9151b40a47800f",
+      "receipt_sha256": "41031c58cef5170cb12712c0c6ee25b5f73a3b0d66330ead6bc6b5607ea0f50f"
+    },
+    "Vombatus ursinus|target_only_random_init_resmlp|seed01": {
+      "artifact_sha256": "11dd2c95461ffec5cbc31cd408e20cca2ec67aa80bdf2794dfb769542222986f",
+      "receipt_sha256": "298ba6dcffacd13d3a2db12e4ddce994511e5911e6481be633d2901182b91174"
+    },
+    "Vombatus ursinus|target_only_random_init_resmlp|seed02": {
+      "artifact_sha256": "f7cffe2b1c582c7fa5632bcd975207982baf835dcface3e96366c28d7f478ced",
+      "receipt_sha256": "367336f0d41defa009af4beac9f06419510fa860745df22059e100f679587649"
+    },
+    "Vombatus ursinus|target_only_random_init_resmlp|seed03": {
+      "artifact_sha256": "ad9a676ff9bb4a63a77b8bf3f8a1f6d72d03e8a0fa4c0518d228c6603fb366f5",
+      "receipt_sha256": "d21d33aae499e629c2e4d557d1596d46d96afd087d7e8ef67590d4ec9ba0dc57"
+    },
+    "Vombatus ursinus|target_only_random_init_resmlp|seed04": {
+      "artifact_sha256": "3493f319fd94be098a0545cfc8c37f9a0ab1d4786e2d68e59b0e40f27b70cfdc",
+      "receipt_sha256": "4d5f5b6de13a82f62ca02958ba3e08de7ad4c79266f1c9b51de9782266840fe3"
+    },
+    "Vombatus ursinus|target_plus_q_linear_resmlp|seed00": {
+      "artifact_sha256": "f55d586f667e9b4478dce9412e8c6e4b8109a9597db6e6d91e08f87b1bcf402c",
+      "receipt_sha256": "fb348309503e80afcc7e6e17bfdfc02fddac6275036d40c0ad554d5171e5a583"
+    },
+    "Vombatus ursinus|target_plus_q_linear_resmlp|seed01": {
+      "artifact_sha256": "133656e183e4787a55c4a542656b8cf9d7a7cb38e11e2f73c6bbad014db47323",
+      "receipt_sha256": "5d265aa8d63861bd2229469509e3108207359708d68142e00df183309bcc5c3a"
+    },
+    "Vombatus ursinus|target_plus_q_linear_resmlp|seed02": {
+      "artifact_sha256": "c6ade7aabc2acddeee480d4d12e6e3421f0cc0ec811d7e6a98278afd262bcf1e",
+      "receipt_sha256": "45e3bc27d071932e4a8e83b0ba0f50b5a763830149805d407a3d2d2ddbfabd33"
+    },
+    "Vombatus ursinus|target_plus_q_linear_resmlp|seed03": {
+      "artifact_sha256": "aa261ce8d4a631d32ba7c5adf2ab9df91423b26ecbe70f05c5ddabad8db6d470",
+      "receipt_sha256": "3b346087c43d1a61d6356b845595ea244a2210a101bbbc47392b027104460569"
+    },
+    "Vombatus ursinus|target_plus_q_linear_resmlp|seed04": {
+      "artifact_sha256": "cdedb337db00259f3ea9242ce2e4c44db18daa1e205c50c0c0d0b0a3854caf8a",
+      "receipt_sha256": "6413288645bbdb292dab9717d0038acb7bc24a77641d4d8db4c00a74ef739d03"
+    }
+  },
+  "predictor_authority": {
+    "categorical_vocabulary": {
+      "alum_secondary": {
+        "encoded_levels": [
+          "11:1.1 Nature conservation",
+          "12:1.2 Managed resource protection",
+          "13:1.3 Other minimal use",
+          "21:2.1 Grazing native vegetation",
+          "22:2.2 Production native forests",
+          "31:3.1 Plantation forests",
+          "32:3.2 Grazing modified pastures",
+          "33:3.3 Cropping",
+          "34:3.4 Perennial horticulture",
+          "35:3.5 Seasonal horticulture",
+          "41:4.1 Irrigated plantation forests",
+          "42:4.2 Grazing irrigated modified pastures",
+          "43:4.3 Irrigated cropping",
+          "44:4.4 Irrigated perennial horticulture",
+          "45:4.5 Irrigated seasonal horticulture",
+          "51:5.1 Intensive horticulture",
+          "52:5.2 Intensive animal production",
+          "53:5.3 Manufacturing and industrial",
+          "54:5.4.0; 5.4.1 Urban residential",
+          "55:5.5 Services",
+          "56:5.6 Utilities",
+          "57:5.7 Transport and communication",
+          "58:5.8 Mining",
+          "59:5.9 Waste treatment and disposal",
+          "61:6.1 Lake",
+          "62:6.0 Water",
+          "62:6.2 Reservoir/dam",
+          "63:6.3 River",
+          "64:6.4 Channel/aqueduct",
+          "65:6.5 Marsh/wetland",
+          "66:6.6 Estuary/coastal waters",
+          "70:5.4.2; 5.4.3; 5.4.4; 5.4.5 Rural residential and farm infrastructure",
+          "__MISSING__",
+          "__UNSEEN__"
+        ],
+        "observed_levels": [
+          "11:1.1 Nature conservation",
+          "12:1.2 Managed resource protection",
+          "13:1.3 Other minimal use",
+          "21:2.1 Grazing native vegetation",
+          "22:2.2 Production native forests",
+          "31:3.1 Plantation forests",
+          "32:3.2 Grazing modified pastures",
+          "33:3.3 Cropping",
+          "34:3.4 Perennial horticulture",
+          "35:3.5 Seasonal horticulture",
+          "41:4.1 Irrigated plantation forests",
+          "42:4.2 Grazing irrigated modified pastures",
+          "43:4.3 Irrigated cropping",
+          "44:4.4 Irrigated perennial horticulture",
+          "45:4.5 Irrigated seasonal horticulture",
+          "51:5.1 Intensive horticulture",
+          "52:5.2 Intensive animal production",
+          "53:5.3 Manufacturing and industrial",
+          "54:5.4.0; 5.4.1 Urban residential",
+          "55:5.5 Services",
+          "56:5.6 Utilities",
+          "57:5.7 Transport and communication",
+          "58:5.8 Mining",
+          "59:5.9 Waste treatment and disposal",
+          "61:6.1 Lake",
+          "62:6.0 Water",
+          "62:6.2 Reservoir/dam",
+          "63:6.3 River",
+          "64:6.4 Channel/aqueduct",
+          "65:6.5 Marsh/wetland",
+          "66:6.6 Estuary/coastal waters",
+          "70:5.4.2; 5.4.3; 5.4.4; 5.4.5 Rural residential and farm infrastructure"
+        ]
+      },
+      "nvis_mvg": {
+        "encoded_levels": [
+          "10:Other Forests and Woodlands",
+          "11:Eucalypt Open Woodlands",
+          "13:Acacia Open Woodlands",
+          "14:Mallee Woodlands and Shrublands",
+          "15:Low Closed Forests and Tall Closed Shrublands",
+          "16:Acacia Shrublands",
+          "17:Other Shrublands",
+          "18:Heathlands",
+          "19:Tussock Grasslands",
+          "1:Rainforests and Vine Thickets",
+          "20:Hummock Grasslands",
+          "21:Other Grasslands, Herblands, Sedgelands and Rushlands",
+          "22:Chenopod Shrublands, Samphire Shrublands and Forblands",
+          "23:Mangroves",
+          "24:Inland aquatic - freshwater, salt lakes, lagoons",
+          "25:Cleared, non-native vegetation, buildings",
+          "26:Unclassified native vegetation",
+          "27:Naturally bare - sand, rock, claypan, mudflat",
+          "28:Sea and estuaries",
+          "29:Regrowth, modified native vegetation",
+          "2:Eucalypt Tall Open Forests",
+          "31:Other Open Woodlands",
+          "32:Mallee Open Woodlands and Sparse Mallee Shrublands",
+          "3:Eucalypt Open Forests",
+          "4:Eucalypt Low Open Forests",
+          "5:Eucalypt Woodlands",
+          "6:Acacia Forests and Woodlands",
+          "7:Callitris Forests and Woodlands",
+          "8:Casuarina Forests and Woodlands",
+          "9:Melaleuca Forests and Woodlands",
+          "__MISSING__",
+          "__UNSEEN__"
+        ],
+        "observed_levels": [
+          "10:Other Forests and Woodlands",
+          "11:Eucalypt Open Woodlands",
+          "13:Acacia Open Woodlands",
+          "14:Mallee Woodlands and Shrublands",
+          "15:Low Closed Forests and Tall Closed Shrublands",
+          "16:Acacia Shrublands",
+          "17:Other Shrublands",
+          "18:Heathlands",
+          "19:Tussock Grasslands",
+          "1:Rainforests and Vine Thickets",
+          "20:Hummock Grasslands",
+          "21:Other Grasslands, Herblands, Sedgelands and Rushlands",
+          "22:Chenopod Shrublands, Samphire Shrublands and Forblands",
+          "23:Mangroves",
+          "24:Inland aquatic - freshwater, salt lakes, lagoons",
+          "25:Cleared, non-native vegetation, buildings",
+          "26:Unclassified native vegetation",
+          "27:Naturally bare - sand, rock, claypan, mudflat",
+          "28:Sea and estuaries",
+          "29:Regrowth, modified native vegetation",
+          "2:Eucalypt Tall Open Forests",
+          "31:Other Open Woodlands",
+          "32:Mallee Open Woodlands and Sparse Mallee Shrublands",
+          "3:Eucalypt Open Forests",
+          "4:Eucalypt Low Open Forests",
+          "5:Eucalypt Woodlands",
+          "6:Acacia Forests and Woodlands",
+          "7:Callitris Forests and Woodlands",
+          "8:Casuarina Forests and Woodlands",
+          "9:Melaleuca Forests and Woodlands",
+          "__MISSING__"
+        ]
+      },
+      "soil_order": {
+        "encoded_levels": [
+          "10:Podosol",
+          "11:Rudosol",
+          "12:Calcarasol",
+          "13:Organosol",
+          "14:Anthroposol",
+          "1:Vertosol",
+          "2:Sodosol",
+          "3:Dermosol",
+          "4:Chromosol",
+          "5:Ferrosol",
+          "6:Kurosol",
+          "7:Tenosol",
+          "8:Kandosol",
+          "9:Hydrosol",
+          "__MISSING__",
+          "__UNSEEN__"
+        ],
+        "observed_levels": [
+          "10:Podosol",
+          "11:Rudosol",
+          "12:Calcarasol",
+          "13:Organosol",
+          "14:Anthroposol",
+          "1:Vertosol",
+          "2:Sodosol",
+          "3:Dermosol",
+          "4:Chromosol",
+          "5:Ferrosol",
+          "6:Kurosol",
+          "7:Tenosol",
+          "8:Kandosol",
+          "9:Hydrosol",
+          "__MISSING__"
+        ]
+      }
+    },
+    "categorical_vocabulary_id": "vocab_415d56d5c169",
+    "continuous_ranges": {
+      "bio01": {
+        "maximum": 22.941667556762695,
+        "minimum": 3.7666666507720947
+      },
+      "bio02": {
+        "maximum": 16.95833396911621,
+        "minimum": 4.974999904632568
+      },
+      "bio03": {
+        "maximum": 56.36666488647461,
+        "minimum": 34.1194953918457
+      },
+      "bio04": {
+        "maximum": 631.2473754882812,
+        "minimum": 240.6509552001953
+      },
+      "bio05": {
+        "maximum": 36.0,
+        "minimum": 16.700000762939453
+      },
+      "bio06": {
+        "maximum": 15.5,
+        "minimum": -7.699999809265137
+      },
+      "bio07": {
+        "maximum": 32.400001525878906,
+        "minimum": 12.000000953674316
+      },
+      "bio08": {
+        "maximum": 28.166667938232422,
+        "minimum": -0.6333333253860474
+      },
+      "bio09": {
+        "maximum": 24.516666412353516,
+        "minimum": 2.4166667461395264
+      },
+      "bio10": {
+        "maximum": 28.166667938232422,
+        "minimum": 10.066666603088379
+      },
+      "bio11": {
+        "maximum": 18.683334350585938,
+        "minimum": -2.5333333015441895
+      },
+      "bio12": {
+        "maximum": 2242.0,
+        "minimum": 231.0
+      },
+      "bio13": {
+        "maximum": 345.0,
+        "minimum": 26.0
+      },
+      "bio14": {
+        "maximum": 103.0,
+        "minimum": 5.0
+      },
+      "bio15": {
+        "maximum": 94.83012390136719,
+        "minimum": 8.012189865112305
+      },
+      "bio16": {
+        "maximum": 932.0,
+        "minimum": 69.0
+      },
+      "bio17": {
+        "maximum": 347.0,
+        "minimum": 28.0
+      },
+      "bio18": {
+        "maximum": 871.0,
+        "minimum": 28.0
+      },
+      "bio19": {
+        "maximum": 677.0,
+        "minimum": 50.0
+      },
+      "elevation_mean": {
+        "maximum": 2136.769290123457,
+        "minimum": -40.348907554433765
+      },
+      "elevation_sd": {
+        "maximum": 214.75224697883846,
+        "minimum": 0.0
+      }
+    },
+    "tasmania_predictor_rows_read": 0,
+    "training_cell_count": 1051904,
+    "training_identity_sha256": "2597b718bc6ac6aa1a8365c3fa552d3f7d04e09411a0d9a564e4ea6e6f668c46",
+    "transform_id": "mainland_full"
+  },
+  "preopening_access_counters": {
+    "predictor_rows_read": 0,
+    "response_rows_read": 0
+  },
+  "pretraining_inventory": {
+    "Dasyurus maculatus|seed00|pretraining": {
+      "artifact_sha256": "6a0d696765b13a2d0ffea5c78e81639c0359da7506ea0dcc3636472d49e333e5",
+      "receipt_sha256": "035fbb13ce4feada3f2490bf3de917ede6607c26105f74541600b610b478262d"
+    },
+    "Dasyurus maculatus|seed01|pretraining": {
+      "artifact_sha256": "33a4ffd6953597b16e864c52a5bb97c3a321b995d3258e7aad78a89aff0f7cee",
+      "receipt_sha256": "9d46e37b8834efbca40a15a7ebd82ea5614b5c0aa0086525cce60d3929669d5a"
+    },
+    "Dasyurus maculatus|seed02|pretraining": {
+      "artifact_sha256": "526b02e96f8904d6185bd2d10710415e6b3cb7fe9ecb95ba1bc7c450ea0a3745",
+      "receipt_sha256": "969cc520fed6a6757e855952527eaff47530b72ef21e28561df16420ffdc5e16"
+    },
+    "Dasyurus maculatus|seed03|pretraining": {
+      "artifact_sha256": "90a998d81bb57d8da2675454bc266704547c26ac74f45245ba46ba0d4c7e36bd",
+      "receipt_sha256": "b3e67616a59621ddd1666b25d0e5d1542413d4ff79cde9cf4e46d0dda71f5ccb"
+    },
+    "Dasyurus maculatus|seed04|pretraining": {
+      "artifact_sha256": "b416e979d3ff05208ab9dc5ee663b08e7c536f617da449c79715ef5aaad5b534",
+      "receipt_sha256": "009215c6cdc4f499b0e81d82a809753796724e909d3de190a902cbddda5131b5"
+    },
+    "Notamacropus rufogriseus|seed00|pretraining": {
+      "artifact_sha256": "20c57988b9ccab22eba8bc2e1e403880a79cb28e69b6859d504e569b44d2aa10",
+      "receipt_sha256": "e6a64a4c09bc1ff2c9c96d6fbe3a6f7b65f8c1f01fb8e33e7afa238f621b0ca7"
+    },
+    "Notamacropus rufogriseus|seed01|pretraining": {
+      "artifact_sha256": "fa68b40ca384ab6f05fa889b910e16be2cf555118458d77a2ae87a03c57a9dda",
+      "receipt_sha256": "7b4bdf01c4055f8553d194c6896787c807527e947daa68c9331232e8d2b41eda"
+    },
+    "Notamacropus rufogriseus|seed02|pretraining": {
+      "artifact_sha256": "eb01e1805b9200e254059f0d897a90d0e55fd6d05c1092b0c225fb44fe0b2762",
+      "receipt_sha256": "5ce0ee1c6da74f66bebeeff7f5405396e608c4e55648efa8d2a7597d94b44f5a"
+    },
+    "Notamacropus rufogriseus|seed03|pretraining": {
+      "artifact_sha256": "305d4dfca3965929b5e17e1ef8287d7e02b83579be23269ba23054a0107a30e8",
+      "receipt_sha256": "4776cf1b5e1ba723ce4e785a72a30d0f5c6368946b0e7c0744c483aca39f6b7b"
+    },
+    "Notamacropus rufogriseus|seed04|pretraining": {
+      "artifact_sha256": "4371bcbf6e080a586d268f3f5069ecd394c120205f2f27f9714aecf4fd1bf241",
+      "receipt_sha256": "b2cb89d36dad80d3a18e2f774faeaa672d57b8de8f6bf79b99b1ac1aa1d54241"
+    },
+    "Pseudocheirus peregrinus|seed00|pretraining": {
+      "artifact_sha256": "77b9c8c07d6b933bd868657892d81ba616d378d8eaf06bea305ba8958492f506",
+      "receipt_sha256": "978cc41e84d3d41e23102f64b31a0b09002bc9e1918f323ef0df05ca5ca1174a"
+    },
+    "Pseudocheirus peregrinus|seed01|pretraining": {
+      "artifact_sha256": "6f2c405e9c9e4d9e096f6bc0ae59c343fb30a82c4186f79452ea451a94047b21",
+      "receipt_sha256": "6ff9f3145343ee66023f40f63bccb4bb13285ec3d59a8f8e2ecbb4b6a9ea0e19"
+    },
+    "Pseudocheirus peregrinus|seed02|pretraining": {
+      "artifact_sha256": "93fec5b8bb1bcf1fa985f22b98b3e52158a8c6c4dd88566ddde6feb93d2c637b",
+      "receipt_sha256": "ac865ed5a6642532208a1b999907428f3bbdfc6ca68447a5c340f84a7991ad3e"
+    },
+    "Pseudocheirus peregrinus|seed03|pretraining": {
+      "artifact_sha256": "e38545cfd6490f5b927e9523270498ee6320db9be8ef63eac9571a4f2bccc796",
+      "receipt_sha256": "fbf4c62ee0d598dd084dd9056500713542c41a9d81f3261a6a57cb647f867d47"
+    },
+    "Pseudocheirus peregrinus|seed04|pretraining": {
+      "artifact_sha256": "02c726f57529f8b267f2455f8ae636dae2de9f9e4a168808b4bb22f984b2f43a",
+      "receipt_sha256": "aa59a0ec2b12378e0d155577efd8fa2c16aca7ad5480b8c1144d1e85bea4adaa"
+    },
+    "Trichosurus vulpecula|seed00|pretraining": {
+      "artifact_sha256": "085bc1f42374004b67d119a51d3a8827177b1cd14b7b3f537f81cb7f2dd1ac82",
+      "receipt_sha256": "76ac0dcafc677d32c6910b2a6069f202cb8dc7188391df5f5c2cc8dcb5a04155"
+    },
+    "Trichosurus vulpecula|seed01|pretraining": {
+      "artifact_sha256": "ee266678d9f3c32d3b4151e750763e4f90b4af2a82c09d77cfc4c390462d584e",
+      "receipt_sha256": "51ee2908656d420794b6b2955bc885e6038f7b7af7df2a3f9f26b554079dd854"
+    },
+    "Trichosurus vulpecula|seed02|pretraining": {
+      "artifact_sha256": "ba6b148f50e8786ccf40ffbf0f47a2908a1d5d13235b08a4d756dcd5ec23db45",
+      "receipt_sha256": "fb788c76d190c0b49be88dca4dcd005b9924fe52a7b75bc060723174320e445a"
+    },
+    "Trichosurus vulpecula|seed03|pretraining": {
+      "artifact_sha256": "50d04a4e0b9b88f84dcf7e138fc102017d50270f64f2120b1498cbcc5041199d",
+      "receipt_sha256": "c061cfd635e4e921508ad1e03b08399e1e07ce8f736d25b218ed54dcdbcc8701"
+    },
+    "Trichosurus vulpecula|seed04|pretraining": {
+      "artifact_sha256": "273bd78d7e86ba7b6a87369dff025fa1f7c17d3362b3c947cc12dcbc0f5c5db2",
+      "receipt_sha256": "b7af3728bd63e993c3ea91bdb68db76955ea208020755fb56698e5a2764fe0ab"
+    },
+    "Vombatus ursinus|seed00|pretraining": {
+      "artifact_sha256": "d886cbda60f0875d488dab9203e0812738847210f8803e26b288024b1e988bd2",
+      "receipt_sha256": "0c9a8dfdc07e987115576473408c1526cdc38dafd14174c1ce07f900c4cafb5b"
+    },
+    "Vombatus ursinus|seed01|pretraining": {
+      "artifact_sha256": "6c88810f63090c6b24d3ce599fe06fcdc91830181680bd743546084fe4462a6f",
+      "receipt_sha256": "d54f66cfdc8d1a961a3b0527c0645c1b4bb8305651642f888d82f3699a72ff35"
+    },
+    "Vombatus ursinus|seed02|pretraining": {
+      "artifact_sha256": "f6eb471e5600b6633e54bb73e266ce44cab6a59990fe94597c92f4b361268d2a",
+      "receipt_sha256": "9c83ef604cfbe05a9d696aaff0ed3cef02e3212dbe3755840117a130c9d01031"
+    },
+    "Vombatus ursinus|seed03|pretraining": {
+      "artifact_sha256": "64eb5c99238f828ceb0ba85c01878aa5f674a345ce78bc6085ea255251024efe",
+      "receipt_sha256": "331c2b2dc0fc6ad7ed2a78d2821668c845f328f41089655b8c7361855b964f1b"
+    },
+    "Vombatus ursinus|seed04|pretraining": {
+      "artifact_sha256": "8f11bc8f46ae5bc5dfccb93053cb73804e3a0905d6eb855008bd8e468de701c4",
+      "receipt_sha256": "a789db416483be73903c6ed88f502f4330172a64382e3a2f33d2f67df63513e3"
+    }
+  },
+  "production_authorized": true,
+  "q_inventory": {
+    "Dasyurus maculatus": {
+      "artifact_sha256": "dcd1fe695575b505900df88b35347c91e5aa244766e462a2e6a2c21ee83b5c02",
+      "receipt_sha256": "573f3d4fc76bfadb16f5e279a46906142e0fa6e30c5798543bdd9d6a7152d0f6"
+    },
+    "Notamacropus rufogriseus": {
+      "artifact_sha256": "07251b264e1759fcf0391759b793ada583271383b9d87025a5f003c2626ce2f9",
+      "receipt_sha256": "d472db7891bcb17c91bc01b979a72c98a4bce1cee473c24719031671d144edb6"
+    },
+    "Pseudocheirus peregrinus": {
+      "artifact_sha256": "b3f31463f5375960b004549c10ff9ede865a5578a02da2ca3f69fef9874cbe37",
+      "receipt_sha256": "d2501630398563f09adc7a60b00c1d4e4c5bde41d2259327224a54010580da48"
+    },
+    "Trichosurus vulpecula": {
+      "artifact_sha256": "2c0e4b8d05e9eedca60559c9f3bde03fb46526ae5dac9418cd3b61551c39b00f",
+      "receipt_sha256": "d027bb14d60613a35a4f8d3eebd7b73274cd33e59e3f03a2314a5ecbef3a09bc"
+    },
+    "Vombatus ursinus": {
+      "artifact_sha256": "e684d68b00de5a4945dd141d52277f7713a89e5757d1fc36a4d54b0f10b53f04",
+      "receipt_sha256": "ccb93fd6b329b09e1c6cd683ec45fcfa48454a08e9ce4da89ba769a6a756295c"
+    }
+  },
+  "response_inventory": {
+    "parquet_sha256": "49d3c234f753383ad19792a9c4a88903c2b62eba4bb52598338cf80f6f307c43",
+    "receipt_sha256": "5628641a4fec1d0c300dce55c4068ffaca2c41f0ab32ef1925430f859f479d48"
+  },
+  "schema_version": "goal047-opening-v2",
+  "status": "sealed_ready_for_opening",
+  "threshold_table": {
+    "multihead_frozen_trunk": {
+      "Dasyurus maculatus": 0.2528041124343872,
+      "Notamacropus rufogriseus": 0.6772815704345703,
+      "Pseudocheirus peregrinus": 0.8581528902053833,
+      "Trichosurus vulpecula": 0.9827600955963135,
+      "Vombatus ursinus": 0.7621071755886077
+    },
+    "multihead_full_finetune": {
+      "Dasyurus maculatus": 0.19805894494056703,
+      "Notamacropus rufogriseus": 0.6740138918161392,
+      "Pseudocheirus peregrinus": 0.876939594745636,
+      "Trichosurus vulpecula": 0.9810212254524231,
+      "Vombatus ursinus": 0.7574150368571282
+    },
+    "selected_conventional": {
+      "Dasyurus maculatus": 0.2896,
+      "Notamacropus rufogriseus": 0.636,
+      "Pseudocheirus peregrinus": 0.9336680962051864,
+      "Trichosurus vulpecula": 0.9733583633054164,
+      "Vombatus ursinus": 0.7464000000000001
+    },
+    "strict_q_conventional": {
+      "Dasyurus maculatus": 0.2548,
+      "Notamacropus rufogriseus": 0.6324,
+      "Pseudocheirus peregrinus": 0.9217647486215976,
+      "Trichosurus vulpecula": 0.9765752018464744,
+      "Vombatus ursinus": 0.7176
+    },
+    "target_only_random_init_resmlp": {
+      "Dasyurus maculatus": 0.2410335510969162,
+      "Notamacropus rufogriseus": 0.7445951282978058,
+      "Pseudocheirus peregrinus": 0.8844978451728821,
+      "Trichosurus vulpecula": 0.9820661425590516,
+      "Vombatus ursinus": 0.7603634238243103
+    },
+    "target_plus_q_linear_resmlp": {
+      "Dasyurus maculatus": 0.2661109983921051,
+      "Notamacropus rufogriseus": 0.7171572327613831,
+      "Pseudocheirus peregrinus": 0.8864576935768127,
+      "Trichosurus vulpecula": 0.9851567506790161,
+      "Vombatus ursinus": 0.7435207486152648
+    }
+  }
+}
