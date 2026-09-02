@@ -1,0 +1,54 @@
+{
+  "authority_sha256": "cc7d340ed949bf7683eb940a66ca17d5d1b897ff5d7ea8b47e59e21c93561c94",
+  "retrieved_utc": "2026-09-02T02:56:49Z",
+  "source_sha256": {
+    "australian_bird_data": "188ebb38529d830cd74cdc16b9333d8949abc7601959f5bae365c4201ed6528a",
+    "australian_bird_data_metadata": "a5f598c36cf068085d28a3d2a5574759d23ba2d8d4d33d4cf5254cfd2d771a20",
+    "birdlife_working_list": "f4de7450531c8c72ec18d09e2c0e68698751e46300b4e256ecaacf3aeb4da44e"
+  },
+  "sources": {
+    "australian_bird_data": {
+      "bytes": 2429354,
+      "citation": "Garnett_et_al_2015_Scientific_Data_2_150061",
+      "doi": "10.1038/sdata.2015.61",
+      "expected_md5": "6308a724b87ed5c064ebd72e60d63fba",
+      "expected_sha256": "188ebb38529d830cd74cdc16b9333d8949abc7601959f5bae365c4201ed6528a",
+      "filename": "data/processed/dsdm/goal049-seawfb-canonical-response/authorities/australian_bird_data_v1.csv",
+      "license": "CC0",
+      "observed_md5": "6308a724b87ed5c064ebd72e60d63fba",
+      "observed_sha256": "188ebb38529d830cd74cdc16b9333d8949abc7601959f5bae365c4201ed6528a",
+      "published": null,
+      "url": "https://ndownloader.figshare.com/files/3417176",
+      "version": "1.0"
+    },
+    "australian_bird_data_metadata": {
+      "bytes": 148904,
+      "citation": "Garnett_et_al_2015_Scientific_Data_2_150061",
+      "doi": "10.1038/sdata.2015.61",
+      "expected_md5": "87f22eae881546349b06ee1ff0756889",
+      "expected_sha256": "a5f598c36cf068085d28a3d2a5574759d23ba2d8d4d33d4cf5254cfd2d771a20",
+      "filename": "data/processed/dsdm/goal049-seawfb-canonical-response/authorities/australian_bird_data_v1_metadata.csv",
+      "license": "CC0",
+      "observed_md5": "87f22eae881546349b06ee1ff0756889",
+      "observed_sha256": "a5f598c36cf068085d28a3d2a5574759d23ba2d8d4d33d4cf5254cfd2d771a20",
+      "published": null,
+      "url": "https://ndownloader.figshare.com/files/3417212",
+      "version": "1.0"
+    },
+    "birdlife_working_list": {
+      "bytes": 230065,
+      "citation": "Working List of Australian Birds",
+      "doi": null,
+      "expected_md5": null,
+      "expected_sha256": "f4de7450531c8c72ec18d09e2c0e68698751e46300b4e256ecaacf3aeb4da44e",
+      "filename": "data/processed/dsdm/goal049-seawfb-canonical-response/authorities/WLAB_v4.3.xlsx",
+      "license": "BirdLife Australia source page; no stated machine-readable reuse licence",
+      "observed_md5": "f3d7482fb9d984cccf2d3684cfda9b7e",
+      "observed_sha256": "f4de7450531c8c72ec18d09e2c0e68698751e46300b4e256ecaacf3aeb4da44e",
+      "published": "2023-10-19",
+      "url": "https://birdata.birdlife.org.au/wp-content/uploads/2023/10/WLAB_v4.3.xlsx",
+      "version": "4.3"
+    }
+  },
+  "status": "downloaded_and_hashed"
+}

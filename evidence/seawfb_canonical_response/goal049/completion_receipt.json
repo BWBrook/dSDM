@@ -1,0 +1,75 @@
+{
+  "bindings": {
+    "acquisition_canary_sha256": "41a59637b5b470584da4abc7c4c5c2aafb0cf546d1c78fc09dffbf6f3a8cc2a6",
+    "acquisition_progress_sha256": "c0651604a417240f14828d24283b87bab178658126b842eeb2904d77adb42382",
+    "canonical_species_cells_sha256": "6b328dd7849bf1a8fa70d26b497369395e9e1b600ca8ff1d3a436b98a32ae3d9",
+    "config_sha256": "8db78f90d07ef5058fafb23fb7047d2da3ad7212671bc4f109ea82473ff248ce",
+    "domain_receipt_sha256": "6de281570cc6b7e2984ba8f2c55b6f0ceb250138ab6b51769004e2a621ad2e88",
+    "domain_sha256": "3555b7895dc0ae913714c04cdd7bcf6a17a8a0bde33e6d36de041ba8346b2e9b",
+    "goal048_design_resolution_sha256": "70e3b68b58c3ae637774254d3f094e9a18e2c62b8463c94ee2727827615801f8",
+    "goal048_selection_receipt_sha256": "c75c619447a4ad5f8a6b0ac9d0c4c64227ee96f3b2ea6e7d191ccbade797d3a1",
+    "ibra_sha256": "bff6feea4da7e456e461149e454a83db3dcbfda090d295af4ec5bb4c0a7c06b4",
+    "panel_ledger_sha256": "7afde373931b070a0fb466ca40ccac5330d5dff6292faec0d20ee1b49e657a7e",
+    "panel_summary_sha256": "31e275959dcd6bc15e1dfa8456c3f02839b5a464e251bd179c4f67ef87604d6d",
+    "region_ledger_receipt_sha256": "34e60f0bd52370879b43613420eb529da6da02308eaa4d83c6631b502657787b",
+    "region_ledger_sha256": "0c14fcc5c9d39c1c1a6587c52f41deb69d5ecb7cbc86225ec170127dda63d890",
+    "registry_sha256": "1c28e3a935e1b62b47dc3b600a0f78f1c8a77d1dfee4e499c2b578048360c4d1",
+    "run_exit_sha256": "29dc19c5d1714f6660080aa90a6c07e46737f5ed34fdd2bdab923d162b5c8ba3",
+    "stage_a_sha256": "b5b238c64a6de6bd636b600173d0ec3dba39082712526beb15e7bec5d5212ee2",
+    "taxonomy_sha256": "e9e04b1ed37cb682c0ce2f398f6c203741f86a11c3d72dd36e4eb2b715e8dbb6"
+  },
+  "counts": {
+    "active_species": 505,
+    "auxiliary_heads": 259,
+    "canonical_memberships": 5048061,
+    "common_primary_targets": 73,
+    "effort_donors": 505,
+    "focal_candidates": 259,
+    "maximum_effort_donor_richness": 209,
+    "panel_rows": 777,
+    "regional_secondary_targets": {
+      "NCP": 88,
+      "NNC": 134,
+      "SEH": 122
+    },
+    "selected_region_buffer_cells": {
+      "NCP": 54293,
+      "NNC": 87861,
+      "SEH": 214775
+    },
+    "selected_region_cells": {
+      "NCP": 24321,
+      "NNC": 37510,
+      "SEH": 83029
+    },
+    "training_cells_after_simultaneous_buffers": 787357
+  },
+  "privacy": {
+    "coordinates_written": false,
+    "model_outcomes": 0,
+    "private_species_cell_lists_written": false,
+    "raw_occurrence_rows": 0
+  },
+  "private_outputs": {
+    "canonical_species_cells": "data/processed/dsdm/goal049-seawfb-canonical-response/canonical_species_cells.parquet",
+    "panel_ledger": "data/processed/dsdm/goal049-seawfb-canonical-response/panel_ledger.parquet"
+  },
+  "regions": [
+    "NCP",
+    "SEH",
+    "NNC"
+  ],
+  "schema_version": "goal049-canonical-response-completion-v1",
+  "scientific_invariants": {
+    "focal_absent_richness_identity_verified": true,
+    "focal_excluded_from_donor_richness": true,
+    "future_focal_exclusion_from_auxiliary_pretraining_required": true,
+    "richness_used_as_predictor": false,
+    "training_excludes_all_three_region_buffers_simultaneously": true,
+    "x20_changes_membership": false,
+    "x20_subset_of_x10": true
+  },
+  "simultaneous_buffer_km": 50.0,
+  "status": "complete",
+  "tasmania_role": "ordinary_training_geography"
+}

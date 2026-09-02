@@ -1,0 +1,22 @@
+{
+  "count_conservation_sha256": "feadb7ce57b8c421a868ee1149d5eda4e2550627284c57e23e9b735ec44e2662",
+  "domain_cell_count": 1144286,
+  "domain_cells_sha256": "3555b7895dc0ae913714c04cdd7bcf6a17a8a0bde33e6d36de041ba8346b2e9b",
+  "domain_freeze_sha256": "6de281570cc6b7e2984ba8f2c55b6f0ceb250138ab6b51769004e2a621ad2e88",
+  "facet_count_sum": 4,
+  "facet_group_count": 4,
+  "identifiers_sha256": "df52f130c79861ac02cc6fd4b40c6e663930342aee002b516828bb69463a0645",
+  "model_outcome_counter": 0,
+  "normalisation_sha256": "711312e40dbbe3758b79721091d8ba520fb25607a0e1322ddd8e6a98909e551d",
+  "occurrence_rows_downloaded": 0,
+  "private_cell_receipt": "data/processed/dsdm/goal049-seawfb-canonical-response/species_cells/00000.json",
+  "private_cell_receipt_sha256": "d669c7500bfbba17d51bc1933fe0e12d256daa8d5a85ebfd7873867e648af319",
+  "query_fingerprint": "f412b90140ff37e214c6b7b1a4ab4e162a31fb26096058227dc7c52d2fbdf020",
+  "runtime_seconds": 9.835,
+  "schema_version": "goal049-live-canary-receipt-v1",
+  "source": "live_galah_aggregate",
+  "species": "Casuarius casuarius",
+  "stage_a_freeze_sha256": "b5b238c64a6de6bd636b600173d0ec3dba39082712526beb15e7bec5d5212ee2",
+  "status": "passed",
+  "total_count": 4
+}

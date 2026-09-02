@@ -1,0 +1,2668 @@
+{
+  "active_species_count": 505,
+  "alias_count": 3170,
+  "authority_receipt": "metadata/goal049_authority_receipt.json",
+  "authority_receipt_sha256": "6f30f3e0c6640e1c3c66f95607e034987d7f1451ab44ed5ec2e74eab6f73ef9e",
+  "config_sha256": "8db78f90d07ef5058fafb23fb7047d2da3ad7212671bc4f109ea82473ff248ce",
+  "descendant_count": 805,
+  "exception_ledger": "data/processed/dsdm/goal049-seawfb-canonical-response/exception_ledger.json",
+  "exception_ledger_sha256": "c9ca40007adbb17639f136d4a93b38b71ab4c2f4173e21d84c8e05524c642ea3",
+  "explicit_name_resolutions": {
+    "Grus antigone": "Antigone antigone",
+    "Lophorina magnifica": "Ptiloris magnificus"
+  },
+  "goal048_prerequisite": "metadata/goal048_prerequisite_freeze.json",
+  "goal048_prerequisite_sha256": "27e5796525879232c99d7c97ddc5bff5d7f5f3064553f7376c0163b973b03fbd",
+  "goal048_seed_count": 100,
+  "goal048_seed_names": [
+    "Acanthiza ewingii",
+    "Acanthiza lineata",
+    "Acanthiza pusilla",
+    "Acanthiza reguloides",
+    "Acanthorhynchus tenuirostris",
+    "Accipiter fasciatus",
+    "Alisterus scapularis",
+    "Anthochaera carunculata",
+    "Anthochaera chrysoptera",
+    "Anthochaera paradoxa",
+    "Anthochaera phrygia",
+    "Aquila audax",
+    "Artamus cyanopterus",
+    "Cacatua galerita",
+    "Cacatua sanguinea",
+    "Cacatua tenuirostris",
+    "Cacomantis flabelliformis",
+    "Calamanthus fuliginosus",
+    "Caligavis chrysops",
+    "Callocephalon fimbriatum",
+    "Calyptorhynchus banksii",
+    "Calyptorhynchus lathami",
+    "Ceyx azureus",
+    "Chalcites lucidus",
+    "Circus approximans",
+    "Climacteris erythrops",
+    "Climacteris picumnus",
+    "Colluricincla harmonica",
+    "Coracina novaehollandiae",
+    "Corcorax melanorhamphos",
+    "Cormobates leucophaea",
+    "Corvus coronoides",
+    "Corvus mellori",
+    "Corvus tasmanicus",
+    "Cracticus nigrogularis",
+    "Cracticus torquatus",
+    "Dacelo novaeguineae",
+    "Eolophus roseicapilla",
+    "Eopsaltria australis",
+    "Falco longipennis",
+    "Fulica atra",
+    "Glossopsitta concinna",
+    "Gymnorhina tibicen",
+    "Haliaeetus leucogaster",
+    "Heteroscenes pallidus",
+    "Hieraaetus morphnoides",
+    "Hirundo neoxena",
+    "Lathamus discolor",
+    "Lichenostomus melanops",
+    "Malurus cyaneus",
+    "Malurus lamberti",
+    "Manorina melanocephala",
+    "Melanodryas vittata",
+    "Meliphaga lewinii",
+    "Melithreptus affinis",
+    "Melithreptus lunatus",
+    "Melithreptus validirostris",
+    "Menura novaehollandiae",
+    "Myiagra cyanoleuca",
+    "Myzomela sanguinolenta",
+    "Neophema chrysostoma",
+    "Nesoptilotis flavicollis",
+    "Nesoptilotis leucotis",
+    "Pachycephala olivacea",
+    "Pachycephala pectoralis",
+    "Pardalotus punctatus",
+    "Pardalotus quadragintus",
+    "Pardalotus striatus",
+    "Parvipsitta pusilla",
+    "Petrochelidon nigricans",
+    "Petroica boodang",
+    "Petroica phoenicea",
+    "Petroica rodinogaster",
+    "Petroica rosea",
+    "Pezoporus wallicus",
+    "Phaps chalcoptera",
+    "Phylidonyris novaehollandiae",
+    "Phylidonyris pyrrhopterus",
+    "Platycercus caledonicus",
+    "Platycercus elegans",
+    "Platycercus eximius",
+    "Podargus strigoides",
+    "Ptilonorhynchus violaceus",
+    "Ptiloris paradiseus",
+    "Ptilotula fusca",
+    "Pyrrholaemus sagittata",
+    "Rhipidura albiscapa",
+    "Sericornis magnirostra",
+    "Sericulus chrysocephalus",
+    "Spilopelia chinensis",
+    "Stagonopleura bella",
+    "Strepera fuliginosa",
+    "Strepera graculina",
+    "Strepera versicolor",
+    "Trichoglossus moluccanus",
+    "Vanellus miles",
+    "Zanda funerea",
+    "Zoothera heinei",
+    "Zoothera lunulata",
+    "Zosterops lateralis"
+  ],
+  "model_outcome_counter": 0,
+  "name_resolution_sha256": "4b6e90a65a4f4bd9e2f6b6d091c82dc9d7432ae9e80a83d5a60a22a03cc9e1fc",
+  "name_resolutions": [
+    {
+      "basis": "registry_name",
+      "input_name": "Casuarius casuarius",
+      "lookup_name": "Casuarius casuarius"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Dromaius novaehollandiae",
+      "lookup_name": "Dromaius novaehollandiae"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Anseranas semipalmata",
+      "lookup_name": "Anseranas semipalmata"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Dendrocygna guttata",
+      "lookup_name": "Dendrocygna guttata"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Dendrocygna eytoni",
+      "lookup_name": "Dendrocygna eytoni"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Dendrocygna arcuata",
+      "lookup_name": "Dendrocygna arcuata"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Cereopsis novaehollandiae",
+      "lookup_name": "Cereopsis novaehollandiae"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Cygnus atratus",
+      "lookup_name": "Cygnus atratus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Radjah radjah",
+      "lookup_name": "Radjah radjah"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Tadorna tadornoides",
+      "lookup_name": "Tadorna tadornoides"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Spatula querquedula",
+      "lookup_name": "Spatula querquedula"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Anas superciliosa",
+      "lookup_name": "Anas superciliosa"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Chenonetta jubata",
+      "lookup_name": "Chenonetta jubata"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Alectura lathami",
+      "lookup_name": "Alectura lathami"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Leipoa ocellata",
+      "lookup_name": "Leipoa ocellata"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Megapodius reinwardt",
+      "lookup_name": "Megapodius reinwardt"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Coturnix pectoralis",
+      "lookup_name": "Coturnix pectoralis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Synoicus ypsilophorus",
+      "lookup_name": "Synoicus ypsilophorus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Synoicus chinensis",
+      "lookup_name": "Synoicus chinensis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Columba leucomela",
+      "lookup_name": "Columba leucomela"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Spilopelia chinensis",
+      "lookup_name": "Spilopelia chinensis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Macropygia phasianella",
+      "lookup_name": "Macropygia phasianella"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Leucosarcia melanoleuca",
+      "lookup_name": "Leucosarcia melanoleuca"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Geophaps plumifera",
+      "lookup_name": "Geophaps plumifera"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Geophaps scripta",
+      "lookup_name": "Geophaps scripta"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Phaps chalcoptera",
+      "lookup_name": "Phaps chalcoptera"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Phaps elegans",
+      "lookup_name": "Phaps elegans"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Phaps histrionica",
+      "lookup_name": "Phaps histrionica"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Ocyphaps lophotes",
+      "lookup_name": "Ocyphaps lophotes"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Geopelia cuneata",
+      "lookup_name": "Geopelia cuneata"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Geopelia placida",
+      "lookup_name": "Geopelia placida"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Geopelia humeralis",
+      "lookup_name": "Geopelia humeralis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Chalcophaps longirostris",
+      "lookup_name": "Chalcophaps longirostris"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Ducula mullerii",
+      "lookup_name": "Ducula mullerii"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Ducula spilorrhoa",
+      "lookup_name": "Ducula spilorrhoa"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Megaloprepia magnifica",
+      "lookup_name": "Megaloprepia magnifica"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Ptilinopus superbus",
+      "lookup_name": "Ptilinopus superbus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Ptilinopus regina",
+      "lookup_name": "Ptilinopus regina"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Lopholaimus antarcticus",
+      "lookup_name": "Lopholaimus antarcticus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Centropus phasianinus",
+      "lookup_name": "Centropus phasianinus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Eudynamys orientalis",
+      "lookup_name": "Eudynamys orientalis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Scythrops novaehollandiae",
+      "lookup_name": "Scythrops novaehollandiae"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Chalcites basalis",
+      "lookup_name": "Chalcites basalis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Chalcites osculans",
+      "lookup_name": "Chalcites osculans"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Chalcites lucidus",
+      "lookup_name": "Chalcites lucidus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Chalcites minutillus",
+      "lookup_name": "Chalcites minutillus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Cacomantis castaneiventris",
+      "lookup_name": "Cacomantis castaneiventris"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Cacomantis flabelliformis",
+      "lookup_name": "Cacomantis flabelliformis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Cacomantis variolosus",
+      "lookup_name": "Cacomantis variolosus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Heteroscenes pallidus",
+      "lookup_name": "Heteroscenes pallidus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Cuculus optatus",
+      "lookup_name": "Cuculus optatus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Ardeotis australis",
+      "lookup_name": "Ardeotis australis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Podargus ocellatus",
+      "lookup_name": "Podargus ocellatus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Podargus papuensis",
+      "lookup_name": "Podargus papuensis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Podargus strigoides",
+      "lookup_name": "Podargus strigoides"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Eurostopodus mystacalis",
+      "lookup_name": "Eurostopodus mystacalis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Eurostopodus argus",
+      "lookup_name": "Eurostopodus argus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Caprimulgus macrurus",
+      "lookup_name": "Caprimulgus macrurus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Aegotheles cristatus",
+      "lookup_name": "Aegotheles cristatus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Hirundapus caudacutus",
+      "lookup_name": "Hirundapus caudacutus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Aerodramus terraereginae",
+      "lookup_name": "Aerodramus terraereginae"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Apus pacificus",
+      "lookup_name": "Apus pacificus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Rallina tricolor",
+      "lookup_name": "Rallina tricolor"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Hypotaenidia sylvestris",
+      "lookup_name": "Hypotaenidia sylvestris"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Hypotaenidia philippensis",
+      "lookup_name": "Hypotaenidia philippensis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Zapornia tabuensis",
+      "lookup_name": "Zapornia tabuensis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Amaurornis moluccana",
+      "lookup_name": "Amaurornis moluccana"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Amaurornis cinerea",
+      "lookup_name": "Amaurornis cinerea"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Porphyrio porphyrio",
+      "lookup_name": "Porphyrio porphyrio"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Gallinula tenebrosa",
+      "lookup_name": "Gallinula tenebrosa"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Tribonyx ventralis",
+      "lookup_name": "Tribonyx ventralis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Tribonyx mortierii",
+      "lookup_name": "Tribonyx mortierii"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Fulica atra",
+      "lookup_name": "Fulica atra"
+    },
+    {
+      "basis": "explicit_name_resolution",
+      "input_name": "Grus antigone",
+      "lookup_name": "Antigone antigone"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Grus rubicunda",
+      "lookup_name": "Grus rubicunda"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Burhinus grallarius",
+      "lookup_name": "Burhinus grallarius"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Pluvialis squatarola",
+      "lookup_name": "Pluvialis squatarola"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Pluvialis fulva",
+      "lookup_name": "Pluvialis fulva"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Charadrius bicinctus",
+      "lookup_name": "Charadrius bicinctus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Charadrius veredus",
+      "lookup_name": "Charadrius veredus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Vanellus tricolor",
+      "lookup_name": "Vanellus tricolor"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Vanellus miles",
+      "lookup_name": "Vanellus miles"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Erythrogonys cinctus",
+      "lookup_name": "Erythrogonys cinctus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Peltohyas australis",
+      "lookup_name": "Peltohyas australis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Pedionomus torquatus",
+      "lookup_name": "Pedionomus torquatus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Numenius minutus",
+      "lookup_name": "Numenius minutus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Limosa lapponica",
+      "lookup_name": "Limosa lapponica"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Gallinago hardwickii",
+      "lookup_name": "Gallinago hardwickii"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Gallinago megala",
+      "lookup_name": "Gallinago megala"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Turnix maculosus",
+      "lookup_name": "Turnix maculosus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Turnix melanogaster",
+      "lookup_name": "Turnix melanogaster"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Turnix varius",
+      "lookup_name": "Turnix varius"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Turnix olivii",
+      "lookup_name": "Turnix olivii"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Turnix pyrrhothorax",
+      "lookup_name": "Turnix pyrrhothorax"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Turnix velox",
+      "lookup_name": "Turnix velox"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Stiltia isabella",
+      "lookup_name": "Stiltia isabella"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Glareola maldivarum",
+      "lookup_name": "Glareola maldivarum"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Catharacta antarcticus",
+      "lookup_name": "Catharacta antarcticus"
+    },
+    {
+      "basis": "registry_name+classification.speciesGuid",
+      "input_name": "Larus novaehollandiae",
+      "lookup_name": "Larus novaehollandiae"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Larus pacificus",
+      "lookup_name": "Larus pacificus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Larus dominicanus",
+      "lookup_name": "Larus dominicanus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Gelochelidon nilotica",
+      "lookup_name": "Gelochelidon nilotica"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Chlidonias leucopterus",
+      "lookup_name": "Chlidonias leucopterus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Ephippiorhynchus asiaticus",
+      "lookup_name": "Ephippiorhynchus asiaticus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Nycticorax caledonicus",
+      "lookup_name": "Nycticorax caledonicus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Bubulcus ibis",
+      "lookup_name": "Bubulcus ibis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Ardea pacifica",
+      "lookup_name": "Ardea pacifica"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Ardea alba",
+      "lookup_name": "Ardea alba"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Ardea plumifera",
+      "lookup_name": "Ardea plumifera"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Egretta picata",
+      "lookup_name": "Egretta picata"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Egretta novaehollandiae",
+      "lookup_name": "Egretta novaehollandiae"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Threskiornis moluccus",
+      "lookup_name": "Threskiornis moluccus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Threskiornis spinicollis",
+      "lookup_name": "Threskiornis spinicollis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Elanus axillaris",
+      "lookup_name": "Elanus axillaris"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Elanus scriptus",
+      "lookup_name": "Elanus scriptus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Hamirostra melanosternon",
+      "lookup_name": "Hamirostra melanosternon"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Lophoictinia isura",
+      "lookup_name": "Lophoictinia isura"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Aviceda subcristata",
+      "lookup_name": "Aviceda subcristata"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Aquila audax",
+      "lookup_name": "Aquila audax"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Hieraaetus morphnoides",
+      "lookup_name": "Hieraaetus morphnoides"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Circus approximans",
+      "lookup_name": "Circus approximans"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Circus assimilis",
+      "lookup_name": "Circus assimilis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Accipiter novaehollandiae",
+      "lookup_name": "Accipiter novaehollandiae"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Accipiter fasciatus",
+      "lookup_name": "Accipiter fasciatus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Accipiter cirrocephalus",
+      "lookup_name": "Accipiter cirrocephalus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Erythrotriorchis radiatus",
+      "lookup_name": "Erythrotriorchis radiatus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Haliaeetus leucogaster",
+      "lookup_name": "Haliaeetus leucogaster"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Haliastur sphenurus",
+      "lookup_name": "Haliastur sphenurus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Haliastur indus",
+      "lookup_name": "Haliastur indus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Milvus migrans",
+      "lookup_name": "Milvus migrans"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Tyto longimembris",
+      "lookup_name": "Tyto longimembris"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Tyto tenebricosa",
+      "lookup_name": "Tyto tenebricosa"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Tyto multipunctata",
+      "lookup_name": "Tyto multipunctata"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Tyto novaehollandiae",
+      "lookup_name": "Tyto novaehollandiae"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Tyto alba",
+      "lookup_name": "Tyto alba"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Ninox rufa",
+      "lookup_name": "Ninox rufa"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Ninox strenua",
+      "lookup_name": "Ninox strenua"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Ninox connivens",
+      "lookup_name": "Ninox connivens"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Ninox boobook",
+      "lookup_name": "Ninox boobook"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Ninox leucopsis",
+      "lookup_name": "Ninox leucopsis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Merops ornatus",
+      "lookup_name": "Merops ornatus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Eurystomus orientalis",
+      "lookup_name": "Eurystomus orientalis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Ceyx pusillus",
+      "lookup_name": "Ceyx pusillus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Ceyx azureus",
+      "lookup_name": "Ceyx azureus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Syma torotoro",
+      "lookup_name": "Syma torotoro"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Todiramphus macleayii",
+      "lookup_name": "Todiramphus macleayii"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Todiramphus chloris",
+      "lookup_name": "Todiramphus chloris"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Todiramphus sanctus",
+      "lookup_name": "Todiramphus sanctus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Todiramphus pyrrhopygius",
+      "lookup_name": "Todiramphus pyrrhopygius"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Tanysiptera sylvia",
+      "lookup_name": "Tanysiptera sylvia"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Dacelo novaeguineae",
+      "lookup_name": "Dacelo novaeguineae"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Dacelo leachii",
+      "lookup_name": "Dacelo leachii"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Falco cenchroides",
+      "lookup_name": "Falco cenchroides"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Falco longipennis",
+      "lookup_name": "Falco longipennis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Falco berigora",
+      "lookup_name": "Falco berigora"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Falco hypoleucos",
+      "lookup_name": "Falco hypoleucos"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Falco subniger",
+      "lookup_name": "Falco subniger"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Falco peregrinus",
+      "lookup_name": "Falco peregrinus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Nymphicus hollandicus",
+      "lookup_name": "Nymphicus hollandicus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Calyptorhynchus banksii",
+      "lookup_name": "Calyptorhynchus banksii"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Calyptorhynchus lathami",
+      "lookup_name": "Calyptorhynchus lathami"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Zanda funerea",
+      "lookup_name": "Zanda funerea"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Probosciger aterrimus",
+      "lookup_name": "Probosciger aterrimus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Callocephalon fimbriatum",
+      "lookup_name": "Callocephalon fimbriatum"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Eolophus roseicapilla",
+      "lookup_name": "Eolophus roseicapilla"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Cacatua leadbeateri",
+      "lookup_name": "Cacatua leadbeateri"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Cacatua tenuirostris",
+      "lookup_name": "Cacatua tenuirostris"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Cacatua sanguinea",
+      "lookup_name": "Cacatua sanguinea"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Cacatua galerita",
+      "lookup_name": "Cacatua galerita"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Polytelis swainsonii",
+      "lookup_name": "Polytelis swainsonii"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Polytelis anthopeplus",
+      "lookup_name": "Polytelis anthopeplus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Polytelis alexandrae",
+      "lookup_name": "Polytelis alexandrae"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Alisterus scapularis",
+      "lookup_name": "Alisterus scapularis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Aprosmictus erythropterus",
+      "lookup_name": "Aprosmictus erythropterus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Eclectus polychloros",
+      "lookup_name": "Eclectus polychloros"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Geoffroyus geoffroyi",
+      "lookup_name": "Geoffroyus geoffroyi"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Psephotus haematonotus",
+      "lookup_name": "Psephotus haematonotus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Northiella haematogaster",
+      "lookup_name": "Northiella haematogaster"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Psephotellus varius",
+      "lookup_name": "Psephotellus varius"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Psephotellus chrysopterygius",
+      "lookup_name": "Psephotellus chrysopterygius"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Platycercus caledonicus",
+      "lookup_name": "Platycercus caledonicus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Platycercus elegans",
+      "lookup_name": "Platycercus elegans"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Platycercus venustus",
+      "lookup_name": "Platycercus venustus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Platycercus adscitus",
+      "lookup_name": "Platycercus adscitus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Platycercus eximius",
+      "lookup_name": "Platycercus eximius"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Barnardius zonarius",
+      "lookup_name": "Barnardius zonarius"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Lathamus discolor",
+      "lookup_name": "Lathamus discolor"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Pezoporus wallicus",
+      "lookup_name": "Pezoporus wallicus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Pezoporus occidentalis",
+      "lookup_name": "Pezoporus occidentalis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Neopsephotus bourkii",
+      "lookup_name": "Neopsephotus bourkii"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Neophema chrysostoma",
+      "lookup_name": "Neophema chrysostoma"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Neophema elegans",
+      "lookup_name": "Neophema elegans"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Neophema petrophila",
+      "lookup_name": "Neophema petrophila"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Neophema chrysogaster",
+      "lookup_name": "Neophema chrysogaster"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Neophema pulchella",
+      "lookup_name": "Neophema pulchella"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Neophema splendida",
+      "lookup_name": "Neophema splendida"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Glossopsitta concinna",
+      "lookup_name": "Glossopsitta concinna"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Glossopsitta pusilla",
+      "lookup_name": "Glossopsitta pusilla"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Glossopsitta porphyrocephala",
+      "lookup_name": "Glossopsitta porphyrocephala"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Psitteuteles versicolor",
+      "lookup_name": "Psitteuteles versicolor"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Trichoglossus moluccanus",
+      "lookup_name": "Trichoglossus moluccanus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Trichoglossus rubritorquis",
+      "lookup_name": "Trichoglossus rubritorquis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Trichoglossus chlorolepidotus",
+      "lookup_name": "Trichoglossus chlorolepidotus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Melopsittacus undulatus",
+      "lookup_name": "Melopsittacus undulatus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Cyclopsitta diophthalma",
+      "lookup_name": "Cyclopsitta diophthalma"
+    },
+    {
+      "basis": "registry_name+classification.speciesGuid",
+      "input_name": "Erythropitta macklotii",
+      "lookup_name": "Erythropitta macklotii"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Pitta versicolor",
+      "lookup_name": "Pitta versicolor"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Menura alberti",
+      "lookup_name": "Menura alberti"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Menura novaehollandiae",
+      "lookup_name": "Menura novaehollandiae"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Atrichornis rufescens",
+      "lookup_name": "Atrichornis rufescens"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Ailuroedus melanotis",
+      "lookup_name": "Ailuroedus melanotis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Ailuroedus crassirostris",
+      "lookup_name": "Ailuroedus crassirostris"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Scenopoeetes dentirostris",
+      "lookup_name": "Scenopoeetes dentirostris"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Prionodura newtoniana",
+      "lookup_name": "Prionodura newtoniana"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Sericulus chrysocephalus",
+      "lookup_name": "Sericulus chrysocephalus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Ptilonorhynchus violaceus",
+      "lookup_name": "Ptilonorhynchus violaceus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Chlamydera maculata",
+      "lookup_name": "Chlamydera maculata"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Chlamydera guttata",
+      "lookup_name": "Chlamydera guttata"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Chlamydera nuchalis",
+      "lookup_name": "Chlamydera nuchalis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Chlamydera cerviniventris",
+      "lookup_name": "Chlamydera cerviniventris"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Cormobates leucophaea",
+      "lookup_name": "Cormobates leucophaea"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Climacteris erythrops",
+      "lookup_name": "Climacteris erythrops"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Climacteris affinis",
+      "lookup_name": "Climacteris affinis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Climacteris rufus",
+      "lookup_name": "Climacteris rufus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Climacteris picumnus",
+      "lookup_name": "Climacteris picumnus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Climacteris melanurus",
+      "lookup_name": "Climacteris melanurus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Malurus coronatus",
+      "lookup_name": "Malurus coronatus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Malurus pulcherrimus",
+      "lookup_name": "Malurus pulcherrimus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Malurus amabilis",
+      "lookup_name": "Malurus amabilis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Malurus assimilis",
+      "lookup_name": "Malurus assimilis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Malurus cyaneus",
+      "lookup_name": "Malurus cyaneus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Malurus splendens",
+      "lookup_name": "Malurus splendens"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Malurus melanocephalus",
+      "lookup_name": "Malurus melanocephalus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Malurus leucopterus",
+      "lookup_name": "Malurus leucopterus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Stipiturus malachurus",
+      "lookup_name": "Stipiturus malachurus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Stipiturus mallee",
+      "lookup_name": "Stipiturus mallee"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Stipiturus ruficeps",
+      "lookup_name": "Stipiturus ruficeps"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Amytornis barbatus",
+      "lookup_name": "Amytornis barbatus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Amytornis dorotheae",
+      "lookup_name": "Amytornis dorotheae"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Amytornis striatus",
+      "lookup_name": "Amytornis striatus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Amytornis merrotsyi",
+      "lookup_name": "Amytornis merrotsyi"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Amytornis goyderi",
+      "lookup_name": "Amytornis goyderi"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Amytornis ballarae",
+      "lookup_name": "Amytornis ballarae"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Amytornis purnelli",
+      "lookup_name": "Amytornis purnelli"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Amytornis textilis",
+      "lookup_name": "Amytornis textilis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Amytornis modestus",
+      "lookup_name": "Amytornis modestus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Dasyornis brachypterus",
+      "lookup_name": "Dasyornis brachypterus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Dasyornis broadbenti",
+      "lookup_name": "Dasyornis broadbenti"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Sugomel nigrum",
+      "lookup_name": "Sugomel nigrum"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Myzomela obscura",
+      "lookup_name": "Myzomela obscura"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Myzomela erythrocephala",
+      "lookup_name": "Myzomela erythrocephala"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Myzomela sanguinolenta",
+      "lookup_name": "Myzomela sanguinolenta"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Grantiella picta",
+      "lookup_name": "Grantiella picta"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Plectorhyncha lanceolata",
+      "lookup_name": "Plectorhyncha lanceolata"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Xanthotis macleayanus",
+      "lookup_name": "Xanthotis macleayanus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Xanthotis flaviventer",
+      "lookup_name": "Xanthotis flaviventer"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Philemon buceroides",
+      "lookup_name": "Philemon buceroides"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Philemon argenticeps",
+      "lookup_name": "Philemon argenticeps"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Philemon corniculatus",
+      "lookup_name": "Philemon corniculatus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Philemon citreogularis",
+      "lookup_name": "Philemon citreogularis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Cissomela pectoralis",
+      "lookup_name": "Cissomela pectoralis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Lichmera indistincta",
+      "lookup_name": "Lichmera indistincta"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Trichodere cockerelli",
+      "lookup_name": "Trichodere cockerelli"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Phylidonyris pyrrhopterus",
+      "lookup_name": "Phylidonyris pyrrhopterus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Phylidonyris novaehollandiae",
+      "lookup_name": "Phylidonyris novaehollandiae"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Phylidonyris niger",
+      "lookup_name": "Phylidonyris niger"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Nesoptilotis leucotis",
+      "lookup_name": "Nesoptilotis leucotis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Nesoptilotis flavicollis",
+      "lookup_name": "Nesoptilotis flavicollis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Entomyzon cyanotis",
+      "lookup_name": "Entomyzon cyanotis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Melithreptus gularis",
+      "lookup_name": "Melithreptus gularis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Melithreptus validirostris",
+      "lookup_name": "Melithreptus validirostris"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Melithreptus brevirostris",
+      "lookup_name": "Melithreptus brevirostris"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Melithreptus albogularis",
+      "lookup_name": "Melithreptus albogularis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Melithreptus lunatus",
+      "lookup_name": "Melithreptus lunatus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Melithreptus affinis",
+      "lookup_name": "Melithreptus affinis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Gliciphila melanops",
+      "lookup_name": "Gliciphila melanops"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Glycichaera fallax",
+      "lookup_name": "Glycichaera fallax"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Acanthorhynchus tenuirostris",
+      "lookup_name": "Acanthorhynchus tenuirostris"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Certhionyx variegatus",
+      "lookup_name": "Certhionyx variegatus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Conopophila albogularis",
+      "lookup_name": "Conopophila albogularis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Conopophila rufogularis",
+      "lookup_name": "Conopophila rufogularis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Conopophila whitei",
+      "lookup_name": "Conopophila whitei"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Ramsayornis modestus",
+      "lookup_name": "Ramsayornis modestus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Ramsayornis fasciatus",
+      "lookup_name": "Ramsayornis fasciatus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Ashbyia lovensis",
+      "lookup_name": "Ashbyia lovensis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Epthianura tricolor",
+      "lookup_name": "Epthianura tricolor"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Epthianura aurifrons",
+      "lookup_name": "Epthianura aurifrons"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Epthianura crocea",
+      "lookup_name": "Epthianura crocea"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Epthianura albifrons",
+      "lookup_name": "Epthianura albifrons"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Stomiopera unicolor",
+      "lookup_name": "Stomiopera unicolor"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Stomiopera flava",
+      "lookup_name": "Stomiopera flava"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Meliphaga lewinii",
+      "lookup_name": "Meliphaga lewinii"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Meliphaga notata",
+      "lookup_name": "Meliphaga notata"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Microptilotis gracilis",
+      "lookup_name": "Microptilotis gracilis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Acanthagenys rufogularis",
+      "lookup_name": "Acanthagenys rufogularis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Anthochaera chrysoptera",
+      "lookup_name": "Anthochaera chrysoptera"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Anthochaera phrygia",
+      "lookup_name": "Anthochaera phrygia"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Anthochaera carunculata",
+      "lookup_name": "Anthochaera carunculata"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Anthochaera paradoxa",
+      "lookup_name": "Anthochaera paradoxa"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Bolemoreus frenatus",
+      "lookup_name": "Bolemoreus frenatus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Bolemoreus hindwoodi",
+      "lookup_name": "Bolemoreus hindwoodi"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Gavicalis virescens",
+      "lookup_name": "Gavicalis virescens"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Gavicalis versicolor",
+      "lookup_name": "Gavicalis versicolor"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Gavicalis fasciogularis",
+      "lookup_name": "Gavicalis fasciogularis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Ptilotula keartlandi",
+      "lookup_name": "Ptilotula keartlandi"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Ptilotula ornata",
+      "lookup_name": "Ptilotula ornata"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Ptilotula plumula",
+      "lookup_name": "Ptilotula plumula"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Ptilotula fusca",
+      "lookup_name": "Ptilotula fusca"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Ptilotula flavescens",
+      "lookup_name": "Ptilotula flavescens"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Ptilotula penicillata",
+      "lookup_name": "Ptilotula penicillata"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Purnella albifrons",
+      "lookup_name": "Purnella albifrons"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Caligavis chrysops",
+      "lookup_name": "Caligavis chrysops"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Lichenostomus melanops",
+      "lookup_name": "Lichenostomus melanops"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Lichenostomus cratitius",
+      "lookup_name": "Lichenostomus cratitius"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Manorina melanophrys",
+      "lookup_name": "Manorina melanophrys"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Manorina melanocephala",
+      "lookup_name": "Manorina melanocephala"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Manorina melanotis",
+      "lookup_name": "Manorina melanotis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Manorina flavigula",
+      "lookup_name": "Manorina flavigula"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Pardalotus punctatus",
+      "lookup_name": "Pardalotus punctatus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Pardalotus quadragintus",
+      "lookup_name": "Pardalotus quadragintus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Pardalotus rubricatus",
+      "lookup_name": "Pardalotus rubricatus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Pardalotus striatus",
+      "lookup_name": "Pardalotus striatus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Oreoscopus gutturalis",
+      "lookup_name": "Oreoscopus gutturalis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Gerygone mouki",
+      "lookup_name": "Gerygone mouki"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Gerygone palpebrosa",
+      "lookup_name": "Gerygone palpebrosa"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Gerygone olivacea",
+      "lookup_name": "Gerygone olivacea"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Gerygone magnirostris",
+      "lookup_name": "Gerygone magnirostris"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Gerygone levigaster",
+      "lookup_name": "Gerygone levigaster"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Gerygone fusca",
+      "lookup_name": "Gerygone fusca"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Smicrornis brevirostris",
+      "lookup_name": "Smicrornis brevirostris"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Pycnoptilus floccosus",
+      "lookup_name": "Pycnoptilus floccosus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Pyrrholaemus brunneus",
+      "lookup_name": "Pyrrholaemus brunneus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Pyrrholaemus sagittatus",
+      "lookup_name": "Pyrrholaemus sagittatus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Calamanthus pyrrhopygius",
+      "lookup_name": "Calamanthus pyrrhopygius"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Calamanthus cautus",
+      "lookup_name": "Calamanthus cautus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Calamanthus fuliginosus",
+      "lookup_name": "Calamanthus fuliginosus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Calamanthus campestris",
+      "lookup_name": "Calamanthus campestris"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Origma solitaria",
+      "lookup_name": "Origma solitaria"
+    },
+    {
+      "basis": "registry_name+classification.speciesGuid",
+      "input_name": "Sericornis citreogularis",
+      "lookup_name": "Sericornis citreogularis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Sericornis keri",
+      "lookup_name": "Sericornis keri"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Sericornis frontalis",
+      "lookup_name": "Sericornis frontalis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Sericornis humilis",
+      "lookup_name": "Sericornis humilis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Sericornis magnirostra",
+      "lookup_name": "Sericornis magnirostra"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Sericornis beccarii",
+      "lookup_name": "Sericornis beccarii"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Acanthornis magna",
+      "lookup_name": "Acanthornis magna"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Aphelocephala leucopsis",
+      "lookup_name": "Aphelocephala leucopsis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Aphelocephala pectoralis",
+      "lookup_name": "Aphelocephala pectoralis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Aphelocephala nigricincta",
+      "lookup_name": "Aphelocephala nigricincta"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Acanthiza chrysorrhoa",
+      "lookup_name": "Acanthiza chrysorrhoa"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Acanthiza nana",
+      "lookup_name": "Acanthiza nana"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Acanthiza lineata",
+      "lookup_name": "Acanthiza lineata"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Acanthiza apicalis",
+      "lookup_name": "Acanthiza apicalis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Acanthiza ewingii",
+      "lookup_name": "Acanthiza ewingii"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Acanthiza pusilla",
+      "lookup_name": "Acanthiza pusilla"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Acanthiza katherina",
+      "lookup_name": "Acanthiza katherina"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Acanthiza robustirostris",
+      "lookup_name": "Acanthiza robustirostris"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Acanthiza iredalei",
+      "lookup_name": "Acanthiza iredalei"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Acanthiza uropygialis",
+      "lookup_name": "Acanthiza uropygialis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Acanthiza reguloides",
+      "lookup_name": "Acanthiza reguloides"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Orthonyx temminckii",
+      "lookup_name": "Orthonyx temminckii"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Orthonyx spaldingii",
+      "lookup_name": "Orthonyx spaldingii"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Pomatostomus temporalis",
+      "lookup_name": "Pomatostomus temporalis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Pomatostomus halli",
+      "lookup_name": "Pomatostomus halli"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Pomatostomus superciliosus",
+      "lookup_name": "Pomatostomus superciliosus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Pomatostomus ruficeps",
+      "lookup_name": "Pomatostomus ruficeps"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Daphoenositta chrysoptera",
+      "lookup_name": "Daphoenositta chrysoptera"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Coracina maxima",
+      "lookup_name": "Coracina maxima"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Coracina lineata",
+      "lookup_name": "Coracina lineata"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Coracina novaehollandiae",
+      "lookup_name": "Coracina novaehollandiae"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Coracina papuensis",
+      "lookup_name": "Coracina papuensis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Edolisoma tenuirostre",
+      "lookup_name": "Edolisoma tenuirostre"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Lalage tricolor",
+      "lookup_name": "Lalage tricolor"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Lalage leucomela",
+      "lookup_name": "Lalage leucomela"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Cinclosoma punctatum",
+      "lookup_name": "Cinclosoma punctatum"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Cinclosoma castanotum",
+      "lookup_name": "Cinclosoma castanotum"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Cinclosoma castaneothorax",
+      "lookup_name": "Cinclosoma castaneothorax"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Cinclosoma cinnamomeum",
+      "lookup_name": "Cinclosoma cinnamomeum"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Pachycephala olivacea",
+      "lookup_name": "Pachycephala olivacea"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Pachycephala rufogularis",
+      "lookup_name": "Pachycephala rufogularis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Pachycephala inornata",
+      "lookup_name": "Pachycephala inornata"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Pachycephala simplex",
+      "lookup_name": "Pachycephala simplex"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Pachycephala rufiventris",
+      "lookup_name": "Pachycephala rufiventris"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Pachycephala lanioides",
+      "lookup_name": "Pachycephala lanioides"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Pachycephala pectoralis",
+      "lookup_name": "Pachycephala pectoralis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Pachycephala melanura",
+      "lookup_name": "Pachycephala melanura"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Colluricincla megarhyncha",
+      "lookup_name": "Colluricincla megarhyncha"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Colluricincla boweri",
+      "lookup_name": "Colluricincla boweri"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Colluricincla harmonica",
+      "lookup_name": "Colluricincla harmonica"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Colluricincla woodwardi",
+      "lookup_name": "Colluricincla woodwardi"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Falcunculus frontatus",
+      "lookup_name": "Falcunculus frontatus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Oreoica gutturalis",
+      "lookup_name": "Oreoica gutturalis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Psophodes olivaceus",
+      "lookup_name": "Psophodes olivaceus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Psophodes nigrogularis",
+      "lookup_name": "Psophodes nigrogularis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Psophodes cristatus",
+      "lookup_name": "Psophodes cristatus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Psophodes occidentalis",
+      "lookup_name": "Psophodes occidentalis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Sphecotheres vieilloti",
+      "lookup_name": "Sphecotheres vieilloti"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Oriolus sagittatus",
+      "lookup_name": "Oriolus sagittatus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Oriolus flavocinctus",
+      "lookup_name": "Oriolus flavocinctus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Machaerirhynchus flaviventer",
+      "lookup_name": "Machaerirhynchus flaviventer"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Strepera fuliginosa",
+      "lookup_name": "Strepera fuliginosa"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Strepera graculina",
+      "lookup_name": "Strepera graculina"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Strepera versicolor",
+      "lookup_name": "Strepera versicolor"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Melloria quoyi",
+      "lookup_name": "Melloria quoyi"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Gymnorhina tibicen",
+      "lookup_name": "Gymnorhina tibicen"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Cracticus nigrogularis",
+      "lookup_name": "Cracticus nigrogularis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Cracticus torquatus",
+      "lookup_name": "Cracticus torquatus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Cracticus mentalis",
+      "lookup_name": "Cracticus mentalis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Artamus personatus",
+      "lookup_name": "Artamus personatus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Artamus superciliosus",
+      "lookup_name": "Artamus superciliosus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Artamus cyanopterus",
+      "lookup_name": "Artamus cyanopterus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Artamus cinereus",
+      "lookup_name": "Artamus cinereus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Artamus minor",
+      "lookup_name": "Artamus minor"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Artamus leucorynchus",
+      "lookup_name": "Artamus leucorynchus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Dicrurus bracteatus",
+      "lookup_name": "Dicrurus bracteatus"
+    },
+    {
+      "basis": "registry_name+classification.speciesGuid",
+      "input_name": "Rhipidura isura",
+      "lookup_name": "Rhipidura isura"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Rhipidura leucophrys",
+      "lookup_name": "Rhipidura leucophrys"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Rhipidura rufifrons",
+      "lookup_name": "Rhipidura rufifrons"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Rhipidura phasiana",
+      "lookup_name": "Rhipidura phasiana"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Rhipidura albiscapa",
+      "lookup_name": "Rhipidura albiscapa"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Corvus orru",
+      "lookup_name": "Corvus orru"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Corvus bennetti",
+      "lookup_name": "Corvus bennetti"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Corvus mellori",
+      "lookup_name": "Corvus mellori"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Corvus tasmanicus",
+      "lookup_name": "Corvus tasmanicus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Corvus coronoides",
+      "lookup_name": "Corvus coronoides"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Myiagra rubecula",
+      "lookup_name": "Myiagra rubecula"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Myiagra ruficollis",
+      "lookup_name": "Myiagra ruficollis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Myiagra cyanoleuca",
+      "lookup_name": "Myiagra cyanoleuca"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Myiagra alecto",
+      "lookup_name": "Myiagra alecto"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Myiagra inquieta",
+      "lookup_name": "Myiagra inquieta"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Arses lorealis",
+      "lookup_name": "Arses lorealis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Arses kaupi",
+      "lookup_name": "Arses kaupi"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Grallina cyanoleuca",
+      "lookup_name": "Grallina cyanoleuca"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Symposiachrus trivirgatus",
+      "lookup_name": "Symposiachrus trivirgatus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Carterornis leucotis",
+      "lookup_name": "Carterornis leucotis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Monarcha frater",
+      "lookup_name": "Monarcha frater"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Monarcha melanopsis",
+      "lookup_name": "Monarcha melanopsis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Corcorax melanorhamphos",
+      "lookup_name": "Corcorax melanorhamphos"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Struthidea cinerea",
+      "lookup_name": "Struthidea cinerea"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Phonygammus keraudrenii",
+      "lookup_name": "Phonygammus keraudrenii"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Lophorina paradisea",
+      "lookup_name": "Lophorina paradisea"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Lophorina victoriae",
+      "lookup_name": "Lophorina victoriae"
+    },
+    {
+      "basis": "explicit_name_resolution",
+      "input_name": "Lophorina magnifica",
+      "lookup_name": "Ptiloris magnificus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Petroica rosea",
+      "lookup_name": "Petroica rosea"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Petroica rodinogaster",
+      "lookup_name": "Petroica rodinogaster"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Petroica phoenicea",
+      "lookup_name": "Petroica phoenicea"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Petroica boodang",
+      "lookup_name": "Petroica boodang"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Petroica goodenovii",
+      "lookup_name": "Petroica goodenovii"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Kempiella griseoceps",
+      "lookup_name": "Kempiella griseoceps"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Microeca flavigaster",
+      "lookup_name": "Microeca flavigaster"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Microeca fascinans",
+      "lookup_name": "Microeca fascinans"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Drymodes superciliaris",
+      "lookup_name": "Drymodes superciliaris"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Drymodes brunneopygia",
+      "lookup_name": "Drymodes brunneopygia"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Poecilodryas superciliosa",
+      "lookup_name": "Poecilodryas superciliosa"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Poecilodryas cerviniventris",
+      "lookup_name": "Poecilodryas cerviniventris"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Heteromyias cinereifrons",
+      "lookup_name": "Heteromyias cinereifrons"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Eopsaltria australis",
+      "lookup_name": "Eopsaltria australis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Eopsaltria griseogularis",
+      "lookup_name": "Eopsaltria griseogularis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Tregellasia leucops",
+      "lookup_name": "Tregellasia leucops"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Tregellasia capito",
+      "lookup_name": "Tregellasia capito"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Melanodryas cucullata",
+      "lookup_name": "Melanodryas cucullata"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Melanodryas vittata",
+      "lookup_name": "Melanodryas vittata"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Peneoenanthe pulverulenta",
+      "lookup_name": "Peneoenanthe pulverulenta"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Dicaeum hirundinaceum",
+      "lookup_name": "Dicaeum hirundinaceum"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Dicaeum geelvinkianum",
+      "lookup_name": "Dicaeum geelvinkianum"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Cinnyris jugularis",
+      "lookup_name": "Cinnyris jugularis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Lonchura castaneothorax",
+      "lookup_name": "Lonchura castaneothorax"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Heteromunia pectoralis",
+      "lookup_name": "Heteromunia pectoralis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Stagonopleura bella",
+      "lookup_name": "Stagonopleura bella"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Stagonopleura guttata",
+      "lookup_name": "Stagonopleura guttata"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Emblema pictum",
+      "lookup_name": "Emblema pictum"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Neochmia temporalis",
+      "lookup_name": "Neochmia temporalis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Neochmia phaeton",
+      "lookup_name": "Neochmia phaeton"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Neochmia ruficauda",
+      "lookup_name": "Neochmia ruficauda"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Neochmia modesta",
+      "lookup_name": "Neochmia modesta"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Poephila personata",
+      "lookup_name": "Poephila personata"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Poephila acuticauda",
+      "lookup_name": "Poephila acuticauda"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Poephila cincta",
+      "lookup_name": "Poephila cincta"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Taeniopygia castanotis",
+      "lookup_name": "Taeniopygia castanotis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Taeniopygia bichenovii",
+      "lookup_name": "Taeniopygia bichenovii"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Erythrura trichroa",
+      "lookup_name": "Erythrura trichroa"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Chloebia gouldiae",
+      "lookup_name": "Chloebia gouldiae"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Anthus novaeseelandiae",
+      "lookup_name": "Anthus novaeseelandiae"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Mirafra javanica",
+      "lookup_name": "Mirafra javanica"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Cisticola juncidis",
+      "lookup_name": "Cisticola juncidis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Cisticola exilis",
+      "lookup_name": "Cisticola exilis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Cincloramphus cruralis",
+      "lookup_name": "Cincloramphus cruralis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Cincloramphus mathewsi",
+      "lookup_name": "Cincloramphus mathewsi"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Cincloramphus timoriensis",
+      "lookup_name": "Cincloramphus timoriensis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Poodytes gramineus",
+      "lookup_name": "Poodytes gramineus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Poodytes carteri",
+      "lookup_name": "Poodytes carteri"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Acrocephalus orientalis",
+      "lookup_name": "Acrocephalus orientalis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Acrocephalus australis",
+      "lookup_name": "Acrocephalus australis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Cheramoeca leucosterna",
+      "lookup_name": "Cheramoeca leucosterna"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Petrochelidon ariel",
+      "lookup_name": "Petrochelidon ariel"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Petrochelidon nigricans",
+      "lookup_name": "Petrochelidon nigricans"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Cecropis daurica",
+      "lookup_name": "Cecropis daurica"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Hirundo neoxena",
+      "lookup_name": "Hirundo neoxena"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Hirundo rustica",
+      "lookup_name": "Hirundo rustica"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Zosterops citrinella",
+      "lookup_name": "Zosterops citrinella"
+    },
+    {
+      "basis": "registry_name+classification.speciesGuid",
+      "input_name": "Zosterops luteus",
+      "lookup_name": "Zosterops luteus"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Zosterops lateralis",
+      "lookup_name": "Zosterops lateralis"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Aplonis metallica",
+      "lookup_name": "Aplonis metallica"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Aplonis cantoroides",
+      "lookup_name": "Aplonis cantoroides"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Zoothera lunulata",
+      "lookup_name": "Zoothera lunulata"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Zoothera heinei",
+      "lookup_name": "Zoothera heinei"
+    },
+    {
+      "basis": "registry_name",
+      "input_name": "Malurus lamberti",
+      "lookup_name": "Malurus lamberti"
+    }
+  ],
+  "occurrence_rows_downloaded": 0,
+  "occurrence_support_queried": false,
+  "parent_count": 506,
+  "registry_receipt": "metadata/goal049_registry_receipt.json",
+  "registry_receipt_sha256": "4e731de461da7af9be73361331ce03bc4fc905eac2b0616e2f68bc961e85dde9",
+  "registry_semantic_sha256": "9d57bdc5579aa738eb6533efda306857285bdf1c75b6bea79dd7a16e0d499e21",
+  "registry_sha256": "1c28e3a935e1b62b47dc3b600a0f78f1c8a77d1dfee4e499c2b578048360c4d1",
+  "schema_version": "goal049-registry-taxonomy-freeze-receipt-v1",
+  "source_species_sha256": "242c8837c21e60925927857e2d64a30cf942629a1150c3b43dd748494787c5ee",
+  "species_count": 506,
+  "stage": "stage_a",
+  "status": "passed",
+  "taxonomy_private_receipt": "data/processed/dsdm/goal049-seawfb-canonical-response/taxonomy_freeze.json",
+  "taxonomy_private_sha256": "e9e04b1ed37cb682c0ce2f398f6c203741f86a11c3d72dd36e4eb2b715e8dbb6",
+  "unresolved_alias_count": 0
+}

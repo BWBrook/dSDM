@@ -1,0 +1,16 @@
+{
+  "checkpoint_inventory_sha256": "2552a2a7261a7c23d5ee663ca959a5fcc67499cdbcdbc9a23900ae00b4d847e5",
+  "completed_species": 505,
+  "cumulative_facet_groups": 13731793,
+  "cumulative_retained_species_cells": 5048061,
+  "cumulative_total_count": 56437642,
+  "model_outcome_counter": 0,
+  "next_index": null,
+  "occurrence_rows_downloaded": 0,
+  "peak_ram_bytes_upper_bound": 855244800,
+  "planned_species": 505,
+  "private_disk_bytes": 96339682,
+  "schema_version": "goal049-aggregate-census-progress-v1",
+  "stage_a_freeze_sha256": "b5b238c64a6de6bd636b600173d0ec3dba39082712526beb15e7bec5d5212ee2",
+  "status": "complete"
+}

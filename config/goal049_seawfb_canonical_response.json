@@ -1,0 +1,301 @@
+{
+  "schema_version": "1.0",
+  "goal_id": "049",
+  "status": "prospective_count_free_contract",
+  "objective": "freeze_an_expanded_response_blind_seawfb_species_registry_then_build_the_canonical_2001_2025_species_cell_substrate_and_primary_and_regional_secondary_panels",
+  "upstream": {
+    "goal048_config": "config/goal048_seawfb_bioregional_freeze.json",
+    "goal048_prerequisite": "metadata/goal048_prerequisite_freeze.json",
+    "goal048_selected_regions": [
+      "NCP",
+      "SEH",
+      "NNC"
+    ],
+    "goal048_selected_regions_are_immutable": true,
+    "external_training_exclusion_km": 50.0,
+    "tasmania_role": "ordinary_training_geography"
+  },
+  "stages": {
+    "stage_a": "download_and_hash_authorities_then_freeze_species_registry_ecological_roles_ala_concept_unions_query_contract_and_panel_rules_without_occurrence_counts",
+    "stage_b": "only_after_stage_a_passes_promote_exact_goal048_receipts_or_run_sequential_aggregate_occurrence_census_then_build_canonical_membership_table_and_panels"
+  },
+  "authorities": {
+    "birdlife_working_list": {
+      "name": "Working List of Australian Birds",
+      "version": "4.3",
+      "published": "2023-10-19",
+      "url": "https://birdata.birdlife.org.au/wp-content/uploads/2023/10/WLAB_v4.3.xlsx",
+      "sha256": "f4de7450531c8c72ec18d09e2c0e68698751e46300b4e256ecaacf3aeb4da44e",
+      "license": "no_explicit_reuse_license_stated_on_the_source_page_private_research_copy_only",
+      "use": "current_birdlife_australia_name_and_population_crosswalk"
+    },
+    "australian_bird_data": {
+      "citation": "Garnett_et_al_2015_Scientific_Data_2_150061",
+      "doi": "10.1038/sdata.2015.61",
+      "version": "1.0",
+      "data_url": "https://ndownloader.figshare.com/files/3417176",
+      "data_md5": "6308a724b87ed5c064ebd72e60d63fba",
+      "data_sha256": "188ebb38529d830cd74cdc16b9333d8949abc7601959f5bae365c4201ed6528a",
+      "metadata_url": "https://ndownloader.figshare.com/files/3417212",
+      "metadata_md5": "87f22eae881546349b06ee1ff0756889",
+      "metadata_sha256": "a5f598c36cf068085d28a3d2a5574759d23ba2d8d4d33d4cf5254cfd2d771a20",
+      "license": "CC0",
+      "use": "species_rank_native_status_southeast_jurisdiction_feeding_habitat_and_movement_traits"
+    },
+    "ala": {
+      "use": "operational_current_accepted_taxonomy_and_aggregate_occurrence_evidence",
+      "interface": "galah_python",
+      "taxonomy_is_resolved_after_ecological_registry_rules_are_frozen": true
+    }
+  },
+  "registry": {
+    "source_rank": "species_only_australian_bird_data_field_17_equals_1",
+    "base_candidate_rule": {
+      "core_taxon_field_30": 1,
+      "extinct_field_32": 0,
+      "introduced_field_33": 0,
+      "vagrant_field_34": 0,
+      "at_least_one_core_jurisdiction": [
+        "ACT_field_67",
+        "NSW_field_68",
+        "QLD_field_70",
+        "SA_field_71",
+        "TAS_field_72",
+        "VIC_field_73"
+      ]
+    },
+    "goal048_seed_policy": "retain_all_100_goal048_seed_taxa_in_the_registry_even_when_the_new_rule_assigns_no_active_role",
+    "birdlife_crosswalk": "candidate_join_australian_bird_data_field_229_to_wlab_v4_3_spid_at_species_rank_then_exact_or_frozen_name_congruence_gate",
+    "birdlife_crosswalk_key": {
+      "australian_bird_data_field": 229,
+      "wlab_candidate_column": "SpID",
+      "wlab_column_not_used_as_join_key": "ABD_Avibase ID",
+      "legacy_id_policy": "candidate_only; accept exact scientific name, Goal 048 frozen attributable alias/transition, or an explicitly reviewed same-family nomenclatural transition; otherwise use unique exact-name fallback or retain a count-free exception"
+    },
+    "unmatched_crosswalk_policy": "retain_source_name_in_a_count_free_exception_ledger_and_require_unique_ala_resolution",
+    "manual_exception_stop_fraction": 0.1,
+    "explicit_reconciliations": [
+      {
+        "source_name": "Geophaps ferruginea",
+        "canonical_name": "Geophaps plumifera",
+        "disposition": "collapse_into_existing_registry_species",
+        "basis": "ALA accepted Geophaps plumifera ferruginea is a subspecies whose species parent is Geophaps plumifera; the ABD source row states retention in Geophaps plumifera",
+        "merge_roles": true
+      },
+      {
+        "source_name": "Cyclopsitta coxeni",
+        "canonical_name": "Cyclopsitta diophthalma",
+        "disposition": "collapse_into_existing_registry_species",
+        "basis": "ALA operational accepted-parent resolution treats the source taxon as Cyclopsitta diophthalma for the count-free registry",
+        "merge_roles": true
+      },
+      {
+        "source_name": "Gelochelidon macrotarsa",
+        "canonical_name": "Gelochelidon nilotica",
+        "disposition": "collapse_into_existing_registry_species",
+        "basis": "ALA operational accepted-parent resolution treats the source taxon as Gelochelidon nilotica for the count-free registry",
+        "merge_roles": true
+      },
+      {
+        "source_name": "Trichoglossus haematodus",
+        "canonical_name": "Trichoglossus moluccanus",
+        "disposition": "collapse_into_existing_registry_species",
+        "basis": "Goal 048 frozen transition and ALA operational accepted-parent resolution treat the source name as Trichoglossus moluccanus",
+        "merge_roles": true
+      }
+    ],
+    "split_inheritances": [
+      {
+        "source_name": "Malurus lamberti",
+        "target_seed": "Malurus lamberti",
+        "disposition": "retain_mandatory_seed_with_split_derived_trait_inheritance",
+        "basis": "The old ABD broad row is retained for coarse ecological eligibility while current WLAB species Malurus assimilis and Goal 048 seed Malurus lamberti remain distinct accepted parents"
+      }
+    ]
+  },
+  "taxonomy": {
+    "explicit_name_resolutions": [
+      {
+        "source_name": "Grus antigone",
+        "resolved_name": "Antigone antigone",
+        "basis": "exact operational taxonomy resolution"
+      },
+      {
+        "source_name": "Lophorina magnifica",
+        "resolved_name": "Ptiloris magnificus",
+        "basis": "exact operational taxonomy resolution"
+      }
+    ]
+  },
+  "roles": {
+    "overlapping_booleans": true,
+    "effort_donor": {
+      "rule": "base_candidate_and_at_least_one_nontrivial_terrestrial_feeding_habitat",
+      "australian_bird_data_fields_any_one": [
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125
+      ],
+      "movement_policy": "include_resident_regular_migrant_nomadic_irruptive_raptor_nocturnal_and_aerial_taxa_because_the_role_is_observation_effort_only"
+    },
+    "auxiliary_head": {
+      "rule": "effort_donor_and_nontrivial_temperate_dry_or_wet_sclerophyll_or_rainforest_feeding_use_and_not_nomadic_or_irruptive_and_not_scale_detection_excluded_family",
+      "forest_feeding_fields_any_one": [
+        122,
+        123,
+        124
+      ],
+      "exclude_if_field_equals_one": [
+        196,
+        197
+      ],
+      "scale_detection_excluded_families": [
+        "Accipitridae",
+        "Aegothelidae",
+        "Apodidae",
+        "Caprimulgidae",
+        "Eurostopodidae",
+        "Falconidae",
+        "Hirundinidae",
+        "Podargidae",
+        "Strigidae",
+        "Tytonidae"
+      ],
+      "regular_seasonal_migrants": "eligible"
+    },
+    "focal_target_candidate": {
+      "rule": "same_count_free_ecological_eligibility_as_auxiliary_head",
+      "reason": "avoid_an_arbitrary_extra_ecological_filter_target_status_is_later_determined_only_by_prespecified_support_gates"
+    },
+    "focal_exclusion": {
+      "from_donor_count": true,
+      "from_auxiliary_pretraining": true
+    },
+    "richness_or_effort_as_model_predictor": false
+  },
+  "taxonomy": {
+    "unit": "unique_current_ala_accepted_species_parent",
+    "explicit_name_resolutions": {
+      "Grus antigone": "Antigone antigone",
+      "Lophorina magnifica": "Ptiloris magnificus"
+    },
+    "explicit_name_resolution_basis": {
+      "Grus antigone": "WLAB v4.3 name is not resolved by the ALA Australia backbone; ALA accepts Antigone antigone as the operational species concept",
+      "Lophorina magnifica": "WLAB v4.3 name is absent from the ALA Australia backbone; the ABD source name Ptiloris magnificus resolves to the operational accepted species concept"
+    },
+    "ordered_union": [
+      "accepted_species_parent",
+      "accepted_descendant_or_subspecies_concepts",
+      "historical_alias_identifiers_whose_accepted_concept_points_to_the_parent_or_an_included_descendant"
+    ],
+    "exclude_composite_aliases": true,
+    "exclude_alias_name_patterns": [
+      "/"
+    ],
+    "require_unique_parent_per_source_species": true,
+    "require_identifier_global_uniqueness": true,
+    "source_species_parent_collision": "stop_for_count_free_exception_review",
+    "unresolved_or_ambiguous_concept": "stop_before_occurrence_counts"
+  },
+  "occurrence_contract": {
+    "time_start": "2001-01-01",
+    "time_end": "2025-12-31",
+    "occurrence_status": "PRESENT",
+    "spatially_valid": true,
+    "aggregate_interface": "galah.atlas_counts",
+    "total_and_lat_long_facets_must_conserve_exactly": true,
+    "snap_immediately_to_resolution_degree": 0.01,
+    "retain_only_cells_in_exact_goal048_domain": true,
+    "raw_occurrence_rows": 0,
+    "no_raw_row_fallback": true,
+    "sequential_species_processing": true,
+    "checkpoint_each_species_atomically": true,
+    "transport_ceiling": {
+      "lat_long_groups_per_species": 750000,
+      "lat_long_groups_total": 50000000,
+      "private_disk_gib": 4,
+      "peak_ram_gib": 8
+    }
+  },
+  "goal048_receipt_promotion": {
+    "allowed": true,
+    "requires_exact_match": [
+      "domain",
+      "dates",
+      "occurrence_filters",
+      "ordered_identifier_union",
+      "normalisation",
+      "total_to_facet_conservation"
+    ],
+    "otherwise": "reacquire_without_mutating_goal048"
+  },
+  "effort_support": {
+    "donor_definition": "distinct_effort_donor_species_present_in_cell_excluding_focal_target",
+    "background_definition": "focal_target_not_recorded_in_cell_and_donor_count_at_least_x",
+    "primary_x": 10,
+    "evaluation_only_sensitivity_x": 20,
+    "require_x20_subset_of_x10": true,
+    "labels": "effort_supported_target_group_background_not_true_absence"
+  },
+  "estimability": {
+    "evaluation_minimum_presence_cells_per_target_region": 30,
+    "evaluation_minimum_x10_background_cells_per_target_region": 100,
+    "evaluation_minimum_50km_tiles_per_class": 4,
+    "training_minimum_presence_cells_per_target": 200,
+    "training_minimum_x10_background_cells_per_target": 500,
+    "training_minimum_spatial_tiles_per_class": 4,
+    "common_primary_target_panel_minimum": 20,
+    "gate_use": "pass_fail_only_never_rank_or_score_margin"
+  },
+  "panels": {
+    "primary_common": "all_focal_candidates_passing_training_and_x10_evaluation_gates_in_each_of_NCP_SEH_and_NNC",
+    "secondary_region_specific": "for_each_frozen_region_all_focal_candidates_passing_training_and_that_regions_x10_evaluation_gates",
+    "secondary_motivation_disclosure": "prespecified_after_goal048_seed_feasibility_counts_but_before_goal049_expanded_counts_and_before_all_model_outcomes",
+    "two_of_three_panel": false,
+    "x20": "evaluation_only_sensitivity_never_changes_x10_panel_membership",
+    "later_common_panel_weighting": "equal_species_within_region_and_equal_region_weight"
+  },
+  "private_outputs": {
+    "root": "data/processed/dsdm/goal049-seawfb-canonical-response",
+    "authority_sources": "authorities",
+    "registry": "registry.json",
+    "taxonomy": "taxonomy_freeze.json",
+    "species_receipts": "species_cells",
+    "canonical_memberships": "canonical_species_cells.parquet",
+    "panel_ledger": "panel_ledger.parquet"
+  },
+  "tracked_outputs": {
+    "authority_receipt": "metadata/goal049_authority_receipt.json",
+    "registry_receipt": "metadata/goal049_registry_receipt.json",
+    "freeze_receipt": "metadata/goal049_registry_taxonomy_freeze.json",
+    "canary": "evidence/seawfb_canonical_response/goal049/acquisition_canary.json",
+    "progress": "evidence/seawfb_canonical_response/goal049/acquisition_progress.json",
+    "completion": "evidence/seawfb_canonical_response/goal049/completion_receipt.json",
+    "panel_summary": "evidence/seawfb_canonical_response/goal049/panel_summary.json"
+  },
+  "forbidden_work": [
+    "change_or_rerank_goal048_holdouts",
+    "use_occurrence_support_to_assign_ecological_roles",
+    "fit_models",
+    "inspect_model_outcomes",
+    "weaken_estimability_gates_after_counts",
+    "write_coordinates_or_private_species_cell_lists_to_tracked_outputs"
+  ],
+  "stop_conditions": [
+    "manual_ecological_or_taxonomic_exceptions_exceed_10_percent_of_registry",
+    "ala_parent_or_identifier_collision_is_unresolved",
+    "mandatory_goal048_seed_is_unresolved",
+    "transport_ceiling_is_exceeded",
+    "aggregate_total_to_facet_conservation_fails",
+    "common_primary_panel_has_fewer_than_20_targets",
+    "canonical_conservation_or_privacy_check_fails"
+  ]
+}

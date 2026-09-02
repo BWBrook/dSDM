@@ -1,0 +1,36 @@
+{
+  "authority_sha256": {
+    "australian_bird_data": "188ebb38529d830cd74cdc16b9333d8949abc7601959f5bae365c4201ed6528a",
+    "australian_bird_data_metadata": "a5f598c36cf068085d28a3d2a5574759d23ba2d8d4d33d4cf5254cfd2d771a20",
+    "wlab": "f4de7450531c8c72ec18d09e2c0e68698751e46300b4e256ecaacf3aeb4da44e"
+  },
+  "config_sha256": "8db78f90d07ef5058fafb23fb7047d2da3ad7212671bc4f109ea82473ff248ce",
+  "exception_types": {
+    "duplicate_source_population_collapsed": 25,
+    "incongruent_crosswalk": 5,
+    "missing_source_id": 4,
+    "resolved_authority_exception": 169,
+    "unmatched_crosswalk": 2
+  },
+  "goal048_seed_assignment_sha256": "f0294bd1f7391679d6df17566d46e28e6049487dd922b04368b7fa6145e19128",
+  "goal048_seed_count": 100,
+  "goal048_taxonomy_source_sha256": "3c45107e3d5366f95716d4f3b73b61a1536a2e063196213c4af36c27ef32d9d2",
+  "goal_id": "049",
+  "privacy": {
+    "coordinates_written": false,
+    "model_outcomes": 0,
+    "private_species_cell_lists_written": false,
+    "raw_occurrence_rows": 0
+  },
+  "private_exception_ledger_sha256": "c9ca40007adbb17639f136d4a93b38b71ab4c2f4173e21d84c8e05524c642ea3",
+  "private_registry": "data/processed/dsdm/goal049-seawfb-canonical-response/registry.json",
+  "private_registry_sha256": "1c28e3a935e1b62b47dc3b600a0f78f1c8a77d1dfee4e499c2b578048360c4d1",
+  "role_counts": {
+    "auxiliary": 259,
+    "effort": 505,
+    "target": 259
+  },
+  "row_count": 653,
+  "schema_version": "1.0",
+  "status": "frozen_response_blind"
+}

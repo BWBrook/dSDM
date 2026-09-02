@@ -34,6 +34,7 @@ temp/
 .Rcheck/
 __pycache__/
 *.py[cod]
+*.egg-info/
 
 # Global CSV ignore was masking versioned examples. Keep data/ ignored but
 # explicitly allow tracked sample/manifests.

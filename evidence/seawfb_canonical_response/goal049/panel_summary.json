@@ -1,0 +1,2119 @@
+{
+  "bindings": {
+    "canonical_species_cells_sha256": "6b328dd7849bf1a8fa70d26b497369395e9e1b600ca8ff1d3a436b98a32ae3d9",
+    "completion_config_sha256": "8db78f90d07ef5058fafb23fb7047d2da3ad7212671bc4f109ea82473ff248ce",
+    "panel_ledger_sha256": "7afde373931b070a0fb466ca40ccac5330d5dff6292faec0d20ee1b49e657a7e"
+  },
+  "focal_gate_reasons": {
+    "Acanthagenys rufogularis": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Acanthiza apicalis": {
+      "NCP": "passed_x10",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Acanthiza chrysorrhoa": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Acanthiza ewingii": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Acanthiza katherina": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Acanthiza lineata": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Acanthiza nana": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Acanthiza pusilla": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Acanthiza reguloides": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Acanthiza uropygialis": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Acanthorhynchus tenuirostris": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Acanthornis magna": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Acrocephalus australis": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Ailuroedus crassirostris": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Ailuroedus melanotis": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Alectura lathami": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Alisterus scapularis": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Amaurornis cinerea": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Anthochaera chrysoptera": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Anthochaera paradoxa": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Aphelocephala leucopsis": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "passed_x10"
+    },
+    "Aplonis cantoroides": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Aplonis metallica": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Aprosmictus erythropterus": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Arses kaupi": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Arses lorealis": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Artamus cyanopterus": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Artamus leucorynchus": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Atrichornis rufescens": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Barnardius zonarius": {
+      "NCP": "passed_x10",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Bolemoreus frenatus": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Bolemoreus hindwoodi": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Burhinus grallarius": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Cacatua galerita": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Cacatua leadbeateri": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "passed_x10"
+    },
+    "Cacatua sanguinea": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Cacatua tenuirostris": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Cacomantis castaneiventris": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Cacomantis flabelliformis": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Cacomantis variolosus": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Calamanthus cautus": {
+      "NCP": "passed_x10",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Calamanthus pyrrhopygius": {
+      "NCP": "passed_x10",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "passed_x10"
+    },
+    "Caligavis chrysops": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Callocephalon fimbriatum": {
+      "NCP": "passed_x10",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "passed_x10"
+    },
+    "Calyptorhynchus lathami": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Carterornis leucotis": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Casuarius casuarius": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Centropus phasianinus": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Ceyx azureus": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Ceyx pusillus": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Chalcites basalis": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Chalcites lucidus": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Chalcites minutillus": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Chalcophaps longirostris": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Chlamydera maculata": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Chlamydera nuchalis": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Cincloramphus mathewsi": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Cinclosoma punctatum": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Cinnyris jugularis": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Climacteris erythrops": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Climacteris picumnus": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Climacteris rufus": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Colluricincla boweri": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Colluricincla harmonica": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Colluricincla megarhyncha": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Colluricincla woodwardi": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Conopophila albogularis": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Coracina lineata": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Coracina novaehollandiae": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Coracina papuensis": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Corcorax melanorhamphos": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Cormobates leucophaea": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Corvus coronoides": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Corvus tasmanicus": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Cracticus nigrogularis": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Cracticus torquatus": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Cuculus optatus": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Cyclopsitta diophthalma": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Dacelo novaeguineae": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Daphoenositta chrysoptera": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Dasyornis brachypterus": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Dasyornis broadbenti": {
+      "NCP": "retained_training_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate"
+    },
+    "Dicaeum hirundinaceum": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Dicrurus bracteatus": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Drymodes brunneopygia": {
+      "NCP": "passed_x10",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Drymodes superciliaris": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Ducula spilorrhoa": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Eclectus polychloros": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Edolisoma tenuirostre": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Entomyzon cyanotis": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Eolophus roseicapilla": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Eopsaltria australis": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Eopsaltria griseogularis": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Erythropitta macklotii": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Erythrura trichroa": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Eudynamys orientalis": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Eurystomus orientalis": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Falcunculus frontatus": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Gallinago megala": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Gavicalis fasciogularis": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Geoffroyus geoffroyi": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Geopelia humeralis": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Geopelia placida": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Geophaps scripta": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Gerygone fusca": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "passed_x10"
+    },
+    "Gerygone magnirostris": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Gerygone mouki": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Gerygone olivacea": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Gerygone palpebrosa": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Glycichaera fallax": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Grantiella picta": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "passed_x10"
+    },
+    "Heteromyias cinereifrons": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Heteroscenes pallidus": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Hypotaenidia sylvestris": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Kempiella griseoceps": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Lalage leucomela": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Leipoa ocellata": {
+      "NCP": "passed_x10",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Leucosarcia melanoleuca": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Lonchura castaneothorax": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Lopholaimus antarcticus": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Lophorina magnifica": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Lophorina paradisea": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Lophorina victoriae": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Machaerirhynchus flaviventer": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Macropygia phasianella": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Malurus amabilis": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Malurus assimilis": {
+      "NCP": "passed_x10",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Malurus cyaneus": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Malurus lamberti": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Malurus melanocephalus": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Malurus splendens": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Manorina flavigula": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Manorina melanocephala": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Manorina melanophrys": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Megaloprepia magnifica": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Megapodius reinwardt": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Melanodryas cucullata": {
+      "NCP": "passed_x10",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "passed_x10"
+    },
+    "Melanodryas vittata": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Meliphaga lewinii": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Meliphaga notata": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Melithreptus albogularis": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Melithreptus gularis": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Melithreptus lunatus": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Melithreptus validirostris": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Melloria quoyi": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Menura alberti": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Menura novaehollandiae": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Merops ornatus": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Microeca fascinans": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Microeca flavigaster": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Microptilotis gracilis": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Monarcha frater": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Monarcha melanopsis": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Myiagra alecto": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Myiagra cyanoleuca": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Myiagra inquieta": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Myiagra rubecula": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Myiagra ruficollis": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Myzomela obscura": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Myzomela sanguinolenta": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Neochmia ruficauda": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Neochmia temporalis": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Neophema chrysogaster": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Neophema chrysostoma": {
+      "NCP": "passed_x10",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "passed_x10"
+    },
+    "Neophema elegans": {
+      "NCP": "passed_x10",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Neophema pulchella": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Nesoptilotis flavicollis": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Nesoptilotis leucotis": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Ocyphaps lophotes": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Oreoica gutturalis": {
+      "NCP": "passed_x10",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Oreoscopus gutturalis": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Origma solitaria": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "passed_x10"
+    },
+    "Oriolus flavocinctus": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Oriolus sagittatus": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Orthonyx spaldingii": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Orthonyx temminckii": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Pachycephala melanura": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Pachycephala pectoralis": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Pachycephala rufiventris": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Pachycephala simplex": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Pardalotus punctatus": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Pardalotus quadragintus": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Pardalotus striatus": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Petroica boodang": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Petroica phoenicea": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Petroica rodinogaster": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "passed_x10"
+    },
+    "Petroica rosea": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Phaps elegans": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Philemon buceroides": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Philemon citreogularis": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Phonygammus keraudrenii": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Phylidonyris niger": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Phylidonyris novaehollandiae": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Phylidonyris pyrrhopterus": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Pitta versicolor": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Platycercus adscitus": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Platycercus caledonicus": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Platycercus elegans": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Platycercus eximius": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Platycercus venustus": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Poecilodryas cerviniventris": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Poecilodryas superciliosa": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Polytelis anthopeplus": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Polytelis swainsonii": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "passed_x10"
+    },
+    "Pomatostomus superciliosus": {
+      "NCP": "passed_x10",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "passed_x10"
+    },
+    "Pomatostomus temporalis": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Prionodura newtoniana": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Probosciger aterrimus": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Psephotus haematonotus": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Psophodes olivaceus": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Ptilinopus regina": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Ptilinopus superbus": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Ptilotula flavescens": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Ptilotula penicillata": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Pycnoptilus floccosus": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "passed_x10"
+    },
+    "Pyrrholaemus sagittatus": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Rallina tricolor": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Ramsayornis fasciatus": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Rhipidura albiscapa": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Rhipidura isura": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Rhipidura rufifrons": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Scenopoeetes dentirostris": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Scythrops novaehollandiae": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Sericornis beccarii": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Sericornis citreogularis": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Sericornis frontalis": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Sericornis humilis": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Sericornis keri": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Sericornis magnirostra": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Sericulus chrysocephalus": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Smicrornis brevirostris": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Sphecotheres vieilloti": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Stagonopleura bella": {
+      "NCP": "passed_x10",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "passed_x10"
+    },
+    "Stagonopleura guttata": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Stipiturus malachurus": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Stomiopera flava": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Stomiopera unicolor": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Strepera fuliginosa": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Strepera graculina": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Strepera versicolor": {
+      "NCP": "passed_x10",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "passed_x10"
+    },
+    "Struthidea cinerea": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Syma torotoro": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Symposiachrus trivirgatus": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Taeniopygia bichenovii": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Tanysiptera sylvia": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Threskiornis spinicollis": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Todiramphus macleayii": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Todiramphus sanctus": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Tregellasia capito": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Tregellasia leucops": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Turnix melanogaster": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "region_x10_evaluation_gate",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Turnix varius": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Vanellus miles": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Xanthotis flaviventer": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Xanthotis macleayanus": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    },
+    "Zoothera heinei": {
+      "NCP": "region_x10_evaluation_gate",
+      "NNC": "passed_x10",
+      "SEH": "region_x10_evaluation_gate"
+    },
+    "Zoothera lunulata": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Zosterops lateralis": {
+      "NCP": "passed_x10",
+      "NNC": "passed_x10",
+      "SEH": "passed_x10"
+    },
+    "Zosterops luteus": {
+      "NCP": "retained_training_gate+region_x10_evaluation_gate",
+      "NNC": "retained_training_gate+region_x10_evaluation_gate",
+      "SEH": "retained_training_gate+region_x10_evaluation_gate"
+    }
+  },
+  "primary_common": {
+    "count": 73,
+    "species": [
+      "Acanthagenys rufogularis",
+      "Acanthiza chrysorrhoa",
+      "Acanthiza lineata",
+      "Acanthiza nana",
+      "Acanthiza pusilla",
+      "Acanthiza reguloides",
+      "Acanthorhynchus tenuirostris",
+      "Acrocephalus australis",
+      "Anthochaera chrysoptera",
+      "Artamus cyanopterus",
+      "Cacatua galerita",
+      "Cacatua sanguinea",
+      "Cacatua tenuirostris",
+      "Cacomantis flabelliformis",
+      "Caligavis chrysops",
+      "Ceyx azureus",
+      "Chalcites basalis",
+      "Chalcites lucidus",
+      "Cincloramphus mathewsi",
+      "Climacteris picumnus",
+      "Colluricincla harmonica",
+      "Coracina novaehollandiae",
+      "Coracina papuensis",
+      "Corcorax melanorhamphos",
+      "Cormobates leucophaea",
+      "Corvus coronoides",
+      "Corvus tasmanicus",
+      "Cracticus torquatus",
+      "Dacelo novaeguineae",
+      "Daphoenositta chrysoptera",
+      "Dicaeum hirundinaceum",
+      "Entomyzon cyanotis",
+      "Eolophus roseicapilla",
+      "Eopsaltria australis",
+      "Falcunculus frontatus",
+      "Geopelia placida",
+      "Heteroscenes pallidus",
+      "Malurus cyaneus",
+      "Malurus lamberti",
+      "Manorina melanocephala",
+      "Melithreptus gularis",
+      "Melithreptus lunatus",
+      "Microeca fascinans",
+      "Myiagra inquieta",
+      "Neochmia temporalis",
+      "Nesoptilotis leucotis",
+      "Ocyphaps lophotes",
+      "Oriolus sagittatus",
+      "Pachycephala pectoralis",
+      "Pachycephala rufiventris",
+      "Pardalotus punctatus",
+      "Pardalotus striatus",
+      "Petroica boodang",
+      "Petroica phoenicea",
+      "Phaps elegans",
+      "Phylidonyris novaehollandiae",
+      "Phylidonyris pyrrhopterus",
+      "Platycercus elegans",
+      "Platycercus eximius",
+      "Psephotus haematonotus",
+      "Ptilotula penicillata",
+      "Rhipidura albiscapa",
+      "Rhipidura rufifrons",
+      "Sericornis frontalis",
+      "Smicrornis brevirostris",
+      "Stipiturus malachurus",
+      "Strepera graculina",
+      "Threskiornis spinicollis",
+      "Todiramphus sanctus",
+      "Turnix varius",
+      "Vanellus miles",
+      "Zoothera lunulata",
+      "Zosterops lateralis"
+    ]
+  },
+  "privacy": {
+    "coordinates_written": false,
+    "model_outcomes": 0,
+    "private_lists_written": false,
+    "raw_occurrence_rows": 0
+  },
+  "regions": [
+    "NCP",
+    "SEH",
+    "NNC"
+  ],
+  "schema_version": "goal049-panel-summary-v1",
+  "secondary_motivation": "prespecified_after_goal048_seed_feasibility_counts_but_before_goal049_expanded_counts_and_before_all_model_outcomes",
+  "secondary_region_specific": {
+    "NCP": {
+      "count": 88,
+      "species": [
+        "Acanthagenys rufogularis",
+        "Acanthiza apicalis",
+        "Acanthiza chrysorrhoa",
+        "Acanthiza lineata",
+        "Acanthiza nana",
+        "Acanthiza pusilla",
+        "Acanthiza reguloides",
+        "Acanthorhynchus tenuirostris",
+        "Acrocephalus australis",
+        "Anthochaera chrysoptera",
+        "Artamus cyanopterus",
+        "Barnardius zonarius",
+        "Cacatua galerita",
+        "Cacatua sanguinea",
+        "Cacatua tenuirostris",
+        "Cacomantis flabelliformis",
+        "Calamanthus cautus",
+        "Calamanthus pyrrhopygius",
+        "Caligavis chrysops",
+        "Callocephalon fimbriatum",
+        "Ceyx azureus",
+        "Chalcites basalis",
+        "Chalcites lucidus",
+        "Cincloramphus mathewsi",
+        "Climacteris picumnus",
+        "Colluricincla harmonica",
+        "Coracina novaehollandiae",
+        "Coracina papuensis",
+        "Corcorax melanorhamphos",
+        "Cormobates leucophaea",
+        "Corvus coronoides",
+        "Corvus tasmanicus",
+        "Cracticus torquatus",
+        "Dacelo novaeguineae",
+        "Daphoenositta chrysoptera",
+        "Dicaeum hirundinaceum",
+        "Drymodes brunneopygia",
+        "Entomyzon cyanotis",
+        "Eolophus roseicapilla",
+        "Eopsaltria australis",
+        "Falcunculus frontatus",
+        "Geopelia placida",
+        "Heteroscenes pallidus",
+        "Leipoa ocellata",
+        "Malurus assimilis",
+        "Malurus cyaneus",
+        "Malurus lamberti",
+        "Manorina melanocephala",
+        "Melanodryas cucullata",
+        "Melithreptus gularis",
+        "Melithreptus lunatus",
+        "Microeca fascinans",
+        "Myiagra inquieta",
+        "Neochmia temporalis",
+        "Neophema chrysostoma",
+        "Neophema elegans",
+        "Nesoptilotis leucotis",
+        "Ocyphaps lophotes",
+        "Oreoica gutturalis",
+        "Oriolus sagittatus",
+        "Pachycephala pectoralis",
+        "Pachycephala rufiventris",
+        "Pardalotus punctatus",
+        "Pardalotus striatus",
+        "Petroica boodang",
+        "Petroica phoenicea",
+        "Phaps elegans",
+        "Phylidonyris novaehollandiae",
+        "Phylidonyris pyrrhopterus",
+        "Platycercus elegans",
+        "Platycercus eximius",
+        "Pomatostomus superciliosus",
+        "Psephotus haematonotus",
+        "Ptilotula penicillata",
+        "Rhipidura albiscapa",
+        "Rhipidura rufifrons",
+        "Sericornis frontalis",
+        "Smicrornis brevirostris",
+        "Stagonopleura bella",
+        "Stipiturus malachurus",
+        "Strepera graculina",
+        "Strepera versicolor",
+        "Threskiornis spinicollis",
+        "Todiramphus sanctus",
+        "Turnix varius",
+        "Vanellus miles",
+        "Zoothera lunulata",
+        "Zosterops lateralis"
+      ]
+    },
+    "NNC": {
+      "count": 134,
+      "species": [
+        "Acanthagenys rufogularis",
+        "Acanthiza chrysorrhoa",
+        "Acanthiza lineata",
+        "Acanthiza nana",
+        "Acanthiza pusilla",
+        "Acanthiza reguloides",
+        "Acanthorhynchus tenuirostris",
+        "Acrocephalus australis",
+        "Ailuroedus crassirostris",
+        "Alectura lathami",
+        "Alisterus scapularis",
+        "Anthochaera chrysoptera",
+        "Artamus cyanopterus",
+        "Artamus leucorynchus",
+        "Burhinus grallarius",
+        "Cacatua galerita",
+        "Cacatua sanguinea",
+        "Cacatua tenuirostris",
+        "Cacomantis flabelliformis",
+        "Cacomantis variolosus",
+        "Caligavis chrysops",
+        "Calyptorhynchus lathami",
+        "Centropus phasianinus",
+        "Ceyx azureus",
+        "Chalcites basalis",
+        "Chalcites lucidus",
+        "Chalcites minutillus",
+        "Chalcophaps longirostris",
+        "Cincloramphus mathewsi",
+        "Cinclosoma punctatum",
+        "Climacteris erythrops",
+        "Climacteris picumnus",
+        "Colluricincla harmonica",
+        "Colluricincla megarhyncha",
+        "Coracina lineata",
+        "Coracina novaehollandiae",
+        "Coracina papuensis",
+        "Corcorax melanorhamphos",
+        "Cormobates leucophaea",
+        "Corvus coronoides",
+        "Corvus tasmanicus",
+        "Cracticus nigrogularis",
+        "Cracticus torquatus",
+        "Dacelo novaeguineae",
+        "Daphoenositta chrysoptera",
+        "Dicaeum hirundinaceum",
+        "Dicrurus bracteatus",
+        "Edolisoma tenuirostre",
+        "Entomyzon cyanotis",
+        "Eolophus roseicapilla",
+        "Eopsaltria australis",
+        "Eudynamys orientalis",
+        "Eurystomus orientalis",
+        "Falcunculus frontatus",
+        "Geopelia humeralis",
+        "Geopelia placida",
+        "Gerygone mouki",
+        "Gerygone olivacea",
+        "Heteroscenes pallidus",
+        "Lalage leucomela",
+        "Leucosarcia melanoleuca",
+        "Lonchura castaneothorax",
+        "Lopholaimus antarcticus",
+        "Lophorina paradisea",
+        "Macropygia phasianella",
+        "Malurus cyaneus",
+        "Malurus lamberti",
+        "Malurus melanocephalus",
+        "Manorina melanocephala",
+        "Manorina melanophrys",
+        "Megaloprepia magnifica",
+        "Meliphaga lewinii",
+        "Melithreptus albogularis",
+        "Melithreptus gularis",
+        "Melithreptus lunatus",
+        "Menura novaehollandiae",
+        "Merops ornatus",
+        "Microeca fascinans",
+        "Monarcha melanopsis",
+        "Myiagra cyanoleuca",
+        "Myiagra inquieta",
+        "Myiagra rubecula",
+        "Myzomela sanguinolenta",
+        "Neochmia temporalis",
+        "Neophema pulchella",
+        "Nesoptilotis leucotis",
+        "Ocyphaps lophotes",
+        "Oriolus sagittatus",
+        "Orthonyx temminckii",
+        "Pachycephala pectoralis",
+        "Pachycephala rufiventris",
+        "Pardalotus punctatus",
+        "Pardalotus striatus",
+        "Petroica boodang",
+        "Petroica phoenicea",
+        "Petroica rosea",
+        "Phaps elegans",
+        "Philemon citreogularis",
+        "Phylidonyris niger",
+        "Phylidonyris novaehollandiae",
+        "Phylidonyris pyrrhopterus",
+        "Pitta versicolor",
+        "Platycercus elegans",
+        "Platycercus eximius",
+        "Pomatostomus temporalis",
+        "Psephotus haematonotus",
+        "Psophodes olivaceus",
+        "Ptilinopus regina",
+        "Ptilinopus superbus",
+        "Ptilotula penicillata",
+        "Pyrrholaemus sagittatus",
+        "Rhipidura albiscapa",
+        "Rhipidura rufifrons",
+        "Scythrops novaehollandiae",
+        "Sericornis citreogularis",
+        "Sericornis frontalis",
+        "Sericornis magnirostra",
+        "Sericulus chrysocephalus",
+        "Smicrornis brevirostris",
+        "Sphecotheres vieilloti",
+        "Stagonopleura guttata",
+        "Stipiturus malachurus",
+        "Strepera graculina",
+        "Symposiachrus trivirgatus",
+        "Taeniopygia bichenovii",
+        "Threskiornis spinicollis",
+        "Todiramphus macleayii",
+        "Todiramphus sanctus",
+        "Tregellasia capito",
+        "Turnix varius",
+        "Vanellus miles",
+        "Zoothera heinei",
+        "Zoothera lunulata",
+        "Zosterops lateralis"
+      ]
+    },
+    "SEH": {
+      "count": 122,
+      "species": [
+        "Acanthagenys rufogularis",
+        "Acanthiza chrysorrhoa",
+        "Acanthiza lineata",
+        "Acanthiza nana",
+        "Acanthiza pusilla",
+        "Acanthiza reguloides",
+        "Acanthorhynchus tenuirostris",
+        "Acrocephalus australis",
+        "Alisterus scapularis",
+        "Anthochaera chrysoptera",
+        "Aphelocephala leucopsis",
+        "Artamus cyanopterus",
+        "Burhinus grallarius",
+        "Cacatua galerita",
+        "Cacatua leadbeateri",
+        "Cacatua sanguinea",
+        "Cacatua tenuirostris",
+        "Cacomantis flabelliformis",
+        "Cacomantis variolosus",
+        "Calamanthus pyrrhopygius",
+        "Caligavis chrysops",
+        "Callocephalon fimbriatum",
+        "Calyptorhynchus lathami",
+        "Ceyx azureus",
+        "Chalcites basalis",
+        "Chalcites lucidus",
+        "Cincloramphus mathewsi",
+        "Cinclosoma punctatum",
+        "Climacteris erythrops",
+        "Climacteris picumnus",
+        "Colluricincla harmonica",
+        "Coracina novaehollandiae",
+        "Coracina papuensis",
+        "Corcorax melanorhamphos",
+        "Cormobates leucophaea",
+        "Corvus coronoides",
+        "Corvus tasmanicus",
+        "Cracticus nigrogularis",
+        "Cracticus torquatus",
+        "Dacelo novaeguineae",
+        "Daphoenositta chrysoptera",
+        "Dicaeum hirundinaceum",
+        "Dicrurus bracteatus",
+        "Edolisoma tenuirostre",
+        "Entomyzon cyanotis",
+        "Eolophus roseicapilla",
+        "Eopsaltria australis",
+        "Eudynamys orientalis",
+        "Eurystomus orientalis",
+        "Falcunculus frontatus",
+        "Geopelia humeralis",
+        "Geopelia placida",
+        "Gerygone fusca",
+        "Gerygone mouki",
+        "Gerygone olivacea",
+        "Grantiella picta",
+        "Heteroscenes pallidus",
+        "Leucosarcia melanoleuca",
+        "Lopholaimus antarcticus",
+        "Malurus cyaneus",
+        "Malurus lamberti",
+        "Manorina melanocephala",
+        "Manorina melanophrys",
+        "Melanodryas cucullata",
+        "Meliphaga lewinii",
+        "Melithreptus gularis",
+        "Melithreptus lunatus",
+        "Menura novaehollandiae",
+        "Merops ornatus",
+        "Microeca fascinans",
+        "Monarcha melanopsis",
+        "Myiagra cyanoleuca",
+        "Myiagra inquieta",
+        "Myiagra rubecula",
+        "Myzomela sanguinolenta",
+        "Neochmia temporalis",
+        "Neophema chrysostoma",
+        "Neophema pulchella",
+        "Nesoptilotis leucotis",
+        "Ocyphaps lophotes",
+        "Origma solitaria",
+        "Oriolus sagittatus",
+        "Pachycephala pectoralis",
+        "Pachycephala rufiventris",
+        "Pardalotus punctatus",
+        "Pardalotus striatus",
+        "Petroica boodang",
+        "Petroica phoenicea",
+        "Petroica rodinogaster",
+        "Petroica rosea",
+        "Phaps elegans",
+        "Philemon citreogularis",
+        "Phylidonyris niger",
+        "Phylidonyris novaehollandiae",
+        "Phylidonyris pyrrhopterus",
+        "Platycercus elegans",
+        "Platycercus eximius",
+        "Polytelis swainsonii",
+        "Pomatostomus superciliosus",
+        "Psephotus haematonotus",
+        "Psophodes olivaceus",
+        "Ptilotula penicillata",
+        "Pycnoptilus floccosus",
+        "Pyrrholaemus sagittatus",
+        "Rhipidura albiscapa",
+        "Rhipidura rufifrons",
+        "Scythrops novaehollandiae",
+        "Sericornis frontalis",
+        "Sericornis magnirostra",
+        "Smicrornis brevirostris",
+        "Stagonopleura bella",
+        "Stagonopleura guttata",
+        "Stipiturus malachurus",
+        "Strepera graculina",
+        "Strepera versicolor",
+        "Taeniopygia bichenovii",
+        "Threskiornis spinicollis",
+        "Todiramphus sanctus",
+        "Turnix varius",
+        "Vanellus miles",
+        "Zoothera lunulata",
+        "Zosterops lateralis"
+      ]
+    }
+  },
+  "status": "frozen",
+  "two_of_three_panel": false,
+  "x20_changes_membership": false,
+  "x20_evaluation_only": {
+    "NCP": {
+      "count": 87,
+      "species": [
+        "Acanthagenys rufogularis",
+        "Acanthiza apicalis",
+        "Acanthiza chrysorrhoa",
+        "Acanthiza lineata",
+        "Acanthiza nana",
+        "Acanthiza pusilla",
+        "Acanthiza reguloides",
+        "Acanthorhynchus tenuirostris",
+        "Acrocephalus australis",
+        "Anthochaera chrysoptera",
+        "Artamus cyanopterus",
+        "Barnardius zonarius",
+        "Cacatua galerita",
+        "Cacatua sanguinea",
+        "Cacatua tenuirostris",
+        "Cacomantis flabelliformis",
+        "Calamanthus cautus",
+        "Calamanthus pyrrhopygius",
+        "Caligavis chrysops",
+        "Callocephalon fimbriatum",
+        "Ceyx azureus",
+        "Chalcites basalis",
+        "Chalcites lucidus",
+        "Cincloramphus mathewsi",
+        "Climacteris picumnus",
+        "Colluricincla harmonica",
+        "Coracina novaehollandiae",
+        "Coracina papuensis",
+        "Corcorax melanorhamphos",
+        "Cormobates leucophaea",
+        "Corvus coronoides",
+        "Corvus tasmanicus",
+        "Cracticus torquatus",
+        "Dacelo novaeguineae",
+        "Daphoenositta chrysoptera",
+        "Dicaeum hirundinaceum",
+        "Drymodes brunneopygia",
+        "Entomyzon cyanotis",
+        "Eolophus roseicapilla",
+        "Eopsaltria australis",
+        "Falcunculus frontatus",
+        "Geopelia placida",
+        "Heteroscenes pallidus",
+        "Leipoa ocellata",
+        "Malurus assimilis",
+        "Malurus lamberti",
+        "Manorina melanocephala",
+        "Melanodryas cucullata",
+        "Melithreptus gularis",
+        "Melithreptus lunatus",
+        "Microeca fascinans",
+        "Myiagra inquieta",
+        "Neochmia temporalis",
+        "Neophema chrysostoma",
+        "Neophema elegans",
+        "Nesoptilotis leucotis",
+        "Ocyphaps lophotes",
+        "Oreoica gutturalis",
+        "Oriolus sagittatus",
+        "Pachycephala pectoralis",
+        "Pachycephala rufiventris",
+        "Pardalotus punctatus",
+        "Pardalotus striatus",
+        "Petroica boodang",
+        "Petroica phoenicea",
+        "Phaps elegans",
+        "Phylidonyris novaehollandiae",
+        "Phylidonyris pyrrhopterus",
+        "Platycercus elegans",
+        "Platycercus eximius",
+        "Pomatostomus superciliosus",
+        "Psephotus haematonotus",
+        "Ptilotula penicillata",
+        "Rhipidura albiscapa",
+        "Rhipidura rufifrons",
+        "Sericornis frontalis",
+        "Smicrornis brevirostris",
+        "Stagonopleura bella",
+        "Stipiturus malachurus",
+        "Strepera graculina",
+        "Strepera versicolor",
+        "Threskiornis spinicollis",
+        "Todiramphus sanctus",
+        "Turnix varius",
+        "Vanellus miles",
+        "Zoothera lunulata",
+        "Zosterops lateralis"
+      ]
+    },
+    "NNC": {
+      "count": 134,
+      "species": [
+        "Acanthagenys rufogularis",
+        "Acanthiza chrysorrhoa",
+        "Acanthiza lineata",
+        "Acanthiza nana",
+        "Acanthiza pusilla",
+        "Acanthiza reguloides",
+        "Acanthorhynchus tenuirostris",
+        "Acrocephalus australis",
+        "Ailuroedus crassirostris",
+        "Alectura lathami",
+        "Alisterus scapularis",
+        "Anthochaera chrysoptera",
+        "Artamus cyanopterus",
+        "Artamus leucorynchus",
+        "Burhinus grallarius",
+        "Cacatua galerita",
+        "Cacatua sanguinea",
+        "Cacatua tenuirostris",
+        "Cacomantis flabelliformis",
+        "Cacomantis variolosus",
+        "Caligavis chrysops",
+        "Calyptorhynchus lathami",
+        "Centropus phasianinus",
+        "Ceyx azureus",
+        "Chalcites basalis",
+        "Chalcites lucidus",
+        "Chalcites minutillus",
+        "Chalcophaps longirostris",
+        "Cincloramphus mathewsi",
+        "Cinclosoma punctatum",
+        "Climacteris erythrops",
+        "Climacteris picumnus",
+        "Colluricincla harmonica",
+        "Colluricincla megarhyncha",
+        "Coracina lineata",
+        "Coracina novaehollandiae",
+        "Coracina papuensis",
+        "Corcorax melanorhamphos",
+        "Cormobates leucophaea",
+        "Corvus coronoides",
+        "Corvus tasmanicus",
+        "Cracticus nigrogularis",
+        "Cracticus torquatus",
+        "Dacelo novaeguineae",
+        "Daphoenositta chrysoptera",
+        "Dicaeum hirundinaceum",
+        "Dicrurus bracteatus",
+        "Edolisoma tenuirostre",
+        "Entomyzon cyanotis",
+        "Eolophus roseicapilla",
+        "Eopsaltria australis",
+        "Eudynamys orientalis",
+        "Eurystomus orientalis",
+        "Falcunculus frontatus",
+        "Geopelia humeralis",
+        "Geopelia placida",
+        "Gerygone mouki",
+        "Gerygone olivacea",
+        "Heteroscenes pallidus",
+        "Lalage leucomela",
+        "Leucosarcia melanoleuca",
+        "Lonchura castaneothorax",
+        "Lopholaimus antarcticus",
+        "Lophorina paradisea",
+        "Macropygia phasianella",
+        "Malurus cyaneus",
+        "Malurus lamberti",
+        "Malurus melanocephalus",
+        "Manorina melanocephala",
+        "Manorina melanophrys",
+        "Megaloprepia magnifica",
+        "Meliphaga lewinii",
+        "Melithreptus albogularis",
+        "Melithreptus gularis",
+        "Melithreptus lunatus",
+        "Menura novaehollandiae",
+        "Merops ornatus",
+        "Microeca fascinans",
+        "Monarcha melanopsis",
+        "Myiagra cyanoleuca",
+        "Myiagra inquieta",
+        "Myiagra rubecula",
+        "Myzomela sanguinolenta",
+        "Neochmia temporalis",
+        "Neophema pulchella",
+        "Nesoptilotis leucotis",
+        "Ocyphaps lophotes",
+        "Oriolus sagittatus",
+        "Orthonyx temminckii",
+        "Pachycephala pectoralis",
+        "Pachycephala rufiventris",
+        "Pardalotus punctatus",
+        "Pardalotus striatus",
+        "Petroica boodang",
+        "Petroica phoenicea",
+        "Petroica rosea",
+        "Phaps elegans",
+        "Philemon citreogularis",
+        "Phylidonyris niger",
+        "Phylidonyris novaehollandiae",
+        "Phylidonyris pyrrhopterus",
+        "Pitta versicolor",
+        "Platycercus elegans",
+        "Platycercus eximius",
+        "Pomatostomus temporalis",
+        "Psephotus haematonotus",
+        "Psophodes olivaceus",
+        "Ptilinopus regina",
+        "Ptilinopus superbus",
+        "Ptilotula penicillata",
+        "Pyrrholaemus sagittatus",
+        "Rhipidura albiscapa",
+        "Rhipidura rufifrons",
+        "Scythrops novaehollandiae",
+        "Sericornis citreogularis",
+        "Sericornis frontalis",
+        "Sericornis magnirostra",
+        "Sericulus chrysocephalus",
+        "Smicrornis brevirostris",
+        "Sphecotheres vieilloti",
+        "Stagonopleura guttata",
+        "Stipiturus malachurus",
+        "Strepera graculina",
+        "Symposiachrus trivirgatus",
+        "Taeniopygia bichenovii",
+        "Threskiornis spinicollis",
+        "Todiramphus macleayii",
+        "Todiramphus sanctus",
+        "Tregellasia capito",
+        "Turnix varius",
+        "Vanellus miles",
+        "Zoothera heinei",
+        "Zoothera lunulata",
+        "Zosterops lateralis"
+      ]
+    },
+    "SEH": {
+      "count": 122,
+      "species": [
+        "Acanthagenys rufogularis",
+        "Acanthiza chrysorrhoa",
+        "Acanthiza lineata",
+        "Acanthiza nana",
+        "Acanthiza pusilla",
+        "Acanthiza reguloides",
+        "Acanthorhynchus tenuirostris",
+        "Acrocephalus australis",
+        "Alisterus scapularis",
+        "Anthochaera chrysoptera",
+        "Aphelocephala leucopsis",
+        "Artamus cyanopterus",
+        "Burhinus grallarius",
+        "Cacatua galerita",
+        "Cacatua leadbeateri",
+        "Cacatua sanguinea",
+        "Cacatua tenuirostris",
+        "Cacomantis flabelliformis",
+        "Cacomantis variolosus",
+        "Calamanthus pyrrhopygius",
+        "Caligavis chrysops",
+        "Callocephalon fimbriatum",
+        "Calyptorhynchus lathami",
+        "Ceyx azureus",
+        "Chalcites basalis",
+        "Chalcites lucidus",
+        "Cincloramphus mathewsi",
+        "Cinclosoma punctatum",
+        "Climacteris erythrops",
+        "Climacteris picumnus",
+        "Colluricincla harmonica",
+        "Coracina novaehollandiae",
+        "Coracina papuensis",
+        "Corcorax melanorhamphos",
+        "Cormobates leucophaea",
+        "Corvus coronoides",
+        "Corvus tasmanicus",
+        "Cracticus nigrogularis",
+        "Cracticus torquatus",
+        "Dacelo novaeguineae",
+        "Daphoenositta chrysoptera",
+        "Dicaeum hirundinaceum",
+        "Dicrurus bracteatus",
+        "Edolisoma tenuirostre",
+        "Entomyzon cyanotis",
+        "Eolophus roseicapilla",
+        "Eopsaltria australis",
+        "Eudynamys orientalis",
+        "Eurystomus orientalis",
+        "Falcunculus frontatus",
+        "Geopelia humeralis",
+        "Geopelia placida",
+        "Gerygone fusca",
+        "Gerygone mouki",
+        "Gerygone olivacea",
+        "Grantiella picta",
+        "Heteroscenes pallidus",
+        "Leucosarcia melanoleuca",
+        "Lopholaimus antarcticus",
+        "Malurus cyaneus",
+        "Malurus lamberti",
+        "Manorina melanocephala",
+        "Manorina melanophrys",
+        "Melanodryas cucullata",
+        "Meliphaga lewinii",
+        "Melithreptus gularis",
+        "Melithreptus lunatus",
+        "Menura novaehollandiae",
+        "Merops ornatus",
+        "Microeca fascinans",
+        "Monarcha melanopsis",
+        "Myiagra cyanoleuca",
+        "Myiagra inquieta",
+        "Myiagra rubecula",
+        "Myzomela sanguinolenta",
+        "Neochmia temporalis",
+        "Neophema chrysostoma",
+        "Neophema pulchella",
+        "Nesoptilotis leucotis",
+        "Ocyphaps lophotes",
+        "Origma solitaria",
+        "Oriolus sagittatus",
+        "Pachycephala pectoralis",
+        "Pachycephala rufiventris",
+        "Pardalotus punctatus",
+        "Pardalotus striatus",
+        "Petroica boodang",
+        "Petroica phoenicea",
+        "Petroica rodinogaster",
+        "Petroica rosea",
+        "Phaps elegans",
+        "Philemon citreogularis",
+        "Phylidonyris niger",
+        "Phylidonyris novaehollandiae",
+        "Phylidonyris pyrrhopterus",
+        "Platycercus elegans",
+        "Platycercus eximius",
+        "Polytelis swainsonii",
+        "Pomatostomus superciliosus",
+        "Psephotus haematonotus",
+        "Psophodes olivaceus",
+        "Ptilotula penicillata",
+        "Pycnoptilus floccosus",
+        "Pyrrholaemus sagittatus",
+        "Rhipidura albiscapa",
+        "Rhipidura rufifrons",
+        "Scythrops novaehollandiae",
+        "Sericornis frontalis",
+        "Sericornis magnirostra",
+        "Smicrornis brevirostris",
+        "Stagonopleura bella",
+        "Stagonopleura guttata",
+        "Stipiturus malachurus",
+        "Strepera graculina",
+        "Strepera versicolor",
+        "Taeniopygia bichenovii",
+        "Threskiornis spinicollis",
+        "Todiramphus sanctus",
+        "Turnix varius",
+        "Vanellus miles",
+        "Zoothera lunulata",
+        "Zosterops lateralis"
+      ]
+    }
+  }
+}
