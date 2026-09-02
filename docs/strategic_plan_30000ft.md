@@ -297,11 +297,15 @@ pretraining hypothesis.
 
 ### Phase 8: Method-freeze checkpoint
 
+Status: complete through Goal047.
+
 Freeze the version that emerges from the original Tasmanian prove-out and the
 southeastern-mammal geographic-transfer bridge. Record any null results and
 limitations explicitly before birds.
 
 ### Phase 9: SE Australia birds acquisition and dataset construction
+
+Status: in progress. Goals048-049 are complete.
 
 Repeat the source-acquisition and analysis-ready construction sequence for the
 larger bird case:
@@ -414,6 +418,18 @@ split-fitted transformations. Goals044-046 then completed the conventional and
 corrected dSDM mainland development experiments; Goal046 supersedes the Goal
 045 full-endpoint claim because it enforces strict leave-target-out support.
 Goal047 completed the prospectively frozen, one-shot Tasmania transfer and
-found no transferable dSDM advantage for these five mammals. The programme now
-moves to Goal048: a prospective three-whole-IBRA7.1-region outer-design freeze
-for the SEAWFB case, with Tasmania retained as ordinary training geography.
+found no transferable dSDM advantage for these five mammals. Goal048 then
+froze NCP, SEH, and NNC as the three complete IBRA7.1 outer regions, with all
+three regions and their 50 km external buffers excluded simultaneously and
+Tasmania retained as ordinary training geography.
+
+Goal049 expanded the response-blind bird universe, froze 505 active effort
+donors and 259 auxiliary/focal candidates, and completed the aggregate
+2001-2025 ALA census without downloading raw occurrence rows. Its private
+canonical substrate contains 5,048,061 species-cell memberships. The strict
+three-region primary panel contains 73 targets; region-specific secondary
+panels contain 88 NCP, 122 SEH, and 134 NNC targets. No model or performance
+outcome has been produced. The next step is an analysis-ready SEAWFB modelling
+foundation that binds predictors, responses, retained-training partitions,
+feature transformations, leakage controls, and a realistic compute plan
+before conventional or dSDM fitting begins.
