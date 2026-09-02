@@ -428,8 +428,10 @@ donors and 259 auxiliary/focal candidates, and completed the aggregate
 2001-2025 ALA census without downloading raw occurrence rows. Its private
 canonical substrate contains 5,048,061 species-cell memberships. The strict
 three-region primary panel contains 73 targets; region-specific secondary
-panels contain 88 NCP, 122 SEH, and 134 NNC targets. No model or performance
-outcome has been produced. The next step is an analysis-ready SEAWFB modelling
-foundation that binds predictors, responses, retained-training partitions,
-feature transformations, leakage controls, and a realistic compute plan
-before conventional or dSDM fitting begins.
+panels contain 88 NCP, 122 SEH, and 134 NNC targets. Goal050 now binds the
+frozen predictors and responses into an analysis-ready retained-training
+substrate, with five spatial folds, leakage-safe species blocks, deterministic
+target row plans for all 157 focal targets, split-fitted transforms, provenance
+bindings, and a training-only compute-canary basis. No model or performance
+outcome has been produced. The next scientific tranche is conventional
+baseline development; dSDM development follows as a separate experiment.

@@ -1,0 +1,23 @@
+{
+  "counts": {
+    "domain_cells": 1144286,
+    "effort_donors": 505,
+    "focal_targets": 157,
+    "predictor_complete_cells": 784967,
+    "primary_targets": 73,
+    "response_row_plan_entries": 785,
+    "response_row_plan_full_only_entries": 420,
+    "response_row_plan_primary_entries": 365,
+    "retained_training_cells": 787357,
+    "sparse_memberships": 1630551,
+    "training_heads": 183
+  },
+  "privacy": {
+    "coordinates_tracked": false,
+    "models": 0,
+    "outcomes": 0
+  },
+  "seed": 394,
+  "status": "passed",
+  "tracked_only": false
+}

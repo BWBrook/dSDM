@@ -1,0 +1,73 @@
+{
+  "schema_version": "goal050-compute-plan-v1",
+  "status": "complete",
+  "protocol": {
+    "rows": 90000,
+    "heads": 167,
+    "held_fold": 0,
+    "held_block": 0,
+    "epochs": 2,
+    "batch_size": 128,
+    "threads": 1,
+    "architecture": "bridge_control"
+  },
+  "candidate_gate": {
+    "required_rows": 90000,
+    "available_rows": 94873,
+    "passed": true,
+    "available_under_exact_frozen_rule": 94873,
+    "reason": "canary_size_reduced_to_90000_without_relaxing_scientific_eligibility"
+  },
+  "eligibility_resolution": {
+    "exact_frozen_candidate_pool_rows": 94873,
+    "canary_size_rows": 90000,
+    "scientific_eligibility_rule_relaxed": false,
+    "note": "Only the canary bundle-size requirement changed from 100000 to 90000."
+  },
+  "planned_hosts": ["mac_cpu", "deep_server_cpu", "alien_gpu"],
+  "planned_repeats_per_host": 2,
+  "runs_completed": 6,
+  "median_multi_fit_seconds": {
+    "mac_cpu": 1.5789247498614714,
+    "deep_server_cpu": 10.824128331500106,
+    "alien_gpu": 19.994718753994675
+  },
+  "per_epoch_row_head_per_second": {
+    "mac_cpu": [18881667.893753037, 19197552.71769391],
+    "deep_server_cpu": [2745269.7638709825, 2809743.081522582],
+    "alien_gpu": [1586866.959056772, 1428270.0937189753]
+  },
+  "aggregate_calibration": {
+    "mac_cpu_concurrency3": {"batch_wall_seconds": 4.206098416121677, "successful_jobs": 3, "jobs_per_second": 0.713250072442721, "row_head_epoch_per_second": 21440297.177628193, "peak_rss_bytes": 712179712, "finite": true, "deterministic": true, "ecological_metrics": 0},
+    "deep_server_cpu_concurrency16": {"batch_wall_seconds": 31.409162184922025, "successful_jobs": 16, "jobs_per_second": 0.5094055010381908, "row_head_epoch_per_second": 15312729.361208016, "peak_rss_bytes": 993341440, "finite": true, "deterministic": true, "ecological_metrics": 0},
+    "deep_server_cpu_concurrency32": {"batch_wall_seconds": 35.68790526385419, "successful_jobs": 32, "jobs_per_second": 0.8966623219662765, "row_head_epoch_per_second": 26953669.398306273, "peak_rss_bytes": 993849344, "finite": true, "deterministic": true, "ecological_metrics": 0}
+  },
+  "provenance": {
+    "canary_source_sha256": "c2dc574f05e77b039b9ba2e65dad3ba2f00780ca3e5548e9e7a7ddae3700909d",
+    "config_sha256": "951ebf7a753a5de7967d7ac296e4fa598188355fe12ff18ff030d7f7a4fea542",
+    "uv_lock_sha256": "51712e74b2f9d78a4efb7bfd6732244188e8c6c5bc722f7a78f2724e6b8b84f6"
+  },
+  "runtime": {
+    "mac_cpu": "fresh uv sync --locked; Python 3.12.13, NumPy 2.5.1, Torch 2.13.0",
+    "deep_server_cpu": "fresh uv sync --locked; Python 3.12.3, NumPy 2.5.1, Torch 2.13.0+cu130 forced to CPU",
+    "alien_gpu": "compatible pre-existing environment; Python 3.12.3, NumPy 2.2.6, Torch 2.7.1+cu118, CUDA 11.8, driver 546.01",
+    "cpu_lock_match": true,
+    "alien_lock_match": false,
+    "alien_caveat": "Alien CUDA runtime differs from the locked CPU stack and is hardware-compatibility evidence only."
+  },
+  "route_decision": "deep_server_cpu_vectorized_pretraining_and_target_jobs",
+  "workload_projection": {
+    "unit": "one row-head-epoch",
+    "canary_units": 30060000,
+    "planning_unit_range": [3600000, 39446585700],
+    "interpretation": "Linear workload-unit projection only; production wall time is not claimed."
+  },
+  "production_launched": false,
+  "ecological_metrics": 0,
+  "resumability": {
+    "sessions": ["goal051-conventional-deep", "goal052-dsdm-deep"],
+    "checkpoint_unit": "one target-fold-seed endpoint",
+    "completion_marker": "atomic run.exit plus independent receipt validation",
+    "wake_up": "dSDM orchestrator when a named tmux session completes or blocks"
+  }
+}

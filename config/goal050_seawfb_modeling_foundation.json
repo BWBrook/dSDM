@@ -1,0 +1,55 @@
+{
+  "schema_version": "goal050-seawfb-modeling-foundation-v1",
+  "goal_id": "goal050-seawfb-modeling-foundation",
+  "upstream": {
+    "goal048_domain": "data/processed/dsdm/goal048-seawfb-bioregional-freeze/domain_cells.csv",
+    "goal048_region_ledger": "data/processed/dsdm/goal048-seawfb-bioregional-freeze/response_free/cell_region_ledger.parquet",
+    "goal048_predictors": "data/processed/dsdm/goal048-seawfb-bioregional-freeze/predictors/predictor_substrate.parquet",
+    "goal049_registry": "data/processed/dsdm/goal049-seawfb-canonical-response/registry.json",
+    "goal049_taxonomy": "data/processed/dsdm/goal049-seawfb-canonical-response/taxonomy_freeze.json",
+    "goal049_canonical": "data/processed/dsdm/goal049-seawfb-canonical-response/canonical_species_cells.parquet",
+    "goal049_panel": "data/processed/dsdm/goal049-seawfb-canonical-response/panel_ledger.parquet",
+    "goal049_completion": "evidence/seawfb_canonical_response/goal049/completion_receipt.json",
+    "goal048_prerequisite": "metadata/goal048_prerequisite_freeze.json"
+  },
+  "provenance": {
+    "generator_source": "src/dsdm_phase1/goal050_seawfb_foundation.py",
+    "uv_lock": "uv.lock",
+    "ibra_authority": "data/raw/goal040/domain/ibra7_1_subregions.geojson"
+  },
+  "regions": ["NCP", "SEH", "NNC"],
+  "buffer_km": 50.0,
+  "grid": {"crs": "EPSG:4326", "projected_crs": "EPSG:3577", "block_m": 50000},
+  "folds": {
+    "count": 5,
+    "seed_range": [0, 511],
+    "selected_seed": null,
+    "map_share": [0.15, 0.25],
+    "primary_validation_presences": 30,
+    "focal_validation_presences": 10,
+    "head_validation_presences": 1,
+    "head_complement_training_presences": 100,
+    "validation_backgrounds": 100,
+    "complete_predictor_rows": true
+  },
+  "effort_support": {"primary_x": 10, "evaluation_only_x": 20},
+  "cross_fitting": {"focal_blocks": 10, "focal_block_sizes": [16, 15], "auxiliary_learning_curve": [20, 80, "full"], "target_learning_curve": [0.25, 0.5, 1.0]},
+  "predictors": {
+    "continuous": ["bio01", "bio02", "bio03", "bio04", "bio05", "bio06", "bio07", "bio08", "bio09", "bio10", "bio11", "bio12", "bio13", "bio14", "bio15", "bio16", "bio17", "bio18", "bio19", "elevation_mean", "elevation_sd"],
+    "categorical": ["nvis_mvg", "soil_order", "alum_secondary"]
+  },
+  "private_outputs": {
+    "root": "data/processed/dsdm/goal050-seawfb-modeling-foundation",
+    "cells": "cells.parquet",
+    "memberships": "memberships.parquet",
+    "crossfit": "crossfit_plan.json",
+    "curves": "learning_curves.json",
+    "run_exit": "run.exit"
+  },
+  "tracked_outputs": {
+    "transforms": "metadata/goal050_transforms.json",
+    "manifest": "metadata/goal050_manifest.json",
+    "decision": "metadata/goal050_decision_receipt.json",
+    "validation": "evidence/seawfb_modeling_foundation/goal050/foundation_validation.json"
+  }
+}

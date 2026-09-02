@@ -1,0 +1,71 @@
+{
+  "aggregate_calibration": {
+    "deep_server_cpu": [
+      16,
+      32
+    ],
+    "device": "cpu",
+    "mac_cpu": [
+      3
+    ],
+    "threads_per_job": 1
+  },
+  "bundle": {
+    "directory": "data/processed/dsdm/goal050-seawfb-modeling-foundation/canary",
+    "filename": "data/processed/dsdm/goal050-seawfb-modeling-foundation/canary/bundle-6a1ead837ee61b10f29d4039278f9e34b7441bea4fc17bc6b1ad5bf99c18d280.npz",
+    "metadata_sha256": "708bdd7e74a56e84ffc58003aa09eb2a15f2dcb5986f2867b90aee0fc1b3c8af",
+    "sha256": "6a1ead837ee61b10f29d4039278f9e34b7441bea4fc17bc6b1ad5bf99c18d280"
+  },
+  "compute_plan": "evidence/seawfb_modeling_foundation/goal050/compute_plan.json",
+  "goal_id": "goal050-seawfb-modeling-foundation",
+  "private_receipt_directory": "data/processed/dsdm/goal050-seawfb-modeling-foundation/canary/runs",
+  "protocol": {
+    "architecture": {
+      "activation": "GELU",
+      "blocks": 3,
+      "bottleneck": 64,
+      "dropout": 0.0,
+      "learning_rate": 0.001,
+      "normalization": "LayerNorm",
+      "optimizer": "AdamW",
+      "weight_decay": 0.001,
+      "width": 128
+    },
+    "batch_size": 128,
+    "eligibility_note": "Exact frozen eligibility yielded 94873 rows; only the canary bundle-size requirement changed from 100000 to 90000. No scientific eligibility rule was relaxed.",
+    "eligible_rows_under_frozen_rule": 94873,
+    "epochs": 2,
+    "heads": 167,
+    "held_block": 0,
+    "held_fold": 0,
+    "predictor_continuous": 21,
+    "rows": 90000,
+    "seed": 5050394,
+    "selected_seed": 394,
+    "threads": 1
+  },
+  "provenance": {
+    "canary_source": "src/dsdm_phase1/goal050_compute_canary.py",
+    "canary_source_sha256": "c2dc574f05e77b039b9ba2e65dad3ba2f00780ca3e5548e9e7a7ddae3700909d",
+    "uv_lock": "uv.lock",
+    "uv_lock_sha256": "51712e74b2f9d78a4efb7bfd6732244188e8c6c5bc722f7a78f2724e6b8b84f6"
+  },
+  "schema_version": "goal050-seawfb-compute-canary-v1",
+  "source": {
+    "cells": "data/processed/dsdm/goal050-seawfb-modeling-foundation/cells.parquet",
+    "crossfit": "data/processed/dsdm/goal050-seawfb-modeling-foundation/crossfit_plan.json",
+    "decision": "metadata/goal050_decision_receipt.json",
+    "manifest": "metadata/goal050_manifest.json",
+    "memberships": "data/processed/dsdm/goal050-seawfb-modeling-foundation/memberships.parquet",
+    "transforms": "metadata/goal050_transforms.json"
+  },
+  "source_bindings": {
+    "cells": "a66a540da7f3b8d0ea91e2f8d726e395debf28f49512470350cb7ce773dfe425",
+    "crossfit": "b3abdb006fb7d384445db376d5ba3f0f7b48afd170982494f88ff20ef612e804",
+    "decision": "f8848131404c93241d51f9f02b8e4491bc03b4b27c85e83b6e34f1a2741f3326",
+    "manifest": "239dd61cc5d3ab942a813201c0cb4117820b74367c7ba71deffddc6990d36198",
+    "memberships": "498e5948cd589a571a76547d4768ec37e9b55bed19da08d45af04e0ad38adede",
+    "transforms": "1d8b3d09b139264e288630f283e330d28919c00b4631132aa9a79529ad3abb52"
+  },
+  "tracked_output": "metadata/goal050_compute_canary.json"
+}

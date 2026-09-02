@@ -1,0 +1,24 @@
+{
+  "bindings": {
+    "manifest_sha256": "239dd61cc5d3ab942a813201c0cb4117820b74367c7ba71deffddc6990d36198",
+    "transforms_sha256": "1d8b3d09b139264e288630f283e330d28919c00b4631132aa9a79529ad3abb52"
+  },
+  "fold_count": 5,
+  "model_fitting": false,
+  "outer_regions_opened": false,
+  "privacy": {
+    "coordinates_tracked": false,
+    "models": 0,
+    "outcomes": 0,
+    "species_cell_payload_tracked": false
+  },
+  "richness_scope": {
+    "auxiliary_pretraining_backgrounds": "held-block-adjusted complement richness",
+    "target_fine_tuning_and_evaluation": "target-specific X10 background mask using full richness; target-absent rows already contribute zero for that target and co-block species remain donors"
+  },
+  "schema_version": "goal050-decision-receipt-v1",
+  "selected_seed": 394,
+  "status": "complete",
+  "x10_primary": true,
+  "x20_evaluation_only": true
+}

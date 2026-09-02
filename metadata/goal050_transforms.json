@@ -1,0 +1,1085 @@
+{
+  "bindings": {
+    "config_sha256": "8391a3b05a0f7a97509433e31f08aa9a889eb9ea09e4253afa150fa369a1b463"
+  },
+  "schema_version": "goal050-transforms-v1",
+  "seed": 394,
+  "training_cells": {
+    "fold_0": 601326,
+    "fold_1": 623447,
+    "fold_2": 635650,
+    "fold_3": 639836,
+    "fold_4": 649169,
+    "retained_full": 787357
+  },
+  "transforms": {
+    "fold_0": {
+      "categorical": {
+        "alum_secondary": [
+          "__MISSING__",
+          "__UNSEEN__",
+          "11:1.1 Nature conservation",
+          "12:1.2 Managed resource protection",
+          "13:1.3 Other minimal use",
+          "21:2.1 Grazing native vegetation",
+          "22:2.2 Production native forests",
+          "31:3.1 Plantation forests",
+          "32:3.2 Grazing modified pastures",
+          "33:3.3 Cropping",
+          "34:3.4 Perennial horticulture",
+          "35:3.5 Seasonal horticulture",
+          "41:4.1 Irrigated plantation forests",
+          "42:4.2 Grazing irrigated modified pastures",
+          "43:4.3 Irrigated cropping",
+          "44:4.4 Irrigated perennial horticulture",
+          "45:4.5 Irrigated seasonal horticulture",
+          "51:5.1 Intensive horticulture",
+          "52:5.2 Intensive animal production",
+          "53:5.3 Manufacturing and industrial",
+          "54:5.4.0; 5.4.1 Urban residential",
+          "55:5.5 Services",
+          "56:5.6 Utilities",
+          "57:5.7 Transport and communication",
+          "58:5.8 Mining",
+          "59:5.9 Waste treatment and disposal",
+          "61:6.1 Lake",
+          "62:6.0 Water",
+          "62:6.2 Reservoir/dam",
+          "63:6.3 River",
+          "64:6.4 Channel/aqueduct",
+          "65:6.5 Marsh/wetland",
+          "66:6.6 Estuary/coastal waters",
+          "70:5.4.2; 5.4.3; 5.4.4; 5.4.5 Rural residential and farm infrastructure"
+        ],
+        "nvis_mvg": [
+          "__MISSING__",
+          "__UNSEEN__",
+          "10:Other Forests and Woodlands",
+          "11:Eucalypt Open Woodlands",
+          "13:Acacia Open Woodlands",
+          "14:Mallee Woodlands and Shrublands",
+          "15:Low Closed Forests and Tall Closed Shrublands",
+          "16:Acacia Shrublands",
+          "17:Other Shrublands",
+          "18:Heathlands",
+          "19:Tussock Grasslands",
+          "1:Rainforests and Vine Thickets",
+          "20:Hummock Grasslands",
+          "21:Other Grasslands, Herblands, Sedgelands and Rushlands",
+          "22:Chenopod Shrublands, Samphire Shrublands and Forblands",
+          "23:Mangroves",
+          "24:Inland aquatic - freshwater, salt lakes, lagoons",
+          "25:Cleared, non-native vegetation, buildings",
+          "26:Unclassified native vegetation",
+          "27:Naturally bare - sand, rock, claypan, mudflat",
+          "28:Sea and estuaries",
+          "29:Regrowth, modified native vegetation",
+          "2:Eucalypt Tall Open Forests",
+          "31:Other Open Woodlands",
+          "32:Mallee Open Woodlands and Sparse Mallee Shrublands",
+          "3:Eucalypt Open Forests",
+          "4:Eucalypt Low Open Forests",
+          "5:Eucalypt Woodlands",
+          "6:Acacia Forests and Woodlands",
+          "7:Callitris Forests and Woodlands",
+          "8:Casuarina Forests and Woodlands",
+          "9:Melaleuca Forests and Woodlands"
+        ],
+        "soil_order": [
+          "__MISSING__",
+          "__UNSEEN__",
+          "10:Podosol",
+          "11:Rudosol",
+          "12:Calcarasol",
+          "13:Organosol",
+          "14:Anthroposol",
+          "1:Vertosol",
+          "2:Sodosol",
+          "3:Dermosol",
+          "4:Chromosol",
+          "5:Ferrosol",
+          "6:Kurosol",
+          "7:Tenosol",
+          "8:Kandosol",
+          "9:Hydrosol"
+        ]
+      },
+      "continuous": {
+        "bio01": {
+          "mean": 17.085878027151146,
+          "population_sd": 3.0340854160659876
+        },
+        "bio02": {
+          "mean": 12.761482862390736,
+          "population_sd": 1.931843196797028
+        },
+        "bio03": {
+          "mean": 49.055996772690925,
+          "population_sd": 2.374987901198716
+        },
+        "bio04": {
+          "mean": 494.38246270571784,
+          "population_sd": 91.41404753646877
+        },
+        "bio05": {
+          "mean": 30.42073704714292,
+          "population_sd": 3.9649345632066724
+        },
+        "bio06": {
+          "mean": 4.363987138543723,
+          "population_sd": 1.8824529207408216
+        },
+        "bio07": {
+          "mean": 26.056749909416084,
+          "population_sd": 4.048646276549395
+        },
+        "bio08": {
+          "mean": 18.410455282592256,
+          "population_sd": 7.245159351868844
+        },
+        "bio09": {
+          "mean": 16.114622952357543,
+          "population_sd": 4.218519368621743
+        },
+        "bio10": {
+          "mean": 22.990886413028313,
+          "population_sd": 3.542699178922258
+        },
+        "bio11": {
+          "mean": 10.807199296899155,
+          "population_sd": 2.513839802277594
+        },
+        "bio12": {
+          "mean": 656.2597258367175,
+          "population_sd": 343.3423998201347
+        },
+        "bio13": {
+          "mean": 86.99927071834243,
+          "population_sd": 46.13109839434575
+        },
+        "bio14": {
+          "mean": 29.9203934124887,
+          "population_sd": 14.9962400057363
+        },
+        "bio15": {
+          "mean": 32.70510654025845,
+          "population_sd": 13.347606335738298
+        },
+        "bio16": {
+          "mean": 236.29576034272907,
+          "population_sd": 127.33340145640514
+        },
+        "bio17": {
+          "mean": 104.19267021983346,
+          "population_sd": 53.26590679768965
+        },
+        "bio18": {
+          "mean": 193.7792541013768,
+          "population_sd": 113.79313817096667
+        },
+        "bio19": {
+          "mean": 145.41488966701132,
+          "population_sd": 110.07178727524801
+        },
+        "elevation_mean": {
+          "mean": 258.4210869401202,
+          "population_sd": 189.1755071610283
+        },
+        "elevation_sd": {
+          "mean": 11.004558374304684,
+          "population_sd": 15.620765718890905
+        }
+      }
+    },
+    "fold_1": {
+      "categorical": {
+        "alum_secondary": [
+          "__MISSING__",
+          "__UNSEEN__",
+          "11:1.1 Nature conservation",
+          "12:1.2 Managed resource protection",
+          "13:1.3 Other minimal use",
+          "21:2.1 Grazing native vegetation",
+          "22:2.2 Production native forests",
+          "31:3.1 Plantation forests",
+          "32:3.2 Grazing modified pastures",
+          "33:3.3 Cropping",
+          "34:3.4 Perennial horticulture",
+          "35:3.5 Seasonal horticulture",
+          "41:4.1 Irrigated plantation forests",
+          "42:4.2 Grazing irrigated modified pastures",
+          "43:4.3 Irrigated cropping",
+          "44:4.4 Irrigated perennial horticulture",
+          "45:4.5 Irrigated seasonal horticulture",
+          "51:5.1 Intensive horticulture",
+          "52:5.2 Intensive animal production",
+          "53:5.3 Manufacturing and industrial",
+          "54:5.4.0; 5.4.1 Urban residential",
+          "55:5.5 Services",
+          "56:5.6 Utilities",
+          "57:5.7 Transport and communication",
+          "58:5.8 Mining",
+          "59:5.9 Waste treatment and disposal",
+          "61:6.1 Lake",
+          "62:6.0 Water",
+          "62:6.2 Reservoir/dam",
+          "63:6.3 River",
+          "64:6.4 Channel/aqueduct",
+          "65:6.5 Marsh/wetland",
+          "66:6.6 Estuary/coastal waters",
+          "70:5.4.2; 5.4.3; 5.4.4; 5.4.5 Rural residential and farm infrastructure"
+        ],
+        "nvis_mvg": [
+          "__MISSING__",
+          "__UNSEEN__",
+          "10:Other Forests and Woodlands",
+          "11:Eucalypt Open Woodlands",
+          "13:Acacia Open Woodlands",
+          "14:Mallee Woodlands and Shrublands",
+          "15:Low Closed Forests and Tall Closed Shrublands",
+          "16:Acacia Shrublands",
+          "17:Other Shrublands",
+          "18:Heathlands",
+          "19:Tussock Grasslands",
+          "1:Rainforests and Vine Thickets",
+          "20:Hummock Grasslands",
+          "21:Other Grasslands, Herblands, Sedgelands and Rushlands",
+          "22:Chenopod Shrublands, Samphire Shrublands and Forblands",
+          "23:Mangroves",
+          "24:Inland aquatic - freshwater, salt lakes, lagoons",
+          "25:Cleared, non-native vegetation, buildings",
+          "26:Unclassified native vegetation",
+          "27:Naturally bare - sand, rock, claypan, mudflat",
+          "28:Sea and estuaries",
+          "29:Regrowth, modified native vegetation",
+          "2:Eucalypt Tall Open Forests",
+          "31:Other Open Woodlands",
+          "32:Mallee Open Woodlands and Sparse Mallee Shrublands",
+          "3:Eucalypt Open Forests",
+          "4:Eucalypt Low Open Forests",
+          "5:Eucalypt Woodlands",
+          "6:Acacia Forests and Woodlands",
+          "7:Callitris Forests and Woodlands",
+          "8:Casuarina Forests and Woodlands",
+          "9:Melaleuca Forests and Woodlands"
+        ],
+        "soil_order": [
+          "__MISSING__",
+          "__UNSEEN__",
+          "10:Podosol",
+          "11:Rudosol",
+          "12:Calcarasol",
+          "13:Organosol",
+          "14:Anthroposol",
+          "1:Vertosol",
+          "2:Sodosol",
+          "3:Dermosol",
+          "4:Chromosol",
+          "5:Ferrosol",
+          "6:Kurosol",
+          "7:Tenosol",
+          "8:Kandosol",
+          "9:Hydrosol"
+        ]
+      },
+      "continuous": {
+        "bio01": {
+          "mean": 17.21998028859396,
+          "population_sd": 3.0809322422361296
+        },
+        "bio02": {
+          "mean": 12.851258696552982,
+          "population_sd": 1.946654570254607
+        },
+        "bio03": {
+          "mean": 49.02743513817629,
+          "population_sd": 2.352237761598438
+        },
+        "bio04": {
+          "mean": 499.3165044858081,
+          "population_sd": 91.89126339684913
+        },
+        "bio05": {
+          "mean": 30.586037354728326,
+          "population_sd": 4.043625763503207
+        },
+        "bio06": {
+          "mean": 4.33109285849294,
+          "population_sd": 1.8644189968210105
+        },
+        "bio07": {
+          "mean": 26.254944501230266,
+          "population_sd": 4.071748610022884
+        },
+        "bio08": {
+          "mean": 18.842066543076555,
+          "population_sd": 7.32502069994443
+        },
+        "bio09": {
+          "mean": 15.88659831178723,
+          "population_sd": 4.190188602559775
+        },
+        "bio10": {
+          "mean": 23.170846905930283,
+          "population_sd": 3.618337867607308
+        },
+        "bio11": {
+          "mean": 10.866325689431381,
+          "population_sd": 2.519693577354241
+        },
+        "bio12": {
+          "mean": 661.8461502641425,
+          "population_sd": 361.37360497276524
+        },
+        "bio13": {
+          "mean": 87.77502448737094,
+          "population_sd": 46.82263853770665
+        },
+        "bio14": {
+          "mean": 30.02448576521027,
+          "population_sd": 15.600586307457064
+        },
+        "bio15": {
+          "mean": 33.00477399158691,
+          "population_sd": 12.86546444784715
+        },
+        "bio16": {
+          "mean": 238.23650464858616,
+          "population_sd": 130.6032888541851
+        },
+        "bio17": {
+          "mean": 104.99399457263516,
+          "population_sd": 56.423296317729054
+        },
+        "bio18": {
+          "mean": 196.0260031793439,
+          "population_sd": 110.70701095179305
+        },
+        "bio19": {
+          "mean": 146.09448753151244,
+          "population_sd": 118.45202365603387
+        },
+        "elevation_mean": {
+          "mean": 266.21056779674535,
+          "population_sd": 191.91800387941643
+        },
+        "elevation_sd": {
+          "mean": 10.69255207116356,
+          "population_sd": 15.52604786041522
+        }
+      }
+    },
+    "fold_2": {
+      "categorical": {
+        "alum_secondary": [
+          "__MISSING__",
+          "__UNSEEN__",
+          "11:1.1 Nature conservation",
+          "12:1.2 Managed resource protection",
+          "13:1.3 Other minimal use",
+          "21:2.1 Grazing native vegetation",
+          "22:2.2 Production native forests",
+          "31:3.1 Plantation forests",
+          "32:3.2 Grazing modified pastures",
+          "33:3.3 Cropping",
+          "34:3.4 Perennial horticulture",
+          "35:3.5 Seasonal horticulture",
+          "41:4.1 Irrigated plantation forests",
+          "42:4.2 Grazing irrigated modified pastures",
+          "43:4.3 Irrigated cropping",
+          "44:4.4 Irrigated perennial horticulture",
+          "45:4.5 Irrigated seasonal horticulture",
+          "51:5.1 Intensive horticulture",
+          "52:5.2 Intensive animal production",
+          "53:5.3 Manufacturing and industrial",
+          "54:5.4.0; 5.4.1 Urban residential",
+          "55:5.5 Services",
+          "56:5.6 Utilities",
+          "57:5.7 Transport and communication",
+          "58:5.8 Mining",
+          "59:5.9 Waste treatment and disposal",
+          "61:6.1 Lake",
+          "62:6.0 Water",
+          "62:6.2 Reservoir/dam",
+          "63:6.3 River",
+          "64:6.4 Channel/aqueduct",
+          "65:6.5 Marsh/wetland",
+          "66:6.6 Estuary/coastal waters",
+          "70:5.4.2; 5.4.3; 5.4.4; 5.4.5 Rural residential and farm infrastructure"
+        ],
+        "nvis_mvg": [
+          "__MISSING__",
+          "__UNSEEN__",
+          "10:Other Forests and Woodlands",
+          "11:Eucalypt Open Woodlands",
+          "13:Acacia Open Woodlands",
+          "14:Mallee Woodlands and Shrublands",
+          "15:Low Closed Forests and Tall Closed Shrublands",
+          "16:Acacia Shrublands",
+          "17:Other Shrublands",
+          "18:Heathlands",
+          "19:Tussock Grasslands",
+          "1:Rainforests and Vine Thickets",
+          "20:Hummock Grasslands",
+          "21:Other Grasslands, Herblands, Sedgelands and Rushlands",
+          "22:Chenopod Shrublands, Samphire Shrublands and Forblands",
+          "23:Mangroves",
+          "24:Inland aquatic - freshwater, salt lakes, lagoons",
+          "25:Cleared, non-native vegetation, buildings",
+          "26:Unclassified native vegetation",
+          "27:Naturally bare - sand, rock, claypan, mudflat",
+          "28:Sea and estuaries",
+          "29:Regrowth, modified native vegetation",
+          "2:Eucalypt Tall Open Forests",
+          "31:Other Open Woodlands",
+          "32:Mallee Open Woodlands and Sparse Mallee Shrublands",
+          "3:Eucalypt Open Forests",
+          "4:Eucalypt Low Open Forests",
+          "5:Eucalypt Woodlands",
+          "6:Acacia Forests and Woodlands",
+          "7:Callitris Forests and Woodlands",
+          "8:Casuarina Forests and Woodlands",
+          "9:Melaleuca Forests and Woodlands"
+        ],
+        "soil_order": [
+          "__MISSING__",
+          "__UNSEEN__",
+          "10:Podosol",
+          "11:Rudosol",
+          "12:Calcarasol",
+          "13:Organosol",
+          "14:Anthroposol",
+          "1:Vertosol",
+          "2:Sodosol",
+          "3:Dermosol",
+          "4:Chromosol",
+          "5:Ferrosol",
+          "6:Kurosol",
+          "7:Tenosol",
+          "8:Kandosol",
+          "9:Hydrosol"
+        ]
+      },
+      "continuous": {
+        "bio01": {
+          "mean": 17.210940030923176,
+          "population_sd": 2.8508711358873113
+        },
+        "bio02": {
+          "mean": 12.873626662875239,
+          "population_sd": 1.8702383980346695
+        },
+        "bio03": {
+          "mean": 48.9536457797062,
+          "population_sd": 2.3879827518901693
+        },
+        "bio04": {
+          "mean": 501.2524162601189,
+          "population_sd": 90.35077338548842
+        },
+        "bio05": {
+          "mean": 30.711404158686488,
+          "population_sd": 3.732991480982794
+        },
+        "bio06": {
+          "mean": 4.367142037575065,
+          "population_sd": 1.7899267888906152
+        },
+        "bio07": {
+          "mean": 26.344262125932268,
+          "population_sd": 3.9440471192351088
+        },
+        "bio08": {
+          "mean": 18.50896946217372,
+          "population_sd": 7.178543222933372
+        },
+        "bio09": {
+          "mean": 16.225074691352802,
+          "population_sd": 4.2642322618079955
+        },
+        "bio10": {
+          "mean": 23.207739150443654,
+          "population_sd": 3.335785329524172
+        },
+        "bio11": {
+          "mean": 10.855365819823874,
+          "population_sd": 2.366360019475475
+        },
+        "bio12": {
+          "mean": 632.01241016884,
+          "population_sd": 320.6131471083125
+        },
+        "bio13": {
+          "mean": 83.34888516419294,
+          "population_sd": 43.443869434665714
+        },
+        "bio14": {
+          "mean": 29.104835838576438,
+          "population_sd": 13.551127594692087
+        },
+        "bio15": {
+          "mean": 32.038657147605065,
+          "population_sd": 13.067069310237496
+        },
+        "bio16": {
+          "mean": 226.02675164854554,
+          "population_sd": 120.03294660276943
+        },
+        "bio17": {
+          "mean": 101.68132268014278,
+          "population_sd": 49.66475693939816
+        },
+        "bio18": {
+          "mean": 186.95330985094566,
+          "population_sd": 110.47130661949507
+        },
+        "bio19": {
+          "mean": 139.50028355298187,
+          "population_sd": 100.32201630565335
+        },
+        "elevation_mean": {
+          "mean": 245.72901808265763,
+          "population_sd": 176.45965562612184
+        },
+        "elevation_sd": {
+          "mean": 9.64415289498525,
+          "population_sd": 14.08657108522064
+        }
+      }
+    },
+    "fold_3": {
+      "categorical": {
+        "alum_secondary": [
+          "__MISSING__",
+          "__UNSEEN__",
+          "11:1.1 Nature conservation",
+          "12:1.2 Managed resource protection",
+          "13:1.3 Other minimal use",
+          "21:2.1 Grazing native vegetation",
+          "22:2.2 Production native forests",
+          "31:3.1 Plantation forests",
+          "32:3.2 Grazing modified pastures",
+          "33:3.3 Cropping",
+          "34:3.4 Perennial horticulture",
+          "35:3.5 Seasonal horticulture",
+          "41:4.1 Irrigated plantation forests",
+          "42:4.2 Grazing irrigated modified pastures",
+          "43:4.3 Irrigated cropping",
+          "44:4.4 Irrigated perennial horticulture",
+          "45:4.5 Irrigated seasonal horticulture",
+          "51:5.1 Intensive horticulture",
+          "52:5.2 Intensive animal production",
+          "53:5.3 Manufacturing and industrial",
+          "54:5.4.0; 5.4.1 Urban residential",
+          "55:5.5 Services",
+          "56:5.6 Utilities",
+          "57:5.7 Transport and communication",
+          "58:5.8 Mining",
+          "59:5.9 Waste treatment and disposal",
+          "61:6.1 Lake",
+          "62:6.0 Water",
+          "62:6.2 Reservoir/dam",
+          "63:6.3 River",
+          "64:6.4 Channel/aqueduct",
+          "65:6.5 Marsh/wetland",
+          "66:6.6 Estuary/coastal waters",
+          "70:5.4.2; 5.4.3; 5.4.4; 5.4.5 Rural residential and farm infrastructure"
+        ],
+        "nvis_mvg": [
+          "__MISSING__",
+          "__UNSEEN__",
+          "10:Other Forests and Woodlands",
+          "11:Eucalypt Open Woodlands",
+          "13:Acacia Open Woodlands",
+          "14:Mallee Woodlands and Shrublands",
+          "15:Low Closed Forests and Tall Closed Shrublands",
+          "16:Acacia Shrublands",
+          "17:Other Shrublands",
+          "18:Heathlands",
+          "19:Tussock Grasslands",
+          "1:Rainforests and Vine Thickets",
+          "20:Hummock Grasslands",
+          "21:Other Grasslands, Herblands, Sedgelands and Rushlands",
+          "22:Chenopod Shrublands, Samphire Shrublands and Forblands",
+          "23:Mangroves",
+          "24:Inland aquatic - freshwater, salt lakes, lagoons",
+          "25:Cleared, non-native vegetation, buildings",
+          "26:Unclassified native vegetation",
+          "27:Naturally bare - sand, rock, claypan, mudflat",
+          "28:Sea and estuaries",
+          "29:Regrowth, modified native vegetation",
+          "2:Eucalypt Tall Open Forests",
+          "31:Other Open Woodlands",
+          "32:Mallee Open Woodlands and Sparse Mallee Shrublands",
+          "3:Eucalypt Open Forests",
+          "4:Eucalypt Low Open Forests",
+          "5:Eucalypt Woodlands",
+          "6:Acacia Forests and Woodlands",
+          "7:Callitris Forests and Woodlands",
+          "8:Casuarina Forests and Woodlands",
+          "9:Melaleuca Forests and Woodlands"
+        ],
+        "soil_order": [
+          "__MISSING__",
+          "__UNSEEN__",
+          "10:Podosol",
+          "11:Rudosol",
+          "12:Calcarasol",
+          "13:Organosol",
+          "14:Anthroposol",
+          "1:Vertosol",
+          "2:Sodosol",
+          "3:Dermosol",
+          "4:Chromosol",
+          "5:Ferrosol",
+          "6:Kurosol",
+          "7:Tenosol",
+          "8:Kandosol",
+          "9:Hydrosol"
+        ]
+      },
+      "continuous": {
+        "bio01": {
+          "mean": 17.072536737629612,
+          "population_sd": 3.0620175749554996
+        },
+        "bio02": {
+          "mean": 12.817178155411789,
+          "population_sd": 1.9696406632591543
+        },
+        "bio03": {
+          "mean": 49.10464197166669,
+          "population_sd": 2.3342703684974024
+        },
+        "bio04": {
+          "mean": 496.1331924011459,
+          "population_sd": 92.72656871552178
+        },
+        "bio05": {
+          "mean": 30.429623984566156,
+          "population_sd": 4.080368187220117
+        },
+        "bio06": {
+          "mean": 4.2859655480115855,
+          "population_sd": 1.803527018077625
+        },
+        "bio07": {
+          "mean": 26.14365843738529,
+          "population_sd": 4.113953969822739
+        },
+        "bio08": {
+          "mean": 18.602199308553402,
+          "population_sd": 7.324629943374922
+        },
+        "bio09": {
+          "mean": 15.8383694835639,
+          "population_sd": 4.18636811228077
+        },
+        "bio10": {
+          "mean": 22.99342469373692,
+          "population_sd": 3.6391971772630476
+        },
+        "bio11": {
+          "mean": 10.76703823031516,
+          "population_sd": 2.454030365034875
+        },
+        "bio12": {
+          "mean": 659.59249111189,
+          "population_sd": 352.77255313892164
+        },
+        "bio13": {
+          "mean": 87.54910993715731,
+          "population_sd": 45.94859881462842
+        },
+        "bio14": {
+          "mean": 30.013812561027514,
+          "population_sd": 15.352797984597249
+        },
+        "bio15": {
+          "mean": 33.09163543217912,
+          "population_sd": 12.78325396274074
+        },
+        "bio16": {
+          "mean": 237.33366246463532,
+          "population_sd": 127.93286445251373
+        },
+        "bio17": {
+          "mean": 104.86070547808016,
+          "population_sd": 55.15550984476286
+        },
+        "bio18": {
+          "mean": 193.48034913998148,
+          "population_sd": 110.70731437945967
+        },
+        "bio19": {
+          "mean": 147.4829811471921,
+          "population_sd": 115.4694657241469
+        },
+        "elevation_mean": {
+          "mean": 266.24578846474947,
+          "population_sd": 190.93061870805874
+        },
+        "elevation_sd": {
+          "mean": 10.877143453518903,
+          "population_sd": 15.88044944005908
+        }
+      }
+    },
+    "fold_4": {
+      "categorical": {
+        "alum_secondary": [
+          "__MISSING__",
+          "__UNSEEN__",
+          "11:1.1 Nature conservation",
+          "12:1.2 Managed resource protection",
+          "13:1.3 Other minimal use",
+          "21:2.1 Grazing native vegetation",
+          "22:2.2 Production native forests",
+          "31:3.1 Plantation forests",
+          "32:3.2 Grazing modified pastures",
+          "33:3.3 Cropping",
+          "34:3.4 Perennial horticulture",
+          "35:3.5 Seasonal horticulture",
+          "41:4.1 Irrigated plantation forests",
+          "42:4.2 Grazing irrigated modified pastures",
+          "43:4.3 Irrigated cropping",
+          "44:4.4 Irrigated perennial horticulture",
+          "45:4.5 Irrigated seasonal horticulture",
+          "51:5.1 Intensive horticulture",
+          "52:5.2 Intensive animal production",
+          "53:5.3 Manufacturing and industrial",
+          "54:5.4.0; 5.4.1 Urban residential",
+          "55:5.5 Services",
+          "56:5.6 Utilities",
+          "57:5.7 Transport and communication",
+          "58:5.8 Mining",
+          "59:5.9 Waste treatment and disposal",
+          "61:6.1 Lake",
+          "62:6.0 Water",
+          "62:6.2 Reservoir/dam",
+          "63:6.3 River",
+          "64:6.4 Channel/aqueduct",
+          "65:6.5 Marsh/wetland",
+          "66:6.6 Estuary/coastal waters",
+          "70:5.4.2; 5.4.3; 5.4.4; 5.4.5 Rural residential and farm infrastructure"
+        ],
+        "nvis_mvg": [
+          "__MISSING__",
+          "__UNSEEN__",
+          "10:Other Forests and Woodlands",
+          "11:Eucalypt Open Woodlands",
+          "13:Acacia Open Woodlands",
+          "14:Mallee Woodlands and Shrublands",
+          "15:Low Closed Forests and Tall Closed Shrublands",
+          "16:Acacia Shrublands",
+          "17:Other Shrublands",
+          "18:Heathlands",
+          "19:Tussock Grasslands",
+          "1:Rainforests and Vine Thickets",
+          "20:Hummock Grasslands",
+          "21:Other Grasslands, Herblands, Sedgelands and Rushlands",
+          "22:Chenopod Shrublands, Samphire Shrublands and Forblands",
+          "23:Mangroves",
+          "24:Inland aquatic - freshwater, salt lakes, lagoons",
+          "25:Cleared, non-native vegetation, buildings",
+          "26:Unclassified native vegetation",
+          "27:Naturally bare - sand, rock, claypan, mudflat",
+          "28:Sea and estuaries",
+          "29:Regrowth, modified native vegetation",
+          "2:Eucalypt Tall Open Forests",
+          "31:Other Open Woodlands",
+          "32:Mallee Open Woodlands and Sparse Mallee Shrublands",
+          "3:Eucalypt Open Forests",
+          "4:Eucalypt Low Open Forests",
+          "5:Eucalypt Woodlands",
+          "6:Acacia Forests and Woodlands",
+          "7:Callitris Forests and Woodlands",
+          "8:Casuarina Forests and Woodlands",
+          "9:Melaleuca Forests and Woodlands"
+        ],
+        "soil_order": [
+          "__MISSING__",
+          "__UNSEEN__",
+          "10:Podosol",
+          "11:Rudosol",
+          "12:Calcarasol",
+          "13:Organosol",
+          "14:Anthroposol",
+          "1:Vertosol",
+          "2:Sodosol",
+          "3:Dermosol",
+          "4:Chromosol",
+          "5:Ferrosol",
+          "6:Kurosol",
+          "7:Tenosol",
+          "8:Kandosol",
+          "9:Hydrosol"
+        ]
+      },
+      "continuous": {
+        "bio01": {
+          "mean": 17.131367878510112,
+          "population_sd": 3.0797456313244935
+        },
+        "bio02": {
+          "mean": 12.824239870802083,
+          "population_sd": 1.9285509766587485
+        },
+        "bio03": {
+          "mean": 49.09093354812175,
+          "population_sd": 2.361607021631345
+        },
+        "bio04": {
+          "mean": 496.33943112235136,
+          "population_sd": 90.95570876851822
+        },
+        "bio05": {
+          "mean": 30.498472173395587,
+          "population_sd": 4.0162377246057614
+        },
+        "bio06": {
+          "mean": 4.334349707590612,
+          "population_sd": 1.8204239616486075
+        },
+        "bio07": {
+          "mean": 26.164122470949522,
+          "population_sd": 4.023872506067938
+        },
+        "bio08": {
+          "mean": 18.591091212105113,
+          "population_sd": 7.36646611601031
+        },
+        "bio09": {
+          "mean": 15.893328929180345,
+          "population_sd": 4.1491290988704
+        },
+        "bio10": {
+          "mean": 23.053084335357568,
+          "population_sd": 3.6256192222500814
+        },
+        "bio11": {
+          "mean": 10.82278617763635,
+          "population_sd": 2.4912553696952484
+        },
+        "bio12": {
+          "mean": 654.7639796580994,
+          "population_sd": 359.099044136769
+        },
+        "bio13": {
+          "mean": 86.88799152266562,
+          "population_sd": 46.41919854901202
+        },
+        "bio14": {
+          "mean": 29.728982889543232,
+          "population_sd": 15.839303058925227
+        },
+        "bio15": {
+          "mean": 33.09933212391222,
+          "population_sd": 13.020112722220404
+        },
+        "bio16": {
+          "mean": 235.51855342371093,
+          "population_sd": 129.08012216658125
+        },
+        "bio17": {
+          "mean": 104.02857861200616,
+          "population_sd": 57.066441742812096
+        },
+        "bio18": {
+          "mean": 192.77635014969528,
+          "population_sd": 112.14175589799272
+        },
+        "bio19": {
+          "mean": 145.08356714385093,
+          "population_sd": 115.03528499527363
+        },
+        "elevation_mean": {
+          "mean": 261.7150831286171,
+          "population_sd": 190.07579214873815
+        },
+        "elevation_sd": {
+          "mean": 10.69838483903243,
+          "population_sd": 15.884871863375821
+        }
+      }
+    },
+    "retained_full": {
+      "categorical": {
+        "alum_secondary": [
+          "__MISSING__",
+          "__UNSEEN__",
+          "11:1.1 Nature conservation",
+          "12:1.2 Managed resource protection",
+          "13:1.3 Other minimal use",
+          "21:2.1 Grazing native vegetation",
+          "22:2.2 Production native forests",
+          "31:3.1 Plantation forests",
+          "32:3.2 Grazing modified pastures",
+          "33:3.3 Cropping",
+          "34:3.4 Perennial horticulture",
+          "35:3.5 Seasonal horticulture",
+          "41:4.1 Irrigated plantation forests",
+          "42:4.2 Grazing irrigated modified pastures",
+          "43:4.3 Irrigated cropping",
+          "44:4.4 Irrigated perennial horticulture",
+          "45:4.5 Irrigated seasonal horticulture",
+          "51:5.1 Intensive horticulture",
+          "52:5.2 Intensive animal production",
+          "53:5.3 Manufacturing and industrial",
+          "54:5.4.0; 5.4.1 Urban residential",
+          "55:5.5 Services",
+          "56:5.6 Utilities",
+          "57:5.7 Transport and communication",
+          "58:5.8 Mining",
+          "59:5.9 Waste treatment and disposal",
+          "61:6.1 Lake",
+          "62:6.0 Water",
+          "62:6.2 Reservoir/dam",
+          "63:6.3 River",
+          "64:6.4 Channel/aqueduct",
+          "65:6.5 Marsh/wetland",
+          "66:6.6 Estuary/coastal waters",
+          "70:5.4.2; 5.4.3; 5.4.4; 5.4.5 Rural residential and farm infrastructure"
+        ],
+        "nvis_mvg": [
+          "__MISSING__",
+          "__UNSEEN__",
+          "10:Other Forests and Woodlands",
+          "11:Eucalypt Open Woodlands",
+          "13:Acacia Open Woodlands",
+          "14:Mallee Woodlands and Shrublands",
+          "15:Low Closed Forests and Tall Closed Shrublands",
+          "16:Acacia Shrublands",
+          "17:Other Shrublands",
+          "18:Heathlands",
+          "19:Tussock Grasslands",
+          "1:Rainforests and Vine Thickets",
+          "20:Hummock Grasslands",
+          "21:Other Grasslands, Herblands, Sedgelands and Rushlands",
+          "22:Chenopod Shrublands, Samphire Shrublands and Forblands",
+          "23:Mangroves",
+          "24:Inland aquatic - freshwater, salt lakes, lagoons",
+          "25:Cleared, non-native vegetation, buildings",
+          "26:Unclassified native vegetation",
+          "27:Naturally bare - sand, rock, claypan, mudflat",
+          "28:Sea and estuaries",
+          "29:Regrowth, modified native vegetation",
+          "2:Eucalypt Tall Open Forests",
+          "31:Other Open Woodlands",
+          "32:Mallee Open Woodlands and Sparse Mallee Shrublands",
+          "3:Eucalypt Open Forests",
+          "4:Eucalypt Low Open Forests",
+          "5:Eucalypt Woodlands",
+          "6:Acacia Forests and Woodlands",
+          "7:Callitris Forests and Woodlands",
+          "8:Casuarina Forests and Woodlands",
+          "9:Melaleuca Forests and Woodlands"
+        ],
+        "soil_order": [
+          "__MISSING__",
+          "__UNSEEN__",
+          "10:Podosol",
+          "11:Rudosol",
+          "12:Calcarasol",
+          "13:Organosol",
+          "14:Anthroposol",
+          "1:Vertosol",
+          "2:Sodosol",
+          "3:Dermosol",
+          "4:Chromosol",
+          "5:Ferrosol",
+          "6:Kurosol",
+          "7:Tenosol",
+          "8:Kandosol",
+          "9:Hydrosol"
+        ]
+      },
+      "continuous": {
+        "bio01": {
+          "mean": 17.144332449012555,
+          "population_sd": 3.0233575027895525
+        },
+        "bio02": {
+          "mean": 12.826138822988696,
+          "population_sd": 1.9299890370659278
+        },
+        "bio03": {
+          "mean": 49.04677009957012,
+          "population_sd": 2.362767341321302
+        },
+        "bio04": {
+          "mean": 497.50478706151466,
+          "population_sd": 91.5026009590156
+        },
+        "bio05": {
+          "mean": 30.52995099059349,
+          "population_sd": 3.9711474326432716
+        },
+        "bio06": {
+          "mean": 4.336151675699023,
+          "population_sd": 1.8319642390602326
+        },
+        "bio07": {
+          "mean": 26.19379931824135,
+          "population_sd": 4.041859769352785
+        },
+        "bio08": {
+          "mean": 18.591974761971,
+          "population_sd": 7.2903664857073025
+        },
+        "bio09": {
+          "mean": 15.99003304635492,
+          "population_sd": 4.204194989337431
+        },
+        "bio10": {
+          "mean": 23.08361420934301,
+          "population_sd": 3.5555787806101615
+        },
+        "bio11": {
+          "mean": 10.823679291963572,
+          "population_sd": 2.4693276248567466
+        },
+        "bio12": {
+          "mean": 652.8412048057946,
+          "population_sd": 347.97262730165846
+        },
+        "bio13": {
+          "mean": 86.50494414942318,
+          "population_sd": 45.79232455899106
+        },
+        "bio14": {
+          "mean": 29.755942389468757,
+          "population_sd": 15.096284276343754
+        },
+        "bio15": {
+          "mean": 32.789720814767335,
+          "population_sd": 13.02104857610496
+        },
+        "bio16": {
+          "mean": 234.65828145028382,
+          "population_sd": 127.11972047452507
+        },
+        "bio17": {
+          "mean": 103.94640404687786,
+          "population_sd": 54.41051294851987
+        },
+        "bio18": {
+          "mean": 192.5790987609107,
+          "population_sd": 111.59259653876742
+        },
+        "bio19": {
+          "mean": 144.70768225192782,
+          "population_sd": 112.09881761675256
+        },
+        "elevation_mean": {
+          "mean": 259.6700441599002,
+          "population_sd": 187.93465088782156
+        },
+        "elevation_sd": {
+          "mean": 10.579229026379007,
+          "population_sd": 15.42196737536522
+        }
+      }
+    }
+  }
+}
