@@ -1,5 +1,9 @@
 # dSDM
 
+For a fresh task, start with [HANDOVER.md](HANDOVER.md). It contains the current
+scientific and execution handoff and supersedes the older status narrative
+below; the linked historical protocols remain useful.
+
 dSDM is a provenance-bound, Python-first workflow for rebuilding and comparing
 species distribution models, currently proved on the Tasmanian mammal case
 study. It protects source lineage, camera privacy, response semantics,
