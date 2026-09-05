@@ -1,7 +1,7 @@
 {
   "schema_version": "goal051-seawfb-conventional-v1",
   "goal_id": "goal051-seawfb-conventional-benchmark",
-  "protocol_version": 2,
+  "protocol_version": 3,
   "status": "prospectively_frozen_before_ecological_scores",
   "amendments": [
     {
@@ -11,6 +11,21 @@
       "timing": "before_any_ecological_scores",
       "classification": "numerical_only",
       "changed": ["tol_1e-5", "primary_max_iter_5000", "same_seed_from_scratch_extended_max_iter_10000"],
+      "unchanged": ["solver_saga", "C_0.1", "l1_ratio_0.5", "weights", "features", "exclusions", "seed"]
+    },
+    {
+      "id": "goal051-q-linear-numerical-amendment-2",
+      "date": "2026-09-05",
+      "trigger": "metric_free_q_linear_weight_scaling_and_warning_classification_review",
+      "timing": "before_any_ecological_scores",
+      "classification": "numerical_only",
+      "authorization": "user_approved_2026-09-05",
+      "changed": [
+        "solver_sample_weight=w/k_where_k=max_collapsed_sample_weight",
+        "solver_C=canonical_C*k",
+        "convergence_warning_classification",
+        "remove_deprecated_penalty_and_n_jobs_arguments"
+      ],
       "unchanged": ["solver_saga", "C_0.1", "l1_ratio_0.5", "weights", "features", "exclusions", "seed"]
     }
   ],

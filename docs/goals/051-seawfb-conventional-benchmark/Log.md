@@ -33,3 +33,23 @@
   selection and production remain unlaunched pending an explicit decision on
   a different q-linear convergence policy or model.
 - No ecological metric was calculated and NCP, SEH, and NNC remained sealed.
+
+## 2026-09-05 - numerical amendment 2
+
+- User-approved a numerical-only correction before any ecological scores.
+- The q solver now divides collapsed sample weights by `k = max(weight)` and
+  uses `solver_C = canonical_C * k` (`canonical_C = 0.1`), preserving the exact
+  penalized likelihood up to the common factor `1/k`. Rows, equal-total head
+  weighting, features, exclusions, and seed are unchanged.
+- Convergence is classified from `ConvergenceWarning`; unrelated warnings are
+  recorded, while explicit numerical warnings and iteration ceilings remain
+  rejection conditions. Deprecated q `penalty` and `n_jobs` arguments are
+  removed. Receipts bind `k`, canonical and solver `C`, representation, and
+  warning types. No ecological score or outer outcome informed this amendment.
+- Focused verification passed: `31 passed`; the weighted penalized objective
+  equivalence and practical probability equivalence tests passed; `bash -n`
+  and `git diff --check` passed. Protocol-v2 failures did not retain per-attempt
+  iteration or warning-type details. Inspection now confirms that deprecated
+  sklearn arguments could emit warnings falsely captured by `bool(caught)`, so
+  those failures alone do not prove exhausted-iteration nonconvergence. Prior
+  v1 history remains intact.

@@ -148,23 +148,51 @@ EXPECTED_Q_NUMERICAL_FIT = {
     "acceptance": "converged_attempt_only",
     "ceiling_stability_acceptance": False,
 }
-EXPECTED_GOAL051_AMENDMENT = {
-    "id": "goal051-q-linear-numerical-amendment-1",
-    "date": "2026-09-05",
-    "trigger": "metric_free_q_linear_primary_nonconvergence",
-    "timing": "before_any_ecological_scores",
-    "classification": "numerical_only",
-    "changed": ["tol_1e-5", "primary_max_iter_5000", "same_seed_from_scratch_extended_max_iter_10000"],
-    "unchanged": ["solver_saga", "C_0.1", "l1_ratio_0.5", "weights", "features", "exclusions", "seed"],
-}
-EXPECTED_GOAL052_AMENDMENT = {
-    "id": "goal051-q-linear-numerical-amendment-1",
-    "date": "2026-09-05",
-    "timing": "before_any_ecological_scores",
-    "classification": "numerical_only",
-    "scope": "goal051_q_linear_convergence_only",
-    "dsdm_scientific_design_changed": False,
-}
+EXPECTED_GOAL051_AMENDMENTS = [
+    {
+        "id": "goal051-q-linear-numerical-amendment-1",
+        "date": "2026-09-05",
+        "trigger": "metric_free_q_linear_primary_nonconvergence",
+        "timing": "before_any_ecological_scores",
+        "classification": "numerical_only",
+        "changed": ["tol_1e-5", "primary_max_iter_5000", "same_seed_from_scratch_extended_max_iter_10000"],
+        "unchanged": ["solver_saga", "C_0.1", "l1_ratio_0.5", "weights", "features", "exclusions", "seed"],
+    },
+    {
+        "id": "goal051-q-linear-numerical-amendment-2",
+        "date": "2026-09-05",
+        "trigger": "metric_free_q_linear_weight_scaling_and_warning_classification_review",
+        "timing": "before_any_ecological_scores",
+        "classification": "numerical_only",
+        "authorization": "user_approved_2026-09-05",
+        "changed": [
+            "solver_sample_weight=w/k_where_k=max_collapsed_sample_weight",
+            "solver_C=canonical_C*k",
+            "convergence_warning_classification",
+            "remove_deprecated_penalty_and_n_jobs_arguments",
+        ],
+        "unchanged": ["solver_saga", "C_0.1", "l1_ratio_0.5", "weights", "features", "exclusions", "seed"],
+    },
+]
+EXPECTED_GOAL052_AMENDMENTS = [
+    {
+        "id": "goal051-q-linear-numerical-amendment-1",
+        "date": "2026-09-05",
+        "timing": "before_any_ecological_scores",
+        "classification": "numerical_only",
+        "scope": "goal051_q_linear_convergence_only",
+        "dsdm_scientific_design_changed": False,
+    },
+    {
+        "id": "goal051-q-linear-numerical-amendment-2",
+        "date": "2026-09-05",
+        "timing": "before_any_ecological_scores",
+        "classification": "numerical_only",
+        "scope": "goal051_q_linear_representation_and_warning_classification_only",
+        "authorization": "user_approved_2026-09-05",
+        "dsdm_scientific_design_changed": False,
+    },
+]
 PREDICTION_SCHEMA = pa.schema(
     [
         pa.field("target", pa.string(), nullable=False),
@@ -266,7 +294,12 @@ def _validate_q_attempts(receipt: Mapping[str, Any], numerical_fit: Mapping[str,
             and isinstance(item.get("n_iter"), int)
             and 0 < item["n_iter"] <= max_iter
             and isinstance(item.get("warning"), bool)
-            and item.get("converged") == (not item["warning"] and item["n_iter"] < max_iter),
+            and isinstance(item.get("warning_types"), list)
+            and all(isinstance(value, str) for value in item["warning_types"])
+            and item.get("warning") == ("ConvergenceWarning" in item["warning_types"])
+            and isinstance(item.get("numerical_warning"), bool)
+            and item.get("numerical_warning") == ("RuntimeWarning" in item["warning_types"])
+            and item.get("converged") == (not item["warning"] and not item["numerical_warning"] and item["n_iter"] < max_iter),
             "q_attempt_record_drift",
         )
     accepted = receipt.get("accepted_attempt")
@@ -282,11 +315,28 @@ def _validate_q_attempts(receipt: Mapping[str, Any], numerical_fit: Mapping[str,
     )
 
 
+def _validate_q_weight_rescaling(receipt: Mapping[str, Any]) -> None:
+    k = receipt.get("k")
+    canonical_c = receipt.get("canonical_C")
+    solver_c = receipt.get("solver_C")
+    require(
+        isinstance(k, (int, float))
+        and np.isfinite(k)
+        and k > 0
+        and isinstance(canonical_c, (int, float))
+        and np.isclose(canonical_c, 0.1, rtol=0, atol=0)
+        and isinstance(solver_c, (int, float))
+        and np.isclose(solver_c, canonical_c * k, rtol=0, atol=1e-12)
+        and receipt.get("representation") == "collapsed_weight_divided_by_k_solver_C_multiplied_by_k",
+        "q_weight_rescaling_receipt_drift",
+    )
+
+
 def _validate_goal052(goal052: Mapping[str, Any]) -> None:
     require(goal052.get("schema_version") == "goal052-seawfb-dsdm-v1", "goal052_schema_drift")
     require(
-        goal052.get("protocol_version") == 2
-        and goal052.get("prospective_amendments") == [EXPECTED_GOAL052_AMENDMENT],
+        goal052.get("protocol_version") == 3
+        and goal052.get("prospective_amendments") == EXPECTED_GOAL052_AMENDMENTS,
         "goal052_amendment_record_drift",
     )
     require(goal052.get("status") == "prospectively_frozen_protocol_only_not_executed", "goal052_not_prospectively_frozen")
@@ -365,7 +415,7 @@ def _validate_goal052(goal052: Mapping[str, Any]) -> None:
     require(
         goal052.get("amendment_policy")
         == {
-            "before_scores": "goal051_q_linear_numerical_amendment_1_exercised_before_scores; any_further_before_score_change_requires_explicit_versioned_authorization_and_repeated_metric_free_canary",
+            "before_scores": "goal051_q_linear_numerical_amendments_1_and_2_exercised_before_scores; any_further_before_score_change_requires_explicit_versioned_authorization_and_repeated_metric_free_canary",
             "after_scores": "any_scientific_change_requires_versioned_amendment_and_full_prespecified_rerun",
             "performance_driven_goalpost_change": False,
         },
@@ -458,8 +508,8 @@ def validate_inputs(root: Path) -> dict[str, Any]:
     config = _config(root)
     require(config.get("schema_version") == "goal051-seawfb-conventional-v1", "goal051_schema_drift")
     require(
-        config.get("protocol_version") == 2
-        and config.get("amendments") == [EXPECTED_GOAL051_AMENDMENT],
+        config.get("protocol_version") == 3
+        and config.get("amendments") == EXPECTED_GOAL051_AMENDMENTS,
         "goal051_amendment_record_drift",
     )
     require(config.get("status") == "prospectively_frozen_before_ecological_scores", "goal051_not_frozen")
@@ -615,6 +665,7 @@ def _load_q(root: Path, config: Mapping[str, Any], identity: Mapping[str, str], 
     require(coefficient.ndim == 1 and np.isfinite(coefficient).all() and np.isfinite(intercept), "q_checkpoint_parameter_drift")
     require(receipt.get("numerical_fit") == config["community_control"]["numerical_fit"], "q_checkpoint_numerical_fit_drift")
     _validate_q_attempts(receipt, config["community_control"]["numerical_fit"])
+    _validate_q_weight_rescaling(receipt)
     require(receipt.get("parameter_digest") == q_parameter_digest(coefficient, intercept), "q_checkpoint_parameter_digest_drift")
     model = QLinearModel(coefficient, intercept, block, fold, auxiliary, receipt["transform_id"], int(receipt["iterations"]))
     return model, receipt
@@ -1189,6 +1240,7 @@ def q_provenance(root: Path, config: Mapping[str, Any], require_complete: bool) 
         require(held.isdisjoint(receipt["heads"]), "q_receipt_block_leakage")
         require(receipt["head_count"] == len(expected_heads), "q_receipt_head_count_drift")
         require(receipt["richness"] == "R_complement" and receipt["within_head_class_balancing"] is False, "q_receipt_science_drift")
+        _validate_q_weight_rescaling(receipt)
         low, high = receipt["head_total_weight_range"]
         require(np.isclose(low, high, rtol=0, atol=1e-8), "q_receipt_head_weight_drift")
         records.append(
@@ -1200,6 +1252,10 @@ def q_provenance(root: Path, config: Mapping[str, Any], require_complete: bool) 
                 "parameter_digest": receipt["parameter_digest"],
                 "attempts": receipt["attempts"],
                 "accepted_attempt": receipt["accepted_attempt"],
+                "k": receipt["k"],
+                "canonical_C": receipt["canonical_C"],
+                "solver_C": receipt["solver_C"],
+                "representation": receipt["representation"],
                 "head_count": receipt["head_count"],
                 "expanded_rows": receipt["expanded_rows"],
                 "collapsed_rows": receipt["collapsed_rows"],
@@ -1538,6 +1594,10 @@ def _canary(root: Path, receipt_tag: str | None = None) -> dict[str, Any]:
                 "converged": True,
                 "attempts": q_fit["attempts"],
                 "accepted_attempt": q_fit["accepted_attempt"],
+                "k": q_fit["k"],
+                "canonical_C": q_fit["canonical_C"],
+                "solver_C": q_fit["solver_C"],
+                "representation": q_fit["representation"],
                 "parameter_digest": q_fit["parameter_digest"],
                 "standardization": scale,
                 "downstream_family": spec["q_augmented_family"],
@@ -1695,6 +1755,7 @@ def canary_summary(root: Path, host_key: str) -> dict[str, Any]:
             low, high = item.get("prediction_range", [np.nan, np.nan])
             downstream = item.get("downstream_fit", {})
             _validate_q_attempts(item, config["community_control"]["numerical_fit"])
+            _validate_q_weight_rescaling(item)
             require(
                 item.get("converged") is True
                 and item.get("finite") is True

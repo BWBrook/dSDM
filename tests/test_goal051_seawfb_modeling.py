@@ -12,6 +12,7 @@ import numpy as np
 import pandas as pd
 import pytest
 from sklearn.exceptions import ConvergenceWarning
+from sklearn.linear_model import LogisticRegression
 
 from dsdm_phase1.goal050_seawfb_foundation import CATEGORICAL, CONTINUOUS
 from dsdm_phase1.goal051_seawfb_conventional import (
@@ -184,6 +185,7 @@ def _script_q_fits(monkeypatch, specifications):
 
         def fit(self, x, y, sample_weight):
             calls.append(self.kwargs)
+            self.kwargs["sample_weight"] = np.asarray(sample_weight)
             n_iter, warning = self.specification
             if warning:
                 warnings.warn("synthetic ceiling", ConvergenceWarning)
@@ -204,7 +206,20 @@ def test_q_numerical_primary_success_and_deterministic_digest(monkeypatch):
     first, first_receipt = fit_q_linear(_FitQStore(), 0, 0, "full", "seed-space", EXPECTED_Q_NUMERICAL_FIT)
     second, second_receipt = fit_q_linear(_FitQStore(), 0, 0, "full", "seed-space", EXPECTED_Q_NUMERICAL_FIT)
     assert first_receipt["accepted_attempt"] == "primary"
-    assert first_receipt["attempts"] == [{"attempt": "primary", "max_iter": 5000, "tol": 1e-5, "n_iter": 25, "warning": False, "converged": True}]
+    assert first_receipt["attempts"] == [{
+        "attempt": "primary",
+        "max_iter": 5000,
+        "tol": 1e-5,
+        "n_iter": 25,
+        "warning": False,
+        "warning_types": [],
+        "numerical_warning": False,
+        "converged": True,
+    }]
+    assert first_receipt["k"] == 1.0
+    assert first_receipt["canonical_C"] == 0.1
+    assert first_receipt["solver_C"] == 0.1
+    assert first_receipt["representation"] == "collapsed_weight_divided_by_k_solver_C_multiplied_by_k"
     assert first_receipt["fit_seed"] == second_receipt["fit_seed"]
     assert first_receipt["parameter_digest"] == second_receipt["parameter_digest"]
     assert first_receipt["parameter_digest"] == q_parameter_digest(first.coefficient, first.intercept)
@@ -223,8 +238,92 @@ def test_q_numerical_extended_attempt_is_from_scratch_same_seed(monkeypatch):
 
 def test_q_numerical_extended_nonconvergence_fails_closed(monkeypatch):
     _script_q_fits(monkeypatch, [(5000, True), (10000, True)])
-    with pytest.raises(SeawfbModelingError, match="q_linear_nonconverged_after_extended_attempt"):
+    with pytest.raises(SeawfbModelingError, match="q_linear_nonconverged_after_extended_attempt") as error:
         fit_q_linear(_FitQStore(), 2, 3, "80", "seed-space", EXPECTED_Q_NUMERICAL_FIT)
+    assert '"warning_types":["ConvergenceWarning"]' in str(error.value)
+
+
+def test_q_future_warning_does_not_count_as_nonconvergence(monkeypatch):
+    calls = []
+
+    class FutureWarningLogistic:
+        def __init__(self, **kwargs):
+            self.kwargs = kwargs
+
+        def fit(self, x, y, sample_weight):
+            calls.append((self.kwargs, sample_weight.copy()))
+            warnings.warn("synthetic compatibility warning", FutureWarning)
+            self.n_iter_ = np.array([25])
+            self.coef_ = np.array([[0.25]])
+            self.intercept_ = np.array([-0.5])
+            return self
+
+    monkeypatch.setattr("dsdm_phase1.seawfb_modeling.LogisticRegression", FutureWarningLogistic)
+    _, receipt = fit_q_linear(_FitQStore(), 0, 0, "full", "seed-space", EXPECTED_Q_NUMERICAL_FIT)
+    assert receipt["accepted_attempt"] == "primary"
+    assert receipt["attempts"][0]["warning_types"] == ["FutureWarning"]
+    assert receipt["attempts"][0]["warning"] is False
+    assert "penalty" not in calls[0][0]
+    assert "n_jobs" not in calls[0][0]
+
+
+def test_q_convergence_warning_still_retries_and_is_recorded(monkeypatch):
+    calls = _script_q_fits(monkeypatch, [(5000, True), (8123, False)])
+    _, receipt = fit_q_linear(_FitQStore(), 0, 0, "full", "seed-space", EXPECTED_Q_NUMERICAL_FIT)
+    assert receipt["accepted_attempt"] == "extended"
+    assert receipt["attempts"][0]["warning_types"] == ["ConvergenceWarning"]
+    assert receipt["attempts"][0]["warning"] is True
+    assert receipt["attempts"][0]["converged"] is False
+
+
+def test_q_rescaled_objective_is_exactly_original_over_k():
+    x = np.array([[1.2, -0.7], [-0.4, 0.9], [0.8, 1.1]])
+    y = np.array([0, 1, 1])
+    beta = np.array([0.65, -0.35])
+    intercept = -0.2
+    weights = np.array([2.0, 5.0, 3.0])
+    eta = x @ beta + intercept
+    for l1_ratio in (0.0, 0.5, 1.0):
+        canonical_c = 0.1
+        k = float(np.max(weights))
+        penalty = (1.0 - l1_ratio) * 0.5 * np.sum(beta**2) + l1_ratio * np.sum(np.abs(beta))
+        original = weighted_logistic_loss(eta, y, weights) + penalty / canonical_c
+        rescaled = weighted_logistic_loss(eta, y, weights / k) + penalty / (canonical_c * k)
+        assert np.isclose(rescaled, original / k, rtol=0, atol=1e-12)
+
+
+def test_q_solver_receives_rescaled_weights_and_compensated_C(monkeypatch):
+    class WeightedStore(_FitQStore):
+        def q_collapsed_rows(self, held_block, held_fold, auxiliary_size):
+            collapsed, receipt = super().q_collapsed_rows(held_block, held_fold, auxiliary_size)
+            return CollapsedBinaryRows(collapsed.indices, collapsed.y, np.array([2.0, 5.0]), (2,), 2), receipt
+
+    calls = _script_q_fits(monkeypatch, [(25, False)])
+    _, receipt = fit_q_linear(WeightedStore(), 0, 0, "full", "seed-space", EXPECTED_Q_NUMERICAL_FIT)
+    assert np.allclose(calls[0]["sample_weight"], np.array([0.4, 1.0]))
+    assert receipt["k"] == 5.0
+    assert receipt["canonical_C"] == 0.1
+    assert receipt["solver_C"] == 0.5
+
+
+def test_q_rescaled_solver_matches_modest_weight_fit():
+    rng = np.random.default_rng(23)
+    x = rng.normal(size=(160, 3))
+    y = (x[:, 0] - 0.4 * x[:, 1] + rng.normal(size=160) > 0).astype(np.int8)
+    weights = np.linspace(1.0, 2.0, len(y))
+    k = float(np.max(weights))
+    common = {
+        "l1_ratio": 0.5,
+        "solver": "saga",
+        "max_iter": 50000,
+        "tol": 1e-9,
+        "fit_intercept": True,
+        "class_weight": None,
+        "random_state": 31,
+    }
+    raw = LogisticRegression(C=0.1, **common).fit(x, y, sample_weight=weights)
+    scaled = LogisticRegression(C=0.1 * k, **common).fit(x, y, sample_weight=weights / k)
+    assert np.allclose(raw.predict_proba(x), scaled.predict_proba(x), rtol=0, atol=2e-7)
 
 
 def test_q_numerical_config_drift_is_rejected():
@@ -436,9 +535,22 @@ def test_canary_summary_requires_exact_metric_free_inventory(tmp_path, monkeypat
                     "prediction_digest": f"digest-q-{auxiliary}",
                     "parameter_digest": "a" * 64 if str(auxiliary) == "20" else "b" * 64,
                     "attempts": [
-                        {"attempt": "primary", "max_iter": 5000, "tol": 1e-5, "n_iter": 25, "warning": False, "converged": True}
+                        {
+                            "attempt": "primary",
+                            "max_iter": 5000,
+                            "tol": 1e-5,
+                            "n_iter": 25,
+                            "warning": False,
+                            "warning_types": [],
+                            "numerical_warning": False,
+                            "converged": True,
+                        }
                     ],
                     "accepted_attempt": "primary",
+                    "k": 2.0,
+                    "canonical_C": 0.1,
+                    "solver_C": 0.2,
+                    "representation": "collapsed_weight_divided_by_k_solver_C_multiplied_by_k",
                     "downstream_family": "hist_gradient_boosting",
                     "downstream_candidate_id": "hgb04",
                     "downstream_fit": {"converged": True},

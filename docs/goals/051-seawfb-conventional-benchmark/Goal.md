@@ -35,9 +35,14 @@ ecological benchmark score is exposed.
   the frozen categorical encoding, without family or candidate retuning. The
   five unique downstream endpoints are target 100% with auxiliary 20/80/`full`,
   and target 25/50% with auxiliary `full`.
-- Under numerical amendment 1, fit q with SAGA tolerance 1e-5 and a 5,000
+- Under numerical amendments 1 and 2, fit q with SAGA tolerance 1e-5 and a 5,000
   iteration primary ceiling. On warning or ceiling hit, retry once from scratch
   with the same seed and a 10,000 iteration ceiling; accept only convergence.
+  Amendment 2 divides solver sample weights by `k = max(weight)` and multiplies
+  solver `C` by `k`, preserving the exact q objective up to a common scale.
+  Only `ConvergenceWarning` and explicit numerical warnings affect convergence
+  classification; other warning types remain diagnostics. Deprecated q solver
+  arguments are omitted.
 
 ## Acceptance criteria
 

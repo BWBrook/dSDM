@@ -18,6 +18,7 @@ import numpy as np
 import pandas as pd
 import pyarrow.parquet as pq
 from scipy.special import expit
+from sklearn.exceptions import ConvergenceWarning
 from sklearn.linear_model import LogisticRegression
 
 from .goal050_seawfb_foundation import CATEGORICAL, CONTINUOUS, nested_response_rows
@@ -446,6 +447,18 @@ def fit_q_linear(
     candidate = CANONICAL_CANDIDATES[candidate_id]
     seed = stable_seed(seed_namespace, "q_linear", held_block, held_fold, auxiliary_size)
     tol = float(numerical_fit["tol"])
+    k = float(np.max(collapsed.sample_weight))
+    canonical_c = float(candidate["C"])
+    require(math.isfinite(k) and k > 0, "q_weight_rescaling_invalid")
+    solver_c = canonical_c * k
+    solver_sample_weight = collapsed.sample_weight / k
+    require(
+        np.isfinite(solver_sample_weight).all()
+        and np.all(solver_sample_weight > 0)
+        and np.isclose(np.max(solver_sample_weight), 1.0, rtol=0, atol=1e-12),
+        "q_solver_weight_rescaling_invalid",
+    )
+    representation = "collapsed_weight_divided_by_k_solver_C_multiplied_by_k"
     attempts = []
     model = None
     accepted_attempt = None
@@ -454,23 +467,41 @@ def fit_q_linear(
         ("extended", int(numerical_fit["extended_max_iter"])),
     ):
         fitted_attempt = LogisticRegression(
-            C=float(candidate["C"]),
+            C=solver_c,
             l1_ratio=float(candidate["l1_ratio"]),
-            penalty="elasticnet",
             solver="saga",
             max_iter=max_iter,
             tol=tol,
             fit_intercept=True,
             class_weight=None,
-            n_jobs=1,
             random_state=seed,
         )
         with warnings.catch_warnings(record=True) as caught:
             warnings.simplefilter("always")
-            fitted_attempt.fit(features.x, collapsed.y, sample_weight=collapsed.sample_weight)
-        warning = bool(caught)
+            try:
+                fitted_attempt.fit(features.x, collapsed.y, sample_weight=solver_sample_weight)
+            except Exception as exc:
+                warning_types = sorted({type(item.message).__name__ for item in caught})
+                attempts.append(
+                    {
+                        "attempt": attempt,
+                        "max_iter": max_iter,
+                        "tol": tol,
+                        "n_iter": None,
+                        "warning": "ConvergenceWarning" in warning_types,
+                        "warning_types": warning_types,
+                        "numerical_warning": any(name == "RuntimeWarning" for name in warning_types),
+                        "converged": False,
+                        "error": type(exc).__name__,
+                    }
+                )
+                details = json.dumps({"attempts": attempts}, sort_keys=True, separators=(",", ":"))
+                raise SeawfbModelingError(f"q_linear_fit_failed:{details}") from exc
+        warning_types = sorted({type(item.message).__name__ for item in caught})
+        warning = any(isinstance(item.message, ConvergenceWarning) for item in caught)
+        numerical_warning = any(isinstance(item.message, RuntimeWarning) for item in caught)
         n_iter = int(fitted_attempt.n_iter_[0])
-        converged = not warning and n_iter < max_iter
+        converged = not warning and not numerical_warning and n_iter < max_iter
         attempts.append(
             {
                 "attempt": attempt,
@@ -478,6 +509,8 @@ def fit_q_linear(
                 "tol": tol,
                 "n_iter": n_iter,
                 "warning": warning,
+                "warning_types": warning_types,
+                "numerical_warning": numerical_warning,
                 "converged": converged,
             }
         )
@@ -485,7 +518,9 @@ def fit_q_linear(
             model = fitted_attempt
             accepted_attempt = attempt
             break
-    require(model is not None and accepted_attempt is not None, "q_linear_nonconverged_after_extended_attempt")
+    if model is None or accepted_attempt is None:
+        details = json.dumps({"attempts": attempts}, sort_keys=True, separators=(",", ":"))
+        raise SeawfbModelingError(f"q_linear_nonconverged_after_extended_attempt:{details}")
     fitted = QLinearModel(
         np.asarray(model.coef_[0], dtype=np.float64),
         float(model.intercept_[0]),
@@ -507,6 +542,10 @@ def fit_q_linear(
         "parameter_digest": parameter_digest,
         "numerical_fit": dict(numerical_fit),
         "coefficient_count": len(fitted.coefficient),
+        "k": k,
+        "canonical_C": canonical_c,
+        "solver_C": solver_c,
+        "representation": representation,
     }
 
 

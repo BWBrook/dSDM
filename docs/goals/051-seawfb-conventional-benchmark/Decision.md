@@ -37,6 +37,16 @@ ceiling. Only a converged attempt is accepted. No coefficient- or prediction-
 stability exception is authorized. Solver, regularization, data, weights,
 features, exclusions, and random seed are unchanged.
 
+Numerical amendment 2 was authorized by the user on 2026-09-05 before any
+ecological scores. It rescales only the solver representation: `k` is the
+maximum collapsed row weight, solver weights are `w/k`, and solver `C` is
+`0.1*k`, so the penalized objective is exactly the original objective divided
+by `k`. Convergence classification is based on `ConvergenceWarning`, with
+explicit numerical warnings still rejected; unrelated warnings are retained
+in attempt diagnostics. Deprecated `penalty` and `n_jobs` arguments are
+removed from the q fit. Scientific rows, equal-head weighting, features,
+exclusions, seed, and acceptance gate are unchanged.
+
 The inventory gate is 303 base endpoints, 449 q conditions, and 150 shared q
 surfaces. There is no partial-fold scoring. The null is mandatory; each family
 needs at least two complete candidates or an explicit NA. At the primary full

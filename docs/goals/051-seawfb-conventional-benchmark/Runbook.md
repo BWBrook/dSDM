@@ -33,6 +33,12 @@ tmux new-session -d -s dsdm-goal051-conventional \
   "GOAL051_WORKERS=$WORKERS bash scripts/goal051_launch.sh ."
 ```
 
+The launcher sets an explicit tool path for detached sessions: Mac uses
+`/opt/homebrew/bin` and deep-server uses `/home/bwbrook/.local/bin` (with
+standard system paths). It validates the repository root and run-directory
+creation before launching. Existing `run.log` and `run.exit` files are moved
+to timestamped `.previous-*` files before a restart.
+
 Inspect it without attaching:
 
 ```sh
@@ -48,5 +54,7 @@ is necessary but not sufficient: run the independent validator before
 acceptance. Do not open NCP, SEH, or NNC response/outcome data.
 
 Each q receipt records the primary and, when needed, extended numerical
-attempt, the accepted attempt, and the finite parameter digest. Host summaries
-must reproduce both q prediction and q parameter digests exactly.
+attempt, typed warning diagnostics, the accepted attempt, the finite parameter
+digest, and the exact solver representation (`k`, canonical `C`, solver `C`,
+and representation label). Host summaries must reproduce both q prediction and
+q parameter digests exactly.
