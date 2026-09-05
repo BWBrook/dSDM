@@ -58,3 +58,29 @@ attempt, typed warning diagnostics, the accepted attempt, the finite parameter
 digest, and the exact solver representation (`k`, canonical `C`, solver `C`,
 and representation label). Host summaries must reproduce both q prediction and
 q parameter digests exactly.
+
+## Detached Canary Handoff
+
+The corrected protocol-v3 canaries run detached under the existing approval.
+Use these exact status checks when waking the work:
+
+```sh
+set +e
+tmux has-session -t dsdm-goal051-canary-mac
+printf 'mac_tmux_rc=%s\n' "$?"
+tail -n 40 /Users/bwbrook/papers/dSDM/canary/batch-v3-mac.log
+printf 'mac_exit_marker='; cat /Users/bwbrook/papers/dSDM/canary/batch-v3-mac.exit
+```
+
+```sh
+set +e
+ssh deep-server 'tmux has-session -t dsdm-goal051-canary'
+printf 'deep_tmux_rc=%s\n' "$?"
+ssh deep-server 'tail -n 40 /data/codex/repos/dSDM/canary/batch-v3.log'
+printf 'deep_exit_marker='; ssh deep-server 'cat /data/codex/repos/dSDM/canary/batch-v3.exit'
+```
+
+An exit marker of `0` is necessary but not sufficient for acceptance. Resume
+only after both host summaries are complete and independently valid; then run
+`canary-route` with the selected host and workers before launching the main
+benchmark session. The main benchmark has not yet been launched.

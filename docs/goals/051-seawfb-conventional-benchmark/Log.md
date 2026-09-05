@@ -53,3 +53,22 @@
   sklearn arguments could emit warnings falsely captured by `bool(caught)`, so
   those failures alone do not prove exhausted-iteration nonconvergence. Prior
   v1 history remains intact.
+
+## 2026-09-05 - detached corrected canary handoff
+
+- Correction `c14bc47` is committed and pushed cleanly on Mac and deep-server;
+  the independent focused rerun remains `31 passed`.
+- The corrected protocol-v3 canary-batch was launched at approximately 16:27
+  AEST under the existing approval: Mac session `dsdm-goal051-canary-mac` in
+  `/Users/bwbrook/papers/dSDM`, with `canary/batch-v3-mac.log` and
+  `canary/batch-v3-mac.exit`; deep-server session `dsdm-goal051-canary` in
+  `/data/codex/repos/dSDM`, with `canary/batch-v3.log` and
+  `canary/batch-v3.exit`.
+- At approximately 16:32 AEST both CPU processes were active. The first
+  receipt had not completed; no failure, outer access, or ecological metric
+  was observed. Prior logs were preserved. The main benchmark remains
+  unlaunched.
+- User cadence is detached long compute followed by wake-up. On resume, finish
+  valid two-host summaries, run route selection, then launch the full
+  production benchmark under the existing approval. No new permission is
+  required.
