@@ -103,3 +103,33 @@
   Source changes invalidate the old canaries for route selection: retain them
   as history and run fresh two-host evidence after continuation. No canaries,
   production, or ongoing monitoring were launched during this sweep.
+
+## 2026-09-06 - resumed corrected two-host canaries
+
+- Barry authorized continuation of Goal051 under Twilight Laboratory. Kept the
+  frozen Goal051/052 science and the existing detached-compute cadence.
+- Confirmed no Goal051 jobs remained active; fast-forwarded the clean
+  deep-server checkout from `c14bc47` to `ab7e369`. Local source was already
+  clean at `ab7e369`.
+- Both live input plans passed with identical identity fields, including
+  source SHA `d304b3a9bfea3b5e7bbffc8fe3ea1ddce050fadfa0248a05a768389e462fb28b`.
+  The Linux portable gate passed **54 tests, 3 real-scope tests deselected**,
+  including actual spawned-worker backpropagation after parent autograd.
+  Two existing warnings concerned the unused Quadro K620 CUDA architecture;
+  the computation uses CPU.
+- Deep-server had 64 logical CPUs, 117 GiB available memory and 4.4 TiB free
+  on `/data`. Background load was about 49–51 at launch. Retained the approved
+  mixed concurrency of eight; interpret measured throughput in that shared
+  load context. Mac had 69% free memory and about 260 GiB free disk.
+- Preserved prior canary directories as
+  `canary.previous-20260905T141741Z` on Mac and
+  `canary.previous-20260905T141805Z` on deep-server. No old receipt was rebound.
+- Launched `dsdm-goal051-canary-mac` at 00:17:41 AEST and
+  `dsdm-goal051-canary` at 00:18:05 AEST, both from `ab7e369`, with explicit
+  one-thread estimator environment and atomic exit markers. Each private
+  `canary/launch.sh` retains the exact command. Both CPU processes were active
+  at the post-launch check; neither had an exit marker yet.
+- No production or ongoing monitor was launched. On wake-up, inspect these
+  existing sessions, validate complete host summaries and underlying receipts,
+  select the measured route, then proceed to the benchmark under the existing
+  approval. Do not duplicate jobs or use the archived canaries to select it.

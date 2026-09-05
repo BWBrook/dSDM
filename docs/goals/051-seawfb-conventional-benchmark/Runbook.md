@@ -61,14 +61,18 @@ q parameter digests exactly.
 
 ## Detached Canary Handoff
 
-The pre-cleanup protocol-v3 canaries have finished: Mac exited 0; deep-server
-exited 1 during mixed concurrency with the autograd/fork threading error.
-The 2026-09-05 code sweep explicitly selected `spawn` for canary and production
-workers. It also changed source-bound adapters and q preparation. Both hosts
-therefore need fresh canaries from the final source; the old Mac success
-cannot select a route for the changed source. Preserve the existing canary
-directory and logs before restarting. No replacement runs were launched in
-the sweep. These paths identify the historical runs until restart:
+Fresh protocol-v3 canaries were launched on **2026-09-06 at 00:17–00:18 AEST**
+from `ab7e369` on both hosts, following the code cleanup and explicit `spawn`
+repair. Both initial CPU processes were verified active. The Linux portable
+gate passed 54 tests; both hosts passed the frozen-input plan with identical
+identity fields. Production remains unlaunched.
+
+The prior Mac success and deep-server autograd/fork failure were preserved in
+`canary.previous-20260905T141741Z` (Mac) and
+`canary.previous-20260905T141805Z` (deep-server), beside the new `canary`
+directory. Each new `canary/launch.sh` records its exact command, source commit,
+one-thread environment, and log/exit handling. The following paths now refer
+to the replacement runs:
 
 ```sh
 set +e

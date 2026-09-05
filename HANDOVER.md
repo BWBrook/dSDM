@@ -2,8 +2,8 @@
 
 Prepared for Barry Brook's successor research collaborator, 2026-09-05.
 Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
-execution status and cleanup notes were refreshed during the successor's
-orientation and code sweep on 2026-09-05.
+execution status was refreshed on 2026-09-06 after the successor's orientation,
+code sweep, and fresh canary launch.
 
 ## Start Here
 
@@ -118,17 +118,24 @@ The authorized code sweep removed the abandoned Goal029 P-spline implementation,
 merged repeated q standardization work, trimmed duplicate input/q validation,
 and explicitly selected `spawn` for both process pools. It retained the frozen
 scientific configurations and historical evidence. These source changes make
-the prior canaries historical: **both hosts need fresh canaries against the
-final source before route selection**. Preserve the old logs/receipts when
+the prior canaries historical: **route selection requires fresh canaries
+against the final source**. Preserve the old logs/receipts when
 restarting; do not rebind their hashes to new code. No canaries or production
 were launched during the sweep.
+
+Barry resumed Goal051 on 6 September. Both hosts now have fresh canaries from
+`ab7e369`, launched at 00:17–00:18 AEST in the sessions above; both initial CPU
+processes were verified active. The old canary directories were preserved.
+Linux passed 54 portable tests, and both live input plans produced identical
+identities. The exact current paths and archive names are in the runbook.
+These runs have not yet been accepted; production remains unlaunched.
 
 Barry paused automatic-goal monitoring. **Do not recreate automatic-goal
 machinery or launch duplicate jobs.**
 
 On Barry's next continuation, inspect the existing jobs first using the
 [Goal 051 runbook](docs/goals/051-seawfb-conventional-benchmark/Runbook.md),
-which has exact v3 log/exit paths. Rerun and validate both host summaries,
+which has exact v3 log/exit paths. Finish and validate the existing host runs,
 select the measured route, then launch the benchmark under its existing
 approval. Goal 050's earlier PyTorch throughput result does not choose the
 route for this different workload. An exit code or receipt alone is not
