@@ -1,0 +1,159 @@
+{
+  "schema_version": "goal052-seawfb-dsdm-v1",
+  "goal_id": "goal052-seawfb-dsdm-experiment",
+  "status": "prospectively_frozen_protocol_only_not_executed",
+  "prospective_ordering": {
+    "freeze_before_goal051_ecological_scores": true,
+    "goal051_config": "config/goal051_seawfb_conventional.json",
+    "goal051_results_may_not_amend_this_protocol": true
+  },
+  "upstream": {
+    "goal048_config": "config/goal048_seawfb_bioregional_freeze.json",
+    "goal049_config": "config/goal049_seawfb_canonical_response.json",
+    "goal050_config": "config/goal050_seawfb_modeling_foundation.json",
+    "retained_training_substrate": "goal050_retained_training_cells_and_plans",
+    "outer_regions": ["NCP", "SEH", "NNC"],
+    "outer_access": "sealed",
+    "tasmania_role": "ordinary_training_geography"
+  },
+  "scope": {
+    "folds": ["fold00", "fold01", "fold02", "fold03", "fold04"],
+    "focal_targets": "all_157_goal050_focal_targets",
+    "primary_targets": 73,
+    "full_only_targets": 84,
+    "target_learning_fractions": [25, 50, 100],
+    "full_only_target_learning_fractions": [100],
+    "auxiliary_learning_sizes": [20, 80, "full"],
+    "nested_target_subsets": true,
+    "response_row_plan_binding": "reuse_goal050_frozen_crossfit_and_learning_curve_plans_and_digests",
+    "crossed_grid": {
+      "source": "goal051_conventional_q_condition_grid",
+      "q_conditions": 449,
+      "base_endpoints": 303,
+      "q_surfaces": 150
+    },
+    "primary_richness_rule": "goal050_X10",
+    "natural_prevalence": true,
+    "class_balancing": false
+  },
+  "arms": [
+    "target_only_random_init_resmlp",
+    "target_plus_q_linear_resmlp",
+    "multihead_frozen_trunk",
+    "multihead_full_finetune"
+  ],
+  "primary_arm": "multihead_full_finetune",
+  "pretraining": {
+    "heads": "all_goal050_eligible_heads_except_focal_block",
+    "target_excluded_from_pretraining": true,
+    "focal_block_excluded_from_pretraining": true,
+    "auxiliary_effort_richness_rule": "goal050_remove_entire_focal_block_from_auxiliary_richness",
+    "strict_held_fold_exclusion": true,
+    "head_weighting": "equal_total_contribution_per_head",
+    "within_head_class_balancing": false,
+    "auxiliary_endpoints": [20, 80, "full"]
+  },
+  "community_control": {
+    "id": "q_linear",
+    "source": "goal051_q_linear_surfaces",
+    "target_excluded": true,
+    "focal_block_excluded": true,
+    "surface_count": 150,
+    "surface_identity": ["focal_block", "held_fold", "auxiliary_size"],
+    "append_to_target_only_arm": true,
+    "q_fit_is_not_retuned": true
+  },
+  "architectures": {
+    "selection_scope": "shared_across_targets",
+    "selection_arm": "multihead_full_finetune",
+    "selection_targets": "73_primary_targets",
+    "selection_endpoint": "target100_auxiliary_full",
+    "selection_seed_labels": ["seed00"],
+    "selection_rank": {
+      "within_target": ["equal_fold_mean_roc_auc_desc", "pooled_oof_tss_desc", "architecture_id_asc"],
+      "shared": ["mean_target_rank_asc", "mean_target_roc_auc_desc", "architecture_id_asc"]
+    },
+    "candidates": [
+      {"id": "bridge_control", "blocks": 3, "width": 128, "bottleneck": 64, "dropout": 0.0, "weight_decay": 0.001},
+      {"id": "bridge_wide", "blocks": 3, "width": 256, "bottleneck": 64, "dropout": 0.0, "weight_decay": 0.001},
+      {"id": "bridge_deep", "blocks": 6, "width": 128, "bottleneck": 64, "dropout": 0.0, "weight_decay": 0.001},
+      {"id": "seawfb_scale", "blocks": 6, "width": 256, "bottleneck": 128, "dropout": 0.0, "weight_decay": 0.001}
+    ],
+    "constants": {
+      "activation": "GELU",
+      "normalization": "LayerNorm",
+      "optimizer": "AdamW",
+      "learning_rate": 0.001,
+      "batch_size": 128,
+      "max_epochs": 300,
+      "patience": 30,
+      "min_improvement": 0.00001,
+      "stopping_fold": "(held_fold+1)%5",
+      "discovery_folds": "other_three",
+      "replay_folds": "all_four_nonheld_at_selected_epoch",
+      "residual_shape": "pre_norm_two_layer_mlp_with_input_projection_and_identity_skip"
+    }
+  },
+  "replication": {
+    "seed_labels": ["seed00", "seed01", "seed02", "seed03", "seed04"],
+    "paired_across_arms": true,
+    "average_seed_predictions_before_primary_evaluation": true,
+    "primary_contrasts": [
+      "multihead_full_finetune_minus_target_only_random_init_resmlp",
+      "multihead_full_finetune_minus_target_plus_q_linear_resmlp",
+      "multihead_full_finetune_minus_goal051_selected_conventional",
+      "multihead_full_finetune_minus_goal051_q_augmented_conventional"
+    ],
+    "mechanistic_contrasts": [
+      "multihead_frozen_trunk_minus_target_only_random_init_resmlp",
+      "multihead_full_finetune_minus_multihead_frozen_trunk"
+    ],
+    "selected_epoch_summary": "median_selected_epoch_rounded_for_later_retained_full_refit"
+  },
+  "stability_audit": {
+    "leave_one_focal_block_out": true,
+    "role": "post_selection_diagnostic_only",
+    "cannot_change_winner": true
+  },
+  "amendment_policy": {
+    "before_scores": "hardware_only_metric_free_amendment_permitted_once_with_versioned_config_and_repeated_canary",
+    "after_scores": "any_scientific_change_requires_versioned_amendment_and_full_prespecified_rerun",
+    "performance_driven_goalpost_change": false
+  },
+  "evaluation": {
+    "primary_metric": "roc_auc",
+    "threshold_objective": "tss_equivalently_balanced_accuracy",
+    "threshold_source": "concatenated_training_oof_predictions",
+    "threshold_tie": "median_finite_maximizer",
+    "supplementary_metrics": ["tss", "balanced_accuracy", "mcc", "sensitivity", "specificity", "prevalence", "fold_variation"],
+    "interpretation": "relative_habitat_suitability_not_occupancy_probability",
+    "outer_threshold_selection": false,
+    "outer_outcomes": false
+  },
+  "execution": {
+    "private_root": "data/processed/dsdm/goal052-seawfb-dsdm-experiment",
+    "tracked_summary": "evidence/seawfb_dsdm/goal052/summary.json",
+    "canary_receipt": "metadata/goal052_canary.json",
+    "checkpoint_unit": "target_endpoint_arm_seed_fold",
+    "atomic_checkpoint_writes": true,
+    "default_device": "cpu",
+    "session_name": "dsdm-goal052-dsdm",
+    "production_boundary": "detached_resumable_launch_after_goal051_acceptance",
+    "protocol_only_in_this_goal": true
+  },
+  "privacy": {
+    "tracked_predictions": false,
+    "tracked_cell_ids": false,
+    "tracked_coordinates": false,
+    "tracked_response_rows": false,
+    "outer_NCP_SEH_NNC_rows_read": 0
+  },
+  "stopping_boundary": [
+    "goal051_conventional_acceptance",
+    "outer_NCP_SEH_NNC_evaluation",
+    "outer_threshold_selection",
+    "full_refit",
+    "mapping",
+    "manuscript_claims"
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "schema_version": "goal051-seawfb-conventional-v1",
+  "goal_id": "goal051-seawfb-conventional-benchmark",
+  "status": "prospectively_frozen_before_ecological_scores",
+  "upstream": {
+    "goal048_config": "config/goal048_seawfb_bioregional_freeze.json",
+    "goal049_config": "config/goal049_seawfb_canonical_response.json",
+    "goal050_config": "config/goal050_seawfb_modeling_foundation.json",
+    "retained_training_substrate": "goal050_retained_training_cells_and_plans",
+    "outer_regions": ["NCP", "SEH", "NNC"],
+    "outer_access": "sealed",
+    "tasmania_role": "ordinary_training_geography"
+  },
+  "scope": {
+    "region": "seawfb_retained_training_domain",
+    "time_inclusive": [2001, 2025],
+    "resolution_degree": 0.01,
+    "folds": ["fold00", "fold01", "fold02", "fold03", "fold04"],
+    "focal_targets": "all_157_goal050_focal_targets",
+    "primary_targets": 73,
+    "full_only_targets": 84,
+    "primary_target_learning_fractions": [25, 50, 100],
+    "full_only_learning_fractions": [100],
+    "nested_target_subsets": true,
+    "response_row_plan_binding": {
+      "manifest": "metadata/goal050_manifest.json",
+      "crossfit_plan": "data/processed/dsdm/goal050-seawfb-modeling-foundation/crossfit_plan.json",
+      "crossfit_binding_sha256": "b3abdb006fb7d384445db376d5ba3f0f7b48afd170982494f88ff20ef612e804",
+      "learning_curves": "data/processed/dsdm/goal050-seawfb-modeling-foundation/learning_curves.json",
+      "learning_curves_binding_sha256": "317a5513b6645edc588c63db1c2d26afaea3edfa202480b2f46ca58a2817c3d6",
+      "selection": "use_goal050_frozen_deterministic_plans_without_new_subset_seed"
+    }
+  },
+  "data_contract": {
+    "predictor_authority": "goal050_bound_predictor_substrate",
+    "raw_predictor_count": 24,
+    "encoded_predictor_width": 103,
+    "primary_richness_rule": "goal050_X10",
+    "row_weight": "one",
+    "class_balancing": false,
+    "resampling": false,
+    "pseudo_absence_policy": "goal049_canonical_membership_and_goal050_effort_support",
+    "natural_prevalence": true,
+    "fold_assignment": "goal050_frozen_projected_50km_block_folds"
+  },
+  "conventional": {
+    "families": [
+      "intercept",
+      "elastic_net",
+      "random_forest",
+      "hist_gradient_boosting",
+      "shallow_ann"
+    ],
+    "candidate_ids": {
+      "intercept": ["null00"],
+      "elastic_net": ["enet00", "enet04", "enet08", "enet09"],
+      "random_forest": ["rf00", "rf02", "rf03", "rf05"],
+      "hist_gradient_boosting": ["hgb00", "hgb02", "hgb04", "hgb05"],
+      "shallow_ann": ["ann00", "ann02", "ann04"]
+    },
+    "screen_seed_labels": {
+      "intercept": ["seed00"],
+      "elastic_net": ["seed00"],
+      "random_forest": ["seed00"],
+      "hist_gradient_boosting": ["seed00"],
+      "shallow_ann": ["seed00", "seed01", "seed02"]
+    },
+    "selected_seed_labels": {
+      "intercept": ["seed00"],
+      "elastic_net": ["seed00"],
+      "random_forest": ["seed00", "seed01", "seed02", "seed03", "seed04"],
+      "hist_gradient_boosting": ["seed00"],
+      "shallow_ann": ["seed00", "seed01", "seed02", "seed03", "seed04"]
+    },
+    "minimum_complete_candidates": {
+      "intercept": 1,
+      "elastic_net": 2,
+      "random_forest": 2,
+      "hist_gradient_boosting": 2,
+      "shallow_ann": 2
+    },
+    "candidate_selection": ["mean_fold_roc_auc_desc", "pooled_oof_tss_desc", "candidate_id_asc"],
+    "family_selection": ["mean_fold_roc_auc_desc", "pooled_oof_tss_desc", "family_asc"]
+  },
+  "community_control": {
+    "id": "q_linear",
+    "model": "pooled_elastic_net_logistic",
+    "candidate_id": "enet04",
+    "target_excluded": true,
+    "focal_block_excluded": true,
+    "focal_block_count": 10,
+    "surface_count": 150,
+    "strict_held_fold_exclusion": true,
+    "auxiliary_head_rule": "all_goal050_eligible_heads_except_focal_block",
+    "auxiliary_effort_richness_rule": "goal050_remove_entire_focal_block_from_auxiliary_richness",
+    "head_weighting": "equal_total_contribution_per_head",
+    "within_head_class_balancing": false,
+    "output": "continuous_0_1_relative_suitability_index",
+    "fit_scope": ["focal_block", "held_fold", "auxiliary_size"],
+    "checkpoint_unit": "focal_block_held_fold_auxiliary_size",
+    "predictors": "X_only_no_species_identity_predictor",
+    "fixed_regularization": {"candidate_id": "enet04", "C": 0.1, "l1_ratio": 0.5},
+    "fit_seed_namespace": "goal051-q-linear-v1",
+    "head_row_weighting": "constant_within_head_scaled_to_equal_total_weight_per_head",
+    "q_standardization": "per_target_held_fold_endpoint_on_target_training_role_rows",
+    "append_position": "after_21_continuous_predictors_before_frozen_categorical_encoding",
+    "family_retuning": false,
+    "unique_endpoints": [
+      {"target_fraction": 100, "auxiliary_size": 20},
+      {"target_fraction": 100, "auxiliary_size": 80},
+      {"target_fraction": 100, "auxiliary_size": "full"},
+      {"target_fraction": 25, "auxiliary_size": "full"},
+      {"target_fraction": 50, "auxiliary_size": "full"}
+    ],
+    "downstream_control": "append_q_to_selected_target_only_family_and_candidate",
+    "downstream_candidate_retuning": false
+  },
+  "evaluation": {
+    "primary_metric": "roc_auc",
+    "candidate_tie_break": "pooled_oof_tss",
+    "threshold_objective": "tss_equivalently_balanced_accuracy",
+    "threshold_source": "concatenated_training_oof_predictions",
+    "threshold_tie": "median_finite_maximizer",
+    "supplementary_metrics": ["tss", "balanced_accuracy", "mcc", "sensitivity", "specificity", "prevalence", "fold_variation"],
+    "interpretation": "relative_habitat_suitability_not_occupancy_probability",
+    "outer_threshold_selection": false,
+    "outer_outcomes": false
+  },
+  "execution": {
+    "private_root": "data/processed/dsdm/goal051-seawfb-conventional-benchmark",
+    "tracked_summary": "evidence/seawfb_conventional/goal051/summary.json",
+    "canary_receipt": "data/processed/dsdm/goal051-seawfb-conventional-benchmark/canary/receipt.json",
+    "tracked_canary_summary": "metadata/goal051_canary.json",
+    "checkpoint_unit": "target_endpoint",
+    "atomic_checkpoint_writes": true,
+    "per_estimator_threads": 1,
+    "fit_seed_namespace": "goal051-target-model-v1",
+    "default_workers": 3,
+    "session_name": "dsdm-goal051-conventional",
+    "canary": {
+      "target": "Cacatua sanguinea",
+      "focal_block": "block6",
+      "held_fold": "fold00",
+      "target_fraction": 100,
+      "auxiliary_sizes": [20, "full"],
+      "q_augmented_family": "hist_gradient_boosting",
+      "candidate_ids": ["null00", "enet04", "rf02", "hgb04", "ann02"],
+      "serial_repeats": 2,
+      "mixed_concurrency": {"mac": 3, "deep_server": 8},
+      "host_expectations": {
+        "mac": {"hostname": "Barrys-Mac-mini.local", "system": "Darwin"},
+        "deep_server": {"hostname": "deep-server", "system": "Linux"}
+      },
+      "metrics_allowed": false
+    },
+    "production_boundary": "may_stop_after_detached_resumable_launch"
+  },
+  "prospective_firewall": {
+    "goal052_protocol_frozen_before_goal051_ecological_scores": true,
+    "goal051_may_not_amend_goal052_from_conventional_results": true,
+    "outer_regions_remain_unopened": true,
+    "tracked_row_level_payloads": false,
+    "tracked_coordinates": false,
+    "tracked_predictions": false
+  },
+  "planned_inventory": {
+    "base_endpoints": 303,
+    "q_conditions": 449,
+    "q_surfaces": 150,
+    "partial_fold_scoring": false,
+    "mandatory_null": true,
+    "minimum_complete_candidates_per_non_null_family": 2,
+    "mandatory_intercept_candidates": 1,
+    "primary_full_required_family_groups": {
+      "elastic_net": ["elastic_net"],
+      "tree_family": ["random_forest", "hist_gradient_boosting"],
+      "shallow_ann": ["shallow_ann"]
+    },
+    "family_coverage_stop_fraction": 0.95,
+    "prevalence_failure_gate": {
+      "ranking": "constructed_validation_prevalence_then_target_then_fraction",
+      "extreme_quartiles": ["lowest", "highest"],
+      "extreme_quartile_minimum_coverage": 0.9,
+      "action": "stop_for_review"
+    },
+    "repair_passes_max": 1
+  },
+  "stopping_boundary": [
+    "goal052_dsdm_fit",
+    "outer_NCP_SEH_NNC_evaluation",
+    "outer_threshold_selection",
+    "full_refit",
+    "mapping",
+    "manuscript_claims"
+  ]
+}
