@@ -35,6 +35,9 @@ ecological benchmark score is exposed.
   the frozen categorical encoding, without family or candidate retuning. The
   five unique downstream endpoints are target 100% with auxiliary 20/80/`full`,
   and target 25/50% with auxiliary `full`.
+- Under numerical amendment 1, fit q with SAGA tolerance 1e-5 and a 5,000
+  iteration primary ceiling. On warning or ceiling hit, retry once from scratch
+  with the same seed and a 10,000 iteration ceiling; accept only convergence.
 
 ## Acceptance criteria
 

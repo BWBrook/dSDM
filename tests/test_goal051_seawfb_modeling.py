@@ -4,12 +4,14 @@ import json
 import inspect
 import copy
 import platform
+import warnings
 from concurrent.futures import Future
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 import pytest
+from sklearn.exceptions import ConvergenceWarning
 
 from dsdm_phase1.goal050_seawfb_foundation import CATEGORICAL, CONTINUOUS
 from dsdm_phase1.goal051_seawfb_conventional import (
@@ -19,6 +21,8 @@ from dsdm_phase1.goal051_seawfb_conventional import (
     _prevalence_diagnostic,
     _primary_full_family_gate,
     _validate_goal052,
+    _validate_q_numerical_fit,
+    EXPECTED_Q_NUMERICAL_FIT,
     _family_coverage,
     _family_gate,
     _fit_seed,
@@ -34,6 +38,7 @@ from dsdm_phase1.goal051_seawfb_conventional import (
 )
 from dsdm_phase1.seawfb_modeling import (
     EncodedFeatures,
+    CollapsedBinaryRows,
     QLinearModel,
     ResponseRows,
     SeawfbModelingError,
@@ -41,6 +46,8 @@ from dsdm_phase1.seawfb_modeling import (
     collapse_equal_head_rows,
     standardized_q,
     weighted_logistic_loss,
+    fit_q_linear,
+    q_parameter_digest,
 )
 
 
@@ -147,6 +154,86 @@ def test_q_standardization_is_fit_on_current_endpoint_training_rows():
     assert np.all(scaled_requested > scaled_training.max())
 
 
+class _FitQStore:
+    def q_collapsed_rows(self, held_block, held_fold, auxiliary_size):
+        return (
+            CollapsedBinaryRows(np.array([0, 1]), np.array([0, 1]), np.ones(2), (2,), 2),
+            {"held_block": held_block, "held_fold": held_fold, "auxiliary_size": auxiliary_size},
+        )
+
+    def encoded(self, indices, held_fold, q=None):
+        return EncodedFeatures(
+            np.asarray(indices, dtype=np.float64).reshape(-1, 1),
+            ("x",),
+            ("continuous",),
+            1,
+            f"fold_{held_fold}",
+            "transform",
+            "encoder",
+        )
+
+
+def _script_q_fits(monkeypatch, specifications):
+    calls = []
+    queue = iter(specifications)
+
+    class FakeLogistic:
+        def __init__(self, kwargs, specification):
+            self.kwargs = kwargs
+            self.specification = specification
+
+        def fit(self, x, y, sample_weight):
+            calls.append(self.kwargs)
+            n_iter, warning = self.specification
+            if warning:
+                warnings.warn("synthetic ceiling", ConvergenceWarning)
+            self.n_iter_ = np.array([n_iter])
+            self.coef_ = np.array([[0.25]])
+            self.intercept_ = np.array([-0.5])
+            return self
+
+    monkeypatch.setattr(
+        "dsdm_phase1.seawfb_modeling.LogisticRegression",
+        lambda **kwargs: FakeLogistic(kwargs, next(queue)),
+    )
+    return calls
+
+
+def test_q_numerical_primary_success_and_deterministic_digest(monkeypatch):
+    calls = _script_q_fits(monkeypatch, [(25, False), (25, False)])
+    first, first_receipt = fit_q_linear(_FitQStore(), 0, 0, "full", "seed-space", EXPECTED_Q_NUMERICAL_FIT)
+    second, second_receipt = fit_q_linear(_FitQStore(), 0, 0, "full", "seed-space", EXPECTED_Q_NUMERICAL_FIT)
+    assert first_receipt["accepted_attempt"] == "primary"
+    assert first_receipt["attempts"] == [{"attempt": "primary", "max_iter": 5000, "tol": 1e-5, "n_iter": 25, "warning": False, "converged": True}]
+    assert first_receipt["fit_seed"] == second_receipt["fit_seed"]
+    assert first_receipt["parameter_digest"] == second_receipt["parameter_digest"]
+    assert first_receipt["parameter_digest"] == q_parameter_digest(first.coefficient, first.intercept)
+    assert calls[0]["random_state"] == calls[1]["random_state"]
+
+
+def test_q_numerical_extended_attempt_is_from_scratch_same_seed(monkeypatch):
+    calls = _script_q_fits(monkeypatch, [(5000, False), (8123, False)])
+    _, receipt = fit_q_linear(_FitQStore(), 2, 3, "20", "seed-space", EXPECTED_Q_NUMERICAL_FIT)
+    assert receipt["accepted_attempt"] == "extended"
+    assert [item["max_iter"] for item in receipt["attempts"]] == [5000, 10000]
+    assert [item["converged"] for item in receipt["attempts"]] == [False, True]
+    assert calls[0]["random_state"] == calls[1]["random_state"]
+    assert calls[0]["tol"] == calls[1]["tol"] == 1e-5
+
+
+def test_q_numerical_extended_nonconvergence_fails_closed(monkeypatch):
+    _script_q_fits(monkeypatch, [(5000, True), (10000, True)])
+    with pytest.raises(SeawfbModelingError, match="q_linear_nonconverged_after_extended_attempt"):
+        fit_q_linear(_FitQStore(), 2, 3, "80", "seed-space", EXPECTED_Q_NUMERICAL_FIT)
+
+
+def test_q_numerical_config_drift_is_rejected():
+    _validate_q_numerical_fit(EXPECTED_Q_NUMERICAL_FIT)
+    changed = dict(EXPECTED_Q_NUMERICAL_FIT, tol=1e-6)
+    with pytest.raises(SeawfbModelingError, match="q_numerical_fit_drift"):
+        _validate_q_numerical_fit(changed)
+
+
 def test_selection_is_auc_then_tss_then_stable_identity():
     def result(auc, tss):
         return {"metrics": {"mean_fold_roc_auc": auc, "pooled": {"tss": tss}}}
@@ -230,6 +317,7 @@ def test_goal052_freeze_detects_consequential_mutations():
         (("replication", "primary_contrasts"), [], "goal052_replication_drift"),
         (("stability_audit", "cannot_change_winner"), False, "goal052_stability_policy_drift"),
         (("amendment_policy", "performance_driven_goalpost_change"), True, "goal052_amendment_policy_drift"),
+        (("prospective_amendments", 0, "timing"), "after_scores", "goal052_amendment_record_drift"),
         (("stopping_boundary", 1), "outer_open", "goal052_stopping_boundary_drift"),
     ]
     for path, value, error in mutations:
@@ -264,6 +352,7 @@ def test_prevalence_extreme_quartiles_are_ranked_and_gated():
 
 def test_canary_summary_requires_exact_metric_free_inventory(tmp_path, monkeypatch):
     config = {
+        "community_control": {"numerical_fit": EXPECTED_Q_NUMERICAL_FIT},
         "execution": {
             "canary_receipt": "private/canary/receipt.json",
             "canary": {
@@ -345,6 +434,11 @@ def test_canary_summary_requires_exact_metric_free_inventory(tmp_path, monkeypat
                     "head_count": 2,
                     "prediction_range": [0.2, 0.8],
                     "prediction_digest": f"digest-q-{auxiliary}",
+                    "parameter_digest": "a" * 64 if str(auxiliary) == "20" else "b" * 64,
+                    "attempts": [
+                        {"attempt": "primary", "max_iter": 5000, "tol": 1e-5, "n_iter": 25, "warning": False, "converged": True}
+                    ],
+                    "accepted_attempt": "primary",
                     "downstream_family": "hist_gradient_boosting",
                     "downstream_candidate_id": "hgb04",
                     "downstream_fit": {"converged": True},
@@ -358,8 +452,14 @@ def test_canary_summary_requires_exact_metric_free_inventory(tmp_path, monkeypat
     assert summary["mixed_batch"]["runs"] == 3
     assert summary["mixed_batch"]["interval_peak_concurrency"] == 3
     assert summary["prediction_digest_stable"] is True
+    assert summary["q_parameter_digest_stable"] is True
     missing, _ = _canary_receipt_path(tmp_path, config, "mac-mixed-3")
     nonoverlap = json.loads(missing.read_text())
+    nonoverlap["q_linear"][0]["parameter_digest"] = "c" * 64
+    missing.write_text(json.dumps(nonoverlap))
+    with pytest.raises(SeawfbModelingError, match="canary_q_parameter_digest_instability"):
+        canary_summary(tmp_path, "mac")
+    nonoverlap["q_linear"][0]["parameter_digest"] = "a" * 64
     nonoverlap["start_epoch_ns"] = 21_000_000_000
     nonoverlap["end_epoch_ns"] = 22_000_000_000
     missing.write_text(json.dumps(nonoverlap))
@@ -468,6 +568,8 @@ def test_canary_route_binds_both_host_summaries_and_worker_limit(tmp_path, monke
                     "peak_rss_bytes": 1234,
                     "prediction_digest_stable": True,
                     "prediction_digests": {"candidate:null00": "abc"},
+                    "q_parameter_digest_stable": True,
+                    "q_parameter_digests": {"20": "a" * 64, "full": "b" * 64},
                     "metrics_computed": False,
                     "outer_response_rows_read": 0,
                     "outer_predictor_rows_used": 0,

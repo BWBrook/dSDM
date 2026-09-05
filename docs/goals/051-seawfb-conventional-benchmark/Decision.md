@@ -30,6 +30,13 @@ candidate selection are not retuned. Auxiliary 20/80/`full` and target
 25/50/100% plans are represented as five unique downstream endpoints, with
 target 100%/auxiliary `full` shared rather than duplicated.
 
+After a metric-free primary nonconvergence, numerical amendment 1 fixes SAGA
+at tolerance 1e-5 and 5,000 primary iterations. A warning or iteration-ceiling
+hit triggers one from-scratch fit with the identical seed and a 10,000-iteration
+ceiling. Only a converged attempt is accepted. No coefficient- or prediction-
+stability exception is authorized. Solver, regularization, data, weights,
+features, exclusions, and random seed are unchanged.
+
 The inventory gate is 303 base endpoints, 449 q conditions, and 150 shared q
 surfaces. There is no partial-fold scoring. The null is mandatory; each family
 needs at least two complete candidates or an explicit NA. At the primary full

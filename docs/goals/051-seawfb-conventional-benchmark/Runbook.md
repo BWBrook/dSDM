@@ -46,3 +46,7 @@ boosting fit, run two serial repeats and mixed Mac-3/deep-server-8
 concurrency, and suppress ecological metrics and outer access. An exit marker
 is necessary but not sufficient: run the independent validator before
 acceptance. Do not open NCP, SEH, or NNC response/outcome data.
+
+Each q receipt records the primary and, when needed, extended numerical
+attempt, the accepted attempt, and the finite parameter digest. Host summaries
+must reproduce both q prediction and q parameter digests exactly.

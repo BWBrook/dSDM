@@ -18,7 +18,6 @@ import numpy as np
 import pandas as pd
 import pyarrow.parquet as pq
 from scipy.special import expit
-from sklearn.exceptions import ConvergenceWarning
 from sklearn.linear_model import LogisticRegression
 
 from .goal050_seawfb_foundation import CATEGORICAL, CONTINUOUS, nested_response_rows
@@ -62,6 +61,14 @@ def digest(value: Any) -> str:
 def stable_seed(*parts: object) -> int:
     raw = "\x1f".join(map(str, parts)).encode()
     return int.from_bytes(hashlib.sha256(raw).digest()[:4], "big")
+
+
+def q_parameter_digest(coefficient: Sequence[float], intercept: float) -> str:
+    values = np.concatenate(
+        [np.asarray(coefficient, dtype="<f8").reshape(-1), np.asarray([intercept], dtype="<f8")]
+    )
+    require(np.isfinite(values).all(), "q_linear_nonfinite_parameters")
+    return hashlib.sha256(values.tobytes()).hexdigest()
 
 
 def slug(value: str) -> str:
@@ -430,6 +437,7 @@ def fit_q_linear(
     held_fold: int,
     auxiliary_size: str,
     seed_namespace: str,
+    numerical_fit: Mapping[str, Any],
     candidate_id: str = "enet04",
 ) -> tuple[QLinearModel, dict[str, Any]]:
     require(candidate_id == "enet04", "q_candidate_drift")
@@ -437,26 +445,47 @@ def fit_q_linear(
     features = store.encoded(collapsed.indices, held_fold)
     candidate = CANONICAL_CANDIDATES[candidate_id]
     seed = stable_seed(seed_namespace, "q_linear", held_block, held_fold, auxiliary_size)
-    model = LogisticRegression(
-        C=float(candidate["C"]),
-        l1_ratio=float(candidate["l1_ratio"]),
-        penalty="elasticnet",
-        solver="saga",
-        max_iter=int(candidate["max_iter"]),
-        tol=float(candidate["tol"]),
-        fit_intercept=True,
-        class_weight=None,
-        n_jobs=1,
-        random_state=seed,
-    )
-    with warnings.catch_warnings(record=True) as caught:
-        warnings.simplefilter("always")
-        model.fit(features.x, collapsed.y, sample_weight=collapsed.sample_weight)
-    require(
-        not any(issubclass(item.category, ConvergenceWarning) for item in caught)
-        and int(model.n_iter_[0]) < int(candidate["max_iter"]),
-        "q_linear_nonconverged",
-    )
+    tol = float(numerical_fit["tol"])
+    attempts = []
+    model = None
+    accepted_attempt = None
+    for attempt, max_iter in (
+        ("primary", int(numerical_fit["primary_max_iter"])),
+        ("extended", int(numerical_fit["extended_max_iter"])),
+    ):
+        fitted_attempt = LogisticRegression(
+            C=float(candidate["C"]),
+            l1_ratio=float(candidate["l1_ratio"]),
+            penalty="elasticnet",
+            solver="saga",
+            max_iter=max_iter,
+            tol=tol,
+            fit_intercept=True,
+            class_weight=None,
+            n_jobs=1,
+            random_state=seed,
+        )
+        with warnings.catch_warnings(record=True) as caught:
+            warnings.simplefilter("always")
+            fitted_attempt.fit(features.x, collapsed.y, sample_weight=collapsed.sample_weight)
+        warning = bool(caught)
+        n_iter = int(fitted_attempt.n_iter_[0])
+        converged = not warning and n_iter < max_iter
+        attempts.append(
+            {
+                "attempt": attempt,
+                "max_iter": max_iter,
+                "tol": tol,
+                "n_iter": n_iter,
+                "warning": warning,
+                "converged": converged,
+            }
+        )
+        if converged:
+            model = fitted_attempt
+            accepted_attempt = attempt
+            break
+    require(model is not None and accepted_attempt is not None, "q_linear_nonconverged_after_extended_attempt")
     fitted = QLinearModel(
         np.asarray(model.coef_[0], dtype=np.float64),
         float(model.intercept_[0]),
@@ -467,11 +496,16 @@ def fit_q_linear(
         int(model.n_iter_[0]),
     )
     require(np.isfinite(fitted.coefficient).all() and math.isfinite(fitted.intercept), "q_linear_nonfinite_parameters")
+    parameter_digest = q_parameter_digest(fitted.coefficient, fitted.intercept)
     return fitted, {
         **receipt,
         "candidate_id": candidate_id,
         "fit_seed": seed,
         "iterations": fitted.iterations,
+        "attempts": attempts,
+        "accepted_attempt": accepted_attempt,
+        "parameter_digest": parameter_digest,
+        "numerical_fit": dict(numerical_fit),
         "coefficient_count": len(fitted.coefficient),
     }
 

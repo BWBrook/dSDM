@@ -43,6 +43,7 @@ from .seawfb_modeling import (
     digest,
     fit_q_linear,
     require,
+    q_parameter_digest,
     sha256_file,
     slug,
     stable_seed,
@@ -138,6 +139,32 @@ EXPECTED_CANARY_HOSTS = {
     "mac": {"hostname": "Barrys-Mac-mini.local", "system": "Darwin"},
     "deep_server": {"hostname": "deep-server", "system": "Linux"},
 }
+EXPECTED_Q_NUMERICAL_FIT = {
+    "solver": "saga",
+    "tol": 1e-5,
+    "primary_max_iter": 5000,
+    "extended_max_iter": 10000,
+    "extended_refit": "from_scratch_same_seed_after_primary_warning_or_ceiling",
+    "acceptance": "converged_attempt_only",
+    "ceiling_stability_acceptance": False,
+}
+EXPECTED_GOAL051_AMENDMENT = {
+    "id": "goal051-q-linear-numerical-amendment-1",
+    "date": "2026-09-05",
+    "trigger": "metric_free_q_linear_primary_nonconvergence",
+    "timing": "before_any_ecological_scores",
+    "classification": "numerical_only",
+    "changed": ["tol_1e-5", "primary_max_iter_5000", "same_seed_from_scratch_extended_max_iter_10000"],
+    "unchanged": ["solver_saga", "C_0.1", "l1_ratio_0.5", "weights", "features", "exclusions", "seed"],
+}
+EXPECTED_GOAL052_AMENDMENT = {
+    "id": "goal051-q-linear-numerical-amendment-1",
+    "date": "2026-09-05",
+    "timing": "before_any_ecological_scores",
+    "classification": "numerical_only",
+    "scope": "goal051_q_linear_convergence_only",
+    "dsdm_scientific_design_changed": False,
+}
 PREDICTION_SCHEMA = pa.schema(
     [
         pa.field("target", pa.string(), nullable=False),
@@ -222,8 +249,46 @@ def _peak_rss_bytes() -> int:
     return value if sys.platform == "darwin" else value * 1024
 
 
+def _validate_q_numerical_fit(value: Mapping[str, Any]) -> None:
+    require(value == EXPECTED_Q_NUMERICAL_FIT, "q_numerical_fit_drift")
+
+
+def _validate_q_attempts(receipt: Mapping[str, Any], numerical_fit: Mapping[str, Any]) -> None:
+    attempts = receipt.get("attempts")
+    require(isinstance(attempts, list) and len(attempts) in (1, 2), "q_attempt_inventory_drift")
+    expected_names = ["primary", "extended"][: len(attempts)]
+    expected_max = [numerical_fit["primary_max_iter"], numerical_fit["extended_max_iter"]][: len(attempts)]
+    for item, name, max_iter in zip(attempts, expected_names, expected_max):
+        require(
+            item.get("attempt") == name
+            and item.get("max_iter") == max_iter
+            and item.get("tol") == numerical_fit["tol"]
+            and isinstance(item.get("n_iter"), int)
+            and 0 < item["n_iter"] <= max_iter
+            and isinstance(item.get("warning"), bool)
+            and item.get("converged") == (not item["warning"] and item["n_iter"] < max_iter),
+            "q_attempt_record_drift",
+        )
+    accepted = receipt.get("accepted_attempt")
+    require(
+        (accepted == "primary" and len(attempts) == 1 and attempts[0]["converged"] is True)
+        or (
+            accepted == "extended"
+            and len(attempts) == 2
+            and attempts[0]["converged"] is False
+            and attempts[1]["converged"] is True
+        ),
+        "q_attempt_acceptance_drift",
+    )
+
+
 def _validate_goal052(goal052: Mapping[str, Any]) -> None:
     require(goal052.get("schema_version") == "goal052-seawfb-dsdm-v1", "goal052_schema_drift")
+    require(
+        goal052.get("protocol_version") == 2
+        and goal052.get("prospective_amendments") == [EXPECTED_GOAL052_AMENDMENT],
+        "goal052_amendment_record_drift",
+    )
     require(goal052.get("status") == "prospectively_frozen_protocol_only_not_executed", "goal052_not_prospectively_frozen")
     ordering = goal052.get("prospective_ordering", {})
     require(ordering.get("freeze_before_goal051_ecological_scores") is True and ordering.get("goal051_results_may_not_amend_this_protocol") is True, "goal052_ordering_drift")
@@ -300,7 +365,7 @@ def _validate_goal052(goal052: Mapping[str, Any]) -> None:
     require(
         goal052.get("amendment_policy")
         == {
-            "before_scores": "hardware_only_metric_free_amendment_permitted_once_with_versioned_config_and_repeated_canary",
+            "before_scores": "goal051_q_linear_numerical_amendment_1_exercised_before_scores; any_further_before_score_change_requires_explicit_versioned_authorization_and_repeated_metric_free_canary",
             "after_scores": "any_scientific_change_requires_versioned_amendment_and_full_prespecified_rerun",
             "performance_driven_goalpost_change": False,
         },
@@ -392,6 +457,11 @@ def validate_inputs(root: Path) -> dict[str, Any]:
     root = Path(root)
     config = _config(root)
     require(config.get("schema_version") == "goal051-seawfb-conventional-v1", "goal051_schema_drift")
+    require(
+        config.get("protocol_version") == 2
+        and config.get("amendments") == [EXPECTED_GOAL051_AMENDMENT],
+        "goal051_amendment_record_drift",
+    )
     require(config.get("status") == "prospectively_frozen_before_ecological_scores", "goal051_not_frozen")
     require(config["upstream"]["outer_access"] == "sealed", "outer_access_not_sealed")
     require(config["evaluation"]["outer_outcomes"] is False, "outer_outcomes_enabled")
@@ -403,6 +473,7 @@ def validate_inputs(root: Path) -> dict[str, Any]:
     require(_seed_namespace(config, "target") != _seed_namespace(config, "q"), "fit_seed_namespaces_not_separate")
     community = config["community_control"]
     require(community["candidate_id"] == "enet04", "q_candidate_drift")
+    _validate_q_numerical_fit(community.get("numerical_fit", {}))
     q_candidate = CANONICAL_CANDIDATES["enet04"]
     require(
         community.get("fixed_regularization")
@@ -542,6 +613,9 @@ def _load_q(root: Path, config: Mapping[str, Any], identity: Mapping[str, str], 
         coefficient = payload["coefficient"].astype(np.float64)
         intercept = float(payload["intercept"][0])
     require(coefficient.ndim == 1 and np.isfinite(coefficient).all() and np.isfinite(intercept), "q_checkpoint_parameter_drift")
+    require(receipt.get("numerical_fit") == config["community_control"]["numerical_fit"], "q_checkpoint_numerical_fit_drift")
+    _validate_q_attempts(receipt, config["community_control"]["numerical_fit"])
+    require(receipt.get("parameter_digest") == q_parameter_digest(coefficient, intercept), "q_checkpoint_parameter_digest_drift")
     model = QLinearModel(coefficient, intercept, block, fold, auxiliary, receipt["transform_id"], int(receipt["iterations"]))
     return model, receipt
 
@@ -559,6 +633,7 @@ def prepare_q_surface(root: Path, store: SeawfbStore, config: Mapping[str, Any],
         auxiliary,
         candidate_id=config["community_control"]["candidate_id"],
         seed_namespace=_seed_namespace(config, "q"),
+        numerical_fit=config["community_control"]["numerical_fit"],
     )
     receipt = {**receipt, "runtime_seconds": time.perf_counter() - started}
     _write_q(root, config, identity, model, receipt)
@@ -1122,6 +1197,9 @@ def q_provenance(root: Path, config: Mapping[str, Any], require_complete: bool) 
                 "fold": fold,
                 "auxiliary_size": auxiliary,
                 "model_sha256": receipt["model_sha256"],
+                "parameter_digest": receipt["parameter_digest"],
+                "attempts": receipt["attempts"],
+                "accepted_attempt": receipt["accepted_attempt"],
                 "head_count": receipt["head_count"],
                 "expanded_rows": receipt["expanded_rows"],
                 "collapsed_rows": receipt["collapsed_rows"],
@@ -1429,6 +1507,7 @@ def _canary(root: Path, receipt_tag: str | None = None) -> dict[str, Any]:
             fold,
             auxiliary,
             seed_namespace=_seed_namespace(config, "q"),
+            numerical_fit=config["community_control"]["numerical_fit"],
         )
         train_q, scale = standardized_q(q_model, store, target, fold, train_rows, train_rows)
         validation_q, _ = standardized_q(q_model, store, target, fold, validation_rows, train_rows)
@@ -1457,6 +1536,9 @@ def _canary(root: Path, receipt_tag: str | None = None) -> dict[str, Any]:
                 "head_count": q_fit["head_count"],
                 "iterations": q_fit["iterations"],
                 "converged": True,
+                "attempts": q_fit["attempts"],
+                "accepted_attempt": q_fit["accepted_attempt"],
+                "parameter_digest": q_fit["parameter_digest"],
                 "standardization": scale,
                 "downstream_family": spec["q_augmented_family"],
                 "downstream_candidate_id": "hgb04",
@@ -1612,6 +1694,7 @@ def canary_summary(root: Path, host_key: str) -> dict[str, Any]:
         for item in q_entries:
             low, high = item.get("prediction_range", [np.nan, np.nan])
             downstream = item.get("downstream_fit", {})
+            _validate_q_attempts(item, config["community_control"]["numerical_fit"])
             require(
                 item.get("converged") is True
                 and item.get("finite") is True
@@ -1622,6 +1705,7 @@ def canary_summary(root: Path, host_key: str) -> dict[str, Any]:
                 and int(item.get("expanded_rows", 0)) > 0
                 and int(item.get("collapsed_rows", 0)) > 0
                 and int(item.get("head_count", 0)) > 0
+                and bool(re.fullmatch(r"[0-9a-f]{64}", str(item.get("parameter_digest", ""))))
                 and "metrics" not in item
                 and "metrics" not in downstream
                 and np.isfinite([low, high]).all()
@@ -1633,12 +1717,15 @@ def canary_summary(root: Path, host_key: str) -> dict[str, Any]:
         receipts.append(receipt)
 
     digest_groups: dict[str, set[str]] = {}
+    parameter_digest_groups: dict[str, set[str]] = {}
     for receipt in receipts:
         for item in receipt["entries"]:
             digest_groups.setdefault(f"candidate:{item['candidate_id']}", set()).add(item["prediction_digest"])
         for item in receipt["q_linear"]:
             digest_groups.setdefault(f"q:{item['auxiliary_size']}", set()).add(item["prediction_digest"])
+            parameter_digest_groups.setdefault(str(item["auxiliary_size"]), set()).add(item["parameter_digest"])
     require(all(len(values) == 1 for values in digest_groups.values()), "canary_prediction_digest_instability")
+    require(all(len(values) == 1 for values in parameter_digest_groups.values()), "canary_q_parameter_digest_instability")
     serial = [receipt for receipt in receipts if receipt["run_mode"] == "serial"]
     mixed = [receipt for receipt in receipts if receipt["run_mode"] == "mixed"]
     actual_hosts = {receipt["host"] for receipt in receipts}
@@ -1681,6 +1768,10 @@ def canary_summary(root: Path, host_key: str) -> dict[str, Any]:
         "peak_rss_bytes": max(int(item["process_peak_rss_bytes"]) for item in receipts),
         "prediction_digest_stable": True,
         "prediction_digests": {key: next(iter(values)) for key, values in sorted(digest_groups.items())},
+        "q_parameter_digest_stable": True,
+        "q_parameter_digests": {
+            key: next(iter(values)) for key, values in sorted(parameter_digest_groups.items())
+        },
         "metrics_computed": False,
         "outer_response_rows_read": 0,
         "outer_predictor_rows_used": 0,
@@ -1726,8 +1817,11 @@ def canary_route(root: Path, selected_host: str, workers: int) -> dict[str, Any]
             and isinstance(summary.get("actual_platform"), str)
             and bool(summary["actual_platform"])
             and summary.get("prediction_digest_stable") is True
+            and summary.get("q_parameter_digest_stable") is True
             and isinstance(summary.get("prediction_digests"), dict)
             and bool(summary["prediction_digests"])
+            and isinstance(summary.get("q_parameter_digests"), dict)
+            and bool(summary["q_parameter_digests"])
             and len(serial_values) == int(config["execution"]["canary"]["serial_repeats"])
             and all(isinstance(value, (int, float)) for value in serial_values)
             and np.isfinite(serial_values).all()
@@ -1759,6 +1853,7 @@ def canary_route(root: Path, selected_host: str, workers: int) -> dict[str, Any]
             "mixed_batch": summary["mixed_batch"],
             "peak_rss_bytes": summary["peak_rss_bytes"],
             "prediction_digest_stable": summary["prediction_digest_stable"],
+            "q_parameter_digest_stable": summary["q_parameter_digest_stable"],
         }
     route = {
         "schema_version": "goal051-canary-route-v1",
