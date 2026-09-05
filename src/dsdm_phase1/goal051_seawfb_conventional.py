@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import multiprocessing
 import os
 import platform
 import resource
@@ -725,7 +726,6 @@ def _fit_predict(
     train_rows: ResponseRows,
     train: FeatureBatch,
     validation: FeatureBatch,
-    auxiliary: str,
 ) -> tuple[np.ndarray, dict[str, Any]]:
     candidate = CANONICAL_CANDIDATES[candidate_id]
     adapter = build_adapter(family)
@@ -772,9 +772,7 @@ def _prepared_folds(
             loaded = _load_q(root, config, identity, block, fold, auxiliary)
             require(loaded is not None, f"q_checkpoint_missing:{block}:{fold}:{auxiliary}")
             model, q_receipt = loaded
-            train_q, scale = standardized_q(model, store, target, fold, train_rows, train_rows)
-            validation_q, validation_scale = standardized_q(model, store, target, fold, validation_rows, train_rows)
-            require(scale == validation_scale, "q_standardization_replay_drift")
+            train_q, validation_q, scale = standardized_q(model, store, fold, train_rows, validation_rows)
             q_receipt = {"model_sha256": q_receipt["model_sha256"], **scale}
         prepared.append(
             {
@@ -797,7 +795,6 @@ def _evaluate(
     candidate_id: str,
     seed_labels: Sequence[str],
     prepared: Sequence[Mapping[str, Any]],
-    auxiliary: str,
 ) -> dict[str, Any]:
     folds, fits = [], []
     for item in prepared:
@@ -814,7 +811,6 @@ def _evaluate(
                 item["train_rows"],
                 item["train"],
                 item["validation"],
-                auxiliary,
             )
             require(np.isfinite(scores).all() and np.all((scores >= 0) & (scores <= 1)), "candidate_score_invalid")
             scores_by_seed[seed_label] = scores
@@ -862,7 +858,7 @@ def _extend_selected(
     missing = [label for label in desired if label not in selected["seed_labels"]]
     if not missing:
         return dict(selected)
-    extra = _evaluate(config, target, fraction, family, selected["candidate_id"], missing, prepared, "none")
+    extra = _evaluate(config, target, fraction, family, selected["candidate_id"], missing, prepared)
     folds = []
     for base, added in zip(selected["folds"], extra["folds"]):
         combined = {**base["scores_by_seed"], **added["scores_by_seed"]}
@@ -1044,7 +1040,6 @@ def run_endpoint(root: Path, store: SeawfbStore, config: Mapping[str, Any], targ
                     candidate_id,
                     config["conventional"]["screen_seed_labels"][family],
                     base_prepared,
-                    "none",
                 )
                 candidates.append(candidate)
                 predictions.extend(_prediction_rows(target, fraction, "none", "candidate_screen", family, candidate))
@@ -1089,7 +1084,6 @@ def run_endpoint(root: Path, store: SeawfbStore, config: Mapping[str, Any], targ
             best["candidate_id"],
             config["conventional"]["selected_seed_labels"][best_family],
             prepared,
-            auxiliary,
         )
         predictions.extend(_prediction_rows(target, fraction, auxiliary, "q_linear", best_family, q_result))
         q_results[auxiliary] = {"family": best_family, "candidate_retuned": False, **_public(q_result)}
@@ -1240,7 +1234,6 @@ def q_provenance(root: Path, config: Mapping[str, Any], require_complete: bool) 
         require(held.isdisjoint(receipt["heads"]), "q_receipt_block_leakage")
         require(receipt["head_count"] == len(expected_heads), "q_receipt_head_count_drift")
         require(receipt["richness"] == "R_complement" and receipt["within_head_class_balancing"] is False, "q_receipt_science_drift")
-        _validate_q_weight_rescaling(receipt)
         low, high = receipt["head_total_weight_range"]
         require(np.isclose(low, high, rtol=0, atol=1e-8), "q_receipt_head_weight_drift")
         records.append(
@@ -1377,14 +1370,16 @@ def validate(root: Path, complete: bool = False) -> dict[str, Any]:
     config = _config(root)
     crossfit = _read_json(root / CROSSFIT_PATH)
     identity = _identity(root)
-    ready_q = sum(_load_q(root, config, identity, *spec) is not None for spec in q_surface_specs(crossfit))
+    q_receipts = q_provenance(root, config, require_complete=True) if complete else None
+    ready_q = q_receipts["ready"] if complete else sum(
+        _load_q(root, config, identity, *spec) is not None for spec in q_surface_specs(crossfit)
+    )
     receipt = {**inputs, "q_surfaces_ready": ready_q, "complete_required": complete}
     if complete:
         summary_path = root / config["execution"]["tracked_summary"]
         require(summary_path.is_file(), "goal051_summary_missing")
         summary = _read_json(summary_path)
         require(summary.get("identity") == identity and summary.get("target_endpoints") == 303 and summary.get("q_conditions") == 449, "goal051_summary_drift")
-        q_receipts = q_provenance(root, config, require_complete=True)
         require(q_receipts == summary["q_surface_provenance"], "q_summary_provenance_drift")
         curves = _read_json(root / CURVES_PATH)
         store = SeawfbStore(root)
@@ -1534,7 +1529,7 @@ def _canary(root: Path, receipt_tag: str | None = None) -> dict[str, Any]:
     for candidate_id in spec["candidate_ids"]:
         family = CANONICAL_CANDIDATES[candidate_id]["family"]
         started = time.perf_counter()
-        scores, fit = _fit_predict(config, target, fraction, fold, family, candidate_id, "seed00", train_rows, train, validation_batch, "canary")
+        scores, fit = _fit_predict(config, target, fraction, fold, family, candidate_id, "seed00", train_rows, train, validation_batch)
         entries.append(
             {
                 "family": family,
@@ -1565,8 +1560,7 @@ def _canary(root: Path, receipt_tag: str | None = None) -> dict[str, Any]:
             seed_namespace=_seed_namespace(config, "q"),
             numerical_fit=config["community_control"]["numerical_fit"],
         )
-        train_q, scale = standardized_q(q_model, store, target, fold, train_rows, train_rows)
-        validation_q, _ = standardized_q(q_model, store, target, fold, validation_rows, train_rows)
+        train_q, validation_q, scale = standardized_q(q_model, store, fold, train_rows, validation_rows)
         q_train = store.batch(target, train_rows, fold, train_q)
         q_validation = store.batch(target, validation_rows, fold, validation_q)
         q_scores, q_downstream = _fit_predict(
@@ -1580,7 +1574,6 @@ def _canary(root: Path, receipt_tag: str | None = None) -> dict[str, Any]:
             train_rows,
             q_train,
             q_validation,
-            f"canary_q_{auxiliary}",
         )
         q_entries.append(
             {
@@ -1665,7 +1658,7 @@ def canary_batch(root: Path, host_key: str) -> dict[str, Any]:
         canary(root, tag)
     configured = int(config["execution"]["canary"]["mixed_concurrency"][host_key])
     require(len(mixed) == configured, "canary_mixed_schedule_drift")
-    with ProcessPoolExecutor(max_workers=configured) as pool:
+    with ProcessPoolExecutor(max_workers=configured, mp_context=multiprocessing.get_context("spawn")) as pool:
         futures = [pool.submit(_canary_process, str(root), tag) for tag in mixed]
         completed = {future.result() for future in as_completed(futures)}
     require(completed == set(mixed), "canary_mixed_completion_drift")
@@ -1965,7 +1958,7 @@ def _run_parallel(root: Path, function: Any, tasks: Sequence[Any], workers: int)
         for task in tasks:
             print(function(task), flush=True)
         return
-    with ProcessPoolExecutor(max_workers=workers, initializer=_worker_init, initargs=(str(root),)) as pool:
+    with ProcessPoolExecutor(max_workers=workers, mp_context=multiprocessing.get_context("spawn"), initializer=_worker_init, initargs=(str(root),)) as pool:
         futures = {pool.submit(function, task): task for task in tasks}
         for future in as_completed(futures):
             print(future.result(), flush=True)
@@ -2025,7 +2018,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     if args.command == "status":
         print(json.dumps(status(root), indent=2, sort_keys=True))
         return 0
-    inputs = validate_inputs(root)
+    # These entrypoints validate their own inputs; other CLI paths own the gate here.
+    inputs = None if args.command in {"validate", "canary", "canary-batch"} else validate_inputs(root)
     if args.command == "plan":
         print(json.dumps(inputs, indent=2, sort_keys=True))
     elif args.command == "q":

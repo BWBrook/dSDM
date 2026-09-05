@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import inspect
 import copy
+import multiprocessing
 import platform
 import warnings
 from concurrent.futures import Future
@@ -46,7 +47,6 @@ from dsdm_phase1.seawfb_modeling import (
     SeawfbStore,
     collapse_equal_head_rows,
     standardized_q,
-    weighted_logistic_loss,
     fit_q_linear,
     q_parameter_digest,
 )
@@ -55,13 +55,15 @@ from dsdm_phase1.seawfb_modeling import (
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def weighted_logistic_loss(linear_predictor, y, weight):
+    eta = np.asarray(linear_predictor, dtype=np.float64)
+    return float(np.sum(np.asarray(weight) * (np.logaddexp(0.0, eta) - np.asarray(y) * eta)))
+
+
 def test_frozen_endpoint_inventories_are_exact_and_noncartesian():
-    curves = json.loads(
-        (ROOT / "data/processed/dsdm/goal050-seawfb-modeling-foundation/learning_curves.json").read_text()
-    )
-    crossfit = json.loads(
-        (ROOT / "data/processed/dsdm/goal050-seawfb-modeling-foundation/crossfit_plan.json").read_text()
-    )
+    targets = [f"bird-{index:03d}" for index in range(157)]
+    curves = {"applies_to": {"primary_targets": targets[:73], "full_full_focal_targets": targets}}
+    crossfit = {"auxiliary_sets": {str(block): {} for block in range(10)}}
     endpoints = target_endpoints(curves)
     conditions = q_conditions(curves)
     assert len(endpoints) == 303
@@ -144,15 +146,34 @@ def _response(indices):
 
 
 def test_q_standardization_is_fit_on_current_endpoint_training_rows():
+    class CountingStore(_QStore):
+        def __init__(self):
+            self.encodings = []
+
+        def encoded(self, indices, held_fold, q=None):
+            self.encodings.append(tuple(indices))
+            return super().encoded(indices, held_fold, q)
+
     model = QLinearModel(np.array([0.8]), -0.3, 0, 0, "full", "fold_0", 10)
     training = _response([0, 1, 2, 3])
     requested = _response([4, 5])
-    scaled_training, scale = standardized_q(model, _QStore(), "target", 0, training, training)
-    scaled_requested, repeated = standardized_q(model, _QStore(), "target", 0, requested, training)
+    store = CountingStore()
+    scaled_training, scaled_requested, scale = standardized_q(model, store, 0, training, requested)
+    assert store.encodings == [(0, 1, 2, 3), (4, 5)]
+    raw_training = model.raw_scores(_QStore().encoded(training.indices, 0))
+    raw_requested = model.raw_scores(_QStore().encoded(requested.indices, 0))
+    mean, sd = np.mean(raw_training), np.std(raw_training, ddof=0)
+    assert np.array_equal(scaled_training, (raw_training - mean) / sd)
+    assert np.array_equal(scaled_requested, (raw_requested - mean) / sd)
+    assert scale == {"training_mean": mean, "training_population_sd": sd}
     assert np.isclose(np.mean(scaled_training), 0, atol=1e-12)
     assert np.isclose(np.std(scaled_training), 1, atol=1e-12)
-    assert scale == repeated
     assert np.all(scaled_requested > scaled_training.max())
+    with pytest.raises(SeawfbModelingError, match="q_scale_training_fold_leakage"):
+        standardized_q(model, store, 1, training, requested)
+    constant_model = QLinearModel(np.array([0.0]), 0.0, 0, 0, "full", "fold_0", 10)
+    with pytest.raises(SeawfbModelingError, match="q_standardization_degenerate"):
+        standardized_q(constant_model, store, 0, training, requested)
 
 
 class _FitQStore:
@@ -604,7 +625,8 @@ def test_canary_batch_uses_exact_serial_then_concurrent_schedule(tmp_path, monke
     pools = []
 
     class FakePool:
-        def __init__(self, max_workers):
+        def __init__(self, max_workers, mp_context):
+            assert mp_context.get_start_method() == "spawn"
             self.max_workers = max_workers
             pools.append(self)
 
@@ -697,6 +719,33 @@ def test_canary_route_binds_both_host_summaries_and_worker_limit(tmp_path, monke
         canary_route(tmp_path, "mac", 4)
 
 
+def _synthetic_worker_init(root):
+    import torch
+
+    torch.set_num_threads(1)
+
+
+def _synthetic_backward(value):
+    import torch
+
+    assert multiprocessing.get_start_method() == "spawn"
+    tensor = torch.tensor(float(value), requires_grad=True)
+    tensor.square().backward()
+    return f"gradient={tensor.grad.item()}"
+
+
+def test_production_workers_can_backpropagate_after_parent_autograd(tmp_path, monkeypatch, capsys):
+    import torch
+    import dsdm_phase1.goal051_seawfb_conventional as goal051
+
+    parent = torch.tensor(2.0, requires_grad=True)
+    parent.square().backward()
+    monkeypatch.setattr(goal051, "_worker_init", _synthetic_worker_init)
+    goal051._run_parallel(tmp_path, _synthetic_backward, [2, 3], workers=2)
+    assert set(capsys.readouterr().out.splitlines()) == {"gradient=4.0", "gradient=6.0"}
+
+
+@pytest.mark.real_scope
 def test_live_protocol_contract_validates_without_fitting_models():
     result = validate_inputs(ROOT)
     assert result["target_endpoints"] == 303

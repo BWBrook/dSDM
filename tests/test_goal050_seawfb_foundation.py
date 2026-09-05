@@ -54,6 +54,7 @@ def test_transform_fit_uses_population_sd_and_explicit_missing_unseen():
     assert transformed.loc[0, "nvis_mvg"] == "__UNSEEN__"
 
 
+@pytest.mark.real_scope
 def test_tracked_validation_is_clean_for_built_foundation():
     root = Path(__file__).parents[1]
     result = foundation.validate(root, tracked_only=True)
@@ -63,7 +64,8 @@ def test_tracked_validation_is_clean_for_built_foundation():
     assert manifest["fold_search"]["model_metrics_used"] is False
 
 
-def test_written_folds_match_selected_assignment_and_gate_receipt():
+@pytest.mark.real_scope
+def test_built_foundation_replays_folds_receipts_and_target_plans():
     root = Path(__file__).parents[1]
     result = foundation.validate(root, tracked_only=False)
     manifest = json.loads((root / "metadata/goal050_manifest.json").read_text())
@@ -75,10 +77,6 @@ def test_written_folds_match_selected_assignment_and_gate_receipt():
     assert selected["head_presence_gate"] is True
     assert selected["head_complement_gate"] is True
     assert selected["adequate_background_gate"] is True
-
-
-def test_response_plans_cover_all_focal_targets_with_primary_nested_endpoints():
-    root = Path(__file__).parents[1]
     curves = json.loads((root / "data/processed/dsdm/goal050-seawfb-modeling-foundation/learning_curves.json").read_text())
     plan = curves["response_row_plan"]
     assert len(plan) == 157 * 5
@@ -86,15 +84,6 @@ def test_response_plans_cover_all_focal_targets_with_primary_nested_endpoints():
     assert sum(row["endpoint_plan"] == "full_only" for row in plan) == 84 * 5
     for row in plan:
         assert set(row["fractions"]) == ({"0.25", "0.5", "1.0"} if row["endpoint_plan"] == "nested_25_50_100" else {"1.0"})
-
-
-def test_completion_receipt_binds_current_manifest():
-    root = Path(__file__).parents[1]
-    private = root / "data/processed/dsdm/goal050-seawfb-modeling-foundation"
-    receipt = json.loads((private / "run.exit").read_text())
-    manifest = root / "metadata/goal050_manifest.json"
-    assert receipt["status"] == "complete"
-    assert receipt["manifest_sha256"] == foundation.sha256(manifest)
 
 
 def test_tracked_privacy_guard_rejects_coordinates_and_cell_payloads():

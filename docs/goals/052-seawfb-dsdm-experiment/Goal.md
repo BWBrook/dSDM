@@ -56,7 +56,7 @@ outer ecological outcomes.
    runtime, and privacy receipts validate independently.
 4. NCP, SEH, and NNC remain unopened until a separately authorized outer
    evaluation goal.
-5. Goal 051 numerical amendment 1 is the recorded pre-score amendment and must
+5. Goal 051 numerical amendments 1 and 2 are recorded in protocol v3 and must
    pass a repeated metric-free canary. Any further pre-score change requires
    explicit versioned authorization; any post-score scientific amendment
    requires a versioned protocol and full rerun.

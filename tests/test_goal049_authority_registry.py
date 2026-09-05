@@ -3,7 +3,6 @@ import hashlib
 import importlib.util
 import json
 import re
-import shutil
 from pathlib import Path
 
 import pytest
@@ -46,7 +45,12 @@ def _write_fixture(tmp_path):
     (config_dir / "goal048_seawfb_bioregional_freeze.json").write_text(json.dumps(goal048))
     taxonomy = tmp_path / "data/processed/dsdm/goal048-seawfb-bioregional-freeze/taxonomy_freeze.json"
     taxonomy.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copy(ROOT / "data/processed/dsdm/goal048-seawfb-bioregional-freeze/taxonomy_freeze.json", taxonomy)
+    universes = goal048["species_universes"]
+    taxonomy.write_text(json.dumps({"rows": [
+        {"seed_name": name, "accepted_name": universes["accepted_name_transitions"].get(name, name),
+         "aliases": [], "descendants": []}
+        for name in universes["ecological_candidate_names"]
+    ]}))
     authority = tmp_path / goal049.PRIVATE_ROOT / goal049.AUTHORITY_DIRNAME
     authority.mkdir(parents=True)
 

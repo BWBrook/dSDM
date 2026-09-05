@@ -149,7 +149,7 @@ def test_replay_detects_noncanonical_assessment_cells_with_updated_digest(tmp_pa
 def test_endpoint_records_failed_non_null_family_as_unavailable(tmp_path, monkeypatch):
     scores = [0.1, 0.3, 0.7, 0.9]
 
-    def evaluated(config, target, fraction, family, candidate, seeds, prepared, auxiliary):
+    def evaluated(config, target, fraction, family, candidate, seeds, prepared):
         if family == "elastic_net":
             raise SeawfbModelingError("synthetic_fit_failure")
         folds = []

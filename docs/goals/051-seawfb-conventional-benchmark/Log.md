@@ -73,3 +73,33 @@
   valid two-host summaries, run route selection, then launch the full
   production benchmark under the existing approval. No new permission is
   required.
+
+## 2026-09-05 - bounded code and test simplification
+
+- The successor inspected the detached jobs: Mac completed all five receipts;
+  deep-server completed two serial receipts then failed in mixed concurrency
+  with PyTorch's autograd/fork threading error. Production had not started.
+- Under Barry's requested code sweep, removed the caller-free Goal029 P-spline
+  experiment and its authority registry/tests. Retained Goal028's pyGAM path,
+  the accepted model families, historical evidence, and frozen configurations.
+- Q preparation now evaluates training q once per role pair instead of three
+  times, preserving exact values and training-only standardization. Removed
+  unused helpers/arguments, duplicate CLI input validation, and repeated q
+  checkpoint loads in complete validation. Full metric replay remains intact.
+- Both process pools explicitly use `spawn`. A real two-worker synthetic
+  backward-pass test runs after parent autograd initialization. Linux canary
+  verification is still pending; no remote code or jobs were changed here.
+- Removed private-file dependencies from the Goal049 authority and Goal051
+  inventory unit fixtures. Consolidated duplicate Goal050 happy-path checks
+  into explicit `real_scope` replay tests. Older unmarked historical test
+  assumptions and the aggregate/final-validation replay overlap remain deferred.
+- Focused final gate: **56 passed, 3 real-scope checks deselected in 5.33 s**.
+  This covers the README's five-file gate plus the existing canonical-runtime
+  and missing-pyGAM isolation checks. Canonical candidate definitions and
+  neural training/serialization are structurally unchanged; exact q values,
+  convergence, exclusion, tamper detection and all-endpoint replay checks pass.
+- README and handover now describe the current scientific and execution state.
+  No data, ecological scores, source-binding receipts, or lockfiles changed.
+  Source changes invalidate the old canaries for route selection: retain them
+  as history and run fresh two-host evidence after continuation. No canaries,
+  production, or ongoing monitoring were launched during this sweep.

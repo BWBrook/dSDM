@@ -99,15 +99,6 @@ class ResponseRows:
         object.__setattr__(self, "y", y)
         object.__setattr__(self, "source_folds", folds)
 
-    def take(self, selected: Sequence[int]) -> "ResponseRows":
-        chosen = np.asarray(selected, dtype=np.int64)
-        return ResponseRows(
-            self.indices[chosen],
-            tuple(self.cell_ids[index] for index in chosen),
-            self.y[chosen],
-            self.source_folds[chosen],
-        )
-
 
 @dataclass(frozen=True)
 class EncodedFeatures:
@@ -201,18 +192,6 @@ def collapse_equal_head_rows(
         tuple(counts.tolist()),
         expanded,
     )
-
-
-def weighted_logistic_loss(
-    linear_predictor: Sequence[float], y: Sequence[int], weight: Sequence[float]
-) -> float:
-    """Numerically stable weighted Bernoulli loss, used by replay tests."""
-
-    eta = np.asarray(linear_predictor, dtype=np.float64)
-    labels = np.asarray(y, dtype=np.float64)
-    weights = np.asarray(weight, dtype=np.float64)
-    require(len(eta) == len(labels) == len(weights), "loss_input_mismatch")
-    return float(np.sum(weights * (np.logaddexp(0.0, eta) - labels * eta)))
 
 
 class SeawfbStore:
@@ -552,19 +531,19 @@ def fit_q_linear(
 def standardized_q(
     model: QLinearModel,
     store: SeawfbStore,
-    target: str,
     held_fold: int,
-    requested_rows: ResponseRows,
     training_rows: ResponseRows,
-) -> tuple[np.ndarray, dict[str, float]]:
-    """Standardize raw q on the current endpoint's target training rows."""
+    validation_rows: ResponseRows,
+) -> tuple[np.ndarray, np.ndarray, dict[str, float]]:
+    """Scale both roles using one evaluation of the target training rows."""
 
     require((training_rows.source_folds != held_fold).all(), "q_scale_training_fold_leakage")
     training_raw = model.raw_scores(store.encoded(training_rows.indices, held_fold))
     mean = float(np.mean(training_raw))
     sd = float(np.std(training_raw, ddof=0))
     require(math.isfinite(mean) and math.isfinite(sd) and sd > 0, "q_standardization_degenerate")
-    requested_raw = model.raw_scores(store.encoded(requested_rows.indices, held_fold))
-    standardized = (requested_raw - mean) / sd
-    require(np.isfinite(standardized).all(), "q_standardization_nonfinite")
-    return standardized, {"training_mean": mean, "training_population_sd": sd}
+    validation_raw = model.raw_scores(store.encoded(validation_rows.indices, held_fold))
+    training_q = (training_raw - mean) / sd
+    validation_q = (validation_raw - mean) / sd
+    require(np.isfinite(training_q).all() and np.isfinite(validation_q).all(), "q_standardization_nonfinite")
+    return training_q, validation_q, {"training_mean": mean, "training_population_sd": sd}

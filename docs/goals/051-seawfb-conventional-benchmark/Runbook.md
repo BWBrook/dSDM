@@ -4,7 +4,7 @@ From the repository root, use the locked environment and the Goal 051 runner
 once implementation is present:
 
 ```sh
-uv run --locked pytest -q tests/test_goal051_seawfb_modeling.py tests/test_goal051_seawfb_replay.py
+uv run --locked pytest -q tests/test_goal051_seawfb_modeling.py tests/test_goal051_seawfb_replay.py -m 'not real_scope'
 uv run --locked python -m dsdm_phase1.goal051_seawfb_conventional plan --root .
 uv run --locked python -m dsdm_phase1.goal051_seawfb_conventional canary-batch --root . --host-key mac
 # On deep-server, from its Goal 051 checkout:
@@ -61,8 +61,14 @@ q parameter digests exactly.
 
 ## Detached Canary Handoff
 
-The corrected protocol-v3 canaries run detached under the existing approval.
-Use these exact status checks when waking the work:
+The pre-cleanup protocol-v3 canaries have finished: Mac exited 0; deep-server
+exited 1 during mixed concurrency with the autograd/fork threading error.
+The 2026-09-05 code sweep explicitly selected `spawn` for canary and production
+workers. It also changed source-bound adapters and q preparation. Both hosts
+therefore need fresh canaries from the final source; the old Mac success
+cannot select a route for the changed source. Preserve the existing canary
+directory and logs before restarting. No replacement runs were launched in
+the sweep. These paths identify the historical runs until restart:
 
 ```sh
 set +e

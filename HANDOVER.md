@@ -1,9 +1,9 @@
 # dSDM: Fresh-Task Handover
 
 Prepared for Barry Brook's successor research collaborator, 2026-09-05.
-Repository: `/Users/bwbrook/papers/dSDM`; source snapshot: clean `main` at
-`8be8ec6` before this documentation change. Job status below is a last-known
-handoff, not a fresh compute inspection.
+Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
+execution status and cleanup notes were refreshed during the successor's
+orientation and code sweep on 2026-09-05.
 
 ## Start Here
 
@@ -12,10 +12,9 @@ action-agent `quoll` arrangement are retired for this project. Use native,
 bounded subagents when useful; do not reconstruct that management machinery.
 
 This note gives the current orientation; linked protocols, decisions, code,
-and evidence supply the detail. Older README and roadmap status paragraphs
-lag behind the work. In particular, their claim that the mainland-to-Tasmania
-transfer assessment is still sealed is obsolete. Do not confuse that completed
-assessment with the separate, still-deferred original Tasmania outer test.
+and evidence supply the detail. Some historical roadmap paragraphs lag behind
+the work. The mainland-to-Tasmania transfer assessment is complete; it is
+distinct from the still-deferred original Tasmania outer test.
 
 ## Scientific Purpose And Findings
 
@@ -109,14 +108,27 @@ Corrected canaries were launched on 5 September in detached sessions:
 | Mac mini | `/Users/bwbrook/papers/dSDM` | `dsdm-goal051-canary-mac` |
 | `deep-server-ts` | `/data/codex/repos/dSDM` | `dsdm-goal051-canary` |
 
-At handoff, production had not launched; canaries may since have finished.
-Barry paused the Codex automatic goal and stopped monitoring, without cancelling
-tmux jobs. **Do not recreate automatic-goal machinery or launch duplicate jobs.**
-This handover request authorizes no resumed compute or monitoring.
+The successor's read-only inspection found both canary sessions finished. Mac
+exited 0 with all five receipts and a host summary. Deep-server produced two
+serial receipts, then exited 1 during mixed concurrency with PyTorch's
+autograd/fork threading error; no completed deep-server host summary exists.
+Neither host had a production session or run log.
+
+The authorized code sweep removed the abandoned Goal029 P-spline implementation,
+merged repeated q standardization work, trimmed duplicate input/q validation,
+and explicitly selected `spawn` for both process pools. It retained the frozen
+scientific configurations and historical evidence. These source changes make
+the prior canaries historical: **both hosts need fresh canaries against the
+final source before route selection**. Preserve the old logs/receipts when
+restarting; do not rebind their hashes to new code. No canaries or production
+were launched during the sweep.
+
+Barry paused automatic-goal monitoring. **Do not recreate automatic-goal
+machinery or launch duplicate jobs.**
 
 On Barry's next continuation, inspect the existing jobs first using the
 [Goal 051 runbook](docs/goals/051-seawfb-conventional-benchmark/Runbook.md),
-which has exact v3 log/exit paths. Complete and validate both host summaries,
+which has exact v3 log/exit paths. Rerun and validate both host summaries,
 select the measured route, then launch the benchmark under its existing
 approval. Goal 050's earlier PyTorch throughput result does not choose the
 route for this different workload. An exit code or receipt alone is not
@@ -133,8 +145,7 @@ training-only evidence. Do not redesign it after seeing conventional scores.
 
 Accept Goal 051 before executing Goal 052, and establish execution authority
 at that transition. Its [v3 config](config/goal052_seawfb_dsdm.json) records
-both numerical amendments; acceptance item 5 in its older Goal.md mentions
-only amendment 1 and is stale. A later, separately authorized bird outer
+both numerical amendments. A later, separately authorized bird outer
 evaluation precedes cross-case synthesis and manuscript rewriting.
 
 ## Working Contract And Practical Guardrails
