@@ -21,3 +21,15 @@
 - Acceptance still requires convergence. Ceiling-stability acceptance remains
   deferred. Solver, C, l1 ratio, rows, weights, features, exclusions, and seed
   are unchanged. No ecological score or outer outcome informed this amendment.
+
+## 2026-09-05 - convergence blocker after amendment 1
+
+- Repeated the metric-free canary at protocol version 2 from commit `c030674`
+  on `Barrys-Mac-mini.local` and `deep-server`.
+- Both hosts exited 1 during the first serial canary with
+  `q_linear_nonconverged_after_extended_attempt`. Neither host produced a
+  canary receipt or reached the mixed-concurrency stage.
+- The one prespecified numerical repair pass is exhausted. Compute-route
+  selection and production remain unlaunched pending an explicit decision on
+  a different q-linear convergence policy or model.
+- No ecological metric was calculated and NCP, SEH, and NNC remained sealed.
