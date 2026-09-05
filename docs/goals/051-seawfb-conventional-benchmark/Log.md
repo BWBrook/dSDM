@@ -61,9 +61,10 @@
 - The corrected protocol-v3 canary-batch was launched at approximately 16:27
   AEST under the existing approval: Mac session `dsdm-goal051-canary-mac` in
   `/Users/bwbrook/papers/dSDM`, with `canary/batch-v3-mac.log` and
-  `canary/batch-v3-mac.exit`; deep-server session `dsdm-goal051-canary` in
-  `/data/codex/repos/dSDM`, with `canary/batch-v3.log` and
-  `canary/batch-v3.exit`.
+  `canary/batch-v3-mac.exit` relative to the private run root;
+  deep-server session `dsdm-goal051-canary` in `/data/codex/repos/dSDM`, with
+  `canary/batch-v3.log` and `canary/batch-v3.exit` relative to the private run
+  root.
 - At approximately 16:32 AEST both CPU processes were active. The first
   receipt had not completed; no failure, outer access, or ecological metric
   was observed. Prior logs were preserved. The main benchmark remains
