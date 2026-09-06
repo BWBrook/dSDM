@@ -74,6 +74,13 @@ directory. Each new `canary/launch.sh` records its exact command, source commit,
 one-thread environment, and log/exit handling. The following paths now refer
 to the replacement runs:
 
+**Wake-up at 13:04 AEST, 6 September:** Mac completed and its five-receipt
+summary reproduced exactly. Deep-server rebooted at 03:31, leaving one valid
+serial receipt and no exit marker. The interrupted directory is preserved as
+`canary.interrupted-20260906T030509Z`. A fresh server batch started at 13:05:09
+AEST in the same session and paths below, from unchanged source. Mac does not
+need another run. Production still awaits the complete two-host route gate.
+
 ```sh
 set +e
 tmux has-session -t dsdm-goal051-canary-mac

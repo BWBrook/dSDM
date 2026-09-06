@@ -133,3 +133,25 @@
   existing sessions, validate complete host summaries and underlying receipts,
   select the measured route, then proceed to the benchmark under the existing
   approval. Do not duplicate jobs or use the archived canaries to select it.
+
+## 2026-09-06 - wake-up and server reboot recovery
+
+- At 13:04 AEST, Mac had exited 0 with all five receipts. Reproduced its
+  summary exactly and independently checked identities, timing arithmetic,
+  interval concurrency, q digest stability, accepted convergence attempts,
+  and zero ecological metrics/outer access. Mean serial latency was 1,736 s;
+  the three concurrent probes completed in 1,855 s. These are canary timings,
+  not production estimates.
+- Deep-server boot records show a 03:31 reboot into kernel 6.8.0-139-generic.
+  The batch left one valid serial receipt (7,450 s under the earlier heavy
+  host load), no completed summary, and no exit marker. Its accepted q fits
+  converged at 1,263 and 9,566 iterations. No new model failure was observed;
+  the reboot cause was not investigated or changed.
+- Preserved the interrupted directory as
+  `canary.interrupted-20260906T030509Z` and restarted the complete deep-server
+  batch at 13:05:09 AEST from unchanged `ab7e369`. Current host load was about
+  1–2 with 122 GiB available memory. A fresh timing batch avoids combining
+  serial measurements across the reboot and substantially changed host load.
+- Verified the restarted CPU process active. Retained the completed Mac run.
+  Route selection and production remain pending the server's full evidence;
+  no ongoing monitor or duplicate job was created.

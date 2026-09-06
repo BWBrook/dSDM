@@ -128,7 +128,12 @@ Barry resumed Goal051 on 6 September. Both hosts now have fresh canaries from
 processes were verified active. The old canary directories were preserved.
 Linux passed 54 portable tests, and both live input plans produced identical
 identities. The exact current paths and archive names are in the runbook.
-These runs have not yet been accepted; production remains unlaunched.
+At the 13:04 AEST wake-up, Mac had completed and its five-receipt evidence
+validated. Deep-server rebooted at 03:31 after one serial receipt, interrupting
+its batch. The interrupted directory was preserved and a fresh server batch
+started at 13:05:09 AEST from unchanged source; its CPU process was verified
+active. Retain the Mac result. The server summary and route gate remain
+pending; production is unlaunched.
 
 Barry paused automatic-goal monitoring. **Do not recreate automatic-goal
 machinery or launch duplicate jobs.**
