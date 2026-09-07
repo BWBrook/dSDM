@@ -1,0 +1,74 @@
+{
+  "host_summaries": {
+    "deep_server": {
+      "actual_hostname": "deep-server",
+      "actual_platform": "Linux-6.8.0-139-generic-x86_64-with-glibc2.39",
+      "actual_system": "Linux",
+      "mixed_batch": {
+        "configured_concurrency": 8,
+        "elapsed_seconds": 7549.959934086,
+        "interval_peak_concurrency": 8,
+        "runs": 8,
+        "throughput_runs_per_second": 0.0010596082720760135
+      },
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark/canary/summary-deep_server.json",
+      "peak_rss_bytes": 2414960640,
+      "prediction_digest_stable": true,
+      "q_parameter_digest_stable": true,
+      "serial_latency_seconds": {
+        "maximum": 8094.134003949999,
+        "mean": 7062.919525349,
+        "minimum": 6031.705046748,
+        "values": [
+          6031.705046748,
+          8094.134003949999
+        ]
+      },
+      "sha256": "54b30a18cd02fa9e704b16c823c14d7e7fb4a4529d95176a051132db9cd760c2"
+    },
+    "mac": {
+      "actual_hostname": "Barrys-Mac-mini.local",
+      "actual_platform": "macOS-26.6.2-arm64-arm-64bit",
+      "actual_system": "Darwin",
+      "mixed_batch": {
+        "configured_concurrency": 3,
+        "elapsed_seconds": 1854.936464,
+        "interval_peak_concurrency": 3,
+        "runs": 3,
+        "throughput_runs_per_second": 0.0016173060685489874
+      },
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark/canary/summary-mac.json",
+      "peak_rss_bytes": 2428534784,
+      "prediction_digest_stable": true,
+      "q_parameter_digest_stable": true,
+      "serial_latency_seconds": {
+        "maximum": 1820.3661866250914,
+        "mean": 1736.191653124988,
+        "minimum": 1652.0171196248848,
+        "values": [
+          1820.3661866250914,
+          1652.0171196248848
+        ]
+      },
+      "sha256": "4fcb48a68ab45dcb26fb1b5dba81bf12467ff9dde15be8e9ed9e4e5dfc882eff"
+    }
+  },
+  "identity": {
+    "config_sha256": "85cc0800862c2fcf0acf8153fce9ede3400efe86ca91d85a31645b09fba34646",
+    "goal050_crossfit_sha256": "b3abdb006fb7d384445db376d5ba3f0f7b48afd170982494f88ff20ef612e804",
+    "goal050_curves_sha256": "317a5513b6645edc588c63db1c2d26afaea3edfa202480b2f46ca58a2817c3d6",
+    "goal050_manifest_sha256": "239dd61cc5d3ab942a813201c0cb4117820b74367c7ba71deffddc6990d36198",
+    "goal050_transforms_sha256": "1d8b3d09b139264e288630f283e330d28919c00b4631132aa9a79529ad3abb52",
+    "goal052_config_sha256": "10e1e5862231d2baa6b3f66ea8dcc504aa75cfe044e9cdf29fb94f0ecb379155",
+    "source_sha256": "d304b3a9bfea3b5e7bbffc8fe3ea1ddce050fadfa0248a05a768389e462fb28b",
+    "uv_lock_sha256": "51712e74b2f9d78a4efb7bfd6732244188e8c6c5bc722f7a78f2724e6b8b84f6"
+  },
+  "metrics_computed": false,
+  "outer_predictor_rows_used": 0,
+  "outer_response_rows_read": 0,
+  "proven_mixed_concurrency": 3,
+  "schema_version": "goal051-canary-route-v1",
+  "selected_host": "mac",
+  "selected_workers": 3,
+  "status": "metric_free_route_selected"
+}

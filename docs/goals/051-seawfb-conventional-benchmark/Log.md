@@ -155,3 +155,27 @@
 - Verified the restarted CPU process active. Retained the completed Mac run.
   Route selection and production remain pending the server's full evidence;
   no ongoing monitor or duplicate job was created.
+
+## 2026-09-08 - canary acceptance and production launch
+
+- Deep-server completed at 19:06 AEST on 6 September, exit 0, with two serial
+  and eight concurrent receipts. The repaired spawned-worker path completed.
+- Transferred ten receipts and the host summary privately to Mac; all eleven
+  SHA-256 hashes matched the server originals. Both summaries reproduced
+  exactly. Independent arithmetic and receipt checks confirmed serial order,
+  mixed interval peaks of three/eight, throughput, peak RSS, matching source
+  identities, accepted convergence, within-host q parameter stability, and
+  zero ecological metrics/outer access. Cross-platform bitwise equality is
+  not asserted.
+- Selected Mac with three workers and wrote `metadata/goal051_canary.json`.
+  Mac mixed throughput was 5.822 probes/hour versus deep-server 3.815
+  (1.526 times faster). Mean serial latencies were 1,736 and 7,063 seconds.
+  Deep-server experienced substantial background load during the run; this
+  is a measured operating-route choice, not a hardware ranking or production
+  ETA. Mac preflight showed 69% free memory and 253 GiB free disk.
+- Launched `dsdm-goal051-conventional` locally at 09:22:38 AEST using the
+  existing resumable launcher and three workers. Implementation source and
+  frozen Goal051/052 configurations are unchanged. The launcher runs input
+  validation, 150 q surfaces, 303 target endpoints, aggregation, and complete
+  validation. Input validation passed and all three spawned q workers were
+  verified active at about 99.5% CPU each. Production acceptance remains pending.

@@ -97,7 +97,32 @@ ssh deep-server-ts 'tail -n 40 /data/codex/repos/dSDM/data/processed/dsdm/goal05
 printf 'deep_exit_marker='; ssh deep-server-ts 'cat /data/codex/repos/dSDM/data/processed/dsdm/goal051-seawfb-conventional-benchmark/canary/batch-v3.exit'
 ```
 
-An exit marker of `0` is necessary but not sufficient for acceptance. Resume
-only after both host summaries are complete and independently valid; then run
-`canary-route` with the selected host and workers before launching the main
-benchmark session. The main benchmark has not yet been launched.
+An exit marker of `0` is necessary but not sufficient for acceptance.
+
+## Production Handoff — 8 September
+
+Both host canaries are now independently validated. Deep-server finished at
+19:06 AEST on 6 September with exit 0 and all ten receipts. All eleven server
+JSON files were copied privately to Mac and verified against remote SHA-256;
+both host summaries reproduced exactly from their receipts.
+
+`metadata/goal051_canary.json` selects **Mac mini with three workers**. Measured
+mixed throughput was 5.82 probes/hour on Mac versus 3.81 at server concurrency
+eight; the server run experienced background contention. These are canary
+timings, not a production ETA or a hardware ranking.
+
+The production session launched at **09:22:38 AEST on 8 September**:
+
+```sh
+tmux capture-pane -pt dsdm-goal051-conventional -S -40
+tail -n 40 data/processed/dsdm/goal051-seawfb-conventional-benchmark/run.log
+uv run --locked python -m dsdm_phase1.goal051_seawfb_conventional status --root .
+cat data/processed/dsdm/goal051-seawfb-conventional-benchmark/run.exit
+```
+
+Run these locally in `/Users/bwbrook/papers/dSDM`. The q stage precedes the
+303 target endpoints. Preserve source identity while the job runs. If it is
+interrupted, inspect the failure and checkpoint validity before restarting
+the same launcher with `GOAL051_WORKERS=3`; do not launch a duplicate session.
+Complete benchmark evidence still requires scientific acceptance before any
+Goal052 execution.

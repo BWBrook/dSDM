@@ -2,8 +2,8 @@
 
 Prepared for Barry Brook's successor research collaborator, 2026-09-05.
 Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
-execution status was refreshed on 2026-09-06 after the successor's orientation,
-code sweep, and fresh canary launch.
+execution status was refreshed on 2026-09-08 after both canaries validated
+and the conventional benchmark launched.
 
 ## Start Here
 
@@ -132,18 +132,32 @@ At the 13:04 AEST wake-up, Mac had completed and its five-receipt evidence
 validated. Deep-server rebooted at 03:31 after one serial receipt, interrupting
 its batch. The interrupted directory was preserved and a fresh server batch
 started at 13:05:09 AEST from unchanged source; its CPU process was verified
-active. Retain the Mac result. The server summary and route gate remain
-pending; production is unlaunched.
+active.
+
+At the 8 September wake-up, deep-server had completed at **19:06 AEST on
+6 September**, exit 0, with all ten receipts. Both host summaries reproduced
+exactly; independent checks covered transfer hashes, timing, interval
+concurrency, convergence, identities, and zero ecological metrics/outer access.
+The selected route is **Mac mini, three workers**: measured throughput was
+5.82 canary probes/hour versus 3.81 on deep-server at eight workers. The server
+measurement reflects substantial background contention, not an intrinsic
+hardware ranking. The route receipt is `metadata/goal051_canary.json`.
+
+Production launched locally at **09:22:38 AEST on 8 September**, in tmux
+`dsdm-goal051-conventional`, from unchanged implementation source `ab7e369`.
+The resumable launcher prepares 150 q surfaces, runs 303 target endpoints,
+aggregates, and validates. Goal051 remains incomplete until its full evidence
+passes acceptance. Inspect this existing production session on continuation.
 
 Barry paused automatic-goal monitoring. **Do not recreate automatic-goal
 machinery or launch duplicate jobs.**
 
 On Barry's next continuation, inspect the existing jobs first using the
 [Goal 051 runbook](docs/goals/051-seawfb-conventional-benchmark/Runbook.md),
-which has exact v3 log/exit paths. Finish and validate the existing host runs,
-select the measured route, then launch the benchmark under its existing
-approval. Goal 050's earlier PyTorch throughput result does not choose the
-route for this different workload. An exit code or receipt alone is not
+which has exact log/exit paths. Check the production process, log, exit marker,
+and checkpoint inventory; resume valid checkpoints if interrupted. Goal 050's
+earlier PyTorch throughput result did not choose this workload's route.
+An exit code or receipt alone is not
 scientific acceptance: inspect the emitted evidence and proportionally verify
 metrics, exclusions, and coverage.
 
