@@ -254,3 +254,32 @@
   and block1/fold4/full. A pending failure is suspected but not confirmed from
   an emitted error. Preserve useful progress and inspect the final traceback
   before any recovery or scientific amendment. No process or source changed.
+
+## 2026-09-08 20:17 AEST - q convergence gate stopped production
+
+- The suspected deferred error is confirmed. The pool ended at 18:49:53 AEST
+  with both exit markers 1. The captured exception exhausted the 5,000- and
+  10,000-iteration attempts at tolerance 1e-5, with `ConvergenceWarning` and
+  no numerical warning. No target endpoint or ecological score was generated.
+- All 143 completed q checkpoints pass their original identity, hash,
+  parameter-digest and convergence validators. All q20 and q80 surfaces are
+  complete. Seven full-auxiliary surfaces are missing: block1/folds0,4;
+  block7/folds0,2,4; block8/folds0,4. Only the first exception is available and
+  lacks a surface ID; do not assert identical failure details for all seven.
+- Q20 accepted 50 primary attempts, maximum 2,794 iterations. Q80 accepted
+  eight primary and 42 extended attempts, maximum 7,681. Qfull accepted three
+  primary and 40 extended attempts, maximum 9,943. Several successful full
+  fits lie close to the 10,000 ceiling, supporting a bounded ceiling review
+  rather than a change of objective or acceptance of unconverged estimates.
+- Preserved and returned all 286 model/receipt files plus four logs/exit
+  markers, verifying all 290 transfer hashes. The original Mac logs remain
+  untouched. Compact evidence is in
+  `evidence/seawfb_conventional/goal051/q_stage_failure.json`.
+- No source, numerical policy or model was changed and no fit was repeated.
+  Nectar is idle; further numerical execution awaits a versioned amendment
+  approved before ecological scores, as required by the frozen protocol.
+- Prepared `Numerical-amendment-3-proposal.md` with an independent numerical
+  review: one 20,000-iteration tertiary attempt, unchanged objective/tolerance,
+  explicit preserved-checkpoint provenance, and all 150 converged before
+  targets. This is proposed, not authorized or executed. The recurring check
+  remains active with explicit silence for an unchanged reported blocker.

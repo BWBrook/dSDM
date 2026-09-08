@@ -163,6 +163,17 @@ the summary and route reproduced exactly with independent checks. The
 16-worker q stage was active at 20/150 complete. The current route is
 `metadata/goal051_nectar_route.json`; the old Mac route remains historical.
 
+**20:17 AEST update:** the q pool stopped at 18:49:53 with exit 1 after an
+extended-attempt convergence failure. There are 143 validated q surfaces and
+seven missing full-auxiliary surfaces; no target endpoints started. All 290
+model/receipt/log/exit files were returned with verified hashes to
+`nectar-return-20260908T1017Z` under the local Goal051 private root, preserving
+the earlier Mac logs. No job is active. Do not use the routine restart below
+for this deterministic numerical failure: a versioned amendment needs Barry's
+approval before another fit beyond the existing policy.
+See `Numerical-amendment-3-proposal.md` for the bounded recovery awaiting
+authorization. Keep scheduled checks quiet while this blocker is unchanged.
+
 The wrapper sets data-volume uv caches and one-thread estimator limits. It
 runs two serial probes followed by 16 concurrent probes; raw evidence must
 validate before `metadata/goal051_nectar_route.json` is written and the

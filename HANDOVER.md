@@ -187,6 +187,31 @@ shutdown. This is a suspected pending failure, not a confirmed traceback:
 inspect the eventual log/exit and missing surfaces before restarting or
 amending anything. Leave the productive workers running meanwhile.
 
+**Current state at 20:17 AEST: stopped for numerical-policy review.** The
+pool finished at 18:49:53 AEST with exit 1. Its first reported exception was
+`q_linear_nonconverged_after_extended_attempt`: both 5,000 and 10,000 iteration
+ceilings were exhausted with `ConvergenceWarning`. No target endpoints or
+ecological scores were generated. All 143 completed q checkpoints validate;
+the seven missing surfaces are all full-auxiliary: block1/folds0,4;
+block7/folds0,2,4; block8/folds0,4. The original executor did not attach a
+surface ID to the reported error or retain every individual exception.
+Preserve this distinction; do not label all seven with the single traceback.
+
+The 286 model/receipt files and four execution logs/exit markers were returned
+to private `nectar-return-20260908T1017Z` under the Goal051 root, with all 290
+SHA-256 hashes verified. Both the remote checkpoints and stopped Mac logs are
+preserved. Compact evidence is
+`evidence/seawfb_conventional/goal051/q_stage_failure.json`. Do not repeat the
+unchanged failed schedule or relax convergence without explicit authorization
+for a versioned numerical amendment. Nectar currently has no active compute.
+The reviewable recommendation is
+`docs/goals/051-seawfb-conventional-benchmark/Numerical-amendment-3-proposal.md`:
+one from-scratch 20,000-iteration tertiary attempt, unchanged objective and
+tolerance, with explicit provenance and a strict all-150 convergence gate.
+It remains a proposal. The three-hour follow-up stays active but silent while
+this reported blocker is unchanged. Nectar remains at c3.3xlarge pending the
+campaign decision; no resize or amended fit has occurred.
+
 Barry authorized a **three-hour recurring follow-up in this thread** on
 8 September, superseding the earlier pause on monitoring. The app automation
 is `check-dsdm-nectar-progress`. Inspect the existing Nectar chain, handle
