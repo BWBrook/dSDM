@@ -300,3 +300,18 @@
   available attempt diagnostics immediately, while productive workers drain.
 - Local portable gate passed 84 tests with three real-scope tests deselected.
   Live input validation passed. Linux verification and detached launch follow.
+
+## 2026-09-08 23:19 AEST — v4 Nectar recovery launched
+
+- Linux passed the same 84 portable tests (three real-scope tests deselected)
+  and exact input identity gate. Independent review found no critical
+  identity, gate or provenance blocker; both launchers passed shell checks.
+- Fast-forwarded Nectar to `ce63d96` via Git bundle. Verified all 290 historical
+  model/receipt/log/exit hashes both before and after the update and preserved
+  the old Nectar route bytes exactly. The new production root was absent.
+- Launched `dsdm-goal051-nectar` at 23:19:09 AEST / 13:19:09 UTC. The first
+  isolated block1/fold0/full stress fit is active. The chain proceeds through
+  the repeated canary, route gate, fresh 150-surface q stage and benchmark only
+  on success; neither convergence nor benchmark completion is claimed yet.
+- Updated the existing three-hour follow-up to use v4 paths and the approved
+  recovery boundary. No duplicate automation or Goal052 execution was created.

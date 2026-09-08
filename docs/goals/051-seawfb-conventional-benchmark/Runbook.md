@@ -2,7 +2,9 @@
 
 ## Current: approved amendment 3, protocol v4
 
-Barry approved the bounded recovery on 8 September. The active private root
+Barry approved the bounded recovery on 8 September. It launched on Nectar at
+23:19:09 AEST from `ce63d96`, after 84 tests passed on each host and input/host
+validation passed. The initial stress process was verified active. The active private root
 is now `data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4` on Nectar.
 All earlier roots, q checkpoints and route files below are historical and
 must remain untouched. The initial launcher requires fresh production q and

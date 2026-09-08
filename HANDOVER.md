@@ -212,7 +212,7 @@ It remains a proposal. The three-hour follow-up stays active but silent while
 this reported blocker is unchanged. Nectar remains at c3.3xlarge pending the
 campaign decision; no resize or amended fit has occurred.
 
-**Latest: amendment 3 approved on 8 September; protocol v4 prepared.** Barry
+**Latest: protocol v4 recovery launched on Nectar at 23:19:09 AEST, 8 September.** Barry
 approved the complete bounded recovery proposal. Use the fresh-collection
 fallback: preserve all v3 evidence and rerun 150 q surfaces in
 `data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4`. The initial
@@ -224,6 +224,11 @@ recorded immediately by surface. A final 20,000-iteration failure stops again;
 no further numerical amendment is authorized. The old unresolved-approval
 paragraphs above are historical. See the current section at the top of the
 Goal051 Runbook for v4 paths and continuation commands.
+The launch uses source `ce63d96`, with 84 portable tests passed on both Mac
+and Linux and the exact v4 input identity validated. The initial detached
+stress process is active; convergence and production remain pending. The
+three-hour follow-up now explicitly follows the v4 chain. All 290 original
+v3 artifact hashes were verified unchanged before and after the remote update.
 
 Barry authorized a **three-hour recurring follow-up in this thread** on
 8 September, superseding the earlier pause on monitoring. The app automation
