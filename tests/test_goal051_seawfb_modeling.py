@@ -235,6 +235,7 @@ def test_q_numerical_primary_success_and_deterministic_digest(monkeypatch):
         "warning": False,
         "warning_types": [],
         "numerical_warning": False,
+        "finite_parameters": True,
         "converged": True,
     }]
     assert first_receipt["k"] == 1.0
@@ -258,10 +259,79 @@ def test_q_numerical_extended_attempt_is_from_scratch_same_seed(monkeypatch):
 
 
 def test_q_numerical_extended_nonconvergence_fails_closed(monkeypatch):
+    numerical_fit = {
+        key: value
+        for key, value in EXPECTED_Q_NUMERICAL_FIT.items()
+        if key not in {"tertiary_max_iter", "tertiary_refit"}
+    }
     _script_q_fits(monkeypatch, [(5000, True), (10000, True)])
     with pytest.raises(SeawfbModelingError, match="q_linear_nonconverged_after_extended_attempt") as error:
-        fit_q_linear(_FitQStore(), 2, 3, "80", "seed-space", EXPECTED_Q_NUMERICAL_FIT)
+        fit_q_linear(_FitQStore(), 2, 3, "80", "seed-space", numerical_fit)
     assert '"warning_types":["ConvergenceWarning"]' in str(error.value)
+
+
+def test_q_numerical_tertiary_attempt_is_from_scratch_same_seed(monkeypatch):
+    numerical_fit = {
+        **EXPECTED_Q_NUMERICAL_FIT,
+        "tertiary_max_iter": 20000,
+    }
+    calls = _script_q_fits(monkeypatch, [(5000, False), (10000, False), (17500, False)])
+    _, receipt = fit_q_linear(_FitQStore(), 2, 3, "20", "seed-space", numerical_fit)
+    assert receipt["accepted_attempt"] == "tertiary"
+    assert [item["max_iter"] for item in receipt["attempts"]] == [5000, 10000, 20000]
+    assert [item["converged"] for item in receipt["attempts"]] == [False, False, True]
+    assert [item["attempt"] for item in receipt["attempts"]] == ["primary", "extended", "tertiary"]
+    assert [call["random_state"] for call in calls] == [calls[0]["random_state"]] * 3
+    assert [call["tol"] for call in calls] == [1e-5] * 3
+
+
+def test_q_numerical_tertiary_cap_fails_with_complete_attempt_diagnostics(monkeypatch):
+    numerical_fit = {
+        **EXPECTED_Q_NUMERICAL_FIT,
+        "tertiary_max_iter": 20000,
+    }
+    _script_q_fits(monkeypatch, [(5000, True), (10000, True), (20000, True)])
+    with pytest.raises(SeawfbModelingError, match="q_linear_nonconverged_after_tertiary_attempt") as error:
+        fit_q_linear(_FitQStore(), 2, 3, "80", "seed-space", numerical_fit)
+    message = str(error.value)
+    assert '"attempt":"primary"' in message
+    assert '"attempt":"extended"' in message
+    assert '"attempt":"tertiary"' in message
+    assert message.count('"converged":false') == 3
+
+
+def test_q_numerical_tertiary_rejects_nonfinite_parameters(monkeypatch):
+    numerical_fit = {
+        **EXPECTED_Q_NUMERICAL_FIT,
+        "tertiary_max_iter": 20000,
+    }
+    specifications = iter([(5000, False), (10000, False), (17500, False)])
+
+    class NonfiniteTertiaryLogistic:
+        calls = 0
+
+        def __init__(self, **kwargs):
+            self.kwargs = kwargs
+
+        def fit(self, x, y, sample_weight):
+            type(self).calls += 1
+            n_iter, warning = next(specifications)
+            if warning:
+                warnings.warn("synthetic ceiling", ConvergenceWarning)
+            self.n_iter_ = np.array([n_iter])
+            value = np.nan if type(self).calls == 3 else 0.25
+            self.coef_ = np.array([[value]])
+            self.intercept_ = np.array([-0.5])
+            return self
+
+    monkeypatch.setattr(
+        "dsdm_phase1.seawfb_modeling.LogisticRegression",
+        NonfiniteTertiaryLogistic,
+    )
+    with pytest.raises(SeawfbModelingError, match="q_linear_nonconverged_after_tertiary_attempt") as error:
+        fit_q_linear(_FitQStore(), 2, 3, "80", "seed-space", numerical_fit)
+    assert [item["finite_parameters"] for item in error.value.attempts] == [True, True, False]
+    assert '"finite_parameters":false' in str(error.value)
 
 
 def test_q_future_warning_does_not_count_as_nonconvergence(monkeypatch):
@@ -564,6 +634,7 @@ def test_canary_summary_requires_exact_metric_free_inventory(tmp_path, monkeypat
                             "warning": False,
                             "warning_types": [],
                             "numerical_warning": False,
+                            "finite_parameters": True,
                             "converged": True,
                         }
                     ],

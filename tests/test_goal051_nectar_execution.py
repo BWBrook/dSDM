@@ -19,6 +19,7 @@ def evidence(tmp_path, monkeypatch):
         (tmp_path / path).parent.mkdir(parents=True, exist_ok=True)
         (tmp_path / path).write_bytes((ROOT / path).read_bytes())
     config = science._config(ROOT)
+    monkeypatch.setattr(nectar, 'stress_evidence', lambda root: {'fixture': 'stress_passed'})
     monkeypatch.setattr(science, '_identity', lambda root: plan['scientific_identity'])
     monkeypatch.setattr(science, '_config', lambda root: config)
     _, execution = nectar.execution_context(tmp_path)
@@ -51,7 +52,7 @@ def evidence(tmp_path, monkeypatch):
                           'parameter_digest': 'b'*64,
                           'attempts': [{'attempt': 'primary', 'max_iter': 5000, 'tol': 1e-5,
                                         'n_iter': 25, 'warning': False, 'warning_types': [],
-                                        'numerical_warning': False, 'converged': True}],
+                                        'numerical_warning': False, 'finite_parameters': True, 'converged': True}],
                           'accepted_attempt': 'primary', 'k': 2.0, 'canonical_C': 0.1, 'solver_C': 0.2,
                           'representation': 'collapsed_weight_divided_by_k_solver_C_multiplied_by_k',
                           'downstream_family': 'hist_gradient_boosting', 'downstream_candidate_id': 'hgb04',

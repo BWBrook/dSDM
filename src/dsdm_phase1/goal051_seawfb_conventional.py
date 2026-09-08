@@ -145,6 +145,8 @@ EXPECTED_Q_NUMERICAL_FIT = {
     "tol": 1e-5,
     "primary_max_iter": 5000,
     "extended_max_iter": 10000,
+    "tertiary_max_iter": 20000,
+    "tertiary_refit": "from_scratch_same_seed_after_extended_warning_or_ceiling",
     "extended_refit": "from_scratch_same_seed_after_primary_warning_or_ceiling",
     "acceptance": "converged_attempt_only",
     "ceiling_stability_acceptance": False,
@@ -174,6 +176,16 @@ EXPECTED_GOAL051_AMENDMENTS = [
         ],
         "unchanged": ["solver_saga", "C_0.1", "l1_ratio_0.5", "weights", "features", "exclusions", "seed"],
     },
+    {
+        "id": "goal051-q-linear-numerical-amendment-3",
+        "date": "2026-09-08",
+        "trigger": "retained_training_q_extended_nonconvergence_before_target_fits",
+        "timing": "before_any_ecological_scores",
+        "classification": "numerical_only",
+        "authorization": "user_approved_2026-09-08",
+        "changed": ["same_seed_from_scratch_tertiary_max_iter_20000"],
+        "unchanged": ["primary_5000", "extended_10000", "tol_1e-5", "solver_saga", "C_0.1", "l1_ratio_0.5", "weights", "features", "exclusions", "seed"],
+    },
 ]
 EXPECTED_GOAL052_AMENDMENTS = [
     {
@@ -191,6 +203,15 @@ EXPECTED_GOAL052_AMENDMENTS = [
         "classification": "numerical_only",
         "scope": "goal051_q_linear_representation_and_warning_classification_only",
         "authorization": "user_approved_2026-09-05",
+        "dsdm_scientific_design_changed": False,
+    },
+    {
+        "id": "goal051-q-linear-numerical-amendment-3",
+        "date": "2026-09-08",
+        "timing": "before_any_ecological_scores",
+        "classification": "numerical_only",
+        "scope": "goal051_q_linear_tertiary_convergence_attempt_only",
+        "authorization": "user_approved_2026-09-08",
         "dsdm_scientific_design_changed": False,
     },
 ]
@@ -284,9 +305,9 @@ def _validate_q_numerical_fit(value: Mapping[str, Any]) -> None:
 
 def _validate_q_attempts(receipt: Mapping[str, Any], numerical_fit: Mapping[str, Any]) -> None:
     attempts = receipt.get("attempts")
-    require(isinstance(attempts, list) and len(attempts) in (1, 2), "q_attempt_inventory_drift")
-    expected_names = ["primary", "extended"][: len(attempts)]
-    expected_max = [numerical_fit["primary_max_iter"], numerical_fit["extended_max_iter"]][: len(attempts)]
+    require(isinstance(attempts, list) and len(attempts) in (1, 2, 3), "q_attempt_inventory_drift")
+    expected_names = ["primary", "extended", "tertiary"][: len(attempts)]
+    expected_max = [numerical_fit["primary_max_iter"], numerical_fit["extended_max_iter"], numerical_fit["tertiary_max_iter"]][: len(attempts)]
     for item, name, max_iter in zip(attempts, expected_names, expected_max):
         require(
             item.get("attempt") == name
@@ -298,20 +319,17 @@ def _validate_q_attempts(receipt: Mapping[str, Any], numerical_fit: Mapping[str,
             and isinstance(item.get("warning_types"), list)
             and all(isinstance(value, str) for value in item["warning_types"])
             and item.get("warning") == ("ConvergenceWarning" in item["warning_types"])
+            and isinstance(item.get("finite_parameters"), bool)
             and isinstance(item.get("numerical_warning"), bool)
             and item.get("numerical_warning") == ("RuntimeWarning" in item["warning_types"])
-            and item.get("converged") == (not item["warning"] and not item["numerical_warning"] and item["n_iter"] < max_iter),
+            and item.get("converged") == (not item["warning"] and not item["numerical_warning"] and item["finite_parameters"] and item["n_iter"] < max_iter),
             "q_attempt_record_drift",
         )
     accepted = receipt.get("accepted_attempt")
     require(
-        (accepted == "primary" and len(attempts) == 1 and attempts[0]["converged"] is True)
-        or (
-            accepted == "extended"
-            and len(attempts) == 2
-            and attempts[0]["converged"] is False
-            and attempts[1]["converged"] is True
-        ),
+        accepted == expected_names[-1]
+        and attempts[-1]["converged"] is True
+        and all(item["converged"] is False for item in attempts[:-1]),
         "q_attempt_acceptance_drift",
     )
 
@@ -336,7 +354,7 @@ def _validate_q_weight_rescaling(receipt: Mapping[str, Any]) -> None:
 def _validate_goal052(goal052: Mapping[str, Any]) -> None:
     require(goal052.get("schema_version") == "goal052-seawfb-dsdm-v1", "goal052_schema_drift")
     require(
-        goal052.get("protocol_version") == 3
+        goal052.get("protocol_version") == 4
         and goal052.get("prospective_amendments") == EXPECTED_GOAL052_AMENDMENTS,
         "goal052_amendment_record_drift",
     )
@@ -416,7 +434,7 @@ def _validate_goal052(goal052: Mapping[str, Any]) -> None:
     require(
         goal052.get("amendment_policy")
         == {
-            "before_scores": "goal051_q_linear_numerical_amendments_1_and_2_exercised_before_scores; any_further_before_score_change_requires_explicit_versioned_authorization_and_repeated_metric_free_canary",
+            "before_scores": "goal051_q_linear_numerical_amendments_1_2_and_3_exercised_before_scores; any_further_before_score_change_requires_explicit_versioned_authorization_and_repeated_metric_free_canary",
             "after_scores": "any_scientific_change_requires_versioned_amendment_and_full_prespecified_rerun",
             "performance_driven_goalpost_change": False,
         },
@@ -509,7 +527,7 @@ def validate_inputs(root: Path) -> dict[str, Any]:
     config = _config(root)
     require(config.get("schema_version") == "goal051-seawfb-conventional-v1", "goal051_schema_drift")
     require(
-        config.get("protocol_version") == 3
+        config.get("protocol_version") == 4
         and config.get("amendments") == EXPECTED_GOAL051_AMENDMENTS,
         "goal051_amendment_record_drift",
     )
@@ -666,6 +684,7 @@ def _load_q(root: Path, config: Mapping[str, Any], identity: Mapping[str, str], 
     require(coefficient.ndim == 1 and np.isfinite(coefficient).all() and np.isfinite(intercept), "q_checkpoint_parameter_drift")
     require(receipt.get("numerical_fit") == config["community_control"]["numerical_fit"], "q_checkpoint_numerical_fit_drift")
     _validate_q_attempts(receipt, config["community_control"]["numerical_fit"])
+    require(receipt.get("iterations") == receipt["attempts"][-1]["n_iter"], "q_checkpoint_iteration_drift")
     _validate_q_weight_rescaling(receipt)
     require(receipt.get("parameter_digest") == q_parameter_digest(coefficient, intercept), "q_checkpoint_parameter_digest_drift")
     model = QLinearModel(coefficient, intercept, block, fold, auxiliary, receipt["transform_id"], int(receipt["iterations"]))
@@ -678,15 +697,27 @@ def prepare_q_surface(root: Path, store: SeawfbStore, config: Mapping[str, Any],
     if cached is not None:
         return cached[1]
     started = time.perf_counter()
-    model, receipt = fit_q_linear(
-        store,
-        block,
-        fold,
-        auxiliary,
-        candidate_id=config["community_control"]["candidate_id"],
-        seed_namespace=_seed_namespace(config, "q"),
-        numerical_fit=config["community_control"]["numerical_fit"],
-    )
+    try:
+        model, receipt = fit_q_linear(
+            store, block, fold, auxiliary,
+            candidate_id=config["community_control"]["candidate_id"],
+            seed_namespace=_seed_namespace(config, "q"),
+            numerical_fit=config["community_control"]["numerical_fit"],
+        )
+    except Exception as error:
+        failure = {
+            "status": "q_fit_failed", "identity": identity,
+            "held_block": block, "held_fold": fold, "auxiliary_size": auxiliary,
+            "numerical_fit": config["community_control"]["numerical_fit"],
+            "runtime_seconds": time.perf_counter() - started,
+            "error_type": type(error).__name__, "error": str(error),
+            "attempts": getattr(error, "attempts", []),
+            "metrics_computed": False, "outer_response_rows_read": 0,
+        }
+        failure_path = _q_paths(root, config, block, fold, auxiliary)[1]
+        _atomic_json(failure_path.with_suffix(".failure.json"), failure)
+        print(json.dumps(failure, sort_keys=True), flush=True)
+        raise
     receipt = {**receipt, "runtime_seconds": time.perf_counter() - started}
     _write_q(root, config, identity, model, receipt)
     return receipt
@@ -1958,10 +1989,16 @@ def _run_parallel(root: Path, function: Any, tasks: Sequence[Any], workers: int)
         for task in tasks:
             print(function(task), flush=True)
         return
+    failures = []
     with ProcessPoolExecutor(max_workers=workers, mp_context=multiprocessing.get_context("spawn"), initializer=_worker_init, initargs=(str(root),)) as pool:
         futures = {pool.submit(function, task): task for task in tasks}
         for future in as_completed(futures):
-            print(future.result(), flush=True)
+            try:
+                print(future.result(), flush=True)
+            except Exception as error:
+                failures.append(futures[future])
+                print(f"task_failed:{futures[future]}:{error}", file=sys.stderr, flush=True)
+    require(not failures, f"parallel_tasks_failed:{failures}")
 
 
 def status(root: Path) -> dict[str, Any]:
@@ -2032,6 +2069,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             specs = [spec for spec in specs if spec[2] == args.auxiliary]
         _run_parallel(root, _q_worker, specs, workers)
     elif args.command == "run":
+        q_provenance(root, config, require_complete=True)
         endpoints = target_endpoints(_read_json(root / CURVES_PATH))
         if args.target_index is not None:
             targets = list(dict.fromkeys(target for target, _ in endpoints))

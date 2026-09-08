@@ -1,4 +1,4 @@
-"""Nectar execution evidence for unchanged Goal051 scientific code and checkpoints.
+"""Nectar execution evidence for the approved Goal051 numerical amendment.
 
 The frozen canary's numerical probe is repeated here using its original helpers;
 only host/scheduling/provenance plumbing differs. This module is deliberately
@@ -34,7 +34,7 @@ SOURCE_PATH = Path("src/dsdm_phase1/goal051_nectar_execution.py")
 
 def execution_context(root: Path):
     plan = science._read_json(root / CONFIG_PATH)
-    require(plan.get("schema_version") == "goal051-nectar-execution-plan-v1", "nectar_plan_schema_invalid")
+    require(plan.get("schema_version") == "goal051-nectar-execution-plan-v2", "nectar_plan_schema_invalid")
     require(plan.get("workers") == 16 and plan.get("serial_repeats") == 2, "nectar_schedule_invalid")
     identity = science._identity(root)
     require(identity == plan["scientific_identity"], "nectar_scientific_identity_drift")
@@ -42,7 +42,9 @@ def execution_context(root: Path):
     previous_path = root / previous["path"]
     require(science.sha256_file(previous_path) == previous["sha256"], "nectar_previous_route_drift")
     old_route = science._read_json(previous_path)
-    require(old_route.get("identity") == identity and old_route.get("status") == "metric_free_route_selected", "nectar_previous_route_invalid")
+    require(old_route.get("identity") == plan["parent_scientific_identity"] and old_route.get("status") == "metric_free_route_selected", "nectar_previous_route_invalid")
+    require(plan.get("amendment") == "goal051-q-linear-numerical-amendment-3"
+            and science._config(root)["protocol_version"] == 4, "nectar_amendment_invalid")
     execution = {
         "config_sha256": science.sha256_file(root / CONFIG_PATH),
         "source_sha256": science.sha256_file(root / SOURCE_PATH),
@@ -76,6 +78,33 @@ def validate_host(plan, host):
     require(isinstance(host.get("platform"), str) and bool(host["platform"]), "nectar_platform_missing")
     require(isinstance(host.get("cpus"), int) and host["cpus"] >= expected["minimum_cpus"], "nectar_cpu_capacity_insufficient")
     require(isinstance(host.get("memory_bytes"), int) and host["memory_bytes"] >= expected["minimum_memory_bytes"], "nectar_memory_capacity_insufficient")
+
+
+def _stress_config(root):
+    config = science._config(root)
+    return {**config, "execution": {**config["execution"],
+            "private_root": config["execution"]["private_root"] + "/amendment-stress"}}
+
+
+def stress_evidence(root):
+    """Validate the amended policy on a previously unresolved surface."""
+    config = _stress_config(root)
+    loaded = science._load_q(root, config, science._identity(root), 1, 0, "full")
+    require(loaded is not None, "nectar_amendment_stress_missing")
+    _, receipt = loaded
+    paths = science._q_paths(root, config, 1, 0, "full")
+    return {"spec": [1, 0, "full"], "accepted_attempt": receipt["accepted_attempt"],
+            "artifacts": [{"path": str(p.relative_to(root)), "sha256": science.sha256_file(p)} for p in paths],
+            "metrics_computed": False, "outer_response_rows_read": 0}
+
+
+def stress_probe(root):
+    plan, _ = execution_context(root)
+    validate_host(plan, actual_host())
+    science.validate_inputs(root)
+    with threadpool_limits(limits=1):
+        science.prepare_q_surface(root, SeawfbStore(root), _stress_config(root), 1, 0, "full")
+    return stress_evidence(root)
 
 
 def expected_tags(plan):
@@ -357,15 +386,17 @@ def canary_summary(root: Path):
 def expected_route(root: Path, workers: int):
     plan, execution = execution_context(root)
     require(type(workers) is int and 0 < workers <= plan["workers"], "nectar_route_workers_invalid")
+    stress = stress_evidence(root)
     summary = summarize(root)
     path = root / plan["private_root"] / "summary.json"
     require(path.is_file() and science._read_json(path) == summary, "nectar_summary_missing_or_stale")
-    return {"schema_version": "goal051-nectar-route-v1", "status": "metric_free_route_selected",
+    return {"schema_version": "goal051-nectar-route-v2", "status": "metric_free_route_selected",
             "identity": execution["scientific_identity"], "execution_identity": execution,
             "selected_host": "nectar", "selected_workers": workers, "proven_mixed_concurrency": plan["workers"],
             "host_attestation": summary["host_attestation"], "host_plan": plan["host"],
             "summary": {"path": str(path.relative_to(root)), "sha256": science.sha256_file(path)},
             "previous_route": plan["previous_route"], "reason": plan["reason"],
+            "amendment_stress": stress,
             "metrics_computed": False, "outer_response_rows_read": 0, "outer_predictor_rows_used": 0}
 
 
@@ -389,12 +420,14 @@ def gate(root: Path, workers: int):
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=("canary-batch", "canary-summary", "route", "gate"))
+    parser.add_argument("command", choices=("stress", "canary-batch", "canary-summary", "route", "gate"))
     parser.add_argument("--root", type=Path, default=Path("."))
     parser.add_argument("--workers", type=int, default=16)
     args = parser.parse_args(argv)
     root = args.root.resolve()
-    if args.command == "canary-batch":
+    if args.command == "stress":
+        result = stress_probe(root)
+    elif args.command == "canary-batch":
         result = canary_batch(root)
     elif args.command == "canary-summary":
         result = canary_summary(root)

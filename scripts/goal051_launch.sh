@@ -7,7 +7,7 @@ ROOT="$(cd "${1:-.}" 2>/dev/null && pwd)" || {
   exit 1
 }
 WORKERS="${GOAL051_WORKERS:-3}"
-RUN_DIR="$ROOT/data/processed/dsdm/goal051-seawfb-conventional-benchmark"
+RUN_DIR="$ROOT/data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4"
 LOG="$RUN_DIR/run.log"
 EXIT_MARKER="$RUN_DIR/run.exit"
 

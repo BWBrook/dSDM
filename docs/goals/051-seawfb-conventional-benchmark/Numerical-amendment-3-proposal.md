@@ -1,7 +1,8 @@
-# Proposed numerical amendment 3
+# Numerical amendment 3 — approved recovery
 
-Status: **proposed; awaiting Barry's explicit authorization**. No amended fit
-has run. Prepared 8 September 2026 after the Nectar q stage stopped.
+Status: **approved by Barry on 8 September 2026**: "Approved for bounded
+recovery proposal." Prepared after the Nectar q stage stopped; implementation
+is protocol v4, before any ecological score.
 
 ## Evidence
 
@@ -17,7 +18,7 @@ The 143 models and their original receipts are preserved on both hosts, with
 all return hashes verified. See `q_stage_failure.json` under
 `evidence/seawfb_conventional/goal051/`.
 
-## Recommended authorization
+## Approved authorization
 
 Add one **20,000-iteration tertiary attempt**, from scratch with the same seed,
 only when the unchanged primary 5,000 and extended 10,000 attempts fail.
@@ -56,3 +57,24 @@ conditioning and optimizer diagnostics. Do not double ceilings again, loosen
 tolerance, accept estimates at the ceiling, drop surfaces, change penalties,
 or switch solvers under this authorization. Goal052 execution and outer
 evaluation remain separate decisions.
+
+## Implementation decision
+
+Use the authorized fresh-collection fallback: rerun all 150 q surfaces under
+one v4 identity in `goal051-seawfb-conventional-benchmark-v4`. The original 143
+models, receipts, logs and routes remain unchanged. Independent review favored
+this over a mixed-version import layer; it costs several Nectar hours but
+keeps provenance and validation direct.
+
+First fit block1/fold0/full in separate `amendment-stress` storage. Any valid
+converged attempt under the amended policy passes; the original unassigned
+exception does not prove that this particular surface must reach the tertiary
+attempt. Unit tests exercise tertiary success and rejection. Do not promote
+the stress model into the production collection. Then repeat the two serial
+and 16 mixed Nectar canaries, bind the new route to v4 and the old Nectar route
+as lineage, and fit all 150 fresh production surfaces. The `run` command
+validates the complete q collection before scheduling any target endpoint.
+
+Failures receive a per-surface JSON record immediately, with the specification,
+identity and attempt diagnostics. A failed 20,000-iteration attempt still stops
+the chain before scoring; no further numerical amendment is authorized.

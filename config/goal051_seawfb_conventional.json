@@ -1,7 +1,7 @@
 {
   "schema_version": "goal051-seawfb-conventional-v1",
   "goal_id": "goal051-seawfb-conventional-benchmark",
-  "protocol_version": 3,
+  "protocol_version": 4,
   "status": "prospectively_frozen_before_ecological_scores",
   "amendments": [
     {
@@ -27,6 +27,29 @@
         "remove_deprecated_penalty_and_n_jobs_arguments"
       ],
       "unchanged": ["solver_saga", "C_0.1", "l1_ratio_0.5", "weights", "features", "exclusions", "seed"]
+    },
+    {
+      "id": "goal051-q-linear-numerical-amendment-3",
+      "date": "2026-09-08",
+      "trigger": "retained_training_q_extended_nonconvergence_before_target_fits",
+      "timing": "before_any_ecological_scores",
+      "classification": "numerical_only",
+      "authorization": "user_approved_2026-09-08",
+      "changed": [
+        "same_seed_from_scratch_tertiary_max_iter_20000"
+      ],
+      "unchanged": [
+        "primary_5000",
+        "extended_10000",
+        "tol_1e-5",
+        "solver_saga",
+        "C_0.1",
+        "l1_ratio_0.5",
+        "weights",
+        "features",
+        "exclusions",
+        "seed"
+      ]
     }
   ],
   "upstream": {
@@ -132,6 +155,8 @@
       "tol": 0.00001,
       "primary_max_iter": 5000,
       "extended_max_iter": 10000,
+      "tertiary_max_iter": 20000,
+      "tertiary_refit": "from_scratch_same_seed_after_extended_warning_or_ceiling",
       "extended_refit": "from_scratch_same_seed_after_primary_warning_or_ceiling",
       "acceptance": "converged_attempt_only",
       "ceiling_stability_acceptance": false
@@ -163,10 +188,10 @@
     "outer_outcomes": false
   },
   "execution": {
-    "private_root": "data/processed/dsdm/goal051-seawfb-conventional-benchmark",
+    "private_root": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4",
     "tracked_summary": "evidence/seawfb_conventional/goal051/summary.json",
-    "canary_receipt": "data/processed/dsdm/goal051-seawfb-conventional-benchmark/canary/receipt.json",
-    "tracked_canary_summary": "metadata/goal051_canary.json",
+    "canary_receipt": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/canary/receipt.json",
+    "tracked_canary_summary": "metadata/goal051_canary_v4.json",
     "checkpoint_unit": "target_endpoint",
     "atomic_checkpoint_writes": true,
     "per_estimator_threads": 1,

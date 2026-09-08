@@ -441,10 +441,15 @@ def fit_q_linear(
     attempts = []
     model = None
     accepted_attempt = None
-    for attempt, max_iter in (
+    attempt_plan = [
         ("primary", int(numerical_fit["primary_max_iter"])),
         ("extended", int(numerical_fit["extended_max_iter"])),
-    ):
+    ]
+    # The tertiary recovery is opt-in so the frozen two-attempt protocol keeps
+    # its existing behaviour until the caller supplies the approved cap.
+    if numerical_fit.get("tertiary_max_iter") is not None:
+        attempt_plan.append(("tertiary", int(numerical_fit["tertiary_max_iter"])))
+    for attempt, max_iter in attempt_plan:
         fitted_attempt = LogisticRegression(
             C=solver_c,
             l1_ratio=float(candidate["l1_ratio"]),
@@ -470,17 +475,24 @@ def fit_q_linear(
                         "warning": "ConvergenceWarning" in warning_types,
                         "warning_types": warning_types,
                         "numerical_warning": any(name == "RuntimeWarning" for name in warning_types),
+                        "finite_parameters": False,
                         "converged": False,
                         "error": type(exc).__name__,
                     }
                 )
                 details = json.dumps({"attempts": attempts}, sort_keys=True, separators=(",", ":"))
-                raise SeawfbModelingError(f"q_linear_fit_failed:{details}") from exc
+                error = SeawfbModelingError(f"q_linear_fit_failed:{details}")
+                error.attempts = attempts
+                raise error from exc
         warning_types = sorted({type(item.message).__name__ for item in caught})
         warning = any(isinstance(item.message, ConvergenceWarning) for item in caught)
         numerical_warning = any(isinstance(item.message, RuntimeWarning) for item in caught)
         n_iter = int(fitted_attempt.n_iter_[0])
-        converged = not warning and not numerical_warning and n_iter < max_iter
+        finite_parameters = bool(
+            np.isfinite(np.asarray(fitted_attempt.coef_, dtype=np.float64)).all()
+            and np.isfinite(np.asarray(fitted_attempt.intercept_, dtype=np.float64)).all()
+        )
+        converged = not warning and not numerical_warning and finite_parameters and n_iter < max_iter
         attempts.append(
             {
                 "attempt": attempt,
@@ -490,6 +502,7 @@ def fit_q_linear(
                 "warning": warning,
                 "warning_types": warning_types,
                 "numerical_warning": numerical_warning,
+                "finite_parameters": finite_parameters,
                 "converged": converged,
             }
         )
@@ -499,7 +512,10 @@ def fit_q_linear(
             break
     if model is None or accepted_attempt is None:
         details = json.dumps({"attempts": attempts}, sort_keys=True, separators=(",", ":"))
-        raise SeawfbModelingError(f"q_linear_nonconverged_after_extended_attempt:{details}")
+        terminal_attempt = attempts[-1]["attempt"]
+        error = SeawfbModelingError(f"q_linear_nonconverged_after_{terminal_attempt}_attempt:{details}")
+        error.attempts = attempts
+        raise error
     fitted = QLinearModel(
         np.asarray(model.coef_[0], dtype=np.float64),
         float(model.intercept_[0]),

@@ -47,6 +47,14 @@ in attempt diagnostics. Deprecated `penalty` and `n_jobs` arguments are
 removed from the q fit. Scientific rows, equal-head weighting, features,
 exclusions, seed, and acceptance gate are unchanged.
 
+Numerical amendment 3 was authorized on 2026-09-08 after the q stage stopped
+with 143 converged surfaces and no target fits or ecological scores. It adds
+one final from-scratch, same-seed 20,000-iteration attempt after the unchanged
+5,000 and 10,000 attempts. Tolerance, objective, exclusions and acceptance
+remain fixed. Use one fresh v4 collection, preserving all original evidence,
+and pass the amended Nectar stress/canary gate before production. All 150
+surfaces must validate before target fitting. A further failure stops for review.
+
 The inventory gate is 303 base endpoints, 449 q conditions, and 150 shared q
 surfaces. There is no partial-fold scoring. The null is mandatory; each family
 needs at least two complete candidates or an explicit NA. At the primary full

@@ -1,5 +1,39 @@
 # Goal 051 runbook
 
+## Current: approved amendment 3, protocol v4
+
+Barry approved the bounded recovery on 8 September. The active private root
+is now `data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4` on Nectar.
+All earlier roots, q checkpoints and route files below are historical and
+must remain untouched. The initial launcher requires fresh production q and
+endpoint directories. It runs block1/fold0/full in isolated stress storage,
+then two serial and 16 mixed metric-free probes, selects
+`metadata/goal051_nectar_route_v4.json`, verifies its live-host gate, and starts
+fresh q production. Target `run` first requires all 150 valid q surfaces.
+
+```sh
+# On Nectar, after source/input/test validation and checking no duplicate job:
+tmux new-session -d -s dsdm-goal051-nectar \
+  'cd /data/codex/repos/dSDM && bash scripts/goal051_nectar_launch.sh .'
+tail -n 25 data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/nectar-execution.log
+uv run --locked python -m dsdm_phase1.goal051_seawfb_conventional status --root .
+```
+
+The stress model is never promoted into production. Every failed q fit writes
+`q_linear/blockNN_foldNN_auxSIZE.failure.json` with its identity, specification
+and all available attempt diagnostics before returning the worker exception.
+Successful receipts include finite-parameter flags for every attempt. A failure
+at the final 20,000 ceiling stops before ecological scoring; no further ceiling
+increase, tolerance change or solver substitution is authorized.
+
+If interrupted, inspect both `nectar-execution.exit` and `run.exit` under the
+v4 root and preserve the logs. Reuse only validated v4 evidence. After the
+v4 canary gate passed, resume production with the gate/restart command in the
+Nectar section below. The three-hour follow-up remains active and can continue
+through this approved recovery without another permission request.
+
+## Historical execution record (protocol v3)
+
 From the repository root, use the locked environment and the Goal 051 runner
 once implementation is present:
 

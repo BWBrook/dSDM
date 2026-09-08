@@ -212,6 +212,19 @@ It remains a proposal. The three-hour follow-up stays active but silent while
 this reported blocker is unchanged. Nectar remains at c3.3xlarge pending the
 campaign decision; no resize or amended fit has occurred.
 
+**Latest: amendment 3 approved on 8 September; protocol v4 prepared.** Barry
+approved the complete bounded recovery proposal. Use the fresh-collection
+fallback: preserve all v3 evidence and rerun 150 q surfaces in
+`data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4`. The initial
+Nectar chain first runs the isolated block1/fold0/full stress fit, then repeats
+two serial/16 mixed metric-free canaries and writes
+`metadata/goal051_nectar_route_v4.json`. Only then may q production start; all
+150 must validate before any target endpoint is scheduled. Every q failure is
+recorded immediately by surface. A final 20,000-iteration failure stops again;
+no further numerical amendment is authorized. The old unresolved-approval
+paragraphs above are historical. See the current section at the top of the
+Goal051 Runbook for v4 paths and continuation commands.
+
 Barry authorized a **three-hour recurring follow-up in this thread** on
 8 September, superseding the earlier pause on monitoring. The app automation
 is `check-dsdm-nectar-progress`. Inspect the existing Nectar chain, handle

@@ -31,9 +31,10 @@ diagnostic only. Frozen-versus-target and full-versus-frozen are mandatory
 mechanistic diagnostics, not members of the four primary scientific contrasts.
 The median selected epoch is rounded for any later retained-full refit.
 
-Before scores, Goal 051 numerical amendments 1 and 2 were versioned after
+Before scores, Goal 051 numerical amendments 1, 2 and 3 were versioned after
 metric-free q fitting diagnostics and require a repeated metric-free canary.
-They do not alter the dSDM scientific design. Any further pre-score change requires explicit
+Amendment 3 adds only the authorized tertiary 20,000-iteration q attempt;
+these amendments do not alter the dSDM scientific design. Any further pre-score change requires explicit
 versioned authorization; after scores, any scientific amendment requires a
 versioned protocol and full rerun.
 

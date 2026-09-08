@@ -283,3 +283,20 @@
   explicit preserved-checkpoint provenance, and all 150 converged before
   targets. This is proposed, not authorized or executed. The recurring check
   remains active with explicit silence for an unchanged reported blocker.
+
+## 2026-09-08 — amendment 3 approved and implemented
+
+- Barry explicitly approved the bounded recovery proposal. Implemented protocol
+  v4: one tertiary 20,000-iteration from-scratch same-seed attempt after the
+  original attempts, unchanged objective/tolerance, finite warning-free
+  convergence below the ceiling, and a complete q gate before target fitting.
+- Chose the approved fresh-collection fallback after independent review. All
+  143 historical models/receipts remain untouched; no cross-version import or
+  relabeling is used. The new root ends in `benchmark-v4`.
+- The new Nectar chain runs an isolated previously unresolved full-auxiliary
+  stress fit, repeats the two serial/16 mixed canaries, binds a distinct v4
+  route to current identity and historical Nectar lineage, then runs q and
+  the benchmark conditionally. Failures now retain surface IDs and complete
+  available attempt diagnostics immediately, while productive workers drain.
+- Local portable gate passed 84 tests with three real-scope tests deselected.
+  Live input validation passed. Linux verification and detached launch follow.

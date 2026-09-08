@@ -19,3 +19,11 @@
   training data, exclusions, weights, seeds, or evaluation policy.
 - Any further pre-score change requires explicit versioned authorization and a
   repeated metric-free canary.
+
+## 2026-09-08 — approved q numerical amendment 3
+
+- Recorded the approved tertiary 20,000-iteration attempt in protocol v4 before
+  any ecological score. The Goal051 q control retains its objective, tolerance,
+  exclusions and strict convergence gate; fresh v4 q provenance replaces no
+  historical receipt. Goal052 architecture, contrasts and execution boundary
+  are unchanged, and no Goal052 model has run.

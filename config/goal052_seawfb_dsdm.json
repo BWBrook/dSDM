@@ -1,7 +1,7 @@
 {
   "schema_version": "goal052-seawfb-dsdm-v1",
   "goal_id": "goal052-seawfb-dsdm-experiment",
-  "protocol_version": 3,
+  "protocol_version": 4,
   "status": "prospectively_frozen_protocol_only_not_executed",
   "prospective_amendments": [
     {
@@ -19,6 +19,15 @@
       "classification": "numerical_only",
       "scope": "goal051_q_linear_representation_and_warning_classification_only",
       "authorization": "user_approved_2026-09-05",
+      "dsdm_scientific_design_changed": false
+    },
+    {
+      "id": "goal051-q-linear-numerical-amendment-3",
+      "date": "2026-09-08",
+      "timing": "before_any_ecological_scores",
+      "classification": "numerical_only",
+      "scope": "goal051_q_linear_tertiary_convergence_attempt_only",
+      "authorization": "user_approved_2026-09-08",
       "dsdm_scientific_design_changed": false
     }
   ],
@@ -136,7 +145,7 @@
     "cannot_change_winner": true
   },
   "amendment_policy": {
-    "before_scores": "goal051_q_linear_numerical_amendments_1_and_2_exercised_before_scores; any_further_before_score_change_requires_explicit_versioned_authorization_and_repeated_metric_free_canary",
+    "before_scores": "goal051_q_linear_numerical_amendments_1_2_and_3_exercised_before_scores; any_further_before_score_change_requires_explicit_versioned_authorization_and_repeated_metric_free_canary",
     "after_scores": "any_scientific_change_requires_versioned_amendment_and_full_prespecified_rerun",
     "performance_driven_goalpost_change": false
   },

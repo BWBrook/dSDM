@@ -35,9 +35,12 @@ ecological benchmark score is exposed.
   the frozen categorical encoding, without family or candidate retuning. The
   five unique downstream endpoints are target 100% with auxiliary 20/80/`full`,
   and target 25/50% with auxiliary `full`.
-- Under numerical amendments 1 and 2, fit q with SAGA tolerance 1e-5 and a 5,000
+- Under numerical amendments 1, 2 and 3, fit q with SAGA tolerance 1e-5 and a 5,000
   iteration primary ceiling. On warning or ceiling hit, retry once from scratch
-  with the same seed and a 10,000 iteration ceiling; accept only convergence.
+  with the same seed and a 10,000 iteration ceiling. Amendment 3 adds one
+  final from-scratch, same-seed attempt at 20,000 if needed. Accept only finite,
+  warning-free convergence below the ceiling; all 150 q surfaces must validate
+  before any target fitting.
   Amendment 2 divides solver sample weights by `k = max(weight)` and multiplies
   solver `C` by `k`, preserving the exact q objective up to a common scale.
   Only `ConvergenceWarning` and explicit numerical warnings affect convergence
@@ -62,9 +65,11 @@ ecological benchmark score is exposed.
 6. Stop if family coverage is below 95% or failures are prevalence-patterned;
    permit one focused repair pass only.
 7. No NCP, SEH, or NNC response/outcome table is opened.
-8. The metric-free route receipt binds exact Mac and deep-server host evidence,
-   proves configured mixed concurrency from overlapping run intervals, and
-   selects no more workers than the chosen host demonstrated.
+8. The original Mac/deep-server route remains historical. Under amendment 3,
+   the Nectar route binds the fresh v4 stress fit and two serial/16 concurrent
+   metric-free canaries, with the old Nectar route as lineage. It proves
+   configured concurrency from overlapping intervals and selects no more
+   workers than the host demonstrated.
 
 ## Stopping boundary
 

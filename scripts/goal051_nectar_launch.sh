@@ -3,12 +3,12 @@
 set -u
 
 ROOT="$(cd "${1:-.}" && pwd)" || exit 1
-RUN_DIR="$ROOT/data/processed/dsdm/goal051-seawfb-conventional-benchmark"
+RUN_DIR="$ROOT/data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4"
 LOG="$RUN_DIR/nectar-execution.log"
 EXIT_MARKER="$RUN_DIR/nectar-execution.exit"
 mkdir -p "$RUN_DIR" || exit 1
-if [[ -e "$LOG" || -e "$EXIT_MARKER" ]]; then
-  printf 'Inspect the existing Nectar execution before restarting; see the Goal051 runbook.\n' >&2
+if [[ -e "$LOG" || -e "$EXIT_MARKER" || -e "$RUN_DIR/q_linear" || -e "$RUN_DIR/endpoints" ]]; then
+  printf 'Initial Nectar launch requires fresh v4 production directories; see the Goal051 runbook.\n' >&2
   exit 1
 fi
 
@@ -24,7 +24,8 @@ umask 077
   cd "$ROOT" || exit 1
   date -u '+Nectar execution started: %Y-%m-%dT%H:%M:%SZ'
   git rev-parse HEAD
-  uv run --locked python -m dsdm_phase1.goal051_nectar_execution canary-batch --root . &&
+  uv run --locked python -m dsdm_phase1.goal051_nectar_execution stress --root . &&
+    uv run --locked python -m dsdm_phase1.goal051_nectar_execution canary-batch --root . &&
     uv run --locked python -m dsdm_phase1.goal051_nectar_execution route --root . --workers "$GOAL051_WORKERS" &&
     uv run --locked python -m dsdm_phase1.goal051_nectar_execution gate --root . --workers "$GOAL051_WORKERS" &&
     bash scripts/goal051_launch.sh .
