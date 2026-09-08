@@ -179,3 +179,32 @@
   validation, 150 q surfaces, 303 target endpoints, aggregation, and complete
   validation. Input validation passed and all three spawned q workers were
   verified active at about 99.5% CPU each. Production acceptance remains pending.
+
+## 2026-09-08 - user-directed Nectar offload
+
+- Barry preferred a resized Nectar VM for this multi-day workload to preserve
+  Mac Mini capacity. Stopped the Mac q processes deliberately; exit 143 is an
+  operator interruption. Preserved and validated 13 complete q surfaces. No
+  conventional endpoint had begun.
+- Installed OpenStack CLI on Mac and, with Barry's explicit authorization,
+  copied the existing credential files privately from the briefly awakened
+  MacBook. Resized idle Nectar from `c3.xsmall` to `c3.3xlarge`; OpenStack is
+  ACTIVE with 64 vCPUs and 128 GiB allocated RAM. Guest/storage/service checks
+  passed. Infrastructure details are in the `nectar` control-plane repo.
+- Staged source using a Git bundle and transferred only the retained-training
+  inputs plus the 13 q model/receipt pairs. All 30 private files matched their
+  Mac SHA-256 manifest. The unchanged input plan and all 13 checkpoint loads
+  passed on Nectar. The locked environment and caches live under `/data`.
+- Added a separate execution adapter/config for the exact Nectar VM and 16
+  workers. It repeats the original metric-free numerical probe using frozen
+  scientific helpers, validates two serial/16 concurrent receipts, and binds
+  their hashes plus its own execution identity. The production gate replays
+  raw evidence and checks the live host. Existing science source/configs and
+  prior canary/route receipts retain their original hashes.
+- The first Linux gate passed 72 tests with three real-scope checks deselected.
+  Parent review added a wall-clock/interval consistency check before launch.
+  The final 19 Nectar-specific tests passed on both Mac and Linux, and the
+  live Nectar identity/capacity gate passed. The launcher passes its shell
+  syntax and ShellCheck gates. It will chain
+  validated Nectar canary evidence into the unchanged resumable production
+  launcher; scientific acceptance remains pending.

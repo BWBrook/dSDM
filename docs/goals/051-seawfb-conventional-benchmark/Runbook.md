@@ -101,6 +101,10 @@ An exit marker of `0` is necessary but not sufficient for acceptance.
 
 ## Production Handoff — 8 September
 
+**Superseded later on 8 September by the Nectar offload below.** The Mac run
+was deliberately stopped after 13 complete q surfaces; exit 143 records that
+operator stop.
+
 Both host canaries are now independently validated. Deep-server finished at
 19:06 AEST on 6 September with exit 0 and all ten receipts. All eleven server
 JSON files were copied privately to Mac and verified against remote SHA-256;
@@ -126,3 +130,63 @@ interrupted, inspect the failure and checkpoint validity before restarting
 the same launcher with `GOAL051_WORKERS=3`; do not launch a duplicate session.
 Complete benchmark evidence still requires scientific acceptance before any
 Goal052 execution.
+
+## Nectar Offload — 8 September
+
+Barry requested the multi-day work run on resized Nectar, leaving the Mac Mini
+free. Nectar is `c3.3xlarge` (64 vCPUs, 128 GiB allocated RAM); use
+`nectar-codex-ts`, user `codex`, checkout `/data/codex/repos/dSDM`. The existing
+13 Mac q checkpoints were transferred and validated without changing their
+identity. All four retained-training input files matched their Mac hashes.
+Outer response tables were not staged.
+
+The separate `goal051_nectar_execution` module binds its own source/config
+hashes, the original scientific identity and the prior two-host route receipt.
+Its hardware gate checks Linux `deep-vm`, DMI UUID
+`2c0b08ec-1f02-4864-90a9-8d0fd1816d2e`, at least 64 CPUs and 120 GiB visible
+RAM. Cloud-init's `nocloud` instance ID is unsuitable for this restored VM.
+The original production source and Goal051/052 scientific configs are unchanged.
+
+Initial detached launch on Nectar:
+
+```sh
+cd /data/codex/repos/dSDM
+tmux new-session -d -s dsdm-goal051-nectar \
+  'bash scripts/goal051_nectar_launch.sh /data/codex/repos/dSDM'
+```
+
+The wrapper sets data-volume uv caches and one-thread estimator limits. It
+runs two serial probes followed by 16 concurrent probes; raw evidence must
+validate before `metadata/goal051_nectar_route.json` is written and the
+live-host gate permits production. Production then resumes q checkpoints and
+runs target endpoints, aggregation and complete validation. A failed canary
+or gate stops the chain. No new ecological selection occurs in this routing
+step, and no background monitor is installed.
+
+Inspect remotely:
+
+```sh
+ssh nectar-codex-ts 'tmux capture-pane -pt dsdm-goal051-nectar -S -30'
+ssh nectar-codex-ts 'tail -n 25 /data/codex/repos/dSDM/data/processed/dsdm/goal051-seawfb-conventional-benchmark/nectar-execution.log'
+ssh nectar-codex-ts 'cat /data/codex/repos/dSDM/data/processed/dsdm/goal051-seawfb-conventional-benchmark/nectar-execution.exit'
+ssh nectar-codex-ts 'cd /data/codex/repos/dSDM && UV_CACHE_DIR=/data/codex/cache/uv uv run --locked python -m dsdm_phase1.goal051_seawfb_conventional status --root .'
+```
+
+The initial wrapper refuses to overwrite prior execution logs. If production
+is interrupted after the canary passed, inspect the failure and resume from
+the existing evidence on Nectar with:
+
+```sh
+export UV_CACHE_DIR=/data/codex/cache/uv
+export UV_PYTHON_INSTALL_DIR=/data/codex/cache/uv-python
+uv run --locked python -m dsdm_phase1.goal051_nectar_execution gate --root . --workers 16 &&
+  GOAL051_WORKERS=16 bash scripts/goal051_launch.sh .
+```
+
+Run that restart in a detached session after checking no duplicate exists.
+If the canary itself was interrupted, preserve its directory and execution
+logs before restarting a fresh complete canary batch. Do not splice partial
+timing batches or rebind old evidence. Source moves through Git bundles from
+the canonical Mac; inputs/results use Tailscale rsync with SHA-256 verification.
+Return useful results to the Mac and preserve remote evidence through project
+acceptance; park Nectar when the campaign no longer needs compute.

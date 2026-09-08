@@ -2,8 +2,8 @@
 
 Prepared for Barry Brook's successor research collaborator, 2026-09-05.
 Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
-execution status was refreshed on 2026-09-08 after both canaries validated
-and the conventional benchmark launched.
+execution status was refreshed on 2026-09-08 for the move from Mac production
+to resized Nectar at Barry's request.
 
 ## Start Here
 
@@ -145,18 +145,36 @@ hardware ranking. The route receipt is `metadata/goal051_canary.json`.
 
 Production launched locally at **09:22:38 AEST on 8 September**, in tmux
 `dsdm-goal051-conventional`, from unchanged implementation source `ab7e369`.
-The resumable launcher prepares 150 q surfaces, runs 303 target endpoints,
-aggregates, and validates. Goal051 remains incomplete until its full evidence
-passes acceptance. Inspect this existing production session on continuation.
+Barry subsequently requested offloading this multi-day run to Nectar so the Mac
+remains available for local work. The Mac process was deliberately stopped
+(exit 143), preserving **13 complete q surfaces**; no target endpoint had
+started. All 13 checkpoints pass unchanged on Nectar.
+
+Nectar is now ACTIVE at `c3.3xlarge` (64 vCPUs, 128 GiB allocated RAM), with the
+working clone at `/data/codex/repos/dSDM` via `nectar-codex-ts`. The execution
+plan uses **16 single-thread workers**, an exact VM UUID/capacity check, and
+two serial plus 16 concurrent metric-free probes. The new execution module and
+config have their own identity; the original scientific source/config hashes
+and Mac/deep-server evidence remain unchanged. This is an authorized change of
+compute route, not a new scientific protocol.
+
+`scripts/goal051_nectar_launch.sh` chains the Nectar canary, route receipt,
+live-host/evidence gate, and unchanged resumable production launcher. The
+planned session is `dsdm-goal051-nectar`. Its execution log/exit files are
+`nectar-execution.log` / `nectar-execution.exit` in the Goal051 private root;
+production still writes `run.log` / `run.exit`. See the runbook for launch and
+restart details. Goal051 remains incomplete until its full evidence passes
+acceptance.
 
 Barry paused automatic-goal monitoring. **Do not recreate automatic-goal
 machinery or launch duplicate jobs.**
 
 On Barry's next continuation, inspect the existing jobs first using the
 [Goal 051 runbook](docs/goals/051-seawfb-conventional-benchmark/Runbook.md),
-which has exact log/exit paths. Check the production process, log, exit marker,
-and checkpoint inventory; resume valid checkpoints if interrupted. Goal 050's
-earlier PyTorch throughput result did not choose this workload's route.
+which has exact log/exit paths. Check Nectar's existing session, current stage,
+exit marker, and checkpoint inventory; resume valid checkpoints if interrupted.
+Keep the stopped Mac run as history. Goal 050's earlier PyTorch throughput
+result did not choose this workload's route.
 An exit code or receipt alone is not
 scientific acceptance: inspect the emitted evidence and proportionally verify
 metrics, exclusions, and coverage.
