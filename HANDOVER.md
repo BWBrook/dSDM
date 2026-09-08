@@ -160,7 +160,9 @@ compute route, not a new scientific protocol.
 
 `scripts/goal051_nectar_launch.sh` chains the Nectar canary, route receipt,
 live-host/evidence gate, and unchanged resumable production launcher. The
-planned session is `dsdm-goal051-nectar`. Its execution log/exit files are
+session is `dsdm-goal051-nectar`, launched at **10:51:23 AEST on 8 September**
+from `5404fc6`. The first serial canary process was verified active at 99.9%
+CPU. Its execution log/exit files are
 `nectar-execution.log` / `nectar-execution.exit` in the Goal051 private root;
 production still writes `run.log` / `run.exit`. See the runbook for launch and
 restart details. Goal051 remains incomplete until its full evidence passes

@@ -147,7 +147,9 @@ Its hardware gate checks Linux `deep-vm`, DMI UUID
 RAM. Cloud-init's `nocloud` instance ID is unsuitable for this restored VM.
 The original production source and Goal051/052 scientific configs are unchanged.
 
-Initial detached launch on Nectar:
+The initial detached chain launched at **10:51:23 AEST on 8 September** from
+`5404fc6`; its first serial canary was verified active at 99.9% CPU. Do not
+duplicate this existing session. The launch command was:
 
 ```sh
 cd /data/codex/repos/dSDM

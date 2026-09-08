@@ -208,3 +208,8 @@
   syntax and ShellCheck gates. It will chain
   validated Nectar canary evidence into the unchanged resumable production
   launcher; scientific acceptance remains pending.
+- Launched the detached `dsdm-goal051-nectar` chain at **10:51:23 AEST** from
+  clean commit `5404fc6`. Verified its first serial canary process active at
+  99.9% CPU and about 1.4 GiB RSS. No Mac Goal051 worker remains. The chain
+  automatically proceeds to production only if its metric-free gate passes;
+  production/scientific completion is not yet claimed.
