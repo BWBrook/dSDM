@@ -157,13 +157,19 @@ tmux new-session -d -s dsdm-goal051-nectar \
   'bash scripts/goal051_nectar_launch.sh /data/codex/repos/dSDM'
 ```
 
+**14:15 AEST update:** the canary passed and production began at 14:03:04 AEST.
+All 18 receipts, summary and route were returned with SHA-256 verification;
+the summary and route reproduced exactly with independent checks. The
+16-worker q stage was active at 20/150 complete. The current route is
+`metadata/goal051_nectar_route.json`; the old Mac route remains historical.
+
 The wrapper sets data-volume uv caches and one-thread estimator limits. It
 runs two serial probes followed by 16 concurrent probes; raw evidence must
 validate before `metadata/goal051_nectar_route.json` is written and the
 live-host gate permits production. Production then resumes q checkpoints and
 runs target endpoints, aggregation and complete validation. A failed canary
 or gate stops the chain. No new ecological selection occurs in this routing
-step, and no background monitor is installed.
+step. The three-hour follow-up is described below.
 
 Inspect remotely:
 

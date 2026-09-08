@@ -219,3 +219,22 @@
   independent Goal051 acceptance work. It supersedes the earlier monitoring
   pause and should be paused after Goal051 is accepted. Goal052 remains a
   separate execution decision.
+
+## 2026-09-08 14:15 AEST - first scheduled Nectar check
+
+- All two serial and 16 concurrent Nectar canary receipts completed; the
+  route and live-host gate passed. The existing chain started production at
+  14:03:04 AEST without another launch or source change.
+- Retrieved all 18 raw receipts, summary and route. All 20 SHA-256 hashes
+  match the remote originals. The local summary and expected route reproduce
+  exactly. Independent checks confirmed serial order, 16 overlapping runs,
+  latency/throughput arithmetic, peak memory, matching identities, accepted
+  q convergence, stable q parameter digests, and zero metrics/outer access.
+- Mean serial latency was 3,607.56 seconds; the concurrent batch took
+  4,271.86 seconds, delivering 13.48 probes/hour (2.32 times the observed
+  three-worker Mac rate). Peak process RSS was 2.23 GiB. These are canary
+  timings, not a revised full-production ETA.
+- Production had 20/150 q surfaces ready, including the 13 carried from Mac;
+  target endpoints had not started. All 16 workers were active near 100% CPU,
+  with about 104 GiB available memory and no exit marker or reported error.
+  No recovery was needed. The three-hour follow-up remains active.

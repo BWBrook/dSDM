@@ -168,6 +168,16 @@ production still writes `run.log` / `run.exit`. See the runbook for launch and
 restart details. Goal051 remains incomplete until its full evidence passes
 acceptance.
 
+At the **14:15 AEST, 8 September** scheduled check, all 18 Nectar canary probes
+had completed and the chain had started production at **14:03:04 AEST**.
+The 18 receipts, summary and new route were copied back with all 20 SHA-256
+hashes verified. Summary/route reproduction and independent checks of timing,
+concurrency, convergence, identity and zero outer access passed. The new route
+is `metadata/goal051_nectar_route.json`. Measured mixed throughput was 13.48
+probes/hour, 2.32 times the Mac's three-worker rate. Production had 20/150 q
+surfaces complete, no target endpoints yet, and all 16 workers active with
+about 104 GiB available memory. No restart was needed.
+
 Barry authorized a **three-hour recurring follow-up in this thread** on
 8 September, superseding the earlier pause on monitoring. The app automation
 is `check-dsdm-nectar-progress`. Inspect the existing Nectar chain, handle

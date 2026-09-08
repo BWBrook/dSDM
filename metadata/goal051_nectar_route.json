@@ -1,0 +1,59 @@
+{
+  "execution_identity": {
+    "config_sha256": "ba3d4c707845e36af77a307c178f947e4d8de3dc3bfdec37384f13ecceade5a3",
+    "scientific_identity": {
+      "config_sha256": "85cc0800862c2fcf0acf8153fce9ede3400efe86ca91d85a31645b09fba34646",
+      "goal050_crossfit_sha256": "b3abdb006fb7d384445db376d5ba3f0f7b48afd170982494f88ff20ef612e804",
+      "goal050_curves_sha256": "317a5513b6645edc588c63db1c2d26afaea3edfa202480b2f46ca58a2817c3d6",
+      "goal050_manifest_sha256": "239dd61cc5d3ab942a813201c0cb4117820b74367c7ba71deffddc6990d36198",
+      "goal050_transforms_sha256": "1d8b3d09b139264e288630f283e330d28919c00b4631132aa9a79529ad3abb52",
+      "goal052_config_sha256": "10e1e5862231d2baa6b3f66ea8dcc504aa75cfe044e9cdf29fb94f0ecb379155",
+      "source_sha256": "d304b3a9bfea3b5e7bbffc8fe3ea1ddce050fadfa0248a05a768389e462fb28b",
+      "uv_lock_sha256": "51712e74b2f9d78a4efb7bfd6732244188e8c6c5bc722f7a78f2724e6b8b84f6"
+    },
+    "source_sha256": "3cbc7c0ab2da672d92abd384a2c24c819ae55037f4f50235aa53ff28b792f2ad"
+  },
+  "host_attestation": {
+    "cpus": 64,
+    "hostname": "deep-vm",
+    "instance_id": "2c0b08ec-1f02-4864-90a9-8d0fd1816d2e",
+    "memory_bytes": 135050559488,
+    "platform": "Linux-6.8.0-139-generic-x86_64-with-glibc2.39",
+    "system": "Linux"
+  },
+  "host_plan": {
+    "flavour": "c3.3xlarge",
+    "hostname": "deep-vm",
+    "instance_id": "2c0b08ec-1f02-4864-90a9-8d0fd1816d2e",
+    "minimum_cpus": 64,
+    "minimum_memory_bytes": 128849018880,
+    "system": "Linux"
+  },
+  "identity": {
+    "config_sha256": "85cc0800862c2fcf0acf8153fce9ede3400efe86ca91d85a31645b09fba34646",
+    "goal050_crossfit_sha256": "b3abdb006fb7d384445db376d5ba3f0f7b48afd170982494f88ff20ef612e804",
+    "goal050_curves_sha256": "317a5513b6645edc588c63db1c2d26afaea3edfa202480b2f46ca58a2817c3d6",
+    "goal050_manifest_sha256": "239dd61cc5d3ab942a813201c0cb4117820b74367c7ba71deffddc6990d36198",
+    "goal050_transforms_sha256": "1d8b3d09b139264e288630f283e330d28919c00b4631132aa9a79529ad3abb52",
+    "goal052_config_sha256": "10e1e5862231d2baa6b3f66ea8dcc504aa75cfe044e9cdf29fb94f0ecb379155",
+    "source_sha256": "d304b3a9bfea3b5e7bbffc8fe3ea1ddce050fadfa0248a05a768389e462fb28b",
+    "uv_lock_sha256": "51712e74b2f9d78a4efb7bfd6732244188e8c6c5bc722f7a78f2724e6b8b84f6"
+  },
+  "metrics_computed": false,
+  "outer_predictor_rows_used": 0,
+  "outer_response_rows_read": 0,
+  "previous_route": {
+    "path": "metadata/goal051_canary.json",
+    "sha256": "64e873092940d2eaf72a3ed008b18e5cb6db7ec528044076c848d48f1002a758"
+  },
+  "proven_mixed_concurrency": 16,
+  "reason": "User requested dedicated Linux compute to free Mac mini for local work.",
+  "schema_version": "goal051-nectar-route-v1",
+  "selected_host": "nectar",
+  "selected_workers": 16,
+  "status": "metric_free_route_selected",
+  "summary": {
+    "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark/nectar-canary/summary.json",
+    "sha256": "4e143952b9c3e58fbab12247744072646662a346ded1dd12562679b6ed071911"
+  }
+}
