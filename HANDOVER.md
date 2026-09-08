@@ -230,6 +230,15 @@ stress process is active; convergence and production remain pending. The
 three-hour follow-up now explicitly follows the v4 chain. All 290 original
 v3 artifact hashes were verified unchanged before and after the remote update.
 
+**02:20 AEST, 9 September:** the isolated stress surface converged at 10,478
+iterations on the tertiary attempt after reaching 5,000 and 10,000 on the
+first two attempts. Both returned artifacts match remote hashes; standard
+receipt replay and independent checks of identity, seed, attempt sequence,
+parameters, heads, exclusions and weights passed. Compact evidence is
+`evidence/seawfb_conventional/goal051/amendment3_stress.json`. The first of two
+serial canaries is complete and the second is active; the mixed batch and
+production remain pending. Keep the existing chain running.
+
 Barry authorized a **three-hour recurring follow-up in this thread** on
 8 September, superseding the earlier pause on monitoring. The app automation
 is `check-dsdm-nectar-progress`. Inspect the existing Nectar chain, handle

@@ -315,3 +315,19 @@
   on success; neither convergence nor benchmark completion is claimed yet.
 - Updated the existing three-hour follow-up to use v4 paths and the approved
   recovery boundary. No duplicate automation or Goal052 execution was created.
+
+## 2026-09-09 02:20 AEST — amended stress fit passed
+
+- Block1/fold0/full reached the 5,000 and 10,000 ceilings, then converged at
+  10,478 iterations on its fresh tertiary attempt at tolerance 1e-5. All
+  parameters are finite and the accepted attempt has no warnings. Total
+  stress runtime was 5,329.21 seconds, including all three attempts.
+- Returned its model and receipt and verified both hashes against Nectar.
+  The standard receipt replay and an independent check of hashes, identity,
+  seed, attempt order/ceilings, parameter digest, head inventory, focal-block
+  exclusion and weighting passed. Recorded compact evidence in
+  `evidence/seawfb_conventional/goal051/amendment3_stress.json`.
+- The existing chain moved automatically into the repeated Nectar canary.
+  One serial receipt is complete; the second serial process is active at
+  99.9% CPU. No exit marker, v4 route or production q checkpoint exists yet.
+  No fit was restarted and the isolated stress model was not promoted.

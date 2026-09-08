@@ -13,6 +13,10 @@ then two serial and 16 mixed metric-free probes, selects
 `metadata/goal051_nectar_route_v4.json`, verifies its live-host gate, and starts
 fresh q production. Target `run` first requires all 150 valid q surfaces.
 
+At 02:20 AEST on 9 September, stress convergence was independently verified
+at 10,478 iterations on the tertiary attempt. The first serial canary is
+complete and the second is active; no v4 production q surface exists yet.
+
 ```sh
 # On Nectar, after source/input/test validation and checking no duplicate job:
 tmux new-session -d -s dsdm-goal051-nectar \
