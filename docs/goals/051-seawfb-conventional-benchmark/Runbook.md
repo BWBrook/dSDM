@@ -192,3 +192,13 @@ timing batches or rebind old evidence. Source moves through Git bundles from
 the canonical Mac; inputs/results use Tailscale rsync with SHA-256 verification.
 Return useful results to the Mac and preserve remote evidence through project
 acceptance; park Nectar when the campaign no longer needs compute.
+
+### Three-hour Follow-up
+
+After the Nectar launch, Barry explicitly requested a recurring wake-up every
+three hours. The active app follow-up is `check-dsdm-nectar-progress`, attached
+to this thread. This supersedes the earlier monitoring pause. It checks the
+existing chain, resumes valid work after routine interruptions, retrieves and
+independently validates completed evidence, and progresses Goal051 through
+acceptance. Pause it after Goal051 is accepted; Goal052 and outer evaluation
+retain their separate authorization boundaries.

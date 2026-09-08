@@ -168,8 +168,12 @@ production still writes `run.log` / `run.exit`. See the runbook for launch and
 restart details. Goal051 remains incomplete until its full evidence passes
 acceptance.
 
-Barry paused automatic-goal monitoring. **Do not recreate automatic-goal
-machinery or launch duplicate jobs.**
+Barry authorized a **three-hour recurring follow-up in this thread** on
+8 September, superseding the earlier pause on monitoring. The app automation
+is `check-dsdm-nectar-progress`. Inspect the existing Nectar chain, handle
+routine interruptions, and continue verification/acceptance when outputs are
+ready. Pause the follow-up once Goal051 is accepted. Do not launch duplicate
+jobs or start Goal052 without its separate execution authority.
 
 On Barry's next continuation, inspect the existing jobs first using the
 [Goal 051 runbook](docs/goals/051-seawfb-conventional-benchmark/Runbook.md),

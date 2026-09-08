@@ -213,3 +213,9 @@
   99.9% CPU and about 1.4 GiB RSS. No Mac Goal051 worker remains. The chain
   automatically proceeds to production only if its metric-free gate passes;
   production/scientific completion is not yet claimed.
+- Barry then authorized a recurring follow-up in this thread every three hours.
+  Created active app automation `check-dsdm-nectar-progress` to inspect the
+  existing Nectar chain and continue routine recovery, evidence retrieval and
+  independent Goal051 acceptance work. It supersedes the earlier monitoring
+  pause and should be paused after Goal051 is accepted. Goal052 remains a
+  separate execution decision.
