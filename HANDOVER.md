@@ -178,6 +178,15 @@ probes/hour, 2.32 times the Mac's three-worker rate. Production had 20/150 q
 surfaces complete, no target endpoints yet, and all 16 workers active with
 about 104 GiB available memory. No restart was needed.
 
+At the **17:16 AEST** follow-up, 112/150 q checkpoints passed their original
+load/convergence/identity checks (42 q20, 38 q80, 32 qfull); no target endpoint
+had started. All 16 workers remained active and checkpoints were still being
+written. However, `run.log` had not advanced since 14:53 AEST. The executor
+can defer a raised worker exception until queued work finishes during pool
+shutdown. This is a suspected pending failure, not a confirmed traceback:
+inspect the eventual log/exit and missing surfaces before restarting or
+amending anything. Leave the productive workers running meanwhile.
+
 Barry authorized a **three-hour recurring follow-up in this thread** on
 8 September, superseding the earlier pause on monitoring. The app automation
 is `check-dsdm-nectar-progress`. Inspect the existing Nectar chain, handle

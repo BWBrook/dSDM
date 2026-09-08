@@ -238,3 +238,19 @@
   target endpoints had not started. All 16 workers were active near 100% CPU,
   with about 104 GiB available memory and no exit marker or reported error.
   No recovery was needed. The three-hour follow-up remains active.
+
+## 2026-09-08 17:16 AEST - q progress and logging anomaly
+
+- The initial status snapshot showed 111/150 q surfaces. A subsequent complete
+  checkpoint-load pass validated 112: 42 q20, 38 q80 and 32 qfull. Model hashes,
+  original scientific identities, parameter digests and accepted convergence
+  receipts pass; target endpoints remain at zero.
+- All 16 workers are active near 100% CPU. New checkpoints continue to appear,
+  with about 104 GiB available memory. Neither exit marker exists yet.
+- `run.log` stopped advancing at 14:53:23 AEST despite later checkpoint
+  writes. `_run_parallel` propagates a future exception inside the executor
+  context, whose shutdown waits for queued work; this can defer the traceback
+  while other surfaces finish. Earliest missing surfaces are block1/fold0/full
+  and block1/fold4/full. A pending failure is suspected but not confirmed from
+  an emitted error. Preserve useful progress and inspect the final traceback
+  before any recovery or scientific amendment. No process or source changed.
