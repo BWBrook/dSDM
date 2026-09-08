@@ -351,3 +351,14 @@
   All 16 workers are active at about one CPU each, with 103 GiB available RAM.
   There are no failure receipts, exit markers or target endpoint results yet.
 - Source remains `ce63d96` on Nectar. No job was restarted or model amended.
+
+## 2026-09-09 08:20 AEST — q stage at 136/150
+
+- Full checkpoint provenance validation passed for 136 surfaces: all 50 q20,
+  46 q80 and 40 qfull. Accepted attempts comprise 61 primary, 73 extended and
+  two tertiary fits. No target endpoint has started.
+- The previously unresolved block1/fold0/full and block1/fold4/full surfaces
+  converged at 10,478 and 10,267 iterations respectively. Five other formerly
+  unresolved full surfaces remain pending, together with nine block9 surfaces.
+- The existing 16-worker pool remains active. No failure receipt or exit marker
+  is present. No source, numerical policy, process or automation was changed.

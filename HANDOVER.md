@@ -248,6 +248,13 @@ All 43 completed q surfaces validate (19 q20, 16 q80, eight qfull); all 16
 workers are active, with no failure receipt or exit marker. Target endpoints
 have not started. Continue the existing q stage; do not change its source.
 
+**08:20 AEST, 9 September:** 136/150 q surfaces now validate: all 50 q20,
+46 q80 and 40 qfull. Two formerly unresolved full surfaces (block1/folds0,4)
+converged on the tertiary attempt at 10,478 and 10,267 iterations. The other
+five formerly unresolved full surfaces are still pending, alongside nine
+block9 surfaces. There are no failure receipts or exit markers; workers remain
+active and no target endpoint has started. Continue the existing chain.
+
 Barry authorized a **three-hour recurring follow-up in this thread** on
 8 September, superseding the earlier pause on monitoring. The app automation
 is `check-dsdm-nectar-progress`. Inspect the existing Nectar chain, handle
