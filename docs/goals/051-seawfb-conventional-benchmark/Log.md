@@ -331,3 +331,23 @@
   One serial receipt is complete; the second serial process is active at
   99.9% CPU. No exit marker, v4 route or production q checkpoint exists yet.
   No fit was restarted and the isolated stress model was not promoted.
+
+## 2026-09-09 05:20 AEST — amended canary accepted; production active
+
+- All 18 v4 canary receipts completed. Returned them, their summary and the v4
+  route, verifying all 20 hashes against Nectar. Both summary and route
+  reproduced exactly using the production validators.
+- Independent checks confirmed the two serial runs precede the mixed batch,
+  all 16 mixed intervals overlap, timing arithmetic and RSS agree, all fits
+  satisfy their convergence gates, scientific/execution identities agree,
+  prediction and q-parameter digests are stable, and metric/outer-access
+  flags remain false/zero. The previously verified stress hashes remain bound
+  into the v4 route.
+- Mean serial latency was 3,517.13 seconds; 16 mixed runs took 3,847.34 seconds
+  (14.97 probes/hour), with peak per-process RSS 2,406,617,088 bytes. These
+  describe the canary and do not establish a full benchmark completion time.
+- The existing chain started q production at 03:49:44 AEST. All 43 completed
+  surfaces passed full q provenance validation: 19 q20, 16 q80 and eight qfull.
+  All 16 workers are active at about one CPU each, with 103 GiB available RAM.
+  There are no failure receipts, exit markers or target endpoint results yet.
+- Source remains `ce63d96` on Nectar. No job was restarted or model amended.

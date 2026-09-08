@@ -17,6 +17,11 @@ At 02:20 AEST on 9 September, stress convergence was independently verified
 at 10,478 iterations on the tertiary attempt. The first serial canary is
 complete and the second is active; no v4 production q surface exists yet.
 
+At 05:20 AEST, all 18 canaries and the v4 route are independently validated;
+production began automatically at 03:49:44 AEST. There are 43 validated q
+surfaces, no target endpoints, no reported failure and 16 active workers.
+All 20 returned canary/summary/route files passed transfer-hash verification.
+
 ```sh
 # On Nectar, after source/input/test validation and checking no duplicate job:
 tmux new-session -d -s dsdm-goal051-nectar \

@@ -239,6 +239,15 @@ parameters, heads, exclusions and weights passed. Compact evidence is
 serial canaries is complete and the second is active; the mixed batch and
 production remain pending. Keep the existing chain running.
 
+**05:20 AEST, 9 September:** all 18 v4 Nectar canaries passed and the existing
+chain started fresh q production at 03:49:44 AEST. All 20 returned canary,
+summary and route hashes match Nectar; the summary and route reproduce
+exactly, and independent interval/concurrency, convergence, identity and
+digest checks passed. The current route is `metadata/goal051_nectar_route_v4.json`.
+All 43 completed q surfaces validate (19 q20, 16 q80, eight qfull); all 16
+workers are active, with no failure receipt or exit marker. Target endpoints
+have not started. Continue the existing q stage; do not change its source.
+
 Barry authorized a **three-hour recurring follow-up in this thread** on
 8 September, superseding the earlier pause on monitoring. The app automation
 is `check-dsdm-nectar-progress`. Inspect the existing Nectar chain, handle

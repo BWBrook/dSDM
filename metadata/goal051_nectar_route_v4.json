@@ -1,0 +1,79 @@
+{
+  "amendment_stress": {
+    "accepted_attempt": "tertiary",
+    "artifacts": [
+      {
+        "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/amendment-stress/q_linear/block01_fold00_auxfull.npz",
+        "sha256": "2597360336885ffd54037f404246d4c04adb5082de41a84522a9278fd9d435c8"
+      },
+      {
+        "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/amendment-stress/q_linear/block01_fold00_auxfull.json",
+        "sha256": "05c53845366561ff986214d03dccc04b0b39d3d7009271dbb69b3dd3e253ed8f"
+      }
+    ],
+    "metrics_computed": false,
+    "outer_response_rows_read": 0,
+    "spec": [
+      1,
+      0,
+      "full"
+    ]
+  },
+  "execution_identity": {
+    "config_sha256": "687e4d35ca1042db2b79447c5fcc28021d673188036ac6572a6e142385f9febc",
+    "scientific_identity": {
+      "config_sha256": "48465d0a5180931a72ffc87aa830f6ce60da93a4b491558540af5afa9d42884d",
+      "goal050_crossfit_sha256": "b3abdb006fb7d384445db376d5ba3f0f7b48afd170982494f88ff20ef612e804",
+      "goal050_curves_sha256": "317a5513b6645edc588c63db1c2d26afaea3edfa202480b2f46ca58a2817c3d6",
+      "goal050_manifest_sha256": "239dd61cc5d3ab942a813201c0cb4117820b74367c7ba71deffddc6990d36198",
+      "goal050_transforms_sha256": "1d8b3d09b139264e288630f283e330d28919c00b4631132aa9a79529ad3abb52",
+      "goal052_config_sha256": "04b667168944b39ced1044da8f381553c4024e31cca1f5590f2fbc693e521f9a",
+      "source_sha256": "24057a4ef6c857d26e0fb4deecf46fe81cfc0e91c67e34d92dbdd77d7ca7ce2e",
+      "uv_lock_sha256": "51712e74b2f9d78a4efb7bfd6732244188e8c6c5bc722f7a78f2724e6b8b84f6"
+    },
+    "source_sha256": "002e7460ac85640f5451e5cb6e1701e206fb43d668b136b26a9611425f76548b"
+  },
+  "host_attestation": {
+    "cpus": 64,
+    "hostname": "deep-vm",
+    "instance_id": "2c0b08ec-1f02-4864-90a9-8d0fd1816d2e",
+    "memory_bytes": 135050559488,
+    "platform": "Linux-6.8.0-139-generic-x86_64-with-glibc2.39",
+    "system": "Linux"
+  },
+  "host_plan": {
+    "flavour": "c3.3xlarge",
+    "hostname": "deep-vm",
+    "instance_id": "2c0b08ec-1f02-4864-90a9-8d0fd1816d2e",
+    "minimum_cpus": 64,
+    "minimum_memory_bytes": 128849018880,
+    "system": "Linux"
+  },
+  "identity": {
+    "config_sha256": "48465d0a5180931a72ffc87aa830f6ce60da93a4b491558540af5afa9d42884d",
+    "goal050_crossfit_sha256": "b3abdb006fb7d384445db376d5ba3f0f7b48afd170982494f88ff20ef612e804",
+    "goal050_curves_sha256": "317a5513b6645edc588c63db1c2d26afaea3edfa202480b2f46ca58a2817c3d6",
+    "goal050_manifest_sha256": "239dd61cc5d3ab942a813201c0cb4117820b74367c7ba71deffddc6990d36198",
+    "goal050_transforms_sha256": "1d8b3d09b139264e288630f283e330d28919c00b4631132aa9a79529ad3abb52",
+    "goal052_config_sha256": "04b667168944b39ced1044da8f381553c4024e31cca1f5590f2fbc693e521f9a",
+    "source_sha256": "24057a4ef6c857d26e0fb4deecf46fe81cfc0e91c67e34d92dbdd77d7ca7ce2e",
+    "uv_lock_sha256": "51712e74b2f9d78a4efb7bfd6732244188e8c6c5bc722f7a78f2724e6b8b84f6"
+  },
+  "metrics_computed": false,
+  "outer_predictor_rows_used": 0,
+  "outer_response_rows_read": 0,
+  "previous_route": {
+    "path": "metadata/goal051_nectar_route.json",
+    "sha256": "b2513d13dbd11be525e7e5318b46cf4b442a020ddc1ae02a0ad4f2d10695ef8a"
+  },
+  "proven_mixed_concurrency": 16,
+  "reason": "Approved numerical amendment 3: fresh v4 q collection, repeated Nectar canary, original route retained as lineage.",
+  "schema_version": "goal051-nectar-route-v2",
+  "selected_host": "nectar",
+  "selected_workers": 16,
+  "status": "metric_free_route_selected",
+  "summary": {
+    "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/nectar-canary/summary.json",
+    "sha256": "4ef77d2366736043964782a36a4b131727ca5631f83dece2c59c276619a4b974"
+  }
+}
