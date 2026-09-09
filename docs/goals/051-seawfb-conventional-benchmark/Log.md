@@ -362,3 +362,25 @@
   unresolved full surfaces remain pending, together with nine block9 surfaces.
 - The existing 16-worker pool remains active. No failure receipt or exit marker
   is present. No source, numerical policy, process or automation was changed.
+
+## 2026-09-09 11:21 AEST — all q surfaces accepted; target fitting active
+
+- All 150 q surfaces converged: 50 q20, 50 q80 and 50 qfull. Accepted attempts
+  comprise 61 primary, 82 extended and seven tertiary fits. The seven formerly
+  unresolved full surfaces converged at 10,194–10,553 iterations, below the
+  approved final ceiling, without accepted-attempt warnings.
+- Returned 300 model/receipt files and their manifest, verifying every transfer
+  hash. Complete q provenance replay on the Mac matches Nectar's combined
+  receipt digest. Independent checks passed for all specs, identities, seeds,
+  attempt sequences/ceilings, finite parameters/digests, head inventories,
+  focal-block exclusions and weighting. Recorded `q_v4_acceptance.json`.
+- All 143 previously converged surfaces retain the same accepted attempt and
+  iteration count. The 130 formerly fitted on Nectar reproduce parameter
+  digests exactly. The 13 originally carried from the Mac differ by at most
+  3.741e-12 in parameters; their original model bytes match the retained Mac
+  artifacts. This cross-host comparison is diagnostic, not a new acceptance rule.
+- Target fitting started automatically at 09:18:48 AEST. Sixteen completed
+  endpoints (nine target25, seven target50) pass identity and model-output file
+  hash checks. Full ecological metric replay and family/coverage acceptance
+  remain pending until the grid finishes. All 16 workers remain active; there
+  is no job exit marker or q failure. No process or source changed.

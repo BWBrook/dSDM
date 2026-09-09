@@ -19,10 +19,11 @@ complete and the second is active; no v4 production q surface exists yet.
 
 At 05:20 AEST, all 18 canaries and the v4 route are independently validated;
 production began automatically at 03:49:44 AEST. All 20 returned canary/summary/
-route files passed transfer-hash verification. At 08:20 AEST, 136/150 q surfaces
-validate (50 q20, 46 q80, 40 qfull), including two formerly unresolved full
-surfaces accepted on tertiary attempts. No failure or target endpoint is
-reported; the existing workers remain active.
+route files passed transfer-hash verification. By 11:21 AEST, all 150 q surfaces
+were independently verified after returning all 300 model/receipt files with
+hash checks. Target fitting began at 09:18:48 AEST; 16 endpoint checkpoints
+pass identity/hash checks. Full metric and coverage acceptance is still pending.
+The existing 16 workers remain active; no restart is needed.
 
 ```sh
 # On Nectar, after source/input/test validation and checking no duplicate job:

@@ -1,0 +1,83 @@
+{
+  "accepted_attempts": {
+    "extended": 82,
+    "primary": 61,
+    "tertiary": 7
+  },
+  "by_auxiliary_size": {
+    "20": 50,
+    "80": 50,
+    "full": 50
+  },
+  "combined_receipt_digest": "32b6dbc36c587d35a0baa17b68af7706bae35adb6760b50e836d1a6d81d19ef2",
+  "historical_comparison": {
+    "accepted_attempts_and_iterations_unchanged_for_all_143": true,
+    "mac_carried_models": 13,
+    "mac_maximum_absolute_parameter_difference": 3.740452392264615e-12,
+    "nectar_parameter_digests_reproduced": 130
+  },
+  "identity": {
+    "config_sha256": "48465d0a5180931a72ffc87aa830f6ce60da93a4b491558540af5afa9d42884d",
+    "goal050_crossfit_sha256": "b3abdb006fb7d384445db376d5ba3f0f7b48afd170982494f88ff20ef612e804",
+    "goal050_curves_sha256": "317a5513b6645edc588c63db1c2d26afaea3edfa202480b2f46ca58a2817c3d6",
+    "goal050_manifest_sha256": "239dd61cc5d3ab942a813201c0cb4117820b74367c7ba71deffddc6990d36198",
+    "goal050_transforms_sha256": "1d8b3d09b139264e288630f283e330d28919c00b4631132aa9a79529ad3abb52",
+    "goal052_config_sha256": "04b667168944b39ced1044da8f381553c4024e31cca1f5590f2fbc693e521f9a",
+    "source_sha256": "24057a4ef6c857d26e0fb4deecf46fe81cfc0e91c67e34d92dbdd77d7ca7ce2e",
+    "uv_lock_sha256": "51712e74b2f9d78a4efb7bfd6732244188e8c6c5bc722f7a78f2724e6b8b84f6"
+  },
+  "outer_response_rows_read": 0,
+  "q_surfaces": 150,
+  "q_validation_ecological_metrics_computed": false,
+  "status": "q_collection_independently_verified",
+  "tertiary_surfaces": [
+    {
+      "auxiliary_size": "full",
+      "block": 1,
+      "fold": 0,
+      "iterations": 10478
+    },
+    {
+      "auxiliary_size": "full",
+      "block": 1,
+      "fold": 4,
+      "iterations": 10267
+    },
+    {
+      "auxiliary_size": "full",
+      "block": 7,
+      "fold": 0,
+      "iterations": 10468
+    },
+    {
+      "auxiliary_size": "full",
+      "block": 7,
+      "fold": 2,
+      "iterations": 10194
+    },
+    {
+      "auxiliary_size": "full",
+      "block": 7,
+      "fold": 4,
+      "iterations": 10368
+    },
+    {
+      "auxiliary_size": "full",
+      "block": 8,
+      "fold": 0,
+      "iterations": 10553
+    },
+    {
+      "auxiliary_size": "full",
+      "block": 8,
+      "fold": 4,
+      "iterations": 10199
+    }
+  ],
+  "transfer_manifest": {
+    "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q-complete-sha256.json",
+    "sha256": "e775cf360dce0149316a94b7ab21330869c42127b7b5502355033e7803727be0",
+    "verified_files": 300
+  },
+  "verified_at_aest": "2026-09-09 11:21"
+}

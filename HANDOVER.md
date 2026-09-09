@@ -255,6 +255,18 @@ five formerly unresolved full surfaces are still pending, alongside nine
 block9 surfaces. There are no failure receipts or exit markers; workers remain
 active and no target endpoint has started. Continue the existing chain.
 
+**11:21 AEST, 9 September:** all 150 q surfaces are complete and independently
+verified (50 per auxiliary size; 61 primary, 82 extended, seven tertiary).
+All seven formerly unresolved full surfaces converged at 10,194–10,553
+iterations. Returned all 300 model/receipt files with verified hashes and
+replayed the complete q provenance gate on the Mac. Independent parameter,
+seed, attempt, head/exclusion and weighting checks passed; compact evidence
+is `evidence/seawfb_conventional/goal051/q_v4_acceptance.json`.
+Target fitting started automatically at 09:18:48 AEST. Sixteen endpoint
+checkpoints pass identity and file-hash checks; full metric/coverage acceptance
+awaits completion. The 16 workers remain active, with no job exit marker or
+q failure. Continue the existing target stage without source changes.
+
 Barry authorized a **three-hour recurring follow-up in this thread** on
 8 September, superseding the earlier pause on monitoring. The app automation
 is `check-dsdm-nectar-progress`. Inspect the existing Nectar chain, handle
