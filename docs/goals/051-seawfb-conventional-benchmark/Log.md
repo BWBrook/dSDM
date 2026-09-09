@@ -384,3 +384,14 @@
   hash checks. Full ecological metric replay and family/coverage acceptance
   remain pending until the grid finishes. All 16 workers remain active; there
   is no job exit marker or q failure. No process or source changed.
+
+## 2026-09-09 14:21 AEST — target fitting at 45/303
+
+- All 45 completed endpoint checkpoints pass identity and prediction-file hash
+  checks: 15 target25, 14 target50 and 16 target100. All five conventional
+  families are available in these completed endpoints; this is partial-grid
+  status, not final metric or coverage acceptance.
+- All 16 workers remain active at about one CPU each. The latest checkpoint
+  arrived about 14 minutes before inspection. There are no execution-error
+  lines, q failure receipts or job exit markers. No restart or source change
+  was needed; the existing chain and three-hour follow-up continue.

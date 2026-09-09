@@ -262,10 +262,12 @@ iterations. Returned all 300 model/receipt files with verified hashes and
 replayed the complete q provenance gate on the Mac. Independent parameter,
 seed, attempt, head/exclusion and weighting checks passed; compact evidence
 is `evidence/seawfb_conventional/goal051/q_v4_acceptance.json`.
-Target fitting started automatically at 09:18:48 AEST. Sixteen endpoint
-checkpoints pass identity and file-hash checks; full metric/coverage acceptance
-awaits completion. The 16 workers remain active, with no job exit marker or
-q failure. Continue the existing target stage without source changes.
+Target fitting started automatically at 09:18:48 AEST. At 14:21 AEST,
+45/303 endpoint checkpoints pass identity and file-hash checks (15 target25,
+14 target50, 16 target100). All five families are available in these completed
+endpoints. Full metric/coverage acceptance awaits completion. The 16 workers
+remain active, with no execution-error line or exit marker. Continue the
+existing target stage without source changes.
 
 Barry authorized a **three-hour recurring follow-up in this thread** on
 8 September, superseding the earlier pause on monitoring. The app automation
