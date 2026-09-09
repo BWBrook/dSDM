@@ -21,7 +21,7 @@ At 05:20 AEST, all 18 canaries and the v4 route are independently validated;
 production began automatically at 03:49:44 AEST. All 20 returned canary/summary/
 route files passed transfer-hash verification. By 11:21 AEST, all 150 q surfaces
 were independently verified after returning all 300 model/receipt files with
-hash checks. Target fitting began at 09:18:48 AEST. At 17:22 AEST, 75/303
+hash checks. Target fitting began at 09:18:48 AEST. At 20:23 AEST, 107/303
 endpoint checkpoints pass identity/hash checks, with all five families
 available in the completed endpoints. Full metric and coverage acceptance is
 still pending. The existing 16 workers remain active; no restart is needed.
