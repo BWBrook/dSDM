@@ -395,3 +395,16 @@
   arrived about 14 minutes before inspection. There are no execution-error
   lines, q failure receipts or job exit markers. No restart or source change
   was needed; the existing chain and three-hour follow-up continue.
+
+## 2026-09-09 17:22 AEST — target fitting at 75/303
+
+- All 75 completed endpoint checkpoints pass identity and prediction-file hash
+  checks: 22 target25, 21 target50 and 32 target100. All five conventional
+  families are available in every completed endpoint. Full metric and coverage
+  acceptance remains pending.
+- All 16 workers remain active. The production log advanced five minutes
+  before inspection; no execution-error lines, q failure receipts or job exit
+  markers are present. All 150 q model/receipt pairs remain present, and the
+  22 stress/canary/route artifact hashes match the accepted local copies.
+- No restart, source change or resource change was needed. The existing chain
+  and three-hour follow-up continue.
