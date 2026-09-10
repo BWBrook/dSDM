@@ -262,12 +262,30 @@ iterations. Returned all 300 model/receipt files with verified hashes and
 replayed the complete q provenance gate on the Mac. Independent parameter,
 seed, attempt, head/exclusion and weighting checks passed; compact evidence
 is `evidence/seawfb_conventional/goal051/q_v4_acceptance.json`.
-Target fitting started automatically at 09:18:48 AEST on 9 September. At
-14:25 AEST on 10 September, 292/303 endpoint checkpoints pass identity and
-file-hash checks (73 target25, 71 target50, 148 target100). All five families
-are available in these completed endpoints. Full metric/coverage acceptance
-awaits completion. The 16 workers remain active, with no execution-error line
-or exit marker. Continue the existing target stage without source changes.
+Target fitting completed at **16:15:47 AEST on 10 September**: all 303
+endpoints and 449 q conditions are present, with all five families available
+at every endpoint. Aggregation passed at about 17:30 AEST and the existing
+chain is running final `validate --complete` (PID 23216 at 17:46 AEST).
+All 606 endpoint files were returned to the Mac with verified SHA-256 hashes;
+the aggregate was returned privately as `summary-returned.json` in the v4 root.
+
+The independent endpoint audit passed all 6,763 prediction groups and
+474,174,113 rows, with maximum metric difference 4.45e-16. Candidate/family
+selection, q reuse, fit counts, coverage and q provenance passed. See
+`evidence/seawfb_conventional/goal051/independent_endpoint_audit.json`.
+The 49 rejected candidates are all `enet08` nonconvergence; three elastic-net
+candidates remain everywhere. Rejections are more frequent in the lowest
+prevalence quartile (18/75 versus 4/75 in the highest), reducing tuning breadth,
+although the frozen family-availability gates pass at 100%.
+
+**Goal051 acceptance remains pending** native final validation and the
+separate canonical training-contract check (PID 23433 at 17:46 AEST).
+The latter writes `training-contract-check.json` under the remote v4 root.
+It checks frozen subset digests, nesting, held-fold exclusion, disjoint
+training/validation cells and X10 background support. Do not duplicate either
+active check. Once both pass, return final logs/exit markers and the training
+receipt with hashes, complete the acceptance decision, park Nectar according
+to the control-plane policy, and pause the follow-up. Goal052 remains unstarted.
 
 Barry authorized a **three-hour recurring follow-up in this thread** on
 8 September, superseding the earlier pause on monitoring. The app automation

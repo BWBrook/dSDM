@@ -494,3 +494,35 @@
   the local copies.
 - Continue the existing chain through aggregation and validation. No restart
   or source change was needed; the three-hour follow-up remains active.
+
+## 2026-09-10 17:46 AEST — fits complete; independent audit passed
+
+- The final endpoint completed at 16:15:47 AEST. All 303 endpoint identity/hash
+  checks pass: 73 target25, 73 target50 and 157 target100, with 449 q conditions.
+  All 1,515 family-endpoint groups are available. Aggregation passed at about
+  17:30 AEST, recording 67,910 successful physical fits and 474,174,113
+  prediction rows. The native final validation remains active.
+- Returned all 606 endpoint JSON/Parquet files (3,942,564,468 bytes) and their
+  manifest; every SHA-256 matched. The detached local transfer verifier exited
+  0. Manifest SHA-256 is `cf63098d0e46a5624c90f6406ed6228fb816c334e8e78efcfc2a8b84078f3d7a`.
+  The returned private aggregate matches its remote hash. All four original
+  retained-training input hashes still match on both hosts; the aggregate's
+  identity matches the accepted local source and configurations.
+- Independent NumPy metric replay passed 6,763 groups / 40,578 pooled and fold
+  metric sets, with maximum absolute difference 4.45e-16. Candidate/family
+  selection, seed-label schedules, successful fit counts, q reuse, all-150 q
+  receipts/models and coverage gates passed. The bound receipt is committed;
+  the independent script and original receipt remain in private v4 storage.
+- All 49 rejected candidates are `enet08` nonconvergence (7 target25, 7
+  target50, 35 target100), leaving three elastic-net candidates at every
+  endpoint. Candidate failures are more common in the lowest prevalence
+  quartile (18/75) than the highest (4/75). This reduces tuning breadth; the
+  prespecified family-availability gate nevertheless passes at 100% in both.
+- Independent metric replay does not inspect cell IDs; the native replay
+  supplies canonical cell-order, duplicate-cell and label checks. Target
+  numeric seeds and per-fit convergence records are not retained in endpoint
+  payloads; their execution is supported by the bound source and adapter gates.
+- A separate canonical check of all training subset digests, nesting, fold
+  exclusions, disjoint roles and X10 support remains active as PID 23433.
+  Final acceptance awaits this receipt and native validation (PID 23216).
+  No production source, fitted model, resource size or automation was changed.

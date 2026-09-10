@@ -21,11 +21,28 @@ At 05:20 AEST, all 18 canaries and the v4 route are independently validated;
 production began automatically at 03:49:44 AEST. All 20 returned canary/summary/
 route files passed transfer-hash verification. By 11:21 AEST, all 150 q surfaces
 were independently verified after returning all 300 model/receipt files with
-hash checks. Target fitting began at 09:18:48 AEST on 9 September. At
-14:25 AEST on 10 September, 292/303 endpoint checkpoints pass identity/hash
-checks, with all five families available in the completed endpoints.
-Full metric and coverage acceptance is still pending. The existing 16 workers
-remain active; no restart is needed.
+hash checks. Target fitting completed at 16:15:47 AEST on 10 September:
+303 endpoints, 449 q conditions and all five families available everywhere.
+Aggregation passed at about 17:30 AEST; the existing chain is running final
+`validate --complete` (PID 23216 at 17:46 AEST). No restart is needed.
+
+All 606 endpoint files are back on the Mac and verified against
+`endpoint-return-sha256.json`; `endpoint-return-verified.json` records success.
+The returned aggregate is private `summary-returned.json`. Its SHA-256 is
+`9c1bf1ff8884fae35fe7ebe6f8d19e2aae46ab7eedee252b398c0c74705dd2d8`.
+The independent metric audit passed all 303 endpoints and 6,763 groups;
+its bound receipt is `evidence/seawfb_conventional/goal051/independent_endpoint_audit.json`.
+The verifier and original receipt are preserved in private `independent-audit/`.
+
+Before acceptance, let native validation and the canonical training-contract
+check finish. The latter was PID 23433 at 17:46 AEST and writes remote private
+`training-contract-check.json`. Inspect that receipt and the existing
+`run.exit` / `nectar-execution.exit`; retrieve final logs/receipts with hash
+checks. Preserve the 49 rejected `enet08` candidates and their prevalence
+pattern in the interpretation; every endpoint retains three other elastic-net
+candidates and the prespecified family-coverage gates pass. Do not start a
+duplicate validation or any Goal052 work. The three-hour follow-up stays active
+until scientific acceptance and documented Nectar closeout are complete.
 
 ```sh
 # On Nectar, after source/input/test validation and checking no duplicate job:

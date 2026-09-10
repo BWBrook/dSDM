@@ -1,0 +1,202 @@
+{
+  "audit_limits": [
+    "Endpoint payloads retain selected seed labels, fit counts, and ANN epoch ranges but omit numeric target-model seeds and per-fit convergence records; those cannot be independently reconstructed from row predictions.",
+    "This verifier checks five-fold label/support identity for every prediction group but does not rescan canonical cell IDs; the production aggregate replay owns canonical cell-order and label binding.",
+    "Outer NCP, SEH, and NNC outcomes were not read. No models were fitted and Goal 052 was not executed."
+  ],
+  "candidate_failures": {
+    "by_fraction": {
+      "100": 35,
+      "25": 7,
+      "50": 7
+    },
+    "by_type": {
+      "elastic_net|enet08|elastic_net_nonconverged": 49
+    },
+    "interpretive_note": "The prespecified prevalence gate concerns family availability. Candidate failure concentration is reported separately because it can reduce tuning breadth without making a family unavailable.",
+    "total": 49
+  },
+  "checks": {
+    "assertions": 796536,
+    "failed": 0,
+    "failure_labels": []
+  },
+  "evidence_bindings": {
+    "aggregate_sha256": "9c1bf1ff8884fae35fe7ebe6f8d19e2aae46ab7eedee252b398c0c74705dd2d8",
+    "audit_script_private_path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/independent-audit/dsdm-goal051-independent-endpoints.py",
+    "audit_script_sha256": "fdfaf29f8df167dfb2d9812a6277ddaf7acc448a580b00fbc251b34b4b48d6b5",
+    "endpoint_manifest_sha256": "cf63098d0e46a5624c90f6406ed6228fb816c334e8e78efcfc2a8b84078f3d7a",
+    "raw_audit_receipt_sha256": "d84aa972eb7a5d08d8419b60899b26d78119b9498c3add3a655fc7363f6f90ac",
+    "scientific_identity": {
+      "config_sha256": "48465d0a5180931a72ffc87aa830f6ce60da93a4b491558540af5afa9d42884d",
+      "goal050_crossfit_sha256": "b3abdb006fb7d384445db376d5ba3f0f7b48afd170982494f88ff20ef612e804",
+      "goal050_curves_sha256": "317a5513b6645edc588c63db1c2d26afaea3edfa202480b2f46ca58a2817c3d6",
+      "goal050_manifest_sha256": "239dd61cc5d3ab942a813201c0cb4117820b74367c7ba71deffddc6990d36198",
+      "goal050_transforms_sha256": "1d8b3d09b139264e288630f283e330d28919c00b4631132aa9a79529ad3abb52",
+      "goal052_config_sha256": "04b667168944b39ced1044da8f381553c4024e31cca1f5590f2fbc693e521f9a",
+      "source_sha256": "24057a4ef6c857d26e0fb4deecf46fe81cfc0e91c67e34d92dbdd77d7ca7ce2e",
+      "uv_lock_sha256": "51712e74b2f9d78a4efb7bfd6732244188e8c6c5bc722f7a78f2724e6b8b84f6"
+    },
+    "scope": "Independent endpoint metric audit only; overall Goal051 acceptance awaits native final validation and canonical training-contract check."
+  },
+  "family_availability": {
+    "by_family": {
+      "elastic_net": {
+        "available": 303,
+        "coverage": 1.0,
+        "planned": 303
+      },
+      "hist_gradient_boosting": {
+        "available": 303,
+        "coverage": 1.0,
+        "planned": 303
+      },
+      "intercept": {
+        "available": 303,
+        "coverage": 1.0,
+        "planned": 303
+      },
+      "random_forest": {
+        "available": 303,
+        "coverage": 1.0,
+        "planned": 303
+      },
+      "shallow_ann": {
+        "available": 303,
+        "coverage": 1.0,
+        "planned": 303
+      }
+    },
+    "overall": {
+      "available": 1515,
+      "coverage": 1.0,
+      "planned": 1515
+    }
+  },
+  "inventory": {
+    "fractions": {
+      "100": 157,
+      "25": 73,
+      "50": 73
+    },
+    "full_only_targets": 84,
+    "metric_groups_recomputed": 6763,
+    "metric_sets_recomputed_including_folds": 40578,
+    "prediction_rows_read": 474174113,
+    "primary_targets": 73,
+    "q_conditions": 449,
+    "target_endpoints": 303,
+    "targets": 157
+  },
+  "metric_replay": {
+    "absolute_tolerance": 5e-12,
+    "implementation": "independent NumPy rank-sum ROC AUC, maximum-TSS threshold, and confusion-matrix metrics",
+    "maximum_absolute_difference": 4.440892098500626e-16
+  },
+  "prevalence_gate": {
+    "minimum_family_coverage": 0.9,
+    "quartile_size": 75,
+    "quartiles": {
+      "highest": {
+        "candidate_failure_endpoints": 4,
+        "candidate_failure_fraction": 0.05333333333333334,
+        "family_availability": {
+          "elastic_net": {
+            "available": 75,
+            "coverage": 1.0,
+            "planned": 75
+          },
+          "hist_gradient_boosting": {
+            "available": 75,
+            "coverage": 1.0,
+            "planned": 75
+          },
+          "intercept": {
+            "available": 75,
+            "coverage": 1.0,
+            "planned": 75
+          },
+          "random_forest": {
+            "available": 75,
+            "coverage": 1.0,
+            "planned": 75
+          },
+          "shallow_ann": {
+            "available": 75,
+            "coverage": 1.0,
+            "planned": 75
+          }
+        },
+        "prevalence_range": [
+          0.25912615314958404,
+          0.644593628346707
+        ]
+      },
+      "lowest": {
+        "candidate_failure_endpoints": 18,
+        "candidate_failure_fraction": 0.24,
+        "family_availability": {
+          "elastic_net": {
+            "available": 75,
+            "coverage": 1.0,
+            "planned": 75
+          },
+          "hist_gradient_boosting": {
+            "available": 75,
+            "coverage": 1.0,
+            "planned": 75
+          },
+          "intercept": {
+            "available": 75,
+            "coverage": 1.0,
+            "planned": 75
+          },
+          "random_forest": {
+            "available": 75,
+            "coverage": 1.0,
+            "planned": 75
+          },
+          "shallow_ann": {
+            "available": 75,
+            "coverage": 1.0,
+            "planned": 75
+          }
+        },
+        "prevalence_range": [
+          0.003234890605819915,
+          0.0635249737232373
+        ]
+      }
+    }
+  },
+  "q_receipts": {
+    "accepted_iteration_ranges": {
+      "extended": [
+        5027,
+        9943
+      ],
+      "primary": [
+        525,
+        4937
+      ],
+      "tertiary": [
+        10194,
+        10553
+      ]
+    },
+    "by_accepted_attempt": {
+      "extended": 82,
+      "primary": 61,
+      "tertiary": 7
+    },
+    "collapsed_rows_total": 20021428,
+    "expanded_rows_total": 729862592,
+    "surfaces": 150
+  },
+  "root": "/data/codex/repos/dSDM",
+  "runtime_seconds": 260.0580713748932,
+  "schema_version": "goal051-independent-endpoint-audit-v1",
+  "scientific_target": "training-domain five-fold OOF discrimination of five conventional families and fixed-family q_linear controls across frozen Goal 051 target endpoints",
+  "scope_of_inference": "retained SEAWFB training folds only; relative suitability discrimination, not occupancy probability or outer-region transfer",
+  "status": "pass"
+}
