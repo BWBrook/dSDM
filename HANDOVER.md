@@ -278,14 +278,34 @@ candidates remain everywhere. Rejections are more frequent in the lowest
 prevalence quartile (18/75 versus 4/75 in the highest), reducing tuning breadth,
 although the frozen family-availability gates pass at 100%.
 
-**Goal051 acceptance remains pending** native final validation and the
-separate canonical training-contract check (PID 23433 at 17:46 AEST).
-The latter writes `training-contract-check.json` under the remote v4 root.
-It checks frozen subset digests, nesting, held-fold exclusion, disjoint
-training/validation cells and X10 background support. Do not duplicate either
-active check. Once both pass, return final logs/exit markers and the training
-receipt with hashes, complete the acceptance decision, park Nectar according
-to the control-plane policy, and pause the follow-up. Goal052 remains unstarted.
+**20:30 AEST, 10 September: all computation and verification are complete;
+acceptance requires one scientific decision.** Native `validate --complete`
+replayed all 303 endpoints and both job exit markers are zero. The separate
+canonical training-contract check passed all 785 target/fold pairs and 1,515
+training endpoint/fold pairs. Final logs and the training receipt have been
+returned with verified hashes; the canonical aggregate is now tracked at
+`evidence/seawfb_conventional/goal051/summary.json`. The bound completion
+receipt is `completion_review.json` beside it.
+
+The independent acceptance review found an ambiguity: the original frozen
+code/config checks family availability at prevalence extremes (100% coverage,
+passing the 90% gate), but Goal.md and Decision.md unqualifiedly say
+prevalence-patterned "failure" stops the goal. The 49 rejected `enet08`
+candidates are concentrated at lower prevalence: 18/75 versus 4/75 endpoints.
+Do not silently resolve this in favour of the narrower code interpretation.
+The recommendation prepared for Barry is to accept the original family-level
+gate with this candidate-level pattern as an explicit limitation, without a
+post hoc test or refit. See the current Decision section for the evidence and
+inner-fold results. Goal051 is **verified, not yet accepted**. Goal052 remains
+unstarted and outer outcomes sealed.
+
+No compute jobs remain. Nectar is parked ACTIVE at c3.xsmall (1 vCPU, 2 GiB)
+after the 20:30 AEST resize; SSH, /data and evidence hashes passed post-resize
+checks. Its data volume and remote evidence are preserved. The heartbeat
+remains active but must stay quiet while this reported decision is pending;
+no duplicate computation, automatic repair or new gate interpretation is
+authorized. After Barry adjudicates acceptance, record his decision and pause
+the follow-up; any Goal052 launch needs separate authority.
 
 Barry authorized a **three-hour recurring follow-up in this thread** on
 8 September, superseding the earlier pause on monitoring. The app automation

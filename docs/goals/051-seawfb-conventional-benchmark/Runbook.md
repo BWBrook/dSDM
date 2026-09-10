@@ -23,26 +23,35 @@ route files passed transfer-hash verification. By 11:21 AEST, all 150 q surfaces
 were independently verified after returning all 300 model/receipt files with
 hash checks. Target fitting completed at 16:15:47 AEST on 10 September:
 303 endpoints, 449 q conditions and all five families available everywhere.
-Aggregation passed at about 17:30 AEST; the existing chain is running final
-`validate --complete` (PID 23216 at 17:46 AEST). No restart is needed.
+Aggregation and native final `validate --complete` have passed, with both
+`run.exit` and `nectar-execution.exit` equal to zero. All 303 endpoint replays
+passed. The canonical training-contract check also passed 785 target/fold
+pairs and 1,515 training endpoint/fold pairs. No compute process or tmux
+production session remains at the 20:25 AEST, 10 September wake-up.
 
-All 606 endpoint files are back on the Mac and verified against
-`endpoint-return-sha256.json`; `endpoint-return-verified.json` records success.
-The returned aggregate is private `summary-returned.json`. Its SHA-256 is
+All 606 endpoint files are back on the Mac with verified SHA-256 hashes.
+Final logs and the training receipt are under private `final-return/`, with
+`final-return-sha256.json` alongside. The canonical aggregate is now
+`evidence/seawfb_conventional/goal051/summary.json`, SHA-256
 `9c1bf1ff8884fae35fe7ebe6f8d19e2aae46ab7eedee252b398c0c74705dd2d8`.
 The independent metric audit passed all 303 endpoints and 6,763 groups;
-its bound receipt is `evidence/seawfb_conventional/goal051/independent_endpoint_audit.json`.
-The verifier and original receipt are preserved in private `independent-audit/`.
+its receipt is `independent_endpoint_audit.json` beside the aggregate.
+`completion_review.json` binds the completed native/training/transfer evidence.
 
-Before acceptance, let native validation and the canonical training-contract
-check finish. The latter was PID 23433 at 17:46 AEST and writes remote private
-`training-contract-check.json`. Inspect that receipt and the existing
-`run.exit` / `nectar-execution.exit`; retrieve final logs/receipts with hash
-checks. Preserve the 49 rejected `enet08` candidates and their prevalence
-pattern in the interpretation; every endpoint retains three other elastic-net
-candidates and the prespecified family-coverage gates pass. Do not start a
-duplicate validation or any Goal052 work. The three-hour follow-up stays active
-until scientific acceptance and documented Nectar closeout are complete.
+**Do not relaunch: numerical verification is complete; acceptance is pending
+Barry's adjudication.** The original executable gate addresses family coverage
+at prevalence extremes and passes at 100%, but the Goal/Decision prose uses
+unqualified prevalence-patterned failure wording. All 49 rejected `enet08`
+candidates are retained; 18/75 low-prevalence versus 4/75 high-prevalence
+endpoints are affected. The independent review recommends accepting the
+original family-level gate with this candidate-level limitation, subject to
+Barry's explicit decision. See Decision.md. No new test or refit is authorized.
+
+Nectar is parked ACTIVE at c3.xsmall (1 vCPU, 2 GiB); SSH, /data and evidence
+hashes passed post-resize checks. Preserve all remote evidence. The three-hour follow-up
+stays active and silent while this reported decision is unchanged. Once Barry
+accepts Goal051, record that decision and pause it. Goal052 remains unstarted.
+The following launch example is historical, not a continuation instruction.
 
 ```sh
 # On Nectar, after source/input/test validation and checking no duplicate job:

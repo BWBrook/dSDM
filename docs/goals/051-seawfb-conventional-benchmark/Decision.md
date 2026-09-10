@@ -68,3 +68,62 @@ The estimand is relative habitat suitability. ROC AUC is primary; pooled OOF
 TSS selects candidates and derives a finite threshold, with BA, MCC,
 sensitivity, specificity, prevalence, and fold variation supplementary. The
 three frozen IBRA holdouts, NCP, SEH, and NNC, remain sealed.
+
+
+## 10 September 2026 — verification complete; acceptance decision required
+
+All 303 endpoints, 449 q conditions and 150 q surfaces are numerically
+verified. Both production exit markers are zero. Native final validation
+replayed every endpoint, and a separate reconstruction verified all 785
+target/fold pairs and 1,515 training endpoint/fold pairs: frozen subset
+selection, nested fractions, held-fold exclusion, disjoint training/validation
+cells and X10 support. Independent metric replay agreed within 4.45e-16 over
+474,174,113 prediction rows. All useful results are returned to the Mac with
+verified SHA-256 hashes. Outer outcomes remain unopened; Goal052 is unstarted.
+See `evidence/seawfb_conventional/goal051/completion_review.json` and the
+canonical aggregate `summary.json` beside it.
+
+**Acceptance remains pending Barry's adjudication of the failure criterion.**
+The prospective freeze (`9216e29`) defined the executable prevalence gate as
+family availability of at least 90% in both extreme prevalence quartiles,
+alongside at least 95% overall coverage. All five families achieved 100%
+everywhere, and every endpoint retains at least three elastic-net candidates.
+However, the Goal and Decision prose above says prevalence-patterned
+"failure" stops the goal without specifying the family level.
+
+All 49 rejected candidates are `enet08` nonconvergence. They affect 18/75
+endpoints in the lowest prevalence quartile versus 4/75 in the highest
+(24.0% versus 5.3%). This reduces tuning breadth unevenly. `enet08` is the
+selected elastic-net candidate at 54 of the 254 endpoints where it converges,
+so its absence cannot be declared immaterial. None of the 49 affected endpoints
+selected elastic net as its best family, but the missing candidate's
+counterfactual effect on family/q selection is unknown. Both the parent and
+independent specialist recommend **acceptance under the original operational
+family-level gate, explicitly retaining this candidate-level limitation**.
+Barry must settle that interpretation; no new statistical test, relaxed
+convergence rule or refit is proposed or authorized here.
+
+The descriptive inner-fold results are:
+
+| Panel | Selected conventional mean AUC | With full q | Mean change |
+| --- | ---: | ---: | ---: |
+| All 157 targets, full target data | 0.879419 | 0.879577 | +0.000158 |
+| 73 primary targets, 25% data | 0.820012 | 0.820527 | +0.000515 |
+| 73 primary targets, 50% data | 0.824473 | 0.824921 | +0.000449 |
+| 73 primary targets, 100% data | 0.828213 | 0.828594 | +0.000381 |
+
+These are equal-target averages of mean-fold AUC, following candidate/family
+selection on the same inner folds; they are not independent outer performance
+estimates. Full-data selected families are HGB 66, random forest 51 and shallow
+ANN 40. Scalar community q adds very little mean discrimination in this
+comparison. This does not test the distinct learned-representation hypothesis
+reserved for Goal052, establish occupancy probabilities, or justify changing
+its prospectively frozen design.
+
+Target-model numeric seeds and per-fit convergence diagnostics are not retained
+in endpoint payloads; their execution is supported by the identity-bound source
+and strict adapter checks. All q attempt diagnostics and finite parameter
+digests were independently verified. This distinction remains an audit limit.
+
+The next decision is to adjudicate Goal051 acceptance as above. If accepted,
+Goal052 execution still needs separate authority; its design remains frozen.

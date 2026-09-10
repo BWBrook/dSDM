@@ -526,3 +526,32 @@
   exclusions, disjoint roles and X10 support remains active as PID 23433.
   Final acceptance awaits this receipt and native validation (PID 23216).
   No production source, fitted model, resource size or automation was changed.
+
+
+## 2026-09-10 20:30 AEST — verification complete; acceptance scope review
+
+- Native complete validation passed all 303 endpoint replays; both exit
+  markers are zero and the production session has ended. Canonical training
+  reconstruction passed 785 target/fold and 1,515 training endpoint/fold pairs.
+- Returned final logs, exit markers and the training receipt with five SHA-256
+  matches. All 22 stress/canary/route artifacts still match between hosts.
+  The native identity equals the independently audited returned aggregate.
+  Promoted that exact aggregate to its prescribed tracked path and wrote
+  `completion_review.json`; raw outputs remain private.
+- A focused independent review of acceptance wording found a consequential
+  ambiguity between the prospectively frozen family-level executable gate
+  (all five families at 100% coverage) and unqualified prevalence-patterned
+  failure wording in Goal.md/Decision.md. Candidate failures affect 18/75 low
+  versus 4/75 high prevalence endpoints. `enet08` was selected within elastic
+  net at 54/254 successful endpoints; its missing influence is unknown.
+- Parent and specialist recommend acceptance under the original operational
+  family-level gate, retaining the candidate pattern as a limitation. This is
+  prepared for Barry's adjudication; Goal051 has not been marked accepted.
+  No repair, retrospective test, Goal052 fit or outer access occurred.
+- Live cloud identity and storage match the documented VM. No other campaign
+  compute was found. Requested parking to c3.xsmall at 20:29 AEST, preserving
+  the attached data volume. Resize confirmed at 20:30:13 AEST; subsequent
+  cloud state is ACTIVE at c3.xsmall (1 vCPU, 2 GiB), with no task state. SSH,
+  /data (443 GiB free), aggregate/training-receipt hashes and zero run exit
+  passed post-resize checks. No containers are running. The heartbeat remains
+  active and silent while the acceptance decision is pending.
