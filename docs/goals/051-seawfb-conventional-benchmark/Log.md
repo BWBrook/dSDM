@@ -480,3 +480,17 @@
   are present. All 150 q model/receipt pairs remain present. The 22 accepted
   stress/canary/route artifact hashes are unchanged from the previous check.
 - The existing target stage and three-hour follow-up continue unchanged.
+
+## 2026-09-10 14:25 AEST — target fitting at 292/303
+
+- All 292 completed endpoint checkpoints pass identity and prediction-file
+  hash checks: 73 target25, 71 target50 and 148 target100. All five conventional
+  families are available in every completed endpoint. Eleven endpoints remain;
+  full metric and coverage acceptance is pending.
+- The existing 16-worker pool remains present. The production log advanced
+  about eight minutes before inspection; no execution-error lines, q failure
+  receipts or job exit markers are present. All 150 q model/receipt pairs
+  remain present, and the 22 accepted stress/canary/route artifact hashes match
+  the local copies.
+- Continue the existing chain through aggregation and validation. No restart
+  or source change was needed; the three-hour follow-up remains active.

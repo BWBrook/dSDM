@@ -22,7 +22,7 @@ production began automatically at 03:49:44 AEST. All 20 returned canary/summary/
 route files passed transfer-hash verification. By 11:21 AEST, all 150 q surfaces
 were independently verified after returning all 300 model/receipt files with
 hash checks. Target fitting began at 09:18:48 AEST on 9 September. At
-11:24 AEST on 10 September, 259/303 endpoint checkpoints pass identity/hash
+14:25 AEST on 10 September, 292/303 endpoint checkpoints pass identity/hash
 checks, with all five families available in the completed endpoints.
 Full metric and coverage acceptance is still pending. The existing 16 workers
 remain active; no restart is needed.
