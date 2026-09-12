@@ -121,3 +121,16 @@
   The full-row profile then started (parent PID 14494), with its explicit
   `pretraining_started` event verified. Production has not started. Hourly
   continuation remains active; the Nectar handover is pushed at `c2fde2f`.
+
+## 2026-09-12 15:17 AEST — hourly qualification check
+
+The full-row profile remains active after 40 minutes: verified worker PID
+14502 belongs to profile parent 14494, uses 99.9% CPU and 2.097 GiB RSS.
+Its log still contains only `pretraining_started`; neither a profile exit
+marker nor the completed metadata receipt exists. Process activity does not
+establish completion or scientific validity. Deep-server remains at `e309ca8`
+with no source/config/lock changes, and the returned canary SHA-256 still
+matches `578128be69aae014837906d26a64c080455dc2b24910f76fdb856b49ce064c43`.
+Server load has fallen to 17.06, with about 119 GiB available memory. No
+source change, duplicate launch or production commitment was made. Hourly
+continuation remains active pending the complete profile.
