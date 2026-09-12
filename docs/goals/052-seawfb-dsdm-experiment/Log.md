@@ -98,3 +98,26 @@
 - Fit receipts bind the optimizer implementation. The source change requires
   fresh canary and full-profile receipts; the original unfinished profile is
   superseded with logs preserved, rather than counted as a numerical failure.
+
+- Source `e309ca8` is committed, pushed and staged on deep-server. All 43
+  focused tests and native accepted-input/q checks passed there again. The
+  replacement two-worker canary/profile chain started at 14:34 AEST in
+  `dsdm-goal052-qualification`, source digest
+  `fce7fb52b386c662c198e264aebc007de203e363b5ccc917ccd55ebaa2470926`.
+  The superseded profile ended by an intentional signal to its verified worker;
+  its parent and wrapper exited before source was changed. No production ran.
+
+- At 14:36 AEST, the replacement canary had two active one-thread workers at
+  about 2.15 GiB RSS each; server load average was 56.75, with approximately
+  60 processes above 50% CPU in the preceding snapshot. This supersedes the
+  earlier 32-process load observation. Treat profile timings as contended
+  measurements and recheck capacity before a production recommendation.
+
+- At 14:37 AEST the new-source canary exited zero. All four repeated jobs across
+  two worker PIDs agreed on prediction and shared-trunk digests; every fit
+  recorded foreach AdamW and finite state. Maximum worker RSS was 2.545 GiB.
+  Returned `metadata/goal052_canary.json` SHA-256 matched the remote file:
+  `578128be69aae014837906d26a64c080455dc2b24910f76fdb856b49ce064c43`.
+  The full-row profile then started (parent PID 14494), with its explicit
+  `pretraining_started` event verified. Production has not started. Hourly
+  continuation remains active; the Nectar handover is pushed at `c2fde2f`.

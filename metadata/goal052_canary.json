@@ -1,7 +1,7 @@
 {
   "architecture": "seawfb_scale",
   "block": 8,
-  "created_utc": "2026-09-12T04:05:27.746332+00:00",
+  "created_utc": "2026-09-12T04:37:38.800005+00:00",
   "ecological_metrics_computed": false,
   "fold": 2,
   "identity": {
@@ -17,7 +17,7 @@
       "source_sha256": "24057a4ef6c857d26e0fb4deecf46fe81cfc0e91c67e34d92dbdd77d7ca7ce2e",
       "uv_lock_sha256": "51712e74b2f9d78a4efb7bfd6732244188e8c6c5bc722f7a78f2724e6b8b84f6"
     },
-    "source_sha256": "af717b986da3fa77eee78ace36c43941dde671e55f4ae505b722da4897fbd2bf"
+    "source_sha256": "fce7fb52b386c662c198e264aebc007de203e363b5ccc917ccd55ebaa2470926"
   },
   "outer_response_rows_read": 0,
   "production_epoch_throughput_measured": false,
@@ -785,10 +785,10 @@
           }
         }
       },
-      "memory_after_full_data_bytes": 2553352192,
+      "memory_after_full_data_bytes": 2536222720,
       "peak_cuda_allocated_bytes": null,
-      "peak_rss_bytes": 2553352192,
-      "pid": 7776,
+      "peak_rss_bytes": 2536222720,
+      "pid": 14174,
       "prediction_digests": {
         "multihead_frozen_trunk": "8da92f73f97d2418026abffaca92cb71b7457c4bce8161a58f5bf6dd9eef436f",
         "multihead_full_finetune": "d484c5a2e1f88bb8dbb48dee2ce51f0bab8a5fc96339bfa455506ebbb6dee176",
@@ -796,6 +796,7 @@
         "target_plus_q_linear_resmlp": "8ac2f8c41329ddc50c131ad73117a7f92cd166919fb5a52cfb1eec324676645d"
       },
       "pretraining_fit": {
+        "adamw_implementation": "foreach",
         "auxiliary_head_count": 168,
         "auxiliary_heads": [
           "Philemon citreogularis",
@@ -996,7 +997,7 @@
         "replay_rows": 21504,
         "replay_seed": 2876447568,
         "replay_shuffle_seed": 2876447568,
-        "runtime_seconds": 24.241449293003825,
+        "runtime_seconds": 21.601762186997803,
         "seed": 2876347568,
         "selected_epoch": 1,
         "shared_state_digest": "2a72e953b263c95b70dd47f4e9edc7fb63293933ff1ad8bb397cc2ea55316bac",
@@ -1017,9 +1018,10 @@
       },
       "q_model_sha256": "40740d0cd0ed34a8be75159364196a728e68a1351fe30c888c3964264c9131de",
       "repeat_pretraining_digest": "2a72e953b263c95b70dd47f4e9edc7fb63293933ff1ad8bb397cc2ea55316bac",
-      "runtime_seconds": 72.67064158799622,
+      "runtime_seconds": 87.11739850100275,
       "target_fits": {
         "multihead_frozen_trunk": {
+          "adamw_implementation": "foreach",
           "batch_size": 128,
           "best_stopping_loss": 0.37120053358376026,
           "completed_epochs": 1,
@@ -1047,7 +1049,7 @@
           "replay_rows": 4096,
           "replay_seed": 642765894,
           "replay_shuffle_seed": 642765894,
-          "runtime_seconds": 0.5587266240036115,
+          "runtime_seconds": 0.9752847490017302,
           "seed": 642665894,
           "selected_epoch": 1,
           "shuffle_seeds": {
@@ -1065,6 +1067,7 @@
           "transferred": true
         },
         "multihead_full_finetune": {
+          "adamw_implementation": "foreach",
           "batch_size": 128,
           "best_stopping_loss": 0.34824504097923636,
           "completed_epochs": 1,
@@ -1092,7 +1095,7 @@
           "replay_rows": 4096,
           "replay_seed": 642765894,
           "replay_shuffle_seed": 642765894,
-          "runtime_seconds": 1.2345414500014158,
+          "runtime_seconds": 1.9992207089962903,
           "seed": 642665894,
           "selected_epoch": 1,
           "shuffle_seeds": {
@@ -1110,6 +1113,7 @@
           "transferred": true
         },
         "target_only_random_init_resmlp": {
+          "adamw_implementation": "foreach",
           "batch_size": 128,
           "best_stopping_loss": 0.35865057446062565,
           "completed_epochs": 1,
@@ -1137,7 +1141,7 @@
           "replay_rows": 4096,
           "replay_seed": 642765894,
           "replay_shuffle_seed": 642765894,
-          "runtime_seconds": 1.224046619994624,
+          "runtime_seconds": 1.9942642559981323,
           "seed": 642665894,
           "selected_epoch": 1,
           "shuffle_seeds": {
@@ -1155,6 +1159,7 @@
           "transferred": false
         },
         "target_plus_q_linear_resmlp": {
+          "adamw_implementation": "foreach",
           "batch_size": 128,
           "best_stopping_loss": 0.3623989624902606,
           "completed_epochs": 1,
@@ -1182,7 +1187,7 @@
           "replay_rows": 4096,
           "replay_seed": 642765894,
           "replay_shuffle_seed": 642765894,
-          "runtime_seconds": 1.2211994980025338,
+          "runtime_seconds": 1.980535750000854,
           "seed": 642665894,
           "selected_epoch": 1,
           "shuffle_seeds": {
@@ -1963,10 +1968,10 @@
           }
         }
       },
-      "memory_after_full_data_bytes": 2561445888,
+      "memory_after_full_data_bytes": 2536423424,
       "peak_cuda_allocated_bytes": null,
-      "peak_rss_bytes": 2561445888,
-      "pid": 7779,
+      "peak_rss_bytes": 2536423424,
+      "pid": 14177,
       "prediction_digests": {
         "multihead_frozen_trunk": "8da92f73f97d2418026abffaca92cb71b7457c4bce8161a58f5bf6dd9eef436f",
         "multihead_full_finetune": "d484c5a2e1f88bb8dbb48dee2ce51f0bab8a5fc96339bfa455506ebbb6dee176",
@@ -1974,6 +1979,7 @@
         "target_plus_q_linear_resmlp": "8ac2f8c41329ddc50c131ad73117a7f92cd166919fb5a52cfb1eec324676645d"
       },
       "pretraining_fit": {
+        "adamw_implementation": "foreach",
         "auxiliary_head_count": 168,
         "auxiliary_heads": [
           "Philemon citreogularis",
@@ -2174,7 +2180,7 @@
         "replay_rows": 21504,
         "replay_seed": 2876447568,
         "replay_shuffle_seed": 2876447568,
-        "runtime_seconds": 16.764930049001123,
+        "runtime_seconds": 21.194748333997268,
         "seed": 2876347568,
         "selected_epoch": 1,
         "shared_state_digest": "2a72e953b263c95b70dd47f4e9edc7fb63293933ff1ad8bb397cc2ea55316bac",
@@ -2195,9 +2201,10 @@
       },
       "q_model_sha256": "40740d0cd0ed34a8be75159364196a728e68a1351fe30c888c3964264c9131de",
       "repeat_pretraining_digest": "2a72e953b263c95b70dd47f4e9edc7fb63293933ff1ad8bb397cc2ea55316bac",
-      "runtime_seconds": 62.60873382900172,
+      "runtime_seconds": 85.61270350400446,
       "target_fits": {
         "multihead_frozen_trunk": {
+          "adamw_implementation": "foreach",
           "batch_size": 128,
           "best_stopping_loss": 0.37120053358376026,
           "completed_epochs": 1,
@@ -2225,7 +2232,7 @@
           "replay_rows": 4096,
           "replay_seed": 642765894,
           "replay_shuffle_seed": 642765894,
-          "runtime_seconds": 0.5545116610010155,
+          "runtime_seconds": 0.9144860579981469,
           "seed": 642665894,
           "selected_epoch": 1,
           "shuffle_seeds": {
@@ -2243,6 +2250,7 @@
           "transferred": true
         },
         "multihead_full_finetune": {
+          "adamw_implementation": "foreach",
           "batch_size": 128,
           "best_stopping_loss": 0.34824504097923636,
           "completed_epochs": 1,
@@ -2270,7 +2278,7 @@
           "replay_rows": 4096,
           "replay_seed": 642765894,
           "replay_shuffle_seed": 642765894,
-          "runtime_seconds": 1.2389251369968406,
+          "runtime_seconds": 1.9052712650009198,
           "seed": 642665894,
           "selected_epoch": 1,
           "shuffle_seeds": {
@@ -2288,6 +2296,7 @@
           "transferred": true
         },
         "target_only_random_init_resmlp": {
+          "adamw_implementation": "foreach",
           "batch_size": 128,
           "best_stopping_loss": 0.35865057446062565,
           "completed_epochs": 1,
@@ -2315,7 +2324,7 @@
           "replay_rows": 4096,
           "replay_seed": 642765894,
           "replay_shuffle_seed": 642765894,
-          "runtime_seconds": 1.2316616239986615,
+          "runtime_seconds": 1.9088409850010066,
           "seed": 642665894,
           "selected_epoch": 1,
           "shuffle_seeds": {
@@ -2333,6 +2342,7 @@
           "transferred": false
         },
         "target_plus_q_linear_resmlp": {
+          "adamw_implementation": "foreach",
           "batch_size": 128,
           "best_stopping_loss": 0.3623989624902606,
           "completed_epochs": 1,
@@ -2360,7 +2370,7 @@
           "replay_rows": 4096,
           "replay_seed": 642765894,
           "replay_shuffle_seed": 642765894,
-          "runtime_seconds": 1.2268818699958501,
+          "runtime_seconds": 1.8992818889964838,
           "seed": 642665894,
           "selected_epoch": 1,
           "shuffle_seeds": {
@@ -3141,10 +3151,10 @@
           }
         }
       },
-      "memory_after_full_data_bytes": 2777460736,
+      "memory_after_full_data_bytes": 2732285952,
       "peak_cuda_allocated_bytes": null,
-      "peak_rss_bytes": 2777460736,
-      "pid": 7779,
+      "peak_rss_bytes": 2732285952,
+      "pid": 14177,
       "prediction_digests": {
         "multihead_frozen_trunk": "8da92f73f97d2418026abffaca92cb71b7457c4bce8161a58f5bf6dd9eef436f",
         "multihead_full_finetune": "d484c5a2e1f88bb8dbb48dee2ce51f0bab8a5fc96339bfa455506ebbb6dee176",
@@ -3152,6 +3162,7 @@
         "target_plus_q_linear_resmlp": "8ac2f8c41329ddc50c131ad73117a7f92cd166919fb5a52cfb1eec324676645d"
       },
       "pretraining_fit": {
+        "adamw_implementation": "foreach",
         "auxiliary_head_count": 168,
         "auxiliary_heads": [
           "Philemon citreogularis",
@@ -3352,7 +3363,7 @@
         "replay_rows": 21504,
         "replay_seed": 2876447568,
         "replay_shuffle_seed": 2876447568,
-        "runtime_seconds": 17.87855562400364,
+        "runtime_seconds": 22.04933431399695,
         "seed": 2876347568,
         "selected_epoch": 1,
         "shared_state_digest": "2a72e953b263c95b70dd47f4e9edc7fb63293933ff1ad8bb397cc2ea55316bac",
@@ -3373,9 +3384,10 @@
       },
       "q_model_sha256": "40740d0cd0ed34a8be75159364196a728e68a1351fe30c888c3964264c9131de",
       "repeat_pretraining_digest": "2a72e953b263c95b70dd47f4e9edc7fb63293933ff1ad8bb397cc2ea55316bac",
-      "runtime_seconds": 59.56974534800247,
+      "runtime_seconds": 75.13376960299502,
       "target_fits": {
         "multihead_frozen_trunk": {
+          "adamw_implementation": "foreach",
           "batch_size": 128,
           "best_stopping_loss": 0.37120053358376026,
           "completed_epochs": 1,
@@ -3403,7 +3415,7 @@
           "replay_rows": 4096,
           "replay_seed": 642765894,
           "replay_shuffle_seed": 642765894,
-          "runtime_seconds": 0.5567358440021053,
+          "runtime_seconds": 0.9660637060005683,
           "seed": 642665894,
           "selected_epoch": 1,
           "shuffle_seeds": {
@@ -3421,6 +3433,7 @@
           "transferred": true
         },
         "multihead_full_finetune": {
+          "adamw_implementation": "foreach",
           "batch_size": 128,
           "best_stopping_loss": 0.34824504097923636,
           "completed_epochs": 1,
@@ -3448,7 +3461,7 @@
           "replay_rows": 4096,
           "replay_seed": 642765894,
           "replay_shuffle_seed": 642765894,
-          "runtime_seconds": 1.23638726399804,
+          "runtime_seconds": 1.3116803540033288,
           "seed": 642665894,
           "selected_epoch": 1,
           "shuffle_seeds": {
@@ -3466,6 +3479,7 @@
           "transferred": true
         },
         "target_only_random_init_resmlp": {
+          "adamw_implementation": "foreach",
           "batch_size": 128,
           "best_stopping_loss": 0.35865057446062565,
           "completed_epochs": 1,
@@ -3493,7 +3507,7 @@
           "replay_rows": 4096,
           "replay_seed": 642765894,
           "replay_shuffle_seed": 642765894,
-          "runtime_seconds": 1.5489595109975198,
+          "runtime_seconds": 1.9944169160007732,
           "seed": 642665894,
           "selected_epoch": 1,
           "shuffle_seeds": {
@@ -3511,6 +3525,7 @@
           "transferred": false
         },
         "target_plus_q_linear_resmlp": {
+          "adamw_implementation": "foreach",
           "batch_size": 128,
           "best_stopping_loss": 0.3623989624902606,
           "completed_epochs": 1,
@@ -3538,7 +3553,7 @@
           "replay_rows": 4096,
           "replay_seed": 642765894,
           "replay_shuffle_seed": 642765894,
-          "runtime_seconds": 1.2302705850015627,
+          "runtime_seconds": 1.9932552359969122,
           "seed": 642665894,
           "selected_epoch": 1,
           "shuffle_seeds": {
@@ -4319,10 +4334,10 @@
           }
         }
       },
-      "memory_after_full_data_bytes": 2734002176,
+      "memory_after_full_data_bytes": 2718093312,
       "peak_cuda_allocated_bytes": null,
-      "peak_rss_bytes": 2734002176,
-      "pid": 7776,
+      "peak_rss_bytes": 2718093312,
+      "pid": 14174,
       "prediction_digests": {
         "multihead_frozen_trunk": "8da92f73f97d2418026abffaca92cb71b7457c4bce8161a58f5bf6dd9eef436f",
         "multihead_full_finetune": "d484c5a2e1f88bb8dbb48dee2ce51f0bab8a5fc96339bfa455506ebbb6dee176",
@@ -4330,6 +4345,7 @@
         "target_plus_q_linear_resmlp": "8ac2f8c41329ddc50c131ad73117a7f92cd166919fb5a52cfb1eec324676645d"
       },
       "pretraining_fit": {
+        "adamw_implementation": "foreach",
         "auxiliary_head_count": 168,
         "auxiliary_heads": [
           "Philemon citreogularis",
@@ -4530,7 +4546,7 @@
         "replay_rows": 21504,
         "replay_seed": 2876447568,
         "replay_shuffle_seed": 2876447568,
-        "runtime_seconds": 19.394866260998242,
+        "runtime_seconds": 21.97533495799871,
         "seed": 2876347568,
         "selected_epoch": 1,
         "shared_state_digest": "2a72e953b263c95b70dd47f4e9edc7fb63293933ff1ad8bb397cc2ea55316bac",
@@ -4551,9 +4567,10 @@
       },
       "q_model_sha256": "40740d0cd0ed34a8be75159364196a728e68a1351fe30c888c3964264c9131de",
       "repeat_pretraining_digest": "2a72e953b263c95b70dd47f4e9edc7fb63293933ff1ad8bb397cc2ea55316bac",
-      "runtime_seconds": 62.18845433199749,
+      "runtime_seconds": 72.59937575000367,
       "target_fits": {
         "multihead_frozen_trunk": {
+          "adamw_implementation": "foreach",
           "batch_size": 128,
           "best_stopping_loss": 0.37120053358376026,
           "completed_epochs": 1,
@@ -4581,7 +4598,7 @@
           "replay_rows": 4096,
           "replay_seed": 642765894,
           "replay_shuffle_seed": 642765894,
-          "runtime_seconds": 0.5663183979995665,
+          "runtime_seconds": 0.5768241819969262,
           "seed": 642665894,
           "selected_epoch": 1,
           "shuffle_seeds": {
@@ -4599,6 +4616,7 @@
           "transferred": true
         },
         "multihead_full_finetune": {
+          "adamw_implementation": "foreach",
           "batch_size": 128,
           "best_stopping_loss": 0.34824504097923636,
           "completed_epochs": 1,
@@ -4626,7 +4644,7 @@
           "replay_rows": 4096,
           "replay_seed": 642765894,
           "replay_shuffle_seed": 642765894,
-          "runtime_seconds": 1.2297536789992591,
+          "runtime_seconds": 1.2160976000013761,
           "seed": 642665894,
           "selected_epoch": 1,
           "shuffle_seeds": {
@@ -4644,6 +4662,7 @@
           "transferred": true
         },
         "target_only_random_init_resmlp": {
+          "adamw_implementation": "foreach",
           "batch_size": 128,
           "best_stopping_loss": 0.35865057446062565,
           "completed_epochs": 1,
@@ -4671,7 +4690,7 @@
           "replay_rows": 4096,
           "replay_seed": 642765894,
           "replay_shuffle_seed": 642765894,
-          "runtime_seconds": 1.2230926460033515,
+          "runtime_seconds": 1.2059232560059172,
           "seed": 642665894,
           "selected_epoch": 1,
           "shuffle_seeds": {
@@ -4689,6 +4708,7 @@
           "transferred": false
         },
         "target_plus_q_linear_resmlp": {
+          "adamw_implementation": "foreach",
           "batch_size": 128,
           "best_stopping_loss": 0.3623989624902606,
           "completed_epochs": 1,
@@ -4716,7 +4736,7 @@
           "replay_rows": 4096,
           "replay_seed": 642765894,
           "replay_shuffle_seed": 642765894,
-          "runtime_seconds": 1.2209659210056998,
+          "runtime_seconds": 1.1917693609939306,
           "seed": 642665894,
           "selected_epoch": 1,
           "shuffle_seeds": {

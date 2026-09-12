@@ -297,9 +297,15 @@ The current task advances the prospectively frozen Goal052 comparison through
 implementation and validation under Barry's autonomy request. Its original
 config is preserved byte-for-byte as the scientific freeze; execution status
 and authority are recorded in the Goal052 Decision/Runbook. The runner and
-43 focused tests pass on Mac and deep-server. The two-worker engineering
-canary passed; the uncapped one-epoch profile is running on deep-server in
-`dsdm-goal052-qualification`. No production leaves exist yet.
+43 focused tests pass on Mac and deep-server. CPU foreach AdamW passed
+within-host bitwise stopping/replay comparisons on both machines; fused AdamW
+is deferred because it changed Linux numerics. Source `e309ca8` is staged on
+deep-server. Its fresh two-worker canary passed at 14:37 AEST, with bitwise
+repeat agreement and maximum worker RSS 2.545 GiB. The full-row profile is now
+running in `dsdm-goal052-qualification`; earlier qualification was superseded
+with evidence preserved. No production leaves exist yet.
+Hourly thread continuation `continue-dsdm-goal052` is active to verify the
+profile and prepare the route; it pauses when a material decision is needed.
 Outer outcomes remain sealed. Routine implementation and tests
 can proceed; material scientific amendments or substantial new compute
 commitments require discussion. Start from the current Goal052 runbook and
