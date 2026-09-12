@@ -201,3 +201,23 @@ qualification hashes, and launch receipt hash are unchanged. Timeout PID
 23201 still controls the original process group. Host load is 2.00 with
 118 GiB available RAM. No intervention or extension: the deadline remains
 16:28 AEST today, with the original 60-second termination allowance.
+
+## 2026-09-13 04:32 AEST — first pilot checkpoint verified
+
+The runner reports 1/200 architecture-screen pretraining tasks complete, with
+zero target leaves. The completed block-0/fold-0/full/seed00 `bridge_wide` fit
+selected epoch 3, completed 33 discovery/stopping epochs and replayed 3 epochs.
+Its measured lifecycle runtime was 43,098.62 seconds (11.97 hours). The saved
+payload and receipt were returned and their SHA-256 values matched deep-server.
+Native checkpoint loading, finite tensors, source/accepted identity, frozen
+budget, seed namespaces, initialization/replay/final-trunk binding, and an
+independent replay of the stopping rule all passed. Reconstructing auxiliary
+data locally reproduced the recorded roles, weights, focal-block exclusions,
+167-head inventory and row counts. The compact verification receipt is under
+`evidence/seawfb_dsdm/goal052/pilot-checkpoints/`; model payload remains private.
+
+Both workers and the original timeout process group remain active after
+12 hours 3 minutes, near 100% CPU each with 2.03/2.05 GiB RSS. Host load is
+2.01 with 118 GiB available memory. Source/config/lock and qualification,
+wrapper and launch hashes are unchanged. No ecological metrics were computed.
+The original 16:28 AEST deadline and four-hour cadence remain in force.
