@@ -309,10 +309,11 @@ at 16:28 AEST on 12 September in `dsdm-goal052-pilot`, with an enforced deadline
 at approximately 16:28 AEST on 13 September (plus 60 seconds for termination).
 `continue-dsdm-goal052` now checks every four hours. See `ComputeRoute.md` and
 `evidence/seawfb_dsdm/goal052/pilot-launch.json`. No larger production
-commitment is implied. At 04:32 AEST on 13 September, the first pretraining
-checkpoint (bridge_wide, block 0/fold 0) passed hash, state, data-contract and
-stopping-rule verification: 33 discovery epochs, selected/replay epoch 3,
-11.97 hours. No target fits or ecological metrics were available at that check.
+commitment is implied. At 08:33 AEST on 13 September, two pretraining
+checkpoints (block 0/fold 0) passed hash, state, data-contract and stopping-rule
+verification: bridge_wide took 11.97 hours (33 discovery, selected/replay 3),
+and bridge_control took 15.44 hours (34 discovery, selected/replay 4). No
+target fits or ecological metrics were available at that check.
 Outer outcomes remain sealed. Routine implementation and tests
 can proceed; material scientific amendments or substantial new compute
 commitments require discussion. Start from the current Goal052 runbook and

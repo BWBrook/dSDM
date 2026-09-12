@@ -221,3 +221,23 @@ Both workers and the original timeout process group remain active after
 2.01 with 118 GiB available memory. Source/config/lock and qualification,
 wrapper and launch hashes are unchanged. No ecological metrics were computed.
 The original 16:28 AEST deadline and four-hour cadence remain in force.
+
+## 2026-09-13 08:33 AEST — second pilot checkpoint verified
+
+The runner reports 2/200 architecture-screen pretraining tasks complete and
+zero target leaves. Block-0/fold-0/full/seed00 `bridge_control` completed
+34 discovery/stopping epochs and replayed selected epoch 4, taking 55,597.17
+seconds (15.44 hours). Returned payload and receipt hashes matched the server.
+Native checkpoint load, finite tensors, identity, frozen budget, seed and
+reset/replay/final-trunk checks passed. Independent stopping-history replay
+selected epoch 4 with 30 subsequent stale epochs. Its data contract, heads and
+role counts exactly match the previously reconstructed block-0/fold-0/full
+contract. A second compact verification receipt is retained under
+`evidence/seawfb_dsdm/goal052/pilot-checkpoints/`. The first checkpoint receipt
+hash remains unchanged.
+
+Both original workers remain active after 16 hours 4 minutes, approximately
+100% CPU each with 2.11/2.05 GiB RSS. Load is 2.05; 118 GiB RAM remains available.
+Original source, wrapper, qualification and launch bindings and timeout process
+group are unchanged. No intervention, scoring or extension occurred. The
+pilot still stops at 16:28 AEST today, plus its termination allowance.
