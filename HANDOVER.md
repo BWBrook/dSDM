@@ -85,9 +85,10 @@ tie-breaking and threshold selection. BA, MCC, sensitivity, specificity,
 prevalence, and fold variation provide complementary interpretation. Outer
 outcomes must never choose architectures, features, thresholds, or repairs.
 
-## Current Work: Goal 051
+## Goal 051 benchmark — accepted 12 September
 
-The approved conventional benchmark is implemented but not yet accepted.
+The conventional benchmark is implemented and accepted with its documented
+candidate-failure limitation; the dated closeout below is authoritative.
 Its five families are intercept-only null, elastic-net logistic regression,
 random forest, histogram gradient boosting, and a shallow one-hidden-layer ANN.
 The statistical families use scikit-learn; the ANN and dSDM use PyTorch.
@@ -295,8 +296,9 @@ production chain or repeat heavy validation on the parked VM.
 The current task advances the prospectively frozen Goal052 comparison through
 implementation and validation under Barry's autonomy request. Its original
 config is preserved byte-for-byte as the scientific freeze; execution status
-and authority are recorded in the Goal052 Decision/Runbook. No Goal052 fits
-have run yet. Outer outcomes remain sealed. Routine implementation and tests
+and authority are recorded in the Goal052 Decision/Runbook. The runner and
+focused tests are implemented; real-data canary/profile qualification is next.
+Outer outcomes remain sealed. Routine implementation and tests
 can proceed; material scientific amendments or substantial new compute
 commitments require discussion. Start from the current Goal052 runbook and
 live source/test state, not the historical Goal051 launch paragraphs above.
@@ -311,7 +313,7 @@ training-only evidence. Do not redesign it after seeing conventional scores.
 
 Goal051 is now accepted and Barry has authorized autonomous continuation.
 Its [v4 config](config/goal052_seawfb_dsdm.json) records
-both numerical amendments. A later, separately authorized bird outer
+all three numerical amendments. A later, separately authorized bird outer
 evaluation precedes cross-case synthesis and manuscript rewriting.
 
 ## Working Contract And Practical Guardrails

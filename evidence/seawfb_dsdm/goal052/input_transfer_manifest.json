@@ -1,0 +1,1547 @@
+{
+  "bytes": 71948967,
+  "file_count": 308,
+  "files": [
+    {
+      "bytes": 35176423,
+      "path": "data/processed/dsdm/goal050-seawfb-modeling-foundation/cells.parquet",
+      "sha256": "a66a540da7f3b8d0ea91e2f8d726e395debf28f49512470350cb7ce773dfe425"
+    },
+    {
+      "bytes": 91212,
+      "path": "data/processed/dsdm/goal050-seawfb-modeling-foundation/crossfit_plan.json",
+      "sha256": "b3abdb006fb7d384445db376d5ba3f0f7b48afd170982494f88ff20ef612e804"
+    },
+    {
+      "bytes": 349343,
+      "path": "data/processed/dsdm/goal050-seawfb-modeling-foundation/learning_curves.json",
+      "sha256": "317a5513b6645edc588c63db1c2d26afaea3edfa202480b2f46ca58a2817c3d6"
+    },
+    {
+      "bytes": 3967131,
+      "path": "data/processed/dsdm/goal050-seawfb-modeling-foundation/memberships.parquet",
+      "sha256": "498e5948cd589a571a76547d4768ec37e9b55bed19da08d45af04e0ad38adede"
+    },
+    {
+      "bytes": 4056,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block00_fold00_aux20.json",
+      "sha256": "5c6bfbca36f75699bce740ae106655d59c6f887bb7379cc19d393baba1ad2692"
+    },
+    {
+      "bytes": 1114,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block00_fold00_aux20.npz",
+      "sha256": "a362d499c34ecc2d253c6b3e7a3e039ae67153d74d8861b2c48eb76656115831"
+    },
+    {
+      "bytes": 8098,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block00_fold00_aux80.json",
+      "sha256": "446c5802ada2d489da9c356049843cdbbffca0203582e2cb2fa16b5561b382b3"
+    },
+    {
+      "bytes": 1204,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block00_fold00_aux80.npz",
+      "sha256": "1e8bdb526434669fbbd2b4928d2895ca16284fe11edcc695a7cbdc4097267268"
+    },
+    {
+      "bytes": 13584,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block00_fold00_auxfull.json",
+      "sha256": "bce5d365aeda81578d1003ae8acbd3dfe10072cfdf65a02dc8fb52719bd280bd"
+    },
+    {
+      "bytes": 1228,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block00_fold00_auxfull.npz",
+      "sha256": "03ad89602159067a4fe3e273f177f1a125b6d1a9bfb2fb99125b374fee1f8402"
+    },
+    {
+      "bytes": 4053,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block00_fold01_aux20.json",
+      "sha256": "dd8dc69054e88ac8d94f58d2245857b1befa7950eab4734a08f5cc57e60acc9e"
+    },
+    {
+      "bytes": 1159,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block00_fold01_aux20.npz",
+      "sha256": "3cf575e215f559c0566e3073ac5b689a4097d17a0d9d872393594a4b4ce775f0"
+    },
+    {
+      "bytes": 7807,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block00_fold01_aux80.json",
+      "sha256": "248eb48654e9f795f05d9acf0b56e0afd3d39ab864339f1c600f61daa1450ead"
+    },
+    {
+      "bytes": 1179,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block00_fold01_aux80.npz",
+      "sha256": "d1b0b3511a2ca5fe0e5a93579eb1ad52a4164d4091804887c3d90fe7c03192a1"
+    },
+    {
+      "bytes": 13582,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block00_fold01_auxfull.json",
+      "sha256": "b0a2742a829b5bbfcea4a6576b7f74b7891b07bf4a62ff4726838b023fa8e02d"
+    },
+    {
+      "bytes": 1211,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block00_fold01_auxfull.npz",
+      "sha256": "69b1ed057e898760f716968b28f255889cff4444e97e55186a64a300522e9dfc"
+    },
+    {
+      "bytes": 4053,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block00_fold02_aux20.json",
+      "sha256": "937810b01a6f0ac8191d8e7f669d2ea0465bd06aae7abb20b0d584f62b623d98"
+    },
+    {
+      "bytes": 1156,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block00_fold02_aux20.npz",
+      "sha256": "52f3fca4b1a3ff1087ee467cf73cb1fb6ae136648132f1c051d7a22f922be602"
+    },
+    {
+      "bytes": 8097,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block00_fold02_aux80.json",
+      "sha256": "d881457e2177e144fd228a8267a7c54d2b9833e00fd5006049b854cc9de0c098"
+    },
+    {
+      "bytes": 1204,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block00_fold02_aux80.npz",
+      "sha256": "942a74356f9da37f491205857347b331e2a7fccd6d9e28df0650e3899f181f43"
+    },
+    {
+      "bytes": 13584,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block00_fold02_auxfull.json",
+      "sha256": "5b3780804fc8e61179eea6a138819dffe3202cc72d30bd424ecccf014c1cf044"
+    },
+    {
+      "bytes": 1219,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block00_fold02_auxfull.npz",
+      "sha256": "c7f1cf2cdf436e96d5ee73dc15b4ac9ece973b744a4710843225b86a08b9c249"
+    },
+    {
+      "bytes": 4054,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block00_fold03_aux20.json",
+      "sha256": "b2c126e257a61411c6588bb4034e683517a5ed4ca5c5f8de993a4bdd8c9ed320"
+    },
+    {
+      "bytes": 1107,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block00_fold03_aux20.npz",
+      "sha256": "e588907123f6318ff54b0598cdb45b4c85b01068f7c34d666c6b0d2149b7b893"
+    },
+    {
+      "bytes": 8096,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block00_fold03_aux80.json",
+      "sha256": "7d62fd0b52459102c7fce103701da687242af9470a077f86a8b27cd99af7e957"
+    },
+    {
+      "bytes": 1209,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block00_fold03_aux80.npz",
+      "sha256": "c67b97fe964cf6011b31e38a168f51833491763fa621289c048c9fa2b4ce45ec"
+    },
+    {
+      "bytes": 13586,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block00_fold03_auxfull.json",
+      "sha256": "096856b8d40ab95217faeaffa0fe0a72f857f15f947568be65e8f4a60c012f37"
+    },
+    {
+      "bytes": 1216,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block00_fold03_auxfull.npz",
+      "sha256": "da6b309a0b1ee28abeaa1aa2cfcd526bad1ecbc6ba6e9ac1b2beafe22a3edbe9"
+    },
+    {
+      "bytes": 4056,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block00_fold04_aux20.json",
+      "sha256": "454f3b4488d715347186a016b31038779d8e604545b155694ac35c37fca0779f"
+    },
+    {
+      "bytes": 1153,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block00_fold04_aux20.npz",
+      "sha256": "a2027c92558adecd72898b251b06c0cdf2cb9f95d2b59522233ff246629f55ed"
+    },
+    {
+      "bytes": 8092,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block00_fold04_aux80.json",
+      "sha256": "a1fe9957ec034a7ac43c79d67308f71c352f9c6696c77607ee586583ff400138"
+    },
+    {
+      "bytes": 1170,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block00_fold04_aux80.npz",
+      "sha256": "124215b96bc331ce8d0f53383cf1434cd6b06fcca2a845e8445b0825343e7191"
+    },
+    {
+      "bytes": 13582,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block00_fold04_auxfull.json",
+      "sha256": "65e0c9b4c4eb61e02a638478582aac09629165ff1f6737ee0314f8c67779c355"
+    },
+    {
+      "bytes": 1200,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block00_fold04_auxfull.npz",
+      "sha256": "758e21ecadc524595e5edb9235f2edce9ba34baa0c51efa9ad0525159ae9d967"
+    },
+    {
+      "bytes": 4077,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block01_fold00_aux20.json",
+      "sha256": "4417605417c99c18a80bacfab08fa02e11e41a564642fd2484089e5d63444ab9"
+    },
+    {
+      "bytes": 1161,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block01_fold00_aux20.npz",
+      "sha256": "0ec61acb141379caa37d391cf7f0be86767419406d5c20810709aadc0c9e055c"
+    },
+    {
+      "bytes": 8084,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block01_fold00_aux80.json",
+      "sha256": "20f42fef59fdd0aa785a06cd76ed459e350edea8e0ce14272739b5039b8fdf72"
+    },
+    {
+      "bytes": 1203,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block01_fold00_aux80.npz",
+      "sha256": "16f19a1db7b86a7bddc5272f324a71cf8cd0b61b1d5ca1b98135534a7c9b0bb9"
+    },
+    {
+      "bytes": 13860,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block01_fold00_auxfull.json",
+      "sha256": "a0d13fcd8d6e38ed285b7da09486a1f3dfcbef740726568d53a07fdb3fd16530"
+    },
+    {
+      "bytes": 1223,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block01_fold00_auxfull.npz",
+      "sha256": "2597360336885ffd54037f404246d4c04adb5082de41a84522a9278fd9d435c8"
+    },
+    {
+      "bytes": 4074,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block01_fold01_aux20.json",
+      "sha256": "16ed33990882bb0facd3297dc3238c6b63d374033509ffe55c19b5fa6e1437b3"
+    },
+    {
+      "bytes": 1138,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block01_fold01_aux20.npz",
+      "sha256": "acb85e3832a68357826f8fe41352bdc592ab831ccd22159a0719465331e94d95"
+    },
+    {
+      "bytes": 7794,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block01_fold01_aux80.json",
+      "sha256": "76c397aba053ffc025dd7b27b27f592f74e5df4add2edcabc69c9a332e17a2cb"
+    },
+    {
+      "bytes": 1212,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block01_fold01_aux80.npz",
+      "sha256": "5001f9bec6241b962d0516f06b8438380e83570bef67093d3460bdef54ab2997"
+    },
+    {
+      "bytes": 13572,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block01_fold01_auxfull.json",
+      "sha256": "9c6b1eb28b0d84d646ebf0d036317a0c245d24f68875eccacd56916b66ae6672"
+    },
+    {
+      "bytes": 1226,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block01_fold01_auxfull.npz",
+      "sha256": "72f5e3e04a22124f70542acb923f22dd87b01c5a8003a02d25faaceaac04a21b"
+    },
+    {
+      "bytes": 4079,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block01_fold02_aux20.json",
+      "sha256": "4018a24e20a1494ec358decfc1970237d4326d2e78a3c74fbda4163d364cefc6"
+    },
+    {
+      "bytes": 1165,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block01_fold02_aux20.npz",
+      "sha256": "382c8444298fa7c9bf246b08f8b4e2e6acf727731ce421729e74608658a9a569"
+    },
+    {
+      "bytes": 8084,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block01_fold02_aux80.json",
+      "sha256": "b56b3377828eca11334bb845b8f53d5d217c0b250d4e03bb9d7f0e1dad4927cf"
+    },
+    {
+      "bytes": 1211,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block01_fold02_aux80.npz",
+      "sha256": "cdb9523f4fc8f5aba7ec121a3afc01c713da957eee8ba701c1832e01f2dc32ee"
+    },
+    {
+      "bytes": 13570,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block01_fold02_auxfull.json",
+      "sha256": "7592907caa078625f013dec2ed64ef451cb981a26d72e6db5f5d68d742f65a19"
+    },
+    {
+      "bytes": 1212,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block01_fold02_auxfull.npz",
+      "sha256": "21a348c8f63af207c9e417d141d5b2893f3ce192f0a19fb5d5ffeffa0e286827"
+    },
+    {
+      "bytes": 4076,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block01_fold03_aux20.json",
+      "sha256": "850f27cb4ce24a246872e791972a505b1ac656c725a275932d02b69f29fb3e92"
+    },
+    {
+      "bytes": 1129,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block01_fold03_aux20.npz",
+      "sha256": "2baafc7fab7db5cb31012a4d006fe0a4bb667cea096aabef6704b913887f857c"
+    },
+    {
+      "bytes": 8083,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block01_fold03_aux80.json",
+      "sha256": "27146f5ce1cd7fbe2a1e8fd20c3d2e137f55b4f3190c67559e6e44adf646f6b6"
+    },
+    {
+      "bytes": 1212,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block01_fold03_aux80.npz",
+      "sha256": "842df7a747dac232dd287c8f1b7bae9e6f4e1af4b5247aa61d537d22c28260ef"
+    },
+    {
+      "bytes": 13568,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block01_fold03_auxfull.json",
+      "sha256": "d9c5d4e40d4b069529e66245544646c23cd5e3490a2e9b22b4d3b7dbcea09093"
+    },
+    {
+      "bytes": 1202,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block01_fold03_auxfull.npz",
+      "sha256": "aa3a2ce35fe1c810b91ed6879b5c1b521d0f66cdc13a265a2c746c55f15d5c0a"
+    },
+    {
+      "bytes": 4073,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block01_fold04_aux20.json",
+      "sha256": "3dd670524f09096f8a03d60bbc2683e035a351755db5ad237a9ae46ec8860448"
+    },
+    {
+      "bytes": 1138,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block01_fold04_aux20.npz",
+      "sha256": "f0ad2f538a750636d97f363578e7edca0c8a02d588c9467ce8c85999ca8c2bf7"
+    },
+    {
+      "bytes": 8084,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block01_fold04_aux80.json",
+      "sha256": "cc7fd60062f6fcf0a15464d84122a4b241616f58946565491a7f7d1cd1594572"
+    },
+    {
+      "bytes": 1168,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block01_fold04_aux80.npz",
+      "sha256": "5d74a162478414f018008f8e5ba02598cf64988af4e62b4eb6882a5cd91f7fba"
+    },
+    {
+      "bytes": 13860,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block01_fold04_auxfull.json",
+      "sha256": "945effc2df1ed4278c3d2e61f0a8781769b8aa163dfb759ccf124a0a93a9a384"
+    },
+    {
+      "bytes": 1229,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block01_fold04_auxfull.npz",
+      "sha256": "47644597561405f6d737c1726e07db2adefdedcbae4306b71e2ebd77ee731d68"
+    },
+    {
+      "bytes": 4104,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block02_fold00_aux20.json",
+      "sha256": "65e81290d64addea373cb91230fbf089fb813ffd74cf7a96a9f3d30e6697ae2b"
+    },
+    {
+      "bytes": 1120,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block02_fold00_aux20.npz",
+      "sha256": "4a3ae33da706a729e4d23d632e40c6377faa828866b5a72e9433d0467ff254a2"
+    },
+    {
+      "bytes": 8109,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block02_fold00_aux80.json",
+      "sha256": "44d7f3efadf89d2bf95070bbc68862ecbd338e303e825bc69fc4c119a855de36"
+    },
+    {
+      "bytes": 1205,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block02_fold00_aux80.npz",
+      "sha256": "0d71fb1ecdb9b1a20853dce5bec8573c804bbf1fa126eff71f0201166d5de0c6"
+    },
+    {
+      "bytes": 13566,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block02_fold00_auxfull.json",
+      "sha256": "4a13092c3d3c09af56d2d13fec65f7282a98bb9b0ce2482bf9a11808fa4a7cc9"
+    },
+    {
+      "bytes": 1236,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block02_fold00_auxfull.npz",
+      "sha256": "30f385b99ccf9920fc04ee784303071ca8b45f812c96aa8b749645ba0b796ddb"
+    },
+    {
+      "bytes": 4102,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block02_fold01_aux20.json",
+      "sha256": "29169a5236486c71529f7d03924f436264cffbc45c4ad3cbb54988afc2180e87"
+    },
+    {
+      "bytes": 1150,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block02_fold01_aux20.npz",
+      "sha256": "7d9d64e5d035b9ec8ae2bca783e2b1ca22a84819671a30df18777da4092a8d93"
+    },
+    {
+      "bytes": 8103,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block02_fold01_aux80.json",
+      "sha256": "d886d49a6d2c352cbed3d370df358bad563b06059464af200f3e15b7e7eeb087"
+    },
+    {
+      "bytes": 1204,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block02_fold01_aux80.npz",
+      "sha256": "0c7d0b8a6d9821349bc2f76961aa171105943b8a185a2fb16125a3cb9a649b5b"
+    },
+    {
+      "bytes": 13563,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block02_fold01_auxfull.json",
+      "sha256": "bd2f880f6bf1d9e5d769638f9da8985643656194b91e8e0b8efa00cc42840609"
+    },
+    {
+      "bytes": 1214,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block02_fold01_auxfull.npz",
+      "sha256": "825681463ed326e481282a13ba4a53f25e0d0bc9eab664db9c757e5d754e77fd"
+    },
+    {
+      "bytes": 4101,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block02_fold02_aux20.json",
+      "sha256": "d1b885aa524c2145d34e6ffb5ef47f621072fa14f24f763dd1817b6eb0855926"
+    },
+    {
+      "bytes": 1159,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block02_fold02_aux20.npz",
+      "sha256": "983724e03fe9adf0b9a501ab2a8fd8ececdad858df8c5fa84270990cc8d9bdf9"
+    },
+    {
+      "bytes": 8109,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block02_fold02_aux80.json",
+      "sha256": "5ca672ca6b3aea6175ec5c2a20e59b5110ccb997dd275a95b75bc65b64cdff6d"
+    },
+    {
+      "bytes": 1203,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block02_fold02_aux80.npz",
+      "sha256": "96e55041b838caf0e5b5abe5485b94749ae8e3539c61f035e6816d77cf0cf277"
+    },
+    {
+      "bytes": 13564,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block02_fold02_auxfull.json",
+      "sha256": "02fbba795a50786eaf78cc79c4699288d5542b83a92c120a2e6a0160866fbcbb"
+    },
+    {
+      "bytes": 1225,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block02_fold02_auxfull.npz",
+      "sha256": "513745b44b1e2ecdf9a328fec2f724a85dfb8728bbb519d6dceba230176353ee"
+    },
+    {
+      "bytes": 4102,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block02_fold03_aux20.json",
+      "sha256": "dc3ea644f627f134617ed2649a63837c006d18597ca445cdc344c1d3272cd62d"
+    },
+    {
+      "bytes": 1133,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block02_fold03_aux20.npz",
+      "sha256": "90551d8c1a6c853e154c769bdc3ab962e37926c452cbdcf6efcc035e24cf6f9e"
+    },
+    {
+      "bytes": 8108,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block02_fold03_aux80.json",
+      "sha256": "a2caf3da47dd4c80bdd525f98c40d06288e24e5b411fcfb314c778c111146886"
+    },
+    {
+      "bytes": 1178,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block02_fold03_aux80.npz",
+      "sha256": "359e6c3443d6d78bebd01cf96e84b545fa511989da0acb3635f86a68922a08e4"
+    },
+    {
+      "bytes": 13564,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block02_fold03_auxfull.json",
+      "sha256": "63ec9cda041afbbab4591b63bcbb805ca40b493d39669ccb6719a487c0d38e0c"
+    },
+    {
+      "bytes": 1196,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block02_fold03_auxfull.npz",
+      "sha256": "c909a1473998bb18ad4704e45540b0ff188604970068244fd71fcba3172675ed"
+    },
+    {
+      "bytes": 4104,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block02_fold04_aux20.json",
+      "sha256": "5566e12ab88f9e91ec529d1e70eae20c08730247d29d6c9e8b4750eb3138b0d2"
+    },
+    {
+      "bytes": 1162,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block02_fold04_aux20.npz",
+      "sha256": "6705037d5fe3fd094c8ca7fcb0b8ec0510a4c46a3119b988b14c0e856123d1c5"
+    },
+    {
+      "bytes": 8108,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block02_fold04_aux80.json",
+      "sha256": "12b88eb6c99f776612e1928211a3f99b8959fa24e5c1808a28ada5a3cee6ea71"
+    },
+    {
+      "bytes": 1162,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block02_fold04_aux80.npz",
+      "sha256": "2b270873594dc56a42752e033a75373ce0289af0a950e26d83ca0e20ccae21ae"
+    },
+    {
+      "bytes": 13565,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block02_fold04_auxfull.json",
+      "sha256": "c82941a18e13445174c3c62905b61d1dfaaec9d2a39f12418a2668f58874895d"
+    },
+    {
+      "bytes": 1236,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block02_fold04_auxfull.npz",
+      "sha256": "7a6760d6106989b0acd8b5ac426e145f1ad1a161aaaf9b192c0fe297885244a9"
+    },
+    {
+      "bytes": 4081,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block03_fold00_aux20.json",
+      "sha256": "a464649860e3e778aadd8192dbea09306575f3def65c1ab83e179447bcdedd88"
+    },
+    {
+      "bytes": 1129,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block03_fold00_aux20.npz",
+      "sha256": "083113ce0f33fa79fbba79cb50c791647e2387617d7edcf386e3c71bb673876f"
+    },
+    {
+      "bytes": 8112,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block03_fold00_aux80.json",
+      "sha256": "5ce554d2efca6d2347069b95203e52d98894265c6dc87217db1d9d88d8ad74c9"
+    },
+    {
+      "bytes": 1193,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block03_fold00_aux80.npz",
+      "sha256": "c3f26579b11e1187d49acb00bcb4fda921b22455dcbe29d277254f5247340706"
+    },
+    {
+      "bytes": 13579,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block03_fold00_auxfull.json",
+      "sha256": "cf0940e24e9c2e81743980e2156d244069451e24828d81f570434d52f90df850"
+    },
+    {
+      "bytes": 1226,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block03_fold00_auxfull.npz",
+      "sha256": "69612803955b5495b701625b0604e1ed96086f7e6398f3bd1fa1938e5b54c0b4"
+    },
+    {
+      "bytes": 4079,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block03_fold01_aux20.json",
+      "sha256": "a59d37871f0072de03d44bf523ea064283bba258c4865ba15efb739506b610b3"
+    },
+    {
+      "bytes": 1147,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block03_fold01_aux20.npz",
+      "sha256": "33510e5c14f903f616fed28c690a21a1aae9c9c25fec001d1cd54de7e414e95e"
+    },
+    {
+      "bytes": 7823,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block03_fold01_aux80.json",
+      "sha256": "afc5d26c4c3dc080b50b23c19df8664b1f8239d124a490eeca8f743f87e10a92"
+    },
+    {
+      "bytes": 1207,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block03_fold01_aux80.npz",
+      "sha256": "3d7f3e485fc3fbf4bbb6faced459b3320e1e99835652ce77d614f9a56ab22ddb"
+    },
+    {
+      "bytes": 13576,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block03_fold01_auxfull.json",
+      "sha256": "fece6a22e17a32627243577ab84b7d25fb97e720b2050a1df122bd8fc3332129"
+    },
+    {
+      "bytes": 1220,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block03_fold01_auxfull.npz",
+      "sha256": "f4cd0dfc2313471aefada4973a84093af03d2027013ba3d7bfc1a08ce1aa5178"
+    },
+    {
+      "bytes": 4082,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block03_fold02_aux20.json",
+      "sha256": "ac0e9af9aee74ac1c2a5ac8a00151993b27d317cad97b38f3226aa37d5c2ff39"
+    },
+    {
+      "bytes": 1142,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block03_fold02_aux20.npz",
+      "sha256": "25da0b8d5a37ffd45bba1eade2739312510b1afbd71c46b68947f94ddd52f915"
+    },
+    {
+      "bytes": 8108,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block03_fold02_aux80.json",
+      "sha256": "a65a8b5af8aaece052fd6be6ac44c6808b414951e87d6c37063b9ee2bbd03de2"
+    },
+    {
+      "bytes": 1203,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block03_fold02_aux80.npz",
+      "sha256": "3f4580ed9b43ff989b52b0859e80bbf7fa16dbec0402c5eff00acdd96617900a"
+    },
+    {
+      "bytes": 13582,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block03_fold02_auxfull.json",
+      "sha256": "263681fbbfe65e73989cb3153578e6df4b243b6091a717c010d6be2fab3f8189"
+    },
+    {
+      "bytes": 1217,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block03_fold02_auxfull.npz",
+      "sha256": "9f812b40a1766ac3ca3d59860359d3906b7cbf5eff8f99e65648dec1259e93a8"
+    },
+    {
+      "bytes": 4079,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block03_fold03_aux20.json",
+      "sha256": "fb8ccd9009280986dda29e334b5a4ef193bf943511fd90c1a425f382b638785d"
+    },
+    {
+      "bytes": 1156,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block03_fold03_aux20.npz",
+      "sha256": "5953f71b93ac6171478b8fd7ff7141086a92929a02a83c7cc8190ab847808387"
+    },
+    {
+      "bytes": 8111,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block03_fold03_aux80.json",
+      "sha256": "ba5f179780c11ce44777a76fd2d9266ba9a3ae27d8a41649b8f6b07e1955ac12"
+    },
+    {
+      "bytes": 1185,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block03_fold03_aux80.npz",
+      "sha256": "ea53d7d91e7a60f141d770e4d93927136225878ab30d607f3fac84b3804e0b60"
+    },
+    {
+      "bytes": 13572,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block03_fold03_auxfull.json",
+      "sha256": "f2eaa12760d8fc80def6fd0bca67895c1d45bed34ede44b7025037fa7cc7e0a4"
+    },
+    {
+      "bytes": 1219,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block03_fold03_auxfull.npz",
+      "sha256": "7ddf9486c1418610a8b5dd937c8fea32088bb20ab5765d9f8a1599ec8f2c91ea"
+    },
+    {
+      "bytes": 4080,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block03_fold04_aux20.json",
+      "sha256": "7677fb8a02108d36614184313db8936358874da8132e3a80be444bdf84cbbf9c"
+    },
+    {
+      "bytes": 1149,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block03_fold04_aux20.npz",
+      "sha256": "7b0d658dead9dcf21522cf9ad4264e79995c19b9622ea36c8af7c6c84c1f9b61"
+    },
+    {
+      "bytes": 8111,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block03_fold04_aux80.json",
+      "sha256": "e4fde51c3028c37989cad9f1290d3c0d61045ca06d66b1858803fb7f62850113"
+    },
+    {
+      "bytes": 1198,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block03_fold04_aux80.npz",
+      "sha256": "2dc6a4958eae19b160c03429e94c62b38000d5b2805cfbac952a3fcaf4739c6a"
+    },
+    {
+      "bytes": 13581,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block03_fold04_auxfull.json",
+      "sha256": "f005c21e84d77423d2d51782c15806e4faa6764a8f3c611a3fcc6776d8c9f107"
+    },
+    {
+      "bytes": 1221,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block03_fold04_auxfull.npz",
+      "sha256": "47738e6746917df86a4ce1e2ac6323eec6fd76920649c1a3ce87c88f14d00277"
+    },
+    {
+      "bytes": 4083,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block04_fold00_aux20.json",
+      "sha256": "51e16dddeb7125525a69a34723acfe4c460002f4631b999e34f01845ea1fe54e"
+    },
+    {
+      "bytes": 1127,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block04_fold00_aux20.npz",
+      "sha256": "76783fd8e760fe0f41c92ac24f6d65354fd938f70a49b8ec52fc95a5f3b12823"
+    },
+    {
+      "bytes": 8080,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block04_fold00_aux80.json",
+      "sha256": "e66428084a515a80399b01dded1534895c98a05b8da8d92d68740e2eb1f87d3d"
+    },
+    {
+      "bytes": 1195,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block04_fold00_aux80.npz",
+      "sha256": "359f5eeb0ea70958bcbffc0fde2ee1838503fabda4700b78e014fe8d63cd0a34"
+    },
+    {
+      "bytes": 13555,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block04_fold00_auxfull.json",
+      "sha256": "e92203480fe2b939772fa10259ff9fccf68df0765d44019ad5e7d966786c778d"
+    },
+    {
+      "bytes": 1205,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block04_fold00_auxfull.npz",
+      "sha256": "517e629f3c7816efa6a942a996e553e9e2aefadd0ff330b5436e48f2ea4850f7"
+    },
+    {
+      "bytes": 4084,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block04_fold01_aux20.json",
+      "sha256": "13c56d5ca6dc9ddb49b5bac19df845c26ac5064a7842e3cada8332a7df81455f"
+    },
+    {
+      "bytes": 1151,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block04_fold01_aux20.npz",
+      "sha256": "8695ffaa05a7c3bbde13f0b7f83d8ea059ecb1d927e9a8ddfa41872e99d0df37"
+    },
+    {
+      "bytes": 7794,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block04_fold01_aux80.json",
+      "sha256": "916be96eeebf14b36f105258742ff413dbbec5d16f134485c1d3565283163240"
+    },
+    {
+      "bytes": 1191,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block04_fold01_aux80.npz",
+      "sha256": "3da63e3cad4e31f745dfd7dd91796cfd0ba7905137bb58e92d55f4d7c69889b3"
+    },
+    {
+      "bytes": 13554,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block04_fold01_auxfull.json",
+      "sha256": "73fabd226ac3675e7b9077cc8bf070e933052328383d307366118dc85c36d3a2"
+    },
+    {
+      "bytes": 1204,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block04_fold01_auxfull.npz",
+      "sha256": "e6ccd33e48d527961e099de2c48e7c54d5d1330769f227433071bf23c41ed3be"
+    },
+    {
+      "bytes": 4083,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block04_fold02_aux20.json",
+      "sha256": "2bac6a236a221473c1f46637ec7633221326370cc752d18f2c4cdf94c28cad09"
+    },
+    {
+      "bytes": 1165,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block04_fold02_aux20.npz",
+      "sha256": "49d3f438986057a4466f8d9c3581febc4816db140b250602bddf1d11afd605ca"
+    },
+    {
+      "bytes": 8075,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block04_fold02_aux80.json",
+      "sha256": "10263fdf39334f994411a01ad388a32a62766da3406ea124d572e572f5ac0c8d"
+    },
+    {
+      "bytes": 1215,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block04_fold02_aux80.npz",
+      "sha256": "7dac8cb2130c4feedc2741d08120784180307ba95aba2c469fa368af1fe88067"
+    },
+    {
+      "bytes": 13551,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block04_fold02_auxfull.json",
+      "sha256": "5d39debd7537aea46f352189d36832268a1b30efee4488641721b07628f82d0b"
+    },
+    {
+      "bytes": 1219,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block04_fold02_auxfull.npz",
+      "sha256": "cce15d9249cd80d26144173bd8d00a892998d205e75244908d8e75a90ba1c344"
+    },
+    {
+      "bytes": 4085,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block04_fold03_aux20.json",
+      "sha256": "ffe43270f344d5edeeceaa71bf760b8913af6061309d4ccdfcd941209a61ca12"
+    },
+    {
+      "bytes": 1137,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block04_fold03_aux20.npz",
+      "sha256": "40045f72d3ae8e2f2b9b52bbac85c23e78a139879b83ad8f7833f607bcf89fd3"
+    },
+    {
+      "bytes": 7787,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block04_fold03_aux80.json",
+      "sha256": "bb0d95e7491f036bf9181b9bd58cb5785a29c7dc4acbd5050744da063aac7afc"
+    },
+    {
+      "bytes": 1173,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block04_fold03_aux80.npz",
+      "sha256": "a342f141f6f2bcc50daa3986a68bc34d8c26362addcc1781ae4f04c72e1a0193"
+    },
+    {
+      "bytes": 13553,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block04_fold03_auxfull.json",
+      "sha256": "f73204608000bfcc1623f3a9ad5004133555adc97db62dfbbeb548415a9dc5fe"
+    },
+    {
+      "bytes": 1198,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block04_fold03_auxfull.npz",
+      "sha256": "3b7d4daa8148b18bc9dcdb6917cf4f08829bd2ddaaf5089b6e6ca4619e845be9"
+    },
+    {
+      "bytes": 4083,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block04_fold04_aux20.json",
+      "sha256": "48e764aee225d0072331a59722180db82c3f93c887a91b99cb7df6d7c7d935bb"
+    },
+    {
+      "bytes": 1149,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block04_fold04_aux20.npz",
+      "sha256": "70cc5855fd0756f5939f12d257dedd098fd6ff50924fe59b3ae34d1155a211a2"
+    },
+    {
+      "bytes": 8081,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block04_fold04_aux80.json",
+      "sha256": "8de28e46db47520937fe0a94821493c8b9b6cbdd03265f33344ddf350b9b99c8"
+    },
+    {
+      "bytes": 1194,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block04_fold04_aux80.npz",
+      "sha256": "20c6fcb39d144756de9dc545db92f739a8944e6767821fde8634b18830547025"
+    },
+    {
+      "bytes": 13555,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block04_fold04_auxfull.json",
+      "sha256": "1fa4cb4cdc3fd3b1a87d16dd74f16719cc2fd600f78b3cde078161d8c04dd2e3"
+    },
+    {
+      "bytes": 1194,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block04_fold04_auxfull.npz",
+      "sha256": "0986860964defe390a84b7c6b8ac0afa6affd0b50035a3b54001d73a7ba81232"
+    },
+    {
+      "bytes": 4099,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block05_fold00_aux20.json",
+      "sha256": "09bdcd79e1d1432fe1a3a776672e657cd8f6de768afded69218db41ee84cafac"
+    },
+    {
+      "bytes": 1128,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block05_fold00_aux20.npz",
+      "sha256": "4cc49be125ed120838e785fec48cc2c0f13333612ce4e9b0d73ae2bea9ede88c"
+    },
+    {
+      "bytes": 8087,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block05_fold00_aux80.json",
+      "sha256": "41906167f76d14edcc4ad8d9cd51eeb4ac2f72317647a35054ca352e3173cc94"
+    },
+    {
+      "bytes": 1175,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block05_fold00_aux80.npz",
+      "sha256": "989a359d46042da2895692850eca8805e3b204caad58084469fd9b0d9629b155"
+    },
+    {
+      "bytes": 13570,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block05_fold00_auxfull.json",
+      "sha256": "1db393d67811738b402f576ff41436225d9c9b601b61103f4709313525eefb59"
+    },
+    {
+      "bytes": 1221,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block05_fold00_auxfull.npz",
+      "sha256": "2c4abe5ce77b007f9521e005aadc90dd74d239f8fc8fab60d46e9f1e2b0b8af7"
+    },
+    {
+      "bytes": 4099,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block05_fold01_aux20.json",
+      "sha256": "6adb30f8c5ec1bbb679c9a4934b6a67ce70339de654c120761daadd1cc277288"
+    },
+    {
+      "bytes": 1150,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block05_fold01_aux20.npz",
+      "sha256": "a750415c227940069c2f4679c6d9ad1ec508021e100b3eb33999712aa18517c0"
+    },
+    {
+      "bytes": 8092,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block05_fold01_aux80.json",
+      "sha256": "ed853a50ed0919a1d1fe33c4ec2a32ef0e1791e9561683e3e8a06206543fe008"
+    },
+    {
+      "bytes": 1169,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block05_fold01_aux80.npz",
+      "sha256": "66dd9ce0646d4e34a9ff234bad9f4ca35b4f89384f60345a21049d3ed2b806f7"
+    },
+    {
+      "bytes": 13568,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block05_fold01_auxfull.json",
+      "sha256": "0f307de743bdd18408072aa38bb4bcaa0a58588306314c80bda404032f80b91d"
+    },
+    {
+      "bytes": 1229,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block05_fold01_auxfull.npz",
+      "sha256": "77da876a244e519083ec6598d8497eece38d6e028c6ee6aa90caffaac45a3ce6"
+    },
+    {
+      "bytes": 4098,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block05_fold02_aux20.json",
+      "sha256": "8578d4fe82d148e194f74e1000fd69d4c8a1790cb71002332b8d7421fcfbba8b"
+    },
+    {
+      "bytes": 1139,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block05_fold02_aux20.npz",
+      "sha256": "758b3067dddb4a3650dea7d75f82afdbf371d40a9c8f7b5063aabbb8f4b0c460"
+    },
+    {
+      "bytes": 8090,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block05_fold02_aux80.json",
+      "sha256": "6bcc7db4c4b214439c301b2a0627f1977e387f147735ba1058b5242e5f7a91da"
+    },
+    {
+      "bytes": 1216,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block05_fold02_aux80.npz",
+      "sha256": "22791c817348eccf1b35acc14ba1fbf67273ac40debb51e3f1e872dd6ff3bd06"
+    },
+    {
+      "bytes": 13571,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block05_fold02_auxfull.json",
+      "sha256": "6e12297323620ab6ef28adb92723683647affc0e8cd7d0827e2a5608c5738004"
+    },
+    {
+      "bytes": 1199,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block05_fold02_auxfull.npz",
+      "sha256": "d43f10194f8faaa341cfae463a28de7507b73faf5ba62102aa7c1a3fb2b916a4"
+    },
+    {
+      "bytes": 4094,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block05_fold03_aux20.json",
+      "sha256": "f91c8bdda742511a43327639036664f6b894b40b59cc641ce6f5d916e4386fd0"
+    },
+    {
+      "bytes": 1130,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block05_fold03_aux20.npz",
+      "sha256": "f796bb69cd21804f0a8e0c101fb69c5fa08fbb1451e67a9335b75c2fa27b217c"
+    },
+    {
+      "bytes": 8091,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block05_fold03_aux80.json",
+      "sha256": "7eb72e1bd7296c3baf15b6d33d9cf4f5fa3239f8c66b23294a0d89bf6e2776cc"
+    },
+    {
+      "bytes": 1176,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block05_fold03_aux80.npz",
+      "sha256": "c98ab2f0248381e15b6db0789bcc29a60601be95da6ab15b8b2f896a78aeacd8"
+    },
+    {
+      "bytes": 13569,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block05_fold03_auxfull.json",
+      "sha256": "5bbab574a4807a0e1e42c2c69a54a89da66886917fb88992e8aa3d549711dcc4"
+    },
+    {
+      "bytes": 1219,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block05_fold03_auxfull.npz",
+      "sha256": "8e2f88b27bb8853cc6e289276510993bb708a11fe3135468e0f6b1ce043cf487"
+    },
+    {
+      "bytes": 4097,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block05_fold04_aux20.json",
+      "sha256": "ba4e16dcc53c87b7e1a07f653fee80685687709eee7b7af93bb2e42ecd8abb8e"
+    },
+    {
+      "bytes": 1150,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block05_fold04_aux20.npz",
+      "sha256": "c0ff92945d6416d36c96a3b4a37ed339d4d1f3d0cd639bd3cde8c06b137e4174"
+    },
+    {
+      "bytes": 8085,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block05_fold04_aux80.json",
+      "sha256": "3175ff8ac353d1e421735dc4b551633668f60de6417911861dfab55ac52c8a7a"
+    },
+    {
+      "bytes": 1186,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block05_fold04_aux80.npz",
+      "sha256": "c1cebb111bd8c8c419eb4364ec46e67912a4fdaddaf820f2ab59aa32ca5ba352"
+    },
+    {
+      "bytes": 13571,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block05_fold04_auxfull.json",
+      "sha256": "c2a65d698a2773a8cc2569a211f667610e056ffd4d9583cc4be9fb07de063bc2"
+    },
+    {
+      "bytes": 1216,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block05_fold04_auxfull.npz",
+      "sha256": "022de79603aabaa41f02e9e646867e3ede9aa6f1ffcc5ab62cc81932bb38d6da"
+    },
+    {
+      "bytes": 4091,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block06_fold00_aux20.json",
+      "sha256": "23657ec5e7d2a9f67a902dc2cc50fc8bab4402097af4f58a94aec438996d0a17"
+    },
+    {
+      "bytes": 1143,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block06_fold00_aux20.npz",
+      "sha256": "7f216d816341c527794beb556f7420df90443244ea7a3e975dee564155689ab2"
+    },
+    {
+      "bytes": 8073,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block06_fold00_aux80.json",
+      "sha256": "5bd13fabd93db843b52692257c7784f438c7b51e27b36fc1bb5538012880aa04"
+    },
+    {
+      "bytes": 1204,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block06_fold00_aux80.npz",
+      "sha256": "5508cf9bbb870214d9e485d4e17b16ebeb61016326d7f7cefb3c51d157fecb0d"
+    },
+    {
+      "bytes": 13554,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block06_fold00_auxfull.json",
+      "sha256": "540ce545688374763016f10d0369b31c3c98db9b931267aeb30e6899c9ff5d73"
+    },
+    {
+      "bytes": 1210,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block06_fold00_auxfull.npz",
+      "sha256": "4a1df18511f4116dd8765b3a4a9cbfa038a6f45e49cbb53dce6642d923fe25d5"
+    },
+    {
+      "bytes": 4090,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block06_fold01_aux20.json",
+      "sha256": "73c9f8720b2d04b709cbf554d66c9c2815cb8d90d3ba1fa711a538d22c2dbeb4"
+    },
+    {
+      "bytes": 1159,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block06_fold01_aux20.npz",
+      "sha256": "08bfc55c17fbd0af1db7c8535fd644e10327082f2480a319fa66762ade8219e0"
+    },
+    {
+      "bytes": 8076,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block06_fold01_aux80.json",
+      "sha256": "15e0516bd15d86714272d1a20783d9f55054cad9859147df9de6e7b4f6300616"
+    },
+    {
+      "bytes": 1216,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block06_fold01_aux80.npz",
+      "sha256": "b70a3cd0e25825076fb384d7de10a6a8923865fe9bce3f7a61737045534fe1cc"
+    },
+    {
+      "bytes": 13554,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block06_fold01_auxfull.json",
+      "sha256": "941d3ea09963c530754fea8ccf87f8da9ff13d834044e02fe1a432dc5b41701e"
+    },
+    {
+      "bytes": 1229,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block06_fold01_auxfull.npz",
+      "sha256": "a1138fbd126c7672c0faa86b71649d62c56d954be8bc3f9cc288e608b7f1f744"
+    },
+    {
+      "bytes": 4094,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block06_fold02_aux20.json",
+      "sha256": "546b5099adc13a5d651675acf6a70964eaead465e3f02d12279a163230e1e612"
+    },
+    {
+      "bytes": 1183,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block06_fold02_aux20.npz",
+      "sha256": "8cacbe5ee8cb6e1bef11df3dadc703fd3d67e0d08c3bbd1e45d7be8c72a5c05b"
+    },
+    {
+      "bytes": 8078,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block06_fold02_aux80.json",
+      "sha256": "bc1bf9892368d513672b002ad3c4a3848749b1752c5d372a00453af64a7273d3"
+    },
+    {
+      "bytes": 1203,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block06_fold02_aux80.npz",
+      "sha256": "43f1b0704a738267587df92cd626528f43018fb98d866a75164eeff4d31b5f42"
+    },
+    {
+      "bytes": 13552,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block06_fold02_auxfull.json",
+      "sha256": "dc9e06bf8557f915262a19e2813cac35b0b1f5c39efc19c68c97e6c4e4052f7c"
+    },
+    {
+      "bytes": 1197,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block06_fold02_auxfull.npz",
+      "sha256": "3b4dd8ae276bd3512b0ef2e1f448789ceb1fadf8942191a287d74d916f907350"
+    },
+    {
+      "bytes": 4094,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block06_fold03_aux20.json",
+      "sha256": "6ab56d167fd8c0a9e8c08b689b4ab3e9338187c76a5d916922149c0849298c90"
+    },
+    {
+      "bytes": 1131,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block06_fold03_aux20.npz",
+      "sha256": "e40d41d234dd3c884c553387a96dfa6c21fbcdb3466b2adb9f1aa7e22f3c509c"
+    },
+    {
+      "bytes": 8078,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block06_fold03_aux80.json",
+      "sha256": "99e9bcfacdcc5e2d75d1e5907e4d054d93a86da269cb4b71be5c9d348e198218"
+    },
+    {
+      "bytes": 1169,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block06_fold03_aux80.npz",
+      "sha256": "73f10ee211b61bd271da86580239e6b3b8060d2f0e00fcb45dfa3759d90cfb62"
+    },
+    {
+      "bytes": 13267,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block06_fold03_auxfull.json",
+      "sha256": "f00318906ff8cb87b8f0d546f761300b54e5eb8bed3547f5c7ef324bd4875835"
+    },
+    {
+      "bytes": 1216,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block06_fold03_auxfull.npz",
+      "sha256": "b05f5d71a990c69964cf3c04c49b4f5617451615c0574d567908658dcaef01df"
+    },
+    {
+      "bytes": 4091,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block06_fold04_aux20.json",
+      "sha256": "7f396609f7eb84dadcfa02cb21650bc041cd1bff5f2d56ca707148c0cf814605"
+    },
+    {
+      "bytes": 1138,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block06_fold04_aux20.npz",
+      "sha256": "a1b5598c9491ab63936867b0100628d40e4914f07f4169821d48d38fd97d5d54"
+    },
+    {
+      "bytes": 8075,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block06_fold04_aux80.json",
+      "sha256": "bd928da808d392353b7978b650e16698daf2be9dcd18c9848aeb1a6c7e074496"
+    },
+    {
+      "bytes": 1208,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block06_fold04_aux80.npz",
+      "sha256": "3886a66a3c034404b0f846d6eeaeeacdfc677b344d701d3d87400f0fde703e8d"
+    },
+    {
+      "bytes": 13553,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block06_fold04_auxfull.json",
+      "sha256": "943fc0ae8c91173fb3f4ae70cc139bfab0d397eb95a39a286c1912859b3bcb0b"
+    },
+    {
+      "bytes": 1208,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block06_fold04_auxfull.npz",
+      "sha256": "5d0089c515d17ec1006806e02ab6968af1c85414458eac8623025d857f59b542"
+    },
+    {
+      "bytes": 4066,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block07_fold00_aux20.json",
+      "sha256": "5dbbefd17416ffb0174542a9dd0dbd2af455329a810e1850e969fdd81fd9322c"
+    },
+    {
+      "bytes": 1158,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block07_fold00_aux20.npz",
+      "sha256": "dab96a59c230e738bc8107b0c0c0fe942c50f0a604f694b1a6ca84f663e608d9"
+    },
+    {
+      "bytes": 8076,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block07_fold00_aux80.json",
+      "sha256": "ec2f6250e01e63fefb25b83551cb779b39711786ed17c5ab8d10a80ff836df34"
+    },
+    {
+      "bytes": 1199,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block07_fold00_aux80.npz",
+      "sha256": "f93b0cea10579942b8abad2c259f47806dad62b1bd7bbdd72555570abde79109"
+    },
+    {
+      "bytes": 13887,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block07_fold00_auxfull.json",
+      "sha256": "faf3874852ab74731611e16c51cec32528902c63f25ea9a6abe08bb27b4436fd"
+    },
+    {
+      "bytes": 1231,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block07_fold00_auxfull.npz",
+      "sha256": "807b048f00bb83f7f4ac66db90c664b3e0b80d69420b97fbe394e6bc5b4946c3"
+    },
+    {
+      "bytes": 4067,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block07_fold01_aux20.json",
+      "sha256": "900d0b9646ede0beb245a137dceba79603562f8f90e8e29b3b5c01040296b55b"
+    },
+    {
+      "bytes": 1172,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block07_fold01_aux20.npz",
+      "sha256": "8586c296c61d9f7ad4aacbba8459afb60fad9d0eaad58bd2ff7324ae45a7b85a"
+    },
+    {
+      "bytes": 7789,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block07_fold01_aux80.json",
+      "sha256": "7a8aae5c160c49e854705fa102491163c559b806c39d66fa0153e5b774ebaaa9"
+    },
+    {
+      "bytes": 1203,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block07_fold01_aux80.npz",
+      "sha256": "907bcf6edb1f5bff83597fcc92a831b1d6753144d3ece7b297c26b9586cc940f"
+    },
+    {
+      "bytes": 13311,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block07_fold01_auxfull.json",
+      "sha256": "5174c3461b175c7be890804b556594ae8a4c625feaefe107daa05f4dcc817cec"
+    },
+    {
+      "bytes": 1207,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block07_fold01_auxfull.npz",
+      "sha256": "6258d46d1d96c866dbd6c9fe5520b0985e4444cc4ae12bf89471f9c3d8f15923"
+    },
+    {
+      "bytes": 4069,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block07_fold02_aux20.json",
+      "sha256": "2814a24d6add7c3d8cba347918e7cf7076dff7c12ad25e8c0840897ced6fcab7"
+    },
+    {
+      "bytes": 1168,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block07_fold02_aux20.npz",
+      "sha256": "5fa3a7031ae500cf396e34b9e70e5acdaa82edfbf1582c8336915f9f0b36d64b"
+    },
+    {
+      "bytes": 8073,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block07_fold02_aux80.json",
+      "sha256": "d8584cd8469241d3926230e683ab7d33529ea119e9221d7821ae0a1e29e732ae"
+    },
+    {
+      "bytes": 1220,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block07_fold02_aux80.npz",
+      "sha256": "82c34cdcd112f401547e5b35538438f842c36ea7d1a739941cfe41eb482d99a2"
+    },
+    {
+      "bytes": 13891,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block07_fold02_auxfull.json",
+      "sha256": "a93bd26a0e61716915a0d49430663c1104ff4814b96d68db55e5f24671d3313f"
+    },
+    {
+      "bytes": 1211,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block07_fold02_auxfull.npz",
+      "sha256": "11c943f65eab385163f1cc591cc44b87e6d3da8098b25033d8ee35694412a4b4"
+    },
+    {
+      "bytes": 4068,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block07_fold03_aux20.json",
+      "sha256": "987e1d46ae391625e138a40b0f356272488c77348f037899cde46da803f9d24e"
+    },
+    {
+      "bytes": 1160,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block07_fold03_aux20.npz",
+      "sha256": "4a5958ba38c10964e92026462aee8d0782204f5810d9a9d6ef94c08128501c73"
+    },
+    {
+      "bytes": 7788,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block07_fold03_aux80.json",
+      "sha256": "6c2e93dfb9375d7f0eb71ad5119cfe0d49eef4cf7f821ae71c80c9d140bef587"
+    },
+    {
+      "bytes": 1190,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block07_fold03_aux80.npz",
+      "sha256": "27633f9f8aa1bf9490b59ac7f03469a61a1e2a0084cccf8553b6059aed36181c"
+    },
+    {
+      "bytes": 13604,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block07_fold03_auxfull.json",
+      "sha256": "976e6e77f929a5b31c4628fa80087f8cd9d933978f05be233cf73540b6451095"
+    },
+    {
+      "bytes": 1209,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block07_fold03_auxfull.npz",
+      "sha256": "efd4dd338a6d4908e872fd84dc7c39721a3d52f326d735101c01bab725826122"
+    },
+    {
+      "bytes": 4063,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block07_fold04_aux20.json",
+      "sha256": "ee8ea123c41bbbddc6737a795c77d9adbfe1094fedeff5fc556e2e8c4953af36"
+    },
+    {
+      "bytes": 1167,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block07_fold04_aux20.npz",
+      "sha256": "bcacbcdf159a53eefbc939392fe475adfd87e87108d1d77291f56cbd9ba73121"
+    },
+    {
+      "bytes": 8079,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block07_fold04_aux80.json",
+      "sha256": "b342672fda289b9247a00b62eb938b3796128adb6c0c7526097ea881c911f875"
+    },
+    {
+      "bytes": 1175,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block07_fold04_aux80.npz",
+      "sha256": "1206a4bcc7ac7bde816268f124a9c58b813d13ea0bc61c42c4ed6d4926a73c2f"
+    },
+    {
+      "bytes": 13891,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block07_fold04_auxfull.json",
+      "sha256": "dad94116ae75ecdd30f55acd741dcf51dd0d9b27eeb91a51bc5b139e355038c8"
+    },
+    {
+      "bytes": 1210,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block07_fold04_auxfull.npz",
+      "sha256": "b072e30545481d65bb1c4259e933a638c011069111ce445b615a125938a83157"
+    },
+    {
+      "bytes": 4050,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block08_fold00_aux20.json",
+      "sha256": "10e553bfb1021ab9713bc1bba863d7ef02d4d3cfe0ca2caea1936670d253723f"
+    },
+    {
+      "bytes": 1148,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block08_fold00_aux20.npz",
+      "sha256": "12c633520be358d4b86d65f8c0d75a16231a42d724cf56a65142d216d37017ec"
+    },
+    {
+      "bytes": 8042,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block08_fold00_aux80.json",
+      "sha256": "1ffcc5f00b878928ad335bc0e7e922c3d835d590b86dc3601839451862ef14ce"
+    },
+    {
+      "bytes": 1182,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block08_fold00_aux80.npz",
+      "sha256": "9df099b495c2000b3440e5b936ff58a128ecadc5f2b1ec8d39c581571566662f"
+    },
+    {
+      "bytes": 13885,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block08_fold00_auxfull.json",
+      "sha256": "05eec7c00c3c60f83feaa6a12b44343571949564da271d5468027521035009c8"
+    },
+    {
+      "bytes": 1227,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block08_fold00_auxfull.npz",
+      "sha256": "12a7ac2dc9464950f0fbc806bf42adc5e62364a3145272397f26a8cab98c63da"
+    },
+    {
+      "bytes": 4051,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block08_fold01_aux20.json",
+      "sha256": "f90bc6cda4aafcd9bb062e826cb213a63bbc93491c2f5fa38204b59bba480d4a"
+    },
+    {
+      "bytes": 1145,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block08_fold01_aux20.npz",
+      "sha256": "0a7eee57a55c6cbd80faa400f3b15d47c96e5763cccb03a36614abb9d1bd9985"
+    },
+    {
+      "bytes": 8043,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block08_fold01_aux80.json",
+      "sha256": "f8117dd7b79b0b21976f5f2a4fbfb2e7f18e293a906982d2e71b974fb22f6334"
+    },
+    {
+      "bytes": 1196,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block08_fold01_aux80.npz",
+      "sha256": "cfc1f81fa8f87eff6bfb8d6427a49d974ed95b5c4a5689ff0b8cdbbd7bb23ddf"
+    },
+    {
+      "bytes": 13308,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block08_fold01_auxfull.json",
+      "sha256": "5364f278e3ecee980ca44b702fdc4961e36e6a077625bc99d04c1f1516e899bf"
+    },
+    {
+      "bytes": 1194,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block08_fold01_auxfull.npz",
+      "sha256": "801a503450ea7cbfcd526966d85e9567324bd70b12cdf66ad8e262f6e7a2b6e5"
+    },
+    {
+      "bytes": 4054,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block08_fold02_aux20.json",
+      "sha256": "4dcd73852ceab13d58b316b8df5b05e000570df0a18c06a5d281b81dfe0fc43e"
+    },
+    {
+      "bytes": 1146,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block08_fold02_aux20.npz",
+      "sha256": "49e3a0b9764467be3a381f52e604927f06f86ed30e5ed0b6dfc867e75dc54f49"
+    },
+    {
+      "bytes": 8040,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block08_fold02_aux80.json",
+      "sha256": "27b22feaf515d5f78e277ad778541be5f82c0b2f80853d912365ae22fd54e09d"
+    },
+    {
+      "bytes": 1204,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block08_fold02_aux80.npz",
+      "sha256": "e8b76d0f52faf994824bbda34956be7e6e9c97d234020bc47124b7a380e61a51"
+    },
+    {
+      "bytes": 13593,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block08_fold02_auxfull.json",
+      "sha256": "a7e889ab74c5ce08e81dcfd79c739630a961ba5d7ecfef64f469ec6cdb19eeb8"
+    },
+    {
+      "bytes": 1217,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block08_fold02_auxfull.npz",
+      "sha256": "40740d0cd0ed34a8be75159364196a728e68a1351fe30c888c3964264c9131de"
+    },
+    {
+      "bytes": 4053,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block08_fold03_aux20.json",
+      "sha256": "2d11cfdf7e1d9a0f424e7181f477fb51c880e359239d4854199b0e6d25545d2e"
+    },
+    {
+      "bytes": 1135,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block08_fold03_aux20.npz",
+      "sha256": "341e3ba41565d781ede3b54fd5d343d04b260f88aaf7b394fe4519a092bc7b0f"
+    },
+    {
+      "bytes": 8039,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block08_fold03_aux80.json",
+      "sha256": "010b4695af6463184fc6ecb62b504d9f93fdcbd3936728cd96918d5c0a431e36"
+    },
+    {
+      "bytes": 1175,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block08_fold03_aux80.npz",
+      "sha256": "80b32ebbd64f0ee0a2b19d3c644ee3c08d36da95296765d4b21711c9cdd84b4d"
+    },
+    {
+      "bytes": 13595,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block08_fold03_auxfull.json",
+      "sha256": "8ac212942584782c82634198240a18fb89783705d9593451bb034b3db38fc2a8"
+    },
+    {
+      "bytes": 1217,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block08_fold03_auxfull.npz",
+      "sha256": "0b407a6134cce7b0143983bc03bdff0adda7d271870076c09a7978becac4a901"
+    },
+    {
+      "bytes": 4050,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block08_fold04_aux20.json",
+      "sha256": "dc57a1e2a3dbe07ab9f6504b9a6d26681d193ab147f11f82005be0e49e14da48"
+    },
+    {
+      "bytes": 1134,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block08_fold04_aux20.npz",
+      "sha256": "0fd5dc21b68a11182beb6ab4e2712ae055c5235cea11b1ee397f2c16b3e67cf0"
+    },
+    {
+      "bytes": 8037,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block08_fold04_aux80.json",
+      "sha256": "89b01829a5db713593e266af7ec577b99414966a82e9582a78d111a584bffe39"
+    },
+    {
+      "bytes": 1175,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block08_fold04_aux80.npz",
+      "sha256": "3456b8e22189a2777199c2e3f6ae3bad3a73d6dd58a002be992266310acba83d"
+    },
+    {
+      "bytes": 13886,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block08_fold04_auxfull.json",
+      "sha256": "c1e91905505c939fbe546f2b1b22c36a4204e1cc1cc557411589101eae5b8866"
+    },
+    {
+      "bytes": 1226,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block08_fold04_auxfull.npz",
+      "sha256": "476e52825e817d1d7493bbd7599caf3b2443da81ab747d0dd8c452b9165e8840"
+    },
+    {
+      "bytes": 4079,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block09_fold00_aux20.json",
+      "sha256": "11c8e4736b8a5bb39a6bfa0a1853019a719ba4fa8850786bf1dbe0f1740d98e6"
+    },
+    {
+      "bytes": 1151,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block09_fold00_aux20.npz",
+      "sha256": "a58f2df4a11e190d3532f85228714f8690369fe22c2cf398d00b1bcdc3084d07"
+    },
+    {
+      "bytes": 8061,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block09_fold00_aux80.json",
+      "sha256": "aecf57c99b331e96ab4cce02cb40edc7f45d584f065bf03e77e4e7d95b057d63"
+    },
+    {
+      "bytes": 1183,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block09_fold00_aux80.npz",
+      "sha256": "7d6a2565587c3d34f603924f638a26036ef2d2926b72d20cc14ad1ce741ffc81"
+    },
+    {
+      "bytes": 13584,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block09_fold00_auxfull.json",
+      "sha256": "d1f596f433f4a2ad3290ed9ae983720f7b012b12dcd6eb90de93edec8ed8fd65"
+    },
+    {
+      "bytes": 1216,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block09_fold00_auxfull.npz",
+      "sha256": "f08410c741e88d3beab1c37db8782e05f7289ebcce2fcb5edbed8594876ac6f1"
+    },
+    {
+      "bytes": 4073,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block09_fold01_aux20.json",
+      "sha256": "f5e35154b3ca02aab47f60b4479c0a80633083c4aa2a101680f44320c96a4687"
+    },
+    {
+      "bytes": 1146,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block09_fold01_aux20.npz",
+      "sha256": "57824ece66c302e075eff14acefbd5a24b9ee534298326b9fbb69a705fc1afbf"
+    },
+    {
+      "bytes": 7776,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block09_fold01_aux80.json",
+      "sha256": "b4e317ae82150700f6b3fec93b63cbb7caf53ecc7432dad984d4a98eb64f0933"
+    },
+    {
+      "bytes": 1175,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block09_fold01_aux80.npz",
+      "sha256": "b987d8f07033b2c19857a2cbf2cd234d9a7a6286cc16081b14128d3c607afe9f"
+    },
+    {
+      "bytes": 13581,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block09_fold01_auxfull.json",
+      "sha256": "f5fe88901cb88284d32a2cf7a1fec570ab074276503e587364886ee33e12fcdd"
+    },
+    {
+      "bytes": 1218,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block09_fold01_auxfull.npz",
+      "sha256": "534badf9741d3d36eed45203ed31e756b64bc3b005bbfc26eb98a9e49e32158c"
+    },
+    {
+      "bytes": 4075,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block09_fold02_aux20.json",
+      "sha256": "25b6d1715eb380ba4c16ac7cc5f6676ebd4c91c9749a03306b1f4466fd0b771a"
+    },
+    {
+      "bytes": 1148,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block09_fold02_aux20.npz",
+      "sha256": "f8268358ca94ec0f2b39325b26c1479b81e3cf9792b94031a54a158545aa8244"
+    },
+    {
+      "bytes": 8062,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block09_fold02_aux80.json",
+      "sha256": "f2d8ca8fc0ee45660df07f3a3d4ebd3339781dab6f72d271708efbe62c170947"
+    },
+    {
+      "bytes": 1190,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block09_fold02_aux80.npz",
+      "sha256": "e7504b96eac55f9fc78ab0cbc1f7ef33f4556ef36b201d412497499f3eb4d60e"
+    },
+    {
+      "bytes": 13581,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block09_fold02_auxfull.json",
+      "sha256": "8f44ca3414673b86753d44211e9006c2cf9ba1ce3a20f58c66fd61cea09408d7"
+    },
+    {
+      "bytes": 1210,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block09_fold02_auxfull.npz",
+      "sha256": "e1d6286030f26e2ba3a6edba7ab3aa8f751e7edd6bc89d80c43322fec223b3de"
+    },
+    {
+      "bytes": 4079,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block09_fold03_aux20.json",
+      "sha256": "d65b17757bbb4055c308a25601e3ed92a98b169b0c95fc9db94e8190a4d9d4e6"
+    },
+    {
+      "bytes": 1118,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block09_fold03_aux20.npz",
+      "sha256": "703ed3455b7b1213c17c4adb5031a15d8596050b4d7924d4e9bfb4e2a1f7fb01"
+    },
+    {
+      "bytes": 8061,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block09_fold03_aux80.json",
+      "sha256": "e313676e34e812f4b51eb17d0fadc472d1dc160138fd2a0b184210dc8c196d9a"
+    },
+    {
+      "bytes": 1176,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block09_fold03_aux80.npz",
+      "sha256": "7af363873d458888e1aa16fb665dc970f3d50b613b5f56ead9b53fe5ea54dacb"
+    },
+    {
+      "bytes": 13596,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block09_fold03_auxfull.json",
+      "sha256": "178d5506b422a375df63888de61e38c065d4204a2e650490a422dc5b5d6f6d19"
+    },
+    {
+      "bytes": 1197,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block09_fold03_auxfull.npz",
+      "sha256": "6ab413ed31db15f2257b93c0279e65eb1b25f10679dee4b23286135d485d501c"
+    },
+    {
+      "bytes": 4076,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block09_fold04_aux20.json",
+      "sha256": "3a51d08c6198f326b26dacc183e7a00df9a71cd9fa44abab88b8841f655e69d1"
+    },
+    {
+      "bytes": 1134,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block09_fold04_aux20.npz",
+      "sha256": "b946cbb9c25f8d3bcd70897bb5b3498d062f59b29a1ba81f096b8bdf4d8ef6a2"
+    },
+    {
+      "bytes": 8062,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block09_fold04_aux80.json",
+      "sha256": "11bde61c8a81ff66b4b0550fc1acbbf540f2824d0e699d7cb95d7b76c4342434"
+    },
+    {
+      "bytes": 1181,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block09_fold04_aux80.npz",
+      "sha256": "4f617ec52b1360ca79207d7fe0c467a8a5569cd3ad711f82b54a03a37776598b"
+    },
+    {
+      "bytes": 13598,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block09_fold04_auxfull.json",
+      "sha256": "cbd3a8f938e3dd8f2a4718f79b97a98d70e8ccda31eb383a7fbec5cc90cc1ad7"
+    },
+    {
+      "bytes": 1216,
+      "path": "data/processed/dsdm/goal051-seawfb-conventional-benchmark-v4/q_linear/block09_fold04_auxfull.npz",
+      "sha256": "25eb68052d0e540a31295ced6c1423390fd296262cd7ac48bfbc2ff15d665f85"
+    },
+    {
+      "bytes": 8450,
+      "path": "evidence/seawfb_conventional/goal051/completion_review.json",
+      "sha256": "cb97d64c0ac53bd11f24c1acc2e125b71d6b401bf9d9adac1a8495033c5b0157"
+    },
+    {
+      "bytes": 30823029,
+      "path": "evidence/seawfb_conventional/goal051/summary.json",
+      "sha256": "9c1bf1ff8884fae35fe7ebe6f8d19e2aae46ab7eedee252b398c0c74705dd2d8"
+    },
+    {
+      "bytes": 35041,
+      "path": "metadata/goal050_manifest.json",
+      "sha256": "239dd61cc5d3ab942a813201c0cb4117820b74367c7ba71deffddc6990d36198"
+    },
+    {
+      "bytes": 35049,
+      "path": "metadata/goal050_transforms.json",
+      "sha256": "1d8b3d09b139264e288630f283e330d28919c00b4631132aa9a79529ad3abb52"
+    }
+  ],
+  "schema_version": "goal052-input-transfer-v1"
+}
