@@ -297,7 +297,9 @@ The current task advances the prospectively frozen Goal052 comparison through
 implementation and validation under Barry's autonomy request. Its original
 config is preserved byte-for-byte as the scientific freeze; execution status
 and authority are recorded in the Goal052 Decision/Runbook. The runner and
-focused tests are implemented; real-data canary/profile qualification is next.
+43 focused tests pass on Mac and deep-server. The two-worker engineering
+canary passed; the uncapped one-epoch profile is running on deep-server in
+`dsdm-goal052-qualification`. No production leaves exist yet.
 Outer outcomes remain sealed. Routine implementation and tests
 can proceed; material scientific amendments or substantial new compute
 commitments require discussion. Start from the current Goal052 runbook and

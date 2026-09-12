@@ -53,3 +53,29 @@
   its old GPU is unsupported. Alien's current CUDA/driver compatibility is
   unresolved, so no driver or environment change was attempted. Nectar stays
   parked. A full-row one-epoch profile must precede a production commitment.
+
+## 2026-09-12 14:06 AEST — deep-server engineering canary passed
+
+- Committed/pushed implementation `61a80c9`; scientific config SHA remains
+  `04b667168944b39ced1044da8f381553c4024e31cca1f5590f2fbc693e521f9a`.
+- All 43 focused tests passed on Mac and deep-server. All 308 transferred files
+  (71,948,967 bytes) passed an independent SHA-256 manifest comparison, followed
+  by the native Goal052 input/accepted-q checks.
+- Deep CPU canary passed with two spawned workers and repeated persistent-store
+  jobs. Prediction and shared-trunk digests agreed exactly. Maximum worker RSS
+  was 2.587 GiB. Bounded pretraining lifecycles took 16.8–24.2 seconds; these
+  timings do not establish full-epoch throughput.
+- The full-row one-epoch profile is running in detached tmux session
+  `dsdm-goal052-qualification` at `/data/codex/repos/dSDM`. It writes separate
+  `canary-deep` and `profile-deep` logs/exit markers under the private Goal052
+  root. No production leaves or ecological metrics have been generated.
+- Resource observation changed since the initial idle probe: another campaign
+  is using approximately 32 single-threaded processes. The profile uses one CPU and ample RAM
+  remains available; any production concurrency must use fresh capacity checks.
+- Exact frozen-grid row accounting is retained in `workload.json`: 900 auxiliary
+  lifecycles and 42,345 unique target lifecycles sum to 6,882,700,168 replay rows.
+  Patience 30 entails at least 31 discovery epochs plus one replay epoch for a
+  successful lifecycle. Thus at least 220,246,405,376 discovery/stopping/replay
+  row visits are required, excluding held prediction and orchestration. This
+  is workload accounting, not a runtime forecast. The full-epoch profile will
+  resolve whether production needs a substantial new compute commitment.
