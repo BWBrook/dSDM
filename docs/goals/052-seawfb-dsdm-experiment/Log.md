@@ -178,3 +178,15 @@ bound to the qualified identity. Log: `logs/run-20260912T162812-23202.log`.
 No completed fit was claimed from process activity. The same existing
 follow-up is now active every four hours; timeout enforces the 24-hour cap
 independently, with a 60-second termination allowance. Do not reset its clock.
+
+## 2026-09-12 20:30 AEST — four-hour pilot check
+
+The original timeout/runner/worker process group remains active after four
+hours, with both workers at approximately 100% CPU and 2.03/2.08 GiB RSS.
+No pretraining or target checkpoint directory exists yet; the run log is
+empty and no exit marker is present. Thus no completed lifecycle, selected
+epoch history or fit-state invariant can yet be verified. Source/config/lock
+files have no Git changes; wrapper, canary, full-profile and launch receipt
+hashes still match the recorded values. Server load has fallen to 2.03 with
+118 GiB available memory. No intervention was needed. The original 13 September
+16:28 AEST deadline and four-hour check cadence remain unchanged.
