@@ -301,11 +301,12 @@ and authority are recorded in the Goal052 Decision/Runbook. The runner and
 within-host bitwise stopping/replay comparisons on both machines; fused AdamW
 is deferred because it changed Linux numerics. Source `e309ca8` is staged on
 deep-server. Its fresh two-worker canary passed at 14:37 AEST, with bitwise
-repeat agreement and maximum worker RSS 2.545 GiB. The full-row profile is now
-running in `dsdm-goal052-qualification`; earlier qualification was superseded
-with evidence preserved. No production leaves exist yet.
-Hourly thread continuation `continue-dsdm-goal052` is active to verify the
-profile and prepare the route; it pauses when a material decision is needed.
+repeat agreement and maximum worker RSS 2.545 GiB. The full-row profile also
+passed: 79.54 minutes for auxiliary pretraining and 2.395 GiB peak RSS. Returned
+receipt hashes and fit invariants are verified. No production leaves exist yet.
+See `docs/goals/052-seawfb-dsdm-experiment/ComputeRoute.md` for the prepared
+24-hour, two-worker CPU pilot proposal. Barry's resource decision is pending;
+`continue-dsdm-goal052` is paused. No larger production commitment is implied.
 Outer outcomes remain sealed. Routine implementation and tests
 can proceed; material scientific amendments or substantial new compute
 commitments require discussion. Start from the current Goal052 runbook and

@@ -134,3 +134,28 @@ matches `578128be69aae014837906d26a64c080455dc2b24910f76fdb856b49ce064c43`.
 Server load has fallen to 17.06, with about 119 GiB available memory. No
 source change, duplicate launch or production commitment was made. Hourly
 continuation remains active pending the complete profile.
+
+## 2026-09-12 16:18 AEST — full profile passed; resource decision pending
+
+- The full profile exited zero and its tmux session ended. Returned metadata
+  SHA-256 `b580e1fd551deb1f51d6b4a3f87f1ac020c96a05d78aad4884fa6d70e20a102f`
+  matches deep-server. The independent `full-profile-review.json` verifies
+  source/acceptance/host, row/head inventories, seed and one-epoch budgets,
+  finite state/losses, reset/replay, transfer/freeze and paired-head invariants,
+  q binding, row-rate arithmetic and absence of ecological/outer metrics.
+- Full 168-head pretraining used 6,895,417 discovery, 2,737,414 stopping and
+  9,632,831 replay rows in 79.54 minutes; the complete profile took 80.57
+  minutes with peak RSS 2.395 GiB. Target arms took 12.64–12.77 seconds, except
+  frozen trunk at 4.55 seconds. These are one-epoch measurements.
+- A bounded independent methodological review supports a 24-hour, two-worker
+  CPU pilot to measure production stopping/replay times. It rejects treating
+  minimum row visits as a wall-time bound or extrapolating the largest case
+  uniformly across architectures and auxiliary sizes. No GPU speedup is assumed.
+- `ComputeRoute.md` contains the concrete resource proposal; the prepared
+  `scripts/goal052_pilot.sh` passed shell syntax validation. A temporary process
+  group probe on deep-server verified GNU timeout stops children at its cap.
+  No production was launched. At the 16:18 check, other load was about 48,
+  with 118 GiB available RAM. Recheck capacity before an approved launch.
+- The hourly qualification follow-up is paused pending Barry's decision on
+  this 48-worker-hour pilot (plus the 60-second termination allowance). The
+  full campaign, cloud allocation and driver changes remain unauthorized.

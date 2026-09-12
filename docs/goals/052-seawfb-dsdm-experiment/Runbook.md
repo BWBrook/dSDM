@@ -69,3 +69,9 @@ with within-host bitwise agreement through stopping and replay on Mac and
 Linux. See `evidence/seawfb_dsdm/goal052/optimizer-equivalence.json`. Fused AdamW
 is deferred because it changed deep-server numerics. Qualification receipts
 from implementation `61a80c9` are historical and cannot qualify the new source.
+
+As of 16:18 AEST on 12 September, both current-source qualification receipts
+have passed and the full profile has exited zero. The next action is Barry's
+resource decision on the bounded pilot in `ComputeRoute.md`. The prepared
+`scripts/goal052_pilot.sh` has not been launched. Hourly qualification
+continuation is paused pending that decision.
