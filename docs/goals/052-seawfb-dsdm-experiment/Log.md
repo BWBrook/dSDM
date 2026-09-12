@@ -79,3 +79,22 @@
   row visits are required, excluding held prediction and orchestration. This
   is workload accounting, not a runtime forecast. The full-epoch profile will
   resolve whether production needs a substantial new compute commitment.
+
+- Enabled hourly continuation in this thread (`continue-dsdm-goal052`) under
+  Barry's autonomy request so the full-row profile can finish without a manual
+  prompt. It must preserve active source, verify returned evidence, prepare the
+  route, and pause for a material new compute/scientific decision.
+## 2026-09-12 — equivalent CPU optimizer implementation
+
+- Adopted CPU AdamW `foreach=True` after explicit single-tensor versus foreach
+  checks on both Mac and deep-server: two seeds, 168 heads, full stopping budget,
+  31 discovery epochs and one replay epoch. Every stopping loss, selected epoch,
+  model digest and final tensor matched bit-for-bit within each host. Compact
+  results and private-artifact hashes are in `optimizer-equivalence.json`.
+- Repeated deep-server step timings improved from 47.40 to 32.79 ms (1.45x).
+  These synthetic timings do not replace full-data throughput qualification.
+- Fused AdamW is deferred: deep-server lifecycle weights differed by up to
+  2.384e-7. No numerical tolerance was relaxed and no fused path was adopted.
+- Fit receipts bind the optimizer implementation. The source change requires
+  fresh canary and full-profile receipts; the original unfinished profile is
+  superseded with logs preserved, rather than counted as a numerical failure.

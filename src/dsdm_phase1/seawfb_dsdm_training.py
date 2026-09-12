@@ -142,6 +142,7 @@ def _train_rows(model: nn.Module, rows: IndexedRows, spec: ArchitectureSpec, see
     optimizer = torch.optim.AdamW(
         (parameter for parameter in model.parameters() if parameter.requires_grad),
         lr=0.001, weight_decay=spec.weight_decay,
+        foreach=True if device.type == "cpu" else None,
     )
     tensors = _indexed_tensors(rows, device, require_heads=head_names is not None)
     generator = np.random.default_rng(seed)
@@ -201,6 +202,7 @@ def _select_epoch(model: nn.Module, discovery: IndexedRows, stopping: IndexedRow
     optimizer = torch.optim.AdamW(
         (parameter for parameter in model.parameters() if parameter.requires_grad),
         lr=0.001, weight_decay=spec.weight_decay,
+        foreach=True if device.type == "cpu" else None,
     )
     tensors = _indexed_tensors(discovery, device, require_heads=head_names is not None)
     stopping_tensors = _indexed_tensors(stopping, device, require_heads=head_names is not None)
@@ -366,6 +368,7 @@ def fit_target_lifecycle(
         final_shared, freeze_trunk, transferred_state, True, freeze_invariant,
     )
     receipt['head_initialization_seed'] = int(seed + 17)
+    receipt['adamw_implementation'] = 'foreach' if device.type == 'cpu' else 'library_default'
     return scores, receipt
 
 
@@ -420,6 +423,7 @@ def fit_pretraining_lifecycle(
         final_shared, False, None, True, True,
     )
     receipt.update({
+        "adamw_implementation": "foreach" if device.type == "cpu" else "library_default",
         "auxiliary_head_count": len(names),
         "auxiliary_heads": list(names),
         "mean_discovery_weight": float(np.mean(discovery.weights)),

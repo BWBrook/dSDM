@@ -106,8 +106,9 @@ def spec_for(config: Mapping, architecture: str):
     return architecture_spec(next(row for row in config['architectures']['candidates'] if row['id'] == architecture))
 
 
-def verify_fit(receipt: Mapping, config: Mapping, seed: int, *, transferred: bool, frozen: bool) -> None:
-    expected = fit_options(config, 'cpu')
+def verify_fit(receipt: Mapping, config: Mapping, seed: int, *, transferred: bool, frozen: bool, device: str = "cpu") -> None:
+    expected = fit_options(config, device)
+    require(receipt.get('adamw_implementation') == ('foreach' if device == 'cpu' else 'library_default'), 'adamw_implementation_drift')
     require(all(receipt[k] == v for k, v in expected.items() if k != 'device_name'), 'fit_budget_drift')
     require(receipt['seed'] == seed and receipt['replay_shuffle_seed'] == seed + 100000, 'fit_seed_drift')
     require(receipt['state_finite'] and receipt['stopping_history_finite'], 'fit_nonfinite')
@@ -125,12 +126,12 @@ def run_pretraining(root: Path, store: SeawfbStore, config: Mapping, identity: M
     cached = load_pretraining(output, key)
     numeric_seed = stable_seed('goal052-pretraining-v1', block, fold, auxiliary, architecture, seed)
     if cached is not None:
-        verify_fit(cached[1]['fit'], config, numeric_seed, transferred=False, frozen=False)
+        verify_fit(cached[1]['fit'], config, numeric_seed, transferred=False, frozen=False, device=cached[1]['device'])
         return cached
     data = auxiliary_data(store, block, fold, auxiliary)
     state, fit = fit_pretraining_lifecycle(spec_for(config, architecture), data.discovery, data.stopping,
                                          data.replay, data.heads, seed=numeric_seed, **fit_options(config, device))
-    verify_fit(fit, config, numeric_seed, transferred=False, frozen=False)
+    verify_fit(fit, config, numeric_seed, transferred=False, frozen=False, device=device)
     receipt = save_pretraining(output, key, state, {'data': dict(data.metadata), 'fit': fit, 'device': device})
     return state, receipt
 
@@ -144,7 +145,7 @@ def run_target(root: Path, store: SeawfbStore, config: Mapping, identity: Mappin
     cached = load_leaf(output, key, held.cell_ids, held.y)
     numeric_seed = target_seed(target, fraction, fold, architecture, seed)
     if cached is not None:
-        verify_fit(cached[1]['fit'], config, numeric_seed, transferred=arm in ARMS[2:], frozen=arm == ARMS[2])
+        verify_fit(cached[1]['fit'], config, numeric_seed, transferred=arm in ARMS[2:], frozen=arm == ARMS[2], device=cached[1]['device'])
         return cached[1]
     block = int(store.crossfit['focal_blocks'][target])
     q, q_receipt, state, pre_receipt = None, None, None, None
@@ -161,7 +162,7 @@ def run_target(root: Path, store: SeawfbStore, config: Mapping, identity: Mappin
     scores, fit = fit_target_lifecycle(spec_for(config, architecture), data.discovery, data.stopping,
                                       data.replay, data.held_x, seed=numeric_seed,
                                       transferred_state=state, freeze_trunk=arm == ARMS[2], **fit_options(config, device))
-    verify_fit(fit, config, numeric_seed, transferred=arm in ARMS[2:], frozen=arm == ARMS[2])
+    verify_fit(fit, config, numeric_seed, transferred=arm in ARMS[2:], frozen=arm == ARMS[2], device=device)
     receipt = {'data': dict(data.metadata), 'fit': fit, 'device': device,
                'q_receipt_digest': None if q_receipt is None else digest(q_receipt),
                'pretraining_receipt_digest': None if pre_receipt is None else digest(pre_receipt)}
@@ -239,7 +240,7 @@ def read_folds(root: Path, store: SeawfbStore, config: Mapping, identity: Mappin
             roles = _roles(train.indices, train.y, train.source_folds, fold)
             require(all(receipt['data'][k] == v for k, v in roles.items()), 'target_training_roles_drift')
             require(receipt['data']['target_subset_digest'] == digest(list(train.cell_ids)), 'target_subset_binding_drift')
-            verify_fit(receipt['fit'], config, target_seed(target, fraction, fold, architecture, seed), transferred=arm in ARMS[2:], frozen=arm == ARMS[2])
+            verify_fit(receipt['fit'], config, target_seed(target, fraction, fold, architecture, seed), transferred=arm in ARMS[2:], frozen=arm == ARMS[2], device=receipt['device'])
             if arm in ARMS[2:]:
                 pre_key = pretraining_key(identity, int(store.crossfit['focal_blocks'][target]), fold, auxiliary, architecture, seed)
                 pre = load_pretraining(private_root(root, config), pre_key)
@@ -323,7 +324,7 @@ def validate_pretraining(root: Path, store: SeawfbStore, config: Mapping, identi
             state, receipt = loaded
             require(receipt['data'] == expected_metadata, 'auxiliary_training_roles_drift')
             numeric = stable_seed('goal052-pretraining-v1', block, fold, auxiliary, candidate, seed)
-            verify_fit(receipt['fit'], config, numeric, transferred=False, frozen=False)
+            verify_fit(receipt['fit'], config, numeric, transferred=False, frozen=False, device=receipt['device'])
             require(receipt['fit']['final_shared_digest'] == state_digest(state), 'pretraining_final_state_drift')
             checked += 1
     require(checked == 900, 'pretraining_inventory_drift')

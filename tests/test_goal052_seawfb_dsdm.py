@@ -69,6 +69,7 @@ def test_verify_fit_rejects_budget_initialisation_seed_and_freeze_drift():
     base = {
         **expected,
         "seed": 19,
+        "adamw_implementation": "foreach",
         "replay_shuffle_seed": 100019,
         "state_finite": True,
         "stopping_history_finite": True,
@@ -81,6 +82,7 @@ def test_verify_fit_rejects_budget_initialisation_seed_and_freeze_drift():
         "completed_epochs": 1,
     }
     for mutation in (
+        {"adamw_implementation": "fused"},
         {"max_epochs": 2},
         {"replay_initial_model_digest": "different"},
         {"seed": 20},

@@ -1,0 +1,39 @@
+{
+  "status": "superseded_for_bitwise_preserving_foreach",
+  "time": "2026-09-12T04:32:37.595647+00:00",
+  "source_commit": "61a80c9",
+  "profile_completed": false,
+  "production_started": false,
+  "files": [
+    {
+      "name": "canary-deep.log",
+      "sha256": "1d8902f13d92a0626d202ebd8f93041a133f2967c017b4a7e510c854500279f0",
+      "bytes": 144378
+    },
+    {
+      "name": "canary-deep.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    {
+      "name": "profile-deep.log",
+      "sha256": "5ebaf08220ec40fc1ae00fad67405a22d7d2ec3a17e6f924d08bc95fb91c1655",
+      "bytes": 1029
+    },
+    {
+      "name": "profile-deep.exit",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "bytes": 2
+    },
+    {
+      "name": "qualification.sh",
+      "sha256": "51c79c04374e7e127c10531d5a781fb0ea8bb1166bfd5d27bab3bf8f91009928",
+      "bytes": 684
+    },
+    {
+      "name": "goal052_canary.json",
+      "sha256": "1d8902f13d92a0626d202ebd8f93041a133f2967c017b4a7e510c854500279f0",
+      "bytes": 144378
+    }
+  ]
+}

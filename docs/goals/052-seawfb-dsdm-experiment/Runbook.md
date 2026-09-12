@@ -57,3 +57,15 @@ uv run --locked python -m dsdm_phase1.goal052_seawfb_dsdm validate --root .
 
 NCP, SEH and NNC outcomes remain sealed. No full refit, mapping, manuscript
 claim or scientific amendment belongs in this execution.
+
+
+An hourly thread follow-up (`continue-dsdm-goal052`) continues qualification
+and prepares the production route after the full profile returns. It pauses
+once the route is resolved or a material resource/scientific decision is
+needed. The completed Goal051 follow-up remains paused.
+
+CPU fits use explicit AdamW `foreach=True`, qualified against `foreach=False`
+with within-host bitwise agreement through stopping and replay on Mac and
+Linux. See `evidence/seawfb_dsdm/goal052/optimizer-equivalence.json`. Fused AdamW
+is deferred because it changed deep-server numerics. Qualification receipts
+from implementation `61a80c9` are historical and cannot qualify the new source.
