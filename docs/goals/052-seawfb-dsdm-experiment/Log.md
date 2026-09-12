@@ -190,3 +190,14 @@ files have no Git changes; wrapper, canary, full-profile and launch receipt
 hashes still match the recorded values. Server load has fallen to 2.03 with
 118 GiB available memory. No intervention was needed. The original 13 September
 16:28 AEST deadline and four-hour check cadence remain unchanged.
+
+## 2026-09-13 00:31 AEST — eight-hour pilot check
+
+Both original workers remain active after 8 hours 3 minutes, each near 100%
+CPU with unchanged RSS (2.03/2.08 GiB). There are zero pretraining and target
+receipts, an empty run log and no exit marker; selected epochs and final fit
+invariants remain unavailable. Source/config/lock state, wrapper and both
+qualification hashes, and launch receipt hash are unchanged. Timeout PID
+23201 still controls the original process group. Host load is 2.00 with
+118 GiB available RAM. No intervention or extension: the deadline remains
+16:28 AEST today, with the original 60-second termination allowance.
