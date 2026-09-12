@@ -159,3 +159,22 @@ continuation remains active pending the complete profile.
 - The hourly qualification follow-up is paused pending Barry's decision on
   this 48-worker-hour pilot (plus the 60-second termination allowance). The
   full campaign, cloud allocation and driver changes remain unauthorized.
+
+## 2026-09-12 16:28 AEST — approved pilot launched
+
+Barry approved the 24-hour, two-worker pilot and requested checks every four
+hours. The staged wrapper SHA-256 is
+`ab548ed8b7feb59a61265afbaa0bbe8ed81addfb6fae1bbc6c5bb7cc8766bfab`;
+scientific source remains `e309ca8`. Source/config/lock state and both
+qualification receipt identities/hashes matched before launch. Load was
+48.11 with 118 GiB available RAM. The detached `dsdm-goal052-pilot` session
+started at 16:28:12 AEST, with nominal deadline 16:28:12 AEST on 13 September.
+`pilot-launch.json` binds these details and was returned to tracked evidence.
+
+At the post-launch check, timeout PID 23201, runner PID 23210 and workers
+23221/23224 shared process group 23201. Both training workers were active
+at approximately 100% CPU and 2.03 GiB RSS. The runner lock was present and
+bound to the qualified identity. Log: `logs/run-20260912T162812-23202.log`.
+No completed fit was claimed from process activity. The same existing
+follow-up is now active every four hours; timeout enforces the 24-hour cap
+independently, with a 60-second termination allowance. Do not reset its clock.

@@ -59,3 +59,14 @@ Resolve routine implementation details from established project contracts;
 consult Barry if a material scientific ambiguity cannot be settled from them,
 or if production requires a substantial new compute commitment. NCP, SEH and
 NNC outcomes remain sealed. No Goal052 fit has run at this transition.
+
+
+## 12 September 2026 — capped pilot authorized
+
+Barry approved the prepared 24-hour, two-worker deep-server CPU pilot and
+requested a four-hour cadence for checks. The resource cap is 48 worker-hours,
+with a 60-second termination allowance. This authorizes the bounded production
+pilot described in `ComputeRoute.md`; it does not authorize a full campaign,
+cloud allocation, driver change or scientific amendment. Retain completed
+checkpoints, stop at the cap and review measured lifecycle cost before the next
+resource commitment.

@@ -75,3 +75,9 @@ have passed and the full profile has exited zero. The next action is Barry's
 resource decision on the bounded pilot in `ComputeRoute.md`. The prepared
 `scripts/goal052_pilot.sh` has not been launched. Hourly qualification
 continuation is paused pending that decision.
+
+Barry approved the pilot and four-hour check cadence. The pilot launched at
+16:28 AEST on 12 September in `dsdm-goal052-pilot`; it stops at approximately
+16:28 AEST on 13 September, with 60 seconds allowed for forced termination.
+The existing follow-up is active at four-hour intervals. Do not restart the
+24-hour clock during recovery or extend the cap without further authorization.

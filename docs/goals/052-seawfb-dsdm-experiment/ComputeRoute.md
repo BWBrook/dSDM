@@ -1,9 +1,10 @@
 # Goal052 compute decision — 12 September 2026
 
-Status: qualification passed; resource decision pending. No production run
-has started. The recommended next tranche is a 24-hour, two-worker CPU pilot
-on the already-qualified deep-server, capped at 48 worker-hours plus a
-60-second termination allowance. This does not authorize the full campaign.
+Status: Barry approved the 24-hour, two-worker CPU pilot on 12 September,
+with checks every four hours. It launched on the qualified deep-server at
+16:28 AEST, capped at 48 worker-hours plus a 60-second termination allowance.
+The nominal deadline is 16:28 AEST on 13 September. This authorization does
+not extend to the full campaign.
 
 ## Verified measurement
 
@@ -69,7 +70,7 @@ GPU speedup nor CUDA compatibility has been established for this workflow.
 The current Alien driver route is unresolved; Nectar allocation and driver
 changes are not part of this pilot. Nectar remains parked.
 
-## Prepared launch after Barry's resource decision
+## Approved launch and deadline
 
 The wrapper `scripts/goal052_pilot.sh` has passed shell syntax validation.
 GNU timeout 9.4 is present on deep-server. A temporary process-tree probe
@@ -79,8 +80,9 @@ and permits 60 seconds before KILL. It writes a separate pilot exit marker;
 124 is the expected time-cap outcome, while 137 may indicate forced shutdown.
 Neither is a successful experiment-completion marker.
 
-After approval, stage the wrapper without changing the bound scientific source,
-recheck existing sessions, source/receipt identity and CPU capacity, then launch:
+The wrapper was staged without changing the bound scientific source. Source
+and both qualification identities were checked before launch; server load
+was 48.11 and available RAM 118 GiB. Launch command:
 
 ```sh
 tmux new-session -d -s dsdm-goal052-pilot \
@@ -89,5 +91,7 @@ tmux new-session -d -s dsdm-goal052-pilot \
 
 At the deadline, verify no pilot worker remains, retain completed leaves and
 logs, and return the measured cost and a next-route recommendation. Do not
-continue beyond the cap without the ensuing resource decision. The hourly
-qualification follow-up is paused while Barry's decision is pending.
+continue beyond the cap without the ensuing resource decision. The existing
+follow-up now checks the pilot every four hours. Its cadence is independent
+of the wrapper's enforced deadline. See the bound `pilot-launch.json` receipt
+in the private run root and `evidence/seawfb_dsdm/goal052/`.

@@ -303,10 +303,13 @@ is deferred because it changed Linux numerics. Source `e309ca8` is staged on
 deep-server. Its fresh two-worker canary passed at 14:37 AEST, with bitwise
 repeat agreement and maximum worker RSS 2.545 GiB. The full-row profile also
 passed: 79.54 minutes for auxiliary pretraining and 2.395 GiB peak RSS. Returned
-receipt hashes and fit invariants are verified. No production leaves exist yet.
-See `docs/goals/052-seawfb-dsdm-experiment/ComputeRoute.md` for the prepared
-24-hour, two-worker CPU pilot proposal. Barry's resource decision is pending;
-`continue-dsdm-goal052` is paused. No larger production commitment is implied.
+receipt hashes and fit invariants are verified. The bounded pilot is now active.
+Barry approved the 24-hour, two-worker CPU pilot. It launched on deep-server
+at 16:28 AEST on 12 September in `dsdm-goal052-pilot`, with an enforced deadline
+at approximately 16:28 AEST on 13 September (plus 60 seconds for termination).
+`continue-dsdm-goal052` now checks every four hours. See `ComputeRoute.md` and
+`evidence/seawfb_dsdm/goal052/pilot-launch.json`. No larger production
+commitment is implied.
 Outer outcomes remain sealed. Routine implementation and tests
 can proceed; material scientific amendments or substantial new compute
 commitments require discussion. Start from the current Goal052 runbook and
