@@ -555,3 +555,15 @@
   /data (443 GiB free), aggregate/training-receipt hashes and zero run exit
   passed post-resize checks. No containers are running. The heartbeat remains
   active and silent while the acceptance decision is pending.
+
+
+## 2026-09-12 — accepted; completed monitoring paused
+
+- Barry approved proceeding autonomously after the acceptance recommendation.
+  Recorded acceptance under the original family-level gate, retaining the
+  candidate failure pattern as an explicit limitation. No refit or change to
+  scientific source/configuration or aggregate evidence.
+- Paused `check-dsdm-nectar-progress` through the app; status PAUSED confirmed.
+  Nectar remains parked; remote evidence is preserved.
+- Advanced to frozen Goal052 implementation and validation, with outer
+  evaluation and material scientific/resource decisions still excluded.

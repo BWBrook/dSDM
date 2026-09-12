@@ -278,51 +278,28 @@ candidates remain everywhere. Rejections are more frequent in the lowest
 prevalence quartile (18/75 versus 4/75 in the highest), reducing tuning breadth,
 although the frozen family-availability gates pass at 100%.
 
-**20:30 AEST, 10 September: all computation and verification are complete;
-acceptance requires one scientific decision.** Native `validate --complete`
-replayed all 303 endpoints and both job exit markers are zero. The separate
-canonical training-contract check passed all 785 target/fold pairs and 1,515
-training endpoint/fold pairs. Final logs and the training receipt have been
-returned with verified hashes; the canonical aggregate is now tracked at
-`evidence/seawfb_conventional/goal051/summary.json`. The bound completion
-receipt is `completion_review.json` beside it.
+**12 September: Goal051 is accepted.** Barry approved proceeding autonomously
+under the recommendation to retain the original family-level coverage gate
+and explicitly document the prevalence-patterned `enet08` candidate failures.
+No refitting or post hoc numerical/gate change occurred. All 303 endpoints,
+449 q conditions and 150 q surfaces passed native and independent verification;
+results are returned with verified hashes. The accepted aggregate and bound
+receipt are `evidence/seawfb_conventional/goal051/summary.json` and
+`completion_review.json`. The detailed limitations and results are in the
+Goal051 Decision record.
 
-The independent acceptance review found an ambiguity: the original frozen
-code/config checks family availability at prevalence extremes (100% coverage,
-passing the 90% gate), but Goal.md and Decision.md unqualifiedly say
-prevalence-patterned "failure" stops the goal. The 49 rejected `enet08`
-candidates are concentrated at lower prevalence: 18/75 versus 4/75 endpoints.
-Do not silently resolve this in favour of the narrower code interpretation.
-The recommendation prepared for Barry is to accept the original family-level
-gate with this candidate-level pattern as an explicit limitation, without a
-post hoc test or refit. See the current Decision section for the evidence and
-inner-fold results. Goal051 is **verified, not yet accepted**. Goal052 remains
-unstarted and outer outcomes sealed.
+Nectar remains parked at c3.xsmall with all evidence preserved. The completed
+Goal051 heartbeat `check-dsdm-nectar-progress` is paused. Do not restart its
+production chain or repeat heavy validation on the parked VM.
 
-No compute jobs remain. Nectar is parked ACTIVE at c3.xsmall (1 vCPU, 2 GiB)
-after the 20:30 AEST resize; SSH, /data and evidence hashes passed post-resize
-checks. Its data volume and remote evidence are preserved. The heartbeat
-remains active but must stay quiet while this reported decision is pending;
-no duplicate computation, automatic repair or new gate interpretation is
-authorized. After Barry adjudicates acceptance, record his decision and pause
-the follow-up; any Goal052 launch needs separate authority.
-
-Barry authorized a **three-hour recurring follow-up in this thread** on
-8 September, superseding the earlier pause on monitoring. The app automation
-is `check-dsdm-nectar-progress`. Inspect the existing Nectar chain, handle
-routine interruptions, and continue verification/acceptance when outputs are
-ready. Pause the follow-up once Goal051 is accepted. Do not launch duplicate
-jobs or start Goal052 without its separate execution authority.
-
-On Barry's next continuation, inspect the existing jobs first using the
-[Goal 051 runbook](docs/goals/051-seawfb-conventional-benchmark/Runbook.md),
-which has exact log/exit paths. Check Nectar's existing session, current stage,
-exit marker, and checkpoint inventory; resume valid checkpoints if interrupted.
-Keep the stopped Mac run as history. Goal 050's earlier PyTorch throughput
-result did not choose this workload's route.
-An exit code or receipt alone is not
-scientific acceptance: inspect the emitted evidence and proportionally verify
-metrics, exclusions, and coverage.
+The current task advances the prospectively frozen Goal052 comparison through
+implementation and validation under Barry's autonomy request. Its original
+config is preserved byte-for-byte as the scientific freeze; execution status
+and authority are recorded in the Goal052 Decision/Runbook. No Goal052 fits
+have run yet. Outer outcomes remain sealed. Routine implementation and tests
+can proceed; material scientific amendments or substantial new compute
+commitments require discussion. Start from the current Goal052 runbook and
+live source/test state, not the historical Goal051 launch paragraphs above.
 
 ## What Follows
 
@@ -332,8 +309,8 @@ trunk, and full fine-tuning; auxiliary sizes 20/80/full and five paired seeds.
 A bounded four-architecture panel selects one shared architecture using
 training-only evidence. Do not redesign it after seeing conventional scores.
 
-Accept Goal 051 before executing Goal 052, and establish execution authority
-at that transition. Its [v3 config](config/goal052_seawfb_dsdm.json) records
+Goal051 is now accepted and Barry has authorized autonomous continuation.
+Its [v4 config](config/goal052_seawfb_dsdm.json) records
 both numerical amendments. A later, separately authorized bird outer
 evaluation precedes cross-case synthesis and manuscript rewriting.
 

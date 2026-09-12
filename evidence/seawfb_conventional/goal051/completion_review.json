@@ -1,4 +1,12 @@
 {
+  "acceptance_decision": {
+    "authority": "Barry: Proceed, as autonomous as is feasible please.",
+    "criterion_interpretation": "Original prospectively frozen family-level coverage gates; candidate-level prevalence pattern retained as explicit limitation.",
+    "date": "2026-09-12",
+    "heartbeat_status": "PAUSED",
+    "refit_performed": false,
+    "scientific_design_changed": false
+  },
   "acceptance_review": {
     "all_family_coverage": 1.0,
     "candidate": "elastic_net/enet08",
@@ -184,7 +192,7 @@
     "vm_uuid": "2c0b08ec-1f02-4864-90a9-8d0fd1816d2e"
   },
   "schema_version": "goal051-completion-review-v1",
-  "status": "numerically_verified_acceptance_pending_prevalence_scope_decision",
+  "status": "goal051_accepted_with_documented_candidate_failure_limitation",
   "summary_sha256": "9c1bf1ff8884fae35fe7ebe6f8d19e2aae46ab7eedee252b398c0c74705dd2d8",
   "verified_at_utc": "2026-09-10T10:29:09.836887+00:00"
 }

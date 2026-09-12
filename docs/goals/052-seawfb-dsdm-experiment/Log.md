@@ -27,3 +27,12 @@
   exclusions and strict convergence gate; fresh v4 q provenance replaces no
   historical receipt. Goal052 architecture, contrasts and execution boundary
   are unchanged, and no Goal052 model has run.
+
+
+## 2026-09-12 — implementation and validation started
+
+- Goal051 accepted by Barry with the original family-level coverage gate and
+  the candidate-level failure limitation documented; no refit.
+- User requested autonomous continuation. Started a bounded audit of reuse
+  and training contracts before implementing the frozen Goal052 experiment.
+  Config remains unchanged; no Goal052 fit or outer access has occurred.

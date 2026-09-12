@@ -38,20 +38,12 @@ The independent metric audit passed all 303 endpoints and 6,763 groups;
 its receipt is `independent_endpoint_audit.json` beside the aggregate.
 `completion_review.json` binds the completed native/training/transfer evidence.
 
-**Do not relaunch: numerical verification is complete; acceptance is pending
-Barry's adjudication.** The original executable gate addresses family coverage
-at prevalence extremes and passes at 100%, but the Goal/Decision prose uses
-unqualified prevalence-patterned failure wording. All 49 rejected `enet08`
-candidates are retained; 18/75 low-prevalence versus 4/75 high-prevalence
-endpoints are affected. The independent review recommends accepting the
-original family-level gate with this candidate-level limitation, subject to
-Barry's explicit decision. See Decision.md. No new test or refit is authorized.
-
-Nectar is parked ACTIVE at c3.xsmall (1 vCPU, 2 GiB); SSH, /data and evidence
-hashes passed post-resize checks. Preserve all remote evidence. The three-hour follow-up
-stays active and silent while this reported decision is unchanged. Once Barry
-accepts Goal051, record that decision and pause it. Goal052 remains unstarted.
-The following launch example is historical, not a continuation instruction.
+**Accepted on 12 September following Barry's approval.** The original
+family-level coverage gate applies; the uneven `enet08` candidate failures
+remain an explicit limitation. No refit or retrospective test occurred.
+Nectar is parked at c3.xsmall with all evidence preserved. The Goal051
+heartbeat is paused. Continue via the Goal052 runbook; do not relaunch this
+completed benchmark. The launch example below is historical.
 
 ```sh
 # On Nectar, after source/input/test validation and checking no duplicate job:

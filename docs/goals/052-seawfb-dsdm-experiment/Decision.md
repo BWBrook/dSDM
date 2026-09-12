@@ -43,3 +43,19 @@ versioned protocol and full rerun.
 The output is a relative habitat-suitability index. Any improvement or null
 result is an inner spatial-generalisation result until a later, explicitly
 authorized outer evaluation exposes the three frozen IBRA holdouts.
+
+
+## 12 September 2026 — execution preparation authorized
+
+Barry's instruction to proceed as autonomously as feasible follows acceptance
+of Goal051 under the documented family-level gate interpretation. Advance this
+frozen experiment through implementation and validation. Its scientific config
+remains unchanged, including the historical protocol-only status fields;
+this dated decision records the transition from freeze to execution preparation.
+The Goal051 acceptance receipt and aggregate supply the bound conventional
+controls. No new architecture or performance-informed adjustment is authorized.
+
+Resolve routine implementation details from established project contracts;
+consult Barry if a material scientific ambiguity cannot be settled from them,
+or if production requires a substantial new compute commitment. NCP, SEH and
+NNC outcomes remain sealed. No Goal052 fit has run at this transition.

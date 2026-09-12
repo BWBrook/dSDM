@@ -1,8 +1,9 @@
 # Goal 052 runbook
 
-This runbook is inactive until Goal 051 is accepted. The command names below
-are the frozen interface expected of the later implementation; they are not
-available in this protocol-only goal:
+Goal051 was accepted on 12 September and Barry authorized autonomous
+continuation. Implementation and validation are now in preparation. The
+scientific config remains frozen; the command names below are the required
+interface and are not yet implemented. No Goal052 fit has run:
 
 ```sh
 uv run --locked pytest -q tests/test_goal052_seawfb_dsdm.py

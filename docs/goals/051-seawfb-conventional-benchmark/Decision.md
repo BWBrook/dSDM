@@ -127,3 +127,20 @@ digests were independently verified. This distinction remains an audit limit.
 
 The next decision is to adjudicate Goal051 acceptance as above. If accepted,
 Goal052 execution still needs separate authority; its design remains frozen.
+
+
+## 12 September 2026 — accepted by Barry
+
+Barry approved proceeding autonomously after the recommendation above.
+Goal051 is accepted under its prospectively frozen operational family-level
+coverage gate, with the prevalence-patterned `enet08` candidate failures and
+their unknown counterfactual effect retained as explicit limitations. No
+candidate refit, retrospective gate, numerical relaxation or scientific
+redefinition was made. The verified v4 benchmark is the conventional reference
+for Goal052; its source, configuration and aggregate hashes remain unchanged.
+
+The completed Goal051 heartbeat is paused. Nectar remains parked with all
+remote evidence preserved. Proceed to implementation and validation of the
+frozen Goal052 design within the user's autonomy request; preserve sealed
+outer outcomes and consult Barry for a material scientific amendment or
+substantial new compute commitment.
