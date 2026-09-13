@@ -84,3 +84,25 @@ The pilot has now stopped at the 13 September 16:28 AEST cap (exit 124),
 with no live pilot workers. Two completed pretraining checkpoints are verified
 and retained. Four-hour checks are paused. Start from `PilotReview.md` for
 the closeout and next resource proposal; do not restart the old pilot wrapper.
+
+
+## 2026-09-13 16:59 AEST — eight-worker qualification passed
+
+Barry approved the 30-minute/four-worker-hour qualification. The CLI rejected
+its hard-coded two-worker ceiling before fitting; the failed attempt is
+preserved. A separately hashed driver called the unchanged canary worker,
+with 16 jobs across eight spawned processes, within the original 17:22 AEST
+deadline. It exited 0 at 16:59:38 AEST after 117.22 seconds. All eight PIDs
+completed two jobs, and every fit field except runtime plus every prediction
+and trunk digest matches the prior two-worker result. Independent checks
+covered source/runtime, driver binding, finite state/loss, full data contracts,
+q reuse, reset/replay, pairing, transfer and frozen state. All 18 manifest file
+hashes match the server, including both preserved production checkpoints.
+
+Peak worker RSS was 2.555 GiB; maximum sampled summed process RSS was 18.324
+GiB (ten-second sampling; shared pages may be counted more than once). No
+qualification process or semaphore remains. Fitting source stays `e309ca8`;
+full-row parallel throughput is not measured. See `eight-worker-review.json`
+and `eight-worker-manifest.json` under tracked Goal052 evidence. The new
+48-hour/eight-worker continuation is prepared, not authorized or launched.
+The four-hour follow-up remains paused pending that resource decision.

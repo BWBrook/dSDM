@@ -1,0 +1,64 @@
+{
+  "status": "goal052_eight_worker_canary_independently_verified",
+  "identity": {
+    "acceptance_sha256": "cb97d64c0ac53bd11f24c1acc2e125b71d6b401bf9d9adac1a8495033c5b0157",
+    "baseline_summary_sha256": "9c1bf1ff8884fae35fe7ebe6f8d19e2aae46ab7eedee252b398c0c74705dd2d8",
+    "goal051_identity": {
+      "config_sha256": "48465d0a5180931a72ffc87aa830f6ce60da93a4b491558540af5afa9d42884d",
+      "goal050_crossfit_sha256": "b3abdb006fb7d384445db376d5ba3f0f7b48afd170982494f88ff20ef612e804",
+      "goal050_curves_sha256": "317a5513b6645edc588c63db1c2d26afaea3edfa202480b2f46ca58a2817c3d6",
+      "goal050_manifest_sha256": "239dd61cc5d3ab942a813201c0cb4117820b74367c7ba71deffddc6990d36198",
+      "goal050_transforms_sha256": "1d8b3d09b139264e288630f283e330d28919c00b4631132aa9a79529ad3abb52",
+      "goal052_config_sha256": "04b667168944b39ced1044da8f381553c4024e31cca1f5590f2fbc693e521f9a",
+      "source_sha256": "24057a4ef6c857d26e0fb4deecf46fe81cfc0e91c67e34d92dbdd77d7ca7ce2e",
+      "uv_lock_sha256": "51712e74b2f9d78a4efb7bfd6732244188e8c6c5bc722f7a78f2724e6b8b84f6"
+    },
+    "source_sha256": "fce7fb52b386c662c198e264aebc007de203e363b5ccc917ccd55ebaa2470926"
+  },
+  "canary_sha256": "6a67e43792656813ae0c40979161d8e0d6101576b7ea08650a0a1f7ad9f36351",
+  "qualification_driver_sha256": "058321c2c3101774ef10e0f10a6ed46fa63584c641734601801cb8e5c3b3110b",
+  "prior_canary_sha256": "578128be69aae014837906d26a64c080455dc2b24910f76fdb856b49ce064c43",
+  "full_profile_sha256": "b580e1fd551deb1f51d6b4a3f87f1ac020c96a05d78aad4884fa6d70e20a102f",
+  "qualified_workers": 8,
+  "jobs": 16,
+  "jobs_per_pid": {
+    "29682": 2,
+    "29674": 2,
+    "29681": 2,
+    "29683": 2,
+    "29677": 2,
+    "29679": 2,
+    "29678": 2,
+    "29680": 2
+  },
+  "finished_utc": "2026-09-13T06:59:38.135032+00:00",
+  "deadline_utc": "2026-09-13T07:22:03.821374+00:00",
+  "driver_elapsed_seconds": 117.217453,
+  "peak_worker_rss_gib": 2.5553817749023438,
+  "peak_sampled_group_rss_gib": 18.32364273071289,
+  "peak_sampled_worker_rss_gib": 17.61931610107422,
+  "peak_sampled_group_cpu_percent": 840.2,
+  "load_1min_range": [
+    0.0,
+    6.38037109375
+  ],
+  "resource_sampling_interval_seconds": 10,
+  "memory_caveat": "sum of process RSS; shared pages may be counted more than once",
+  "checks": [
+    "all_return_manifest_file_hashes",
+    "unchanged_fitting_source_and_profile_identity",
+    "driver_hash_binding",
+    "eight_concurrent_pids_each_two_jobs",
+    "all_prediction_and_trunk_digests_match_prior_two_worker_canary",
+    "all_fit_receipts_equal_prior_except_runtime",
+    "finite_states_losses_reset_replay_paired_head_transfer_freeze",
+    "full_data_contract_bounded_optimization_and_q_hash",
+    "exit_zero_before_original_deadline",
+    "two_preserved_production_checkpoint_payload_and_receipt_hashes",
+    "no_remaining_qualification_process_or_semaphore"
+  ],
+  "production_epoch_throughput_measured": false,
+  "ecological_metrics_computed": false,
+  "outer_response_rows_read": 0,
+  "production_extension_authorized": false
+}

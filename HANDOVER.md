@@ -5,6 +5,18 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
+## Latest Goal052 state — 13 September, 16:59 AEST
+
+The capped eight-worker CPU qualification passed: 16 jobs, two per process,
+with exact agreement against the prior two-worker results. Peak worker RSS
+was 2.555 GiB; maximum sampled aggregate process RSS was 18.324 GiB. Fitting
+source remains `e309ca8`; a separately hashed qualification driver is recorded
+in `metadata/goal052_canary.json`. Both production checkpoints are preserved.
+No compute job is active. The four-hour follow-up is paused. A prepared
+48-hour/eight-worker continuation (384 worker-hours) awaits Barry's decision;
+see Goal052 `PilotReview.md`. Do not restart the old pilot or interpret the
+canary as a full-row parallel throughput measurement.
+
 ## Start Here
 
 Work directly with Barry here. The Chief-of-Staff worktree and named
@@ -311,9 +323,9 @@ bridge_wide took 11.97 hours (33 discovery, selected/replay 3), bridge_control
 no target leaves, architecture selection or ecological metrics were generated.
 See `docs/goals/052-seawfb-dsdm-experiment/PilotReview.md` and the tracked
 `pilot-review.json`/`pilot-closeout-manifest.json` evidence. The four-hour
-follow-up is paused. The proposed next resource decision is a 30-minute,
-eight-worker metric-free canary (four worker-hours plus termination allowance),
-with no automatic production extension. No new work has been launched.
+follow-up is paused. The subsequent eight-worker qualification passed; the
+latest state at the top of this handover and `PilotReview.md` describe the
+prepared 48-hour continuation. No production extension has been launched.
 Outer outcomes remain sealed. Routine implementation and tests
 can proceed; material scientific amendments or substantial new compute
 commitments require discussion. Start from the current Goal052 runbook and

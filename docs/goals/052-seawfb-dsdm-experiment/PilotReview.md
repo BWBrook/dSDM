@@ -46,38 +46,68 @@ idle with about 122 GiB available memory. The changing load, architecture,
 head count, discovery/stopping/replay costs and selected epochs prevent a
 simple extrapolation from the two completed fits or the one-epoch profile.
 
-## Proposed next resource decision
+## Eight-worker qualification authorized
 
-Recommend a native eight-worker metric-free canary on deep-server, capped
-at **30 minutes (at most four worker-hours), plus a 60-second termination
-allowance**. Do not repeat the expensive two-worker pilot. This is a separate
-resource request beyond the exhausted pilot cap; it has not been launched.
-An independent methodological review supports this next tranche.
+Barry approved the separate 30-minute check on 13 September: at most four
+worker-hours, plus a 60-second termination allowance. The original deadline
+is 17:22:03 AEST. The public CLI rejected eight workers before fitting because
+its canary entry point caps concurrency at two. Its failed log is preserved.
 
-Eight single-thread workers would use one quarter of the host's 32 physical
-cores. The prior canary peak suggests roughly 22 GiB worker RSS in aggregate,
-plus parent/store overhead; this is a sizing estimate, not eight-worker
-qualification. Check live capacity again before launch. Preserve the current
-two-worker canary in the existing qualification-history directory before the
-native command writes its new receipt. Use the exact current source, lock,
-inputs and CPU backend. No GPU/driver/cloud change is proposed.
-
-Prepared command (run in a distinct detached session after authorization;
-capture its log and exit code separately from the completed pilot):
-
-```sh
-cd /data/codex/repos/dSDM
-export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 CUDA_VISIBLE_DEVICES=""
-timeout --signal=TERM --kill-after=60s 30m \
-  ~/.local/bin/uv run --locked python -m dsdm_phase1.goal052_seawfb_dsdm \
-  canary --root . --device cpu --workers 8
-```
+The separate `scripts/goal052_canary8.py` driver invokes the same frozen canary
+worker with 16 jobs across eight spawned processes. It reuses the hash-bound,
+score-free largest case from the prior two-worker receipt, preserves fitting
+source identity, and records its own SHA-256 in the new receipt. The prior
+receipt is archived under private `qualification-history/e309ca8-two-worker/`.
+The driver started at 16:57:40 AEST in `dsdm-goal052-canary8` with only the
+remaining 1,462 seconds to the original deadline. The supervisor, failed CLI
+attempt, launch receipt and resource samples are under private
+`qualification-eight-workers/`. No production extension is authorized.
 
 Success requires all eight worker PIDs exercised, repeated prediction/trunk
 digests agreeing, finite state and transfer/freeze invariants passing, and
-observed memory fitting the host. Record aggregate process memory and load
-as well as per-worker peaks. Canary timing is bounded engineering evidence,
-not full-row parallel throughput. The existing full-row one-worker profile
-remains useful if source and runtime identities match. After the canary,
-prepare a separately capped eight-worker production proposal using the new
-measurements; do not automatically launch or extrapolate a campaign ETA.
+observed memory fitting the host. Aggregate process RSS samples can double
+count shared pages. Canary timing is bounded engineering evidence, not
+full-row parallel throughput. The existing full-row one-worker profile remains
+useful if source and runtime identities match. After the check, prepare a
+separately capped production proposal; do not automatically launch or
+extrapolate a campaign ETA.
+
+## Eight-worker result — 13 September 2026, 16:59 AEST
+
+The check passed in 117.22 seconds, exit 0, before the original deadline.
+All eight concurrent worker PIDs completed two jobs each. Every prediction,
+trunk digest, data contract and fit receipt field other than runtime matches
+the prior two-worker canary. Finite state/loss, paired heads, reset/replay,
+transfer and frozen-trunk invariants passed. Returned hashes bind the driver,
+new canary, prior profile, logs and unchanged production checkpoints.
+No qualification processes or semaphore files remain.
+
+Maximum recorded worker RSS was **2.555 GiB**; the maximum ten-second sample
+of summed process RSS was **18.324 GiB**, including the parent (shared pages
+may be counted more than once). The post-run host has about 122 GiB available
+and no swap use. This qualifies eight-worker execution for unchanged fitting
+source `e309ca8`; full-row throughput at eight workers remains unmeasured.
+Compact evidence is `evidence/seawfb_dsdm/goal052/eight-worker-review.json`
+and `eight-worker-manifest.json`. No ecological metrics or outer responses
+were accessed, and the two production checkpoints remain unchanged.
+
+## Prepared next production decision
+
+Recommend a **48-hour, eight-worker CPU continuation** on deep-server, capped
+at **384 worker-hours plus 60 seconds for termination**, with the requested
+four-hour checks. This longer window gives the deeper architectures more time
+to complete than the first 24-hour pilot, while measuring actual concurrent
+full-data cost. It does not guarantee their completion or supply a campaign
+ETA. The frozen scheduler reuses the two verified checkpoints and restarts
+interrupted fits from scratch. Unfinished fits at the new cap would again lose
+their within-fit progress. No epoch, patience, optimizer or scientific change
+is proposed.
+
+`scripts/goal052_pilot8.sh` is prepared and passes shell syntax validation.
+Its preflight binds the verified canary and separate driver's hash; the native
+runner then checks current fitting identity, accepted inputs and host profile.
+After authorization, recheck live host capacity, stage the wrapper, record its
+hash and dispatch time/deadline, and launch it in `dsdm-goal052-pilot8`. Resume
+the existing four-hour follow-up for that exact launch, then pause and review
+at the cap. **This continuation has not launched and requires Barry's resource
+decision.** No cloud allocation or driver change is needed.

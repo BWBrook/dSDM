@@ -70,3 +70,13 @@ pilot described in `ComputeRoute.md`; it does not authorize a full campaign,
 cloud allocation, driver change or scientific amendment. Retain completed
 checkpoints, stop at the cap and review measured lifecycle cost before the next
 resource commitment.
+
+
+## 13 September 2026 — eight-worker qualification authorized
+
+Barry approved the proposed eight-worker metric-free canary, capped
+at 30 minutes (four worker-hours) plus a 60-second termination allowance.
+This is qualification only. Preserve the previous canary and completed pilot
+checkpoints. Review deterministic repetition, state, memory and contention
+before proposing a separately capped production run; no production extension
+is authorized by this decision.

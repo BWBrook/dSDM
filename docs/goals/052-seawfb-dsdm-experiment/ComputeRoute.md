@@ -2,8 +2,9 @@
 
 Status: the approved 24-hour pilot stopped at its cap on 13 September,
 with two verified pretraining checkpoints and no target or ecological results.
-Monitoring is paused. `PilotReview.md` records the closeout and the proposed
-30-minute, eight-worker qualification check (new authorization required).
+Monitoring is paused. The authorized eight-worker qualification passed on
+13 September; `PilotReview.md` records its measurements and a prepared
+48-hour/eight-worker continuation requiring a new resource decision.
 The original approved plan and qualification measurements follow.
 
 ## Verified measurement

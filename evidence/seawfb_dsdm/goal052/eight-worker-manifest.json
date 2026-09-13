@@ -1,0 +1,74 @@
+{
+  "metadata/goal052_canary.json": {
+    "bytes": 576221,
+    "sha256": "6a67e43792656813ae0c40979161d8e0d6101576b7ea08650a0a1f7ad9f36351"
+  },
+  "metadata/goal052_full_epoch_profile.json": {
+    "bytes": 18412,
+    "sha256": "b580e1fd551deb1f51d6b4a3f87f1ac020c96a05d78aad4884fa6d70e20a102f"
+  },
+  "scripts/goal052_canary8.py": {
+    "bytes": 2969,
+    "sha256": "058321c2c3101774ef10e0f10a6ed46fa63584c641734601801cb8e5c3b3110b"
+  },
+  "data/processed/dsdm/goal052-seawfb-dsdm-experiment/qualification-eight-workers/canary8.exit": {
+    "bytes": 2,
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  },
+  "data/processed/dsdm/goal052-seawfb-dsdm-experiment/qualification-eight-workers/canary8.log": {
+    "bytes": 576221,
+    "sha256": "18523d883aa591619f41c6beba96e7ba1b89b9c35cee34d5a0ad0767203a2460"
+  },
+  "data/processed/dsdm/goal052-seawfb-dsdm-experiment/qualification-eight-workers/resources.json": {
+    "bytes": 4267,
+    "sha256": "c60b8a9f09856d28e0aeadc590afbbba3332b8c9ed88646fd0a48ea27ed538a4"
+  },
+  "data/processed/dsdm/goal052-seawfb-dsdm-experiment/qualification-eight-workers/supervise-before-launch-fix.py": {
+    "bytes": 1911,
+    "sha256": "0dc404e526fb2afe5cc3cc4460389f303c5f777ddd136621686e84240de7d612"
+  },
+  "data/processed/dsdm/goal052-seawfb-dsdm-experiment/qualification-eight-workers/launch.json": {
+    "bytes": 496,
+    "sha256": "0f4bb8248e28ad4d153679395383cf832ece04b53ac574295cadb6ac5e5517be"
+  },
+  "data/processed/dsdm/goal052-seawfb-dsdm-experiment/qualification-eight-workers/supervise.py": {
+    "bytes": 2006,
+    "sha256": "cb7161876c6e79222319aafd7f0f9e545974a784d3e3d1b55e61dd7a95d4733e"
+  },
+  "data/processed/dsdm/goal052-seawfb-dsdm-experiment/qualification-eight-workers/failed-cli-worker-limit/canary8.exit": {
+    "bytes": 2,
+    "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+  },
+  "data/processed/dsdm/goal052-seawfb-dsdm-experiment/qualification-eight-workers/failed-cli-worker-limit/canary8.log": {
+    "bytes": 866,
+    "sha256": "b47f74e881a57c74b4b20a4fae6f445cf6224b17b3d151f20b51b5b5e7d719b5"
+  },
+  "data/processed/dsdm/goal052-seawfb-dsdm-experiment/qualification-eight-workers/failed-cli-worker-limit/resources.json": {
+    "bytes": 349,
+    "sha256": "d5de4fff748b780d4ee026305714d2be544523f302fcb9a851285d427d7ae3da"
+  },
+  "data/processed/dsdm/goal052-seawfb-dsdm-experiment/qualification-eight-workers/failed-cli-worker-limit/launch.json": {
+    "bytes": 315,
+    "sha256": "f80b6f7b8d3b39137a9086ae65ea41909887b46538ce50f94d82d4e63ee55460"
+  },
+  "data/processed/dsdm/goal052-seawfb-dsdm-experiment/qualification-eight-workers/failed-cli-worker-limit/supervise.py": {
+    "bytes": 1914,
+    "sha256": "d45d6d3401f0c60193cfc5d49a267ba2e86b3cb46f44b47a1c70184a66bc3887"
+  },
+  "data/processed/dsdm/goal052-seawfb-dsdm-experiment/pretraining/fcb221298f76e03d08ad9b8eff740a691a38bacf7e0f9783e508e49b238ffed5.pt": {
+    "bytes": 263505,
+    "sha256": "ee24e56ec4c17be12989ee16ee0f552bf0d1b2765475a832352bf8ee5f746d0b"
+  },
+  "data/processed/dsdm/goal052-seawfb-dsdm-experiment/pretraining/9d6496a1272fbb056acf7b5cc952747d2190d5f3b69c307bc17dd021ede2b40a.json": {
+    "bytes": 24926,
+    "sha256": "c76c7a8946e37a563dcc3e6d8ce9d8bf898d6756830a717bf07b72f0ff04f079"
+  },
+  "data/processed/dsdm/goal052-seawfb-dsdm-experiment/pretraining/fcb221298f76e03d08ad9b8eff740a691a38bacf7e0f9783e508e49b238ffed5.json": {
+    "bytes": 24960,
+    "sha256": "f52abd6771a4bc3ca6255b10e945037034bceb8d3cf93a0a9394bb1533c5b734"
+  },
+  "data/processed/dsdm/goal052-seawfb-dsdm-experiment/pretraining/9d6496a1272fbb056acf7b5cc952747d2190d5f3b69c307bc17dd021ede2b40a.pt": {
+    "bytes": 519057,
+    "sha256": "00e1ba0405c15466969dfb62e4f66d5a258aa2cd967a72f4849e7e60638bd2e7"
+  }
+}
