@@ -321,3 +321,20 @@ review measured throughput, then choose and execute the next justified
 allocation under Barry's standing authority. Resource allocation alone no
 longer requires approval. Record each subsequent allocation and review point.
 Scientific changes and outer access retain their existing review boundaries.
+
+
+## 13 September 2026, 21:12 AEST — four-hour continuation check
+
+All eight original workers remain active in timeout group 30921 after
+4 hours 2 minutes, at 99.9% CPU each with 1.98–2.09 GiB RSS. Host load is
+8.00 and available RAM about 109 GiB, with no swap use. The two starting
+pretraining checkpoints remain unchanged; no new pretraining completion or
+target leaf has appeared. The log reports their reuse (2/200 screen tasks)
+and there is no exit marker. This establishes active execution, not a new
+fit result or throughput measurement.
+
+Fitting identity, CPU runtime, qualification driver, canary/profile, wrapper
+and launch hashes match the launch evidence; all four existing checkpoint
+payload/receipt hashes remain unchanged. No intervention or resource change
+is warranted. Continue the original 15 September 17:10 AEST deadline and
+four-hour cadence; no scientific scoring or outer access occurred.

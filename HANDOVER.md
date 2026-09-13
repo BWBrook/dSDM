@@ -5,7 +5,7 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Latest Goal052 state — 13 September, 17:10 AEST
+## Latest Goal052 state — 13 September, 21:12 AEST
 
 The capped eight-worker CPU qualification passed: 16 jobs, two per process,
 with exact agreement against the prior two-worker results. Peak worker RSS
@@ -19,6 +19,9 @@ Four-hour checks are ACTIVE. Barry granted standing authority to allocate
 compute resources; review this run at the cap, then execute justified further
 allocations autonomously. See Goal052 Decision, PilotReview and the bound
 `pilot8-launch.json`. Scientific and sealed outer boundaries still apply.
+At the four-hour check, all eight workers remain active at 99.9% CPU,
+with 1.98–2.09 GiB RSS each and about 109 GiB available RAM. Both initial
+checkpoints retain their hashes; no new fit has completed. No intervention.
 
 ## Start Here
 
