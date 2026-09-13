@@ -378,3 +378,38 @@ or failure is recorded. No resource change is warranted; retain the original
 15 September 17:10 AEST deadline and four-hour cadence. A single new fit does
 not establish campaign throughput, comparative performance or a new epoch
 budget. No ecological scores or outer outcomes were accessed.
+
+
+## 14 September 2026, 09:14 AEST — nine checkpoints verified
+
+Six new block-0/full/seed00 pretraining checkpoints passed verification,
+bringing the architecture-screen total to 9/200 (seven new completions in
+this continuation, plus two reused checkpoints). No target leaves exist.
+
+| Architecture | Held fold | Lifecycle hours | Discovery epochs | Selected/replay epochs |
+| --- | ---: | ---: | ---: | ---: |
+| bridge_deep | 0 | 14.67 | 35 | 5 |
+| seawfb_scale | 0 | 14.84 | 32 | 2 |
+| bridge_deep | 1 | 12.65 | 32 | 2 |
+| bridge_wide | 1 | 13.22 | 34 | 4 |
+| bridge_control | 2 | 12.27 | 33 | 3 |
+| bridge_wide | 2 | 13.33 | 35 | 5 |
+
+All 18 current checkpoint payload/receipt files matched the remote transfer
+manifest. Native loading verified finite tensors and saved trunk digests;
+source/accepted identity, frozen budget, seeds and reset/replay invariants
+passed. Independent stopping-history replay reproduced every selected epoch
+and patience stop. Reconstructing block-0/fold-2 auxiliary data reproduced the
+full role, head, exclusion, weight, transform and row contracts. Other new
+receipts exactly matched the previously reconstructed fold-0/fold-1 contracts.
+Six compact receipts were added to `evidence/seawfb_dsdm/goal052/pilot-checkpoints/`;
+payloads and the transfer manifest remain private.
+
+All eight original workers remain active after 16 hours 4 minutes at 99.9%
+CPU each, with 2.01–2.11 GiB RSS. Host load is 8.00, available memory about
+109 GiB, and swap use zero. Source/runtime/driver, qualifications, wrapper
+and launch bindings are unchanged. No exit marker or recorded failure exists.
+The deeper architectures have now produced verified checkpoints, but these
+few fits do not establish a campaign ETA or comparative ecological performance.
+Continue the original 15 September 17:10 AEST deadline and four-hour cadence
+without intervention. No ecological scores or outer outcomes were accessed.
