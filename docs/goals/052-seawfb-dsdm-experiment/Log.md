@@ -338,3 +338,17 @@ and launch hashes match the launch evidence; all four existing checkpoint
 payload/receipt hashes remain unchanged. No intervention or resource change
 is warranted. Continue the original 15 September 17:10 AEST deadline and
 four-hour cadence; no scientific scoring or outer access occurred.
+
+
+## 14 September 2026, 01:12 AEST — eight-hour continuation check
+
+All eight original workers remain active in timeout group 30921 after
+8 hours 2 minutes at 99.9% CPU each, with 1.98–2.08 GiB RSS. Host load is
+8.38 and available memory about 109 GiB, with no swap use. The log remains
+at the two reused pretraining checkpoints (2/200 screen tasks); no new
+pretraining completion or target leaf is present, and no exit marker exists.
+Both checkpoint payload/receipt hashes and the source, runtime, qualification
+driver, canary/profile, wrapper and launch bindings remain unchanged.
+No intervention is warranted. Continue the existing deadline of 15 September
+17:10 AEST and four-hour cadence. No new fit result or ecological score is
+claimed from worker activity.
