@@ -352,3 +352,29 @@ driver, canary/profile, wrapper and launch bindings remain unchanged.
 No intervention is warranted. Continue the existing deadline of 15 September
 17:10 AEST and four-hour cadence. No new fit result or ecological score is
 claimed from worker activity.
+
+
+## 14 September 2026, 05:13 AEST — third checkpoint verified
+
+The continuation completed its first new pretraining fit, bringing the screen
+total to 3/200 (three campaign pretraining checkpoints, zero target leaves).
+Block-0/fold-1/full/seed00 `bridge_control` took 35,761.24 seconds (9.93 hours),
+completed 31 discovery/stopping epochs and replayed selected epoch 1. Returned
+payload and receipt hashes match deep-server. Native finite-state loading,
+source/accepted baseline identity, frozen budget, seed namespaces and
+initialization/replay/final-trunk binding passed. Independent stopping-history
+replay selected epoch 1 followed by 30 stale epochs. Local reconstruction of
+the auxiliary data exactly matched the saved roles, exclusions, transforms,
+weights, 167 heads and row counts: 7,012,283 discovery, 1,910,059 stopping and
+8,922,342 replay. The compact verification receipt is under tracked
+`pilot-checkpoints/092e9604f871841f2a0160e1fda87bfd3fd05809a30966257d608c18b46fd8db.json`.
+The model payload remains private.
+
+All eight original workers remain active after 12 hours 3 minutes, at 99.9%
+CPU each with 1.98–2.08 GiB RSS. Host load is 8.00, available memory about
+109 GiB and swap use zero. Both starting checkpoints and source/runtime,
+qualification, wrapper and launch bindings remain unchanged. No exit marker
+or failure is recorded. No resource change is warranted; retain the original
+15 September 17:10 AEST deadline and four-hour cadence. A single new fit does
+not establish campaign throughput, comparative performance or a new epoch
+budget. No ecological scores or outer outcomes were accessed.
