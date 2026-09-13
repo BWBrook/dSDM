@@ -241,3 +241,15 @@ Both original workers remain active after 16 hours 4 minutes, approximately
 Original source, wrapper, qualification and launch bindings and timeout process
 group are unchanged. No intervention, scoring or extension occurred. The
 pilot still stops at 16:28 AEST today, plus its termination allowance.
+
+## 2026-09-13 12:34 AEST — twenty-hour pilot check
+
+Both original workers remain active after 20 hours 5 minutes at approximately
+100% CPU, with 2.11/2.05 GiB RSS. The two previously verified pretraining
+checkpoints retain their receipt hashes; no additional checkpoint or target
+leaf has appeared. The log still reports 2/200 screen-pretraining tasks and
+there is no exit marker. Source/config/lock, wrapper, qualification and launch
+bindings are unchanged. The original timeout process remains active. Load is
+2.01 with 118 GiB available RAM. No intervention or extension was needed.
+The next scheduled check follows the 16:28 AEST deadline and should verify
+termination, retrieve final evidence and review the bounded pilot outcome.
