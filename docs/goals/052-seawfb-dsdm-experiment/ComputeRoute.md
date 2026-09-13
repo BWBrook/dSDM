@@ -2,9 +2,10 @@
 
 Status: the approved 24-hour pilot stopped at its cap on 13 September,
 with two verified pretraining checkpoints and no target or ecological results.
-Monitoring is paused. The authorized eight-worker qualification passed on
-13 September; `PilotReview.md` records its measurements and a prepared
-48-hour/eight-worker continuation requiring a new resource decision.
+The eight-worker qualification passed on 13 September. Its approved 48-hour
+continuation launched at 17:10 AEST with four-hour checks. Barry granted
+standing compute allocation authority; review and select further resources
+autonomously. `PilotReview.md` and `pilot8-launch.json` record the active run.
 The original approved plan and qualification measurements follow.
 
 ## Verified measurement

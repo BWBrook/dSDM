@@ -80,3 +80,17 @@ This is qualification only. Preserve the previous canary and completed pilot
 checkpoints. Review deterministic repetition, state, memory and contention
 before proposing a separately capped production run; no production extension
 is authorized by this decision.
+
+
+## 13 September 2026 — continuation and standing compute authority
+
+Barry instructed: "Launch it. You henceforth have full authority to allocate
+compute resources as you see fit." Launch the prepared 48-hour, eight-worker
+CPU continuation, with four-hour checks. This grants standing authority for
+subsequent compute allocations, route choices and bounded continuations;
+resource commitments alone no longer require another approval. Record the
+measurement, rationale, allocation and stopping/review point for each change.
+The current 48-hour cap remains its operational review point. After reviewing
+results, choose and execute the next appropriate allocation autonomously.
+Scientific protocol changes and sealed outer assessments retain their existing
+boundaries; compute authority does not change the frozen scientific design.

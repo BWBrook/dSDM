@@ -4,7 +4,8 @@ The approved 24-hour, two-worker pilot stopped at its cap. The pilot exit
 marker is 124, modified at 16:28:12.507 AEST on 13 September, approximately
 24 hours after launch. The 16:34 check found no session or process in the
 pilot group. The source and qualification identities remain unchanged.
-The four-hour follow-up is paused. No production extension has been launched.
+At pilot closeout, the four-hour follow-up paused. It has since resumed for
+the approved eight-worker continuation described below.
 
 ## Verified output
 
@@ -91,7 +92,7 @@ Compact evidence is `evidence/seawfb_dsdm/goal052/eight-worker-review.json`
 and `eight-worker-manifest.json`. No ecological metrics or outer responses
 were accessed, and the two production checkpoints remain unchanged.
 
-## Prepared next production decision
+## Approved continuation
 
 Recommend a **48-hour, eight-worker CPU continuation** on deep-server, capped
 at **384 worker-hours plus 60 seconds for termination**, with the requested
@@ -106,8 +107,8 @@ is proposed.
 `scripts/goal052_pilot8.sh` is prepared and passes shell syntax validation.
 Its preflight binds the verified canary and separate driver's hash; the native
 runner then checks current fitting identity, accepted inputs and host profile.
-After authorization, recheck live host capacity, stage the wrapper, record its
-hash and dispatch time/deadline, and launch it in `dsdm-goal052-pilot8`. Resume
-the existing four-hour follow-up for that exact launch, then pause and review
-at the cap. **This continuation has not launched and requires Barry's resource
-decision.** No cloud allocation or driver change is needed.
+Barry approved launch and granted standing compute authority. The run launched
+at 17:10:11 AEST on 13 September in `dsdm-goal052-pilot8`, with its 48-hour
+review point at 17:10:11 AEST on 15 September. Four-hour checks are active.
+Review the evidence at the cap and select subsequent resources autonomously.
+No cloud allocation or driver change was needed.

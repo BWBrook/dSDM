@@ -106,3 +106,31 @@ full-row parallel throughput is not measured. See `eight-worker-review.json`
 and `eight-worker-manifest.json` under tracked Goal052 evidence. The new
 48-hour/eight-worker continuation is prepared, not authorized or launched.
 The four-hour follow-up remains paused pending that resource decision.
+
+
+## 13 September 2026, 17:10 AEST — eight-worker continuation launched
+
+Barry approved launch and granted standing authority to allocate compute
+resources. `dsdm-goal052-pilot8` is running on deep-server from unchanged
+fitting source `e309ca8`. The wrapper started at 17:10:11 AEST; its nominal
+48-hour deadline is **15 September, 17:10:11 AEST**, plus 60 seconds for
+termination. Eight workers are active at approximately one CPU each. The log
+confirms reuse of both verified checkpoints (2/200 screen pretraining); no
+new fit completion or ecological result is claimed at dispatch.
+
+The private `pilot8-launch.json` binds source/qualification/wrapper hashes,
+timestamps, process IDs and exact log/exit paths. Its preflight parent PID is
+recorded separately from the observed wrapper PID because uv launches Python
+as a child. Tracked launch verification is
+`evidence/seawfb_dsdm/goal052/pilot8-launch.json`. Prelaunch checks passed for
+current inputs, host runtime, both qualifications and all four existing
+checkpoint files. The wrapper passed shell syntax validation. Host capacity
+was about 122 GiB available RAM and load 0.16 before dispatch.
+
+The existing `continue-dsdm-goal052` heartbeat is ACTIVE every four hours.
+Follow the existing timeout group 30921 and runner 30930; do not duplicate or
+reset this launch. At the cap, verify shutdown and returned checkpoints,
+review measured throughput, then choose and execute the next justified
+allocation under Barry's standing authority. Resource allocation alone no
+longer requires approval. Record each subsequent allocation and review point.
+Scientific changes and outer access retain their existing review boundaries.

@@ -5,17 +5,20 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Latest Goal052 state — 13 September, 16:59 AEST
+## Latest Goal052 state — 13 September, 17:10 AEST
 
 The capped eight-worker CPU qualification passed: 16 jobs, two per process,
 with exact agreement against the prior two-worker results. Peak worker RSS
 was 2.555 GiB; maximum sampled aggregate process RSS was 18.324 GiB. Fitting
 source remains `e309ca8`; a separately hashed qualification driver is recorded
 in `metadata/goal052_canary.json`. Both production checkpoints are preserved.
-No compute job is active. The four-hour follow-up is paused. A prepared
-48-hour/eight-worker continuation (384 worker-hours) awaits Barry's decision;
-see Goal052 `PilotReview.md`. Do not restart the old pilot or interpret the
-canary as a full-row parallel throughput measurement.
+The approved 48-hour/eight-worker continuation is active in deep-server tmux
+`dsdm-goal052-pilot8`, with eight workers and both starting checkpoints reused.
+Its nominal deadline is 17:10 AEST on 15 September, plus 60 seconds termination.
+Four-hour checks are ACTIVE. Barry granted standing authority to allocate
+compute resources; review this run at the cap, then execute justified further
+allocations autonomously. See Goal052 Decision, PilotReview and the bound
+`pilot8-launch.json`. Scientific and sealed outer boundaries still apply.
 
 ## Start Here
 
@@ -323,12 +326,11 @@ bridge_wide took 11.97 hours (33 discovery, selected/replay 3), bridge_control
 no target leaves, architecture selection or ecological metrics were generated.
 See `docs/goals/052-seawfb-dsdm-experiment/PilotReview.md` and the tracked
 `pilot-review.json`/`pilot-closeout-manifest.json` evidence. The four-hour
-follow-up is paused. The subsequent eight-worker qualification passed; the
-latest state at the top of this handover and `PilotReview.md` describe the
-prepared 48-hour continuation. No production extension has been launched.
-Outer outcomes remain sealed. Routine implementation and tests
-can proceed; material scientific amendments or substantial new compute
-commitments require discussion. Start from the current Goal052 runbook and
+follow-up resumed for the subsequent 48-hour/eight-worker continuation.
+The latest state at the top of this handover and `PilotReview.md` describe it.
+Outer outcomes remain sealed. Routine implementation and tests can proceed;
+material scientific amendments require discussion. Compute allocations now
+fall under Barry's standing authorization. Start from the current Goal052 runbook and
 live source/test state, not the historical Goal051 launch paragraphs above.
 
 ## What Follows
