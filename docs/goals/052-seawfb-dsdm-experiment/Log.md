@@ -253,3 +253,21 @@ bindings are unchanged. The original timeout process remains active. Load is
 2.01 with 118 GiB available RAM. No intervention or extension was needed.
 The next scheduled check follows the 16:28 AEST deadline and should verify
 termination, retrieve final evidence and review the bounded pilot outcome.
+
+## 2026-09-13 16:34 AEST — pilot closed at its authorized cap
+
+The exit marker was written at 16:28:12.507 AEST with status 124. No pilot
+session, process group or residual semaphore files remained. Two pretraining
+checkpoints survived, with no target leaves or new completions since the
+sixteen-hour check. All final transferred files matched the closeout manifest;
+both model checkpoints reloaded with unchanged verified hashes and state.
+Source/qualification bindings remain unchanged. Completed lifecycle times sum
+to 27.42 wall-worker hours, not exact accounting of the 48-worker-hour cap;
+the two deeper fits were interrupted without resumable within-fit state.
+
+The independent route review recommends a native eight-worker metric-free
+canary before further production. `PilotReview.md` prepares a 30-minute/four-
+worker-hour cap plus 60 seconds for termination; it requires a new resource
+decision and has not run. Deep-server is idle with about 122 GiB RAM available.
+The four-hour follow-up is paused. No ecological result, architecture choice,
+new compute extension or scientific amendment was made.

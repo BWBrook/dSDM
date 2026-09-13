@@ -1,0 +1,54 @@
+{
+  "checked_utc": "2026-09-13T06:35:44.388060+00:00",
+  "status": "pilot_stopped_at_time_cap",
+  "exit_code": 124,
+  "exit_marker_modified_utc": "2026-09-13T06:28:12.506728+00:00",
+  "launch_requested_utc": "2026-09-12T06:28:12.480522+00:00",
+  "nominal_deadline_utc": "2026-09-13T06:28:12.480522+00:00",
+  "live_pilot_processes": [],
+  "tmux_session_present": false,
+  "files": [
+    {
+      "path": "pilot-launch.json",
+      "bytes": 1792,
+      "sha256": "2f44390b5b9ee4eabd69b1206a81e1ec12c3177dae735c1cb4dcb8f2f3826dfb"
+    },
+    {
+      "path": "run.lock",
+      "bytes": 1191,
+      "sha256": "691fb75b6a9dd437e9762a5621f4c26dd0309fd3ef81e0d7132716940ecb84e6"
+    },
+    {
+      "path": "logs/pilot-20260912T162812-23196.exit",
+      "bytes": 4,
+      "sha256": "ca2ebdf97d7469496b1f4b78958f9dc8447efdcb623953fee7b6996b762f6fff"
+    },
+    {
+      "path": "logs/run-20260912T162812-23202.log",
+      "bytes": 505,
+      "sha256": "86afb933c2833bb55eafc10e7172da9a8a5cf27810716ab974a2d6b16e1f7748"
+    },
+    {
+      "path": "pretraining/9d6496a1272fbb056acf7b5cc952747d2190d5f3b69c307bc17dd021ede2b40a.json",
+      "bytes": 24926,
+      "sha256": "c76c7a8946e37a563dcc3e6d8ce9d8bf898d6756830a717bf07b72f0ff04f079"
+    },
+    {
+      "path": "pretraining/9d6496a1272fbb056acf7b5cc952747d2190d5f3b69c307bc17dd021ede2b40a.pt",
+      "bytes": 519057,
+      "sha256": "00e1ba0405c15466969dfb62e4f66d5a258aa2cd967a72f4849e7e60638bd2e7"
+    },
+    {
+      "path": "pretraining/fcb221298f76e03d08ad9b8eff740a691a38bacf7e0f9783e508e49b238ffed5.json",
+      "bytes": 24960,
+      "sha256": "f52abd6771a4bc3ca6255b10e945037034bceb8d3cf93a0a9394bb1533c5b734"
+    },
+    {
+      "path": "pretraining/fcb221298f76e03d08ad9b8eff740a691a38bacf7e0f9783e508e49b238ffed5.pt",
+      "bytes": 263505,
+      "sha256": "ee24e56ec4c17be12989ee16ee0f552bf0d1b2765475a832352bf8ee5f746d0b"
+    }
+  ],
+  "load": "16:35:44 up 1 day, 13:04,  1 user,  load average: 0.00, 0.43, 1.21",
+  "semaphore_files_current": []
+}

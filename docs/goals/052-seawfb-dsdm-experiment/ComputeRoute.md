@@ -1,10 +1,10 @@
 # Goal052 compute decision — 12 September 2026
 
-Status: Barry approved the 24-hour, two-worker CPU pilot on 12 September,
-with checks every four hours. It launched on the qualified deep-server at
-16:28 AEST, capped at 48 worker-hours plus a 60-second termination allowance.
-The nominal deadline is 16:28 AEST on 13 September. This authorization does
-not extend to the full campaign.
+Status: the approved 24-hour pilot stopped at its cap on 13 September,
+with two verified pretraining checkpoints and no target or ecological results.
+Monitoring is paused. `PilotReview.md` records the closeout and the proposed
+30-minute, eight-worker qualification check (new authorization required).
+The original approved plan and qualification measurements follow.
 
 ## Verified measurement
 

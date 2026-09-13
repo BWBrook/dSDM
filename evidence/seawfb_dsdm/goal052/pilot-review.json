@@ -1,0 +1,44 @@
+{
+  "status": "pilot_closed_at_authorized_time_cap",
+  "experiment_status": "incomplete",
+  "exit_code": 124,
+  "verified_stopped_utc": "2026-09-13T06:35:44.388060+00:00",
+  "exit_marker_modified_utc": "2026-09-13T06:28:12.506728+00:00",
+  "authorized_worker_hour_cap": 48,
+  "completed_fit_wall_worker_hours": 27.415497918965556,
+  "accounting_note": "Completed lifecycle wall times are not exact total CPU accounting; the cap also included interrupted fits and setup.",
+  "pretraining_completed": 2,
+  "screen_pretraining_total": 200,
+  "pretraining_campaign_total": 900,
+  "target_leaves": 0,
+  "ecological_metrics_computed": false,
+  "fits": [
+    {
+      "checkpoint": "9d6496a1272fbb056acf7b5cc952747d2190d5f3b69c307bc17dd021ede2b40a",
+      "architecture": "bridge_wide",
+      "block": 0,
+      "fold": 0,
+      "auxiliary": "full",
+      "seed_label": "seed00",
+      "discovery_epochs": 33,
+      "selected_epoch": 3,
+      "replay_epochs": 3,
+      "runtime_seconds": 43098.623685143
+    },
+    {
+      "checkpoint": "fcb221298f76e03d08ad9b8eff740a691a38bacf7e0f9783e508e49b238ffed5",
+      "architecture": "bridge_control",
+      "block": 0,
+      "fold": 0,
+      "auxiliary": "full",
+      "seed_label": "seed00",
+      "discovery_epochs": 34,
+      "selected_epoch": 4,
+      "replay_epochs": 4,
+      "runtime_seconds": 55597.168823133
+    }
+  ],
+  "evidence_manifest_sha256": "260da68d3d820c28d7667ecfd03c339aa74ad65bcd56be69fa2a63c0e7818d28",
+  "followup_status": "paused_for_next_resource_decision",
+  "recommendation": "Metric-free native eight-worker canary, capped at 30 minutes plus 60 seconds termination; no production extension. Requires new authorization."
+}

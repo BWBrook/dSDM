@@ -79,3 +79,8 @@ Barry approved the pilot and four-hour check cadence. The pilot launched at
 16:28 AEST on 13 September, with 60 seconds allowed for forced termination.
 The existing follow-up is active at four-hour intervals. Do not restart the
 24-hour clock during recovery or extend the cap without further authorization.
+
+The pilot has now stopped at the 13 September 16:28 AEST cap (exit 124),
+with no live pilot workers. Two completed pretraining checkpoints are verified
+and retained. Four-hour checks are paused. Start from `PilotReview.md` for
+the closeout and next resource proposal; do not restart the old pilot wrapper.

@@ -303,17 +303,17 @@ is deferred because it changed Linux numerics. Source `e309ca8` is staged on
 deep-server. Its fresh two-worker canary passed at 14:37 AEST, with bitwise
 repeat agreement and maximum worker RSS 2.545 GiB. The full-row profile also
 passed: 79.54 minutes for auxiliary pretraining and 2.395 GiB peak RSS. Returned
-receipt hashes and fit invariants are verified. The bounded pilot is now active.
-Barry approved the 24-hour, two-worker CPU pilot. It launched on deep-server
-at 16:28 AEST on 12 September in `dsdm-goal052-pilot`, with an enforced deadline
-at approximately 16:28 AEST on 13 September (plus 60 seconds for termination).
-`continue-dsdm-goal052` now checks every four hours. See `ComputeRoute.md` and
-`evidence/seawfb_dsdm/goal052/pilot-launch.json`. No larger production
-commitment is implied. At 08:33 AEST on 13 September, two pretraining
-checkpoints (block 0/fold 0) passed hash, state, data-contract and stopping-rule
-verification: bridge_wide took 11.97 hours (33 discovery, selected/replay 3),
-and bridge_control took 15.44 hours (34 discovery, selected/replay 4). No
-target fits or ecological metrics were available at that check.
+receipt hashes and fit invariants are verified. The approved 24-hour pilot
+stopped at 16:28 AEST on 13 September with exit 124; no pilot workers remain.
+Two block-0/fold-0 pretraining checkpoints are verified and preserved:
+bridge_wide took 11.97 hours (33 discovery, selected/replay 3), bridge_control
+15.44 hours (34 discovery, selected/replay 4). Deeper fits were interrupted;
+no target leaves, architecture selection or ecological metrics were generated.
+See `docs/goals/052-seawfb-dsdm-experiment/PilotReview.md` and the tracked
+`pilot-review.json`/`pilot-closeout-manifest.json` evidence. The four-hour
+follow-up is paused. The proposed next resource decision is a 30-minute,
+eight-worker metric-free canary (four worker-hours plus termination allowance),
+with no automatic production extension. No new work has been launched.
 Outer outcomes remain sealed. Routine implementation and tests
 can proceed; material scientific amendments or substantial new compute
 commitments require discussion. Start from the current Goal052 runbook and
