@@ -529,3 +529,20 @@ frozen full-data panels, separating within-target and between-target count
 associations, and avoiding effort-mechanism claims from richness strata.
 The review requests a narrower specification; fitting and scoring contracts
 remain unchanged. The discussion does not require an immediate Barry decision.
+
+
+## 15 September 2026, 05:19 AEST — thirty-six-hour continuation check
+
+All eight original workers remain active after 36 hours 9 minutes at 99.9%
+CPU each, with 2.04–2.18 GiB RSS. Load is 8.00, available RAM about 108 GiB,
+and swap use zero. No additional checkpoint has completed since the previous
+check: 18/200 screen-pretraining fits remain verified, with zero target leaves.
+
+All 36 checkpoint payload/receipt hashes match the previously verified
+`pilot8-check-20260914T1518Z.json` manifest. Source identity, CPU runtime,
+qualification driver, canary/profile, wrapper and launch bindings are
+unchanged. The original timeout is active; no exit marker or traceback is
+recorded. Continue to the original 15 September 17:10 AEST cap, with four-hour
+checks. Process activity alone does not establish within-fit progress.
+No ecological scoring, outer access or scientific amendment occurred.
+There is no new unread board message from Fable.
