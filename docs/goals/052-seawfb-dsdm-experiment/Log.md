@@ -546,3 +546,37 @@ recorded. Continue to the original 15 September 17:10 AEST cap, with four-hour
 checks. Process activity alone does not establish within-fit progress.
 No ecological scoring, outer access or scientific amendment occurred.
 There is no new unread board message from Fable.
+
+
+## 15 September 2026, 09:20 AEST — twenty-two checkpoints verified
+
+Four new full-auxiliary/seed00 pretraining fits passed verification, bringing
+screen pretraining to 22/200: twenty completed in this continuation plus
+two reused starting checkpoints. No target leaves exist.
+
+| Block | Architecture | Held fold | Lifecycle hours | Discovery epochs | Selected/replay epochs |
+| --- | --- | ---: | ---: | ---: | ---: |
+| 0 | bridge_deep | 4 | 13.96 | 33 | 3 |
+| 1 | bridge_control | 0 | 14.06 | 37 | 7 |
+| 1 | bridge_wide | 0 | 11.77 | 33 | 3 |
+| 1 | bridge_deep | 0 | 12.28 | 32 | 2 |
+
+All 44 returned payload/receipt hashes match deep-server; the previous 36
+remain unchanged. Native finite-state loading, trunk digests, source/accepted
+identity, frozen budgets, initialization, seeds, transfer flags and replay
+bindings passed. Independent stopping-history replay reproduced every selected
+epoch and patience stop. Reconstruction of the block-1/fold-0/full auxiliary
+contract matched all three new block-1 receipts, including roles, exclusions,
+heads, transforms, weights and row digests/counts. The remaining fit matched
+the previously reconstructed block-0/fold-4 contract. Four compact receipts
+are in `evidence/seawfb_dsdm/goal052/pilot-checkpoints/`; payloads and manifest
+`pilot8-check-20260914T2319Z.json` remain private.
+
+All eight original workers remain active after 40 hours 9 minutes at 99.9%
+CPU each, with 2.03–2.18 GiB RSS. Load is approximately 8.00, available RAM
+about 108 GiB, and swap use zero. Source/runtime/driver, canary/profile,
+wrapper and launch bindings are unchanged. No exit marker or traceback is
+recorded. Continue to the original 15 September 17:10 AEST cap with four-hour
+checks; no allocation or scientific change is warranted during active fits.
+No ecological scores or sealed outer outcomes were accessed. There is no
+new unread Fable message on the board.
