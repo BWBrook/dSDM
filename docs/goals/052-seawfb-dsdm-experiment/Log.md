@@ -455,3 +455,37 @@ and launch bindings are unchanged. The original timeout remains active.
 Continue the second half of this allocation without intervention; retain the
 15 September 17:10 AEST deadline and four-hour cadence. Process activity alone
 does not establish within-fit progress or another completed result.
+
+
+## 14 September 2026, 21:16 AEST — fifteen checkpoints verified
+
+Five new block-0/full/seed00 pretraining fits passed verification, bringing
+screen pretraining to 15/200: thirteen completed in this continuation plus
+the two reused starting checkpoints. No target leaves exist.
+
+| Architecture | Held fold | Lifecycle hours | Discovery epochs | Selected/replay epochs |
+| --- | ---: | ---: | ---: | ---: |
+| bridge_deep | 2 | 14.73 | 35 | 5 |
+| bridge_control | 3 | 11.46 | 33 | 3 |
+| bridge_wide | 3 | 14.38 | 36 | 6 |
+| bridge_deep | 3 | 12.99 | 34 | 4 |
+| bridge_control | 4 | 10.93 | 32 | 2 |
+
+All 30 returned payload/receipt hashes match deep-server; the previous 20
+remain unchanged. Native checkpoint loading verified finite tensors and
+trunk digests. Source/accepted identity, frozen budgets, initialization,
+seed namespaces, transfer flags and replay bindings passed. Independent
+stopping-history replay reproduced each selected epoch and patience stop.
+Reconstructed block-0/fold-3 and fold-4 full auxiliary contracts matched all
+roles, heads, exclusions, transforms, weights and row digests/counts; fold 2
+matched its previously reconstructed contract. Five compact receipts are in
+`evidence/seawfb_dsdm/goal052/pilot-checkpoints/`. Payloads and the all-file
+manifest `pilot8-check-20260914T1116Z.json` remain private.
+
+All eight original workers remain active after 28 hours 6 minutes at 99.9%
+CPU each, with 2.04–2.13 GiB RSS. Host load is 8.00, available RAM about
+108 GiB, and swap use zero. Source/runtime/qualification driver, canary,
+profile, wrapper and launch bindings are unchanged; no exit marker or
+recorded failure exists. Retain the original 15 September 17:10 AEST cap and
+four-hour cadence without intervention. No ecological scores or outer
+outcomes were accessed. No new unread Fable message was present on the board.
