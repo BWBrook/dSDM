@@ -489,3 +489,43 @@ profile, wrapper and launch bindings are unchanged; no exit marker or
 recorded failure exists. Retain the original 15 September 17:10 AEST cap and
 four-hour cadence without intervention. No ecological scores or outer
 outcomes were accessed. No new unread Fable message was present on the board.
+
+
+## 15 September 2026, 01:18 AEST — eighteen checkpoints verified
+
+Three new block-0/full/seed00 pretraining fits passed verification, bringing
+screen pretraining to 18/200: sixteen completed in this continuation plus
+the two reused starting checkpoints. No target leaves exist.
+
+| Architecture | Held fold | Lifecycle hours | Discovery epochs | Selected/replay epochs |
+| --- | ---: | ---: | ---: | ---: |
+| seawfb_scale | 2 | 16.72 | 32 | 2 |
+| seawfb_scale | 3 | 16.32 | 33 | 3 |
+| bridge_wide | 4 | 13.07 | 33 | 3 |
+
+All 36 returned payload/receipt hashes match deep-server; the previous 30
+remain unchanged. Native finite-state loading, trunk digests, source/accepted
+identity, frozen budgets, initialization, seeds, transfer flags and replay
+bindings passed. Independent stopping-history replay reproduced selected
+epochs and patience stops. Each full auxiliary data contract matched its
+previously reconstructed block-0/fold-2, fold-3 or fold-4 contract, including
+roles, heads, exclusions, transforms, weights and row digests/counts.
+Three compact receipts are in `evidence/seawfb_dsdm/goal052/pilot-checkpoints/`.
+Payloads and manifest `pilot8-check-20260914T1518Z.json` remain private.
+
+All eight original workers remain active after 32 hours 8 minutes at 99.9%
+CPU each, with 2.04–2.18 GiB RSS. Load is 8.00, available RAM about 108 GiB,
+and swap use zero. Source/runtime/driver, canary/profile, wrapper and launch
+bindings are unchanged; no exit marker or recorded failure exists. Continue
+to the original 15 September 17:10 AEST cap with four-hour checks. No
+partial-grid ecological scoring or sealed outer access occurred.
+
+Correspondence thread 32 contains Fable's supplementary-analysis proposal
+(message 162) and Astra's review (169), posted before any Goal052 target
+leaves. This is an open proposal, not an accepted supplement or protocol
+amendment. Outstanding issues include distinguishing composition sensitivity
+from calibrated uncertainty under shared-data dependence, retaining all three
+frozen full-data panels, separating within-target and between-target count
+associations, and avoiding effort-mechanism claims from richness strata.
+The review requests a narrower specification; fitting and scoring contracts
+remain unchanged. The discussion does not require an immediate Barry decision.
