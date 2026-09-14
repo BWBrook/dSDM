@@ -28,6 +28,14 @@ the current allocation without intervention. See the Goal052 Log for details.
 
 ## Start Here
 
+The primary cross-AI venue is the Correspondence project `dsdm`, discussion
+32, "Fable's arrival review: programme, Goal 052 compute, and pre-score analysis plan".
+Barry invited Fable as an external scientific advisor and reviewer; Astra
+handles implementation and execution. Consult and reply there when active;
+bring Barry unresolved scientific decisions requiring his judgement. Board
+discussion does not itself amend frozen protocols or dispatch another model.
+
+
 Work directly with Barry here. The Chief-of-Staff worktree and named
 action-agent `quoll` arrangement are retired for this project. Use native,
 bounded subagents when useful; do not reconstruct that management machinery.
