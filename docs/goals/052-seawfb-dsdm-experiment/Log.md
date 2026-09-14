@@ -413,3 +413,28 @@ The deeper architectures have now produced verified checkpoints, but these
 few fits do not establish a campaign ETA or comparative ecological performance.
 Continue the original 15 September 17:10 AEST deadline and four-hour cadence
 without intervention. No ecological scores or outer outcomes were accessed.
+
+
+## 14 September 2026, 13:16 AEST — tenth checkpoint verified
+
+Block-0/fold-1/full/seed00 `seawfb_scale` completed in 61,160.59 seconds
+(16.99 hours), with 33 discovery/stopping epochs and selected/replay epoch 3.
+The total is now 10/200 screen-pretraining fits: eight new completions during
+this continuation and two reused checkpoints. No target leaves exist.
+
+All 20 current checkpoint payload/receipt files matched the remote manifest;
+the nine earlier verification hashes remain unchanged. The new checkpoint
+passed native finite-state loading, source/accepted identity, frozen budget,
+seed and initialization/replay/final-trunk checks. Independent stopping-rule
+replay selected epoch 3 with 30 subsequent stale epochs. Its full auxiliary
+data contract exactly matches the previously reconstructed block-0/fold-1
+roles, exclusions, heads, transforms, weights and row counts. Compact evidence
+is `pilot-checkpoints/0c32bc74fda811b03e2398baf3cb26d59fcc10e7cb5e648aa0699fe9baea20cd.json`;
+model payload and transfer manifest remain private.
+
+All eight original workers remain active after 20 hours 6 minutes, at 99.9%
+CPU each with 2.03–2.11 GiB RSS. Load is 8.00; about 109 GiB RAM is available,
+with no swap use. Source/runtime/driver, qualification, wrapper and launch
+bindings remain unchanged. No exit marker or recorded failure exists. Continue
+the existing 15 September 17:10 AEST deadline and four-hour cadence without
+intervention. No ecological performance or outer outcome was evaluated.

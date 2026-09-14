@@ -5,7 +5,7 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Latest Goal052 state — 14 September, 09:14 AEST
+## Latest Goal052 state — 14 September, 13:16 AEST
 
 The capped eight-worker CPU qualification passed: 16 jobs, two per process,
 with exact agreement against the prior two-worker results. Peak worker RSS
@@ -19,13 +19,13 @@ Four-hour checks are ACTIVE. Barry granted standing authority to allocate
 compute resources; review this run at the cap, then execute justified further
 allocations autonomously. See Goal052 Decision, PilotReview and the bound
 `pilot8-launch.json`. Scientific and sealed outer boundaries still apply.
-At the sixteen-hour check, all eight workers remain active at 99.9% CPU,
-with 2.01–2.11 GiB RSS each and about 109 GiB available RAM. Six more verified
-checkpoints bring the screen total to 9/200, including bridge_deep and
-seawfb_scale. Their lifecycle times range from 12.27 to 14.84 hours. Native
-state, independent stopping-history and reconstructed data-contract checks
-passed. All previous checkpoint hashes are unchanged. Zero target leaves;
-no intervention. See the Goal052 Log for per-fit epoch and timing details.
+At the twenty-hour check, all eight workers remain active at 99.9% CPU,
+with 2.03–2.11 GiB RSS each and about 109 GiB available RAM. A new verified
+block-0/fold-1 seawfb_scale checkpoint brings the screen total to 10/200:
+16.99 hours, 33 discovery epochs and selected/replay epoch 3. Native state,
+independent stopping-history and data-contract checks passed. All previous
+checkpoint hashes are unchanged. Zero target leaves; no intervention. See
+the Goal052 Log for per-fit epoch and timing details.
 
 ## Start Here
 
