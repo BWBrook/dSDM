@@ -438,3 +438,20 @@ with no swap use. Source/runtime/driver, qualification, wrapper and launch
 bindings remain unchanged. No exit marker or recorded failure exists. Continue
 the existing 15 September 17:10 AEST deadline and four-hour cadence without
 intervention. No ecological performance or outer outcome was evaluated.
+
+
+## 14 September 2026, 17:16 AEST — halfway continuation check
+
+All eight original workers remain active after 24 hours 6 minutes at 99.9%
+CPU each, with 2.01–2.13 GiB RSS. Load is 8.00, available RAM about 109 GiB,
+and swap use zero. No additional checkpoint has completed since the twenty-
+hour check: 10/200 screen-pretraining fits remain verified, with zero target
+leaves. The log still records ten completed/reused tasks and no exit marker
+or failure is recorded.
+
+All 20 existing checkpoint payload/receipt hashes match the verified manifest.
+Source identity, CPU runtime, qualification driver, canary/profile, wrapper
+and launch bindings are unchanged. The original timeout remains active.
+Continue the second half of this allocation without intervention; retain the
+15 September 17:10 AEST deadline and four-hour cadence. Process activity alone
+does not establish within-fit progress or another completed result.
