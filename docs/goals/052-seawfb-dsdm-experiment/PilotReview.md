@@ -112,3 +112,33 @@ at 17:10:11 AEST on 13 September in `dsdm-goal052-pilot8`, with its 48-hour
 review point at 17:10:11 AEST on 15 September. Four-hour checks are active.
 Review the evidence at the cap and select subsequent resources autonomously.
 No cloud allocation or driver change was needed.
+
+
+## Eight-worker closeout — 15 September 2026
+
+The 48-hour allocation stopped at 17:10:11 AEST with exit 124. At 17:21,
+the wrapper, timeout, runner and all original workers were absent; no tmux
+session or multiprocessing semaphore file remained. The shutdown warning
+about semaphore cleanup did not correspond to surviving semaphore files.
+Fitting source, host runtime, qualification, driver, wrapper and launch
+bindings were unchanged.
+
+Twenty-six pretraining checkpoints are verified: two reused plus 24 newly
+completed in this allocation, giving 0.5 new fits per allocation hour. The
+completed new fits took 9.93–18.41 hours each (mean 13.67 hours), totalling
+328.06 lifecycle worker-hours. This total excludes interrupted work and is
+not exact CPU accounting. No target leaves or ecological scores exist.
+All 52 payload/receipt hashes passed, and all newly completed stopping,
+replay, initialization, finite-state and auxiliary data contracts passed.
+See `pilot8-review.json`, `pilot8-closeout-manifest.json` and the checkpoint
+receipts under tracked Goal052 evidence. Interrupted fits restart from scratch.
+
+The eight-worker route leaves substantial capacity unused on a server with
+32 physical cores, 64 logical CPUs and 125 GiB RAM. Post-closeout available
+RAM was approximately 122 GiB. Proceed with a separate 24-worker qualification
+under a 30-minute cap (12 worker-hours plus 60 seconds termination), retaining
+prior qualifications. If it passes, use a seven-day/24-worker continuation
+ceiling (4,032 worker-hours plus termination) with daily reviews. This uses
+more CPU while allowing longer uninterrupted fits; actual 24-worker full-data
+throughput must still be measured. No scientific or numerical amendment is
+part of this resource change.

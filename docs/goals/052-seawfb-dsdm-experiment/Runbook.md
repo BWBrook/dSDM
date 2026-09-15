@@ -145,3 +145,22 @@ still stops at 17:10 AEST today. At closeout, review and qualify higher CPU
 concurrency (initial target 24 workers if capacity permits), then launch the
 next justified bounded allocation under standing authority. Keep checks
 proportionate and retain the daily cadence when updating the actual route.
+
+
+## Active route — 15 September 2026
+
+Follow `dsdm-goal052-continue24` on deep-server, runner PID 45460, timeout
+PID 45451. `scripts/goal052_continue24.sh` launched a 168-hour/24-worker CPU
+allocation at 17:29:30 AEST on 15 September, after the old run stopped and
+fresh qualification passed. Cap: 22 September 17:29:30 AEST plus 60 seconds.
+Use private `continuation24-launch.json` and tracked
+`continuation24-launch-review.json` for exact log/exit paths and bindings.
+The old eight-worker wrapper and original launch receipt are historical.
+Twenty-six verified checkpoints were reused; no target leaves existed at launch.
+
+The daily heartbeat now runs at 17:40 Australia/Hobart, following the cap on
+its final day. The qualification review is `twentyfour-worker-review.json`;
+all 48 canary jobs matched the previous qualification exactly. Fitting source
+and scientific design remain unchanged. After cap/early exit, verify shutdown
+and completed evidence before choosing the next allocation under standing
+authority. Do not launch a duplicate or reset the current deadline.

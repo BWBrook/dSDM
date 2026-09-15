@@ -1,0 +1,59 @@
+{
+  "canary_sha256": "ad9d25d1c0baf843a19b2affa4baa74f4e6f103106db06730a7a98cd6fa4af6b",
+  "checked_utc": "2026-09-15T07:28:45.540152+00:00",
+  "checks": [
+    "all_48_nonruntime_results_equal_previous_qualification",
+    "all_24_pids_exercised_twice_and_observed_in_memory_samples",
+    "finite_state_stopping_replay_initialization_transfer_freeze",
+    "source_runtime_driver_profile_and_prior_bindings",
+    "all_52_production_checkpoint_hashes_preserved",
+    "zero_exit_no_remaining_workers_or_semaphores"
+  ],
+  "driver_sha256": "ec429084523673666d0664bea80f7e14ef88bd7bb8b64086711d166f8b8d91d3",
+  "duration_seconds": 144.0,
+  "ecological_metrics_computed": false,
+  "identity": {
+    "acceptance_sha256": "cb97d64c0ac53bd11f24c1acc2e125b71d6b401bf9d9adac1a8495033c5b0157",
+    "baseline_summary_sha256": "9c1bf1ff8884fae35fe7ebe6f8d19e2aae46ab7eedee252b398c0c74705dd2d8",
+    "goal051_identity": {
+      "config_sha256": "48465d0a5180931a72ffc87aa830f6ce60da93a4b491558540af5afa9d42884d",
+      "goal050_crossfit_sha256": "b3abdb006fb7d384445db376d5ba3f0f7b48afd170982494f88ff20ef612e804",
+      "goal050_curves_sha256": "317a5513b6645edc588c63db1c2d26afaea3edfa202480b2f46ca58a2817c3d6",
+      "goal050_manifest_sha256": "239dd61cc5d3ab942a813201c0cb4117820b74367c7ba71deffddc6990d36198",
+      "goal050_transforms_sha256": "1d8b3d09b139264e288630f283e330d28919c00b4631132aa9a79529ad3abb52",
+      "goal052_config_sha256": "04b667168944b39ced1044da8f381553c4024e31cca1f5590f2fbc693e521f9a",
+      "source_sha256": "24057a4ef6c857d26e0fb4deecf46fe81cfc0e91c67e34d92dbdd77d7ca7ce2e",
+      "uv_lock_sha256": "51712e74b2f9d78a4efb7bfd6732244188e8c6c5bc722f7a78f2724e6b8b84f6"
+    },
+    "source_sha256": "fce7fb52b386c662c198e264aebc007de203e363b5ccc917ccd55ebaa2470926"
+  },
+  "jobs": 48,
+  "jobs_per_pid": 2,
+  "maximum_sampled_group_rss_gib": 58.64338302612305,
+  "memory_limit_note": "Summed RSS samples can double count shared pages; sampling may miss short peaks.",
+  "peak_worker_rss_gib": 2.56427001953125,
+  "prior_canary_sha256": "6a67e43792656813ae0c40979161d8e0d6101576b7ea08650a0a1f7ad9f36351",
+  "production_parallel_throughput_measured": false,
+  "profile_sha256": "b580e1fd551deb1f51d6b4a3f87f1ac020c96a05d78aad4884fa6d70e20a102f",
+  "qualified_workers": 24,
+  "resource_sample_interval_seconds": 2,
+  "runtime": {
+    "device": "cpu",
+    "device_name": "x86_64",
+    "host": "deep-server",
+    "machine": "x86_64",
+    "system": "Linux",
+    "torch": "2.13.0+cu130"
+  },
+  "status": "twentyfour_worker_qualification_verified",
+  "transfer_manifest": {
+    "finished.utc": "1f93ef035fc36264a0d69d9a5489df6738b98936e0fbc5eb734f67f7d587ab38",
+    "goal052_canary.json": "ad9d25d1c0baf843a19b2affa4baa74f4e6f103106db06730a7a98cd6fa4af6b",
+    "launch.sh": "c29ff0aea8d04de049e6e280b23c3932636b8f97d7d58d2330291bac67ed5189",
+    "resource-samples.json": "50c2f41d4a94f06081e77a8ac330b9359ff00bfc220183ab2816be8ce61c90b4",
+    "run.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "run.log": "eb41fa7108d69a72314cfdb0f37acbe988976cec1d89847a27aceff57b5df959",
+    "started.utc": "dd6876bd83d3ec610cd214cb36cc312ccd624e947d680544be2e0e6a8448bbe9",
+    "timeout.pid": "7b8de5003a4662ca6f5f1d7723c4209c488b869f69346fac76ede14a1138a24e"
+  }
+}

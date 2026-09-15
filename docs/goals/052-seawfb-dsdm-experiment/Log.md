@@ -592,3 +592,53 @@ is preferred for the successor allocation: first qualify 24 single-thread
 CPU workers if live capacity supports it, then choose a production bound
 that avoids frequent loss of unfinished fits. No new qualification or
 production job was launched during this scheduling update.
+
+
+## 15 September 2026, 17:30 AEST — 24-worker continuation launched
+
+The eight-worker allocation stopped at 17:10:11 AEST with exit 124; shutdown
+and all 26 checkpoints passed verification. It completed 24 new fits in
+48 hours (0.5/hour), reusing two earlier fits. Completed new lifecycles ranged
+9.93–18.41 hours (mean 13.67); this is conditional on completion and excludes
+interrupted work. No target leaves or ecological results exist. Closeout
+receipts are `pilot8-review.json` and `pilot8-closeout-manifest.json` under
+tracked Goal052 evidence. All 52 payload/receipt hashes and final log/exit
+hashes match deep-server.
+
+The separate 24-worker canary ran 17:24:25–17:26:49 AEST, exit 0, within its
+30-minute/12-worker-hour cap. Two barrier-synchronized waves exercised all
+24 spawned PIDs twice. Every non-runtime result field matched the preserved
+eight-worker qualification, including prediction/trunk digests, data
+contracts, finite states, stopping/replay, initialization, transfer and freeze
+invariants. Peak worker RSS was 2.564 GiB; maximum sampled process-group RSS
+was 58.643 GiB (two-second samples; shared pages may be counted more than once).
+No qualification workers or semaphore files remained. The private transferred
+artifacts passed all eight file hashes. See `twentyfour-worker-review.json`.
+
+The new canary was promoted to `metadata/goal052_canary.json`; the previous
+receipt is preserved under private `qualification-history/e309ca8-eight-worker/`.
+The current canary SHA is `ad9d25d1c0baf843a19b2affa4baa74f4e6f103106db06730a7a98cd6fa4af6b`.
+The frozen fitting source and full-row profile remain unchanged. The separate
+driver `scripts/goal052_canary24.py` and continuation wrapper each have their
+own bound hashes. No scientific configuration changed.
+
+`scripts/goal052_continue24.sh` launched at 17:29:30 AEST in
+`dsdm-goal052-continue24`, capped at 168 hours / 4,032 worker-hours plus
+60 seconds termination. Deadline: **22 September, 17:29:30 AEST**. The longer
+window reduces repeated loss of unfinished fits; daily reviews can stop
+execution earlier. The server has 32 physical cores, 64 logical CPUs and
+125 GiB RAM. At startup all 24 workers were active at approximately one CPU
+each, with about 80 GiB RAM still available and zero swap use. Actual full-data
+24-worker throughput remains unmeasured; no proportional speedup is claimed.
+
+The runner is PID 45460, timeout PID 45451, wrapper PID 45312. Private
+`continuation24-launch.json` contains the immutable allocation binding;
+tracked `continuation24-launch-review.json` adds actual worker PIDs and log
+path. All 26 initial scheduler completions match pre-existing checkpoint IDs
+and unchanged payload/receipt hashes. No new completed fit is claimed at
+launch. Do not duplicate this scheduler or reset its deadline.
+
+The daily heartbeat now runs at **17:40 Australia/Hobart**, so its final-day
+review falls after the cap; this supersedes 17:20 and historical four-hour
+instructions. Retain daily cadence and concise reporting. No partial-grid
+scoring, outer access, full refit, mapping or scientific amendment occurred.

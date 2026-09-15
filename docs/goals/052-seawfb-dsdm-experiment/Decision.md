@@ -110,3 +110,15 @@ unchanged fitting numerics. This is a qualification target, not a claim of
 measured throughput or a launched allocation. Choose the next production
 bound after reviewing shutdown and qualification; avoid repeated short caps
 that discard costly in-progress fits. Scientific boundaries remain unchanged.
+
+
+## 15 September 2026 — 24-worker allocation executed
+
+Under standing compute authority, the capped eight-worker run was closed and
+its 26 checkpoints verified. A 30-minute-capped 24-worker canary passed in
+144 seconds with exact prior numerical agreement and acceptable memory.
+Launched 24 single-thread CPU workers for at most 168 hours (4,032 worker-hours)
+plus 60 seconds termination, ending 22 September 17:29:30 AEST. Daily reviews
+at 17:40 may stop it earlier. This increases CPU use while reducing losses
+from repeated short caps. Full-data scaling remains to be measured. Source,
+optimizer, budgets, stopping, comparisons and outer boundaries are unchanged.

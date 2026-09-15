@@ -5,29 +5,34 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Latest Goal052 state — 15 September, 09:20 AEST
+## Latest Goal052 state — 15 September, 17:30 AEST
 
-The capped eight-worker CPU qualification passed: 16 jobs, two per process,
-with exact agreement against the prior two-worker results. Peak worker RSS
-was 2.555 GiB; maximum sampled aggregate process RSS was 18.324 GiB. Fitting
-source remains `e309ca8`; a separately hashed qualification driver is recorded
-in `metadata/goal052_canary.json`. Both production checkpoints are preserved.
-The approved 48-hour/eight-worker continuation is active in deep-server tmux
-`dsdm-goal052-pilot8`, with eight workers and both starting checkpoints reused.
-Its nominal deadline is 17:10 AEST on 15 September, plus 60 seconds termination.
-Daily checks at 17:20 AEST are ACTIVE (Barry changed the cadence on
-15 September). Barry granted standing authority to allocate
-compute resources; review this run at the cap, then execute justified further
-allocations autonomously. See Goal052 Decision, PilotReview and the bound
-`pilot8-launch.json`. Scientific and sealed outer boundaries still apply.
-At the 40-hour check, all eight original workers remain active at 99.9% CPU,
-with 2.03–2.18 GiB RSS each and about 108 GiB available RAM. Four new fits
-bring the verified screen-pretraining total to 22/200; target leaves remain
-zero. All 44 payload/receipt hashes passed, including unchanged prior files.
-New stopping/replay, finite-state and full auxiliary data contracts passed,
-including the first completed block-1 fits. Source/runtime/qualification/
-launch bindings are unchanged. Continue to the original cap without
-intervention. See the Goal052 Log.
+The eight-worker allocation closed at its original 17:10 AEST cap (exit 124),
+with 26 verified pretraining checkpoints, including 24 new completions in
+48 hours, and zero target leaves. All payload/receipt hashes and fit/data
+contracts passed; no workers or semaphore files remained after shutdown.
+
+The new 24-worker CPU qualification passed: 48 jobs, exactly two per PID,
+with all non-runtime result fields identical to the previous qualification.
+It took 144 seconds, with 2.564 GiB peak worker RSS and 58.643 GiB maximum
+sampled group RSS. The prior eight-worker receipt is archived. The active
+canary is `metadata/goal052_canary.json`; its separate driver and review are
+hash-bound. Fitting source remains `e309ca8` (digest `fce7fb52...`).
+
+The seven-day/24-worker continuation launched at **17:29:30 AEST on
+15 September** in deep-server tmux `dsdm-goal052-continue24`, at
+`/data/codex/repos/dSDM`. All 24 workers are active, and the first 26 scheduler
+completions reuse the unchanged existing checkpoints. The cap is
+**22 September, 17:29:30 AEST**, plus 60 seconds termination. Private
+`continuation24-launch.json` binds the launch; tracked
+`evidence/seawfb_dsdm/goal052/continuation24-launch-review.json` adds actual
+PIDs, log path and reuse verification. Runner PID 45460; timeout PID 45451.
+
+Daily checks now run at **17:40 Australia/Hobart**, after the final cap on
+its last day. This supersedes 17:20 and four-hour instructions below. Barry
+retains standing compute authority: review actual throughput and capacity,
+and choose subsequent bounded allocations autonomously. No new scientific
+or numerical amendment is authorized. The sealed outer boundaries remain.
 
 ## Start Here
 
