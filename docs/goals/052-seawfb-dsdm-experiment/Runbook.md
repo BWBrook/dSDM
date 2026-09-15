@@ -134,3 +134,14 @@ review measured throughput, then choose and execute the next justified
 allocation under Barry's standing authority. Resource allocation alone no
 longer requires approval. Record each subsequent allocation and review point.
 Scientific changes and outer access retain their existing review boundaries.
+
+
+## 15 September 2026 — monitoring cadence superseded
+
+Barry changed monitoring to once every 24 hours. `continue-dsdm-goal052` now
+runs daily at 17:20 Australia/Hobart, starting with today's allocation-closeout
+review. Earlier four-hour instructions are historical. The original pilot
+still stops at 17:10 AEST today. At closeout, review and qualify higher CPU
+concurrency (initial target 24 workers if capacity permits), then launch the
+next justified bounded allocation under standing authority. Keep checks
+proportionate and retain the daily cadence when updating the actual route.

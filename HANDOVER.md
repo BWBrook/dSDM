@@ -15,7 +15,8 @@ in `metadata/goal052_canary.json`. Both production checkpoints are preserved.
 The approved 48-hour/eight-worker continuation is active in deep-server tmux
 `dsdm-goal052-pilot8`, with eight workers and both starting checkpoints reused.
 Its nominal deadline is 17:10 AEST on 15 September, plus 60 seconds termination.
-Four-hour checks are ACTIVE. Barry granted standing authority to allocate
+Daily checks at 17:20 AEST are ACTIVE (Barry changed the cadence on
+15 September). Barry granted standing authority to allocate
 compute resources; review this run at the cap, then execute justified further
 allocations autonomously. See Goal052 Decision, PilotReview and the bound
 `pilot8-launch.json`. Scientific and sealed outer boundaries still apply.

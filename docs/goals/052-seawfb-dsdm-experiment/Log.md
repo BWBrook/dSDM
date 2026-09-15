@@ -580,3 +580,15 @@ recorded. Continue to the original 15 September 17:10 AEST cap with four-hour
 checks; no allocation or scientific change is warranted during active fits.
 No ecological scores or sealed outer outcomes were accessed. There is no
 new unread Fable message on the board.
+
+
+## 15 September 2026, 10:12 AEST — daily cadence requested
+
+Barry noted that four-hour checks waste tokens at the observed completion
+rate and requested 24-hour checks. Updated the existing heartbeat to daily
+17:20 Australia/Hobart, placing the next review just after today's original
+48-hour cap. No run was interrupted or deadline extended. Higher concurrency
+is preferred for the successor allocation: first qualify 24 single-thread
+CPU workers if live capacity supports it, then choose a production bound
+that avoids frequent loss of unfinished fits. No new qualification or
+production job was launched during this scheduling update.

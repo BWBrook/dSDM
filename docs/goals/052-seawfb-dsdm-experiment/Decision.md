@@ -94,3 +94,19 @@ The current 48-hour cap remains its operational review point. After reviewing
 results, choose and execute the next appropriate allocation autonomously.
 Scientific protocol changes and sealed outer assessments retain their existing
 boundaries; compute authority does not change the frozen scientific design.
+
+
+## 15 September 2026 — daily monitoring and next concurrency review
+
+Barry requested checks every 24 hours to avoid spending tokens on slow,
+predictable progress, and reaffirmed discretion over resource allocation.
+The existing heartbeat now runs daily at 17:20 Australia/Hobart. Its first
+review follows today's original 17:10 cap; there is no intervening four-hour
+check. Preserve active fits and the original cap. The eight-worker pilot has
+provided sufficient evidence to make higher concurrency the preferred next
+route, subject to current capacity and fresh qualification. Aim first at 24
+single-thread CPU workers on deep-server, preserving all prior receipts and
+unchanged fitting numerics. This is a qualification target, not a claim of
+measured throughput or a launched allocation. Choose the next production
+bound after reviewing shutdown and qualification; avoid repeated short caps
+that discard costly in-progress fits. Scientific boundaries remain unchanged.
