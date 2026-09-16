@@ -642,3 +642,30 @@ The daily heartbeat now runs at **17:40 Australia/Hobart**, so its final-day
 review falls after the cap; this supersedes 17:20 and historical four-hour
 instructions. Retain daily cadence and concise reporting. No partial-grid
 scoring, outer access, full refit, mapping or scientific amendment occurred.
+
+
+## 16 September 2026, 17:43 AEST — first day at 24 workers
+
+Twenty-four new pretraining checkpoints passed verification, bringing the
+screen total to 50/200. No target leaves exist. All 100 returned payload/receipt
+hashes match deep-server; the 26 starting checkpoints are unchanged. New
+finite-state, trunk, identity, budget, seed, initialization, transfer and
+stopping/replay checks passed. Reconstructed six previously unseen auxiliary
+contracts (block 1/folds 2–4; block 2/folds 0–2), matching all roles, exclusions,
+heads, transforms, weights and row digests/counts. Other receipts matched
+previously reconstructed contracts. Compact receipts and
+`continue24-day1-review.json` are tracked; payloads and
+`continue24-check-20260916.json` remain private.
+
+The 24 new lifecycles took 13.20–23.25 hours (mean 16.71), with 32–35 discovery
+epochs and selected/replay epochs 2–5. Approximately 24.2 hours of allocation
+produced these 24 completions, versus 24 in the previous 48-hour allocation.
+This is a descriptive throughput comparison, not a controlled scaling test:
+task mix differs and unfinished work is excluded. No campaign ETA is inferred.
+
+All 24 original workers remain active at 99.9% CPU, RSS 2.02–2.15 GiB each.
+Load is about 24, available memory 81 GiB and swap use zero. Source/runtime,
+canary/driver/profile, review and immutable launch bindings are unchanged;
+no exit or traceback exists. Continue the same allocation to its original
+22 September 17:29:30 AEST cap, with daily 17:40 checks. No ecological scoring
+or sealed outer access occurred. No unread Fable reply was present.
