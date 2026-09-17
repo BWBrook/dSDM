@@ -669,3 +669,28 @@ canary/driver/profile, review and immutable launch bindings are unchanged;
 no exit or traceback exists. Continue the same allocation to its original
 22 September 17:29:30 AEST cap, with daily 17:40 checks. No ecological scoring
 or sealed outer access occurred. No unread Fable reply was present.
+
+
+## 17 September 2026, 17:44 AEST — second day at 24 workers
+
+Thirty-three new pretraining checkpoints passed verification, bringing the
+screen total to 83/200 (57 new in approximately 48.2 allocation hours).
+Target leaves remain zero. All 166 returned payload/receipt hashes match
+deep-server, and all previously verified hashes remain unchanged. New
+finite-state, trunk, identity, budget, seed, initialization, transfer and
+stopping/replay checks passed. Reconstructed nine new auxiliary contracts:
+block 2/folds 3–4, block 3/all five folds, block 4/folds 0–1. Roles, exclusions,
+heads, transforms, weights and row digests/counts matched. Other new fits
+matched previously reconstructed contracts. Compact evidence is
+`continue24-day2-review.json` and the new checkpoint receipts; payloads and
+`continue24-check-20260917.json` remain private.
+
+New completed lifecycles took 12.62–23.35 hours (mean 16.52), with 31–38
+discovery epochs and selected/replay epochs 1–8. The last day produced 33
+completions; this observed rate does not establish a full-campaign ETA.
+All 24 original workers remain active at 99.9% CPU, RSS 2.01–2.21 GiB each.
+Host load is approximately 24, available memory 81 GiB, and swap use zero.
+Source/runtime, canary/driver/profile/review and launch bindings are unchanged;
+no exit marker or traceback exists. Continue the original allocation and
+daily cadence. No ecological scoring or sealed outer access occurred, and
+there is no unread Fable reply.
