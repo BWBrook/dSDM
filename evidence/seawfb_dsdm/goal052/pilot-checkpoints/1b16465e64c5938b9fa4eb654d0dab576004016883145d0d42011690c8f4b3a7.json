@@ -1,0 +1,43 @@
+{
+  "checked_utc": "2026-09-18T07:43:07.285732+00:00",
+  "checks": [
+    "source_and_accepted_baseline_identity",
+    "transferred_payload_and_receipt_sha256",
+    "native_checkpoint_load_and_finite_tensors",
+    "frozen_training_budget_and_seed_namespaces",
+    "initialization_replay_and_final_trunk_binding",
+    "independent_stopping_history_replay",
+    "matches_reconstructed_full_auxiliary_data_contract_roles_weights_exclusions_heads_and_rows"
+  ],
+  "discovery_epochs": 33,
+  "ecological_metrics_computed": false,
+  "key": {
+    "architecture": "bridge_wide",
+    "auxiliary": "full",
+    "block": 5,
+    "fold": 2,
+    "identity": {
+      "acceptance_sha256": "cb97d64c0ac53bd11f24c1acc2e125b71d6b401bf9d9adac1a8495033c5b0157",
+      "baseline_summary_sha256": "9c1bf1ff8884fae35fe7ebe6f8d19e2aae46ab7eedee252b398c0c74705dd2d8",
+      "goal051_identity": {
+        "config_sha256": "48465d0a5180931a72ffc87aa830f6ce60da93a4b491558540af5afa9d42884d",
+        "goal050_crossfit_sha256": "b3abdb006fb7d384445db376d5ba3f0f7b48afd170982494f88ff20ef612e804",
+        "goal050_curves_sha256": "317a5513b6645edc588c63db1c2d26afaea3edfa202480b2f46ca58a2817c3d6",
+        "goal050_manifest_sha256": "239dd61cc5d3ab942a813201c0cb4117820b74367c7ba71deffddc6990d36198",
+        "goal050_transforms_sha256": "1d8b3d09b139264e288630f283e330d28919c00b4631132aa9a79529ad3abb52",
+        "goal052_config_sha256": "04b667168944b39ced1044da8f381553c4024e31cca1f5590f2fbc693e521f9a",
+        "source_sha256": "24057a4ef6c857d26e0fb4deecf46fe81cfc0e91c67e34d92dbdd77d7ca7ce2e",
+        "uv_lock_sha256": "51712e74b2f9d78a4efb7bfd6732244188e8c6c5bc722f7a78f2724e6b8b84f6"
+      },
+      "source_sha256": "fce7fb52b386c662c198e264aebc007de203e363b5ccc917ccd55ebaa2470926"
+    },
+    "seed_label": "seed00"
+  },
+  "payload_sha256": "44d058f7c3909dd77583ce35ef48457e44406fe8d5e08150d0e61c51a70d1e75",
+  "receipt_sha256": "a2bd955c03b4bea6155810d2a82f5bfa64ab19b3bfc0910be51b29258467195c",
+  "replay_epochs": 3,
+  "runtime_seconds": 53093.98015582096,
+  "selected_epoch": 3,
+  "shared_state_digest": "65d3a205e33eb0847149dc3caa5adf23509af9ae030c2917a8b5008471f879dd",
+  "status": "checkpoint_verified"
+}

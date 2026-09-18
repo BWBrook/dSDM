@@ -5,7 +5,7 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Latest Goal052 state — 17 September, 17:44 AEST
+## Latest Goal052 state — 18 September, 17:43 AEST
 
 The eight-worker allocation closed at its original 17:10 AEST cap (exit 124),
 with 26 verified pretraining checkpoints, including 24 new completions in
@@ -34,14 +34,14 @@ retains standing compute authority: review actual throughput and capacity,
 and choose subsequent bounded allocations autonomously. No new scientific
 or numerical amendment is authorized. The sealed outer boundaries remain.
 
-Second daily check: **83/200 screen-pretraining checkpoints are verified**,
-including 33 new fits since yesterday (57 since this allocation started).
-All 166 payload/receipt hashes, stopping/replay and data-contract checks passed;
+Third daily check: **116/200 screen-pretraining checkpoints are verified**,
+including 33 new fits since yesterday (90 since this allocation started).
+All 232 payload/receipt hashes, stopping/replay and data-contract checks passed;
 zero target leaves. All 24 original workers remain active at 99.9% CPU, with
 about 81 GiB RAM available and no swap use. New completed lifecycles took
-12.62–23.35 hours (mean 16.52), selected/replayed epochs 1–8. Source/runtime/
+12.13–21.97 hours (mean 16.55), selected/replayed epochs 1–5. Source/runtime/
 qualification/launch bindings are unchanged. Continue the same allocation
-and daily cadence. See `continue24-day2-review.json`.
+and daily cadence. See `continue24-day3-review.json`.
 
 ## Start Here
 
