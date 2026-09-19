@@ -1,0 +1,60 @@
+{
+  "all_transfer_hashes_verified": true,
+  "checked_utc": "2026-09-19T07:42:40.904927+00:00",
+  "decision": "continue_existing_24_worker_allocation",
+  "new_contracts_reconstructed": [
+    [
+      6,
+      1,
+      "full"
+    ],
+    [
+      7,
+      0,
+      "full"
+    ],
+    [
+      6,
+      4,
+      "full"
+    ],
+    [
+      6,
+      2,
+      "full"
+    ],
+    [
+      7,
+      2,
+      "full"
+    ],
+    [
+      7,
+      1,
+      "full"
+    ],
+    [
+      6,
+      3,
+      "full"
+    ],
+    [
+      7,
+      3,
+      "full"
+    ]
+  ],
+  "new_discovery_epochs_max": 36,
+  "new_discovery_epochs_min": 32,
+  "new_fit_hours_max": 24.22087213595055,
+  "new_fit_hours_mean": 18.403936694641665,
+  "new_fit_hours_min": 13.628742098376938,
+  "new_pretraining": 32,
+  "new_selected_epochs_max": 6,
+  "new_selected_epochs_min": 2,
+  "pretraining_total": 148,
+  "private_manifest_sha256": "4938b9af8fe971097f88db821dfe4271239152810c94d90912dedb38514d551e",
+  "source_runtime_qualification_launch_verified": true,
+  "status": "daily_check_verified",
+  "target_leaves": 0
+}
