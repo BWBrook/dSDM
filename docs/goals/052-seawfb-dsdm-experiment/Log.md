@@ -741,3 +741,29 @@ profile/review and immutable launch bindings are unchanged; no exit marker
 or traceback exists. Continue the same allocation and daily checks. No
 ecological scoring or sealed outer access occurred. No unread Fable reply
 was present.
+
+
+## 20 September 2026, 17:43 AEST — fifth day at 24 workers
+
+Thirty-five new pretraining checkpoints passed verification, bringing the
+screen total to 183/200 (157 new in approximately 120.2 allocation hours).
+Target leaves remain zero. All 366 returned payload/receipt hashes match
+deep-server; previous checkpoint hashes are unchanged. New finite-state,
+trunk, identity, budget, seed, initialization, transfer and stopping/replay
+checks passed. Reconstructed eight new auxiliary contracts: block 7/fold 4,
+block 8/all five folds and block 9/folds 0–1. All roles, exclusions, heads,
+transforms, weights and row digests/counts matched; other fits matched
+previously reconstructed contracts. Compact evidence is
+`continue24-day5-review.json` and the new checkpoint receipts. Payloads and
+`continue24-check-20260920.json` remain private.
+
+New completed lifecycles took 13.86–25.82 hours (mean 17.56), with 31–36
+discovery epochs and selected/replay epochs 1–6. All 24 original workers are
+alive, RSS 1.60–2.18 GiB each. A two-second CPU sample found 17 busy and
+seven idle, consistent with the 17 remaining fits: the frozen runner waits
+for the entire pretraining stage before submitting target fits. Load is
+17.56, available memory about 83 GiB, and swap use zero. Source/runtime,
+canary/driver/profile/review and immutable launch bindings are unchanged;
+no exit marker or traceback exists. Continue the same allocation and daily
+checks. No ecological scoring or sealed outer access occurred. No unread
+Fable reply was present.
