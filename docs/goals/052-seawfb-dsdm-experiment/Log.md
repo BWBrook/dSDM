@@ -767,3 +767,63 @@ canary/driver/profile/review and immutable launch bindings are unchanged;
 no exit marker or traceback exists. Continue the same allocation and daily
 checks. No ecological scoring or sealed outer access occurred. No unread
 Fable reply was present.
+
+
+## 21 September 2026 — architecture screen complete; remaining pretraining active
+
+The runner completed all 200 screen-pretraining checkpoints and all 1,460
+screen target leaves, then selected `seawfb_scale` using the frozen rule.
+The screen-pretraining stage's last receipt was written at 21:33:52 UTC on
+20 September (134.07 hours after launch, including 26 initial checkpoints
+reused). Selection was written at 00:11:41 UTC on 21 September, about 2 hours
+38 minutes later. The runner automatically entered the remaining 700-job
+pretraining stage. At today's snapshot 17 of those were complete, giving
+217 pretraining checkpoints overall and 34 new since yesterday.
+
+All 434 pretraining payload/receipt hashes passed; the previous 183 pairs
+are unchanged. All 34 new fits passed native finite-state loading, identity,
+seed, initialization, transfer/freeze, independent stopping-history replay,
+epoch and data-contract checks. Seven newly reconstructed auxiliary contracts
+covered block 9/folds 2–4/full and block 0/folds 0–2/20 plus fold 0/80. The
+checkpoint inventory exactly matches the full 200-job screen plus 17 jobs
+from the frozen remaining grid. New screen lifecycles took 12.99–20.36 hours
+(mean 16.55); new remaining-grid fits took 1.43–7.18 hours (mean 2.44). These
+use different auxiliary sizes and must not be pooled into a campaign ETA.
+All new selected/replay epochs were 2–15, discovery epochs 32–45.
+
+All 24 original workers remain alive and busy in a two-second CPU sample,
+with RSS 1.86–2.20 GiB each, load 24.08, about 83 GiB available RAM and no
+swap use. Source/runtime, canary/driver/profile/review and immutable launch
+bindings are unchanged; no exit marker or traceback exists. Continue through
+the original 22 September 17:29:30 AEST cap plus termination allowance.
+Tomorrow's daily 17:40 check will verify shutdown and choose the next bounded
+allocation under Barry's standing authority. The heartbeat now records the
+new stage, observed timing and quiet routine-check policy. No sealed outer
+access, partial-grid ecological scoring or scientific amendment occurred.
+No unread Fable reply was present at the start of this check.
+
+
+Independent completed-screen verification passed all 2,921 transfer hashes
+(2,920 leaf files plus selection), the exact 73-target/four-architecture/
+five-fold grid, and all 1,460 native leaf, role/subset, fit, initialization,
+transfer and stopping-history checks. Additional receipt checks covered
+head/shuffle seeds, completed/replay epochs, row counts, held-row digests,
+encoder/transform identities, feature width and stopping termination rules.
+The full frozen aggregator was replayed only after the grid was complete;
+its selection digest exactly matched the returned `selection.json`:
+`56c82a967664b36c8bd0dd72287ca89b9bdf310714098e8d1c72074d71c36710`.
+Target selected/replay epochs ranged 1–15. The diagnostic leave-one-block-out
+winners also all matched, without changing the frozen selection rule.
+This validates the architecture selection, not ecological superiority over
+controls. Compact evidence: `selection-screen-review.json`; daily pretraining
+and resource evidence: `continue24-day6-review.json`. Private payloads and
+`continue24-check-20260921.json` are retained locally.
+
+The temporary verifier's trailing optional mean-AUC print raised a KeyError
+after all required checks and exact replay had passed. No fitting code or
+production output was affected; the compact review records that diagnostic
+exit separately from the passed checks. No fits or numerical checks were
+repeated to repair the print.
+
+Posted this verified milestone to Correspondence thread 32, message 455;
+no new advisor review or scientific decision was requested.

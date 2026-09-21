@@ -1,0 +1,82 @@
+{
+  "all_transfer_hashes_verified": true,
+  "available_memory_gib_approx": 83,
+  "checked_utc": "2026-09-21T07:42:55.306052+00:00",
+  "decision": "continue_existing_24_worker_allocation",
+  "load_average_1min": 24.08,
+  "new_contracts_reconstructed": [
+    [
+      9,
+      2,
+      "full"
+    ],
+    [
+      0,
+      1,
+      "20"
+    ],
+    [
+      0,
+      2,
+      "20"
+    ],
+    [
+      0,
+      0,
+      "20"
+    ],
+    [
+      9,
+      4,
+      "full"
+    ],
+    [
+      0,
+      0,
+      "80"
+    ],
+    [
+      9,
+      3,
+      "full"
+    ]
+  ],
+  "new_discovery_epochs_max": 45,
+  "new_discovery_epochs_min": 32,
+  "new_fit_hours_max": 20.364210454667496,
+  "new_fit_hours_mean": 9.494166063757703,
+  "new_fit_hours_min": 1.4327510870702747,
+  "new_pretraining": 34,
+  "new_remaining_fit_hours": {
+    "max": 7.179810287875007,
+    "mean": 2.442023875252827,
+    "min": 1.4327510870702747,
+    "n": 17
+  },
+  "new_screen_fit_hours": {
+    "max": 20.364210454667496,
+    "mean": 16.54630825226258,
+    "min": 12.98726437559416,
+    "n": 17
+  },
+  "new_selected_epochs_max": 15,
+  "new_selected_epochs_min": 2,
+  "pretraining_grid_verified": true,
+  "pretraining_total": 217,
+  "private_manifest_sha256": "e118048411f7a4dea734b8d95110c31352b658fa5b4f40a8c39ad300cc20fedd",
+  "remaining_pretraining_complete": 17,
+  "remaining_pretraining_total": 700,
+  "screen_pretraining_complete": 200,
+  "screen_pretraining_completed_utc": "2026-09-20T21:33:52.867561+00:00",
+  "screen_pretraining_hours_since_launch": 134.07275595916641,
+  "screen_selection_written_utc": "2026-09-21T00:11:41.304094+00:00",
+  "screen_verification_receipt": "selection-screen-review.json",
+  "screen_verification_sha256": "c4570fcf70e1caaede9f6a27f9c30ee0665120533ce0f2fb8e09d3e0d806aca9",
+  "selected_architecture": "seawfb_scale",
+  "source_runtime_qualification_launch_verified": true,
+  "status": "daily_check_verified",
+  "swap_used_bytes": 0,
+  "target_leaves": 1460,
+  "workers_alive": 24,
+  "workers_busy_in_2s_sample": 24
+}

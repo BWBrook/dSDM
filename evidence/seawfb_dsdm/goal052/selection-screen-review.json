@@ -1,0 +1,74 @@
+{
+  "checked_utc": "2026-09-21T08:04:13.229848+00:00",
+  "complete_grid": {
+    "architecture_leaf_counts": {
+      "bridge_control": 365,
+      "bridge_deep": 365,
+      "bridge_wide": 365,
+      "seawfb_scale": 365
+    },
+    "architectures": 4,
+    "arm": "multihead_full_finetune",
+    "auxiliary": "full",
+    "exact_key_inventory": true,
+    "folds": 5,
+    "fraction": 100,
+    "native_loaded_leaves": 1460,
+    "planned_leaves": 1460,
+    "seeds": [
+      "seed00"
+    ],
+    "targets": 73
+  },
+  "leaf_contracts": {
+    "additional_seed_epoch_row_count_encoder_transform_and_held_row_digest_checks": 1460,
+    "finite_scores_and_states": true,
+    "fit_seed_and_replay_seed_contracts": 1460,
+    "freeze_trunk_false": 1460,
+    "head_initialization_seed_and_stopping_termination_rules": 1460,
+    "initialization_and_replay_identity_contracts": 1460,
+    "native_payload_schema_cell_order_label_and_score_checks": true,
+    "pretraining_transfer_digest_bindings": 1460,
+    "selected_epoch_max": 15,
+    "selected_epoch_mean": 3.3486301369863014,
+    "selected_epoch_min": 1,
+    "stopping_history_finite": true,
+    "stopping_history_replays": 1460,
+    "target_role_and_subset_contracts": 1460,
+    "transfer_mode_true": 1460
+  },
+  "required_checks_passed": true,
+  "schema_version": "goal052-selection-screen-review-v1",
+  "scope": "complete_inner_architecture_screen_only",
+  "selection_replay": {
+    "aggregate_selection_replayed_after_complete_grid": true,
+    "diagnostic_winner_agreement_count": 10,
+    "diagnostic_winners_all_agree": true,
+    "mean_target_rank": {
+      "bridge_control": 2.671232876712329,
+      "bridge_deep": 2.589041095890411,
+      "bridge_wide": 2.547945205479452,
+      "seawfb_scale": 2.191780821917808
+    },
+    "private_selection": "data/processed/dsdm/goal052-seawfb-dsdm-experiment/selection.json",
+    "returned_and_replayed_digest_match": true,
+    "selected_architecture": "seawfb_scale",
+    "selection_digest": "56c82a967664b36c8bd0dd72287ca89b9bdf310714098e8d1c72074d71c36710"
+  },
+  "source_identity": {
+    "outer_response_rows_read": 0,
+    "selection_identity_source_matches": true,
+    "source_sha256": "fce7fb52b386c662c198e264aebc007de203e363b5ccc917ccd55ebaa2470926"
+  },
+  "status": "selection_screen_verified",
+  "transfer_manifest": {
+    "all_hashes_match": true,
+    "check_receipt": "data/processed/dsdm/goal052-seawfb-dsdm-experiment/continue24-check-20260921.json",
+    "check_receipt_sha256": "e118048411f7a4dea734b8d95110c31352b658fa5b4f40a8c39ad300cc20fedd",
+    "expected_files": 2921,
+    "hash_verified_files": 2921,
+    "selection_file_sha256": "ebe2497476b5c4d761091a6ea2a43acc0153d5cf0e01fb67e46cacc06787a162"
+  },
+  "verifier_exit_code": 1,
+  "verifier_exit_note": "Required checks and selection digest replay passed; a trailing diagnostic-only mean-AUC print used a nonexistent roc_auc key and raised KeyError after validation."
+}

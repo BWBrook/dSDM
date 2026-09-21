@@ -5,7 +5,7 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Latest Goal052 state — 20 September, 17:43 AEST
+## Latest Goal052 state — 21 September, 18:02 AEST
 
 The eight-worker allocation closed at its original 17:10 AEST cap (exit 124),
 with 26 verified pretraining checkpoints, including 24 new completions in
@@ -34,16 +34,21 @@ retains standing compute authority: review actual throughput and capacity,
 and choose subsequent bounded allocations autonomously. No new scientific
 or numerical amendment is authorized. The sealed outer boundaries remain.
 
-Fifth daily check: **183/200 screen-pretraining checkpoints are verified**,
-including 35 new fits since yesterday (157 since this allocation started).
-All 366 payload/receipt hashes, stopping/replay and data-contract checks passed;
-zero target leaves. All 24 original workers remain alive: a two-second CPU
-sample showed 17 busy and seven idle, consistent with 17 remaining fits and
-the existing stage barrier before target fitting. About 83 GiB RAM is available,
-with no swap use. New completed lifecycles took 13.86–25.82 hours (mean 17.56),
-selected/replayed epochs 1–6. Source/runtime/qualification/launch bindings are
-unchanged. Continue the same allocation and daily cadence. See
-`continue24-day5-review.json`.
+Sixth daily check: all **200 screen-pretraining fits and 1,460 screen target
+fits are complete**. The frozen rule selected `seawfb_scale`; independent
+screen verification and exact selection replay passed. The runner entered
+`remaining_pretraining` automatically, with **17/700** complete: **217 total
+pretraining checkpoints**, including 34 new since yesterday, have passed
+hash, finite-state, stopping/replay and data-contract checks. The 17 new screen
+fits took 12.99–20.36 hours (mean 16.55); the first 17 remaining-grid fits took
+1.43–7.18 hours (mean 2.44), reflecting different auxiliary sizes rather than
+a comparable throughput estimate. All 24 original workers are alive and busy,
+with about 83 GiB RAM available and no swap use. Source/runtime/qualification/
+launch bindings are unchanged. Continue the same allocation through its
+original cap tomorrow, then verify shutdown and choose the next bounded
+allocation. Daily cadence and scientific boundaries remain unchanged. See
+`continue24-day6-review.json` and `selection-screen-review.json`. The verified
+milestone is on Correspondence thread 32, message 455.
 
 ## Start Here
 
