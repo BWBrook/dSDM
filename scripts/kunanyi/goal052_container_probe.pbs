@@ -1,0 +1,17 @@
+#!/bin/bash
+#PBS -N dsdm052_container
+#PBS -q test
+#PBS -l select=1:ncpus=2:mem=8gb
+#PBS -l walltime=00:20:00
+#PBS -j oe
+#PBS -m n
+set -euo pipefail
+cd "${PBS_O_WORKDIR:?}"
+export APPTAINER_CACHEDIR="$PWD/cache"
+export APPTAINER_TMPDIR="${TMPDIR:-/tmp}/dsdm052-${PBS_JOBID}"
+mkdir -p "$APPTAINER_CACHEDIR" "$APPTAINER_TMPDIR"
+printf 'UTC=%s HOST=%s JOB=%s\n' "$(date -u +%FT%TZ)" "$(hostname)" "$PBS_JOBID"
+apptainer --version
+apptainer pull ubuntu24.sif docker://ubuntu:24.04
+sha256sum ubuntu24.sif
+apptainer exec --cleanenv ubuntu24.sif /bin/bash -c 'cat /etc/os-release; getconf GNU_LIBC_VERSION; printf "CONTAINER_EXEC_PASSED\n"'

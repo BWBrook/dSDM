@@ -827,3 +827,34 @@ repeated to repair the print.
 
 Posted this verified milestone to Correspondence thread 32, message 455;
 no new advisor review or scientific decision was requested.
+
+## 21 September 2026 — kunanyi preparation after Barry's resource request
+
+Consulted X-ray's PBS scripts and storage history. Its proven 28-core node
+layout and 48-hour queue usage apply operationally; its Anaconda environment
+is not a dSDM qualification. Live hardware probe 810868 completed F/0 on n078
+(28 physical cores, 125 GiB RAM, GLIBC 2.17, Apptainer 1.3.2). Container probe
+810869 completed F/0 on n001 in 22 seconds, running official Ubuntu 24.04 with
+GLIBC 2.39. Scratch upload failed at close with a zero-byte file; home upload
+succeeded. Use `/u/bwbrook/codex_kunanyi/dsdm-goal052` and 45-second nested SSH
+connection timeout. Barry completed the institutional login; routine portal
+refresh renews the same five-minute SSH window.
+
+Prepared a checksummed, retained-only 3,748-file snapshot (217 pretraining
+checkpoints and 1,460 screen leaves), qualification drivers, PBS wrappers, and
+an external sharding adapter. Nine focused adapter tests passed. Direct native
+inventory comparison confirmed 700 and 41,250 disjoint checkpoint keys. No
+fitting source changed. The first runtime snapshot stopped on a bare-ldd
+wheel-library resolution issue; corrected handling preserves the complete
+wheel trees and loaded system-library closure. The resulting exact Python
+image imports the native runner and passes a basic tensor check. Numerical
+qualification on PBS remains required; no production fits have started there.
+The initial login-node tar extraction timed out after its archive checksum
+passed; the PBS qualification wrapper uses a fresh root and extracts afresh.
+See `Kunanyi.md` and `kunanyi-preparation-review.json` for current bindings.
+
+Numerical qualification job **810907.kunanyi-ohpc** was submitted after all
+transferred runtime/driver/wrapper checksums passed. Its output is
+`/u/bwbrook/codex_kunanyi/dsdm-goal052/dsdm052_buildqual.o810907`;
+its isolated build/root is `build-810907.kunanyi-ohpc`. Inspect completion
+and evidence at the next daily check; do not submit a duplicate.

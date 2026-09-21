@@ -1,0 +1,28 @@
+#!/bin/bash
+#PBS -N dsdm052_probe
+#PBS -q test
+#PBS -l select=1:ncpus=28:mpiprocs=28
+#PBS -l walltime=00:10:00
+#PBS -j oe
+#PBS -m n
+set -euo pipefail
+cd "${PBS_O_WORKDIR:?}"
+printf 'UTC=%s HOST=%s JOB=%s\n' "$(date -u +%FT%TZ)" "$(hostname)" "$PBS_JOBID"
+uname -a
+cat /etc/os-release
+getconf GNU_LIBC_VERSION
+lscpu
+free -h
+for executable in python3 uv apptainer singularity; do
+    command -v "$executable" || true
+done
+apptainer --version || true
+singularity --version || true
+cat /proc/sys/user/max_user_namespaces || true
+if type module >/dev/null 2>&1; then
+    module -t avail 2>&1 | awk 'tolower($0) ~ /python|apptainer|singularity|gcccore/'
+fi
+if [[ -n "${DSDM_PYTHON:-}" ]]; then
+    "$DSDM_PYTHON" -c 'import sys, platform, torch, numpy, scipy, pyarrow; print(sys.version); print(platform.platform()); print("torch",torch.__version__,"numpy",numpy.__version__,"scipy",scipy.__version__,"pyarrow",pyarrow.__version__); torch.set_num_threads(1); print((torch.ones(2,2) @ torch.ones(2,2)).tolist())'
+fi
+printf 'PROBE_COMPLETE\n'

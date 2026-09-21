@@ -50,6 +50,23 @@ allocation. Daily cadence and scientific boundaries remain unchanged. See
 `continue24-day6-review.json` and `selection-screen-review.json`. The verified
 milestone is on Correspondence thread 32, message 455.
 
+## Kunanyi migration preparation — 21 September evening
+
+Barry identified up to 48 nodes × 28 CPUs / 128 GB and authorized using them.
+Kunanyi is now the preferred route for the remaining independent fits, after
+runtime qualification and verified production handoff. Deep-server continues
+unchanged until its original cap tomorrow. See
+[the execution note](docs/goals/052-seawfb-dsdm-experiment/Kunanyi.md).
+PBS hardware probe 810868 and container probe 810869 both passed (exit 0).
+Kunanyi has GLIBC 2.17; Apptainer successfully runs Ubuntu 24.04 with GLIBC
+2.39. Package the exact existing Python/locked environment and require exact
+28-worker numerical agreement before production. Use the home staging root
+`/u/bwbrook/codex_kunanyi/dsdm-goal052`; scratch upload failed, consistent with
+X-ray's recorded quota issue. Numerical qualification job **810907.kunanyi-ohpc** started on n234 at
+18:54:28 AEST (28 CPUs,
+110 GB, four hours). Its runtime/input/driver checksums passed before dispatch.
+Inspect that job at the next daily check. No PBS production fits have started.
+
 ## Start Here
 
 The primary cross-AI venue is the Correspondence project `dsdm`, discussion

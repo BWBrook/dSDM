@@ -1,0 +1,43 @@
+#!/bin/bash
+#PBS -N dsdm052_buildqual
+#PBS -q normal
+#PBS -l select=1:ncpus=28:mpiprocs=28:mem=110gb
+#PBS -l walltime=04:00:00
+#PBS -j oe
+#PBS -m n
+set -euo pipefail
+cd "${PBS_O_WORKDIR:?}"
+: "${DSDM_RUNTIME_SHA256:?runtime archive checksum required}"
+: "${DSDM_DRIVERS_SHA256:?qualification driver archive checksum required}"
+stage=/u/bwbrook/codex_kunanyi/dsdm-goal052
+printf '%s  %s\n' "$DSDM_RUNTIME_SHA256" "$stage/goal052-runtime-20260921.tar.gz" | sha256sum -c -
+printf '%s  %s\n' "$DSDM_DRIVERS_SHA256" "$stage/qualification-drivers.tar.gz" | sha256sum -c -
+printf '%s  %s\n' 8394bc14b741d240dbaf984d9c889f42e14360b04e0de7319b8bbd44ae920bab "$stage/inputs-20260921.tar.gz" | sha256sum -c -
+build="$stage/build-$PBS_JOBID"
+mkdir "$build"
+export APPTAINER_CACHEDIR="$build/cache"
+export APPTAINER_TMPDIR="${TMPDIR:-/tmp}/dsdm052-build-$PBS_JOBID"
+mkdir -p "$APPTAINER_CACHEDIR" "$APPTAINER_TMPDIR"
+gzip -dc "$stage/goal052-runtime-20260921.tar.gz" > "$build/runtime.tar"
+export DSDM_SIF="$build/runtime.sif"
+apptainer build "$DSDM_SIF" "docker-archive:$build/runtime.tar"
+sha256sum "$DSDM_SIF" > "$build/runtime.sif.sha256"
+export DSDM_ROOT="$build/qualification"
+mkdir "$DSDM_ROOT"
+tar -xzf "$stage/inputs-20260921.tar.gz" -C "$DSDM_ROOT"
+tar -xzf "$stage/qualification-drivers.tar.gz" -C "$DSDM_ROOT"
+export DSDM_PYTHON="$build/python-container"
+cat > "$DSDM_PYTHON" <<'WRAPPER'
+#!/bin/bash
+set -euo pipefail
+exec apptainer exec --cleanenv \
+  --bind "$DSDM_ROOT:$DSDM_ROOT" \
+  --bind "$DSDM_ROOT/src:/data/codex/repos/dSDM/src:ro" \
+  --pwd "$DSDM_ROOT" "$DSDM_SIF" \
+  /data/codex/repos/dSDM/.venv/bin/python "$@"
+WRAPPER
+chmod 700 "$DSDM_PYTHON"
+"$DSDM_PYTHON" -c 'import sys,torch,numpy; from dsdm_phase1 import goal052_seawfb_dsdm; print(sys.version,torch.__version__,numpy.__version__,flush=True)'
+export DSDM_REFERENCE="$DSDM_ROOT/reference/goal052_canary.json"
+export DSDM_REFERENCE_SHA256=ad9d25d1c0baf843a19b2affa4baa74f4e6f103106db06730a7a98cd6fa4af6b
+bash "$DSDM_ROOT/scripts/kunanyi/goal052_qualify.pbs"

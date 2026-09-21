@@ -1,0 +1,66 @@
+{
+  "status": "kunanyi_transport_hardware_container_probe_passed_numerical_qualification_pending",
+  "date": "2026-09-21",
+  "production_started": false,
+  "production_source_sha256": "fce7fb52b386c662c198e264aebc007de203e363b5ccc917ccd55ebaa2470926",
+  "maximum_authorized_nodes": 48,
+  "cpus_per_node": 28,
+  "hardware_probe": {
+    "job_id": "810868.kunanyi-ohpc",
+    "exit_status": 0,
+    "host": "n078.kunanyi",
+    "physical_cores": 28,
+    "memory_gib_approx": 125,
+    "cpu": "Intel Xeon E5-2680 v4 @ 2.40GHz",
+    "glibc": "2.17",
+    "apptainer": "1.3.2",
+    "user_max_user_namespaces": 0
+  },
+  "container_probe": {
+    "job_id": "810869.kunanyi-ohpc",
+    "exit_status": 0,
+    "host": "n001.kunanyi",
+    "walltime_seconds": 22,
+    "base": "ubuntu:24.04",
+    "glibc": "2.39",
+    "sif_sha256": "9a856b0746f6dec8a143c4ca91a4a3aa23a30be602ca813808d1fe2f9a2db33d"
+  },
+  "remote_root": "/u/bwbrook/codex_kunanyi/dsdm-goal052",
+  "input_archive_sha256": "8394bc14b741d240dbaf984d9c889f42e14360b04e0de7319b8bbd44ae920bab",
+  "driver_archive_sha256": "24b1fd752daf5808ec3af8d6f382695199b25826aa0d5d31261651f07e9ce49d",
+  "input_snapshot_not_final_handoff": true,
+  "native_inventory_check": {
+    "remaining_pretraining": 700,
+    "final_targets": 41250,
+    "all_keys_unique": true,
+    "all_keys_match_native": true
+  },
+  "adapter_tests_passed": 9,
+  "deep_server_deadline_unchanged": true,
+  "sealed_data_staged": false,
+  "runtime": {
+    "docker_image_id": "sha256:b79688acba36746d9230c7b3bc0bb811829281676743e7e3bb6246fd0c324fe8",
+    "base_digest": "sha256:008173c23f95b170204355c12626cb5a965d779a7e1283b09e9cffbb1bf33ca3",
+    "archive_sha256": "e3ed6e9b8090e83749ccd186c92f0b9729efc90460c0277e542af1a9eb1e5f34",
+    "snapshot_manifest_sha256": "b1fc19e0471431e454321b127b776213251d4a261f22a9de2c26c0230cbcd95e",
+    "snapshot_script_sha256": "a3c6b6588ad80cf2267c0039d244bed1bb1aa6b3d8e6388aeaa35111130398b2",
+    "python": "3.12.3",
+    "torch": "2.13.0+cu130",
+    "numpy": "2.5.1",
+    "deep_container_import_and_tensor_probe_passed": true,
+    "archive_bytes": 3149821803
+  },
+  "qualification_job": {
+    "job_id": "810907.kunanyi-ohpc",
+    "queue": "normal",
+    "cpus": 28,
+    "memory_gb": 110,
+    "walltime_hours": 4,
+    "numerical_qualification_complete": false,
+    "wrapper_sha256": "7f36b48b62cedc519593e83bc1b3a8445663258f12af5ed5099a59dc3a21ea60",
+    "observed_state": "R",
+    "exec_host": "n234",
+    "start_local": "2026-09-21T18:54:28+10:00",
+    "pbs_mail": "n"
+  }
+}

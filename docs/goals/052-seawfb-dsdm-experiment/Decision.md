@@ -122,3 +122,20 @@ plus 60 seconds termination, ending 22 September 17:29:30 AEST. Daily reviews
 at 17:40 may stop it earlier. This increases CPU use while reducing losses
 from repeated short caps. Full-data scaling remains to be measured. Source,
 optimizer, budgets, stopping, comparisons and outer boundaries are unchanged.
+
+## 21 September 2026 — prefer kunanyi for remaining independent fits
+
+Barry identified access to 48 PBS nodes, each 28 CPUs / 128 GB RAM, and asked
+why that capacity was not being used. Under his standing compute authority,
+prepare kunanyi as the preferred continuation route. At most 25 nodes cover
+the 700 remaining-pretraining tasks; up to 48 nodes can usefully run the final
+target grid. Choose actual concurrency from unfinished tasks, queue limits,
+and qualified memory/runtime evidence. Slot ratios are not throughput claims.
+
+Keep the active deep-server allocation and its original deadline while
+qualifying PBS. Use the exact frozen runtime in Apptainer because the native
+kunanyi GLIBC is too old for the locked Torch wheel. Require exact canary
+agreement and a full-row profile on the actual target runtime, then verified
+shutdown and imported checkpoints before dispatching disjoint production
+shards. Hardware/container probes passed; numerical qualification is pending.
+The daily cadence, frozen numerical design and sealed outcomes remain intact.

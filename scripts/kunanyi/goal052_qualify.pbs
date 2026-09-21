@@ -1,0 +1,31 @@
+#!/bin/bash
+#PBS -N dsdm052_qual
+#PBS -q normal
+#PBS -l select=1:ncpus=28:mpiprocs=28:mem=110gb
+#PBS -l walltime=04:00:00
+#PBS -j oe
+#PBS -m n
+# Queue and walltime must be checked against live PBS policy before submission.
+set -euo pipefail
+: "${DSDM_ROOT:?isolated qualification root required}"
+: "${DSDM_PYTHON:?qualified-runtime Python or explicit container wrapper required}"
+: "${DSDM_REFERENCE:?path to original accepted Linux canary required}"
+: "${DSDM_REFERENCE_SHA256:?accepted canary digest required}"
+cd "$DSDM_ROOT"
+[[ "$(cat .goal052-qualification-root)" == qualification-only ]]
+[[ ! -e metadata/goal052_canary.json && ! -e metadata/goal052_full_epoch_profile.json ]]
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1
+export PYTHONPATH="$DSDM_ROOT/src"
+mkdir -p qualification
+/usr/bin/python3 scripts/kunanyi/sample_job.py "$$" qualification/resource-samples.jsonl &
+sampler_pid=$!
+trap 'kill "$sampler_pid" 2>/dev/null || true' EXIT
+printf 'UTC=%s HOST=%s PBS_JOBID=%s\n' "$(date -u +%FT%TZ)" "$(hostname)" "$PBS_JOBID" > qualification/job.txt
+"$DSDM_PYTHON" scripts/goal052_canary28.py --root "$DSDM_ROOT" \
+    --reference "$DSDM_REFERENCE" --reference-sha256 "$DSDM_REFERENCE_SHA256" \
+    --output qualification/canary.json
+# This root is qualification-only; production metadata is never overwritten.
+cp qualification/canary.json metadata/goal052_canary.json
+"$DSDM_PYTHON" -m dsdm_phase1.goal052_seawfb_dsdm profile --root "$DSDM_ROOT" --device cpu
+cp metadata/goal052_full_epoch_profile.json qualification/full-epoch-profile.json
+printf 'QUALIFICATION_MEASUREMENTS_COMPLETE; independent review still required\n'
