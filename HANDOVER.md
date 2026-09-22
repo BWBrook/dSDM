@@ -5,6 +5,29 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
+## Current handoff — 22 September, daily check
+
+The deep-server allocation ended at its original 17:29:30 AEST cap with
+**exit 124**. No Goal052 workers or tmux session remain; the native run lock is
+available and no multiprocessing semaphore files remain. All **272 pretraining
+checkpoints** are validated and preserved locally, **55 new since yesterday**.
+The remaining-pretraining stage completed **72/700**, leaving **628**. All
+1,460 screen target leaves and the selected architecture remain unchanged.
+Local and remote hashes match for all 544 pretraining files; source,
+qualification and launch bindings are unchanged. See
+`evidence/seawfb_dsdm/goal052/continuation24-closeout-review.json`.
+Do not reset the launch binding or restart its original wrapper. Earlier
+counts below are historical.
+
+Kunanyi qualification job **810907.kunanyi-ohpc** remains unverified: access
+failed because the SSH admission window expired, and refreshing the existing
+Enable SSH page requires a fresh UTAS sign-in. Barry has been asked to sign in
+and enable jumpbox SSH. This is an access blocker, not a verified job failure.
+After access returns, inspect the existing job and its qualification evidence
+before production dispatch. No replacement PBS job or new fitting allocation
+has been started. The existing daily heartbeat records this state. See
+`evidence/seawfb_dsdm/goal052/kunanyi-access-20260922.json`.
+
 ## Latest Goal052 state — 21 September, 18:02 AEST
 
 The eight-worker allocation closed at its original 17:10 AEST cap (exit 124),

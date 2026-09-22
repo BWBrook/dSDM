@@ -1,0 +1,92 @@
+{
+  "checked_utc": "2026-09-22T07:57:35.913141+00:00",
+  "checkpoints": {
+    "final_all_checkpoint_inventory_sha256": "bd04c2b978a47799b90763e4f5cff553cabbf46e9ac7a340e5188a360e62efef",
+    "final_checkpoint_files": 544,
+    "final_pretraining": 272,
+    "new_counts_by_auxiliary": {
+      "20": 20,
+      "80": 23,
+      "full": 12
+    },
+    "new_pairs_imported": 55,
+    "new_regular_files_imported": 110,
+    "prior_check_path": "data/processed/dsdm/goal052-seawfb-dsdm-experiment/continue24-check-20260921.json",
+    "prior_check_sha256": "e118048411f7a4dea734b8d95110c31352b658fa5b4f40a8c39ad300cc20fedd",
+    "prior_verified_pretraining": 217
+  },
+  "launch_binding": {
+    "canary_sha256": "ad9d25d1c0baf843a19b2affa4baa74f4e6f103106db06730a7a98cd6fa4af6b",
+    "cap_hours": 168,
+    "device": "cpu",
+    "nominal_deadline_utc": "2026-09-22T07:29:30.946108+00:00",
+    "path": "data/processed/dsdm/goal052-seawfb-dsdm-experiment/continuation24-launch.json",
+    "profile_sha256": "b580e1fd551deb1f51d6b4a3f87f1ac020c96a05d78aad4884fa6d70e20a102f",
+    "qualification_review_sha256": "a1ee28d71173e84a802923036ef1e27a8c19485586891f8785dbfe3afa998e78",
+    "sha256": "f36c57f75180e95c698d5e4efcaed45c270b8786fc95be25cbb6ec677a0cc038",
+    "source_sha256": "fce7fb52b386c662c198e264aebc007de203e363b5ccc917ccd55ebaa2470926",
+    "started_utc": "2026-09-15T07:29:30.946108+00:00",
+    "workers": 24,
+    "wrapper_sha256": "4037100d722bdd1d19472d7a834d660cfd2efdceffaa079506db64f03c345f06"
+  },
+  "new_fit_hours": {
+    "20": {
+      "max": 2.508587844860546,
+      "mean": 1.7666289537733473,
+      "min": 1.3007911317552983,
+      "n": 20
+    },
+    "80": {
+      "max": 9.382868494297758,
+      "mean": 8.318003709304104,
+      "min": 7.0365916159549835,
+      "n": 23
+    },
+    "full": {
+      "max": 24.389762695772223,
+      "mean": 22.01285925398382,
+      "min": 18.511523698512498,
+      "n": 12
+    }
+  },
+  "next_allocation_decision": "parent-controlled PBS qualification/handoff",
+  "private_closeout_path": "data/processed/dsdm/goal052-seawfb-dsdm-experiment/continuation24-closeout.json",
+  "private_closeout_sha256": "8aabdd8b699c14acc90d23c2a5a3a30f5f5853a6986ad190ba5144a9cc7c078d",
+  "qualification_and_source_unchanged": true,
+  "remote": {
+    "exit_path": "data/processed/dsdm/goal052-seawfb-dsdm-experiment/logs/continue24-20260915T172927-45312.exit",
+    "exit_sha256": "ca2ebdf97d7469496b1f4b78958f9dc8447efdcb623953fee7b6996b762f6fff",
+    "exit_status": 124,
+    "final_progress": "remaining_pretraining 72/700",
+    "goal052_workers": "absent",
+    "host": "deep-server-ts",
+    "repository": "/data/codex/repos/dSDM",
+    "run_lock_nonblocking_flock": "available",
+    "run_log": "data/processed/dsdm/goal052-seawfb-dsdm-experiment/logs/run-20260915T172931-45452.log",
+    "run_log_sha256": "3cf85c599987bea896e4c737033c88d133f5a303dd6d99c190cfaf6445b57e26",
+    "semaphore_files": "none",
+    "session": "dsdm-goal052-continue24",
+    "tmux_server": "absent"
+  },
+  "schema_version": "goal052-continuation24-closeout-review-v1",
+  "scientific_scoring_performed": false,
+  "selection_screen_sha256": "ebe2497476b5c4d761091a6ea2a43acc0153d5cf0e01fb67e46cacc06787a162",
+  "status": "cap_closeout_checkpoint_import_verified",
+  "validation": {
+    "checked_pretraining_checkpoints": 272,
+    "checks": [
+      "validate_inputs and identity binding",
+      "load_pretraining atomic receipt/payload/hash checks",
+      "filename equals canonical key digest",
+      "verify_fit finite/stopping/replay/seed/epoch/transfer/freeze contracts",
+      "final_shared_digest equals loaded state digest",
+      "auxiliary_data metadata equals receipt data contract"
+    ],
+    "commands": [
+      "rsync -a --ignore-existing --partial --info=stats2 -e \"ssh -o ConnectTimeout=30\" deep-server-ts:/data/codex/repos/dSDM/data/processed/dsdm/goal052-seawfb-dsdm-experiment/pretraining/ data/processed/dsdm/goal052-seawfb-dsdm-experiment/pretraining/",
+      "uv run --locked python <inline native checkpoint validation using dsdm_phase1.goal052_seawfb_dsdm>"
+    ],
+    "source_sha256": "fce7fb52b386c662c198e264aebc007de203e363b5ccc917ccd55ebaa2470926",
+    "status": "passed"
+  }
+}

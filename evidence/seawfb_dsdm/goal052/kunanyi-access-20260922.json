@@ -1,0 +1,13 @@
+{
+  "checked_utc": "2026-09-22T07:42:52Z",
+  "status": "institutional_signin_required",
+  "pbs_job_id": "810907.kunanyi-ohpc",
+  "job_completion_verified": false,
+  "observations": [
+    "SSH rejected expired MFA admission",
+    "Refreshing existing Enable SSH page redirected to UTAS Microsoft sign-in",
+    "User asked to sign in and renew jumpbox SSH while independent checkpoint closeout continues"
+  ],
+  "production_dispatched": false,
+  "source_changes": false
+}

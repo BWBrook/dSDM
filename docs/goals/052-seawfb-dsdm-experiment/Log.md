@@ -858,3 +858,30 @@ transferred runtime/driver/wrapper checksums passed. Its output is
 `/u/bwbrook/codex_kunanyi/dsdm-goal052/dsdm052_buildqual.o810907`;
 its isolated build/root is `build-810907.kunanyi-ohpc`. Inspect completion
 and evidence at the next daily check; do not submit a duplicate.
+
+## 22 September 2026 — cap closeout and institutional access blocker
+
+The daily check found no Goal052 workers or tmux session on deep-server after
+its original cap, with approximately 122 GiB available RAM. Final checkpoint
+and exit verification proceeds independently of the PBS access issue.
+
+SSH refused access to kunanyi because the MFA admission window expired.
+Refreshing the existing Enable SSH page redirected to UTAS Microsoft sign-in.
+Barry was asked to complete that login and enable SSH; the page is retained.
+The result of qualification job 810907 is unknown, so no replacement job,
+production dispatch, changed numerical setting or competing deep-server run
+was launched. The existing daily heartbeat and Nectar records were updated.
+Correspondence thread 32 has no new messages after the verified milestone 455.
+
+Final closeout passed: exit 124, 272 complete pretraining checkpoints, including
+55 new pairs copied locally (20 auxiliary-20, 23 auxiliary-80, 12 full).
+New fit durations were 1.30–2.51, 7.04–9.38 and 18.51–24.39 hours respectively.
+These support a long PBS bound; unlike auxiliary sizes do not support a pooled
+campaign ETA. The stage ended at 72/700 remaining-pretraining completions.
+All 272 native checkpoint, finite-state, seed/stopping/replay and exact data
+metadata checks passed. Source/launch/qualification bindings are unchanged.
+Parent checks independently confirmed matching remote/local inventory digest
+`bd04c2b978a47799b90763e4f5cff553cabbf46e9ac7a340e5188a360e62efef`,
+unchanged prior day6 checkpoint/screen hashes, available native run lock and
+no remaining multiprocessing semaphores. The shutdown log's semaphore warning
+therefore did not leave semaphore files. No new numerical work was launched.

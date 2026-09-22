@@ -177,3 +177,18 @@ and evidence at the next daily check; do not submit a duplicate.
 
 PBS confirms job 810907 running on **n234**, started **18:54:28 AEST** on
 21 September, with the requested four-hour walltime and mail disabled.
+
+## 22 September handoff state
+
+Deep-server ended at its original cap (exit 124), with 272 verified pretraining
+checkpoints and 1,460 preserved screen leaves. The 55 new checkpoint pairs are
+local; all 544 pretraining file hashes match the stopped remote inventory.
+The native run lock is available and no worker/semaphore remains. There are
+628 unfinished remaining-pretraining fits. The initial kunanyi snapshot still
+has only 217 checkpoints and must be updated before production handoff.
+
+Job 810907's result could not be retrieved because the portal requires a fresh
+UTAS sign-in. Barry has been asked to sign in and enable SSH. Preserve this
+existing job/staging; qualification remains unverified and no PBS production
+has launched. Once access returns, inspect the result before choosing the
+next bounded allocation. Daily cadence and scientific boundaries are unchanged.
