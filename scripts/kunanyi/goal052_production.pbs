@@ -1,0 +1,179 @@
+#!/bin/bash
+# Goal052 bounded one-node production shard.  The launch binding is immutable;
+# each allocated host is qualified before it may execute native pretraining.
+#PBS -N dsdm052_prod
+#PBS -q normal
+#PBS -l select=1:ncpus=28:mpiprocs=28:mem=110gb
+#PBS -l walltime=48:00:00
+#PBS -j oe
+#PBS -m n
+set -Eeuo pipefail
+
+: "${DSDM_ROOT:?shared production root required}"
+: "${DSDM_LAUNCH:?immutable launch JSON required}"
+: "${DSDM_LAUNCH_SHA256:?immutable launch JSON SHA256 required}"
+: "${DSDM_NODE:?manifest node label required}"
+: "${PBS_JOBID:?PBS job id required}"
+
+root="$(cd "$DSDM_ROOT" && pwd -P)"
+manifest="${DSDM_MANIFEST:-$root/handoff/pretraining-manifest.json}"
+
+manifest_digest="$(/usr/bin/python3 - "$DSDM_LAUNCH" <<'PY'
+import json
+import sys
+from pathlib import Path
+value = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+print(value["manifest_digest"])
+PY
+)"
+
+PYTHONPATH="$root/scripts"
+export PYTHONPATH
+/usr/bin/python3 "$root/scripts/goal052_pbs_run.py" \
+    --root "$root" --manifest "$manifest" \
+    --expected-manifest-digest "$manifest_digest" --validate-launch-only >/dev/null
+
+readarray -t launch_values < <(/usr/bin/python3 - "$DSDM_LAUNCH" <<'PY'
+import json
+import sys
+from pathlib import Path
+value = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+print(value["sif_path"])
+print(value["inputs_archive_path"])
+print(value["pilot_reference_root"])
+for name, digest in value["pilot_reference_sha256"].items():
+    if name.rsplit("/", 1)[-1] == "canary.json":
+        print(f"{value['pilot_reference_root'].rstrip('/')}/{name}")
+        print(digest)
+        break
+PY
+)
+sif_path="${launch_values[0]}"
+inputs_archive="${launch_values[1]}"
+pilot_reference_root="${launch_values[2]}"
+pilot_reference="${launch_values[3]:-}"
+pilot_reference_sha256="${launch_values[4]:-}"
+[[ -n "$pilot_reference_sha256" ]] || {
+    printf '%s\n' 'pilot reference must bind canary.json' >&2
+    exit 1
+}
+
+job_state="$root/.goal052-pbs/jobs/$PBS_JOBID"
+mkdir -p "$job_state"
+exit_record="$job_state/exit.json"
+[[ ! -e "$exit_record" ]] || {
+    printf 'job state already exists: %s\n' "$job_state" >&2
+    exit 1
+}
+status="started"
+sampler_pid=""
+
+write_exit() {
+    rc=$?
+    if [[ -n "$sampler_pid" ]]; then
+        kill "$sampler_pid" 2>/dev/null || true
+        wait "$sampler_pid" 2>/dev/null || true
+    fi
+    tmp="$exit_record.tmp.$$"
+    /usr/bin/python3 - "$tmp" "$rc" "$status" "$PBS_JOBID" "$DSDM_NODE" "$DSDM_LAUNCH_SHA256" "$manifest_digest" <<'PY'
+import json
+import os
+import sys
+from pathlib import Path
+out = {
+    "schema_version": "goal052-pbs-job-exit-v1",
+    "status": sys.argv[3],
+    "exit_code": int(sys.argv[2]),
+    "job_id": sys.argv[4],
+    "node": sys.argv[5],
+    "launch_sha256": sys.argv[6],
+    "manifest_digest": sys.argv[7],
+    "hostname": os.uname().nodename,
+}
+path = Path(sys.argv[1])
+path.write_text(json.dumps(out, sort_keys=True) + "\n", encoding="utf-8")
+os.replace(path, path.with_name("exit.json"))
+PY
+    trap - EXIT
+    exit "$rc"
+}
+trap write_exit EXIT
+
+qual_root="$root/.goal052-pbs/qualification/$PBS_JOBID"
+[[ ! -e "$qual_root" ]] || {
+    printf 'qualification root already exists: %s\n' "$qual_root" >&2
+    exit 1
+}
+mkdir -p "$qual_root"
+tar -xzf "$inputs_archive" -C "$qual_root"
+
+# The archive supplies frozen data; current source/config and physical driver
+# paths come from the same production root bound by the launch JSON.
+mkdir -p "$qual_root/scripts/kunanyi"
+rm -rf "$qual_root/src" "$qual_root/config"
+cp -a "$root/src" "$qual_root/src"
+cp -a "$root/config" "$qual_root/config"
+cp -p "$root/uv.lock" "$qual_root/uv.lock"
+cp -p "$root/scripts/goal052_canary24.py" "$qual_root/scripts/goal052_canary24.py"
+cp -p "$root/scripts/goal052_canary28.py" "$qual_root/scripts/goal052_canary28.py"
+cp -p "$root/scripts/goal052_pbs.py" "$qual_root/scripts/goal052_pbs.py"
+cp -p "$root/scripts/goal052_pbs_run.py" "$qual_root/scripts/goal052_pbs_run.py"
+cp -p "$root/scripts/goal052_pbs_verify.py" "$qual_root/scripts/goal052_pbs_verify.py"
+cp -p "$root/scripts/kunanyi/goal052_qualify.pbs" "$qual_root/scripts/kunanyi/goal052_qualify.pbs"
+cp -p "$root/scripts/kunanyi/goal052_production.pbs" "$qual_root/scripts/kunanyi/goal052_production.pbs"
+cp -p "$root/scripts/kunanyi/sample_job.py" "$qual_root/scripts/kunanyi/sample_job.py"
+rm -rf "$qual_root/qualification"
+mkdir -p "$qual_root/metadata"
+rm -f "$qual_root/metadata/goal052_canary.json" "$qual_root/metadata/goal052_full_epoch_profile.json"
+printf '%s\n' qualification-only > "$qual_root/.goal052-qualification-root"
+
+qual_python="$job_state/qualification-python"
+cat > "$qual_python" <<'SH'
+#!/bin/bash
+set -Eeuo pipefail
+exec apptainer exec --cleanenv \
+  --bind "$DSDM_QUAL_ROOT:$DSDM_QUAL_ROOT" \
+  --bind "$DSDM_QUAL_ROOT/src:/data/codex/repos/dSDM/src:ro" \
+  --bind "$DSDM_PROD_ROOT:$DSDM_PROD_ROOT" \
+  --bind "$DSDM_PILOT_ROOT:$DSDM_PILOT_ROOT:ro" \
+  --pwd "$DSDM_QUAL_ROOT" "$DSDM_SIF" \
+  /data/codex/repos/dSDM/.venv/bin/python "$@"
+SH
+chmod 700 "$qual_python"
+export DSDM_QUAL_ROOT="$qual_root" DSDM_PROD_ROOT="$root" DSDM_PILOT_ROOT="$pilot_reference_root" \
+    DSDM_SIF="$sif_path" DSDM_PYTHON="$qual_python"
+export DSDM_REFERENCE="$pilot_reference"
+export DSDM_REFERENCE_SHA256="$pilot_reference_sha256"
+export PYTHONPATH="$qual_root/src"
+export APPTAINERENV_OMP_NUM_THREADS=1 APPTAINERENV_OPENBLAS_NUM_THREADS=1 \
+    APPTAINERENV_MKL_NUM_THREADS=1 APPTAINERENV_VECLIB_MAXIMUM_THREADS=1
+DSDM_ROOT="$qual_root" bash "$qual_root/scripts/kunanyi/goal052_qualify.pbs"
+qual_dir="$qual_root/qualification"
+status="qualification_complete"
+"$qual_python" "$qual_root/scripts/goal052_pbs_verify.py" \
+    --root "$qual_root" --reference-root "$pilot_reference_root" \
+    --output-dir "$qual_dir"
+
+/usr/bin/python3 "$root/scripts/kunanyi/sample_job.py" "$$" "$job_state/resource-samples.jsonl" &
+sampler_pid=$!
+prod_python="$job_state/production-python"
+cat > "$prod_python" <<'SH'
+#!/bin/bash
+set -Eeuo pipefail
+exec apptainer exec --cleanenv \
+  --bind "$DSDM_PROD_ROOT:$DSDM_PROD_ROOT" \
+  --bind "$DSDM_PROD_ROOT/src:/data/codex/repos/dSDM/src:ro" \
+  --pwd "$DSDM_PROD_ROOT" "$DSDM_SIF" \
+  /data/codex/repos/dSDM/.venv/bin/python "$@"
+SH
+chmod 700 "$prod_python"
+export DSDM_PROD_ROOT="$root" DSDM_SIF="$sif_path"
+export APPTAINERENV_DSDM_LAUNCH="$DSDM_LAUNCH"
+export APPTAINERENV_DSDM_LAUNCH_SHA256="$DSDM_LAUNCH_SHA256"
+status="production_started"
+"$prod_python" "$root/scripts/goal052_pbs_run.py" \
+    --root "$root" --manifest "$manifest" \
+    --expected-manifest-digest "$manifest_digest" --node "$DSDM_NODE" \
+    --qualification "$qual_dir/qualification-review.json" \
+    --profile-review "$qual_dir/profile-review.json" --job-id "$PBS_JOBID"
+status="complete"

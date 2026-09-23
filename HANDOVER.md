@@ -5,7 +5,24 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Current handoff — 22 September, daily check
+## Current handoff — 23 September, TPAC access restored
+
+Qualification job **810907.kunanyi-ohpc** completed with exit 0 on n234:
+56 canary jobs across 28 workers and the full-row profile agree exactly with
+the accepted deep-server scientific results. The canary took 2.54 minutes and
+the full profile 65.93 minutes. PBS recorded 55.97 GiB peak memory. The old
+resource sampler crashed; its empty output is retained, and the replacement
+procfs sampler passed a live Linux check. This does not change fitting code.
+
+Handoff job **811257.kunanyi-ohpc** completed with exit 0. The new canonical
+root `/u/bwbrook/codex_kunanyi/dsdm-goal052/production-20260923` contains all
+272 verified pretraining checkpoints and the preserved selection screen.
+All 544 pretraining file hashes match the accepted closeout inventory.
+The returned 700-task manifest was independently replayed: 25 disjoint shards,
+with 24–26 unfinished fits each (628 total). Deep-server remains stopped.
+Production dispatch is being prepared; do not independently submit jobs.
+
+## Historical handoff — 22 September, daily check
 
 The deep-server allocation ended at its original 17:29:30 AEST cap with
 **exit 124**. No Goal052 workers or tmux session remain; the native run lock is

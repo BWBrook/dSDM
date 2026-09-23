@@ -1,0 +1,152 @@
+{
+  "archive_sha256": "07b7d81e8437fb04b0a74fa2ed43c4a2829e20d5ac070fd01f7d5639a4dc5efa",
+  "canary": {
+    "all_56_results_match_reference_scientific_fields_exactly": true,
+    "comparison_excluded_runtime_fields": [
+      "memory_after_full_data_bytes",
+      "peak_cuda_allocated_bytes",
+      "peak_rss_bytes",
+      "pid",
+      "runtime_seconds"
+    ],
+    "conservative_sum_of_28_worker_peaks_gib": 68.1585693359375,
+    "duration_seconds": 152.3979925662279,
+    "jobs": 56,
+    "jobs_per_worker": 2,
+    "native_fit_checks_replayed": true,
+    "peak_worker_rss_gib": 2.434234619140625,
+    "reference_scientific_digest": "a21009a26a8f971b6981e3e285306b661e2b5be649d8798e5cd725eecfd79d4e",
+    "synchronized_waves": 2,
+    "workers": 28
+  },
+  "canary_sha256": "98eb2e69659e61e304018651729c4c0d2ca438407f3eb73aa502f95e8cd1d3cc",
+  "checks": [
+    "returned_archive_hash",
+    "qualification_input_identity_and_no_sealed_data",
+    "frozen_source_config_lock_and_driver_hashes",
+    "container_runtime_and_actual_host",
+    "native_fit_validation_for_reference_and_returned_receipts",
+    "exact_canary_scientific_field_agreement_without_tolerance",
+    "exact_full_profile_scientific_field_agreement_without_tolerance",
+    "28_worker_two_wave_pid_accounting",
+    "PBS_zero_exit_and_scheduler_peak_memory",
+    "no_ecological_metrics_or_outer_response_rows"
+  ],
+  "decision": {
+    "full_row_profile": "qualified",
+    "memory": "qualified_from_PBS_peakmem_and_per_worker_receipts_with_missing_time_resolved_samples",
+    "numerical_portability": "qualified_exactly_without_tolerance_relaxation",
+    "production_epoch_throughput": "not_measured",
+    "resource_sampling": "failed_observability_channel_not_a_fit_or_memory_failure"
+  },
+  "driver_bindings": {
+    "qualification_driver_archive_sha256": "24b1fd752daf5808ec3af8d6f382695199b25826aa0d5d31261651f07e9ce49d",
+    "scripts/goal052_canary24.py": "ec429084523673666d0664bea80f7e14ef88bd7bb8b64086711d166f8b8d91d3",
+    "scripts/goal052_canary28.py": "c27bf7e7de91c7a04320381dc6e212d44d9567de6574f2b8a3a16d0933e7ab12"
+  },
+  "ecological_metrics_computed": false,
+  "fitting_source_commit": "e309ca8",
+  "identity": {
+    "acceptance_sha256": "cb97d64c0ac53bd11f24c1acc2e125b71d6b401bf9d9adac1a8495033c5b0157",
+    "baseline_summary_sha256": "9c1bf1ff8884fae35fe7ebe6f8d19e2aae46ab7eedee252b398c0c74705dd2d8",
+    "goal051_identity": {
+      "config_sha256": "48465d0a5180931a72ffc87aa830f6ce60da93a4b491558540af5afa9d42884d",
+      "goal050_crossfit_sha256": "b3abdb006fb7d384445db376d5ba3f0f7b48afd170982494f88ff20ef612e804",
+      "goal050_curves_sha256": "317a5513b6645edc588c63db1c2d26afaea3edfa202480b2f46ca58a2817c3d6",
+      "goal050_manifest_sha256": "239dd61cc5d3ab942a813201c0cb4117820b74367c7ba71deffddc6990d36198",
+      "goal050_transforms_sha256": "1d8b3d09b139264e288630f283e330d28919c00b4631132aa9a79529ad3abb52",
+      "goal052_config_sha256": "04b667168944b39ced1044da8f381553c4024e31cca1f5590f2fbc693e521f9a",
+      "source_sha256": "24057a4ef6c857d26e0fb4deecf46fe81cfc0e91c67e34d92dbdd77d7ca7ce2e",
+      "uv_lock_sha256": "51712e74b2f9d78a4efb7bfd6732244188e8c6c5bc722f7a78f2724e6b8b84f6"
+    },
+    "source_sha256": "fce7fb52b386c662c198e264aebc007de203e363b5ccc917ccd55ebaa2470926"
+  },
+  "input_snapshot": {
+    "file_count": 3748,
+    "pretraining_checkpoint_count": 217,
+    "sealed_data_included": false,
+    "source_snapshot_sha256": "e118048411f7a4dea734b8d95110c31352b658fa5b4f40a8c39ad300cc20fedd",
+    "status": "qualification_staging_snapshot_not_production_handoff",
+    "target_leaf_count": 1460
+  },
+  "limitations": [
+    "resource-samples.jsonl is empty because the original ps parser crashed before sampling; CPU utilisation, process-level concurrency timing and a time series of group RSS are unavailable",
+    "PBS peakmem is scheduler-level high-water evidence and does not provide time-resolved process attribution",
+    "the canary uses full auxiliary data but one bounded optimization epoch; the full profile is a single-worker one-epoch lifecycle",
+    "qualification does not estimate ecological performance, production epoch throughput, multi-node scaling efficiency or production completion probability",
+    "qualification contains no sealed outer data or scoring and cannot support ecological conclusions"
+  ],
+  "outer_response_rows_read": 0,
+  "pbs": {
+    "allocated_memory_gib": 110,
+    "cpu_percent_reported": 1234,
+    "cpu_time": "02:27:50",
+    "exit_status": 0,
+    "host": "n234.kunanyi",
+    "job_id": "810907.kunanyi-ohpc",
+    "ncpus": 28,
+    "peak_memory_bytes": 60097806336,
+    "peak_memory_fraction_of_allocation": 0.5088222156871449,
+    "peak_memory_gib": 55.97044372558594,
+    "remaining_memory_fraction": 0.4911777843128551,
+    "walltime": "01:15:12"
+  },
+  "production_authorized": false,
+  "profile": {
+    "allowed_runtime_differences": {
+      "nested": [
+        "runtime_seconds"
+      ],
+      "runtime": [
+        "host"
+      ],
+      "top_level": [
+        "lifecycle_runtime_seconds",
+        "peak_cuda_allocated_bytes",
+        "peak_rss_bytes",
+        "pretraining_rows_per_second",
+        "pretraining_runtime_seconds",
+        "rows_per_second",
+        "target_runtime_seconds"
+      ]
+    },
+    "all_other_fields_match_reference_exactly": true,
+    "full_auxiliary_rows": 19265662,
+    "lifecycle_runtime_seconds": 3955.6615119408816,
+    "native_fit_checks_replayed": true,
+    "peak_rss_gib": 2.3065757751464844,
+    "pretraining_runtime_seconds": 3906.7188927335665,
+    "processed_rows_total": 19735118,
+    "reference_scientific_digest": "cfcfa0bbda6604e20ce698f17fb69c655dfe31766612e57dc088cd2f1047f819"
+  },
+  "profile_sha256": "3a2c0acbdde78daab6899424c01bd9847dbbf7f5d76ad539aa7c7e3c6d3a9d89",
+  "qualified_workers": 28,
+  "recommendation": {
+    "accept_as_pilot_reference": true,
+    "independent_scientific_review_materially_changes_decision": false,
+    "production_jobs_must_use_repaired_resource_sampler": true,
+    "production_node_requirement": "each actual host must independently pass scripts/goal052_pbs_verify.py against this accepted pilot reference pack before native shard execution"
+  },
+  "reference_bindings": {
+    "canary_sha256": "ad9d25d1c0baf843a19b2affa4baa74f4e6f103106db06730a7a98cd6fa4af6b",
+    "profile_sha256": "b580e1fd551deb1f51d6b4a3f87f1ac020c96a05d78aad4884fa6d70e20a102f"
+  },
+  "resource_sampling": {
+    "failure": "ValueError_not_enough_values_to_unpack_expected_4_got_1",
+    "future_acceptance": "positive valid procfs rows, all canary worker PIDs observed, and every summed RSS sample below 100 GiB",
+    "resource_samples_bytes": 0,
+    "resource_samples_rows": 0
+  },
+  "runtime": {
+    "device": "cpu",
+    "device_name": "x86_64",
+    "host": "n234.kunanyi",
+    "machine": "x86_64",
+    "platform": "Linux-3.10.0-1160.119.1.el7.tuxcare.els22.x86_64-x86_64-with-glibc2.39",
+    "runtime_sif_sha256": "6c6a3ad220e23fa6db9b8999d3f1be1e734489505c5a27eed50a28f7c674f440",
+    "runtime_source_archive_sha256": "e3ed6e9b8090e83749ccd186c92f0b9729efc90460c0277e542af1a9eb1e5f34",
+    "system": "Linux",
+    "torch": "2.13.0+cu130"
+  },
+  "status": "goal052_kunanyi_pilot_qualification_accepted"
+}
