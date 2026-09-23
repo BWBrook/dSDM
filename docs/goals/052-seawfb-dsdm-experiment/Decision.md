@@ -139,3 +139,28 @@ agreement and a full-row profile on the actual target runtime, then verified
 shutdown and imported checkpoints before dispatching disjoint production
 shards. Hardware/container probes passed; numerical qualification is pending.
 The daily cadence, frozen numerical design and sealed outcomes remain intact.
+
+
+## 23 September 2026 — bounded 25-node pretraining allocation
+
+Use Barry's standing compute authority to dispatch the verified remaining
+pretraining inventory on 25 independent kunanyi nodes, 28 single-thread workers
+per node, 110 GiB and 48 hours per PBS job. This covers the native 700-task
+inventory in one worker wave per shard, reusing 72 cached fits and leaving
+24–26 unfinished fits per node. More nodes would leave still more workers idle
+at this stage. Queue availability controls actual concurrency.
+
+The n234 pilot is accepted on exact numerical agreement, native fit contracts,
+full-row profiling and PBS/per-worker peak-memory evidence. Its missing sampler
+series is an explicit limitation, repaired for production. Every production
+host must produce its own canary/profile evidence and pass the independently
+reviewed deterministic verifier; prior hostnames are never rebound and no
+numerical tolerance is relaxed. This mechanical host gate is an engineering
+implementation of the accepted checks, not a scientific amendment.
+
+The fresh import, stopped prior scheduler, 272 checkpoint pairs, selection,
+manifest and launch are hash-bound. Persistent rank ownership is authoritative.
+Jobs 811265–811289 are the sole active allocation. Retain valid checkpoints on
+failure/cap and verify shutdown before deciding any replacement. Final targets
+remain behind the full 900-pretraining barrier; sealed-data and scoring limits
+remain unchanged. Continue the existing daily heartbeat.

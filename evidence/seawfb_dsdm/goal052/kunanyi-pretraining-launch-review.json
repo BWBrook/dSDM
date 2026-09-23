@@ -1,0 +1,300 @@
+{
+  "cached_remaining_tasks": 72,
+  "checked_utc": "2026-09-23T01:08:19Z",
+  "checks": [
+    "native_manifest_partition_independently_replayed",
+    "all_544_import_hashes_match_verified_closeout",
+    "all_25_distinct_PBS_IDs_and_rank_environments_verified",
+    "48_hour_28_CPU_110_GiB_resource_bindings_verified",
+    "all_eight_driver_and_three_reference_hashes_bound",
+    "13_focused_tests_and_independent_launch_audit_passed",
+    "host_Python_3_6_and_shell_syntax_passed"
+  ],
+  "dispatch_return_sha256": "e0b12cde791e47d2a22efcf329f6a681baedae9b244674fd380ee6875a338868",
+  "engineering_commit": "3280156",
+  "final_target_dispatch_authorized": false,
+  "fitting_source_commit": "e309ca8",
+  "fitting_source_sha256": "fce7fb52b386c662c198e264aebc007de203e363b5ccc917ccd55ebaa2470926",
+  "full_pretraining_barrier_required": 900,
+  "handoff_job": "811257.kunanyi-ohpc",
+  "handoff_sha256": "b9e1777b5e7f3600150d32a1502ba28ebacdfde8aa1cb440e7426fd6746cd7cb",
+  "initial_checkpoint_inventory_sha256": "bd04c2b978a47799b90763e4f5cff553cabbf46e9ac7a340e5188a360e62efef",
+  "initial_pretraining_checkpoints": 272,
+  "jobs": [
+    {
+      "comment": "Job run at Wed Sep 23 at 11:07 on (n149:ncpus=28:mem=115343360kb)",
+      "host": "n149/0*28",
+      "job_id": "811265.kunanyi-ohpc",
+      "job_name": "ds052p000",
+      "node": "node-000",
+      "started_local": "Wed Sep 23 11:07:47 2026",
+      "state": "R"
+    },
+    {
+      "comment": "Job run at Wed Sep 23 at 11:07 on (n186:ncpus=28:mem=115343360kb)",
+      "host": "n186/0*28",
+      "job_id": "811266.kunanyi-ohpc",
+      "job_name": "ds052p001",
+      "node": "node-001",
+      "started_local": "Wed Sep 23 11:07:47 2026",
+      "state": "R"
+    },
+    {
+      "comment": "Job run at Wed Sep 23 at 11:07 on (n135:ncpus=28:mem=115343360kb)",
+      "host": "n135/0*28",
+      "job_id": "811267.kunanyi-ohpc",
+      "job_name": "ds052p002",
+      "node": "node-002",
+      "started_local": "Wed Sep 23 11:07:47 2026",
+      "state": "R"
+    },
+    {
+      "comment": "Job run at Wed Sep 23 at 11:07 on (n054:ncpus=28:mem=115343360kb)",
+      "host": "n054/0*28",
+      "job_id": "811268.kunanyi-ohpc",
+      "job_name": "ds052p003",
+      "node": "node-003",
+      "started_local": "Wed Sep 23 11:07:47 2026",
+      "state": "R"
+    },
+    {
+      "comment": "Job run at Wed Sep 23 at 11:07 on (n005:ncpus=28:mem=115343360kb)",
+      "host": "n005/0*28",
+      "job_id": "811269.kunanyi-ohpc",
+      "job_name": "ds052p004",
+      "node": "node-004",
+      "started_local": "Wed Sep 23 11:07:47 2026",
+      "state": "R"
+    },
+    {
+      "comment": "Job run at Wed Sep 23 at 11:07 on (n030:ncpus=28:mem=115343360kb)",
+      "host": "n030/0*28",
+      "job_id": "811270.kunanyi-ohpc",
+      "job_name": "ds052p005",
+      "node": "node-005",
+      "started_local": "Wed Sep 23 11:07:47 2026",
+      "state": "R"
+    },
+    {
+      "comment": "Job run at Wed Sep 23 at 11:07 on (n066:ncpus=28:mem=115343360kb)",
+      "host": "n066/0*28",
+      "job_id": "811271.kunanyi-ohpc",
+      "job_name": "ds052p006",
+      "node": "node-006",
+      "started_local": "Wed Sep 23 11:07:47 2026",
+      "state": "R"
+    },
+    {
+      "comment": "Job run at Wed Sep 23 at 11:07 on (n084:ncpus=28:mem=115343360kb)",
+      "host": "n084/0*28",
+      "job_id": "811272.kunanyi-ohpc",
+      "job_name": "ds052p007",
+      "node": "node-007",
+      "started_local": "Wed Sep 23 11:07:48 2026",
+      "state": "R"
+    },
+    {
+      "comment": "Job run at Wed Sep 23 at 11:07 on (n104:ncpus=28:mem=115343360kb)",
+      "host": "n104/0*28",
+      "job_id": "811273.kunanyi-ohpc",
+      "job_name": "ds052p008",
+      "node": "node-008",
+      "started_local": "Wed Sep 23 11:07:48 2026",
+      "state": "R"
+    },
+    {
+      "comment": "Job run at Wed Sep 23 at 11:07 on (n106:ncpus=28:mem=115343360kb)",
+      "host": "n106/0*28",
+      "job_id": "811274.kunanyi-ohpc",
+      "job_name": "ds052p009",
+      "node": "node-009",
+      "started_local": "Wed Sep 23 11:07:48 2026",
+      "state": "R"
+    },
+    {
+      "comment": "Not Running: Insufficient amount of resource: ncpus ",
+      "host": null,
+      "job_id": "811275.kunanyi-ohpc",
+      "job_name": "ds052p010",
+      "node": "node-010",
+      "started_local": null,
+      "state": "Q"
+    },
+    {
+      "comment": "Not Running: Insufficient amount of resource: ncpus ",
+      "host": null,
+      "job_id": "811276.kunanyi-ohpc",
+      "job_name": "ds052p011",
+      "node": "node-011",
+      "started_local": null,
+      "state": "Q"
+    },
+    {
+      "comment": "Not Running: Insufficient amount of resource: ncpus ",
+      "host": null,
+      "job_id": "811277.kunanyi-ohpc",
+      "job_name": "ds052p012",
+      "node": "node-012",
+      "started_local": null,
+      "state": "Q"
+    },
+    {
+      "comment": "Not Running: Insufficient amount of resource: ncpus ",
+      "host": null,
+      "job_id": "811278.kunanyi-ohpc",
+      "job_name": "ds052p013",
+      "node": "node-013",
+      "started_local": null,
+      "state": "Q"
+    },
+    {
+      "comment": "Not Running: Insufficient amount of resource: ncpus ",
+      "host": null,
+      "job_id": "811279.kunanyi-ohpc",
+      "job_name": "ds052p014",
+      "node": "node-014",
+      "started_local": null,
+      "state": "Q"
+    },
+    {
+      "comment": "Not Running: Insufficient amount of resource: ncpus ",
+      "host": null,
+      "job_id": "811280.kunanyi-ohpc",
+      "job_name": "ds052p015",
+      "node": "node-015",
+      "started_local": null,
+      "state": "Q"
+    },
+    {
+      "comment": "Not Running: Insufficient amount of resource: ncpus ",
+      "host": null,
+      "job_id": "811281.kunanyi-ohpc",
+      "job_name": "ds052p016",
+      "node": "node-016",
+      "started_local": null,
+      "state": "Q"
+    },
+    {
+      "comment": "Not Running: Insufficient amount of resource: ncpus ",
+      "host": null,
+      "job_id": "811282.kunanyi-ohpc",
+      "job_name": "ds052p017",
+      "node": "node-017",
+      "started_local": null,
+      "state": "Q"
+    },
+    {
+      "comment": "Not Running: Insufficient amount of resource: ncpus ",
+      "host": null,
+      "job_id": "811283.kunanyi-ohpc",
+      "job_name": "ds052p018",
+      "node": "node-018",
+      "started_local": null,
+      "state": "Q"
+    },
+    {
+      "comment": "Not Running: Insufficient amount of resource: ncpus ",
+      "host": null,
+      "job_id": "811284.kunanyi-ohpc",
+      "job_name": "ds052p019",
+      "node": "node-019",
+      "started_local": null,
+      "state": "Q"
+    },
+    {
+      "comment": "Not Running: Insufficient amount of resource: ncpus ",
+      "host": null,
+      "job_id": "811285.kunanyi-ohpc",
+      "job_name": "ds052p020",
+      "node": "node-020",
+      "started_local": null,
+      "state": "Q"
+    },
+    {
+      "comment": "Not Running: Insufficient amount of resource: ncpus ",
+      "host": null,
+      "job_id": "811286.kunanyi-ohpc",
+      "job_name": "ds052p021",
+      "node": "node-021",
+      "started_local": null,
+      "state": "Q"
+    },
+    {
+      "comment": "Not Running: Insufficient amount of resource: ncpus ",
+      "host": null,
+      "job_id": "811287.kunanyi-ohpc",
+      "job_name": "ds052p022",
+      "node": "node-022",
+      "started_local": null,
+      "state": "Q"
+    },
+    {
+      "comment": "Not Running: Insufficient amount of resource: ncpus ",
+      "host": null,
+      "job_id": "811288.kunanyi-ohpc",
+      "job_name": "ds052p023",
+      "node": "node-023",
+      "started_local": null,
+      "state": "Q"
+    },
+    {
+      "comment": "Not Running: Insufficient amount of resource: ncpus ",
+      "host": null,
+      "job_id": "811289.kunanyi-ohpc",
+      "job_name": "ds052p024",
+      "node": "node-024",
+      "started_local": null,
+      "state": "Q"
+    }
+  ],
+  "launch_sha256": "3e04173f2834d3df6857e71386a3f65121d14d6f1c0ed15e4c98f17b056c9ccb",
+  "manifest_digest": "21506b03ac8884cd497900cdd985bd93aef7c19ed66cdd3f9b28849aa4cdb0fd",
+  "manifest_sha256": "18f60b64d60ab6e5e42268064a256471f4784bdec58d3f5d395d107cd39a4d70",
+  "memory_gib_per_node": 110,
+  "native_remaining_inventory": 700,
+  "nodes_submitted": 25,
+  "ownership": "Persistent exclusive rank claims under .goal052-pbs/remaining_pretraining/ownership. Do not resubmit or change owners without verified stopped-job recovery.",
+  "pilot_job": "810907.kunanyi-ohpc",
+  "pilot_review_sha256": "167a7da5f2a4c5ebee59776fe880e50a96a27864d9b59940b58516963648486b",
+  "production_fit_completions_observed": false,
+  "production_root": "/u/bwbrook/codex_kunanyi/dsdm-goal052/production-20260923",
+  "qstat_snapshot_sha256": "74e16a68723ceec1f9fb2edf35e05ace035435549ffffeb530cb084f5d8bf924",
+  "qualification_gate": "Each actual host must pass exact canary/full-profile comparison and repaired procfs resource checks before native fitting.",
+  "queue": "normal",
+  "scientific_scoring_performed": false,
+  "state_counts": {
+    "Q": 15,
+    "R": 10
+  },
+  "status": "goal052_pbs_pretraining_submitted",
+  "unfinished_per_node": [
+    25,
+    25,
+    26,
+    25,
+    26,
+    26,
+    25,
+    25,
+    25,
+    24,
+    24,
+    24,
+    24,
+    24,
+    26,
+    25,
+    26,
+    26,
+    26,
+    26,
+    25,
+    25,
+    25,
+    25,
+    25
+  ],
+  "unfinished_tasks": 628,
+  "walltime_hours_per_job": 48,
+  "workers_per_node": 28
+}

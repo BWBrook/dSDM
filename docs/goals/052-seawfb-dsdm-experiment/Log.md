@@ -885,3 +885,42 @@ Parent checks independently confirmed matching remote/local inventory digest
 unchanged prior day6 checkpoint/screen hashes, available native run lock and
 no remaining multiprocessing semaphores. The shutdown log's semaphore warning
 therefore did not leave semaphore files. No new numerical work was launched.
+
+## 23 September 2026 — exact PBS qualification and 25-node dispatch
+
+Barry restored TPAC access. Existing job 810907 completed on n234 with exit 0
+in 75m12s. Its 56 canary jobs across 28 PIDs and full-row profile match the
+accepted Linux scientific fields exactly. PBS peak memory was 55.9704 GiB;
+the original process sampler failed before producing any rows. That limitation
+is retained. The repaired procfs sampler passed a live Linux check; future
+hosts must show all canary worker PIDs and summed RSS below 100 GiB.
+
+Preparation job 811257 exited 0 after importing all 272 checkpoint pairs.
+All 544 file hashes match the accepted closeout inventory. The returned native
+700-task manifest was replayed independently and partitions exactly into 25
+non-overlapping shards, each with 24–26 unfinished fits. Deep-server is stopped.
+Fitting source remains e309ca8 / fce7fb52..., with accepted data/config/q/lock
+bindings unchanged. Engineering code is committed as 3280156.
+
+Independent launch review and 13 focused tests passed. Jobs 811265–811289
+were submitted to normal, each with one 28-CPU node, 110 GiB and 48 hours.
+The initial snapshot has ten running jobs and fifteen queued for insufficient
+free CPUs. Each job first qualifies its actual host against the accepted pilot
+using a reviewed exact-comparison verifier; only then may its native task shard
+claim ownership and fit. This is a submitted allocation, not evidence that
+production fits have completed. The 48-hour cap starts from each PBS start
+and must not be reset. A fixed dispatch directory and durable rank/job records
+prevent accidental duplicate submissions; persistent ownership prevents
+concurrent writers.
+
+See `kunanyi-node-qualification-review.json` and
+`kunanyi-pretraining-launch-review.json` under tracked Goal052 evidence.
+Private `handoff/production-launch.json` binds every driver, SIF, input archive,
+reference receipt and manifest. Retain daily 17:40 monitoring. No final targets
+until all 900 pretraining checkpoints validate, no aggregation before the
+complete unique target grid, and no sealed outer outcomes or scientific changes.
+
+Correspondence thread 32 was checked through message 455 (no new foreign
+messages) and updated with the verified PBS milestone as message **467**.
+The existing heartbeat now points to this allocation at the unchanged daily
+17:40 cadence. Future task-local board checks should begin after message 467.

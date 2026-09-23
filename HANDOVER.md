@@ -20,7 +20,25 @@ root `/u/bwbrook/codex_kunanyi/dsdm-goal052/production-20260923` contains all
 All 544 pretraining file hashes match the accepted closeout inventory.
 The returned 700-task manifest was independently replayed: 25 disjoint shards,
 with 24–26 unfinished fits each (628 total). Deep-server remains stopped.
-Production dispatch is being prepared; do not independently submit jobs.
+PBS jobs **811265–811289.kunanyi-ohpc** are submitted, one per fixed shard,
+28 CPUs / 110 GiB / 48 hours each. At the initial 11:08 AEST snapshot, ten
+were running and fifteen queued for insufficient free CPUs. Running means
+startup/qualification, not yet verified production fitting. Each actual host
+must pass the exact 28-worker canary, full-row profile and repaired sampler
+checks before native workers start. No final targets are authorized yet.
+See `evidence/seawfb_dsdm/goal052/kunanyi-pretraining-launch-review.json` and
+`kunanyi-node-qualification-review.json`.
+
+The immutable launch SHA is `3e04173f2834d3df6857e71386a3f65121d14d6f1c0ed15e4c98f17b056c9ccb`;
+manifest digest `21506b03ac8884cd497900cdd985bd93aef7c19ed66cdd3f9b28849aa4cdb0fd`.
+Launch, handoff and manifest are under the production root's `handoff/`.
+Actual per-job qualification and exit records live in `.goal052-pbs/`.
+Inspect existing jobs and receipts; never rerun the dispatcher or clear rank
+ownership merely to retry. At completion/failure/cap, verify stopped jobs,
+preserve and validate checkpoints, then choose a bounded continuation.
+All **900 pretraining checkpoints** are required before final-target dispatch;
+all **42,345 unique target leaves** before aggregation. Daily checks remain
+**17:40 Australia/Hobart**. Sealed data and scientific boundaries are unchanged.
 
 ## Historical handoff — 22 September, daily check
 
@@ -45,7 +63,7 @@ before production dispatch. No replacement PBS job or new fitting allocation
 has been started. The existing daily heartbeat records this state. See
 `evidence/seawfb_dsdm/goal052/kunanyi-access-20260922.json`.
 
-## Latest Goal052 state — 21 September, 18:02 AEST
+## Historical Goal052 state — 21 September, 18:02 AEST
 
 The eight-worker allocation closed at its original 17:10 AEST cap (exit 124),
 with 26 verified pretraining checkpoints, including 24 new completions in
@@ -90,7 +108,7 @@ allocation. Daily cadence and scientific boundaries remain unchanged. See
 `continue24-day6-review.json` and `selection-screen-review.json`. The verified
 milestone is on Correspondence thread 32, message 455.
 
-## Kunanyi migration preparation — 21 September evening
+## Historical Kunanyi migration preparation — 21 September evening
 
 Barry identified up to 48 nodes × 28 CPUs / 128 GB and authorized using them.
 Kunanyi is now the preferred route for the remaining independent fits, after
