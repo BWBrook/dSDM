@@ -1,0 +1,294 @@
+{
+  "canaries_exact": 25,
+  "checked_utc": "2026-09-23T07:44:36.527946+00:00",
+  "checks": [
+    "PBS_actual_host_and_48_hour_resource_bindings",
+    "all_canary_fields_exact_and_native_fit_validation",
+    "all_frozen_source_config_lock_and_Goal051_evidence_bindings_match",
+    "canonical_import_without_overwriting_existing_files",
+    "completed_full_profile_scientific_fields_exact_and_native_fit_validation",
+    "exact_auxiliary_roles_heads_weights_rows_and_exclusions",
+    "exclusive_rank_owner_manifest_job_host_binding",
+    "fresh_positive_resource_samples_below_100_GiB",
+    "frozen_fit_budget_seed_init_transfer_freeze_contracts",
+    "immutable_manifest_and_launch_hashes_match",
+    "independent_stopping_history_and_replay_epoch_reconstruction",
+    "native_atomic_checkpoint_and_finite_state_validation",
+    "native_identity_and_disjoint_qualified_owner",
+    "prior_272_receipt_hashes_match_accepted_closeout_for_data_contract_reuse",
+    "qualification_review_hash_and_repaired_sampler_binding",
+    "returned_file_hashes",
+    "unchanged_driver_source_selection_and_launch_bindings"
+  ],
+  "correspondence_last_checked_message": 467,
+  "correspondence_new_messages": 0,
+  "daily_check_local": "17:40 Australia/Hobart",
+  "decision": "Continue the existing fixed-shard allocation under the original per-job 48-hour caps. No new allocation, deadline reset, ownership change or numerical amendment.",
+  "discovery_epoch_range": [
+    34,
+    48
+  ],
+  "distinct_hosts": 25,
+  "engineering_commit": "3280156",
+  "failures_observed": 0,
+  "final_target_dispatch_started": false,
+  "fitting_source_commit": "e309ca8",
+  "fitting_source_sha256": "fce7fb52b386c662c198e264aebc007de203e363b5ccc917ccd55ebaa2470926",
+  "full_pretraining_barrier_required": 900,
+  "historical_audit_repeated": false,
+  "job_exits_observed": 0,
+  "jobs": [
+    {
+      "host": "n149",
+      "job_id": "811265.kunanyi-ohpc",
+      "node": "node-000",
+      "pbs_48_hour_cap": "2026-09-25T11:07:47+10:00",
+      "pbs_started": "2026-09-23T11:07:47+10:00",
+      "stage_at_snapshot": "production"
+    },
+    {
+      "host": "n186",
+      "job_id": "811266.kunanyi-ohpc",
+      "node": "node-001",
+      "pbs_48_hour_cap": "2026-09-25T11:07:47+10:00",
+      "pbs_started": "2026-09-23T11:07:47+10:00",
+      "stage_at_snapshot": "production"
+    },
+    {
+      "host": "n135",
+      "job_id": "811267.kunanyi-ohpc",
+      "node": "node-002",
+      "pbs_48_hour_cap": "2026-09-25T11:07:47+10:00",
+      "pbs_started": "2026-09-23T11:07:47+10:00",
+      "stage_at_snapshot": "production"
+    },
+    {
+      "host": "n054",
+      "job_id": "811268.kunanyi-ohpc",
+      "node": "node-003",
+      "pbs_48_hour_cap": "2026-09-25T11:07:47+10:00",
+      "pbs_started": "2026-09-23T11:07:47+10:00",
+      "stage_at_snapshot": "production"
+    },
+    {
+      "host": "n005",
+      "job_id": "811269.kunanyi-ohpc",
+      "node": "node-004",
+      "pbs_48_hour_cap": "2026-09-25T11:07:47+10:00",
+      "pbs_started": "2026-09-23T11:07:47+10:00",
+      "stage_at_snapshot": "production"
+    },
+    {
+      "host": "n030",
+      "job_id": "811270.kunanyi-ohpc",
+      "node": "node-005",
+      "pbs_48_hour_cap": "2026-09-25T11:07:47+10:00",
+      "pbs_started": "2026-09-23T11:07:47+10:00",
+      "stage_at_snapshot": "production"
+    },
+    {
+      "host": "n066",
+      "job_id": "811271.kunanyi-ohpc",
+      "node": "node-006",
+      "pbs_48_hour_cap": "2026-09-25T11:07:47+10:00",
+      "pbs_started": "2026-09-23T11:07:47+10:00",
+      "stage_at_snapshot": "production"
+    },
+    {
+      "host": "n084",
+      "job_id": "811272.kunanyi-ohpc",
+      "node": "node-007",
+      "pbs_48_hour_cap": "2026-09-25T11:07:48+10:00",
+      "pbs_started": "2026-09-23T11:07:48+10:00",
+      "stage_at_snapshot": "production"
+    },
+    {
+      "host": "n104",
+      "job_id": "811273.kunanyi-ohpc",
+      "node": "node-008",
+      "pbs_48_hour_cap": "2026-09-25T11:07:48+10:00",
+      "pbs_started": "2026-09-23T11:07:48+10:00",
+      "stage_at_snapshot": "production"
+    },
+    {
+      "host": "n106",
+      "job_id": "811274.kunanyi-ohpc",
+      "node": "node-009",
+      "pbs_48_hour_cap": "2026-09-25T11:07:48+10:00",
+      "pbs_started": "2026-09-23T11:07:48+10:00",
+      "stage_at_snapshot": "production"
+    },
+    {
+      "host": "n150",
+      "job_id": "811275.kunanyi-ohpc",
+      "node": "node-010",
+      "pbs_48_hour_cap": "2026-09-25T13:25:42+10:00",
+      "pbs_started": "2026-09-23T13:25:42+10:00",
+      "stage_at_snapshot": "production"
+    },
+    {
+      "host": "n093",
+      "job_id": "811276.kunanyi-ohpc",
+      "node": "node-011",
+      "pbs_48_hour_cap": "2026-09-25T15:03:39+10:00",
+      "pbs_started": "2026-09-23T15:03:39+10:00",
+      "stage_at_snapshot": "production"
+    },
+    {
+      "host": "n166",
+      "job_id": "811277.kunanyi-ohpc",
+      "node": "node-012",
+      "pbs_48_hour_cap": "2026-09-25T15:58:23+10:00",
+      "pbs_started": "2026-09-23T15:58:23+10:00",
+      "stage_at_snapshot": "production"
+    },
+    {
+      "host": "n006",
+      "job_id": "811278.kunanyi-ohpc",
+      "node": "node-013",
+      "pbs_48_hour_cap": "2026-09-25T16:18:31+10:00",
+      "pbs_started": "2026-09-23T16:18:31+10:00",
+      "stage_at_snapshot": "production"
+    },
+    {
+      "host": "n046",
+      "job_id": "811279.kunanyi-ohpc",
+      "node": "node-014",
+      "pbs_48_hour_cap": "2026-09-25T17:35:20+10:00",
+      "pbs_started": "2026-09-23T17:35:20+10:00",
+      "stage_at_snapshot": "qualification"
+    },
+    {
+      "host": "n096",
+      "job_id": "811280.kunanyi-ohpc",
+      "node": "node-015",
+      "pbs_48_hour_cap": "2026-09-25T17:35:20+10:00",
+      "pbs_started": "2026-09-23T17:35:20+10:00",
+      "stage_at_snapshot": "qualification"
+    },
+    {
+      "host": "n210",
+      "job_id": "811281.kunanyi-ohpc",
+      "node": "node-016",
+      "pbs_48_hour_cap": "2026-09-25T17:35:20+10:00",
+      "pbs_started": "2026-09-23T17:35:20+10:00",
+      "stage_at_snapshot": "qualification"
+    },
+    {
+      "host": "n048",
+      "job_id": "811282.kunanyi-ohpc",
+      "node": "node-017",
+      "pbs_48_hour_cap": "2026-09-25T17:35:20+10:00",
+      "pbs_started": "2026-09-23T17:35:20+10:00",
+      "stage_at_snapshot": "qualification"
+    },
+    {
+      "host": "n211",
+      "job_id": "811283.kunanyi-ohpc",
+      "node": "node-018",
+      "pbs_48_hour_cap": "2026-09-25T17:35:20+10:00",
+      "pbs_started": "2026-09-23T17:35:20+10:00",
+      "stage_at_snapshot": "qualification"
+    },
+    {
+      "host": "n212",
+      "job_id": "811284.kunanyi-ohpc",
+      "node": "node-019",
+      "pbs_48_hour_cap": "2026-09-25T17:35:20+10:00",
+      "pbs_started": "2026-09-23T17:35:20+10:00",
+      "stage_at_snapshot": "qualification"
+    },
+    {
+      "host": "n078",
+      "job_id": "811285.kunanyi-ohpc",
+      "node": "node-020",
+      "pbs_48_hour_cap": "2026-09-25T17:35:20+10:00",
+      "pbs_started": "2026-09-23T17:35:20+10:00",
+      "stage_at_snapshot": "qualification"
+    },
+    {
+      "host": "n213",
+      "job_id": "811286.kunanyi-ohpc",
+      "node": "node-021",
+      "pbs_48_hour_cap": "2026-09-25T17:35:20+10:00",
+      "pbs_started": "2026-09-23T17:35:20+10:00",
+      "stage_at_snapshot": "qualification"
+    },
+    {
+      "host": "n099",
+      "job_id": "811287.kunanyi-ohpc",
+      "node": "node-022",
+      "pbs_48_hour_cap": "2026-09-25T17:35:20+10:00",
+      "pbs_started": "2026-09-23T17:35:20+10:00",
+      "stage_at_snapshot": "qualification"
+    },
+    {
+      "host": "n214",
+      "job_id": "811288.kunanyi-ohpc",
+      "node": "node-023",
+      "pbs_48_hour_cap": "2026-09-25T17:35:20+10:00",
+      "pbs_started": "2026-09-23T17:35:20+10:00",
+      "stage_at_snapshot": "qualification"
+    },
+    {
+      "host": "n107",
+      "job_id": "811289.kunanyi-ohpc",
+      "node": "node-024",
+      "pbs_48_hour_cap": "2026-09-25T17:35:20+10:00",
+      "pbs_started": "2026-09-23T17:35:20+10:00",
+      "stage_at_snapshot": "qualification"
+    }
+  ],
+  "jobs_still_in_profile": 11,
+  "launch_sha256": "3e04173f2834d3df6857e71386a3f65121d14d6f1c0ed15e4c98f17b056c9ccb",
+  "manifest_digest": "21506b03ac8884cd497900cdd985bd93aef7c19ed66cdd3f9b28849aa4cdb0fd",
+  "manifest_sha256": "18f60b64d60ab6e5e42268064a256471f4784bdec58d3f5d395d107cd39a4d70",
+  "maximum_sampled_production_rss_gib": 46.67215347290039,
+  "maximum_sampled_qualification_rss_gib": 65.1700439453125,
+  "memory_allocation_gib_per_node": 110,
+  "new_fit_runtime_hours": {
+    "max": 2.3656494525369878,
+    "mean": 1.7124443493062977,
+    "median": 1.669520568610169,
+    "min": 1.3094151957415872
+  },
+  "new_fits_by_auxiliary_size": {
+    "20": 93
+  },
+  "new_verified_pretraining": 93,
+  "prior_verified_pretraining": 272,
+  "private_artifact_sha256": {
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/kunanyi-check-20260923/audit-scripts/dsdm052_daily_snapshot.py": "8173ff3e056489401361866c84351741de6ed3b9224e47e109b02af297a5290d",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/kunanyi-check-20260923/audit-scripts/dsdm052_verify_hosts.py": "c87ce0d29cbbee2b67282645f1d20ba50e2ce528ff48858f91020d8dca4c8a77",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/kunanyi-check-20260923/audit-scripts/dsdm052_verify_new.py": "1061dfe28dc68f04b06bbee11f2b8d3c6052f512353adc900aed0628386fc20c",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/kunanyi-check-20260923/checkpoint-review.json": "eb5f901b5aad47290d179ac63ede8d609bbb82f95dea083e86b899b7d63ce57f",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/kunanyi-check-20260923/host-review.json": "5dc53114f9cd0011985016fc8a5627604115f027356f328f8dfce770fd07657c",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/kunanyi-check-20260923/qualification-samples.tar.gz": "64c065d1f9d2e25c8fb18ab9d1e62aa5e76243d9fc5ac18955c4009a8ec5247f",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/kunanyi-check-20260923/return.tar.gz": "48fed5645a464970ca111f2f57500323b3387760d779befe583ab0f73f620108",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/kunanyi-check-20260923/review/qstat.txt": "a4f6b4b45dcb21625d0fb371936b0f7ba9651cced7b49f04612cda94b6a38080",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/kunanyi-check-20260923/review/returned-file-hashes.json": "2e44059a1ff93c6e142173079718e98774cc77dfb78562991f43570d5d519a50",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/kunanyi-check-20260923/review/snapshot.json": "6f27fa8b59237b7f7e35889829c397ef519d7bb71e213e30f1718d0cfb56fb21"
+  },
+  "production_owners": 14,
+  "production_root": "/u/bwbrook/codex_kunanyi/dsdm-goal052/production-20260923",
+  "profiles_exact": 14,
+  "queued_jobs": 0,
+  "rank_completions_observed": 0,
+  "remaining_pretraining_stage_completed": 165,
+  "remaining_pretraining_stage_total": 700,
+  "resource_qualification_limit_gib": 100,
+  "running_jobs": 25,
+  "sampling_note": "Production CPU utilisation varies with finished or cached tasks; 700 allocated CPUs do not mean 700 active production fits. The eleven newest jobs were still profiling. RSS is sampled, not a continuous upper bound.",
+  "scientific_scoring_performed": false,
+  "selected_epoch_range": [
+    4,
+    18
+  ],
+  "selection": "seawfb_scale",
+  "selection_sha256": "ebe2497476b5c4d761091a6ea2a43acc0153d5cf0e01fb67e46cacc06787a162",
+  "status": "goal052_kunanyi_day1_verified",
+  "throughput_note": "All 93 new completions are auxiliary-20 fits. Auxiliary-80 and full fits remain in progress; no pooled campaign ETA is inferred.",
+  "total_verified_pretraining": 365,
+  "unfinished_pretraining": 535,
+  "unique_target_barrier_required": 42345
+}

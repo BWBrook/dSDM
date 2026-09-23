@@ -226,3 +226,32 @@ Private `handoff/production-launch.json` binds every driver, SIF, input archive,
 reference receipt and manifest. Retain daily 17:40 monitoring. No final targets
 until all 900 pretraining checkpoints validate, no aggregation before the
 complete unique target grid, and no sealed outer outcomes or scientific changes.
+
+## 23 September 2026 — first daily production check, 17:44 AEST
+
+All 25 jobs are running on distinct hosts. Every 28-worker/56-job canary
+matches the accepted pilot exactly; fourteen full-row profiles, sampler
+reviews and production owner claims also passed independent verification.
+The other eleven jobs started at 17:35:20 and were still profiling. No exit,
+failure or completed rank was observed. Keep the existing allocation unchanged.
+
+Validated and imported 93 new atomic checkpoint pairs locally, bringing the
+total to 365: 165/700 remaining-pretraining tasks complete and 535 unfinished.
+Payload/receipt hashes, finite states, native fit contracts, independent
+stopping/replay reconstruction, seed/init/transfer/freeze invariants and exact
+auxiliary data contracts all passed. The prior 272 receipt hashes matched the
+accepted closeout when reusing their data contracts. No historical payload
+audit or ecological scoring was repeated.
+
+All 93 new fits are auxiliary-20 and took 1.31–2.37 hours (median 1.67).
+Auxiliary-80 and full fits remain in progress; do not pool unlike fit sizes
+into a campaign ETA. Maximum sampled group RSS was 46.67 GiB in production
+and 65.17 GiB during qualification. Some workers have finished their short or
+cached tasks, so allocated CPUs are not all busy production workers.
+
+The actual 48-hour PBS caps range from **25 September 11:07:47 to 17:35:20
+AEST**. Keep daily 17:40 checks; the final check is after all original caps.
+Launch, manifest, selection, frozen source/config/lock and driver bindings
+remain unchanged. See tracked `kunanyi-day1-review.json` and private
+`kunanyi-check-20260923/` for returned receipts, exact resource files, audit
+scripts and hashes. Correspondence thread 32 has no new messages after 467.

@@ -924,3 +924,26 @@ Correspondence thread 32 was checked through message 455 (no new foreign
 messages) and updated with the verified PBS milestone as message **467**.
 The existing heartbeat now points to this allocation at the unchanged daily
 17:40 cadence. Future task-local board checks should begin after message 467.
+
+## 23 September 2026 — first daily PBS production check
+
+At 17:44 AEST, all 25 existing jobs were running on distinct hosts. All 25
+canaries passed exact comparison; fourteen completed full profiles and
+repaired sampler reviews passed independent verification, with matching
+production owner claims. Eleven recent starters were still profiling.
+No job exit, failure or rank completion was observed.
+
+All 93 new checkpoint pairs passed hash, finite-state, seed/init/transfer/
+freeze, independent stopping/replay and exact data-contract checks and were
+preserved locally. Total 365/900; remaining-pretraining stage 165/700, leaving
+535 fits. All new completions are auxiliary-20 (1.31–2.37 hours, median 1.67),
+so they do not yet support a full-campaign ETA. Maximum sampled RSS was
+46.67 GiB in production and 65.17 GiB during qualification. Source, config,
+lock, driver, launch, manifest and selection bindings remain unchanged.
+
+Continue the existing allocation without resubmission or changed ownership.
+Original caps fall on 25 September between 11:07:47 and 17:35:20 AEST, before
+the daily check. Tracked `kunanyi-day1-review.json` binds the private returned
+snapshot and both independent audits. Project/Nectar records and the existing
+daily heartbeat were refreshed. Correspondence thread 32 has no new messages
+after 467. No final targets, ecological scores or scientific changes.

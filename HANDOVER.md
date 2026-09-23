@@ -5,7 +5,7 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Current handoff — 23 September, TPAC access restored
+## Current handoff — 23 September, 17:44 AEST daily check
 
 Qualification job **810907.kunanyi-ohpc** completed with exit 0 on n234:
 56 canary jobs across 28 workers and the full-row profile agree exactly with
@@ -20,14 +20,26 @@ root `/u/bwbrook/codex_kunanyi/dsdm-goal052/production-20260923` contains all
 All 544 pretraining file hashes match the accepted closeout inventory.
 The returned 700-task manifest was independently replayed: 25 disjoint shards,
 with 24–26 unfinished fits each (628 total). Deep-server remains stopped.
-PBS jobs **811265–811289.kunanyi-ohpc** are submitted, one per fixed shard,
-28 CPUs / 110 GiB / 48 hours each. At the initial 11:08 AEST snapshot, ten
-were running and fifteen queued for insufficient free CPUs. Running means
-startup/qualification, not yet verified production fitting. Each actual host
-must pass the exact 28-worker canary, full-row profile and repaired sampler
-checks before native workers start. No final targets are authorized yet.
+PBS jobs **811265–811289.kunanyi-ohpc** are all running on 25 distinct hosts,
+one fixed shard each, 28 CPUs / 110 GiB / 48 hours. All 25 exact canaries
+passed. Fourteen hosts also passed the full-row profile and repaired sampler
+checks and claimed their production ranks; eleven were still profiling.
+Independent review confirmed all returned numerical and host bindings.
+
+There are **365 verified pretraining checkpoints**, including **93 new pairs**
+validated and preserved locally today: **165/700** remaining-pretraining tasks
+complete, **535 unfinished**. Every new completion is auxiliary-20, taking
+1.31–2.37 hours (median 1.67). Auxiliary-80 and full fits remain in progress;
+these early completions do not establish a campaign ETA. Sampled group RSS
+peaked at 46.67 GiB in production and 65.17 GiB during qualification, below the
+100 GiB qualification limit. No job exit, failure or completed rank was seen.
+Source, driver, launch, manifest and selection bindings remain unchanged.
+Continue these jobs through their existing caps: **25 September, 11:07:47 to
+17:35:20 AEST**, depending on actual PBS start. The daily check falls after the
+last cap. See `evidence/seawfb_dsdm/goal052/kunanyi-day1-review.json`; private
+`kunanyi-check-20260923/` contains the snapshot, returned evidence and audits.
 See `evidence/seawfb_dsdm/goal052/kunanyi-pretraining-launch-review.json` and
-`kunanyi-node-qualification-review.json`.
+`kunanyi-node-qualification-review.json` for launch and pilot evidence.
 
 The immutable launch SHA is `3e04173f2834d3df6857e71386a3f65121d14d6f1c0ed15e4c98f17b056c9ccb`;
 manifest digest `21506b03ac8884cd497900cdd985bd93aef7c19ed66cdd3f9b28849aa4cdb0fd`.
