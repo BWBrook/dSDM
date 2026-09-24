@@ -5,7 +5,26 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Current handoff — 23 September, 17:44 AEST daily check
+## Current handoff — 24 September, TPAC access requires renewal
+
+Today's daily check could not reach PBS: SSH rejected expired MFA admission,
+and the portal's Enable Jumpbox SSH link redirected to UTAS Microsoft sign-in.
+Chrome then blocked automation because an extension UI was open on that page.
+Barry has been asked to complete sign-in, dismiss the extension popup and
+enable jumpbox SSH. Current job states, new checkpoints, remaining
+qualifications and resource use are **unverified**. The last verified remote
+snapshot remains 23 September below; its 365 local checkpoints and review
+references are preserved. No allocation, source, ownership or deadline changed.
+
+Once access returns, inspect existing jobs **811265–811289** and retrieve only
+new evidence. Their original caps remain **25 September, 11:07:47–17:35:20
+AEST**, before tomorrow's daily 17:40 check. Preserve stopped-job recovery and
+the 900-checkpoint barrier before final targets. See
+`evidence/seawfb_dsdm/goal052/kunanyi-access-20260924.json`.
+Correspondence thread 32 has no new messages; next retrieval cursor is 518
+(last actual thread message remains 467).
+
+## Last verified handoff — 23 September, 17:44 AEST daily check
 
 Qualification job **810907.kunanyi-ohpc** completed with exit 0 on n234:
 56 canary jobs across 28 workers and the full-row profile agree exactly with

@@ -947,3 +947,17 @@ the daily check. Tracked `kunanyi-day1-review.json` binds the private returned
 snapshot and both independent audits. Project/Nectar records and the existing
 daily heartbeat were refreshed. Correspondence thread 32 has no new messages
 after 467. No final targets, ecological scores or scientific changes.
+
+## 24 September 2026 — daily check blocked by TPAC authentication
+
+The existing SSH route rejected expired MFA admission. Opening Enable Jumpbox
+SSH redirected to UTAS sign-in, and Chrome blocked automation because an
+extension UI was open. Barry was asked to finish sign-in, dismiss that popup
+and enable SSH. Current jobs, progress and resource use remain unverified.
+The prior snapshot and audit references are unchanged; 365 checkpoint receipts
+remain local. No new fits were launched and no source, ownership or cap changed.
+The project/Nectar records and existing daily follow-up now record this blocker.
+Original caps remain 25 September 11:07:47–17:35:20 AEST.
+
+See `kunanyi-access-20260924.json`. Correspondence thread 32 returned no new
+messages after 467; save retrieval cursor 518 for the next check.

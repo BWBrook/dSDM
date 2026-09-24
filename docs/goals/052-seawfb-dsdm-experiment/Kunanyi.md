@@ -255,3 +255,18 @@ Launch, manifest, selection, frozen source/config/lock and driver bindings
 remain unchanged. See tracked `kunanyi-day1-review.json` and private
 `kunanyi-check-20260923/` for returned receipts, exact resource files, audit
 scripts and hashes. Correspondence thread 32 has no new messages after 467.
+
+## 24 September 2026 — daily access blocker
+
+SSH rejected expired MFA admission. The portal's Enable Jumpbox SSH link
+redirected to UTAS Microsoft sign-in, where Chrome blocked automation because
+an extension UI was open. Barry was asked to complete sign-in, dismiss the
+popup and enable SSH. No current PBS state, new completion, qualification or
+resource measurement could be verified. The last verified state remains the
+23 September snapshot and 365 preserved local checkpoints. Prior snapshot and
+audit hashes still match. See `kunanyi-access-20260924.json`.
+
+No source, allocation, ownership or cap changed. After access returns, inspect
+the existing jobs and new receipts first. The original caps remain 25 September
+11:07:47–17:35:20 AEST; tomorrow's daily check is after them. No new discussion
+on thread 32; its next retrieval cursor is 518, last message 467.
