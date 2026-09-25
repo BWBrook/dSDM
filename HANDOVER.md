@@ -5,7 +5,7 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Current handoff — 25 September, pretraining complete; 48 target nodes launched
+## Current handoff — 25 September, 48 target nodes; PBS completion email
 
 Barry restored TPAC access. All old jobs **811265–811289.kunanyi-ohpc** finished
 with exit 0, exact rank completions and accepted actual-host qualifications.
@@ -19,11 +19,11 @@ Goal052 scheduler remains stopped.
 
 Preparation **811744.kunanyi-ohpc** exited 0 after verifying the fresh import
 of 900 checkpoint pairs and 1,460 screen leaves and reproducing the native
-final-target manifest. The sole active allocation is now **811750–811797.kunanyi-ohpc**,
+final-target manifest. The sole active fitting allocation is **811750–811797.kunanyi-ohpc**,
 48 fixed shards (`node-000`–`node-047`), each 28 single-thread workers, 110 GiB
 and 48 hours. At **25 September 10:37 AEST**, all 48 jobs were running on distinct
 hosts with no observed exit. Their original caps are **27 September
-10:37:06–10:37:11 AEST**, before that day's daily check. PBS R is startup evidence;
+10:37:06–10:37:11 AEST**. PBS R is startup evidence;
 each actual host still must pass exact canary/full-profile/resource qualification
 before fitting. No new target-host qualification or target leaf is accepted by
 this initial snapshot. A final 10:42 AEST startup check still found all 48
@@ -48,11 +48,27 @@ stopped-job recovery. Qualify any changed allocation/runtime before restarting.
 
 External launch changes are **e70fd46**; frozen fitting source remains
 **e309ca8 / fce7fb52...**, with accepted data/config/lock/q surfaces unchanged.
-Daily checks remain **17:40 Australia/Hobart**, quiet unless meaningful progress,
-failure, completion or user action is required. The existing heartbeat now tracks
-this target allocation. No partial-grid scoring, sealed outcomes, full refits,
-maps, manuscript claims or scientific/numerical amendments. Correspondence
-thread 32 was updated as message **531**; next retrieval cursor is **531**.
+Barry has replaced the daily monitor with **PBS completion email** because
+inactive TPAC portal sessions expire. Automation `continue-dsdm-goal052` was
+**deleted**. Do not recreate polling or an automatic wake-up; wait for Barry to
+report the email and resume this task.
+
+Notification **811800.kunanyi-ohpc** (`ds052_notify`) is in the expected PBS
+system dependency hold, with `afterany` covering every job **811750–811797**.
+PBS will email **barry.brook@utas.edu.au** when that notification job ends or
+aborts. It becomes eligible after all 48 production jobs end, including error
+or time-limit exits, and requests only one CPU / 256 MiB / two minutes. All
+predecessors had already started before this dependency was attached. This
+signals allocation termination; scientific completion still requires returned
+receipts, qualifications and the complete target-grid checks after Barry resumes.
+
+See `evidence/seawfb_dsdm/goal052/kunanyi-notification-review.json`. Remote
+notification records are `/u/bwbrook/codex_kunanyi/dsdm-goal052/notifications-targets-20260925`;
+local copies are in private `kunanyi-target-notification/`. The production
+scripts, job ownership and deadlines are unchanged. No partial-grid scoring,
+sealed outcomes, full refits, maps, manuscript claims or scientific/numerical
+amendments. Correspondence thread 32 message **533** records this superseding
+monitoring decision; next retrieval cursor is **533**.
 
 ## Historical handoff — 24 September, TPAC access requires renewal
 

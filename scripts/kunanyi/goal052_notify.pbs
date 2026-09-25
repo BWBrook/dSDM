@@ -1,0 +1,27 @@
+#!/bin/bash
+# Submit once with an afterany dependency on every production job.
+# This job records scheduler state only; scientific validation follows later.
+#PBS -N ds052_notify
+#PBS -q test
+#PBS -l select=1:ncpus=1:mem=256mb
+#PBS -l walltime=00:02:00
+#PBS -r n
+#PBS -j oe
+#PBS -M barry.brook@utas.edu.au
+#PBS -m ae
+set -Eeuo pipefail
+
+: "${DSDM_NOTIFY_DIR:?notification record directory required}"
+cd "$DSDM_NOTIFY_DIR"
+export LC_ALL=C
+readarray -t jobs < dependency-jobs.txt
+(( ${#jobs[@]} == 48 ))
+for job in "${jobs[@]}"; do
+    [[ "$job" =~ ^[0-9]+\.kunanyi-ohpc$ ]]
+done
+
+printf 'Goal052 target allocation ended at %s\n' "$(date -u +%FT%TZ)"
+printf 'Notification job: %s\n' "$PBS_JOBID"
+printf '%s\n' 'PBS end/abort email requests follow-up; results still require validation.'
+/opt/pbs/bin/qstat -xf "${jobs[@]}" > predecessors-qstat.txt
+printf '%s\n' 'Scheduler records saved in predecessors-qstat.txt.'

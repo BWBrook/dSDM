@@ -192,3 +192,19 @@ and independent launch review passed.
 Keep fixed disjoint ownership and each actual PBS start's original deadline.
 No aggregation until all 42,345 unique target leaves validate. The frozen
 scientific boundaries and daily 17:40 cadence remain unchanged.
+
+
+## 25 September 2026 — wait for PBS email and Barry's resumption
+
+Barry superseded daily monitoring with the PBS email workflow used by X-ray
+Cavities. Delete the Codex heartbeat and attach one lightweight notification
+job to the whole active allocation using `afterany`, so successful, failed and
+capped predecessors all release it after they have ended. Use the established
+PBS recipient `barry.brook@utas.edu.au`; avoid 48 separate routine end emails.
+
+Job 811800 is verified held on jobs 811750–811797 with end/abort mail enabled.
+Wait for Barry to report the email and resume the task. Do not recreate an
+automatic polling loop that requires a live TPAC portal session. This changes
+notification and handoff only; compute authority, existing caps, scientific
+review and sealed-data boundaries remain intact. Allocation termination must
+still be distinguished from validated scientific completion.

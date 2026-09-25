@@ -1008,3 +1008,29 @@ The existing daily 17:40 heartbeat now follows this allocation. Project and
 Nectar records were updated, and Correspondence thread 32 received message
 531; use retrieval cursor 531 on the next check. No scientific or sealed-data
 boundary changed.
+
+
+## 25 September 2026 — PBS email replaces the daily monitor
+
+Barry requested the X-ray Cavities email pattern because inactive TPAC portal
+sessions expire. Deleted automation `continue-dsdm-goal052`; wait for Barry's
+message after the email instead of scheduling further checks. This supersedes
+the daily-cadence instructions above.
+
+Notification job **811800.kunanyi-ohpc** (`ds052_notify`) was submitted at
+10:52 AEST. Returned PBS state verifies a system dependency hold (`H` / `s`),
+`afterany` on all 48 original jobs 811750–811797, recipient
+`barry.brook@utas.edu.au`, mail points `ae`, one CPU, 256 MiB, two minutes and
+no automatic rerun. The dependency releases after every production job ends,
+regardless of exit status. All predecessors had already started. Email is
+configured through the PBS route previously confirmed by Barry in X-ray
+Cavities; future delivery is not yet claimed.
+
+The new notification script only records scheduler state. Active production
+scripts, launch/source bindings, rank ownership and caps are unchanged. An end
+email is not scientific acceptance: after Barry resumes, inspect stopped-job
+and qualification receipts and validate the complete unique target grid before
+aggregation. See `kunanyi-notification-review.json` and private
+`kunanyi-target-notification/`; remote notification records are under
+`/u/bwbrook/codex_kunanyi/dsdm-goal052/notifications-targets-20260925`.
+Correspondence thread 32 message/cursor 533 records the new workflow.
