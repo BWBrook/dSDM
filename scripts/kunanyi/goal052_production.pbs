@@ -1,6 +1,6 @@
 #!/bin/bash
 # Goal052 bounded one-node production shard.  The launch binding is immutable;
-# each allocated host is qualified before it may execute native pretraining.
+# each allocated host is qualified before it may execute its native stage.
 #PBS -N dsdm052_prod
 #PBS -q normal
 #PBS -l select=1:ncpus=28:mpiprocs=28:mem=110gb

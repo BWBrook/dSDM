@@ -1,0 +1,78 @@
+{
+  "checked_utc": "2026-09-25T00:15:54.301243+00:00",
+  "checkpoint_inventory_sha256": "a672566943221c8f69cad5b5334750f347887cf100981cafe629a9eee7e01dc5",
+  "checks": [
+    "all_900_unique_native_pretraining_keys_present",
+    "all_1800_payload_receipt_hashes_match_verified_evidence",
+    "535_new_native_fit_finite_state_seed_stopping_replay_and_data_contracts_pass",
+    "365_prior_verified_pairs_preserved_under_exact_hashes",
+    "all_25_PBS_jobs_finished_exit_zero_with_exact_rank_completions",
+    "all_25_actual_hosts_qualified_against_accepted_pilot",
+    "frozen_inputs_source_config_lock_selection_and_launch_bindings_unchanged"
+  ],
+  "fitting_source_commit": "e309ca8",
+  "full_pretraining_barrier_sha256": "8594a9fe3cc592dc31554fe1e2768853d9d13179b112062ae1798c0bdab882c7",
+  "identity": {
+    "acceptance_sha256": "cb97d64c0ac53bd11f24c1acc2e125b71d6b401bf9d9adac1a8495033c5b0157",
+    "baseline_summary_sha256": "9c1bf1ff8884fae35fe7ebe6f8d19e2aae46ab7eedee252b398c0c74705dd2d8",
+    "goal051_identity": {
+      "config_sha256": "48465d0a5180931a72ffc87aa830f6ce60da93a4b491558540af5afa9d42884d",
+      "goal050_crossfit_sha256": "b3abdb006fb7d384445db376d5ba3f0f7b48afd170982494f88ff20ef612e804",
+      "goal050_curves_sha256": "317a5513b6645edc588c63db1c2d26afaea3edfa202480b2f46ca58a2817c3d6",
+      "goal050_manifest_sha256": "239dd61cc5d3ab942a813201c0cb4117820b74367c7ba71deffddc6990d36198",
+      "goal050_transforms_sha256": "1d8b3d09b139264e288630f283e330d28919c00b4631132aa9a79529ad3abb52",
+      "goal052_config_sha256": "04b667168944b39ced1044da8f381553c4024e31cca1f5590f2fbc693e521f9a",
+      "source_sha256": "24057a4ef6c857d26e0fb4deecf46fe81cfc0e91c67e34d92dbdd77d7ca7ce2e",
+      "uv_lock_sha256": "51712e74b2f9d78a4efb7bfd6732244188e8c6c5bc722f7a78f2724e6b8b84f6"
+    },
+    "source_sha256": "fce7fb52b386c662c198e264aebc007de203e363b5ccc917ccd55ebaa2470926"
+  },
+  "jobs_completed": 25,
+  "native_inventory_digest": "6cffc40d8926140165cd7d9a167a9f4f812f08363fa8c4eb860c9fdf7c0c08d2",
+  "new_fit_runtime_hours_by_auxiliary": {
+    "20": {
+      "count": 122,
+      "max": 2.3373247288527073,
+      "mean": 1.7255793101051478,
+      "median": 1.717916509442471,
+      "min": 1.2916609950968996
+    },
+    "80": {
+      "count": 225,
+      "max": 9.530811541302958,
+      "mean": 7.55577054698127,
+      "median": 7.501576398380825,
+      "min": 6.130491974023947
+    },
+    "full": {
+      "count": 188,
+      "max": 23.355709062708645,
+      "mean": 19.13706134545061,
+      "median": 18.921014763517434,
+      "min": 16.171516574267816
+    }
+  },
+  "new_verified_since_day1": 535,
+  "new_verified_since_dispatch": 628,
+  "next_manifest_digest": "5d54bd7cdeb8368ec4ca024cc6a853a4b2e3268ec9bc6cbf49fb8e1a76764cc6",
+  "next_manifest_sha256": "7e91c9486791a8456ae7e5812ec17a84348b70399812c38be63b69b85088fdcb",
+  "next_nodes": 48,
+  "next_task_count": 41250,
+  "pretraining_checkpoints": 900,
+  "prior_scheduler_stopped": true,
+  "private_artifacts": {
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/kunanyi-check-20260925/checkpoint-review.json": "33ac146851cd88e6e4348c622930410252303fb5994bce73b610bf81144a6448",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/kunanyi-check-20260925/full-pretraining-file-hashes.json": "b9483719d3c25a011262f85ecce0c69fa20a71a989aed31f4350914d2730a1ab",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/kunanyi-check-20260925/host-review.json": "876c89fd2cb07babd2e7aeca4c0603333193575a3396cac0986aeae3ecc1d8a1",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/kunanyi-check-20260925/return.tar.gz": "ba3b92ec57cc44e225d63e066830645e96adb3081e3275500ba79e3960a0b27b",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/kunanyi-check-20260925/review/snapshot.json": "56183f90e9c03a043f0039b4776acb9db3caeda1b31dd00593dae0e79d22d33c",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/kunanyi-target-staging/handoff/final-stage-coordinator.json": "b412c89a7131cb8b3b4c3176c74821d328525cf95423d07025b80d5cfb16d29f",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/kunanyi-target-staging/handoff/final-target-manifest.json": "7e91c9486791a8456ae7e5812ec17a84348b70399812c38be63b69b85088fdcb",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/kunanyi-target-staging/handoff/full-pretraining.json": "8594a9fe3cc592dc31554fe1e2768853d9d13179b112062ae1798c0bdab882c7"
+  },
+  "scoring_performed": false,
+  "selection": "seawfb_scale",
+  "selection_sha256": "ebe2497476b5c4d761091a6ea2a43acc0153d5cf0e01fb67e46cacc06787a162",
+  "snapshot_utc": "2026-09-25T00:06:01.067730+00:00",
+  "status": "goal052_kunanyi_pretraining_complete_verified"
+}

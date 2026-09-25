@@ -16,6 +16,11 @@ from typing import Any, Dict, List, Mapping, Optional
 
 
 LAUNCH_STATUS = "goal052_pbs_pretraining_launch_bound"
+FINAL_TARGETS_LAUNCH_STATUS = "goal052_pbs_final_targets_launch_bound"
+LAUNCH_STAGES = {
+    LAUNCH_STATUS: "remaining_pretraining",
+    FINAL_TARGETS_LAUNCH_STATUS: "final_targets",
+}
 SHA256 = re.compile(r"[0-9a-f]{64}\Z")
 REQUIRED_DRIVERS = frozenset({
     "scripts/goal052_canary24.py",
@@ -86,6 +91,46 @@ def _hash_bound_files(root: Path, mapping: Mapping[str, Any], label: str) -> Dic
     return result
 
 
+def _rooted_reference_path(root: Path, value: Any, label: str) -> Path:
+    """Resolve an external receipt path while keeping it under production root."""
+    require(isinstance(value, str) and value, f"{label}_path_invalid")
+    raw_path = Path(value)
+    path = raw_path.resolve() if raw_path.is_absolute() else (root / _relative(value, label)).resolve()
+    try:
+        inside_root = os.path.commonpath([str(root), str(path)]) == str(root)
+    except ValueError:
+        inside_root = False
+    require(inside_root, f"{label}_outside_production_root")
+    return path
+
+
+def _validate_full_pretraining_reference(root: Path, manifest: Mapping[str, Any]) -> Dict[str, Any]:
+    """Validate the immutable 900-checkpoint barrier before host qualification."""
+    reference = manifest.get("full_pretraining_reference")
+    require(isinstance(reference, Mapping) and set(reference) == {"path", "sha256"},
+            "full_pretraining_reference_required")
+    receipt_path = _rooted_reference_path(root, reference.get("path"),
+                                          "full_pretraining_reference")
+    receipt_sha256 = _sha(reference.get("sha256"), "full_pretraining_reference")
+    require(receipt_path.is_file(), "full_pretraining_reference_missing")
+    require(sha256_file(receipt_path) == receipt_sha256,
+            "full_pretraining_reference_drift")
+    receipt = read_json(receipt_path, "full_pretraining")
+    require(receipt.get("immutable") is True, "full_pretraining_receipt_not_immutable")
+    require(receipt.get("status") == "goal052_full_pretraining_verified",
+            "full_pretraining_receipt_unverified")
+    require(receipt.get("identity") == manifest.get("identity"),
+            "full_pretraining_identity_drift")
+    require(receipt.get("selection_digest") == manifest.get("selection_digest"),
+            "full_pretraining_selection_drift")
+    require(receipt.get("native_inventory_digest") == manifest.get("full_pretraining_inventory_digest"),
+            "full_pretraining_inventory_drift")
+    require(receipt.get("validated_checkpoint_count") == 900,
+            "full_pretraining_checkpoint_count_invalid")
+    _sha(receipt.get("checkpoint_inventory_sha256"), "checkpoint_inventory")
+    return {"path": receipt_path, "receipt": receipt}
+
+
 def validate_launch_binding(
     launch_path: Path,
     launch_sha256: str,
@@ -101,7 +146,9 @@ def validate_launch_binding(
     require(launch_path.is_file(), "launch_missing")
     require(sha256_file(launch_path) == launch_sha256, "launch_digest_mismatch")
     launch = read_json(launch_path, "launch")
-    require(launch.get("status") == LAUNCH_STATUS, "launch_status_invalid")
+    status = launch.get("status")
+    require(status in LAUNCH_STAGES, "launch_status_invalid")
+    launch_stage = LAUNCH_STAGES[status]
     require(_absolute(launch.get("production_root"), "production_root") == root,
             "launch_production_root_drift")
     require(_absolute(launch.get("manifest_path"), "manifest") == manifest_path,
@@ -115,8 +162,9 @@ def validate_launch_binding(
     manifest = read_json(manifest_path, "manifest")
     require(manifest.get("manifest_digest") == expected_manifest_digest,
             "manifest_content_digest_drift")
-    require(manifest.get("stage") == "remaining_pretraining",
-            "final_targets_dispatch_forbidden")
+    require(manifest.get("stage") == launch_stage, "launch_stage_mismatch")
+    if "stage" in launch:
+        require(launch.get("stage") == launch_stage, "launch_stage_mismatch")
 
     sif_path = _absolute(launch.get("sif_path"), "sif")
     require(sif_path.is_file(), "sif_missing")
@@ -135,11 +183,31 @@ def validate_launch_binding(
     require(REQUIRED_DRIVERS.issubset(set(driver_files)), "driver_binding_incomplete")
 
     require(launch.get("walltime_hours") == 48, "launch_walltime_invalid")
-    require(launch.get("nodes") == 25, "launch_node_count_invalid")
+    launch_nodes = launch.get("nodes")
+    require(isinstance(launch_nodes, int) and not isinstance(launch_nodes, bool),
+            "launch_node_count_invalid")
+    if launch_stage == "remaining_pretraining":
+        require(launch_nodes == 25, "launch_node_count_invalid")
+    else:
+        require(1 <= launch_nodes <= 48, "launch_node_count_invalid")
+    manifest_nodes = manifest.get("nodes")
+    require(isinstance(manifest_nodes, list) and all(isinstance(node, str) and node for node in manifest_nodes),
+            "manifest_nodes_invalid")
+    require(len(manifest_nodes) == launch_nodes, "launch_manifest_node_count_mismatch")
+    shards = manifest.get("shards")
+    require(isinstance(shards, list) and len(shards) == launch_nodes,
+            "manifest_shard_count_mismatch")
+    require([shard.get("node") for shard in shards if isinstance(shard, Mapping)] == manifest_nodes,
+            "manifest_shard_nodes_mismatch")
     require(launch.get("workers_per_node") == 28, "launch_worker_count_invalid")
+    require(manifest.get("workers_per_node") == 28,
+            "manifest_worker_count_invalid")
     reference = next((path for name, path in reference_files.items()
                       if Path(name).name == "canary.json"), None)
     require(reference is not None, "pilot_reference_canary_missing")
+    full_pretraining = None
+    if launch_stage == "final_targets":
+        full_pretraining = _validate_full_pretraining_reference(root, manifest)
     return {
         "launch": launch,
         "manifest": manifest,
@@ -149,6 +217,8 @@ def validate_launch_binding(
         "pilot_reference": reference,
         "pilot_reference_sha256": sha256_file(reference),
         "driver_files": driver_files,
+        "stage": launch_stage,
+        "full_pretraining_reference": full_pretraining,
     }
 
 
