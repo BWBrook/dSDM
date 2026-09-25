@@ -270,3 +270,48 @@ No source, allocation, ownership or cap changed. After access returns, inspect
 the existing jobs and new receipts first. The original caps remain 25 September
 11:07:47–17:35:20 AEST; tomorrow's daily check is after them. No new discussion
 on thread 32; its next retrieval cursor is 518, last message 467.
+
+
+## 25 September 2026 — 900 checkpoints verified; 48 final-target nodes launched
+
+Access was restored. All 25 pretraining jobs 811265–811289 finished with exit
+0 and exact rank completions in 20h46m–24h39m. All actual hosts qualified;
+the last eleven profiles received independent verification today. The remaining
+535 checkpoint pairs passed hashes, finite-state, fit/seed/transfer/freeze,
+stopping/replay and exact data-contract checks. All 900 native pairs are now
+preserved locally. Median new-fit times were 1.72 h (auxiliary-20), 7.50 h
+(auxiliary-80) and 18.92 h (full). Peak sampled RSS was 46.819 GiB in production
+and 65.170 GiB in qualification; PBS peak memory was 62.326 GiB. See
+`kunanyi-pretraining-completion-review.json` and private `kunanyi-check-20260925`.
+
+Preparation **811744** exited 0 after 12m13s. It copied the 900 pretraining
+pairs and 1,460 screen leaves into a fresh root, checked every imported hash,
+and reproduced the 48-shard native manifest. The completed historical root is
+preserved. Current root:
+`/u/bwbrook/codex_kunanyi/dsdm-goal052/targets-20260925`.
+
+Jobs **811750–811797.kunanyi-ohpc** were submitted only after the exact staging
+receipt and fresh PBS F / exit 0 passed the reviewed dispatch gate. At
+**25 September 10:37 AEST**, all 48 were running on distinct hosts, with no
+observed exit. Each requests 28 single-thread CPUs / 110 GiB / 48 hours and
+must pass its actual-host exact canary, full-row profile and repaired sampler
+before fitting. Original caps: **27 September 10:37:06–10:37:11 AEST**. PBS R
+alone is not accepted numerical qualification or target completion.
+
+The final stage has 41,250 tasks, 365 cached screen fits and 40,885 new fits.
+All 42,345 unique target leaves are required before aggregation. Frozen fitting
+source remains e309ca8 / fce7fb52..., with accepted inputs, q surfaces, config
+and lock unchanged. External launch gate changes are e70fd46; 20 focused tests
+and independent launch review passed. No scoring or sealed access occurred.
+
+See tracked `kunanyi-target-launch-review.json` and private
+`kunanyi-target-staging` for exact hashes and returned PBS evidence. Launch:
+`handoff/target-launch.json`, SHA256
+`4aeedc0d4e426dfee7d2c2d7f7fe08d686611bd46b3fecbcc606b5967e3177a7`;
+manifest digest `5d54bd7cdeb8368ec4ca024cc6a853a4b2e3268ec9bc6cbf49fb8e1a76764cc6`.
+Durable submissions are `.goal052-pbs/dispatch-targets-20260925`, and the rank
+state is `.goal052-pbs/final_targets`; job/qualification directories follow the
+prior layout. Inspect existing IDs before recovery, preserve ownership and
+valid checkpoints, never reset deadlines or change active drivers, and do not
+rerun a dispatcher blindly. The daily 17:40 heartbeat now follows these jobs;
+Correspondence thread 32 message/cursor 531 records the milestone.

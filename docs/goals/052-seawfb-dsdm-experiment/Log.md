@@ -961,3 +961,50 @@ Original caps remain 25 September 11:07:47–17:35:20 AEST.
 
 See `kunanyi-access-20260924.json`. Correspondence thread 32 returned no new
 messages after 467; save retrieval cursor 518 for the next check.
+
+## 25 September 2026 — pretraining complete and final-target preparation
+
+Barry restored TPAC access. PBS history confirms all 25 jobs 811265–811289
+finished with exit 0 in 20h46m–24h39m. Returned exit, owner, completion and
+actual-host qualification receipts agree exactly. The final eleven profiles
+passed independent numerical/resource verification; fourteen profiles and all
+25 canaries reused their prior accepted hashes. Peak sampled group RSS was
+46.819 GiB in production and 65.170 GiB in qualification; PBS peak memory was
+62.326 GiB.
+
+Retrieved and validated the remaining 535 checkpoint pairs: 122 auxiliary-20,
+225 auxiliary-80 and 188 full. Median fit times were 1.72, 7.50 and 18.92 hours,
+respectively; these size groups are not pooled into a campaign ETA. All new
+atomic file/hash, finite-state, native fit, seed/init/transfer/freeze,
+independent stopping/replay and exact data-contract checks passed. The prior
+365 pairs were preserved under exact hashes. The full native inventory has
+900 unique keys and 1,800 exact payload/receipt files. See tracked
+`kunanyi-pretraining-completion-review.json`; the private return archive,
+checkpoint/host reviews and reproducible audits are in `kunanyi-check-20260925`.
+
+The final-target manifest has 48 disjoint shards, 41,250 tasks and 365 cached
+screen fits, leaving 40,885 new fits. Preparation job 811744 exited 0 after copying and
+checking the verified inputs in a fresh `targets-20260925` root, preserving the
+completed pretraining root. Its 12m13s execution independently reproduced the
+manifest and verified the full imported checkpoint and screen-leaf inventories. The reviewed dispatch invocation requires its exact
+staging receipt and fresh PBS F / exit 0 before submitting jobs. Engineering
+commit e70fd46 adds the final-stage launch gate; 20 focused tests passed.
+Fitting source e309ca8, accepted inputs/config/lock/q surfaces and selection
+remain unchanged. No ecological scoring or sealed access occurred.
+
+
+The reviewed staging gate passed before submission. Jobs **811750–811797**
+are now the sole active Goal052 allocation. The returned 10:37 AEST snapshot
+verified all 48 running on distinct hosts, correct 28 CPU / 110 GiB / 48-hour
+resources, exact rank/root/launch/manifest environment, unchanged drivers and
+pilot references, and no exit receipts. Original caps are **27 September
+10:37:06–10:37:11 AEST**. This is launch/startup evidence; host qualification
+and new target leaves are not yet accepted. See `kunanyi-target-launch-review.json`.
+The one-shot external dispatch gate checks identity against the bound manifest;
+a local preflight caught and corrected an attempted lookup in the launch JSON
+before any target submission. The support archive and active drivers were unchanged.
+
+The existing daily 17:40 heartbeat now follows this allocation. Project and
+Nectar records were updated, and Correspondence thread 32 received message
+531; use retrieval cursor 531 on the next check. No scientific or sealed-data
+boundary changed.

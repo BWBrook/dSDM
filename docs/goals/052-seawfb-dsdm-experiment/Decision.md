@@ -164,3 +164,31 @@ Jobs 811265–811289 are the sole active allocation. Retain valid checkpoints on
 failure/cap and verify shutdown before deciding any replacement. Final targets
 remain behind the full 900-pretraining barrier; sealed-data and scoring limits
 remain unchanged. Continue the existing daily heartbeat.
+
+## 25 September 2026 — complete pretraining and 48-node target allocation
+
+All 25 pretraining PBS jobs finished with exit 0 and exact rank completions;
+all 900 native checkpoint pairs are verified and preserved locally. The 535
+new pairs passed atomic-file, finite-state, seed/init/transfer/freeze,
+stopping/replay and data-contract checks. All actual hosts passed exact
+qualification; the last eleven profiles were independently checked today.
+
+Use the available 48 nodes for the final-target stage: 28 single-thread workers,
+110 GiB and a 48-hour PBS limit per job. The frozen native manifest has 41,250
+tasks, including 365 reusable selection-screen fits, leaving 40,885 new fits.
+Unlike pretraining's one worker wave, each target shard has hundreds of tasks,
+so the requested nodes have useful independent work. Queue availability sets
+actual concurrency; no throughput or completion-time claim follows from slots.
+
+Preserve the completed production root and stage under
+`/u/bwbrook/codex_kunanyi/dsdm-goal052/targets-20260925`. Require a successful
+PBS staging receipt, exact import hashes and manifest replay before dispatch.
+Every allocated host must independently qualify before fitting. The external
+launch validator now accepts the final-target stage and checks the immutable
+900-checkpoint certificate; engineering commit e70fd46 changes no fitting
+source, data, configuration, lock or numerical policy. Twenty focused tests
+and independent launch review passed.
+
+Keep fixed disjoint ownership and each actual PBS start's original deadline.
+No aggregation until all 42,345 unique target leaves validate. The frozen
+scientific boundaries and daily 17:40 cadence remain unchanged.

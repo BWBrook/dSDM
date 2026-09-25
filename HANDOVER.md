@@ -5,7 +5,56 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Current handoff — 24 September, TPAC access requires renewal
+## Current handoff — 25 September, pretraining complete; 48 target nodes launched
+
+Barry restored TPAC access. All old jobs **811265–811289.kunanyi-ohpc** finished
+with exit 0, exact rank completions and accepted actual-host qualifications.
+All **900 pretraining checkpoint pairs** are verified and preserved locally,
+including 535 new pairs since 23 September. See
+`evidence/seawfb_dsdm/goal052/kunanyi-pretraining-completion-review.json` and
+private `kunanyi-check-20260925/`. Preserve these accepted audits rather than
+repeating the historical checks. The completed `production-20260923` root and
+its original source/driver/launch bindings remain intact; the deep-server
+Goal052 scheduler remains stopped.
+
+Preparation **811744.kunanyi-ohpc** exited 0 after verifying the fresh import
+of 900 checkpoint pairs and 1,460 screen leaves and reproducing the native
+final-target manifest. The sole active allocation is now **811750–811797.kunanyi-ohpc**,
+48 fixed shards (`node-000`–`node-047`), each 28 single-thread workers, 110 GiB
+and 48 hours. At **25 September 10:37 AEST**, all 48 jobs were running on distinct
+hosts with no observed exit. Their original caps are **27 September
+10:37:06–10:37:11 AEST**, before that day's daily check. PBS R is startup evidence;
+each actual host still must pass exact canary/full-profile/resource qualification
+before fitting. No new target-host qualification or target leaf is accepted by
+this initial snapshot. A final 10:42 AEST startup check still found all 48
+running and no exit receipts.
+
+Canonical root: `/u/bwbrook/codex_kunanyi/dsdm-goal052/targets-20260925`.
+See `evidence/seawfb_dsdm/goal052/kunanyi-target-launch-review.json` and private
+`kunanyi-target-staging/` for exact preparation, launch, returned PBS records
+and independent review. Immutable `handoff/target-launch.json` SHA256:
+`4aeedc0d4e426dfee7d2c2d7f7fe08d686611bd46b3fecbcc606b5967e3177a7`.
+Final-target manifest digest:
+`5d54bd7cdeb8368ec4ca024cc6a853a4b2e3268ec9bc6cbf49fb8e1a76764cc6`.
+The 900-checkpoint barrier and exact 1,800-file inventory are bound in the launch.
+
+There are **41,250 final-stage tasks**, with **365 cached screen fits** and
+**40,885 new fits**. Require all **42,345 unique target leaves** before any
+aggregation. Within `.goal052-pbs/`, inspect `dispatch-targets-20260925`,
+`jobs/JOBID`, `qualification/JOBID/qualification` and
+`final_targets/{ownership,completions}`. Never rerun the dispatcher blindly, duplicate ranks,
+reset a live deadline, change active drivers or clear ownership before verified
+stopped-job recovery. Qualify any changed allocation/runtime before restarting.
+
+External launch changes are **e70fd46**; frozen fitting source remains
+**e309ca8 / fce7fb52...**, with accepted data/config/lock/q surfaces unchanged.
+Daily checks remain **17:40 Australia/Hobart**, quiet unless meaningful progress,
+failure, completion or user action is required. The existing heartbeat now tracks
+this target allocation. No partial-grid scoring, sealed outcomes, full refits,
+maps, manuscript claims or scientific/numerical amendments. Correspondence
+thread 32 was updated as message **531**; next retrieval cursor is **531**.
+
+## Historical handoff — 24 September, TPAC access requires renewal
 
 Today's daily check could not reach PBS: SSH rejected expired MFA admission,
 and the portal's Enable Jumpbox SSH link redirected to UTAS Microsoft sign-in.
