@@ -222,3 +222,17 @@ its evidence and use the tested, separately bound replacement 812148. The
 frozen numerical source and all scientific gates remain unchanged. PBS sends
 end/abort mail for this validation job; wait for Barry's resumption and keep
 the daily monitor deleted.
+
+## 25 September 2026, evening — preserve the passed leaf gate and extend acceptance
+
+Validator 812148 exhausted its four-hour allocation after passing the full
+leaf gate; PBS terminated it during aggregation. Preserve that completed audit
+through exact file/source/runtime/manifest hashes, then continue unchanged native
+aggregation and its independent replay on the same n001 host and SIF. One CPU /
+16 GiB is sufficient for the observed serial path and 2.97 GiB memory use;
+allow 24 hours to avoid another short cap. The two native aggregation passes
+remain independent. No saved fit is rerun and no scientific check is weakened.
+
+Continuation 812164 uses a fresh immutable binding and native run lock, records
+progress, and handles termination explicitly. Keep PBS email and Barry's
+resumption as the follow-up route; no recurring monitor or sealed access.

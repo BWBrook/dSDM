@@ -1,0 +1,43 @@
+{
+  "checked_utc": "2026-09-25T11:45:34.511021+00:00",
+  "ended_aest": "2026-09-25T19:14:59+10:00",
+  "failure": "walltime_limit",
+  "files": {
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/kunanyi-target-closeout-20260925/exit271-inspection.txt": "96289299f18123f77aa5dcf4fba4046b294e609c2b81d4742d31d1d699a28f04",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/kunanyi-target-closeout-20260925/exit271-return-review.json": "83800a1ab5f24a6406e7b6432c5c8559ac2280b6c03780e54f0d68171ac0a772",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/kunanyi-target-closeout-20260925/validation-v2-closeout.tar.gz": "30ed5d20b5f93117b91fd9d45d8c7dac04965b6e9666bb80c176e9d7d4957fdc",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/kunanyi-target-closeout-20260925/validation-v2-closeout/final-qstat.txt": "e5c0da68331ca3e00ffa56dfb9fdf8bbf37aa6f5437a7604c851baf955df3956",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/kunanyi-target-closeout-20260925/validation-v2-closeout/leaf-review.json": "ab0d2d4247b095d0a0992000c0f3438b3ddcbf89e58847caa97c18416152cfdf",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/kunanyi-target-closeout-20260925/validation-v2-closeout/pbs-output.txt": "652d988bcc1a7450ac02ff54542758e9a27fdf82577940b58283f3ed9df5da94",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/kunanyi-target-closeout-20260925/validation-v2-closeout/validation-launch.json": "ff9a0aed38b9868b1fed7c605170c5330946428dde3dcc73fd52c93feae90406",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/kunanyi-target-closeout-20260925/validation-v2-closeout/wrapper-exit.json": "a6b1467d73b56242278617464ada09ad730fd7a0779bc8021fb8838b58e79bc6"
+  },
+  "final_target_tasks_checked": 41250,
+  "fitting_source_changed": false,
+  "job_id": "812148.kunanyi-ohpc",
+  "leaf_audit_checked_utc": "2026-09-25T07:31:15.008372+00:00",
+  "leaf_audit_elapsed_since_start_seconds": 8274,
+  "leaf_audit_status": "goal052_final_target_leaves_verified",
+  "limit_seconds": 14400,
+  "native_acceptance_exists": false,
+  "new_pairs_checked": 40885,
+  "partial_aggregation_summary_exists": false,
+  "pbs_cput": "03:28:23",
+  "pbs_exit_status": 271,
+  "pbs_memory_kib": 3109336,
+  "pbs_reported_kill_seconds": 14487,
+  "pbs_state": "F",
+  "pbs_walltime": "04:01:38",
+  "pretraining_pair_hashes_preserved": 900,
+  "replacement_job_id": "812164.kunanyi-ohpc",
+  "saved_fits_rerun": false,
+  "screen_pairs_preserved": 1460,
+  "started_aest": "2026-09-25T15:13:21+10:00",
+  "status": "goal052_validation_stopped_at_walltime_after_full_leaf_gate",
+  "unique_target_pairs_verified": 42345,
+  "wrapper_exit": {
+    "authoritative": false,
+    "reason": "EXIT trap ran after external termination; PBS F/271 and explicit kill diagnostic establish failure",
+    "reported": 0
+  }
+}

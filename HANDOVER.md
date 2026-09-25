@@ -5,7 +5,7 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Current handoff — 25 September, production completed; validating the return
+## Current handoff — 25 September, validation continued after wall-time cap
 
 Barry reported the PBS email and resumed the task. Notification **811800**
 exited 0 at **14:24:01 AEST** with `00:00:00` execution time, as expected for
@@ -39,26 +39,42 @@ working directory as the fallback while the caller supplies the exact root.
 A shallow-path import test and all 1,460 preserved screen receipt-contract
 checks passed; no fitting code changed.
 
-Replacement **812148.kunanyi-ohpc** (`ds052_validate`) started at **15:13:21
-AEST** on n001 with one CPU / 16 GiB / a four-hour limit, end/abort email to
-Barry, and no rerun. At 15:18:57 it was still running with 5m08s sampled
-walltime, about 1.2 GiB RAM and no exit receipt. Work directory:
-`/u/bwbrook/codex_kunanyi/dsdm-goal052/validation-20260925-v2`.
-Immutable `validation-launch.json` SHA256:
-`ff9a0aed38b9868b1fed7c605170c5330946428dde3dcc73fd52c93feae90406`.
-It checks every leaf contract and preserved pretraining/screen hashes before
-native aggregation, then runs unchanged `validate_outputs`. Only a successful
-replay writes native `complete.json` and `validation-return.tar.gz`. No new
-fitting occurs. See `kunanyi-validation-launch-review.json` for exact bindings.
+Validation **812148** reached its four-hour wall-time cap and PBS terminated
+it with exit **271** after **4h01m38s**, at **19:14:59 AEST**. Its output explicitly
+records the wall-time kill; the old shell EXIT receipt misleadingly says 0 and
+must not override PBS or native acceptance evidence. Memory peaked at only
+2.97 GiB. The complete 42,345-leaf audit **passed at 17:31:15 AEST**, after
+2h17m54s; the job then entered aggregation. No summary or native completion
+was produced. See `kunanyi-validation-timeout-review.json` and private
+`validation-v2-closeout/leaf-review.json` (SHA256
+`ab0d2d4247b095d0a0992000c0f3438b3ddcbf89e58847caa97c18416152cfdf`).
 
-**Wait for Barry's validation email and resumption.** Inspect existing job
-812148, `pbs-output.txt`, `wrapper-exit.json`, `phase-exit.json`, `leaf-review.json`
-and `native-validation.json`; retrieve the small return archive when present.
-Do not resubmit blindly or recreate polling. The daily automation stays deleted.
-Acceptance remains pending. No sealed access, full refits, maps, manuscript
-claims or scientific amendments are authorized.
-Correspondence thread 32 message **548** records this closeout; next retrieval
-cursor is **539** (the last read checkpoint, distinct from the posted message).
+Continuation **812164.kunanyi-ohpc** (`ds052_accept`) started at **21:43:51
+AEST** on the same **n001** host and SIF, one CPU / 16 GiB / **24 hours**, with
+PBS end/abort email to Barry and rerun disabled. Requested cap: **26 September
+21:43:51 AEST**, subject to PBS termination handling. Work directory:
+`/u/bwbrook/codex_kunanyi/dsdm-goal052/validation-continuation-20260925`.
+Immutable `validation-launch.json` SHA256:
+`4553390e694c3c0c6c8422db04c6c4e84a0707c83b17c3acc9dd9e99df240d87`.
+It rechecks all saved-fit hashes, accepted inputs, source, manifest and prior
+audit bindings before reusing the passed full-leaf audit. It then calls the
+unchanged native aggregation and independent `validate_outputs`. No fits are
+rerun. A native run lock excludes competing schedulers; durable `progress.json`
+and `validation.log` expose phase and completed fold-group progress. Explicit
+termination handling passed success/failure/SIGTERM tests; independent review
+found no blocker. Startup verified PBS R on n001, no exit receipt, and progress
+in `rehash_completed_audit_inputs` after source/runtime checks passed. See
+`kunanyi-validation-continuation-review.json`.
+
+**Wait for Barry's PBS email and resumption.** Inspect existing **812164**,
+`progress.json`, `validation.log`, `wrapper-exit.json`, `phase-exit.json` and
+`native-validation.json`; retrieve `validation-return.tar.gz` when present.
+Require successful PBS termination and native acceptance. Do not resubmit
+blindly or recreate polling. Scientific acceptance remains pending. The saved
+900 pretraining and 42,345 target pairs remain intact locally and remotely.
+No sealed access, full refits, maps, manuscript claims or scientific amendments.
+Correspondence thread 32 message **560** records this continuation; keep retrieval
+cursor **554**, the last contiguous read checkpoint.
 
 ## Historical handoff — 25 September, 48 target nodes; PBS completion email
 

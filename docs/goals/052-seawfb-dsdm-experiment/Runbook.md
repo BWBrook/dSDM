@@ -178,3 +178,12 @@ the existing validation job and retrieve `validation-return.tar.gz` if complete.
 Require complete leaf validation and unchanged native acceptance before treating
 Goal052 as complete. Verify all returned archive/file hashes before local import.
 Do not recreate an automation, restart fitting or resubmit the validator blindly.
+
+The evening closeout supersedes validator 812148: it ended F/271 at the four-hour
+cap after passing the full-leaf audit. Follow **812164**, same host/runtime and
+one CPU / 16 GiB with a 24-hour cap, in `validation-continuation-20260925`.
+It must rehash all audit inputs before reusing that passed gate, then finish
+unchanged aggregation and independent acceptance. Check `progress.json` and
+`validation.log`; require successful PBS termination plus native acceptance,
+because an EXIT-only shell trap previously recorded 0 after PBS killed the job.
+Wait for Barry's email-triggered resumption; do not recreate polling.

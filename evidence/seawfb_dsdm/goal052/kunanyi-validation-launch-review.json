@@ -56,7 +56,7 @@
   "mail_points": "ae",
   "mail_recipient": "barry.brook@utas.edu.au",
   "memory_gib": 16,
-  "next_action": "Wait for Barry to report the validation PBS email. Inspect existing 812148 state and outputs; do not duplicate the job or recreate a heartbeat.",
+  "next_action": "Closed; follow continuation 812164 and its separately bound launch review. Preserve all passed full-leaf audit evidence.",
   "packaging_job": {
     "archives": 8,
     "bytes": 5833826750,
@@ -68,6 +68,8 @@
     "unique_leaf_pairs": 42345,
     "walltime": "00:04:09"
   },
+  "pbs_final_exit_status": 271,
+  "pbs_final_state": "F",
   "pbs_state_at_handoff": "R",
   "pbs_state_at_startup": "R",
   "pbs_state_at_submission": "Q",
@@ -88,7 +90,8 @@
   "startup_used_cput": "00:00:23",
   "startup_used_memory_kib": 604252,
   "startup_used_walltime": "00:00:26",
-  "status": "goal052_post_fit_validation_running",
+  "status": "goal052_post_fit_validation_timed_out_after_full_leaf_gate",
+  "timeout_review": "evidence/seawfb_dsdm/goal052/kunanyi-validation-timeout-review.json",
   "validation_launch_sha256": "ff9a0aed38b9868b1fed7c605170c5330946428dde3dcc73fd52c93feae90406",
   "validation_passed": false,
   "walltime_hours": 4

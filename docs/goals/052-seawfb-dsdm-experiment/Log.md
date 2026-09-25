@@ -1069,3 +1069,26 @@ hashes passed, and 40,885 new pairs were imported without changing any of the
 1,460 preserved screen pairs. All 42,345 pairs are now local; private
 `import-review.json` binds this return. Scientific acceptance remains pending.
 Correspondence thread 32 message 548 records the production/validation handoff.
+
+## 25 September 2026, evening — validator wall-time closeout and continuation
+
+Barry reported exit 271. Live PBS history and output confirm 812148 exceeded
+its four-hour limit: it ended at 19:14:59 AEST after 4h01m38s, using 3h28m23s
+CPU and 2.97 GiB peak memory. The allocation was too short. The complete leaf
+audit passed at 17:31:15 (2h17m54s after start), validating all 42,345 pairs and
+preserved checkpoint hashes. The job was aggregating when terminated; no
+summary or native acceptance artifact exists. The shell's zero-valued EXIT
+receipt is misleading after external termination; PBS F/271 and the explicit
+kill diagnostic are authoritative. All evidence is preserved in private
+`validation-v2-closeout/`; tracked review is `kunanyi-validation-timeout-review.json`.
+
+Independent review supports reusing the passed audit only after exact rehash
+of every leaf/pretraining/screen file and unchanged source, inputs, runtime,
+manifest and prior audit bindings. Continuation **812164** started at
+**21:43:51 AEST**, requesting the same n001 host, one CPU, 16 GiB and **24 hours**.
+It resumes unchanged native aggregation and independent `validate_outputs`;
+no fitting or numerical amendment occurs. It holds the native run lock and
+writes phase/fold-group progress. Support checks covered argument/result
+preservation, propagated errors, shell syntax and success/failure/SIGTERM exit
+receipts. PBS end/abort email remains the handoff; the daily monitor is deleted.
+See `kunanyi-validation-continuation-review.json`. Acceptance is still pending.

@@ -5,7 +5,26 @@ up to 48 PBS nodes, each with 28 CPUs and 128 GB RAM. Standing compute
 authority covers this migration. Fitting code, numerical rules and sealed
 outer boundaries remain frozen.
 
-## Current status — 25 September, 15:14 AEST
+## Current status — 25 September, 21:44 AEST
+
+Validator **812148** reached its four-hour wall-time cap and ended **F/271**
+at 19:14:59 AEST. Its full **42,345-leaf audit passed at 17:31:15**, but native
+aggregation and independent acceptance did not finish. All fits are preserved.
+The old zero-valued shell EXIT receipt does not override PBS's explicit kill
+diagnostic. See `kunanyi-validation-timeout-review.json`.
+
+Continuation **812164** started at **21:43:51 AEST**, one CPU / 16 GiB /
+**24 hours**, on the same n001 host and SIF. It rehashes every saved-fit file
+and verifies the prior passed audit before unchanged native aggregation and
+independent replay. Work directory: `validation-continuation-20260925` under
+`/u/bwbrook/codex_kunanyi/dsdm-goal052`; launch SHA256:
+`4553390e694c3c0c6c8422db04c6c4e84a0707c83b17c3acc9dd9e99df240d87`.
+Inspect `progress.json`, `validation.log`, exit receipts and native validation
+after Barry's PBS email. Requested cap is **26 September 21:43:51 AEST**.
+Keep polling deleted; no fitting source or scientific rule changed.
+See `kunanyi-validation-continuation-review.json` and current HANDOVER.
+
+## Earlier status — 25 September, 15:14 AEST
 
 All 48 target jobs **811750–811797** finished with exit 0 in **3h22m33s–
 3h46m50s**. All host qualifications and rank completions passed independent
