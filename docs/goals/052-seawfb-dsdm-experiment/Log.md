@@ -1034,3 +1034,38 @@ aggregation. See `kunanyi-notification-review.json` and private
 `kunanyi-target-notification/`; remote notification records are under
 `/u/bwbrook/codex_kunanyi/dsdm-goal052/notifications-targets-20260925`.
 Correspondence thread 32 message/cursor 533 records the new workflow.
+
+## 25 September 2026 — target allocation completed; native acceptance running
+
+Barry reported the notification email. Job 811800 exited 0 at 14:24:01 AEST;
+its zero-second runtime belongs to the administrative notifier. All 48 target
+jobs 811750–811797 exited 0 after 3h22m33s–3h46m50s. Independent review passed
+1,129 host/qualification/ownership/completion checks with no failures. All
+42,345 expected unique target receipt pairs are present. Peak sampled RSS was
+64.974 GiB during qualification and 40.578 GiB during production. Frozen source,
+drivers, manifest and launch bindings passed; no simulation restart is needed.
+
+Transfer job 812035 exited 0 after 4m09s, producing eight archives (5.83 GB)
+and exact hashes for 84,690 files. Native validation runs beside these data on
+Kunanyi while the archives return. Initial validator 812145 failed after 18
+seconds at helper import: `SCRIPT.parents[6]` assumed the deeper Mac path.
+It reached neither leaf audit nor aggregation. The corrected helper passed a
+shallow-path import and all 1,460 preserved screen receipt-contract checks.
+
+Replacement validator 812148 started at 15:13:21 AEST on n001 and was verified
+running at 15:14:04. It requests one CPU, 16 GiB and four hours, with PBS
+end/abort email to Barry. Complete leaf/hash/contract validation precedes
+unchanged native aggregation and independent `validate_outputs`; acceptance
+remains pending. No fitting code or scientific policy changed. Preserve both
+validation attempts and inspect the existing replacement after Barry resumes;
+the daily automation remains deleted.
+
+Evidence: `kunanyi-target-completion-review.json`,
+`kunanyi-validation-first-attempt-review.json`, `kunanyi-validation-launch-review.json`
+and private `kunanyi-target-closeout-20260925/`.
+
+Local return subsequently completed: all eight archive hashes and 84,690 file
+hashes passed, and 40,885 new pairs were imported without changing any of the
+1,460 preserved screen pairs. All 42,345 pairs are now local; private
+`import-review.json` binds this return. Scientific acceptance remains pending.
+Correspondence thread 32 message 548 records the production/validation handoff.

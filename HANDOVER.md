@@ -5,7 +5,62 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Current handoff — 25 September, 48 target nodes; PBS completion email
+## Current handoff — 25 September, production completed; validating the return
+
+Barry reported the PBS email and resumed the task. Notification **811800**
+exited 0 at **14:24:01 AEST** with `00:00:00` execution time, as expected for
+the administrative job released after all production predecessors ended.
+All **48 target jobs 811750–811797** finished with exit 0 after **3h22m33s–
+3h46m50s** each. Independent review verified all actual-host qualifications,
+owners, exits and rank completions: 41,250 final-stage tasks, with the expected
+42,345 unique leaf receipts present. Peak sampled RSS was 64.974 GiB during
+qualification and 40.578 GiB during production. No fit restart is required.
+
+See `evidence/seawfb_dsdm/goal052/kunanyi-target-completion-review.json` and
+private `kunanyi-target-closeout-20260925/`. All 728 returned host-evidence
+hashes passed; `host-review.json` records 1,129 successful checks. Source,
+launch and driver bindings remain unchanged. All 42,345 leaf pairs are now
+hash-verified and imported locally; native scientific acceptance is still pending.
+
+Transfer-only PBS **812035** finished with exit 0 after **4m09s**, packaging
+all 42,345 pairs into eight archives (5.83 GB). Remote package and hashes:
+`/u/bwbrook/codex_kunanyi/dsdm-goal052/target-closeout-20260925/parallel-leaves`.
+The slow serial collector was stopped, preserving its completed host archive.
+All eight archive hashes and all 84,690 file hashes passed. The canonical local
+`leaves/` now holds every pair: 40,885 new pairs plus all 1,460 unchanged screen
+pairs. Private `import-review.json`, `leaf-file-hashes.json` and the preserved
+archives bind the return; no download or import process remains active.
+
+Initial validation **812145** exited 1 after 18 seconds: the audit helper assumed
+`SCRIPT.parents[6]`, which fails in the shorter remote path. It stopped at
+helper import, before leaf audit or aggregation. Preserve that failed attempt
+and `kunanyi-validation-first-attempt-review.json`. The fix uses the current
+working directory as the fallback while the caller supplies the exact root.
+A shallow-path import test and all 1,460 preserved screen receipt-contract
+checks passed; no fitting code changed.
+
+Replacement **812148.kunanyi-ohpc** (`ds052_validate`) started at **15:13:21
+AEST** on n001 with one CPU / 16 GiB / a four-hour limit, end/abort email to
+Barry, and no rerun. At 15:18:57 it was still running with 5m08s sampled
+walltime, about 1.2 GiB RAM and no exit receipt. Work directory:
+`/u/bwbrook/codex_kunanyi/dsdm-goal052/validation-20260925-v2`.
+Immutable `validation-launch.json` SHA256:
+`ff9a0aed38b9868b1fed7c605170c5330946428dde3dcc73fd52c93feae90406`.
+It checks every leaf contract and preserved pretraining/screen hashes before
+native aggregation, then runs unchanged `validate_outputs`. Only a successful
+replay writes native `complete.json` and `validation-return.tar.gz`. No new
+fitting occurs. See `kunanyi-validation-launch-review.json` for exact bindings.
+
+**Wait for Barry's validation email and resumption.** Inspect existing job
+812148, `pbs-output.txt`, `wrapper-exit.json`, `phase-exit.json`, `leaf-review.json`
+and `native-validation.json`; retrieve the small return archive when present.
+Do not resubmit blindly or recreate polling. The daily automation stays deleted.
+Acceptance remains pending. No sealed access, full refits, maps, manuscript
+claims or scientific amendments are authorized.
+Correspondence thread 32 message **548** records this closeout; next retrieval
+cursor is **539** (the last read checkpoint, distinct from the posted message).
+
+## Historical handoff — 25 September, 48 target nodes; PBS completion email
 
 Barry restored TPAC access. All old jobs **811265–811289.kunanyi-ohpc** finished
 with exit 0, exact rank completions and accepted actual-host qualifications.

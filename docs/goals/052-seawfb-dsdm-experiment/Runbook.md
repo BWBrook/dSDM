@@ -164,3 +164,17 @@ all 48 canary jobs matched the previous qualification exactly. Fitting source
 and scientific design remain unchanged. After cap/early exit, verify shutdown
 and completed evidence before choosing the next allocation under standing
 authority. Do not launch a duplicate or reset the current deadline.
+
+## Superseding route — 25 September 2026
+
+Deep-server and all 48 Kunanyi target fitting jobs are stopped. All target jobs
+exited 0; their host/ownership/rank reviews passed. Follow current HANDOVER and
+Kunanyi.md for the post-fit validation **812148**, one CPU / 16 GiB / four hours,
+under `/u/bwbrook/codex_kunanyi/dsdm-goal052/validation-20260925-v2`.
+The first validation wrapper 812145 failed at import and is preserved separately.
+
+Barry replaced recurring checks with PBS email. Wait for his resumption, inspect
+the existing validation job and retrieve `validation-return.tar.gz` if complete.
+Require complete leaf validation and unchanged native acceptance before treating
+Goal052 as complete. Verify all returned archive/file hashes before local import.
+Do not recreate an automation, restart fitting or resubmit the validator blindly.

@@ -5,6 +5,34 @@ up to 48 PBS nodes, each with 28 CPUs and 128 GB RAM. Standing compute
 authority covers this migration. Fitting code, numerical rules and sealed
 outer boundaries remain frozen.
 
+## Current status — 25 September, 15:14 AEST
+
+All 48 target jobs **811750–811797** finished with exit 0 in **3h22m33s–
+3h46m50s**. All host qualifications and rank completions passed independent
+review; 42,345 leaf pairs are present. Notification **811800** exited 0 in zero
+seconds at 14:24:01; this is the notifier's runtime. Production is stopped.
+
+Packaging **812035** exited 0 after 4m09s. Eight archives and their full hash
+inventory are under `target-closeout-20260925/parallel-leaves` beneath the
+canonical `/u/bwbrook/codex_kunanyi/dsdm-goal052` root. All eight archive hashes and
+84,690 file hashes passed on local return. Canonical local `leaves/` holds all
+42,345 pairs, preserving every screen hash. Private `import-review.json` records
+the import; scientific acceptance remains pending.
+
+Validation **812145** failed after 18 seconds at an audit-helper path assumption,
+before leaf checks or aggregation. Preserve `validation-20260925`. The fix
+passed shallow-path import and 1,460 screen-receipt checks. Replacement
+**812148** started at 15:13:21 on n001 and is running with one CPU / 16 GiB /
+four hours. Its work directory is `validation-20260925-v2`, launch SHA256
+`ff9a0aed38b9868b1fed7c605170c5330946428dde3dcc73fd52c93feae90406`.
+It validates the complete leaf grid before unchanged native aggregation and
+acceptance. No new fitting occurs.
+
+Wait for Barry's PBS end/abort email and resumption, then inspect existing job
+812148 and its return evidence. The daily monitor is deleted; earlier cadence
+instructions below are historical. See the current HANDOVER and tracked
+`kunanyi-target-completion-review.json` / `kunanyi-validation-launch-review.json`.
+
 ## Decision and current status
 
 Use kunanyi for the remaining independent fits, subject to target-runtime

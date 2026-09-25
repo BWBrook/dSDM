@@ -208,3 +208,17 @@ automatic polling loop that requires a live TPAC portal session. This changes
 notification and handoff only; compute authority, existing caps, scientific
 review and sealed-data boundaries remain intact. Allocation termination must
 still be distinguished from validated scientific completion.
+
+## 25 September 2026 — validate completed targets beside the data
+
+All 48 target jobs finished successfully and their actual-host qualification,
+ownership and rank receipts passed independent review. Run the unchanged
+post-fit acceptance on Kunanyi with one CPU / 16 GiB / a four-hour bound while
+returning the 5.83 GB leaf archives. Check the full 42,345-leaf inventory and
+every saved-fit contract before native aggregation. No new fitting is needed.
+
+The first wrapper failed at import because of a path-depth assumption; preserve
+its evidence and use the tested, separately bound replacement 812148. The
+frozen numerical source and all scientific gates remain unchanged. PBS sends
+end/abort mail for this validation job; wait for Barry's resumption and keep
+the daily monitor deleted.
