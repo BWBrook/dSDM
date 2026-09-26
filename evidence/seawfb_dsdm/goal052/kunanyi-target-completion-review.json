@@ -1,6 +1,8 @@
 {
+  "acceptance_checked_utc": "2026-09-26T04:17:37.534829+00:00",
   "all_production_jobs_finished_exit_zero": true,
   "checked_utc": "2026-09-25T04:43:35.694804+00:00",
+  "completion_review": "evidence/seawfb_dsdm/goal052/completion_review.json",
   "daily_automation_deleted": true,
   "final_stage_tasks": 41250,
   "fitting_source_sha256": "fce7fb52b386c662c198e264aebc007de203e363b5ccc917ccd55ebaa2470926",
@@ -20,8 +22,9 @@
     "status": "all_42345_pairs_hash_verified_and_imported"
   },
   "manifest_digest": "5d54bd7cdeb8368ec4ca024cc6a853a4b2e3268ec9bc6cbf49fb8e1a76764cc6",
+  "native_acceptance_passed": true,
   "new_fitting_jobs_submitted": false,
-  "next_action": "Wait for continuation PBS 812164 email and Barry resumption, then inspect its native aggregation and acceptance evidence. Full leaf audit passed; all saved fits are preserved locally.",
+  "next_action": "Review effect sizes, prespecified controls and learning-size panels with Fable/Barry. No new fitting, recurring polling, outer access, retained-full refit, mapping or manuscript claim is authorized by this completion.",
   "notification_execution_seconds": 0,
   "notification_exit_status": 0,
   "notification_explanation": "This administrative job ran after all 48 production jobs ended; its execution time does not describe the production allocation.",
@@ -97,7 +100,8 @@
     "post_fit_aggregation_requires_complete_leaf_audit": true,
     "sealed_outcomes_opened": false
   },
-  "status": "goal052_target_allocation_completed_validation_pending",
+  "status": "goal052_target_allocation_completed_native_acceptance_passed",
+  "summary_sha256": "ec0bc6c2df8cabd3554f5b2b9eebda97b3426ddd186bfa2acc64ba3d1244a3d3",
   "target_rank_completions": 48,
   "validation_first_attempt_review": "evidence/seawfb_dsdm/goal052/kunanyi-validation-first-attempt-review.json",
   "validation_job_id": "812164.kunanyi-ohpc",

@@ -5,7 +5,23 @@ up to 48 PBS nodes, each with 28 CPUs and 128 GB RAM. Standing compute
 authority covers this migration. Fitting code, numerical rules and sealed
 outer boundaries remain frozen.
 
-## Current status — 25 September, 21:44 AEST
+## Current status — 26 September, computational acceptance complete
+
+PBS **812164** finished **F / exit 0 at 01:41:50 AEST**, after **3h57m59s**
+on n001. Peak PBS memory was 2.140 GiB. The unchanged native independent
+validator passed all 900 pretraining lifecycles, 42,345 unique target lifecycles
+and 449 conditions. All saved files were rehashed before the previously passed
+full-leaf audit was reused. No fits or scientific rules changed.
+
+Returned summary and native completion are hash-verified and imported locally;
+87 local acceptance-return checks passed. No active PBS jobs remain. See
+`evidence/seawfb_dsdm/goal052/completion_review.json`, private
+`kunanyi-target-closeout-20260925/validation-completion-20260926/`, and
+`Results.md`. Preserve all historical attempts and launch bindings.
+No further compute is needed for Goal052 acceptance. Keep polling deleted;
+scientific result review is next and outer outcomes remain sealed.
+
+## Earlier status — 25 September, 21:44 AEST
 
 Validator **812148** reached its four-hour wall-time cap and ended **F/271**
 at 19:14:59 AEST. Its full **42,345-leaf audit passed at 17:31:15**, but native

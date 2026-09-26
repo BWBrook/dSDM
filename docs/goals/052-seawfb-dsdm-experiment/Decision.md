@@ -236,3 +236,22 @@ remain independent. No saved fit is rerun and no scientific check is weakened.
 Continuation 812164 uses a fresh immutable binding and native run lock, records
 progress, and handles termination explicitly. Keep PBS email and Barry's
 resumption as the follow-up route; no recurring monitor or sealed access.
+
+
+## 26 September 2026 — accept completed frozen inner experiment
+
+Accept Goal052's computational execution under the unchanged frozen protocol.
+PBS 812164 exited 0; the complete leaf audit, exact audit-input rehash, native
+aggregation and independent replay all passed. The hash-bound native receipt
+records 900 pretraining lifecycles, 42,345 unique target lifecycles, 449
+conditions and zero outer-response rows. The exact summary and completion
+marker are imported locally; 87 return checks and independent read-only review
+found no material blocker. Preserve all earlier failed-wrapper/capped-job evidence.
+
+This acceptance certifies computation and reproducibility, without requiring a
+positive scientific result. `Results.md` records the initial descriptive
+comparisons and their limits. Review the modest effect sizes, controls and
+heterogeneity before any decision about a separately authorized outer
+assessment. No scientific amendment, retained-full refit, mapping, manuscript
+claim or sealed-outcome access follows from acceptance. The compute stage is
+closed, and recurring polling remains deleted.

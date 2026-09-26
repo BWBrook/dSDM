@@ -1,5 +1,12 @@
 # Goal 052 runbook
 
+**26 September 2026: computational acceptance is complete.** PBS 812164 exited
+0 and the unchanged native independent replay passed. The accepted aggregate
+and private completion marker are local; start with `Results.md`, current
+HANDOVER and `evidence/seawfb_dsdm/goal052/completion_review.json`.
+Do not rerun completed fitting or recreate polling. Commands and launch notes
+below document the completed execution and explicit replay procedures.
+
 Goal051 was accepted on 12 September and Barry authorized autonomous
 continuation. The frozen experiment is implemented. Its scientific config
 retains the historical protocol-only fields; the dated Decision records the

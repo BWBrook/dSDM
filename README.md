@@ -19,15 +19,17 @@ contracts.
   [Goal 047 decision](docs/goals/047-tasmania-transfer-assessment/Decision.md)
   and its aggregate evidence; Goal 046 supersedes Goal 045's affected result.
 - **Southeastern woodland/forest birds:** the foundation is frozen for 183
-  modelling heads and 157 focal targets. The current work is the
-  [Goal 051 conventional benchmark](docs/goals/051-seawfb-conventional-benchmark/Goal.md).
-  [Goal 052](docs/goals/052-seawfb-dsdm-experiment/Goal.md) freezes the subsequent
-  neural experiment. NCP, SEH and NNC outer outcomes remain sealed.
+  modelling heads and 157 focal targets. Goal 051's conventional benchmark is
+  accepted, and Goal 052's neural experiment passed complete independent
+  validation on 26 September 2026: 900 pretraining lifecycles, 42,345 unique
+  target lifecycles and 449 conditions. See the
+  [Goal 052 results review](docs/goals/052-seawfb-dsdm-experiment/Results.md).
+  NCP, SEH and NNC outer outcomes remain sealed.
 
 The active flow is frozen retained-training inputs → shared `q_linear` models
 → target endpoints → aggregate evidence → independent metric replay. Current
-execution commands and canary status belong in the
-[Goal 051 runbook](docs/goals/051-seawfb-conventional-benchmark/Runbook.md).
+execution records belong in the
+[Goal 052 runbook](docs/goals/052-seawfb-dsdm-experiment/Runbook.md).
 Historical mammal and acquisition modules remain where they support accepted
 results, replay, or deferred assessment. Manuscript work is described in
 [manuscript/README.md](manuscript/README.md).

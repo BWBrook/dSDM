@@ -5,7 +5,37 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Current handoff — 25 September, validation continued after wall-time cap
+## Current handoff — 26 September, Goal052 computational acceptance passed
+
+Barry reported the completion email. PBS **812164.kunanyi-ohpc** finished
+**F / exit 0 at 01:41:50 AEST on 26 September**, after **3h57m59s** on n001
+(one CPU; 2.140 GiB peak memory). The unchanged native independent replay
+returned **`goal052_complete_valid`**: **900 pretraining lifecycles, 42,345 unique
+target lifecycles and 449 conditions**, with zero outer-response rows read.
+No PBS jobs were active at the 26 September return check.
+
+The exact accepted summary and native completion marker are now local.
+The 5.37 MB return archive and all 16 contained evidence-file hashes passed;
+87 local checks verified the launch/helper/source/input/q bindings, receipts,
+condition inventory, preserved selection and byte-identical canonical imports.
+All previously returned fits remain preserved. See
+`evidence/seawfb_dsdm/goal052/completion_review.json` and
+`docs/goals/052-seawfb-dsdm-experiment/Results.md`.
+Accepted summary SHA256:
+`ec0bc6c2df8cabd3554f5b2b9eebda97b3426ddd186bfa2acc64ba3d1244a3d3`.
+Its native `complete_pending_validation` field is immutable aggregation output;
+the separate hash-bound `goal052_complete_valid` receipt confirms acceptance.
+
+**The compute stage is complete.** Next is focused scientific review of effect
+sizes, controls and target/block heterogeneity. Keep the daily monitor deleted;
+do not restart fitting or validation. NCP, SEH and NNC remain sealed. Outer
+evaluation, retained-full refits, mapping and manuscript claims retain their
+separate authorization boundaries. Source remains e309ca8 / fce7fb52… .
+Correspondence thread 32 message **562** records completion and requests Fable's
+focused scientific critique. Keep retrieval cursor **561**, the last contiguous
+read checkpoint.
+
+## Historical handoff — 25 September, validation continued after wall-time cap
 
 Barry reported the PBS email and resumed the task. Notification **811800**
 exited 0 at **14:24:01 AEST** with `00:00:00` execution time, as expected for

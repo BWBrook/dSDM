@@ -1092,3 +1092,38 @@ writes phase/fold-group progress. Support checks covered argument/result
 preservation, propagated errors, shell syntax and success/failure/SIGTERM exit
 receipts. PBS end/abort email remains the handoff; the daily monitor is deleted.
 See `kunanyi-validation-continuation-review.json`. Acceptance is still pending.
+
+
+## 26 September 2026 — native acceptance and local return complete
+
+Barry reported successful completion. Live PBS history confirms **812164**
+ended **F / exit 0 at 01:41:50 AEST**, after **3h57m59s**, with 3h47m37s CPU
+and 2.140 GiB peak memory. Wrapper and phase receipts independently report
+exit 0 and complete. The current user queue is empty.
+
+The full saved-file rehash passed before audit reuse; unchanged native selection
+and aggregation then completed, followed by independent `validate_outputs`.
+Its `goal052_complete_valid` receipt covers 900 pretraining lifecycles, 42,345
+unique target lifecycles and 449 conditions, with 365 reused screen leaves and
+zero outer-response rows. No fit or scientific source changed.
+
+Returned `validation-completion-20260926.tar.gz` is 5,370,018 bytes, SHA256
+`22d68acdab7874f2fae5d1d16708b78449fad2ab8d91a8e4674dce8413f3be91`.
+All 16 evidence-file hashes and 87 local checks passed, including current
+source/input/q identity and exact canonical imports. The accepted aggregate
+is now `evidence/seawfb_dsdm/goal052/summary.json`; private `complete.json` is
+byte-identical to the remote native receipt. Existing saved fits remain intact.
+Private `acceptance-return-review.json` and its audit script preserve checks;
+tracked `completion_review.json` binds the complete chain.
+
+A bounded independent read-only review found no acceptance blocker and confirmed
+aggregate privacy. `Results.md` records all four primary comparisons and required
+mechanistic/block-stability diagnostics. Full fine-tuning shows a small mean
+inner advantage, smaller among the 84 targets outside architecture selection;
+scientific review of magnitude and heterogeneity remains. Keep polling deleted
+and preserve sealed outer outcomes. No further fitting or validation is needed.
+
+Correspondence thread 32 message 562 records acceptance and the first descriptive
+readout, and requests Fable's focused scientific critique. Retrieval cursor is
+561. All 16 comparison-table values and both absolute primary AUC values were
+independently checked against the accepted aggregate before posting.
