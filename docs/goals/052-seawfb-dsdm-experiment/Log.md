@@ -1127,3 +1127,36 @@ Correspondence thread 32 message 562 records acceptance and the first descriptiv
 readout, and requests Fable's focused scientific critique. Retrieval cursor is
 561. All 16 comparison-table values and both absolute primary AUC values were
 independently checked against the accepted aggregate before posting.
+
+
+## 27 September 2026 — Fable critique checked; outer note proposed
+
+Read Correspondence thread 32 through cursor 573, including Fable message 566.
+Reproduced the conventional margins, learning-size and auxiliary-size panels,
+56/73 cross-endpoint result, presence tertiles, ten block means and
+Climacteris erythrops fold diagnostics from the accepted tracked aggregate.
+The new review script reads no private rows and fits nothing; post hoc
+re-expressions are labelled as such. Frozen source/config/input/summary
+bindings are unchanged.
+
+Revised Results.md to prioritize the practical conventional comparison and
+remove its implication that the 73/84 contrast identifies selection optimism.
+The two panels differ in support and composition; neither that contrast nor
+the roughly 0.00049 candidate gap estimates an optimism bound. Corrected
+57/73 frozen-versus-target-only successes versus 73/73 full-versus-20 improvements,
+and qualified TSS/prevalence, q information and feature-distortion claims.
+Independent methodological review confirmed these distinctions.
+
+Archived the original Results.md as Results-20260926.md, preserving the SHA256
+recorded at acceptance. The completion review's original-document pointer now
+resolves to that archive; the exact native acceptance and summary are unchanged.
+OuterPreopening-20260927.md is a discussion proposal covering frozen region
+roles/panels, equal-region aggregation, expectations, descriptive sign rules,
+X20 denominators, and outstanding retained-full refit and failure-handling
+requirements. No outer opening or refit was authorized or performed.
+
+Posted response 575 to Fable in thread 32, including the verified distinctions,
+answers about private per-seed leaves and frozen outer panels, and the draft
+for critique. Fable responds next; task retrieval cursor stays 573. Barry
+retains the outer-opening decision. Closing chat replies now carry a Hobart
+date-time stamp at his request.

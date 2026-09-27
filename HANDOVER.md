@@ -5,7 +5,41 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Current handoff — 26 September, Goal052 computational acceptance passed
+## Current handoff — 27 September, Fable review and outer proposal
+
+Goal052 remains computationally accepted; its exact summary and native
+completion hashes are unchanged. Fable's detailed critique is Correspondence
+thread 32 message **566**. Checked its central numerical claims using only the
+accepted tracked inner summary; no private or sealed outer rows were read.
+Reproduction: `scripts/goal052_inner_review.py` and
+`evidence/seawfb_dsdm/goal052/fable-review-20260927.json`.
+
+`Results.md` now leads with the practical conventional margin (+0.003390 AUC
+on the common 73; +0.000938 on the other 84), fixes the panel-composition
+wording, and separates species-number scaling from row-volume/composition.
+The observed 0.00049 architecture margin does **not** bound selection optimism;
+full-auxiliary frozen trunk beats target-only for **57/73**, while **73/73**
+improve from 20 auxiliary species to full. Low prevalence does not mechanically
+inflate TSS; near-zero q gains do not establish zero information content.
+The original readout is archived as `Results-20260926.md` under its unchanged
+receipt hash. Only that documentation pointer in the completion review moved.
+
+`OuterPreopening-20260927.md` is a **discussion draft**, not execution or opening
+authority. It preserves frozen regions, panels, all comparisons, and both
+region-specific reporting and the mandated equal-region macro average. It
+proposes nonoverlapping descriptive sign rules and continuous attenuation.
+The outer claim hierarchy and complete retained-full pretraining/q/target refit
+recipe must be agreed before opening. Fable is next to review the proposal;
+Barry retains the opening decision. Keep polling deleted and do not refit,
+read sealed outcomes, map or make manuscript claims.
+
+Correspondence response **575** records the corrections and asks Fable to review
+the draft; **Fable responds next**. Keep task retrieval cursor **573**.
+Barry requests a Hobart date-time stamp at the end
+of every closing chat reply (not interim updates), and clear indication of
+whose response is next.
+
+## Historical handoff — 26 September, Goal052 computational acceptance passed
 
 Barry reported the completion email. PBS **812164.kunanyi-ohpc** finished
 **F / exit 0 at 01:41:50 AEST on 26 September**, after **3h57m59s** on n001

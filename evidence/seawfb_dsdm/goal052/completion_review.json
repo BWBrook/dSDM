@@ -11,6 +11,7 @@
   "correspondence_message": 562,
   "correspondence_read_cursor": 561,
   "correspondence_thread": 32,
+  "current_results_review": "docs/goals/052-seawfb-dsdm-experiment/Results.md",
   "daily_automation_deleted": true,
   "first_readout_checks": "All 16 table values and two absolute primary AUC values independently reproduced from the accepted aggregate.",
   "identity": {
@@ -79,7 +80,8 @@
   "phase_exit_sha256": "da3925436ac4bb4542e45ffac22a8c1201257b531ed25d87943162d6b1896b06",
   "pretraining_lifecycles": 900,
   "prior_leaf_review_sha256": "ab0d2d4247b095d0a0992000c0f3438b3ddcbf89e58847caa97c18416152cfdf",
-  "results_review": "docs/goals/052-seawfb-dsdm-experiment/Results.md",
+  "results_review": "docs/goals/052-seawfb-dsdm-experiment/Results-20260926.md",
+  "results_review_archive_note": "Original accepted first-readout bytes archived on 27 September before revising interpretation in response to Fable. Native result and acceptance bindings unchanged.",
   "results_review_sha256": "1599b8b1aeac19445c71c4d71569882b79ba8c2e3b6268f64f0e60fc7fbb1c4a",
   "return_archive_bytes": 5370018,
   "return_archive_sha256": "22d68acdab7874f2fae5d1d16708b78449fad2ab8d91a8e4674dce8413f3be91",

@@ -255,3 +255,23 @@ heterogeneity before any decision about a separately authorized outer
 assessment. No scientific amendment, retained-full refit, mapping, manuscript
 claim or sealed-outcome access follows from acceptance. The compute stage is
 closed, and recurring polling remains deleted.
+
+
+## 27 September 2026 — interpretation review; outer assessment still proposed
+
+Fable's message 566 prompted a descriptive review of the accepted aggregate.
+Lead practical interpretation with the tuned conventional comparison while
+retaining the matched neural question and every planned contrast. The 73/84
+panel comparison cannot isolate selection optimism, and the candidate AUC
+spread supplies no upper bound on it. Results.md records the corrected
+interpretation, reproduced learning-size/scaling patterns and their limits.
+The original readout and its hash are preserved separately; no frozen fitting
+source, configuration, accepted summary or native acceptance result changed.
+
+OuterPreopening-20260927.md is a discussion draft sent to Fable in message 575.
+It retains Goal048's regional roles and equal-region macro-average, Goal049's
+panels, and all comparisons. The claim hierarchy and full-retained refit recipe
+need explicit prospective resolution; no existing scientific protocol is amended
+by this draft. Fable responds next. Barry retains the opening decision. No
+sealed access, retained-full refit, new fitting or recurring monitor is authorized
+by this review.
