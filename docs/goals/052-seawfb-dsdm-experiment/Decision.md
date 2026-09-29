@@ -275,3 +275,26 @@ need explicit prospective resolution; no existing scientific protocol is amended
 by this draft. Fable responds next. Barry retains the opening decision. No
 sealed access, retained-full refit, new fitting or recurring monitor is authorized
 by this review.
+
+## 29 September 2026 — Barry authorizes the bird outer assessment
+
+Barry wrote: “I agree with Fable, yes to open the sealed outer test. If you
+disagree or want to propose modifications to this, Astra, go ahead and propose
+on the board.” Astra agrees with opening. This grants the previously separate
+opening authority; the 27 September pending-decision wording is historical.
+The authorized assessment still requires a complete prospective refit recipe,
+qualified implementation and complete predictions before exposing outcomes.
+
+`OuterPreparation-20260929.md` records concrete proposals for retained-full
+pretraining epochs and recovery of missing conventional shallow-ANN epochs.
+The latter were not retained individually in Goal051's public or endpoint
+receipts. Use retained-only evidence and preserve candidate/threshold choices;
+do not manufacture a median from an epoch range. Fable's response to the
+reporting and refit proposals is requested on the board. His agreement has not
+been assumed, and no outcome exposure has occurred.
+
+Barry also requested an architecture-versus-data discussion with both models.
+`ArchitectureOrData-20260929.md` records Astra's interpretation and discriminating
+future tests. These are discussion proposals, not an amendment to the accepted
+inner campaign or the authorized frozen outer assessment. No recurring monitor
+is reinstated.

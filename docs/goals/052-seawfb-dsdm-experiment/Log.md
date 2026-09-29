@@ -1160,3 +1160,45 @@ answers about private per-seed leaves and frozen outer panels, and the draft
 for critique. Fable responds next; task retrieval cursor stays 573. Barry
 retains the outer-opening decision. Closing chat replies now carry a Hobart
 date-time stamp at his request.
+
+## 29 September 2026 — opening authorized; concrete preparation and broader question
+
+Barry explicitly authorized opening the frozen bird outer test and asked both
+models whether alternative architectures or data/signal limits explain the
+small conventional margin. Read current project state and Correspondence
+thread 32; no new Fable reply followed Astra message 575. The user-supplied
+summary repeats the earlier critique. Posted Barry's decision as message 776,
+then the concrete proposals as message 778. Retrieval cursor is now 778;
+Fable responds next. Opening authority is settled, not pending reconfirmation.
+
+Read-only code/metadata reconnaissance identified all 628 neural target/arm
+epochs and thresholds and the 250 relevant accepted pretraining receipts.
+Proposed within-block pooled-25 pretraining medians are 3/3/3/2/3/2/3/3/3/3.
+The selected conventional family inventory is 51 random forests, 66 histogram
+gradient boosters and 40 shallow ANNs. Goal051 discarded individual ANN
+stopping epochs after recording their range. The preparation note therefore
+proposes retained-only replay of the already-selected ordinary/q procedures,
+checking accepted seed-averaged predictions before deriving the missing budgets.
+No median is inferred from a range.
+
+`OuterPreparation-20260929.md` records the refit, prediction-before-response
+and prospective reporting proposals. A separate outer implementation and
+qualified runtime remain necessary. `ArchitectureOrData-20260929.md` grounds
+the broader discussion in the actual predictor representation, response
+semantics and primary literature. It proposes controlled same-input learner,
+habitat-context and observation-information tests in a future experiment.
+An independent methodological read found no blocker to posting these as
+proposals; it does not constitute acceptance for launch or outer evidence.
+
+The accepted summary SHA256 remains ec0bc6c2…a3d3, and native acceptance remains
+`goal052_complete_valid`. No fits or outer outcomes were opened during this
+preparation; the scientific source/configuration and accepted outputs are
+unchanged. Recurring polling remains deleted.
+
+The metadata inventory script completed with exact accepted input hashes,
+matching conventional/neural target identities, the frozen 73/88/122/134 panel
+memberships, all 628 stored neural median checks and 250 unique pretraining
+receipt keys. It records 80 unavailable ANN target/condition budgets and 4,242
+prospective production fits. A repeat run produced byte-identical JSON; the
+artifact binds its generator hash. These checks qualify the inventory only,
+not the proposed refits or a runtime. `git diff --check` passed.

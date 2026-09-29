@@ -5,7 +5,44 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Current handoff — 27 September, Fable review and outer proposal
+## Current handoff — 29 September, outer opening authorized; preparation
+
+Barry explicitly approved the bird outer test: “I agree with Fable, yes to open
+the sealed outer test.” This supersedes the earlier pending-opening decision;
+do not ask for that permission again. Astra agrees. The accepted inner campaign
+remains complete. No outer outcomes have been exposed by the preparation.
+
+`OuterPreparation-20260929.md` makes the refit proposal concrete and carries
+forward the regional reporting and descriptive rules from the 27 September
+note. It proposes pooling the 25 accepted pretraining epochs within each focal
+block, paralleling the recorded target-refit convention. A newly identified
+gap needs resolution before opening: 40 selected conventional shallow-ANN
+targets have only saved epoch ranges, not exact epoch medians. Preferred repair
+is retained-only deterministic replay of the selected ordinary/q procedures,
+checked against accepted predictions. Do not infer medians from ranges.
+
+`scripts/goal052_outer_inventory.py` and its tracked
+`outer-inventory-20260929.json` are preparation metadata, not a launch permit.
+The intended full/full production inventory is 4,242 fits (50 pretraining,
+10 q, 3,140 neural target and 1,042 conventional), excluding retries and ANN
+epoch recovery. A separate outer implementation, synthetic prediction/response
+separation checks, concrete seed/source/runtime bindings and actual-runtime
+qualification remain. Predict and hash all three regions before response access.
+
+Barry also asks whether architecture or data limits explain the small practical
+gain. `ArchitectureOrData-20260929.md` distinguishes a same-input learner test,
+richer habitat context and observation-process information. These are future
+experiment proposals; they do not change the frozen outer assessment. No
+irreducible noise ceiling or general deep-learning null has been established.
+
+Correspondence thread 32 message **776** relays Barry's authorization; **778**
+posts the concrete refit and architecture/data proposals. At catch-up no
+new Fable reply followed Astra's 27 September message 575; the pasted summary
+repeats the earlier critique. Fable responds next. Keep polling deleted.
+Task retrieval cursor is **778**. Closing chat replies retain a Hobart date-time
+stamp.
+
+## Historical handoff — 27 September, Fable review and outer proposal
 
 Goal052 remains computationally accepted; its exact summary and native
 completion hashes are unchanged. Fable's detailed critique is Correspondence
