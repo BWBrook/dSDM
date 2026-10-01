@@ -5,7 +5,60 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Current handoff — 29 September, outer opening authorized; preparation
+## Current handoff — 1 October, richness review and retained replay qualification
+
+Fable's message **783** accepts the prospective core refit/reporting proposals
+and adds a recorded-richness diagnostic. The retained-only reproduction in
+`RecordedRichnessReview-20261001.md` matches all 157 targets' four neural and
+selected-conventional mean-fold AUCs exactly. The reported ensemble gains and
+primary 59-target richness reversal reproduce. An exact weighted decomposition
+also retains all 73 primary targets and recovers the accepted +0.003390 gain.
+The reporting-rate gradient is close, but Fable's 151-target support rule is
+unspecified; the explicit pooled-quintile reproduction has 157 targets.
+
+Observation-aware evaluation now precedes richer-input and same-input learner
+proposals. Recorded richness mixes ecology and observation, so the reversal
+cannot identify what the trunk learned. Ensemble gain is not an architecture
+upper bound, and PCA variance is not predictive complexity. The main scientific
+assessment and all accepted inner artifacts remain unchanged.
+
+`OuterDiagnostics-20261001.md` fixes supplementary bins, support/NA rules,
+within-region target intersections, a high-recording-richness subset, and an
+AUC-only fixed 50:50 FT/conventional ensemble before outer access. Pure scoring
+and response-free predictor-reader tests pass. The reader covers all **144,860**
+frozen-region cells using the existing **103-feature** retained-full transform.
+The former “predictor-complete grids” phrase was corrected: frozen Goal049
+response masks include incomplete-predictor rows, handled by imputation.
+
+ANN epoch recovery remains a prerequisite. The one-worker Deep probe completed
+25 ordinary discovery/replay pairs, then failed bitwise agreement (maximum
+probability difference `5.66e-8`). Exit 1 and every failed fit/prediction are
+preserved in private `ann-epoch-recovery/`; the tracked review is
+`ann-recovery-deep-probe-20261001.json`. No epochs were accepted and q was not run.
+The helper at **ff14c26** retains the exact-match gate and must not be edited
+under a running job.
+
+Nectar was temporarily resized to **c3.large (8 vCPU, 16 GiB)** for an
+original-runtime check. The accepted conventional source remains `ce63d96`
+with digest `24057a4e…`. One worker started at **23:44:18 AEST on 1 October** in
+`dsdm-ann-recovery-probe-nectar`, ordinary then q_full. Cap: **2 October 00:44
+AEST**, plus 60 seconds for termination. Follow `nectar-probe-20261001/` beneath
+`data/processed/dsdm/goal052-seawfb-dsdm-experiment/ann-epoch-recovery/` on
+`nectar-codex-ts`; inspect existing launch/log/result/exit before any retry.
+Do not duplicate the run or reset its deadline. Return evidence, then park
+Nectar if no further qualified work follows. No recurring monitor was created.
+
+The complete retained-full fitting orchestrator, all 80 ANN procedure budgets,
+complete prediction closure and actual outer runtime qualification remain.
+**No outer response rows have been opened.** Barry's opening authority persists;
+do not ask for it again.
+
+Correspondence **805** reports the reproduction and scientific objections.
+**Fable responds next**, particularly on the 151-target definition and causal
+interpretation. Task retrieval cursor is **805**. Closing chat replies retain
+a Hobart date-time stamp.
+
+## Historical handoff — 29 September, outer opening authorized; preparation
 
 Barry explicitly approved the bird outer test: “I agree with Fable, yes to open
 the sealed outer test.” This supersedes the earlier pending-opening decision;

@@ -5,6 +5,12 @@ prepared for discussion with Fable after the accepted Goal052 inner results.
 These are proposals for a separate experiment, not changes to the authorized
 outer assessment.
 
+**1 October follow-up:** `RecordedRichnessReview-20261001.md` revises the
+priority order after Fable's retained-data diagnostics: observation-aware
+evaluation first, richer habitat information next, and another same-input
+learner comparison later. The competing mechanisms remain unresolved. The
+dated discussion below is preserved as the proposal Fable reviewed.
+
 ## What the present result says
 
 The practical conventional margins are small: mean AUC +0.003390 for the common

@@ -94,11 +94,19 @@ the retained-full profile; the previous inner throughput is not an outer ETA.
 A separate outer implementation is still needed. Keep the accepted inner source
 and outputs immutable. Build the prediction-side reader from predictor/domain
 artifacts, with no response membership imports. Generate scores for the complete
-fixed predictor-complete region grids so target-specific outcome masks are not
+fixed whole-region domain grids so target-specific outcome masks are not
 needed before prediction. Hash and close the complete three-region prediction
 set, fitted models and frozen thresholds before opening membership/background
 data for the fixed scoring pass. Verify the separation with synthetic contract
 tests and qualify the actual fitting runtime before production.
+
+**1 October coverage correction:** the earlier phrase “predictor-complete”
+was too restrictive. Goal049's frozen evaluation masks never excluded cells
+with missing predictors; Goal050 retained them and used frozen imputation.
+Predict all 144,860 domain cells in NCP/SEH/NNC using the retained-full
+transform, then apply unchanged response masks only in scoring. Goal048's
+95% completeness requirement was a whole-region feasibility gate, not a row
+filter. This corrects implementation coverage without changing the estimand.
 
 Unexpected primary class/support failure, missing predictions or numerical
 failure stops acceptance with explicit counts; expected X20 non-evaluability

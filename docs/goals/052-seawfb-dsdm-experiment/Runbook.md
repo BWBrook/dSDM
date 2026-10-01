@@ -1,5 +1,33 @@
 # Goal 052 runbook
 
+**1 October: retained ANN epoch recovery is being qualified for the authorized
+outer assessment.** The accepted inner campaign is unchanged. Start with the
+current HANDOVER, `RecordedRichnessReview-20261001.md`, and the prospective
+`OuterDiagnostics-20261001.md`. The response-free reader now covers every
+frozen-region cell, with missing predictors handled by frozen imputation.
+
+The Deep probe failed exact prediction agreement; preserve its failed receipt
+and payload. Follow the existing Nectar one-worker/one-hour probe launched at
+23:44 AEST on 1 October, with a 2 October 00:44 AEST cap plus 60 seconds. Do not
+rerun its launcher or edit the live helper. Its private `nectar-probe-20261001/`
+directory contains the launch, log and eventual result/exit; procedure receipts
+are in the parent `ann-epoch-recovery/` directory and failed attempts remain.
+No epoch is promotable without exact accepted seed-averaged predictions and
+complete 25-fold/seed receipts. Scope is 40 targets by ordinary/q, 80 procedures.
+The two-procedure probe does not complete that inventory.
+
+Targeted preparation checks (21 passed locally; the eight ANN checks also pass
+on Deep and Nectar):
+
+```sh
+uv run --locked pytest -q tests/test_goal052_ann_epoch_recovery.py tests/test_goal052_outer_diagnostics.py tests/test_goal052_outer_predictors.py
+uv run --locked python scripts/goal052_ann_epoch_recovery.py
+```
+
+These do not qualify retained-full production or permit response access before
+complete frozen predictions. Keep the deleted recurring monitor deleted.
+The execution notes below are historical inner-campaign procedures.
+
 **26 September 2026: computational acceptance is complete.** PBS 812164 exited
 0 and the unchanged native independent replay passed. The accepted aggregate
 and private completion marker are local; start with `Results.md`, current

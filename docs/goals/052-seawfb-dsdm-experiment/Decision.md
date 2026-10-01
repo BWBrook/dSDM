@@ -298,3 +298,30 @@ Barry also requested an architecture-versus-data discussion with both models.
 future tests. These are discussion proposals, not an amendment to the accepted
 inner campaign or the authorized frozen outer assessment. No recurring monitor
 is reinstated.
+
+## 1 October 2026 — recorded-richness diagnostics and original-runtime replay
+
+Fable's message 783 accepts the core outer reporting/refit proposals. The
+retained-only replication verifies the ensemble gain and richness-stratum
+reversal; `RecordedRichnessReview-20261001.md` records exact definitions,
+denominators, the full-panel weighted identity, and inferential limits.
+Observation-aware evaluation is the first proposed follow-on question.
+Neither recorded richness, the ensemble gain nor PCA identifies a biological
+mechanism or an irreducible predictive ceiling.
+
+`OuterDiagnostics-20261001.md` fixes supplementary reporting prospectively
+within the authorized assessment. It changes no fitted model, primary panel,
+threshold, selection rule or registered contrast. Its high-richness restriction
+is not called effort matching. Any future observation-covariate, richer-input
+or new-architecture experiment still needs its own scientific design.
+
+Predict every frozen-region domain cell, with retained-full imputation, before
+applying any response mask. The prior predictor-complete-only wording was a
+coverage error: Goal049 never used that row exclusion. Code/config review and
+the real response-free reader check verify all 144,860 cells without responses.
+
+The retained ANN epoch-recovery gate stays exact. Deep's first ordinary replay
+failed by at most `5.66e-8` and yields no accepted epoch budget. Preserve the
+failed evidence. A bounded check on the original Nectar environment is now
+running under existing compute authority; its result must be reviewed before
+any wider recovery allocation. No outer-response access has occurred.

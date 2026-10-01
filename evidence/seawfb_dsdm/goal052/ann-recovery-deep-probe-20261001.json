@@ -1,0 +1,128 @@
+{
+  "accepted_predictions_sha256": "d571bc8cca78e1b28b1d6b41e41d9786d901b325be873d5ef7d05ecce2d97a7d",
+  "ended_utc": "2026-10-01T13:33:34.391403+00:00",
+  "epochs_accepted": false,
+  "exact_gate_relaxed": false,
+  "exit_code": 1,
+  "fit_receipts": 25,
+  "fold_comparison": [
+    {
+      "fold": 0,
+      "max_absolute_difference": 4.172325135387567e-08,
+      "mismatched_scores": 12818,
+      "rows": 13434
+    },
+    {
+      "fold": 1,
+      "max_absolute_difference": 4.172325133999788e-08,
+      "mismatched_scores": 14663,
+      "rows": 15406
+    },
+    {
+      "fold": 2,
+      "max_absolute_difference": 5.364418032005602e-08,
+      "mismatched_scores": 10929,
+      "rows": 11542
+    },
+    {
+      "fold": 3,
+      "max_absolute_difference": 5.6624412547723324e-08,
+      "mismatched_scores": 15774,
+      "rows": 16399
+    },
+    {
+      "fold": 4,
+      "max_absolute_difference": 3.874301909845279e-08,
+      "mismatched_scores": 11757,
+      "rows": 12454
+    }
+  ],
+  "helper_sha256": "44c61f9135f6b39cf6c359ecd29e00464444aea6b2e0b293e72b625101c48f62",
+  "host": "deep-server",
+  "interpretation": "Numerical reproduction failure on Deep. Small probability differences are not accepted as exact replay. Preserve all failed predictions and fit records; investigate runtime before any epochs are promoted.",
+  "limit_seconds": 3600,
+  "method": "ordinary",
+  "outer_response_rows_read": 0,
+  "physical_fits": 50,
+  "private_evidence": {
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/ann-epoch-recovery/chalcites_minutillus_ordinary.evaluated.npz": "9a02d6cf3312d4e30c88be18086782f4c97cde76a06161e7eb6133d1da577c1c",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/ann-epoch-recovery/chalcites_minutillus_ordinary.json": "b1be292e99e30ee7bfc5c3e3f320118418d8252cbbc46a886894681801fa8eeb",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/ann-epoch-recovery/probe-20261001/launch.json": "c6cf811ed2067eb625ef1dc55aa2482e415e23d0da947dc4452883609e416f00",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/ann-epoch-recovery/probe-20261001/probe-exit.json": "9b6d80fa4a1331219ee1dbfbd798b727c377ff9108b58bc20c010e1f0bfec041",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/ann-epoch-recovery/probe-20261001/probe.log": "5bab4bf5940ddd38873db228b09d99b566e75f994c69d6422d3709b601f965fc",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/ann-epoch-recovery/probe-20261001/probe.py": "956ae537de0297a45e2048c5e85b6d4c2cd5db187cf4a38466f05be78d90f3dc",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/ann-epoch-recovery/probe-20261001/probe.sh": "d819cb41823c449d692aab02edc45cb179f4f845c9ab654c2342d10bd8b8c61d"
+  },
+  "q_full_attempted": false,
+  "runtime": {
+    "cpu_count": 64,
+    "host": "deep-server",
+    "machine": "x86_64",
+    "numpy": "2.5.1",
+    "platform": "Linux-6.8.0-142-generic-x86_64-with-glibc2.39",
+    "processor": "x86_64",
+    "pyarrow": "21.0.0",
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "python_executable": "/data/codex/repos/dSDM/.venv/bin/python",
+    "scikit_learn": "1.9.0",
+    "scipy": "1.16.3",
+    "threadpool_info": [
+      {
+        "architecture": "Haswell",
+        "filepath": "/data/codex/repos/dSDM/.venv/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-017048f4.so",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libscipy_openblas",
+        "threading_layer": "pthreads",
+        "user_api": "blas",
+        "version": "0.3.33.112.0"
+      },
+      {
+        "filepath": "/data/codex/repos/dSDM/.venv/lib/python3.12/site-packages/torch/lib/libgomp.so.1",
+        "internal_api": "openmp",
+        "num_threads": 1,
+        "prefix": "libgomp",
+        "user_api": "openmp",
+        "version": null
+      },
+      {
+        "architecture": "Haswell",
+        "filepath": "/data/codex/repos/dSDM/.venv/lib/python3.12/site-packages/scipy.libs/libscipy_openblas-b75cc656.so",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libscipy_openblas",
+        "threading_layer": "pthreads",
+        "user_api": "blas",
+        "version": "0.3.29.dev"
+      },
+      {
+        "filepath": "/data/codex/repos/dSDM/.venv/lib/python3.12/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0",
+        "internal_api": "openmp",
+        "num_threads": 1,
+        "prefix": "libgomp",
+        "user_api": "openmp",
+        "version": null
+      }
+    ],
+    "torch": "2.13.0",
+    "torch_thread_settings": {
+      "interop_threads": 32,
+      "threads": 1
+    }
+  },
+  "source_identity": {
+    "config_sha256": "48465d0a5180931a72ffc87aa830f6ce60da93a4b491558540af5afa9d42884d",
+    "goal050_crossfit_sha256": "b3abdb006fb7d384445db376d5ba3f0f7b48afd170982494f88ff20ef612e804",
+    "goal050_curves_sha256": "317a5513b6645edc588c63db1c2d26afaea3edfa202480b2f46ca58a2817c3d6",
+    "goal050_manifest_sha256": "239dd61cc5d3ab942a813201c0cb4117820b74367c7ba71deffddc6990d36198",
+    "goal050_transforms_sha256": "1d8b3d09b139264e288630f283e330d28919c00b4631132aa9a79529ad3abb52",
+    "goal052_config_sha256": "04b667168944b39ced1044da8f381553c4024e31cca1f5590f2fbc693e521f9a",
+    "source_sha256": "24057a4ef6c857d26e0fb4deecf46fe81cfc0e91c67e34d92dbdd77d7ca7ce2e",
+    "uv_lock_sha256": "51712e74b2f9d78a4efb7bfd6732244188e8c6c5bc722f7a78f2724e6b8b84f6"
+  },
+  "started_utc": "2026-10-01T13:24:13.767856+00:00",
+  "status": "failed_exact_prediction_replay",
+  "target": "Chalcites minutillus",
+  "wall_seconds": 560.623547,
+  "workers": 1
+}

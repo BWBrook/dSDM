@@ -1202,3 +1202,72 @@ receipt keys. It records 80 unavailable ANN target/condition budgets and 4,242
 prospective production fits. A repeat run produced byte-identical JSON; the
 artifact binds its generator hash. These checks qualify the inventory only,
 not the proposed refits or a runtime. `git diff --check` passed.
+
+## 1 October 2026 — recorded-richness review and outer preparation
+
+Read Fable's message 783 after Barry forwarded its summary. Reproduced the
+retained inner predictions with `scripts/goal052_effort_review.py`, processing
+one target at a time and checking hashes and cell/fold/response alignment.
+All five arm AUCs (four neural plus the selected conventional) match exactly
+on every target. Fixed FT/conventional averaging gives +0.00241387 AUC over
+FT on the primary 73 and +0.00182883 on the other 84. The common 59-target
+primary richness table and the 55-target high-richness restriction reproduce.
+The other common richness panel has 83, not 84, targets. A background-weighted
+identity includes every primary target and recovers +0.00338986, with maximum
+target-level error below 2.2e-16. The reporting-rate gradient reproduces closely
+under an explicit pooled-quintile definition, but its 157 versus Fable's 151
+denominator remains a documented support-rule question.
+
+The predictor covariance helper independently reproduces 5 PCs for 90% and
+9 for 99% variance, with participation ratio 3.3913. The review distinguishes
+linear collinearity from supervised complexity, recorded richness from effort,
+and ensemble complementarity from a bound on learner improvement. Both
+scripts' final source hashes match their generated evidence. Parent checks
+verified retained cell/membership hashes against the accepted Goal050 manifest
+and exercised sparse/empty-bin arithmetic and both-class restriction on a
+synthetic example. No model was fitted by these diagnostic scripts.
+
+`RecordedRichnessReview-20261001.md` records the revised research priority:
+observation-aware evaluation, then richer inputs, then a same-input learner
+test if still warranted. Primary literature supports the caveats about bias
+covariates and nondetections. Correspondence reply **805** gives reproduced
+numbers and preserves the remaining inferential disagreement; Fable responds
+next on those objections and the 151-target definition.
+
+`OuterDiagnostics-20261001.md` fixes supplementary reporting before opening.
+The new pure scoring module implements the fixed ensemble, richness bins,
+20-per-class rule, explicit NAs and exact weighted AUC identity. The separate
+response-free reader checks a pinned manifest and reads only the region ledger
+and predictor substrate. Review corrected two representation assumptions:
+transform JSON key order is not feature order, and the predictor `region` field
+is the coarse `southeast_mainland` source domain, while the ledger carries
+official IBRA codes. The real reader returns all 144,860 cells with 103 finite
+encoded features. Completeness is not a Goal049 row filter, so the earlier
+predictor-complete-only proposal was corrected without changing scoring masks.
+The 21 targeted recovery/reader/scoring tests and compilation checks pass.
+
+The ANN helper and eight tests were committed/pushed as **ff14c26**. The first
+Deep probe used one worker and a one-hour cap; it finished 25 selected ordinary
+discovery/replay pairs for `Chalcites minutillus`, then failed bitwise prediction
+agreement. All five folds differ slightly, maximum `5.6624412547723324e-8`.
+Exit 1 at 23:33:34 AEST followed 560.6 seconds; q was never attempted and no
+epoch budget was accepted. Failed fit records and per-seed predictions are
+hash-verified locally, with tracked `ann-recovery-deep-probe-20261001.json`.
+No exactness tolerance was weakened.
+
+The accepted conventional endpoints originated on Nectar. Its preserved
+environment matches current numerical package versions; the CPU differs from
+Deep. Simple no-fit exp/sigmoid/GELU hashes match, so the cause is unresolved.
+Resized idle Nectar from c3.xsmall to **c3.large (8 vCPU/16 GiB)** under standing
+compute authority; OpenStack ACTIVE and guest capacity passed. All eight helper
+tests passed there. A one-worker original-runtime probe started at **23:44:18
+AEST**, ordinary then q_full, capped at **2 October 00:44 AEST** plus 60 seconds.
+Use the existing `dsdm-ann-recovery-probe-nectar` session and private
+`ann-epoch-recovery/nectar-probe-20261001/` receipts. The control-plane current
+status and dated exchange log record allocation and return-to-park review.
+
+The accepted inner source/config and summary bindings are unchanged. Outer
+response rows remain sealed; reading response-free predictor rows does not
+complete model predictions or qualify the full outer pipeline. Remaining work
+includes successful recovery of all 80 ANN budgets and retained-full execution,
+prediction closure, synthetic separation and runtime qualification.
