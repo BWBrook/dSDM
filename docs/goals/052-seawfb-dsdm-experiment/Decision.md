@@ -325,3 +325,25 @@ failed by at most `5.66e-8` and yields no accepted epoch budget. Preserve the
 failed evidence. A bounded check on the original Nectar environment is now
 running under existing compute authority; its result must be reviewed before
 any wider recovery allocation. No outer-response access has occurred.
+
+
+## 2 October 2026 — exact original-runtime ANN recovery route accepted
+
+Accept only the independently verified ordinary and q_full epoch budgets for
+`Chalcites minutillus` (5 and 6) from the original Nectar runtime. Both exactly
+reproduce accepted inner predictions; Deep's failed attempt is retained and
+yields no budget. The fitting helper, numerical exactness gate, candidates,
+seeds, source/config identities and accepted inner results remain unchanged.
+
+Under existing compute authority, recover the remaining 78 procedures using
+four spawned single-thread workers on c3.large, a fixed six-hour cap from
+00:15:29 AEST, 60-second termination allowance and 2 GiB available-memory floor.
+Stop new submissions on any task failure; abort the pool for resource failure.
+Preserve all native receipts. All budgets need independent review before use.
+
+A one-shot controller owns evidence return and idle parking. Failed fitting
+can be followed by successful cleanup, but must remain explicitly failed.
+Receipt ambiguity, a live owned process group, failed return verification or
+other user workload prevents automatic parking. This recovery route does not
+qualify the retained-full outer pipeline or release its prediction-before-response
+requirement. No recurring automation is authorized or created by this decision.

@@ -5,7 +5,7 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Current handoff — 1 October, richness review and retained replay qualification
+## Current handoff — 2 October, ANN replay qualified and bounded batch running
 
 Fable's message **783** accepts the prospective core refit/reporting proposals
 and adds a recorded-richness diagnostic. The retained-only reproduction in
@@ -38,24 +38,43 @@ preserved in private `ann-epoch-recovery/`; the tracked review is
 The helper at **ff14c26** retains the exact-match gate and must not be edited
 under a running job.
 
-Nectar was temporarily resized to **c3.large (8 vCPU, 16 GiB)** for an
-original-runtime check. The accepted conventional source remains `ce63d96`
-with digest `24057a4e…`. One worker started at **23:44:18 AEST on 1 October** in
-`dsdm-ann-recovery-probe-nectar`, ordinary then q_full. Cap: **2 October 00:44
-AEST**, plus 60 seconds for termination. Follow `nectar-probe-20261001/` beneath
-`data/processed/dsdm/goal052-seawfb-dsdm-experiment/ann-epoch-recovery/` on
-`nectar-codex-ts`; inspect existing launch/log/result/exit before any retry.
-Do not duplicate the run or reset its deadline. Return evidence, then park
-Nectar if no further qualified work follows. No recurring monitor was created.
+The original Nectar probe **passed both procedures exactly** and exited 0 at
+23:57:07 AEST on 1 October. Independent reconstruction checked 69,235 rows and
+25 fold/seed receipts per procedure. `Chalcites minutillus` epoch budgets are
+ordinary **5**, q_full **6**. The tracked `ann-recovery-nectar-probe-20261001.json`
+binds the preserved evidence. Host/runtime association is observed; the precise
+cause of Deep's numerical difference is not established.
 
-The complete retained-full fitting orchestrator, all 80 ANN procedure budgets,
-complete prediction closure and actual outer runtime qualification remain.
-**No outer response rows have been opened.** Barry's opening authority persists;
-do not ask for it again.
+Nectar remains **c3.large (8 vCPU, 16 GiB)**, with frozen conventional checkout
+`ce63d96` and source digest `24057a4e…`. A four-worker, single-thread batch
+started **2 October 00:15:29 AEST**, recovering the remaining **78 of 80**
+procedures. Its cap is **06:15:29 AEST**, plus 60 seconds for termination;
+MemAvailable below 2 GiB aborts it. Run ID: `1f498e0dbbdd47c4b64692ecae5b7abb`.
+Four workers and about 8.9 GiB available RAM were observed after dispatch.
+No new procedure had completed at that early snapshot.
 
-Correspondence **805** reports the reproduction and scientific objections.
+Read `ann-recovery-batch-dispatch-20261002.json`. Private local and remote
+receipts are under `ann-epoch-recovery/batch-20261001/`; remote alias is
+`nectar-codex-ts`. A detached one-shot controller on the Mac mini (PID 17558)
+owns the SSH job, evidence return and idle-VM parking. Its log is
+`controller.log`; outcomes are `return-review.json` and
+`controller-result.json`. Fit completion and successful resource closeout are
+separate statuses. It requires matching ownership/process/exit identities,
+verifies returned file hashes, then parks only after two empty user-workload
+and container checks. On ambiguity it preserves evidence and requires
+inspection, without retry. No recurring monitor was created.
+
+Do not edit these live drivers/helper, duplicate the batch, reset its deadline
+or run a second resource controller. Inspect existing receipts first. Native
+batch completion still needs independent review before all epochs are accepted.
+The complete retained-full fitting orchestrator, complete prediction closure
+and actual outer runtime qualification remain. **No outer response rows have
+been opened.** Barry's opening authority persists; do not ask for it again.
+
+Correspondence **805** reports the reproduction and scientific objections;
+**807** records original-runtime qualification and bounded dispatch.
 **Fable responds next**, particularly on the 151-target definition and causal
-interpretation. Task retrieval cursor is **805**. Closing chat replies retain
+interpretation. Task retrieval cursor is **807**. Closing chat replies retain
 a Hobart date-time stamp.
 
 ## Historical handoff — 29 September, outer opening authorized; preparation

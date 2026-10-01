@@ -1271,3 +1271,42 @@ response rows remain sealed; reading response-free predictor rows does not
 complete model predictions or qualify the full outer pipeline. Remaining work
 includes successful recovery of all 80 ANN budgets and retained-full execution,
 prediction closure, synthetic separation and runtime qualification.
+
+
+## 2 October 2026 — original-runtime replay passed; remaining ANN budgets launched
+
+The Nectar probe exited 0 at 23:57:07 AEST on 1 October after 768.74 seconds.
+Both ordinary and q_full reproduce the accepted 69,235 probabilities exactly.
+Independent reconstruction from returned per-seed arrays checked all 25 unique
+fold/seed records per procedure (100 physical discovery/replay fits total).
+The derived epoch budgets are 5 and 6; the 2.292 GiB peak worker RSS informed
+the subsequent four-worker allocation. Preserve Deep's failed attempt. The
+specific numerical cause of the cross-host difference remains unresolved.
+
+The bounded batch passed an original-runtime no-fit preflight with exactly
+80 planned procedures and two bound native successes. Synthetic checks exercise
+the production scheduler and completion paths, task failure, duplicate rejection,
+memory-floor abort, ownership, stale/contradictory receipts, incomplete success,
+return hashes and containment, and idle-check failure. Parent review repaired
+receipt naming/run IDs and retained memory monitoring while draining failed
+work. The exact replay helper and all fitting/config sources remain unchanged.
+
+Launched the other 78 procedures at **00:15:29 AEST**, four spawned workers
+with one numerical thread each on Nectar c3.large. Wall cap **06:15:29 AEST**
+plus 60-second termination allowance; available-memory floor 2 GiB. The early
+snapshot confirmed four live workers, four submitted procedures, no completed
+new procedure or failure, and 9,520,799,744 bytes available RAM. It is dispatch
+evidence, not completed recovery. The tracked dispatch receipt binds every
+private driver and static launch receipt.
+
+The detached Mac mini controller (PID 17558, run
+`1f498e0dbbdd47c4b64692ecae5b7abb`) will return and hash-check evidence, then park
+Nectar only after its process group has stopped and two workload/container
+checks are empty. It treats fitting outcome separately from resource closeout,
+bounds resize execution, and never retries or resets the job. Any contradiction
+requires inspection. No recurring monitor was reinstated. Control-plane current
+status and its dated exchange log carry the allocation and closeout pointers.
+
+Correspondence **807** records the runtime result and dispatch; Fable responds
+next to **805**'s scientific objections and denominator question. The outer
+pipeline remains unqualified and outer responses remain sealed.

@@ -1,0 +1,505 @@
+{
+  "available_memory_bytes": 9520799744,
+  "checks": {
+    "controller_success_failure_timeout_stale_receipt_and_hash_checks": "passed",
+    "idle_before_dispatch": true,
+    "local_and_original_runtime_scheduler_tests": "passed",
+    "one_numerical_thread_per_worker": true,
+    "remote_plan": "ready_plan_80_with_two_native_successes",
+    "source_helper_unchanged": true
+  },
+  "closeout_contract": "matching run and process identities; explicit fit status separate from hash-verified return; park only after stopped process group and two empty user-process/container checks; no retries",
+  "controller_local_pid": 17558,
+  "cpus": 8,
+  "driver_sha256": {
+    "batch.py": "8ba9f5a059ede7f08b20ab8b1a330d80748766ad586401c66cb22f5f98c4505d",
+    "batch.sh": "24088b88ff97c0ced29a1c5e5cafb56e17ef8382faa8199cbdf2117749f66a83",
+    "controller-check.py": "9c8f10666ab1626c4f9cfce10947d888f6d6fb9346ac65bf79c2cd50a16d198c",
+    "local-controller.py": "15e1beda6fb56edc771d33677d07e2778584bcffa7a3d8bffe004b207544749b",
+    "synthetic-check.py": "58262348b6c20c8d89e0a286782f1b4db3ce796605cd933e73dc4c9474a01727"
+  },
+  "existing_verified_procedures": 2,
+  "flavour": "c3.large",
+  "host": "nectar-codex-ts",
+  "launch": {
+    "all_task_count": 80,
+    "bindings": {
+      "driver_sha256": "8ba9f5a059ede7f08b20ab8b1a330d80748766ad586401c66cb22f5f98c4505d",
+      "helper_sha256": "44c61f9135f6b39cf6c359ecd29e00464444aea6b2e0b293e72b625101c48f62",
+      "inventory_sha256": "bcc2afd99bae661b99fe0dd7dfa8ef6f91f48baf63d3e9502f8e7f1ae960c003",
+      "probe_exit_sha256": "2329f33905bdf873328a26662f5d42b035cd30bf8727c7f782e06c8c65a84537",
+      "probe_launch_sha256": "bc48ed1bd6e924dd0427bb235cdc34999f7c6f0dec08e129d15c2818536fdc0a",
+      "probe_result_sha256": "b0715b6b3c9767a958de9adf162b084496c82a837d6e59b25baea4a99176b51c",
+      "source_identity": {
+        "config_sha256": "48465d0a5180931a72ffc87aa830f6ce60da93a4b491558540af5afa9d42884d",
+        "goal050_crossfit_sha256": "b3abdb006fb7d384445db376d5ba3f0f7b48afd170982494f88ff20ef612e804",
+        "goal050_curves_sha256": "317a5513b6645edc588c63db1c2d26afaea3edfa202480b2f46ca58a2817c3d6",
+        "goal050_manifest_sha256": "239dd61cc5d3ab942a813201c0cb4117820b74367c7ba71deffddc6990d36198",
+        "goal050_transforms_sha256": "1d8b3d09b139264e288630f283e330d28919c00b4631132aa9a79529ad3abb52",
+        "goal052_config_sha256": "04b667168944b39ced1044da8f381553c4024e31cca1f5590f2fbc693e521f9a",
+        "source_sha256": "24057a4ef6c857d26e0fb4deecf46fe81cfc0e91c67e34d92dbdd77d7ca7ce2e",
+        "uv_lock_sha256": "51712e74b2f9d78a4efb7bfd6732244188e8c6c5bc722f7a78f2724e6b8b84f6"
+      },
+      "wrapper_sha256": "24088b88ff97c0ced29a1c5e5cafb56e17ef8382faa8199cbdf2117749f66a83"
+    },
+    "max_wall_seconds": 21600,
+    "max_workers": 4,
+    "memory_floor_bytes": 2147483648,
+    "run_id": "1f498e0dbbdd47c4b64692ecae5b7abb",
+    "runtime": {
+      "coordinator_pid": 3311,
+      "host": "deep-vm",
+      "probe_runtime": {
+        "cpu_count": 8,
+        "host": "deep-vm",
+        "machine": "x86_64",
+        "numpy": "2.5.1",
+        "platform": "Linux-6.8.0-142-generic-x86_64-with-glibc2.39",
+        "processor": "x86_64",
+        "pyarrow": "21.0.0",
+        "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+        "python_executable": "/data/codex/repos/dSDM/.venv/bin/python",
+        "scikit_learn": "1.9.0",
+        "scipy": "1.16.3",
+        "threadpool_info": [
+          {
+            "architecture": "Haswell",
+            "filepath": "/data/codex/repos/dSDM/.venv/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-017048f4.so",
+            "internal_api": "openblas",
+            "num_threads": 1,
+            "prefix": "libscipy_openblas",
+            "threading_layer": "pthreads",
+            "user_api": "blas",
+            "version": "0.3.33.112.0"
+          },
+          {
+            "architecture": "Haswell",
+            "filepath": "/data/codex/repos/dSDM/.venv/lib/python3.12/site-packages/scipy.libs/libscipy_openblas-b75cc656.so",
+            "internal_api": "openblas",
+            "num_threads": 1,
+            "prefix": "libscipy_openblas",
+            "threading_layer": "pthreads",
+            "user_api": "blas",
+            "version": "0.3.29.dev"
+          },
+          {
+            "filepath": "/data/codex/repos/dSDM/.venv/lib/python3.12/site-packages/scikit_learn.libs/libgomp-e985bcbb.so.1.0.0",
+            "internal_api": "openmp",
+            "num_threads": 1,
+            "prefix": "libgomp",
+            "user_api": "openmp",
+            "version": null
+          },
+          {
+            "filepath": "/data/codex/repos/dSDM/.venv/lib/python3.12/site-packages/torch/lib/libgomp.so.1",
+            "internal_api": "openmp",
+            "num_threads": 1,
+            "prefix": "libgomp",
+            "user_api": "openmp",
+            "version": null
+          }
+        ],
+        "torch": "2.13.0",
+        "torch_thread_settings": {
+          "interop_threads": 8,
+          "threads": 1
+        }
+      },
+      "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+      "runtime": {
+        "cpu_count": 8,
+        "host": "deep-vm",
+        "machine": "x86_64",
+        "numpy": "2.5.1",
+        "platform": "Linux-6.8.0-142-generic-x86_64-with-glibc2.39",
+        "processor": "x86_64",
+        "pyarrow": "21.0.0",
+        "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+        "python_executable": "/data/codex/repos/dSDM/.venv/bin/python",
+        "scikit_learn": "1.9.0",
+        "scipy": "1.16.3",
+        "threadpool_info": [
+          {
+            "architecture": "Haswell",
+            "filepath": "/data/codex/repos/dSDM/.venv/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-017048f4.so",
+            "internal_api": "openblas",
+            "num_threads": 1,
+            "prefix": "libscipy_openblas",
+            "threading_layer": "pthreads",
+            "user_api": "blas",
+            "version": "0.3.33.112.0"
+          },
+          {
+            "filepath": "/data/codex/repos/dSDM/.venv/lib/python3.12/site-packages/torch/lib/libgomp.so.1",
+            "internal_api": "openmp",
+            "num_threads": 1,
+            "prefix": "libgomp",
+            "user_api": "openmp",
+            "version": null
+          }
+        ],
+        "torch": "2.13.0",
+        "torch_thread_settings": {
+          "interop_threads": 8,
+          "threads": 1
+        }
+      },
+      "source_identity": {
+        "config_sha256": "48465d0a5180931a72ffc87aa830f6ce60da93a4b491558540af5afa9d42884d",
+        "goal050_crossfit_sha256": "b3abdb006fb7d384445db376d5ba3f0f7b48afd170982494f88ff20ef612e804",
+        "goal050_curves_sha256": "317a5513b6645edc588c63db1c2d26afaea3edfa202480b2f46ca58a2817c3d6",
+        "goal050_manifest_sha256": "239dd61cc5d3ab942a813201c0cb4117820b74367c7ba71deffddc6990d36198",
+        "goal050_transforms_sha256": "1d8b3d09b139264e288630f283e330d28919c00b4631132aa9a79529ad3abb52",
+        "goal052_config_sha256": "04b667168944b39ced1044da8f381553c4024e31cca1f5590f2fbc693e521f9a",
+        "source_sha256": "24057a4ef6c857d26e0fb4deecf46fe81cfc0e91c67e34d92dbdd77d7ca7ce2e",
+        "uv_lock_sha256": "51712e74b2f9d78a4efb7bfd6732244188e8c6c5bc722f7a78f2724e6b8b84f6"
+      }
+    },
+    "started_utc": "2026-10-01T14:15:33.221696+00:00",
+    "status": "prepared_bounded_batch_started",
+    "task_count": 78,
+    "task_keys": [
+      [
+        "Cacomantis flabelliformis",
+        "ordinary"
+      ],
+      [
+        "Cacomantis flabelliformis",
+        "q_full"
+      ],
+      [
+        "Centropus phasianinus",
+        "ordinary"
+      ],
+      [
+        "Centropus phasianinus",
+        "q_full"
+      ],
+      [
+        "Ceyx azureus",
+        "ordinary"
+      ],
+      [
+        "Ceyx azureus",
+        "q_full"
+      ],
+      [
+        "Chalcophaps longirostris",
+        "ordinary"
+      ],
+      [
+        "Chalcophaps longirostris",
+        "q_full"
+      ],
+      [
+        "Cinclosoma punctatum",
+        "ordinary"
+      ],
+      [
+        "Cinclosoma punctatum",
+        "q_full"
+      ],
+      [
+        "Colluricincla megarhyncha",
+        "ordinary"
+      ],
+      [
+        "Colluricincla megarhyncha",
+        "q_full"
+      ],
+      [
+        "Dicrurus bracteatus",
+        "ordinary"
+      ],
+      [
+        "Dicrurus bracteatus",
+        "q_full"
+      ],
+      [
+        "Eudynamys orientalis",
+        "ordinary"
+      ],
+      [
+        "Eudynamys orientalis",
+        "q_full"
+      ],
+      [
+        "Geopelia humeralis",
+        "ordinary"
+      ],
+      [
+        "Geopelia humeralis",
+        "q_full"
+      ],
+      [
+        "Gerygone mouki",
+        "ordinary"
+      ],
+      [
+        "Gerygone mouki",
+        "q_full"
+      ],
+      [
+        "Gerygone olivacea",
+        "ordinary"
+      ],
+      [
+        "Gerygone olivacea",
+        "q_full"
+      ],
+      [
+        "Lalage leucomela",
+        "ordinary"
+      ],
+      [
+        "Lalage leucomela",
+        "q_full"
+      ],
+      [
+        "Lonchura castaneothorax",
+        "ordinary"
+      ],
+      [
+        "Lonchura castaneothorax",
+        "q_full"
+      ],
+      [
+        "Lopholaimus antarcticus",
+        "ordinary"
+      ],
+      [
+        "Lopholaimus antarcticus",
+        "q_full"
+      ],
+      [
+        "Lophorina paradisea",
+        "ordinary"
+      ],
+      [
+        "Lophorina paradisea",
+        "q_full"
+      ],
+      [
+        "Macropygia phasianella",
+        "ordinary"
+      ],
+      [
+        "Macropygia phasianella",
+        "q_full"
+      ],
+      [
+        "Megaloprepia magnifica",
+        "ordinary"
+      ],
+      [
+        "Megaloprepia magnifica",
+        "q_full"
+      ],
+      [
+        "Melithreptus albogularis",
+        "ordinary"
+      ],
+      [
+        "Melithreptus albogularis",
+        "q_full"
+      ],
+      [
+        "Monarcha melanopsis",
+        "ordinary"
+      ],
+      [
+        "Monarcha melanopsis",
+        "q_full"
+      ],
+      [
+        "Myiagra cyanoleuca",
+        "ordinary"
+      ],
+      [
+        "Myiagra cyanoleuca",
+        "q_full"
+      ],
+      [
+        "Myiagra rubecula",
+        "ordinary"
+      ],
+      [
+        "Myiagra rubecula",
+        "q_full"
+      ],
+      [
+        "Myzomela sanguinolenta",
+        "ordinary"
+      ],
+      [
+        "Myzomela sanguinolenta",
+        "q_full"
+      ],
+      [
+        "Neophema elegans",
+        "ordinary"
+      ],
+      [
+        "Neophema elegans",
+        "q_full"
+      ],
+      [
+        "Neophema pulchella",
+        "ordinary"
+      ],
+      [
+        "Neophema pulchella",
+        "q_full"
+      ],
+      [
+        "Origma solitaria",
+        "ordinary"
+      ],
+      [
+        "Origma solitaria",
+        "q_full"
+      ],
+      [
+        "Petroica rodinogaster",
+        "ordinary"
+      ],
+      [
+        "Petroica rodinogaster",
+        "q_full"
+      ],
+      [
+        "Petroica rosea",
+        "ordinary"
+      ],
+      [
+        "Petroica rosea",
+        "q_full"
+      ],
+      [
+        "Phylidonyris pyrrhopterus",
+        "ordinary"
+      ],
+      [
+        "Phylidonyris pyrrhopterus",
+        "q_full"
+      ],
+      [
+        "Pitta versicolor",
+        "ordinary"
+      ],
+      [
+        "Pitta versicolor",
+        "q_full"
+      ],
+      [
+        "Ptilinopus superbus",
+        "ordinary"
+      ],
+      [
+        "Ptilinopus superbus",
+        "q_full"
+      ],
+      [
+        "Pycnoptilus floccosus",
+        "ordinary"
+      ],
+      [
+        "Pycnoptilus floccosus",
+        "q_full"
+      ],
+      [
+        "Rhipidura rufifrons",
+        "ordinary"
+      ],
+      [
+        "Rhipidura rufifrons",
+        "q_full"
+      ],
+      [
+        "Scythrops novaehollandiae",
+        "ordinary"
+      ],
+      [
+        "Scythrops novaehollandiae",
+        "q_full"
+      ],
+      [
+        "Sphecotheres vieilloti",
+        "ordinary"
+      ],
+      [
+        "Sphecotheres vieilloti",
+        "q_full"
+      ],
+      [
+        "Todiramphus macleayii",
+        "ordinary"
+      ],
+      [
+        "Todiramphus macleayii",
+        "q_full"
+      ],
+      [
+        "Tregellasia capito",
+        "ordinary"
+      ],
+      [
+        "Tregellasia capito",
+        "q_full"
+      ],
+      [
+        "Vanellus miles",
+        "ordinary"
+      ],
+      [
+        "Vanellus miles",
+        "q_full"
+      ],
+      [
+        "Zoothera heinei",
+        "ordinary"
+      ],
+      [
+        "Zoothera heinei",
+        "q_full"
+      ],
+      [
+        "Zoothera lunulata",
+        "ordinary"
+      ],
+      [
+        "Zoothera lunulata",
+        "q_full"
+      ]
+    ],
+    "termination_allowance_seconds": 60
+  },
+  "live_worker_count": 4,
+  "memory_gib": 16,
+  "new_completed": 0,
+  "new_failed": [],
+  "new_submitted": 4,
+  "outer_response_rows_read": 0,
+  "private_receipt_sha256": {
+    "controller-claim.json": "051a424f66bfadaee2ad2c593073b738c48d7f6dd11aa9fd400e7a4ee7db5ead",
+    "controller-start.json": "f8e4364b99979648b7687f9f34bbb3f65bb2753ce76486cca584e9d116dc4e6e",
+    "dispatch-bindings.json": "56b622d72477adc34cdd6fad93eacc56e7252a1127fd372ff30c7fb4daad7ce5",
+    "early-progress-snapshot.json": "2c4734c92fa4c7bebbb588b4cb6d056f1627162ec7a3dd11020e3e02a92d0496",
+    "launch.json": "64f9a878fd6b1fc0f3d674ac79533fda2d7ebecea6e1208411283a570bcba329",
+    "process-group.json": "bca15c7eda7954b16e55a93c12905723fe97b2c8ad7a1714729cfdd1c11c37ff"
+  },
+  "process_group": {
+    "pgid": 3309,
+    "pid": 3309,
+    "root": "/data/codex/repos/dSDM",
+    "run_id": "1f498e0dbbdd47c4b64692ecae5b7abb",
+    "started_utc": "2026-10-01T14:15:29.850266+00:00",
+    "status": "running",
+    "wrapper_pid": 3304
+  },
+  "process_rss_sum_bytes": 8631058432,
+  "retained_full_outer_pipeline_qualified": false,
+  "run_id": "1f498e0dbbdd47c4b64692ecae5b7abb",
+  "sampled_utc": "2026-10-01T14:16:58.710339+00:00",
+  "status": "bounded_ann_recovery_batch_running"
+}

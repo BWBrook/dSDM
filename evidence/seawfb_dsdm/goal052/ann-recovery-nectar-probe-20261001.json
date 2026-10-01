@@ -1,0 +1,88 @@
+{
+  "allocated_memory_gib": 16,
+  "completed_procedures": 2,
+  "cpus": 8,
+  "deep_failed_attempt_preserved": true,
+  "exact_gate_relaxed": false,
+  "exit": {
+    "ended_utc": "2026-10-01T13:57:07.965117+00:00",
+    "exit_code": 0
+  },
+  "flavour": "c3.large",
+  "helper_sha256": "44c61f9135f6b39cf6c359ecd29e00464444aea6b2e0b293e72b625101c48f62",
+  "host": "deep-vm",
+  "independent_review": [
+    {
+      "exact_reconstructed_probability_match": true,
+      "median_rounded_epoch": 5,
+      "method": "ordinary",
+      "native_receipt_sha256": "0ae86efd85685bd82aa6945b8ed1711b18fda94baab615765a16c18671adee4a",
+      "physical_fits": 50,
+      "prediction_sha256": "0b43505c9bceb46fb447f19da8997bb5216e87597fe428c8e6022f529f94de34",
+      "rows": 69235,
+      "unique_fold_seed_receipts": 25
+    },
+    {
+      "exact_reconstructed_probability_match": true,
+      "median_rounded_epoch": 6,
+      "method": "q_full",
+      "native_receipt_sha256": "9b1f41e0dacfe91ed3e12b734b818c6a63c35413677ea014734f490694571393",
+      "physical_fits": 50,
+      "prediction_sha256": "7f9b511957126e1aadf35276aed35aa133a519444f6375a9d98e63e0cba99427",
+      "rows": 69235,
+      "unique_fold_seed_receipts": 25
+    }
+  ],
+  "interpretation": "Original-runtime recovery passes; Deep failed bitwise reproduction. Host association is observed, the specific numerical cause is not identified. Only these two procedure budgets are accepted.",
+  "outer_response_rows_read": 0,
+  "planned_procedures": 80,
+  "private_file_sha256": {
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/ann-epoch-recovery/chalcites_minutillus_ordinary.attempt0002.evaluated.npz": "11e909312be1f319a64b7bb538823071e266fbf1558f92f3370dd0cb02f3f375",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/ann-epoch-recovery/chalcites_minutillus_ordinary.attempt0002.json": "0ae86efd85685bd82aa6945b8ed1711b18fda94baab615765a16c18671adee4a",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/ann-epoch-recovery/chalcites_minutillus_ordinary.attempt0002.predictions.npz": "0b43505c9bceb46fb447f19da8997bb5216e87597fe428c8e6022f529f94de34",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/ann-epoch-recovery/chalcites_minutillus_q_full.evaluated.npz": "d4ce785a9733412679db98d4ba9aa6d246120886c645f2aeb1a34a3023fe1185",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/ann-epoch-recovery/chalcites_minutillus_q_full.json": "9b1f41e0dacfe91ed3e12b734b818c6a63c35413677ea014734f490694571393",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/ann-epoch-recovery/chalcites_minutillus_q_full.predictions.npz": "7f9b511957126e1aadf35276aed35aa133a519444f6375a9d98e63e0cba99427",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/ann-epoch-recovery/nectar-probe-20261001/launch.json": "bc48ed1bd6e924dd0427bb235cdc34999f7c6f0dec08e129d15c2818536fdc0a",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/ann-epoch-recovery/nectar-probe-20261001/probe-exit.json": "2329f33905bdf873328a26662f5d42b035cd30bf8727c7f782e06c8c65a84537",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/ann-epoch-recovery/nectar-probe-20261001/probe-result.json": "b0715b6b3c9767a958de9adf162b084496c82a837d6e59b25baea4a99176b51c",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/ann-epoch-recovery/nectar-probe-20261001/probe.log": "4d01f889ff88a79fa057771938d15cfd9855e1acfa15d7057242c1a2da372241",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/ann-epoch-recovery/nectar-probe-20261001/probe.py": "4eaf97cc2bc1a8bfff062d3c53ca831c199e12e56ac09946bc9ec9fe43e420b8",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/ann-epoch-recovery/nectar-probe-20261001/probe.sh": "32698e1baf866feb8e5de4ae7274396abc56ee6096d7076d2d78ea203416a7b7"
+  },
+  "probe": {
+    "completed": [
+      {
+        "median_rounded_epoch": 5,
+        "method": "ordinary",
+        "recovered_predictions_sha256": "0b43505c9bceb46fb447f19da8997bb5216e87597fe428c8e6022f529f94de34",
+        "status": "success"
+      },
+      {
+        "median_rounded_epoch": 6,
+        "method": "q_full",
+        "recovered_predictions_sha256": "7f9b511957126e1aadf35276aed35aa133a519444f6375a9d98e63e0cba99427",
+        "status": "success"
+      }
+    ],
+    "ended_utc": "2026-10-01T13:57:06.935111+00:00",
+    "helper_sha256": "44c61f9135f6b39cf6c359ecd29e00464444aea6b2e0b293e72b625101c48f62",
+    "outer_response_rows_read": 0,
+    "peak_rss_bytes": 2461306880,
+    "status": "both_procedures_exactly_reproduced",
+    "wall_seconds": 768.737976881
+  },
+  "remaining_procedures": 78,
+  "source_identity": {
+    "config_sha256": "48465d0a5180931a72ffc87aa830f6ce60da93a4b491558540af5afa9d42884d",
+    "goal050_crossfit_sha256": "b3abdb006fb7d384445db376d5ba3f0f7b48afd170982494f88ff20ef612e804",
+    "goal050_curves_sha256": "317a5513b6645edc588c63db1c2d26afaea3edfa202480b2f46ca58a2817c3d6",
+    "goal050_manifest_sha256": "239dd61cc5d3ab942a813201c0cb4117820b74367c7ba71deffddc6990d36198",
+    "goal050_transforms_sha256": "1d8b3d09b139264e288630f283e330d28919c00b4631132aa9a79529ad3abb52",
+    "goal052_config_sha256": "04b667168944b39ced1044da8f381553c4024e31cca1f5590f2fbc693e521f9a",
+    "source_sha256": "24057a4ef6c857d26e0fb4deecf46fe81cfc0e91c67e34d92dbdd77d7ca7ce2e",
+    "uv_lock_sha256": "51712e74b2f9d78a4efb7bfd6732244188e8c6c5bc722f7a78f2724e6b8b84f6"
+  },
+  "status": "two_selected_ann_procedures_exactly_qualified_on_original_runtime",
+  "target": "Chalcites minutillus"
+}

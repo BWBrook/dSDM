@@ -1,20 +1,35 @@
 # Goal 052 runbook
 
-**1 October: retained ANN epoch recovery is being qualified for the authorized
-outer assessment.** The accepted inner campaign is unchanged. Start with the
-current HANDOVER, `RecordedRichnessReview-20261001.md`, and the prospective
-`OuterDiagnostics-20261001.md`. The response-free reader now covers every
-frozen-region cell, with missing predictors handled by frozen imputation.
+**2 October: original-runtime ANN recovery is qualified and its bounded batch
+is running.** The accepted inner campaign is unchanged. Start with current
+HANDOVER, `RecordedRichnessReview-20261001.md`, and prospective
+`OuterDiagnostics-20261001.md`. The response-free reader covers every frozen
+region cell with the existing imputation rules.
 
-The Deep probe failed exact prediction agreement; preserve its failed receipt
-and payload. Follow the existing Nectar one-worker/one-hour probe launched at
-23:44 AEST on 1 October, with a 2 October 00:44 AEST cap plus 60 seconds. Do not
-rerun its launcher or edit the live helper. Its private `nectar-probe-20261001/`
-directory contains the launch, log and eventual result/exit; procedure receipts
-are in the parent `ann-epoch-recovery/` directory and failed attempts remain.
-No epoch is promotable without exact accepted seed-averaged predictions and
-complete 25-fold/seed receipts. Scope is 40 targets by ordinary/q, 80 procedures.
-The two-procedure probe does not complete that inventory.
+The Deep probe failed exact agreement and its failed evidence is preserved.
+The Nectar probe reproduced both selected procedures exactly, independently
+verified, with ordinary/q_full epoch medians 5/6. Only these two budgets are
+accepted. The current batch recovers the other 78; it does not perform outer
+refits. See tracked `ann-recovery-nectar-probe-20261001.json` and
+`ann-recovery-batch-dispatch-20261002.json` under `evidence/seawfb_dsdm/goal052/`.
+
+Current private directory, locally and under `/data/codex/repos/dSDM` on
+`nectar-codex-ts`:
+`data/processed/dsdm/goal052-seawfb-dsdm-experiment/ann-epoch-recovery/batch-20261001/`.
+It has `launch.json`, `process-group.json`, `progress.json`, and eventual
+`completion.json`, `exit.json`, `batch-exit.json`. Four spawned single-thread
+workers run on c3.large (8 vCPU/16 GiB), with a 2 GiB available-memory floor.
+The immutable cap is **2 October 06:15:29 AEST**, plus 60 seconds for forced
+termination. Run ID: `1f498e0dbbdd47c4b64692ecae5b7abb`.
+
+The Mac mini's one-shot controller PID 17558 owns return and idle parking;
+inspect `controller.log`, `return-review.json`, and `controller-result.json`.
+A failed fit may still have successful verified return and resource closeout.
+Contradictory ownership/exit receipts or another user workload defer parking.
+Do not restart the controller, duplicate the job, edit live driver/helper
+bytes, or reset its deadline. Inspect receipts before any recovery action.
+Native success requires independent review before promoting the full epoch
+inventory. No outer response access follows from this batch.
 
 Targeted preparation checks (21 passed locally; the eight ANN checks also pass
 on Deep and Nectar):
