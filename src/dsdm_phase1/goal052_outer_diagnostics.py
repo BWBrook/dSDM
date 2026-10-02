@@ -81,7 +81,12 @@ cell-identity validation are responsibilities of the outer scoring caller.
     membership_count = np.sum(np.vstack(list(bin_masks.values())), axis=0)
     if not np.array_equal(membership_count, background.astype(int)):
         raise ValueError("richness bins do not partition the scored X10 backgrounds")
-    strata = {label: score_subset(positive, absent) for label, absent in bin_masks.items()}
+    background_total = int(background.sum())
+    strata = {
+        label: {**score_subset(positive, absent),
+                "background_share": float(absent.sum() / background_total)}
+        for label, absent in bin_masks.items()
+    }
 
     identity = {}
     for name, values in scores.items():
@@ -103,7 +108,58 @@ cell-identity validation are responsibilities of the outer scoring caller.
     high = richness >= 100
     return {
         "minimum_cells_per_class": MINIMUM_CLASS_CELLS,
+        "background_cells_total": background_total,
         "background_strata": strata,
         "high_recording_richness_subset": score_subset(positive & high, background & high),
         "weighted_auc_identity": identity,
+    }
+
+
+def summarize_background_composition(
+    target_results: Mapping[str, Mapping[str, Any]],
+) -> dict[str, Any]:
+    """Summarize a caller-specified frozen panel without cell-weighting targets.
+
+    A physical cell can be background for several targets. Summed counts are
+    target-background pairs, not unique regional cells. The mean of target
+    shares accompanies the equally weighted target AUC headline; a pooled
+    pair share is also provided under its own explicit name.
+    """
+    targets = sorted(target_results)
+    labels = [label for _, _, label in BACKGROUND_BINS]
+    if not targets:
+        return {"target_count": 0, "targets": [], "background_pairs_total": 0,
+                "bins": {label: {"background_pairs": 0,
+                                 "mean_background_cells_per_target": None,
+                                 "mean_target_share": None,
+                                 "pooled_pair_share": None} for label in labels}}
+    counts, totals, shares = [], [], []
+    for target in targets:
+        item = target_results[target]
+        count = np.asarray([item["background_strata"][label]["background_cells"]
+                            for label in labels], dtype=np.float64)
+        share = np.asarray([item["background_strata"][label]["background_share"]
+                            for label in labels], dtype=np.float64)
+        total = float(item["background_cells_total"])
+        if (not np.isfinite(total) or total <= 0 or total != np.floor(total)
+                or not np.isfinite(count).all() or np.any(count < 0)
+                or np.any(count != np.floor(count)) or count.sum() != total
+                or not np.isfinite(share).all()
+                or not np.allclose(share, count / total, rtol=0, atol=1e-12)):
+            raise ValueError(f"invalid background composition for {target}")
+        counts.append(count)
+        totals.append(total)
+        shares.append(share)
+    count_matrix, share_matrix = np.asarray(counts), np.asarray(shares)
+    pair_total = int(np.sum(totals))
+    return {
+        "target_count": len(targets), "targets": targets,
+        "background_pairs_total": pair_total,
+        "bins": {
+            label: {"background_pairs": int(count_matrix[:, index].sum()),
+                    "mean_background_cells_per_target": float(count_matrix[:, index].mean()),
+                    "mean_target_share": float(share_matrix[:, index].mean()),
+                    "pooled_pair_share": float(count_matrix[:, index].sum() / pair_total)}
+            for index, label in enumerate(labels)
+        },
     }

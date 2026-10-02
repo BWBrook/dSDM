@@ -5,77 +5,67 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Current handoff — 2 October, ANN replay qualified and bounded batch running
+## Current handoff — 2 October, scientific follow-up and all ANN budgets accepted
 
-Fable's message **783** accepts the prospective core refit/reporting proposals
-and adds a recorded-richness diagnostic. The retained-only reproduction in
-`RecordedRichnessReview-20261001.md` matches all 157 targets' four neural and
-selected-conventional mean-fold AUCs exactly. The reported ensemble gains and
-primary 59-target richness reversal reproduce. An exact weighted decomposition
-also retains all 73 primary targets and recovers the accepted +0.003390 gain.
-The reporting-rate gradient is close, but Fable's 151-target support rule is
-unspecified; the explicit pooled-quintile reproduction has 157 targets.
+Fable's message **810** withdraws the mechanism claim, architecture/PCA bounds,
+rough ceiling and interpretation of the proposed richness-covariate experiment.
+The agreed later order is observation-aware independent evaluation (with an
+early known-truth simulation), richer habitat inputs, then same-input learners.
+No new simulation, observation-covariate or architecture experiment was launched.
 
-Observation-aware evaluation now precedes richer-input and same-input learner
-proposals. Recorded richness mixes ecology and observation, so the reversal
-cannot identify what the trunk learned. Ensemble gain is not an architecture
-upper bound, and PCA variance is not predictive complexity. The main scientific
-assessment and all accepted inner artifacts remain unchanged.
+`RecordedRichnessFollowup-20261002.md` verifies the matched FT/target-only
+comparison on 142 targets: +0.005336/+0.003421/−0.002110 across background
+richness 10–24/25–99/100+, with 139/123/69 positive. It holds architecture and
+inputs fixed but does not identify the transferred ecological/observation
+mechanism. Preserve the 59-primary/83-other split: the other 83 have a negative
+high-richness mean (−0.000580) but a positive majority (47/83), a mixed direction.
+The conventional-family and ensemble tables also reproduce.
 
-`OuterDiagnostics-20261001.md` fixes supplementary bins, support/NA rules,
-within-region target intersections, a high-recording-richness subset, and an
-AUC-only fixed 50:50 FT/conventional ensemble before outer access. Pure scoring
-and response-free predictor-reader tests pass. The reader covers all **144,860**
-frozen-region cells using the existing **103-feature** retained-full transform.
-The former “predictor-complete grids” phrase was corrected: frozen Goal049
-response masks include incomplete-predictor rows, handled by imputation.
+Fable's 151-target reporting-rate medians reproduce exactly to his rounding
+when the reference is the highest **nonempty top-score bin**. Contrary to his
+statement that every target uses 200+, 92 use 100–199 and 65 use 200+. Six of
+the latter have zero focal records among only one or two reference cells each;
+these small denominators give little independent evidence of habitat confounding.
+The literal fixed-200+ rule has only 59 defined ratios. Preserve both calculations
+and the original 1 October review. All diagnostics use retained inner data.
 
-ANN epoch recovery remains a prerequisite. The one-worker Deep probe completed
-25 ordinary discovery/replay pairs, then failed bitwise agreement (maximum
-probability difference `5.66e-8`). Exit 1 and every failed fit/prediction are
-preserved in private `ann-epoch-recovery/`; the tracked review is
-`ann-recovery-deep-probe-20261001.json`. No epochs were accepted and q was not run.
-The helper at **ff14c26** retains the exact-match gate and must not be edited
-under a running job.
+`OuterDiagnostics-20261001.md` now also specifies background counts/shares beside
+each regional headline, with equal species weighting and explicit target-cell
+pair counts. Its scoring tests cover sparse/empty bins and unequal target
+counts. No mask, model, primary contrast, support gate or threshold changed.
+Fitted target weights were not saved in the inner artifacts, so Fable's proposed
+fold-model/full-model comparison on a common grid needs additional replay fits.
+`OuterPreparation-20260929.md` records this limit; fixed OOF thresholds remain.
 
-The original Nectar probe **passed both procedures exactly** and exited 0 at
-23:57:07 AEST on 1 October. Independent reconstruction checked 69,235 rows and
-25 fold/seed receipts per procedure. `Chalcites minutillus` epoch budgets are
-ordinary **5**, q_full **6**. The tracked `ann-recovery-nectar-probe-20261001.json`
-binds the preserved evidence. Host/runtime association is observed; the precise
-cause of Deep's numerical difference is not established.
+All **80 conventional ANN epoch budgets** (40 targets × ordinary/q_full) are
+accepted in tracked `ann-recovery-review-20261002.json`. Independent reconstruction
+checked 2,000 unique fold/seed receipts (4,000 discovery/replay fits), 5,555,454
+accepted prediction rows, every candidate/seed/source/input binding and all
+264 returned-file hashes. Exact agreement is to the saved five-seed fold means;
+original individual seed vectors were not saved. The failed Deep probe remains
+preserved and contributes no accepted budget. No numerical tolerance was relaxed.
 
-Nectar remains **c3.large (8 vCPU, 16 GiB)**, with frozen conventional checkout
-`ce63d96` and source digest `24057a4e…`. A four-worker, single-thread batch
-started **2 October 00:15:29 AEST**, recovering the remaining **78 of 80**
-procedures. Its cap is **06:15:29 AEST**, plus 60 seconds for termination;
-MemAvailable below 2 GiB aborts it. Run ID: `1f498e0dbbdd47c4b64692ecae5b7abb`.
-Four workers and about 8.9 GiB available RAM were observed after dispatch.
-No new procedure had completed at that early snapshot.
+The Nectar batch exited **0 at 03:37:36 AEST** and verified return/idle parking
+completed at **03:41:08 AEST**. A live check around 11:00 confirmed **ACTIVE /
+c3.xsmall (1 vCPU, 2 GiB)**, no batch workers and original checkout **ce63d96**.
+Run ID: `1f498e0dbbdd47c4b64692ecae5b7abb`; alias **nectar-codex-ts**. The
+closed batch/controller receipts are local and remote under
+`data/processed/dsdm/goal052-seawfb-dsdm-experiment/ann-epoch-recovery/batch-20261001/`.
+Do not relaunch them. Nectar control-plane commit **d83053f** records the
+verified closeout. No recurring monitor exists.
 
-Read `ann-recovery-batch-dispatch-20261002.json`. Private local and remote
-receipts are under `ann-epoch-recovery/batch-20261001/`; remote alias is
-`nectar-codex-ts`. A detached one-shot controller on the Mac mini (PID 17558)
-owns the SSH job, evidence return and idle-VM parking. Its log is
-`controller.log`; outcomes are `return-review.json` and
-`controller-result.json`. Fit completion and successful resource closeout are
-separate statuses. It requires matching ownership/process/exit identities,
-verifies returned file hashes, then parks only after two empty user-workload
-and container checks. On ambiguity it preserves evidence and requires
-inspection, without retry. No recurring monitor was created.
-
-Do not edit these live drivers/helper, duplicate the batch, reset its deadline
-or run a second resource controller. Inspect existing receipts first. Native
-batch completion still needs independent review before all epochs are accepted.
-The complete retained-full fitting orchestrator, complete prediction closure
-and actual outer runtime qualification remain. **No outer response rows have
+The complete retained-full fitting orchestrator, complete hashed prediction
+closure and actual-runtime qualification remain. **No outer response rows have
 been opened.** Barry's opening authority persists; do not ask for it again.
+Use the explicit recovered medians beside the unchanged 29 September inventory.
+The response-free reader already covers all **144,860** region cells with the
+existing **103-feature** transform, including imputed incomplete-predictor rows.
 
-Correspondence **805** reports the reproduction and scientific objections;
-**807** records original-runtime qualification and bounded dispatch.
-**Fable responds next**, particularly on the 151-target definition and causal
-interpretation. Task retrieval cursor is **807**. Closing chat replies retain
-a Hobart date-time stamp.
+Correspondence reply **820** responds to Fable 810 with the reconciled evidence,
+reference correction and recovery closeout. Task retrieval checkpoint is **820**.
+Fable responds next on the reference-bin wording or any material objection;
+this is not a new authorization gate. Closing chat replies retain a Hobart
+date-time stamp.
 
 ## Historical handoff — 29 September, outer opening authorized; preparation
 

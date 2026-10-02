@@ -1310,3 +1310,68 @@ status and its dated exchange log carry the allocation and closeout pointers.
 Correspondence **807** records the runtime result and dispatch; Fable responds
 next to **805**'s scientific objections and denominator question. The outer
 pipeline remains unqualified and outer responses remain sealed.
+
+## 2 October 2026, morning — ANN recovery independently accepted and Nectar parked
+
+The bounded batch exited 0 at **03:37:36 AEST**, with 78 new procedures plus
+the two probe successes, no failed procedures and zero outer-response rows.
+The controller verified all 264 returned-file hashes at 03:39:23, confirmed
+its process group stopped and passed two empty workload/container checks.
+It recorded **ACTIVE / c3.xsmall at 03:41:08 AEST**. A read-only live check
+around 11:00 reconfirmed the cloud state, 1 vCPU/2 GiB allocation, no batch
+workers, preserved conventional checkout `ce63d96`, and five matching static
+remote/local receipt hashes. The Nectar control-plane exchange records the
+resource closeout. No new allocation or automation was made.
+
+Independent `scripts/goal052_ann_recovery_review.py` accepts all 80 recovered
+epoch budgets. It checked 2,000 unique fold/seed receipts representing 4,000
+discovery/replay fits, candidate and seed identities, accepted source/config and
+input hashes, full cell/response/fold coverage and every epoch range/median.
+Reconstructed five-seed means exactly match all 5,555,454 accepted prediction
+rows. An in-memory mutation of one seed array was rejected. All 264 returned
+files and seven preserved Deep-failure evidence hashes passed. The generator
+and tracked evidence hashes are bound and independently checked by the parent.
+
+Original per-seed predictions are unavailable; agreement is exact at the saved
+fold-mean granularity. The review resolves mechanical epoch recovery, not the
+cause of the cross-host discrepancy or the remaining outer qualification.
+No additional fits or sealed data were used by the independent audit.
+
+## 2 October 2026 — Fable 810 reconciliation
+
+The separate retained-only follow-up reproduces Fable's matched-network AUC
+table, comparator-family table and ensemble gains. It preserves 59 primary
+and 83 other common-support targets. The other panel's 100+ FT-minus-target-only
+mean is −0.000580 with 47/83 positive, so the combined reversal must not imply
+uniform harm. No ecological/observation mechanism is identified.
+
+The literal universal-200+ reference gives 59 defined reporting ratios.
+Recomputing from saved bin counts with the highest nonempty reference reproduces
+all revised 151-target medians: 92 targets use 100–199; 65 use 200+ and six of
+those have zero focal records. Each excluded reference contains only one or
+two selected cells. Changing tie order from endpoint order to cell-ID order
+changes no top-decile membership in any of 785 folds. The original review
+script/evidence remain unchanged.
+
+Added prospective composition counts/shares and equal-target summaries to the
+pure scoring module and `OuterDiagnostics-20261001.md`. Ten focused scoring
+tests pass, including sparse/empty-bin behavior and unequal target counts.
+Source inspection found no retained fitted target weights for Fable's proposed
+identical-grid score comparison; `OuterPreparation-20260929.md` records the
+limitation. His interpretive concessions and revised future priorities are
+recorded in `RecordedRichnessFollowup-20261002.md`. No new scientific fits,
+outer predictions or outer-response access occurred in this follow-up review.
+
+Parent integration corrected the follow-up helper's final panel lookup and
+made tie-audit counts derive from the recorded target folds. The final helper
+then ran end-to-end successfully, including explicit cross-arm cell/label/richness
+alignment and first-review input/source gates. No result changed. Its source
+SHA-256 is `f49ea52ac3a11797895934f78df4fcfa2813fa57cdf35f05243e75a5fc1a181c`;
+the final evidence SHA-256 is
+`742c367ab100886da764853cceeaca1684176259d934794d7ec83c8896e5cad0`.
+The parent independently checked final source/input bindings, counts and figures.
+
+Correspondence reply **820** posts the reconciliation and recovery closeout
+as a reply to **810**. Task retrieval checkpoint is 820. Fable responds next
+on reference-bin wording or a material objection; no new Barry decision or
+authorization gate is introduced.

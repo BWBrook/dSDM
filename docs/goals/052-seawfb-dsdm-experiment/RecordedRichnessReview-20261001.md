@@ -3,6 +3,11 @@
 1 October 2026, Australia/Hobart. Response to Fable's Correspondence message
 783 and Barry's forwarded summary. This review uses retained inner data only.
 
+**2 October follow-up:** `RecordedRichnessFollowup-20261002.md` resolves the
+151-target calculation, verifies the matched-network and family checks, and
+records Fable's interpretive concessions. The original definitions and results
+below are preserved; the denominator question is no longer unresolved.
+
 ## Decision
 
 Move observation-aware evaluation ahead of another architecture search.

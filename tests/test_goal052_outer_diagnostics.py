@@ -5,6 +5,7 @@ from sklearn.metrics import roc_auc_score
 from dsdm_phase1.goal052_outer_diagnostics import (
     evaluate_richness_diagnostics,
     fixed_probability_ensemble,
+    summarize_background_composition,
 )
 
 
@@ -18,6 +19,10 @@ def test_sparse_bins_keep_identity_and_positives_below_ten():
     assert result["background_strata"]["25_99"]["background_cells"] == 0
     assert result["background_strata"]["10_24"]["presence_cells"] == 2
     assert all(item["auc"]["arm"] is None for item in result["background_strata"].values())
+    assert result["background_cells_total"] == 3
+    np.testing.assert_allclose(
+        [item["background_share"] for item in result["background_strata"].values()],
+        [1 / 3, 0, 2 / 3], rtol=0, atol=1e-15)
     identity = result["weighted_auc_identity"]["arm"]
     assert identity["full_x10_auc"] == roc_auc_score(y, score)
     assert identity["absolute_error"] < 1e-12
@@ -64,3 +69,33 @@ def test_ensemble_uses_probabilities_and_rejects_invalid_component():
         fixed_probability_ensemble(ft, np.array([0.5]))
     with pytest.raises(ValueError):
         fixed_probability_ensemble(ft, np.array([0.5, np.nan]))
+
+
+def test_panel_composition_keeps_equal_target_weights_and_counts_repeated_cells_as_pairs():
+    def target(counts):
+        richness = np.r_[0, np.repeat([10, 25, 100], counts)]
+        y = np.r_[1, np.zeros(sum(counts))]
+        return evaluate_richness_diagnostics(
+            y, {"arm": np.full(len(y), 0.5)}, richness, np.arange(len(y)))
+
+    result = summarize_background_composition({"large": target([80, 20, 0]),
+                                              "small": target([1, 0, 9])})
+    assert result["target_count"] == 2
+    assert result["background_pairs_total"] == 110
+    low = result["bins"]["10_24"]
+    assert low["background_pairs"] == 81
+    assert low["mean_background_cells_per_target"] == 40.5
+    assert low["mean_target_share"] == pytest.approx(0.45)
+    assert low["pooled_pair_share"] == pytest.approx(81 / 110)
+    assert sum(row["mean_target_share"] for row in result["bins"].values()) == pytest.approx(1)
+    corrupted = target([1, 2, 3])
+    corrupted["background_strata"]["10_24"]["background_share"] = 0.9
+    with pytest.raises(ValueError, match="invalid background composition"):
+        summarize_background_composition({"corrupted": corrupted})
+
+
+def test_empty_panel_composition_has_no_invented_share():
+    result = summarize_background_composition({})
+    assert result["target_count"] == 0
+    assert result["background_pairs_total"] == 0
+    assert all(row["mean_target_share"] is None for row in result["bins"].values())

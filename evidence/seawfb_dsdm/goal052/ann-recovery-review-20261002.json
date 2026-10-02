@@ -1,0 +1,2659 @@
+{
+  "batch_closeout": {
+    "closeout_status": "returned_verified_and_parked",
+    "helper_sha256": "44c61f9135f6b39cf6c359ecd29e00464444aea6b2e0b293e72b625101c48f62",
+    "inventory_sha256": "bcc2afd99bae661b99fe0dd7dfa8ef6f91f48baf63d3e9502f8e7f1ae960c003",
+    "live_resource_assertion": "verified separately by the parent reviewer; this offline audit verifies only the hash-bound local closeout artifacts",
+    "local_closeout_artifact_sha256": {
+      "controller-result.json": "e14b61ddb536c08921300ec825d1d248de169bb7aea60e6048021a27d102e744",
+      "parked-cloud-status.txt": "551226377d4681ed77a242234f0ab8937b79ca18cdc4ed8078a6c043693e22d7",
+      "return-review.json": "4914b0d597147fa9d3fb4777b5b9bf4603404984f8b7a79034a94613a86bb3c1"
+    },
+    "native_completed_count": 80,
+    "native_exit_codes": {
+      "inner": 0,
+      "ssh": 0,
+      "wrapper": 0
+    },
+    "native_failed_count": 0,
+    "parked_flavour": "c3.xsmall",
+    "process_group_stopped": true,
+    "run_id": "1f498e0dbbdd47c4b64692ecae5b7abb"
+  },
+  "checks": {
+    "all_2000_fold_seed_receipts_unique_and_seed_bound": true,
+    "all_80_saved_seed_means_reconstructed_exactly": true,
+    "all_cell_y_fold_rows_match_accepted_predictions": true,
+    "all_epoch_ranges_and_rounded_medians_reproduced": true,
+    "all_return_manifest_hashes_verified": true,
+    "all_success_payload_hashes_verified": true,
+    "candidate_and_seed_bindings_match_inventory_and_endpoints": true,
+    "current_source_config_and_inputs_match_accepted_identity": true,
+    "endpoint_result_and_prediction_hashes_match_accepted_summary": true,
+    "exact_inventory_80_unique_keys": true,
+    "failed_deep_attempt_preserved_and_unused": true,
+    "no_epoch_inferred_from_range": true,
+    "source_helper_identity_unchanged": true
+  },
+  "counts": {
+    "accepted_prediction_rows_checked_across_procedures": 5555454,
+    "failed_attempts_preserved": 1,
+    "fit_receipts": 2000,
+    "physical_fits_represented": 4000,
+    "procedures": 80,
+    "returned_manifest_files": 264,
+    "targets": 40
+  },
+  "estimand_scope": {
+    "epoch_source": "25 exact fold-seed discovery receipts per procedure; ranges used only as containment checks",
+    "inference_change": "none; exact epoch-budget recovery only",
+    "outer_response_rows_read": 0,
+    "prediction_target": "accepted Goal051 retained-training out-of-fold cell probabilities",
+    "procedures": "40 selected shallow-ANN targets x ordinary/q_full"
+  },
+  "failed_deep_attempt": {
+    "epochs_accepted": 0,
+    "error": "prediction_mismatch:0",
+    "evaluated_arrays_sha256": "9a02d6cf3312d4e30c88be18086782f4c97cde76a06161e7eb6133d1da577c1c",
+    "preserved_private_evidence_hashes_verified": 7,
+    "receipt": "data/processed/dsdm/goal052-seawfb-dsdm-experiment/ann-epoch-recovery/chalcites_minutillus_ordinary.json",
+    "receipt_sha256": "b1be292e99e30ee7bfc5c3e3f320118418d8252cbbc46a886894681801fa8eeb",
+    "selected_for_recovery": false
+  },
+  "independent_scientific_review_scope": "This completed independent audit resolves the mechanical epoch-budget decision. Scientific review remains necessary for the later outer evaluation and claims, where it can affect inference.",
+  "limitations": [
+    "This accepts exact retained-only epoch recovery; it does not qualify the retained-full outer fitting or prediction pipeline.",
+    "The accepted Goal051 artifacts retain each five-seed fold mean, not the original per-seed vectors. The recovered per-seed arrays are hash-, seed-, and coverage-bound and reproduce every accepted mean exactly, but cannot be compared with unavailable original per-seed arrays.",
+    "Exact agreement establishes original-runtime reproduction, not a causal diagnosis of the earlier Deep-server floating-point mismatch.",
+    "No outer response, outer membership, outer fit, or ecological outcome was inspected."
+  ],
+  "procedures": [
+    {
+      "accepted_endpoint_predictions_sha256": "08424645a824d10fadccc7f9827c189ec1ce25b0b276927de23e27592ac363d4",
+      "candidate_id": "ann02",
+      "coverage_sha256": "b590e7031bf49e756de14564944518c5f05868fd1dfa0f070435d49d879bec7a",
+      "evaluated_arrays_sha256": "13aae133d2b820b33984cf01c272cfe1643bac042a70e8526c209b932daeee77",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13508,
+        15494,
+        11625,
+        16477,
+        12508
+      ],
+      "median_rounded_epoch": 12,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        2,
+        24
+      ],
+      "physical_fits": 50,
+      "positive_rows": 14154,
+      "receipt_sha256": "2b0797e1a6b3e284a145789c210ec918d16d2c0a2da8cbd1eb03e1a99adf8ea0",
+      "recovered_seed_arrays_sha256": "8d29fe1b8e75bfaf1f48dee09d45c46d7e6128c5563cc320e554bdc8c16d8317",
+      "rows": 69612,
+      "target": "Cacomantis flabelliformis"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "08424645a824d10fadccc7f9827c189ec1ce25b0b276927de23e27592ac363d4",
+      "candidate_id": "ann02",
+      "coverage_sha256": "b590e7031bf49e756de14564944518c5f05868fd1dfa0f070435d49d879bec7a",
+      "evaluated_arrays_sha256": "5601dbf1fdc15327ed95477d9046ef6847be1cca0b0f8d8183bbd14bf7f198f1",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13508,
+        15494,
+        11625,
+        16477,
+        12508
+      ],
+      "median_rounded_epoch": 9,
+      "method": "q_full",
+      "observed_epoch_range": [
+        2,
+        23
+      ],
+      "physical_fits": 50,
+      "positive_rows": 14154,
+      "receipt_sha256": "280eba6df88e361c2ae3572e993fa7a7a0b9d8acf7739e058701cd8b7d22ef3d",
+      "recovered_seed_arrays_sha256": "451cb825c1e526060c52122552d683cbe62aeba1ccd5214ec6619685929cac60",
+      "rows": 69612,
+      "target": "Cacomantis flabelliformis"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "c967c397ec5fc401db8d2cba9821dd71ea49968470a14a29edfc6522eed87513",
+      "candidate_id": "ann02",
+      "coverage_sha256": "7f28f6798b07f4afb4667106ff4548f30dc14c2e42841e3b47b1296d0723630a",
+      "evaluated_arrays_sha256": "8432f658c55f99636120dbd7ab13f2416b7891e675df7d8879371e83e7034e04",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13486,
+        15513,
+        11651,
+        16472,
+        12513
+      ],
+      "median_rounded_epoch": 12,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        6,
+        21
+      ],
+      "physical_fits": 50,
+      "positive_rows": 6462,
+      "receipt_sha256": "8ab85cb3cd7f5b7f536dcb44f4cb7973ab76a45a0ff91110b1d52f891a396c41",
+      "recovered_seed_arrays_sha256": "4f4408ee33576110cebebaca7e1ae91dc62a4e9af4287814ed53c7770d026ac1",
+      "rows": 69635,
+      "target": "Centropus phasianinus"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "c967c397ec5fc401db8d2cba9821dd71ea49968470a14a29edfc6522eed87513",
+      "candidate_id": "ann02",
+      "coverage_sha256": "7f28f6798b07f4afb4667106ff4548f30dc14c2e42841e3b47b1296d0723630a",
+      "evaluated_arrays_sha256": "1dc7e6da4596ec5fe2a6d5625ca9c6f8818added519c532cd7a3037ada4d7749",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13486,
+        15513,
+        11651,
+        16472,
+        12513
+      ],
+      "median_rounded_epoch": 11,
+      "method": "q_full",
+      "observed_epoch_range": [
+        5,
+        22
+      ],
+      "physical_fits": 50,
+      "positive_rows": 6462,
+      "receipt_sha256": "715202f208950f65b335ea1e05091797c5464a4587ede820be781cf329dff18c",
+      "recovered_seed_arrays_sha256": "e0b71b260d854233725ab251b1e4e86c7d2acc1c5d196a7d00bc1c831fd77968",
+      "rows": 69635,
+      "target": "Centropus phasianinus"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "81dc735624969c75fb641a23f518bc0c81fb9dc83f037513be19e557cb5921a0",
+      "candidate_id": "ann04",
+      "coverage_sha256": "9ea7b52f95fdda7586e30e769a38a77c6bff0dd2add17c0bd261eab1d52f7427",
+      "evaluated_arrays_sha256": "83034cacb8da646bf2dea5bfa02539fbc91b02dbeb891406d633ef2a96b5a5c0",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13457,
+        15473,
+        11590,
+        16442,
+        12491
+      ],
+      "median_rounded_epoch": 42,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        11,
+        59
+      ],
+      "physical_fits": 50,
+      "positive_rows": 4412,
+      "receipt_sha256": "e6c74eb3290e76fb1eccae974c3bc3b6656c7dc24506cbb64018e5b8bc7406d6",
+      "recovered_seed_arrays_sha256": "55f4a84dc37ef778dce448a7860619dbbcfd2e1024dd73bbc305bc5c080d66e7",
+      "rows": 69453,
+      "target": "Ceyx azureus"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "81dc735624969c75fb641a23f518bc0c81fb9dc83f037513be19e557cb5921a0",
+      "candidate_id": "ann04",
+      "coverage_sha256": "9ea7b52f95fdda7586e30e769a38a77c6bff0dd2add17c0bd261eab1d52f7427",
+      "evaluated_arrays_sha256": "8def4dba88b8f5eaddc066da98b357693541181a97d3e5483d40da45f698c41e",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13457,
+        15473,
+        11590,
+        16442,
+        12491
+      ],
+      "median_rounded_epoch": 32,
+      "method": "q_full",
+      "observed_epoch_range": [
+        9,
+        54
+      ],
+      "physical_fits": 50,
+      "positive_rows": 4412,
+      "receipt_sha256": "134d966bb1c6b3431c5c30b9d643e9c4df614af45f17749c8b877dbc1e8f214b",
+      "recovered_seed_arrays_sha256": "3ac1c0c986c7daf2a621f09a672f7aefebe27a947c686b293e4ea19c8446a390",
+      "rows": 69453,
+      "target": "Ceyx azureus"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "d571bc8cca78e1b28b1d6b41e41d9786d901b325be873d5ef7d05ecce2d97a7d",
+      "candidate_id": "ann00",
+      "coverage_sha256": "f99e5482ba4675be9228b2d96a3150a42d65e0b2d619e3b2c028ac61d18dc53a",
+      "evaluated_arrays_sha256": "11e909312be1f319a64b7bb538823071e266fbf1558f92f3370dd0cb02f3f375",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13434,
+        15406,
+        11542,
+        16399,
+        12454
+      ],
+      "median_rounded_epoch": 5,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        2,
+        13
+      ],
+      "physical_fits": 50,
+      "positive_rows": 1120,
+      "receipt_sha256": "0ae86efd85685bd82aa6945b8ed1711b18fda94baab615765a16c18671adee4a",
+      "recovered_seed_arrays_sha256": "0b43505c9bceb46fb447f19da8997bb5216e87597fe428c8e6022f529f94de34",
+      "rows": 69235,
+      "target": "Chalcites minutillus"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "d571bc8cca78e1b28b1d6b41e41d9786d901b325be873d5ef7d05ecce2d97a7d",
+      "candidate_id": "ann00",
+      "coverage_sha256": "f99e5482ba4675be9228b2d96a3150a42d65e0b2d619e3b2c028ac61d18dc53a",
+      "evaluated_arrays_sha256": "d4ce785a9733412679db98d4ba9aa6d246120886c645f2aeb1a34a3023fe1185",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13434,
+        15406,
+        11542,
+        16399,
+        12454
+      ],
+      "median_rounded_epoch": 6,
+      "method": "q_full",
+      "observed_epoch_range": [
+        4,
+        16
+      ],
+      "physical_fits": 50,
+      "positive_rows": 1120,
+      "receipt_sha256": "9b1f41e0dacfe91ed3e12b734b818c6a63c35413677ea014734f490694571393",
+      "recovered_seed_arrays_sha256": "7f9b511957126e1aadf35276aed35aa133a519444f6375a9d98e63e0cba99427",
+      "rows": 69235,
+      "target": "Chalcites minutillus"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "1f5d4670175c1435abd264232a3450eebac55cd9fca86cc66ea1983bf9ecafba",
+      "candidate_id": "ann02",
+      "coverage_sha256": "bb97b6f0436daaa569e2ca79833deeabcef7bf5536c785a978f523164221b36e",
+      "evaluated_arrays_sha256": "bb7e0d2f2f23d9402968812fc816d8ba55ace5e20c2295f5be6562cf3c0195c5",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13439,
+        15432,
+        11574,
+        16409,
+        12471
+      ],
+      "median_rounded_epoch": 11,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        4,
+        20
+      ],
+      "physical_fits": 50,
+      "positive_rows": 2031,
+      "receipt_sha256": "9340bf0aedfc7feaad812cb27f44c3ad187366ff05ba2cad4566b0252b06af99",
+      "recovered_seed_arrays_sha256": "5308b984e292e318e9fa9ff072536301976aa57429000f5ceb3524cecba55180",
+      "rows": 69325,
+      "target": "Chalcophaps longirostris"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "1f5d4670175c1435abd264232a3450eebac55cd9fca86cc66ea1983bf9ecafba",
+      "candidate_id": "ann02",
+      "coverage_sha256": "bb97b6f0436daaa569e2ca79833deeabcef7bf5536c785a978f523164221b36e",
+      "evaluated_arrays_sha256": "fd6d9b5b782e58ccae9077e22a2e179da083d2a519469a2560b30a1ad9f5c90e",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13439,
+        15432,
+        11574,
+        16409,
+        12471
+      ],
+      "median_rounded_epoch": 12,
+      "method": "q_full",
+      "observed_epoch_range": [
+        4,
+        21
+      ],
+      "physical_fits": 50,
+      "positive_rows": 2031,
+      "receipt_sha256": "d2ed6443e315662abb32556fa05cc9ce2364e1baef12a5d9fbf6f909892d5c6e",
+      "recovered_seed_arrays_sha256": "a121c4fb0fd38f3d316f66fedbc49dd009fbf495e4d9f5f1f5cfdb9485723eaa",
+      "rows": 69325,
+      "target": "Chalcophaps longirostris"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "dabae1e116042b55ac55492f5bda5f6746a4f8c0ab8b06fdd09ca54742ed728a",
+      "candidate_id": "ann02",
+      "coverage_sha256": "9c8c3007bba65b4001402e4b92ba2e500f9d6702821b5ee362a72e5b0d9b2773",
+      "evaluated_arrays_sha256": "83a50d24dd36f379ce223e2f7c7c930cf9216435d1c3c4ba5a280f38af19b24f",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13464,
+        15450,
+        11564,
+        16462,
+        12480
+      ],
+      "median_rounded_epoch": 9,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        3,
+        26
+      ],
+      "physical_fits": 50,
+      "positive_rows": 1270,
+      "receipt_sha256": "3daf38edfd6290db1425fb22adb90ab55139c057188a08311fa08fdf0a3d46de",
+      "recovered_seed_arrays_sha256": "a1ed645183396f02f0868800a6835217f373d5f6f0435e3395a92174bc76327d",
+      "rows": 69420,
+      "target": "Cinclosoma punctatum"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "dabae1e116042b55ac55492f5bda5f6746a4f8c0ab8b06fdd09ca54742ed728a",
+      "candidate_id": "ann02",
+      "coverage_sha256": "9c8c3007bba65b4001402e4b92ba2e500f9d6702821b5ee362a72e5b0d9b2773",
+      "evaluated_arrays_sha256": "04d554a431c6fda095fcac62ecb027fd5811978d41bf01e37e78d1203b7f2a7b",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13464,
+        15450,
+        11564,
+        16462,
+        12480
+      ],
+      "median_rounded_epoch": 11,
+      "method": "q_full",
+      "observed_epoch_range": [
+        2,
+        25
+      ],
+      "physical_fits": 50,
+      "positive_rows": 1270,
+      "receipt_sha256": "948b12896dd5c1665d1c9470fe967a483997234bfcc396beba94889e92ef4fde",
+      "recovered_seed_arrays_sha256": "825a384d201e416a06fcf80b1e0998bb5c00f33bc0769c3b5114c49ff59619bb",
+      "rows": 69420,
+      "target": "Cinclosoma punctatum"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "ebb1810591dd230a38049c694346e5daaea3760189afed53665a74c0a9a4b342",
+      "candidate_id": "ann00",
+      "coverage_sha256": "e1f21aae06e155d6b4097a941871b39839964d2c4fa5ec54720f81889b4c84e2",
+      "evaluated_arrays_sha256": "20c441d4638c09b7be742f8d5b4e9b9481ff4912d6f364f9c233f153b4604f5f",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13440,
+        15410,
+        11549,
+        16406,
+        12461
+      ],
+      "median_rounded_epoch": 11,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        4,
+        19
+      ],
+      "physical_fits": 50,
+      "positive_rows": 1887,
+      "receipt_sha256": "4a5614abb5e50941ebf93f5c867be2cd1539d6e70e0b22f3346fae59404fba97",
+      "recovered_seed_arrays_sha256": "08954f8a629ef22ae0c123d155773dc465f649130964bbb552acf022fa63c542",
+      "rows": 69266,
+      "target": "Colluricincla megarhyncha"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "ebb1810591dd230a38049c694346e5daaea3760189afed53665a74c0a9a4b342",
+      "candidate_id": "ann00",
+      "coverage_sha256": "e1f21aae06e155d6b4097a941871b39839964d2c4fa5ec54720f81889b4c84e2",
+      "evaluated_arrays_sha256": "5bac84a9078eac21d0958eabdbf0ea99e8af71f12624d6667302fcbf40cba5ea",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13440,
+        15410,
+        11549,
+        16406,
+        12461
+      ],
+      "median_rounded_epoch": 8,
+      "method": "q_full",
+      "observed_epoch_range": [
+        4,
+        21
+      ],
+      "physical_fits": 50,
+      "positive_rows": 1887,
+      "receipt_sha256": "cbbce7e0aa8bb1760e5cbda03f7b57c5e992a70cd648ce7090f8e3d9a42135b1",
+      "recovered_seed_arrays_sha256": "756ba1b00f639322a1c594ab532dc1659c63f09b104d91c62078929f611a0c1e",
+      "rows": 69266,
+      "target": "Colluricincla megarhyncha"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "917c805a04e59ba6634badddfda57879e46cc9877407d537abbdd55507563c17",
+      "candidate_id": "ann00",
+      "coverage_sha256": "87a0d78fed4a0c0532f03cac1edd31bc7f6b1e3fa8a7852d325fe2d8f4026961",
+      "evaluated_arrays_sha256": "857af6e69c3e2ff732418c1acc98662675d103bc1fe8f669e395ad6a6a1ac382",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13459,
+        15455,
+        11585,
+        16457,
+        12481
+      ],
+      "median_rounded_epoch": 10,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        5,
+        21
+      ],
+      "physical_fits": 50,
+      "positive_rows": 7085,
+      "receipt_sha256": "63a04cccfa32a763c7ba11125fe8f2722f7cc973c402da0b5347032d2f18bf6f",
+      "recovered_seed_arrays_sha256": "88870e313fd73e2cf455cbb4df78dae5c8e495e7993d60e49cc01aba86e84851",
+      "rows": 69437,
+      "target": "Dicrurus bracteatus"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "917c805a04e59ba6634badddfda57879e46cc9877407d537abbdd55507563c17",
+      "candidate_id": "ann00",
+      "coverage_sha256": "87a0d78fed4a0c0532f03cac1edd31bc7f6b1e3fa8a7852d325fe2d8f4026961",
+      "evaluated_arrays_sha256": "52fd6cfed0474e9356414dfea325b3e520822d6233edd8a2dc28a79c2d4d382e",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13459,
+        15455,
+        11585,
+        16457,
+        12481
+      ],
+      "median_rounded_epoch": 8,
+      "method": "q_full",
+      "observed_epoch_range": [
+        5,
+        26
+      ],
+      "physical_fits": 50,
+      "positive_rows": 7085,
+      "receipt_sha256": "e2c397429b56474c7596b4e04355acd3dab437ef5323536c0785bb1190ec1cfd",
+      "recovered_seed_arrays_sha256": "f43e265ce5417cdc8454d0bc6f8e09def5fb24e971ffba9963e06ca03af83803",
+      "rows": 69437,
+      "target": "Dicrurus bracteatus"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "4d2cb207a3d7f6a06cf04983fb2854fbc603682483c08ccac8b412352d9d7e06",
+      "candidate_id": "ann02",
+      "coverage_sha256": "1d38eef8876c7af400b26b680c64977f5a10809b18c326bf76aa175c51bc9c04",
+      "evaluated_arrays_sha256": "1033240690283c1916da225f7ae16ea242f53423dd1a48a0228c1f0a8237a5f8",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13447,
+        15434,
+        11582,
+        16438,
+        12476
+      ],
+      "median_rounded_epoch": 8,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        3,
+        33
+      ],
+      "physical_fits": 50,
+      "positive_rows": 7983,
+      "receipt_sha256": "b2e0bc35f408f563149772d1812d0ecb635a6e1b4e5d7f0e62620dbf8a805799",
+      "recovered_seed_arrays_sha256": "9cd1b7f5901b526145ce678ff22ff23d1b371b7fc5f7764ea0431c55c3eae00a",
+      "rows": 69377,
+      "target": "Eudynamys orientalis"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "4d2cb207a3d7f6a06cf04983fb2854fbc603682483c08ccac8b412352d9d7e06",
+      "candidate_id": "ann02",
+      "coverage_sha256": "1d38eef8876c7af400b26b680c64977f5a10809b18c326bf76aa175c51bc9c04",
+      "evaluated_arrays_sha256": "5202bf151652f0902562724ca98a7e73ed643825067f0da71c80e0dbfc089375",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13447,
+        15434,
+        11582,
+        16438,
+        12476
+      ],
+      "median_rounded_epoch": 8,
+      "method": "q_full",
+      "observed_epoch_range": [
+        3,
+        37
+      ],
+      "physical_fits": 50,
+      "positive_rows": 7983,
+      "receipt_sha256": "c2ad06cf89bb6855a77e8f217fd0dd7f25e0fa807379ac2dddd24dacf2fd2c4b",
+      "recovered_seed_arrays_sha256": "32ca693a5cbef992a014b28230f96d6317a9cce7cb111f41c070499f99ebd8f4",
+      "rows": 69377,
+      "target": "Eudynamys orientalis"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "3fc297d64f6d769bb28e18ebda805dd0afdbaf945f69d221926f6f7308963993",
+      "candidate_id": "ann02",
+      "coverage_sha256": "63075644ba53f8cfc5ab86fad30d6286ee99ad39ff2cb34bc99225501e2f2136",
+      "evaluated_arrays_sha256": "d66687cb8d4e3de6716245b1fea07403fe9cc037e918fad6119f2012948433cd",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13502,
+        15486,
+        11610,
+        16457,
+        12499
+      ],
+      "median_rounded_epoch": 12,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        3,
+        31
+      ],
+      "physical_fits": 50,
+      "positive_rows": 10405,
+      "receipt_sha256": "2f5063d111700d2caec5f62b727198ed807fed30fe1bcaa6287961c46e772c86",
+      "recovered_seed_arrays_sha256": "0dabd0fd64cd98d7d8d54c11806dbb2e683c200ab61df0984b52757fc78d8ab3",
+      "rows": 69554,
+      "target": "Geopelia humeralis"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "3fc297d64f6d769bb28e18ebda805dd0afdbaf945f69d221926f6f7308963993",
+      "candidate_id": "ann02",
+      "coverage_sha256": "63075644ba53f8cfc5ab86fad30d6286ee99ad39ff2cb34bc99225501e2f2136",
+      "evaluated_arrays_sha256": "ad11498abf7a9e054dacb1a5c630f2682f4b9af8d700a411453cab1e7052b266",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13502,
+        15486,
+        11610,
+        16457,
+        12499
+      ],
+      "median_rounded_epoch": 11,
+      "method": "q_full",
+      "observed_epoch_range": [
+        2,
+        31
+      ],
+      "physical_fits": 50,
+      "positive_rows": 10405,
+      "receipt_sha256": "651cd6344fc7db99bf9cebbf60c0a3f57d7abc881a426250b0829673b440ec6f",
+      "recovered_seed_arrays_sha256": "020d26675d0ac9e769a0873ca109751b32899c482375524934dcb54d7d2c3f6f",
+      "rows": 69554,
+      "target": "Geopelia humeralis"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "d8bbffcaa917e621a37eead4a9f588e99afb25476ad2bd3c893db551fe3c191b",
+      "candidate_id": "ann04",
+      "coverage_sha256": "d4764202fefefea816f7deb6671ac09a1b7ae4ec84914cc7a223281f74af558d",
+      "evaluated_arrays_sha256": "0f3a4f5698b26d364493cd5a4c115fcb3b91ce65e3473c6447feca293a047524",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13436,
+        15414,
+        11551,
+        16409,
+        12462
+      ],
+      "median_rounded_epoch": 14,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        7,
+        28
+      ],
+      "physical_fits": 50,
+      "positive_rows": 3193,
+      "receipt_sha256": "c5c65c3969b8157852aaad315e637868288ba643a6a97c7443f019cd9ce688d8",
+      "recovered_seed_arrays_sha256": "0c71ac4b83f13d8fe07527d0fb3d75c2909f443821b1b74fcae668b24f501f81",
+      "rows": 69272,
+      "target": "Gerygone mouki"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "d8bbffcaa917e621a37eead4a9f588e99afb25476ad2bd3c893db551fe3c191b",
+      "candidate_id": "ann04",
+      "coverage_sha256": "d4764202fefefea816f7deb6671ac09a1b7ae4ec84914cc7a223281f74af558d",
+      "evaluated_arrays_sha256": "c6bbf030e60d46fac6dbabd6307dc0fbb32313b60b548511cffb2ff4900d9faf",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13436,
+        15414,
+        11551,
+        16409,
+        12462
+      ],
+      "median_rounded_epoch": 14,
+      "method": "q_full",
+      "observed_epoch_range": [
+        8,
+        28
+      ],
+      "physical_fits": 50,
+      "positive_rows": 3193,
+      "receipt_sha256": "c6901c8cff25890fa768d5f5f88d786a10edfb057a2e31ff89873c23ae0dd68d",
+      "recovered_seed_arrays_sha256": "0b74899fc1f298e42031894d72b1f711a1299cd946d5f9859120e98dd0335273",
+      "rows": 69272,
+      "target": "Gerygone mouki"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "f072fed3a6344be47b6f80c5f90c21dc3427be5b0a66e196c3f218c6af0d3d5f",
+      "candidate_id": "ann00",
+      "coverage_sha256": "32df1d3094b159ea78c6ebd27fd5b18c3d0476d0c183772073c423dec27fa565",
+      "evaluated_arrays_sha256": "2507461955c10bba3d2b8c1181bacb5957805fea81b9b9012fbe2dacb204d335",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13454,
+        15442,
+        11576,
+        16425,
+        12486
+      ],
+      "median_rounded_epoch": 13,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        7,
+        23
+      ],
+      "physical_fits": 50,
+      "positive_rows": 8037,
+      "receipt_sha256": "88cc8fa807b8e01174dfe68998648ac353e400309d98418c55d09c6783d55910",
+      "recovered_seed_arrays_sha256": "eaa61a6474d09129b09101d989f20900ef59b547ec06de5a72bbb3e17102cfbe",
+      "rows": 69383,
+      "target": "Gerygone olivacea"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "f072fed3a6344be47b6f80c5f90c21dc3427be5b0a66e196c3f218c6af0d3d5f",
+      "candidate_id": "ann00",
+      "coverage_sha256": "32df1d3094b159ea78c6ebd27fd5b18c3d0476d0c183772073c423dec27fa565",
+      "evaluated_arrays_sha256": "f36c3ef5123a0cc0a6fd75848ed1a39159b8949cdda026e7ea65e32bf7cf70d6",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13454,
+        15442,
+        11576,
+        16425,
+        12486
+      ],
+      "median_rounded_epoch": 12,
+      "method": "q_full",
+      "observed_epoch_range": [
+        4,
+        27
+      ],
+      "physical_fits": 50,
+      "positive_rows": 8037,
+      "receipt_sha256": "c08652d4846a5404824401e286120621ba1294ba75959e71cf3ebf0c78bca439",
+      "recovered_seed_arrays_sha256": "6797641b2a9d11c200ae700de8a98eaae2137cd1eb979901f139045279e74764",
+      "rows": 69383,
+      "target": "Gerygone olivacea"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "1f27ec2b12017a7f3b1bf209ce17834ad19b13efcfc09a764cbdc8c390828dda",
+      "candidate_id": "ann02",
+      "coverage_sha256": "61ac87a79bd6b972628a993b30b64daae6c0475f9440b7a41c143680fb8350a9",
+      "evaluated_arrays_sha256": "44da9022d716dd88da81bf3569d5cb09d7d6843a764bf33d10289576c70f57c1",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13442,
+        15407,
+        11552,
+        16410,
+        12459
+      ],
+      "median_rounded_epoch": 12,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        6,
+        24
+      ],
+      "physical_fits": 50,
+      "positive_rows": 3363,
+      "receipt_sha256": "97750e44309b0159bbdf125d6c3b0240d43a3a6c474f241a27e37df88af8b828",
+      "recovered_seed_arrays_sha256": "4ec13b10ed206ed181ce0109862e085c00dd7dedf80e782d865be9c505ae0ba4",
+      "rows": 69270,
+      "target": "Lalage leucomela"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "1f27ec2b12017a7f3b1bf209ce17834ad19b13efcfc09a764cbdc8c390828dda",
+      "candidate_id": "ann02",
+      "coverage_sha256": "61ac87a79bd6b972628a993b30b64daae6c0475f9440b7a41c143680fb8350a9",
+      "evaluated_arrays_sha256": "bbf89a3dc60b2ba6a6687a5be0120136baa7e15125941681dbe4bb5a8995d7b4",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13442,
+        15407,
+        11552,
+        16410,
+        12459
+      ],
+      "median_rounded_epoch": 12,
+      "method": "q_full",
+      "observed_epoch_range": [
+        6,
+        24
+      ],
+      "physical_fits": 50,
+      "positive_rows": 3363,
+      "receipt_sha256": "85e27f797658819f5dda73ca80fdbffaa3c9aeddbbd3a7732261a5a81f4dae9c",
+      "recovered_seed_arrays_sha256": "602283822c568a1dec82f55dc2d701c9d8153bf2b291576fc25124b4a59e6fee",
+      "rows": 69270,
+      "target": "Lalage leucomela"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "40e59f00beb4a617f0dd9f3f6e93f1f4ebf7fab69ff43a1966993b998c8c0d79",
+      "candidate_id": "ann02",
+      "coverage_sha256": "19c7e24232300058b5698691678abc1bc8ba0218e57a545820b3d9ef80dfb379",
+      "evaluated_arrays_sha256": "371f2887c33cecb46f359b396872b27eb6e7f5631ae702472d84474ade9d57c8",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13449,
+        15430,
+        11558,
+        16410,
+        12458
+      ],
+      "median_rounded_epoch": 8,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        2,
+        20
+      ],
+      "physical_fits": 50,
+      "positive_rows": 2614,
+      "receipt_sha256": "02f38cdad9eb7cc2ea8dd57d09ab8f841a3dc51ab82cd0436992766cedee8951",
+      "recovered_seed_arrays_sha256": "90630abf5ef90f8b9a3ce1fd3892ded4e312884c1f5b34730e1cdc6f97540167",
+      "rows": 69305,
+      "target": "Lonchura castaneothorax"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "40e59f00beb4a617f0dd9f3f6e93f1f4ebf7fab69ff43a1966993b998c8c0d79",
+      "candidate_id": "ann02",
+      "coverage_sha256": "19c7e24232300058b5698691678abc1bc8ba0218e57a545820b3d9ef80dfb379",
+      "evaluated_arrays_sha256": "f10289e198132b468a6344ae8690e3ce99a3bd9920445022e09b7bd71f8c02c9",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13449,
+        15430,
+        11558,
+        16410,
+        12458
+      ],
+      "median_rounded_epoch": 8,
+      "method": "q_full",
+      "observed_epoch_range": [
+        3,
+        24
+      ],
+      "physical_fits": 50,
+      "positive_rows": 2614,
+      "receipt_sha256": "bb0074c8324b5396efc5f47b36042cc0c5ad987c8ef6aa0f8a9ff254befc1a67",
+      "recovered_seed_arrays_sha256": "86a144bc73841c0765d3ec846c26fcf176f7f1f5aab46a113b0dc18445b4722b",
+      "rows": 69305,
+      "target": "Lonchura castaneothorax"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "d8570db53c8ccd6790d7cdd12bca8ab9b862b4bceaf4ae14c23eda58b72838bd",
+      "candidate_id": "ann02",
+      "coverage_sha256": "f391e5c4fd6f27abda123d7ec9fa534a52eff127eb970335a9df14a07c0fcabf",
+      "evaluated_arrays_sha256": "dd9475b1ebc943f5bc01e6ed0b7f2e7ad2f3c7fc4591a3078fbd4fdc40a93ece",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13461,
+        15431,
+        11577,
+        16410,
+        12467
+      ],
+      "median_rounded_epoch": 9,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        5,
+        20
+      ],
+      "physical_fits": 50,
+      "positive_rows": 4090,
+      "receipt_sha256": "3af064b19bdae6c5a20b0da9e95a8fb8b3c6f9637b8ee3fbc0bc7067be92a2ab",
+      "recovered_seed_arrays_sha256": "0dae96364ead1371d0c2917eeeb39d93f04cc20fb62861d2e1f6afbbf3b52dde",
+      "rows": 69346,
+      "target": "Lopholaimus antarcticus"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "d8570db53c8ccd6790d7cdd12bca8ab9b862b4bceaf4ae14c23eda58b72838bd",
+      "candidate_id": "ann02",
+      "coverage_sha256": "f391e5c4fd6f27abda123d7ec9fa534a52eff127eb970335a9df14a07c0fcabf",
+      "evaluated_arrays_sha256": "a81450a26a8cd1ed4d8ff160e094fd6e41728a375a47a76c238ea86a2a444ed0",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13461,
+        15431,
+        11577,
+        16410,
+        12467
+      ],
+      "median_rounded_epoch": 10,
+      "method": "q_full",
+      "observed_epoch_range": [
+        6,
+        16
+      ],
+      "physical_fits": 50,
+      "positive_rows": 4090,
+      "receipt_sha256": "bb7b228d30b0f0c922674b18c0e712f45edd2aa9922aa809082e7a4dce7891f4",
+      "recovered_seed_arrays_sha256": "a638260e21ebee746c92d6076c99c9b1c38b202b7b878b120954a8213f11fc28",
+      "rows": 69346,
+      "target": "Lopholaimus antarcticus"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "427a771f50c79aeba945e3585ba000a2574bae169cfc422e78a9b3b36738f044",
+      "candidate_id": "ann04",
+      "coverage_sha256": "2a8ffe0227307ad81a93bfc67f084aa63d2ebae363388fd9844467c9e4792354",
+      "evaluated_arrays_sha256": "96dff8ce4bc7d7231e544805488dd93380f107b2e532881ae6765919acdbd77e",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13448,
+        15415,
+        11554,
+        16400,
+        12463
+      ],
+      "median_rounded_epoch": 10,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        6,
+        29
+      ],
+      "physical_fits": 50,
+      "positive_rows": 776,
+      "receipt_sha256": "b46c6032ba4153ac67f482a2c4bed6f1e57f63585ed9c34e80d8326570eb346e",
+      "recovered_seed_arrays_sha256": "2ffd263ddaddb77e722337d96706100b275d5fb54f8bd9ffd0486b9d118e3099",
+      "rows": 69280,
+      "target": "Lophorina paradisea"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "427a771f50c79aeba945e3585ba000a2574bae169cfc422e78a9b3b36738f044",
+      "candidate_id": "ann04",
+      "coverage_sha256": "2a8ffe0227307ad81a93bfc67f084aa63d2ebae363388fd9844467c9e4792354",
+      "evaluated_arrays_sha256": "b5965aec40f922985b04442b7df24e644cd47e2517922145d6174bc24f077fcf",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13448,
+        15415,
+        11554,
+        16400,
+        12463
+      ],
+      "median_rounded_epoch": 10,
+      "method": "q_full",
+      "observed_epoch_range": [
+        7,
+        27
+      ],
+      "physical_fits": 50,
+      "positive_rows": 776,
+      "receipt_sha256": "9357a98e2eb8797445cf1bc73fa453d23d2cc2a48ced1920711e1bdc2415057f",
+      "recovered_seed_arrays_sha256": "c123ba2e70db144655be7f6898d5fa66adaaeac77c4d431954570cab39ff168e",
+      "rows": 69280,
+      "target": "Lophorina paradisea"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "2da6ec0d96d0fcad1893c668a9534cda79abc40ab7814497c7424820f9fd811f",
+      "candidate_id": "ann02",
+      "coverage_sha256": "c9dcdccb653647335ef622cfc29876ac6458e042cde358ffd216cc7e6249b3ef",
+      "evaluated_arrays_sha256": "9644ce8e083312841ece476a7ad357a55b14aafd0a64ef5fff3c2e594fd60a94",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13455,
+        15478,
+        11608,
+        16434,
+        12493
+      ],
+      "median_rounded_epoch": 10,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        3,
+        20
+      ],
+      "physical_fits": 50,
+      "positive_rows": 5685,
+      "receipt_sha256": "4f7d389f29536777af5a3af392eddf4b9a4ee38fb8fbdb6173b62c1bca6a692e",
+      "recovered_seed_arrays_sha256": "30f4523632fc6bb8a5e51c56568c32224d967608a649e20c38dbbd4e99e78ab3",
+      "rows": 69468,
+      "target": "Macropygia phasianella"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "2da6ec0d96d0fcad1893c668a9534cda79abc40ab7814497c7424820f9fd811f",
+      "candidate_id": "ann02",
+      "coverage_sha256": "c9dcdccb653647335ef622cfc29876ac6458e042cde358ffd216cc7e6249b3ef",
+      "evaluated_arrays_sha256": "abbe72029b5c1fa614170240378bff89fb1e0d1e56f585fa9a2d5d0047511be2",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13455,
+        15478,
+        11608,
+        16434,
+        12493
+      ],
+      "median_rounded_epoch": 10,
+      "method": "q_full",
+      "observed_epoch_range": [
+        2,
+        17
+      ],
+      "physical_fits": 50,
+      "positive_rows": 5685,
+      "receipt_sha256": "68864f49fe9d4410e031a8dbde7ce2ed670264f9718648438ceff67c981611d6",
+      "recovered_seed_arrays_sha256": "453593565f675b18da2affb21a6f4e53b41391477503ca086db31afd9ff7854f",
+      "rows": 69468,
+      "target": "Macropygia phasianella"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "757119f46aea774b7709287cfd2b4b56a7e9eb17a3d53ca5a6b69168d06628ec",
+      "candidate_id": "ann02",
+      "coverage_sha256": "094d126bab184516dccaa6f1e030b38e5e70305be0628e95ca85c428893a95cc",
+      "evaluated_arrays_sha256": "8c416f719040de94787caabe057005166ce1e767430d2ceefbd9f08530e29723",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13448,
+        15426,
+        11583,
+        16410,
+        12471
+      ],
+      "median_rounded_epoch": 11,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        3,
+        23
+      ],
+      "physical_fits": 50,
+      "positive_rows": 1263,
+      "receipt_sha256": "68f663bfabb761134f5fc06cecb9b9ad012cf25c5f62549b53c92aab3f4ff603",
+      "recovered_seed_arrays_sha256": "04f31c3d25db890c289218b7a39d39d8f9518c5f657eda1cedfe889988f2eb3a",
+      "rows": 69338,
+      "target": "Megaloprepia magnifica"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "757119f46aea774b7709287cfd2b4b56a7e9eb17a3d53ca5a6b69168d06628ec",
+      "candidate_id": "ann02",
+      "coverage_sha256": "094d126bab184516dccaa6f1e030b38e5e70305be0628e95ca85c428893a95cc",
+      "evaluated_arrays_sha256": "87ca96f735c272126dfdddc74a61c9efef5fa0312c8c37379c5df06dda0fcd0c",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13448,
+        15426,
+        11583,
+        16410,
+        12471
+      ],
+      "median_rounded_epoch": 11,
+      "method": "q_full",
+      "observed_epoch_range": [
+        4,
+        34
+      ],
+      "physical_fits": 50,
+      "positive_rows": 1263,
+      "receipt_sha256": "685abc1e6cd5e353f008400ffc52caced4a0ec53fe26f4603fc90a0c2432e60c",
+      "recovered_seed_arrays_sha256": "5fedb2ebc499fe060d71743d06579930f658b03785c8178aff8416e62986f489",
+      "rows": 69338,
+      "target": "Megaloprepia magnifica"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "f8d988d66d25c684f40e8cc6dadf6989e690e812ea228dfeaf58bbf0fc87bb45",
+      "candidate_id": "ann02",
+      "coverage_sha256": "f3925173da10201d54be5a11bcd2bca120c8d1923ace862a4a3c879b6deda873",
+      "evaluated_arrays_sha256": "3066a1f0e35da267cea4aa4cb233e0523c56e713d9204ecc55c4d0bd4751ed27",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13460,
+        15427,
+        11576,
+        16455,
+        12480
+      ],
+      "median_rounded_epoch": 15,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        3,
+        35
+      ],
+      "physical_fits": 50,
+      "positive_rows": 5334,
+      "receipt_sha256": "0beea07be397dcd9d60c45b445de33df05f75b69593fa460a588f45eb5920df6",
+      "recovered_seed_arrays_sha256": "884ac078b6289df652621f2c1f14311c3e8ec4780bddec15ce10fae21611272c",
+      "rows": 69398,
+      "target": "Melithreptus albogularis"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "f8d988d66d25c684f40e8cc6dadf6989e690e812ea228dfeaf58bbf0fc87bb45",
+      "candidate_id": "ann02",
+      "coverage_sha256": "f3925173da10201d54be5a11bcd2bca120c8d1923ace862a4a3c879b6deda873",
+      "evaluated_arrays_sha256": "5f36014c7c3ead20d099dbdaabb0c40088b9f8cf44edc020f470f4c699288dfb",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13460,
+        15427,
+        11576,
+        16455,
+        12480
+      ],
+      "median_rounded_epoch": 12,
+      "method": "q_full",
+      "observed_epoch_range": [
+        2,
+        29
+      ],
+      "physical_fits": 50,
+      "positive_rows": 5334,
+      "receipt_sha256": "b8fa36716bc2cf80f234d540c5df16545a32f49a5eb330ebde13598706f0e59c",
+      "recovered_seed_arrays_sha256": "96bd4c91567aade47fd678a1bc6ac26b28ac0d7a47c8f3ba1716d690b1c0f9a4",
+      "rows": 69398,
+      "target": "Melithreptus albogularis"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "4e76f8865bcd69ecbb76edec339f63a97eb000e9fdc62deee226cfa869975a13",
+      "candidate_id": "ann02",
+      "coverage_sha256": "652e6eeec3d8340c4b09fe42109225d16190f001d62d1e3327fc52f761c2f811",
+      "evaluated_arrays_sha256": "fc08f284940b2c132c3e80663a52572e977f893e58277659ef12b0d23c9021aa",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13443,
+        15411,
+        11546,
+        16402,
+        12469
+      ],
+      "median_rounded_epoch": 8,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        3,
+        36
+      ],
+      "physical_fits": 50,
+      "positive_rows": 3026,
+      "receipt_sha256": "844a99ce373aec3cd07561dea2b54a50139beb440ebf869d9a9523556b7d0b95",
+      "recovered_seed_arrays_sha256": "aae576ea3d4a10f72bcb2037c46dbf103a9ac1bb1faa527694ad90c1668cae0f",
+      "rows": 69271,
+      "target": "Monarcha melanopsis"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "4e76f8865bcd69ecbb76edec339f63a97eb000e9fdc62deee226cfa869975a13",
+      "candidate_id": "ann02",
+      "coverage_sha256": "652e6eeec3d8340c4b09fe42109225d16190f001d62d1e3327fc52f761c2f811",
+      "evaluated_arrays_sha256": "91f8dca2c393b41f94aff49796f64a9633c64092f141f11ab4241aa5f7728cd5",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13443,
+        15411,
+        11546,
+        16402,
+        12469
+      ],
+      "median_rounded_epoch": 9,
+      "method": "q_full",
+      "observed_epoch_range": [
+        3,
+        37
+      ],
+      "physical_fits": 50,
+      "positive_rows": 3026,
+      "receipt_sha256": "3b57a941e203053f428fdacbd107c1c7dc3a28eb9722bf2e0bb510de4b124a84",
+      "recovered_seed_arrays_sha256": "703eccc79e0ea509281d4e60150b090ea05f68d9834fd611c9870d6efe64aab9",
+      "rows": 69271,
+      "target": "Monarcha melanopsis"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "f7b3728cd31750f9ad0c7820d8b0066ad5c4b5057063108c65ece2dc51197102",
+      "candidate_id": "ann00",
+      "coverage_sha256": "37a979ccb4d1bbceb5ddc2dfbf6540f7c9eb5b7ba709cfd4b961ca3fb2f866bb",
+      "evaluated_arrays_sha256": "d2602b3e4fb31c477606ae557b018892d8d6793eef56d285089638ca952af123",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13447,
+        15416,
+        11548,
+        16402,
+        12460
+      ],
+      "median_rounded_epoch": 8,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        2,
+        18
+      ],
+      "physical_fits": 50,
+      "positive_rows": 1841,
+      "receipt_sha256": "16106f2c0335ad13b59fd677e2b35935ec43dcb80accdb37cb29e71be5dbf696",
+      "recovered_seed_arrays_sha256": "5331ace0f67951026901d4dc5d9712359a2fd70650580dbd55dc4ba65f6355d3",
+      "rows": 69273,
+      "target": "Myiagra cyanoleuca"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "f7b3728cd31750f9ad0c7820d8b0066ad5c4b5057063108c65ece2dc51197102",
+      "candidate_id": "ann00",
+      "coverage_sha256": "37a979ccb4d1bbceb5ddc2dfbf6540f7c9eb5b7ba709cfd4b961ca3fb2f866bb",
+      "evaluated_arrays_sha256": "9769e20b7429713be1b1292726ce73fd5467d63d54e8eea0aec434f0b4631adb",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13447,
+        15416,
+        11548,
+        16402,
+        12460
+      ],
+      "median_rounded_epoch": 8,
+      "method": "q_full",
+      "observed_epoch_range": [
+        2,
+        18
+      ],
+      "physical_fits": 50,
+      "positive_rows": 1841,
+      "receipt_sha256": "e712fb574b41ba1b68ddf96d01fc5c98c1b7c18df445d11660c24dd15fe75076",
+      "recovered_seed_arrays_sha256": "f3090204d2a1aef87a6c97e1dff3814cb583f80e909f96baa5a7a8876b0095ea",
+      "rows": 69273,
+      "target": "Myiagra cyanoleuca"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "831d2d6a6aeccca5ed515c06c971cddb45b1290c991ab04cc7b57724f9c7bc04",
+      "candidate_id": "ann02",
+      "coverage_sha256": "6afe2c50176f7648295b22f4f31500e2b4283617713c70a2ec63f22384e96ae3",
+      "evaluated_arrays_sha256": "7eb3e286114a18cf2240443f398849973773a0feb1e93d09e73f0f769e48bc3a",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13468,
+        15439,
+        11575,
+        16444,
+        12470
+      ],
+      "median_rounded_epoch": 9,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        3,
+        19
+      ],
+      "physical_fits": 50,
+      "positive_rows": 7281,
+      "receipt_sha256": "47c6df8fd3e6f4526fade86597cbcac96665521c7c074384c74cc3362b1a9a87",
+      "recovered_seed_arrays_sha256": "afc6599352a53a698ca95c128102353e515016ebff4dba9307f41db71a7e7cf6",
+      "rows": 69396,
+      "target": "Myiagra rubecula"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "831d2d6a6aeccca5ed515c06c971cddb45b1290c991ab04cc7b57724f9c7bc04",
+      "candidate_id": "ann02",
+      "coverage_sha256": "6afe2c50176f7648295b22f4f31500e2b4283617713c70a2ec63f22384e96ae3",
+      "evaluated_arrays_sha256": "aeeb1d2874d64f48918a214c8c1ced52f7d51f14d2e9f1a55666e187b3b99432",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13468,
+        15439,
+        11575,
+        16444,
+        12470
+      ],
+      "median_rounded_epoch": 9,
+      "method": "q_full",
+      "observed_epoch_range": [
+        2,
+        19
+      ],
+      "physical_fits": 50,
+      "positive_rows": 7281,
+      "receipt_sha256": "e0c10e5e7d62e91b963599e9a0216a645cc1bb8cf54d3cf9b6847c2a7a6c9f05",
+      "recovered_seed_arrays_sha256": "994d6b45a5487196792c81ac1f4d52fb29335c6737162d448b7f4136c9236735",
+      "rows": 69396,
+      "target": "Myiagra rubecula"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "247e441a25a454fc026dfb6abeea53d4fed9e76368a2d8ac3e1e4179011dc0bd",
+      "candidate_id": "ann02",
+      "coverage_sha256": "3ee62d8faedb2256137b199521c3b960923f4fb9d2858f758c42079a5b26ec19",
+      "evaluated_arrays_sha256": "31559f0c2ac38d8b82f62c07001e98f2ef5dbcd91a28110c5babb04089a87327",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13464,
+        15460,
+        11610,
+        16484,
+        12495
+      ],
+      "median_rounded_epoch": 8,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        3,
+        21
+      ],
+      "physical_fits": 50,
+      "positive_rows": 8808,
+      "receipt_sha256": "165b57f2ad5e1dcd3025b7a4843339030f75a80b377deae96bce4a9ff3976636",
+      "recovered_seed_arrays_sha256": "43ac2cfe3740ccf4cf660ffd34cc5707fcd0f7d1d125e8a91ea0ddcaad278c57",
+      "rows": 69513,
+      "target": "Myzomela sanguinolenta"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "247e441a25a454fc026dfb6abeea53d4fed9e76368a2d8ac3e1e4179011dc0bd",
+      "candidate_id": "ann02",
+      "coverage_sha256": "3ee62d8faedb2256137b199521c3b960923f4fb9d2858f758c42079a5b26ec19",
+      "evaluated_arrays_sha256": "0964517a25d29510ce81147aa1752003ba5b80a18575318058b4b69a3a5d7e18",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13464,
+        15460,
+        11610,
+        16484,
+        12495
+      ],
+      "median_rounded_epoch": 8,
+      "method": "q_full",
+      "observed_epoch_range": [
+        2,
+        21
+      ],
+      "physical_fits": 50,
+      "positive_rows": 8808,
+      "receipt_sha256": "18116a4f3ee6f1734a20e4bd45916f04918ad05d5a5af6cfbabd7bf3079db0ea",
+      "recovered_seed_arrays_sha256": "b2ab0ccec41460a52216c599816fc37548857bf9af52e5bde8d899fd1af18e75",
+      "rows": 69513,
+      "target": "Myzomela sanguinolenta"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "2eab1ecc0b594439fa1ebd35e2051103bb44bbd2bdd0f3863a977ba42bf9935e",
+      "candidate_id": "ann02",
+      "coverage_sha256": "90564262426376ad35e6a2b357864a92ffca871a2eaf6b1e1aca89a78147ffee",
+      "evaluated_arrays_sha256": "eccb856b408022c4b49ca6f4d26e812e2bd97cc233940c8be99cbde8b15eb722",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13463,
+        15413,
+        11556,
+        16419,
+        12472
+      ],
+      "median_rounded_epoch": 14,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        7,
+        21
+      ],
+      "physical_fits": 50,
+      "positive_rows": 1234,
+      "receipt_sha256": "c8aec90d6d0426b846ac3551ef9dfe49db7ae413b0db155464b7108d798aeb21",
+      "recovered_seed_arrays_sha256": "8ee0f8290d7c4df62203a6d14483189550dd87b77665ef4eef8dc7aa4b51df29",
+      "rows": 69323,
+      "target": "Neophema elegans"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "2eab1ecc0b594439fa1ebd35e2051103bb44bbd2bdd0f3863a977ba42bf9935e",
+      "candidate_id": "ann02",
+      "coverage_sha256": "90564262426376ad35e6a2b357864a92ffca871a2eaf6b1e1aca89a78147ffee",
+      "evaluated_arrays_sha256": "c3ec6c6aa3216b2dd2f17f8b7d4bb0390568924890166a219e90397862d9b3e0",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13463,
+        15413,
+        11556,
+        16419,
+        12472
+      ],
+      "median_rounded_epoch": 14,
+      "method": "q_full",
+      "observed_epoch_range": [
+        9,
+        19
+      ],
+      "physical_fits": 50,
+      "positive_rows": 1234,
+      "receipt_sha256": "0ac4a155dde9fef8f48535de972471276befc2a79d03508c8a9ff921b69c85d2",
+      "recovered_seed_arrays_sha256": "a513430be0b68f96ba1fe86c4299288a20b9ee254b6f9eb9d3a744febafd057b",
+      "rows": 69323,
+      "target": "Neophema elegans"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "02338251ca467fd03005ee74143614de3ca1e12ee748fd463ba9c7883f75ca4e",
+      "candidate_id": "ann00",
+      "coverage_sha256": "28f79c2cb45006d1f9a505cb875e3169399e28e4b6368fb7830a633e75814e19",
+      "evaluated_arrays_sha256": "a45291c1cbeb213b8d7b8062295c66795b58c05c2965c86f5dd67b2ecb86db41",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13520,
+        15615,
+        11645,
+        16449,
+        12644
+      ],
+      "median_rounded_epoch": 8,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        3,
+        17
+      ],
+      "physical_fits": 50,
+      "positive_rows": 1701,
+      "receipt_sha256": "83a0eddb8f9ef6b1de51466f251aff691390935026403c2a528e97de3567c095",
+      "recovered_seed_arrays_sha256": "6a915ae6056720999d91c01391c7c3237b090daf4a35f01bc6b7196534d0c1c9",
+      "rows": 69873,
+      "target": "Neophema pulchella"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "02338251ca467fd03005ee74143614de3ca1e12ee748fd463ba9c7883f75ca4e",
+      "candidate_id": "ann00",
+      "coverage_sha256": "28f79c2cb45006d1f9a505cb875e3169399e28e4b6368fb7830a633e75814e19",
+      "evaluated_arrays_sha256": "531b734c5d73952d14344bb864d3a5e6474911a4ad03e5b8b1a42483be1b518a",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13520,
+        15615,
+        11645,
+        16449,
+        12644
+      ],
+      "median_rounded_epoch": 10,
+      "method": "q_full",
+      "observed_epoch_range": [
+        3,
+        16
+      ],
+      "physical_fits": 50,
+      "positive_rows": 1701,
+      "receipt_sha256": "a528c7eac19ee77f0178519fc97b8b02fc683ef26a206872ba4fd515542a3e8c",
+      "recovered_seed_arrays_sha256": "3db84ff973b874523bcc8922f8f7c8812e3a5ba176617e72bafbfe3e7642931f",
+      "rows": 69873,
+      "target": "Neophema pulchella"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "c9d4190911d89b42c068ee742badf1d5a1ee0bb30846608b01ba7f08039e91a0",
+      "candidate_id": "ann02",
+      "coverage_sha256": "7aab96fc76a9f336fc5993d0c7c14d7c5f34cba759853a1715c82cff2d43b44a",
+      "evaluated_arrays_sha256": "a24767e3575f9060364a3bd2a70f3217da35aeaa6a0bf751e2937054789cde98",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13435,
+        15408,
+        11552,
+        16397,
+        12467
+      ],
+      "median_rounded_epoch": 11,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        2,
+        27
+      ],
+      "physical_fits": 50,
+      "positive_rows": 555,
+      "receipt_sha256": "af684fde5f44f5f239432152d0ce375ab2e51fd8de2e64917fe1eb6e9f68c868",
+      "recovered_seed_arrays_sha256": "79a86c108f1e0d07f0bbca341163ee0ed63e96cdd9e9d5cbc1632f1f3a87f5fa",
+      "rows": 69259,
+      "target": "Origma solitaria"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "c9d4190911d89b42c068ee742badf1d5a1ee0bb30846608b01ba7f08039e91a0",
+      "candidate_id": "ann02",
+      "coverage_sha256": "7aab96fc76a9f336fc5993d0c7c14d7c5f34cba759853a1715c82cff2d43b44a",
+      "evaluated_arrays_sha256": "097ecdbb2508f3657864f7eabe222c4675d7058d3323c4cec9d86872fa029adf",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13435,
+        15408,
+        11552,
+        16397,
+        12467
+      ],
+      "median_rounded_epoch": 11,
+      "method": "q_full",
+      "observed_epoch_range": [
+        2,
+        27
+      ],
+      "physical_fits": 50,
+      "positive_rows": 555,
+      "receipt_sha256": "c1a05d4e573d7515cc7f0c7da709ac90a03d89d1b601b2ea5db7ba88bc996df2",
+      "recovered_seed_arrays_sha256": "a75c650c2821a690e1fe335cbd5ed48abd2fdc35364cf2b02cdacbc4d75c85d1",
+      "rows": 69259,
+      "target": "Origma solitaria"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "626868ac4f1d53d172595cde8b64533e1abfc13a8770c7d5cfa4bb54de766b8c",
+      "candidate_id": "ann04",
+      "coverage_sha256": "a1d7d100ff62f63ecc7c29fbdf64370e4d0dd61f8b7cf038eaccbbf89b154a25",
+      "evaluated_arrays_sha256": "058adfa1787b6201148cc48e515fd9c158546d5538e65a6458c00cd0cc875197",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13491,
+        15445,
+        11610,
+        16402,
+        12475
+      ],
+      "median_rounded_epoch": 10,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        4,
+        19
+      ],
+      "physical_fits": 50,
+      "positive_rows": 1528,
+      "receipt_sha256": "89a55815d1034b17afc806ea4245287961059454b6d145bd68122d043e06f9d6",
+      "recovered_seed_arrays_sha256": "3bd7720008f866330474e782c5ec6aa816802d8ae639a80245b6f393a26b7b80",
+      "rows": 69423,
+      "target": "Petroica rodinogaster"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "626868ac4f1d53d172595cde8b64533e1abfc13a8770c7d5cfa4bb54de766b8c",
+      "candidate_id": "ann04",
+      "coverage_sha256": "a1d7d100ff62f63ecc7c29fbdf64370e4d0dd61f8b7cf038eaccbbf89b154a25",
+      "evaluated_arrays_sha256": "df1a8567c9597b752f8940425afb286b4d6e60b08fae9b057d7664867603a6a5",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13491,
+        15445,
+        11610,
+        16402,
+        12475
+      ],
+      "median_rounded_epoch": 9,
+      "method": "q_full",
+      "observed_epoch_range": [
+        5,
+        19
+      ],
+      "physical_fits": 50,
+      "positive_rows": 1528,
+      "receipt_sha256": "4ba43d8c2e6c9e2a8d7862963e583da1d85a874c70313f3eab9d176b8e6f330d",
+      "recovered_seed_arrays_sha256": "4f5f5694123bbe0d5f6a81aa13b1840e46707aed264ff7230fda5f672f1c7d73",
+      "rows": 69423,
+      "target": "Petroica rodinogaster"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "c92d0188730083957836d8e4ff0c2b2bc5a9c484547549b1fbe3cfd95d5483c5",
+      "candidate_id": "ann04",
+      "coverage_sha256": "06a840760a0088a3c46f4aef915bbc19e1bc97b72f5625ef39955b36a7c4a04c",
+      "evaluated_arrays_sha256": "5899a069e8e66c0673b075df6ea550184b1462893052ab7560f7e3b4ff7d8c54",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13449,
+        15410,
+        11555,
+        16421,
+        12470
+      ],
+      "median_rounded_epoch": 21,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        11,
+        43
+      ],
+      "physical_fits": 50,
+      "positive_rows": 3762,
+      "receipt_sha256": "0dd7cdb20991352e81c77f11bc45732443561a00c577eb241237777110b5fcdd",
+      "recovered_seed_arrays_sha256": "86ad9b6354291a1508c69068a3c1b782efdedf2936112df7c8367bce00b27cc0",
+      "rows": 69305,
+      "target": "Petroica rosea"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "c92d0188730083957836d8e4ff0c2b2bc5a9c484547549b1fbe3cfd95d5483c5",
+      "candidate_id": "ann04",
+      "coverage_sha256": "06a840760a0088a3c46f4aef915bbc19e1bc97b72f5625ef39955b36a7c4a04c",
+      "evaluated_arrays_sha256": "1bf5eb2b076e4d126120d299396fe7f9f091eec27204136ce7f9c54320ba11e6",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13449,
+        15410,
+        11555,
+        16421,
+        12470
+      ],
+      "median_rounded_epoch": 22,
+      "method": "q_full",
+      "observed_epoch_range": [
+        9,
+        47
+      ],
+      "physical_fits": 50,
+      "positive_rows": 3762,
+      "receipt_sha256": "51aba1d01f8cb73878610c62cc4574c31538b368f104df7333fc710857ba184f",
+      "recovered_seed_arrays_sha256": "4dcce9f6661cdd9c926446821f98f50119bbb7110ed0c575d80320842f0e73b3",
+      "rows": 69305,
+      "target": "Petroica rosea"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "6ac7f550db1505e117cfc9c922a36906d76a2852baecbf2403356c92ffa6e2db",
+      "candidate_id": "ann02",
+      "coverage_sha256": "c09e2e65bc96b73c7cb35ae403a5317383a53074badd5233bec4cc56c01b50d9",
+      "evaluated_arrays_sha256": "e69766d165259eb87e92d2cb6e7cf43f35d1b89983af59680ba912c9df2d5c77",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13653,
+        15546,
+        11747,
+        16476,
+        12527
+      ],
+      "median_rounded_epoch": 15,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        4,
+        35
+      ],
+      "physical_fits": 50,
+      "positive_rows": 6131,
+      "receipt_sha256": "0178a791658d2a7c8775367ad9fbaf6a91e7de565060c46c09f2e0116c397317",
+      "recovered_seed_arrays_sha256": "331ca28c79d6bf454d845b91314082d04eabae8e40aafa75406fa2c385e6b6dc",
+      "rows": 69949,
+      "target": "Phylidonyris pyrrhopterus"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "6ac7f550db1505e117cfc9c922a36906d76a2852baecbf2403356c92ffa6e2db",
+      "candidate_id": "ann02",
+      "coverage_sha256": "c09e2e65bc96b73c7cb35ae403a5317383a53074badd5233bec4cc56c01b50d9",
+      "evaluated_arrays_sha256": "eb4f4a6f264d65172786d7ee43c347cd2d0c3e3faa68e17b860b3874cd12dce4",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13653,
+        15546,
+        11747,
+        16476,
+        12527
+      ],
+      "median_rounded_epoch": 13,
+      "method": "q_full",
+      "observed_epoch_range": [
+        5,
+        42
+      ],
+      "physical_fits": 50,
+      "positive_rows": 6131,
+      "receipt_sha256": "dee8c9ead4beb2351f4d1c1b21df9ea82f9c6865c86f607ef43902536619ab2e",
+      "recovered_seed_arrays_sha256": "d1e20a778b6568114f62c45618d644d44c4e9b2134126149d086fb4cb9d40ed0",
+      "rows": 69949,
+      "target": "Phylidonyris pyrrhopterus"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "e45046ce9439868aa8f8770a69a654f9d9e31e00d15dc4a6668422a322128d7a",
+      "candidate_id": "ann04",
+      "coverage_sha256": "ff274a56c312edf50788862466c933c92af47ba41e03d0fa3343da6649284e52",
+      "evaluated_arrays_sha256": "640263879247ad7541ea079f85fb62a35978d992512a686b27cb175685824e2e",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13447,
+        15425,
+        11562,
+        16403,
+        12492
+      ],
+      "median_rounded_epoch": 13,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        6,
+        49
+      ],
+      "physical_fits": 50,
+      "positive_rows": 1522,
+      "receipt_sha256": "5e4ad68ab75e7c5d33bda898ed2ac9e284bc1e069ba2bc10fe62953dffdf9736",
+      "recovered_seed_arrays_sha256": "65daea89e6e7969cbcfd5f2f26bdac31cf5e5ef60c9f60da8214e5618919aadd",
+      "rows": 69329,
+      "target": "Pitta versicolor"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "e45046ce9439868aa8f8770a69a654f9d9e31e00d15dc4a6668422a322128d7a",
+      "candidate_id": "ann04",
+      "coverage_sha256": "ff274a56c312edf50788862466c933c92af47ba41e03d0fa3343da6649284e52",
+      "evaluated_arrays_sha256": "9a864b8f1e908fb9bc0727d9759ae1c9fd753b759124cda4cdec9791102e7b47",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13447,
+        15425,
+        11562,
+        16403,
+        12492
+      ],
+      "median_rounded_epoch": 16,
+      "method": "q_full",
+      "observed_epoch_range": [
+        6,
+        41
+      ],
+      "physical_fits": 50,
+      "positive_rows": 1522,
+      "receipt_sha256": "24581ea244b605029385a1a94a1a72b9d240a90e8dfe147ebd84b6de43daf055",
+      "recovered_seed_arrays_sha256": "4305bc770a460229f423850d0ef2aa948ab5779fc39519b4d156f894dcbdc40c",
+      "rows": 69329,
+      "target": "Pitta versicolor"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "2b11500f688db42a6a7049614b29b8d2a2179c8f20b8d502390dc2d0fdac8b92",
+      "candidate_id": "ann02",
+      "coverage_sha256": "98be1c624b4e6fd83533611c305d238cbdc947a67e0a5c8daeeccc67030e456a",
+      "evaluated_arrays_sha256": "5ec4bc555c16f5b798a84533429b6d93aca157784c5d65832c851cdbbcd3b5f5",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13432,
+        15404,
+        11545,
+        16397,
+        12454
+      ],
+      "median_rounded_epoch": 10,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        7,
+        24
+      ],
+      "physical_fits": 50,
+      "positive_rows": 289,
+      "receipt_sha256": "5f4821dd922eccac7ac524ef91659dc583cc920fab7a37368ae48b88857766e6",
+      "recovered_seed_arrays_sha256": "ac14db005a3fa2b490bf22cda00e1a23701053b32bd603ca90ffd3cd44634626",
+      "rows": 69232,
+      "target": "Ptilinopus superbus"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "2b11500f688db42a6a7049614b29b8d2a2179c8f20b8d502390dc2d0fdac8b92",
+      "candidate_id": "ann02",
+      "coverage_sha256": "98be1c624b4e6fd83533611c305d238cbdc947a67e0a5c8daeeccc67030e456a",
+      "evaluated_arrays_sha256": "7e85f8610d37da555173de118200cb1c9cc63b3beef1f07b83d6dbf5f29ebf69",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13432,
+        15404,
+        11545,
+        16397,
+        12454
+      ],
+      "median_rounded_epoch": 10,
+      "method": "q_full",
+      "observed_epoch_range": [
+        6,
+        18
+      ],
+      "physical_fits": 50,
+      "positive_rows": 289,
+      "receipt_sha256": "5714d3faca144f1517fd35a2afa8f1b298987f3c5dec2e8ebdb6914be2b6be36",
+      "recovered_seed_arrays_sha256": "b6f58b4c82b163f3eeeca11f8190e0b03f095f7cc64e58f09ad5680461950a8c",
+      "rows": 69232,
+      "target": "Ptilinopus superbus"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "fcc04d02d5b297283c3be9355455e054e1826fed2ac960d87a1cb9a77651f88c",
+      "candidate_id": "ann00",
+      "coverage_sha256": "863633994014f198a6777d2ba0ff3e30e05b50c284559a2019ff3834d5335e74",
+      "evaluated_arrays_sha256": "e63f6325d1c5aa36c6ac5171070bc1f73f8bfbcaae8b50581fbb757a3b1478a5",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13433,
+        15405,
+        11542,
+        16402,
+        12463
+      ],
+      "median_rounded_epoch": 15,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        4,
+        50
+      ],
+      "physical_fits": 50,
+      "positive_rows": 224,
+      "receipt_sha256": "594087fa7b693b7cf4ba4a0c648a0eb93348b6dc2dc5085b80b7847548116753",
+      "recovered_seed_arrays_sha256": "f7bc1348ceb85b02c43b2440a6e03f40e22803d064f514a97824e132f3685c4a",
+      "rows": 69245,
+      "target": "Pycnoptilus floccosus"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "fcc04d02d5b297283c3be9355455e054e1826fed2ac960d87a1cb9a77651f88c",
+      "candidate_id": "ann00",
+      "coverage_sha256": "863633994014f198a6777d2ba0ff3e30e05b50c284559a2019ff3834d5335e74",
+      "evaluated_arrays_sha256": "a922c3406b37d8668ff6bac3d3895c26f32c67b78273133f2904e6be82a3144b",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13433,
+        15405,
+        11542,
+        16402,
+        12463
+      ],
+      "median_rounded_epoch": 18,
+      "method": "q_full",
+      "observed_epoch_range": [
+        4,
+        50
+      ],
+      "physical_fits": 50,
+      "positive_rows": 224,
+      "receipt_sha256": "bfd8a4a966db1880b460ad1796a05c63c70506efdc4f2b1f2b13764e8d055f9d",
+      "recovered_seed_arrays_sha256": "3e3255bad1939045acf4e69e120e57ed43a1a5cab6a0b83f90dc45e2f71dcc8b",
+      "rows": 69245,
+      "target": "Pycnoptilus floccosus"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "929aeacffc391389b8e1294ed34ba1a07af1b42215cbb44d42ae9565c6aebe39",
+      "candidate_id": "ann02",
+      "coverage_sha256": "330b7ae9b6389af9bf3db96c683e826f5b9bfb1dad4b02d097cae095098f4126",
+      "evaluated_arrays_sha256": "c7004e947de68f949543df4dd96d2866d1bc7edfa856a2e71ff280d70bfca72e",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13449,
+        15436,
+        11567,
+        16432,
+        12469
+      ],
+      "median_rounded_epoch": 13,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        5,
+        43
+      ],
+      "physical_fits": 50,
+      "positive_rows": 5154,
+      "receipt_sha256": "4213c1725e16308005faacbe7a8b9af5ddcf8438f7f88a298e35d9d26ff9afd4",
+      "recovered_seed_arrays_sha256": "4fc96c371f28bff529f098c4092b930775ec66d87f66179bb90170767f17d856",
+      "rows": 69353,
+      "target": "Rhipidura rufifrons"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "929aeacffc391389b8e1294ed34ba1a07af1b42215cbb44d42ae9565c6aebe39",
+      "candidate_id": "ann02",
+      "coverage_sha256": "330b7ae9b6389af9bf3db96c683e826f5b9bfb1dad4b02d097cae095098f4126",
+      "evaluated_arrays_sha256": "7311392e872538cbbc797deb43b799785a39e0b1ea39b052b2f8c2ad7683c948",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13449,
+        15436,
+        11567,
+        16432,
+        12469
+      ],
+      "median_rounded_epoch": 13,
+      "method": "q_full",
+      "observed_epoch_range": [
+        5,
+        40
+      ],
+      "physical_fits": 50,
+      "positive_rows": 5154,
+      "receipt_sha256": "98683a68312f54aad17898d679623e3e18e51ea406d1c4447493b9041b8ea297",
+      "recovered_seed_arrays_sha256": "f6efe675058f457f3493fbb3514b9beb6b89abeb80923ef3eb5b66c3ff1c81fc",
+      "rows": 69353,
+      "target": "Rhipidura rufifrons"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "581b3e98ec579301f10da3393da5067a5d6f38e351e100953006cb42f4800228",
+      "candidate_id": "ann02",
+      "coverage_sha256": "3bc10518806bf81396ced8bc906021b626b77421766588b82d61fde22e41e84e",
+      "evaluated_arrays_sha256": "e219e6b2ea7ad24568b11ee574394939571e61e50a367f661d9f8b9301a969be",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13466,
+        15452,
+        11581,
+        16436,
+        12505
+      ],
+      "median_rounded_epoch": 10,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        3,
+        24
+      ],
+      "physical_fits": 50,
+      "positive_rows": 7436,
+      "receipt_sha256": "2e62c2d8685460b22c9c2c4d49800dd90efbf1060169ff3834f88322b8921f4f",
+      "recovered_seed_arrays_sha256": "75c1f53821b0ba4762032d375d8c2522a3262422a83ebf5ea404d506e6b0e7ef",
+      "rows": 69440,
+      "target": "Scythrops novaehollandiae"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "581b3e98ec579301f10da3393da5067a5d6f38e351e100953006cb42f4800228",
+      "candidate_id": "ann02",
+      "coverage_sha256": "3bc10518806bf81396ced8bc906021b626b77421766588b82d61fde22e41e84e",
+      "evaluated_arrays_sha256": "217ded68036c5da4d2a7ed0e9e26939f59e043715966d7516b9f30fc694a05c4",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13466,
+        15452,
+        11581,
+        16436,
+        12505
+      ],
+      "median_rounded_epoch": 12,
+      "method": "q_full",
+      "observed_epoch_range": [
+        3,
+        24
+      ],
+      "physical_fits": 50,
+      "positive_rows": 7436,
+      "receipt_sha256": "d6cf51e89f14113330709d780b91019608750aff7996f86b60961d04c38a014e",
+      "recovered_seed_arrays_sha256": "56b632f9c95d7759e5b84c8b1fdd130317579a2f7ad7978e428af73f5029a752",
+      "rows": 69440,
+      "target": "Scythrops novaehollandiae"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "57d36c339a63c83a2c6e3738ae19a7aa3807b6deaa4bd763314e62b41baba243",
+      "candidate_id": "ann04",
+      "coverage_sha256": "e49bdfa4ad82eba76d98ab1a25ac07b01d0b20a5ceb4f7aa80bc99b5654b45bd",
+      "evaluated_arrays_sha256": "53f4fd9068637cd03cd192de88d16eab8cb43f9af0c8c28559627fc40200b6f6",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13470,
+        15484,
+        11625,
+        16489,
+        12508
+      ],
+      "median_rounded_epoch": 14,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        9,
+        34
+      ],
+      "physical_fits": 50,
+      "positive_rows": 9903,
+      "receipt_sha256": "d405790c63b5926ff5582abe8e767e412db25c2d504e91515c51bcd847cfad82",
+      "recovered_seed_arrays_sha256": "70125696706b754042b4900f11fb9c0dddbfdc50287a0999b9290c5175b7e2fd",
+      "rows": 69576,
+      "target": "Sphecotheres vieilloti"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "57d36c339a63c83a2c6e3738ae19a7aa3807b6deaa4bd763314e62b41baba243",
+      "candidate_id": "ann04",
+      "coverage_sha256": "e49bdfa4ad82eba76d98ab1a25ac07b01d0b20a5ceb4f7aa80bc99b5654b45bd",
+      "evaluated_arrays_sha256": "99063374cf046c5fa2684875aa86a98c17a345ef84901499f1001beb88616596",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13470,
+        15484,
+        11625,
+        16489,
+        12508
+      ],
+      "median_rounded_epoch": 14,
+      "method": "q_full",
+      "observed_epoch_range": [
+        3,
+        27
+      ],
+      "physical_fits": 50,
+      "positive_rows": 9903,
+      "receipt_sha256": "047502299f76f1adbd46524317daa87f73516160baf6e4b102d5b9afc695494f",
+      "recovered_seed_arrays_sha256": "dda3ea2e09e544f8ddacf17afc4f62bf9b310ca84289665bf89e7b4c4ad8b94c",
+      "rows": 69576,
+      "target": "Sphecotheres vieilloti"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "124d96e39b4d0c278445f17676add5489247d81ffc3dda7daa3654de64c60cbf",
+      "candidate_id": "ann04",
+      "coverage_sha256": "2e76c7473dd4f6fa21e3e61f7e21cf43358754b2f32913f610ff9e3c92171d79",
+      "evaluated_arrays_sha256": "c715ab933668c724b677bd9866bb829a04e286c48f10c5aff8989bb315ab3977",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13455,
+        15439,
+        11582,
+        16436,
+        12476
+      ],
+      "median_rounded_epoch": 16,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        4,
+        28
+      ],
+      "physical_fits": 50,
+      "positive_rows": 3276,
+      "receipt_sha256": "66af1e7bfb797dccf3f85b17acf44a424c80347ef720089689110d2395860707",
+      "recovered_seed_arrays_sha256": "c8ee0a063e1f93e8da663a4bafcc43ec905fcce41366c60f93a14e7838431131",
+      "rows": 69388,
+      "target": "Todiramphus macleayii"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "124d96e39b4d0c278445f17676add5489247d81ffc3dda7daa3654de64c60cbf",
+      "candidate_id": "ann04",
+      "coverage_sha256": "2e76c7473dd4f6fa21e3e61f7e21cf43358754b2f32913f610ff9e3c92171d79",
+      "evaluated_arrays_sha256": "3a34f4446b97178a7e910eea40890b5fe181af11570c407707372dca9ecb56d1",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13455,
+        15439,
+        11582,
+        16436,
+        12476
+      ],
+      "median_rounded_epoch": 14,
+      "method": "q_full",
+      "observed_epoch_range": [
+        4,
+        27
+      ],
+      "physical_fits": 50,
+      "positive_rows": 3276,
+      "receipt_sha256": "f53dc9b792a9d5b4804565454a59fdd0cd8bdb2a43ffe3981b1eb5c3f9c1545d",
+      "recovered_seed_arrays_sha256": "d0f40a15d71059ee3701411bca6f266d15008ce91bd5ffca01061c3eccbb5213",
+      "rows": 69388,
+      "target": "Todiramphus macleayii"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "6ee9dac7ba180b9fad000794065142e9165526f5512297a6cf3758cd95ac1992",
+      "candidate_id": "ann04",
+      "coverage_sha256": "5592495f82d9e1fe1a0e5b8ef116c0623b749efd2e4ee7e7381e2a73f7acc04b",
+      "evaluated_arrays_sha256": "52e7ed4f5debfb9b28279abbda77434c26b99d0412a650382a3121f46688213c",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13441,
+        15406,
+        11546,
+        16403,
+        12459
+      ],
+      "median_rounded_epoch": 13,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        4,
+        39
+      ],
+      "physical_fits": 50,
+      "positive_rows": 787,
+      "receipt_sha256": "414b07bfb4e6d12c3f9c95cb1c94c6cbdcf60ff49e18e7e1ddefc83a39969443",
+      "recovered_seed_arrays_sha256": "0d70d9ba466e085ec7c4cab5dd77604a3413df0a6494f63c5404a64e7af35afa",
+      "rows": 69255,
+      "target": "Tregellasia capito"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "6ee9dac7ba180b9fad000794065142e9165526f5512297a6cf3758cd95ac1992",
+      "candidate_id": "ann04",
+      "coverage_sha256": "5592495f82d9e1fe1a0e5b8ef116c0623b749efd2e4ee7e7381e2a73f7acc04b",
+      "evaluated_arrays_sha256": "85e4abd19888fb8b5da2eb125080d9dc08bccdd6f2ed34a7d833a749ee3e5ab8",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13441,
+        15406,
+        11546,
+        16403,
+        12459
+      ],
+      "median_rounded_epoch": 11,
+      "method": "q_full",
+      "observed_epoch_range": [
+        3,
+        37
+      ],
+      "physical_fits": 50,
+      "positive_rows": 787,
+      "receipt_sha256": "d75939beb85a61cbeea5371ddc6b05a272b660efd1f2418a4044676fc4ee4872",
+      "recovered_seed_arrays_sha256": "49edd9377c628b38eb0999b4b65618be72d60947631ab103037a6684577434cd",
+      "rows": 69255,
+      "target": "Tregellasia capito"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "aa6824ebbcf11e5e07a8b700c0011d4ffce7fc1e845c14618c72be4c877b107d",
+      "candidate_id": "ann00",
+      "coverage_sha256": "906113a4db51d04f14cf7246cc98d197a6871e5d2cb874f091dd0c99f892e7e8",
+      "evaluated_arrays_sha256": "66a6bcbfbdf9ce1d91a0552d868b1e6bb31b98c0523b71b6e16a7219f4c4fc3b",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13791,
+        15955,
+        11881,
+        16737,
+        12869
+      ],
+      "median_rounded_epoch": 12,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        2,
+        21
+      ],
+      "physical_fits": 50,
+      "positive_rows": 26239,
+      "receipt_sha256": "a028ea5be641011bcaba9892ee21cdf969965ef65179f99935378c2ee28b29bf",
+      "recovered_seed_arrays_sha256": "eaa2504e1dcf549dfd865eb81d993ac91c8ed5d944476a1ec446421b2e97d377",
+      "rows": 71233,
+      "target": "Vanellus miles"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "aa6824ebbcf11e5e07a8b700c0011d4ffce7fc1e845c14618c72be4c877b107d",
+      "candidate_id": "ann00",
+      "coverage_sha256": "906113a4db51d04f14cf7246cc98d197a6871e5d2cb874f091dd0c99f892e7e8",
+      "evaluated_arrays_sha256": "83e860460abfaad41704961f66fdafa3064197cd8dffebf71e98ab7df89c5a7e",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13791,
+        15955,
+        11881,
+        16737,
+        12869
+      ],
+      "median_rounded_epoch": 8,
+      "method": "q_full",
+      "observed_epoch_range": [
+        4,
+        26
+      ],
+      "physical_fits": 50,
+      "positive_rows": 26239,
+      "receipt_sha256": "34e5f0f156590afc3b7938f74ab27ad6308e4998b7669df242ab2c66a6e9575e",
+      "recovered_seed_arrays_sha256": "58e0ca14559dd833c3ff00202ef0abf82019ac67f0406ad6096362a20e651459",
+      "rows": 71233,
+      "target": "Vanellus miles"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "8ada31d5054c20bf7f60e7298aa295944d7ecd4eb5382d4bd7d7f20a3c273d38",
+      "candidate_id": "ann02",
+      "coverage_sha256": "c86a0800c8033b7fb42fcfbaa36596f40e15d10e3479c12795f3a8e3728dfaaa",
+      "evaluated_arrays_sha256": "1ca7a7a96727f8e3d9c94a3e1e135f442400cc1b3212d4afa729002118d858c9",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13438,
+        15417,
+        11552,
+        16406,
+        12459
+      ],
+      "median_rounded_epoch": 8,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        3,
+        25
+      ],
+      "physical_fits": 50,
+      "positive_rows": 707,
+      "receipt_sha256": "262392359ca130e529f3e47a9dcc9a9ee77c609f2021a12289da929a67d267e3",
+      "recovered_seed_arrays_sha256": "3e1203712b058def8672ba2f4c62e943e71acdec331400e675dfb1c71a8f7d1f",
+      "rows": 69272,
+      "target": "Zoothera heinei"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "8ada31d5054c20bf7f60e7298aa295944d7ecd4eb5382d4bd7d7f20a3c273d38",
+      "candidate_id": "ann02",
+      "coverage_sha256": "c86a0800c8033b7fb42fcfbaa36596f40e15d10e3479c12795f3a8e3728dfaaa",
+      "evaluated_arrays_sha256": "8cbac79b9bbd53bf45ff8a5c2503fa4a6029bb0333004ede876f00cd0af44db9",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13438,
+        15417,
+        11552,
+        16406,
+        12459
+      ],
+      "median_rounded_epoch": 9,
+      "method": "q_full",
+      "observed_epoch_range": [
+        3,
+        21
+      ],
+      "physical_fits": 50,
+      "positive_rows": 707,
+      "receipt_sha256": "afa9a2c4067ae52283c709c9a1d6af3e49f092a5096843828af95e188b0bf353",
+      "recovered_seed_arrays_sha256": "459b78c48275f1f388f34562a0fcc3fda6a58f2fcce8db3abd72e1bd456f8520",
+      "rows": 69272,
+      "target": "Zoothera heinei"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "c845de59e93c8dd603595e29a451e16b81b000331e5f8fc73d2422a013d19443",
+      "candidate_id": "ann00",
+      "coverage_sha256": "50732d7fdafba3a5a312e5c7e709e9ea811a9e28719138ab2f83250fe8673e71",
+      "evaluated_arrays_sha256": "4f6f5012d76ed53dc540db7fc49c9fc271454ceb5db0135a637da2e9221aa52a",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13481,
+        15457,
+        11598,
+        16431,
+        12478
+      ],
+      "median_rounded_epoch": 8,
+      "method": "ordinary",
+      "observed_epoch_range": [
+        3,
+        23
+      ],
+      "physical_fits": 50,
+      "positive_rows": 2549,
+      "receipt_sha256": "ec11a1ec0e2101d1a5c9207cabc1489973a68562e31875bbec6a0f9b1eb8860b",
+      "recovered_seed_arrays_sha256": "62a2ae20eb3cced17c3dd946b4dc8f0bf07f156e8e354d296f14216cbeee202b",
+      "rows": 69445,
+      "target": "Zoothera lunulata"
+    },
+    {
+      "accepted_endpoint_predictions_sha256": "c845de59e93c8dd603595e29a451e16b81b000331e5f8fc73d2422a013d19443",
+      "candidate_id": "ann00",
+      "coverage_sha256": "50732d7fdafba3a5a312e5c7e709e9ea811a9e28719138ab2f83250fe8673e71",
+      "evaluated_arrays_sha256": "81f96be9984af6abd5ca2b28ab93bacdd3fd6f22d58c998e012d32a3578e47cc",
+      "exact_checks": {
+        "accepted_cell_y_fold_coverage": true,
+        "all_five_seed_vectors_reconstructed": true,
+        "concatenated_seed_payload_equals_evaluated_arrays": true,
+        "seed_mean_equals_saved_and_accepted_score": true
+      },
+      "fit_receipts": 25,
+      "fold_rows": [
+        13481,
+        15457,
+        11598,
+        16431,
+        12478
+      ],
+      "median_rounded_epoch": 7,
+      "method": "q_full",
+      "observed_epoch_range": [
+        3,
+        15
+      ],
+      "physical_fits": 50,
+      "positive_rows": 2549,
+      "receipt_sha256": "c57f870096a5ef022b61f3cb38b24623a484ec177a9a0768637221805eb42c6d",
+      "recovered_seed_arrays_sha256": "4919a510c511c54c112b746ed9938350990c50d481c609e2fd4fd560baa997c9",
+      "rows": 69445,
+      "target": "Zoothera lunulata"
+    }
+  ],
+  "provenance": {
+    "accepted_identity": {
+      "config_sha256": "48465d0a5180931a72ffc87aa830f6ce60da93a4b491558540af5afa9d42884d",
+      "goal050_crossfit_sha256": "b3abdb006fb7d384445db376d5ba3f0f7b48afd170982494f88ff20ef612e804",
+      "goal050_curves_sha256": "317a5513b6645edc588c63db1c2d26afaea3edfa202480b2f46ca58a2817c3d6",
+      "goal050_manifest_sha256": "239dd61cc5d3ab942a813201c0cb4117820b74367c7ba71deffddc6990d36198",
+      "goal050_transforms_sha256": "1d8b3d09b139264e288630f283e330d28919c00b4631132aa9a79529ad3abb52",
+      "goal052_config_sha256": "04b667168944b39ced1044da8f381553c4024e31cca1f5590f2fbc693e521f9a",
+      "source_sha256": "24057a4ef6c857d26e0fb4deecf46fe81cfc0e91c67e34d92dbdd77d7ca7ce2e",
+      "uv_lock_sha256": "51712e74b2f9d78a4efb7bfd6732244188e8c6c5bc722f7a78f2724e6b8b84f6"
+    },
+    "accepted_summary": "evidence/seawfb_conventional/goal051/summary.json",
+    "accepted_summary_sha256": "9c1bf1ff8884fae35fe7ebe6f8d19e2aae46ab7eedee252b398c0c74705dd2d8",
+    "execution": "one process; NumPy, Arrow, BLAS and OpenMP threads fixed at one; endpoint Parquet read one target at a time",
+    "inventory": "evidence/seawfb_dsdm/goal052/outer-inventory-20260929.json",
+    "inventory_sha256": "bcc2afd99bae661b99fe0dd7dfa8ef6f91f48baf63d3e9502f8e7f1ae960c003",
+    "recovery_helper": "scripts/goal052_ann_epoch_recovery.py",
+    "recovery_helper_sha256": "44c61f9135f6b39cf6c359ecd29e00464444aea6b2e0b293e72b625101c48f62",
+    "return_manifest": "data/processed/dsdm/goal052-seawfb-dsdm-experiment/ann-epoch-recovery/batch-20261001/return-manifest.json",
+    "return_manifest_sha256": "f1ce521fea49b6ef8969874766d2ebd4474cfc7b898f6638be42fcad0bb97c87",
+    "review_script": "scripts/goal052_ann_recovery_review.py",
+    "review_script_sha256": "1cd659f282b5a60f89c60aef11de6dee03396e30ede89bfc4d296ba29adc9e66"
+  },
+  "recommendation": "Accept the 80 recovered epoch budgets for the prospective retained-full refit. Preserve the failed Deep attempt as numerical-portability evidence and retain the original-runtime requirement.",
+  "schema_version": "goal052-ann-recovery-independent-review-v1",
+  "scientific_target": "recover exact selected shallow-ANN epoch budgets for retained-full outer refits without changing the frozen Goal051 estimand",
+  "status": "accepted_exact_recovery"
+}

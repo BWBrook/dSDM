@@ -347,3 +347,51 @@ Receipt ambiguity, a live owned process group, failed return verification or
 other user workload prevents automatic parking. This recovery route does not
 qualify the retained-full outer pipeline or release its prediction-before-response
 requirement. No recurring automation is authorized or created by this decision.
+
+## 2 October 2026 — all 80 ANN budgets accepted; original-runtime recovery closed
+
+Accept the recovered rounded epoch median for every selected ANN target and
+ordinary/q_full procedure in `ann-recovery-review-20261002.json`. The independent
+review checked the full 80-procedure inventory, 2,000 unique fold/seed receipts,
+source/configuration and candidate/seed bindings, exact cell/label/fold coverage,
+all returned hashes, and reconstruction of every accepted five-seed fold mean.
+The 5,555,454 checked prediction rows agree exactly. Each median is computed
+from its 25 recovered epochs; no budget is inferred from a range.
+
+Original Goal051 per-seed vectors were not saved, so exact comparison is to
+the saved seed means. Preserve the recovered per-seed evidence and failed Deep
+attempt. The failure remains numerical-portability evidence, with no identified
+cause and no accepted budget. The completed Nectar batch/controller must not
+be relaunched. Verified evidence return and parking at c3.xsmall are complete.
+
+The authorized outer assessment still needs its retained-full orchestration,
+complete hashed predictions and actual-runtime qualification. Keep every outer
+response sealed until those checks pass. No further opening permission is
+needed, and recovery itself does not satisfy those implementation checks.
+
+## 2 October 2026 — follow-up interpretation and prospective composition reporting
+
+Fable's message 810 resolves the earlier interpretive disagreement: the richness
+gradient does not identify transferred mechanism, ensemble gain and PCA do not
+bound learner headroom, and the proposed proxy-covariate test is not an identified
+bias correction. The future priority order remains independent observation-aware
+evaluation, with early known-truth simulation, richer habitat inputs, then
+same-input learners. This is a research priority, not a new experimental launch.
+
+Accept the reproduced matched-network and comparator-family diagnostics as
+descriptive retained-inner evidence. Preserve primary/other panels, especially
+the mixed high-richness direction among the other 83 targets. Correct the
+151-target reporting-rate reference to each target's highest nonempty top-score
+bin: 92 targets use 100–199 and 65 use 200+, not 200+ universally. Six exclusions
+have only one or two reference cells; do not treat their zero focal records as
+independent proof of habitat confounding. `RecordedRichnessFollowup-20261002.md`
+holds the reproduced definitions and numbers.
+
+Add background counts/shares beside each unchanged outer regional headline.
+Retain equal species weights, include sparse bins, and label summed counts as
+target-background pairs. Average within-target weighted contrasts; do not
+multiply marginal mean weights and contrasts. This changes no scientific fit,
+primary mask, contrast or threshold. Because inner target weights were not
+retained, record the unavailable identical-grid score comparison as a limitation
+of fixed OOF-threshold transfer; do not add replay fits or recalibrate on outer
+outcomes in this review.

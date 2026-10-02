@@ -1,47 +1,42 @@
 # Goal 052 runbook
 
-**2 October: original-runtime ANN recovery is qualified and its bounded batch
-is running.** The accepted inner campaign is unchanged. Start with current
-HANDOVER, `RecordedRichnessReview-20261001.md`, and prospective
-`OuterDiagnostics-20261001.md`. The response-free reader covers every frozen
-region cell with the existing imputation rules.
+**2 October: all 80 ANN budgets independently accepted; Nectar parked.**
+Start with current HANDOVER, `RecordedRichnessFollowup-20261002.md`, prospective
+`OuterDiagnostics-20261001.md`, and `OuterPreparation-20260929.md`. The accepted
+inner campaign is unchanged. The response-free reader covers every frozen
+region cell using the existing imputation rules.
 
-The Deep probe failed exact agreement and its failed evidence is preserved.
-The Nectar probe reproduced both selected procedures exactly, independently
-verified, with ordinary/q_full epoch medians 5/6. Only these two budgets are
-accepted. The current batch recovers the other 78; it does not perform outer
-refits. See tracked `ann-recovery-nectar-probe-20261001.json` and
-`ann-recovery-batch-dispatch-20261002.json` under `evidence/seawfb_dsdm/goal052/`.
+Use the explicit target/method epoch medians and receipt bindings in
+`evidence/seawfb_dsdm/goal052/ann-recovery-review-20261002.json` alongside the
+unchanged historical 29 September inventory. The independent audit checked
+2,000 unique fold/seed receipts and exactly reconstructed all 5,555,454 accepted
+prediction rows. Goal051 retained seed means, not original per-seed vectors;
+the review makes no stronger comparison. Preserve Deep's failed attempt.
 
-Current private directory, locally and under `/data/codex/repos/dSDM` on
-`nectar-codex-ts`:
-`data/processed/dsdm/goal052-seawfb-dsdm-experiment/ann-epoch-recovery/batch-20261001/`.
-It has `launch.json`, `process-group.json`, `progress.json`, and eventual
-`completion.json`, `exit.json`, `batch-exit.json`. Four spawned single-thread
-workers run on c3.large (8 vCPU/16 GiB), with a 2 GiB available-memory floor.
-The immutable cap is **2 October 06:15:29 AEST**, plus 60 seconds for forced
-termination. Run ID: `1f498e0dbbdd47c4b64692ecae5b7abb`.
+The bounded Nectar batch exited 0 at **03:37:36 AEST**. Verified return and
+parking completed at **03:41:08 AEST**; a live check around 11:00 reconfirmed
+ACTIVE / c3.xsmall (1 vCPU, 2 GiB) and no batch workers. Run ID:
+`1f498e0dbbdd47c4b64692ecae5b7abb`. All static receipts are under
+`data/processed/dsdm/goal052-seawfb-dsdm-experiment/ann-epoch-recovery/batch-20261001/`,
+locally and under `/data/codex/repos/dSDM` on `nectar-codex-ts`.
+`completion.json`, `exit.json`, `batch-exit.json`, `return-review.json` and
+`controller-result.json` are complete. Do not relaunch this batch or its closed
+controller. No recurring automation was created.
 
-The Mac mini's one-shot controller PID 17558 owns return and idle parking;
-inspect `controller.log`, `return-review.json`, and `controller-result.json`.
-A failed fit may still have successful verified return and resource closeout.
-Contradictory ownership/exit receipts or another user workload defer parking.
-Do not restart the controller, duplicate the job, edit live driver/helper
-bytes, or reset its deadline. Inspect receipts before any recovery action.
-Native success requires independent review before promoting the full epoch
-inventory. No outer response access follows from this batch.
-
-Targeted preparation checks (21 passed locally; the eight ANN checks also pass
-on Deep and Nectar):
+The complete retained-full fitting orchestrator, prediction closure and
+actual-runtime qualification remain. Outer responses stay sealed until those
+requirements pass; Barry's opening authority already exists. Current pure
+scoring checks include sparse-bin shares, empty-panel handling and preservation
+of equal species weights in background composition. To repeat relevant checks:
 
 ```sh
-uv run --locked pytest -q tests/test_goal052_ann_epoch_recovery.py tests/test_goal052_outer_diagnostics.py tests/test_goal052_outer_predictors.py
-uv run --locked python scripts/goal052_ann_epoch_recovery.py
+uv run --locked pytest -q tests/test_goal052_outer_diagnostics.py
+uv run --locked python scripts/goal052_ann_recovery_review.py
 ```
 
-These do not qualify retained-full production or permit response access before
-complete frozen predictions. Keep the deleted recurring monitor deleted.
-The execution notes below are historical inner-campaign procedures.
+The audit reads retained-only evidence and fits no model. Preparation checks do
+not qualify retained-full production. Keep the deleted recurring monitor
+deleted. The execution notes below are historical inner-campaign procedures.
 
 **26 September 2026: computational acceptance is complete.** PBS 812164 exited
 0 and the unchanged native independent replay passed. The accepted aggregate

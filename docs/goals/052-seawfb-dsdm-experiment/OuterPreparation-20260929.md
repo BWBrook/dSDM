@@ -8,8 +8,10 @@
 This supersedes the pending-Barry-decision status of
 `OuterPreopening-20260927.md`. Astra agrees with opening. No further opening
 permission is requested. The earlier note's reporting and descriptive reading
-rules remain proposals for Fable's response; model concurrence has not been
-reported. No outer outcomes have been exposed by this preparation.
+rules and the refit recipe below were subsequently accepted by Fable in
+message 783. This is advisory review, not runtime qualification. All 80 missing
+ANN budgets passed independent exact recovery on 2 October; the dated account
+below supersedes the original gap status. No outer outcomes have been exposed.
 
 ## Reporting and expectations
 
@@ -72,6 +74,39 @@ seed's epoch and predictions in the new evidence, using the original bound
 source/runtime and deterministic row ordering. Do not weaken numerical
 agreement requirements after seeing a discrepancy.
 
+**2 October recovery accepted:** all 40 selected ANN targets now have verified
+ordinary and q_full budgets. The original Nectar runtime completed all 80
+procedures. `scripts/goal052_ann_recovery_review.py` independently checked
+2,000 unique fold/seed receipts (4,000 discovery/replay fits), reconstructed
+every accepted fold mean exactly across 5,555,454 prediction rows, and verified
+the 264-file return manifest. Candidate, seed, source/configuration, response,
+cell and fold bindings passed. Its tracked
+`evidence/seawfb_dsdm/goal052/ann-recovery-review-20261002.json` contains the
+80 target/method budgets and their receipt hashes; consume those explicit
+budgets alongside the unchanged 29 September inventory. Do not regenerate the
+historical inventory to hide its originally missing values.
+
+This accepts recovery at the granularity of the saved seed means; unavailable
+original per-seed vectors cannot be compared. The failed Deep attempt remains
+preserved and supplies no accepted budget. Exact Nectar agreement does not
+identify the cause of Deep's numerical discrepancy. The batch ended at
+03:37:36 AEST; verified return and idle parking completed at 03:41:08. A live
+check around 11:00 confirmed ACTIVE / c3.xsmall and no batch workers. Recovery
+does not qualify retained-full fitting, prediction closure or outer scoring.
+
+**2 October score-scale limitation:** Fable's message 810 suggests comparing
+inner-fold and retained-full predictions on one identical response-free grid.
+The original target-model checkpoints do not retain fitted target weights:
+Goal052 `run_target` saves held-cell scores and fit receipts, and
+`fit_target_lifecycle` returns no state. Goal051 endpoint checkpoints likewise
+save scores and fit summaries. Retained pretraining trunks and q coefficients
+do not supply the missing fitted target models. The suggested comparison
+therefore requires additional replay fits; it is not available from the saved
+states. Record this limitation for the fixed OOF-threshold metrics. Even with
+those states, a response-free comparison measures changes in the score scale
+or ranking, not empirical calibration against outcomes. Retain the frozen
+thresholds and do not use outer outcomes to repair them.
+
 Seed integers and namespaces, training-row digests, head sets, feature order,
 q means/SDs, threshold values and all source/runtime hashes must appear in the
 execution manifest before fitting. The metadata inventory is preparatory and
@@ -114,7 +149,8 @@ remains visible as NA. No target deletion, rescue model or threshold revision
 follows from outer scores. Keep recurring polling deleted; use the established
 PBS completion/abort email route when PBS work is launched.
 
-Fable's requested review is now specific: reporting/sign rules, the pooled
-within-block pretraining epoch proposal, and retained-only ANN epoch recovery.
-Barry's opening decision is settled. Preparation and review remain, and should
-not be mistaken for a completed outer test.
+Barry's opening decision and the prospective reporting/refit review are settled.
+Fable's message 810 also accepts the supplementary diagnostics, with background
+composition now specified in `OuterDiagnostics-20261001.md`. The separate
+retained-full implementation, frozen prediction closure and actual-runtime
+qualification remain. This is not yet a completed outer test.

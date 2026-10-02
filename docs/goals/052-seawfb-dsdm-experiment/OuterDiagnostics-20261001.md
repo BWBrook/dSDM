@@ -69,6 +69,29 @@ an empty intersection yields NA. This supplemental subset estimate never
 replaces the unchanged 73-target primary macro estimate. Do not manufacture a
 minimum number of targets for a significance claim: none is being made.
 
+## 2 October addition: background composition beside each regional headline
+
+Following Fable's message 810, report the X10 background count and fraction
+in each of the three bins for every target-region, including empty and sparse
+bins. This composition summary uses the original headline panel, regardless
+of diagnostic AUC reportability. A missing diagnostic AUC does not remove its
+target from the headline composition summary.
+
+For each region and frozen panel show the target count, summed background
+counts by bin, mean background count per target, and **mean of the individual
+target shares**. Summed counts are target-background pairs: the same physical
+cell may appear for several species. Separately label any pooled-pair share;
+it is not the weight implied by the equally weighted species headline. An
+empty supplementary panel has zero counts and undefined shares, not zero
+shares.
+
+The exact headline decomposition is `mean_target(sum_bin(weight * contrast))`.
+Do not replace this with `sum_bin(mean_target(weight) * mean_target(contrast))`:
+weights and contrasts can covary among species. Composition can change the
+headline even if the within-bin contrasts are fixed, but composition alone
+does not identify the cause of a regional difference. This reporting addition
+changes no model, response mask, primary contrast, support gate or threshold.
+
 ## Fixed ensemble
 
 Create a cellwise probability average, after each component's prescribed seed
