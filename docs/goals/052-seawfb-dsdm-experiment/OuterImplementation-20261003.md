@@ -96,3 +96,21 @@ The next scientific discussion with Fable follows the completed outer scores.
 An implementation-forced change to a fixed scientific definition must be raised
 before using outer outcomes. Routine engineering qualification stays within the
 approved assessment.
+
+## Bounded execution and report rendering
+
+`scripts/goal052_outer_supervise.py` runs the qualified q, pretraining, neural
+and conventional stages, followed by closure and verification. A run-level lock
+prevents concurrent supervisors; each attempt has a separate immutable manifest,
+stage receipts and completion receipt. The controller enforces the selected
+wall-time cap, a 16 GiB available-memory floor and a 200 GiB free-disk floor.
+Failure stops the sequence and terminates the owned process group, including
+descendants whose group leader has exited. It never invokes scoring. A failed
+attempt is retained; a later attempt may reuse only verified fitting leaves.
+
+`scripts/goal052_outer_report.py` renders an already-created score JSON to
+Markdown, carrying its score, plan and closure identities. Tables preserve
+panel denominators, missing values, nested regional attenuation, the fixed
+ensemble and the arithmetic richness decomposition. Synthetic scoring fixtures
+test the actual output schema. These two operational helpers do not change the
+hash-bound scientific source or the frozen plan.
