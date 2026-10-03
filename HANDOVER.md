@@ -5,7 +5,7 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Current handoff — 3 October, outer implementation and runtime preparation
+## Current handoff — 3 October, outer continuation running
 
 Fable's message **839** accepts the scientific corrections and needs no reply
 or further review before outer scores unless implementation changes a fixed
@@ -40,21 +40,46 @@ The fresh run is `outer-assessment-20261003-r2`, on the separate Deep export
 Replacement plan **4b179d6c...** binds scientific source **8f33704**. Its actual
 24-process canary passed exact numerical/state/reload comparisons in 17.16
 seconds. The full-row profile began at **17:42 AEST** and remains active as of
-18:37, within the six-hour cap, using one CPU core and about 2 GiB RSS. The final
-runtime qualification receipt and production allocation are still pending.
+20:13, within the six-hour cap, using one CPU core and about 1.9 GiB RSS. The
+final runtime qualification receipt and production allocation are still pending.
 
 The bounded production supervisor and score-report renderer are committed in
 **4eb0448**; 16 focused tests passed. The independent response-free closure
 checker is committed in **aeaa9f9**. Its synthetic valid/failure checks pass,
 and it independently reconstructs every actual task and threshold in the plan.
-All three helpers are staged on Deep with verified hashes; the 29 frozen
-scientific sources are unchanged. Run the independent checker after the native
-closure/verification commands and before invoking scoring.
+All operational helpers are staged on Deep with verified hashes; the 29 frozen
+scientific sources are unchanged. The independent checker now also rejects any
+pre-existing native response-access receipt (commit **260a946**).
+
+The one-shot continuation (`scripts/goal052_outer_complete.py`, **deef6fb**)
+was launched locally at **20:13:08 AEST**, PID **84576**, with its idle-sleep
+inhibitor **84577**. Its preflight passed and live heartbeat is **runtime_wait**.
+It waits for successful actual qualification, selects at most 24 workers from
+measured peak memory and live RAM, then dispatches the bounded production
+supervisor. It requires all six stages, native closure verification and the
+independent audit before transferring canonical responses and invoking scoring.
+Production is capped at 72 hours; the continuation is capped at 84 hours.
+
+Local state is under the r2 run's `continuation-control-001/`; the launch receipt
+is `continuation-launch.json`. Do not relaunch or create another attempt while
+this process is active. The program returns the final predictions, scores,
+`outer-report.md` and compact, hash-verified evidence. Full fitted models remain
+on Deep. A failed gate stops continuation without automatic refitting.
+
+Tracked `outer-continuation-validation-20261003.json` records 20 focused tests,
+the independent code review, and harmless Deep launcher/timeout smoke checks.
+Those checks validate the operational code; the actual 4,242-fit chain has not
+yet completed. Before interpreting any returned score, verify final completion,
+all production/audit bindings, both native response-access receipts and their
+linkage, both response-transfer copies, and the returned-file hashes. The
+independent review also passed 19 native contract tests and eight auditor
+self-test cases. No further scientific definition changed.
 
 **No outer response rows have been opened.** Complete and independently verify
 all fitted models, component seed averages, ensemble predictions and threshold
 bindings before the scoring entrypoint can load responses. Existing opening
-and compute authority applies. No recurring monitor is configured.
+and compute authority applies. No recurring monitor is configured; the running
+continuation is one bounded campaign.
 
 ## Historical handoff — 2 October, scientific follow-up and all ANN budgets accepted
 
