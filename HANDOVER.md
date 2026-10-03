@@ -37,6 +37,20 @@ retains exact prediction/state checks and adds an explicit ANN weight digest.
 The fresh run is `outer-assessment-20261003-r2`, on the separate Deep export
 `/data/codex/repos/dSDM-outer-20261003-r2`. No production fit ran in attempt 1.
 
+Replacement plan **4b179d6c...** binds scientific source **8f33704**. Its actual
+24-process canary passed exact numerical/state/reload comparisons in 17.16
+seconds. The full-row profile began at **17:42 AEST** and remains active as of
+18:37, within the six-hour cap, using one CPU core and about 2 GiB RSS. The final
+runtime qualification receipt and production allocation are still pending.
+
+The bounded production supervisor and score-report renderer are committed in
+**4eb0448**; 16 focused tests passed. The independent response-free closure
+checker is committed in **aeaa9f9**. Its synthetic valid/failure checks pass,
+and it independently reconstructs every actual task and threshold in the plan.
+All three helpers are staged on Deep with verified hashes; the 29 frozen
+scientific sources are unchanged. Run the independent checker after the native
+closure/verification commands and before invoking scoring.
+
 **No outer response rows have been opened.** Complete and independently verify
 all fitted models, component seed averages, ensemble predictions and threshold
 bindings before the scoring entrypoint can load responses. Existing opening
