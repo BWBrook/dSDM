@@ -121,3 +121,25 @@ seed means, the fixed ensemble and the complete prediction closure. It rejects
 existing score files and any native response-access receipt. Run it before
 transferring the canonical response source or invoking the scorer, and bind its
 passing receipt to the exact plan and closure hashes.
+
+`scripts/goal052_outer_complete.py` is a local, one-shot continuation for the
+Deep export. It waits for the existing runtime controller, verifies the actual
+canary/profile/final qualification receipts, and selects at most 24 workers
+from measured peak memory with a 16 GiB reserve. Production has a maximum
+72-hour cap; the complete continuation has an 84-hour cap. It records launch
+intent before dispatch and never automatically replays a failed fitting stage.
+
+After all six production stages succeed, the continuation runs the independent
+audit outside the closed run directory. Only a passing, hash-bound audit and
+absence of previous response access permit it to read and transfer the canonical
+response source. The native scorer then verifies closure again and owns the
+response-access receipts. Audit, scoring and report jobs have remote time limits
+as well as local supervision. Any failed gate stops the sequence.
+
+The continuation returns predictions, scores, the Markdown report and compact
+receipts with remote SHA verification. The complete fitted models remain on
+Deep. Its returned-file manifest covers immutable control evidence; mutable
+status/heartbeat files and the subsequently written completion receipt are
+explicitly excluded from that manifest. Native response-access evidence is
+retrieved on failure where the connection permits. This is one bounded campaign,
+not a recurring app automation.

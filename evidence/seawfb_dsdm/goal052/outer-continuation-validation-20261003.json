@@ -1,0 +1,101 @@
+{
+  "before_interpreting_results": [
+    "Verify successful runtime qualification and worker selection.",
+    "Verify all six production receipts, closure and independent auditor identities.",
+    "Cross-check both native access receipts, access_started_sha256 and closure/plan/canonical bindings.",
+    "Cross-check captured audit_sha and both response-transfer copies.",
+    "Verify score/report hashes and every immutable returned-files entry."
+  ],
+  "created_utc": "2026-10-03T10:11:38.267490+00:00",
+  "deep_poststage_smoke": {
+    "cases": [
+      {
+        "expected_return_code": 0,
+        "launch_pid": 90377,
+        "pass": true,
+        "receipt": {
+          "pid": 90377,
+          "return_code": 0,
+          "stage": "success",
+          "status": "complete"
+        },
+        "stage": "success",
+        "wait_error": null
+      },
+      {
+        "expected_return_code": 7,
+        "launch_pid": 90522,
+        "pass": true,
+        "receipt": {
+          "pid": 90522,
+          "return_code": 7,
+          "stage": "failure",
+          "status": "complete"
+        },
+        "stage": "failure",
+        "wait_error": "failure detached stage failed"
+      },
+      {
+        "child_pid": 90759,
+        "child_status_after_timeout": "",
+        "expected_return_code": 124,
+        "launch_pid": 90757,
+        "pass": true,
+        "receipt": {
+          "pid": 90757,
+          "return_code": 124,
+          "stage": "timeout",
+          "status": "complete"
+        },
+        "stage": "timeout",
+        "wait_error": "timeout detached stage failed"
+      }
+    ],
+    "local": "/var/folders/dp/d928g2rx58vdldb7lym6vp5m0000gn/T/dsdm-outer-poststage-smoke-7yacfcwo",
+    "pass": true,
+    "remote": "/data/codex/tmp/dsdm-outer-poststage-smoke-a32c6c9eceba",
+    "snapshot_sha256": "0be3b473f3e3e39be59833a74cf8c41ed7e27a2b214c929d6c6da3335ce9bbd8"
+  },
+  "deep_production_launcher_smoke": {
+    "command": "export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1; cd /data/codex/tmp/dsdm-production-launch-smoke-46f43c943a16 || exit 1; nohup /data/codex/tmp/dsdm-production-launch-smoke-46f43c943a16/.venv/bin/python /data/codex/tmp/dsdm-production-launch-smoke-46f43c943a16/scripts/goal052_outer_supervise.py --root /data/codex/tmp/dsdm-production-launch-smoke-46f43c943a16 --run /data/codex/tmp/dsdm-production-launch-smoke-46f43c943a16/run --python /data/codex/tmp/dsdm-production-launch-smoke-46f43c943a16/.venv/bin/python --workers 1 --max-hours 0.01 --attempt 001 > /data/codex/tmp/dsdm-production-launch-smoke-46f43c943a16/run/production-supervisor-001.log 2>&1 < /dev/null & printf '%s\\n' \"$!\"",
+    "launch_pid": 89354,
+    "local": "/var/folders/dp/d928g2rx58vdldb7lym6vp5m0000gn/T/dsdm-production-launch-smoke-b41kh7m0",
+    "pass": true,
+    "receipt": {
+      "pgid": 89353,
+      "pid": 89354,
+      "synthetic": true
+    },
+    "remote": "/data/codex/tmp/dsdm-production-launch-smoke-46f43c943a16",
+    "source_sha256": "d9f4822476e954edef539d5ff7b1337e494c3d19fc134190f2a86d43f6bdbf18"
+  },
+  "focused_tests": {
+    "count": 20,
+    "files": [
+      "tests/test_goal052_outer_complete.py",
+      "tests/test_goal052_outer_supervise.py",
+      "tests/test_goal052_outer_report.py"
+    ],
+    "status": "passed"
+  },
+  "full_production_chain_executed": false,
+  "independent_review": {
+    "auditor_self_test_cases_passed": 8,
+    "condition": "actual runtime qualification and all production/closure/response/scoring gates must pass; inspect final evidence before scientific interpretation",
+    "native_contract_tests_passed": 19,
+    "verdict": "conditionally_supported_for_launch"
+  },
+  "outer_response_rows_read": 0,
+  "plan_digest": "4b179d6cf8134551099c896bbcb30837d2d316cc3e5c70ed30d91c53bf4b63e0",
+  "production_launcher_ast_matches_current": true,
+  "schema_version": "goal052-outer-continuation-validation-v1",
+  "scientific_source_commit": "8f3370475d41d23b1aa6cf827c14641968ae61e2",
+  "source_sha256": {
+    "scripts/goal052_outer_complete.py": "0be3b473f3e3e39be59833a74cf8c41ed7e27a2b214c929d6c6da3335ce9bbd8",
+    "scripts/goal052_outer_independent_audit.py": "aec200b22eafce660b43a7acf2db5c613bdd0691ace2240d8d0add3de1fdfc5d",
+    "scripts/goal052_outer_report.py": "8dba41f8d02c9b5681f675f54d1822d12fd2153cc1c56aade3d74207466f5c5b",
+    "scripts/goal052_outer_supervise.py": "904683f39493d4cf23ba8d19dab037bd10d409044ed34ccd057f6394bd57e82a",
+    "tests/test_goal052_outer_complete.py": "efacc054613db9afad5cead05226b46347a83d43995c0e98b247df945c4dc1ab"
+  },
+  "status": "operational_code_validated_actual_qualification_pending"
+}
