@@ -17,8 +17,6 @@ import numpy as np
 import pandas as pd
 from pyproj import Transformer
 
-from .goal050_compute_canary import _encode_predictors
-
 
 CONFIG_PATH = Path("config/goal050_seawfb_modeling_foundation.json")
 MANIFEST_PATH = Path("metadata/goal050_manifest.json")
@@ -124,6 +122,23 @@ def _projected_blocks(longitude: np.ndarray, latitude: np.ndarray, block_m: int)
     return np.floor(x / block_m).astype(np.int64), np.floor(y / block_m).astype(np.int64)
 
 
+def _encode_retained_full(frame: Any, transform: Mapping[str, Any]) -> np.ndarray:
+    """Apply the native retained transform without an early float32 rounding."""
+    columns: list[np.ndarray] = []
+    for name in CONTINUOUS:
+        spec = transform["continuous"][name]
+        values = np.asarray(frame[name], dtype=np.float64).copy()
+        values[~np.isfinite(values)] = float(spec["mean"])
+        columns.append((values - float(spec["mean"])) / float(spec["population_sd"]))
+    for name in CATEGORICAL:
+        levels = list(transform["categorical"][name])
+        allowed = set(levels)
+        raw = frame[name].astype("string").fillna("__MISSING__").astype(str).to_numpy()
+        values = np.asarray([value if value in allowed else "__UNSEEN__" for value in raw], dtype=object)
+        columns.extend((values == level).astype(np.float64) for level in levels)
+    return np.column_stack(columns)
+
+
 def read_outer_predictors(root: Path = Path("."), *, expected_manifest_sha256: str = EXPECTED_MANIFEST_SHA256) -> dict[str, Any]:
     """Read all three fixed regions and encode predictors with retained_full."""
 
@@ -157,7 +172,7 @@ def read_outer_predictors(root: Path = Path("."), *, expected_manifest_sha256: s
     _require(merged["_region_order"].notna().all(), "region_order_missing")
     merged = merged.sort_values(["_region_order", "row", "column", "cell_id"], kind="mergesort").reset_index(drop=True)
     frame = merged[PREDICTORS]
-    encoded = _encode_predictors(frame, bound["transform"])
+    encoded = _encode_retained_full(frame, bound["transform"])
     _require(encoded.shape == (len(merged), EXPECTED_FEATURES), "encoded_feature_shape_drift")
     _require(np.isfinite(encoded).all(), "encoded_predictors_nonfinite")
     longitude = merged["longitude"].to_numpy(dtype=float)
@@ -181,6 +196,7 @@ def read_outer_predictors(root: Path = Path("."), *, expected_manifest_sha256: s
         "rows": len(merged),
         "rows_by_region": {region: int(sum(value == region for value in regions)) for region in REGIONS},
         "feature_count": int(encoded.shape[1]),
+        "feature_dtype": str(encoded.dtype),
         "feature_order": [*CONTINUOUS, *[f"{name}={level}" for name in CATEGORICAL for level in bound["transform"]["categorical"][name]]],
         "cell_id_sha256": _digest_strings(cell_ids),
         "region_sha256": _digest_strings(regions),

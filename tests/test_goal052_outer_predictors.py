@@ -52,6 +52,7 @@ def _fixture(tmp_path: Path):
         ]
     )
     base = {name: [1.0, np.nan, 3.0] for name in reader.CONTINUOUS}
+    base["bio01"][0] = 10.246913578246913
     predictors = pd.DataFrame({"cell_id": ["c1", "c2", "c3"], "region": [reader.PREDICTOR_SOURCE_REGION] * 3, **base})
     predictors["nvis_mvg"] = ["known", None, "unknown"]
     predictors["soil_order"] = ["s0", "unseen-soil", "s1"]
@@ -82,6 +83,8 @@ def test_response_free_read_and_deterministic_order_with_missing_unseen(tmp_path
     for name in first["arrays"]:
         np.testing.assert_array_equal(first["arrays"][name], second["arrays"][name])
     assert first["arrays"]["x"].shape == (3, 103)
+    assert first["arrays"]["x"].dtype == np.float64
+    assert first["arrays"]["x"][0, 0] == (10.246913578246913 - 10.0) / 2.0
     assert np.isfinite(first["arrays"]["x"]).all()
     # c2 has a missing continuous value and categorical missing/unseen values;
     # the retained transform must encode them as finite mean/__MISSING__/__UNSEEN__.

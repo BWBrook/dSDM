@@ -395,3 +395,23 @@ primary mask, contrast or threshold. Because inner target weights were not
 retained, record the unavailable identical-grid score comparison as a limitation
 of fixed OOF-threshold transfer; do not add replay fits or recalibrate on outer
 outcomes in this review.
+
+## 3 October 2026 — implement the agreed retained-full outer assessment
+
+Fable 839 accepts the corrections and requires no further discussion before
+outer scores unless a fixed definition changes. Barry explicitly authorizes
+proceeding on this basis. Implement the fixed 4,242-fit inventory, using the
+accepted ANN medians, native retained-full transforms and whole-block exclusion.
+`OuterImplementation-20261003.md` records seed namespaces and technical choices.
+Preserve every fitted state and finish verified prediction closure before
+response access. Engineering corrections before preparation include preserving
+float64 transformed predictors for conventional/q prediction and validating
+actual canary worker concurrency; neither changes the scientific recipe.
+
+Select Deep for the initial CPU qualification/profile, with an isolated source
+export and existing environment. The full-row profile is limited to six hours
+and a 16 GiB available-memory floor. Test up to 24 single-thread canary workers;
+choose production capacity from measured memory and time. This is covered by
+existing compute-allocation authority. Any change to a fixed scientific
+definition must be raised before opening responses; routine source/runtime
+repairs proceed within the approved assessment.

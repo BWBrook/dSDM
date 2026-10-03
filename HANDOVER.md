@@ -5,7 +5,35 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Current handoff — 2 October, scientific follow-up and all ANN budgets accepted
+## Current handoff — 3 October, outer implementation and runtime preparation
+
+Fable's message **839** accepts the scientific corrections and needs no reply
+or further review before outer scores unless implementation changes a fixed
+definition. Barry explicitly instructed Astra to proceed. Task retrieval cursor
+is **845**. The next substantive board contribution is the outer assessment.
+
+The retained-full implementation is in `src/dsdm_phase1/goal052_outer*.py`.
+`OuterImplementation-20261003.md` records full-fold seeds, fixed-budget replay,
+staged q scaling, fitted-state preservation, prediction closure and scoring.
+It consumes the accepted 80 ANN budgets and enumerates 4,242 fits. All 144,860
+outer predictor rows retain the native float64 transform before any neural
+float32 conversion. Synthetic tests cover native replay, data rules, exact
+model reloads, closure corruption, fixed thresholds and runtime qualification.
+
+Actual retained-data preparation, host profiling and production are the current
+engineering work. Deep is available (64 logical CPUs, about 123 GiB available
+memory at 17:32 AEST). Use an isolated source export there; preserve its older
+checkout and recovery evidence. The runtime supports CPU only. Test 24 actual
+single-thread worker processes, then choose production concurrency from the
+full-row memory/runtime profile. The initial profile has a six-hour cap and a
+16 GiB host available-memory floor. Do not promote profiling fits to production.
+
+**No outer response rows have been opened.** Complete and independently verify
+all fitted models, component seed averages, ensemble predictions and threshold
+bindings before the scoring entrypoint can load responses. Existing opening
+and compute authority applies. No recurring monitor is configured.
+
+## Historical handoff — 2 October, scientific follow-up and all ANN budgets accepted
 
 Fable's message **810** withdraws the mechanism claim, architecture/PCA bounds,
 rough ceiling and interpretation of the proposed richness-covariate experiment.
