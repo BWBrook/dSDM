@@ -468,8 +468,17 @@ def audit_run(root: Path, run: Path, *, production: bool = True,
     _HASH_CACHE.clear()
     started = utc_now()
     script_hash = sha256_file(Path(__file__).resolve())
-    require(not (run / "scores.json").exists() and not (run / "scoring-failure.json").exists(),
-            "post_response_or_scoring_artifact_present", str(run))
+    forbidden_artifacts = [
+        path
+        for path in (run / "scores.json", run / "scoring-failure.json")
+        if path.exists()
+    ]
+    forbidden_artifacts.extend(
+        path for path in sorted(run.glob("response-access*.json"))
+        if path not in forbidden_artifacts
+    )
+    require(not forbidden_artifacts, "post_response_or_scoring_artifact_present",
+            ", ".join(str(path) for path in forbidden_artifacts))
     plan_path = run / "plan.json"
     plan_sha = cached_sha256(plan_path)
     plan = read_json(plan_path)
@@ -721,7 +730,8 @@ def audit_run(root: Path, run: Path, *, production: bool = True,
             "ensemble_arms": 1, "domain_rows_per_arm": domain_rows,
             "closure_files": len(closure_files), "hashed_files": len(_HASH_CACHE),
             "hashed_bytes": sum(signature[1] for signature, _ in _HASH_CACHE.values()),
-            "pre_score_absence": True, "outer_response_content_opened": False,
+            "pre_score_absence": True, "pre_response_access_absence": True,
+            "outer_response_content_opened": False,
         },
     }
     return result
@@ -925,6 +935,10 @@ def self_test() -> dict[str, Any]:
             ("missing_model", "missing_file", lambda r, u: next((u / "fits").glob("conventional.*/model.json")).unlink()),
             ("source_drift", "file_hash_mismatch", lambda r, u: (r / "source.py").write_text("changed\n")),
             ("qualification_tamper", "file_hash_mismatch", lambda r, u: (u / "qualification/canary.json").write_text("{}\n")),
+            ("response_access_started_artifact", "post_response_or_scoring_artifact_present",
+             lambda r, u: _write_json(u / "response-access.json", {"status": "response_access_started"})),
+            ("response_access_success_artifact", "post_response_or_scoring_artifact_present",
+             lambda r, u: _write_json(u / "response-access-success.json", {"status": "response_access_complete"})),
             ("wrong_seed_mean", "closed_seed_mean_mismatch",
              lambda r, u: _rewrite_closed_prediction(u, lambda arrays: arrays[CONVENTIONAL_ARMS[0]].__setitem__(0, arrays[CONVENTIONAL_ARMS[0]][0] + 0.01))),
             ("wrong_ensemble", "closed_ensemble_mismatch",

@@ -114,3 +114,10 @@ panel denominators, missing values, nested regional attenuation, the fixed
 ensemble and the arithmetic richness decomposition. Synthetic scoring fixtures
 test the actual output schema. These two operational helpers do not change the
 hash-bound scientific source or the frozen plan.
+
+`scripts/goal052_outer_independent_audit.py` independently reconstructs the task
+inventory and verifies source/input bindings, fitted leaves, qualifications,
+seed means, the fixed ensemble and the complete prediction closure. It rejects
+existing score files and any native response-access receipt. Run it before
+transferring the canonical response source or invoking the scorer, and bind its
+passing receipt to the exact plan and closure hashes.
