@@ -415,3 +415,10 @@ choose production capacity from measured memory and time. This is covered by
 existing compute-allocation authority. Any change to a fixed scientific
 definition must be raised before opening responses; routine source/runtime
 repairs proceed within the approved assessment.
+
+The initial actual-host canary failed on serialized ANN payload size only
+(49,050 versus 49,062 bytes), as reproduced in a 24-process diagnostic. Preserve
+that failed run and its plan. Exclude file size from numerical-repeat equality,
+retain it for resource profiling, and explicitly compare ANN fitted-weight
+digests. All numerical requirements remain exact. Use a fresh source-bound
+plan and isolated `-r2` export; the first attempt produced no full-data fit.

@@ -78,6 +78,13 @@ process before selecting production concurrency. Profile all three conventional
 families, auxiliary pretraining, q and all four neural target arms. No production
 worker count may exceed the measured memory limit or the tested concurrency.
 
+The first actual Deep canary rejected a 12-byte difference in serialized ANN
+file sizes. A separate 24-process diagnostic found no other repeated-receipt
+difference. Preserve that failed attempt. Serialization size remains a resource
+measurement; deterministic qualification compares exact scores and states,
+including an explicit ANN weight digest. No numerical tolerance changed. Freeze
+a fresh source-bound plan for run `outer-assessment-20261003-r2` before retrying.
+
 The scorer retains the original common 73 and regional 88/122/134 panels,
 X10 and X20 gates, all six registered contrasts and fixed thresholds. The
 prospective richness diagnostics and exploratory AUC-only ensemble follow

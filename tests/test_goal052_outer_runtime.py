@@ -19,6 +19,14 @@ def test_runtime_fingerprint_excludes_dynamic_resource_probe(monkeypatch):
     assert first["runtime"]["torch_deterministic_algorithms"] is True
 
 
+def test_canary_comparison_excludes_serialized_size_but_requires_exact_numerics():
+    first = {"conventional": {"ann02": {"model_size_bytes": 49050, "score_digest": "scores", "state_digest": "weights"}}}
+    second = {"conventional": {"ann02": {"model_size_bytes": 49062, "score_digest": "scores", "state_digest": "weights"}}}
+    assert runtime._strip_dynamic(first) == runtime._strip_dynamic(second)
+    second["conventional"]["ann02"]["state_digest"] = "changed"
+    assert runtime._strip_dynamic(first) != runtime._strip_dynamic(second)
+
+
 def test_synthetic_canary_repeats_are_exact_and_cover_native_paths():
     repeats = runtime._run_canary_repetitions(Path("."), "cpu", 2)
     assert len(repeats) == 2

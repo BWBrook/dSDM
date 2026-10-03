@@ -21,7 +21,7 @@ from .seawfb_modeling import digest, require, sha256_file, slug, stable_seed
 INVENTORY = Path("evidence/seawfb_dsdm/goal052/outer-inventory-20260929.json")
 RECOVERY = Path("evidence/seawfb_dsdm/goal052/ann-recovery-review-20261002.json")
 PANEL = Path("evidence/seawfb_canonical_response/goal049/panel_summary.json")
-PRIVATE = Path("data/processed/dsdm/goal052-seawfb-dsdm-experiment/outer-assessment-20261003")
+PRIVATE = Path("data/processed/dsdm/goal052-seawfb-dsdm-experiment/outer-assessment-20261003-r2")
 CONVENTIONAL = ("selected_conventional", "selected_conventional_plus_q")
 ARMS = (*native.ARMS, *CONVENTIONAL)
 ENSEMBLE = "fixed_ensemble"

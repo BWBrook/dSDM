@@ -28,6 +28,15 @@ single-thread worker processes, then choose production concurrency from the
 full-row memory/runtime profile. The initial profile has a six-hour cap and a
 16 GiB host available-memory floor. Do not promote profiling fits to production.
 
+The initial Deep canary stopped before profiling because ANN serialized file
+sizes differed by 12 bytes between processes. A 24-process diagnostic reproduced
+only that storage-size difference; every recorded numerical comparison matched.
+Preserve the initial plan `8ec8e7ce...` and its failed receipts under
+`outer-assessment-20261003`. The repaired comparison excludes serialized size,
+retains exact prediction/state checks and adds an explicit ANN weight digest.
+The fresh run is `outer-assessment-20261003-r2`, on the separate Deep export
+`/data/codex/repos/dSDM-outer-20261003-r2`. No production fit ran in attempt 1.
+
 **No outer response rows have been opened.** Complete and independently verify
 all fitted models, component seed averages, ensemble predictions and threshold
 bindings before the scoring entrypoint can load responses. Existing opening

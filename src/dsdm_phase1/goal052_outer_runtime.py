@@ -347,7 +347,8 @@ def _canary_repetition(root: str, repeat: int, device: str) -> dict[str, Any]:
             envelope = fitted.serialize(path)
             reloaded = load_fitted_model(path, envelope["whole_file_sha256"])
             require(np.array_equal(scores, reloaded.predict_scores(batch)), f"canary_save_reload_mismatch:{candidate_id}")
-            conventional[candidate_id] = {"family": family, "score_digest": _digest(scores.tolist()), "iterations": report.iterations, "model_size_bytes": int(path.stat().st_size)}
+            conventional[candidate_id] = {"family": family, "score_digest": _digest(scores.tolist()), "iterations": report.iterations, "model_size_bytes": int(path.stat().st_size),
+                                          "state_digest": _state_digest(fitted.model.state_dict()) if family == "shallow_ann" else None}
     return {
         "repeat": repeat,
         "pid": os.getpid(),
@@ -390,7 +391,9 @@ def _strip_dynamic(value: Any) -> Any:
         return {
             key: _strip_dynamic(item)
             for key, item in value.items()
-            if key not in {"repeat", "pid", "runtime_seconds", "elapsed_seconds", "wall_seconds", "peak_rss_bytes", "resources"}
+            # Serialized PyTorch storage identifiers can change payload size
+            # between processes; compare numerical states and scores instead.
+            if key not in {"repeat", "pid", "runtime_seconds", "elapsed_seconds", "wall_seconds", "peak_rss_bytes", "model_size_bytes", "resources"}
         }
     if isinstance(value, list):
         return [_strip_dynamic(item) for item in value]
@@ -459,7 +462,11 @@ def qualify(root: Path, run: Path, device: str = "cpu", workers: int = 1) -> dic
         repeats = _run_canary_repetitions(root, device, workers)
         require(len(repeats) >= len(CANARY_REPEATS), "outer_runtime_canary_repeat_count")
         reference = _strip_dynamic(repeats[0])
-        require(all(_strip_dynamic(item) == reference for item in repeats[1:]), "outer_runtime_canary_repeat_drift")
+        repeated_exactly = all(_strip_dynamic(item) == reference for item in repeats[1:])
+        if not repeated_exactly:
+            write_once(paths["canary"].with_name(paths["canary"].stem + "-failed.json"),
+                       {"status": "canary_repeat_drift", "plan_digest": plan["plan_digest"], "repeats": repeats})
+        require(repeated_exactly, "outer_runtime_canary_repeat_drift")
         receipt = {
             "schema_version": SCHEMA_VERSION,
             "status": CANARY_STATUS,
