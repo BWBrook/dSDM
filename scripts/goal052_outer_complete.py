@@ -32,7 +32,8 @@ SCORE_TIMEOUT_SECONDS = 12.0 * 3600.0
 REPORT_TIMEOUT_SECONDS = 2.0 * 3600.0
 TRANSFER_ATTEMPTS = 3
 RUNTIME_CONTROL = "runtime-control-001/complete.json"
-PRODUCTION_CONTROL = "production-control-001/complete.json"
+PRODUCTION_CONTROL = "production-control-{}/complete.json"
+STAGE_HELPER_RELATIVE = "scripts/goal052_outer_stage.py"
 CONFIG_RELATIVE = "config/goal049_seawfb_canonical_response.json"
 COMPLETION_RELATIVE = "evidence/seawfb_canonical_response/goal049/completion_receipt.json"
 SUPERVISOR_RELATIVE = "scripts/goal052_outer_supervise.py"
@@ -301,8 +302,14 @@ def _validate_args(args: argparse.Namespace) -> None:
         raise ControllerError("campaign caps are 72 production hours and 84 overall hours")
     if args.overall_hours < args.production_hours:
         raise ControllerError("--overall-hours must cover --production-hours")
-    if args.attempt != "001":
-        raise ControllerError("this one-shot campaign requires --attempt 001")
+    attempt = str(args.attempt)
+    restart_from = getattr(args, "restart_from", None)
+    if attempt not in {"001", "002"}:
+        raise ControllerError("unknown continuation attempt: {}".format(attempt))
+    if attempt == "001" and restart_from not in (None, ""):
+        raise ControllerError("--restart-from is only valid for manual attempt 002")
+    if attempt == "002" and restart_from != "001":
+        raise ControllerError("manual attempt 002 requires --restart-from 001")
     if len(args.expected_plan_digest) != 64 or any(ch not in "0123456789abcdef" for ch in args.expected_plan_digest):
         raise ControllerError("--expected-plan-digest must be a lowercase SHA-256 digest")
     if not args.remote_host or not args.remote_root or not args.run_relative:
@@ -522,13 +529,16 @@ def _thread_exports() -> str:
 
 
 def _launch_command(remote_root: str, remote_run: str, workers: int,
-                    production_hours: float, attempt: str) -> str:
+                    production_hours: float, attempt: str,
+                    restart_from: Optional[str] = None) -> str:
     python = str(Path(remote_root) / ".venv/bin/python")
     supervisor = str(Path(remote_root) / SUPERVISOR_RELATIVE)
     log = str(Path(remote_run) / "production-supervisor-{}.log".format(attempt))
     argv = [python, supervisor, "--root", remote_root, "--run", remote_run,
             "--python", python, "--workers", str(workers),
             "--max-hours", str(production_hours), "--attempt", attempt]
+    if restart_from is not None:
+        argv.extend(["--recover-stage-logging", "--restart-from", restart_from])
     rendered = " ".join(shlex.quote(item) for item in argv)
     return "export {}; cd {} || exit 1; nohup {} > {} 2>&1 < /dev/null & printf '%s\\n' \"$!\"".format(
         _thread_exports(), shlex.quote(remote_root), rendered, shlex.quote(log))
@@ -732,8 +742,10 @@ def _wait_for_runtime(transport: Any, host: str, remote_run: str,
 def _wait_for_production(transport: Any, host: str, remote_run: str,
                          expected_digest: str, plan_sha: str,
                          deadline: float, clock: Callable[[], float], sleeper: Callable[[float], None],
-                         heartbeat: Optional[Callable[[str], None]] = None) -> Tuple[Dict[str, Any], bytes]:
-    remote_path = _remote_path(remote_run, PRODUCTION_CONTROL)
+                         heartbeat: Optional[Callable[[str], None]] = None,
+                         expected_attempt: str = "001",
+                         expected_stage_helper_sha: Optional[str] = None) -> Tuple[Dict[str, Any], bytes]:
+    remote_path = _remote_path(remote_run, PRODUCTION_CONTROL.format(expected_attempt))
     while True:
         polled = _poll_json(transport, host, remote_path, deadline, clock)
         if polled is not None:
@@ -748,6 +760,8 @@ def _wait_for_production(transport: Any, host: str, remote_run: str,
                     raise ControllerError("remote production plan digest mismatch")
                 if complete.get("plan_sha256") != plan_sha:
                     raise ControllerError("remote production plan SHA mismatch")
+                if expected_stage_helper_sha is not None and complete.get("recovery_helper_sha256") != expected_stage_helper_sha:
+                    raise ControllerError("remote production stage-helper source SHA mismatch")
                 commands = complete.get("commands")
                 if (not isinstance(commands, list) or len(commands) != len(STAGES) or any(
                     not isinstance(item, Mapping) or item.get("stage") != STAGES[index]
@@ -771,7 +785,8 @@ def _reconcile_production_launch(transport: Any, host: str, remote_control: str,
                                  expected_supervisor_sha: str, expected_workers: int,
                                  expected_max_hours: float, expected_attempt: str,
                                  deadline: float, clock: Callable[[], float],
-                                 sleeper: Callable[[float], None]) -> Optional[int]:
+                                 sleeper: Callable[[float], None],
+                                 expected_stage_helper_sha: Optional[str] = None) -> Optional[int]:
     """Recover an uncertain SSH launch from the supervisor's immutable control."""
     manifest_path = _remote_path(remote_control, "manifest.json")
     if not _is_remote_file(transport, host, manifest_path, deadline, clock, sleeper):
@@ -787,6 +802,8 @@ def _reconcile_production_launch(transport: Any, host: str, remote_control: str,
             or manifest.get("attempt") != expected_attempt
             or manifest.get("plan_sha256") != expected_plan_sha
             or manifest.get("source_supervisor_sha256") != expected_supervisor_sha
+            or (expected_stage_helper_sha is not None
+                and manifest.get("recovery_helper_sha256") != expected_stage_helper_sha)
             or not isinstance(args, Mapping)
             or workers != expected_workers
             or max_hours != float(expected_max_hours)
@@ -804,6 +821,233 @@ def _reconcile_production_launch(transport: Any, host: str, remote_control: str,
             if isinstance(stage, Mapping) and isinstance(stage.get("pid"), int) and stage["pid"] > 0:
                 return int(stage["pid"])
     return None
+
+
+def _remote_process_table(transport: Any, host: str, deadline: float,
+                          clock: Callable[[], float], sleeper: Callable[[float], None]) -> str:
+    """Return a command-bearing process table for identity-safe restart checks."""
+    return _ssh_text(transport, host, "ps -eo pid=,pgid=,args=", deadline, clock,
+                     retries=1, sleeper=sleeper)
+
+
+def _require_prior_processes_dead(transport: Any, host: str,
+                                  process_records: Sequence[Mapping[str, Any]],
+                                  deadline: float, clock: Callable[[], float],
+                                  sleeper: Callable[[float], None]) -> None:
+    """Fail closed on an active or ambiguously reused prior PID/PGID.
+
+    A numeric ``kill -0`` result is insufficient here: a recycled PID must not
+    be mistaken for the old production process.  The command-bearing process
+    table binds both PID and process group to the recorded command identity.
+    """
+    table = _remote_process_table(transport, host, deadline, clock, sleeper)
+    rows = []
+    for line in table.splitlines():
+        fields = line.strip().split(None, 2)
+        if len(fields) < 2:
+            continue
+        try:
+            pid, pgid = int(fields[0]), int(fields[1])
+        except ValueError:
+            continue
+        rows.append((pid, pgid, fields[2] if len(fields) == 3 else ""))
+    for record in process_records:
+        try:
+            pid = int(record.get("pid"))
+            pgid = int(record.get("process_group", pid))
+        except (TypeError, ValueError):
+            raise ControllerError("prior process identity is malformed")
+        if pid <= 0 or pgid <= 0:
+            raise ControllerError("prior process identity is non-positive")
+        expected = record.get("command")
+        expected_text = " ".join(str(part) for part in expected) if isinstance(expected, list) else str(expected or "")
+        for observed_pid, observed_pgid, observed_args in rows:
+            if observed_pid != pid and observed_pgid != pgid:
+                continue
+            # A same-PID or same-PGID process with a different command is a
+            # possible PID reuse or group collision, so it is never ignored.
+            if expected_text and not all(token in observed_args for token in (
+                    "goal052_outer_supervise.py" if "supervise" in expected_text else "dsdm_phase1.goal052_outer" ,)):
+                raise ControllerError("prior process identity is ambiguous or PID was reused")
+            raise ControllerError("prior production process or group is still active")
+
+
+def _hash_remote_file(transport: Any, host: str, path: str, deadline: float,
+                      clock: Callable[[], float], sleeper: Callable[[float], None]) -> str:
+    if not _is_remote_file(transport, host, path, deadline, clock, sleeper):
+        raise ControllerError("prior immutable file is missing: {}".format(path))
+    return _remote_sha256(transport, host, path, deadline, clock, sleeper)
+
+
+def _validate_manual_restart(transport: Any, host: str, root: Path, run: Path,
+                             remote_root: str, remote_run: str,
+                             metadata: Mapping[str, Any], expected_digest: str,
+                             plan_sha: str, expected_supervisor_sha: str,
+                             expected_stage_helper_sha: str, deadline: float,
+                             clock: Callable[[], float], sleeper: Callable[[float], None]) -> Dict[str, Any]:
+    """Validate the exact failed attempt that a manual 002 restart may follow."""
+    prior = "001"
+    prior_control = run / "continuation-control-001"
+    required_local = [prior_control / name for name in ("manifest.json", "complete.json", "status.json",
+                                                         "production-process.json")]
+    if any(not path.is_file() for path in required_local):
+        raise ControllerError("manual restart requires complete local attempt 001 evidence")
+    local_manifest_raw = (prior_control / "manifest.json").read_bytes()
+    local_complete_raw = (prior_control / "complete.json").read_bytes()
+    local_status_raw = (prior_control / "status.json").read_bytes()
+    prior_manifest = _read_json_bytes(local_manifest_raw, str(required_local[0]))
+    prior_complete = _read_json_bytes(local_complete_raw, str(required_local[1]))
+    prior_status = _read_json_bytes(local_status_raw, str(required_local[2]))
+    prior_manifest_sha = sha256_bytes(local_manifest_raw)
+    if (prior_manifest.get("attempt") != prior or prior_complete.get("attempt") != prior
+            or prior_status.get("attempt") != prior
+            or prior_manifest.get("plan_sha256") != plan_sha
+            or prior_complete.get("schema_version") != "goal052-outer-continuation-complete-v1"
+            or prior_complete.get("status") != "failed" or prior_complete.get("success") is not False
+            or prior_status.get("status") != "failed"
+            or ("manifest_sha256" in prior_complete and prior_complete.get("manifest_sha256") != prior_manifest_sha)
+            or ("remote_run" in prior_manifest and prior_manifest.get("remote_run") != remote_run)
+            or ("remote_root" in prior_manifest and prior_manifest.get("remote_root") != remote_root)):
+        raise ControllerError("prior continuation attempt 001 identity/status is invalid")
+    failure = prior_complete.get("failure", {})
+    reason = str(failure.get("reason", "")) if isinstance(failure, Mapping) else ""
+    if "remote production failed" not in reason:
+        raise ControllerError("prior continuation was not the authorized remote-production failure")
+    prior_remote_sources = prior_complete.get("remote_source_hashes", {})
+    if not isinstance(prior_remote_sources, Mapping):
+        prior_remote_sources = {}
+    prior_supervisor_sha = prior_remote_sources.get(
+        _remote_path(remote_root, SUPERVISOR_RELATIVE))
+    if not isinstance(prior_supervisor_sha, str):
+        prior_sources = prior_manifest.get("source_hashes", {})
+        prior_supervisor_sha = prior_sources.get(SUPERVISOR_RELATIVE) if isinstance(prior_sources, Mapping) else None
+    if not isinstance(prior_supervisor_sha, str) or len(prior_supervisor_sha) != 64:
+        raise ControllerError("prior supervisor source SHA is missing")
+    local_production_manifest = _read_json_bytes(
+        (run / "production-control-001" / "manifest.json").read_bytes(),
+        str(run / "production-control-001" / "manifest.json"))
+    local_production_complete = _read_json_bytes(
+        (run / "production-control-001" / "complete.json").read_bytes(),
+        str(run / "production-control-001" / "complete.json"))
+    if (local_production_manifest.get("source_supervisor_sha256") not in (None, prior_supervisor_sha)
+            or local_production_complete.get("source_supervisor_sha256") not in (None, prior_supervisor_sha)):
+        raise ControllerError("local prior production supervisor source SHA drift")
+    local_manifest_sources = prior_manifest.get("source_hashes", {})
+    if (isinstance(local_manifest_sources, Mapping)
+            and local_manifest_sources.get(SUPERVISOR_RELATIVE) not in (None, prior_supervisor_sha)):
+        raise ControllerError("local prior continuation supervisor source SHA drift")
+
+    remote_control = _remote_path(remote_root, "continuation-control-001")
+    remote_production = _remote_path(remote_run, "production-control-001")
+    remote_complete_path = _remote_path(remote_production, "complete.json")
+    remote_manifest_path = _remote_path(remote_production, "manifest.json")
+    remote_status_path = _remote_path(remote_production, "status.json")
+    remote_complete, remote_complete_raw = _ssh_json(transport, host, remote_complete_path, deadline, clock,
+                                                     retries=1, sleeper=sleeper)
+    remote_manifest, remote_manifest_raw = _ssh_json(transport, host, remote_manifest_path, deadline, clock,
+                                                     retries=1, sleeper=sleeper)
+    remote_status, remote_status_raw = _ssh_json(transport, host, remote_status_path, deadline, clock,
+                                                  retries=1, sleeper=sleeper)
+    if (remote_complete.get("attempt") != prior or remote_complete.get("status") != "failed"
+            or remote_complete.get("success") is not False
+            or remote_complete.get("plan_sha256") != plan_sha
+            or remote_complete.get("source_supervisor_sha256") != prior_supervisor_sha
+            or remote_manifest.get("attempt") != prior
+            or remote_manifest.get("plan_sha256") != plan_sha
+            or remote_manifest.get("source_supervisor_sha256") != prior_supervisor_sha
+            or ("args" in remote_manifest and isinstance(remote_manifest.get("args"), Mapping)
+                and remote_manifest["args"].get("run") not in (None, remote_run))
+            or ("args" in remote_complete and isinstance(remote_complete.get("args"), Mapping)
+                and remote_complete["args"].get("run") not in (None, remote_run))
+            or remote_status.get("status") != "failed"):
+        raise ControllerError("prior production attempt 001 identity/status is invalid")
+    commands = remote_complete.get("commands")
+    if not isinstance(commands, list) or len(commands) != 1:
+        raise ControllerError("prior production did not terminate at exactly one stage")
+    q_stage = commands[0]
+    if (not isinstance(q_stage, Mapping) or q_stage.get("stage") != "q"
+            or q_stage.get("status") != "failed" or int(q_stage.get("return_code", 0)) == 0):
+        raise ControllerError("prior production q-stage terminal failure is invalid")
+    closure = remote_complete.get("closure", {})
+    if remote_complete.get("closure_sha256") is not None or (isinstance(closure, Mapping) and closure.get("exists") is True):
+        raise ControllerError("prior production already has a closure")
+    q_log = q_stage.get("log")
+    if not isinstance(q_log, str) or os.path.isabs(q_log) or not q_log.endswith(".log"):
+        raise ControllerError("prior q-stage log binding is missing")
+    q_log_path = _remote_path(remote_production, q_log)
+    q_log_sha = _hash_remote_file(transport, host, q_log_path, deadline, clock, sleeper)
+    q_log_raw = _ssh_bytes(transport, host, "cat -- {}".format(shlex.quote(q_log_path)),
+                           deadline, clock, retries=1, sleeper=sleeper)
+    q_log_text = q_log_raw.decode("utf-8", errors="replace")
+    if ("TypeError: event() got multiple values for argument 'stage'" not in q_log_text
+            or 'event("stage_complete", **result)' not in q_log_text
+            or 'goal052_outer.py", line 331, in run_stage' not in q_log_text):
+        raise ControllerError("prior q-stage log is not the approved terminal logger failure")
+    prior_process = _read_json_bytes((prior_control / "production-process.json").read_bytes(),
+                                     str(prior_control / "production-process.json"))
+    records = []
+    if isinstance(prior_process.get("remote_pid"), int):
+        records.append({"pid": prior_process["remote_pid"], "process_group": prior_process.get("remote_pid"),
+                        "command": prior_process.get("command", "goal052_outer_supervise.py")})
+    if isinstance(q_stage.get("pid"), int):
+        records.append({"pid": q_stage["pid"], "process_group": q_stage.get("process_group", q_stage["pid"]),
+                        "command": q_stage.get("command", ["dsdm_phase1.goal052_outer", "run", "--stage", "q"])})
+    if not records:
+        raise ControllerError("prior process identity is missing")
+    _require_prior_processes_dead(transport, host, records, deadline, clock, sleeper)
+    # A response-access receipt, score failure, or canonical closure in either
+    # namespace makes a restart ambiguous and therefore stops before launch.
+    _require_response_absent(transport, host, remote_root, remote_run,
+                             metadata["response_relative"], deadline, clock, sleeper)
+    for relative in ("closure.json", "scores.json", "outer-report.md"):
+        if (run / relative).is_file():
+            raise ControllerError("prior local production artifact already exists: {}".format(relative))
+        if _is_remote_file(transport, host, _remote_path(remote_run, relative), deadline, clock, sleeper):
+            raise ControllerError("prior production artifact already exists: {}".format(relative))
+    for path in run.glob("response-access*.json"):
+        raise ControllerError("prior local response access receipt already exists: {}".format(path))
+    for path in (run / "scoring-failure.json",):
+        if path.is_file():
+            raise ControllerError("prior local scoring failure receipt already exists: {}".format(path))
+    if _is_remote_file(transport, host, _remote_path(remote_root, "continuation-control-002"), deadline, clock, sleeper):
+        raise ControllerError("new continuation control already exists")
+    if _is_remote_file(transport, host, _remote_path(remote_run, "production-control-002"), deadline, clock, sleeper):
+        raise ControllerError("new production control already exists")
+    return {
+        "attempt": prior, "plan_sha256": plan_sha,
+        "continuation_manifest_sha256": sha256_bytes(local_manifest_raw),
+        "continuation_complete_sha256": sha256_bytes(local_complete_raw),
+        "continuation_status_sha256": sha256_bytes(local_status_raw),
+        "production_manifest_sha256": sha256_bytes(remote_manifest_raw),
+        "production_complete_sha256": sha256_bytes(remote_complete_raw),
+        "production_status_sha256": sha256_bytes(remote_status_raw),
+        "q_terminal_log": q_log,
+        "q_terminal_log_sha256": q_log_sha,
+        "source_supervisor_sha256": expected_supervisor_sha,
+        "prior_source_supervisor_sha256": prior_supervisor_sha,
+        "source_stage_helper_sha256": expected_stage_helper_sha,
+        "remote_control": remote_control,
+    }
+
+
+def _local_prior_restart_evidence(run: Path) -> Dict[str, Any]:
+    """Hash the preserved local 001 receipts before creating the 002 manifest."""
+    prior = run / "continuation-control-001"
+    production = run / "production-control-001"
+    paths = {
+        "continuation_manifest_sha256": prior / "manifest.json",
+        "continuation_complete_sha256": prior / "complete.json",
+        "continuation_status_sha256": prior / "status.json",
+        "production_manifest_sha256": production / "manifest.json",
+        "production_complete_sha256": production / "complete.json",
+        "production_status_sha256": production / "status.json",
+        "q_terminal_log_sha256": production / "stage-01-q.log",
+    }
+    if any(not path.is_file() for path in paths.values()):
+        raise ControllerError("manual restart requires preserved local 001 manifests, receipts, and q log")
+    values = {key: sha256_file(path) for key, path in paths.items()}
+    values["q_terminal_log"] = "stage-01-q.log"
+    return values
 
 
 def _response_receipt(metadata: Mapping[str, Any], audit_sha: str, remote_path: str,
@@ -826,10 +1070,10 @@ def _response_receipt(metadata: Mapping[str, Any], audit_sha: str, remote_path: 
     }
 
 
-def _collect_returned_files(run: Path, closure: Mapping[str, Any]) -> Sequence[Path]:
+def _collect_returned_files(run: Path, closure: Mapping[str, Any], attempt: str = "001") -> Sequence[Path]:
     required = ["plan.json", "domain.npz", "closure.json", "scores.json", "outer-report.md",
                 "response-access.json", "response-access-success.json",
-                "production-supervisor-001.log"]
+                "production-supervisor-{}.log".format(attempt)]
     paths = [run / rel for rel in required]
     predictions = closure.get("predictions", {})
     if not isinstance(predictions, Mapping) or not predictions:
@@ -845,7 +1089,7 @@ def _collect_returned_files(run: Path, closure: Mapping[str, Any]) -> Sequence[P
     paths.extend(prediction_dir / Path(relative).name for relative in sorted(expected_predictions))
     # Runtime qualification receipts are retained under continuation-control;
     # the returned run payload contains only the production control receipts.
-    for directory in (run / "production-control-001",):
+    for directory in (run / "production-control-{}".format(attempt),):
         if not directory.is_dir():
             raise ControllerError("returned control directory missing: {}".format(directory))
         paths.extend(path for path in sorted(directory.rglob("*")) if path.is_file())
@@ -889,13 +1133,14 @@ def _return_optional_receipts(transport: Any, host: str, remote_run: str,
 def _return_artifacts(transport: Any, host: str, remote_root: str, remote_run: str,
                       remote_control: str, local_run: Path, local_control: Path,
                       closure: Mapping[str, Any], deadline: float,
-                      clock: Callable[[], float], sleeper: Callable[[float], None]) -> Dict[str, Any]:
+                      clock: Callable[[], float], sleeper: Callable[[float], None],
+                      attempt: str = "001") -> Dict[str, Any]:
     closure_files = closure.get("files")
     if not isinstance(closure_files, Mapping):
         raise ControllerError("closure remote SHA manifest is missing")
     selected = ["plan.json", "domain.npz", "closure.json", "scores.json", "outer-report.md",
                 "response-access.json", "response-access-success.json",
-                "production-supervisor-001.log"]
+                "production-supervisor-{}.log".format(attempt)]
     prediction_values = closure.get("predictions", {})
     if not isinstance(prediction_values, Mapping) or not prediction_values:
         raise ControllerError("returned closure has no prediction inventory")
@@ -923,7 +1168,7 @@ def _return_artifacts(transport: Any, host: str, remote_root: str, remote_run: s
     # Control receipts and detached-stage receipts are not part of closure.json,
     # so hash each returned file against the remote source after transfer.
     control_transfers = [
-        ("production-control-001/", remote_run, local_run / "production-control-001"),
+        ("production-control-{}/".format(attempt), remote_run, local_run / "production-control-{}".format(attempt)),
         ("audit/", remote_control, local_control / "remote-postproduction/audit"),
         ("score/", remote_control, local_control / "remote-postproduction/score"),
         ("report/", remote_control, local_control / "remote-postproduction/report"),
@@ -938,13 +1183,13 @@ def _return_artifacts(transport: Any, host: str, remote_root: str, remote_run: s
         _rsync(transport, "{}:{}".format(host, response_transfer_remote),
                str(local_control / "remote-postproduction/response-transfer.json"),
                deadline, clock, sleeper)
-    for directory, remote_base in ((local_run / "production-control-001", _remote_path(remote_run, "production-control-001")),
+    for directory, remote_base in ((local_run / "production-control-{}".format(attempt), _remote_path(remote_run, "production-control-{}".format(attempt))),
                                    (local_control / "remote-postproduction", remote_control)):
         if not directory.is_dir():
             raise ControllerError("returned control directory missing: {}".format(directory))
         for path in sorted(directory.rglob("*")):
             if path.is_file():
-                relative = str(path.relative_to(local_run)) if directory == local_run / "production-control-001" else "remote-postproduction/{}".format(path.relative_to(directory))
+                relative = str(path.relative_to(local_run)) if directory == local_run / "production-control-{}".format(attempt) else "remote-postproduction/{}".format(path.relative_to(directory))
                 remote_relative = str(path.relative_to(directory))
                 remote_manifest[relative] = _verify_remote_transfer(
                     transport, host, remote_base, remote_relative, path, None,
@@ -954,7 +1199,7 @@ def _return_artifacts(transport: Any, host: str, remote_root: str, remote_run: s
         remote_manifest["remote-postproduction/response-transfer.json"] = _verify_remote_transfer(
             transport, host, remote_control, "response-transfer.json", response_transfer, None,
             deadline, clock, sleeper)
-    paths = _collect_returned_files(local_run, closure)
+    paths = _collect_returned_files(local_run, closure, attempt)
     manifest = {str(path.relative_to(local_run)): sha256_file(path) for path in paths}
     control_manifest = {}
     excluded_control_files = {"status.json", "heartbeat.json", "complete.json"}
@@ -984,8 +1229,11 @@ def continue_campaign(args: argparse.Namespace, transport: Optional[Any] = None,
         raise ControllerError("local run directory missing: {}".format(run))
     metadata = _load_local_metadata(root, run, args.expected_plan_digest)
     plan_source_hashes = _validate_local_sources(root, metadata["plan"])
+    restart_from = getattr(args, "restart_from", None)
     source_paths = (SUPERVISOR_RELATIVE, AUDITOR_RELATIVE, REPORT_RELATIVE,
                     "scripts/goal052_outer_complete.py")
+    if args.attempt == "002":
+        source_paths = source_paths + (STAGE_HELPER_RELATIVE,)
     local_source_hashes = dict(plan_source_hashes)
     for relative in source_paths:
         local_source_hashes[relative] = sha256_file(
@@ -999,8 +1247,15 @@ def continue_campaign(args: argparse.Namespace, transport: Optional[Any] = None,
         except (BlockingIOError, OSError) as error:
             raise ControllerError("continuation run is already locked") from error
         existing_controls = sorted(run.glob("continuation-control-*"))
-        if existing_controls:
-            raise ControllerError("continuation attempt already exists: {}".format(existing_controls[0]))
+        allowed_prior = run / "continuation-control-001"
+        if args.attempt == "001":
+            if existing_controls:
+                raise ControllerError("continuation attempt already exists: {}".format(existing_controls[0]))
+        else:
+            if any(path != allowed_prior for path in existing_controls):
+                raise ControllerError("unknown or existing continuation control blocks manual restart")
+            if not allowed_prior.is_dir():
+                raise ControllerError("manual restart requires continuation-control-001")
         control = run / "continuation-control-{}".format(args.attempt)
         try:
             os.mkdir(str(control))
@@ -1009,6 +1264,7 @@ def continue_campaign(args: argparse.Namespace, transport: Optional[Any] = None,
         started = utc_now()
         status: Dict[str, Any] = {"schema_version": "goal052-outer-continuation-status-v1", "status": "running",
                                   "attempt": args.attempt, "started_utc": started, "events": []}
+        prior_restart = _local_prior_restart_evidence(run) if args.attempt == "002" else None
         manifest = {
             "schema_version": "goal052-outer-continuation-manifest-v1", "attempt": args.attempt,
             "started_utc": started, "args": {key: value for key, value in vars(args).items()
@@ -1022,7 +1278,12 @@ def continue_campaign(args: argparse.Namespace, transport: Optional[Any] = None,
                                    "size_bytes": metadata["response_size"]},
             "response_transfer_gate": "closure_and_independent_audit_required",
         }
-        _immutable_json(control / "manifest.json", manifest)
+        if prior_restart is not None:
+            manifest["manual_restart"] = {
+                "restart_from": restart_from,
+                "prior_evidence": prior_restart,
+                "mode": "explicit_manual_restart",
+            }
         _atomic_json(control / "status.json", status)
         _atomic_json(control / "heartbeat.json", {"utc": started, "stage": "preflight"})
         failure: Optional[Dict[str, Any]] = None
@@ -1032,15 +1293,18 @@ def continue_campaign(args: argparse.Namespace, transport: Optional[Any] = None,
         remote_control = _remote_path(args.remote_root, "continuation-control-{}".format(args.attempt))
         partial_returned: Dict[str, str] = {}
         try:
+            remote_source_paths = source_paths[:3]
+            if STAGE_HELPER_RELATIVE in source_paths:
+                remote_source_paths = remote_source_paths + (STAGE_HELPER_RELATIVE,)
             remote_source_text = _ssh_text(
                 transport, args.remote_host,
-                "sha256sum -- {} {} {}".format(
-                    *(shlex.quote(_remote_path(args.remote_root, relative)) for relative in source_paths[:3])
+                "sha256sum -- {}".format(
+                    " ".join(shlex.quote(_remote_path(args.remote_root, relative)) for relative in remote_source_paths)
                 ), overall_deadline, clock, retries=1, sleeper=sleeper)
             remote_source_hashes = _parse_sha256sum(
-                remote_source_text, [_remote_path(args.remote_root, relative) for relative in source_paths[:3]])
+                remote_source_text, [_remote_path(args.remote_root, relative) for relative in remote_source_paths])
             expected_remote_hashes = { _remote_path(args.remote_root, relative): local_source_hashes[relative]
-                                       for relative in source_paths[:3] }
+                                       for relative in remote_source_paths }
             if remote_source_hashes != expected_remote_hashes:
                 raise ControllerError("staged remote helper source hash mismatch")
             plan_remote_path = _remote_path(remote_run, "plan.json")
@@ -1049,8 +1313,26 @@ def continue_campaign(args: argparse.Namespace, transport: Optional[Any] = None,
             remote_plan_sha = sha256_bytes(remote_plan_raw)
             if remote_plan.get("plan_digest") != args.expected_plan_digest or remote_plan_sha != metadata["plan_sha256"]:
                 raise ControllerError("remote plan binding mismatch")
+            expected_stage_helper_sha = None
+            if args.attempt == "002":
+                expected_stage_helper_sha = local_source_hashes[STAGE_HELPER_RELATIVE]
+                prior_remote = _validate_manual_restart(
+                    transport, args.remote_host, root, run, args.remote_root, remote_run,
+                    metadata, args.expected_plan_digest, metadata["plan_sha256"],
+                    remote_source_hashes[_remote_path(args.remote_root, SUPERVISOR_RELATIVE)],
+                    expected_stage_helper_sha, overall_deadline, clock, sleeper)
+                expected_prior = manifest["manual_restart"]["prior_evidence"]
+                for key in ("continuation_manifest_sha256", "continuation_complete_sha256",
+                            "continuation_status_sha256", "production_manifest_sha256",
+                            "production_complete_sha256", "production_status_sha256",
+                            "q_terminal_log_sha256"):
+                    if prior_remote.get(key) != expected_prior.get(key):
+                        raise ControllerError("prior immutable evidence changed before restart launch")
+                manifest["manual_restart"]["remote_source_hashes"] = remote_source_hashes
+            _immutable_json(control / "manifest.json", manifest)
             _write_event(control, status, {"stage": "preflight", "status": "succeeded",
-                                           "remote_plan_sha256": remote_plan_sha})
+                                           "remote_plan_sha256": remote_plan_sha,
+                                           "restart_from": restart_from})
             _require_response_absent(transport, args.remote_host, args.remote_root, remote_run,
                                      metadata["response_relative"], overall_deadline, clock, sleeper)
 
@@ -1076,7 +1358,8 @@ def continue_campaign(args: argparse.Namespace, transport: Optional[Any] = None,
             if _is_remote_file(transport, args.remote_host, remote_production_dir,
                                overall_deadline, clock, sleeper):
                 raise ControllerError("remote production attempt already exists; refusing replay")
-            launch = _launch_command(args.remote_root, remote_run, workers, args.production_hours, args.attempt)
+            launch = _launch_command(args.remote_root, remote_run, workers, args.production_hours, args.attempt,
+                                     restart_from if args.attempt == "002" else None)
             _immutable_json(control / "production-launch.json", {
                 "stage": "production", "command": launch, "workers": workers,
                 "attempt": args.attempt, "max_hours": args.production_hours,
@@ -1095,7 +1378,8 @@ def continue_campaign(args: argparse.Namespace, transport: Optional[Any] = None,
                 remote_pid = _reconcile_production_launch(
                     transport, args.remote_host, remote_production_dir, remote_run,
                     metadata["plan_sha256"], expected_supervisor_sha, workers,
-                    args.production_hours, args.attempt, overall_deadline, clock, sleeper)
+                    args.production_hours, args.attempt, overall_deadline, clock, sleeper,
+                    expected_stage_helper_sha)
                 if remote_pid is None:
                     raise ControllerError("remote production launch outcome is uncertain; no replay permitted")
                 launch_reconciled = True
@@ -1115,7 +1399,8 @@ def continue_campaign(args: argparse.Namespace, transport: Optional[Any] = None,
             complete, complete_raw = _wait_for_production(transport, args.remote_host, remote_run,
                                                            args.expected_plan_digest, metadata["plan_sha256"],
                                                            overall_deadline, clock, sleeper,
-                                                           lambda stage: _heartbeat(control, stage))
+                                                           lambda stage: _heartbeat(control, stage),
+                                                           args.attempt, expected_stage_helper_sha)
             closure_sha = complete.get("closure_sha256") or complete.get("closure", {}).get("sha256")
             if not isinstance(closure_sha, str):
                 raise ControllerError("production completion lacks closure SHA")
@@ -1125,6 +1410,8 @@ def continue_campaign(args: argparse.Namespace, transport: Optional[Any] = None,
             if (not isinstance(recorded_supervisor_sha, str)
                     or recorded_supervisor_sha != expected_supervisor_sha):
                 raise ControllerError("production supervisor source SHA mismatch")
+            if expected_stage_helper_sha is not None and complete.get("recovery_helper_sha256") != expected_stage_helper_sha:
+                raise ControllerError("production stage-helper source SHA mismatch")
             remote_closure_sha = _remote_sha256(transport, args.remote_host, _remote_path(remote_run, "closure.json"),
                                                 overall_deadline, clock, sleeper)
             if remote_closure_sha != closure_sha:
@@ -1258,7 +1545,7 @@ def continue_campaign(args: argparse.Namespace, transport: Optional[Any] = None,
             closure = _read_json_bytes(closure_raw, "remote closure")
             returned = _return_artifacts(transport, args.remote_host, args.remote_root, remote_run,
                                          remote_control, run, control, closure,
-                                         overall_deadline, clock, sleeper)
+                                         overall_deadline, clock, sleeper, args.attempt)
             if sha256_file(run / "closure.json") != closure_sha:
                 raise ControllerError("returned closure differs from audited closure")
             scores = _read_json_bytes((run / "scores.json").read_bytes(), str(run / "scores.json"))
@@ -1311,6 +1598,11 @@ def continue_campaign(args: argparse.Namespace, transport: Optional[Any] = None,
             status["status"] = "complete"
             status["ended_utc"] = final_data["ended_utc"]
             _atomic_json(control / "status.json", status)
+        if not (control / "manifest.json").is_file():
+            # A preflight failure can occur before remote source/plan binding;
+            # retain the immutable local prior-evidence manifest so the failed
+            # manual restart remains auditable and cannot be replayed silently.
+            _immutable_json(control / "manifest.json", manifest)
         final = {"schema_version": "goal052-outer-continuation-complete-v1", "attempt": args.attempt,
                  "manifest_sha256": sha256_file(control / "manifest.json"),
                  "source_hashes": local_source_hashes,
@@ -1334,6 +1626,8 @@ def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     parser.add_argument("--production-hours", type=float, required=True)
     parser.add_argument("--overall-hours", type=float, required=True)
     parser.add_argument("--attempt", default="001")
+    parser.add_argument("--restart-from", default=None,
+                        help="explicit prior failed attempt for a manual restart (only 001 -> 002)")
     args = parser.parse_args(argv)
     args.root = args.root.resolve()
     return args

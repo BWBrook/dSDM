@@ -194,7 +194,14 @@ def _terminate_process_group(process: subprocess.Popen, reason: str,
     return action
 
 
-def _command(base: Sequence[str], root: Path, run: Path, stage: str, workers: int) -> List[str]:
+def _command(base: Sequence[str], root: Path, run: Path, stage: str, workers: int,
+             recover_stage_logging: bool = False, attempt: str = "001",
+             restart_from: Optional[str] = None) -> List[str]:
+    if recover_stage_logging and stage in ("q", "pretraining", "neural", "conventional"):
+        helper = Path(__file__).resolve().with_name("goal052_outer_stage.py")
+        return list(base) + [str(helper), "--root", str(root), "--run", str(run),
+                             "--stage", stage, "--workers", str(workers),
+                             "--attempt", attempt, "--restart-from", str(restart_from)]
     command = list(base) + [
         "-m", "dsdm_phase1.goal052_outer",
     ]
@@ -216,6 +223,8 @@ def _args_for_receipt(args: argparse.Namespace) -> Dict[str, Any]:
         "memory_floor_gib": args.memory_floor_gib,
         "disk_floor_gib": args.disk_floor_gib,
         "attempt": args.attempt,
+        "recover_stage_logging": bool(args.recover_stage_logging),
+        "restart_from": args.restart_from,
     }
 
 
@@ -265,6 +274,20 @@ def _monitor_child(process: subprocess.Popen, root: Path, started_monotonic: flo
             continue
 
 
+def _verify_recovery_receipt(control: Path, stage: str, attempt: str,
+                             plan_sha: str, helper_sha: str) -> None:
+    path = control / "stage-recovery-{}.json".format(stage)
+    if not path.is_file():
+        raise ValueError("recovery receipt missing: {}".format(path))
+    value = json.loads(path.read_text())
+    if not isinstance(value, dict):
+        raise ValueError("recovery receipt is not an object")
+    if (value.get("status") != "recovered_stage_logging" or value.get("attempt") != attempt
+            or value.get("stage") != stage or value.get("plan_sha256") != plan_sha
+            or value.get("helper_sha256") != helper_sha):
+        raise ValueError("recovery receipt binding mismatch")
+
+
 def _validate_args(args: argparse.Namespace) -> None:
     if args.workers < 1:
         raise ValueError("--workers must be >= 1")
@@ -276,6 +299,11 @@ def _validate_args(args: argparse.Namespace) -> None:
         raise ValueError("--attempt must be exactly three digits")
     if not args.python.strip():
         raise ValueError("--python must not be empty")
+    if args.recover_stage_logging:
+        if args.attempt != "002" or args.restart_from != "001":
+            raise ValueError("stage-logging recovery requires --attempt 002 and --restart-from 001")
+    elif args.restart_from is not None:
+        raise ValueError("--restart-from requires --recover-stage-logging")
 
 
 def _acquire_run_lock(run: Path):
@@ -319,9 +347,13 @@ def _supervise_locked(args: argparse.Namespace, root: Path, run: Path) -> int:
     started_monotonic = time.monotonic()
     source_path = Path(__file__).resolve()
     source_sha = _sha256(source_path)
+    recovery_helper_path = source_path.with_name("goal052_outer_stage.py")
+    recovery_helper_sha = _sha256(recovery_helper_path) if args.recover_stage_logging else None
     plan_sha = _sha256(plan_path)
     receipt_args = _args_for_receipt(args)
-    commands = [_command(python_base, root, run, stage, args.workers) for stage in STAGES]
+    commands = [_command(python_base, root, run, stage, args.workers,
+                         args.recover_stage_logging, args.attempt, args.restart_from)
+                for stage in STAGES]
     env = os.environ.copy()
     env["PYTHONPATH"] = str(root / "src")
     for name in THREAD_VARS:
@@ -333,6 +365,7 @@ def _supervise_locked(args: argparse.Namespace, root: Path, run: Path) -> int:
         "schema_version": "goal052-outer-production-status-v1",
         "status": "running", "attempt": args.attempt,
         "source_supervisor_sha256": source_sha, "plan_sha256": plan_sha,
+        "recovery_helper_sha256": recovery_helper_sha,
         "args": receipt_args, "started_utc": started_utc,
         "commands": [], "failure": None,
     }
@@ -340,6 +373,9 @@ def _supervise_locked(args: argparse.Namespace, root: Path, run: Path) -> int:
         "schema_version": "goal052-outer-production-control-v1",
         "attempt": args.attempt, "source_supervisor": str(source_path),
         "source_supervisor_sha256": source_sha,
+        "recovery_helper": (str(recovery_helper_path) if args.recover_stage_logging else None),
+        "recovery_helper_sha256": recovery_helper_sha,
+        "restart_from": args.restart_from,
         "plan": str(plan_path), "plan_sha256": plan_sha,
         "args": receipt_args, "started_utc": started_utc,
         "commands": commands, "resource_limits": {
@@ -381,6 +417,8 @@ def _supervise_locked(args: argparse.Namespace, root: Path, run: Path) -> int:
                 "pid": None, "process_group": None, "return_code": None,
                 "duration_seconds": None, "status": "running",
             }
+            if args.recover_stage_logging and stage in ("q", "pretraining", "neural", "conventional"):
+                stage_record["recovery_helper_sha256"] = recovery_helper_sha
             status["commands"].append(stage_record)
             status["current_stage"] = stage
             _atomic_write(control / "status.json", status)
@@ -418,7 +456,15 @@ def _supervise_locked(args: argparse.Namespace, root: Path, run: Path) -> int:
                 original_failure = {"reason": "stage_nonzero", "stage": stage,
                                     "return_code": return_code}
             else:
-                stage_record["status"] = "succeeded"
+                try:
+                    if args.recover_stage_logging and stage in ("q", "pretraining", "neural", "conventional"):
+                        _verify_recovery_receipt(control, stage, args.attempt, plan_sha, recovery_helper_sha)
+                    stage_record["status"] = "succeeded"
+                except (OSError, ValueError, json.JSONDecodeError) as error:
+                    stage_record["status"] = "failed"
+                    stage_record["failure_reason"] = "recovery_receipt_invalid"
+                    stage_record["recovery_receipt_error"] = str(error)
+                    original_failure = {"reason": "recovery_receipt_invalid", "stage": stage}
             _immutable_write(control / "stage-{:02d}-{}.json".format(index, stage), dict(stage_record))
             status["failure"] = original_failure
             _atomic_write(control / "status.json", status)
@@ -448,6 +494,7 @@ def _supervise_locked(args: argparse.Namespace, root: Path, run: Path) -> int:
         "args": receipt_args, "started_utc": started_utc, "ended_utc": ended_utc,
         "duration_seconds": time.monotonic() - started_monotonic,
         "commands": status["commands"], "failure": original_failure,
+        "recovery_helper_sha256": recovery_helper_sha,
         "closure_sha256": closure_sha,
         "closure": {"path": "closure.json", "exists": closure_exists,
                      "sha256": closure_sha},
@@ -490,6 +537,10 @@ def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     parser.add_argument("--memory-floor-gib", type=float, default=16.0)
     parser.add_argument("--disk-floor-gib", type=float, default=200.0)
     parser.add_argument("--attempt", default="001")
+    parser.add_argument("--recover-stage-logging", action="store_true",
+                        help="use the bound terminal-logger recovery wrapper for fitting stages")
+    parser.add_argument("--restart-from", default=None,
+                        help="failed prior attempt to validate before recovery")
     args = parser.parse_args(argv)
     args.root = args.root.resolve()
     args.run = args.run.resolve()

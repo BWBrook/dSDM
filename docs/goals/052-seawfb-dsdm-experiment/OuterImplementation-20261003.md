@@ -143,3 +143,30 @@ status/heartbeat files and the subsequently written completion receipt are
 explicitly excluded from that manifest. Native response-access evidence is
 retrieved on failure where the connection permits. This is one bounded campaign,
 not a recurring app automation.
+
+## 4 October: recovery after terminal stage logging failure
+
+Actual Deep qualification passed: the full-row profile took 3 h 17 min and
+measured a 4.09 GiB peak. Its 22-worker qualification and fresh RAM check led
+to 20 production workers. All ten q fits converged and were saved, then the
+native runner's final `event("stage_complete", **result)` call failed because
+`result` also contains `stage`. The supervisor and continuation stopped; no
+subsequent fitting stage, closure or response access occurred. The original
+attempt and returned q models are retained. The tracked stop review records
+native verification of all ten q leaves and their unchanged bindings.
+
+Recovery uses a separate operational stage launcher for this frozen runner.
+It calls the unchanged native stage, accepts only the exact source-bound
+terminal logging exception after every worker has completed, and verifies the
+entire stage inventory and every saved leaf before returning success. All
+pre-existing fit files must retain their hashes. Its immutable recovery receipt
+records the original exception, plan, source, qualification and artifact hashes.
+Other errors still fail the stage. The numerical source, plan, qualification,
+seeds, budgets and accepted fits remain unchanged.
+
+An explicit manual continuation attempt `002`, bound to failed attempt `001`,
+uses this launcher for the four fitting stages. Native closure and verification,
+the independent response-free audit and the native response-access gate retain
+their previous roles. Prior and new control directories remain separate; the
+controller does not automatically retry a failed attempt. The recovery launcher
+is specific to the frozen source hash and is not a general exception handler.

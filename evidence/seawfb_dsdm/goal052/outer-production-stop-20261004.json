@@ -1,0 +1,165 @@
+{
+  "closure_exists": false,
+  "completed_fits": [
+    {
+      "accepted_attempt": "tertiary",
+      "files": {
+        "model.npz": "df715e6a28268d36905e85b7fb4020ace572404d77ceaacbadad41cf4cd9dea5"
+      },
+      "id": "q.block00",
+      "iterations": 10209,
+      "parameter_digest": "27e5ec9725c9be1a220908d2e39f688278b1d3ca0adf0d390bbd5ae0f80cf639",
+      "receipt_sha256": "9c5b0392606594f2d089f019dc93275a354d2cf82bd52046544ae5f7c4aab916",
+      "runtime_seconds": 9850.657759224996
+    },
+    {
+      "accepted_attempt": "tertiary",
+      "files": {
+        "model.npz": "64f9cc45c999ab6d8a3f52294fea17ecf95e1f4950a8f4e0104fe1c51cd6318c"
+      },
+      "id": "q.block01",
+      "iterations": 10609,
+      "parameter_digest": "449c9e85fee736b7e084106df7313095298a552168a1ed4e360b7bc265bb0bf7",
+      "receipt_sha256": "371ca3479cb1c302e1dc071185fe76ca414f694aeb397e9824312e3a8087eb3a",
+      "runtime_seconds": 10031.433027126943
+    },
+    {
+      "accepted_attempt": "extended",
+      "files": {
+        "model.npz": "a1ef832cac2cd6a3ffdae5f380bd4150dbca110b5b979b35c7c1cb8461c3e23f"
+      },
+      "id": "q.block02",
+      "iterations": 9595,
+      "parameter_digest": "6cf1686712d50a2aa17af689086a66c40fb1df937e90d92647087d87913a6abf",
+      "receipt_sha256": "94809879c6b6b66d49342a0afa99e4b7af8e106fc9e7db3cedab6d6fa1a65b9d",
+      "runtime_seconds": 5929.699521550909
+    },
+    {
+      "accepted_attempt": "tertiary",
+      "files": {
+        "model.npz": "b95bc19cb48c91eb924b85d4d3c5a046894818a551001cc618d0ea917362babd"
+      },
+      "id": "q.block03",
+      "iterations": 10079,
+      "parameter_digest": "685e6ce168ab0f3d66a2a14533e18456a1ccf019afa8a140525f719785e10766",
+      "receipt_sha256": "a53df30dc279793320f5ab74b7beba80e9a47308b2b144be823e3222dced80b1",
+      "runtime_seconds": 9658.077907075989
+    },
+    {
+      "accepted_attempt": "extended",
+      "files": {
+        "model.npz": "a433d4da90ae53206ef04ceedfc37d312d6cf990fb59fa44a474224344cc6409"
+      },
+      "id": "q.block04",
+      "iterations": 9999,
+      "parameter_digest": "b24c68714b53e66aa62face87412b1ec29138e68674c0a5585074a9aef833295",
+      "receipt_sha256": "03d83b2dceea66896eba6ba15409d0affe6a11a25115d555bc62c1f3da3139eb",
+      "runtime_seconds": 5820.158023405937
+    },
+    {
+      "accepted_attempt": "extended",
+      "files": {
+        "model.npz": "a68057592a673cb3afe5e6280e6d86925823ea444f3da353368d12b095dd4d19"
+      },
+      "id": "q.block05",
+      "iterations": 9772,
+      "parameter_digest": "58cd30543e1b53bc48dcf537516941a5afeb23ac58f847945cc995d90c56762d",
+      "receipt_sha256": "40d890480d58efedc033a58f3724153be59bd02236d9b06d8c882fd811cc5b41",
+      "runtime_seconds": 5637.591767627047
+    },
+    {
+      "accepted_attempt": "extended",
+      "files": {
+        "model.npz": "79b3d74ea14ef70cdd762f79e0ff202142e4a574cb5c30888167e7403e0c41dc"
+      },
+      "id": "q.block06",
+      "iterations": 9838,
+      "parameter_digest": "0894fcb73c7c83cc58f80e5cd8ad34c711caa0e9cd46bd52afddee97f0f15d40",
+      "receipt_sha256": "501963da125fa90f2f5eb5af42e7b176f21fbca1c5e294cab471bfa1544631b2",
+      "runtime_seconds": 5782.105737998034
+    },
+    {
+      "accepted_attempt": "tertiary",
+      "files": {
+        "model.npz": "d53166c280d12adc062f8279b2f63a44891d9f3aa8c2dfb93adcc1fd396ce791"
+      },
+      "id": "q.block07",
+      "iterations": 10470,
+      "parameter_digest": "6a04c085efaf79d993ed551941d56de4788b8c8fcbf5841b3b88eb5129b3cbdb",
+      "receipt_sha256": "103ee737259e52f5c8cad42b74237935fddcc6e157add9f54cb3efd07a59a8c8",
+      "runtime_seconds": 9751.964005441056
+    },
+    {
+      "accepted_attempt": "tertiary",
+      "files": {
+        "model.npz": "569d10cfc88722bee46df2d2b4562b70274e7b2cc33862f6a4506601fb1e5c96"
+      },
+      "id": "q.block08",
+      "iterations": 10616,
+      "parameter_digest": "fa7c2af206fcdd6e7f30f34636a5166ffe449305524e56556a69e2da1fa4794b",
+      "receipt_sha256": "1e8c3ff009167b415f5a3d366882c46b6481b29f6bd31e0179b9858df8d69cf2",
+      "runtime_seconds": 9528.623100414989
+    },
+    {
+      "accepted_attempt": "extended",
+      "files": {
+        "model.npz": "3385a3f544f6a7499e547968519e8070199253972d4768dcc25b8370843bcfe0"
+      },
+      "id": "q.block09",
+      "iterations": 9703,
+      "parameter_digest": "fa18dba89851357aff3ff7a024e515046204342e1059ee0be69361b90b64e6dc",
+      "receipt_sha256": "18c7f24211aa04ab78d4ce8c77aef59a6b805dcc48ec4a0b2a999c2fd24d087f",
+      "runtime_seconds": 5839.124503068044
+    }
+  ],
+  "continuation_complete_sha256": "82b4a321839277e53d401e0499b0b899c34f91e2f81e62b1fe5ed164b5c728f1",
+  "exception": "TypeError: event() got multiple values for argument 'stage'",
+  "failure": {
+    "reason": "stage_nonzero",
+    "return_code": 1,
+    "stage": "q"
+  },
+  "failure_location": "src/dsdm_phase1/goal052_outer.py:331",
+  "input_count": 22,
+  "launched_workers": 20,
+  "observed_response_access_receipts": 0,
+  "plan_digest": "4b179d6cf8134551099c896bbcb30837d2d316cc3e5c70ed30d91c53bf4b63e0",
+  "plan_sha256": "377a3caf3537eaae727e5830f374ae9166f469b9afefb0d116556d12e75edc75",
+  "planned_counts": {
+    "conventional": 1042,
+    "neural": 3140,
+    "pretraining": 50,
+    "q": 10
+  },
+  "production_complete_sha256": "e22f15c499afeba7e9c82972beeebcb77e927538f1af1853f8c952dacaf64652",
+  "production_ended_utc": "2026-10-03T13:47:37.440069+00:00",
+  "production_stage_log_sha256": "0ad5f185aa0c762ca9523f5026c767fd41933c247f96b8d6d40c0c0fba1d0d77",
+  "profile_peak_rss_bytes": 4389535744,
+  "profile_seconds": 11837.01676870999,
+  "qualification": [
+    {
+      "path": "qualification/da6a9ed6094394c91da92b6e5eaadeb84a215e8efe1012d3fac2d4e7e05366e8-canary.json",
+      "sha256": "2a2f3c0ee0f1ace1d64fc2897597f870e1962b09ff82211a9479320549375bf4",
+      "status": "goal052_outer_canary_valid"
+    },
+    {
+      "path": "qualification/da6a9ed6094394c91da92b6e5eaadeb84a215e8efe1012d3fac2d4e7e05366e8-profile.json",
+      "sha256": "6ef1a1538bbbbb65e717dc1735a76c29b997dff6dccb55f213030d5c3793aa83",
+      "status": "goal052_outer_profile_valid"
+    },
+    {
+      "path": "qualification/da6a9ed6094394c91da92b6e5eaadeb84a215e8efe1012d3fac2d4e7e05366e8.json",
+      "sha256": "e0c4aef8d385a61717651ef5b4c6f21856db0223f95e6acc9763953d5ec0e6b3",
+      "status": "outer_runtime_qualified"
+    }
+  ],
+  "qualified_workers": 22,
+  "review_scope": "Native source/input/leaf/convergence/serialization/parameter validation of returned unchanged evidence; actual Deep load_plan/load_q independently checked in this session. No outer response rows read.",
+  "reviewed_utc": "2026-10-04T01:32:03.476881+00:00",
+  "run_relative": "data/processed/dsdm/goal052-seawfb-dsdm-experiment/outer-assessment-20261003-r2",
+  "runtime_complete_sha256": "39edfd79cb5c3e20f9e22ed6a5f0c0e7eba42f8d6d0d93241c30ca4d888bc591",
+  "schema_version": "goal052-outer-production-stop-review-v1",
+  "scientific_source_count": 29,
+  "scores_exist": false,
+  "status": "ten_q_fits_verified_terminal_logging_failure"
+}

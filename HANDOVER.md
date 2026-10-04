@@ -5,7 +5,39 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Current handoff — 3 October, outer continuation running
+## Current handoff — 4 October, qualification passed; logging recovery
+
+At **12:32 AEDT**, actual Deep qualification is complete. The full-row profile
+finished at **20:59:54 AEST on 3 October**, after 3 h 17 min. Peak RSS was
+4.09 GiB; qualification allowed 22 workers and live-memory headroom selected
+**20**. Production began at 21:00 AEST.
+
+All **10 q models converged and were saved**, but the stage exited at
+**23:47:37 AEST** because its final logging call supplies `stage` twice:
+`event("stage_complete", **result)`. The continuation stopped as designed.
+No pretraining or target production fit started. No closure, response-access
+receipt or outer score exists. The original failed controls are preserved.
+
+`outer-production-stop-20261004.json` records native validation of all ten
+returned q leaves, including model and receipt hashes, convergence, parameters,
+seeds and the unchanged 29 source / 22 input bindings. The same validation
+passed on Deep. Independent review supports an operational handler restricted
+to this exact terminal logging exception, followed by complete stage-artifact
+validation. Recovery now passes 31 focused tests, the actual Deep read-only
+restart preflight and a copied-q smoke that reused all ten fits in 28 seconds
+without changing any saved byte. Independent review finds no material blocker
+to manual attempt `002`; `outer-restart-validation-20261004.json` binds the
+tested helpers and receipts. The fitting code, plan, runtime qualification and
+saved q fits remain unchanged. The next launch must use explicit
+`--attempt 002 --restart-from 001` and retain both prior control directories.
+
+The full-row profile gives a **14.4-hour planning estimate** for the remaining
+three fitting stages at 20 workers, excluding closure/audit/scoring and subject
+to concurrent throughput. This is not a completion promise. Barry's existing
+authority and the prediction-before-response gate still apply. Fable's next
+input follows the outer scores; no board acknowledgement is needed.
+
+## Historical handoff — 3 October, outer continuation running
 
 Fable's message **839** accepts the scientific corrections and needs no reply
 or further review before outer scores unless implementation changes a fixed

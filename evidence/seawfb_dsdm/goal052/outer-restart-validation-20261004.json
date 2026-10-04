@@ -1,0 +1,83 @@
+{
+  "actual_linux_cached_q_smoke": {
+    "remote_root": "/data/codex/tmp/dsdm-outer-q-recovery-20261004-4gk55qq4",
+    "result": {
+      "all_initial_fit_bytes_unchanged": true,
+      "command": [
+        "/data/codex/repos/dSDM-outer-20261003-r2/.venv/bin/python",
+        "/data/codex/repos/dSDM-outer-20261003-r2/scripts/goal052_outer_stage.py",
+        "--root",
+        "/data/codex/repos/dSDM-outer-20261003-r2",
+        "--run",
+        "/data/codex/tmp/dsdm-outer-q-recovery-20261004-4gk55qq4/run",
+        "--stage",
+        "q",
+        "--workers",
+        "20",
+        "--attempt",
+        "002",
+        "--restart-from",
+        "001"
+      ],
+      "fit_started_count": 0,
+      "helper_sha256": "83299c3c54116cb1ddc9c681aeaccbccc2df2efc475417bd4c58d4adc80f3e9a",
+      "log_sha256": "95ebdb076268cd57ae1fe93cd7c5d30ae09986b68de71300e72954b5785d89c7",
+      "recovery_receipt_exists": true,
+      "recovery_receipt_sha256": "4902d7c9f3768aed439754585ebf86a53ee01ea570c414c41a5d9d2f7c5338ee",
+      "return_code": 0,
+      "seconds": 28.199921946041286,
+      "supervisor_sha256": "e57a74aacf20be859546882adcfdf0be825f8d28421320409d32e533f7807517"
+    },
+    "returned_directory": "data/processed/dsdm/goal052-seawfb-dsdm-experiment/outer-assessment-20261003-r2/recovery-validation-20261004",
+    "returned_file_hashes": {
+      "active-manifest.json": "8f3b904a64405b2eb461b5e271a9b61960c478a697874cd8869bf13d77d66566",
+      "manifest.json": "f2d6d8516b40e7ec26983e1a6832f6822f654f25bbf0ee1525d40bc5504ce76f",
+      "result.json": "e51f529e051476b630e7261d6a8381a7e67d82f7e4ee597904bea4eeb1b393bd",
+      "stage-recovery-q.json": "4902d7c9f3768aed439754585ebf86a53ee01ea570c414c41a5d9d2f7c5338ee",
+      "stage.log": "95ebdb076268cd57ae1fe93cd7c5d30ae09986b68de71300e72954b5785d89c7"
+    },
+    "supervisor_receipt_validator_passed": true
+  },
+  "actual_readonly_preflight": {
+    "passed": true,
+    "path": "data/processed/dsdm/goal052-seawfb-dsdm-experiment/outer-assessment-20261003-r2/restart-readonly-preflight-20261004.json",
+    "sha256": "302465de001a9e77ebad73975aef545958cc6a7c402c4295134edb137327d7ee"
+  },
+  "attempt": "002",
+  "bound_inputs_unchanged": 22,
+  "bound_scientific_sources_unchanged": 29,
+  "focused_tests": {
+    "command": "PYTHONPATH=src .venv/bin/pytest -q tests/test_goal052_outer_stage.py tests/test_goal052_outer_supervise.py tests/test_goal052_outer_complete.py",
+    "independently_reproduced": true,
+    "parent_seconds": 7.98,
+    "passed": 31
+  },
+  "independent_review": {
+    "decision": "All prelaunch conditions met; no material blocker to authorized attempt002 launch.",
+    "limitations": [
+      "The remaining real fitting stages and full closure/audit/scoring chain have not completed.",
+      "Resource, runtime, hash, artifact or unexpected-exception failures must stop.",
+      "Native prediction closure and independent audit remain mandatory before response access."
+    ],
+    "reviewer": "native sol_max_auditor subagent outer_restart_audit"
+  },
+  "outer_response_rows_read": 0,
+  "plan_digest": "4b179d6cf8134551099c896bbcb30837d2d316cc3e5c70ed30d91c53bf4b63e0",
+  "plan_sha256": "377a3caf3537eaae727e5830f374ae9166f469b9afefb0d116556d12e75edc75",
+  "production_attempt002_started": false,
+  "restart_from": "001",
+  "reviewed_utc": "2026-10-04T01:48:52.043079+00:00",
+  "schema_version": "goal052-outer-restart-validation-v1",
+  "source_hashes": {
+    "scripts/goal052_outer_complete.py": "bd97481cf87d7991d840e015d1a1ae56e18380e5529a3d78c85deab04d181b21",
+    "scripts/goal052_outer_stage.py": "83299c3c54116cb1ddc9c681aeaccbccc2df2efc475417bd4c58d4adc80f3e9a",
+    "scripts/goal052_outer_supervise.py": "e57a74aacf20be859546882adcfdf0be825f8d28421320409d32e533f7807517",
+    "tests/test_goal052_outer_complete.py": "741235116d4e0deb2f1efb7b513117b093365cb0099e98107c71c9beb1583605",
+    "tests/test_goal052_outer_stage.py": "99097b6529ea971f960bb6b4ddb244aa19d4b62e65f0770918fb086acd1fb559"
+  },
+  "status": "engineering_restart_qualified_before_production",
+  "stop_review": {
+    "path": "evidence/seawfb_dsdm/goal052/outer-production-stop-20261004.json",
+    "sha256": "24013760211416057ff44c39ed5ca9448b2b03e58b33a27dd541131e0b18d02f"
+  }
+}

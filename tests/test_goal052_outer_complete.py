@@ -339,6 +339,124 @@ def test_campaign_cap_is_explicit(tmp_path):
         controller._validate_args(args)
 
 
+def test_manual_restart_args_require_explicit_successor_pair(tmp_path):
+    _root, _run, args, _fake = fixture(tmp_path)
+    args.attempt = "002"
+    args.restart_from = "001"
+    controller._validate_args(args)
+    args.restart_from = None
+    with pytest.raises(controller.ControllerError, match="requires --restart-from 001"):
+        controller._validate_args(args)
+    args.attempt = "003"
+    args.restart_from = "002"
+    with pytest.raises(controller.ControllerError, match="unknown continuation attempt"):
+        controller._validate_args(args)
+
+
+def test_manual_restart_launch_binds_recovery_flags_and_log():
+    launch = controller._launch_command("/tmp/outer-stage", "/tmp/outer-stage/run", 20, 72.0,
+                                        "002", "001")
+    assert "--recover-stage-logging --restart-from 001" in launch
+    assert "production-supervisor-002.log" in launch
+
+
+def test_returned_file_inventory_uses_successor_attempt(tmp_path):
+    run = tmp_path / "run"
+    (run / "predictions").mkdir(parents=True)
+    (run / "production-control-002").mkdir()
+    for relative, value in {
+        "plan.json": b"plan", "domain.npz": b"domain", "closure.json": b"closure",
+        "scores.json": b"scores", "outer-report.md": b"report",
+        "response-access.json": b"access", "response-access-success.json": b"success",
+        "production-supervisor-002.log": b"log", "predictions/target.npz": b"prediction",
+    }.items():
+        path = run / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(value)
+    (run / "production-control-002" / "complete.json").write_bytes(b"complete")
+    closure = {"predictions": {"target": "predictions/target.npz"}}
+    assert {path.name for path in controller._collect_returned_files(run, closure, "002")} >= {
+        "production-supervisor-002.log", "complete.json"
+    }
+
+
+def test_manual_restart_binds_preserved_prior_supervisor_sha_separately(tmp_path):
+    root = tmp_path / "root"
+    run = root / "run"
+    prior = run / "continuation-control-001"
+    remote_root = tmp_path / "remote"
+    remote_run = remote_root / "run"
+    prior_remote = remote_run / "production-control-001"
+    for path in (prior, run / "production-control-001", prior_remote):
+        path.mkdir(parents=True, exist_ok=True)
+    old_supervisor = "b" * 64
+    current_supervisor = "c" * 64
+    helper_sha = "d" * 64
+    plan_sha = "e" * 64
+    q_log = (
+        'event("stage_complete", **result)\n'
+        '  File "src/dsdm_phase1/goal052_outer.py", line 331, in run_stage\n'
+        "TypeError: event() got multiple values for argument 'stage'\n"
+    ).encode()
+    local_prod = run / "production-control-001"
+    prior_manifest = {"attempt": "001", "plan_sha256": plan_sha}
+    prior_complete = {
+        "schema_version": "goal052-outer-continuation-complete-v1", "attempt": "001",
+        "status": "failed", "success": False,
+        "failure": {"reason": "remote production failed; no automatic replay permitted"},
+        "remote_source_hashes": {str(remote_root / "scripts/goal052_outer_supervise.py"): old_supervisor},
+    }
+    prior_status = {"attempt": "001", "status": "failed"}
+    (prior / "manifest.json").write_bytes(json_bytes(prior_manifest))
+    (prior / "complete.json").write_bytes(json_bytes(prior_complete))
+    (prior / "status.json").write_bytes(json_bytes(prior_status))
+    (prior / "production-process.json").write_bytes(json_bytes({"remote_pid": 9001, "command": "goal052_outer_supervise.py"}))
+    prior_local_prod = {"attempt": "001", "plan_sha256": plan_sha,
+                        "source_supervisor_sha256": old_supervisor}
+    q_stage = {"stage": "q", "status": "failed", "return_code": 1,
+               "pid": 9002, "process_group": 9002, "log": "stage-01-q.log",
+               "command": ["python", "-m", "dsdm_phase1.goal052_outer"]}
+    prior_local_complete = {"attempt": "001", "status": "failed", "success": False,
+                            "plan_sha256": plan_sha, "source_supervisor_sha256": old_supervisor,
+                            "closure_sha256": None, "closure": {"exists": False},
+                            "commands": [q_stage]}
+    prior_local_status = {"attempt": "001", "status": "failed"}
+    (local_prod / "manifest.json").write_bytes(json_bytes(prior_local_prod))
+    (local_prod / "complete.json").write_bytes(json_bytes(prior_local_complete))
+    (local_prod / "status.json").write_bytes(json_bytes(prior_local_status))
+    (local_prod / "stage-01-q.log").write_bytes(q_log)
+    for path, value in ((prior_remote / "manifest.json", prior_local_prod),
+                        (prior_remote / "complete.json", prior_local_complete),
+                        (prior_remote / "status.json", prior_local_status),
+                        (prior_remote / "stage-01-q.log", q_log)):
+        path.write_bytes(value if isinstance(value, bytes) else json_bytes(value))
+
+    class RestartTransport:
+        def ssh(self, _host, command, _timeout):
+            tokens = shlex.split(command)
+            if command.startswith("cat -- "):
+                path = Path(tokens[2])
+                return Result(stdout=path.read_bytes()) if path.is_file() else Result(1, stderr=b"missing")
+            if command.startswith("sha256sum -- "):
+                path = Path(tokens[2])
+                return Result(stdout=("{}  {}\n".format(sha_bytes(path.read_bytes()), tokens[2])).encode())
+            if command.startswith("test -e "):
+                return Result(0 if Path(tokens[2]).exists() else 1)
+            if command.startswith("find "):
+                return Result(stdout=b"")
+            if command.startswith("ps -eo "):
+                return Result(stdout=b"")
+            raise AssertionError(command)
+
+    metadata = {"response_relative": "canonical.parquet"}
+    evidence = controller._validate_manual_restart(
+        RestartTransport(), "host", root, run, str(remote_root), str(remote_run), metadata,
+        "a" * 64, plan_sha, current_supervisor, helper_sha, time.monotonic() + 30,
+        time.monotonic, lambda _seconds: None)
+    assert evidence["prior_source_supervisor_sha256"] == old_supervisor
+    assert evidence["source_supervisor_sha256"] == current_supervisor
+
+
 def test_detached_wrapper_shell_syntax_is_valid():
     launch = controller._detached_stage_command(
         "audit", "printf '%s\\n' harmless", "/tmp/outer-stage",
