@@ -314,7 +314,11 @@ def load_scores(path: Path, rows: int, label: str) -> np.ndarray:
 
 
 def _strip_canary_dynamic(value: Any) -> Any:
-    dynamic = {"repeat", "pid", "runtime_seconds", "elapsed_seconds", "wall_seconds", "peak_rss_bytes", "resources"}
+    # Fresh workers can serialize the same shallow-ANN state with different
+    # storage metadata and therefore different file sizes.  Keep all
+    # numerical evidence (state and score digests, family, and iterations)
+    # exact; only this resource/serialization measurement is excluded.
+    dynamic = {"repeat", "pid", "runtime_seconds", "elapsed_seconds", "wall_seconds", "peak_rss_bytes", "model_size_bytes", "resources"}
     if isinstance(value, Mapping):
         return {key: _strip_canary_dynamic(item) for key, item in value.items() if key not in dynamic}
     if isinstance(value, list):
@@ -356,6 +360,10 @@ def validate_qualification(run: Path, relative: str, expected_hash: str, plan: M
     pids = [item.get("pid") for item in repeats]
     require(len(set(pids)) == workers_tested and all(type(pid) is int and pid > 0 for pid in pids),
             "canary_process_coverage_invalid", canary_rel)
+    for repeat in repeats:
+        ann = repeat.get("conventional", {}).get("ann02") if isinstance(repeat.get("conventional"), Mapping) else None
+        require(isinstance(ann, Mapping), "canary_ann_inventory_invalid", canary_rel)
+        require(is_digest(ann.get("state_digest")), "canary_ann_state_digest_invalid", canary_rel)
     reference = _strip_canary_dynamic(repeats[0])
     require(all(_strip_canary_dynamic(item) == reference for item in repeats[1:]),
             "canary_repeat_drift", canary_rel)
@@ -807,7 +815,15 @@ def _build_synthetic_fixture(base: Path) -> tuple[Path, Path, dict[str, int]]:
     plan["plan_digest"] = canonical_digest(plan); plan["created_utc"] = utc_now()
     _write_json(run / "plan.json", plan)
     canary_rel, profile_rel = "qualification/canary.json", "qualification/profile.json"
-    science = {"status": "canary_repeat_valid", "targets": {"a": {"score_digest": "d" * 64}}}
+    science = {
+        "status": "canary_repeat_valid",
+        "targets": {"a": {"score_digest": "d" * 64}},
+        "conventional": {
+            "ann02": {"family": "shallow_ann", "iterations": 1,
+                      "model_size_bytes": 49050, "score_digest": "s" * 64,
+                      "state_digest": "a" * 64}
+        },
+    }
     canary = {"schema_version": RUNTIME_SCHEMA, "status": CANARY_STATUS, "plan_digest": plan["plan_digest"],
               "runtime_fingerprint": "9" * 64, "code_hashes": plan["sources"], "workers_tested": 2,
               "deterministic_repeats": True, "repeats": [{**science, "repeat": 0, "pid": 101, "runtime_seconds": 1.0},
@@ -922,6 +938,19 @@ def _rewrite_closed_prediction(run: Path, mutate: Callable[[dict[str, np.ndarray
     _write_json(run / "closure.json", closure)
 
 
+def _rewrite_qualification_canary(run: Path, mutate: Callable[[dict[str, Any]], None]) -> None:
+    """Mutate a synthetic canary while preserving its enclosing hash bindings."""
+    final_path = run / "qualification/final.json"
+    final = read_json(final_path)
+    canary_path = run / final["canary"]
+    canary = read_json(canary_path)
+    mutate(canary)
+    _write_json(canary_path, canary)
+    final["canary_sha256"] = sha256_file(canary_path)
+    final["files"][final["canary"]] = final["canary_sha256"]
+    _write_json(final_path, final)
+
+
 def self_test() -> dict[str, Any]:
     cases: list[dict[str, str]] = []
     with tempfile.TemporaryDirectory(prefix="dsdm-outer-independent-audit-") as temporary:
@@ -931,6 +960,31 @@ def self_test() -> dict[str, Any]:
         result = audit_run(root, run, production=False, expected_counts=counts, expected_targets=1, expected_rows=3, progress=False)
         require(result["status"] == "pass", "self_test_valid_fixture_failed", "")
         cases.append({"case": "valid_fixture", "status": "pass"})
+        canary_cases: list[tuple[str, str | None, Callable[[dict[str, Any]], None]]] = [
+            ("canary_model_size_variation", None,
+             lambda value: value["repeats"][1]["conventional"]["ann02"].update(model_size_bytes=49062)),
+            ("canary_state_drift", "canary_repeat_drift",
+             lambda value: value["repeats"][1]["conventional"]["ann02"].update(state_digest="b" * 64)),
+            ("canary_score_drift", "canary_repeat_drift",
+             lambda value: value["repeats"][1]["conventional"]["ann02"].update(score_digest="changed")),
+            ("canary_iteration_drift", "canary_repeat_drift",
+             lambda value: value["repeats"][1]["conventional"]["ann02"].update(iterations=2)),
+        ]
+        for name, expected_code, mutation in canary_cases:
+            case = base / name; shutil.copytree(valid, case)
+            case_root, case_run = case / "root", case / "run"
+            _rewrite_qualification_canary(case_run, mutation)
+            try:
+                case_plan = read_json(case_run / "plan.json")
+                validate_qualification(case_run, "qualification/final.json",
+                                       sha256_file(case_run / "qualification/final.json"), case_plan, {})
+            except AuditError as exc:
+                require(expected_code is not None and exc.code == expected_code, "self_test_canary_wrong_failure",
+                        f"{name}: expected={expected_code}; observed={exc.code}")
+                cases.append({"case": name, "status": "pass", "observed_failure": exc.code})
+            else:
+                require(expected_code is None, "self_test_canary_mutation_not_detected", name)
+                cases.append({"case": name, "status": "pass"})
         mutations: list[tuple[str, str, Callable[[Path, Path], None]]] = [
             ("missing_model", "missing_file", lambda r, u: next((u / "fits").glob("conventional.*/model.json")).unlink()),
             ("source_drift", "file_hash_mismatch", lambda r, u: (r / "source.py").write_text("changed\n")),

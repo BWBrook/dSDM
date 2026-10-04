@@ -1,0 +1,57 @@
+{
+  "auditor_sha256": "d16b90307de9f676bac121ff93a992589159651da7a858353b2e6840db11cb0a",
+  "closure_sha256": "aa5b7949cd0c76bb324edde55d5209e0fbf8447b9e00f45a0efa5850ce185063",
+  "created_utc": "2026-10-04T23:33:58.990298+00:00",
+  "diagnosis": {
+    "all_other_fields_exact": true,
+    "ann_score_digests": [
+      "5d115c89ce911aeb24f85073fec28ad657e5ef9f196f5b94e03e944cdc27b93b"
+    ],
+    "ann_state_digests": [
+      "4d9cc1c1d2dec78d71fdf6eb08f1869b8148cbf2f403bf4b29fba7ebbc457aed"
+    ],
+    "canary_sha256": "2a2f3c0ee0f1ace1d64fc2897597f870e1962b09ff82211a9479320549375bf4",
+    "different_fields_after_original_auditor_dynamic_exclusions": {
+      "/conventional/ann02/model_size_bytes": {
+        "49050": 20,
+        "49058": 1,
+        "49062": 3
+      }
+    },
+    "repeats": 24
+  },
+  "focused_tests_sha256": "8dd0e43831198f94edf058d1a40f1663226230aa336331e2a9d85ddccc676f1c",
+  "independent_review": {
+    "actual_canary_stripped_unique_records": 1,
+    "auditor_sha256": "d16b90307de9f676bac121ff93a992589159651da7a858353b2e6840db11cb0a",
+    "embedded_self_test_cases_passed": 12,
+    "remaining_condition": "full independent audit must pass against all actual closed artifacts before response access",
+    "reported_pytest_cases_passed": 13,
+    "scope": "bounded response-free audit rerun only",
+    "status": "pass",
+    "verdict": "conditionally supported"
+  },
+  "next_stage": "new postproduction-control-003 audit only; no refitting",
+  "original_auditor_sha256": "aec200b22eafce660b43a7acf2db5c613bdd0691ace2240d8d0add3de1fdfc5d",
+  "original_failed_audit_sha256": "6b479a4318f84dd7da30f5326902f946ffd5c859bc42f9e7c880f70f78c2ded8",
+  "outer_response_content_opened": false,
+  "parent_validation": {
+    "actual_saved_qualification": "pass",
+    "canary_workers_tested": 24,
+    "diff_check": "pass",
+    "embedded_self_test_cases_passed": 12,
+    "focused_pytest_passed": 6,
+    "qualified_workers": 22
+  },
+  "plan_digest": "4b179d6cf8134551099c896bbcb30837d2d316cc3e5c70ed30d91c53bf4b63e0",
+  "plan_sha256": "377a3caf3537eaae727e5830f374ae9166f469b9afefb0d116556d12e75edc75",
+  "production_complete_sha256": "189e334159177eff3798d9d54be71c9d99e9e783c12013af9d36c42f93c17c68",
+  "repair": {
+    "excluded_additional_resource_field": "model_size_bytes",
+    "numerical_comparisons": "unchanged_exact",
+    "required_ann_state_digest": "valid_64_lowercase_hex_in_every_repeat",
+    "source_plan_fits_predictions_closure_changed": false
+  },
+  "schema_version": "goal052-outer-audit-repair-validation-v1",
+  "status": "validated_for_response_free_full_audit"
+}
