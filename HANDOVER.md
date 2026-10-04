@@ -5,7 +5,7 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Current handoff — 4 October, qualification passed; logging recovery
+## Current handoff — 4 October, outer production resumed
 
 At **12:32 AEDT**, actual Deep qualification is complete. The full-row profile
 finished at **20:59:54 AEST on 3 October**, after 3 h 17 min. Peak RSS was
@@ -27,9 +27,24 @@ validation. Recovery now passes 31 focused tests, the actual Deep read-only
 restart preflight and a copied-q smoke that reused all ten fits in 28 seconds
 without changing any saved byte. Independent review finds no material blocker
 to manual attempt `002`; `outer-restart-validation-20261004.json` binds the
-tested helpers and receipts. The fitting code, plan, runtime qualification and
-saved q fits remain unchanged. The next launch must use explicit
-`--attempt 002 --restart-from 001` and retain both prior control directories.
+tested helpers and receipts. Recovery is committed and pushed as **9621dc6**.
+The fitting code, plan, runtime qualification and saved q fits remain unchanged.
+
+The continuation resumed at **12:51:07 AEDT**, local PID **16370**, using
+`--attempt 002 --restart-from 001`. The Deep supervisor is PID **203393**.
+Its q stage passed in **27.8 seconds**, retaining all ten original fits without
+refitting, and pretraining began at **12:52:00 AEDT** with **20 workers**.
+Actual fit-start records and a live, guard-clear heartbeat confirm pretraining
+is running. Local state is `continuation-control-002/`; the new launch receipt
+is `continuation-launch-002.json`. Remote production receipts are under
+`production-control-002/`. Keep all `001` failure evidence and do not relaunch
+either live controller.
+
+The existing 72-hour production and 84-hour continuation caps remain. After
+all fitting stages, the controller still requires native closure/verification
+and the independent response-free audit before response transfer and scoring.
+Large models remain on Deep; compact results and the report return locally.
+No closure, response-access receipt or outer score exists at this handoff.
 
 The full-row profile gives a **14.4-hour planning estimate** for the remaining
 three fitting stages at 20 workers, excluding closure/audit/scoring and subject
