@@ -5,7 +5,51 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Current handoff — 4 October, outer production resumed
+## Current handoff — 5 October, independent audit passed; outer scoring running
+
+All **4,242 fits** completed on Deep: 10 q, 50 pretraining, 3,140 neural and
+1,042 conventional. Attempt `002` finished the remaining fitting stages in
+12 h 18 min. Native closure and verification succeeded at **01:36:48 AEDT**
+on 5 October, with closure SHA `aa5b7949cd0c76bb324edde55d5209e0fbf8447b9e00f45a0efa5850ce185063`.
+
+The independent audit then stopped at `canary_repeat_drift`, before response
+access. Its comparison had omitted the already-accepted serialization-size
+exclusion: among 24 actual canary repeats, only ANN `model_size_bytes` differed
+after existing timing/process exclusions. Every numerical field, prediction
+digest and fitted-state digest is identical. Preserve the failed continuation
+`002`, its audit, and the archived original auditor source.
+
+The bounded repair excludes that resource field and explicitly requires a
+valid ANN state digest in every repeat. Six focused tests, 12 auditor self-test
+cases, actual saved qualification validation and independent review passed.
+Commit **d63e938** and `outer-audit-repair-validation-20261005.json` bind the
+repair. No fitting source, plan, fitted model, prediction or closure changed.
+
+The fresh **audit-only** execution passed at **10:39:21 AEDT**. It verified all
+4,242 fit receipts, 17,060 closure files and 4,182 seed score files, recomputing
+the six learner means and fixed ensemble for all 157 targets. It hashed
+92,243,220,254 bytes and confirmed absence of response access and scoring.
+Audit receipt SHA is
+`394dc0e64219fba0f85d795c337a2e623d2d5cfd907f13c0bd559e4c9e4c61ef`.
+The parent and independent reviewer checked its exact run/source/plan/closure
+bindings. Original failures remain preserved.
+
+The independently reviewed manual scoring launcher first wrote a complete
+opening-gate receipt at **10:42:51 AEDT**. It then hashed and transferred the
+canonical responses, matching the frozen source checksum. **The response seal
+is now open under the existing authority.** Native scoring launched at
+**10:43:04 AEDT**, leader PID **582322**, with a 12-hour cap. It re-verifies
+closure before loading rows. Scores are pending; no scientific result is yet
+claimed. The prepared return process waits for scoring, renders the report and
+verifies compact returned artifacts, retaining full fitted models on Deep.
+
+Remote postproduction state is outside the closed run at
+`/data/codex/repos/dSDM-outer-20261003-r2/postproduction-control-003/`.
+Local launch, opening, transfer and audit evidence is under the run's
+`postproduction-control-003/`. Do not relaunch scoring or change any frozen
+scientific source, plan, fit, prediction, threshold or panel after opening.
+
+## Historical handoff — 4 October, outer production resumed
 
 At **12:32 AEDT**, actual Deep qualification is complete. The full-row profile
 finished at **20:59:54 AEST on 3 October**, after 3 h 17 min. Peak RSS was
