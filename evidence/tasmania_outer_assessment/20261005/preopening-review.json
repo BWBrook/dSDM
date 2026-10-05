@@ -1,0 +1,47 @@
+{
+  "files": {
+    "config/tasmania_outer_assessment.json": "0913b323f1c53addee4cc7c0f181e850ee08ff5fe0fcbdd776450652f13e7a48",
+    "data/processed/dsdm/tasmania-outer-assessment-20261005/private/logs/native-conventional-validate.json": "37b29ec983980a3e79789d6191ae739cc3e6b743f4a4e571ea47b91212a59320",
+    "data/processed/dsdm/tasmania-outer-assessment-20261005/private/logs/native-neural-validate.json": "c691bf13f3722431687e0fed0259125a23c066959a114b56566dfe21afed4f13",
+    "data/processed/dsdm/tasmania-outer-assessment-20261005/private/logs/status-after-close.json": "79dfb1960935ebdaadc19a5bb3a9a0e9a1b5be2d8835d17ee305e9d53ed22487",
+    "data/processed/dsdm/tasmania-outer-assessment-20261005/private/prediction-closure.json": "c3a67bf39877aaa11ca24ad028fdbca140b5c646340574d072395dcab2d8b3aa",
+    "docs/plan/CrossCaseSynthesis-20261005.md": "9f3bb41f18faa6e5d998ab2b3c02c4eae64d0a0fe2109f46534aee820640c41f",
+    "docs/plan/TasmaniaOuterAssessmentImplementation-20261005.md": "d8a08270ab6ddc3406ea6c95a5b8e428ff8a5418f7f2780ae9a03b2c7f236ba0",
+    "evidence/dsdm_outer_ready/goal037/receipt.json": "c691bf13f3722431687e0fed0259125a23c066959a114b56566dfe21afed4f13",
+    "src/dsdm/tasmania_outer_assessment.py": "7425ec3bc5179954ddd7cb983aa295e9cd0a8e41e28802afd48efcbcf16c1c10",
+    "tests/test_tasmania_outer_assessment.py": "c163646b29da10269f2e048ef3ce995e9fb04fe2d240acca8b148e191e604366"
+  },
+  "human_authority": "Barry explicitly approved opening the original Tasmania test at synthesis on 5 October 2026; recorded in the bound CrossCaseSynthesis plan.",
+  "independent_reviewer": "tasmania_preopen_audit",
+  "limitations": [
+    "Held-patch interpolation within Tasmania; patches touch training cells.",
+    "Mixed zero provenance; planned pseudoabsence-removal sensitivity not completed.",
+    "Eight species with shared spatial structure; descriptive comparisons only.",
+    "Archive artifacts are hardlinks; their content and predictions are bound by verified receipts."
+  ],
+  "opening_conditions": [
+    "Invoke score once.",
+    "Require native response digest, identity, patch and binary-label gates.",
+    "Any failure after access intent must stop without an automated retry."
+  ],
+  "prediction_closure_digest": "a160318d5cc627ff5a724256ee4a008ad4f13038b9419ba7e809cf01bd6a4e6e",
+  "receipt_digest": "8fdc07b873d174178c0c26701c22ecd86ac3de1cc2791cb5c07d13818b208d40",
+  "reviewed_at": "2026-10-05T03:05:18.997486+00:00",
+  "schema_version": "tasmania-preopening-review-v1",
+  "status": "pass_for_one_authorised_score",
+  "verification": {
+    "conventional_challenge_maximum_difference": 1.7881393432617188e-07,
+    "conventional_challenge_tolerance": 1e-06,
+    "conventional_models": 952,
+    "focused_tests_passed": 12,
+    "frozen_conventional_selections": 56,
+    "frozen_thresholds": 616,
+    "geographic_cells": 606,
+    "neural_models": 1768,
+    "no_prior_response_access": true,
+    "prediction_closure_files": 32,
+    "response_free_transform_maximum_difference": 0,
+    "response_rows": 1672,
+    "seed_mean_maximum_difference": 0
+  }
+}

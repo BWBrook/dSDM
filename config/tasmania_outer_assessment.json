@@ -1,0 +1,143 @@
+{
+  "schema_version": "1.0",
+  "assessment_id": "original-tasmania-held-patch-outer-20261005",
+  "approval": {
+    "path": "docs/plan/CrossCaseSynthesis-20261005.md",
+    "sha256": "9f3bb41f18faa6e5d998ab2b3c02c4eae64d0a0fe2109f46534aee820640c41f"
+  },
+  "goal037": {
+    "bindings": {
+      "config": {
+        "path": "config/dsdm_outer_ready.json",
+        "sha256": "762ce12c4937f7eec0e72b4b90f1c7db1246072a9c778cd5c7a4c1b50cdf2f92"
+      },
+      "receipt": {
+        "path": "evidence/dsdm_outer_ready/goal037/receipt.json",
+        "sha256": "c691bf13f3722431687e0fed0259125a23c066959a114b56566dfe21afed4f13"
+      }
+    }
+  },
+  "authorities": {
+    "tasmanian_protocol": {
+      "path": "docs/plan/tasmanian_modelling_protocol.md",
+      "sha256": "6609f3ca4f5100c212db83b3f6bffbed49b6685baeac9ff8242f41c94d7875fb"
+    },
+    "goal026_feature_contract": {
+      "path": "evidence/model_ready_features/2026-07-27/feature_contract.json",
+      "sha256": "e9a8f9b7bee7dee25905dfa052427f6e0a4f1b5ebd6ed02fcfb1761bbd224d98"
+    },
+    "goal026_fit_parameters": {
+      "path": "evidence/model_ready_features/2026-07-27/fit_parameters.json",
+      "sha256": "608b99f94af49122bf9e252e35ae7c067812762d20ba080c3e7fbd40f35661d0"
+    },
+    "goal036_stratum_metrics": {
+      "path": "evidence/dsdm_inner_evaluation/goal036/stratum_metrics.csv",
+      "sha256": "2065ca48895af50036da90ad3e945096c6190594000527056309d78c5ee2bdc6"
+    },
+    "goal036_conventional_selection": {
+      "path": "evidence/dsdm_inner_evaluation/goal036/conventional_selection.csv",
+      "sha256": "3e05784670f58e88144dcbda43819c3811e8303c59cd15c36f23fdf38736a561"
+    }
+  },
+  "execution": {
+    "archive_commit": "ce70bf1",
+    "archive_commit_full": "ce70bf114451f8a049be213b1aa891930e305951",
+    "goal037_transaction_digest": "677b8706333dd3df30a0c07bec648ab11e591bfe016bde73dc867d9e78af3d9c",
+    "controller": {
+      "path": "src/dsdm/tasmania_outer_assessment.py",
+      "sha256": "7425ec3bc5179954ddd7cb983aa295e9cd0a8e41e28802afd48efcbcf16c1c10"
+    },
+    "neural_runtime": {
+      "python_major_minor": "3.12",
+      "numpy": "2.2.6",
+      "scipy": "1.16.3",
+      "scikit_learn": "1.9.0",
+      "torch": "2.7.1"
+    },
+    "conventional_runtime": {
+      "python_major_minor": "3.12",
+      "numpy": "2.5.1",
+      "scipy": "1.16.3",
+      "scikit_learn": "1.9.0",
+      "pygam": "0.10.1",
+      "torch": "2.13.0"
+    }
+  },
+  "response_free_inputs": {
+    "response_support": {
+      "path": "data/processed/features/goal026-model-ready-feature-substrate/2026-07-27/response_support.csv",
+      "sha256": "6f4b246cf3acd24e164118101b762e506a268a4897b34dd316821c2d3778c3d8"
+    },
+    "predictor_response_cells": {
+      "path": "data/processed/predictors/goal024-predictor-source-repair-domain-freeze/2026-07-26/predictor_response_cells_canonical.csv",
+      "sha256": "cf6bd574e3eaa7ed04b6ec6ddbbaa22935b5f03b3fe66bcbdfc4df5691361303"
+    },
+    "response_cell_assignments": {
+      "path": "data/processed/partitions/goal025-spatial-partition/2026-07-26/response_cell_assignments.csv",
+      "sha256": "f74b1df0ce62b71ee0b0c96b2f51060bfed370eece628dfb1c83d7eea5d6ab84"
+    }
+  },
+  "response_vault": {
+    "path": "data/processed/partitions/goal025-spatial-partition/2026-07-26/response_partitioned.csv",
+    "sha256": "b93fbdfa4df2b2d8617dd890cdb7fc4c3aa54ed10c72eed9c9ebc93df18edafc",
+    "opening_policy": "one recorded attempt after immutable prediction closure; no automated rescue"
+  },
+  "scope": {
+    "species": [
+      "thylogale_billardierii",
+      "notamacropus_rufogriseus",
+      "trichosurus_vulpecula",
+      "pseudocheirus_peregrinus",
+      "vombatus_ursinus",
+      "sarcophilus_harrisii",
+      "dasyurus_maculatus",
+      "dasyurus_viverrinus"
+    ],
+    "endpoints": [
+      "fraction25/ladder00",
+      "fraction25/ladder01",
+      "fraction25/ladder02",
+      "fraction50/ladder00",
+      "fraction50/ladder01",
+      "fraction50/ladder02",
+      "fraction100/full"
+    ],
+    "neural_methods": [
+      "target_only_resmlp",
+      "legacy_pooled_finetune",
+      "multihead_frozen_trunk",
+      "multihead_full_finetune",
+      "target_plus_q_linear",
+      "target_plus_q_deep"
+    ],
+    "conventional_families": [
+      "intercept",
+      "elastic_net",
+      "random_forest",
+      "hist_gradient_boosting",
+      "shallow_ann"
+    ],
+    "seeds": [31031, 31032, 31033, 31034, 31035],
+    "patches": ["mc08", "mc20", "mc35", "mc40", "mc49"],
+    "predictor_count": 77,
+    "response_rows": 1672,
+    "domain_cells": 606,
+    "fitting_allowed": false,
+    "postopen_rescue_allowed": false
+  },
+  "metrics": {
+    "seed_aggregation": "arithmetic_mean_scores_before_metrics",
+    "threshold_source": "goal036_frozen_inner_oof",
+    "positive_rule": "score_greater_than_or_equal_threshold",
+    "co_primary": ["roc_auc", "tss"],
+    "supplementary": ["average_precision", "mcc", "sensitivity", "specificity", "confusion_counts"],
+    "pr_auc_definition": "sklearn_average_precision_noninterpolated_step_integral",
+    "classless_policy": "all_performance_metrics_na_counts_retained",
+    "inference": "descriptive_no_p_values_no_row_bootstrap"
+  },
+  "evidence": {
+    "private_root": "data/processed/dsdm/tasmania-outer-assessment-20261005/private",
+    "archive_root": "data/processed/dsdm/tasmania-outer-assessment-20261005/archive/goal037-ce70bf1",
+    "tracked_receipt": "evidence/tasmania_outer_assessment/20261005/receipt.json"
+  }
+}
