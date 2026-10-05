@@ -70,9 +70,11 @@ failed scorer or overwrite its evidence.
 Remote postproduction state is outside the closed run at
 `/data/codex/repos/dSDM-outer-20261003-r2/postproduction-control-003/`.
 Local launch, opening, transfer and audit evidence is under the run's
-`postproduction-control-003/`. The reviewed recovery will use fresh
-`postproduction-control-005/`, with its own new `recovery/` child outside the
-closed run on Deep. Preserve the original access receipt and failed attempt.
+`postproduction-control-003/`. The reviewed recovery launched at **11:24:49 AEDT** in fresh
+`postproduction-control-005/`, leader PID **597547**, with a 12-hour cap and
+its own new `recovery/` child outside the closed run on Deep. Its Python
+process is live and re-verifying the complete closure. The local finisher is
+waiting to render and hash-check the report and returned artifacts. Preserve the original access receipt and failed attempt.
 Do not retry attempt003 or change any frozen scientific source, plan, fit,
 prediction, threshold or panel after opening.
 
