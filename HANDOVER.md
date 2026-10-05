@@ -5,7 +5,7 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Current handoff — 5 October, independent audit passed; outer scoring running
+## Current handoff — 5 October, audit passed; scoring-only loader recovery
 
 All **4,242 fits** completed on Deep: 10 q, 50 pretraining, 3,140 neural and
 1,042 conventional. Attempt `002` finished the remaining fitting stages in
@@ -38,16 +38,39 @@ The independently reviewed manual scoring launcher first wrote a complete
 opening-gate receipt at **10:42:51 AEDT**. It then hashed and transferred the
 canonical responses, matching the frozen source checksum. **The response seal
 is now open under the existing authority.** Native scoring launched at
-**10:43:04 AEDT**, leader PID **582322**, with a 12-hour cap. It re-verifies
-closure before loading rows. Scores are pending; no scientific result is yet
-claimed. The prepared return process waits for scoring, renders the report and
-verifies compact returned artifacts, retaining full fitted models on Deep.
+**10:43:04 AEDT**, leader PID **582322**, and re-verified closure. It then
+stopped at `active_species_count_drift` after reading the canonical file.
+The local return process also stopped. Preserve the failed score controls and
+the original `response-access.json`; no success receipt or scores were written.
+
+The original Goal049 input validator passes on all frozen metadata, 505 exact
+checkpoint/receipt pairs and all 5,048,061 canonical memberships. Its active
+registry and effort-donor universe contain **505** species, including **56**
+with empty cell lists. The sparse canonical file therefore contains **449**
+distinct species. Goal049 deliberately counts all 505 while omitting empty
+species from its serialized rows. All 505 active taxa are donors, and none of
+the 56 empty taxa is among the frozen 157 scoring targets. Independent review
+confirms a loader count-semantics error, with no change to responses, richness,
+panels or the frozen scientific definitions.
+
+The separate scoring-only recovery is now validated: **31 tests pass**, the
+actual metadata/prior-access checks pass, and independent review supports the
+exact attempt-004 launch. `outer-score-recovery-validation-20261005.json` binds
+the helper, launcher, finisher, certificate, original audit and failed access.
+It retains the complete 505 donor universe and uses the unchanged native
+response-array and scoring calculations.
+The 29 frozen source files, plan, fitted models, predictions and closure remain
+unchanged. No model outcome has been computed or examined. Do not rerun the
+failed scorer or overwrite its evidence.
 
 Remote postproduction state is outside the closed run at
 `/data/codex/repos/dSDM-outer-20261003-r2/postproduction-control-003/`.
 Local launch, opening, transfer and audit evidence is under the run's
-`postproduction-control-003/`. Do not relaunch scoring or change any frozen
-scientific source, plan, fit, prediction, threshold or panel after opening.
+`postproduction-control-003/`. The reviewed recovery will use fresh
+`postproduction-control-004/`, with its own new `recovery/` child outside the
+closed run on Deep. Preserve the original access receipt and failed attempt.
+Do not retry attempt003 or change any frozen scientific source, plan, fit,
+prediction, threshold or panel after opening.
 
 ## Historical handoff — 4 October, outer production resumed
 

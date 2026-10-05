@@ -1,0 +1,53 @@
+{
+  "closure_sha256": "aa5b7949cd0c76bb324edde55d5209e0fbf8447b9e00f45a0efa5850ce185063",
+  "created_utc": "2026-10-05T00:17:45.205542+00:00",
+  "finisher_sha256": "e57a5821dfcc87b919fc4f5efb68501e77483b780c531215556f0a441cc03e58",
+  "fits_or_predictions_changed": false,
+  "frozen_scientific_sources_changed": false,
+  "independent_audit_sha256": "394dc0e64219fba0f85d795c337a2e623d2d5cfd907f13c0bd559e4c9e4c61ef",
+  "independent_review": {
+    "required_execution": "Use reviewed launcher only, preserve attempt003, require fresh004, stop on any identity/hash/support/overwrite failure and verify returned artifacts before interpretation.",
+    "reviewer": "outer_restart_audit",
+    "role": "sol_max_auditor",
+    "scope": "Exact reviewed helper, launcher and finisher; does not validate unseen scores or ecological conclusions.",
+    "tests_passed": 31,
+    "verdict": "supported",
+    "verified": "505 registered active donors equal 449 nonempty plus 56 certified empty species; no empty scoring target; unchanged native score, aggregation and support gates; exact hashes and identities; original access receipt preserved."
+  },
+  "inventory_certificate_sha256": "acbce53636cd4e5c02a02781e2265d87cb2f0a09fded7ecdbafde41fca84e8b2",
+  "inventory_proof_sha256": "8e21478e8e7fd312b47a1827606771c0c3b2bf9e0f37d311072d0bc10ea65fea",
+  "launcher_sha256": "67a79806ad509ef771ec5566a5070918a2bb455f1fdb2f409f48dd3d2e56350b",
+  "model_outcomes_read_during_recovery_preparation": false,
+  "parent_metadata_preflight": {
+    "certificate_identity_digests_verified": 4,
+    "empty_species": 56,
+    "frozen_sources_unchanged": 29,
+    "independent_audit_sha256": "394dc0e64219fba0f85d795c337a2e623d2d5cfd907f13c0bd559e4c9e4c61ef",
+    "model_outcomes_read": false,
+    "prior_access_sha256": "1d89233916fe9d9ef81a235723fe1aa8f952c9f293a092246dc508f290ee0829",
+    "recovery_helper_sha256": "155d659f84c4dbb7d59c46004859dd10edf48c977dfe55db3730331958594b09",
+    "registered_active_and_donor_species": 505,
+    "response_rows_read_in_this_preflight": 0,
+    "scoring_targets": 157,
+    "serialized_nonempty_species": 449,
+    "status": "pass"
+  },
+  "plan_digest": "4b179d6cf8134551099c896bbcb30837d2d316cc3e5c70ed30d91c53bf4b63e0",
+  "plan_sha256": "377a3caf3537eaae727e5830f374ae9166f469b9afefb0d116556d12e75edc75",
+  "prior_access_sha256": "1d89233916fe9d9ef81a235723fe1aa8f952c9f293a092246dc508f290ee0829",
+  "prior_score_log_sha256": "51ded501853f930a820d7b3a69dda62614367382ca47ab9f3fc2b68303aaed5b",
+  "prior_score_stage_sha256": "9ea1953939e1eed653bfb36e1659ad068231df18516f9486a52bca7b8667c94e",
+  "recovery_helper_sha256": "155d659f84c4dbb7d59c46004859dd10edf48c977dfe55db3730331958594b09",
+  "recovery_test_sha256": "6c6107839106104e0893f3bdf108584ac5429d002efe6994a49daadd286c4c99",
+  "run_relative": "data/processed/dsdm/goal052-seawfb-dsdm-experiment/outer-assessment-20261003-r2",
+  "schema_version": "goal052-outer-score-recovery-validation-v1",
+  "scientific_definitions_changed": false,
+  "scope": "Exact attempt-004 scoring-only recovery; outer score results are not yet computed or validated.",
+  "status": "pass",
+  "tests": {
+    "command": ".venv/bin/python -m pytest -q tests/test_goal052_outer_score_recovery.py tests/test_goal052_outer_response.py tests/test_goal052_outer_scoring.py tests/test_goal052_outer_report.py",
+    "compilation": "passed",
+    "failed": 0,
+    "passed": 31
+  }
+}
