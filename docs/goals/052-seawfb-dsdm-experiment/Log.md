@@ -1375,3 +1375,37 @@ Correspondence reply **820** posts the reconciliation and recovery closeout
 as a reply to **810**. Task retrieval checkpoint is 820. Fable responds next
 on reference-bin wording or a material objection; no new Barry decision or
 authorization gate is introduced.
+
+## 5 October 2026 — outer assessment completed and independently checked
+
+The retained-full run completed all 4,242 fits. Native closure/verification
+finished at 01:36:48 AEDT. The independent pre-opening audit passed at
+10:39:21 after a bounded serialization-size comparison repair. Authorized
+response transfer began at 10:42:51. Native scoring exposed a loader count
+assumption: the 505 registered active/donor species include 56 empty taxa,
+while sparse canonical rows contain 449 species. Full original acquisition
+validation and independent review certified those identities. The separate
+recovery preserved all registered donors, canonical memberships and scientific
+calculations. A runtime binding failure was corrected before successful recovery005.
+
+Scoring and report stages both completed with exit zero. A local polling race
+stopped artifact return after the report was already finished. The successful
+remote receipts were checked and a separate return-only reconciliation completed
+at 11:54:09, with all 157 final predictions, 185 data/receipt files and 26
+controller files verified. Its success receipt preserves the failed completion
+and binds both successful stages. No frozen source, plan, fit, prediction,
+threshold, mask or panel changed after opening. All earlier failures remain.
+
+Independent checks reproduce every aggregate X10/X20 contrast and richness/
+matched-inner summary. A separate raw-response reconstruction on three
+prospectively chosen species across three regions checks 2,268 metric fields
+at maximum error 2.44e-15. See `OuterResults-20261005.md`, its diagnostic
+appendix, and the final acceptance/review evidence. The primary fine-tuning
+minus target-only macro AUC difference is -0.000396; minus conventional is
++0.002771, with regional reversals. The prospective richness pattern is
+supported descriptively in SEH/NNC; NCP lacks the fixed 100+ bin support.
+This is recording discrimination, without an identified mechanism.
+
+No fitting/scoring/report process remains active on Deep; full models are
+preserved there. Nectar's control-plane closeout is commit `93b0b1f`.
+No new scientific run or external correspondence was initiated.

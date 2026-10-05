@@ -5,7 +5,54 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Current handoff — 5 October, audit passed; scoring-only loader recovery
+## Current handoff — 5 October, outer assessment complete and verified
+
+The complete retained-full outer assessment is now returned and checked.
+Read [OuterResults-20261005.md](docs/goals/052-seawfb-dsdm-experiment/OuterResults-20261005.md)
+for the scientific result and its diagnostic appendix for exact support sets.
+The final acceptance receipt is
+`evidence/seawfb_dsdm/goal052/outer-acceptance-20261005.json`; archived review
+sources/results and the byte-identical native report are in
+`evidence/seawfb_dsdm/goal052/outer-review-20261005/`.
+
+All **4,242 fits** completed and the independent pre-opening audit passed.
+The score/reporter stages then succeeded. Verified return completed at
+**11:54:09 AEDT**: all 157 prediction files, 185 data/receipt files and
+26 controller files checked. All 29 frozen scientific source hashes and the
+original closure remain unchanged. A live check at 11:53:44 found no campaign
+fitting, scoring or report process on Deep.
+
+The result is descriptive: primary fine-tuning minus target-only network AUC
+**−0.000396** (34/73 positive), and minus selected conventional **+0.002771**
+(39/73). The conventional comparison is positive in NCP/NNC and negative in
+SEH. The fixed exploratory ensemble gains **+0.007582** over fine-tuning and
+**+0.010352** over conventional. High-richness comparisons decline in SEH and
+NNC; NCP has no reportable 100+ background bin, so the three-region diagnostic
+is NA. No occupancy, causal mechanism or inferential significance is established.
+
+All-target aggregation/richness checks pass. Independent raw-response
+reconstruction for three prospectively chosen species across all regions and
+X10/X20 passes **2,268 field comparisons**, maximum error **2.44e-15**.
+Original threshold metrics retain their frozen OOF thresholds.
+
+Authoritative private completion is run
+`postproduction-control-005/return-complete-006.json`, SHA
+`287894aa6d38f0b38c545b9c720ce21a28059451f06be795e230abb48577a143`.
+The score SHA is
+`3a81b166f95551afc199577b86c200bf8cc6f91a24289ec5ad5583a9421f4a41`.
+The old `postproduction-control-005/complete.json` deliberately remains failed:
+it recorded a report-completion polling race. Both successful stage receipts
+and the separate return-only receipt resolve it without recomputing scores or
+regenerating the report. Preserve all prior failure/access/recovery evidence.
+Do not relaunch old controllers. Full fitted models remain under the isolated
+Deep export `/data/codex/repos/dSDM-outer-20261003-r2/`.
+
+The next scientific discussion can use the completed outer report. No board
+message, new fit, revised threshold, model selection or scientific redesign
+has been initiated. The generic completion-poll race is a future engineering
+repair before another campaign; this run is closed through verified receipts.
+
+## Historical handoff — 5 October, audit passed; scoring-only loader recovery
 
 All **4,242 fits** completed on Deep: 10 q, 50 pretraining, 3,140 neural and
 1,042 conventional. Attempt `002` finished the remaining fitting stages in

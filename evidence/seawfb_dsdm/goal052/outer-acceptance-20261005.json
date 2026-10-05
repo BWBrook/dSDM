@@ -1,0 +1,335 @@
+{
+  "artifacts": {
+    "docs/goals/052-seawfb-dsdm-experiment/OuterDiagnosticsResults-20261005.md": "27cb30384957e1b8d007f1a86327934d5fb75af5083d0ec9e79a550f0de3f7ec",
+    "docs/goals/052-seawfb-dsdm-experiment/OuterResults-20261005.md": "1810bba88afc9ac83a3e8e44679c586f6c9c0081708b90e036dd740bb65adbc5",
+    "evidence/seawfb_dsdm/goal052/outer-review-20261005/README.md": "0bfe093451d2723044100137aebaaeb83144de2ed4511d979b8f0b705de4e5d8",
+    "evidence/seawfb_dsdm/goal052/outer-review-20261005/aggregate-check.json": "a0c166f32693dea3e4c3533c9e1c9a491a13c70947a07c70c7409f8606a43b72",
+    "evidence/seawfb_dsdm/goal052/outer-review-20261005/aggregate-check.py": "6e04a043e73be4bbbf417f3fb7cd6ab70833844fc6cd758adb4ae3ea1d27e91b",
+    "evidence/seawfb_dsdm/goal052/outer-review-20261005/diagnostics-extract.py": "9057dbe105c6c8dcb1b5d75eaf2377ac603d1f09852055bb430461b187942fc9",
+    "evidence/seawfb_dsdm/goal052/outer-review-20261005/diagnostics-extraction.json": "6725d4eff7fd5cef44b91b80831f327b192de58dc72f36d3d116dad6a5c5f342",
+    "evidence/seawfb_dsdm/goal052/outer-review-20261005/independent-score-check.json": "e4995dfe69fab1d43dc48cba0853bc05946706af72b2037af6a07db85a292093",
+    "evidence/seawfb_dsdm/goal052/outer-review-20261005/independent-score-check.py": "868b70e6e423864ae0c4e3b4c10f820ee562233f4a10ca03dab264c978d5250e",
+    "evidence/seawfb_dsdm/goal052/outer-review-20261005/native-report.md": "b64ce1356ab8394f6c7b6668766576b7855ee60830eaf172a21e1bf9dbe0fbdb",
+    "evidence/seawfb_dsdm/goal052/outer-review-20261005/return-complete-006.json": "287894aa6d38f0b38c545b9c720ce21a28059451f06be795e230abb48577a143",
+    "evidence/seawfb_dsdm/goal052/outer-review-20261005/return-review.json": "8f742626220db76d70d3846fd675b4d57a43fab5d443d5d6c93e64be6c931c3d",
+    "evidence/seawfb_dsdm/goal052/outer-review-20261005/return-source-006.py": "c31cb96e7608096ab990da35ccc439beb8f8f421cf0c19dc4d0397f4870aae3c",
+    "evidence/seawfb_dsdm/goal052/outer-review-20261005/richness-check-initial-failure.json": "ab4fd40046a78848606362cfb8d0b6814ee1d31403b4ae8bdfaebf3a2c0db8ca",
+    "evidence/seawfb_dsdm/goal052/outer-review-20261005/richness-check-initial.py": "c7390950033f0f906be0eb27add18f86279992bc95e695e22a8a182a75d86a72",
+    "evidence/seawfb_dsdm/goal052/outer-review-20261005/richness-check.json": "735b6d13e94d4f61067be466b98b49858e5ea3d8981dd2520a5c8d0c518f6021",
+    "evidence/seawfb_dsdm/goal052/outer-review-20261005/richness-check.py": "d34641f77f93d7880671ee0b8d5a25d3df324aa790f21af2df9239c06f31867c"
+  },
+  "canonical_response_sha256": "6b328dd7849bf1a8fa70d26b497369395e9e1b600ca8ff1d3a436b98a32ae3d9",
+  "checks": {
+    "aggregate": {
+      "numeric_comparisons": 232,
+      "primary_target_count": 73,
+      "rows_checked": 471,
+      "status": "pass"
+    },
+    "appendix_reproduction": {
+      "byte_identical_reproduction": true,
+      "checks": 117995,
+      "document_sha256": "27cb30384957e1b8d007f1a86327934d5fb75af5083d0ec9e79a550f0de3f7ec",
+      "extractor_sha256": "9057dbe105c6c8dcb1b5d75eaf2377ac603d1f09852055bb430461b187942fc9",
+      "output": "/Users/bwbrook/papers/dSDM/docs/goals/052-seawfb-dsdm-experiment/OuterDiagnosticsResults-20261005.md",
+      "output_sha256": "27cb30384957e1b8d007f1a86327934d5fb75af5083d0ec9e79a550f0de3f7ec",
+      "status": "pass"
+    },
+    "independent_raw_score": {
+      "comparison": {
+        "all_selected_metrics_match": true,
+        "field_comparisons": 2268,
+        "float_tolerance": 1e-12,
+        "maximum_absolute_difference": 2.4424906541753444e-15
+      },
+      "masks": [
+        "x10",
+        "x20"
+      ],
+      "regions": [
+        "NCP",
+        "SEH",
+        "NNC"
+      ],
+      "residual_scope": "Three prospectively selected primary targets only; aggregate contrasts checked separately.",
+      "selected_targets": [
+        "Acanthagenys rufogularis",
+        "Heteroscenes pallidus",
+        "Zosterops lateralis"
+      ],
+      "selection_rule": "first_middle_last_lexicographic_target_in_frozen_primary73",
+      "status": "pass"
+    },
+    "returned_files": {
+      "control_files_checked": 26,
+      "files_checked": 185,
+      "frozen_sources_checked": 29,
+      "matching_active_campaign_processes": 0,
+      "observed_remote_process_check_utc": "2026-10-05T00:53:44Z",
+      "original_failed_completion_sha256": "bb2e4c50c07e86476edd747fc0999ce455e0ac98a65450645576b371d8433f77",
+      "prediction_files": 157,
+      "return_complete_sha256": "287894aa6d38f0b38c545b9c720ce21a28059451f06be795e230abb48577a143",
+      "returned_manifest_sha256": "00c357027ebe5485c91269b0a2c12013ca07463be7041e100047a2560729aa59",
+      "schema_version": "goal052-local-return-review-v1",
+      "status": "pass"
+    },
+    "richness": {
+      "failed_invariants": [],
+      "invariants_checked": 33854,
+      "schema_version": "goal052-outer-richness-result-check-v1",
+      "status": "pass"
+    }
+  },
+  "closure_sha256": "aa5b7949cd0c76bb324edde55d5209e0fbf8447b9e00f45a0efa5850ce185063",
+  "completion": {
+    "audit_is_preserved_preopening_reference": true,
+    "auditor_sha256": "d16b90307de9f676bac121ff93a992589159651da7a858353b2e6840db11cb0a",
+    "closure_sha256": "aa5b7949cd0c76bb324edde55d5209e0fbf8447b9e00f45a0efa5850ce185063",
+    "completed_utc": "2026-10-05T00:54:09.835512+00:00",
+    "independent_audit_sha256": "394dc0e64219fba0f85d795c337a2e623d2d5cfd907f13c0bd559e4c9e4c61ef",
+    "inventory_certificate_sha256": "acbce53636cd4e5c02a02781e2265d87cb2f0a09fded7ecdbafde41fca84e8b2",
+    "inventory_proof_sha256": "8e21478e8e7fd312b47a1827606771c0c3b2bf9e0f37d311072d0bc10ea65fea",
+    "models_retained_on_deep": "/data/codex/repos/dSDM-outer-20261003-r2/data/processed/dsdm/goal052-seawfb-dsdm-experiment/outer-assessment-20261003-r2/fits",
+    "native_access_started_sha256": "1d89233916fe9d9ef81a235723fe1aa8f952c9f293a092246dc508f290ee0829",
+    "native_access_success_sha256": "c92fc95e518ae98c0bdedffb18157ca28af3fdb97232ccc6b615e1c9b75b3301",
+    "original_attempt005_manifest_sha256": "a5bfa5d9ff02b96d6430828844751dd8519c7c9715c3e6d17580c8bf1b84ab1a",
+    "original_response_access_preserved": true,
+    "plan_digest": "4b179d6cf8134551099c896bbcb30837d2d316cc3e5c70ed30d91c53bf4b63e0",
+    "plan_sha256": "377a3caf3537eaae727e5830f374ae9166f469b9afefb0d116556d12e75edc75",
+    "production_complete_sha256": "189e334159177eff3798d9d54be71c9d99e9e783c12013af9d36c42f93c17c68",
+    "reconciled_failure_reason": "report exited without a completion receipt",
+    "reconciled_failure_sha256": "bb2e4c50c07e86476edd747fc0999ce455e0ac98a65450645576b371d8433f77",
+    "reconciliation_mode": "return_only",
+    "recovery_helper_sha256": "16bc4c2405a62222a6fcf190a861ad9ad45065e75cbf50d57a4cb7ec16abf328",
+    "recovery_success_sha256": "f85a70f6b2c245266b8518f8e121d610c61fb360666fc51d8173e2912786279d",
+    "report_regenerated": false,
+    "report_sha256": "b64ce1356ab8394f6c7b6668766576b7855ee60830eaf172a21e1bf9dbe0fbdb",
+    "report_stage": {
+      "pid": 609488,
+      "remote_status_sha256": "892f7dab94e10e02d130c06b5db501934e8492022eeedc23df78e9567018f134",
+      "return_code": 0,
+      "stage": "report",
+      "status": "complete"
+    },
+    "response_transfer_sha256": "e16642270d8b1c627ba8818f3a98f33e3ed4ef8f3465c5b824d6c4cd463027e1",
+    "return_source_sha256": "c31cb96e7608096ab990da35ccc439beb8f8f421cf0c19dc4d0397f4870aae3c",
+    "returned_artifact_count": 186,
+    "returned_manifest_sha256": "00c357027ebe5485c91269b0a2c12013ca07463be7041e100047a2560729aa59",
+    "schema_version": "goal052-outer-postproduction-completion-v1",
+    "scientific_recomputation": false,
+    "score_stage": {
+      "pid": 597547,
+      "remote_status_sha256": "65ee80a967cf805a0bfae8d62cf61679333008f243408e21c50f8c2cd9e50f3e",
+      "return_code": 0,
+      "stage": "score",
+      "status": "complete"
+    },
+    "scores_sha256": "3a81b166f95551afc199577b86c200bf8cc6f91a24289ec5ad5583a9421f4a41",
+    "status": "complete",
+    "success": true
+  },
+  "completion_receipt_sha256": "287894aa6d38f0b38c545b9c720ce21a28059451f06be795e230abb48577a143",
+  "fit_counts": {
+    "conventional": 1042,
+    "neural": 3140,
+    "pretraining": 50,
+    "q": 10,
+    "total": 4242
+  },
+  "focused_independent_claim_review": {
+    "closeout_repairs": [
+      "Changed import-error wording to runtime binding error.",
+      "Created this final acceptance receipt and verified its document links."
+    ],
+    "finding": "No material scientific or denominator error identified in direct comparison with the target-region rows.",
+    "scope": "One focused independent pass; numerical spot-check scope is recorded separately."
+  },
+  "frozen_sources_verified": 29,
+  "interpretive_limits": [
+    "Threshold metrics use frozen inner-OOF thresholds; retained-full score-scale changes were not recalibrated on outer outcomes.",
+    "Original fitted inner target states were not saved, so the identical-grid inner/full score-scale comparison is unavailable without additional replay fits.",
+    "Presence versus effort-supported target-group background measures recording discrimination, not occupancy or verified absence.",
+    "Recorded-richness diagnostics test a retained-inner discovery prospectively and do not identify ecological versus observation mechanisms.",
+    "Species, regions and seeds are not iid replicates; descriptive sign labels are not significance, equivalence or practical-importance tests."
+  ],
+  "model_refits_after_opening": false,
+  "native_report_sha256": "b64ce1356ab8394f6c7b6668766576b7855ee60830eaf172a21e1bf9dbe0fbdb",
+  "plan_digest": "4b179d6cf8134551099c896bbcb30837d2d316cc3e5c70ed30d91c53bf4b63e0",
+  "plan_sha256": "377a3caf3537eaae727e5830f374ae9166f469b9afefb0d116556d12e75edc75",
+  "predictions_changed_after_closure": false,
+  "preopening_audit": {
+    "completed_utc": "2026-10-04T23:39:21.520082+00:00",
+    "is_preserved_preopening_audit": true,
+    "sha256": "394dc0e64219fba0f85d795c337a2e623d2d5cfd907f13c0bd559e4c9e4c61ef",
+    "status": "pass",
+    "verified": {
+      "closure_files": 17060,
+      "component_arms": 6,
+      "domain_rows_per_arm": 144860,
+      "ensemble_arms": 1,
+      "fit_receipts": 4242,
+      "hashed_bytes": 92243220254,
+      "hashed_files": 17112,
+      "input_files": 22,
+      "outer_response_content_opened": false,
+      "pre_response_access_absence": true,
+      "pre_score_absence": true,
+      "qualification_receipts": 1,
+      "seed_score_files_recomputed": 4182,
+      "source_files": 29,
+      "targets": 157,
+      "task_counts": {
+        "conventional": 1042,
+        "neural": 3140,
+        "pretraining": 50,
+        "q": 10
+      },
+      "tasks": 4242
+    }
+  },
+  "presentation_finalization": "Removed one surplus final Markdown newline; re-rendered from the archived extractor and verified identical numeric and membership content.",
+  "preserved_failed_completion_receipts": {
+    "continuation-control-001/complete.json": {
+      "reason": null,
+      "sha256": "82b4a321839277e53d401e0499b0b899c34f91e2f81e62b1fe5ed164b5c728f1",
+      "status": "failed"
+    },
+    "continuation-control-002/complete.json": {
+      "reason": null,
+      "sha256": "4b6d654e21c382d902299aa75befb51d85fc67fdfa57a420916534d57d11a5e7",
+      "status": "failed"
+    },
+    "postproduction-control-003/complete.json": {
+      "reason": "score detached stage failed",
+      "sha256": "e6ddb536057b2415bd5230fcf0e79b6653c41ea5dde006d4f808cfac2602aee0",
+      "status": "failed"
+    },
+    "postproduction-control-004/complete.json": {
+      "reason": "score detached stage failed",
+      "sha256": "f119346d6aa8d23629f427a6b1726a44e1afe7577dc1b88fa31df06753b32e09",
+      "status": "failed"
+    },
+    "postproduction-control-005/complete.json": {
+      "reason": "report exited without a completion receipt",
+      "sha256": "bb2e4c50c07e86476edd747fc0999ce455e0ac98a65450645576b371d8433f77",
+      "status": "failed"
+    }
+  },
+  "preserved_panels": {
+    "primary": 73,
+    "regional": {
+      "NCP": 88,
+      "NNC": 134,
+      "SEH": 122
+    }
+  },
+  "primary_absolute_auc": {
+    "fixed_ensemble": {
+      "denominator": 73,
+      "mean": 0.6903139887473388
+    },
+    "multihead_frozen_trunk": {
+      "denominator": 73,
+      "mean": 0.6813540306429695
+    },
+    "multihead_full_finetune": {
+      "denominator": 73,
+      "mean": 0.6827322893660152
+    },
+    "selected_conventional": {
+      "denominator": 73,
+      "mean": 0.679961771932294
+    },
+    "selected_conventional_plus_q": {
+      "denominator": 73,
+      "mean": 0.6806507629008504
+    },
+    "target_only_random_init_resmlp": {
+      "denominator": 73,
+      "mean": 0.683128310344587
+    },
+    "target_plus_q_linear_resmlp": {
+      "denominator": 73,
+      "mean": 0.6827940550832955
+    }
+  },
+  "primary_macro_contrasts": {
+    "ensemble_conventional": {
+      "denominator": 73,
+      "mean": 0.010352216815044852,
+      "median": 0.008767120796952374,
+      "positive_count": 60
+    },
+    "ensemble_ft": {
+      "denominator": 73,
+      "mean": 0.007581699381323819,
+      "median": 0.007634023928851004,
+      "positive_count": 56
+    },
+    "frozen_random": {
+      "denominator": 73,
+      "mean": -0.0017742797016174585,
+      "median": -0.003319770868232985,
+      "positive_count": 31
+    },
+    "ft_conventional": {
+      "denominator": 73,
+      "mean": 0.0027705174337210327,
+      "median": 0.0017166830680248601,
+      "positive_count": 39
+    },
+    "ft_frozen": {
+      "denominator": 73,
+      "mean": 0.0013782587230455362,
+      "median": 6.987007318903782e-05,
+      "positive_count": 38
+    },
+    "ft_q": {
+      "denominator": 73,
+      "mean": -6.176571728025773e-05,
+      "median": -0.0008836082150657232,
+      "positive_count": 34
+    },
+    "ft_q_conventional": {
+      "denominator": 73,
+      "mean": 0.0020815264651647515,
+      "median": 0.002558283980473456,
+      "positive_count": 44
+    },
+    "ft_random": {
+      "denominator": 73,
+      "mean": -0.0003960209785719225,
+      "median": -0.0005650176492974687,
+      "positive_count": 34
+    }
+  },
+  "publication_or_correspondence_sent": false,
+  "remote_root": "/data/codex/repos/dSDM-outer-20261003-r2",
+  "response_recovery_provenance": {
+    "canonical_membership_rows": 5048061,
+    "completion_receipt_sha256": "b75e91b4858e8bb04d6d559ed12efbbcc9b5819fac7cd7915435b3c41d9ba08c",
+    "empty_species": 56,
+    "independent_audit_sha256": "394dc0e64219fba0f85d795c337a2e623d2d5cfd907f13c0bd559e4c9e4c61ef",
+    "inventory_certificate_sha256": "acbce53636cd4e5c02a02781e2265d87cb2f0a09fded7ecdbafde41fca84e8b2",
+    "inventory_proof_sha256": "8e21478e8e7fd312b47a1827606771c0c3b2bf9e0f37d311072d0bc10ea65fea",
+    "prior_access_sha256": "1d89233916fe9d9ef81a235723fe1aa8f952c9f293a092246dc508f290ee0829",
+    "recovery_control": "/data/codex/repos/dSDM-outer-20261003-r2/postproduction-control-005/recovery",
+    "recovery_helper": "/data/codex/repos/dSDM-outer-20261003-r2/postproduction-control-005/recovery-source.py",
+    "recovery_helper_sha256": "16bc4c2405a62222a6fcf190a861ad9ad45065e75cbf50d57a4cb7ec16abf328",
+    "recovery_manifest_sha256": "03bff4451fd4686c7cc36eee4cef2876c3d5e12343326ca9517da650d732c165",
+    "recovery_started_receipt_sha256": "a8a27102911e45d7d58aad3af03dae583fd28907531d8756c807b6999276468f",
+    "registered_active_species_count": 505,
+    "registered_effort_donor_count": 505,
+    "registry_sha256": "1c28e3a935e1b62b47dc3b600a0f78f1c8a77d1dfee4e499c2b578048360c4d1",
+    "serialized_nonempty_species_count": 449,
+    "taxonomy_sha256": "e9e04b1ed37cb682c0ce2f398f6c203741f86a11c3d72dd36e4eb2b715e8dbb6"
+  },
+  "review_scope": "numerical completion, immutable prediction/response provenance, checked descriptive results; not inferential or causal validation",
+  "reviewed_utc": "2026-10-05T01:02:43.235114+00:00",
+  "run_relative": "data/processed/dsdm/goal052-seawfb-dsdm-experiment/outer-assessment-20261003-r2",
+  "schema_version": "goal052-outer-assessment-review-v1",
+  "scientific_source_changed_after_opening": false,
+  "scores_sha256": "3a81b166f95551afc199577b86c200bf8cc6f91a24289ec5ad5583a9421f4a41",
+  "source_git_head_at_review": "ce7dd53aa6560ac589eb3df20756306984f1cd78",
+  "status": "complete_verified"
+}

@@ -1,0 +1,13 @@
+{
+  "control_files_checked": 26,
+  "files_checked": 185,
+  "frozen_sources_checked": 29,
+  "matching_active_campaign_processes": 0,
+  "observed_remote_process_check_utc": "2026-10-05T00:53:44Z",
+  "original_failed_completion_sha256": "bb2e4c50c07e86476edd747fc0999ce455e0ac98a65450645576b371d8433f77",
+  "prediction_files": 157,
+  "return_complete_sha256": "287894aa6d38f0b38c545b9c720ce21a28059451f06be795e230abb48577a143",
+  "returned_manifest_sha256": "00c357027ebe5485c91269b0a2c12013ca07463be7041e100047a2560729aa59",
+  "schema_version": "goal052-local-return-review-v1",
+  "status": "pass"
+}

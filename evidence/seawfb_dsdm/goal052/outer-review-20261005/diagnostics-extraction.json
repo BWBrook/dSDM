@@ -1,0 +1,9 @@
+{
+  "byte_identical_reproduction": true,
+  "checks": 117995,
+  "document_sha256": "27cb30384957e1b8d007f1a86327934d5fb75af5083d0ec9e79a550f0de3f7ec",
+  "extractor_sha256": "9057dbe105c6c8dcb1b5d75eaf2377ac603d1f09852055bb430461b187942fc9",
+  "output": "/Users/bwbrook/papers/dSDM/docs/goals/052-seawfb-dsdm-experiment/OuterDiagnosticsResults-20261005.md",
+  "output_sha256": "27cb30384957e1b8d007f1a86327934d5fb75af5083d0ec9e79a550f0de3f7ec",
+  "status": "pass"
+}
