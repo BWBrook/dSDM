@@ -53,13 +53,17 @@ the 56 empty taxa is among the frozen 157 scoring targets. Independent review
 confirms a loader count-semantics error, with no change to responses, richness,
 panels or the frozen scientific definitions.
 
-The separate scoring-only recovery is now validated: **31 tests pass**, the
+The separate scoring-only recovery is now validated: **33 tests pass**, the
 actual metadata/prior-access checks pass, and independent review supports the
-exact attempt-004 launch. `outer-score-recovery-validation-20261005.json` binds
+exact attempt-005 launch. `outer-score-recovery-entrypoint-validation-20261005.json` binds
 the helper, launcher, finisher, certificate, original audit and failed access.
 It retains the complete 505 donor universe and uses the unchanged native
 response-array and scoring calculations.
-The 29 frozen source files, plan, fitted models, predictions and closure remain
+Attempt004 stopped immediately on an import error before closure verification
+or response reading. Its failure evidence is preserved. Two misplaced helper
+imports are corrected; real-module entrypoint tests and an exhaustive imported-
+symbol check now pass. The 29 frozen source files, plan, fitted models,
+predictions and closure remain
 unchanged. No model outcome has been computed or examined. Do not rerun the
 failed scorer or overwrite its evidence.
 
@@ -67,7 +71,7 @@ Remote postproduction state is outside the closed run at
 `/data/codex/repos/dSDM-outer-20261003-r2/postproduction-control-003/`.
 Local launch, opening, transfer and audit evidence is under the run's
 `postproduction-control-003/`. The reviewed recovery will use fresh
-`postproduction-control-004/`, with its own new `recovery/` child outside the
+`postproduction-control-005/`, with its own new `recovery/` child outside the
 closed run on Deep. Preserve the original access receipt and failed attempt.
 Do not retry attempt003 or change any frozen scientific source, plan, fit,
 prediction, threshold or panel after opening.

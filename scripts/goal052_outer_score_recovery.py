@@ -332,10 +332,10 @@ def reconstruct_response(root: Path, run: Path, closure: Mapping[str, Any], nati
 
 def score_response(root: Path, run: Path, response: Mapping[str, Any], native: Any,
                    recovery_provenance: Mapping[str, Any]) -> dict[str, Any]:
-    from dsdm_phase1.goal052_outer_artifacts import read_json, read_domain, write_once
+    from dsdm_phase1.goal052_outer_artifacts import read_json, write_once
     from dsdm_phase1.goal052_outer_scoring import aggregate_regions, matched_inner_attenuation, score_target_region
     plan = native.load_plan(root, run)
-    domain = read_domain(run, plan)["arrays"]
+    domain = native.read_domain(run, plan)["arrays"]
     blocks = np.asarray([f"{x},{y}" for x, y in zip(domain["block_x"], domain["block_y"])])
     results = []
     for target in plan["targets"]:
@@ -384,7 +384,8 @@ def recover(args: argparse.Namespace) -> dict[str, Any]:
     root, run, control = args.root.resolve(), args.run.resolve(), args.control.resolve()
     native = import_native(root)
     response_native = import_response(root)
-    closure = native.verify_closure(root, run)
+    from dsdm_phase1.goal052_outer_artifacts import verify_closure
+    closure = verify_closure(root, run)
     plan = native.load_plan(root, run)
     plan_sha, closure_sha = sha256_file(run / "plan.json"), sha256_file(run / "closure.json")
     require(args.expected_plan_sha256 == plan_sha and args.expected_closure_sha256 == closure_sha,

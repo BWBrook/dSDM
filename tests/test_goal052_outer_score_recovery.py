@@ -12,6 +12,8 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+from dsdm_phase1 import goal052_outer_artifacts
+from dsdm_phase1 import goal052_outer as native_outer
 from dsdm_phase1 import goal052_outer_response as native_response
 from scripts import goal052_outer_score_recovery as recovery
 
@@ -188,3 +190,38 @@ def test_prior_access_rejects_existing_recovery_outputs(tmp_path: Path, artifact
     (run / artifact).write_text("{}", encoding="utf-8")
     with pytest.raises(recovery.RecoveryError, match="already exists"):
         recovery.validate_prior_access(run, closure, "unused", "canonical", "targets")
+
+
+def test_recover_reaches_artifact_verifier_before_response_access(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    root = Path(__file__).resolve().parents[1]
+    calls: list[tuple[Path, Path]] = []
+
+    def sentinel_verify_closure(actual_root: Path, actual_run: Path) -> dict:
+        calls.append((actual_root, actual_run))
+        raise recovery.RecoveryError("verifier sentinel")
+
+    monkeypatch.setattr(goal052_outer_artifacts, "verify_closure", sentinel_verify_closure)
+    args = type("Args", (), {
+        "root": root,
+        "run": tmp_path / "run",
+        "control": tmp_path / "control",
+    })()
+    with pytest.raises(recovery.RecoveryError, match="verifier sentinel"):
+        recovery.recover(args)
+    assert calls == [(root, (tmp_path / "run").resolve())]
+
+
+def test_score_response_reaches_native_plan_loader_before_prediction_access(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    calls: list[tuple[Path, Path]] = []
+
+    def sentinel_load_plan(actual_root: Path, actual_run: Path) -> dict:
+        calls.append((actual_root, actual_run))
+        raise recovery.RecoveryError("native plan sentinel")
+
+    monkeypatch.setattr(native_outer, "load_plan", sentinel_load_plan)
+    run = tmp_path / "run"
+    with pytest.raises(recovery.RecoveryError, match="native plan sentinel"):
+        recovery.score_response(tmp_path, run, {}, native_outer, {})
+    assert calls == [(tmp_path, run)]

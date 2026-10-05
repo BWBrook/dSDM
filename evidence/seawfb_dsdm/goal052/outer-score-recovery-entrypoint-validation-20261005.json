@@ -1,0 +1,107 @@
+{
+  "closure_sha256": "aa5b7949cd0c76bb324edde55d5209e0fbf8447b9e00f45a0efa5850ce185063",
+  "created_utc": "2026-10-05T00:24:05.764040+00:00",
+  "failed004_completion_sha256": "f119346d6aa8d23629f427a6b1726a44e1afe7577dc1b88fa31df06753b32e09",
+  "failed004_no_success_scores_failure_or_report": true,
+  "failed004_original_access_unchanged_sha256": "1d89233916fe9d9ef81a235723fe1aa8f952c9f293a092246dc508f290ee0829",
+  "failed004_score_sha256": {
+    "stage.json": "40856682e2298256e80e39128f45862fd65aba648c3aad279aa0bd983a21202e",
+    "stage.log": "46e69953de3b7ee4a5f02f58a78916e80b55c79be46310195b3e4f86cdad5605"
+  },
+  "finisher_sha256": "e0acd85d5d7050c2a7a1e25609674f2ccfbd9e57b064fd486609f4e7616a3362",
+  "fits_or_predictions_changed": false,
+  "frozen_scientific_sources_changed": false,
+  "independent_audit_sha256": "394dc0e64219fba0f85d795c337a2e623d2d5cfd907f13c0bd559e4c9e4c61ef",
+  "independent_review": {
+    "required_execution": "Bind previous004 evidence and exact reviewed hashes, use reviewed launcher with fresh005, preserve all prior evidence, and require final artifact and provenance checks before interpretation.",
+    "reviewer": "outer_restart_audit",
+    "role": "sol_max_auditor",
+    "scope": "Fresh005 only with exact reviewed helper, tests, launcher and finisher; no validation of unseen score values or ecological interpretation.",
+    "tests_passed": 33,
+    "verdict": "supported",
+    "verified": "Actual004 failure ended before closure/response; both module bindings corrected; all function-local imports and native/response attributes/signatures checked against real modules; both boundary regression tests pass."
+  },
+  "inventory_certificate_sha256": "acbce53636cd4e5c02a02781e2265d87cb2f0a09fded7ecdbafde41fca84e8b2",
+  "inventory_proof_sha256": "8e21478e8e7fd312b47a1827606771c0c3b2bf9e0f37d311072d0bc10ea65fea",
+  "launcher_sha256": "ba0f4970335417926459c2320ddd85a2f6ad0e8731170432726922edafc1c4d9",
+  "model_outcomes_read_during_recovery_preparation": false,
+  "parent_metadata_preflight": {
+    "certificate_identity_digests_verified": 4,
+    "empty_species": 56,
+    "frozen_sources_unchanged": 29,
+    "independent_audit_sha256": "394dc0e64219fba0f85d795c337a2e623d2d5cfd907f13c0bd559e4c9e4c61ef",
+    "model_outcomes_read": false,
+    "prior_access_sha256": "1d89233916fe9d9ef81a235723fe1aa8f952c9f293a092246dc508f290ee0829",
+    "recovery_helper_sha256": "155d659f84c4dbb7d59c46004859dd10edf48c977dfe55db3730331958594b09",
+    "registered_active_and_donor_species": 505,
+    "response_rows_read_in_this_preflight": 0,
+    "scoring_targets": 157,
+    "serialized_nonempty_species": 449,
+    "status": "pass"
+  },
+  "plan_digest": "4b179d6cf8134551099c896bbcb30837d2d316cc3e5c70ed30d91c53bf4b63e0",
+  "plan_sha256": "377a3caf3537eaae727e5830f374ae9166f469b9afefb0d116556d12e75edc75",
+  "previous_validation_sha256": "dd39443089eb52dc6a90c9ff8291efbae294678ce8d90a430a9c3da813b0f2b1",
+  "prior_access_sha256": "1d89233916fe9d9ef81a235723fe1aa8f952c9f293a092246dc508f290ee0829",
+  "prior_score_log_sha256": "51ded501853f930a820d7b3a69dda62614367382ca47ab9f3fc2b68303aaed5b",
+  "prior_score_stage_sha256": "9ea1953939e1eed653bfb36e1659ad068231df18516f9486a52bca7b8667c94e",
+  "recovery_helper_sha256": "16bc4c2405a62222a6fcf190a861ad9ad45065e75cbf50d57a4cb7ec16abf328",
+  "recovery_test_sha256": "628293e70b1685dbaead20d447f5385c759a3e745737514534c71a559633b6ce",
+  "repair": "Resolve verify_closure from goal052_outer_artifacts and read_domain from goal052_outer; scientific calculations and metadata-validation functions unchanged.",
+  "run_relative": "data/processed/dsdm/goal052-seawfb-dsdm-experiment/outer-assessment-20261003-r2",
+  "runtime_binding_validation": {
+    "bindings": {
+      "__future__": [
+        "annotations"
+      ],
+      "dsdm_phase1": [
+        "goal052_outer",
+        "goal052_outer_response"
+      ],
+      "dsdm_phase1.goal052_outer_artifacts": [
+        "read_json",
+        "verify_closure",
+        "write_once"
+      ],
+      "dsdm_phase1.goal052_outer_scoring": [
+        "aggregate_regions",
+        "matched_inner_attenuation",
+        "score_target_region"
+      ],
+      "native": [
+        "ALL_ARMS",
+        "load_plan",
+        "now",
+        "read_domain"
+      ],
+      "pathlib": [
+        "Path"
+      ],
+      "response_native": [
+        "_array_digest",
+        "_metadata_before_response_read",
+        "_read_canonical_rows",
+        "_read_domain",
+        "_write_access_success"
+      ],
+      "typing": [
+        "Any",
+        "Mapping",
+        "Sequence"
+      ]
+    },
+    "helper_sha256": "16bc4c2405a62222a6fcf190a861ad9ad45065e75cbf50d57a4cb7ec16abf328",
+    "status": "pass"
+  },
+  "runtime_binding_validation_sha256": "c9519e0e34c15f563f419d06a643bee55605791aa38253c59edb243d6d258015",
+  "schema_version": "goal052-outer-score-recovery-entrypoint-validation-v1",
+  "scientific_definitions_changed": false,
+  "scope": "Exact fresh attempt005 after attempt004 entrypoint import failure; no closure verification, response read or metric calculation occurred in004. Actual outer scores are still absent.",
+  "status": "pass",
+  "tests": {
+    "command": ".venv/bin/python -m pytest -q tests/test_goal052_outer_score_recovery.py tests/test_goal052_outer_response.py tests/test_goal052_outer_scoring.py tests/test_goal052_outer_report.py",
+    "compilation": "passed",
+    "failed": 0,
+    "passed": 33
+  }
+}
