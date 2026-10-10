@@ -1,0 +1,160 @@
+{
+  "assessment_receipt_digest": "08915652195df252b062163df189f892b72ccdf1e66dab29cb4908d3b696ab56",
+  "builder_manifest_git_scope": "Build-manifest git fields describe shared makedoc; project_git_head above describes dSDM.",
+  "checks": {
+    "builds": "makedoc draft and supplement PDF/Word builds passed; all manifest source/output hashes rechecked",
+    "document_content": "Both DOCX ZIP/XML packages valid; new qualifications and numerical results present; S5-S9 headings and rho present in Word and PDF (PDF mathematical italic rho verified after Unicode NFKC normalization)",
+    "formatting_correction": "Mathematical rho replaces unavailable text glyph; all numerical report-summary fields unchanged from preserved report-initial source and artifacts",
+    "independent_prose_review": "Tables S5-S9 and numerical Results claims matched audited aggregates; three actionable wording findings corrected and species-level wording clarified",
+    "map_atlas": "pdfunite concatenation of eight bound PDF plates in protocol species order; page count and all species titles verified",
+    "pdf_extracted_replacement_characters": 0,
+    "pdf_page_counts": {
+      "dsdm_manuscript": 18,
+      "dsdm_supplement": 15,
+      "dsdm_tasmania_sensitivity_maps": 8
+    },
+    "report_regeneration": "Final exact idempotent regeneration passed",
+    "visual_inspection": {
+      "main_pdf_pages": [
+        2,
+        7,
+        8,
+        9,
+        12,
+        13,
+        17,
+        18
+      ],
+      "map_plates": 8,
+      "outcome": "Readable text, labels, tables and legends; repeated map-table headers; no material clipping or overlap; final rho render verified",
+      "scope": "Changed prose and tables, surrounding pagination, both existing figures and all eight map plates; remaining pages retained from earlier verified draft",
+      "supplement_pdf_pages": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    }
+  },
+  "completed_at": "2026-10-09T07:32:29.369971+00:00",
+  "files": [
+    {
+      "path": "HANDOVER.md",
+      "sha256": "37a27d3e9d2194623288c793b751f3f045f0f84affeab95ca91e5d22e878feb8"
+    },
+    {
+      "path": "docs/plan/TasmaniaPseudoabsenceExecution-20261009.md",
+      "sha256": "3ce1fb9f19a2d3c366b3cb2dc5c0fd1c05cabeb4649ac1851088bca6fd36403c"
+    },
+    {
+      "path": "docs/plan/TasmaniaPseudoabsenceResults-20261009.md",
+      "sha256": "067048b1d671a4693b3fb0f3306c9a0a68d81c98a4ee35b4d9b2b5d3e4aa24b0"
+    },
+    {
+      "path": "manuscript/README.md",
+      "sha256": "8aba71752956e630d63147f5bb2c0c8994e77ef3dd9677409e01923d8018db49"
+    },
+    {
+      "path": "manuscript/evidence-ledger.md",
+      "sha256": "d0c3bb7ba13ec81f6748f7fd6ea08c8b15321d049b055054c46bb04c260e81a3"
+    },
+    {
+      "path": "manuscript/text/main.md",
+      "sha256": "d6c3ba4511e7a50ca5c0660c21669e56e15f2bccc61ce1e34f0d5290820cba26"
+    },
+    {
+      "path": "manuscript/text/figures.md",
+      "sha256": "b62abb3e145429d17ba99ef7fa9e303510db695fb9132a0c79298b5e59f70aeb"
+    },
+    {
+      "path": "manuscript/text/supplement.md",
+      "sha256": "ad9fa389b772ae98c2b5d1ce88a21c4eaff08ed40640a918633bbc3c9721e170"
+    },
+    {
+      "path": "manuscript/text/tasmania-sensitivity.md",
+      "sha256": "5c29e6a7cfa86477f73c8a4b5b9330f5363f5731fe31823f811ca9e57f8206b1"
+    },
+    {
+      "path": "manuscript/settings/build.yaml",
+      "sha256": "e7722cd54d1e4b11a909fea0a3d3db2382a7f349786286d22eb7cdf865e72aa9"
+    },
+    {
+      "path": "scripts/tasmania_pseudoabsence_report.py",
+      "sha256": "5675e735f65ff0d2e4f02e884a88f81349844a64db51d0800c45445e7e3d5834"
+    },
+    {
+      "path": "manuscript/build/dsdm_manuscript.pdf",
+      "sha256": "0cc2299f82d38508caf0b3710695bdc29cd7cc5b2f0553b290c13eeb9a580c10"
+    },
+    {
+      "path": "manuscript/build/dsdm_manuscript.docx",
+      "sha256": "85c2028bcd3c6c338e75bebb28c9e83ca923230ccfd6b56b1970d960861bce87"
+    },
+    {
+      "path": "manuscript/build/dsdm_manuscript_build_manifest.json",
+      "sha256": "6b9df857b9c7a442b12c93e3a7d6ddb4bdfff89a9c06ce4e354dde1a275f802e"
+    },
+    {
+      "path": "manuscript/build/dsdm_supplement.pdf",
+      "sha256": "38083cdc896c7dcc40debf04ed139fbf0572b0186e42bead9c3dbe9b7b3ae8ef"
+    },
+    {
+      "path": "manuscript/build/dsdm_supplement.docx",
+      "sha256": "4d962c5619392196d3e7d0ac67bcf948430dad8ecef4da802d1e538b055a62d2"
+    },
+    {
+      "path": "manuscript/build/dsdm_supplement_build_manifest.json",
+      "sha256": "2eda2f9b9206b68d2fbaed8927442fab6d8547e8ac5969e9a46b3ffef43d4342"
+    },
+    {
+      "path": "manuscript/build/dsdm_tasmania_sensitivity_maps.pdf",
+      "sha256": "e1800d7545e8459c05d2cc232e67a8292fc7d58fb63523cd0c0230a12f0e54e1"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261009/assessment.json",
+      "sha256": "514b574a046d3773c707adc77143e2072d90ffbb6187ccffd83248ac2603dde7"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261009/independent-assessment-verification.json",
+      "sha256": "3c176093ecfd47e166c5ab99ad007e3107b082c2cc9bb8136ab69d2e96cb091f"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261009/map-rendering.json",
+      "sha256": "fb5c8f53344c6b96181163e0a2d96a9bfa829621ebedb41682d021ba7c0ea84f"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261009/report-summary.json",
+      "sha256": "cf1f0db52464b84c30efda70238bf88b8f0ac1ba737ebb42b0f39df7af524677"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261009/report-initial/report-summary.json",
+      "sha256": "a90a9d50ca13d7aba73ef48f8bf3262ffa6a1a1b9162c9beac99ed436fae3138"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261009/report-initial/tasmania-sensitivity.md",
+      "sha256": "6ccc1fa203c44ee0385688f5b3acf1545fbca01a4932ad9403852f579463410c"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261009/report-initial/tasmania_pseudoabsence_report.py",
+      "sha256": "b0fb99e715b4e1e9211033a63ae38630b7b72f802dc553f0b657380fb099255b"
+    }
+  ],
+  "independent_audit_receipt_digest": "d90a01ad2ac08ef36ff2c40bf7bce9223589011111cc2c67c124e399481ac3be",
+  "limitations": [
+    "Review draft; journal, author and source-access submission details remain outside this tranche",
+    "Sensitivity conditional on unchanged evaluation sources; no ecological truth or occupancy validation",
+    "Word package/content checks passed; PDF was the visually inspected document format"
+  ],
+  "map_rendering_receipt_digest": "52739e502f9b4e8df4b38bcd0ec3dc53d1927c9ffe903e91b22575fb8c2b757f",
+  "project_git_head": "4d2a02478ff2874b808f4cc8792b97faa3d8cbef",
+  "project_working_tree_dirty": true,
+  "receipt_digest": "9eb3ed23b00c9f326f4e4ec629d001f3bb16c0748f8f213df12bca0eda1a72b4",
+  "report_receipt_digest": "0a982306bafa2a46359316c0fa6e857c43ffe09cec60bb683262904df4f6d323",
+  "schema_version": "tasmania-pseudoabsence-delivery-verification-v1",
+  "scope": "Approved sensitivity complete; final document checks involved no fitting, canonical response access or scoring.",
+  "status": "pass"
+}

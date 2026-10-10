@@ -1,0 +1,2980 @@
+{
+  "analysis": "descriptive_reporting_of_accepted_aggregates",
+  "bird_extent_plot": [
+    {
+      "measure": "auc",
+      "scope": "published_mean_fold",
+      "series": "fine_tuned",
+      "value": 0.8316027214151391
+    },
+    {
+      "measure": "auc",
+      "scope": "published_mean_fold",
+      "series": "target_only",
+      "value": 0.8258219710546985
+    },
+    {
+      "measure": "auc",
+      "scope": "published_mean_fold",
+      "series": "conventional",
+      "value": 0.8282128630975819
+    },
+    {
+      "measure": "contrast",
+      "scope": "published_mean_fold",
+      "series": "fine_tuned_minus_target_only",
+      "value": 0.005780750360440689
+    },
+    {
+      "measure": "contrast",
+      "scope": "published_mean_fold",
+      "series": "ft_ensemble_minus_conventional",
+      "value": 0.00580372987143242
+    },
+    {
+      "measure": "contrast",
+      "scope": "published_mean_fold",
+      "series": "to_ensemble_minus_conventional",
+      "value": 0.003090195635140052
+    },
+    {
+      "measure": "auc",
+      "scope": "pooled_whole_domain",
+      "series": "fine_tuned",
+      "value": 0.832677308622367
+    },
+    {
+      "measure": "auc",
+      "scope": "pooled_whole_domain",
+      "series": "target_only",
+      "value": 0.826556631856293
+    },
+    {
+      "measure": "auc",
+      "scope": "pooled_whole_domain",
+      "series": "conventional",
+      "value": 0.8295658235006641
+    },
+    {
+      "measure": "contrast",
+      "scope": "pooled_whole_domain",
+      "series": "fine_tuned_minus_target_only",
+      "value": 0.006120676766073931
+    },
+    {
+      "measure": "contrast",
+      "scope": "pooled_whole_domain",
+      "series": "ft_ensemble_minus_conventional",
+      "value": 0.005778809406199141
+    },
+    {
+      "measure": "contrast",
+      "scope": "pooled_whole_domain",
+      "series": "to_ensemble_minus_conventional",
+      "value": 0.0029219332803599434
+    },
+    {
+      "measure": "auc",
+      "scope": "region_pooled",
+      "series": "fine_tuned",
+      "value": 0.6911164540135926
+    },
+    {
+      "measure": "auc",
+      "scope": "region_pooled",
+      "series": "target_only",
+      "value": 0.6801584130049866
+    },
+    {
+      "measure": "auc",
+      "scope": "region_pooled",
+      "series": "conventional",
+      "value": 0.6874140406295466
+    },
+    {
+      "measure": "contrast",
+      "scope": "region_pooled",
+      "series": "fine_tuned_minus_target_only",
+      "value": 0.010958041008605998
+    },
+    {
+      "measure": "contrast",
+      "scope": "region_pooled",
+      "series": "ft_ensemble_minus_conventional",
+      "value": 0.009373794153679884
+    },
+    {
+      "measure": "contrast",
+      "scope": "region_pooled",
+      "series": "to_ensemble_minus_conventional",
+      "value": 0.004287934485278884
+    },
+    {
+      "measure": "auc",
+      "scope": "region_fold",
+      "series": "fine_tuned",
+      "value": 0.6897088551226503
+    },
+    {
+      "measure": "auc",
+      "scope": "region_fold",
+      "series": "target_only",
+      "value": 0.6824652905437539
+    },
+    {
+      "measure": "auc",
+      "scope": "region_fold",
+      "series": "conventional",
+      "value": 0.6837929464293558
+    },
+    {
+      "measure": "contrast",
+      "scope": "region_fold",
+      "series": "fine_tuned_minus_target_only",
+      "value": 0.007243564578896353
+    },
+    {
+      "measure": "contrast",
+      "scope": "region_fold",
+      "series": "ft_ensemble_minus_conventional",
+      "value": 0.009969836507168225
+    },
+    {
+      "measure": "contrast",
+      "scope": "region_fold",
+      "series": "to_ensemble_minus_conventional",
+      "value": 0.006215792839720773
+    },
+    {
+      "measure": "auc",
+      "scope": "outer_equal_regions",
+      "series": "fine_tuned",
+      "value": 0.6827322893660152
+    },
+    {
+      "measure": "auc",
+      "scope": "outer_equal_regions",
+      "series": "target_only",
+      "value": 0.683128310344587
+    },
+    {
+      "measure": "auc",
+      "scope": "outer_equal_regions",
+      "series": "conventional",
+      "value": 0.6799617719322941
+    },
+    {
+      "measure": "contrast",
+      "scope": "outer_equal_regions",
+      "series": "fine_tuned_minus_target_only",
+      "value": -0.0003960209785719224
+    },
+    {
+      "measure": "contrast",
+      "scope": "outer_equal_regions",
+      "series": "ft_ensemble_minus_conventional",
+      "value": 0.01035221681504485
+    },
+    {
+      "measure": "contrast",
+      "scope": "outer_equal_regions",
+      "series": "to_ensemble_minus_conventional",
+      "value": 0.009620508407280235
+    }
+  ],
+  "cases": {
+    "birds_NCP": {
+      "contrasts": {
+        "conventional": {
+          "mean": 0.007796995416773446,
+          "median": 0.00476310847898298,
+          "n": 73,
+          "negative": 32,
+          "positive": 41,
+          "undefined": 0,
+          "zero": 0
+        },
+        "target_only": {
+          "mean": 0.006350085443521865,
+          "median": 0.008143610084764052,
+          "n": 73,
+          "negative": 29,
+          "positive": 44,
+          "undefined": 0,
+          "zero": 0
+        }
+      },
+      "label": "Birds outer: NCP",
+      "metrics": {
+        "conventional": {
+          "mean": 0.6831315996906564,
+          "median": 0.6756281658621714,
+          "n": 73,
+          "negative": 0,
+          "positive": 73,
+          "undefined": 0,
+          "zero": 0
+        },
+        "fine_tuned": {
+          "mean": 0.6909285951074299,
+          "median": 0.6813754236942051,
+          "n": 73,
+          "negative": 0,
+          "positive": 73,
+          "undefined": 0,
+          "zero": 0
+        },
+        "target_only": {
+          "mean": 0.684578509663908,
+          "median": 0.6766598960026,
+          "n": 73,
+          "negative": 0,
+          "positive": 73,
+          "undefined": 0,
+          "zero": 0
+        }
+      },
+      "species": [
+        {
+          "conventional": 0.715859653087745,
+          "fine_tuned": 0.6829661665528097,
+          "species": "Acanthagenys rufogularis",
+          "target_only": 0.7197848876926791
+        },
+        {
+          "conventional": 0.6481443845128834,
+          "fine_tuned": 0.6565212917665487,
+          "species": "Acanthiza chrysorrhoa",
+          "target_only": 0.6356916964789098
+        },
+        {
+          "conventional": 0.6417827425698747,
+          "fine_tuned": 0.6330948439093546,
+          "species": "Acanthiza lineata",
+          "target_only": 0.6318789963553824
+        },
+        {
+          "conventional": 0.6919377507100402,
+          "fine_tuned": 0.7576201212192193,
+          "species": "Acanthiza nana",
+          "target_only": 0.7090885134541621
+        },
+        {
+          "conventional": 0.6893898277543062,
+          "fine_tuned": 0.6858409164770881,
+          "species": "Acanthiza pusilla",
+          "target_only": 0.6766598960026
+        },
+        {
+          "conventional": 0.7469895946563624,
+          "fine_tuned": 0.763471443880667,
+          "species": "Acanthiza reguloides",
+          "target_only": 0.7265053947231964
+        },
+        {
+          "conventional": 0.7683425015493327,
+          "fine_tuned": 0.7654176170305202,
+          "species": "Acanthorhynchus tenuirostris",
+          "target_only": 0.7875529488432714
+        },
+        {
+          "conventional": 0.6106483300589389,
+          "fine_tuned": 0.6680206286836935,
+          "species": "Acrocephalus australis",
+          "target_only": 0.6296954813359528
+        },
+        {
+          "conventional": 0.5783223134989379,
+          "fine_tuned": 0.5756772592946783,
+          "species": "Anthochaera chrysoptera",
+          "target_only": 0.5751471706395553
+        },
+        {
+          "conventional": 0.6322630111236837,
+          "fine_tuned": 0.664333104552734,
+          "species": "Artamus cyanopterus",
+          "target_only": 0.6374037730249124
+        },
+        {
+          "conventional": 0.6564676249063448,
+          "fine_tuned": 0.6986375645727354,
+          "species": "Cacatua galerita",
+          "target_only": 0.6681414882290311
+        },
+        {
+          "conventional": 0.64637221397359,
+          "fine_tuned": 0.6137019955429213,
+          "species": "Cacatua sanguinea",
+          "target_only": 0.6250700820699778
+        },
+        {
+          "conventional": 0.6784096474776313,
+          "fine_tuned": 0.7216172307104205,
+          "species": "Cacatua tenuirostris",
+          "target_only": 0.7029243468600304
+        },
+        {
+          "conventional": 0.6800380495030813,
+          "fine_tuned": 0.68358159101141,
+          "species": "Cacomantis flabelliformis",
+          "target_only": 0.6723991034646347
+        },
+        {
+          "conventional": 0.6818377098052028,
+          "fine_tuned": 0.6813754236942051,
+          "species": "Caligavis chrysops",
+          "target_only": 0.6805374280230327
+        },
+        {
+          "conventional": 0.854612086848292,
+          "fine_tuned": 0.8527382104826442,
+          "species": "Ceyx azureus",
+          "target_only": 0.8904300926566174
+        },
+        {
+          "conventional": 0.6702455987828734,
+          "fine_tuned": 0.6657085416213866,
+          "species": "Chalcites basalis",
+          "target_only": 0.6575649315366225
+        },
+        {
+          "conventional": 0.6963045359040909,
+          "fine_tuned": 0.6471666048696082,
+          "species": "Chalcites lucidus",
+          "target_only": 0.7078683104684216
+        },
+        {
+          "conventional": 0.7827474150664697,
+          "fine_tuned": 0.760878385032004,
+          "species": "Cincloramphus mathewsi",
+          "target_only": 0.7783791235844412
+        },
+        {
+          "conventional": 0.6745365402015866,
+          "fine_tuned": 0.7075573932622099,
+          "species": "Climacteris picumnus",
+          "target_only": 0.7220871998821623
+        },
+        {
+          "conventional": 0.6564183893974385,
+          "fine_tuned": 0.6228671062760265,
+          "species": "Colluricincla harmonica",
+          "target_only": 0.6504539847713382
+        },
+        {
+          "conventional": 0.562668325526932,
+          "fine_tuned": 0.53542050016728,
+          "species": "Coracina novaehollandiae",
+          "target_only": 0.5446439026430244
+        },
+        {
+          "conventional": 0.7632930438459051,
+          "fine_tuned": 0.6222922728742322,
+          "species": "Coracina papuensis",
+          "target_only": 0.6562709841080354
+        },
+        {
+          "conventional": 0.5411484599900435,
+          "fine_tuned": 0.5462803835414818,
+          "species": "Corcorax melanorhamphos",
+          "target_only": 0.5221337200493495
+        },
+        {
+          "conventional": 0.8082065884352013,
+          "fine_tuned": 0.8332250147047078,
+          "species": "Cormobates leucophaea",
+          "target_only": 0.7714761348040462
+        },
+        {
+          "conventional": 0.5880677800022455,
+          "fine_tuned": 0.5698979450486799,
+          "species": "Corvus coronoides",
+          "target_only": 0.5760541960055817
+        },
+        {
+          "conventional": 0.7136293402847727,
+          "fine_tuned": 0.7294821070274539,
+          "species": "Corvus tasmanicus",
+          "target_only": 0.7143439914906647
+        },
+        {
+          "conventional": 0.5945455912410545,
+          "fine_tuned": 0.6723735490199164,
+          "species": "Cracticus torquatus",
+          "target_only": 0.5932045438253246
+        },
+        {
+          "conventional": 0.750363695742533,
+          "fine_tuned": 0.7090810126081191,
+          "species": "Dacelo novaeguineae",
+          "target_only": 0.6749905983413494
+        },
+        {
+          "conventional": 0.621005484083787,
+          "fine_tuned": 0.6415450272142503,
+          "species": "Daphoenositta chrysoptera",
+          "target_only": 0.564837951509154
+        },
+        {
+          "conventional": 0.6056947854976167,
+          "fine_tuned": 0.6104578939765997,
+          "species": "Dicaeum hirundinaceum",
+          "target_only": 0.5872941643796042
+        },
+        {
+          "conventional": 0.738523399398153,
+          "fine_tuned": 0.6784995330497042,
+          "species": "Entomyzon cyanotis",
+          "target_only": 0.7964511777524126
+        },
+        {
+          "conventional": 0.66711626828243,
+          "fine_tuned": 0.6759338715989969,
+          "species": "Eolophus roseicapilla",
+          "target_only": 0.6780581848754114
+        },
+        {
+          "conventional": 0.6972444890247468,
+          "fine_tuned": 0.7130267565868796,
+          "species": "Eopsaltria australis",
+          "target_only": 0.6526079943813875
+        },
+        {
+          "conventional": 0.5849508635040203,
+          "fine_tuned": 0.5416583647734065,
+          "species": "Falcunculus frontatus",
+          "target_only": 0.5272837704949642
+        },
+        {
+          "conventional": 0.7971214075542599,
+          "fine_tuned": 0.7869988846681409,
+          "species": "Geopelia placida",
+          "target_only": 0.8144513194457701
+        },
+        {
+          "conventional": 0.5607797756809684,
+          "fine_tuned": 0.5550768500385733,
+          "species": "Heteroscenes pallidus",
+          "target_only": 0.5540917452970151
+        },
+        {
+          "conventional": 0.6324425366934368,
+          "fine_tuned": 0.6454719316807381,
+          "species": "Malurus cyaneus",
+          "target_only": 0.6527526290749774
+        },
+        {
+          "conventional": 0.8207860377702161,
+          "fine_tuned": 0.8282705347606865,
+          "species": "Malurus lamberti",
+          "target_only": 0.8384375284601309
+        },
+        {
+          "conventional": 0.8035733604783822,
+          "fine_tuned": 0.7375867953105946,
+          "species": "Manorina melanocephala",
+          "target_only": 0.7567223336873993
+        },
+        {
+          "conventional": 0.7822032243173183,
+          "fine_tuned": 0.7732591172188488,
+          "species": "Melithreptus gularis",
+          "target_only": 0.7597120130677179
+        },
+        {
+          "conventional": 0.6534668783374225,
+          "fine_tuned": 0.6499835474094386,
+          "species": "Melithreptus lunatus",
+          "target_only": 0.6413104344061191
+        },
+        {
+          "conventional": 0.6442990589739712,
+          "fine_tuned": 0.6786821921369807,
+          "species": "Microeca fascinans",
+          "target_only": 0.6658999440212878
+        },
+        {
+          "conventional": 0.6244001072433978,
+          "fine_tuned": 0.6734237454756691,
+          "species": "Myiagra inquieta",
+          "target_only": 0.6633383976048974
+        },
+        {
+          "conventional": 0.48782053805128606,
+          "fine_tuned": 0.6113248578119773,
+          "species": "Neochmia temporalis",
+          "target_only": 0.6099103575856571
+        },
+        {
+          "conventional": 0.6512465792522204,
+          "fine_tuned": 0.7070404445712942,
+          "species": "Nesoptilotis leucotis",
+          "target_only": 0.6896479357990699
+        },
+        {
+          "conventional": 0.7072148435435545,
+          "fine_tuned": 0.7020944877408233,
+          "species": "Ocyphaps lophotes",
+          "target_only": 0.7177574101854223
+        },
+        {
+          "conventional": 0.701739886907351,
+          "fine_tuned": 0.670541539799913,
+          "species": "Oriolus sagittatus",
+          "target_only": 0.7283492822966507
+        },
+        {
+          "conventional": 0.6555208457500812,
+          "fine_tuned": 0.7009556614204622,
+          "species": "Pachycephala pectoralis",
+          "target_only": 0.6724214610727248
+        },
+        {
+          "conventional": 0.6174395477391438,
+          "fine_tuned": 0.6422128797584598,
+          "species": "Pachycephala rufiventris",
+          "target_only": 0.6359201555318634
+        },
+        {
+          "conventional": 0.6775931178190029,
+          "fine_tuned": 0.7175120668087993,
+          "species": "Pardalotus punctatus",
+          "target_only": 0.7146219816899642
+        },
+        {
+          "conventional": 0.6703711605242824,
+          "fine_tuned": 0.6682216098861401,
+          "species": "Pardalotus striatus",
+          "target_only": 0.6242562178306928
+        },
+        {
+          "conventional": 0.7196914279171542,
+          "fine_tuned": 0.7361457432191746,
+          "species": "Petroica boodang",
+          "target_only": 0.7273039539972521
+        },
+        {
+          "conventional": 0.5192518616867747,
+          "fine_tuned": 0.5248802170524737,
+          "species": "Petroica phoenicea",
+          "target_only": 0.5427342674066683
+        },
+        {
+          "conventional": 0.7397647278864877,
+          "fine_tuned": 0.7425099211586526,
+          "species": "Phaps elegans",
+          "target_only": 0.7549025079301394
+        },
+        {
+          "conventional": 0.5742852851146061,
+          "fine_tuned": 0.6099512020850757,
+          "species": "Phylidonyris novaehollandiae",
+          "target_only": 0.6189589236852575
+        },
+        {
+          "conventional": 0.8725717548623169,
+          "fine_tuned": 0.8176500064092853,
+          "species": "Phylidonyris pyrrhopterus",
+          "target_only": 0.8357941104494657
+        },
+        {
+          "conventional": 0.5755417644755211,
+          "fine_tuned": 0.6638700719676225,
+          "species": "Platycercus elegans",
+          "target_only": 0.685982258439588
+        },
+        {
+          "conventional": 0.5896549832702539,
+          "fine_tuned": 0.591335271424131,
+          "species": "Platycercus eximius",
+          "target_only": 0.6290695335783373
+        },
+        {
+          "conventional": 0.7613739074912517,
+          "fine_tuned": 0.761154161898602,
+          "species": "Psephotus haematonotus",
+          "target_only": 0.7242783637660248
+        },
+        {
+          "conventional": 0.7600929876540807,
+          "fine_tuned": 0.7072964658529031,
+          "species": "Ptilotula penicillata",
+          "target_only": 0.741353559040025
+        },
+        {
+          "conventional": 0.6451911468453537,
+          "fine_tuned": 0.6408428820436622,
+          "species": "Rhipidura albiscapa",
+          "target_only": 0.6514985641216139
+        },
+        {
+          "conventional": 0.7282719473650261,
+          "fine_tuned": 0.8275301554537831,
+          "species": "Rhipidura rufifrons",
+          "target_only": 0.7094755853705735
+        },
+        {
+          "conventional": 0.6979560570071259,
+          "fine_tuned": 0.7171013460015836,
+          "species": "Sericornis frontalis",
+          "target_only": 0.7080387965162313
+        },
+        {
+          "conventional": 0.8456763998967985,
+          "fine_tuned": 0.8493552168815944,
+          "species": "Smicrornis brevirostris",
+          "target_only": 0.8368250598614021
+        },
+        {
+          "conventional": 0.6625703504002072,
+          "fine_tuned": 0.6573754636081853,
+          "species": "Stipiturus malachurus",
+          "target_only": 0.6115915373894766
+        },
+        {
+          "conventional": 0.7446738170537487,
+          "fine_tuned": 0.8326311260727468,
+          "species": "Strepera graculina",
+          "target_only": 0.8352411934755862
+        },
+        {
+          "conventional": 0.6504725097108892,
+          "fine_tuned": 0.6679775280898875,
+          "species": "Threskiornis spinicollis",
+          "target_only": 0.6300190307359421
+        },
+        {
+          "conventional": 0.6571806405529065,
+          "fine_tuned": 0.7259850576265952,
+          "species": "Todiramphus sanctus",
+          "target_only": 0.6843587714048533
+        },
+        {
+          "conventional": 0.6939311699830735,
+          "fine_tuned": 0.678359783311601,
+          "species": "Turnix varius",
+          "target_only": 0.6834730924035379
+        },
+        {
+          "conventional": 0.7382691342820653,
+          "fine_tuned": 0.7462465030712158,
+          "species": "Vanellus miles",
+          "target_only": 0.7361700267591073
+        },
+        {
+          "conventional": 0.890409795215658,
+          "fine_tuned": 0.9094724084813337,
+          "species": "Zoothera lunulata",
+          "target_only": 0.890174768938021
+        },
+        {
+          "conventional": 0.6756281658621714,
+          "fine_tuned": 0.6934920920001335,
+          "species": "Zosterops lateralis",
+          "target_only": 0.6524699883815739
+        }
+      ],
+      "within_species_aggregation": "regional X10 ROC AUC"
+    },
+    "birds_NNC": {
+      "contrasts": {
+        "conventional": {
+          "mean": 0.007566498073230546,
+          "median": 0.006304292745915152,
+          "n": 73,
+          "negative": 24,
+          "positive": 49,
+          "undefined": 0,
+          "zero": 0
+        },
+        "target_only": {
+          "mean": -0.0035388478169858795,
+          "median": -0.003932762882582708,
+          "n": 73,
+          "negative": 42,
+          "positive": 31,
+          "undefined": 0,
+          "zero": 0
+        }
+      },
+      "label": "Birds outer: NNC",
+      "metrics": {
+        "conventional": {
+          "mean": 0.6670260924970041,
+          "median": 0.6478915794520844,
+          "n": 73,
+          "negative": 0,
+          "positive": 73,
+          "undefined": 0,
+          "zero": 0
+        },
+        "fine_tuned": {
+          "mean": 0.6745925905702346,
+          "median": 0.6579018448667904,
+          "n": 73,
+          "negative": 0,
+          "positive": 73,
+          "undefined": 0,
+          "zero": 0
+        },
+        "target_only": {
+          "mean": 0.6781314383872205,
+          "median": 0.6474545253613144,
+          "n": 73,
+          "negative": 0,
+          "positive": 73,
+          "undefined": 0,
+          "zero": 0
+        }
+      },
+      "species": [
+        {
+          "conventional": 0.7997862306873647,
+          "fine_tuned": 0.8359205842416236,
+          "species": "Acanthagenys rufogularis",
+          "target_only": 0.8103691878601049
+        },
+        {
+          "conventional": 0.7152581197684493,
+          "fine_tuned": 0.7112083584248857,
+          "species": "Acanthiza chrysorrhoa",
+          "target_only": 0.7262145782883836
+        },
+        {
+          "conventional": 0.6082487651302451,
+          "fine_tuned": 0.6182013483294232,
+          "species": "Acanthiza lineata",
+          "target_only": 0.6325412218479916
+        },
+        {
+          "conventional": 0.5651281611620379,
+          "fine_tuned": 0.6281459391116573,
+          "species": "Acanthiza nana",
+          "target_only": 0.5446228795537796
+        },
+        {
+          "conventional": 0.6013994527988276,
+          "fine_tuned": 0.6093614342700104,
+          "species": "Acanthiza pusilla",
+          "target_only": 0.5977387147170089
+        },
+        {
+          "conventional": 0.6575818380417575,
+          "fine_tuned": 0.6568515645543365,
+          "species": "Acanthiza reguloides",
+          "target_only": 0.6690621335364513
+        },
+        {
+          "conventional": 0.5946531709722421,
+          "fine_tuned": 0.603612484068131,
+          "species": "Acanthorhynchus tenuirostris",
+          "target_only": 0.6068242197611127
+        },
+        {
+          "conventional": 0.8152010884703564,
+          "fine_tuned": 0.8156778299157935,
+          "species": "Acrocephalus australis",
+          "target_only": 0.8280927485304937
+        },
+        {
+          "conventional": 0.8145816918079787,
+          "fine_tuned": 0.8216812079944072,
+          "species": "Anthochaera chrysoptera",
+          "target_only": 0.8361854189643815
+        },
+        {
+          "conventional": 0.6175306830620182,
+          "fine_tuned": 0.66846893267193,
+          "species": "Artamus cyanopterus",
+          "target_only": 0.6414975313817275
+        },
+        {
+          "conventional": 0.5660681413804356,
+          "fine_tuned": 0.5750996711489733,
+          "species": "Cacatua galerita",
+          "target_only": 0.5912415379568317
+        },
+        {
+          "conventional": 0.7694504578155659,
+          "fine_tuned": 0.7785166775670372,
+          "species": "Cacatua sanguinea",
+          "target_only": 0.8061247547416611
+        },
+        {
+          "conventional": 0.8083668905314649,
+          "fine_tuned": 0.8263793359728661,
+          "species": "Cacatua tenuirostris",
+          "target_only": 0.8223680121076172
+        },
+        {
+          "conventional": 0.591535982556225,
+          "fine_tuned": 0.5986425016342025,
+          "species": "Cacomantis flabelliformis",
+          "target_only": 0.5963740279085926
+        },
+        {
+          "conventional": 0.6004320321997926,
+          "fine_tuned": 0.6239831674576954,
+          "species": "Caligavis chrysops",
+          "target_only": 0.6231034395914803
+        },
+        {
+          "conventional": 0.6692630465312075,
+          "fine_tuned": 0.6490167060322677,
+          "species": "Ceyx azureus",
+          "target_only": 0.6852491627659196
+        },
+        {
+          "conventional": 0.6568198432067782,
+          "fine_tuned": 0.6728578356318927,
+          "species": "Chalcites basalis",
+          "target_only": 0.6937110751041834
+        },
+        {
+          "conventional": 0.5666476781375684,
+          "fine_tuned": 0.5810187917804834,
+          "species": "Chalcites lucidus",
+          "target_only": 0.5830187643271884
+        },
+        {
+          "conventional": 0.6876578538435696,
+          "fine_tuned": 0.6832550115040068,
+          "species": "Cincloramphus mathewsi",
+          "target_only": 0.6711018549625166
+        },
+        {
+          "conventional": 0.6514902978618218,
+          "fine_tuned": 0.6539077987887778,
+          "species": "Climacteris picumnus",
+          "target_only": 0.6316648127549129
+        },
+        {
+          "conventional": 0.6198493311938837,
+          "fine_tuned": 0.6213993225767716,
+          "species": "Colluricincla harmonica",
+          "target_only": 0.6253320854593543
+        },
+        {
+          "conventional": 0.6668827962267326,
+          "fine_tuned": 0.6628810423522348,
+          "species": "Coracina novaehollandiae",
+          "target_only": 0.6758021670549159
+        },
+        {
+          "conventional": 0.5619933694249191,
+          "fine_tuned": 0.5973667748006471,
+          "species": "Coracina papuensis",
+          "target_only": 0.51841366583244
+        },
+        {
+          "conventional": 0.7075361424502189,
+          "fine_tuned": 0.7174501070970224,
+          "species": "Corcorax melanorhamphos",
+          "target_only": 0.6935972078755439
+        },
+        {
+          "conventional": 0.6961607129633742,
+          "fine_tuned": 0.7116354911805216,
+          "species": "Cormobates leucophaea",
+          "target_only": 0.7063397313428414
+        },
+        {
+          "conventional": 0.6824243413197485,
+          "fine_tuned": 0.7061632173843826,
+          "species": "Corvus coronoides",
+          "target_only": 0.6388914272068773
+        },
+        {
+          "conventional": 0.5873312254049031,
+          "fine_tuned": 0.6036772036360428,
+          "species": "Corvus tasmanicus",
+          "target_only": 0.5923963119270795
+        },
+        {
+          "conventional": 0.6554348942308444,
+          "fine_tuned": 0.6602370804445445,
+          "species": "Cracticus torquatus",
+          "target_only": 0.6593813239458979
+        },
+        {
+          "conventional": 0.6543255569493892,
+          "fine_tuned": 0.6579018448667904,
+          "species": "Dacelo novaeguineae",
+          "target_only": 0.6723112161969511
+        },
+        {
+          "conventional": 0.5291367892901,
+          "fine_tuned": 0.557681882218221,
+          "species": "Daphoenositta chrysoptera",
+          "target_only": 0.5554190617536935
+        },
+        {
+          "conventional": 0.5619377800167455,
+          "fine_tuned": 0.576248564689456,
+          "species": "Dicaeum hirundinaceum",
+          "target_only": 0.5924326385536267
+        },
+        {
+          "conventional": 0.6130074769847156,
+          "fine_tuned": 0.5828212682297699,
+          "species": "Entomyzon cyanotis",
+          "target_only": 0.5837486890396145
+        },
+        {
+          "conventional": 0.794274537625228,
+          "fine_tuned": 0.7703012261165362,
+          "species": "Eolophus roseicapilla",
+          "target_only": 0.7982275630440184
+        },
+        {
+          "conventional": 0.6255497849060696,
+          "fine_tuned": 0.6318540776519848,
+          "species": "Eopsaltria australis",
+          "target_only": 0.6289551216962961
+        },
+        {
+          "conventional": 0.5849878745015027,
+          "fine_tuned": 0.5758032421489252,
+          "species": "Falcunculus frontatus",
+          "target_only": 0.5721029455646723
+        },
+        {
+          "conventional": 0.5958202571320853,
+          "fine_tuned": 0.6698793946216911,
+          "species": "Geopelia placida",
+          "target_only": 0.6646622694724286
+        },
+        {
+          "conventional": 0.6804215218083414,
+          "fine_tuned": 0.7089419505465351,
+          "species": "Heteroscenes pallidus",
+          "target_only": 0.7231225724291627
+        },
+        {
+          "conventional": 0.6336891136003049,
+          "fine_tuned": 0.6632703272955589,
+          "species": "Malurus cyaneus",
+          "target_only": 0.6810060831163263
+        },
+        {
+          "conventional": 0.5928525755882994,
+          "fine_tuned": 0.6143009385151925,
+          "species": "Malurus lamberti",
+          "target_only": 0.6347205182796153
+        },
+        {
+          "conventional": 0.7527865720991785,
+          "fine_tuned": 0.741036766911555,
+          "species": "Manorina melanocephala",
+          "target_only": 0.766108018784071
+        },
+        {
+          "conventional": 0.6246104876533956,
+          "fine_tuned": 0.5825766174801363,
+          "species": "Melithreptus gularis",
+          "target_only": 0.647241021138072
+        },
+        {
+          "conventional": 0.6478915794520844,
+          "fine_tuned": 0.6793481179215352,
+          "species": "Melithreptus lunatus",
+          "target_only": 0.6545283449809921
+        },
+        {
+          "conventional": 0.5861782861517257,
+          "fine_tuned": 0.5843701450049446,
+          "species": "Microeca fascinans",
+          "target_only": 0.5885688629769856
+        },
+        {
+          "conventional": 0.6297191552891086,
+          "fine_tuned": 0.5955022756901034,
+          "species": "Myiagra inquieta",
+          "target_only": 0.6331334267402893
+        },
+        {
+          "conventional": 0.551271116740132,
+          "fine_tuned": 0.5529833492679057,
+          "species": "Neochmia temporalis",
+          "target_only": 0.561372964548074
+        },
+        {
+          "conventional": 0.7677092551177471,
+          "fine_tuned": 0.7638199282415975,
+          "species": "Nesoptilotis leucotis",
+          "target_only": 0.7799317812494974
+        },
+        {
+          "conventional": 0.7887436936715184,
+          "fine_tuned": 0.7701541389232494,
+          "species": "Ocyphaps lophotes",
+          "target_only": 0.7860845452397753
+        },
+        {
+          "conventional": 0.6389370994445837,
+          "fine_tuned": 0.6179806669266364,
+          "species": "Oriolus sagittatus",
+          "target_only": 0.6474545253613144
+        },
+        {
+          "conventional": 0.6092293031817083,
+          "fine_tuned": 0.610489051995938,
+          "species": "Pachycephala pectoralis",
+          "target_only": 0.6052967626468388
+        },
+        {
+          "conventional": 0.578837116421487,
+          "fine_tuned": 0.6110431921054383,
+          "species": "Pachycephala rufiventris",
+          "target_only": 0.6096384710111162
+        },
+        {
+          "conventional": 0.6481794886890493,
+          "fine_tuned": 0.6422061862400036,
+          "species": "Pardalotus punctatus",
+          "target_only": 0.6463003795984293
+        },
+        {
+          "conventional": 0.6244682386274713,
+          "fine_tuned": 0.5684882224891615,
+          "species": "Pardalotus striatus",
+          "target_only": 0.6151659461338179
+        },
+        {
+          "conventional": 0.8138688218908546,
+          "fine_tuned": 0.7853770212376523,
+          "species": "Petroica boodang",
+          "target_only": 0.8094295348079001
+        },
+        {
+          "conventional": 0.8236539029769451,
+          "fine_tuned": 0.7718022847262832,
+          "species": "Petroica phoenicea",
+          "target_only": 0.8168441489795654
+        },
+        {
+          "conventional": 0.6789922442487744,
+          "fine_tuned": 0.786357748372604,
+          "species": "Phaps elegans",
+          "target_only": 0.7952924393723253
+        },
+        {
+          "conventional": 0.6736332772352184,
+          "fine_tuned": 0.6792379626933118,
+          "species": "Phylidonyris novaehollandiae",
+          "target_only": 0.6398555481548334
+        },
+        {
+          "conventional": 0.8816134316134316,
+          "fine_tuned": 0.9126923574291996,
+          "species": "Phylidonyris pyrrhopterus",
+          "target_only": 0.8946894262683738
+        },
+        {
+          "conventional": 0.6791159283540684,
+          "fine_tuned": 0.6634546885718808,
+          "species": "Platycercus elegans",
+          "target_only": 0.712934908796679
+        },
+        {
+          "conventional": 0.6446273536754806,
+          "fine_tuned": 0.6901522822314575,
+          "species": "Platycercus eximius",
+          "target_only": 0.701642316593513
+        },
+        {
+          "conventional": 0.844592017684497,
+          "fine_tuned": 0.859878297624253,
+          "species": "Psephotus haematonotus",
+          "target_only": 0.8410192877617451
+        },
+        {
+          "conventional": 0.8388247191934126,
+          "fine_tuned": 0.8243310950943551,
+          "species": "Ptilotula penicillata",
+          "target_only": 0.8057537115751865
+        },
+        {
+          "conventional": 0.6151295207340101,
+          "fine_tuned": 0.6219563585017662,
+          "species": "Rhipidura albiscapa",
+          "target_only": 0.6142513936291689
+        },
+        {
+          "conventional": 0.6342391680509413,
+          "fine_tuned": 0.6319093569275256,
+          "species": "Rhipidura rufifrons",
+          "target_only": 0.6357651385812724
+        },
+        {
+          "conventional": 0.6320432398765363,
+          "fine_tuned": 0.6370301080613391,
+          "species": "Sericornis frontalis",
+          "target_only": 0.6358975657050987
+        },
+        {
+          "conventional": 0.5884670561573487,
+          "fine_tuned": 0.6327031831507163,
+          "species": "Smicrornis brevirostris",
+          "target_only": 0.6156763935380586
+        },
+        {
+          "conventional": 0.7416003762744149,
+          "fine_tuned": 0.7690970975347001,
+          "species": "Stipiturus malachurus",
+          "target_only": 0.7661758965791815
+        },
+        {
+          "conventional": 0.5926647187687423,
+          "fine_tuned": 0.6076512082400207,
+          "species": "Strepera graculina",
+          "target_only": 0.6059755686841064
+        },
+        {
+          "conventional": 0.7503193193062861,
+          "fine_tuned": 0.7663714346475009,
+          "species": "Threskiornis spinicollis",
+          "target_only": 0.7743474732218807
+        },
+        {
+          "conventional": 0.6895427163631016,
+          "fine_tuned": 0.6842232704488951,
+          "species": "Todiramphus sanctus",
+          "target_only": 0.7103367383330287
+        },
+        {
+          "conventional": 0.6312051872988,
+          "fine_tuned": 0.6312116853811438,
+          "species": "Turnix varius",
+          "target_only": 0.6396967369037166
+        },
+        {
+          "conventional": 0.7726331357914835,
+          "fine_tuned": 0.7733476477468674,
+          "species": "Vanellus miles",
+          "target_only": 0.7745456219509677
+        },
+        {
+          "conventional": 0.7306336416258248,
+          "fine_tuned": 0.7354655310526628,
+          "species": "Zoothera lunulata",
+          "target_only": 0.7560193202540525
+        },
+        {
+          "conventional": 0.5862260750388186,
+          "fine_tuned": 0.559387695281554,
+          "species": "Zosterops lateralis",
+          "target_only": 0.6026521057134708
+        }
+      ],
+      "within_species_aggregation": "regional X10 ROC AUC"
+    },
+    "birds_SEH": {
+      "contrasts": {
+        "conventional": {
+          "mean": -0.007051941188840895,
+          "median": -0.0009018874365095408,
+          "n": 73,
+          "negative": 37,
+          "positive": 36,
+          "undefined": 0,
+          "zero": 0
+        },
+        "target_only": {
+          "mean": -0.003999300562251753,
+          "median": 0.00210290387397416,
+          "n": 73,
+          "negative": 32,
+          "positive": 41,
+          "undefined": 0,
+          "zero": 0
+        }
+      },
+      "label": "Birds outer: SEH",
+      "metrics": {
+        "conventional": {
+          "mean": 0.6897276236092219,
+          "median": 0.6712697045832084,
+          "n": 73,
+          "negative": 0,
+          "positive": 73,
+          "undefined": 0,
+          "zero": 0
+        },
+        "fine_tuned": {
+          "mean": 0.6826756824203809,
+          "median": 0.6703493293658097,
+          "n": 73,
+          "negative": 0,
+          "positive": 73,
+          "undefined": 0,
+          "zero": 0
+        },
+        "target_only": {
+          "mean": 0.6866749829826326,
+          "median": 0.6728880101915352,
+          "n": 73,
+          "negative": 0,
+          "positive": 73,
+          "undefined": 0,
+          "zero": 0
+        }
+      },
+      "species": [
+        {
+          "conventional": 0.7855270754964571,
+          "fine_tuned": 0.8251736505992476,
+          "species": "Acanthagenys rufogularis",
+          "target_only": 0.7877456040591375
+        },
+        {
+          "conventional": 0.7708040031474895,
+          "fine_tuned": 0.7716269064414624,
+          "species": "Acanthiza chrysorrhoa",
+          "target_only": 0.7791453348134958
+        },
+        {
+          "conventional": 0.6192150184435457,
+          "fine_tuned": 0.619257568138023,
+          "species": "Acanthiza lineata",
+          "target_only": 0.6367428601349423
+        },
+        {
+          "conventional": 0.6846246784263315,
+          "fine_tuned": 0.6177314978967872,
+          "species": "Acanthiza nana",
+          "target_only": 0.5760656935760242
+        },
+        {
+          "conventional": 0.6583384987332331,
+          "fine_tuned": 0.6789730991033204,
+          "species": "Acanthiza pusilla",
+          "target_only": 0.6768701952293462
+        },
+        {
+          "conventional": 0.6545466989997663,
+          "fine_tuned": 0.6420361654984174,
+          "species": "Acanthiza reguloides",
+          "target_only": 0.6633743456737302
+        },
+        {
+          "conventional": 0.6635072486954808,
+          "fine_tuned": 0.648223589642611,
+          "species": "Acanthorhynchus tenuirostris",
+          "target_only": 0.6435215614846904
+        },
+        {
+          "conventional": 0.7460479937992106,
+          "fine_tuned": 0.7483062722265643,
+          "species": "Acrocephalus australis",
+          "target_only": 0.7396628305702122
+        },
+        {
+          "conventional": 0.869781873977634,
+          "fine_tuned": 0.8608799850136755,
+          "species": "Anthochaera chrysoptera",
+          "target_only": 0.8652634674337221
+        },
+        {
+          "conventional": 0.6712697045832084,
+          "fine_tuned": 0.5433058579994927,
+          "species": "Artamus cyanopterus",
+          "target_only": 0.6211343683086693
+        },
+        {
+          "conventional": 0.5817865239496174,
+          "fine_tuned": 0.6051485791417935,
+          "species": "Cacatua galerita",
+          "target_only": 0.6020445915587016
+        },
+        {
+          "conventional": 0.7627465027607746,
+          "fine_tuned": 0.7611388854092823,
+          "species": "Cacatua sanguinea",
+          "target_only": 0.7506298478934932
+        },
+        {
+          "conventional": 0.7733753301570316,
+          "fine_tuned": 0.8036285098885418,
+          "species": "Cacatua tenuirostris",
+          "target_only": 0.799484275607871
+        },
+        {
+          "conventional": 0.6658908254994648,
+          "fine_tuned": 0.6549821161190049,
+          "species": "Cacomantis flabelliformis",
+          "target_only": 0.6743359686888363
+        },
+        {
+          "conventional": 0.592095359407496,
+          "fine_tuned": 0.6106597289808383,
+          "species": "Caligavis chrysops",
+          "target_only": 0.5987194527486377
+        },
+        {
+          "conventional": 0.6931293818168026,
+          "fine_tuned": 0.6922274943802931,
+          "species": "Ceyx azureus",
+          "target_only": 0.6861078904345687
+        },
+        {
+          "conventional": 0.6219605090032138,
+          "fine_tuned": 0.5699014034966663,
+          "species": "Chalcites basalis",
+          "target_only": 0.5604972070789979
+        },
+        {
+          "conventional": 0.6212953159313005,
+          "fine_tuned": 0.6238399632066924,
+          "species": "Chalcites lucidus",
+          "target_only": 0.6279045983221818
+        },
+        {
+          "conventional": 0.7263502842858639,
+          "fine_tuned": 0.7295929990069319,
+          "species": "Cincloramphus mathewsi",
+          "target_only": 0.7254412600783074
+        },
+        {
+          "conventional": 0.6710551037115867,
+          "fine_tuned": 0.6888342651696693,
+          "species": "Climacteris picumnus",
+          "target_only": 0.6925361752137188
+        },
+        {
+          "conventional": 0.6668665787770197,
+          "fine_tuned": 0.6603267497735557,
+          "species": "Colluricincla harmonica",
+          "target_only": 0.6728880101915352
+        },
+        {
+          "conventional": 0.6168677604627362,
+          "fine_tuned": 0.5913580216552229,
+          "species": "Coracina novaehollandiae",
+          "target_only": 0.6152060722274396
+        },
+        {
+          "conventional": 0.6083660183671622,
+          "fine_tuned": 0.5470235570530569,
+          "species": "Coracina papuensis",
+          "target_only": 0.6967988524097964
+        },
+        {
+          "conventional": 0.6953495623827268,
+          "fine_tuned": 0.6017744240224843,
+          "species": "Corcorax melanorhamphos",
+          "target_only": 0.6688126315487009
+        },
+        {
+          "conventional": 0.6841909003898728,
+          "fine_tuned": 0.6968257994486142,
+          "species": "Cormobates leucophaea",
+          "target_only": 0.704371251230997
+        },
+        {
+          "conventional": 0.7146617897601157,
+          "fine_tuned": 0.6703493293658097,
+          "species": "Corvus coronoides",
+          "target_only": 0.6690686103035963
+        },
+        {
+          "conventional": 0.9683499577246759,
+          "fine_tuned": 0.941433413646692,
+          "species": "Corvus tasmanicus",
+          "target_only": 0.9267372677122178
+        },
+        {
+          "conventional": 0.6288626837572291,
+          "fine_tuned": 0.6760377588471904,
+          "species": "Cracticus torquatus",
+          "target_only": 0.6661193621057981
+        },
+        {
+          "conventional": 0.5927740434130284,
+          "fine_tuned": 0.6027484160129098,
+          "species": "Dacelo novaeguineae",
+          "target_only": 0.5970814846981205
+        },
+        {
+          "conventional": 0.6239749919292895,
+          "fine_tuned": 0.6083059856842293,
+          "species": "Daphoenositta chrysoptera",
+          "target_only": 0.6245736438423262
+        },
+        {
+          "conventional": 0.6718167566409651,
+          "fine_tuned": 0.6296426830058639,
+          "species": "Dicaeum hirundinaceum",
+          "target_only": 0.6266522017870411
+        },
+        {
+          "conventional": 0.8541318777014326,
+          "fine_tuned": 0.886820938160424,
+          "species": "Entomyzon cyanotis",
+          "target_only": 0.8928942365897432
+        },
+        {
+          "conventional": 0.7751013231483925,
+          "fine_tuned": 0.783794010375108,
+          "species": "Eolophus roseicapilla",
+          "target_only": 0.7879151187136451
+        },
+        {
+          "conventional": 0.6416384043750494,
+          "fine_tuned": 0.7464205020381209,
+          "species": "Eopsaltria australis",
+          "target_only": 0.7207088668135109
+        },
+        {
+          "conventional": 0.599965658637654,
+          "fine_tuned": 0.6138657376513523,
+          "species": "Falcunculus frontatus",
+          "target_only": 0.6334281741043593
+        },
+        {
+          "conventional": 0.7699839450341791,
+          "fine_tuned": 0.719635484964674,
+          "species": "Geopelia placida",
+          "target_only": 0.713162703616356
+        },
+        {
+          "conventional": 0.6113483825469523,
+          "fine_tuned": 0.6634500391492283,
+          "species": "Heteroscenes pallidus",
+          "target_only": 0.6425816234595046
+        },
+        {
+          "conventional": 0.5565470184610541,
+          "fine_tuned": 0.6012570850272774,
+          "species": "Malurus cyaneus",
+          "target_only": 0.5905992164034463
+        },
+        {
+          "conventional": 0.7552506502560803,
+          "fine_tuned": 0.8062488268575873,
+          "species": "Malurus lamberti",
+          "target_only": 0.8111123401174485
+        },
+        {
+          "conventional": 0.7298775346158253,
+          "fine_tuned": 0.7285576134433307,
+          "species": "Manorina melanocephala",
+          "target_only": 0.7278127198650123
+        },
+        {
+          "conventional": 0.6860542499917403,
+          "fine_tuned": 0.7167600410941878,
+          "species": "Melithreptus gularis",
+          "target_only": 0.7455401321244216
+        },
+        {
+          "conventional": 0.6104701386949102,
+          "fine_tuned": 0.6125059888011349,
+          "species": "Melithreptus lunatus",
+          "target_only": 0.6285175676986141
+        },
+        {
+          "conventional": 0.6647081098940198,
+          "fine_tuned": 0.6720015926669547,
+          "species": "Microeca fascinans",
+          "target_only": 0.6357021712794706
+        },
+        {
+          "conventional": 0.6655622030232226,
+          "fine_tuned": 0.6039340202214892,
+          "species": "Myiagra inquieta",
+          "target_only": 0.5999789445582737
+        },
+        {
+          "conventional": 0.5902133301193202,
+          "fine_tuned": 0.5765417083348263,
+          "species": "Neochmia temporalis",
+          "target_only": 0.5685791401863476
+        },
+        {
+          "conventional": 0.5846420238048557,
+          "fine_tuned": 0.49680492542411037,
+          "species": "Nesoptilotis leucotis",
+          "target_only": 0.5149539008942138
+        },
+        {
+          "conventional": 0.7563468942665222,
+          "fine_tuned": 0.8010905083905235,
+          "species": "Ocyphaps lophotes",
+          "target_only": 0.7783901569248612
+        },
+        {
+          "conventional": 0.6704347024802533,
+          "fine_tuned": 0.6453114062638321,
+          "species": "Oriolus sagittatus",
+          "target_only": 0.637988496065763
+        },
+        {
+          "conventional": 0.6526230575631995,
+          "fine_tuned": 0.6615072449256459,
+          "species": "Pachycephala pectoralis",
+          "target_only": 0.6600059071198201
+        },
+        {
+          "conventional": 0.6214794912638782,
+          "fine_tuned": 0.5494934401345509,
+          "species": "Pachycephala rufiventris",
+          "target_only": 0.618708756892429
+        },
+        {
+          "conventional": 0.6842652191796914,
+          "fine_tuned": 0.6718667363653779,
+          "species": "Pardalotus punctatus",
+          "target_only": 0.6857055575482749
+        },
+        {
+          "conventional": 0.5974134101387276,
+          "fine_tuned": 0.5615944536378887,
+          "species": "Pardalotus striatus",
+          "target_only": 0.6012437346312589
+        },
+        {
+          "conventional": 0.5487398860300133,
+          "fine_tuned": 0.5433461368461419,
+          "species": "Petroica boodang",
+          "target_only": 0.5144038801935897
+        },
+        {
+          "conventional": 0.6537324489620122,
+          "fine_tuned": 0.5847205748855331,
+          "species": "Petroica phoenicea",
+          "target_only": 0.5390066394110671
+        },
+        {
+          "conventional": 0.8094074326773254,
+          "fine_tuned": 0.7872798585526906,
+          "species": "Phaps elegans",
+          "target_only": 0.7808701945585076
+        },
+        {
+          "conventional": 0.7515032071272313,
+          "fine_tuned": 0.7744739756441344,
+          "species": "Phylidonyris novaehollandiae",
+          "target_only": 0.7598298681402237
+        },
+        {
+          "conventional": 0.8043329712414803,
+          "fine_tuned": 0.8132032319348896,
+          "species": "Phylidonyris pyrrhopterus",
+          "target_only": 0.8056186553511901
+        },
+        {
+          "conventional": 0.5232540972798455,
+          "fine_tuned": 0.5297509589901778,
+          "species": "Platycercus elegans",
+          "target_only": 0.536490551059262
+        },
+        {
+          "conventional": 0.75231501979393,
+          "fine_tuned": 0.7399997294407994,
+          "species": "Platycercus eximius",
+          "target_only": 0.7432654933130197
+        },
+        {
+          "conventional": 0.8479843341428911,
+          "fine_tuned": 0.8325785193208056,
+          "species": "Psephotus haematonotus",
+          "target_only": 0.8243443632367985
+        },
+        {
+          "conventional": 0.695009396360343,
+          "fine_tuned": 0.7489103778795103,
+          "species": "Ptilotula penicillata",
+          "target_only": 0.7501918213163032
+        },
+        {
+          "conventional": 0.6450407235249287,
+          "fine_tuned": 0.6636043811217501,
+          "species": "Rhipidura albiscapa",
+          "target_only": 0.6502750491779523
+        },
+        {
+          "conventional": 0.7147196374304383,
+          "fine_tuned": 0.7169827674651441,
+          "species": "Rhipidura rufifrons",
+          "target_only": 0.7158238122782252
+        },
+        {
+          "conventional": 0.6800197616759169,
+          "fine_tuned": 0.6946064519850071,
+          "species": "Sericornis frontalis",
+          "target_only": 0.685839047058322
+        },
+        {
+          "conventional": 0.7841887925553925,
+          "fine_tuned": 0.6785136708957888,
+          "species": "Smicrornis brevirostris",
+          "target_only": 0.7684764691002706
+        },
+        {
+          "conventional": 0.8803291561040161,
+          "fine_tuned": 0.8742072033290286,
+          "species": "Stipiturus malachurus",
+          "target_only": 0.8792421995822771
+        },
+        {
+          "conventional": 0.6229545923582208,
+          "fine_tuned": 0.6144046203322718,
+          "species": "Strepera graculina",
+          "target_only": 0.6196000053620395
+        },
+        {
+          "conventional": 0.7720668639080556,
+          "fine_tuned": 0.7819458742448895,
+          "species": "Threskiornis spinicollis",
+          "target_only": 0.7618410196748775
+        },
+        {
+          "conventional": 0.6275705134100331,
+          "fine_tuned": 0.617294913765376,
+          "species": "Todiramphus sanctus",
+          "target_only": 0.609576688428558
+        },
+        {
+          "conventional": 0.6755170541379658,
+          "fine_tuned": 0.6313971393664292,
+          "species": "Turnix varius",
+          "target_only": 0.6562927933028344
+        },
+        {
+          "conventional": 0.7144437594439408,
+          "fine_tuned": 0.7176318323763473,
+          "species": "Vanellus miles",
+          "target_only": 0.707665316812733
+        },
+        {
+          "conventional": 0.8383238322812178,
+          "fine_tuned": 0.8470507883318853,
+          "species": "Zoothera lunulata",
+          "target_only": 0.8438835981784785
+        },
+        {
+          "conventional": 0.6251764434007046,
+          "fine_tuned": 0.6026648301766386,
+          "species": "Zosterops lateralis",
+          "target_only": 0.6036699096220287
+        }
+      ],
+      "within_species_aggregation": "regional X10 ROC AUC"
+    },
+    "birds_inner": {
+      "contrasts": {
+        "conventional": {
+          "mean": 0.0033898583175572808,
+          "median": 0.003189691296066277,
+          "n": 73,
+          "negative": 6,
+          "positive": 67,
+          "undefined": 0,
+          "zero": 0
+        },
+        "target_only": {
+          "mean": 0.005780750360440689,
+          "median": 0.0053843629382591685,
+          "n": 73,
+          "negative": 1,
+          "positive": 72,
+          "undefined": 0,
+          "zero": 0
+        }
+      },
+      "label": "Birds inner: common 73",
+      "metrics": {
+        "conventional": {
+          "mean": 0.8282128630975819,
+          "median": 0.831802322116469,
+          "n": 73,
+          "negative": 0,
+          "positive": 73,
+          "undefined": 0,
+          "zero": 0
+        },
+        "fine_tuned": {
+          "mean": 0.8316027214151391,
+          "median": 0.8305286707338062,
+          "n": 73,
+          "negative": 0,
+          "positive": 73,
+          "undefined": 0,
+          "zero": 0
+        },
+        "target_only": {
+          "mean": 0.8258219710546985,
+          "median": 0.8272260242164553,
+          "n": 73,
+          "negative": 0,
+          "positive": 73,
+          "undefined": 0,
+          "zero": 0
+        }
+      },
+      "species": [
+        {
+          "conventional": 0.8873755487337315,
+          "fine_tuned": 0.8915530558416602,
+          "species": "Acanthagenys rufogularis",
+          "target_only": 0.8832491921324145
+        },
+        {
+          "conventional": 0.736550988628522,
+          "fine_tuned": 0.7404642475216445,
+          "species": "Acanthiza chrysorrhoa",
+          "target_only": 0.7278634259066484
+        },
+        {
+          "conventional": 0.8973661768193052,
+          "fine_tuned": 0.9011334558825128,
+          "species": "Acanthiza lineata",
+          "target_only": 0.8955103433542879
+        },
+        {
+          "conventional": 0.7992848928244016,
+          "fine_tuned": 0.7973718230672954,
+          "species": "Acanthiza nana",
+          "target_only": 0.7903755507034855
+        },
+        {
+          "conventional": 0.882393800798513,
+          "fine_tuned": 0.884329294523012,
+          "species": "Acanthiza pusilla",
+          "target_only": 0.8788974494477504
+        },
+        {
+          "conventional": 0.8456554031755014,
+          "fine_tuned": 0.8501532350779609,
+          "species": "Acanthiza reguloides",
+          "target_only": 0.8404265532541217
+        },
+        {
+          "conventional": 0.8939070671848526,
+          "fine_tuned": 0.8990494809463074,
+          "species": "Acanthorhynchus tenuirostris",
+          "target_only": 0.8944371239524512
+        },
+        {
+          "conventional": 0.7652778243363295,
+          "fine_tuned": 0.7724284333409447,
+          "species": "Acrocephalus australis",
+          "target_only": 0.7500408737392874
+        },
+        {
+          "conventional": 0.9161733525778153,
+          "fine_tuned": 0.9204904106834884,
+          "species": "Anthochaera chrysoptera",
+          "target_only": 0.9170438819963989
+        },
+        {
+          "conventional": 0.762309098493719,
+          "fine_tuned": 0.7697143094166506,
+          "species": "Artamus cyanopterus",
+          "target_only": 0.76326782169022
+        },
+        {
+          "conventional": 0.7634482639721426,
+          "fine_tuned": 0.7665430790409324,
+          "species": "Cacatua galerita",
+          "target_only": 0.7605589262019785
+        },
+        {
+          "conventional": 0.7700448131237789,
+          "fine_tuned": 0.7768830644560972,
+          "species": "Cacatua sanguinea",
+          "target_only": 0.7674440320262039
+        },
+        {
+          "conventional": 0.8869388984632675,
+          "fine_tuned": 0.8937889389862276,
+          "species": "Cacatua tenuirostris",
+          "target_only": 0.8899934207115283
+        },
+        {
+          "conventional": 0.7872143797826496,
+          "fine_tuned": 0.791075902839763,
+          "species": "Cacomantis flabelliformis",
+          "target_only": 0.7875659945069661
+        },
+        {
+          "conventional": 0.8767631379695299,
+          "fine_tuned": 0.8807376378417782,
+          "species": "Caligavis chrysops",
+          "target_only": 0.8771367261206148
+        },
+        {
+          "conventional": 0.8662603254233309,
+          "fine_tuned": 0.8707889647453987,
+          "species": "Ceyx azureus",
+          "target_only": 0.8662385302201929
+        },
+        {
+          "conventional": 0.6866243319747325,
+          "fine_tuned": 0.6898046736101962,
+          "species": "Chalcites basalis",
+          "target_only": 0.6808358764858503
+        },
+        {
+          "conventional": 0.7912516824701317,
+          "fine_tuned": 0.7941635269061946,
+          "species": "Chalcites lucidus",
+          "target_only": 0.7909105024519946
+        },
+        {
+          "conventional": 0.791500166462743,
+          "fine_tuned": 0.7955530469887957,
+          "species": "Cincloramphus mathewsi",
+          "target_only": 0.7891239954333134
+        },
+        {
+          "conventional": 0.8698403295583252,
+          "fine_tuned": 0.8722795517164055,
+          "species": "Climacteris picumnus",
+          "target_only": 0.8651234978417557
+        },
+        {
+          "conventional": 0.7405865819009467,
+          "fine_tuned": 0.742963394312904,
+          "species": "Colluricincla harmonica",
+          "target_only": 0.7375790313746449
+        },
+        {
+          "conventional": 0.6422204094092004,
+          "fine_tuned": 0.6476464609906424,
+          "species": "Coracina novaehollandiae",
+          "target_only": 0.6391414849325573
+        },
+        {
+          "conventional": 0.8002721964138454,
+          "fine_tuned": 0.8077052630291732,
+          "species": "Coracina papuensis",
+          "target_only": 0.8007107397591801
+        },
+        {
+          "conventional": 0.831802322116469,
+          "fine_tuned": 0.8305286707338062,
+          "species": "Corcorax melanorhamphos",
+          "target_only": 0.8272260242164553
+        },
+        {
+          "conventional": 0.8931921967038192,
+          "fine_tuned": 0.8972493220433938,
+          "species": "Cormobates leucophaea",
+          "target_only": 0.8926581034064871
+        },
+        {
+          "conventional": 0.8370209942983381,
+          "fine_tuned": 0.8367500733493506,
+          "species": "Corvus coronoides",
+          "target_only": 0.833882583330271
+        },
+        {
+          "conventional": 0.9925864823567656,
+          "fine_tuned": 0.9929448882558953,
+          "species": "Corvus tasmanicus",
+          "target_only": 0.9933419601654576
+        },
+        {
+          "conventional": 0.7701667224199398,
+          "fine_tuned": 0.7740008707279267,
+          "species": "Cracticus torquatus",
+          "target_only": 0.7647146441823971
+        },
+        {
+          "conventional": 0.7668409306508487,
+          "fine_tuned": 0.7693727522195042,
+          "species": "Dacelo novaeguineae",
+          "target_only": 0.7643561702757828
+        },
+        {
+          "conventional": 0.7647823384284633,
+          "fine_tuned": 0.7713165255304452,
+          "species": "Daphoenositta chrysoptera",
+          "target_only": 0.7644619422003651
+        },
+        {
+          "conventional": 0.7532554729053383,
+          "fine_tuned": 0.7563656285310482,
+          "species": "Dicaeum hirundinaceum",
+          "target_only": 0.748484769664514
+        },
+        {
+          "conventional": 0.8513577460302197,
+          "fine_tuned": 0.8530949382052728,
+          "species": "Entomyzon cyanotis",
+          "target_only": 0.8519275228762361
+        },
+        {
+          "conventional": 0.780927564751112,
+          "fine_tuned": 0.7825647072645948,
+          "species": "Eolophus roseicapilla",
+          "target_only": 0.7765475173560746
+        },
+        {
+          "conventional": 0.8885853730836646,
+          "fine_tuned": 0.8903160833558521,
+          "species": "Eopsaltria australis",
+          "target_only": 0.8872863402698936
+        },
+        {
+          "conventional": 0.8059447678427436,
+          "fine_tuned": 0.8138178264880299,
+          "species": "Falcunculus frontatus",
+          "target_only": 0.8035397039470243
+        },
+        {
+          "conventional": 0.7804853128809456,
+          "fine_tuned": 0.7836750041770119,
+          "species": "Geopelia placida",
+          "target_only": 0.7761937224812963
+        },
+        {
+          "conventional": 0.7246937436366055,
+          "fine_tuned": 0.7330168078946112,
+          "species": "Heteroscenes pallidus",
+          "target_only": 0.7234692511693386
+        },
+        {
+          "conventional": 0.8118952089782312,
+          "fine_tuned": 0.8146298560095808,
+          "species": "Malurus cyaneus",
+          "target_only": 0.8091089387565731
+        },
+        {
+          "conventional": 0.8364957448196991,
+          "fine_tuned": 0.8378235991764889,
+          "species": "Malurus lamberti",
+          "target_only": 0.8319986411901013
+        },
+        {
+          "conventional": 0.8076746169449122,
+          "fine_tuned": 0.807583983373797,
+          "species": "Manorina melanocephala",
+          "target_only": 0.8017900241456
+        },
+        {
+          "conventional": 0.8545785889702232,
+          "fine_tuned": 0.8588920203984898,
+          "species": "Melithreptus gularis",
+          "target_only": 0.8441064072751189
+        },
+        {
+          "conventional": 0.8587759266893885,
+          "fine_tuned": 0.8616240782553758,
+          "species": "Melithreptus lunatus",
+          "target_only": 0.8576809548116385
+        },
+        {
+          "conventional": 0.8217785506971843,
+          "fine_tuned": 0.8226994863775546,
+          "species": "Microeca fascinans",
+          "target_only": 0.8169613964885668
+        },
+        {
+          "conventional": 0.7362103264968063,
+          "fine_tuned": 0.7363531034939284,
+          "species": "Myiagra inquieta",
+          "target_only": 0.7297781067078988
+        },
+        {
+          "conventional": 0.8510922328932844,
+          "fine_tuned": 0.8566431731030976,
+          "species": "Neochmia temporalis",
+          "target_only": 0.8518616245721071
+        },
+        {
+          "conventional": 0.9062239679458924,
+          "fine_tuned": 0.910413707025068,
+          "species": "Nesoptilotis leucotis",
+          "target_only": 0.9040531324228953
+        },
+        {
+          "conventional": 0.8098160433911087,
+          "fine_tuned": 0.8121084217450161,
+          "species": "Ocyphaps lophotes",
+          "target_only": 0.8086574105439837
+        },
+        {
+          "conventional": 0.8401452466940011,
+          "fine_tuned": 0.8423309225442008,
+          "species": "Oriolus sagittatus",
+          "target_only": 0.8390821595077661
+        },
+        {
+          "conventional": 0.7767077684601678,
+          "fine_tuned": 0.7804418276790009,
+          "species": "Pachycephala pectoralis",
+          "target_only": 0.7757227916323673
+        },
+        {
+          "conventional": 0.7611863126932759,
+          "fine_tuned": 0.7633433566278852,
+          "species": "Pachycephala rufiventris",
+          "target_only": 0.7588938213086884
+        },
+        {
+          "conventional": 0.7934812412572214,
+          "fine_tuned": 0.7962342174719887,
+          "species": "Pardalotus punctatus",
+          "target_only": 0.7883403301212961
+        },
+        {
+          "conventional": 0.6860351027907703,
+          "fine_tuned": 0.6895795262030113,
+          "species": "Pardalotus striatus",
+          "target_only": 0.6804089547053294
+        },
+        {
+          "conventional": 0.9217349898137129,
+          "fine_tuned": 0.925522752975216,
+          "species": "Petroica boodang",
+          "target_only": 0.9204577607845575
+        },
+        {
+          "conventional": 0.8997601617788235,
+          "fine_tuned": 0.9002709731908369,
+          "species": "Petroica phoenicea",
+          "target_only": 0.896647216641487
+        },
+        {
+          "conventional": 0.9084235947577275,
+          "fine_tuned": 0.913471771201586,
+          "species": "Phaps elegans",
+          "target_only": 0.9092196465683287
+        },
+        {
+          "conventional": 0.9188807032248547,
+          "fine_tuned": 0.9217021905320875,
+          "species": "Phylidonyris novaehollandiae",
+          "target_only": 0.9177624325248261
+        },
+        {
+          "conventional": 0.976325704104298,
+          "fine_tuned": 0.9779482309026811,
+          "species": "Phylidonyris pyrrhopterus",
+          "target_only": 0.9768096565867218
+        },
+        {
+          "conventional": 0.9039320703144627,
+          "fine_tuned": 0.9074525433388198,
+          "species": "Platycercus elegans",
+          "target_only": 0.9032009989315963
+        },
+        {
+          "conventional": 0.8781950335425848,
+          "fine_tuned": 0.8818979199454177,
+          "species": "Platycercus eximius",
+          "target_only": 0.8762670319392585
+        },
+        {
+          "conventional": 0.857231326700669,
+          "fine_tuned": 0.8597259697868967,
+          "species": "Psephotus haematonotus",
+          "target_only": 0.856395820221622
+        },
+        {
+          "conventional": 0.8668285980008417,
+          "fine_tuned": 0.8711002886017536,
+          "species": "Ptilotula penicillata",
+          "target_only": 0.8667179304180517
+        },
+        {
+          "conventional": 0.7737454987174065,
+          "fine_tuned": 0.7779500347317343,
+          "species": "Rhipidura albiscapa",
+          "target_only": 0.7726159943897359
+        },
+        {
+          "conventional": 0.9175332163548088,
+          "fine_tuned": 0.9199184750741626,
+          "species": "Rhipidura rufifrons",
+          "target_only": 0.9177412786609447
+        },
+        {
+          "conventional": 0.8821941546820536,
+          "fine_tuned": 0.8870801035253452,
+          "species": "Sericornis frontalis",
+          "target_only": 0.8831393107527095
+        },
+        {
+          "conventional": 0.8528437006368588,
+          "fine_tuned": 0.8559045865745197,
+          "species": "Smicrornis brevirostris",
+          "target_only": 0.8498526826931225
+        },
+        {
+          "conventional": 0.9610345518187549,
+          "fine_tuned": 0.9607315243431366,
+          "species": "Stipiturus malachurus",
+          "target_only": 0.9579915226856828
+        },
+        {
+          "conventional": 0.8955097081823584,
+          "fine_tuned": 0.8976599500873783,
+          "species": "Strepera graculina",
+          "target_only": 0.8955774091627073
+        },
+        {
+          "conventional": 0.787797558600754,
+          "fine_tuned": 0.797148179811682,
+          "species": "Threskiornis spinicollis",
+          "target_only": 0.7903092453087369
+        },
+        {
+          "conventional": 0.7595564636115872,
+          "fine_tuned": 0.7654746379523555,
+          "species": "Todiramphus sanctus",
+          "target_only": 0.7586920851385671
+        },
+        {
+          "conventional": 0.7456340766786803,
+          "fine_tuned": 0.7511430139702995,
+          "species": "Turnix varius",
+          "target_only": 0.7385399999701883
+        },
+        {
+          "conventional": 0.7863691275706153,
+          "fine_tuned": 0.7881533704286943,
+          "species": "Vanellus miles",
+          "target_only": 0.78694582978001
+        },
+        {
+          "conventional": 0.9279860038903853,
+          "fine_tuned": 0.9269264777725077,
+          "species": "Zoothera lunulata",
+          "target_only": 0.9263174006551029
+        },
+        {
+          "conventional": 0.785024244816482,
+          "fine_tuned": 0.7874790385308333,
+          "species": "Zosterops lateralis",
+          "target_only": 0.7837927092036576
+        }
+      ],
+      "within_species_aggregation": "equal-fold mean ROC AUC"
+    },
+    "birds_outer": {
+      "contrasts": {
+        "conventional": {
+          "mean": 0.0027705174337210284,
+          "median": 0.0017166830680248601,
+          "n": 73,
+          "negative": 34,
+          "positive": 39,
+          "undefined": 0,
+          "zero": 0
+        },
+        "target_only": {
+          "mean": -0.0003960209785719396,
+          "median": -0.0005650176492975056,
+          "n": 73,
+          "negative": 39,
+          "positive": 34,
+          "undefined": 0,
+          "zero": 0
+        }
+      },
+      "label": "Birds outer: equal regions",
+      "metrics": {
+        "conventional": {
+          "mean": 0.679961771932294,
+          "median": 0.6658210987016502,
+          "n": 73,
+          "negative": 0,
+          "positive": 73,
+          "undefined": 0,
+          "zero": 0
+        },
+        "fine_tuned": {
+          "mean": 0.682732289366015,
+          "median": 0.6738290943654626,
+          "n": 73,
+          "negative": 0,
+          "positive": 73,
+          "undefined": 0,
+          "zero": 0
+        },
+        "target_only": {
+          "mean": 0.683128310344587,
+          "median": 0.6712641012412428,
+          "n": 73,
+          "negative": 0,
+          "positive": 73,
+          "undefined": 0,
+          "zero": 0
+        }
+      },
+      "species": [
+        {
+          "conventional": 0.7670576530905223,
+          "fine_tuned": 0.7813534671312269,
+          "species": "Acanthagenys rufogularis",
+          "target_only": 0.7726332265373071
+        },
+        {
+          "conventional": 0.7114021691429407,
+          "fine_tuned": 0.7131188522109656,
+          "species": "Acanthiza chrysorrhoa",
+          "target_only": 0.7136838698602631
+        },
+        {
+          "conventional": 0.6230821753812218,
+          "fine_tuned": 0.6235179201256003,
+          "species": "Acanthiza lineata",
+          "target_only": 0.633721026112772
+        },
+        {
+          "conventional": 0.6472301967661366,
+          "fine_tuned": 0.6678325194092212,
+          "species": "Acanthiza nana",
+          "target_only": 0.6099256955279887
+        },
+        {
+          "conventional": 0.6497092597621222,
+          "fine_tuned": 0.6580584832834729,
+          "species": "Acanthiza pusilla",
+          "target_only": 0.6504229353163183
+        },
+        {
+          "conventional": 0.686372710565962,
+          "fine_tuned": 0.687453057977807,
+          "species": "Acanthiza reguloides",
+          "target_only": 0.6863139579777927
+        },
+        {
+          "conventional": 0.6755009737390186,
+          "fine_tuned": 0.6724178969137541,
+          "species": "Acanthorhynchus tenuirostris",
+          "target_only": 0.6792995766963582
+        },
+        {
+          "conventional": 0.723965804109502,
+          "fine_tuned": 0.7440015769420171,
+          "species": "Acrocephalus australis",
+          "target_only": 0.7324836868122196
+        },
+        {
+          "conventional": 0.7542286264281834,
+          "fine_tuned": 0.752746150767587,
+          "species": "Anthochaera chrysoptera",
+          "target_only": 0.7588653523458863
+        },
+        {
+          "conventional": 0.6403544662563034,
+          "fine_tuned": 0.6253692984080522,
+          "species": "Artamus cyanopterus",
+          "target_only": 0.6333452242384364
+        },
+        {
+          "conventional": 0.6014407634121326,
+          "fine_tuned": 0.6262952716211675,
+          "species": "Cacatua galerita",
+          "target_only": 0.6204758725815215
+        },
+        {
+          "conventional": 0.7261897248499768,
+          "fine_tuned": 0.7177858528397469,
+          "species": "Cacatua sanguinea",
+          "target_only": 0.7272748949017108
+        },
+        {
+          "conventional": 0.753383956055376,
+          "fine_tuned": 0.7838750255239427,
+          "species": "Cacatua tenuirostris",
+          "target_only": 0.7749255448585063
+        },
+        {
+          "conventional": 0.645821619186257,
+          "fine_tuned": 0.6457354029215391,
+          "species": "Cacomantis flabelliformis",
+          "target_only": 0.6477030333540212
+        },
+        {
+          "conventional": 0.6247883671374971,
+          "fine_tuned": 0.6386727733775796,
+          "species": "Caligavis chrysops",
+          "target_only": 0.6341201067877169
+        },
+        {
+          "conventional": 0.739001505065434,
+          "fine_tuned": 0.7313274702984017,
+          "species": "Ceyx azureus",
+          "target_only": 0.7539290486190353
+        },
+        {
+          "conventional": 0.6496753169976218,
+          "fine_tuned": 0.6361559269166485,
+          "species": "Chalcites basalis",
+          "target_only": 0.6372577379066012
+        },
+        {
+          "conventional": 0.6280825099909867,
+          "fine_tuned": 0.617341786618928,
+          "species": "Chalcites lucidus",
+          "target_only": 0.6395972243725973
+        },
+        {
+          "conventional": 0.7322518510653011,
+          "fine_tuned": 0.7245754651809809,
+          "species": "Cincloramphus mathewsi",
+          "target_only": 0.7249740795417551
+        },
+        {
+          "conventional": 0.665693980591665,
+          "fine_tuned": 0.6834331524068856,
+          "species": "Climacteris picumnus",
+          "target_only": 0.6820960626169313
+        },
+        {
+          "conventional": 0.6477114331227806,
+          "fine_tuned": 0.6348643928754513,
+          "species": "Colluricincla harmonica",
+          "target_only": 0.6495580268074092
+        },
+        {
+          "conventional": 0.6154729607388002,
+          "fine_tuned": 0.5965531880582459,
+          "species": "Coracina novaehollandiae",
+          "target_only": 0.61188404730846
+        },
+        {
+          "conventional": 0.6445508105459955,
+          "fine_tuned": 0.5888942015759787,
+          "species": "Coracina papuensis",
+          "target_only": 0.6238278341167572
+        },
+        {
+          "conventional": 0.6480113882743298,
+          "fine_tuned": 0.6218349715536627,
+          "species": "Corcorax melanorhamphos",
+          "target_only": 0.6281811864911981
+        },
+        {
+          "conventional": 0.7295194005961495,
+          "fine_tuned": 0.7472287684446145,
+          "species": "Cormobates leucophaea",
+          "target_only": 0.7273957057926282
+        },
+        {
+          "conventional": 0.6617179703607032,
+          "fine_tuned": 0.6488034972662907,
+          "species": "Corvus coronoides",
+          "target_only": 0.6280047445053518
+        },
+        {
+          "conventional": 0.7564368411381173,
+          "fine_tuned": 0.758197574770063,
+          "species": "Corvus tasmanicus",
+          "target_only": 0.7444925237099874
+        },
+        {
+          "conventional": 0.6262810564097093,
+          "fine_tuned": 0.6695494627705504,
+          "species": "Cracticus torquatus",
+          "target_only": 0.6395684099590069
+        },
+        {
+          "conventional": 0.6658210987016502,
+          "fine_tuned": 0.6565770911626064,
+          "species": "Dacelo novaeguineae",
+          "target_only": 0.6481277664121404
+        },
+        {
+          "conventional": 0.5913724217677255,
+          "fine_tuned": 0.6025109650389002,
+          "species": "Daphoenositta chrysoptera",
+          "target_only": 0.5816102190350579
+        },
+        {
+          "conventional": 0.6131497740517758,
+          "fine_tuned": 0.6054497138906398,
+          "species": "Dicaeum hirundinaceum",
+          "target_only": 0.6021263349067573
+        },
+        {
+          "conventional": 0.7352209180281003,
+          "fine_tuned": 0.716047246479966,
+          "species": "Entomyzon cyanotis",
+          "target_only": 0.75769803446059
+        },
+        {
+          "conventional": 0.7454973763520168,
+          "fine_tuned": 0.7433430360302137,
+          "species": "Eolophus roseicapilla",
+          "target_only": 0.7547336222110249
+        },
+        {
+          "conventional": 0.6548108927686219,
+          "fine_tuned": 0.6971004454256619,
+          "species": "Eopsaltria australis",
+          "target_only": 0.6674239942970649
+        },
+        {
+          "conventional": 0.5899681322143923,
+          "fine_tuned": 0.5771091148578947,
+          "species": "Falcunculus frontatus",
+          "target_only": 0.5776049633879986
+        },
+        {
+          "conventional": 0.7209752032401747,
+          "fine_tuned": 0.7255045880848353,
+          "species": "Geopelia placida",
+          "target_only": 0.7307587641781849
+        },
+        {
+          "conventional": 0.6175165600120874,
+          "fine_tuned": 0.6424896132447789,
+          "species": "Heteroscenes pallidus",
+          "target_only": 0.6399319803952275
+        },
+        {
+          "conventional": 0.6075595562515986,
+          "fine_tuned": 0.6366664480011915,
+          "species": "Malurus cyaneus",
+          "target_only": 0.6414526428649167
+        },
+        {
+          "conventional": 0.722963087871532,
+          "fine_tuned": 0.7496067667111554,
+          "species": "Malurus lamberti",
+          "target_only": 0.7614234622857315
+        },
+        {
+          "conventional": 0.7620791557311287,
+          "fine_tuned": 0.7357270585551601,
+          "species": "Manorina melanocephala",
+          "target_only": 0.7502143574454943
+        },
+        {
+          "conventional": 0.6976226539874847,
+          "fine_tuned": 0.6908652585977243,
+          "species": "Melithreptus gularis",
+          "target_only": 0.7174977221100706
+        },
+        {
+          "conventional": 0.637276198828139,
+          "fine_tuned": 0.6472792180440362,
+          "species": "Melithreptus lunatus",
+          "target_only": 0.6414521156952419
+        },
+        {
+          "conventional": 0.6317284850065722,
+          "fine_tuned": 0.64501797660296,
+          "species": "Microeca fascinans",
+          "target_only": 0.630056992759248
+        },
+        {
+          "conventional": 0.6398938218519096,
+          "fine_tuned": 0.6242866804624206,
+          "species": "Myiagra inquieta",
+          "target_only": 0.6321502563011535
+        },
+        {
+          "conventional": 0.5431016616369128,
+          "fine_tuned": 0.5802833051382364,
+          "species": "Neochmia temporalis",
+          "target_only": 0.5799541541066929
+        },
+        {
+          "conventional": 0.6678659527249411,
+          "fine_tuned": 0.6558884327456673,
+          "species": "Nesoptilotis leucotis",
+          "target_only": 0.661511205980927
+        },
+        {
+          "conventional": 0.7507684771605317,
+          "fine_tuned": 0.7577797116848654,
+          "species": "Ocyphaps lophotes",
+          "target_only": 0.7607440374500195
+        },
+        {
+          "conventional": 0.6703705629440626,
+          "fine_tuned": 0.6446112043301272,
+          "species": "Oriolus sagittatus",
+          "target_only": 0.6712641012412428
+        },
+        {
+          "conventional": 0.6391244021649963,
+          "fine_tuned": 0.657650652780682,
+          "species": "Pachycephala pectoralis",
+          "target_only": 0.6459080436131279
+        },
+        {
+          "conventional": 0.6059187184748364,
+          "fine_tuned": 0.6009165039994829,
+          "species": "Pachycephala rufiventris",
+          "target_only": 0.6214224611451362
+        },
+        {
+          "conventional": 0.6700126085625812,
+          "fine_tuned": 0.6771949964713936,
+          "species": "Pardalotus punctatus",
+          "target_only": 0.6822093062788895
+        },
+        {
+          "conventional": 0.6307509364301604,
+          "fine_tuned": 0.5994347620043968,
+          "species": "Pardalotus striatus",
+          "target_only": 0.6135552995319232
+        },
+        {
+          "conventional": 0.6941000452793408,
+          "fine_tuned": 0.6882896337676563,
+          "species": "Petroica boodang",
+          "target_only": 0.683712456332914
+        },
+        {
+          "conventional": 0.6655460712085773,
+          "fine_tuned": 0.6271343588880967,
+          "species": "Petroica phoenicea",
+          "target_only": 0.6328616852657669
+        },
+        {
+          "conventional": 0.7427214682708625,
+          "fine_tuned": 0.7720491760279824,
+          "species": "Phaps elegans",
+          "target_only": 0.7770217139536575
+        },
+        {
+          "conventional": 0.6664739231590185,
+          "fine_tuned": 0.687887713474174,
+          "species": "Phylidonyris novaehollandiae",
+          "target_only": 0.6728814466601049
+        },
+        {
+          "conventional": 0.8528393859057429,
+          "fine_tuned": 0.8478485319244582,
+          "species": "Phylidonyris pyrrhopterus",
+          "target_only": 0.8453673973563433
+        },
+        {
+          "conventional": 0.5926372633698117,
+          "fine_tuned": 0.6190252398432271,
+          "species": "Platycercus elegans",
+          "target_only": 0.6451359060985097
+        },
+        {
+          "conventional": 0.6621991189132216,
+          "fine_tuned": 0.6738290943654626,
+          "species": "Platycercus eximius",
+          "target_only": 0.6913257811616234
+        },
+        {
+          "conventional": 0.8179834197728799,
+          "fine_tuned": 0.8178703262812203,
+          "species": "Psephotus haematonotus",
+          "target_only": 0.7965473382548561
+        },
+        {
+          "conventional": 0.7646423677359454,
+          "fine_tuned": 0.7601793129422562,
+          "species": "Ptilotula penicillata",
+          "target_only": 0.7657663639771716
+        },
+        {
+          "conventional": 0.6351204637014308,
+          "fine_tuned": 0.6421345405557263,
+          "species": "Rhipidura albiscapa",
+          "target_only": 0.6386750023095784
+        },
+        {
+          "conventional": 0.6924102509488019,
+          "fine_tuned": 0.725474093282151,
+          "species": "Rhipidura rufifrons",
+          "target_only": 0.6870215120766904
+        },
+        {
+          "conventional": 0.6700063528531931,
+          "fine_tuned": 0.68291263534931,
+          "species": "Sericornis frontalis",
+          "target_only": 0.6765918030932173
+        },
+        {
+          "conventional": 0.7394440828698466,
+          "fine_tuned": 0.7201906903093666,
+          "species": "Smicrornis brevirostris",
+          "target_only": 0.7403259741665771
+        },
+        {
+          "conventional": 0.7614999609262126,
+          "fine_tuned": 0.7668932548239713,
+          "species": "Stipiturus malachurus",
+          "target_only": 0.7523365445169784
+        },
+        {
+          "conventional": 0.653431042726904,
+          "fine_tuned": 0.6848956515483464,
+          "species": "Strepera graculina",
+          "target_only": 0.6869389225072441
+        },
+        {
+          "conventional": 0.7242862309750769,
+          "fine_tuned": 0.7387649456607592,
+          "species": "Threskiornis spinicollis",
+          "target_only": 0.7220691745442335
+        },
+        {
+          "conventional": 0.6580979567753471,
+          "fine_tuned": 0.6758344139469554,
+          "species": "Todiramphus sanctus",
+          "target_only": 0.6680907327221467
+        },
+        {
+          "conventional": 0.6668844704732798,
+          "fine_tuned": 0.6469895360197246,
+          "species": "Turnix varius",
+          "target_only": 0.659820874203363
+        },
+        {
+          "conventional": 0.7417820098391633,
+          "fine_tuned": 0.7457419943981435,
+          "species": "Vanellus miles",
+          "target_only": 0.739460321840936
+        },
+        {
+          "conventional": 0.8197890897075668,
+          "fine_tuned": 0.8306629092886273,
+          "species": "Zoothera lunulata",
+          "target_only": 0.8300258957901839
+        },
+        {
+          "conventional": 0.6290102281005648,
+          "fine_tuned": 0.6185148724861087,
+          "species": "Zosterops lateralis",
+          "target_only": 0.6195973345723579
+        }
+      ],
+      "within_species_aggregation": "equal-region mean ROC AUC over NCP, SEH, NNC"
+    },
+    "mainland_to_tasmania": {
+      "contrasts": {
+        "conventional": {
+          "mean": -0.02773293862642805,
+          "median": -0.022426381649842675,
+          "n": 5,
+          "negative": 4,
+          "positive": 1,
+          "undefined": 0,
+          "zero": 0
+        },
+        "target_only": {
+          "mean": -0.015513059220361924,
+          "median": 0.026863275494271144,
+          "n": 5,
+          "negative": 2,
+          "positive": 3,
+          "undefined": 0,
+          "zero": 0
+        }
+      },
+      "label": "Mainland to Tasmania",
+      "metrics": {
+        "conventional": {
+          "mean": 0.5836914695522639,
+          "median": 0.5849167601328319,
+          "n": 5,
+          "negative": 0,
+          "positive": 5,
+          "undefined": 0,
+          "zero": 0
+        },
+        "fine_tuned": {
+          "mean": 0.5559585309258359,
+          "median": 0.5666878001754371,
+          "n": 5,
+          "negative": 0,
+          "positive": 5,
+          "undefined": 0,
+          "zero": 0
+        },
+        "target_only": {
+          "mean": 0.5714715901461977,
+          "median": 0.5394950538904474,
+          "n": 5,
+          "negative": 0,
+          "positive": 5,
+          "undefined": 0,
+          "zero": 0
+        }
+      },
+      "species": [
+        {
+          "conventional": 0.5858816581408881,
+          "fine_tuned": 0.5666878001754371,
+          "species": "Dasyurus maculatus",
+          "target_only": 0.5394950538904474
+        },
+        {
+          "conventional": 0.5425636007827789,
+          "fine_tuned": 0.6072602739726027,
+          "species": "Notamacropus rufogriseus",
+          "target_only": 0.6902739726027397
+        },
+        {
+          "conventional": 0.6551073018848974,
+          "fine_tuned": 0.6105493990424854,
+          "species": "Pseudocheirus peregrinus",
+          "target_only": 0.5140848371220998
+        },
+        {
+          "conventional": 0.5499880268199234,
+          "fine_tuned": 0.43280480295566504,
+          "species": "Trichosurus vulpecula",
+          "target_only": 0.5778769841269841
+        },
+        {
+          "conventional": 0.5849167601328319,
+          "fine_tuned": 0.5624903784829892,
+          "species": "Vombatus ursinus",
+          "target_only": 0.5356271029887181
+        }
+      ],
+      "within_species_aggregation": "camera-supported primary ROC AUC"
+    },
+    "tasmania_inner": {
+      "contrasts": {
+        "conventional": {
+          "mean": -0.04978754791259646,
+          "median": -0.0390274538194777,
+          "n": 8,
+          "negative": 8,
+          "positive": 0,
+          "undefined": 0,
+          "zero": 0
+        },
+        "target_only": {
+          "mean": -0.006749640344026919,
+          "median": -0.0027239298528473066,
+          "n": 8,
+          "negative": 4,
+          "positive": 4,
+          "undefined": 0,
+          "zero": 0
+        }
+      },
+      "label": "Tasmania inner",
+      "metrics": {
+        "conventional": {
+          "mean": 0.7630874510777359,
+          "median": 0.7721084143897328,
+          "n": 8,
+          "negative": 0,
+          "positive": 8,
+          "undefined": 0,
+          "zero": 0
+        },
+        "fine_tuned": {
+          "mean": 0.7132999031651394,
+          "median": 0.7097065113842832,
+          "n": 8,
+          "negative": 0,
+          "positive": 8,
+          "undefined": 0,
+          "zero": 0
+        },
+        "target_only": {
+          "mean": 0.7200495435091663,
+          "median": 0.7200394467657244,
+          "n": 8,
+          "negative": 0,
+          "positive": 8,
+          "undefined": 0,
+          "zero": 0
+        }
+      },
+      "species": [
+        {
+          "conventional": 0.6600283364651208,
+          "fine_tuned": 0.6243483131651126,
+          "species": "dasyurus_maculatus",
+          "target_only": 0.6304615707840326
+        },
+        {
+          "conventional": 0.8138972737665018,
+          "fine_tuned": 0.7476811578325169,
+          "species": "dasyurus_viverrinus",
+          "target_only": 0.7952702112781301
+        },
+        {
+          "conventional": 0.7035145973051122,
+          "fine_tuned": 0.6700548316734014,
+          "species": "notamacropus_rufogriseus",
+          "target_only": 0.66220766527341
+        },
+        {
+          "conventional": 0.6862922048338953,
+          "fine_tuned": 0.681787771941436,
+          "species": "pseudocheirus_peregrinus",
+          "target_only": 0.6811223740282106
+        },
+        {
+          "conventional": 0.836751356005149,
+          "fine_tuned": 0.7893052510623255,
+          "species": "sarcophilus_harrisii",
+          "target_only": 0.7963809921602645
+        },
+        {
+          "conventional": 0.8577125240164403,
+          "fine_tuned": 0.6974893087887046,
+          "species": "thylogale_billardierii",
+          "target_only": 0.7522348117590905
+        },
+        {
+          "conventional": 0.8161837612167036,
+          "fine_tuned": 0.7738088768777563,
+          "species": "trichosurus_vulpecula",
+          "target_only": 0.7548746410178339
+        },
+        {
+          "conventional": 0.7303195550129639,
+          "fine_tuned": 0.7219237139798618,
+          "species": "vombatus_ursinus",
+          "target_only": 0.6878440817723583
+        }
+      ],
+      "within_species_aggregation": "equal-fold mean ROC AUC"
+    },
+    "tasmania_outer": {
+      "contrasts": {
+        "conventional": {
+          "mean": -0.005141219536936331,
+          "median": -0.00833174044522722,
+          "n": 8,
+          "negative": 5,
+          "positive": 3,
+          "undefined": 0,
+          "zero": 0
+        },
+        "target_only": {
+          "mean": -0.014741211974987886,
+          "median": -0.012001468359227052,
+          "n": 8,
+          "negative": 7,
+          "positive": 1,
+          "undefined": 0,
+          "zero": 0
+        }
+      },
+      "label": "Tasmania held patches",
+      "metrics": {
+        "conventional": {
+          "mean": 0.8441416669928228,
+          "median": 0.8380352744366651,
+          "n": 8,
+          "negative": 0,
+          "positive": 8,
+          "undefined": 0,
+          "zero": 0
+        },
+        "fine_tuned": {
+          "mean": 0.8390004474558865,
+          "median": 0.8144873478848754,
+          "n": 8,
+          "negative": 0,
+          "positive": 8,
+          "undefined": 0,
+          "zero": 0
+        },
+        "target_only": {
+          "mean": 0.8537416594308744,
+          "median": 0.8413554261830124,
+          "n": 8,
+          "negative": 0,
+          "positive": 8,
+          "undefined": 0,
+          "zero": 0
+        }
+      },
+      "species": [
+        {
+          "conventional": 0.7246551724137931,
+          "fine_tuned": 0.7294827586206896,
+          "species": "dasyurus_maculatus",
+          "target_only": 0.7243103448275863
+        },
+        {
+          "conventional": 0.9442822802197802,
+          "fine_tuned": 0.9278846153846154,
+          "species": "dasyurus_viverrinus",
+          "target_only": 0.9412774725274726
+        },
+        {
+          "conventional": 0.7756381549484996,
+          "fine_tuned": 0.7991491267353336,
+          "species": "notamacropus_rufogriseus",
+          "target_only": 0.8293775190326914
+        },
+        {
+          "conventional": 0.8152438152438152,
+          "fine_tuned": 0.7694837694837695,
+          "species": "pseudocheirus_peregrinus",
+          "target_only": 0.8076648076648076
+        },
+        {
+          "conventional": 0.7461538461538461,
+          "fine_tuned": 0.8572944297082228,
+          "species": "sarcophilus_harrisii",
+          "target_only": 0.8679045092838197
+        },
+        {
+          "conventional": 1.0,
+          "fine_tuned": 0.9997341839447104,
+          "species": "thylogale_billardierii",
+          "target_only": 1.0
+        },
+        {
+          "conventional": 0.8608267336295151,
+          "fine_tuned": 0.8029746957697509,
+          "species": "trichosurus_vulpecula",
+          "target_only": 0.8060652887772841
+        },
+        {
+          "conventional": 0.8863333333333334,
+          "fine_tuned": 0.826,
+          "species": "vombatus_ursinus",
+          "target_only": 0.8533333333333334
+        }
+      ],
+      "within_species_aggregation": "pooled held-patch ROC AUC"
+    }
+  },
+  "inputs": {
+    "bird_extent_posthoc": {
+      "path": "evidence/seawfb_dsdm/goal052/extent-review-20261005.json",
+      "sha256": "08652c0909c600bd0e4794d89b522a1e3ecb32557e4f2dad64598cea3be12fa7"
+    },
+    "bird_inner": {
+      "path": "evidence/seawfb_dsdm/goal052/summary.json",
+      "sha256": "ec0bc6c2df8cabd3554f5b2b9eebda97b3426ddd186bfa2acc64ba3d1244a3d3"
+    },
+    "bird_outer": {
+      "path": "data/processed/dsdm/goal052-seawfb-dsdm-experiment/outer-assessment-20261003-r2/scores.json",
+      "sha256": "3a81b166f95551afc199577b86c200bf8cc6f91a24289ec5ad5583a9421f4a41"
+    },
+    "mainland_transfer": {
+      "path": "evidence/tasmania_transfer/goal047/summary.json",
+      "sha256": "99fea9eb10fce97985ff3ebe8bf6f1679b707980b18124f04f24c3d9a1c041cc"
+    },
+    "tasmania_inner": {
+      "path": "evidence/dsdm_inner_evaluation/goal036/stratum_metrics.csv",
+      "sha256": "2065ca48895af50036da90ad3e945096c6190594000527056309d78c5ee2bdc6"
+    },
+    "tasmania_outer": {
+      "path": "evidence/tasmania_outer_assessment/20261005/receipt.json",
+      "sha256": "3e7fe324b33450b76089edca0f2d5bf438d219121c9c0842961fedcd9695be26"
+    },
+    "tasmania_selection": {
+      "path": "evidence/dsdm_inner_evaluation/goal036/conventional_selection.csv",
+      "sha256": "3e05784670f58e88144dcbda43819c3811e8303c59cd15c36f23fdf38736a561"
+    }
+  },
+  "limits": [
+    "Case means do not imply independent species or equal sampling domains.",
+    "No cross-case grand mean or inferential test is calculated.",
+    "Tasmania outer pooled patches differ from bird equal-region aggregation."
+  ],
+  "schema_version": "dsdm-cross-case-synthesis-v1",
+  "source_sha256": "a468843e2e4d19a911ca881909970022d0db5b232acc3cbdd5bc4fdfd38a5db0"
+}

@@ -1,0 +1,34 @@
+{
+  "change": "verify and initialize historical staged imports before unchanged outer entry point",
+  "command": "env OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1 data/processed/dsdm/goal034-real-six-path-sentinel/runtime/.venv/bin/python scripts/tasmania_neural_launch.py run-outer --execute --workers 3",
+  "files": [
+    {
+      "path": "scripts/tasmania_neural_launch.py",
+      "sha256": "345bc26b5c35e4f2dd7955df599edf8603f1bbe4796b6f77fd841e1e034051c4"
+    },
+    {
+      "path": "scripts/tasmania_pseudoabsence_neural.py",
+      "sha256": "ffc6941055ba5485e414ec6cee8472b8fe5fd65609c04cf3158bf49d82caf289"
+    },
+    {
+      "path": "data/processed/dsdm/tasmania-pseudoabsence-20261008/private/neural/outer-prefit-launch-failure01.json",
+      "sha256": "6694dda0287155cd0ea9029fef9e1c830ec61c45512aa1abf72e4857accc2af5"
+    }
+  ],
+  "fit_starts_before_repair": 0,
+  "fits_authorized_after_repair": 560,
+  "fitting_source_changed": false,
+  "independent_review": "passed source, zero-fit evidence and macOS multiprocessing spawn review",
+  "inner_fits_preserved": 5600,
+  "receipt_digest": "f803a125422820a2cdfc6febd5fa0038f9ef346a7bd0d70c6baf309622c347d0",
+  "runtime_check": {
+    "fits": 0,
+    "numpy": "2.2.6",
+    "outer_packages": 8,
+    "python": "3.12.13",
+    "threads": 1,
+    "torch": "2.7.1"
+  },
+  "schema_version": "tasmania-neural-startup-recovery-v1",
+  "status": "accepted"
+}

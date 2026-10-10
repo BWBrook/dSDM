@@ -1,0 +1,327 @@
+{
+  "accepted_summary_inputs": {
+    "bird_conventional": {
+      "path": "evidence/seawfb_conventional/goal051/summary.json",
+      "sha256": "9c1bf1ff8884fae35fe7ebe6f8d19e2aae46ab7eedee252b398c0c74705dd2d8"
+    },
+    "bird_extent_posthoc": {
+      "path": "evidence/seawfb_dsdm/goal052/extent-review-20261005.json",
+      "sha256": "08652c0909c600bd0e4794d89b522a1e3ecb32557e4f2dad64598cea3be12fa7"
+    },
+    "bird_inner": {
+      "path": "evidence/seawfb_dsdm/goal052/summary.json",
+      "sha256": "ec0bc6c2df8cabd3554f5b2b9eebda97b3426ddd186bfa2acc64ba3d1244a3d3"
+    },
+    "bird_outer": {
+      "path": "data/processed/dsdm/goal052-seawfb-dsdm-experiment/outer-assessment-20261003-r2/scores.json",
+      "sha256": "3a81b166f95551afc199577b86c200bf8cc6f91a24289ec5ad5583a9421f4a41"
+    },
+    "mainland_inner": {
+      "path": "evidence/mainland_dsdm/goal046/summary.json",
+      "sha256": "868a2083036d7b5f14cde9137621977e06405033252551b80fd0d5107627c10b"
+    },
+    "mainland_transfer": {
+      "path": "evidence/tasmania_transfer/goal047/summary.json",
+      "sha256": "99fea9eb10fce97985ff3ebe8bf6f1679b707980b18124f04f24c3d9a1c041cc"
+    },
+    "tasmania_inner": {
+      "path": "evidence/dsdm_inner_evaluation/goal036/stratum_metrics.csv",
+      "sha256": "2065ca48895af50036da90ad3e945096c6190594000527056309d78c5ee2bdc6"
+    },
+    "tasmania_outer": {
+      "path": "evidence/tasmania_outer_assessment/20261005/receipt.json",
+      "sha256": "3e7fe324b33450b76089edca0f2d5bf438d219121c9c0842961fedcd9695be26"
+    },
+    "tasmania_selection": {
+      "path": "evidence/dsdm_inner_evaluation/goal036/conventional_selection.csv",
+      "sha256": "3e05784670f58e88144dcbda43819c3811e8303c59cd15c36f23fdf38736a561"
+    }
+  },
+  "analysis": "central 95% species-composition resampling range",
+  "canonical_panel": {
+    "block_counts": [
+      6,
+      4,
+      3,
+      9,
+      7,
+      8,
+      9,
+      10,
+      7,
+      10
+    ],
+    "block_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "n_blocks": 10,
+    "n_species": 73,
+    "species": [
+      "Acanthagenys rufogularis",
+      "Acanthiza chrysorrhoa",
+      "Acanthiza lineata",
+      "Acanthiza nana",
+      "Acanthiza pusilla",
+      "Acanthiza reguloides",
+      "Acanthorhynchus tenuirostris",
+      "Acrocephalus australis",
+      "Anthochaera chrysoptera",
+      "Artamus cyanopterus",
+      "Cacatua galerita",
+      "Cacatua sanguinea",
+      "Cacatua tenuirostris",
+      "Cacomantis flabelliformis",
+      "Caligavis chrysops",
+      "Ceyx azureus",
+      "Chalcites basalis",
+      "Chalcites lucidus",
+      "Cincloramphus mathewsi",
+      "Climacteris picumnus",
+      "Colluricincla harmonica",
+      "Coracina novaehollandiae",
+      "Coracina papuensis",
+      "Corcorax melanorhamphos",
+      "Cormobates leucophaea",
+      "Corvus coronoides",
+      "Corvus tasmanicus",
+      "Cracticus torquatus",
+      "Dacelo novaeguineae",
+      "Daphoenositta chrysoptera",
+      "Dicaeum hirundinaceum",
+      "Entomyzon cyanotis",
+      "Eolophus roseicapilla",
+      "Eopsaltria australis",
+      "Falcunculus frontatus",
+      "Geopelia placida",
+      "Heteroscenes pallidus",
+      "Malurus cyaneus",
+      "Malurus lamberti",
+      "Manorina melanocephala",
+      "Melithreptus gularis",
+      "Melithreptus lunatus",
+      "Microeca fascinans",
+      "Myiagra inquieta",
+      "Neochmia temporalis",
+      "Nesoptilotis leucotis",
+      "Ocyphaps lophotes",
+      "Oriolus sagittatus",
+      "Pachycephala pectoralis",
+      "Pachycephala rufiventris",
+      "Pardalotus punctatus",
+      "Pardalotus striatus",
+      "Petroica boodang",
+      "Petroica phoenicea",
+      "Phaps elegans",
+      "Phylidonyris novaehollandiae",
+      "Phylidonyris pyrrhopterus",
+      "Platycercus elegans",
+      "Platycercus eximius",
+      "Psephotus haematonotus",
+      "Ptilotula penicillata",
+      "Rhipidura albiscapa",
+      "Rhipidura rufifrons",
+      "Sericornis frontalis",
+      "Smicrornis brevirostris",
+      "Stipiturus malachurus",
+      "Strepera graculina",
+      "Threskiornis spinicollis",
+      "Todiramphus sanctus",
+      "Turnix varius",
+      "Vanellus miles",
+      "Zoothera lunulata",
+      "Zosterops lateralis"
+    ]
+  },
+  "inputs": {
+    "crossfit_plan": {
+      "path": "data/processed/dsdm/goal050-seawfb-modeling-foundation/crossfit_plan.json",
+      "sha256": "b3abdb006fb7d384445db376d5ba3f0f7b48afd170982494f88ff20ef612e804"
+    }
+  },
+  "invariant_checks": {
+    "accepted_unsampled_means": {
+      "birds_inner": {
+        "conventional": true,
+        "target_only": true
+      },
+      "birds_outer": {
+        "conventional": true,
+        "target_only": true
+      }
+    },
+    "before_resampling": {
+      "accepted_unsampled_means": {
+        "birds_inner": {
+          "conventional": true,
+          "target_only": true
+        },
+        "birds_outer": {
+          "conventional": true,
+          "target_only": true
+        }
+      },
+      "one_copy_focal_block_reproduces_inner_mean": {
+        "conventional": true,
+        "target_only": true
+      }
+    },
+    "crossfit_hash": true,
+    "equal_region_reproduces_accepted_outer": true,
+    "finite_auc_values": true,
+    "focal_block_counts": [
+      6,
+      4,
+      3,
+      9,
+      7,
+      8,
+      9,
+      10,
+      7,
+      10
+    ],
+    "focal_block_mapping_complete": true,
+    "model_fits_run": false,
+    "one_copy_focal_block_reproduces_inner_mean": {
+      "conventional": true,
+      "target_only": true
+    },
+    "paired_comparators_share_species_draws": true,
+    "panel_species_sets_identical": true,
+    "plan_hash": true,
+    "response_data_opened": false,
+    "summary_hash": true
+  },
+  "limits": [
+    "The 73 species were selected for support and are not exchangeable random draws from a defined species population.",
+    "These ranges describe empirical reweighting of the observed panel; they are not confidence intervals or population, fitting, spatial-sampling, model-selection, or ecological-replicate uncertainty.",
+    "Focal blocks share block-specific pretrained objects and are neither spatial nor taxonomic clusters.",
+    "Focal-block resampling does not capture dependence from common folds, predictors, architecture selection, geography, or overlapping auxiliary pools.",
+    "Ten focal blocks provide limited tail resolution; neither scheme is selected as a conservative inferential interval."
+  ],
+  "observed_means": {
+    "birds_inner": {
+      "conventional": 0.0033898583175572808,
+      "target_only": 0.005780750360440689
+    },
+    "birds_outer": {
+      "conventional": 0.002770517433721036,
+      "target_only": -0.00039602097857193504
+    }
+  },
+  "plan": {
+    "path": "docs/plan/BirdCompositionResampling-20261008.md",
+    "sha256": "68602df74c8e1c52326644a6a60c73f31ec5ebed7c52662ca4740fec2cd4f904"
+  },
+  "records": [
+    {
+      "case": "birds_inner",
+      "comparator": "target_only",
+      "lower": 0.005040446076138891,
+      "mean": 0.005780750360440689,
+      "n_blocks": null,
+      "n_species": 73,
+      "scheme": "species",
+      "upper": 0.006607825697780757,
+      "width": 0.0015673796216418663
+    },
+    {
+      "case": "birds_inner",
+      "comparator": "conventional",
+      "lower": 0.002873302650906945,
+      "mean": 0.0033898583175572808,
+      "n_blocks": null,
+      "n_species": 73,
+      "scheme": "species",
+      "upper": 0.003911250153337093,
+      "width": 0.0010379475024301478
+    },
+    {
+      "case": "birds_outer",
+      "comparator": "target_only",
+      "lower": -0.004063189515674388,
+      "mean": -0.00039602097857193504,
+      "n_blocks": null,
+      "n_species": 73,
+      "scheme": "species",
+      "upper": 0.0033893689104192125,
+      "width": 0.0074525584260936
+    },
+    {
+      "case": "birds_outer",
+      "comparator": "conventional",
+      "lower": -0.0016834687319924257,
+      "mean": 0.002770517433721036,
+      "n_blocks": null,
+      "n_species": 73,
+      "scheme": "species",
+      "upper": 0.007187826833726992,
+      "width": 0.008871295565719419
+    },
+    {
+      "case": "birds_inner",
+      "comparator": "target_only",
+      "lower": 0.005213015667129919,
+      "mean": 0.005780750360440689,
+      "n_blocks": 10,
+      "n_species": 73,
+      "scheme": "focal_block",
+      "upper": 0.00630522555166495,
+      "width": 0.0010922098845350314
+    },
+    {
+      "case": "birds_inner",
+      "comparator": "conventional",
+      "lower": 0.002724996859097113,
+      "mean": 0.0033898583175572808,
+      "n_blocks": 10,
+      "n_species": 73,
+      "scheme": "focal_block",
+      "upper": 0.0040099943004482915,
+      "width": 0.0012849974413511787
+    }
+  ],
+  "rng": {
+    "batch_size": 4096,
+    "bit_generator": "PCG64",
+    "numpy_version": "2.5.1",
+    "python_version": "3.12.13",
+    "quantile_method": "linear",
+    "replicates": 100000,
+    "seed": 20261008,
+    "streams": [
+      {
+        "entropy": 20261008,
+        "spawn_key": [
+          0
+        ],
+        "stream": 0
+      },
+      {
+        "entropy": 20261008,
+        "spawn_key": [
+          1
+        ],
+        "stream": 1
+      }
+    ]
+  },
+  "schema_version": "bird-composition-resampling-v1",
+  "script": {
+    "path": "scripts/bird_composition_resampling.py",
+    "sha256": "13225080d8263c7f790b5f3a49ca7fb6c81db82a133e96ee9f2877bfa0cdd2df"
+  },
+  "source": {
+    "path": "evidence/cross_case_synthesis/20261005/revision-01/summary.json",
+    "sha256": "6834e34c74767864686862734f57a64a2ac10b324fcdadab89797e1cecbe0fd2"
+  }
+}

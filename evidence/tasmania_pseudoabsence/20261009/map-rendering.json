@@ -1,0 +1,93 @@
+{
+  "assessment_receipt_digest": "08915652195df252b062163df189f892b72ccdf1e66dab29cb4908d3b696ab56",
+  "difference": "sensitivity minus primary",
+  "difference_limits": [
+    -1,
+    1
+  ],
+  "domain_cells": 71023,
+  "export_script_sha256": "5aab540e830626723f1efa40ab6c970dd2424776fcf873bb16e3026b3071d44d",
+  "files": [
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261009/maps/thylogale_billardierii.pdf",
+      "sha256": "c960f4ea5df386f0a1491cae4ea2267770a471e9fc0e89c37070b12dda0722bf"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261009/maps/thylogale_billardierii.png",
+      "sha256": "d972fe16927656dbe931a43590a67d08bb2e96e14799af6b6d02883b1bb21309"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261009/maps/notamacropus_rufogriseus.pdf",
+      "sha256": "3f3947d2e570ea15a43aae1e1663efab3afc16dc7dbbdff7a4e55ad93c813b30"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261009/maps/notamacropus_rufogriseus.png",
+      "sha256": "0f0d4ba63c71c483980ed5c8bb7f976b1a0ec03dd37f090fe2b6ecd1f582b721"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261009/maps/trichosurus_vulpecula.pdf",
+      "sha256": "10036dbd5b7804ffb0568734fba2615dee3a0cec825628ccf9ec1312e69e239f"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261009/maps/trichosurus_vulpecula.png",
+      "sha256": "d52a14d04f371c28523e0187b8f07cb0dcc7acf29414902db55de867c47121da"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261009/maps/pseudocheirus_peregrinus.pdf",
+      "sha256": "ef94dd710c92df6df3f56588d7a01db2e31b369ea80ed9268deef5bfecb24836"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261009/maps/pseudocheirus_peregrinus.png",
+      "sha256": "067c11e4a9b0be53dd4505877e1af7f74e750ec18bb508fa696424e866247ded"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261009/maps/vombatus_ursinus.pdf",
+      "sha256": "f2c371676b480b2bbcbd5ca242ac4829950e0ef5c8397cd606387513444b6b9c"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261009/maps/vombatus_ursinus.png",
+      "sha256": "d1d77293e9893dfd4c5198a56b272a50605cff2ada940524e36b8f20ff8b4135"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261009/maps/sarcophilus_harrisii.pdf",
+      "sha256": "1656875fcf3e2a399959415fa6ce7e6648840b49190fb939eb75b25718791319"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261009/maps/sarcophilus_harrisii.png",
+      "sha256": "a2a0f7e0e419b677831dcd64e6b86ed4989bdba6747c5d7355d49753f3eae6b3"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261009/maps/dasyurus_maculatus.pdf",
+      "sha256": "8ccec5de2039bd856049f6a6c1ff8ce7344bd9d3f669b943fa65868782116d74"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261009/maps/dasyurus_maculatus.png",
+      "sha256": "0d8f709ca32a1c89616ce07b8b62e1f81abc794ab2b3c98e9d7172cc71220761"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261009/maps/dasyurus_viverrinus.pdf",
+      "sha256": "e06980334d261df58065802b80995112e4d1854bc60175f2e3527ab4a487c3a2"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261009/maps/dasyurus_viverrinus.png",
+      "sha256": "ce7e4920491a3bbcae773bfe306f0b8c3e02305e86850657983a332781d01223"
+    }
+  ],
+  "map_source_sha256": "c27b848bd4db81932553ac801029b8e66cf1a1ecd05271343ee2b4d0a3035cc5",
+  "methods": [
+    "target_only_resmlp",
+    "multihead_full_finetune",
+    "selected_conventional"
+  ],
+  "pairs": 24,
+  "prediction_closure_digest": "428ea31c0147b315280eaee8181ce2ebb4808762e4facaf1decd5a5d01462f62",
+  "private_coordinates_exported_to_tracked_files": false,
+  "probability_limits": [
+    0,
+    1
+  ],
+  "receipt_digest": "52739e502f9b4e8df4b38bcd0ec3dc53d1927c9ffe903e91b22575fb8c2b757f",
+  "renderer_sha256": "5afcebd265acd9ddbff7e82a2480b898a44e74dd9805bc9036b48339e7ff5df0",
+  "schema_version": "tasmania-sensitivity-map-rendering-v1",
+  "success": true
+}

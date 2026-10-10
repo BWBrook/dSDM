@@ -1,0 +1,136 @@
+{
+  "accepted_primary_replay": {
+    "baseline_prediction_closure_digest": "a160318d5cc627ff5a724256ee4a008ad4f13038b9419ba7e809cf01bd6a4e6e",
+    "baseline_receipt_digest": "6b1240538079be2219a22502625e34c473fce4c56c1030f5a302b4cacd6cb77e",
+    "conventional_selections": 56,
+    "held_score_panels": 168,
+    "pooled_metrics": 168,
+    "species_response_count_rows": 8,
+    "thresholds": 168
+  },
+  "assessment_receipt_digest": "08915652195df252b062163df189f892b72ccdf1e66dab29cb4908d3b696ab56",
+  "audit_source_sha256": "757d657e11ecf8d51257f319149fc63703a2da7fa72fee651afe3f4850e44c41",
+  "collector_source_validation": {
+    "actual_physical_fit_starts": {
+      "conventional_inner": 1725,
+      "conventional_outer": 240,
+      "neural_inner": 5600,
+      "neural_outer": 560
+    },
+    "smoke_leaves": 8,
+    "source_leaves": 4800,
+    "status": "pass",
+    "verified_held_panels": 168,
+    "verified_map_pairs": 24,
+    "verified_thresholds": 168
+  },
+  "completed_at": "2026-10-09T07:18:37.839487+00:00",
+  "independent_numerical_replay": {
+    "auc": "rank-U with one-based average tie ranks",
+    "held_source_count_rows": 8,
+    "independent_float_absolute_tolerance": 1e-12,
+    "integer_and_threshold_comparison": "exact",
+    "map_rank": "average ties",
+    "map_summary_rows": 24,
+    "mcc": "manual confusion-count formula; zero denominator returns zero",
+    "oof_thresholds": 168,
+    "paired_contrast_rows": 336,
+    "paired_performance_rows": 168,
+    "quantiles": "linear interpolation",
+    "rank_displacement": "100 * (midrank_after - midrank_before) / (71023 - 1)",
+    "seed_aggregation": "identity-aligned float64 mean",
+    "source_specificity_rows": 336,
+    "threshold_rule": "Goal036 candidates, exact maximum TSS, lower median maximizer",
+    "thylogale_exact_negative_controls": {
+      "held_scores": 21,
+      "maps": 3,
+      "thresholds": 21
+    },
+    "top_cells": "7103 by descending mean probability then ascending canonical cell ID"
+  },
+  "independent_reaggregation": {
+    "normalized_held_panels": 168,
+    "normalized_map_pairs": 24,
+    "oof_thresholds": 168,
+    "source_leaves": 4800
+  },
+  "interpretation": "noncausal post hoc paired sensitivity on a fixed held panel; no inferential interval or independent-species claim",
+  "prediction_closure_digest": "428ea31c0147b315280eaee8181ce2ebb4808762e4facaf1decd5a5d01462f62",
+  "privacy": {
+    "aggregate_only": true,
+    "coordinates_emitted": false,
+    "response_rows_emitted": false
+  },
+  "private_response_snapshot_digest": "3fa5a5acbb7481e9d69ae4a65d5aaf7df41d830e9af811788d1b90765ce5f310",
+  "receipt_digest": "d90a01ad2ac08ef36ff2c40bf7bce9223589011111cc2c67c124e399481ac3be",
+  "response_access_digest": "166d6163392271aca7156637d385b7506858424e4c5e4fe273bc3db90b64681b",
+  "schema_version": "tasmania-pseudoabsence-independent-assessment-verification-v1",
+  "status": "pass",
+  "verified_counts": {
+    "endpoints": 7,
+    "held_rows": 1672,
+    "map_domain_cells": 71023,
+    "methods": 3,
+    "normalized_prediction_files": 8,
+    "recovery_physical_fits": 200,
+    "smoke_leaves": 8,
+    "smoke_physical_fits": 14,
+    "source_binding_files": 12,
+    "source_closure_files": 7,
+    "source_leaves": 4800,
+    "species": 8,
+    "target_physical_fits": 8125
+  },
+  "verified_hashes": {
+    "normalized_predictions": {
+      "dasyurus_maculatus": "e263e6e8b9b1c7fb9d15ec6ae8185321983da0a62e2257d66c4dded6575be8a6",
+      "dasyurus_viverrinus": "694819913077ee6e0d1986c46d1d4e666f5988faff62ae2d35d46e8866227b5d",
+      "notamacropus_rufogriseus": "e1bb7231e9381e84e76b8369e5bcc3670a48c7f85e93880783fecd7bfe252a14",
+      "pseudocheirus_peregrinus": "73cab703f8b56ebee551010ee8b61ff043beb6b7a0d6ddf9fff58e04a5ad02f9",
+      "sarcophilus_harrisii": "563c59d1720cad35de21ca8d76f5485647f94fcecad26436343026d23868205c",
+      "thylogale_billardierii": "d6d7f003e98ceefdc4699c44bd6aa87f1ae94863805d763a3452806667a93ae8",
+      "trichosurus_vulpecula": "3130cd0a31f7035f9c0a4f12434f14e7c5e47bd4691d8b09ba2a5f2b8afa786b",
+      "vombatus_ursinus": "f81df061fa862fea15fdf8099cfd542ab2936754bf30f0b924401b0588e50b10"
+    },
+    "public_aggregates": {
+      "held-source-counts.csv": "d0b7818f8c7507fc2d86cee7b85a021f320d1917cf70416f3dc3e0d2e7900735",
+      "map-comparison.csv": "43fc119cb0300a8a4e4cfd56c0e40b73eccdad30a7ab7b668384beee176750dc",
+      "paired-contrasts.csv": "e64a4e65436e3ca36dae43a1f3a2012bf1a3e00e3c6cfaa744a393aa5dbfc7c5",
+      "paired-performance.csv": "dcd6966cb5a34e87b989795b676168cd1fb8e91ea728e26a2ee3bfef9ba24b8f",
+      "source-specificity.csv": "82081c9ba6773b8e9eb4bb966f55e172ff6879ff6ebec6e5c640e5e550c788ac"
+    },
+    "receipts": {
+      "accepted-baseline-prediction-closure.json": "c3a67bf39877aaa11ca24ad028fdbca140b5c646340574d072395dcab2d8b3aa",
+      "accepted-baseline-receipt.json": "3e7fe324b33450b76089edca0f2d5bf438d219121c9c0842961fedcd9695be26",
+      "assessment.json": "514b574a046d3773c707adc77143e2072d90ffbb6187ccffd83248ac2603dde7",
+      "held-response-snapshot.json": "3571ce6f79811c72d37dcebdcdb15cb6f8e6df3e84c4a28e2ee9ec58c7190dbf",
+      "prediction_closure.json": "733471e0f9b759895802ff18a9f9673a42b6c825a396adcfa25f7a0af7dfe89f",
+      "response-access.json": "f17d652f4b7b05b591b2ae66900d07ab6df25f5a0e6e20c9c5de8d6b4c2cfc98",
+      "source-leaf-inventory.json": "0f26bd43804eb26d4eb1c30f0258581423f9383a1d735e6ebf8222901c9c0aa0",
+      "threshold-details.csv": "7b8dafd0a4bb01ab8a10657220762a9ffce9ab1b599e931b28817f6b620c0292"
+    },
+    "source_bindings": {
+      "assessment_source": "72120fbf666e03b105931a8dbcf137977783f1d92c389a0d5a0ba337a8c4e01b",
+      "collector_source": "fb0c57330c6068d7f4cb0f7ec4cb4815881a8521912817b56b6427fdbf9df3fe",
+      "conventional_caps": "3ae698ebcbc61c3df5b21398927fa60c5cd9663dc14e5342083ab68a940aa41c",
+      "conventional_preparation": "ac104b61aa41d2f7549357ee55bbcaaefe2b8b573f7ff291fee4526716552239",
+      "conventional_runner": "6cd09e23b74a96297ed1450179a2f1b24c9f2275590e3b6bce7c570440960f4d",
+      "input_helper": "192780828d695f27a149ed049774e0668966d9f8682a53439ec57909d6e5d4bc",
+      "input_manifest": "21012d5d470b099268db161032e745a08f1bcb02825fcc85ea26b3bca536dabc",
+      "metrics_source": "19df727765f744764011200212c9fefc4d9f7dd2861b9d476852cf8ffb408201",
+      "neural_caps": "fa4595e1670fad5bdd0fba61a8c03a585971e36e0a0229e3f11384477191c50f",
+      "neural_complete": "2e8476498ee87d8d437caabe1030287d9c5496b3d85e15f3de54eb58be6d079b",
+      "neural_preparation": "03f8c81cdd7bb498f156d74afef8e4fb051ede745ad8664270d53ee689ae6374",
+      "neural_runner": "ffc6941055ba5485e414ec6cee8472b8fe5fd65609c04cf3158bf49d82caf289"
+    },
+    "source_closures": {
+      "conventional_inner": "1204596d99133e4267dcf7a0437fba234801ade7a83ba54e655ead65c2a63c9f",
+      "conventional_outer": "24add7583315f008d05a925ba671659de23de933579c98582b9c318927e09560",
+      "conventional_smoke": "a1418b7aa2d9b690ec7cfa9ab542dcad5b014b695d052e18cf902c5568ad055a",
+      "neural_inner": "bd88c401f7b121475b721821dce007af223d3bb696d55472d7c783e4adf892e3",
+      "neural_outer": "200a1aee3bd3c37903cce8349ebbdd7a4a1db8430f7c469ba4e53c5fa4d72b58",
+      "neural_smoke": "46b29a25e2879e9c14d4aeee7a6eddeab82d67331ce8cbfd8a15d2100a90030a",
+      "recovery": "2d86a42321dcbaf1abca9f6cb592e9c6f7bb41e5d59c8e97c683c8fe8464c4f9"
+    }
+  }
+}

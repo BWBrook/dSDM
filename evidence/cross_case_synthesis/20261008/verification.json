@@ -1,0 +1,119 @@
+{
+  "authority": "Reporting and manuscript follow-up to Claude under the approved cross-case synthesis; direct human endpoint choice required before Tasmania sensitivity implementation/fitting.",
+  "build_provenance_note": "Shared makedoc manifests record builder-repository Git identity; repository_head here is the actual dSDM commit. Workspace caches used through explicit make overrides.",
+  "checks": {
+    "accepted_input_hashes": "pass",
+    "deterministic_report_rerun": "Both JSON and CSV byte-identical in executor scratch rerun after final source repair.",
+    "document_builds": {
+      "dsdm_manuscript": {
+        "built_at": "2026-10-08T11:53:24.097900+00:00",
+        "current_input_output_manifest_hashes": "pass",
+        "pages": 17,
+        "word_embedded_figures": 2
+      },
+      "dsdm_supplement": {
+        "built_at": "2026-10-08T11:56:25.942043+00:00",
+        "current_input_output_manifest_hashes": "pass",
+        "pages": 7,
+        "word_embedded_figures": 0
+      }
+    },
+    "focused_tests": {
+      "file": "tests/test_bird_composition_resampling.py",
+      "passed": 3,
+      "scope": "Joint species pairing, explicit unequal-block resampling, changed-block inventory refusal."
+    },
+    "git_diff_whitespace": "pass",
+    "independent_quantile_recalculation": {
+      "maximum_absolute_difference": 2.3418766925686896e-17,
+      "method": "Independent species-multiplicity matrix and expanded block-multiplicity weighting; outer differences averaged by math.fsum; manually interpolated sorted quantiles. No production reporting functions imported.",
+      "quantile_endpoints_checked": 12,
+      "status": "pass"
+    },
+    "new_model_fits": 0,
+    "new_response_scoring": 0,
+    "pre_resampling_invariants": {
+      "accepted_unsampled_means": {
+        "birds_inner": {
+          "conventional": true,
+          "target_only": true
+        },
+        "birds_outer": {
+          "conventional": true,
+          "target_only": true
+        }
+      },
+      "one_copy_focal_block_reproduces_inner_mean": {
+        "conventional": true,
+        "target_only": true
+      }
+    },
+    "python_compilation": "pass",
+    "scientific_source_and_config_unchanged": true,
+    "supplement_reproduction_byte_identical": true,
+    "visual_review": "All 17 manuscript pages and seven supplement pages inspected. Figure 1, methods/caption and new tables inspected individually. Supplement table-heading page breaks repaired and final seven-page layout reinspected.",
+    "word_figures_match_current_pngs": true
+  },
+  "correspondence": {
+    "input_message_id": 1167,
+    "read_checkpoint": 1168,
+    "reply_created_at": "2026-10-08T12:00:13.136692+00:00",
+    "reply_message_id": 1171,
+    "shared_read_markers_advanced": false,
+    "thread_id": 32
+  },
+  "git_status": "All reporting/manuscript changes remain uncommitted after original opening-record commit 4d2a024; no push.",
+  "limits": [
+    "The 73 species were selected for support and are not exchangeable random draws from a defined species population.",
+    "These ranges describe empirical reweighting of the observed panel; they are not confidence intervals or population, fitting, spatial-sampling, model-selection, or ecological-replicate uncertainty.",
+    "Focal blocks share block-specific pretrained objects and are neither spatial nor taxonomic clusters.",
+    "Focal-block resampling does not capture dependence from common folds, predictors, architecture selection, geography, or overlapping auxiliary pools.",
+    "Ten focal blocks provide limited tail resolution; neither scheme is selected as a conservative inferential interval."
+  ],
+  "local_review_outputs": {
+    "manuscript/build/dsdm_manuscript.docx": "94cec98f1e248e4bc9a2fbf96d66c8ec89a9a5967cbef0c45bc75c792854228f",
+    "manuscript/build/dsdm_manuscript.pdf": "c8447fa8cfd18db3d132e817be1a94bff7dd15dd293552a7cb5e13ae4ba54192",
+    "manuscript/build/dsdm_manuscript_build_manifest.json": "9a65d899053e9008afd5355d22df2528ed80e789defb124d049f643917b72ec4",
+    "manuscript/build/dsdm_supplement.docx": "e2af9ba15eb89d29ce80c62bf064eeacdc0d010b44814905ba9e2f76bba1ffbd",
+    "manuscript/build/dsdm_supplement.pdf": "307ce42bbca634efd7ae5cfbb6a1ed5704d7234057651876a877182aeb7f8a0f",
+    "manuscript/build/dsdm_supplement_build_manifest.json": "381d371f42a1d871bb222729324ff14e3390a11fec42cac3e8bd4c470c1b8b2f"
+  },
+  "pending_decision": {
+    "journal": "MEE is a reasonable working target; final submission formatting and preparation not completed.",
+    "tasmania_sensitivity": "Direct endpoint-scope choice pending: full-data 1122 production +14 smoke, or all seven 8125 production +smoke qualification. Claude relays agreement to the sensitivity question; no endpoint choice inferred."
+  },
+  "prior_verification": {
+    "path": "evidence/cross_case_synthesis/20261005/revision-01/verification.json",
+    "sha256": "ac04c582c4d7ad50c0aca6e5c5c10dcafc894238b3fc4af8ebc0049f66c1047c",
+    "unchanged": true
+  },
+  "receipt_digest": "4b61162ea57ea461e3b11350751ca598bf61800e5912a038296d3d931dfad11d",
+  "repository_head": "4d2a02478ff2874b808f4cc8792b97faa3d8cbef",
+  "schema_version": "dsdm-composition-followup-verification-v1",
+  "source_and_evidence_files": {
+    "HANDOVER.md": "9c41011a1bf99af5a3ca81d14721be447486dd7dac6367b4ac92efe58dece713",
+    "docs/plan/BirdCompositionResampling-20261008.md": "68602df74c8e1c52326644a6a60c73f31ec5ebed7c52662ca4740fec2cd4f904",
+    "docs/plan/CrossCaseFollowup-20261008.md": "b305dfd96909c9384decc801acf32bd798673c9cf0637d12e8b431cd2e4a4890",
+    "docs/plan/TasmaniaPseudoabsenceSensitivityProposal-20261005.md": "7175e9fc1aea49d233a113700d6030ba7eb7396c62b9727868970cdc100f0659",
+    "evidence/cross_case_synthesis/20261008/bird-composition-resampling.csv": "27e9815fc4ec58900690b7a06e7374a10ae780e619c53c0de6461c392f9cbc13",
+    "evidence/cross_case_synthesis/20261008/bird-composition-resampling.json": "366d9bd4501d6179185b49c4757e1d2f84a980d22a2e14cc40c6c4d21387b92a",
+    "manuscript/README.md": "6aaaf904e587552f283e1b02585cd20daf68553b8856db380066bf79144478c8",
+    "manuscript/evidence-ledger.md": "1bf2a9fb9fa5997585375273b2fcb9d78b8de6213de49588dd14c1f24089fcd2",
+    "manuscript/figures/bird-extent-and-ensembles.pdf": "ae0b3dccf4f91ba91fab25ed52eaf1db44860718863eed0f129062427b8f9572",
+    "manuscript/figures/bird-extent-and-ensembles.png": "4125b502411cb4a583aad7ef900ec526c8afdd15676a5b1f6cf90bee88baf9db",
+    "manuscript/figures/cross-case-contrasts.pdf": "2ae7063f613b0d7e791e7439582facc1a764e6edbc6681e877fba5747f64733c",
+    "manuscript/figures/cross-case-contrasts.png": "ae4d7961972a299d9b59836e9eefa9f452e93fe95cdabaf1f1c328b59b38a378",
+    "manuscript/references/refs.yaml": "ea6ecfb0a1e6c6238e9f57e5245a17be7264d06ea5938103981d15b81df0cc03",
+    "manuscript/settings/build.yaml": "3119298259deaf9c5a4ed3bf053ac60a19a88154de5ef6bb925b90088085efb6",
+    "manuscript/text/figures.md": "b62abb3e145429d17ba99ef7fa9e303510db695fb9132a0c79298b5e59f70aeb",
+    "manuscript/text/main.md": "78b6b1c8e6f36ff243d9da660dfb910bc94c0d118bc4d281f2ccb6c59d2f67fe",
+    "manuscript/text/supplement.md": "ad9fa389b772ae98c2b5d1ce88a21c4eaff08ed40640a918633bbc3c9721e170",
+    "scripts/bird_composition_resampling.py": "13225080d8263c7f790b5f3a49ca7fb6c81db82a133e96ee9f2877bfa0cdd2df",
+    "scripts/cross_case_supplement.py": "ce4b188aa900c9f18655eb078db13d7eb787c1679103cb39c8b8d600dcb5e98e",
+    "scripts/plot_cross_case_synthesis.R": "0ce5a2b076c030019a55f0224b62e9b300c784198f01ae204643382f4116af43",
+    "tests/test_bird_composition_resampling.py": "09fadbdd53bd71c5254cd30a6dc4076ba4ecaf4186f315fb727aa2604e0251fd"
+  },
+  "status": "completed_reporting_followup",
+  "verified_at": "2026-10-08T12:03:35.595996+00:00",
+  "verified_local": "2026-10-08T23:03:35.595996+11:00"
+}

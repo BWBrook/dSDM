@@ -89,3 +89,11 @@ manuscript/.cache/
 # Tracked project metadata and inventory manifests.
 !metadata/
 !metadata/**
+
+# Verified aggregate reporting and sensitivity map plates.
+!evidence/cross_case_synthesis/20261005/*.csv
+!evidence/cross_case_synthesis/20261005/revision-01/*.csv
+!evidence/cross_case_synthesis/20261008/bird-composition-resampling.csv
+!evidence/tasmania_pseudoabsence/20261009/*.csv
+!evidence/tasmania_pseudoabsence/20261009/maps/*.pdf
+!evidence/tasmania_pseudoabsence/20261009/maps/*.png

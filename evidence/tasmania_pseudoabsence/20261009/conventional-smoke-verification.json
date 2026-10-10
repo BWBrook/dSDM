@@ -1,0 +1,22 @@
+{
+  "ann_tensor_digests_verified": 4,
+  "durable_fit_starts": 6,
+  "exact_clean_repetitions": 2,
+  "exact_intent_attempt_leaf_inventory": true,
+  "logical_tasks": 4,
+  "model_files_verified": 6,
+  "outer_response_opened": false,
+  "physical_fits": 6,
+  "prefit_launch_failure_fits": 0,
+  "prefit_launch_failure_preserved": true,
+  "production_started": false,
+  "receipt_bound_completions": 4,
+  "receipt_digest": "06d42a3e305c410d34b7b943734478238914dfe12f28f3957f11fc7ad0c5186c",
+  "runner_sha256": "6cd09e23b74a96297ed1450179a2f1b24c9f2275590e3b6bce7c570440960f4d",
+  "schema_version": "tasmania-conventional-smoke-verification-v1",
+  "smoke_receipt_digest": "aeb549949e4587b706a8b0f3b65a529e96a5073becc9e47131717dad1a582911",
+  "source": "independent read-only reviewer plus parent source/receipt checks",
+  "status": "accepted",
+  "supervisor_receipt_digest": "1a228ae81edc1fbbc0afd90aa95817be548c047c6024c72784bd29fd8f8fc124",
+  "supervisor_sha256": "8215b2631d71e2c51e394ea323e5e374fe75b5576f605a8975a5cbb909b59987"
+}

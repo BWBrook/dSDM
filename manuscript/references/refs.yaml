@@ -1,12 +1,98 @@
 ---
 references:
-  - id: dsdmDraftSource
-    citation-key: dsdmDraftSource
-    type: manuscript
-    title: A deep-learning advance for species distribution modelling
+  - id: cole2023
+    type: paper-conference
+    title: Spatial Implicit Neural Representations for Global-Scale Species Mapping
     author:
-      - family: Brook
-        given: Barry W.
-    issued:
-      - year: 2026
+      - {family: Cole, given: Elijah}
+      - {family: Van Horn, given: Grant}
+      - {family: Lange, given: Christian}
+      - {family: Shepard, given: Alexander}
+      - {family: Leary, given: Patrick}
+      - {family: Perona, given: Pietro}
+      - {family: Loarie, given: Scott}
+      - {family: Mac Aodha, given: Oisin}
+    issued: {date-parts: [[2023]]}
+    container-title: Proceedings of the 40th International Conference on Machine Learning
+    collection-title: Proceedings of Machine Learning Research
+    volume: 202
+    page: 6320-6342
+    URL: https://proceedings.mlr.press/v202/cole23a.html
+  - id: cawley2010
+    type: article-journal
+    title: On Over-fitting in Model Selection and Subsequent Selection Bias in Performance Evaluation
+    author:
+      - {family: Cawley, given: Gavin C.}
+      - {family: Talbot, given: Nicola L. C.}
+    issued: {date-parts: [[2010]]}
+    container-title: Journal of Machine Learning Research
+    volume: 11
+    page: 2079-2107
+    URL: https://jmlr.org/papers/v11/cawley10a.html
+  - id: phillips2009
+    type: article-journal
+    title: 'Sample selection bias and presence-only distribution models: implications for background and pseudo-absence data'
+    author:
+      - {family: Phillips, given: Steven J.}
+      - {family: Dudík, given: Miroslav}
+      - {family: Elith, given: Jane}
+      - {family: Graham, given: Catherine H.}
+      - {family: Lehmann, given: Anthony}
+      - {family: Leathwick, given: John}
+      - {family: Ferrier, given: Simon}
+    issued: {date-parts: [[2009]]}
+    container-title: Ecological Applications
+    volume: 19
+    issue: 1
+    page: 181-197
+    DOI: 10.1890/07-2153.1
+  - id: roberts2017
+    type: article-journal
+    title: Cross-validation strategies for data with temporal, spatial, hierarchical, or phylogenetic structure
+    author:
+      - {family: Roberts, given: David R.}
+      - {family: Bahn, given: Volker}
+      - {family: Ciuti, given: Simone}
+      - {family: Boyce, given: Mark S.}
+      - {family: Elith, given: Jane}
+      - {family: Guillera-Arroita, given: Gurutzeta}
+      - {family: Hauenstein, given: Severin}
+      - {family: Lahoz-Monfort, given: José J.}
+      - {family: Schröder, given: Boris}
+      - {family: Thuiller, given: Wilfried}
+      - {family: Warton, given: David I.}
+      - {family: Wintle, given: Brendan A.}
+      - {family: Hartig, given: Florian}
+      - {family: Dormann, given: Carsten F.}
+    issued: {date-parts: [[2017]]}
+    container-title: Ecography
+    volume: 40
+    issue: 8
+    page: 913-929
+    DOI: 10.1111/ecog.02881
+  - id: lobo2008
+    type: article-journal
+    title: 'AUC: a misleading measure of the performance of predictive distribution models'
+    author:
+      - {family: Lobo, given: Jorge M.}
+      - {family: Jiménez-Valverde, given: Alberto}
+      - {family: Real, given: Raimundo}
+    issued: {date-parts: [[2008]]}
+    container-title: Global Ecology and Biogeography
+    volume: 17
+    issue: 2
+    page: 145-151
+    DOI: 10.1111/j.1466-8238.2007.00358.x
+  - {"id": "botella2018", "type": "chapter", "title": "A Deep Learning Approach to Species Distribution Modelling", "author": [{"family": "Botella", "given": "Christophe"}, {"family": "Joly", "given": "Alexis"}, {"family": "Bonnet", "given": "Pierre"}, {"family": "Monestiez", "given": "Pascal"}, {"family": "Munoz", "given": "François"}], "editor": [{"family": "Joly", "given": "Alexis"}, {"family": "Vrochidis", "given": "Stefanos"}, {"family": "Karatzas", "given": "Kostas"}, {"family": "Karppinen", "given": "Ari"}, {"family": "Bonnet", "given": "Pierre"}], "issued": {"date-parts": [[2018]]}, "container-title": "Multimedia Tools and Applications for Environmental & Biodiversity Informatics", "collection-title": "Multimedia Systems and Applications", "page": "169-199", "publisher": "Springer International Publishing", "publisher-place": "Cham", "DOI": "10.1007/978-3-319-76445-0_10", "URL": "https://link.springer.com/chapter/10.1007/978-3-319-76445-0_10"}
+  - {"id": "deneu2021", "type": "article-journal", "title": "Convolutional neural networks improve species distribution modelling by capturing the spatial structure of the environment", "author": [{"family": "Deneu", "given": "Benjamin"}, {"family": "Servajean", "given": "Maximilien"}, {"family": "Bonnet", "given": "Pierre"}, {"family": "Botella", "given": "Christophe"}, {"family": "Munoz", "given": "François"}, {"family": "Joly", "given": "Alexis"}], "issued": {"date-parts": [[2021]]}, "container-title": "PLOS Computational Biology", "volume": "17", "issue": "4", "page": "e1008856", "DOI": "10.1371/journal.pcbi.1008856", "URL": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008856"}
+  - {"id": "harris2015", "type": "article-journal", "title": "Generating realistic assemblages with a joint species distribution model", "author": [{"family": "Harris", "given": "David J."}], "issued": {"date-parts": [[2015]]}, "container-title": "Methods in Ecology and Evolution", "volume": "6", "issue": "4", "page": "465-473", "DOI": "10.1111/2041-210X.12332", "URL": "https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.12332"}
+  - {"id": "norberg2019", "type": "article-journal", "title": "A comprehensive evaluation of predictive performance of 33 species distribution models at species and community levels", "author": [{"family": "Norberg", "given": "Anna"}, {"family": "Abrego", "given": "Nerea"}, {"family": "Blanchet", "given": "F. Guillaume"}, {"family": "Adler", "given": "Frederick R."}, {"family": "Anderson", "given": "Barbara J."}, {"family": "Anttila", "given": "Jani"}, {"family": "Araújo", "given": "Miguel B."}, {"family": "Dallas", "given": "Tad"}, {"family": "Dunson", "given": "David"}, {"family": "Elith", "given": "Jane"}, {"family": "Foster", "given": "Scott D."}, {"family": "Fox", "given": "Richard"}, {"family": "Franklin", "given": "Janet"}, {"family": "Godsoe", "given": "William"}, {"family": "Guisan", "given": "Antoine"}, {"family": "O'Hara", "given": "Bob"}, {"family": "Hill", "given": "Nicole A."}, {"family": "Holt", "given": "Robert D."}, {"family": "Hui", "given": "Francis K. C."}, {"family": "Husby", "given": "Magne"}, {"family": "Kålås", "given": "John Atle"}, {"family": "Lehikoinen", "given": "Aleksi"}, {"family": "Luoto", "given": "Miska"}, {"family": "Mod", "given": "Heidi K."}, {"family": "Newell", "given": "Graeme"}, {"family": "Renner", "given": "Ian"}, {"family": "Roslin", "given": "Tomas"}, {"family": "Soininen", "given": "Janne"}, {"family": "Thuiller", "given": "Wilfried"}, {"family": "Vanhatalo", "given": "Jarno"}, {"family": "Warton", "given": "David"}, {"family": "White", "given": "Matt"}, {"family": "Zimmermann", "given": "Niklaus E."}, {"family": "Gravel", "given": "Dominique"}, {"family": "Ovaskainen", "given": "Otso"}], "issued": {"date-parts": [[2019]]}, "container-title": "Ecological Monographs", "volume": "89", "issue": "3", "page": "e01370", "DOI": "10.1002/ecm.1370", "URL": "https://esajournals.onlinelibrary.wiley.com/doi/10.1002/ecm.1370"}
+  - {"id": "valavi2022", "type": "article-journal", "title": "Predictive performance of presence-only species distribution models: a benchmark study with reproducible code", "author": [{"family": "Valavi", "given": "Roozbeh"}, {"family": "Guillera-Arroita", "given": "Gurutzeta"}, {"family": "Lahoz-Monfort", "given": "José J."}, {"family": "Elith", "given": "Jane"}], "issued": {"date-parts": [[2022]]}, "container-title": "Ecological Monographs", "volume": "92", "issue": "1", "page": "e01486", "DOI": "10.1002/ecm.1486", "URL": "https://esajournals.onlinelibrary.wiley.com/doi/10.1002/ecm.1486"}
+  - {"id": "yates2018", "type": "article-journal", "title": "Outstanding Challenges in the Transferability of Ecological Models", "author": [{"family": "Yates", "given": "Katherine L."}, {"family": "Bouchet", "given": "Phil J."}, {"family": "Caley", "given": "M. Julian"}, {"family": "Mengersen", "given": "Kerrie"}, {"family": "Randin", "given": "Christophe F."}, {"family": "Parnell", "given": "Stephen"}, {"family": "Fielding", "given": "Alan H."}, {"family": "Bamford", "given": "Andrew J."}, {"family": "Ban", "given": "Stephen"}, {"family": "Barbosa", "given": "A. Márcia"}, {"family": "Dormann", "given": "Carsten F."}, {"family": "Elith", "given": "Jane"}, {"family": "Embling", "given": "Clare B."}, {"family": "Ervin", "given": "Gary N."}, {"family": "Fisher", "given": "Rebecca"}, {"family": "Gould", "given": "Susan"}, {"family": "Graf", "given": "Roland F."}, {"family": "Gregr", "given": "Edward J."}, {"family": "Halpin", "given": "Patrick N."}, {"family": "Heikkinen", "given": "Risto K."}, {"family": "Heinänen", "given": "Stefan"}, {"family": "Jones", "given": "Alice R."}, {"family": "Krishnakumar", "given": "Periyadan K."}, {"family": "Lauria", "given": "Valentina"}, {"family": "Lozano-Montes", "given": "Hector"}, {"family": "Mannocci", "given": "Laura"}, {"family": "Mellin", "given": "Camille"}, {"family": "Mesgaran", "given": "Mohsen B."}, {"family": "Moreno-Amat", "given": "Elena"}, {"family": "Mormede", "given": "Sophie"}, {"family": "Novaczek", "given": "Emilie"}, {"family": "Oppel", "given": "Steffen"}, {"family": "Ortuño Crespo", "given": "Guillermo"}, {"family": "Peterson", "given": "A. Townsend"}, {"family": "Rapacciuolo", "given": "Giovanni"}, {"family": "Roberts", "given": "Jason J."}, {"family": "Ross", "given": "Rebecca E."}, {"family": "Scales", "given": "Kylie L."}, {"family": "Schoeman", "given": "David"}, {"family": "Snelgrove", "given": "Paul"}, {"family": "Sundblad", "given": "Göran"}, {"family": "Thuiller", "given": "Wilfried"}, {"family": "Torres", "given": "Leigh G."}, {"family": "Verbruggen", "given": "Heroen"}, {"family": "Wang", "given": "Lifei"}, {"family": "Wenger", "given": "Seth"}, {"family": "Whittingham", "given": "Mark J."}, {"family": "Zharikov", "given": "Yuri"}, {"family": "Zurell", "given": "Damaris"}, {"family": "Sequeira", "given": "Ana M. M."}], "issued": {"date-parts": [[2018]]}, "container-title": "Trends in Ecology & Evolution", "volume": "33", "issue": "10", "page": "790-802", "DOI": "10.1016/j.tree.2018.08.001", "URL": "https://www.sciencedirect.com/science/article/pii/S0169534718301812"}
+  - {"id": "wenger2012", "type": "article-journal", "title": "Assessing transferability of ecological models: an underappreciated aspect of statistical validation", "author": [{"family": "Wenger", "given": "Seth J."}, {"family": "Olden", "given": "Julian D."}], "issued": {"date-parts": [[2012]]}, "container-title": "Methods in Ecology and Evolution", "volume": "3", "issue": "2", "page": "260-267", "DOI": "10.1111/j.2041-210X.2011.00170.x", "URL": "https://besjournals.onlinelibrary.wiley.com/doi/10.1111/j.2041-210X.2011.00170.x"}
+  - {"id": "jimenezvalverde2012", "type": "article-journal", "title": "Insights into the area under the receiver operating characteristic curve (AUC) as a discrimination measure in species distribution modelling", "author": [{"family": "Jiménez-Valverde", "given": "Alberto"}], "issued": {"date-parts": [[2012]]}, "container-title": "Global Ecology and Biogeography", "volume": "21", "issue": "4", "page": "498-507", "DOI": "10.1111/j.1466-8238.2011.00683.x", "URL": "https://onlinelibrary.wiley.com/doi/10.1111/j.1466-8238.2011.00683.x"}
+  - {"id": "warton2013", "type": "article-journal", "title": "Model-Based Control of Observer Bias for the Analysis of Presence-Only Data in Ecology", "author": [{"family": "Warton", "given": "David I."}, {"family": "Renner", "given": "Ian W."}, {"family": "Ramp", "given": "Daniel"}], "issued": {"date-parts": [[2013]]}, "container-title": "PLOS ONE", "volume": "8", "issue": "11", "page": "e79168", "DOI": "10.1371/journal.pone.0079168", "URL": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0079168"}
+  - {"id": "johnston2021", "type": "article-journal", "title": "Analytical guidelines to increase the value of community science data: An example using eBird data to estimate species distributions", "author": [{"family": "Johnston", "given": "Alison"}, {"family": "Hochachka", "given": "Wesley M."}, {"family": "Strimas-Mackey", "given": "Matthew E."}, {"family": "Ruiz Gutierrez", "given": "Viviana"}, {"family": "Robinson", "given": "Orin J."}, {"family": "Miller", "given": "Eliot T."}, {"family": "Auer", "given": "Tom"}, {"family": "Kelling", "given": "Steve T."}, {"family": "Fink", "given": "Daniel"}], "issued": {"date-parts": [[2021]]}, "container-title": "Diversity and Distributions", "volume": "27", "issue": "7", "page": "1265-1277", "DOI": "10.1111/ddi.13271", "URL": "https://onlinelibrary.wiley.com/doi/10.1111/ddi.13271"}
+  - {"id": "kumar2022", "type": "paper-conference", "title": "Fine-Tuning Can Distort Pretrained Features and Underperform Out-of-Distribution", "author": [{"family": "Kumar", "given": "Ananya"}, {"family": "Raghunathan", "given": "Aditi"}, {"family": "Jones", "given": "Robbie"}, {"family": "Ma", "given": "Tengyu"}, {"family": "Liang", "given": "Percy"}], "issued": {"date-parts": [[2022]]}, "container-title": "International Conference on Learning Representations", "URL": "https://openreview.net/forum?id=UYneFzXSJWh"}
+  - {"id": "araujo2007", "type": "article-journal", "title": "Ensemble forecasting of species distributions", "author": [{"family": "Araújo", "given": "Miguel B."}, {"family": "New", "given": "Mark"}], "issued": {"date-parts": [[2007]]}, "container-title": "Trends in Ecology & Evolution", "volume": "22", "issue": "1", "page": "42-47", "DOI": "10.1016/j.tree.2006.09.010", "URL": "https://www.sciencedirect.com/science/article/pii/S016953470600303X"}
 ...

@@ -1,0 +1,28 @@
+{
+  "checked_at": "2026-10-09T05:39:42.090345+00:00",
+  "elapsed_wall_seconds": 56.59295415878296,
+  "execution_source_sha256": "0f3d519ab6510bcb83063f31be608bac002cb6cb4e1670c3dcc26cf6456afa0c",
+  "failed_states": 0,
+  "independent_review": {
+    "accepted_fit_started_intents": 200,
+    "actual_model_tensor_hash_checks": 200,
+    "actual_shared_tensor_hash_checks": 200,
+    "aggregate_inventories_match": true,
+    "original_record_field_comparisons": 1600,
+    "reviewer": "tas_sensitivity_runtime",
+    "serialized_file_checks": 200
+  },
+  "launch_record_sha256": "7c3e3cbdbac48e2c3acf3e70a2aa60f6080980053ca232ce010c45a2b5a5a3d2",
+  "matching_states": 200,
+  "new_physical_replay_fits": 200,
+  "receipt_digest": "a20e462b10873f6d209250085e24da492012372d12f5bb54149b0ca2dd22125b",
+  "recovery_receipt_sha256": "2d86a42321dcbaf1abca9f6cb592e9c6f7bb41e5d59c8e97c683c8fe8464c4f9",
+  "schema_version": "tasmania-auxiliary-recovery-independent-verification-v1",
+  "scope": {
+    "outer_held_response_reads": 0,
+    "pooled_fits": 0,
+    "q_fits": 0,
+    "target_fits": 0
+  },
+  "success": true
+}

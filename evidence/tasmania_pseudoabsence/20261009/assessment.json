@@ -1,0 +1,49 @@
+{
+  "baseline_receipt_digest": "6b1240538079be2219a22502625e34c473fce4c56c1030f5a302b4cacd6cb77e",
+  "canonical_response_file_opens": 3,
+  "canonical_response_integrity_hash_passes": 2,
+  "completed_at": "2026-10-09T07:14:47.562788+00:00",
+  "counts": {
+    "endpoints": 7,
+    "held_rows": 1672,
+    "map_pairs": 24,
+    "methods": 3,
+    "paired_performance_rows": 168,
+    "species": 8
+  },
+  "files": [
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261009/paired-performance.csv",
+      "sha256": "dcd6966cb5a34e87b989795b676168cd1fb8e91ea728e26a2ee3bfef9ba24b8f"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261009/source-specificity.csv",
+      "sha256": "82081c9ba6773b8e9eb4bb966f55e172ff6879ff6ebec6e5c640e5e550c788ac"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261009/paired-contrasts.csv",
+      "sha256": "e64a4e65436e3ca36dae43a1f3a2012bf1a3e00e3c6cfaa744a393aa5dbfc7c5"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261009/map-comparison.csv",
+      "sha256": "43fc119cb0300a8a4e4cfd56c0e40b73eccdad30a7ab7b668384beee176750dc"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261009/held-source-counts.csv",
+      "sha256": "d0b7818f8c7507fc2d86cee7b85a021f320d1917cf70416f3dc3e0d2e7900735"
+    }
+  ],
+  "interpretation": "paired descriptive sensitivity conditional on the frozen evaluation panel and conventional selections",
+  "outer_held_response_parses": 1,
+  "prediction_closure_digest": "428ea31c0147b315280eaee8181ce2ebb4808762e4facaf1decd5a5d01462f62",
+  "privacy": {
+    "aggregate_only": true,
+    "tracked_coordinates": false,
+    "tracked_response_rows": false
+  },
+  "private_response_snapshot_digest": "3fa5a5acbb7481e9d69ae4a65d5aaf7df41d830e9af811788d1b90765ce5f310",
+  "receipt_digest": "08915652195df252b062163df189f892b72ccdf1e66dab29cb4908d3b696ab56",
+  "response_access_digest": "166d6163392271aca7156637d385b7506858424e4c5e4fe273bc3db90b64681b",
+  "schema_version": "tasmania-pseudoabsence-sensitivity-assessment-v1",
+  "success": true
+}

@@ -1,0 +1,20 @@
+{
+  "encoder_inventory_digest": "135fce564f162b198520f0305b99f63dbd883adffee5d732f895e25a736aac7c",
+  "held_response_labels_read": 0,
+  "independent_no_fit_tests_passed": 14,
+  "independent_reviewer": "tas_sensitivity_runtime",
+  "local_and_linux_preparation_identical": true,
+  "new_fit_scope": "six fixed conventional smoke fits only at this gate",
+  "preparation_receipt_digest": "398dc673558c3b285ea609cc18ab7157ca803664d7e0e4f8a95410ff9442f8a7",
+  "private_remote_stage": "/data/codex/scratch/dsdm-tasmania-pseudoabsence-20261009",
+  "receipt_digest": "6d801c3aaaf84638da6c81f34fc906d34bc659be1da00657c853b04d48de6588",
+  "recovery_receipt_sha256": "2d86a42321dcbaf1abca9f6cb592e9c6f7bb41e5d59c8e97c683c8fe8464c4f9",
+  "runner_sha256": "6cd09e23b74a96297ed1450179a2f1b24c9f2275590e3b6bce7c570440960f4d",
+  "schema_version": "tasmania-conventional-pre-smoke-review-v1",
+  "source_census_sha256": "211bad0f88daa140f1d56ac2916fd5da584f4164e6e96e36748547b8dc392352",
+  "success": true,
+  "supervisor_disk_full_cleanup_test": "termination remained unconditional when both ABORT writes failed",
+  "supervisor_sha256": "0d38ac8ad6d57d32d3b892b67312ee9e6c27d2d4e944309218ec037ca8cf744d",
+  "synthetic_fitting_test_excluded_from_independent_review": 1,
+  "timestamp": "2026-10-09T05:54:46.688940+00:00"
+}

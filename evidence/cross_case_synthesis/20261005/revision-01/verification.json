@@ -1,0 +1,213 @@
+{
+  "accepted_inputs": {
+    "bird_conventional": {
+      "path": "evidence/seawfb_conventional/goal051/summary.json",
+      "sha256": "9c1bf1ff8884fae35fe7ebe6f8d19e2aae46ab7eedee252b398c0c74705dd2d8"
+    },
+    "bird_extent_posthoc": {
+      "path": "evidence/seawfb_dsdm/goal052/extent-review-20261005.json",
+      "sha256": "08652c0909c600bd0e4794d89b522a1e3ecb32557e4f2dad64598cea3be12fa7"
+    },
+    "bird_inner": {
+      "path": "evidence/seawfb_dsdm/goal052/summary.json",
+      "sha256": "ec0bc6c2df8cabd3554f5b2b9eebda97b3426ddd186bfa2acc64ba3d1244a3d3"
+    },
+    "bird_outer": {
+      "path": "data/processed/dsdm/goal052-seawfb-dsdm-experiment/outer-assessment-20261003-r2/scores.json",
+      "sha256": "3a81b166f95551afc199577b86c200bf8cc6f91a24289ec5ad5583a9421f4a41"
+    },
+    "mainland_inner": {
+      "path": "evidence/mainland_dsdm/goal046/summary.json",
+      "sha256": "868a2083036d7b5f14cde9137621977e06405033252551b80fd0d5107627c10b"
+    },
+    "mainland_transfer": {
+      "path": "evidence/tasmania_transfer/goal047/summary.json",
+      "sha256": "99fea9eb10fce97985ff3ebe8bf6f1679b707980b18124f04f24c3d9a1c041cc"
+    },
+    "supplement_bird_conventional": {
+      "path": "config/goal051_seawfb_conventional.json",
+      "sha256": "48465d0a5180931a72ffc87aa830f6ce60da93a4b491558540af5afa9d42884d"
+    },
+    "supplement_bird_dsdm": {
+      "path": "config/goal052_seawfb_dsdm.json",
+      "sha256": "04b667168944b39ced1044da8f381553c4024e31cca1f5590f2fbc693e521f9a"
+    },
+    "supplement_effort_followup": {
+      "path": "evidence/seawfb_dsdm/goal052/effort-followup-20261002.json",
+      "sha256": "742c367ab100886da764853cceeaca1684176259d934794d7ec83c8896e5cad0"
+    },
+    "supplement_effort_review": {
+      "path": "evidence/seawfb_dsdm/goal052/effort-review-20261001.json",
+      "sha256": "920b43478ec4d8cb3d94b165017e69b20cdfe4b7bff8c9f6f3029c5161d7f7db"
+    },
+    "supplement_mainland_conventional": {
+      "path": "config/goal044_mainland_conventional.json",
+      "sha256": "66350f80d58e58eb1c55fa95cc9e4c899d8792404b09acc26d40c71715828a68"
+    },
+    "supplement_modeling_foundation": {
+      "path": "config/modeling_foundation_preflight.json",
+      "sha256": "35b6ab72ba2b8ba2267dc82179987bfffaa3f339d64272d68012444e46285f00"
+    },
+    "supplement_tasmania_conventional": {
+      "path": "config/conventional_baseline_production.json",
+      "sha256": "62b1c5255c5aa5c74f5ba598818dd13e2f2234c0cb13da58671c3be286ccefae"
+    },
+    "supplement_uv_lock": {
+      "path": "uv.lock",
+      "sha256": "51712e74b2f9d78a4efb7bfd6732244188e8c6c5bc722f7a78f2724e6b8b84f6"
+    },
+    "tasmania_inner": {
+      "path": "evidence/dsdm_inner_evaluation/goal036/stratum_metrics.csv",
+      "sha256": "2065ca48895af50036da90ad3e945096c6190594000527056309d78c5ee2bdc6"
+    },
+    "tasmania_outer": {
+      "path": "evidence/tasmania_outer_assessment/20261005/receipt.json",
+      "sha256": "3e7fe324b33450b76089edca0f2d5bf438d219121c9c0842961fedcd9695be26"
+    },
+    "tasmania_selection": {
+      "path": "evidence/dsdm_inner_evaluation/goal036/conventional_selection.csv",
+      "sha256": "3e05784670f58e88144dcbda43819c3811e8303c59cd15c36f23fdf38736a561"
+    }
+  },
+  "authority": "Barry approved cross-case synthesis and manuscript restructuring; this revision implements the forwarded Fable review using accepted aggregates. New sensitivity fits and journal choice remain undecided.",
+  "build_provenance_note": "The shared makedoc manifests record the builder repository Git identity. repository_head here records the actual dSDM commit; all manuscript inputs and rendered outputs match their manifest hashes.",
+  "checks": {
+    "abstract_words": 204,
+    "all_accepted_input_hashes": "pass",
+    "bird_target_only_baseline": "pass; 157 species and named 73/84 panels reproduced from accepted inputs",
+    "citation_review": "Independent literature review verified 15 candidates; 12 added to the original five. All 17 IDs resolve and DOI/ID uniqueness passes. Warton/Johnston citation placement repaired to support observation-aware evaluation, not known-truth simulation.",
+    "document_builds": {
+      "dsdm_manuscript": {
+        "built_at": "2026-10-05T04:07:42.768510+00:00",
+        "current_inputs_and_outputs_match_manifest": true,
+        "docx_embedded_figures": 2,
+        "manifest": "manuscript/build/dsdm_manuscript_build_manifest.json",
+        "pdf_pages": 17
+      },
+      "dsdm_supplement": {
+        "built_at": "2026-10-05T04:07:45.453050+00:00",
+        "current_inputs_and_outputs_match_manifest": true,
+        "docx_embedded_figures": 0,
+        "manifest": "manuscript/build/dsdm_supplement_build_manifest.json",
+        "pdf_pages": 6
+      }
+    },
+    "document_visual_review": "All 17 manuscript and six supplement PDF pages inspected; both plots and dense table/method pages also inspected individually. Plot-margin/legend and table-layout corrections incorporated in the bound builds.",
+    "earlier_species_rows_unchanged": true,
+    "earlier_summary_fields_reproduced_exactly": 280,
+    "earlier_synthesis_and_accepted_evidence_unchanged": true,
+    "git_diff_whitespace": "pass",
+    "independent_dispersion_comparisons": {
+      "count": 180,
+      "max_abs_difference": 1.1102230246251565e-16,
+      "method": "Explicit linear-interpolation quartiles and brute-force single-species deletion using math.fsum, without importing synthesis helpers."
+    },
+    "mainland_matched_five_species_inner_addition": "pass",
+    "new_fits": 0,
+    "new_scoring_or_response_opening": 0,
+    "python_compilation": "pass",
+    "reporting_reproduction_byte_identical": true,
+    "sensitivity_proposal_review": {
+      "additional_smoke_fits": 14,
+      "approval": "pending",
+      "optional_survey_only_evaluation": "excluded by default",
+      "production_fits_all_seven_endpoints": 8125,
+      "production_fits_full_data": 1122,
+      "proposal_sha256": "7175e9fc1aea49d233a113700d6030ba7eb7396c62b9727868970cdc100f0659",
+      "source_census_implementation_review_and_smoke": "not run; required before production",
+      "status": "independent review: ready for Barry approval; not production qualification"
+    },
+    "unique_cited_works": 17
+  },
+  "git_status": "Original Tasmania opening records committed as 4d2a024; synthesis and manuscript revisions remain local working-tree changes. No push or board message.",
+  "local_review_outputs": {
+    "manuscript/build/dsdm_manuscript.docx": "d899a645933414d974d62561706c7de29d504d347a4d8b534a6eca6ed8a022bd",
+    "manuscript/build/dsdm_manuscript.pdf": "00f753985cc63e052fbeb086fc98c7d3f1cb351422e45823385ab663cd1dd759",
+    "manuscript/build/dsdm_manuscript_build_manifest.json": "c8e4d7342931f5a7a89747e0a318308d95aa26759db5b2af73203d2b23398703",
+    "manuscript/build/dsdm_supplement.docx": "a376dfb532a9730ff0d5a96870b617fbdcc0f3f9eb35e97c9609a7f45df68f3d",
+    "manuscript/build/dsdm_supplement.pdf": "63c36e33b86d5d9a23df8d4983de379009e7ce24473eb145fa54a16ebbe7d148",
+    "manuscript/build/dsdm_supplement_build_manifest.json": "cfe5307150b6b0529efc45d08ae65b4b46d9bb49f4aab819e5e09e784862674c"
+  },
+  "prior_test_evidence": {
+    "passed": 12,
+    "path": "evidence/cross_case_synthesis/20261005/verification.json",
+    "scope": "Original opening and extent-controller tests; unchanged source, not rerun or relabelled as new reporting tests."
+  },
+  "prior_verification": {
+    "path": "evidence/cross_case_synthesis/20261005/verification.json",
+    "sha256": "f144ea45fb7550a96c0fb8a8715535e3247ebc5b447f20dbf962663b4d97f15a",
+    "status": "preserved; its original manuscript-output hashes describe the earlier draft"
+  },
+  "receipt_digest": "09439fe73f670be1101600d4eac2ea02c9051877123e61d3ac978d5a54c3f46b",
+  "remaining_decisions": [
+    "Choose journal; existing CSL is a placeholder.",
+    "Approve endpoint scope and contract for pseudoabsence-removal sensitivity or explicitly defer it."
+  ],
+  "remaining_submission_work": [
+    "Author metadata and contributions.",
+    "Complete dataset, predictor and species/source citations and source-specific release/access conditions.",
+    "Resolve the prespecified sensitivity before claiming complete protocol delivery."
+  ],
+  "repository_head": "4d2a02478ff2874b808f4cc8792b97faa3d8cbef",
+  "schema_version": "dsdm-synthesis-revision-verification-v1",
+  "scientific_limits": [
+    "IQR and single-species deletion ranges are descriptive; they are not inferential intervals.",
+    "All cross-case results retain their original observation, geography, weighting and post hoc or prospective status.",
+    "No sensitivity run, optimal outer threshold, bootstrap, new model selection or submission was performed."
+  ],
+  "source_and_evidence_files": {
+    "HANDOVER.md": "5e78daee21769de1ca9914d267c34ba3da325b2bd84b65c37559b488173bd438",
+    "config/conventional_baseline_production.json": "62b1c5255c5aa5c74f5ba598818dd13e2f2234c0cb13da58671c3be286ccefae",
+    "config/goal044_mainland_conventional.json": "66350f80d58e58eb1c55fa95cc9e4c899d8792404b09acc26d40c71715828a68",
+    "config/goal051_seawfb_conventional.json": "48465d0a5180931a72ffc87aa830f6ce60da93a4b491558540af5afa9d42884d",
+    "config/goal052_seawfb_dsdm.json": "04b667168944b39ced1044da8f381553c4024e31cca1f5590f2fbc693e521f9a",
+    "config/modeling_foundation_preflight.json": "35b6ab72ba2b8ba2267dc82179987bfffaa3f339d64272d68012444e46285f00",
+    "data/processed/dsdm/goal052-seawfb-dsdm-experiment/outer-assessment-20261003-r2/scores.json": "3a81b166f95551afc199577b86c200bf8cc6f91a24289ec5ad5583a9421f4a41",
+    "docs/plan/CrossCaseRevision-20261005.md": "6c32a0f4cfbcb699238b4e7e4422bb703ff70c6142429a844985c6acb8b6a95e",
+    "docs/plan/TasmaniaPseudoabsenceSensitivityProposal-20261005.md": "7175e9fc1aea49d233a113700d6030ba7eb7396c62b9727868970cdc100f0659",
+    "evidence/cross_case_synthesis/20261005/bird_extent_plot.csv": "ea1fbc189ae1cd9f0adf07d11b31e0c5aa5d78ca1f72eb0302eb0f67773aa89f",
+    "evidence/cross_case_synthesis/20261005/case_contrasts.csv": "1bc1f03a8bbe8c429d1cc2c3b6afc9cbbad28dace095ffcf9d6054056a0303ab",
+    "evidence/cross_case_synthesis/20261005/case_metrics.csv": "f32d59ea45d6d3c492ba0af91b20196619eb24c06bafd35ec86dd4bbc63355b3",
+    "evidence/cross_case_synthesis/20261005/comparison-table.md": "0654397a05e00f7bdb9686eb01db34a4584c7eeb56f6ac03894f0fb38ac79086",
+    "evidence/cross_case_synthesis/20261005/revision-01/bird_extent_plot.csv": "ea1fbc189ae1cd9f0adf07d11b31e0c5aa5d78ca1f72eb0302eb0f67773aa89f",
+    "evidence/cross_case_synthesis/20261005/revision-01/case_contrasts.csv": "0941334780b2c58c72ee8aed5adf02f8a23c462dab8c680e7b60619f52474ddc",
+    "evidence/cross_case_synthesis/20261005/revision-01/case_metrics.csv": "686a987d24a1c87aecd0277f1df507246ffc44f360974fb5484d1c6a0fccbff0",
+    "evidence/cross_case_synthesis/20261005/revision-01/comparison-table.md": "4c154a26297be56b1d42d305c928efc6bf750917fb314cbe1e9724061f64fed4",
+    "evidence/cross_case_synthesis/20261005/revision-01/summary.json": "6834e34c74767864686862734f57a64a2ac10b324fcdadab89797e1cecbe0fd2",
+    "evidence/cross_case_synthesis/20261005/summary.json": "40f533f574b28193235dcf0739def46cf63aba208405c047532524bbd90770a3",
+    "evidence/dsdm_inner_evaluation/goal036/conventional_selection.csv": "3e05784670f58e88144dcbda43819c3811e8303c59cd15c36f23fdf38736a561",
+    "evidence/dsdm_inner_evaluation/goal036/stratum_metrics.csv": "2065ca48895af50036da90ad3e945096c6190594000527056309d78c5ee2bdc6",
+    "evidence/dsdm_outer_ready/goal037/receipt.json": "c691bf13f3722431687e0fed0259125a23c066959a114b56566dfe21afed4f13",
+    "evidence/mainland_dsdm/goal046/summary.json": "868a2083036d7b5f14cde9137621977e06405033252551b80fd0d5107627c10b",
+    "evidence/seawfb_conventional/goal051/summary.json": "9c1bf1ff8884fae35fe7ebe6f8d19e2aae46ab7eedee252b398c0c74705dd2d8",
+    "evidence/seawfb_dsdm/goal052/effort-followup-20261002.json": "742c367ab100886da764853cceeaca1684176259d934794d7ec83c8896e5cad0",
+    "evidence/seawfb_dsdm/goal052/effort-review-20261001.json": "920b43478ec4d8cb3d94b165017e69b20cdfe4b7bff8c9f6f3029c5161d7f7db",
+    "evidence/seawfb_dsdm/goal052/extent-review-20261005.json": "08652c0909c600bd0e4794d89b522a1e3ecb32557e4f2dad64598cea3be12fa7",
+    "evidence/seawfb_dsdm/goal052/outer-acceptance-20261005.json": "f233cd66528bd981e14e6d19a6f191910d99c912bbf685a038932a656790643a",
+    "evidence/seawfb_dsdm/goal052/summary.json": "ec0bc6c2df8cabd3554f5b2b9eebda97b3426ddd186bfa2acc64ba3d1244a3d3",
+    "evidence/tasmania_outer_assessment/20261005/preopening-review.json": "da7eeda62edd3cb40737620c899ef6e42eb1a114bb15c9bf2c7b19e12654de50",
+    "evidence/tasmania_outer_assessment/20261005/receipt.json": "3e7fe324b33450b76089edca0f2d5bf438d219121c9c0842961fedcd9695be26",
+    "evidence/tasmania_transfer/goal047/summary.json": "99fea9eb10fce97985ff3ebe8bf6f1679b707980b18124f04f24c3d9a1c041cc",
+    "manuscript/README.md": "49e74cac88f8e48a9a7b91d9f50d785877853c1050fefcbf13ce41df562ce078",
+    "manuscript/authors.yaml": "ba240fbd2d6c2fd6334eebab16d0fe52fdb2c56ede03cb0d0e4e466d82336920",
+    "manuscript/csl/oikos.csl": "f534a47f2a5ae25279d7d89e2297bc4b8bb497f8fe215284f8baf856b723fcc3",
+    "manuscript/evidence-ledger.md": "16303c99cf401ae77dbd7e1e3394ee5129512ec034c3ef173be8be29bd9d8348",
+    "manuscript/figures/bird-extent-and-ensembles.pdf": "ae0b3dccf4f91ba91fab25ed52eaf1db44860718863eed0f129062427b8f9572",
+    "manuscript/figures/bird-extent-and-ensembles.png": "4125b502411cb4a583aad7ef900ec526c8afdd15676a5b1f6cf90bee88baf9db",
+    "manuscript/figures/cross-case-contrasts.pdf": "76ea590bd5b652a9322ef11d0792173b8988a238c25b07dbe39de812df1a981e",
+    "manuscript/figures/cross-case-contrasts.png": "8e8f830fb5e723416900907ba929e5de2bcd51f3e4dbacf21164ce2e6395d878",
+    "manuscript/references/refs.yaml": "ea6ecfb0a1e6c6238e9f57e5245a17be7264d06ea5938103981d15b81df0cc03",
+    "manuscript/references/review-candidates-20261005.json": "dde9ffb7641d8a79c518aa869cc94074d9eb1395b413c24cabe9559321f30fdc",
+    "manuscript/settings/build.yaml": "3119298259deaf9c5a4ed3bf053ac60a19a88154de5ef6bb925b90088085efb6",
+    "manuscript/text/figures.md": "b1d862f905bef839651fd865d3d4b931b10a97ae79716ae0248910e896e27905",
+    "manuscript/text/main.md": "5d31967fdc339ba902a3ffd001072658ebe4fa5c5a22fd9c69b194f856630c3f",
+    "manuscript/text/supplement.md": "6ae5520f58831ad6e87f099bd79870fb90de1c1e4f269856a81c64bb81e1d336",
+    "scripts/cross_case_supplement.py": "2a915596340eb47a82adee0e79a21ccbf723dc61f9a4aa901eaf307ae66b0b63",
+    "scripts/cross_case_synthesis.py": "885cd161d56b1c587cddca46a8d8120a5a2f093960684f7f3713f6b6691012f9",
+    "scripts/plot_bird_extent_synthesis.R": "a983dc8fa581a40c05198450ec8a44c389b4447325ab3e9ff8101a5ce10a5529",
+    "scripts/plot_cross_case_synthesis.R": "68abbe2e16b15c93939a89aec36e868c41b1313d5708b891f3bed4cccb0d14df",
+    "uv.lock": "51712e74b2f9d78a4efb7bfd6732244188e8c6c5bc722f7a78f2724e6b8b84f6"
+  },
+  "status": "completed_review_revision",
+  "verified_at": "2026-10-05T04:14:28.159887+00:00"
+}

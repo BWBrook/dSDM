@@ -1,0 +1,33 @@
+{
+  "actual_tensor_state_verifications": 4,
+  "all_fixed_smoke_fits_independently_qualified": 14,
+  "completed_physical_fits": 8,
+  "conventional_caps_digest": "e11f8b40685d916682f240b799eb365223037f7774c8702e63d258cebfba8320",
+  "exact_clean_repetitions": 2,
+  "exact_smoke_leaf_intent_attempt_count": 4,
+  "neural_caps_digest": "43704a6b11e8ddbec26111d9df05951c49ba0bc6c2565e19ac07a70c1852618d",
+  "no_fit_initial_state_reconstructions": 4,
+  "observed": {
+    "maximum_leaf_wall_seconds": 1.443035,
+    "maximum_worker_peak_rss_bytes": 370475008,
+    "private_storage_bytes": 1057282
+  },
+  "outer_response_labels_read": 0,
+  "production_fits_started": 0,
+  "receipt_bound_completions": 4,
+  "receipt_digest": "4bdf05dc70ab074832c65d1e33dd837e1043c7e41d064058557ed867e33ac489",
+  "resource_limits_independently_reviewed": true,
+  "runner_sha256": "ffc6941055ba5485e414ec6cee8472b8fe5fd65609c04cf3158bf49d82caf289",
+  "saved_model_prediction_replays": 4,
+  "schema_version": "tasmania-neural-smoke-verification-v1",
+  "smoke_receipt_digest": "7a40694cff8abab8a8e5ede93ac1983a33fa75b882e403f57ff223bae574d5db",
+  "status": "accepted",
+  "target_only_selected_epochs": [
+    6,
+    6
+  ],
+  "transfer_selected_epochs": [
+    11,
+    11
+  ]
+}

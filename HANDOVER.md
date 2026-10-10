@@ -5,7 +5,194 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Current handoff — 5 October, outer assessment complete and verified
+## Current handoff — 9 October, Tasmania sensitivity complete
+
+All seven approved endpoints are complete: **8,125 production fits, 14 smoke
+fits and 200 exactly recovered auxiliary states (8,339 physical fits)**.
+The unchanged 1,672-row held panel was scored once after prediction closure.
+Independent replay passed all 4,800 production leaves, 168 thresholds and
+performance panels, 24 full-data map comparisons, primary reconciliation and
+exact Thylogale negative controls. No fitting or scoring remains to run.
+
+Read [TasmaniaPseudoabsenceResults-20261009.md](docs/plan/TasmaniaPseudoabsenceResults-20261009.md)
+for the verified findings and manuscript, supplement and map links. Removing
+training pseudoabsences reduced full-data mean AUC for all three methods,
+with the largest losses in *V. ursinus* and *D. maculatus*. Fine-tuning minus
+target-only mean TSS changed from +0.0477 to −0.0182, whereas fine-tuning kept
+a TSS advantage over the selected conventional learner. These changes are
+conditional on the original evaluation-source mixture; they do not validate
+pseudoabsence truth or mapped occupancy.
+
+The 18-page manuscript and 15-page supplement have been updated in PDF and
+Word, with Tables S5–S9 and eight separate map plates. Final verification is
+in `evidence/tasmania_pseudoabsence/20261009/delivery-verification.json`.
+The [execution record](docs/plan/TasmaniaPseudoabsenceExecution-20261009.md)
+links the completed gates and preserved zero-fit launcher failures. The
+[approval](docs/plan/TasmaniaPseudoabsenceRecoveryApproval-20261009.md)
+remains the scope authority. No new commit, push or submission accompanied
+this delivery. Earlier handoffs below describe their historical states.
+
+## Historical handoff — 8 October, all-endpoint Tasmania sensitivity approved
+
+At 23:28 AEDT, Barry instructed **“All seven endpoints. Proceed.”** The
+protocol-wide sensitivity is now authorised. Its scope and execution gates
+are recorded in
+[TasmaniaPseudoabsenceSensitivity-20261008.md](docs/plan/TasmaniaPseudoabsenceSensitivity-20261008.md).
+All 56 species–endpoint combinations retain their original evaluation rows,
+with pseudoabsences removed from target training only and sensitivity-specific
+OOF thresholds. The planned inventory is 8,125 production fits plus 14 fixed,
+non-promotable smoke fits; the map comparison remains 24 full-data pairs.
+
+The source census passes: all 336 original endpoint membership digests match,
+and all 896 separate roles retain both classes. Eight focused tests and an
+independent reconstruction of all memberships, counts and set hashes pass.
+
+Fitting is awaiting a specific amendment: Goal035 preserved the 200 required
+inner multi-head state hashes and epochs, but no weights. The
+[availability audit](docs/plan/TasmaniaAuxiliaryAvailability-20261008.md)
+proposes 200 replay-only reconstructions at the original epochs, requiring
+exact original state and prediction hashes, with no new discovery or `q`
+fitting. This would bring execution to 8,339 fits including the fixed smoke.
+The approved proposal expressly prohibited auxiliary refitting, so this
+amendment has been put to Barry and remains pending. No sensitivity fit,
+reconstruction fit or new held-response access has started. Earlier endpoint
+scope-pending statements below are historical and are superseded by the direct
+all-endpoint approval; the recovery amendment is the current decision.
+
+## Historical handoff — 8 October, bird composition ranges added
+
+Barry asked Codex to respond to Claude's latest review. Read
+[CrossCaseFollowup-20261008.md](docs/plan/CrossCaseFollowup-20261008.md) for the
+response, numerical table and remaining scope choice. The primary 73 bird
+species now have central 95% species-composition resampling ranges from
+100,000 paired draws, with the ten-focal-block inner width check in the
+supplement. These are finite-panel reweighting diagnostics, not confidence
+intervals or fitting, spatial-sampling, selection or population uncertainty.
+Figure 1 retains all species points and adds ranges only to bird means.
+
+The inner target-only range is **[+0.005040, +0.006608]**; its equal-region
+outer counterpart is **[−0.004063, +0.003389]**. Conventional-comparator ranges
+are **[+0.002873, +0.003911]** inner and **[−0.001683, +0.007188]** outer. The
+block check narrows one inner range and widens the other; computational blocks
+do not remove all dependence. The original estimates and prior aggregate
+receipts remain unchanged.
+
+New results and verification are in `evidence/cross_case_synthesis/20261008/`;
+the plan was fixed before these reporting calculations. Three focused tests,
+deterministic reproduction and an independent 12-endpoint numerical check
+pass. Current PDF/Word outputs are a 17-page manuscript and seven-page
+supplement, with Figure 1 and Tables S1d/S1e updated. The workspace remains
+uncommitted beyond opening-record commit **4d2a024**; no push occurred.
+
+Claude's message 1167 relays Barry's agreement to run the Tasmania sensitivity.
+The direct endpoint-scope question remains pending in Codex: recommended
+full-data-only **1,122 + 14 smoke fits**, or all seven endpoints **8,125
+production fits plus smoke qualification**. No sensitivity implementation or
+fit has started. Do not infer a chosen endpoint scope from the relay. The
+reviewed training-only contract and pre-run scientific checks remain in force.
+MEE is a reasonable working target; final formatting/submission is still open.
+
+Correspondence task checkpoint: thread 32, through/next_after **1168**,
+message **1167** read in full. Shared read markers were not advanced over
+earlier unread messages. Codex's response is message **1171**, posted at
+23:00:13 AEDT on 8 October. The read checkpoint remains before that own reply.
+
+## Historical handoff — 5 October, manuscript review revision complete
+
+The revised review draft and supplement are complete. Read
+[CrossCaseRevision-20261005.md](docs/plan/CrossCaseRevision-20261005.md) for the
+response to Fable and the revised descriptive results. The active sources are
+`manuscript/text/main.md`, `manuscript/text/figures.md`, and generated
+`manuscript/text/supplement.md`. Verified outputs in `manuscript/build/` are the
+17-page manuscript and six-page supplement, each in PDF and Word format.
+
+The revision restores the five-species mainland inner result: fine-tuning
+minus target-only AUC **+0.008745** (4/5 positive), and minus conventional
+**+0.003950** (5/5). These gains precede the heterogeneous mainland-to-Tasmania
+transfer result. It also adds the bird regions' designed roles and external
+50-km buffers, the sparse-third result, inner recorded-richness diagnostics,
+network and conventional-grid details, and the target-only versus tuned-ANN
+comparison. The abstract is 204 words and the bibliography now has 17 verified
+cited works. Original Tasmania AUC and TSS retain their co-primary status and
+their differing conclusions.
+
+Figure 1 and Table S1 cover six headline assessments with all species points,
+means, medians and IQRs. Single-species deletion ranges describe composition
+sensitivity; they are not confidence intervals. The original synthesis files
+are preserved. New reporting outputs and the verification receipt are in
+`evidence/cross_case_synthesis/20261005/revision-01/`. Accepted numerical inputs
+are unchanged; all 280 earlier case-summary fields reproduce exactly. Both
+document builds, citation resolution, reporting reproducibility and visual
+inspection of all 23 PDF pages pass. The initial synthesis's 12 core tests
+remain separate evidence; this revision did not rerun fitting or scoring.
+
+The original Tasmania opening records are committed as **4d2a024**. Manuscript,
+supplement and reporting changes remain local and uncommitted; no push or board
+message was sent. Do not reopen the primary test or rerun its `score` command.
+
+The prespecified pseudoabsence-removal question remains unrun. The independently
+reviewed [proposal](docs/plan/TasmaniaPseudoabsenceSensitivityProposal-20261005.md)
+is ready for Barry's decision: the recommended full-data option requires
+**1,122 production fits plus 14 smoke fits**; all seven endpoints require
+**8,125 production fits**. The full-data option leaves reduced endpoints
+untested. Training-only removal, new OOF thresholds and map comparisons are
+explicit post-opening implementation choices. Approval of that scope must
+precede implementation and the source census, independent implementation review
+and smoke qualification required before production. The optional survey-only
+evaluation view is excluded by default. No sensitivity fit has been launched.
+
+Journal choice also remains open; Methods in Ecology and Evolution is Fable's
+recommendation, while the existing CSL is a placeholder. Author metadata,
+complete data/species/predictor citations and release conditions remain
+submission work. Neither this revision nor the proposal is submission or
+production qualification.
+
+## Historical handoff — 5 October, synthesis and original Tasmania test complete
+
+Barry approved cross-case synthesis, manuscript restructuring and opening the
+original Tasmania held-patch test. Read
+[CrossCaseResults-20261005.md](docs/plan/CrossCaseResults-20261005.md) for the
+combined result, including the reproduced bird extent check, the target-only
+ensemble and the SEH negative tail. The active manuscript is
+`manuscript/text/main.md`; its evidence ledger records claim sources and work
+remaining before submission. The review draft builds to 14-page PDF and Word
+with two verified figures in `manuscript/build/`.
+
+The original Tasmania test was opened once and completed at **14:05:35 AEDT**.
+Its aggregate receipt is
+`evidence/tasmania_outer_assessment/20261005/receipt.json`, SHA
+`3e7fe324b33450b76089edca0f2d5bf438d219121c9c0842961fedcd9695be26`.
+It contains all eight species, seven endpoints and 11 methods, scored over
+1,672 response rows in 606 cells: 3,696 metric records and 2,016 contrasts.
+Native validation and independent pre-opening review passed on the archived
+Goal037 source, followed by an independent aggregate arithmetic/privacy audit.
+No model was refitted. The historical Goal037 zero-access receipt remains
+unchanged; the new receipt records the authorised opening. Do not rerun `score`.
+
+Original Tasmania full-data fine-tuning minus target-only **AUC** has mean
+**−0.014741**, median **−0.012001**, with **1/8** species positive. Co-primary
+**TSS** at frozen inner thresholds has mean **+0.047653**, median **+0.020514**,
+with **5/8** positive, one tied and two negative. Preserve both metrics. This
+is descriptive interpolation in touching patches, not independent regional
+transfer. The protocol's pseudoabsence-removal sensitivity is still unrun.
+
+The bird post hoc reproduction passes all **2,870** defined saved-arm X10 AUC
+comparisons exactly. Fine-tuned inner AUC is **0.689709** within region-by-fold
+strata, with a target-only contrast of **+0.007244** (68/73 positive), versus
+outer **−0.000396** (34/73). The extent comparison does not identify a
+geographic penalty. The outer target-only/conventional ensemble gains
+**+0.009621** over conventional, versus **+0.010352** for the fine-tuned
+ensemble; their difference is **+0.000732**, with 37/73 species positive.
+
+The synthesis uses unchanged accepted results and explicit post hoc reporting.
+Twelve focused tests pass, the manuscript build and visual review pass, and
+`evidence/cross_case_synthesis/20261005/verification.json` binds the final
+sources, results and review outputs. Dataset citations, release conditions,
+the detailed supplement, author metadata and journal style remain submission
+work. No additional fitting or scientific redesign is authorised by this
+closeout.
+
+## Historical handoff — 5 October, bird outer assessment complete and verified
 
 The complete retained-full outer assessment is now returned and checked.
 Read [OuterResults-20261005.md](docs/goals/052-seawfb-dsdm-experiment/OuterResults-20261005.md)

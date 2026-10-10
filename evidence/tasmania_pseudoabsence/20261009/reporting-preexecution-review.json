@@ -1,0 +1,26 @@
+{
+  "actual_fits": 0,
+  "actual_response_reads": 0,
+  "focused_gate_and_arithmetic_tests": 27,
+  "independent_map_fixtures": 100,
+  "outer_response_access_accounting": {
+    "canonical_file_opens": 3,
+    "integrity_hash_passes": 2,
+    "intent_precedes_all_reads": true,
+    "minimal_private_snapshot_for_replay": true,
+    "semantic_parses": 1
+  },
+  "qualification": "implementation only; complete fit and prediction closure plus independent post-run replay still required",
+  "receipt_digest": "e53e40569bbb1d2cd49380f40870d1231459117434da4c4cc6d76799513bbf11",
+  "related_tasmania_tests": 78,
+  "review": "independent no-response scientific and implementation review",
+  "schema_version": "tasmania-sensitivity-reporting-preexecution-review-v1",
+  "scripts": {
+    "tasmania_pseudoabsence_assessment.py": "72120fbf666e03b105931a8dbcf137977783f1d92c389a0d5a0ba337a8c4e01b",
+    "tasmania_pseudoabsence_collect.py": "996b5d2f0d0f8c8a36dce38ebc4023b2d096e640e38b5dc4390c4e568903c4c1",
+    "tasmania_pseudoabsence_metrics.py": "19df727765f744764011200212c9fefc4d9f7dd2861b9d476852cf8ffb408201"
+  },
+  "source_specificity_decomposition": "passed",
+  "status": "accepted",
+  "threshold_fixtures_exact_goal036": 202
+}

@@ -1,0 +1,1650 @@
+{
+  "alternate_local_auxiliary_search": {
+    "conclusion": "Only Goal037 outer-training states and archived copies found, including canary repeats. They cannot replace held-fold-excluding inner states. External backups were not searched.",
+    "excluded_directory_names": [
+      ".venv",
+      "site-packages"
+    ],
+    "files_by_top_level_run": {
+      "goal037-outer-ready": 92,
+      "tasmania-outer-assessment-20261005": 92
+    },
+    "match": "aux in filename OR goal035 in path",
+    "root": "data/processed/dsdm",
+    "suffixes": [
+      ".pt",
+      ".pth",
+      ".model",
+      ".pkl",
+      ".pickle"
+    ]
+  },
+  "archived_execution_sources_match": {
+    "config/dsdm_final_inner_lifecycle.json": {
+      "architecture_mask_revalidation": true,
+      "architecture_runner": true,
+      "architecture_selection": true,
+      "categorical_support": true,
+      "contracts": true,
+      "final_inner_data": true,
+      "final_inner_runner": true,
+      "models": true,
+      "phase1_goal029_production": true,
+      "phase1_modeling_contract": true,
+      "phase1_target_subsets": true,
+      "real_data": true,
+      "real_six_path": true,
+      "real_six_path_data": true,
+      "real_training": true,
+      "uv_lock": true
+    },
+    "config/dsdm_outer_ready.json": {
+      "categorical_support": true,
+      "contracts": true,
+      "conventional_refit_import": true,
+      "final_inner_data": true,
+      "goal029_production": true,
+      "model_adapters": true,
+      "modeling_contract": true,
+      "models": true,
+      "outer_ready": true,
+      "real_six_path": true,
+      "target_subsets": true,
+      "uv_lock": true
+    }
+  },
+  "audit_date": "2026-10-08",
+  "bindings": [
+    {
+      "path": "evidence/dsdm_inner_evaluation/goal036/conventional_selection.csv",
+      "sha256": "3e05784670f58e88144dcbda43819c3811e8303c59cd15c36f23fdf38736a561"
+    },
+    {
+      "path": "evidence/dsdm_final_inner_lifecycle/goal035/aggregate.json",
+      "sha256": "4eae8cea43643a3a82e14ea546ce89fc60129e443c752599304d80fab0b5f7bf"
+    },
+    {
+      "path": "evidence/dsdm_outer_ready/goal037/receipt.json",
+      "sha256": "c691bf13f3722431687e0fed0259125a23c066959a114b56566dfe21afed4f13"
+    },
+    {
+      "path": "evidence/tasmania_outer_assessment/20261005/receipt.json",
+      "sha256": "3e7fe324b33450b76089edca0f2d5bf438d219121c9c0842961fedcd9695be26"
+    },
+    {
+      "path": "config/modeling_foundation_preflight.json",
+      "sha256": "35b6ab72ba2b8ba2267dc82179987bfffaa3f339d64272d68012444e46285f00"
+    },
+    {
+      "path": "data/processed/dsdm/tasmania-outer-assessment-20261005/archive/goal037-ce70bf1/archive-receipt.json",
+      "sha256": "b75a61a31e052477617dedd6b2b3e0d763d727dc85f04d49b5a2bcf4d8099eac"
+    },
+    {
+      "path": "data/processed/dsdm/tasmania-outer-assessment-20261005/archive/goal037-ce70bf1/config/dsdm_final_inner_lifecycle.json",
+      "sha256": "87c3afa6fbb9a2177caafc0b2aacb0130c7f6545523839cd0fd030218795d7c2"
+    },
+    {
+      "path": "data/processed/dsdm/tasmania-outer-assessment-20261005/archive/goal037-ce70bf1/config/dsdm_outer_ready.json",
+      "sha256": "762ce12c4937f7eec0e72b4b90f1c7db1246072a9c778cd5c7a4c1b50cdf2f92"
+    },
+    {
+      "path": "data/processed/dsdm/tasmania-outer-assessment-20261005/archive/goal037-ce70bf1/uv.lock",
+      "sha256": "39c22925750ac8821f5420bdfe5ca39554b7906d812bd3a94a04e91c469284fd"
+    },
+    {
+      "path": "docs/plan/TasmaniaPseudoabsenceSensitivityProposal-20261005.md",
+      "sha256": "7175e9fc1aea49d233a113700d6030ba7eb7396c62b9727868970cdc100f0659"
+    }
+  ],
+  "blocking_rule": {
+    "quote": "Accepted fold-specific auxiliary states and `q` must be reused byte-for-byte; no auxiliary refit or new `q` estimate is permitted.",
+    "reason": "Goal035 preserved auxiliary digests, epochs and original replay inputs but did not serialize fold-specific weights. Reconstruction executes training and exceeds the explicit no-auxiliary-refit rule.",
+    "source": "docs/plan/TasmaniaPseudoabsenceSensitivityProposal-20261005.md"
+  },
+  "conventional_runtime": {
+    "checkout_absolute_path": "not recorded in inspected runbooks; locate without mutating producer before execution",
+    "historical_alias": "deep-server-ts",
+    "host": "deep-server",
+    "live_remote_state_verified": false,
+    "local_conventional_selected_models": 952,
+    "note": "The current local .venv matches the conventional scorer package versions but is Darwin arm64 Python 3.12.13, not historical Linux fitting parity.",
+    "packages": {
+      "numpy": "2.5.1",
+      "pygam": "0.10.1",
+      "python": "3.12.3",
+      "scipy": "1.16.3",
+      "sklearn": "1.9.0",
+      "torch": "2.13.0"
+    },
+    "platform": "Linux/x86-64",
+    "producer_commit": "f85e45922e182858fd351fdaf4f1b36b33fb4f2f",
+    "threads_per_worker": 1,
+    "validator_commit": "e6f07ae8bdb48399af907cf44598cc34d51391f6",
+    "workers": 4
+  },
+  "fit_inventory": {
+    "conventional_inner": 1725,
+    "conventional_outer": 240,
+    "conventional_total": 1965,
+    "fixed_nonpromotable_smoke": 14,
+    "neural_inner": 5600,
+    "neural_outer": 560,
+    "neural_total": 6160,
+    "production_total": 8125,
+    "proposed_auxiliary_reconstruction_fits": 200,
+    "target_executions_including_smoke": 8139,
+    "total_if_reconstruction_amendment_approved": 8339
+  },
+  "frozen_conventional_selection": {
+    "fit_inventory_by_family": [
+      {
+        "family": "random_forest",
+        "inner_fits": 600,
+        "outer_fits": 120,
+        "seeds": 5,
+        "strata": 24,
+        "total_fits": 720
+      },
+      {
+        "family": "hist_gradient_boosting",
+        "inner_fits": 50,
+        "outer_fits": 10,
+        "seeds": 1,
+        "strata": 10,
+        "total_fits": 60
+      },
+      {
+        "family": "shallow_ann",
+        "inner_fits": 1050,
+        "outer_fits": 105,
+        "seeds": 5,
+        "strata": 21,
+        "total_fits": 1155
+      },
+      {
+        "family": "elastic_net",
+        "inner_fits": 25,
+        "outer_fits": 5,
+        "seeds": 5,
+        "strata": 1,
+        "total_fits": 30
+      }
+    ],
+    "source_sha256": "3e05784670f58e88144dcbda43819c3811e8303c59cd15c36f23fdf38736a561",
+    "strata": [
+      {
+        "candidate": "rf05",
+        "candidate_parameters": {
+          "bootstrap": true,
+          "max_depth": 20,
+          "max_features": 0.67,
+          "min_samples_leaf": 3,
+          "n_estimators": 500
+        },
+        "endpoint": "fraction25/ladder00",
+        "family": "random_forest",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "thylogale_billardierii"
+      },
+      {
+        "candidate": "rf06",
+        "candidate_parameters": {
+          "bootstrap": true,
+          "max_depth": 20,
+          "max_features": 0.67,
+          "min_samples_leaf": 10,
+          "n_estimators": 500
+        },
+        "endpoint": "fraction25/ladder01",
+        "family": "random_forest",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "thylogale_billardierii"
+      },
+      {
+        "candidate": "rf06",
+        "candidate_parameters": {
+          "bootstrap": true,
+          "max_depth": 20,
+          "max_features": 0.67,
+          "min_samples_leaf": 10,
+          "n_estimators": 500
+        },
+        "endpoint": "fraction25/ladder02",
+        "family": "random_forest",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "thylogale_billardierii"
+      },
+      {
+        "candidate": "hgb04",
+        "candidate_parameters": {
+          "early_stopping": false,
+          "l2_regularization": 1,
+          "learning_rate": 0.05,
+          "max_iter": 300,
+          "max_leaf_nodes": 31,
+          "min_samples_leaf": 50
+        },
+        "endpoint": "fraction50/ladder00",
+        "family": "hist_gradient_boosting",
+        "seed_count": 1,
+        "seed_labels": [
+          "seed00"
+        ],
+        "species": "thylogale_billardierii"
+      },
+      {
+        "candidate": "hgb01",
+        "candidate_parameters": {
+          "early_stopping": false,
+          "l2_regularization": 1,
+          "learning_rate": 0.03,
+          "max_iter": 300,
+          "max_leaf_nodes": 31,
+          "min_samples_leaf": 20
+        },
+        "endpoint": "fraction50/ladder01",
+        "family": "hist_gradient_boosting",
+        "seed_count": 1,
+        "seed_labels": [
+          "seed00"
+        ],
+        "species": "thylogale_billardierii"
+      },
+      {
+        "candidate": "hgb00",
+        "candidate_parameters": {
+          "early_stopping": false,
+          "l2_regularization": 0,
+          "learning_rate": 0.03,
+          "max_iter": 300,
+          "max_leaf_nodes": 15,
+          "min_samples_leaf": 20
+        },
+        "endpoint": "fraction50/ladder02",
+        "family": "hist_gradient_boosting",
+        "seed_count": 1,
+        "seed_labels": [
+          "seed00"
+        ],
+        "species": "thylogale_billardierii"
+      },
+      {
+        "candidate": "hgb00",
+        "candidate_parameters": {
+          "early_stopping": false,
+          "l2_regularization": 0,
+          "learning_rate": 0.03,
+          "max_iter": 300,
+          "max_leaf_nodes": 15,
+          "min_samples_leaf": 20
+        },
+        "endpoint": "fraction100/full",
+        "family": "hist_gradient_boosting",
+        "seed_count": 1,
+        "seed_labels": [
+          "seed00"
+        ],
+        "species": "thylogale_billardierii"
+      },
+      {
+        "candidate": "ann03",
+        "candidate_parameters": {
+          "dropout": 0.2,
+          "lr": 0.001,
+          "max_epochs": 300,
+          "patience": 30,
+          "weight_decay": 0.0001,
+          "width": 64
+        },
+        "endpoint": "fraction25/ladder00",
+        "family": "shallow_ann",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "notamacropus_rufogriseus"
+      },
+      {
+        "candidate": "ann04",
+        "candidate_parameters": {
+          "dropout": 0.2,
+          "lr": 0.0005,
+          "max_epochs": 300,
+          "patience": 30,
+          "weight_decay": 0.0001,
+          "width": 128
+        },
+        "endpoint": "fraction25/ladder01",
+        "family": "shallow_ann",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "notamacropus_rufogriseus"
+      },
+      {
+        "candidate": "ann04",
+        "candidate_parameters": {
+          "dropout": 0.2,
+          "lr": 0.0005,
+          "max_epochs": 300,
+          "patience": 30,
+          "weight_decay": 0.0001,
+          "width": 128
+        },
+        "endpoint": "fraction25/ladder02",
+        "family": "shallow_ann",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "notamacropus_rufogriseus"
+      },
+      {
+        "candidate": "ann05",
+        "candidate_parameters": {
+          "dropout": 0.3,
+          "lr": 0.0005,
+          "max_epochs": 300,
+          "patience": 30,
+          "weight_decay": 0.001,
+          "width": 128
+        },
+        "endpoint": "fraction50/ladder00",
+        "family": "shallow_ann",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "notamacropus_rufogriseus"
+      },
+      {
+        "candidate": "ann04",
+        "candidate_parameters": {
+          "dropout": 0.2,
+          "lr": 0.0005,
+          "max_epochs": 300,
+          "patience": 30,
+          "weight_decay": 0.0001,
+          "width": 128
+        },
+        "endpoint": "fraction50/ladder01",
+        "family": "shallow_ann",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "notamacropus_rufogriseus"
+      },
+      {
+        "candidate": "hgb00",
+        "candidate_parameters": {
+          "early_stopping": false,
+          "l2_regularization": 0,
+          "learning_rate": 0.03,
+          "max_iter": 300,
+          "max_leaf_nodes": 15,
+          "min_samples_leaf": 20
+        },
+        "endpoint": "fraction50/ladder02",
+        "family": "hist_gradient_boosting",
+        "seed_count": 1,
+        "seed_labels": [
+          "seed00"
+        ],
+        "species": "notamacropus_rufogriseus"
+      },
+      {
+        "candidate": "hgb00",
+        "candidate_parameters": {
+          "early_stopping": false,
+          "l2_regularization": 0,
+          "learning_rate": 0.03,
+          "max_iter": 300,
+          "max_leaf_nodes": 15,
+          "min_samples_leaf": 20
+        },
+        "endpoint": "fraction100/full",
+        "family": "hist_gradient_boosting",
+        "seed_count": 1,
+        "seed_labels": [
+          "seed00"
+        ],
+        "species": "notamacropus_rufogriseus"
+      },
+      {
+        "candidate": "rf00",
+        "candidate_parameters": {
+          "bootstrap": true,
+          "max_depth": null,
+          "max_features": "sqrt",
+          "min_samples_leaf": 1,
+          "n_estimators": 500
+        },
+        "endpoint": "fraction25/ladder00",
+        "family": "random_forest",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "trichosurus_vulpecula"
+      },
+      {
+        "candidate": "rf00",
+        "candidate_parameters": {
+          "bootstrap": true,
+          "max_depth": null,
+          "max_features": "sqrt",
+          "min_samples_leaf": 1,
+          "n_estimators": 500
+        },
+        "endpoint": "fraction25/ladder01",
+        "family": "random_forest",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "trichosurus_vulpecula"
+      },
+      {
+        "candidate": "rf00",
+        "candidate_parameters": {
+          "bootstrap": true,
+          "max_depth": null,
+          "max_features": "sqrt",
+          "min_samples_leaf": 1,
+          "n_estimators": 500
+        },
+        "endpoint": "fraction25/ladder02",
+        "family": "random_forest",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "trichosurus_vulpecula"
+      },
+      {
+        "candidate": "rf00",
+        "candidate_parameters": {
+          "bootstrap": true,
+          "max_depth": null,
+          "max_features": "sqrt",
+          "min_samples_leaf": 1,
+          "n_estimators": 500
+        },
+        "endpoint": "fraction50/ladder00",
+        "family": "random_forest",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "trichosurus_vulpecula"
+      },
+      {
+        "candidate": "rf00",
+        "candidate_parameters": {
+          "bootstrap": true,
+          "max_depth": null,
+          "max_features": "sqrt",
+          "min_samples_leaf": 1,
+          "n_estimators": 500
+        },
+        "endpoint": "fraction50/ladder01",
+        "family": "random_forest",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "trichosurus_vulpecula"
+      },
+      {
+        "candidate": "rf01",
+        "candidate_parameters": {
+          "bootstrap": true,
+          "max_depth": null,
+          "max_features": "sqrt",
+          "min_samples_leaf": 3,
+          "n_estimators": 500
+        },
+        "endpoint": "fraction50/ladder02",
+        "family": "random_forest",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "trichosurus_vulpecula"
+      },
+      {
+        "candidate": "rf00",
+        "candidate_parameters": {
+          "bootstrap": true,
+          "max_depth": null,
+          "max_features": "sqrt",
+          "min_samples_leaf": 1,
+          "n_estimators": 500
+        },
+        "endpoint": "fraction100/full",
+        "family": "random_forest",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "trichosurus_vulpecula"
+      },
+      {
+        "candidate": "ann04",
+        "candidate_parameters": {
+          "dropout": 0.2,
+          "lr": 0.0005,
+          "max_epochs": 300,
+          "patience": 30,
+          "weight_decay": 0.0001,
+          "width": 128
+        },
+        "endpoint": "fraction25/ladder00",
+        "family": "shallow_ann",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "pseudocheirus_peregrinus"
+      },
+      {
+        "candidate": "enet00",
+        "candidate_parameters": {
+          "C": 0.01,
+          "l1_ratio": 0,
+          "max_iter": 5000,
+          "solver": "saga",
+          "tol": 1e-06
+        },
+        "endpoint": "fraction25/ladder01",
+        "family": "elastic_net",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "pseudocheirus_peregrinus"
+      },
+      {
+        "candidate": "ann01",
+        "candidate_parameters": {
+          "dropout": 0.1,
+          "lr": 0.001,
+          "max_epochs": 300,
+          "patience": 30,
+          "weight_decay": 1e-05,
+          "width": 32
+        },
+        "endpoint": "fraction25/ladder02",
+        "family": "shallow_ann",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "pseudocheirus_peregrinus"
+      },
+      {
+        "candidate": "ann03",
+        "candidate_parameters": {
+          "dropout": 0.2,
+          "lr": 0.001,
+          "max_epochs": 300,
+          "patience": 30,
+          "weight_decay": 0.0001,
+          "width": 64
+        },
+        "endpoint": "fraction50/ladder00",
+        "family": "shallow_ann",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "pseudocheirus_peregrinus"
+      },
+      {
+        "candidate": "ann04",
+        "candidate_parameters": {
+          "dropout": 0.2,
+          "lr": 0.0005,
+          "max_epochs": 300,
+          "patience": 30,
+          "weight_decay": 0.0001,
+          "width": 128
+        },
+        "endpoint": "fraction50/ladder01",
+        "family": "shallow_ann",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "pseudocheirus_peregrinus"
+      },
+      {
+        "candidate": "ann03",
+        "candidate_parameters": {
+          "dropout": 0.2,
+          "lr": 0.001,
+          "max_epochs": 300,
+          "patience": 30,
+          "weight_decay": 0.0001,
+          "width": 64
+        },
+        "endpoint": "fraction50/ladder02",
+        "family": "shallow_ann",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "pseudocheirus_peregrinus"
+      },
+      {
+        "candidate": "ann04",
+        "candidate_parameters": {
+          "dropout": 0.2,
+          "lr": 0.0005,
+          "max_epochs": 300,
+          "patience": 30,
+          "weight_decay": 0.0001,
+          "width": 128
+        },
+        "endpoint": "fraction100/full",
+        "family": "shallow_ann",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "pseudocheirus_peregrinus"
+      },
+      {
+        "candidate": "ann05",
+        "candidate_parameters": {
+          "dropout": 0.3,
+          "lr": 0.0005,
+          "max_epochs": 300,
+          "patience": 30,
+          "weight_decay": 0.001,
+          "width": 128
+        },
+        "endpoint": "fraction25/ladder00",
+        "family": "shallow_ann",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "vombatus_ursinus"
+      },
+      {
+        "candidate": "ann00",
+        "candidate_parameters": {
+          "dropout": 0,
+          "lr": 0.001,
+          "max_epochs": 300,
+          "patience": 30,
+          "weight_decay": 0,
+          "width": 32
+        },
+        "endpoint": "fraction25/ladder01",
+        "family": "shallow_ann",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "vombatus_ursinus"
+      },
+      {
+        "candidate": "ann04",
+        "candidate_parameters": {
+          "dropout": 0.2,
+          "lr": 0.0005,
+          "max_epochs": 300,
+          "patience": 30,
+          "weight_decay": 0.0001,
+          "width": 128
+        },
+        "endpoint": "fraction25/ladder02",
+        "family": "shallow_ann",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "vombatus_ursinus"
+      },
+      {
+        "candidate": "ann04",
+        "candidate_parameters": {
+          "dropout": 0.2,
+          "lr": 0.0005,
+          "max_epochs": 300,
+          "patience": 30,
+          "weight_decay": 0.0001,
+          "width": 128
+        },
+        "endpoint": "fraction50/ladder00",
+        "family": "shallow_ann",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "vombatus_ursinus"
+      },
+      {
+        "candidate": "ann05",
+        "candidate_parameters": {
+          "dropout": 0.3,
+          "lr": 0.0005,
+          "max_epochs": 300,
+          "patience": 30,
+          "weight_decay": 0.001,
+          "width": 128
+        },
+        "endpoint": "fraction50/ladder01",
+        "family": "shallow_ann",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "vombatus_ursinus"
+      },
+      {
+        "candidate": "ann03",
+        "candidate_parameters": {
+          "dropout": 0.2,
+          "lr": 0.001,
+          "max_epochs": 300,
+          "patience": 30,
+          "weight_decay": 0.0001,
+          "width": 64
+        },
+        "endpoint": "fraction50/ladder02",
+        "family": "shallow_ann",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "vombatus_ursinus"
+      },
+      {
+        "candidate": "ann04",
+        "candidate_parameters": {
+          "dropout": 0.2,
+          "lr": 0.0005,
+          "max_epochs": 300,
+          "patience": 30,
+          "weight_decay": 0.0001,
+          "width": 128
+        },
+        "endpoint": "fraction100/full",
+        "family": "shallow_ann",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "vombatus_ursinus"
+      },
+      {
+        "candidate": "rf00",
+        "candidate_parameters": {
+          "bootstrap": true,
+          "max_depth": null,
+          "max_features": "sqrt",
+          "min_samples_leaf": 1,
+          "n_estimators": 500
+        },
+        "endpoint": "fraction25/ladder00",
+        "family": "random_forest",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "sarcophilus_harrisii"
+      },
+      {
+        "candidate": "rf00",
+        "candidate_parameters": {
+          "bootstrap": true,
+          "max_depth": null,
+          "max_features": "sqrt",
+          "min_samples_leaf": 1,
+          "n_estimators": 500
+        },
+        "endpoint": "fraction25/ladder01",
+        "family": "random_forest",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "sarcophilus_harrisii"
+      },
+      {
+        "candidate": "rf01",
+        "candidate_parameters": {
+          "bootstrap": true,
+          "max_depth": null,
+          "max_features": "sqrt",
+          "min_samples_leaf": 3,
+          "n_estimators": 500
+        },
+        "endpoint": "fraction25/ladder02",
+        "family": "random_forest",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "sarcophilus_harrisii"
+      },
+      {
+        "candidate": "rf00",
+        "candidate_parameters": {
+          "bootstrap": true,
+          "max_depth": null,
+          "max_features": "sqrt",
+          "min_samples_leaf": 1,
+          "n_estimators": 500
+        },
+        "endpoint": "fraction50/ladder00",
+        "family": "random_forest",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "sarcophilus_harrisii"
+      },
+      {
+        "candidate": "rf00",
+        "candidate_parameters": {
+          "bootstrap": true,
+          "max_depth": null,
+          "max_features": "sqrt",
+          "min_samples_leaf": 1,
+          "n_estimators": 500
+        },
+        "endpoint": "fraction50/ladder01",
+        "family": "random_forest",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "sarcophilus_harrisii"
+      },
+      {
+        "candidate": "rf00",
+        "candidate_parameters": {
+          "bootstrap": true,
+          "max_depth": null,
+          "max_features": "sqrt",
+          "min_samples_leaf": 1,
+          "n_estimators": 500
+        },
+        "endpoint": "fraction50/ladder02",
+        "family": "random_forest",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "sarcophilus_harrisii"
+      },
+      {
+        "candidate": "rf01",
+        "candidate_parameters": {
+          "bootstrap": true,
+          "max_depth": null,
+          "max_features": "sqrt",
+          "min_samples_leaf": 3,
+          "n_estimators": 500
+        },
+        "endpoint": "fraction100/full",
+        "family": "random_forest",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "sarcophilus_harrisii"
+      },
+      {
+        "candidate": "rf06",
+        "candidate_parameters": {
+          "bootstrap": true,
+          "max_depth": 20,
+          "max_features": 0.67,
+          "min_samples_leaf": 10,
+          "n_estimators": 500
+        },
+        "endpoint": "fraction25/ladder00",
+        "family": "random_forest",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "dasyurus_maculatus"
+      },
+      {
+        "candidate": "ann04",
+        "candidate_parameters": {
+          "dropout": 0.2,
+          "lr": 0.0005,
+          "max_epochs": 300,
+          "patience": 30,
+          "weight_decay": 0.0001,
+          "width": 128
+        },
+        "endpoint": "fraction25/ladder01",
+        "family": "shallow_ann",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "dasyurus_maculatus"
+      },
+      {
+        "candidate": "ann05",
+        "candidate_parameters": {
+          "dropout": 0.3,
+          "lr": 0.0005,
+          "max_epochs": 300,
+          "patience": 30,
+          "weight_decay": 0.001,
+          "width": 128
+        },
+        "endpoint": "fraction25/ladder02",
+        "family": "shallow_ann",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "dasyurus_maculatus"
+      },
+      {
+        "candidate": "rf04",
+        "candidate_parameters": {
+          "bootstrap": true,
+          "max_depth": null,
+          "max_features": 0.33,
+          "min_samples_leaf": 10,
+          "n_estimators": 500
+        },
+        "endpoint": "fraction50/ladder00",
+        "family": "random_forest",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "dasyurus_maculatus"
+      },
+      {
+        "candidate": "ann05",
+        "candidate_parameters": {
+          "dropout": 0.3,
+          "lr": 0.0005,
+          "max_epochs": 300,
+          "patience": 30,
+          "weight_decay": 0.001,
+          "width": 128
+        },
+        "endpoint": "fraction50/ladder01",
+        "family": "shallow_ann",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "dasyurus_maculatus"
+      },
+      {
+        "candidate": "rf02",
+        "candidate_parameters": {
+          "bootstrap": true,
+          "max_depth": null,
+          "max_features": "sqrt",
+          "min_samples_leaf": 10,
+          "n_estimators": 500
+        },
+        "endpoint": "fraction50/ladder02",
+        "family": "random_forest",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "dasyurus_maculatus"
+      },
+      {
+        "candidate": "rf02",
+        "candidate_parameters": {
+          "bootstrap": true,
+          "max_depth": null,
+          "max_features": "sqrt",
+          "min_samples_leaf": 10,
+          "n_estimators": 500
+        },
+        "endpoint": "fraction100/full",
+        "family": "random_forest",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "dasyurus_maculatus"
+      },
+      {
+        "candidate": "rf05",
+        "candidate_parameters": {
+          "bootstrap": true,
+          "max_depth": 20,
+          "max_features": 0.67,
+          "min_samples_leaf": 3,
+          "n_estimators": 500
+        },
+        "endpoint": "fraction25/ladder00",
+        "family": "random_forest",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "dasyurus_viverrinus"
+      },
+      {
+        "candidate": "hgb05",
+        "candidate_parameters": {
+          "early_stopping": false,
+          "l2_regularization": 10,
+          "learning_rate": 0.1,
+          "max_iter": 300,
+          "max_leaf_nodes": 15,
+          "min_samples_leaf": 20
+        },
+        "endpoint": "fraction25/ladder01",
+        "family": "hist_gradient_boosting",
+        "seed_count": 1,
+        "seed_labels": [
+          "seed00"
+        ],
+        "species": "dasyurus_viverrinus"
+      },
+      {
+        "candidate": "rf00",
+        "candidate_parameters": {
+          "bootstrap": true,
+          "max_depth": null,
+          "max_features": "sqrt",
+          "min_samples_leaf": 1,
+          "n_estimators": 500
+        },
+        "endpoint": "fraction25/ladder02",
+        "family": "random_forest",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "dasyurus_viverrinus"
+      },
+      {
+        "candidate": "hgb06",
+        "candidate_parameters": {
+          "early_stopping": false,
+          "l2_regularization": 10,
+          "learning_rate": 0.1,
+          "max_iter": 300,
+          "max_leaf_nodes": 31,
+          "min_samples_leaf": 50
+        },
+        "endpoint": "fraction50/ladder00",
+        "family": "hist_gradient_boosting",
+        "seed_count": 1,
+        "seed_labels": [
+          "seed00"
+        ],
+        "species": "dasyurus_viverrinus"
+      },
+      {
+        "candidate": "hgb06",
+        "candidate_parameters": {
+          "early_stopping": false,
+          "l2_regularization": 10,
+          "learning_rate": 0.1,
+          "max_iter": 300,
+          "max_leaf_nodes": 31,
+          "min_samples_leaf": 50
+        },
+        "endpoint": "fraction50/ladder01",
+        "family": "hist_gradient_boosting",
+        "seed_count": 1,
+        "seed_labels": [
+          "seed00"
+        ],
+        "species": "dasyurus_viverrinus"
+      },
+      {
+        "candidate": "hgb06",
+        "candidate_parameters": {
+          "early_stopping": false,
+          "l2_regularization": 10,
+          "learning_rate": 0.1,
+          "max_iter": 300,
+          "max_leaf_nodes": 31,
+          "min_samples_leaf": 50
+        },
+        "endpoint": "fraction50/ladder02",
+        "family": "hist_gradient_boosting",
+        "seed_count": 1,
+        "seed_labels": [
+          "seed00"
+        ],
+        "species": "dasyurus_viverrinus"
+      },
+      {
+        "candidate": "rf00",
+        "candidate_parameters": {
+          "bootstrap": true,
+          "max_depth": null,
+          "max_features": "sqrt",
+          "min_samples_leaf": 1,
+          "n_estimators": 500
+        },
+        "endpoint": "fraction100/full",
+        "family": "random_forest",
+        "seed_count": 5,
+        "seed_labels": [
+          "seed00",
+          "seed01",
+          "seed02",
+          "seed03",
+          "seed04"
+        ],
+        "species": "dasyurus_viverrinus"
+      }
+    ]
+  },
+  "goal035_authority_availability": {
+    "all_live_hashes_match": true,
+    "implication": "The outer-prediction archive is not a directly runnable Goal035 config root. Stage a separate reconstruction root from hash-verified original sources and authorities or explicitly bind both roots; do not mutate the accepted archive or weaken load_config checks.",
+    "missing_from_existing_archive": 9,
+    "records": {
+      "corrected_aggregate": {
+        "expected_sha256": "d80e524245d18f54184433b4fb4e3ba2a4b2c8226452a037d832e14f189e0d43",
+        "in_existing_archive": false,
+        "live_file_sha256": "d80e524245d18f54184433b4fb4e3ba2a4b2c8226452a037d832e14f189e0d43",
+        "live_hash_matches": true,
+        "relative_path": "evidence/dsdm_architecture_selection/goal035/aggregate.json"
+      },
+      "goal026_feature_contract": {
+        "expected_sha256": "e9a8f9b7bee7dee25905dfa052427f6e0a4f1b5ebd6ed02fcfb1761bbd224d98",
+        "in_existing_archive": false,
+        "live_file_sha256": "e9a8f9b7bee7dee25905dfa052427f6e0a4f1b5ebd6ed02fcfb1761bbd224d98",
+        "live_hash_matches": true,
+        "relative_path": "evidence/model_ready_features/2026-07-27/feature_contract.json"
+      },
+      "goal026_fit_parameters": {
+        "expected_sha256": "608b99f94af49122bf9e252e35ae7c067812762d20ba080c3e7fbd40f35661d0",
+        "in_existing_archive": false,
+        "live_file_sha256": "608b99f94af49122bf9e252e35ae7c067812762d20ba080c3e7fbd40f35661d0",
+        "live_hash_matches": true,
+        "relative_path": "evidence/model_ready_features/2026-07-27/fit_parameters.json"
+      },
+      "goal028_config": {
+        "expected_sha256": "35b6ab72ba2b8ba2267dc82179987bfffaa3f339d64272d68012444e46285f00",
+        "in_existing_archive": false,
+        "live_file_sha256": "35b6ab72ba2b8ba2267dc82179987bfffaa3f339d64272d68012444e46285f00",
+        "live_hash_matches": true,
+        "relative_path": "config/modeling_foundation_preflight.json"
+      },
+      "goal028_decision": {
+        "expected_sha256": "3eb6e0fbe2ee7eb1db08e75c8b99f7d1fd9760cdbebacd88bbba8ebc1889a50c",
+        "in_existing_archive": false,
+        "live_file_sha256": "3eb6e0fbe2ee7eb1db08e75c8b99f7d1fd9760cdbebacd88bbba8ebc1889a50c",
+        "live_hash_matches": true,
+        "relative_path": "docs/goals/028-modeling-foundation-preflight/Decision.md"
+      },
+      "goal029_config": {
+        "expected_sha256": "62b1c5255c5aa5c74f5ba598818dd13e2f2234c0cb13da58671c3be286ccefae",
+        "in_existing_archive": true,
+        "live_file_sha256": "62b1c5255c5aa5c74f5ba598818dd13e2f2234c0cb13da58671c3be286ccefae",
+        "live_hash_matches": true,
+        "relative_path": "config/conventional_baseline_production.json"
+      },
+      "goal033_config": {
+        "expected_sha256": "39542d079b3cdc6a11819dea3e1c18b52ec4aa38f530ff218955d7e89775596f",
+        "in_existing_archive": false,
+        "live_file_sha256": "39542d079b3cdc6a11819dea3e1c18b52ec4aa38f530ff218955d7e89775596f",
+        "live_hash_matches": true,
+        "relative_path": "config/dsdm_architecture_selection.json"
+      },
+      "goal033_decision": {
+        "expected_sha256": "f9ba7b18498415422aa39618c4d4ec13f20c97be87a694f52d44bc788d6c68fb",
+        "in_existing_archive": false,
+        "live_file_sha256": "f9ba7b18498415422aa39618c4d4ec13f20c97be87a694f52d44bc788d6c68fb",
+        "live_hash_matches": true,
+        "relative_path": "docs/goals/033-dsdm-architecture-selection/Decision.md"
+      },
+      "goal034_config": {
+        "expected_sha256": "43f5161850d1c7384af8fe0600ae322c93ca9ccca54a2a878ce13f933c6367a9",
+        "in_existing_archive": false,
+        "live_file_sha256": "43f5161850d1c7384af8fe0600ae322c93ca9ccca54a2a878ce13f933c6367a9",
+        "live_hash_matches": true,
+        "relative_path": "config/dsdm_real_six_path_sentinel.json"
+      },
+      "goal034_decision": {
+        "expected_sha256": "edfd76dc3a3e94058da11fc5e36f93b40a23458326e04df8ea33a2ba6b386375",
+        "in_existing_archive": false,
+        "live_file_sha256": "edfd76dc3a3e94058da11fc5e36f93b40a23458326e04df8ea33a2ba6b386375",
+        "live_hash_matches": true,
+        "relative_path": "docs/goals/034-dsdm-real-six-path-sentinel/Decision.md"
+      }
+    }
+  },
+  "goal035_inventory": {
+    "accepted_case_leaves": 40,
+    "accepted_leaf_contents": {
+      "metadata.json": 40,
+      "predictions.npy": 40
+    },
+    "accepted_metadata_inventory_digest": "ca3f3f49d43fe4327cf29a5f06de80f71974c499a0c353042de60a94fad00b99",
+    "all_reconstruction_fields_present": true,
+    "auxiliary_replay_inputs_present_and_hashed_in_metadata": true,
+    "bundle_metadata_inventory_digest": "5c47ab3a290e00d6e889e4d594d5b351da7728cc349d91621f7884a20797c7fd",
+    "bundle_metadata_matches_leaves": true,
+    "files": 4984,
+    "fold_specific_multihead_weight_files": 0,
+    "fold_specific_q_weight_files": 0,
+    "multihead_digest_records": 200,
+    "numerical_array_payloads_validated": false,
+    "pooled_digest_records": 200,
+    "private_root": "data/processed/dsdm/goal035-final-inner-lifecycle/private",
+    "q_digest_records": 40,
+    "suffix_counts": {
+      ".exit-code": 4,
+      ".json": 2467,
+      ".log": 6,
+      ".npy": 2467,
+      ".npz": 40
+    }
+  },
+  "historical_neural_runtime": {
+    "inspection": "interpreter and distribution metadata only",
+    "machine": "arm64",
+    "numerical_thread_attestation_run": false,
+    "packages": {
+      "numpy": "2.2.6",
+      "pyarrow": "21.0.0",
+      "scikit-learn": "1.9.0",
+      "scipy": "1.16.3",
+      "threadpoolctl": "3.6.0",
+      "torch": "2.7.1"
+    },
+    "path": "/Users/bwbrook/papers/dSDM/data/processed/dsdm/goal034-real-six-path-sentinel/runtime/.venv/bin/python",
+    "python": "3.12.13",
+    "resolved_executable": "/Users/bwbrook/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/bin/python3.12",
+    "system": "Darwin"
+  },
+  "minimal_amendment_proposal": {
+    "acceptance": [
+      "Recompute and match source, bundle/input-array, runtime and auxiliary-mask digests before fitting.",
+      "Require exact accepted initial_model_digest == replay_initial_model_digest, initial_shared_digest, final_shared_digest, model_digest and auxiliary replay prediction_digest.",
+      "All 200 must pass before sensitivity target fitting. Persist weights privately with fresh serialization hashes bound to accepted semantic state digests.",
+      "Any mismatch fails the stage: no tolerance relaxation, new discovery, source/runtime change or outcome-driven rescue."
+    ],
+    "api": "Archived real_six_path._neural_lifecycle replay half, or outer_ready.exact_fit with identical MultiHeadResidual factory and _train_epochs; archived _prediction_digest on auxiliary replay rows only",
+    "extra_physical_fits": 200,
+    "feasibility": "Source and retained metadata support exact replay-only reconstruction; empirical reproducibility remains unverified.",
+    "inputs": "Original unchanged masked aux_x_replay, aux_y_replay and aux_species_replay; original species ordering; exact Goal035 source/runtime/architecture/seed and recorded replay_epochs",
+    "method": "200 deterministic replay-only multihead reconstructions: 8 species x 5 inner folds x 5 accepted seeds; no discovery, early-stopping search, epoch reselection or candidate tuning",
+    "outer_auxiliary_fits": 0,
+    "pooled_auxiliary_fits": 0,
+    "q_boundary": "q and pooled-pretraining models are not used by target_only_resmlp, multihead_full_finetune or the frozen conventional candidate. Bind existing provenance without reconstructing or refitting them.",
+    "q_fits": 0,
+    "status": "for parent/user assessment; no execution authorization created by audit"
+  },
+  "outer_multihead_states": {
+    "all_archived_copies_are_same_inode": true,
+    "all_file_sha256_match_receipts": true,
+    "archived_copies_sha256_match": true,
+    "canonical_production_states": 40,
+    "inner_substitution_permitted": false,
+    "neural_production_package_count": 8,
+    "state_file_inventory_digest": "43fcd50137a841e4f76695265d2ea93e7f7067369ce9fc4061bc700751523193"
+  },
+  "receipt_digest": "765e45c7f567c1e021d5954ea69b7d6d0bd11c3863efff2c855e7780cd562347",
+  "schema_version": "tasmania-pseudoabsence-auxiliary-availability-v1",
+  "scope": {
+    "canonical_response_rows_read": 0,
+    "held_response_arrays_read": 0,
+    "models_fitted": 0,
+    "permitted_reads": "source, config, aggregate receipts, leaf metadata, NPZ metadata_json only, file inventory and outer model byte hashes",
+    "predictions_generated": 0,
+    "remote_connections": 0,
+    "scores_computed": 0
+  },
+  "source_api_bindings": [
+    {
+      "functions": {
+        "load_config": {
+          "end_line": 174,
+          "start_line": 127
+        },
+        "prepare_case": {
+          "end_line": 334,
+          "start_line": 304
+        },
+        "runtime_attestation": {
+          "end_line": 199,
+          "start_line": 177
+        },
+        "write_leaf": {
+          "end_line": 368,
+          "start_line": 346
+        }
+      },
+      "path": "data/processed/dsdm/tasmania-outer-assessment-20261005/archive/goal037-ce70bf1/src/dsdm/final_inner_data.py",
+      "sha256": "1c20d1b224ee4092e139e7419fa989797aea5afaa45cdec926a5cd3586baad46"
+    },
+    {
+      "functions": {
+        "_auxiliary_lifecycle": {
+          "end_line": 167,
+          "start_line": 151
+        },
+        "_case_lifecycle": {
+          "end_line": 259,
+          "start_line": 170
+        },
+        "_fit_seed": {
+          "end_line": 88,
+          "start_line": 86
+        },
+        "export_from_foundation": {
+          "end_line": 364,
+          "start_line": 301
+        }
+      },
+      "path": "data/processed/dsdm/tasmania-outer-assessment-20261005/archive/goal037-ce70bf1/src/dsdm/final_inner_runner.py",
+      "sha256": "2b46a96fc5dbe4dbe6a3e1a594eeea48a39f56a9162e0fdd79a5f557968d75dc"
+    },
+    {
+      "functions": {
+        "_neural_lifecycle": {
+          "end_line": 411,
+          "start_line": 351
+        },
+        "_prediction_digest": {
+          "end_line": 348,
+          "start_line": 331
+        },
+        "_residual_factory": {
+          "end_line": 531,
+          "start_line": 511
+        },
+        "_shared_digest": {
+          "end_line": 164,
+          "start_line": 163
+        },
+        "_state_digest": {
+          "end_line": 148,
+          "start_line": 143
+        },
+        "_train_epochs": {
+          "end_line": 253,
+          "start_line": 218
+        }
+      },
+      "path": "data/processed/dsdm/tasmania-outer-assessment-20261005/archive/goal037-ce70bf1/src/dsdm/real_six_path.py",
+      "sha256": "7da430342545403ea8d82deee965ec065178c8660ceccd83a34af68cb9ff2bc0"
+    },
+    {
+      "functions": {
+        "_fit_seed": {
+          "end_line": 874,
+          "start_line": 872
+        },
+        "exact_fit": {
+          "end_line": 654,
+          "start_line": 599
+        },
+        "load_multihead_model": {
+          "end_line": 812,
+          "start_line": 787
+        }
+      },
+      "path": "data/processed/dsdm/tasmania-outer-assessment-20261005/archive/goal037-ce70bf1/src/dsdm/outer_ready.py",
+      "sha256": "8b9cdfbe505f42bc54723b4f4237ad929272ddbfaec517b40e73b9cf073de104"
+    },
+    {
+      "functions": {
+        "fit_support_mask": {
+          "end_line": 88,
+          "start_line": 76
+        }
+      },
+      "path": "data/processed/dsdm/tasmania-outer-assessment-20261005/archive/goal037-ce70bf1/src/dsdm/categorical_support.py",
+      "sha256": "90b59bfe6b47628ba6bb36d130fe427c3e5481b6a8b9c1492203f73a1234d959"
+    },
+    {
+      "functions": {
+        "refit_outer_training": {
+          "end_line": 322,
+          "start_line": 295
+        },
+        "run_candidate_oof": {
+          "end_line": 247,
+          "start_line": 167
+        }
+      },
+      "path": "data/processed/dsdm/tasmania-outer-assessment-20261005/archive/goal037-ce70bf1/src/dsdm_phase1/inner_cv.py",
+      "sha256": "41a5ebd4641f233ea8b9ba5b0941d9f736f7fa73cd73695ecff521b12eec336c"
+    },
+    {
+      "functions": {
+        "FeatureProvider": {
+          "end_line": 443,
+          "start_line": 354
+        }
+      },
+      "path": "data/processed/dsdm/tasmania-outer-assessment-20261005/archive/goal037-ce70bf1/src/dsdm_phase1/modeling_contract.py",
+      "sha256": "342bb461ca3e6c6193984e9d0ec22ba3d18ee8a3fcaeaaf84710c72adf5649a9"
+    },
+    {
+      "functions": {
+        "_NeuralAdapter": {
+          "end_line": 1292,
+          "start_line": 1227
+        },
+        "build_adapter": {
+          "end_line": 1304,
+          "start_line": 1302
+        },
+        "load_fitted_model": {
+          "end_line": 1379,
+          "start_line": 1307
+        }
+      },
+      "path": "data/processed/dsdm/tasmania-outer-assessment-20261005/archive/goal037-ce70bf1/src/dsdm_phase1/model_adapters.py",
+      "sha256": "5aeae21aaeca0502d40db90c732db9c21de3ca72ec2561c77b709738e3a3e35e"
+    }
+  ],
+  "status": "source_and_metadata_audit_complete_reconstruction_not_run"
+}

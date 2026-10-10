@@ -1,0 +1,562 @@
+{
+  "generated_on": "2026-10-05",
+  "purpose": "Verified literature candidates for editorial selection; this file is not the manuscript bibliography.",
+  "recommended_subset": [
+    {
+      "id": "botella2018",
+      "reason": "Direct early precedent for deep, convolutional, multilabel species-distribution modelling; useful in the Introduction if the manuscript explicitly distinguishes joint multilabel training from target-exclusive pretraining."
+    },
+    {
+      "id": "deneu2021",
+      "reason": "Direct empirical deep-SDM precedent showing that spatial environmental context and joint learning can improve predictions, especially for rare species; useful beside the manuscript's statement that shared representations may help data-limited targets."
+    },
+    {
+      "id": "norberg2019",
+      "reason": "Strong support for evaluating models across prediction tasks, biological levels and performance properties rather than treating one ranking or metric as general."
+    },
+    {
+      "id": "valavi2022",
+      "reason": "Direct presence-only benchmark showing that tuning and implementation choices materially affect model rankings and that default ensembles need not outperform single models."
+    },
+    {
+      "id": "wenger2012",
+      "reason": "Direct support for the manuscript's distinction between ordinary held-out accuracy and transferability to distinct locations or data sets."
+    },
+    {
+      "id": "yates2018",
+      "reason": "Broad, authoritative transferability review supporting the manuscript's discussion of sampling bias, nonstationarity, environmental dissimilarity and other limits on geographic transfer."
+    },
+    {
+      "id": "jimenezvalverde2012",
+      "reason": "Direct support for treating presence-background AUC as discrimination against the chosen background rather than occupancy accuracy, and for warning that extent affects AUC."
+    },
+    {
+      "id": "warton2013",
+      "reason": "Direct support for the observation-process limitation: presence-only predictions can encode observer bias, and non-target-species inventory backgrounds do not by themselves remove it."
+    },
+    {
+      "id": "johnston2021",
+      "reason": "Direct community-science guidance supporting careful filtering, effort covariates and complete checklists; relevant to the bird observation-process caveat."
+    }
+  ],
+  "factual_corrections": [
+    "Botella et al. (2018) is a Springer book chapter titled 'A Deep Learning Approach to Species Distribution Modelling', not a journal article.",
+    "Deneu et al. (2021) has six authors; Christophe Botella is the fourth author.",
+    "Harris (2015) is a single-author paper, and mistnet is a joint species distribution model rather than a pretraining method.",
+    "Chen, Xue and Gomes (2018) is an ICML/PMLR machine-learning paper, not an ecological SDM study, and the official PMLR record supplies no DOI.",
+    "Valavi et al.'s presence-only benchmark was first published online in 2021 but belongs to Ecological Monographs volume 92 issue 1 and is cited as 2022.",
+    "The blockCV paper was first published online in 2018 but belongs to Methods in Ecology and Evolution volume 10 issue 2 and is cited as 2019.",
+    "Jiménez-Valverde's DOI contains 2011, but the bibliographic issue year is 2012.",
+    "Kumar et al. (2022) is an ICLR conference paper with an official OpenReview URL but no DOI, volume or page range in the conference record.",
+    "The 2007 ensemble paper's authors are Miguel B. Araújo and Mark New."
+  ],
+  "candidates": [
+    {
+      "classification": "recommended",
+      "verification_status": "verified",
+      "csl": {
+        "id": "botella2018",
+        "type": "chapter",
+        "title": "A Deep Learning Approach to Species Distribution Modelling",
+        "author": [
+          {"family": "Botella", "given": "Christophe"},
+          {"family": "Joly", "given": "Alexis"},
+          {"family": "Bonnet", "given": "Pierre"},
+          {"family": "Monestiez", "given": "Pascal"},
+          {"family": "Munoz", "given": "François"}
+        ],
+        "editor": [
+          {"family": "Joly", "given": "Alexis"},
+          {"family": "Vrochidis", "given": "Stefanos"},
+          {"family": "Karatzas", "given": "Kostas"},
+          {"family": "Karppinen", "given": "Ari"},
+          {"family": "Bonnet", "given": "Pierre"}
+        ],
+        "issued": {"date-parts": [[2018]]},
+        "container-title": "Multimedia Tools and Applications for Environmental & Biodiversity Informatics",
+        "collection-title": "Multimedia Systems and Applications",
+        "page": "169-199",
+        "publisher": "Springer International Publishing",
+        "publisher-place": "Cham",
+        "DOI": "10.1007/978-3-319-76445-0_10",
+        "URL": "https://link.springer.com/chapter/10.1007/978-3-319-76445-0_10"
+      },
+      "evidence": {
+        "supported_claim": "The chapter proposed a deep, convolutional, multilabel SDM and reported that spatial patterns in environmental variables improved prediction in its empirical study.",
+        "relevance": "Useful as an early direct precedent for learning shared nonlinear representations across species.",
+        "limits": "Its multilabel CNN jointly predicts species from environmental neighbourhoods; it does not test target-exclusive auxiliary pretraining, matched target-only networks or geographic transfer.",
+        "suggested_location": "Introduction, after the first paragraph on shared representations, with an explicit distinction from the present pretraining design.",
+        "primary_sources": ["https://link.springer.com/chapter/10.1007/978-3-319-76445-0_10"]
+      }
+    },
+    {
+      "classification": "recommended",
+      "verification_status": "verified",
+      "csl": {
+        "id": "deneu2021",
+        "type": "article-journal",
+        "title": "Convolutional neural networks improve species distribution modelling by capturing the spatial structure of the environment",
+        "author": [
+          {"family": "Deneu", "given": "Benjamin"},
+          {"family": "Servajean", "given": "Maximilien"},
+          {"family": "Bonnet", "given": "Pierre"},
+          {"family": "Botella", "given": "Christophe"},
+          {"family": "Munoz", "given": "François"},
+          {"family": "Joly", "given": "Alexis"}
+        ],
+        "issued": {"date-parts": [[2021]]},
+        "container-title": "PLOS Computational Biology",
+        "volume": "17",
+        "issue": "4",
+        "page": "e1008856",
+        "DOI": "10.1371/journal.pcbi.1008856",
+        "URL": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008856"
+      },
+      "evidence": {
+        "supported_claim": "Using French plant occurrence data, joint-learning CNNs with environmental neighbourhoods outperformed ablated punctual alternatives; gains were especially apparent for species with few occurrences.",
+        "relevance": "Direct empirical evidence that multi-species deep models can exploit shared environmental structure and sometimes help data-limited species.",
+        "limits": "The comparison changes spatial input representation as well as model class, uses GBIF plant records in one domain, and does not isolate a pretrained-versus-target-only effect or test regional transfer.",
+        "suggested_location": "Introduction as qualified precedent for deep multi-species SDMs; optionally Discussion when contrasting the present small inner gains with earlier within-domain results.",
+        "primary_sources": ["https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008856"]
+      }
+    },
+    {
+      "classification": "context_only",
+      "verification_status": "verified",
+      "csl": {
+        "id": "harris2015",
+        "type": "article-journal",
+        "title": "Generating realistic assemblages with a joint species distribution model",
+        "author": [{"family": "Harris", "given": "David J."}],
+        "issued": {"date-parts": [[2015]]},
+        "container-title": "Methods in Ecology and Evolution",
+        "volume": "6",
+        "issue": "4",
+        "page": "465-473",
+        "DOI": "10.1111/2041-210X.12332",
+        "URL": "https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.12332"
+      },
+      "evidence": {
+        "supported_claim": "Mistnet is a stochastic feedforward-neural-network JSDM that represents nonlinear environmental responses and non-independent co-occurrence attributed to unobserved heterogeneity; it improved held-out assemblage likelihood in a North American Breeding Bird Survey example.",
+        "relevance": "Shows an earlier neural route for sharing information across species and modelling community-level dependence.",
+        "limits": "Mistnet's estimand is a joint assemblage distribution and its advantage was assessed largely through assemblage likelihood, unlike the present target-specific AUC comparison and target-exclusive pretraining.",
+        "suggested_location": "Only in a brief literature paragraph distinguishing joint community models from representation pretraining; omit if space is tight.",
+        "primary_sources": ["https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.12332"]
+      }
+    },
+    {
+      "classification": "context_only",
+      "verification_status": "verified",
+      "csl": {
+        "id": "chen2018",
+        "type": "paper-conference",
+        "title": "End-to-End Learning for the Deep Multivariate Probit Model",
+        "author": [
+          {"family": "Chen", "given": "Di"},
+          {"family": "Xue", "given": "Yexiang"},
+          {"family": "Gomes", "given": "Carla"}
+        ],
+        "issued": {"date-parts": [[2018]]},
+        "container-title": "Proceedings of the 35th International Conference on Machine Learning",
+        "collection-title": "Proceedings of Machine Learning Research",
+        "volume": "80",
+        "page": "932-941",
+        "publisher": "PMLR",
+        "URL": "https://proceedings.mlr.press/v80/chen18o.html"
+      },
+      "evidence": {
+        "supported_claim": "The deep multivariate probit model combines neural predictors with a multivariate probit correlation structure and improved joint likelihood on multi-entity tasks relative to tested competitors.",
+        "relevance": "Provides general machine-learning context for deep models of correlated binary outcomes.",
+        "limits": "This is not an ecological SDM evaluation, does not study presence-background observation processes, and optimizes joint multi-entity likelihood rather than testing transferable target-specific representations.",
+        "suggested_location": "Usually omit; use only if the Introduction adds a compact taxonomy of deep multi-output models.",
+        "primary_sources": ["https://proceedings.mlr.press/v80/chen18o.html"]
+      }
+    },
+    {
+      "classification": "recommended",
+      "verification_status": "verified",
+      "csl": {
+        "id": "norberg2019",
+        "type": "article-journal",
+        "title": "A comprehensive evaluation of predictive performance of 33 species distribution models at species and community levels",
+        "author": [
+          {"family": "Norberg", "given": "Anna"},
+          {"family": "Abrego", "given": "Nerea"},
+          {"family": "Blanchet", "given": "F. Guillaume"},
+          {"family": "Adler", "given": "Frederick R."},
+          {"family": "Anderson", "given": "Barbara J."},
+          {"family": "Anttila", "given": "Jani"},
+          {"family": "Araújo", "given": "Miguel B."},
+          {"family": "Dallas", "given": "Tad"},
+          {"family": "Dunson", "given": "David"},
+          {"family": "Elith", "given": "Jane"},
+          {"family": "Foster", "given": "Scott D."},
+          {"family": "Fox", "given": "Richard"},
+          {"family": "Franklin", "given": "Janet"},
+          {"family": "Godsoe", "given": "William"},
+          {"family": "Guisan", "given": "Antoine"},
+          {"family": "O'Hara", "given": "Bob"},
+          {"family": "Hill", "given": "Nicole A."},
+          {"family": "Holt", "given": "Robert D."},
+          {"family": "Hui", "given": "Francis K. C."},
+          {"family": "Husby", "given": "Magne"},
+          {"family": "Kålås", "given": "John Atle"},
+          {"family": "Lehikoinen", "given": "Aleksi"},
+          {"family": "Luoto", "given": "Miska"},
+          {"family": "Mod", "given": "Heidi K."},
+          {"family": "Newell", "given": "Graeme"},
+          {"family": "Renner", "given": "Ian"},
+          {"family": "Roslin", "given": "Tomas"},
+          {"family": "Soininen", "given": "Janne"},
+          {"family": "Thuiller", "given": "Wilfried"},
+          {"family": "Vanhatalo", "given": "Jarno"},
+          {"family": "Warton", "given": "David"},
+          {"family": "White", "given": "Matt"},
+          {"family": "Zimmermann", "given": "Niklaus E."},
+          {"family": "Gravel", "given": "Dominique"},
+          {"family": "Ovaskainen", "given": "Otso"}
+        ],
+        "issued": {"date-parts": [[2019]]},
+        "container-title": "Ecological Monographs",
+        "volume": "89",
+        "issue": "3",
+        "page": "e01370",
+        "DOI": "10.1002/ecm.1370",
+        "URL": "https://esajournals.onlinelibrary.wiley.com/doi/10.1002/ecm.1370"
+      },
+      "evidence": {
+        "supported_claim": "Across 33 variants, five empirical community data sets and interpolation-to-extrapolation tasks, predictive performance depended strongly on model variant, data set and prediction task; rankings also changed with the performance property evaluated.",
+        "relevance": "Supports the manuscript's use of multiple comparators and its separation of discrimination, calibration-like concerns, species-level prediction and transfer tasks.",
+        "limits": "The study used presence-absence community data and many model variants; it does not benchmark the present presence-background design or establish the superiority of a specific comparator here.",
+        "suggested_location": "Introduction when motivating credible conventional comparators, or Discussion where metric- and task-dependent rankings are emphasized.",
+        "primary_sources": ["https://esajournals.onlinelibrary.wiley.com/doi/10.1002/ecm.1370"]
+      }
+    },
+    {
+      "classification": "recommended",
+      "verification_status": "verified",
+      "csl": {
+        "id": "valavi2022",
+        "type": "article-journal",
+        "title": "Predictive performance of presence-only species distribution models: a benchmark study with reproducible code",
+        "author": [
+          {"family": "Valavi", "given": "Roozbeh"},
+          {"family": "Guillera-Arroita", "given": "Gurutzeta"},
+          {"family": "Lahoz-Monfort", "given": "José J."},
+          {"family": "Elith", "given": "Jane"}
+        ],
+        "issued": {"date-parts": [[2022]]},
+        "container-title": "Ecological Monographs",
+        "volume": "92",
+        "issue": "1",
+        "page": "e01486",
+        "DOI": "10.1002/ecm.1486",
+        "URL": "https://esajournals.onlinelibrary.wiley.com/doi/10.1002/ecm.1486"
+      },
+      "evidence": {
+        "supported_claim": "In a reproducible benchmark of presence-only methods evaluated with independent presence-absence data, tuning and fitting choices affected performance; a tuned ensemble ranked highest, while default biomod ensembles did no better than moderate single models.",
+        "relevance": "Directly supports tuning credible conventional comparators and avoiding generic claims that an algorithm family or ensemble is intrinsically superior.",
+        "limits": "The benchmark reanalysed 225 species from six regions under its own background and validation design; its rankings do not transfer automatically to the present taxa, predictors or geographic holdouts.",
+        "suggested_location": "Introduction or Methods around the tuned conventional benchmark; Discussion around the dependence of ensemble benefit on constituent fitting and implementation.",
+        "primary_sources": ["https://esajournals.onlinelibrary.wiley.com/doi/10.1002/ecm.1486"]
+      }
+    },
+    {
+      "classification": "recommended",
+      "verification_status": "verified",
+      "csl": {
+        "id": "yates2018",
+        "type": "article-journal",
+        "title": "Outstanding Challenges in the Transferability of Ecological Models",
+        "author": [
+          {"family": "Yates", "given": "Katherine L."},
+          {"family": "Bouchet", "given": "Phil J."},
+          {"family": "Caley", "given": "M. Julian"},
+          {"family": "Mengersen", "given": "Kerrie"},
+          {"family": "Randin", "given": "Christophe F."},
+          {"family": "Parnell", "given": "Stephen"},
+          {"family": "Fielding", "given": "Alan H."},
+          {"family": "Bamford", "given": "Andrew J."},
+          {"family": "Ban", "given": "Stephen"},
+          {"family": "Barbosa", "given": "A. Márcia"},
+          {"family": "Dormann", "given": "Carsten F."},
+          {"family": "Elith", "given": "Jane"},
+          {"family": "Embling", "given": "Clare B."},
+          {"family": "Ervin", "given": "Gary N."},
+          {"family": "Fisher", "given": "Rebecca"},
+          {"family": "Gould", "given": "Susan"},
+          {"family": "Graf", "given": "Roland F."},
+          {"family": "Gregr", "given": "Edward J."},
+          {"family": "Halpin", "given": "Patrick N."},
+          {"family": "Heikkinen", "given": "Risto K."},
+          {"family": "Heinänen", "given": "Stefan"},
+          {"family": "Jones", "given": "Alice R."},
+          {"family": "Krishnakumar", "given": "Periyadan K."},
+          {"family": "Lauria", "given": "Valentina"},
+          {"family": "Lozano-Montes", "given": "Hector"},
+          {"family": "Mannocci", "given": "Laura"},
+          {"family": "Mellin", "given": "Camille"},
+          {"family": "Mesgaran", "given": "Mohsen B."},
+          {"family": "Moreno-Amat", "given": "Elena"},
+          {"family": "Mormede", "given": "Sophie"},
+          {"family": "Novaczek", "given": "Emilie"},
+          {"family": "Oppel", "given": "Steffen"},
+          {"family": "Ortuño Crespo", "given": "Guillermo"},
+          {"family": "Peterson", "given": "A. Townsend"},
+          {"family": "Rapacciuolo", "given": "Giovanni"},
+          {"family": "Roberts", "given": "Jason J."},
+          {"family": "Ross", "given": "Rebecca E."},
+          {"family": "Scales", "given": "Kylie L."},
+          {"family": "Schoeman", "given": "David"},
+          {"family": "Snelgrove", "given": "Paul"},
+          {"family": "Sundblad", "given": "Göran"},
+          {"family": "Thuiller", "given": "Wilfried"},
+          {"family": "Torres", "given": "Leigh G."},
+          {"family": "Verbruggen", "given": "Heroen"},
+          {"family": "Wang", "given": "Lifei"},
+          {"family": "Wenger", "given": "Seth"},
+          {"family": "Whittingham", "given": "Mark J."},
+          {"family": "Zharikov", "given": "Yuri"},
+          {"family": "Zurell", "given": "Damaris"},
+          {"family": "Sequeira", "given": "Ana M. M."}
+        ],
+        "issued": {"date-parts": [[2018]]},
+        "container-title": "Trends in Ecology & Evolution",
+        "volume": "33",
+        "issue": "10",
+        "page": "790-802",
+        "DOI": "10.1016/j.tree.2018.08.001",
+        "URL": "https://www.sciencedirect.com/science/article/pii/S0169534718301812"
+      },
+      "evidence": {
+        "supported_claim": "This expert synthesis identifies species traits, sampling bias, biotic interactions, nonstationarity and environmental dissimilarity as determinants of transferred predictions, and highlights the lack of broadly applicable transferability metrics.",
+        "relevance": "Provides direct conceptual support for treating regional transfer as a distinct inferential task and for qualifying what a held-region result can establish.",
+        "limits": "It is a broad review and priority-setting exercise, not a quantitative estimate of any transfer penalty or a validation of the present design.",
+        "suggested_location": "Introduction after defining intended transfer; Discussion in the paragraph on composition, support and nonstationarity.",
+        "primary_sources": ["https://www.sciencedirect.com/science/article/pii/S0169534718301812"]
+      }
+    },
+    {
+      "classification": "recommended",
+      "verification_status": "verified",
+      "csl": {
+        "id": "wenger2012",
+        "type": "article-journal",
+        "title": "Assessing transferability of ecological models: an underappreciated aspect of statistical validation",
+        "author": [
+          {"family": "Wenger", "given": "Seth J."},
+          {"family": "Olden", "given": "Julian D."}
+        ],
+        "issued": {"date-parts": [[2012]]},
+        "container-title": "Methods in Ecology and Evolution",
+        "volume": "3",
+        "issue": "2",
+        "page": "260-267",
+        "DOI": "10.1111/j.2041-210X.2011.00170.x",
+        "URL": "https://besjournals.onlinelibrary.wiley.com/doi/10.1111/j.2041-210X.2011.00170.x"
+      },
+      "evidence": {
+        "supported_claim": "Conventional validation need not assess generality to distinct locations, times or data sets; the authors recommend non-random grouping across those dimensions and show in a trout case study that high in-sample machine-learning performance can coexist with poor transfer.",
+        "relevance": "Directly supports the manuscript's separation of inner development performance from held-region and mainland-to-Tasmania transfer.",
+        "limits": "The empirical illustration involved two stream fishes and specific algorithms; it does not imply that flexible models always transfer poorly or quantify the present effect.",
+        "suggested_location": "Introduction beside the sentence that gains should persist under the intended form of transfer.",
+        "primary_sources": ["https://besjournals.onlinelibrary.wiley.com/doi/10.1111/j.2041-210X.2011.00170.x"]
+      }
+    },
+    {
+      "classification": "optional",
+      "verification_status": "verified",
+      "csl": {
+        "id": "valavi2019",
+        "type": "article-journal",
+        "title": "blockCV: An R package for generating spatially or environmentally separated folds for k-fold cross-validation of species distribution models",
+        "author": [
+          {"family": "Valavi", "given": "Roozbeh"},
+          {"family": "Elith", "given": "Jane"},
+          {"family": "Lahoz-Monfort", "given": "José J."},
+          {"family": "Guillera-Arroita", "given": "Gurutzeta"}
+        ],
+        "issued": {"date-parts": [[2019]]},
+        "container-title": "Methods in Ecology and Evolution",
+        "volume": "10",
+        "issue": "2",
+        "page": "225-232",
+        "DOI": "10.1111/2041-210X.13107",
+        "URL": "https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13107"
+      },
+      "evidence": {
+        "supported_claim": "Random cross-validation can underestimate prediction error for structured data; blockCV implements spatially or environmentally separated folds and tools for exploring candidate block structure.",
+        "relevance": "Supports the methodological rationale for complete projected spatial blocks in bird inner folds.",
+        "limits": "It is principally a software/method paper. Citing it does not show that this manuscript's 50-km blocks eliminate dependence or reproduce the outer transfer task; Roberts et al. (2017) already covers the broader principle.",
+        "suggested_location": "Methods beside the bird spatial-fold description only if a software/method-specific citation is wanted; otherwise the existing Roberts citation is adequate.",
+        "primary_sources": ["https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13107"]
+      }
+    },
+    {
+      "classification": "optional",
+      "verification_status": "verified",
+      "csl": {
+        "id": "meyer2021",
+        "type": "article-journal",
+        "title": "Predicting into unknown space? Estimating the area of applicability of spatial prediction models",
+        "author": [
+          {"family": "Meyer", "given": "Hanna"},
+          {"family": "Pebesma", "given": "Edzer"}
+        ],
+        "issued": {"date-parts": [[2021]]},
+        "container-title": "Methods in Ecology and Evolution",
+        "volume": "12",
+        "issue": "9",
+        "page": "1620-1633",
+        "DOI": "10.1111/2041-210X.13650",
+        "URL": "https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13650"
+      },
+      "evidence": {
+        "supported_claim": "The authors define a predictor-space dissimilarity index and area of applicability; in their simulations, cross-validation error was comparable within the estimated area but did not apply outside it.",
+        "relevance": "Useful for explaining that geographic holdouts can contain predictor combinations inadequately represented in training and that this should be diagnosed explicitly.",
+        "limits": "The present manuscript has not reported an area-of-applicability analysis, so the paper cannot support a claim that environmental extrapolation caused the observed regional results.",
+        "suggested_location": "Discussion as a future diagnostic or limitation, not as an explanation of the current outer result.",
+        "primary_sources": ["https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13650"]
+      }
+    },
+    {
+      "classification": "recommended",
+      "verification_status": "verified",
+      "csl": {
+        "id": "jimenezvalverde2012",
+        "type": "article-journal",
+        "title": "Insights into the area under the receiver operating characteristic curve (AUC) as a discrimination measure in species distribution modelling",
+        "author": [{"family": "Jiménez-Valverde", "given": "Alberto"}],
+        "issued": {"date-parts": [[2012]]},
+        "container-title": "Global Ecology and Biogeography",
+        "volume": "21",
+        "issue": "4",
+        "page": "498-507",
+        "DOI": "10.1111/j.1466-8238.2011.00683.x",
+        "URL": "https://onlinelibrary.wiley.com/doi/10.1111/j.1466-8238.2011.00683.x"
+      },
+      "evidence": {
+        "supported_claim": "AUC measures discrimination rather than calibration or ecological accuracy; with background rather than verified absences, its usual bounds and interpretation are altered, and its value depends on the evaluation domain.",
+        "relevance": "Directly supports the manuscript's careful language that bird AUC estimates recorded-presence versus supported-background discrimination and that changing evaluation extent changes the task.",
+        "limits": "The article argues strongly against AUC for potential-distribution evaluation. The present manuscript uses AUC for an explicitly narrower recording-discrimination estimand, so cite it to define that limitation rather than implying the reported comparisons are invalid.",
+        "suggested_location": "Introduction after the Lobo et al. extent sentence or Discussion in the paragraph interpreting presence-background AUC.",
+        "primary_sources": ["https://onlinelibrary.wiley.com/doi/10.1111/j.1466-8238.2011.00683.x"]
+      }
+    },
+    {
+      "classification": "recommended",
+      "verification_status": "verified",
+      "csl": {
+        "id": "warton2013",
+        "type": "article-journal",
+        "title": "Model-Based Control of Observer Bias for the Analysis of Presence-Only Data in Ecology",
+        "author": [
+          {"family": "Warton", "given": "David I."},
+          {"family": "Renner", "given": "Ian W."},
+          {"family": "Ramp", "given": "Daniel"}
+        ],
+        "issued": {"date-parts": [[2013]]},
+        "container-title": "PLOS ONE",
+        "volume": "8",
+        "issue": "11",
+        "page": "e79168",
+        "DOI": "10.1371/journal.pone.0079168",
+        "URL": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0079168"
+      },
+      "evidence": {
+        "supported_claim": "Presence-only records can reflect spatial variation in observer activity; in a 62-plant evaluation, explicitly modelling known observer-bias covariates improved predictions and usually outperformed pseudoabsence or non-target-species inventory corrections.",
+        "relevance": "Directly supports the manuscript's statement that donor-supported background indicates sampling support but does not separate ecological and recording processes.",
+        "limits": "The paper's correction requires measured bias covariates and was evaluated in a plant case study. It does not show which process the present encoder learned or that the manuscript's X10 rule necessarily fails.",
+        "suggested_location": "Introduction immediately after the paragraph on presence-background data and recording support; Discussion in the recording-richness interpretation paragraph.",
+        "primary_sources": ["https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0079168"]
+      }
+    },
+    {
+      "classification": "recommended",
+      "verification_status": "verified",
+      "csl": {
+        "id": "johnston2021",
+        "type": "article-journal",
+        "title": "Analytical guidelines to increase the value of community science data: An example using eBird data to estimate species distributions",
+        "author": [
+          {"family": "Johnston", "given": "Alison"},
+          {"family": "Hochachka", "given": "Wesley M."},
+          {"family": "Strimas-Mackey", "given": "Matthew E."},
+          {"family": "Ruiz Gutierrez", "given": "Viviana"},
+          {"family": "Robinson", "given": "Orin J."},
+          {"family": "Miller", "given": "Eliot T."},
+          {"family": "Auer", "given": "Tom"},
+          {"family": "Kelling", "given": "Steve T."},
+          {"family": "Fink", "given": "Daniel"}
+        ],
+        "issued": {"date-parts": [[2021]]},
+        "container-title": "Diversity and Distributions",
+        "volume": "27",
+        "issue": "7",
+        "page": "1265-1277",
+        "DOI": "10.1111/ddi.13271",
+        "URL": "https://onlinelibrary.wiley.com/doi/10.1111/ddi.13271"
+      },
+      "evidence": {
+        "supported_claim": "In eBird case studies, filtering observations, retaining complete checklists and modelling effort improved or did not harm model quality; degraded presence-only or incomplete-checklist data performed worse.",
+        "relevance": "Supports explicit treatment of heterogeneous observation effort and the manuscript's refusal to interpret community-science recording discrimination as occupancy.",
+        "limits": "The guidance is based on semi-structured eBird checklists with effort metadata. The present bird substrate and support-background construction differ, and the paper does not validate donor richness as an effort proxy.",
+        "suggested_location": "Introduction or Discussion where community-science observation processes and recording richness are qualified.",
+        "primary_sources": ["https://onlinelibrary.wiley.com/doi/10.1111/ddi.13271"]
+      }
+    },
+    {
+      "classification": "context_only",
+      "verification_status": "verified",
+      "csl": {
+        "id": "kumar2022",
+        "type": "paper-conference",
+        "title": "Fine-Tuning Can Distort Pretrained Features and Underperform Out-of-Distribution",
+        "author": [
+          {"family": "Kumar", "given": "Ananya"},
+          {"family": "Raghunathan", "given": "Aditi"},
+          {"family": "Jones", "given": "Robbie"},
+          {"family": "Ma", "given": "Tengyu"},
+          {"family": "Liang", "given": "Percy"}
+        ],
+        "issued": {"date-parts": [[2022]]},
+        "container-title": "International Conference on Learning Representations",
+        "URL": "https://openreview.net/forum?id=UYneFzXSJWh"
+      },
+      "evidence": {
+        "supported_claim": "Across ten computer-vision distribution-shift benchmarks, full fine-tuning improved average in-distribution accuracy but underperformed linear probing out of distribution; the authors also analyse this trade-off in a simplified theoretical setting.",
+        "relevance": "Provides a non-ecological precedent for treating fine-tuning and frozen-feature transfer as distinct hypotheses under distribution shift.",
+        "limits": "The data, losses, architectures and shifts are image-classification settings. It cannot explain the present ecological result, predict its sign or validate frozen-trunk superiority here, which was not observed on average.",
+        "suggested_location": "At most one carefully qualified Discussion sentence; omit if the manuscript remains ecology-focused.",
+        "primary_sources": ["https://openreview.net/forum?id=UYneFzXSJWh", "https://openreview.net/pdf?id=UYneFzXSJWh"]
+      }
+    },
+    {
+      "classification": "optional",
+      "verification_status": "verified",
+      "csl": {
+        "id": "araujo2007",
+        "type": "article-journal",
+        "title": "Ensemble forecasting of species distributions",
+        "author": [
+          {"family": "Araújo", "given": "Miguel B."},
+          {"family": "New", "given": "Mark"}
+        ],
+        "issued": {"date-parts": [[2007]]},
+        "container-title": "Trends in Ecology & Evolution",
+        "volume": "22",
+        "issue": "1",
+        "page": "42-47",
+        "DOI": "10.1016/j.tree.2006.09.010",
+        "URL": "https://www.sciencedirect.com/science/article/pii/S016953470600303X"
+      },
+      "evidence": {
+        "supported_claim": "The review advocates analysing multiple bioclimatic models as ensembles to represent model-dependent uncertainty and describes bounding, consensus and probabilistic approaches.",
+        "relevance": "Provides historical context for combining predictions and for treating ensemble performance as a question about complementary errors rather than a pretraining test.",
+        "limits": "Its ensemble concept spans model classes, parameters, initial and boundary conditions and future scenarios; it does not validate a fixed equal-weight average of two fitted learners or show that such an average isolates pretraining value.",
+        "suggested_location": "Discussion around the exploratory neural-conventional average if a general ensemble reference is desired; Valavi et al. (2022) is more directly relevant to the empirical caution.",
+        "primary_sources": ["https://www.sciencedirect.com/science/article/pii/S016953470600303X"]
+      }
+    }
+  ]
+}

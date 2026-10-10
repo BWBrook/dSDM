@@ -1,0 +1,18 @@
+{
+  "additional_mocked_hard_termination_checks": 2,
+  "counting_note": "inner running records reserve two physical fits; completed lifecycles prove both occurred",
+  "fits_performed": 0,
+  "inner_recovered_states_verified": 200,
+  "no_fit_tests": 21,
+  "outer_response_labels_read": 0,
+  "outer_saved_states_verified": 40,
+  "preparation_receipt_digest": "b50c010da96e00f3698fd05575a07fc6000926959892e04052ddd91b090e304d",
+  "qualified_next_stage": "fixed eight non-promotable neural smoke fits",
+  "receipt_digest": "f35e73cb4a9b10449f98e00386e0574e68e8d33fe00899fb3e624c3d7da4f469",
+  "runner_sha256": "ffc6941055ba5485e414ec6cee8472b8fe5fd65609c04cf3158bf49d82caf289",
+  "schema_version": "tasmania-neural-pre-smoke-review-v1",
+  "staged_authorities_verified": 10,
+  "staged_sources_verified": 46,
+  "status": "accepted",
+  "support_masks_verified": 336
+}

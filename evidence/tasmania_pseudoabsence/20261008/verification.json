@@ -1,0 +1,56 @@
+{
+  "authorised_endpoint_scope": "all_seven",
+  "auxiliary_audit_receipt_digest": "765e45c7f567c1e021d5954ea69b7d6d0bd11c3863efff2c855e7780cd562347",
+  "checks": {
+    "focused_tests_passed": 8,
+    "held_response_labels_read": false,
+    "independent_ladder_reproduction_passed": true,
+    "metadata_only_final_census": true,
+    "new_fits": 0,
+    "new_predictions": 0,
+    "new_scores": 0,
+    "production_qualified": false
+  },
+  "files": {
+    "HANDOVER.md": "0259cb99132aa0ac964254c22d4a26d549491de36931b617edb19c104a92d7c4",
+    "data/processed/dsdm/tasmania-pseudoabsence-20261008/private/audit/independent_census.py": "2c9539619ccb0a32e7213e831ac94bcf2411d1c3b392882649fb8ef75d952b60",
+    "docs/plan/TasmaniaAuxiliaryAvailability-20261008.md": "b433112e09fbfdf232ae4b33fc0dd0d4937304a4a860bcdb2e66b230f1c5f66a",
+    "docs/plan/TasmaniaPseudoabsenceSensitivity-20261008.md": "05f90f85e60859c5bc9d5fb77a00238c5c2e233122fd1ff0261f8cb377d770a6",
+    "docs/plan/TasmaniaPseudoabsenceSensitivityProposal-20261005.md": "7175e9fc1aea49d233a113700d6030ba7eb7396c62b9727868970cdc100f0659",
+    "evidence/tasmania_pseudoabsence/20261008/auxiliary-state-audit.json": "335986169feb00c867ba9fc7cc0ab609607256e71b73c8d5dd4311dd04f15a94",
+    "evidence/tasmania_pseudoabsence/20261008/source-census.json": "211bad0f88daa140f1d56ac2916fd5da584f4164e6e96e36748547b8dc392352",
+    "scripts/tasmania_pseudoabsence_census.py": "7062d2877fe55acd4439e4e357c03b0a99678f0c8dc3da410028ba1b8d1e0618",
+    "tests/test_tasmania_pseudoabsence_census.py": "da993adf083a6a970275338b5c77e5a0cdacbcee9aec53f75c5fddd119c041e0"
+  },
+  "fit_inventory": {
+    "conventional_production": 1965,
+    "family_strata": {
+      "elastic_net": 1,
+      "hist_gradient_boosting": 10,
+      "random_forest": 24,
+      "shallow_ann": 21
+    },
+    "neural_production": 6160,
+    "production": 8125,
+    "proposed_recovery": 200,
+    "proposed_total": 8339,
+    "smoke": 14
+  },
+  "schema_version": "tasmania-pseudoabsence-preflight-review-v1",
+  "source_census": {
+    "fits": 0,
+    "held_response_labels_read": false,
+    "independent_implementation": true,
+    "matched_original_endpoint_digests": 336,
+    "matched_role_counts_and_set_hashes": 896,
+    "predictions": 0,
+    "review_script_sha256": "2c9539619ccb0a32e7213e831ac94bcf2411d1c3b392882649fb8ef75d952b60",
+    "scores": 0,
+    "source_census_sha256": "211bad0f88daa140f1d56ac2916fd5da584f4164e6e96e36748547b8dc392352",
+    "success": true,
+    "training_rows": 11039
+  },
+  "status": "class_support_passed_auxiliary_reconstruction_amendment_pending",
+  "verified_at": "2026-10-08T23:45:06.454040+11:00",
+  "verified_audit_file_bindings": 18
+}
