@@ -5,7 +5,39 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Current handoff — 9 October, Tasmania sensitivity complete
+## Current handoff — 11 October, survey-only review follow-up complete
+
+Barry requested that Codex address Claude’s correspondence review (message
+1403). The post hoc survey-only evaluation is complete using the already-closed
+predictions, all eight species, seven endpoints and three methods. It retains
+all 1,300 held presences and 242 survey-supported negatives, excluding 130
+constructed pseudoabsences. No new fits, model selection or threshold changes
+were made. Nine tests, exact idempotent replay and independent recomputation
+passed; all 336 paired performance rows and 672 contrast rows matched exactly.
+
+The result materially qualifies the mixed-panel finding. Removing training
+pseudoabsences raises full-data mean survey-only AUC for all three methods:
+target-only 0.8403 → 0.8587, fine-tuning 0.8352 → 0.8572 and conventional
+0.8198 → 0.8385. Fine-tuning remains slightly below target-only by AUC, but
+retains positive TSS/MCC contrasts; it exceeds conventional learning on all
+three mean metrics. This is a post hoc source-conditional result, not evidence
+of true absence, occupancy or a learned construction mechanism. Wombat retains
+only seven survey-supported negative rows.
+
+Read [the review response](docs/plan/ClaudeReviewResponse-20261011.md) and the
+[two-page paper plan](docs/plan/PaperPlan-20261011.md). Numerical evidence and
+independent audit are under `evidence/tasmania_pseudoabsence/20261011/survey-only/`.
+The next step is Barry’s agreement on the headline, four lessons and main-text
+allocation before a focused rewrite. The manuscript body remains the working
+synthesis; the new panel has not been added as another Results subsection.
+
+The prior analysis and manuscript delivery were committed and pushed as
+`6e4df9f`. Its receipts retain their original bindings. Only the current
+handover and manuscript README advance beyond those document hashes; all
+prior scientific outputs and manuscript builds remain intact. Earlier
+handoffs below describe their historical states.
+
+## Historical handoff — 9 October, Tasmania sensitivity complete
 
 All seven approved endpoints are complete: **8,125 production fits, 14 smoke
 fits and 200 exactly recovered auxiliary states (8,339 physical fits)**.

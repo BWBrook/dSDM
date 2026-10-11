@@ -11,6 +11,20 @@ The earlier May 2026 conversion and original draft remain in Git history.
 `evidence-ledger.md` records result sources, prospective versus post hoc status,
 and the remaining steps needed before submission.
 
+## Current review status — 11 October
+
+The [review response](../docs/plan/ClaudeReviewResponse-20261011.md) reports the
+independently verified post hoc survey-only Tasmania panel. Its result changes
+the interpretation of the original mixed-negative score decline; it does not
+change the completed fits or original assessment. The manuscript body has not
+been expanded with this panel. The [two-page paper plan](../docs/plan/PaperPlan-20261011.md)
+sets out a focused rewrite for Barry’s agreement on the headline and allocation.
+Its PDF is `build/dsdm_paper_plan_20261011.pdf`.
+
+The 9 October delivery verification remains bound to the versions in commit
+`6e4df9f`; this README and the handover now record the follow-up. Existing
+manuscript, supplement and map builds retain their prior hashes.
+
 ## Build
 
 From the repository root:

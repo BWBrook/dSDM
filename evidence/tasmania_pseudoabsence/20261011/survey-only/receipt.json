@@ -1,0 +1,120 @@
+{
+  "assessment_receipt_digest": "08915652195df252b062163df189f892b72ccdf1e66dab29cb4908d3b696ab56",
+  "counts": {
+    "contrast_rows": 672,
+    "endpoints": 7,
+    "excluded_pseudoabsence_rows": 130,
+    "held_rows": 1672,
+    "methods": 3,
+    "performance_rows": 336,
+    "retained_rows": 1542,
+    "species": 8
+  },
+  "estimand": "post hoc source-conditional descriptive performance on original held presences plus survey_supported_absence rows, with pseudoabsence rows excluded from evaluation only; model scores and phase-specific inner-derived thresholds are frozen",
+  "independent_audit_receipt_digest": "d90a01ad2ac08ef36ff2c40bf7bce9223589011111cc2c67c124e399481ac3be",
+  "membership_hashes": {
+    "dasyurus_maculatus": {
+      "excluded_membership_sha256": "6e116abd3ad6ec98d1a88ca228c0f68759a886d6c857dc105e1e6daa032389fe",
+      "held_membership_sha256": "15e2820246f8768b814d6fb675a240e7ebe2c2a855589d306cfc662d9008f795",
+      "retained_membership_sha256": "f86acfaef30925382fc8e904568b0fdc658182d9b6d9bfb073b37b2b507dda56"
+    },
+    "dasyurus_viverrinus": {
+      "excluded_membership_sha256": "6df676f7341a66cd6d4c1a9e6e6c347f7760287db1953c4790656349eef0e621",
+      "held_membership_sha256": "17fd612eaec4502ff3ee21d9bd66912b297eb53daf214d20719ba4c5f8d6c09f",
+      "retained_membership_sha256": "0f2ea4f6da84403fb8ab5057acf9b189a165a5babac5bbae4abc45eadb6aed27"
+    },
+    "notamacropus_rufogriseus": {
+      "excluded_membership_sha256": "67e7859169f15cc2360b569887bc95dea58763e4256b5452be52fc4af57a7c64",
+      "held_membership_sha256": "0be3decd96fc0680a88bffa43c52c4e12873e78c26bd8f2d995eed5a0595a309",
+      "retained_membership_sha256": "a0ccb1575abb73fe4590a8af9f97e20c81f7d32c00cf82bf52dcae0857a6ed9e"
+    },
+    "pseudocheirus_peregrinus": {
+      "excluded_membership_sha256": "f2f97d6a869c55907eca190a59d5bb5f574764e6d7920ff94efdb0d89d556fd5",
+      "held_membership_sha256": "2ad264d562beb7d05d908ea5ad8fc9210414db0f58c8fa4d7be3eb2fa31a64f4",
+      "retained_membership_sha256": "d06ffa96fee8413984d778cf45f44aacf708352eb230e776c85aa96ffe4764a6"
+    },
+    "sarcophilus_harrisii": {
+      "excluded_membership_sha256": "75cd50b0c32b23b07713e566c6a2d6c4fdc1bc4c26a19290846513396a69586b",
+      "held_membership_sha256": "80f36e55e6549a844246a4cda80f9884fc22fade1b38828020c84ac359d3daec",
+      "retained_membership_sha256": "5e5dd8a3ea4aac40d1b7075bd5322a9f0071d32077714dcf7f4c3369ed9b5b16"
+    },
+    "thylogale_billardierii": {
+      "excluded_membership_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "held_membership_sha256": "31f60b4f323ada1fd5f507bfe39070a19a9bb7ecc02d0d9420f67ae7bfb8e088",
+      "retained_membership_sha256": "31f60b4f323ada1fd5f507bfe39070a19a9bb7ecc02d0d9420f67ae7bfb8e088"
+    },
+    "trichosurus_vulpecula": {
+      "excluded_membership_sha256": "f9a33f2e9272a4c351034930f1c9742f586f0a28c9e65c4f81b89da5f35534c8",
+      "held_membership_sha256": "b080860333ab5cdbfa830d8105a335a98471f735b949088937f6736e65a33e97",
+      "retained_membership_sha256": "df8578e3f67b66612c1aad180404dec7f0a374c761d43ddc4e8015716e91d80d"
+    },
+    "vombatus_ursinus": {
+      "excluded_membership_sha256": "ba878f4e3c85b409d19a5ccb8d01a12ca1b8e6448b4322f12e1ef0074505d1bd",
+      "held_membership_sha256": "f008d9defc572f97b70a38c6f8764a966a8b85e0bbea8f45258cd0017ffb2799",
+      "retained_membership_sha256": "b5f3937e21fd62920d4c6c1686be10fbf6f95298e715eab1827158364cbf7c1d"
+    }
+  },
+  "outputs": {
+    "contrasts.csv": "6f42146499dbab83a82337623956943b2afb0a5fe06d48ad06c3197bcfed7869",
+    "performance.csv": "2589625618db2a0da34fe78fbb880963b1476c5a758f6ef2033db49babf3b933",
+    "summary.json": "0edae61c9bc851c57cd6716d43fb93df204d4742f2c4e7fb2a6cbad73b9f224e"
+  },
+  "prediction_closure_digest": "428ea31c0147b315280eaee8181ce2ebb4808762e4facaf1decd5a5d01462f62",
+  "privacy": {
+    "aggregate_only": true,
+    "coordinates_emitted": false,
+    "membership_identifiers_emitted": false,
+    "response_rows_emitted": false
+  },
+  "receipt_digest": "a627b36b974eae63b986ea0f2bebfddd8be73b35250c90e2ae7a7daf30342f95",
+  "reporting_plan_sha256": "b7c57ba7d6c554027fc7c5a37c69af0dca4db9d511e52fa296a7910d16a9e8d8",
+  "response_access_digest": "166d6163392271aca7156637d385b7506858424e4c5e4fe273bc3db90b64681b",
+  "schema_version": "tasmania-survey-only-receipt-v1",
+  "snapshot_digest": "3fa5a5acbb7481e9d69ae4a65d5aaf7df41d830e9af811788d1b90765ce5f310",
+  "source_hashes": {
+    "accepted_assessment_file_sha256": "514b574a046d3773c707adc77143e2072d90ffbb6187ccffd83248ac2603dde7",
+    "accepted_performance_file_sha256": "dcd6966cb5a34e87b989795b676168cd1fb8e91ea728e26a2ee3bfef9ba24b8f",
+    "assessment_source_sha256": "f7e797403710c357df26ff1466a9eb8d924a41950740a8d2fcf10b195b83f318",
+    "audit_source_sha256": "757d657e11ecf8d51257f319149fc63703a2da7fa72fee651afe3f4850e44c41",
+    "independent_audit_file_sha256": "3c176093ecfd47e166c5ab99ad007e3107b082c2cc9bb8136ab69d2e96cb091f",
+    "independent_audit_source_bindings": {
+      "assessment_source": "72120fbf666e03b105931a8dbcf137977783f1d92c389a0d5a0ba337a8c4e01b",
+      "collector_source": "fb0c57330c6068d7f4cb0f7ec4cb4815881a8521912817b56b6427fdbf9df3fe",
+      "conventional_caps": "3ae698ebcbc61c3df5b21398927fa60c5cd9663dc14e5342083ab68a940aa41c",
+      "conventional_preparation": "ac104b61aa41d2f7549357ee55bbcaaefe2b8b573f7ff291fee4526716552239",
+      "conventional_runner": "6cd09e23b74a96297ed1450179a2f1b24c9f2275590e3b6bce7c570440960f4d",
+      "input_helper": "192780828d695f27a149ed049774e0668966d9f8682a53439ec57909d6e5d4bc",
+      "input_manifest": "21012d5d470b099268db161032e745a08f1bcb02825fcc85ea26b3bca536dabc",
+      "metrics_source": "19df727765f744764011200212c9fefc4d9f7dd2861b9d476852cf8ffb408201",
+      "neural_caps": "fa4595e1670fad5bdd0fba61a8c03a585971e36e0a0229e3f11384477191c50f",
+      "neural_complete": "2e8476498ee87d8d437caabe1030287d9c5496b3d85e15f3de54eb58be6d079b",
+      "neural_preparation": "03f8c81cdd7bb498f156d74afef8e4fb051ede745ad8664270d53ee689ae6374",
+      "neural_runner": "ffc6941055ba5485e414ec6cee8472b8fe5fd65609c04cf3158bf49d82caf289"
+    },
+    "independent_audit_source_closures": {
+      "conventional_inner": "1204596d99133e4267dcf7a0437fba234801ade7a83ba54e655ead65c2a63c9f",
+      "conventional_outer": "24add7583315f008d05a925ba671659de23de933579c98582b9c318927e09560",
+      "conventional_smoke": "a1418b7aa2d9b690ec7cfa9ab542dcad5b014b695d052e18cf902c5568ad055a",
+      "neural_inner": "bd88c401f7b121475b721821dce007af223d3bb696d55472d7c783e4adf892e3",
+      "neural_outer": "200a1aee3bd3c37903cce8349ebbdd7a4a1db8430f7c469ba4e53c5fa4d72b58",
+      "neural_smoke": "46b29a25e2879e9c14d4aeee7a6eddeab82d67331ce8cbfd8a15d2100a90030a",
+      "recovery": "2d86a42321dcbaf1abca9f6cb592e9c6f7bb41e5d59c8e97c683c8fe8464c4f9"
+    },
+    "metrics_source_sha256": "19df727765f744764011200212c9fefc4d9f7dd2861b9d476852cf8ffb408201",
+    "normalized_prediction_file_sha256": {
+      "dasyurus_maculatus": "e263e6e8b9b1c7fb9d15ec6ae8185321983da0a62e2257d66c4dded6575be8a6",
+      "dasyurus_viverrinus": "694819913077ee6e0d1986c46d1d4e666f5988faff62ae2d35d46e8866227b5d",
+      "notamacropus_rufogriseus": "e1bb7231e9381e84e76b8369e5bcc3670a48c7f85e93880783fecd7bfe252a14",
+      "pseudocheirus_peregrinus": "73cab703f8b56ebee551010ee8b61ff043beb6b7a0d6ddf9fff58e04a5ad02f9",
+      "sarcophilus_harrisii": "563c59d1720cad35de21ca8d76f5485647f94fcecad26436343026d23868205c",
+      "thylogale_billardierii": "d6d7f003e98ceefdc4699c44bd6aa87f1ae94863805d763a3452806667a93ae8",
+      "trichosurus_vulpecula": "3130cd0a31f7035f9c0a4f12434f14e7c5e47bd4691d8b09ba2a5f2b8afa786b",
+      "vombatus_ursinus": "f81df061fa862fea15fdf8099cfd542ab2936754bf30f0b924401b0588e50b10"
+    },
+    "prediction_closure_file_sha256": "733471e0f9b759895802ff18a9f9673a42b6c825a396adcfa25f7a0af7dfe89f",
+    "reporting_plan_sha256": "b7c57ba7d6c554027fc7c5a37c69af0dca4db9d511e52fa296a7910d16a9e8d8",
+    "response_access_file_sha256": "f17d652f4b7b05b591b2ae66900d07ab6df25f5a0e6e20c9c5de8d6b4c2cfc98",
+    "snapshot_file_sha256": "3571ce6f79811c72d37dcebdcdb15cb6f8e6df3e84c4a28e2ee9ec58c7190dbf"
+  },
+  "status": "pass"
+}

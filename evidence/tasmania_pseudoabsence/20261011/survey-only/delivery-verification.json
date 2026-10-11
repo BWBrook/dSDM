@@ -1,0 +1,121 @@
+{
+  "assessment_receipt_digest": "a627b36b974eae63b986ea0f2bebfddd8be73b35250c90e2ae7a7daf30342f95",
+  "baseline_commit": "6e4df9f728b58bd98fcbd29ee1d09580abace88e",
+  "checks": {
+    "guarded_idempotent_replay": {
+      "allowed_data_files": 11,
+      "check": "Exact idempotent replay with data file opens restricted to normalized predictions and closed snapshot/closure/access receipts",
+      "data_files_opened": 11,
+      "receipt_digest": "a627b36b974eae63b986ea0f2bebfddd8be73b35250c90e2ae7a7daf30342f95",
+      "status": "pass",
+      "unexpected_data_file_accesses": 0
+    },
+    "independent_replay": "All 336 paired performance rows, 672 contrasts, 42 method summaries, 84 contrast summaries and 24 membership hashes match; maximum numerical discrepancy zero",
+    "manuscript_body_supplement_figures_maps_and_existing_builds": "Prior hashes unchanged",
+    "plan_pdf_pages": 2,
+    "plan_visual_inspection": "Both pages readable with no clipping or overlap",
+    "prior_delivery_bound_files_preserved": [
+      "docs/plan/TasmaniaPseudoabsenceExecution-20261009.md",
+      "docs/plan/TasmaniaPseudoabsenceResults-20261009.md",
+      "manuscript/evidence-ledger.md",
+      "manuscript/text/main.md",
+      "manuscript/text/figures.md",
+      "manuscript/text/supplement.md",
+      "manuscript/text/tasmania-sensitivity.md",
+      "manuscript/settings/build.yaml",
+      "scripts/tasmania_pseudoabsence_report.py",
+      "manuscript/build/dsdm_manuscript.pdf",
+      "manuscript/build/dsdm_manuscript.docx",
+      "manuscript/build/dsdm_manuscript_build_manifest.json",
+      "manuscript/build/dsdm_supplement.pdf",
+      "manuscript/build/dsdm_supplement.docx",
+      "manuscript/build/dsdm_supplement_build_manifest.json",
+      "manuscript/build/dsdm_tasmania_sensitivity_maps.pdf",
+      "evidence/tasmania_pseudoabsence/20261009/assessment.json",
+      "evidence/tasmania_pseudoabsence/20261009/independent-assessment-verification.json",
+      "evidence/tasmania_pseudoabsence/20261009/map-rendering.json",
+      "evidence/tasmania_pseudoabsence/20261009/report-summary.json",
+      "evidence/tasmania_pseudoabsence/20261009/report-initial/report-summary.json",
+      "evidence/tasmania_pseudoabsence/20261009/report-initial/tasmania-sensitivity.md",
+      "evidence/tasmania_pseudoabsence/20261009/report-initial/tasmania_pseudoabsence_report.py"
+    ],
+    "prior_delivery_historical_document_versions_verified_at_baseline_commit": [
+      "HANDOVER.md",
+      "manuscript/README.md"
+    ],
+    "privacy": "New public CSVs contain species/endpoint/method aggregates and no row identities, coordinates or response records",
+    "synthetic_tests_passed": 9
+  },
+  "completed_at": "2026-10-11T00:04:47.571000+00:00",
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "2be55393552c62ad20af18a1d5059f0d46905fed5b28456e7db097e3eab4a616"
+    },
+    {
+      "path": "HANDOVER.md",
+      "sha256": "3048b955a2df575b30f80e23878c1280d2e4f04d3735e94373cadf298e3e3063"
+    },
+    {
+      "path": "manuscript/README.md",
+      "sha256": "2b0109838b309ddecfa2dfc786ac058a0128fe84dc198981fb73b10e21203beb"
+    },
+    {
+      "path": "docs/plan/TasmaniaSurveyOnlyEvaluation-20261011.md",
+      "sha256": "b7c57ba7d6c554027fc7c5a37c69af0dca4db9d511e52fa296a7910d16a9e8d8"
+    },
+    {
+      "path": "docs/plan/ClaudeReviewResponse-20261011.md",
+      "sha256": "1fadfd015d74857afee766916ef38179ecc31dad6c51df3b0b69f10035b69b68"
+    },
+    {
+      "path": "docs/plan/PaperPlan-20261011.md",
+      "sha256": "f1822b29333adab81cafef2312488420a140a91031cf730b07189a0478b0f1ef"
+    },
+    {
+      "path": "manuscript/build/dsdm_paper_plan_20261011.pdf",
+      "sha256": "7b9469ffa55b6fb672fddf2cbebf3cd96c728b42e047d62db5ff23e4d69c1e50"
+    },
+    {
+      "path": "scripts/tasmania_survey_only_assessment.py",
+      "sha256": "f7e797403710c357df26ff1466a9eb8d924a41950740a8d2fcf10b195b83f318"
+    },
+    {
+      "path": "scripts/tasmania_survey_only_audit.py",
+      "sha256": "993d007a8d0bf3b715e105d5892f3c2ca194ee7d8b15c8a96ca47733ab7f9ae8"
+    },
+    {
+      "path": "tests/test_tasmania_survey_only_assessment.py",
+      "sha256": "1b52007d39ec0aade13c7570d5561198704c5f5a696f0426d28e02986a5a049b"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261011/survey-only/performance.csv",
+      "sha256": "2589625618db2a0da34fe78fbb880963b1476c5a758f6ef2033db49babf3b933"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261011/survey-only/contrasts.csv",
+      "sha256": "6f42146499dbab83a82337623956943b2afb0a5fe06d48ad06c3197bcfed7869"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261011/survey-only/summary.json",
+      "sha256": "0edae61c9bc851c57cd6716d43fb93df204d4742f2c4e7fb2a6cbad73b9f224e"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261011/survey-only/receipt.json",
+      "sha256": "b8860b3569eadc935cee12f1311b1f6098dcce1d9f8575a2db65ac03f9d9e283"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261011/survey-only/independent-audit.json",
+      "sha256": "91c4615a234e4c5d97fb06b2f6cf9d71253e4f937dec9d334890e78426406162"
+    }
+  ],
+  "independent_audit_receipt_digest": "65523202519bb3b06baf90bf65e787f11cddde6a0e70a8bf543f9c0a698099f3",
+  "limitations": [
+    "Post hoc source-conditional comparison; no ecological absence or causal validation",
+    "No inferential intervals or tests; endpoints are nested",
+    "Paper plan is proposed for Barry review; manuscript rewrite awaits agreement"
+  ],
+  "receipt_digest": "887dd54e87b1ef5f7931e15886cb07a82b49987559c812dbb9748a003bb9e996",
+  "schema_version": "tasmania-survey-only-delivery-verification-v1",
+  "status": "pass"
+}

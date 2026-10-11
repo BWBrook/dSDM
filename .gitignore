@@ -97,3 +97,4 @@ manuscript/.cache/
 !evidence/tasmania_pseudoabsence/20261009/*.csv
 !evidence/tasmania_pseudoabsence/20261009/maps/*.pdf
 !evidence/tasmania_pseudoabsence/20261009/maps/*.png
+!evidence/tasmania_pseudoabsence/20261011/survey-only/*.csv
