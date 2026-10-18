@@ -1,0 +1,395 @@
+{
+  "schema_version": "dsdm-final-statements-v1",
+  "generated_at_utc": "2026-10-18T06:56:29.152097+00:00",
+  "status": "pass",
+  "base_commit": "811412846802915340809c697d9ed4fb158f3b5d",
+  "scope": "Final author and AI-role statements, three wording replacements, and local correspondence deposit preparation; no new fitting or raw-response analysis; no public release.",
+  "prior_verification": {
+    "path": "evidence/cross_case_synthesis/20261018/claude-round4-verification.json",
+    "sha256": "9f881bc27b11d2829f0a9922bb353b6de788208e38c380780f8c38290e6cc75c",
+    "bytes": 18846
+  },
+  "prior_outputs_archive": {
+    "path": "manuscript/build/archive/20261018-before-final-statements/archive-manifest.json",
+    "sha256": "1658040a1f4bab3d3da83649cfa7b34a129a36490d7483a51c66e20261a6c777",
+    "bytes": 2643
+  },
+  "review": {
+    "claude_verdict_message": 2006,
+    "codex_preparation_message": 2011,
+    "independent_statement_review": "Accepted author metadata, data access and AI contribution wording after checking source records. The subsequent exact subagent-model labels were checked against runtime assignments.",
+    "independent_archive_audit": "Inspected roles, diagnostic claims, version evidence and privacy candidates. No message-text redactions required. Parent independently corrected the audit metadata count from 18 to 20.",
+    "qualification": "Editorial and provenance checks do not replace independent numerical recomputation of study results."
+  },
+  "verification": {
+    "main_scientific_body_matches_prior_after_three_stated_replacements": true,
+    "all_scientific_numeric_tokens_and_order_unchanged": true,
+    "citation_keys": [
+      "@belbin2021ala",
+      "@botella2018",
+      "@bourel2025",
+      "@brun2024",
+      "@cawley2010",
+      "@chen2017",
+      "@cole2023",
+      "@deneu2021",
+      "@fick2017worldclim",
+      "@harris2015",
+      "@jimenezvalverde2012",
+      "@johnston2021",
+      "@kumar2022",
+      "@lange2025",
+      "@lobo2008",
+      "@norberg2019",
+      "@ovaskainen2025",
+      "@phillips2009",
+      "@roberts2017",
+      "@santos2026",
+      "@valavi2022",
+      "@warton2013",
+      "@wenger2012",
+      "@yates2018"
+    ],
+    "other_prior_bound_inputs_unchanged": 20,
+    "accepted_sources_and_checks_unchanged": 11,
+    "figure_source_aggregates_unchanged": 3,
+    "historical_verification_unchanged": true,
+    "all_archived_file_hashes_match": true,
+    "native_checks": "Both profiles passed 37 builder tests, configuration, lint, reference and author checks. Main 24 cited keys; supplement 9; no unknown keys. Main rebuilt and rechecked after adding exact subagent model labels.",
+    "survey_only_reporting": "336 aggregate rows; 42 AUC/TSS/MCC summaries; 84 S10 rows; 8 S11 species; 1300 presences and 242 survey-supported negatives.",
+    "documents": {
+      "dsdm_manuscript": {
+        "tables": 3,
+        "images": 3,
+        "authors_and_orcids_present": true,
+        "continuous_line_numbering_present": true,
+        "pdf_pages": 24,
+        "word_render_pages": 30,
+        "word_render": {
+          "path": "manuscript/.cache/Word QA/final-statements/dsdm_manuscript.pdf",
+          "sha256": "be0476775d2db31677200c84e1706ab2ad55a4086a676be2f579ee8858ae5a7c",
+          "bytes": 780208
+        }
+      },
+      "dsdm_supplement": {
+        "tables": 27,
+        "images": 0,
+        "authors_and_orcids_present": true,
+        "continuous_line_numbering_present": true,
+        "pdf_pages": 24,
+        "word_render_pages": 25,
+        "word_render": {
+          "path": "manuscript/.cache/Word QA/final-statements/dsdm_supplement.pdf",
+          "sha256": "ca55c1947875a9d327427ce813ed32483f2ff9192a3355bc1191bef441b2424e",
+          "bytes": 792800
+        }
+      }
+    },
+    "manifests": {
+      "dsdm_manuscript": {
+        "manifest": {
+          "path": "manuscript/build/dsdm_manuscript_build_manifest.json",
+          "sha256": "0691ee7c3f730adf54e3521df454bdc1499f9029e4f65aeeffdb1dd44988d477",
+          "bytes": 3917
+        },
+        "all_bound_inputs_and_outputs_match": true,
+        "builder_git": {
+          "sha": "b613e715a86f81623953403f84353314405057db",
+          "branch": "main",
+          "dirty": false
+        }
+      },
+      "dsdm_supplement": {
+        "manifest": {
+          "path": "manuscript/build/dsdm_supplement_build_manifest.json",
+          "sha256": "8cd6b3bb0dc7af90ca80b87cbdfd4b52adcb00f3c1c557380ebdc46bc07a166f",
+          "bytes": 4812
+        },
+        "all_bound_inputs_and_outputs_match": true,
+        "builder_git": {
+          "sha": "b613e715a86f81623953403f84353314405057db",
+          "branch": "main",
+          "dirty": false
+        }
+      }
+    },
+    "manifest_git_scope": "Native manifest git describes the makedoc builder repository. dSDM source state is bound separately by base_commit and file hashes.",
+    "visual_review": "Both main title pages, supplement PDF title page, and main availability/disclosure pages in PDF and Word render inspected; no clipping or overlap. Natural page continuation retained."
+  },
+  "correspondence": {
+    "manifest": {
+      "path": "outputs/correspondence/dsdm-20261018/review/manifest.json",
+      "sha256": "606dac870a553553ac6d48afcaf6a929481046d90daa41003142b80d21c404ce",
+      "bytes": 1985
+    },
+    "zip": {
+      "path": "outputs/correspondence/dsdm-20261018/dsdm-correspondence-review-20261018.zip",
+      "sha256": "695d96184c439b393f5f59cdf04b664e7a5691f138d609f672a213962051be97",
+      "bytes": 205807
+    },
+    "message_count": 46,
+    "last_message_id": 2006,
+    "recorded_model_count": 20,
+    "direct_barry_posts": 0,
+    "all_messages_and_reply_links_equal_source": true,
+    "markdown_source_preserved_exactly_after_header": true,
+    "all_zip_files_equal_review_files": true,
+    "message_text_redactions": 0,
+    "scope": "Shared dSDM board only; excludes private app and subagent conversations, tool calls and intermediate computation.",
+    "status": "Local review snapshot; not uploaded; no DOI."
+  },
+  "identity_sources": [
+    "https://fennerschool.anu.edu.au/people/jessie-buettel",
+    "https://discover.utas.edu.au/Barry.Brook",
+    "https://rdp.utas.edu.au/metadata/3a2d9dcf-f8fa-4514-aab0-b9d36f5a1983"
+  ],
+  "inputs": [
+    {
+      "path": "HANDOVER.md",
+      "sha256": "7e148851403b0d87e08438a58e8243dba1286dd5fa606d0754c54b17492e0f0d",
+      "bytes": 86369
+    },
+    {
+      "path": "docs/plan/ManuscriptDrafting-20261018.md",
+      "sha256": "dd0e051ba6021b47b66704760147fac0a4b8f6cd331b5de5f58fc94c78b7b041",
+      "bytes": 14900
+    },
+    {
+      "path": "docs/plan/PublicationPreparation-20261018.md",
+      "sha256": "d296d83e802c0adc1d6e660c485125ff83c89be33aeb55d4859c29b81902e426",
+      "bytes": 6324
+    },
+    {
+      "path": "manuscript/README.md",
+      "sha256": "c21b32a6bcb944d59f3cb2ae9e83e465c96692c63aea8c3cbf7369d50209fbed",
+      "bytes": 7379
+    },
+    {
+      "path": "manuscript/authors.yaml",
+      "sha256": "ac1926c5205a2ffef7febfd7b5158b2f01fdc040a4d1cc652f22c954dd57993c",
+      "bytes": 528
+    },
+    {
+      "path": "manuscript/evidence-ledger.md",
+      "sha256": "4be8ff1955a198ef4c514765ec431d620f07cf8d0c70a664366cafb9410cfd1f",
+      "bytes": 16226
+    },
+    {
+      "path": "manuscript/text/data-sources.md",
+      "sha256": "687a1a67f209a80afbd4f4f2402036fc5317d9672f968a2f9fce0c1b5da22482",
+      "bytes": 5003
+    },
+    {
+      "path": "manuscript/text/main.md",
+      "sha256": "d430fe052b78fdb127f2f1c07d436c95fb4dc40954dfd9cf9e93ae4aab399085",
+      "bytes": 38813
+    },
+    {
+      "path": "manuscript/Makefile",
+      "sha256": "2ddd98b821942d464981ab1086a881f9a79f400a4ffe5ab088ad6f4221038353",
+      "bytes": 1248
+    },
+    {
+      "path": "manuscript/text/figures.md",
+      "sha256": "2a58777f445703fce6d43c6ce79da5a6d9f4300219867253638bfc68d7d09e5c",
+      "bytes": 2409
+    },
+    {
+      "path": "manuscript/text/supplement.md",
+      "sha256": "5a400b48d7cce932fdc74d5088cfaeb19ea1fb15bb45102fab3247927a26ad25",
+      "bytes": 16065
+    },
+    {
+      "path": "manuscript/text/survey-only-and-design.md",
+      "sha256": "c0c23c2f5572d9e80e13b2d861fdafa4a324f75531e00ff58dcc1400d1e8a733",
+      "bytes": 11191
+    },
+    {
+      "path": "manuscript/text/tasmania-sensitivity.md",
+      "sha256": "5c29e6a7cfa86477f73c8a4b5b9330f5363f5731fe31823f811ca9e57f8206b1",
+      "bytes": 13355
+    },
+    {
+      "path": "manuscript/settings/build.yaml",
+      "sha256": "c00a77cbfb8cf166accc1062934b147aa3ceb83a3cd53e2c05daa4b54812db17",
+      "bytes": 2577
+    },
+    {
+      "path": "manuscript/references/refs.yaml",
+      "sha256": "40f9815941efd575c23a3fac34c5a13fa1998d2a1acd65ab46406a713efa7064",
+      "bytes": 23149
+    },
+    {
+      "path": "manuscript/csl/oikos.csl",
+      "sha256": "f534a47f2a5ae25279d7d89e2297bc4b8bb497f8fe215284f8baf856b723fcc3",
+      "bytes": 6343
+    },
+    {
+      "path": "manuscript/figures/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "path": "manuscript/figures/bird-extent-and-ensembles.pdf",
+      "sha256": "73ae837c45d1b6cd441288f7cf4cbf45fff24c7cef3d7b990eff669e0855d135",
+      "bytes": 25524
+    },
+    {
+      "path": "manuscript/figures/bird-extent-and-ensembles.png",
+      "sha256": "d6dfc5df33c4e3f999c3f401df02102255b515c5e85b222127740ee2ee28525e",
+      "bytes": 169065
+    },
+    {
+      "path": "manuscript/figures/bird-recording-richness.pdf",
+      "sha256": "8e921314de98ff8b854af3a46fe6db05b29ef6ae45ab1ef4da8b6f4b5bdaa441",
+      "bytes": 6129
+    },
+    {
+      "path": "manuscript/figures/bird-recording-richness.png",
+      "sha256": "66932acf9e533fcda61b216f551669eddd316a00cc7950e69ed1114367bcbaf2",
+      "bytes": 134717
+    },
+    {
+      "path": "manuscript/figures/cross-case-contrasts.pdf",
+      "sha256": "18bc684d2ea3f174d3c1685e22704e48a49150ff6eb31c49be6511747f61426e",
+      "bytes": 39345
+    },
+    {
+      "path": "manuscript/figures/cross-case-contrasts.png",
+      "sha256": "8e336fe6adca54e9ba4be8d0954f7a244a478b4185b8099b2f41bc51b8ed1312",
+      "bytes": 225465
+    },
+    {
+      "path": "scripts/check_survey_only_supplement.py",
+      "sha256": "4dc527f3cefd53d220421a76f6643b2bd0d92bf18ff3e76f12d6139c4590f2bb",
+      "bytes": 6666
+    },
+    {
+      "path": "scripts/plot_cross_case_synthesis.R",
+      "sha256": "177ab03f0f266efe55f77fa8bc2d185c754e563d4ae34715ff1199d428fc9459",
+      "bytes": 4702
+    },
+    {
+      "path": "scripts/plot_bird_extent_synthesis.R",
+      "sha256": "2fa3f8019de3996ac71520bc4d426792908bf232de344afdda44aef00a034ad9",
+      "bytes": 4357
+    },
+    {
+      "path": "scripts/plot_bird_recording_richness.R",
+      "sha256": "85e39dda8062fff3efeb7b829f19b74e6c64652eb4f4488b3f39f646d1f6b0d8",
+      "bytes": 7801
+    },
+    {
+      "path": "scripts/format_review_docx.py",
+      "sha256": "eb767af9394896a666a397a30bcef16e0b478b529bcced276f27a267114ce116",
+      "bytes": 8549
+    }
+  ],
+  "accepted_sources_and_checks": [
+    {
+      "path": "evidence/cross_case_synthesis/20261005/revision-01/summary.json",
+      "sha256": "6834e34c74767864686862734f57a64a2ac10b324fcdadab89797e1cecbe0fd2",
+      "bytes": 139452
+    },
+    {
+      "path": "evidence/seawfb_dsdm/goal052/summary.json",
+      "sha256": "ec0bc6c2df8cabd3554f5b2b9eebda97b3426ddd186bfa2acc64ba3d1244a3d3",
+      "bytes": 23189956
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261011/survey-only/summary.json",
+      "sha256": "0edae61c9bc851c57cd6716d43fb93df204d4742f2c4e7fb2a6cbad73b9f224e",
+      "bytes": 88767
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261011/survey-only/independent-audit.json",
+      "sha256": "91c4615a234e4c5d97fb06b2f6cf9d71253e4f937dec9d334890e78426406162",
+      "bytes": 17373
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261011/survey-only/delivery-verification.json",
+      "sha256": "9cc93628b46c22b594d204a0b4519c74753e89aca20b665afe72349d6be5d0a1",
+      "bytes": 5675
+    },
+    {
+      "path": "evidence/cross_case_synthesis/20261018/recording-richness.csv",
+      "sha256": "17c80c0f9d2b0f6be0a9965a8184a959bab75542604dc25a6d0de843b7c377d7",
+      "bytes": 4160
+    },
+    {
+      "path": "evidence/cross_case_synthesis/20261018/figure-verification.json",
+      "sha256": "06e9fe46498a2c38f581cff8e9553e4aa1884cbe9909e1fa4817c4177bbe9a47",
+      "bytes": 3545
+    },
+    {
+      "path": "evidence/cross_case_synthesis/20261018/survey-only-reporting.json",
+      "sha256": "575e26fba127ea57b11f8639dc5a4fd6f22438d8c23ad8522f4f5a0e05092191",
+      "bytes": 4065
+    },
+    {
+      "path": "manuscript/references/novelty-check-20261018.json",
+      "sha256": "77da9ee68fe332431ebb6466d83280025990e5cd930f384929e7a7ee80d24aa0",
+      "bytes": 3053
+    },
+    {
+      "path": "manuscript/references/novelty-check-20261018.md",
+      "sha256": "b43b8fab7d3261f4ec9a5ef3d99b9e87962cf7b376ddf808a4cd18c1d840c795",
+      "bytes": 2976
+    },
+    {
+      "path": "manuscript/references/data-source-check-20261018.json",
+      "sha256": "26fcfc7081803836803a02515b0811edfe9fdffc0654df97839dc801a80455b4",
+      "bytes": 8107
+    }
+  ],
+  "figure_source_aggregates": [
+    {
+      "path": "evidence/cross_case_synthesis/20261005/revision-01/case_contrasts.csv",
+      "sha256": "0941334780b2c58c72ee8aed5adf02f8a23c462dab8c680e7b60619f52474ddc",
+      "bytes": 52080
+    },
+    {
+      "path": "evidence/cross_case_synthesis/20261005/revision-01/bird_extent_plot.csv",
+      "sha256": "ea1fbc189ae1cd9f0adf07d11b31e0c5aa5d78ca1f72eb0302eb0f67773aa89f",
+      "bytes": 2002
+    },
+    {
+      "path": "evidence/cross_case_synthesis/20261018/recording-richness.csv",
+      "sha256": "17c80c0f9d2b0f6be0a9965a8184a959bab75542604dc25a6d0de843b7c377d7",
+      "bytes": 4160
+    }
+  ],
+  "outputs": [
+    {
+      "path": "manuscript/build/dsdm_manuscript.pdf",
+      "sha256": "943e64f3c99c525014338791902d42e6a924728c39163ac0bd4d4bdc4418b783",
+      "bytes": 608464
+    },
+    {
+      "path": "manuscript/build/dsdm_manuscript.docx",
+      "sha256": "57d18425f78a1d71d0b12992cf287b103ef57fa63d60cb2ad37cf5d53c28478b",
+      "bytes": 500582
+    },
+    {
+      "path": "manuscript/build/dsdm_supplement.pdf",
+      "sha256": "72dbec9097841a87c3f01f42cedd225d0a2d1bcaa6f7c5b772afc758fd8c2f8e",
+      "bytes": 89191
+    },
+    {
+      "path": "manuscript/build/dsdm_supplement.docx",
+      "sha256": "ec1bbf5e5bc734b5526fe0f4d299fcc64d4f6181b4136b4365cc59394fa8b428",
+      "bytes": 38476
+    }
+  ],
+  "publication_status": {
+    "repository": "private",
+    "public_deposit": false,
+    "doi_reserved": false,
+    "zenodo_session": "not signed in",
+    "remaining": [
+      "Final author read of manuscript and archive",
+      "Reserve deposit identifiers and update manuscript/archive metadata",
+      "Final journal and style selection if journal submission is pursued"
+    ]
+  }
+}

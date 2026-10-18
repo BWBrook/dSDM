@@ -48,9 +48,9 @@ Bird positives were recorded presences. Primary background cells had no focal re
 
 **Table 1.** Prediction settings and geographic exclusions. All development assessments used five spatial folds. The three bird rows share one training domain and the same 73-species primary panel. Regional roles were specified before evaluating model outcomes; they describe contrasting settings rather than replicated environmental treatments.
 
-| Setting | Targets | Outer prediction task | Exclusion from development |
+| Setting | Targets | Withheld-data task | Exclusion from development |
 |---|---:|---|---|
-| Tasmania mammals | 8 | Interpolation in five withheld patches | Held cells; no external buffer |
+| Tasmania mammals | 8 | Interpolation in five withheld patches | Withheld cells; no external buffer |
 | Mainland mammals | 5 | Transfer to camera-supported Tasmania | All Tasmania |
 | Birds: Naracoorte Coastal Plain (NCP) | 73 | Environmentally supported transfer | Whole region plus 50 km |
 | Birds: South Eastern Highlands (SEH) | 73 | Transfer to an environmental edge | Whole region plus 50 km |
@@ -92,7 +92,7 @@ Neither experiment retained a positive mean gain from pretraining in the new reg
 
 Across the three withheld bird regions, mean AUC was 0.6827 for fine-tuning and 0.6831 for target-only: a paired difference of −0.0004, positive for 34 of 73 species. The regional gains were +0.0064 in NCP, −0.0040 in SEH and −0.0035 in NNC. The sole positive regional mean occurred in the region chosen for environmentally supported transfer. Against conventional models, fine-tuning averaged +0.0028 overall, with regional contrasts of +0.0078, −0.0071 and +0.0076. Even within SEH, a negative mean pretraining gain coexisted with a positive median of +0.0021 and 41 positive species: losses in some species outweighed gains in the majority. The target-only network also exceeded conventional models in the withheld regions, by +0.0032 AUC on average. The small average advantage over conventional models was therefore available without pretraining.
 
-The development increments remained positive under the species-resampling checks, whereas both outer contrast ranges crossed zero (Fig. 1; Table S1). Fixed-threshold bird TSS also differed from the AUC comparison: 0.2018 for fine-tuning versus 0.1920 for target-only.
+The development increments remained positive under the species-resampling checks, whereas both outer contrast ranges crossed zero (Fig. 1; Table S1). Fixed-threshold bird TSS also differed from the AUC comparison: 0.2018 for fine-tuning versus 0.1920 for target-only, slightly favouring fine-tuning at the transferred thresholds.
 
 The original Tasmania experiment had no consistent development AUC advantage from pretraining: full-data mean contrasts were −0.0068 against target-only and −0.0498 against conventional models. In the withheld patches, fine-tuning also trailed target-only by mean AUC (−0.0147) while exceeding it by co-primary TSS (+0.0477). Only one of eight species had a positive AUC contrast, compared with five positive TSS contrasts and one tie. Ranking and fixed-threshold performance thus gave different assessments of benefit.
 
@@ -166,11 +166,15 @@ The next tests should address those possibilities directly. Spatial habitat inpu
 
 ## Data and code availability
 
-Analysis source, design records and aggregate evidence are maintained in the dSDM repository (<https://github.com/BWBrook/dSDM>). Recorded input, source and output hashes connect the reported summaries to the accepted analyses. Raw responses, row-level predictions, camera identifiers and precise locations are held outside the tracked aggregate evidence. Source-specific access conditions and the public data-release statement will be completed before submission.
+Analysis source, design records and aggregate evidence are maintained in the dSDM repository (<https://github.com/BWBrook/dSDM>), which is currently private. A versioned code release and the project correspondence archive are being prepared for public deposit; their persistent identifiers will be added before publication. The correspondence archive preserves the shared board discussion, including disagreements, corrections and relayed author decisions. It does not include every private conversation with the AI systems. Recorded input, source and output hashes connect the reported summaries to the accepted analyses.
+
+The private camera-survey data are jointly held by Barry W. Brook and Jessie C. Buettel. Access enquiries should be directed to the custodians at <barry.brook@utas.edu.au> or <Jessie.Buettel@anu.edu.au>; access conditions will be agreed with them. Raw responses, row-level predictions, camera identifiers and precise locations are excluded from the public release package. Other source datasets remain subject to their providers' access and reuse conditions, described in Supplementary Methods S4.
 
 ## Use of generative artificial intelligence
 
-Under the author’s direction, OpenAI Codex and Anthropic Claude developed analysis plans and code, executed analyses and checks, reviewed literature, and drafted and revised the manuscript. Multiple model versions were used; this drafting exchange used GPT-6 in Codex and Claude Opus 5.5. Agreement between the assistants was not treated as independent scientific validation. Author confirmation of this disclosure and the final text remains pending.
+This study developed through sustained collaboration between the human researchers and two AI systems, which carried out most of the technical and writing work and contributed to scientific design and interpretation. OpenAI Codex designed analysis plans, wrote and ran the analysis code, checked results, data sources and literature, produced figures, and drafted and revised the manuscript. Anthropic Claude provided scientific criticism, performed post hoc diagnostic calculations using retained predictions, and proposed and reviewed revisions. Codex independently implemented or reproduced the reported diagnostics. Both systems challenged interpretations and corrected one another through written correspondence.
+
+The lead models used for the manuscript revisions were GPT-6 in Codex and Claude Opus 5.5. Bounded Codex subagent audits also used the model identifiers gpt-5.6-sol and gpt-5.6-luna. Earlier correspondence used the participant names Astra for Codex and Fable for Claude; the earlier Claude version was reported as Fable 5.1. The archive retains model identifiers where recorded and does not infer missing versions. Barry W. Brook guided the research questions and ecological interpretation and authorised staged access to withheld responses. The authors take responsibility for the final work. Agreement between AI systems was not treated as validation: key numerical results were checked by independent recomputation against retained outputs. The project correspondence will accompany the public code release, with its archive identifier added before publication.
 
 ## References
 

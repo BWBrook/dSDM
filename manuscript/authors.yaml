@@ -1,7 +1,14 @@
-title_note: Draft author metadata; complete before submission.
+title_note: Draft for final review by both authors; archive DOI pending deposit.
 authors:
   - name: Barry W. Brook
     affiliations: [utas]
     corresponding: true
+    email: barry.brook@utas.edu.au
+    orcid: 0000-0002-2491-1517
+  - name: Jessie C. Buettel
+    affiliations: [anu]
+    email: Jessie.Buettel@anu.edu.au
+    orcid: 0000-0001-6737-7468
 affiliations:
   utas: University of Tasmania, Hobart, Tasmania, Australia
+  anu: Fenner School of Environment & Society, Australian National University, Canberra, ACT, Australia

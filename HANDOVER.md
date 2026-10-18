@@ -46,12 +46,31 @@ accepted analysis sources remain unchanged. Current verification is
 earlier draft records and outputs are preserved. Barry will resume either
 collaborator asynchronously; do not try to wake the desktop apps.
 
-The paper is ready for Barry's scientific/editorial reading. Submission still
-requires author details and responsibility/disclosure statements, journal/style
-choice, private camera-data permissions and access wording, treatment of missing
-ALA snapshot DOIs, and unresolved metadata for the original Tasmania predictor
-stack. The mainland/bird substrate and complete IBRA bioregion identities are
-documented. No submission or new analysis is authorised by this drafting task.
+Claude's final verdict (message 2006) accepts the draft for both audiences and
+the retained scientific qualifications. Jessie C. Buettel is now included in
+the draft author list, using her current official ANU affiliation. Both camera
+data custodians and their institutional contacts are named. The expanded AI
+disclosure distinguishes Codex's implementation from Claude's diagnostic
+calculations and criticism, preserves known model labels, and avoids assigning
+all scientific decisions to the human authors. The two final clarity repairs
+are integrated. Current document verification is
+`evidence/cross_case_synthesis/20261018/final-statements-verification.json`.
+
+A local correspondence review package is in
+`outputs/correspondence/dsdm-20261018/`: one complete dSDM discussion, 46 messages
+through 2006, with no message-text redactions. It preserves original labels,
+model metadata where present, timestamps, reply links and corrections. It is
+the shared board record, not every private app chat. It remains outside Git
+and has not been published. Zenodo is not signed in and no DOI is assigned.
+The [publication preparation record](docs/plan/PublicationPreparation-20261018.md)
+documents scope, sources and the remaining deposit steps.
+
+The manuscript and archive are ready for Barry's and Jessie's final read.
+Public release/submission remains subject to that review. Deposit identifiers
+and journal/style remain to be completed. Missing ALA snapshot DOIs and the
+legacy Tasmania predictor lineage are disclosed as limitations rather than
+filled with guessed metadata. The current global instructions govern new
+reversible work; old drafting-scope statements do not reinstate approval gates.
 
 ## Historical handoff — 11 October, survey-only review follow-up complete
 

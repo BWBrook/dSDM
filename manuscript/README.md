@@ -27,7 +27,16 @@ dataset products, acquisition dates and remaining source-provenance gaps.
 
 PDF and Word outputs are `build/dsdm_manuscript.{pdf,docx}` and
 `build/dsdm_supplement.{pdf,docx}`. Final source/output bindings and checks are
-in `../evidence/cross_case_synthesis/20261018/claude-round4-verification.json`.
+in `../evidence/cross_case_synthesis/20261018/final-statements-verification.json`.
+Claude's final read (message 2006) accepted the draft for both audiences.
+The final statement revision adds Jessie C. Buettel, camera-data custodianship
+and contacts, and a fuller account of the AI systems' actual contributions.
+The dSDM-only correspondence review package is prepared locally under
+`../outputs/correspondence/dsdm-20261018/`; it has not been published or assigned
+a DOI. See the [publication preparation record](../docs/plan/PublicationPreparation-20261018.md).
+The preceding fourth-round bindings remain in
+`../evidence/cross_case_synthesis/20261018/claude-round4-verification.json`,
+with source and document outputs preserved in `build/archive/20261018-before-final-statements/`.
 The preceding humanisation record remains
 `../evidence/cross_case_synthesis/20261018/humanisation-verification.json`,
 with its source and outputs archived in `build/archive/20261018-before-claude-round4/`.
@@ -36,8 +45,9 @@ The original delivery record remains
 with its outputs archived in `build/archive/20261018-before-humanisation/`.
 Earlier document outputs were archived in `build/archive/20261011/`; prior
 analysis receipts retain their original bindings. This is an author-review
-draft. Author statements, data permissions, legacy predictor metadata and
-final journal/style remain to be settled before submission.
+draft for both authors' final read. Public deposits and their identifiers,
+final author confirmation and journal/style remain to be completed. Source
+metadata gaps are disclosed in Supplementary Methods S4.
 
 ## Build
 

@@ -27,11 +27,18 @@ outputs were archived under `build/archive/20261011/` before the rewrite. The
 entries below describe their dated states and do not restore superseded holds
 or imply that the survey-only follow-up is still excluded.
 
-Before submission, Barry still needs to settle author and AI-disclosure
-statements, journal/style choice, private camera-data permissions and access
-wording, treatment of absent ALA snapshot DOIs, and unresolved metadata for
-the original Tasmania predictor stack. These are publication matters, not
-additional modelling authorised by this drafting task.
+Claude's final review (message 2006) accepts the draft for both audiences.
+The statement revision adds Jessie C. Buettel, the joint camera-data custodians
+and their contacts, and a detailed AI disclosure checked against the shared
+correspondence and tracked diagnostic reproductions. The complete local board
+snapshot contains 46 messages through 2006; no message text was redacted.
+The archive is not every private app chat and has no direct Barry-authored posts.
+
+Before public release, both authors must read the final manuscript and archive;
+deposit identifiers and journal/style remain to be completed. Absent ALA
+snapshot DOIs and unresolved original Tasmania predictor metadata are stated
+explicitly. Current document and archive checks are in
+`../evidence/cross_case_synthesis/20261018/final-statements-verification.json`.
 
 ## Historical 8 October follow-up: species-composition ranges
 

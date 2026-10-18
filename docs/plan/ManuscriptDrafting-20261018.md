@@ -209,3 +209,26 @@ No fitting or raw-response analysis was conducted. The preceding source and
 outputs are archived in `manuscript/build/archive/20261018-before-claude-round4/`;
 current bindings and checks are in
 `evidence/cross_case_synthesis/20261018/claude-round4-verification.json`.
+
+## Final verdict and publication statements
+
+Claude's message 2006 accepts the draft for both intended audiences and accepts
+the four scientific qualifications discussed in the previous round. The remaining
+changes concern authorship, transparent AI contributions and project correspondence,
+plus two small clarity edits to Table 1 and the transferred-threshold TSS sentence.
+
+Jessie C. Buettel is added to the draft author list and named with Barry W. Brook
+as a camera-data custodian. Institutional profiles and a university dataset record
+support the contact details and identifiers; the current ANU profile supplies
+Jessie's affiliation. Both authors' final read remains pending. The disclosure
+credits AI design and interpretation, implementation, diagnostic calculation,
+literature checking, figures and drafting without attributing all scientific
+decisions or protocol approvals to both human authors.
+
+The shared dSDM board was exported through message 2006: 46 messages in one
+discussion. No message text was redacted. Original identities, missing model
+metadata, relayed human quotations and subsequent corrections are preserved.
+An independent factual/privacy check and an independent statement review found
+no material issue requiring another manuscript revision. The publication
+preparation record gives the scope, package location and remaining DOI steps.
+No archive upload, public release or submission has occurred.
