@@ -1,0 +1,312 @@
+{
+  "schema_version": "dsdm-draft-delivery-v1",
+  "generated_at_utc": "2026-10-18T01:57:44.881969+00:00",
+  "status": "pass",
+  "scope": "Complete editor/specialist review draft; no new fits or raw-response scoring; not a submission-readiness approval",
+  "repository": {
+    "root": "/Users/bwbrook/papers/dSDM",
+    "base_commit": "24a9b7c",
+    "head_at_verification": "24a9b7c88d71a6d47755adf265685760dac20e88",
+    "branch": "main",
+    "source_identity": "Exact input hashes below; the shared builder manifest git field identifies makedoc, not dSDM."
+  },
+  "title": "Does learning from other species improve species distribution models in new regions?",
+  "abstract_words_whitespace_count": 287,
+  "pdf_pages": {
+    "dsdm_manuscript": 23,
+    "dsdm_supplement": 22
+  },
+  "editorial_review": {
+    "correspondence_thread": 32,
+    "full_draft_posts": [
+      1875,
+      1882,
+      1887
+    ],
+    "claude_reviews": [
+      1880,
+      1883,
+      1888
+    ],
+    "closure_post": 1889,
+    "rounds": 3,
+    "limit": "Agreement between assistants is not independent scientific validation."
+  },
+  "verification": {
+    "main_and_supplement_native_checks": "pass: 37 builder tests, config, lint, reference and author checks",
+    "citations": {
+      "bibliography_entries": 32,
+      "main_cited": 24,
+      "supplement_cited": 9,
+      "unknown_keys": 0
+    },
+    "survey_tables": "pass: 336 public aggregate rows; 42 means; 84 S10 metric rows; 8 S11 species; 32 paired cells / 64 scalar values",
+    "independent_numerical_review": "main numbers and tables checked against accepted aggregates, including bird target-only/conventional and conventional 50-to-100% scale comparisons",
+    "literature_and_data_sources": "primary-source checks retained in references records",
+    "figure_bindings": "all source, script and output hashes match",
+    "pdf_visual_review": "complete R2 contact sheets; final main Tables1/2, captions/figures, and final S10/S11/source pages inspected; no clipping or orphan table labels",
+    "docx_visual_review": "Word-only layout repair rendered and visually checked; text and image invariance checked in formatter validation",
+    "manifests": {
+      "dsdm_manuscript": {
+        "manifest": {
+          "path": "manuscript/build/dsdm_manuscript_build_manifest.json",
+          "sha256": "1424a0177e09bfb2d378ee476270b57a73400086f18cc6483b1d75f0ae204ad2",
+          "bytes": 3917
+        },
+        "inputs_and_outputs_match": true,
+        "builder_git": {
+          "sha": "b613e715a86f81623953403f84353314405057db",
+          "branch": "main",
+          "dirty": false
+        },
+        "docx_tables": 3,
+        "docx_images": 3
+      },
+      "dsdm_supplement": {
+        "manifest": {
+          "path": "manuscript/build/dsdm_supplement_build_manifest.json",
+          "sha256": "053c7487b8eee6fde76940cd21fb9ca4c2254eca509b3952e5cd7a24186a7893",
+          "bytes": 4812
+        },
+        "inputs_and_outputs_match": true,
+        "builder_git": {
+          "sha": "b613e715a86f81623953403f84353314405057db",
+          "branch": "main",
+          "dirty": false
+        },
+        "docx_tables": 26,
+        "docx_images": 0
+      }
+    }
+  },
+  "selected_verified_contrasts": {
+    "bird_outer_target_only_minus_conventional_auc": 0.003166538412292968,
+    "bird_outer_ft_minus_conventional_auc": 0.0027705174337210284,
+    "bird_development_conventional_50_to_100_auc_gain": 0.003740219099384393,
+    "scale_comparison_limit": "Fraction-specific selection; unpaired neural/conventional seeds; descriptive rather than causal/data-equivalence estimate."
+  },
+  "inputs": [
+    {
+      "path": "manuscript/Makefile",
+      "sha256": "2ddd98b821942d464981ab1086a881f9a79f400a4ffe5ab088ad6f4221038353",
+      "bytes": 1248
+    },
+    {
+      "path": "manuscript/text/data-sources.md",
+      "sha256": "8bb711cb2c8ba87bef578d694d90c4b757bf3fcb84e141239689d0523781fa08",
+      "bytes": 4745
+    },
+    {
+      "path": "manuscript/text/figures.md",
+      "sha256": "bd8a71ef8984801d851e2bb5a0766beee580edb085d989e9965c0956f35d3ee5",
+      "bytes": 2397
+    },
+    {
+      "path": "manuscript/text/main.md",
+      "sha256": "9b5419a047cb3b387b830bb2abd43965921c657eb505e9986be10d359c2afbba",
+      "bytes": 36831
+    },
+    {
+      "path": "manuscript/text/supplement.md",
+      "sha256": "ad9fa389b772ae98c2b5d1ce88a21c4eaff08ed40640a918633bbc3c9721e170",
+      "bytes": 14950
+    },
+    {
+      "path": "manuscript/text/survey-only-and-design.md",
+      "sha256": "c0c23c2f5572d9e80e13b2d861fdafa4a324f75531e00ff58dcc1400d1e8a733",
+      "bytes": 11191
+    },
+    {
+      "path": "manuscript/text/tasmania-sensitivity.md",
+      "sha256": "5c29e6a7cfa86477f73c8a4b5b9330f5363f5731fe31823f811ca9e57f8206b1",
+      "bytes": 13355
+    },
+    {
+      "path": "manuscript/settings/build.yaml",
+      "sha256": "c00a77cbfb8cf166accc1062934b147aa3ceb83a3cd53e2c05daa4b54812db17",
+      "bytes": 2577
+    },
+    {
+      "path": "manuscript/authors.yaml",
+      "sha256": "ba240fbd2d6c2fd6334eebab16d0fe52fdb2c56ede03cb0d0e4e466d82336920",
+      "bytes": 220
+    },
+    {
+      "path": "manuscript/references/refs.yaml",
+      "sha256": "40f9815941efd575c23a3fac34c5a13fa1998d2a1acd65ab46406a713efa7064",
+      "bytes": 23149
+    },
+    {
+      "path": "manuscript/csl/oikos.csl",
+      "sha256": "f534a47f2a5ae25279d7d89e2297bc4b8bb497f8fe215284f8baf856b723fcc3",
+      "bytes": 6343
+    },
+    {
+      "path": "manuscript/evidence-ledger.md",
+      "sha256": "d4e38854da43ba6be0cf0fed3e04fdf5caf9d1690878a484587610a26530fe37",
+      "bytes": 15749
+    },
+    {
+      "path": "manuscript/README.md",
+      "sha256": "63ef6c115dba9e5819e16e7e392e500393b59f5dea77e83fffa4e32155358c1c",
+      "bytes": 5909
+    },
+    {
+      "path": "HANDOVER.md",
+      "sha256": "1302599182b938b13512ca7eece89e0a97239a4d059c82a5dbd66e332bc7209b",
+      "bytes": 84206
+    },
+    {
+      "path": "docs/plan/ManuscriptDrafting-20261018.md",
+      "sha256": "38bb5397cc2d53065455c3bb8699fb3b80cc4da043616ade068421274da8bf93",
+      "bytes": 8327
+    },
+    {
+      "path": "manuscript/figures/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "path": "manuscript/figures/bird-extent-and-ensembles.pdf",
+      "sha256": "73ae837c45d1b6cd441288f7cf4cbf45fff24c7cef3d7b990eff669e0855d135",
+      "bytes": 25524
+    },
+    {
+      "path": "manuscript/figures/bird-extent-and-ensembles.png",
+      "sha256": "d6dfc5df33c4e3f999c3f401df02102255b515c5e85b222127740ee2ee28525e",
+      "bytes": 169065
+    },
+    {
+      "path": "manuscript/figures/bird-recording-richness.pdf",
+      "sha256": "19b619c2ad2ac5693696dc653c24b723071bc66c87656edbdb8791bea2b54787",
+      "bytes": 6135
+    },
+    {
+      "path": "manuscript/figures/bird-recording-richness.png",
+      "sha256": "4d4102a77e4db5f67ba77ce5c128bf2c360b530b8a02245307edba364451df0c",
+      "bytes": 134928
+    },
+    {
+      "path": "manuscript/figures/cross-case-contrasts.pdf",
+      "sha256": "18bc684d2ea3f174d3c1685e22704e48a49150ff6eb31c49be6511747f61426e",
+      "bytes": 39345
+    },
+    {
+      "path": "manuscript/figures/cross-case-contrasts.png",
+      "sha256": "8e336fe6adca54e9ba4be8d0954f7a244a478b4185b8099b2f41bc51b8ed1312",
+      "bytes": 225465
+    },
+    {
+      "path": "scripts/check_survey_only_supplement.py",
+      "sha256": "4dc527f3cefd53d220421a76f6643b2bd0d92bf18ff3e76f12d6139c4590f2bb",
+      "bytes": 6666
+    },
+    {
+      "path": "scripts/plot_cross_case_synthesis.R",
+      "sha256": "177ab03f0f266efe55f77fa8bc2d185c754e563d4ae34715ff1199d428fc9459",
+      "bytes": 4702
+    },
+    {
+      "path": "scripts/plot_bird_extent_synthesis.R",
+      "sha256": "2fa3f8019de3996ac71520bc4d426792908bf232de344afdda44aef00a034ad9",
+      "bytes": 4357
+    },
+    {
+      "path": "scripts/plot_bird_recording_richness.R",
+      "sha256": "e05c97bf1deca6cead18d5ebd9fbe53eac795f01cb7b007469008b891faa77dd",
+      "bytes": 7807
+    },
+    {
+      "path": "scripts/format_review_docx.py",
+      "sha256": "9714f641a6f0192433421eb5fa1f4a171ba1f08caed6c1ae7770b4299380f5a9",
+      "bytes": 8535
+    }
+  ],
+  "accepted_sources_and_checks": [
+    {
+      "path": "evidence/cross_case_synthesis/20261005/revision-01/summary.json",
+      "sha256": "6834e34c74767864686862734f57a64a2ac10b324fcdadab89797e1cecbe0fd2",
+      "bytes": 139452
+    },
+    {
+      "path": "evidence/seawfb_dsdm/goal052/summary.json",
+      "sha256": "ec0bc6c2df8cabd3554f5b2b9eebda97b3426ddd186bfa2acc64ba3d1244a3d3",
+      "bytes": 23189956
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261011/survey-only/summary.json",
+      "sha256": "0edae61c9bc851c57cd6716d43fb93df204d4742f2c4e7fb2a6cbad73b9f224e",
+      "bytes": 88767
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261011/survey-only/independent-audit.json",
+      "sha256": "91c4615a234e4c5d97fb06b2f6cf9d71253e4f937dec9d334890e78426406162",
+      "bytes": 17373
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261011/survey-only/delivery-verification.json",
+      "sha256": "9cc93628b46c22b594d204a0b4519c74753e89aca20b665afe72349d6be5d0a1",
+      "bytes": 5675
+    },
+    {
+      "path": "evidence/cross_case_synthesis/20261018/recording-richness.csv",
+      "sha256": "17c80c0f9d2b0f6be0a9965a8184a959bab75542604dc25a6d0de843b7c377d7",
+      "bytes": 4160
+    },
+    {
+      "path": "evidence/cross_case_synthesis/20261018/figure-verification.json",
+      "sha256": "06e9fe46498a2c38f581cff8e9553e4aa1884cbe9909e1fa4817c4177bbe9a47",
+      "bytes": 3545
+    },
+    {
+      "path": "evidence/cross_case_synthesis/20261018/survey-only-reporting.json",
+      "sha256": "575e26fba127ea57b11f8639dc5a4fd6f22438d8c23ad8522f4f5a0e05092191",
+      "bytes": 4065
+    },
+    {
+      "path": "manuscript/references/novelty-check-20261018.json",
+      "sha256": "77da9ee68fe332431ebb6466d83280025990e5cd930f384929e7a7ee80d24aa0",
+      "bytes": 3053
+    },
+    {
+      "path": "manuscript/references/novelty-check-20261018.md",
+      "sha256": "b43b8fab7d3261f4ec9a5ef3d99b9e87962cf7b376ddf808a4cd18c1d840c795",
+      "bytes": 2976
+    },
+    {
+      "path": "manuscript/references/data-source-check-20261018.json",
+      "sha256": "26fcfc7081803836803a02515b0811edfe9fdffc0654df97839dc801a80455b4",
+      "bytes": 8107
+    }
+  ],
+  "outputs": [
+    {
+      "path": "manuscript/build/dsdm_manuscript.pdf",
+      "sha256": "6da04aa57356e25a47a203351fc632324eabfbe7d53a41e6f45544be228ec91a",
+      "bytes": 604930
+    },
+    {
+      "path": "manuscript/build/dsdm_manuscript.docx",
+      "sha256": "576ba98652a0e209209ad4bacc3d2b443f983a9949ca283a322abbf1adec5c50",
+      "bytes": 499763
+    },
+    {
+      "path": "manuscript/build/dsdm_supplement.pdf",
+      "sha256": "201c64d0a1397406c45b3b95aab51ac565eeae116af86362b53936a6663ca4bf",
+      "bytes": 85516
+    },
+    {
+      "path": "manuscript/build/dsdm_supplement.docx",
+      "sha256": "bd9e97b63c3df180fc3a51fb89df61a04ba37d378b7453040f0121e9bb342148",
+      "bytes": 37486
+    }
+  ],
+  "remaining_publication_items": [
+    "author details, responsibility and AI disclosure confirmation",
+    "journal choice and final citation style",
+    "private camera-source permissions and access statement",
+    "reporting absent ALA snapshot DOIs",
+    "original Tasmania predictor native metadata"
+  ],
+  "historical_evidence": "Original scientific receipts unchanged. Previous document outputs archived with hashes under manuscript/build/archive/20261011."
+}

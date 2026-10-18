@@ -2,28 +2,32 @@
 
 This directory is a repo-local manuscript workspace backed by the shared `makedoc` builder in `/Users/bwbrook/work/makedoc`.
 
-The active source is `text/main.md`. It was substantially restructured on
-2026-10-05 around the completed cross-case tests of multi-species pretraining,
-then revised to include the matched mainland inner result and Fable’s review.
-On 9 October it incorporated the independently verified, seven-endpoint
-Tasmania pseudoabsence-removal sensitivity.
+The active source is `text/main.md`, completely rewritten on 18 October 2026
+through three substantive review rounds with Claude. The question title,
+abstract and argument are written for both an informed generalist editor and
+specialist readers. Three Results sections distinguish the pretraining
+increment, evaluation extent and model averaging, and the definition of
+negative observations. The paper contains three figures and two main tables.
 The earlier May 2026 conversion and original draft remain in Git history.
 `evidence-ledger.md` records result sources, prospective versus post hoc status,
 and the remaining steps needed before submission.
 
-## Current review status — 11 October
+## Current review status — 18 October
 
-The [review response](../docs/plan/ClaudeReviewResponse-20261011.md) reports the
-independently verified post hoc survey-only Tasmania panel. Its result changes
-the interpretation of the original mixed-negative score decline; it does not
-change the completed fits or original assessment. The manuscript body has not
-been expanded with this panel. The [two-page paper plan](../docs/plan/PaperPlan-20261011.md)
-sets out a focused rewrite for Barry’s agreement on the headline and allocation.
-Its PDF is `build/dsdm_paper_plan_20261011.pdf`.
+The [drafting record](../docs/plan/ManuscriptDrafting-20261018.md) documents the
+full rewrites, Claude's reviews and the scientific qualifications retained
+through disagreement. The manuscript now includes the post hoc survey-only
+Tasmania panel as a crossed training/evaluation comparison, with full metrics
+and species support in Tables S10–S11. Supplementary Methods S4 documents
+dataset products, acquisition dates and remaining source-provenance gaps.
 
-The 9 October delivery verification remains bound to the versions in commit
-`6e4df9f`; this README and the handover now record the follow-up. Existing
-manuscript, supplement and map builds retain their prior hashes.
+PDF and Word outputs are `build/dsdm_manuscript.{pdf,docx}` and
+`build/dsdm_supplement.{pdf,docx}`. Final source/output bindings and checks are
+in `../evidence/cross_case_synthesis/20261018/draft-delivery-verification.json`.
+Earlier document outputs were archived in `build/archive/20261011/`; prior
+analysis receipts retain their original bindings. This is an author-review
+draft. Author statements, data permissions, legacy predictor metadata and
+final journal/style remain to be settled before submission.
 
 ## Build
 
@@ -34,7 +38,21 @@ make -C manuscript validate
 make -C manuscript all
 ```
 
+The 18 October build used the existing Python 3.14 runtime (with PyYAML) and
+repo-local caches, avoiding global runtime changes:
+
+```sh
+PATH=/opt/homebrew/opt/python@3.14/libexec/bin:$PATH make -C manuscript all check \
+  PROFILE_CACHE_DIR="$PWD/manuscript/.cache" \
+  PDF_ENGINE_OUTPUT_DIR="$PWD/manuscript/.cache/latex"
+```
+
 Outputs are written to `manuscript/build/`, which is ignored by git. The default profile is `draft`; use `PROFILE=submission` for the stricter lint profile once citations and references have been cleaned up.
+
+The repo wrapper applies `../scripts/format_review_docx.py` after Word builds:
+A4 margins, compact table text, intact rows and repeated headers. It checks
+that text and images remain unchanged, then refreshes the build manifest.
+PDF and Word pagination can differ; both are review formats.
 
 The synthesis tables and figures can be regenerated from the accepted
 aggregate receipts, without reopening responses or fitting models:
@@ -47,7 +65,20 @@ Rscript scripts/plot_bird_extent_synthesis.R
 python3 scripts/cross_case_supplement.py
 ```
 
-Run those commands from the repository root. Revised reporting outputs are
+Run those commands from the repository root only when intentionally rebuilding
+historical reporting outputs; `cross_case_supplement.py` writes the original
+S1 supplement source. Preserve historical source and receipt bindings. The
+18 October figures and added tables can be checked without regenerating old
+reports:
+
+```sh
+Rscript scripts/plot_cross_case_synthesis.R
+Rscript scripts/plot_bird_extent_synthesis.R
+Rscript scripts/plot_bird_recording_richness.R
+python3 scripts/check_survey_only_supplement.py
+```
+
+Revised reporting outputs are
 under `evidence/cross_case_synthesis/20261005/revision-01/`; the first review
 summaries are preserved. Bird composition-resampling outputs are under
 `evidence/cross_case_synthesis/20261008/`; their fixed reporting plan and limits
@@ -84,6 +115,8 @@ binds the manuscript, supplement and map outputs to the completed assessment.
 - `text/figures.md`: `makedoc` figure blocks.
 - `text/supplement.md`: generated supplementary methods and descriptive tables.
 - `text/tasmania-sensitivity.md`: verified sensitivity methods and Tables S5–S9.
+- `text/survey-only-and-design.md`: post hoc survey-only methods and Tables S10–S11.
+- `text/data-sources.md`: data products, provenance and unresolved source metadata.
 - `figures/`: tracked source figures for the paper.
 - `references/refs.yaml`: Pandoc YAML bibliography.
 - `csl/oikos.csl`: placeholder journal style copied from the `makedoc` testbed.

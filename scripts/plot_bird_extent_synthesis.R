@@ -6,6 +6,13 @@ d <- read.csv(file.path(repo_root, 'evidence/cross_case_synthesis/20261005/revis
 scopes <- c('published_mean_fold', 'pooled_whole_domain', 'region_pooled', 'region_fold', 'outer_equal_regions')
 labels <- c('Inner\nmean fold', 'Inner\npooled OOF', 'Inner\nwithin region', 'Inner\nregion x fold', 'Outer\nequal regions')
 cols <- c('#286C9E', '#BC623C', '#5D666D')
+outer_auc <- d[d$scope == 'outer_equal_regions' & d$measure == 'auc', ]
+outer_ft_conv <- outer_auc$value[outer_auc$series == 'fine_tuned'] - outer_auc$value[outer_auc$series == 'conventional']
+outer_to_conv <- outer_auc$value[outer_auc$series == 'target_only'] - outer_auc$value[outer_auc$series == 'conventional']
+stopifnot(length(outer_ft_conv) == 1L, length(outer_to_conv) == 1L,
+          is.finite(outer_ft_conv), is.finite(outer_to_conv),
+          abs(outer_ft_conv - 0.0027705174337210327) < 1e-15,
+          abs(outer_to_conv - 0.003166538412292863) < 1e-15)
 figure_dir <- file.path(repo_root, 'manuscript/figures')
 render <- function() {
   par(mfrow = c(2, 1), mar = c(3.8, 4.5, 3.2, 1.1), oma = c(0.4, 0, 0, 0),
@@ -29,7 +36,7 @@ render <- function() {
   abline(h = 0, lty = 2, col = '#555E63')
   axis(1, at = 1:5, labels = labels, tick = FALSE, cex.axis = 0.88)
   axis(2, at = c(0, 0.005, 0.01, 0.015), labels = c('0', '0.005', '0.010', '0.015'), col = '#858B8F')
-  mtext('b  Pretraining and fixed-ensemble contrasts', 3, line = 1.2, adj = 0, font = 2, cex = 0.98)
+  mtext('b  Pretraining and ensemble contrasts', 3, line = 1.2, adj = 0, font = 2, cex = 0.98)
   comparisons <- c('fine_tuned_minus_target_only', 'ft_ensemble_minus_conventional', 'to_ensemble_minus_conventional')
   cc <- c('#286C9E', '#317B66', '#8D648E')
   for (j in seq_along(comparisons)) {
@@ -39,7 +46,13 @@ render <- function() {
     stopifnot(all(dd$value >= -0.004 & dd$value <= 0.018))
     points((1:5) + (j-2)*0.11, dd$value, pch = c(16, 15, 17)[[j]], col = cc[[j]], cex = 1.05)
   }
-  text(c(4, 5), c(.0057, -.0022), labels=c('68/73 positive', '34/73 positive'), cex=.77, col=cc[[1]])
+  text(c(4, 5), c(.0044, -.0022), labels=c('68/73 positive', '34/73 positive'), cex=.77, col=cc[[1]])
+  rect(.72, -.00385, 4.45, -.00155, col = 'white', border = '#C8CDD0')
+  text(.82, c(-.00205, -.00328),
+       labels = c('Outer single models:',
+                  sprintf('FT − conventional %+.4f; target-only − conventional %+.4f',
+                          outer_ft_conv, outer_to_conv)),
+       adj = c(0, .5), cex = .65, col = '#344148')
   legend('topright', legend = c('Fine-tuned - target-only', 'Fine-tuned ensemble - conventional', 'Target-only ensemble - conventional'),
          pch = c(16, 15, 17), col = cc, bty = 'n', cex = 0.74, inset = c(0, -0.03))
 }

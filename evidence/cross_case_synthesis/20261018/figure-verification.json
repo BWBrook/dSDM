@@ -1,0 +1,81 @@
+{
+  "schema_version": "cross-case-figure-verification-v1",
+  "render_commands": [
+    "Rscript scripts/plot_cross_case_synthesis.R /Users/bwbrook/papers/dSDM",
+    "Rscript scripts/plot_bird_extent_synthesis.R /Users/bwbrook/papers/dSDM",
+    "Rscript scripts/plot_bird_recording_richness.R /Users/bwbrook/papers/dSDM"
+  ],
+  "scripts": {
+    "scripts/plot_cross_case_synthesis.R": "177ab03f0f266efe55f77fa8bc2d185c754e563d4ae34715ff1199d428fc9459",
+    "scripts/plot_bird_extent_synthesis.R": "2fa3f8019de3996ac71520bc4d426792908bf232de344afdda44aef00a034ad9",
+    "scripts/plot_bird_recording_richness.R": "e05c97bf1deca6cead18d5ebd9fbe53eac795f01cb7b007469008b891faa77dd"
+  },
+  "source_aggregates": {
+    "evidence/cross_case_synthesis/20261005/revision-01/case_contrasts.csv": "0941334780b2c58c72ee8aed5adf02f8a23c462dab8c680e7b60619f52474ddc",
+    "evidence/cross_case_synthesis/20261005/revision-01/bird_extent_plot.csv": "ea1fbc189ae1cd9f0adf07d11b31e0c5aa5d78ca1f72eb0302eb0f67773aa89f",
+    "evidence/cross_case_synthesis/20261018/recording-richness.csv": "17c80c0f9d2b0f6be0a9965a8184a959bab75542604dc25a6d0de843b7c377d7"
+  },
+  "numeric_checks": {
+    "figure_1": {
+      "headings": [
+        "Pretraining increment (fine-tuned - target-only)",
+        "Comparison with conventional models (fine-tuned - conventional)"
+      ],
+      "point_mean_iqr_and_composition_ranges_preserved": true
+    },
+    "figure_2": {
+      "outer_fine_tuned_minus_conventional": 0.0027705174337209204,
+      "outer_target_only_minus_conventional": 0.003166538412292863,
+      "source": "outer_equal_regions AUC rows in bird_extent_plot.csv",
+      "existing_ensemble_series_retained": true
+    },
+    "figure_3": {
+      "inner_support": {
+        "evaluated": 59,
+        "positive": [
+          56,
+          43,
+          19
+        ]
+      },
+      "outer_support": {
+        "NCP": {
+          "evaluated": 0,
+          "panel": 73,
+          "status": "no common three-bin support"
+        },
+        "SEH": {
+          "evaluated": 38,
+          "positive": [
+            20,
+            15,
+            13
+          ]
+        },
+        "NNC": {
+          "evaluated": 55,
+          "positive": [
+            39,
+            35,
+            15
+          ]
+        }
+      },
+      "no_intervals_or_joined_continuous_line": true,
+      "values_and_support_counts_unchanged": true,
+      "metadata_correction": "Outer support is >=20 cells per class within the held region, not within every development fold; verified against bound OuterDiagnosticsResults-20261005.md."
+    }
+  },
+  "outputs": {
+    "manuscript/figures/cross-case-contrasts.pdf": "18bc684d2ea3f174d3c1685e22704e48a49150ff6eb31c49be6511747f61426e",
+    "manuscript/figures/cross-case-contrasts.png": "8e336fe6adca54e9ba4be8d0954f7a244a478b4185b8099b2f41bc51b8ed1312",
+    "manuscript/figures/bird-extent-and-ensembles.pdf": "73ae837c45d1b6cd441288f7cf4cbf45fff24c7cef3d7b990eff669e0855d135",
+    "manuscript/figures/bird-extent-and-ensembles.png": "d6dfc5df33c4e3f999c3f401df02102255b515c5e85b222127740ee2ee28525e",
+    "manuscript/figures/bird-recording-richness.pdf": "19b619c2ad2ac5693696dc653c24b723071bc66c87656edbdb8791bea2b54787",
+    "manuscript/figures/bird-recording-richness.png": "4d4102a77e4db5f67ba77ce5c128bf2c360b530b8a02245307edba364451df0c"
+  },
+  "limitations": [
+    "All panels remain descriptive aggregate summaries; no inferential intervals were added.",
+    "Outer Fig. 3 NCP has no common three-bin support and is represented by an explicit note."
+  ]
+}

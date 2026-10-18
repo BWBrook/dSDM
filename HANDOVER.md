@@ -5,7 +5,41 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Current handoff — 11 October, survey-only review follow-up complete
+## Current handoff — 18 October, complete manuscript rewrite and Claude review
+
+Barry authorised substantive drafting for both an informed generalist editor
+and specialist readers, superseding the 11 October prose hold. The complete
+rewrite, expanded supplement, three figures and two main tables are in
+`manuscript/`. The working title is **Does learning from other species improve
+species distribution models in new regions?**
+
+Three complete-draft review rounds with Claude are recorded in correspondence
+thread 32, messages 1875/1880, 1882/1883 and 1887/1888, and in
+[the drafting record](docs/plan/ManuscriptDrafting-20261018.md). The central
+argument now distinguishes the performance of a neural predictor from the
+increment due to pretraining. Held-region bird AUC exceeded conventional
+learning by +0.0028 with fine-tuning and +0.0032 with target-only learning;
+most ensemble gains were also available without pretraining. Extent and
+negative-class diagnostics change the interpretation without identifying
+causal mechanisms. Tasmania's AUC and co-primary TSS conclusions remain
+distinct.
+
+Numerical claims were checked against accepted aggregates. Six close literature
+precedents and dataset references were checked against primary sources.
+Supplementary Methods S3/S4 and Tables S10–S11 now incorporate the post hoc
+survey-only results and source provenance. No models were fitted or raw
+responses reopened for this drafting task. Historical scientific receipts and
+the prior manuscript outputs remain preserved. The current verification record
+is `evidence/cross_case_synthesis/20261018/draft-delivery-verification.json`.
+
+The paper is ready for Barry's scientific/editorial reading. Submission still
+requires author details and responsibility/disclosure statements, journal/style
+choice, private camera-data permissions and access wording, treatment of missing
+ALA snapshot DOIs, and unresolved metadata for the original Tasmania predictor
+stack. The mainland/bird substrate and complete IBRA bioregion identities are
+documented. No submission or new analysis is authorised by this drafting task.
+
+## Historical handoff — 11 October, survey-only review follow-up complete
 
 Barry requested that Codex address Claude’s correspondence review (message
 1403). The post hoc survey-only evaluation is complete using the already-closed

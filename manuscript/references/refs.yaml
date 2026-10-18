@@ -95,4 +95,122 @@ references:
   - {"id": "johnston2021", "type": "article-journal", "title": "Analytical guidelines to increase the value of community science data: An example using eBird data to estimate species distributions", "author": [{"family": "Johnston", "given": "Alison"}, {"family": "Hochachka", "given": "Wesley M."}, {"family": "Strimas-Mackey", "given": "Matthew E."}, {"family": "Ruiz Gutierrez", "given": "Viviana"}, {"family": "Robinson", "given": "Orin J."}, {"family": "Miller", "given": "Eliot T."}, {"family": "Auer", "given": "Tom"}, {"family": "Kelling", "given": "Steve T."}, {"family": "Fink", "given": "Daniel"}], "issued": {"date-parts": [[2021]]}, "container-title": "Diversity and Distributions", "volume": "27", "issue": "7", "page": "1265-1277", "DOI": "10.1111/ddi.13271", "URL": "https://onlinelibrary.wiley.com/doi/10.1111/ddi.13271"}
   - {"id": "kumar2022", "type": "paper-conference", "title": "Fine-Tuning Can Distort Pretrained Features and Underperform Out-of-Distribution", "author": [{"family": "Kumar", "given": "Ananya"}, {"family": "Raghunathan", "given": "Aditi"}, {"family": "Jones", "given": "Robbie"}, {"family": "Ma", "given": "Tengyu"}, {"family": "Liang", "given": "Percy"}], "issued": {"date-parts": [[2022]]}, "container-title": "International Conference on Learning Representations", "URL": "https://openreview.net/forum?id=UYneFzXSJWh"}
   - {"id": "araujo2007", "type": "article-journal", "title": "Ensemble forecasting of species distributions", "author": [{"family": "Araújo", "given": "Miguel B."}, {"family": "New", "given": "Mark"}], "issued": {"date-parts": [[2007]]}, "container-title": "Trends in Ecology & Evolution", "volume": "22", "issue": "1", "page": "42-47", "DOI": "10.1016/j.tree.2006.09.010", "URL": "https://www.sciencedirect.com/science/article/pii/S016953470600303X"}
+  - {"id": "chen2017", "type": "paper-conference", "title": "Deep Multi-Species Embedding", "author": [{"family": "Chen", "given": "Di"}, {"family": "Xue", "given": "Yexiang"}, {"family": "Fink", "given": "Daniel"}, {"family": "Chen", "given": "Shuo"}, {"family": "Gomes", "given": "Carla P."}], "issued": {"date-parts": [[2017]]}, "container-title": "Proceedings of the Twenty-Sixth International Joint Conference on Artificial Intelligence", "page": "3639-3646", "publisher": "International Joint Conferences on Artificial Intelligence Organization", "DOI": "10.24963/ijcai.2017/509", "URL": "https://www.ijcai.org/proceedings/2017/509"}
+  - {"id": "brun2024", "type": "article-journal", "title": "Multispecies deep learning using citizen science data produces more informative plant community models", "author": [{"family": "Brun", "given": "Philipp"}, {"family": "Karger", "given": "Dirk N."}, {"family": "Zurell", "given": "Damaris"}, {"family": "Descombes", "given": "Patrice"}, {"family": "de Witte", "given": "Lucienne C."}, {"family": "de Lutio", "given": "Riccardo"}, {"family": "Wegner", "given": "Jan Dirk"}, {"family": "Zimmermann", "given": "Niklaus E."}], "issued": {"date-parts": [[2024]]}, "container-title": "Nature Communications", "volume": "15", "page": "4421", "DOI": "10.1038/s41467-024-48559-9", "URL": "https://www.nature.com/articles/s41467-024-48559-9"}
+  - {"id": "bourel2025", "type": "article-journal", "title": "From Presence-Only to Abundance Species Distribution Models Using Transfer Learning", "author": [{"family": "Bourel", "given": "Benjamin"}, {"family": "Joly", "given": "Alexis"}, {"family": "Servajean", "given": "Maximilien"}, {"family": "Bettinger", "given": "Simon"}, {"family": "Sanabria-Fernández", "given": "José Antonio"}, {"family": "Mouillot", "given": "David"}], "issued": {"date-parts": [[2025]]}, "container-title": "Ecology Letters", "volume": "28", "issue": "7", "page": "e70177", "DOI": "10.1111/ele.70177", "URL": "https://onlinelibrary.wiley.com/doi/10.1111/ele.70177"}
+  - {"id": "ovaskainen2025", "type": "article-journal", "title": "Common to rare transfer learning (CORAL) enables inference and prediction for a quarter million rare Malagasy arthropods", "author": [{"family": "Ovaskainen", "given": "Otso"}, {"family": "Winter", "given": "Steven"}, {"family": "Tikhonov", "given": "Gleb"}, {"family": "Abrego", "given": "Nerea"}, {"family": "Anslan", "given": "Sten"}, {"family": "deWaard", "given": "Jeremy R."}, {"family": "deWaard", "given": "Stephanie L."}, {"family": "Fisher", "given": "Brian L."}, {"family": "Furneaux", "given": "Brendan"}, {"family": "Hardwick", "given": "Bess"}, {"family": "Kerdraon", "given": "Deirdre"}, {"family": "Pentinsaari", "given": "Mikko"}, {"family": "Raharinjanahary", "given": "Dimby"}, {"family": "Rajoelison", "given": "Eric Tsiriniaina"}, {"family": "Ratnasingham", "given": "Sujeevan"}, {"family": "Somervuo", "given": "Panu"}, {"family": "Sones", "given": "Jayme E."}, {"family": "Zakharov", "given": "Evgeny V."}, {"family": "Hebert", "given": "Paul D. N."}, {"family": "Roslin", "given": "Tomas"}, {"family": "Dunson", "given": "David B."}], "issued": {"date-parts": [[2025]]}, "container-title": "Nature Methods", "volume": "22", "issue": "10", "page": "2074-2082", "DOI": "10.1038/s41592-025-02823-y", "URL": "https://www.nature.com/articles/s41592-025-02823-y"}
+  - {"id": "lange2025", "type": "paper-conference", "title": "Feedforward Few-shot Species Range Estimation", "author": [{"family": "Lange", "given": "Christian"}, {"family": "Hamilton", "given": "Max"}, {"family": "Cole", "given": "Elijah"}, {"family": "Shepard", "given": "Alexander"}, {"family": "Heinrich", "given": "Samuel"}, {"family": "Zhu", "given": "Angela"}, {"family": "Maji", "given": "Subhransu"}, {"family": "Van Horn", "given": "Grant"}, {"family": "Mac Aodha", "given": "Oisin"}], "issued": {"date-parts": [[2025]]}, "container-title": "Proceedings of the 42nd International Conference on Machine Learning", "collection-title": "Proceedings of Machine Learning Research", "volume": "267", "page": "32523-32561", "publisher": "PMLR", "URL": "https://proceedings.mlr.press/v267/lange25a.html"}
+  - {"id": "santos2026", "type": "article-journal", "title": "An integrated sequential deep learning framework with experience replay for large-scale species distribution modeling under data scarcity", "author": [{"family": "Santos", "given": "Fabián"}, {"family": "Moreno", "given": "Silvana"}, {"family": "Mejía-Guerrero", "given": "Mauricio"}, {"family": "Graw", "given": "Valerie"}], "issued": {"date-parts": [[2026, 9, 14]]}, "container-title": "Frontiers in Ecology and Evolution", "volume": "14", "page": "1904087", "DOI": "10.3389/fevo.2026.1904087", "URL": "https://www.frontiersin.org/journals/ecology-and-evolution/articles/10.3389/fevo.2026.1904087/full"}
+  - id: belbin2021ala
+    type: article-journal
+    title: 'The Atlas of Living Australia: History, current state and future directions'
+    author:
+      - {family: Belbin, given: Lee}
+      - {family: Wallis, given: Elycia}
+      - {family: Hobern, given: Donald}
+      - {family: Zerger, given: Andre}
+    issued: {date-parts: [[2021]]}
+    container-title: Biodiversity Data Journal
+    volume: 9
+    page: e65023
+    DOI: 10.3897/BDJ.9.e65023
+    URL: https://bdj.pensoft.net/article/65023/
+  - id: garnett2015birddata
+    type: article-journal
+    title: Biological, ecological, conservation and legal information for all species and subspecies of Australian bird
+    author:
+      - {family: Garnett, given: Stephen T.}
+      - {family: Duursma, given: Daisy E.}
+      - {family: Ehmke, given: Glenn}
+      - {family: Guay, given: Patrick-Jean}
+      - {family: Stewart, given: Alistair}
+      - {family: Szabo, given: Judit K.}
+      - {family: Weston, given: Michael A.}
+      - {family: Bennett, given: Simon}
+      - {family: Crowley, given: Gabriel M.}
+      - {family: Drynan, given: David}
+      - {family: Dutson, given: Guy}
+      - {family: Fitzherbert, given: Kate}
+      - {family: Franklin, given: Donald C.}
+    issued: {date-parts: [[2015]]}
+    container-title: Scientific Data
+    volume: 2
+    page: 150061
+    DOI: 10.1038/sdata.2015.61
+    URL: https://www.nature.com/articles/sdata201561
+  - id: fick2017worldclim
+    type: article-journal
+    title: 'WorldClim 2: new 1-km spatial resolution climate surfaces for global land areas'
+    author:
+      - {family: Fick, given: Stephen E.}
+      - {family: Hijmans, given: Robert J.}
+    issued: {date-parts: [[2017]]}
+    container-title: International Journal of Climatology
+    volume: 37
+    issue: 12
+    page: 4302-4315
+    DOI: 10.1002/joc.5086
+    URL: https://www.worldclim.org/data/worldclim21.html
+  - id: gallant2011srtm
+    type: dataset
+    title: SRTM-derived 1 Second Digital Elevation Models Version 1.0
+    author:
+      - {family: Gallant, given: J.}
+      - {family: Wilson, given: N.}
+      - {family: Dowling, given: T.}
+      - {family: Read, given: A.}
+      - {family: Inskeep, given: C.}
+    issued: {date-parts: [[2011]]}
+    publisher: Geoscience Australia
+    publisher-place: Canberra
+    number: 72759
+    version: '1.0'
+    URL: https://pid.geoscience.gov.au/dataset/ga/72759
+  - id: searle2021soil
+    type: dataset
+    title: Soil and Landscape Grid National Soil Attribute Maps - Australian Soil Classification Map (3 arc-second resolution) - Release 1
+    author:
+      - {family: Searle, given: Ross}
+    issued: {date-parts: [[2021]]}
+    publisher: Commonwealth Scientific and Industrial Research Organisation
+    version: '4'
+    DOI: 10.25919/VKJN-3013
+    URL: https://data.csiro.au/collection/csiro:55695
+  - id: abares2024landuse
+    type: dataset
+    title: Land use of Australia 2010-11 to 2020-21
+    author:
+      - {literal: Australian Bureau of Agricultural and Resource Economics and Sciences}
+    issued: {date-parts: [[2024, 11]]}
+    publisher: Australian Bureau of Agricultural and Resource Economics and Sciences
+    publisher-place: Canberra
+    version: NLUM v7 / ALUM v8
+    DOI: 10.25814/w175-xh85
+    URL: https://www.agriculture.gov.au/abares/aclump/land-use/land-use-of-australia
+  - id: dcceew2026nvis
+    type: webpage
+    title: National Vegetation Information System data products
+    author:
+      - {family: DCCEEW}
+    issued: {date-parts: [[2026, 10, 13]]}
+    publisher: Australian Government Department of Climate Change, Energy, the Environment and Water
+    version: '7.0'
+    URL: https://www.dcceew.gov.au/environment/environment-information-australia/national-vegetation-information-system/data-products
+  - id: dcceew2026ibra
+    type: dataset
+    title: Interim Biogeographic Regionalisation for Australia subregions
+    issued: {literal: n.d.}
+    author:
+      - {family: DCCEEW}
+    publisher: Australian Government Department of Climate Change, Energy, the Environment and Water
+    version: '7.1'
+    URL: https://gis.environment.gov.au/gispubmap/rest/services/ogc_services/IBRA7_Subregions/FeatureServer/0
+  - id: birdlife2023wlab
+    type: dataset
+    title: The BirdLife Australia Working List of Australian Birds
+    author:
+      - {literal: BirdLife Australia}
+    issued: {date-parts: [[2023, 10, 19]]}
+    version: '4.3'
+    URL: https://birdata.birdlife.org.au/wp-content/uploads/2023/10/WLAB_v4.3.xlsx
 ...

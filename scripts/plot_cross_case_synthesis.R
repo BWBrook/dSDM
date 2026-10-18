@@ -46,7 +46,12 @@ render <- function() {
       }
       points(mean(dd$difference), .25, pch=23, cex=1.10, bg=case_colours[[i]], col='#172B31')
       text(limits[[i]]*.97, .38, paste0(sum(dd$difference>0), '/', nrow(dd), ' positive'), adj=c(1,.5), cex=.65, col='#424B50')
-      if (i==1) mtext(if (j==1) 'a  Fine-tuning minus target-only' else 'b  Fine-tuning minus conventional', 3, line=1.1, adj=0, font=2, cex=.87)
+      if (i==1) {
+        mtext(if (j==1) 'a  Pretraining increment' else 'b  Comparison with conventional models',
+              3, line=1.12, adj=0, font=2, cex=.84)
+        mtext(if (j==1) '(fine-tuned − target-only)' else '(fine-tuned − conventional)',
+              3, line=.28, adj=0, cex=.70, col='#5B6267')
+      }
     }
   }
   par(fig=c(0,1,0,.085), oma=rep(0,4), mar=rep(0,4), new=TRUE)

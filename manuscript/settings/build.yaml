@@ -2,7 +2,7 @@ default_profile: draft
 
 profiles:
   draft:
-    description: Cross-case synthesis review draft.
+    description: Editor and specialist review draft, 18 October 2026.
     manuscript_sources:
       - ../text/main.md
       - ../text/figures.md
@@ -17,7 +17,7 @@ profiles:
     output_dir: ../build
     output_stem: dsdm_manuscript
     page_numbers: lower_right
-    line_spacing: 1.5
+    line_spacing: 2
     line_numbering: continuous
     references_new_page: true
     figures:
@@ -69,9 +69,13 @@ profiles:
     manuscript_sources:
       - ../text/supplement.md
       - ../text/tasmania-sensitivity.md
+      - ../text/survey-only-and-design.md
+      - ../text/data-sources.md
     lint_sources:
       - ../text/supplement.md
       - ../text/tasmania-sensitivity.md
+      - ../text/survey-only-and-design.md
+      - ../text/data-sources.md
     author_metadata: ../authors.yaml
     bibliography: ../references/refs.yaml
     csl: ../csl/oikos.csl

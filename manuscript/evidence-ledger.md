@@ -1,6 +1,39 @@
 # Evidence ledger for the cross-case manuscript
 
-## 8 October follow-up: species-composition ranges
+## Current drafting tranche — 18 October 2026
+
+Barry authorised a complete rewrite and substantive iteration with Claude for
+an informed generalist editor and specialist readers. This supersedes the
+11 October prose hold. Accepted scientific analyses are unchanged. The current
+argument separates a pretraining increment from the performance of the final
+predictor, and then examines geographic and observation boundaries.
+
+The [drafting record](../docs/plan/ManuscriptDrafting-20261018.md) documents the
+review rounds and disagreements. New reporting material is confined to
+accepted aggregates:
+
+| Material | Source and verification | Status |
+|---|---|---|
+| Bird outer target-only minus conventional AUC, +0.00316654 | Revision-01 summary; independently reconstructed paired 73-species contrast | Descriptive, 43/73 positive; not equivalence or causal architecture attribution |
+| Conventional bird 50-to-100% target-data gain, +0.00374022 | Accepted Goal052 development summary; independently checked | Post hoc scale comparison; model selection differs by fraction and neural/conventional seeds are unpaired |
+| Figure 3 common-panel recording-richness contrasts | Accepted inner and outer diagnostics; `evidence/cross_case_synthesis/20261018/recording-richness.csv` | Inner exploratory; outer definitions fixed before opening; NCP has no common three-bin support |
+| Revised Figures 1–3 | `evidence/cross_case_synthesis/20261018/figure-verification.json` | Source, script and output hashes; descriptive points and original ranges preserved |
+| Tables S10–S11 and main Table 2 | Accepted 9/11 October Tasmania aggregates; `scripts/check_survey_only_supplement.py` | Post hoc source-conditional comparison of two training regimes and two evaluation panels; no new fitting/scoring |
+| Closest literature | `references/novelty-check-20261018.json` and `.md` | Six primary precedents checked; no unqualified priority claim |
+| Dataset citations and Supplementary Methods S4 | `references/data-source-check-20261018.json` | Versioned mainland/bird substrate and whole IBRA bioregions verified; legacy Tasmania lineage remains incomplete |
+
+Original receipts retain their historical source identities. Earlier document
+outputs were archived under `build/archive/20261011/` before the rewrite. The
+entries below describe their dated states and do not restore superseded holds
+or imply that the survey-only follow-up is still excluded.
+
+Before submission, Barry still needs to settle author and AI-disclosure
+statements, journal/style choice, private camera-data permissions and access
+wording, treatment of absent ALA snapshot DOIs, and unresolved metadata for
+the original Tasmania predictor stack. These are publication matters, not
+additional modelling authorised by this drafting task.
+
+## Historical 8 October follow-up: species-composition ranges
 
 `docs/plan/BirdCompositionResampling-20261008.md` fixes the reporting recipe
 before resampling. `scripts/bird_composition_resampling.py` reads the unchanged

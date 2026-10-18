@@ -1,0 +1,138 @@
+{
+  "schema_version": "dsdm-data-source-check-v1",
+  "generated_on": "2026-10-18",
+  "scope": "Publication-facing source identities for the three accepted experiments; no private or row-level data inspected.",
+  "decision": "Mainland and bird environmental sources have versioned, citation-ready provenance. ALA snapshot DOIs, the private camera access statement, and native product versions for the original Tasmania predictor stack remain unresolved.",
+  "bibliography": [
+    {
+      "id": "belbin2021ala",
+      "role": "ALA infrastructure citation, not an occurrence snapshot citation",
+      "doi": "10.3897/BDJ.9.e65023",
+      "verified_url": "https://bdj.pensoft.net/article/65023/"
+    },
+    {
+      "id": "garnett2015birddata",
+      "role": "Australian Bird Data Version 1 authority",
+      "doi": "10.1038/sdata.2015.61",
+      "verified_url": "https://www.nature.com/articles/sdata201561"
+    },
+    {
+      "id": "fick2017worldclim",
+      "role": "WorldClim 2.1 climate surfaces",
+      "doi": "10.1002/joc.5086",
+      "verified_url": "https://www.worldclim.org/data/worldclim21.html"
+    },
+    {
+      "id": "gallant2011srtm",
+      "role": "SRTM-derived 1 Second Digital Elevation Models Version 1.0",
+      "doi": null,
+      "persistent_id": "https://pid.geoscience.gov.au/dataset/ga/72759",
+      "note": "The product's official citation uses Geoscience Australia persistent identifier 72759. DOI 10.4225/08/57590B59A4A08 belongs to a derived topographic wetness index and must not be assigned to this DEM."
+    },
+    {
+      "id": "searle2021soil",
+      "role": "Australian Soil Classification Soil Order, Release 1 collection v4",
+      "doi": "10.25919/VKJN-3013",
+      "verified_url": "https://data.csiro.au/collection/csiro:55695"
+    },
+    {
+      "id": "abares2024landuse",
+      "role": "Land Use of Australia 2020-21, NLUM v7 / ALUM v8",
+      "doi": "10.25814/w175-xh85",
+      "verified_url": "https://www.agriculture.gov.au/abares/aclump/land-use/land-use-of-australia"
+    },
+    {
+      "id": "dcceew2026nvis",
+      "role": "NVIS v7.0 extant Major Vegetation Groups",
+      "doi": null,
+      "verified_url": "https://www.dcceew.gov.au/environment/environment-information-australia/national-vegetation-information-system/data-products"
+    },
+    {
+      "id": "dcceew2026ibra",
+      "role": "IBRA v7.1 subregion source layer used to dissolve complete bioregion holdouts",
+      "doi": null,
+      "verified_url": "https://gis.environment.gov.au/gispubmap/rest/services/ogc_services/IBRA7_Subregions/FeatureServer/0"
+    },
+    {
+      "id": "birdlife2023wlab",
+      "role": "BirdLife Australia Working List of Australian Birds v4.3",
+      "doi": null,
+      "verified_url": "https://birdata.birdlife.org.au/wp-content/uploads/2023/10/WLAB_v4.3.xlsx",
+      "published": "2023-10-19",
+      "licence_status": "No machine-readable reuse licence stated in the retained authority receipt."
+    }
+  ],
+  "experiments": {
+    "original_tasmania": {
+      "occurrence_repository": "Atlas of Living Australia",
+      "time_bounds_inclusive": [2001, 2025],
+      "acquired_on": "2026-07-24",
+      "source_taxa": 9,
+      "modelled_targets": 8,
+      "ala_snapshot_doi": null,
+      "camera_source": "Private camera-survey evidence; publication access and permission statement pending author confirmation.",
+      "predictors": "Legacy 28-variable stack with verified band order and geometry only.",
+      "lineage_limit": "Native product versions, units, dates, resampling and nodata rules are unavailable and were not inferred. Workbook source labels are reference descriptions, not verified construction lineage. FPAR alone has an explicit 2000-2014 reference window."
+    },
+    "mainland_mammals": {
+      "occurrence_repository": "Atlas of Living Australia",
+      "time_bounds_inclusive": [2001, 2025],
+      "acquired_at": "2026-08-11T06:27:38Z",
+      "source_taxa": 21,
+      "modelled_targets": 5,
+      "ala_client": "galah-python 0.13.3",
+      "ala_snapshot_doi": null,
+      "predictors": "Versioned 24-variable Goal 041 substrate."
+    },
+    "birds": {
+      "occurrence_repository": "Atlas of Living Australia aggregate atlas_counts workflow",
+      "time_bounds_inclusive": [2001, 2025],
+      "acquired_on": "2026-09-02",
+      "queried_species": 505,
+      "common_outer_panel": 73,
+      "filters": ["occurrenceStatus=PRESENT", "spatially valid"],
+      "ala_snapshot_doi": null,
+      "authority_sources": ["Australian Bird Data Version 1", "BirdLife Australia Working List v4.3"],
+      "predictors": "Versioned 24-variable Goal 041 substrate.",
+      "outer_boundary": {
+        "source_layer": "IBRA v7.1 subregions FeatureServer layer 0",
+        "source_feature_count": 419,
+        "region_code_count": 89,
+        "aggregation_field": "REG_CODE_7",
+        "geometry_operation": "make-valid union of all official subregion features sharing each region code",
+        "holdout_unit": "complete official bioregion",
+        "selected_region_codes": ["NCP", "SEH", "NNC"],
+        "evaluation_geometry": "unbuffered complete bioregion",
+        "development_exclusion": "all three complete bioregions plus simultaneous external 50-km buffers"
+      }
+    }
+  },
+  "goal041_predictor_sources": {
+    "worldclim": "WorldClim 2.1; 19 bioclimatic variables; 30 arc-seconds; 1970-2000 baseline; ALA WCS access.",
+    "elevation": "Geoscience Australia SRTM-derived 1 Second DEM v1.0 via 2024 WCS endpoint; cell mean and sample standard deviation.",
+    "vegetation": "NVIS v7.0 extant Major Vegetation Group; 100 m.",
+    "soil": "Soil and Landscape Grid Australian Soil Classification Soil Order; Release 1 collection v4; 3 arc-seconds; approximate temporal coverage 1950-2021.",
+    "land_use": "Land Use of Australia 2020-21; NLUM v7 / ALUM v8; 250 m.",
+    "retrieved_at": "2026-08-14T01:18:22Z",
+    "licences_recorded": "CC BY 4.0"
+  },
+  "unresolved": [
+    "No DOI was minted for any exact ALA occurrence snapshot; retained query identities and hashes do not replace a repository dataset DOI.",
+    "Camera-survey access, ownership/custodianship and publication-permission wording require author confirmation.",
+    "Original Tasmania predictor product versions and full processing lineage are unresolved and must not be reconstructed from current products.",
+    "BirdLife Working List v4.3 has no DOI and no stated machine-readable reuse licence in the retained evidence."
+  ],
+  "evidence_bindings": [
+    {"path": "config/ala_full_acquisition_plan.json", "sha256": "d447e1dfe536f25b1ea0126dbf9e7420024f774491e1670503ed0ea4895df632"},
+    {"path": "evidence/ala_full_acquisition/2026-07-24/review.json", "sha256": "c7a03d2fd5365e5d53d9bd9dc9062a31ac6083a1b054c8f16c2ab03ed364c658"},
+    {"path": "metadata/goal040_acquisition_manifest.json", "sha256": "281371f28ef7d2d20917729db5686de00206214aac7634243ccac8db320517b8"},
+    {"path": "evidence/seawfb_canonical_response/goal049/acquisition_progress.json", "sha256": "c0651604a417240f14828d24283b87bab178658126b842eeb2904d77adb42382"},
+    {"path": "metadata/goal049_authority_receipt.json", "sha256": "6f30f3e0c6640e1c3c66f95607e034987d7f1451ab44ed5ec2e74eab6f73ef9e"},
+    {"path": "metadata/goal041_source_manifest.json", "sha256": "8eb7ada9a14996b45af299ee88b2102e6a2c108d77f315548f47f69dbf0ee604"},
+    {"path": "evidence/predictor_support_diagnostics/2026-07-26/source_metadata.json", "sha256": "00a7521d47db9e15b1e47d0ccb2c4cc51cc209326b06829d062a1c8c032df9a2"},
+    {"path": "config/goal048_seawfb_bioregional_freeze.json", "sha256": "08726d899a5af331639e4e0144f8e34bae1d1e93108c766cdb66d1b2136ffc47"},
+    {"path": "scripts/goal048_response_free_scoring.py", "sha256": "a648b7abdb8122a7bbea2ceb0197241c5712100117f7c8c693b32d657be874c6"},
+    {"path": "evidence/seawfb_bioregional_freeze/goal048/design_resolution.json", "sha256": "70e3b68b58c3ae637774254d3f094e9a18e2c62b8463c94ee2727827615801f8"},
+    {"path": "evidence/seawfb_bioregional_freeze/goal048/estimability_selection_receipt.json", "sha256": "c75c619447a4ad5f8a6b0ac9d0c4c64227ee96f3b2ea6e7d191ccbade797d3a1"}
+  ]
+}

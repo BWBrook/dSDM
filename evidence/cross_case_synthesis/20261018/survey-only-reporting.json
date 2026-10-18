@@ -1,0 +1,104 @@
+{
+  "citation_gap": "Dataset identities, citations and remaining publication provenance gaps are documented in manuscript/text/data-sources.md and manuscript/references/data-source-check-20261018.json.",
+  "delivery_verification": {
+    "path": "evidence/tasmania_pseudoabsence/20261011/survey-only/delivery-verification.json",
+    "sha256": "9cc93628b46c22b594d204a0b4519c74753e89aca20b665afe72349d6be5d0a1",
+    "status": "pass"
+  },
+  "design": {
+    "bird_schema_context": {
+      "encoded": 103,
+      "raw": 24,
+      "status": "Reported in the main Methods for cross-case accounting; not recalculated here."
+    },
+    "endpoint_scheme": "target_subset3ladders: 25% L0-L2, 50% L0-L2, 100% full",
+    "preserved_checks": "pre-outer Tasmania capacity and climate-reduction checks and original model selections retained",
+    "response_grid": "2001-2025 observations resolved to 0.01-degree cells",
+    "species": [
+      "Thylogale billardierii",
+      "Notamacropus rufogriseus",
+      "Trichosurus vulpecula",
+      "Pseudocheirus peregrinus",
+      "Vombatus ursinus",
+      "Sarcophilus harrisii",
+      "Dasyurus maculatus",
+      "Dasyurus viverrinus"
+    ],
+    "tasmania_architecture": "three residual blocks, width 128, bottleneck width 64",
+    "tasmania_predictors": {
+      "encoded": 77,
+      "raw": 28
+    }
+  },
+  "deterministic_check": {
+    "command": "python3 scripts/check_survey_only_supplement.py",
+    "expected": "336 performance rows, 42 panel-endpoint-method summaries, 32 paired S11 contrast cells (64 scalar values), and exact support totals",
+    "prohibitions": [
+      "no fitting",
+      "no scoring",
+      "no response or coordinate reads",
+      "no prediction reads"
+    ],
+    "reads_only": [
+      "performance.csv",
+      "contrasts.csv",
+      "summary.json"
+    ],
+    "script": "scripts/check_survey_only_supplement.py"
+  },
+  "outputs": {
+    "S10a": "AUC, 28 rows: two panels x two regimes x seven endpoints",
+    "S10b": "TSS, 28 rows: two panels x two regimes x seven endpoints",
+    "S10c": "MCC, 28 rows: two panels x two regimes x seven endpoints",
+    "S11": "species-level full-data survey-only contrasts, eight rows"
+  },
+  "receipts": {
+    "independent-audit.json": {
+      "path": "evidence/tasmania_pseudoabsence/20261011/survey-only/independent-audit.json",
+      "receipt_digest": "65523202519bb3b06baf90bf65e787f11cddde6a0e70a8bf543f9c0a698099f3",
+      "sha256": "91c4615a234e4c5d97fb06b2f6cf9d71253e4f937dec9d334890e78426406162"
+    },
+    "receipt.json": {
+      "path": "evidence/tasmania_pseudoabsence/20261011/survey-only/receipt.json",
+      "receipt_digest": "a627b36b974eae63b986ea0f2bebfddd8be73b35250c90e2ae7a7daf30342f95",
+      "sha256": "b8860b3569eadc935cee12f1311b1f6098dcce1d9f8575a2db65ac03f9d9e283"
+    }
+  },
+  "schema_version": "survey-only-reporting-v1",
+  "scope": {
+    "assessment": "Tasmania post hoc survey-only evaluation",
+    "endpoints": 7,
+    "evaluation_panels": [
+      "original_mixed",
+      "survey_only"
+    ],
+    "excluded_rows": {
+      "pseudoabsence": 130
+    },
+    "interpretation": "survey-supported negatives are effort-supported nondetections, not verified ecological absences or occupancy zeros",
+    "methods": 3,
+    "retained_rows": {
+      "held_presences": 1300,
+      "survey_supported_absence": 242
+    },
+    "species": 8,
+    "training_regimes": [
+      "primary",
+      "pseudoabsence_filtered_sensitivity"
+    ]
+  },
+  "source_aggregates": {
+    "contrasts.csv": {
+      "path": "evidence/tasmania_pseudoabsence/20261011/survey-only/contrasts.csv",
+      "sha256": "6f42146499dbab83a82337623956943b2afb0a5fe06d48ad06c3197bcfed7869"
+    },
+    "performance.csv": {
+      "path": "evidence/tasmania_pseudoabsence/20261011/survey-only/performance.csv",
+      "sha256": "2589625618db2a0da34fe78fbb880963b1476c5a758f6ef2033db49babf3b933"
+    },
+    "summary.json": {
+      "path": "evidence/tasmania_pseudoabsence/20261011/survey-only/summary.json",
+      "sha256": "0edae61c9bc851c57cd6716d43fb93df204d4742f2c4e7fb2a6cbad73b9f224e"
+    }
+  }
+}
