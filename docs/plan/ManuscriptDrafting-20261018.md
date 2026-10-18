@@ -127,3 +127,50 @@ manifests. PDF source/layout remains unchanged. The Figure 3 source CSV also
 corrects a support-description typo: outer minimum counts apply within the
 held region, not each development fold. Its values and rendered PNG are
 unchanged.
+
+## Author-requested humanisation pass
+
+Barry's subsequent reading found the draft improved but too heavily caveated
+and stilted. He asked for a candid assessment of its value to generalist editors
+and specialists, with stronger flow and preservation of the scientific context.
+The starting point for this pass was commit `d998626`; its manuscript source,
+PDF, Word file and verification record are preserved in
+`manuscript/build/archive/20261018-before-humanisation/`.
+
+The editorial diagnosis was that specialist defensibility had advanced further
+than the paper's argument. The revision therefore starts with the ecological
+reason to borrow information across species, explains why predictive success
+and the gain from pretraining are different questions, and gives the useful
+development and ensemble results more space in the Discussion. The geographical
+and observation diagnostics support this argument. Repeated defensive endings
+and internal workflow vocabulary were removed, while the contextual literature
+and numerical detail were retained.
+
+A bounded independent scientific read identified the limits that must survive:
+small descriptive effects under dependent species and regions, no equivalence
+claim, architecture selection using fine-tuning, tabular inputs, heterogeneous
+experiments, and post hoc survey-only evidence with sparse negative support.
+Its second read checked the revised source and prompted precise repairs to
+scope the neural advantage to birds, distinguish architecture from fitted
+weights, and separate predictive improvement from management benefit. All
+Methods and Results numerical tokens remain in their original order; every
+original reference key remains cited. No analysis or source data changed.
+
+Claude was asked for a further critique in correspondence message 1949.
+Automatic approval review rejected the desktop documentation step needed to
+resume direct conversation, so this pass does not claim a fourth Claude review.
+The three earlier reviews remain part of the draft's history. The revised text
+was left on the correspondence board for later reading.
+
+The strengthened framing uses the existing Yates et al. (2018) transferability
+review and Ovaskainen et al. (2025) common-to-rare study. Their primary texts
+were checked again for management use in data-poor settings and the biological
+rationale for borrowing environmental information. The main text remains a
+test of tabular environmental pretraining, not a general verdict on shared
+learning. The remaining substantive vulnerabilities are unchanged: modest
+average effects, incomplete explanation of transfer heterogeneity, and limited
+generality beyond this design.
+
+Current document bindings and checks are in
+`evidence/cross_case_synthesis/20261018/humanisation-verification.json`.
+The earlier delivery record is preserved as the record of the preceding draft.

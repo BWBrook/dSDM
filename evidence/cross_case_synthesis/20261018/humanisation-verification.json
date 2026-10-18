@@ -1,0 +1,297 @@
+{
+  "schema_version": "dsdm-manuscript-humanisation-v1",
+  "generated_at_utc": "2026-10-18T03:53:47.766148+00:00",
+  "status": "pass",
+  "base_commit": "d99862673c94469692b6df7085ff18c42c6a974b",
+  "prior_delivery_record": {
+    "path": "evidence/cross_case_synthesis/20261018/draft-delivery-verification.json",
+    "sha256": "71e213ff2c6e043821567e5b01251dbc3711b47cfef01dbe84724f3d98a37139",
+    "bytes": 11548
+  },
+  "prior_outputs_archive": {
+    "path": "manuscript/build/archive/20261018-before-humanisation/archive-manifest.json",
+    "sha256": "3c0fae764587ea2df69f4682d8a65f0c3f67f090a2167e30ce6f679809c49b24",
+    "bytes": 1597
+  },
+  "scope": "Author-requested editorial revision; all scientific analyses, accepted aggregates, tables and figures unchanged.",
+  "editorial_changes": [
+    "Ecological motivation before controls",
+    "Distinguish predictive performance from value added by pretraining",
+    "Give development and ensemble findings their positive interpretation",
+    "Consolidate repeated caveats while retaining scientific qualifications",
+    "Preserve context, literature and numerical detail"
+  ],
+  "review": {
+    "independent_review": "Baseline diagnosis and revised-source claim/flow review completed; consequential repairs integrated. This is an editorial scientific check, not new numerical validation.",
+    "prior_claude_reviews": [
+      1880,
+      1883,
+      1888
+    ],
+    "further_claude_request": 1949,
+    "revised_draft_post": 1959,
+    "new_claude_review_completed": false,
+    "desktop_limitation": "Automatic approval review rejected computer-control documentation refresh; no workaround or direct message was attempted thereafter."
+  },
+  "verification": {
+    "sections": {
+      "Methods": {
+        "numeric_tokens": 59,
+        "tokens_and_order_unchanged": true
+      },
+      "Results": {
+        "numeric_tokens": 158,
+        "tokens_and_order_unchanged": true
+      }
+    },
+    "citation_keys_unchanged": [
+      "@belbin2021ala",
+      "@botella2018",
+      "@bourel2025",
+      "@brun2024",
+      "@cawley2010",
+      "@chen2017",
+      "@cole2023",
+      "@deneu2021",
+      "@fick2017worldclim",
+      "@harris2015",
+      "@jimenezvalverde2012",
+      "@johnston2021",
+      "@kumar2022",
+      "@lange2025",
+      "@lobo2008",
+      "@norberg2019",
+      "@ovaskainen2025",
+      "@phillips2009",
+      "@roberts2017",
+      "@santos2026",
+      "@valavi2022",
+      "@warton2013",
+      "@wenger2012",
+      "@yates2018"
+    ],
+    "citation_key_count": 24,
+    "all_other_prior_bound_inputs_unchanged": true,
+    "all_prior_accepted_sources_unchanged": true,
+    "supplement_outputs_unchanged": true,
+    "main_native_checks": "37 builder tests; configuration, lint, reference and author checks passed",
+    "abstract_words": 278,
+    "main_docx_tables": 3,
+    "main_docx_images": 3,
+    "main_pdf_pages": 23,
+    "main_docx_render_pages": 28,
+    "visual_review": "PDF Tables 1/2 and Discussion opening; Word Tables 1/2; no clipping, split rows or broken headers on those pages",
+    "manifests": {
+      "dsdm_manuscript": {
+        "manifest": {
+          "path": "manuscript/build/dsdm_manuscript_build_manifest.json",
+          "sha256": "43b5921b74f5ddc9181d4e813eade4b0266e1401005a4bd1efe44a7494fd8853",
+          "bytes": 3917
+        },
+        "inputs_and_outputs_match": true,
+        "builder_git": {
+          "sha": "b613e715a86f81623953403f84353314405057db",
+          "branch": "main",
+          "dirty": false
+        }
+      },
+      "dsdm_supplement": {
+        "manifest": {
+          "path": "manuscript/build/dsdm_supplement_build_manifest.json",
+          "sha256": "053c7487b8eee6fde76940cd21fb9ca4c2254eca509b3952e5cd7a24186a7893",
+          "bytes": 4812
+        },
+        "inputs_and_outputs_match": true,
+        "builder_git": {
+          "sha": "b613e715a86f81623953403f84353314405057db",
+          "branch": "main",
+          "dirty": false
+        }
+      }
+    }
+  },
+  "framing_source_recheck": [
+    {
+      "reference": "Yates et al. 2018",
+      "url": "https://www.sciencedirect.com/science/article/am/pii/S0169534718301812",
+      "supports": "Transfer to data-poor conditions and management relevance; not evidence of benefits from this pretraining design."
+    },
+    {
+      "reference": "Ovaskainen et al. 2025",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12510871/",
+      "supports": "Borrowing environmental-response information from common species to support rare-species inference and prediction; distinct method and evaluation design."
+    }
+  ],
+  "inputs": [
+    {
+      "path": "manuscript/Makefile",
+      "sha256": "2ddd98b821942d464981ab1086a881f9a79f400a4ffe5ab088ad6f4221038353",
+      "bytes": 1248
+    },
+    {
+      "path": "manuscript/text/data-sources.md",
+      "sha256": "8bb711cb2c8ba87bef578d694d90c4b757bf3fcb84e141239689d0523781fa08",
+      "bytes": 4745
+    },
+    {
+      "path": "manuscript/text/figures.md",
+      "sha256": "bd8a71ef8984801d851e2bb5a0766beee580edb085d989e9965c0956f35d3ee5",
+      "bytes": 2397
+    },
+    {
+      "path": "manuscript/text/main.md",
+      "sha256": "733578fbcda8ca36a3b39958a84d03897db38bc7f22c0b9cc656557335a6e04e",
+      "bytes": 36506
+    },
+    {
+      "path": "manuscript/text/supplement.md",
+      "sha256": "ad9fa389b772ae98c2b5d1ce88a21c4eaff08ed40640a918633bbc3c9721e170",
+      "bytes": 14950
+    },
+    {
+      "path": "manuscript/text/survey-only-and-design.md",
+      "sha256": "c0c23c2f5572d9e80e13b2d861fdafa4a324f75531e00ff58dcc1400d1e8a733",
+      "bytes": 11191
+    },
+    {
+      "path": "manuscript/text/tasmania-sensitivity.md",
+      "sha256": "5c29e6a7cfa86477f73c8a4b5b9330f5363f5731fe31823f811ca9e57f8206b1",
+      "bytes": 13355
+    },
+    {
+      "path": "manuscript/settings/build.yaml",
+      "sha256": "c00a77cbfb8cf166accc1062934b147aa3ceb83a3cd53e2c05daa4b54812db17",
+      "bytes": 2577
+    },
+    {
+      "path": "manuscript/authors.yaml",
+      "sha256": "ba240fbd2d6c2fd6334eebab16d0fe52fdb2c56ede03cb0d0e4e466d82336920",
+      "bytes": 220
+    },
+    {
+      "path": "manuscript/references/refs.yaml",
+      "sha256": "40f9815941efd575c23a3fac34c5a13fa1998d2a1acd65ab46406a713efa7064",
+      "bytes": 23149
+    },
+    {
+      "path": "manuscript/csl/oikos.csl",
+      "sha256": "f534a47f2a5ae25279d7d89e2297bc4b8bb497f8fe215284f8baf856b723fcc3",
+      "bytes": 6343
+    },
+    {
+      "path": "manuscript/evidence-ledger.md",
+      "sha256": "d4e38854da43ba6be0cf0fed3e04fdf5caf9d1690878a484587610a26530fe37",
+      "bytes": 15749
+    },
+    {
+      "path": "manuscript/README.md",
+      "sha256": "e4fc3c9187ea69ff6a365e2e923d897bf92c33ae4850c12f519eda1de4bb3dff",
+      "bytes": 6292
+    },
+    {
+      "path": "HANDOVER.md",
+      "sha256": "a00cd14b968441e42a71303c5fa6827c913af712d7c7bebbf557c1c80bad305b",
+      "bytes": 84784
+    },
+    {
+      "path": "docs/plan/ManuscriptDrafting-20261018.md",
+      "sha256": "c6b4829bb007ab8950f845be4b7f38e3656f89b5149d4a5bdd9ec625dfca49ce",
+      "bytes": 11198
+    },
+    {
+      "path": "manuscript/figures/.gitkeep",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "path": "manuscript/figures/bird-extent-and-ensembles.pdf",
+      "sha256": "73ae837c45d1b6cd441288f7cf4cbf45fff24c7cef3d7b990eff669e0855d135",
+      "bytes": 25524
+    },
+    {
+      "path": "manuscript/figures/bird-extent-and-ensembles.png",
+      "sha256": "d6dfc5df33c4e3f999c3f401df02102255b515c5e85b222127740ee2ee28525e",
+      "bytes": 169065
+    },
+    {
+      "path": "manuscript/figures/bird-recording-richness.pdf",
+      "sha256": "19b619c2ad2ac5693696dc653c24b723071bc66c87656edbdb8791bea2b54787",
+      "bytes": 6135
+    },
+    {
+      "path": "manuscript/figures/bird-recording-richness.png",
+      "sha256": "4d4102a77e4db5f67ba77ce5c128bf2c360b530b8a02245307edba364451df0c",
+      "bytes": 134928
+    },
+    {
+      "path": "manuscript/figures/cross-case-contrasts.pdf",
+      "sha256": "18bc684d2ea3f174d3c1685e22704e48a49150ff6eb31c49be6511747f61426e",
+      "bytes": 39345
+    },
+    {
+      "path": "manuscript/figures/cross-case-contrasts.png",
+      "sha256": "8e336fe6adca54e9ba4be8d0954f7a244a478b4185b8099b2f41bc51b8ed1312",
+      "bytes": 225465
+    },
+    {
+      "path": "scripts/check_survey_only_supplement.py",
+      "sha256": "4dc527f3cefd53d220421a76f6643b2bd0d92bf18ff3e76f12d6139c4590f2bb",
+      "bytes": 6666
+    },
+    {
+      "path": "scripts/plot_cross_case_synthesis.R",
+      "sha256": "177ab03f0f266efe55f77fa8bc2d185c754e563d4ae34715ff1199d428fc9459",
+      "bytes": 4702
+    },
+    {
+      "path": "scripts/plot_bird_extent_synthesis.R",
+      "sha256": "2fa3f8019de3996ac71520bc4d426792908bf232de344afdda44aef00a034ad9",
+      "bytes": 4357
+    },
+    {
+      "path": "scripts/plot_bird_recording_richness.R",
+      "sha256": "e05c97bf1deca6cead18d5ebd9fbe53eac795f01cb7b007469008b891faa77dd",
+      "bytes": 7807
+    },
+    {
+      "path": "scripts/format_review_docx.py",
+      "sha256": "9714f641a6f0192433421eb5fa1f4a171ba1f08caed6c1ae7770b4299380f5a9",
+      "bytes": 8535
+    }
+  ],
+  "outputs": [
+    {
+      "path": "manuscript/build/dsdm_manuscript.pdf",
+      "sha256": "6399f0ba4289ac259f68d4a78857ad3ea5ae22e5c5d945b39c6a28e3aa61bd51",
+      "bytes": 604659
+    },
+    {
+      "path": "manuscript/build/dsdm_manuscript.docx",
+      "sha256": "ce993093abe32d18ee468e727e8ba445765365cdb08451271a58b288f84926c0",
+      "bytes": 499644
+    },
+    {
+      "path": "manuscript/build/dsdm_supplement.pdf",
+      "sha256": "201c64d0a1397406c45b3b95aab51ac565eeae116af86362b53936a6663ca4bf",
+      "bytes": 85516
+    },
+    {
+      "path": "manuscript/build/dsdm_supplement.docx",
+      "sha256": "bd9e97b63c3df180fc3a51fb89df61a04ba37d378b7453040f0121e9bb342148",
+      "bytes": 37486
+    }
+  ],
+  "remaining_scientific_vulnerabilities": [
+    "Small descriptive average effects; dependence and heterogeneity prevent a general no-benefit or equivalence claim",
+    "Conditional comparison under architecture selection using fine-tuning",
+    "Tabular-input and observed-species scope; rare-species claims require their own evidence",
+    "Observation-process and geographic mechanisms unresolved; survey-only evaluation post hoc"
+  ],
+  "remaining_publication_items": [
+    "author details, responsibility and AI disclosure confirmation",
+    "journal choice and final citation style",
+    "private camera-source permissions and access statement",
+    "reporting absent ALA snapshot DOIs",
+    "original Tasmania predictor native metadata"
+  ]
+}

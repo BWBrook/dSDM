@@ -5,7 +5,9 @@ This directory is a repo-local manuscript workspace backed by the shared `makedo
 The active source is `text/main.md`, completely rewritten on 18 October 2026
 through three substantive review rounds with Claude. The question title,
 abstract and argument are written for both an informed generalist editor and
-specialist readers. Three Results sections distinguish the pretraining
+specialist readers. Barry's subsequent humanisation request prompted a further
+revision of the framing, flow and repeated caveats, with an independent
+scientific check; this is not a fourth Claude review. Three Results sections distinguish the pretraining
 increment, evaluation extent and model averaging, and the definition of
 negative observations. The paper contains three figures and two main tables.
 The earlier May 2026 conversion and original draft remain in Git history.
@@ -23,7 +25,10 @@ dataset products, acquisition dates and remaining source-provenance gaps.
 
 PDF and Word outputs are `build/dsdm_manuscript.{pdf,docx}` and
 `build/dsdm_supplement.{pdf,docx}`. Final source/output bindings and checks are
-in `../evidence/cross_case_synthesis/20261018/draft-delivery-verification.json`.
+in `../evidence/cross_case_synthesis/20261018/humanisation-verification.json`.
+The preceding draft's delivery record remains
+`../evidence/cross_case_synthesis/20261018/draft-delivery-verification.json`,
+with its outputs archived in `build/archive/20261018-before-humanisation/`.
 Earlier document outputs were archived in `build/archive/20261011/`; prior
 analysis receipts retain their original bindings. This is an author-review
 draft. Author statements, data permissions, legacy predictor metadata and

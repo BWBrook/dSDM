@@ -29,8 +29,17 @@ precedents and dataset references were checked against primary sources.
 Supplementary Methods S3/S4 and Tables S10–S11 now incorporate the post hoc
 survey-only results and source provenance. No models were fitted or raw
 responses reopened for this drafting task. Historical scientific receipts and
-the prior manuscript outputs remain preserved. The current verification record
-is `evidence/cross_case_synthesis/20261018/draft-delivery-verification.json`.
+the prior manuscript outputs remain preserved.
+
+Barry's subsequent editorial reading requested a humanisation pass without
+losing context. The abstract, framing and Discussion now give the ecological
+motivation and empirical contribution more room, while consolidating repeated
+caveats. An independent scientific review checked the revision; all Methods
+and Results numbers and original citation keys were retained. This was not a
+fourth Claude review: the desktop access step was blocked by automatic approval
+review, and the further request was left on the correspondence board. Current
+verification is `evidence/cross_case_synthesis/20261018/humanisation-verification.json`;
+the preceding draft's delivery record remains unchanged.
 
 The paper is ready for Barry's scientific/editorial reading. Submission still
 requires author details and responsibility/disclosure statements, journal/style
