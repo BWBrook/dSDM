@@ -79,6 +79,23 @@ Both schemes preserve paired model comparisons. Block replicates contain varying
 | Conventional | Species | [+0.002873, +0.003911] | 0.00103795 |
 | Conventional | Focal block | [+0.002725, +0.004010] | 0.001285 |
 
+\newpage
+
+### Table S1f. Absolute AUC at full target data
+
+Mean ROC AUC across species under the original training and evaluation definitions. Tasmania uses eight species, mainland mammals five, and birds the common 73-species panel. Development values first average the five spatial folds within species; Tasmania patch values pool the withheld patches, mainland transfer uses camera-supported Tasmania, and bird transfer first averages the three withheld regions within species. The Tasmania evaluation includes both constructed and survey-supported negatives. The bird development mean differs from the pooled-domain value in Fig. 2 because the latter recomputes AUC across all retained predictions.
+
+| Assessment | Fine-tuned | Target-only | Conventional |
+| --- | ---: | ---: | ---: |
+| Tasmania development | 0.7133 | 0.7200 | 0.7631 |
+| Tasmania withheld patches | 0.8390 | 0.8537 | 0.8441 |
+| Mainland development | 0.9091 | 0.9004 | 0.9052 |
+| Mainland to Tasmania | 0.5560 | 0.5715 | 0.5837 |
+| Bird development | 0.8316 | 0.8258 | 0.8282 |
+| Bird withheld regions | 0.6827 | 0.6831 | 0.6800 |
+
+\newpage
+
 ## Table S2. Bird recording-richness diagnostics
 
 ### Table S2a. Inner richness-bin contrasts

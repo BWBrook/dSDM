@@ -146,7 +146,7 @@ render <- function() {
   draw_outer_region('SEH', show_y = TRUE)
   par(mar = c(3.7, 1.0, 2.4, 1.0))
   draw_outer_region('NNC', show_y = FALSE)
-  mtext('Other recorded donor species in background cells', side = 1,
+  mtext('Other recorded species in background cells', side = 1,
         outer = TRUE, line = 0.05, cex = 0.86, col = col_dark)
 }
 

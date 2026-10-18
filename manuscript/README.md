@@ -7,7 +7,9 @@ through three substantive review rounds with Claude. The question title,
 abstract and argument are written for both an informed generalist editor and
 specialist readers. Barry's subsequent humanisation request prompted a further
 revision of the framing, flow and repeated caveats, with an independent
-scientific check; this is not a fourth Claude review. Three Results sections distinguish the pretraining
+scientific check. Claude's fourth review then prompted simpler terminology,
+finding-led Results and a new Table S1f retaining the absolute AUCs moved out
+of the prose. Three Results sections distinguish the pretraining
 increment, evaluation extent and model averaging, and the definition of
 negative observations. The paper contains three figures and two main tables.
 The earlier May 2026 conversion and original draft remain in Git history.
@@ -25,8 +27,11 @@ dataset products, acquisition dates and remaining source-provenance gaps.
 
 PDF and Word outputs are `build/dsdm_manuscript.{pdf,docx}` and
 `build/dsdm_supplement.{pdf,docx}`. Final source/output bindings and checks are
-in `../evidence/cross_case_synthesis/20261018/humanisation-verification.json`.
-The preceding draft's delivery record remains
+in `../evidence/cross_case_synthesis/20261018/claude-round4-verification.json`.
+The preceding humanisation record remains
+`../evidence/cross_case_synthesis/20261018/humanisation-verification.json`,
+with its source and outputs archived in `build/archive/20261018-before-claude-round4/`.
+The original delivery record remains
 `../evidence/cross_case_synthesis/20261018/draft-delivery-verification.json`,
 with its outputs archived in `build/archive/20261018-before-humanisation/`.
 Earlier document outputs were archived in `build/archive/20261011/`; prior

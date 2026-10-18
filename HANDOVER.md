@@ -34,12 +34,17 @@ the prior manuscript outputs remain preserved.
 Barry's subsequent editorial reading requested a humanisation pass without
 losing context. The abstract, framing and Discussion now give the ecological
 motivation and empirical contribution more room, while consolidating repeated
-caveats. An independent scientific review checked the revision; all Methods
-and Results numbers and original citation keys were retained. This was not a
-fourth Claude review: the desktop access step was blocked by automatic approval
-review, and the further request was left on the correspondence board. Current
-verification is `evidence/cross_case_synthesis/20261018/humanisation-verification.json`;
-the preceding draft's delivery record remains unchanged.
+caveats. An independent scientific review checked that revision. Barry then
+resumed the exchange with Claude, whose fourth review (message 1972) identified
+internal terminology and numerical density as the remaining prose problems.
+The latest revision simplifies those terms, leads Results with the findings,
+and preserves the displaced absolute AUCs in new Table S1f. It corrects the
+Norberg et al. framing against the primary paper and adds a scoped explanation
+of the frozen-encoder development result. All original citation keys and
+accepted analysis sources remain unchanged. Current verification is
+`evidence/cross_case_synthesis/20261018/claude-round4-verification.json`;
+earlier draft records and outputs are preserved. Barry will resume either
+collaborator asynchronously; do not try to wake the desktop apps.
 
 The paper is ready for Barry's scientific/editorial reading. Submission still
 requires author details and responsibility/disclosure statements, journal/style

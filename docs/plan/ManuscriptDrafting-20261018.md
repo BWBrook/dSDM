@@ -174,3 +174,38 @@ generality beyond this design.
 Current document bindings and checks are in
 `evidence/cross_case_synthesis/20261018/humanisation-verification.json`.
 The earlier delivery record is preserved as the record of the preceding draft.
+
+## Fourth Claude review and final prose revision
+
+Barry resumed Claude asynchronously and returned the exchange to Codex. Claude's
+message 1972 judged the draft effective for specialists and nearly effective for
+editors, identifying internal terminology and dense AUC triplets as the main
+remaining obstacles. Codex's response 1986 records the accepted changes and
+scientific disagreements. Barry now handles asynchronous wakeups himself.
+
+The revision replaces internal shorthand with ordinary model and geographic
+terms, opens Results paragraphs with their findings, and moves the learning-curve
+selection/seed qualification into Methods. New Table S1f preserves all nine
+displaced absolute AUC values within a complete six-assessment, three-method
+table drawn directly from the accepted synthesis summary. Its caption distinguishes
+fold-mean bird development AUC from the pooled-domain Fig. 2 calculation. This
+table is a manuscript addition; the historical supplement generator was not rerun.
+Figure 3's horizontal-axis wording now says "Other recorded species in background
+cells"; all source CSV values and other figure outputs are unchanged.
+
+Norberg et al. (2019) was checked against its primary text, Feature C on shared
+environmental responses. Its controlled comparison favoured sharing for all
+species but independent modelling for common species alone. The Introduction
+now describes task- and species-dependent gains, replacing the overly broad
+"substantial evidence" sentence. The Discussion also states what the full-pool
+frozen-encoder result supports: useful shared information within the training
+domain without adapting the encoder to each target. It does not rule out
+implementation limitations or establish a general transfer benefit.
+
+Claude's "equally well" wording and general claim that ensembles are more reliable
+were not adopted. The draft retains descriptive averages, heterogeneous effects,
+small bird advantages and the distinction between prediction and attribution.
+No fitting or raw-response analysis was conducted. The preceding source and
+outputs are archived in `manuscript/build/archive/20261018-before-claude-round4/`;
+current bindings and checks are in
+`evidence/cross_case_synthesis/20261018/claude-round4-verification.json`.

@@ -140,7 +140,7 @@ def widen_s11_columns(table: ET.Element) -> int:
 
 
 def set_caption_page_breaks(root: ET.Element) -> int:
-    targets = ("Table 2.", "Table S10a.", "Table S10b.", "Table S10c.", "Table S11.")
+    targets = ("Table 2.", "Table S1f.", "Table S10a.", "Table S10b.", "Table S10c.", "Table S11.")
     changed = 0
     for paragraph in root.findall(".//w:p", NS):
         text = " ".join("".join(paragraph.itertext()).split())
