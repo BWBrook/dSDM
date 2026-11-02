@@ -1,5 +1,7 @@
 # dSDM
 
+> **Status:** developed in the open as a working record. This is work in progress: contents may change, and nothing here is peer-reviewed unless stated.
+
 dSDM tests whether species-aware neural pretraining improves relative habitat
 suitability predictions beyond strong target-only models and a scalar
 community-information control. The supported workflow is Python 3.12 with
