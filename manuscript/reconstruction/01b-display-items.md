@@ -1,6 +1,8 @@
-# Step 2: Display items
+# Step 1b: Display items
 
-Main message (step 1): *Training AI on many species helped it predict where one species lives, but only in familiar places, not new ones, where predictions matter most.*
+**Status:** locked draft, 12 November 2026. Barry approved it in chat; it is to be discussed with Codex and checked on Barry's full read.
+
+Main message (step 1a): *Training AI on many species helped it predict where one species lives, but only in familiar places, not new ones, where predictions matter most.*
 
 ## Budget
 

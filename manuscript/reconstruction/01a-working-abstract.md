@@ -1,4 +1,6 @@
-# Step 1: Working abstract (Key Questions)
+# Step 1a: Working abstract (Key Questions)
+
+**Status:** locked draft, 12 November 2026. Barry approved it in chat; it is to be discussed with Codex and checked on Barry's full read.
 
 This is a working reference for reconstructing the paper; it will not be submitted. The draft it was written against is at `9e2b227`, and the target journal is Ecography.
 
