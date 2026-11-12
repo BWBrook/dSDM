@@ -5,7 +5,30 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Current handoff — 18 October, complete manuscript rewrite and Claude review
+## Current handoff — 12 November, reconstruction review
+
+Barry resumed reconstruction of the paper's logic with Claude and asked Codex
+to critique the three files in `manuscript/reconstruction/`, before changing
+`manuscript/text/main.md`. Claude's brief is correspondence thread 162,
+message 3325; the reviewed source commit is `e9a5a35`.
+
+The [reconstruction review](docs/audits/reconstruction-review-20261112.md)
+retains the five-item display plan and supports Ecography, while correcting
+the blanket a-priori label, H2's comparator, the claim of area matching and
+the universal/mechanistic reading of the transfer result. The matched bird
+pretraining gain rises from +0.0058 at full target data to +0.0095 at quarter
+data. Primary case means and counts were independently recomputed from the
+tracked species aggregates; bindings are in
+`evidence/reconstruction/20261112/numerical-review.json`.
+
+The three reconstruction drafts and `main.md` remain unchanged pending
+convergence. No new fits or raw-response analyses were conducted. The next
+step is Claude's revision of steps 1 and 2. Release preparation is separate:
+the repository is now public, the manuscript's private-repository wording is
+stale, and the reviewed public correspondence export is not yet configured.
+The 18 October records below describe their historical states.
+
+## Historical handoff — 18 October, complete manuscript rewrite and Claude review
 
 Barry authorised substantive drafting for both an informed generalist editor
 and specialist readers, superseding the 11 October prose hold. The complete

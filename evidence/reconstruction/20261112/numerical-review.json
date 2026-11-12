@@ -1,0 +1,255 @@
+{
+  "schema_version": "dsdm-reconstruction-review-check-v1",
+  "review_date": "2026-11-12",
+  "reviewed_commit": "e9a5a3548e5e021a44ccaf48fbad3f24fd4ec5fa",
+  "scope": "Read-only recomputation from tracked aggregate species CSVs and inspection of accepted summary values. No new fitting, response access or scientific source edits.",
+  "status": "pass",
+  "species_csv_means_counts_match_summary": true,
+  "cases": [
+    {
+      "case": "birds_NCP",
+      "contrast": "fine_tuned_minus_conventional",
+      "mean": 0.007796995416773445,
+      "positive": 41,
+      "n": 73
+    },
+    {
+      "case": "birds_NCP",
+      "contrast": "fine_tuned_minus_target_only",
+      "mean": 0.006350085443521865,
+      "positive": 44,
+      "n": 73
+    },
+    {
+      "case": "birds_NNC",
+      "contrast": "fine_tuned_minus_conventional",
+      "mean": 0.007566498073230546,
+      "positive": 49,
+      "n": 73
+    },
+    {
+      "case": "birds_NNC",
+      "contrast": "fine_tuned_minus_target_only",
+      "mean": -0.0035388478169858795,
+      "positive": 31,
+      "n": 73
+    },
+    {
+      "case": "birds_SEH",
+      "contrast": "fine_tuned_minus_conventional",
+      "mean": -0.007051941188840895,
+      "positive": 36,
+      "n": 73
+    },
+    {
+      "case": "birds_SEH",
+      "contrast": "fine_tuned_minus_target_only",
+      "mean": -0.003999300562251753,
+      "positive": 41,
+      "n": 73
+    },
+    {
+      "case": "birds_inner",
+      "contrast": "fine_tuned_minus_conventional",
+      "mean": 0.0033898583175572808,
+      "positive": 67,
+      "n": 73
+    },
+    {
+      "case": "birds_inner",
+      "contrast": "fine_tuned_minus_target_only",
+      "mean": 0.005780750360440689,
+      "positive": 72,
+      "n": 73
+    },
+    {
+      "case": "birds_outer",
+      "contrast": "fine_tuned_minus_conventional",
+      "mean": 0.0027705174337210284,
+      "positive": 39,
+      "n": 73
+    },
+    {
+      "case": "birds_outer",
+      "contrast": "fine_tuned_minus_target_only",
+      "mean": -0.0003960209785719396,
+      "positive": 34,
+      "n": 73
+    },
+    {
+      "case": "mainland_inner",
+      "contrast": "fine_tuned_minus_conventional",
+      "mean": 0.003949973861805622,
+      "positive": 5,
+      "n": 5
+    },
+    {
+      "case": "mainland_inner",
+      "contrast": "fine_tuned_minus_target_only",
+      "mean": 0.008745329485429632,
+      "positive": 4,
+      "n": 5
+    },
+    {
+      "case": "mainland_to_tasmania",
+      "contrast": "fine_tuned_minus_conventional",
+      "mean": -0.02773293862642805,
+      "positive": 1,
+      "n": 5
+    },
+    {
+      "case": "mainland_to_tasmania",
+      "contrast": "fine_tuned_minus_target_only",
+      "mean": -0.015513059220361924,
+      "positive": 3,
+      "n": 5
+    },
+    {
+      "case": "tasmania_inner",
+      "contrast": "fine_tuned_minus_conventional",
+      "mean": -0.04978754791259646,
+      "positive": 0,
+      "n": 8
+    },
+    {
+      "case": "tasmania_inner",
+      "contrast": "fine_tuned_minus_target_only",
+      "mean": -0.006749640344026919,
+      "positive": 4,
+      "n": 8
+    },
+    {
+      "case": "tasmania_outer",
+      "contrast": "fine_tuned_minus_conventional",
+      "mean": -0.005141219536936331,
+      "positive": 3,
+      "n": 8
+    },
+    {
+      "case": "tasmania_outer",
+      "contrast": "fine_tuned_minus_target_only",
+      "mean": -0.014741211974987886,
+      "positive": 1,
+      "n": 8
+    }
+  ],
+  "matched_target_data_curve": [
+    {
+      "target_fraction": 1,
+      "mean_matched_pretraining_increment": 0.005780750360440689,
+      "panel": "primary73_100_full"
+    },
+    {
+      "target_fraction": 0.5,
+      "mean_matched_pretraining_increment": 0.00747053486283968,
+      "panel": "primary50_full_aux"
+    },
+    {
+      "target_fraction": 0.25,
+      "mean_matched_pretraining_increment": 0.009457997466085348,
+      "panel": "primary25_full_aux"
+    }
+  ],
+  "outer_bird_ensemble_and_baseline_values": [
+    {
+      "measure": "auc",
+      "scope": "outer_equal_regions",
+      "series": "fine_tuned",
+      "value": 0.6827322893660152
+    },
+    {
+      "measure": "auc",
+      "scope": "outer_equal_regions",
+      "series": "target_only",
+      "value": 0.683128310344587
+    },
+    {
+      "measure": "auc",
+      "scope": "outer_equal_regions",
+      "series": "conventional",
+      "value": 0.6799617719322941
+    },
+    {
+      "measure": "contrast",
+      "scope": "outer_equal_regions",
+      "series": "fine_tuned_minus_target_only",
+      "value": -0.0003960209785719224
+    },
+    {
+      "measure": "contrast",
+      "scope": "outer_equal_regions",
+      "series": "ft_ensemble_minus_conventional",
+      "value": 0.01035221681504485
+    },
+    {
+      "measure": "contrast",
+      "scope": "outer_equal_regions",
+      "series": "to_ensemble_minus_conventional",
+      "value": 0.009620508407280235
+    }
+  ],
+  "tasmania_fine_tuned_minus_conventional_auc": {
+    "original_mixed": {
+      "primary": -0.005141219536936359,
+      "sensitivity": -0.007086260959495494
+    },
+    "survey_only": {
+      "primary": 0.015428853989735147,
+      "sensitivity": 0.018720441228894047
+    }
+  },
+  "limits": [
+    "Agreement of aggregate tables does not independently validate raw prediction generation.",
+    "Numerical agreement does not validate the drafts causal or population-level interpretations."
+  ],
+  "input_bindings": [
+    {
+      "path": "evidence/cross_case_synthesis/20261005/revision-01/summary.json",
+      "sha256": "6834e34c74767864686862734f57a64a2ac10b324fcdadab89797e1cecbe0fd2"
+    },
+    {
+      "path": "evidence/cross_case_synthesis/20261005/revision-01/case_contrasts.csv",
+      "sha256": "0941334780b2c58c72ee8aed5adf02f8a23c462dab8c680e7b60619f52474ddc"
+    },
+    {
+      "path": "evidence/cross_case_synthesis/20261005/revision-01/case_metrics.csv",
+      "sha256": "686a987d24a1c87aecd0277f1df507246ffc44f360974fb5484d1c6a0fccbff0"
+    },
+    {
+      "path": "evidence/seawfb_dsdm/goal052/summary.json",
+      "sha256": "ec0bc6c2df8cabd3554f5b2b9eebda97b3426ddd186bfa2acc64ba3d1244a3d3"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261011/survey-only/summary.json",
+      "sha256": "0edae61c9bc851c57cd6716d43fb93df204d4742f2c4e7fb2a6cbad73b9f224e"
+    },
+    {
+      "path": "evidence/seawfb_dsdm/goal052/extent-review-20261005.json",
+      "sha256": "08652c0909c600bd0e4794d89b522a1e3ecb32557e4f2dad64598cea3be12fa7"
+    },
+    {
+      "path": "evidence/cross_case_synthesis/20261008/bird-composition-resampling.json",
+      "sha256": "366d9bd4501d6179185b49c4757e1d2f84a980d22a2e14cc40c6c4d21387b92a"
+    },
+    {
+      "path": "evidence/cross_case_synthesis/20261018/recording-richness.csv",
+      "sha256": "17c80c0f9d2b0f6be0a9965a8184a959bab75542604dc25a6d0de843b7c377d7"
+    },
+    {
+      "path": "manuscript/text/main.md",
+      "sha256": "d430fe052b78fdb127f2f1c07d436c95fb4dc40954dfd9cf9e93ae4aab399085"
+    },
+    {
+      "path": "manuscript/reconstruction/01a-working-abstract.md",
+      "sha256": "06f92930ace274d45d0bee9e3a82f1e874797dda97b2cf399a0b5349b7f1eae3"
+    },
+    {
+      "path": "manuscript/reconstruction/01b-display-items.md",
+      "sha256": "d0fc3855c75e8afd39e5127a06f73f5224fae450901430a7eebca5b9a6102dea"
+    },
+    {
+      "path": "manuscript/reconstruction/02-one-page-paper.md",
+      "sha256": "2cdbbca83ccf67820f91dcc2efc5d5194f6febd531246ba236e01f519d9645ad"
+    }
+  ]
+}
