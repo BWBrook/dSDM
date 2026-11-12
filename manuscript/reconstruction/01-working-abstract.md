@@ -1,0 +1,57 @@
+# Step 1: Working abstract (Key Questions)
+
+This is a working reference for reconstructing the paper; it will not be submitted. The draft it was written against is at `9e2b227`, and the target journal is Ecography.
+
+**Main message (24 words).** Multi-species pretraining slightly improves distribution models within the training region, but the advantage vanishes in new regions; ensembling neural with conventional models gains more.
+
+## Why are we doing this?
+
+Deep and joint SDMs promise better predictions for each species by learning from many species. That promise has rarely been tested against a matched single-species network where SDMs are actually used: in new places.
+
+## Aims and research questions
+
+**Core question:** does learning from other species improve a target species' distribution model when it predicts into new regions?
+
+**Sub-questions:**
+- Does any gain come from pretraining itself, or from using a neural network at all?
+- How do the evaluation extent and the definition of negative observations change the answer?
+
+## Hypotheses (a priori, grounded in theory)
+
+1. **Shared niche structure.** Species respond to common environmental gradients, so a representation pretrained on other species should improve target prediction within the training domain.
+2. **Borrowing strength.** Pooled information should matter most when the target's own data are scarce, so the gain should grow as target records shrink.
+3. **Transfer under domain shift.** If the shared representation captures general niche structure, the gain should persist in new regions. If it captures structure specific to the training domain, such as co-occurrence or recording patterns, the gain should shrink.
+4. **Shared observation process.** Species share observers, so models learn where people record as well as habitat. The neural advantage should therefore depend on whether negatives come from poorly or well-recorded places.
+
+## What we did
+
+- We trained residual neural networks on many other species and fine-tuned each one on a target species.
+- We compared these against identical networks trained only on the target, a frozen-encoder control, and tuned conventional SDMs.
+- We used three Australian cases (Tasmanian mammals, mainland mammals transferred to Tasmania, and 157 birds) and held out whole bioregions.
+- Primary models and scoring were fixed before we looked at outcomes.
+
+## What we found
+
+- Pretraining improved discrimination within the training region (+0.006 to +0.009 AUC), but that gain vanished in the held-out regions (birds −0.0004, mammals transferred to Tasmania −0.016).
+- The network trained only on the target still beat conventional models there (+0.003).
+- Neural–conventional ensembles gained most (+0.010).
+- Rankings shifted with evaluation extent and with how negatives were defined.
+
+## What the results mean
+
+- The gains a successful pretrained model appears to make are mostly available without learning from other species.
+- The shared representation encodes structure that does not transfer, consistent with hypothesis 3's second branch.
+- Labels and recording processes, not the learner, set the ceiling on performance.
+
+## What it is good for, and how it generalises
+
+Any claim that transfer helps should be tested against a target-only twin, in the regions and with the observations where predictions will be used. Ensembling neural and conventional models is a cheap gain. Improving observation data is likely to beat adding model complexity. Both apply to any taxon or region.
+
+## Notes for later steps
+
+- The current draft states no hypotheses. Hypotheses 1–4 map onto evidence it already has:
+  - **H1:** the gains within the training domain.
+  - **H2:** the target-data learning curves, plus the least-recorded third of species (+0.0006 against conventional models, +0.0041 against the target-only network). H2 is only partly supported: the gain grew under subsampling, but the least-recorded species gained little against conventional models.
+  - **H3:** the held-out region results, and the extent-matched analysis showing the pretraining gain stays positive within regions in the development data.
+  - **H4:** the recording-richness gradient, which was a prospectively fixed diagnostic in the held-out regions, and the Tasmanian survey-only negatives, which were post hoc.
+- **Correction to an earlier Claude answer in chat (12 November).** The recording-richness gradient refers to **places**: background cells with few other recorded species. It does not refer to sparsely recorded species. The neural advantage over conventional models was largest against poorly recorded background, and smallest or negative against well-recorded background. Among the least-recorded *species*, the advantage over conventional models was almost nil.
