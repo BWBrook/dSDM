@@ -2,7 +2,18 @@
 
 This is a working reference for reconstructing the paper; it will not be submitted. The draft it was written against is at `9e2b227`, and the target journal is Ecography.
 
-**Main message (24 words).** Multi-species pretraining slightly improves distribution models within the training region, but the advantage vanishes in new regions; ensembling neural with conventional models gains more.
+## Main message (22 words)
+
+> **Learning from other species improved neural distribution models within their training region, but not in new regions, where predictions are most needed.**
+
+Every section should serve this sentence. The lines of evidence that support it, rather than compete with it:
+- **The target-only twin.** The small neural advantage in new regions was available without pretraining.
+- **Ensembles.** The practical gain comes from combining learners, not from sharing across species.
+- **Extent and negatives.** Absolute scores and rankings depend on how the test is defined, so the comparison must be matched.
+
+Superseded draft (24 words): "Multi-species pretraining slightly improves distribution models within the training region, but the advantage vanishes in new regions; ensembling neural with conventional models gains more." This carried two messages, the pretraining null and the ensemble gain. The ensemble result now serves as evidence for the main message instead.
+
+**Terminology (Barry, 12 November 2026).** "Deep" was Barry's original term, and he is not wedded to it. Describe the model as a neural network: a multilayer perceptron, a standard deep-learning model. Avoid "deep SDM", because readers may take it to mean image or spatial models. This means revising the opening of the v1 abstract.
 
 ## Why are we doing this?
 
