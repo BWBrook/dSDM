@@ -2,9 +2,13 @@
 
 This is a working reference for reconstructing the paper; it will not be submitted. The draft it was written against is at `9e2b227`, and the target journal is Ecography.
 
-## Main message (22 words)
+## Main message (24 words)
 
-> **Learning from other species improved neural distribution models within their training region, but not in new regions, where predictions are most needed.**
+> **Training AI on many species helped it predict where one species lives, but only in familiar places, not new ones, where predictions matter most.**
+
+Written for a reader who assumes nothing. "AI" is the plain term here; the paper itself says what kind (a neural network). "Familiar places" means the region the model was trained in.
+
+Superseded (22 words; too technical, per Barry): "Learning from other species improved neural distribution models within their training region, but not in new regions, where predictions are most needed."
 
 Every section should serve this sentence. The lines of evidence that support it, rather than compete with it:
 - **The target-only twin.** The small neural advantage in new regions was available without pretraining.
