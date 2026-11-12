@@ -6,7 +6,7 @@
 
 ## Learning from other species improves distribution models within training regions, but not on average in new ones
 
-**Introduction.** Conservation needs maps of where species live, above all where records are sparse; species distribution models (SDMs) draw them by relating records to environment. Neural networks offer an upgrade: learn first from many species, then adapt to the species of interest, borrowing information its own records lack. Their gains weaken under geographic transfer (Basile et al. 2026), but how much comes from learning other species, rather than from the network itself, is unmeasured. Measuring it needs an identical network trained on the target alone, tested in regions kept out of model development.
+**Introduction.** Conservation needs maps of where species live, above all where records are sparse; species distribution models (SDMs) draw them by relating records to environment. Neural networks offer an upgrade: a network learns first from many species, then adapts to the target, borrowing information the target's own records lack. Their gains weaken under geographic transfer (Basile et al. 2026), but how much comes from learning other species, rather than from the network itself, is unmeasured. Measuring it needs an identical network trained on the target alone, tested in regions kept out of model development.
 
 We asked whether learning from other species improves predictions in new regions. Species share responses to environment, which gives three predictions:
 1. Pretraining improves prediction within the development region.
