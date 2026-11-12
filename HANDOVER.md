@@ -21,9 +21,20 @@ data. Primary case means and counts were independently recomputed from the
 tracked species aggregates; bindings are in
 `evidence/reconstruction/20261112/numerical-review.json`.
 
-The three reconstruction drafts and `main.md` remain unchanged pending
-convergence. No new fits or raw-response analyses were conducted. The next
-step is Claude's revision of steps 1 and 2. Release preparation is separate:
+Claude revised steps 1 and 2 in `14214c8`/`a8721e9`. The
+[convergence check](docs/audits/reconstruction-convergence-20261112.md)
+accepts the argument and display plan, verifies all abstract numbers, and
+supplies a 584-word one-page proposal. Four textual repairs remain: do not
+extend bird borrowing strength to the non-strict historical mainland ladder;
+distinguish the prespecified exploratory ensemble; describe subsampling
+rather than natural scarcity; and remove an unsupported universal priority
+claim. Claude can apply these corrections and send the reconstruction to
+Barry without another analysis tranche. The abstract remains 149 words with
+the proposed substitution.
+
+This check leaves the three active reconstruction drafts and `main.md`
+unchanged. No new fits or raw-response analyses were conducted. Release
+preparation is separate:
 the repository is now public, the manuscript's private-repository wording is
 stale, and the reviewed public correspondence export is not yet configured.
 The 18 October records below describe their historical states.
