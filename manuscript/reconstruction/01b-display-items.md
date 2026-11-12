@@ -1,116 +1,95 @@
 # Step 1b: Display items
 
-**Status:** locked draft, 12 November 2026. Barry approved it in chat; it is to be discussed with Codex and checked on Barry's full read.
+**Status:** locked draft v2, 12 November 2026. Barry approved v1 in chat. v2 applies Codex's review (`docs/audits/reconstruction-review-20261112.md`, R4, R8, R9, R11 and R13). It is to be checked on Barry's full read.
 
-Main message (step 1a): *Training AI on many species helped it predict where one species lives, but only in familiar places, not new ones, where predictions matter most.*
+Main message (step 1a): *Training AI on many species improved predictions in familiar regions, but on average not in new ones, where predictions matter most.*
 
 ## Budget
 
-**Four figures and one table, which is five of the six items Ecography allows.**
-
-- The text has about 4,650 words; at 5,000 words, each display item should carry one point the reader cannot get from the text.
-- Keep the sixth slot empty. Filling it would make every item compete for attention, and a reviewer's request can use it later.
-- Everything else goes in a single Supporting information file.
+**Four figures and one table: five of Ecography's six.** The main text runs to about 4,650 words against the 5,000 limit, so every display item has to carry a point the text cannot. The sixth slot stays free, and everything else goes into a single Supporting information file.
 
 ## Principles for every item
 
-- **One point per item, stated in a title that reads as a sentence.** The caption explains how to read the figure. Limitations go in the Discussion's limitations paragraph, not in captions.
-- **Plain labels for readers outside the field.**
-  - Write "familiar places" or "training region" and "new places" or "held-out region", not "inner/outer CV", "OOF" or "region × fold".
-  - Write "pretrained network", "single-species network" and "conventional model", not FT/TO/conv. Abbreviations can stay in the methods.
-- **One colour per learner across all figures.** For example: pretrained network in blue, single-species network in orange, conventional model in grey, ensembles in green.
-- **Show the species, not just means.** Plot one point per species, a mean, and a bootstrap 95% interval over species. The interval answers the uncertainty point in the Ecography audit.
-- **Share scales wherever the comparison matters.** The current Fig. 1 has a different scale in every row, so its main contrast cannot be read off it.
-- **No camera-site locations on any map.** Show regions and outlines only.
+- **One point per item.** The title is a sentence stating that point. The caption explains how to read the figure and defines what is plotted. Limitations belong in the Discussion's limitations paragraph.
+- **Plain labels.** Use "familiar regions" or "development region" and "new regions"; avoid "inner/outer CV", "OOF" and "region × fold". Name the learners "pretrained network", "single-species network" and "conventional model".
+- **One colour per learner, the same in every figure.** For example: pretrained network blue, single-species network orange, conventional model grey, ensembles green.
+- **Show species, not only means.**
+  - Bird panels: species points, the mean, and the paired central 95% species-composition resampling range. The caption defines it as conditional on the observed panel and fitted models. Do not call it a confidence interval.
+  - Mammal panels (5 and 8 species): points and means only.
+- **Share scales wherever the comparison matters.**
+- **Maps show public boundaries only.** No camera sites, no masks derived from cameras, and no Tasmanian held-out patches drawn as real locations.
 
 ## Proposed items
 
 ### Figure 1: Study design (new context item)
 
-*Three tests of whether learning from other species helps in new places.*
+*Three tests of whether learning from other species helps in new regions.*
 
-- **(a) Map** of south-eastern Australia showing:
-  - the bird training domain;
-  - the three held-out bird regions (NCP, SEH, NNC) with their 50 km buffers;
-  - the source domain for the mainland mammals, and Tasmania as their transfer target;
-  - Tasmania's held-out patches, shown schematically and without site locations.
-- **(b) Schematic of the four learners and two comparisons:**
-  - The **pretrained network** learns from other species first, then learns from the target.
-  - The **single-species network** has the same architecture but learns from the target only.
-  - The **frozen-encoder** control.
-  - The **conventional models**: elastic net, RF, HGB and a shallow ANN.
-  - Comparison 1, **pretrained minus single-species**, measures what learning from other species adds.
-  - Comparison 2, **single-species minus conventional**, measures what the network adds by itself.
-  - The arrows also show the rule that **the target species is excluded from pretraining** and **the held-out regions are excluded from all fitting**.
-
-**Why:** the three peer papers we read in full that have a map or design schematic all have one. Our design uses three cases, held-out regions and a matched twin, and reviewers will judge it on whether they grasp that design in 30 seconds. The schematic also carries the paper's methodological contribution.
+- **(a) Map.** Start from the boundary-only `evidence/seawfb_bioregional_freeze/goal048/selected_holdouts.svg` and redraw it at print resolution. Show:
+  - the bird development domain;
+  - the three withheld bioregions (NCP, SEH, NNC) with their 50 km buffers;
+  - the mainland mammal source region, with Tasmania as its transfer target.
+  An explicitly schematic Tasmanian inset shows the held-out-patch design.
+- **(b) Schematic of three learners and two comparisons.**
+  - Learners: a pretrained network (learns from other species, then the target); a single-species network (same architecture, target only); a conventional model selected within the development data.
+  - **Pretrained minus single-species** is what learning from other species adds.
+  - **Single-species minus conventional** is what the network adds by itself.
+  - Rules shown: the target species is excluded from pretraining, and the withheld regions are excluded from all fitting.
+  - The frozen-encoder and scalar community controls appear as a labelled branch pointing to Supporting information.
 
 ### Figure 2: The main result (rebuilt from current Fig. 1 and Fig. 2b)
 
-*Learning from other species helped in familiar places but not in new ones.*
+*Learning from other species helped in familiar regions but not, on average, in new ones.*
 
-- **(a) Birds, pretrained minus single-species network, per species**, in three settings on one scale:
-  1. familiar places, scored across the whole training domain (+0.0058);
-  2. familiar places, scored within regions the same size as the held-out ones (+0.0072, 68 of 73 species positive);
-  3. new places, the held-out regions (−0.0004, 34 of 73 positive).
-  Setting 2 is the decisive control: the gain survives a fair comparison by area in familiar places and disappears in new ones. Draw paired lines or link the species across settings so the collapse is visible.
-- **(b) Mammals, same contrast:**
-  - mainland mammals, familiar places (+0.0087) and transferred to Tasmania (−0.0155);
-  - Tasmanian mammals, familiar places (−0.0068) and held-out patches (−0.0147).
-  There are few species here, so plot the individual points large.
+- **(a) Birds: pretrained minus single-species network, paired species points, one scale.**
+  1. Development, whole domain: +0.0058, 72/73 species positive.
+  2. Development scored **within bioregions and spatial folds**: +0.0072, 68/73.
+  3. New regions: −0.0004, 34/73. Mark the regional means: NCP +0.0064, SEH −0.0040, NNC −0.0035.
+  Link the species across settings, so the reader sees the average gain disappear while individual species still vary.
+- **(b) Mammals, same contrast, large points:**
+  - mainland development +0.0087 (4/5), then transfer to Tasmania −0.0155 (3/5);
+  - Tasmania development −0.0068, then held-out patches −0.0147.
 
-**Why:** this figure is the paper. The current Fig. 1 shows 12 panels at 6 scales and mixes both comparisons, so the main message is not visible at a glance.
+### Figure 3: What helps in new regions (rebuilt from current Fig. 2b and its callout)
 
-### Figure 3: What does help in new places (rebuilt from current Fig. 2b and its callout)
+*In new bird regions the network's advantage was available without pretraining, and averaging with a conventional model gained most.*
 
-*In new places, the network's advantage came without pretraining, and combining it with a conventional model gained most.*
+New bird regions only. Each row is a difference from the conventional model, shown as species points, a mean and a resampling range:
+1. single-species network: +0.0032;
+2. pretrained network: +0.0028;
+3. fixed 50:50 single-species/conventional ensemble: +0.0096 (post hoc);
+4. fixed 50:50 pretrained/conventional ensemble: +0.0104 (prespecified as exploratory).
 
-- Held-out bird regions only. Each row is a difference from the conventional model, with species points, a mean and a 95% interval:
-  1. single-species network (+0.0032);
-  2. pretrained network (+0.0028);
-  3. single-species network plus conventional ensemble (+0.0096);
-  4. pretrained network plus conventional ensemble (+0.0104).
-- One panel on one scale. Region-by-region results go in the supporting information.
+The provenance of rows 3 and 4 is stated once, in the Methods. Region-by-region results go to Supporting information.
 
-**Why:** this is the practical take-home for applied modellers, and it shows directly that the useful network gains do not depend on pretraining.
+### Figure 4: Negative evidence changes the ranking (merges current Fig. 3 and Table 2)
 
-### Figure 4: What counts as an absence changes the verdict (merges current Fig. 3 and Table 2)
+*Model rankings changed with how well recorded the negative observations were.*
 
-*Model rankings depend on which negative observations the test uses.*
+- **(a) Birds.** Pretrained network minus conventional model, plotted against background recording richness (10–24, 25–99 and ≥100 other species recorded).
+  - Development: 59 species.
+  - SEH: 38 species; NNC: 55 species.
+  - NCP has no common three-bin estimate; say so in the caption.
+- **(b) Tasmania.** A 2×2 of training (original vs pseudoabsences removed) by evaluation (mixed negatives vs survey-supported negatives only), plotting AUC for each learner as dots joined by lines. The TSS half of the current Table 2 moves to Supporting information.
 
-- **(a) Birds:** pretrained network minus conventional model, plotted against how well recorded the background cells are (10–24, 25–99, and 100+ other species recorded). Show familiar places for 59 species, and SEH and NNC within the held-out regions.
-- **(b) Tasmania:** AUC for each learner, with and without constructed pseudoabsences in training, scored against the mixed negatives and against survey-supported negatives only. A dot-and-line plot reads faster than the eight-row Table 2. The TSS half of Table 2 moves to the supporting information.
+### Table 1: Cases and absolute performance (merges current Table 1 with Table S1f)
 
-**Why:** this tests hypothesis 4 (that the learners share an observation process) and generalises to every presence-only SDM. It frees one table slot.
-
-### Table 1: Cases and headline performance (merges current Table 1 with Table S1f)
-
-One row per case and setting:
-
-| Column | Contents |
-|---|---|
-| Case | Tasmanian mammals, mainland mammals → Tasmania, or birds with one row per held-out region and one pooled row |
-| Species | number of target species |
-| Prediction task | e.g. interpolation within held-out patches, transfer to an environmental edge |
-| Excluded from fitting | what was withheld, including buffers |
-| AUC, familiar places | pretrained, single-species and conventional models |
-| AUC, new places | the same three models, plus the best ensemble where computed |
-
-**Why:** the Ecography audit flagged that the absolute AUCs are hidden in the supplement. Readers need them to judge whether 0.003 matters. Putting the familiar-places and new-places columns side by side also shows the large absolute drop at a glance, so the extent result needs no separate figure.
+- Rows: each case and setting, with the three bird regions and the pooled bird result as subrows.
+- Descriptor columns: species count, prediction task, and what was excluded from fitting.
+- Performance columns: AUC for the three learners, in development and in new regions.
+- Ensembles stay in Fig. 3, and there are no mammal ensemble cells.
 
 ## Moved to Supporting information
 
-| Item | Current location |
-|---|---|
-| Learning curves for target data and for the auxiliary pool, including the frozen-encoder trajectory | text and Table S-series |
-| Results under the true skill statistic (TSS) for all cases, including the Tasmania split between AUC and TSS | text and Table 2b |
-| Absolute AUC under each scoring extent, shown as a full panel | current Fig. 2a |
-| Per-region and per-species breakdowns | various |
-| Maps of how pseudoabsence removal changes the predictions | sensitivity PDF |
-| Detail on the least-recorded third of species | text |
+- Learning curves: target data and auxiliary pool, including the frozen-encoder trajectory.
+- TSS for all cases, including the Tasmanian disagreement between AUC and TSS. The main text keeps one sentence on it.
+- Absolute AUC under each scoring extent, as a full panel.
+- Per-region and per-species breakdowns.
+- Maps of how pseudoabsence removal changes predictions.
+- The scalar community controls.
 
-## Gaps to fill before building
+## Production notes
 
-1. **Bootstrap intervals over species** for each plotted mean. The current resampling ranges describe species composition only. Decide whether to resample folds or seeds as well.
-2. **Mammal ensembles.** Neural plus conventional ensembles were computed for birds only; the only mammal ensembles are across folds (Goal 046). Either compute neural plus conventional ensembles for the mainland and Tasmanian cases, which is cheap and post hoc, or leave those cells blank in Table 1.
-3. **Map layers.** We need region outlines and the training-domain mask at a resolution that cannot reveal camera sites. Check this against the release boundary in the README.
+- **No new fits are needed.** Mammal neural/conventional ensembles are left out. Building them would need aligned prediction vectors and labels, and the saved outer vectors for the mainland transfer are not established.
+- **Bird resampling ranges.** Existing ranges cover development and new-region pretrained minus single-species, and pretrained minus conventional. Ranges for the within-bioregion-and-fold rescoring and for the ensemble rows are a bounded reporting extension (Codex). They use retained species aggregates in `evidence/seawfb_dsdm/goal052/extent-review-20261005.json`, with no fitting and no access to raw responses.
+- **Map geometry.** Display geometry uses 3 km simplification; the analysis geometry is unchanged. Make no claim of a "safe" grid resolution.

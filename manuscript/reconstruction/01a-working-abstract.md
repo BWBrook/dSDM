@@ -1,78 +1,84 @@
 # Step 1a: Working abstract (Key Questions)
 
-**Status:** locked draft, 12 November 2026. Barry approved it in chat; it is to be discussed with Codex and checked on Barry's full read.
+**Status:** locked draft v2, 12 November 2026. This version is revised against Codex's review (`docs/audits/reconstruction-review-20261112.md`, board thread 162, message 3329). It is still to be checked on Barry's full read. It is a working reference and will not be submitted. The target journal is Ecography.
 
-This is a working reference for reconstructing the paper; it will not be submitted. The draft it was written against is at `9e2b227`, and the target journal is Ecography.
+## Main message (21 words)
 
-## Main message (24 words)
+> **Training AI on many species improved predictions in familiar regions, but on average not in new ones, where predictions matter most.**
 
-> **Training AI on many species helped it predict where one species lives, but only in familiar places, not new ones, where predictions matter most.**
+"Familiar regions" means unseen locations inside the region where the model was developed. "New regions" means areas kept out of all model development. The paper names the positive cases explicitly: mainland mammals and birds.
 
-Written for a reader who assumes nothing. "AI" is the plain term here; the paper itself says what kind (a neural network). "Familiar places" means the region the model was trained in.
-
-Superseded (22 words; too technical, per Barry): "Learning from other species improved neural distribution models within their training region, but not in new regions, where predictions are most needed."
-
-Every section should serve this sentence. The lines of evidence that support it, rather than compete with it:
-- **The target-only twin.** The small neural advantage in new regions was available without pretraining.
-- **Ensembles.** The practical gain comes from combining learners, not from sharing across species.
-- **Extent and negatives.** Absolute scores and rankings depend on how the test is defined, so the comparison must be matched.
-
-Superseded draft (24 words): "Multi-species pretraining slightly improves distribution models within the training region, but the advantage vanishes in new regions; ensembling neural with conventional models gains more." This carried two messages, the pretraining null and the ensemble gain. The ensemble result now serves as evidence for the main message instead.
-
-**Terminology (Barry, 12 November 2026).** "Deep" was Barry's original term, and he is not wedded to it. Describe the model as a neural network: a multilayer perceptron, a standard deep-learning model. Avoid "deep SDM", because readers may take it to mean image or spatial models. This means revising the opening of the v1 abstract.
+Earlier versions:
+- Barry-approved v2 (24 words): "Training AI on many species helped it predict where one species lives, but only in familiar places, not new ones, where predictions matter most." Codex's review R1 found that "only" overstates the result. One bird region (NCP) and some individual species did benefit in new places, so the claim is now about the average.
+- v1 (22 words): too technical for a general reader.
 
 ## Why are we doing this?
 
-Deep and joint SDMs promise better predictions for each species by learning from many species. That promise has rarely been tested against a matched single-species network where SDMs are actually used: in new places.
+Neural networks that learn from many species promise better distribution models. Their gains weaken under transfer, but nobody has measured how much comes from learning other species, rather than from the network itself.
 
 ## Aims and research questions
 
-**Core question:** does learning from other species improve a target species' distribution model when it predicts into new regions?
+**Core question:** Does learning from other species improve a target's distribution model in new regions?
 
 **Sub-questions:**
-- Does any gain come from pretraining itself, or from using a neural network at all?
-- How do the evaluation extent and the definition of negative observations change the answer?
+- How does the gain change as the target's own records shrink?
+- Do model rankings depend on the evidence used for absence?
 
-## Hypotheses (a priori, grounded in theory)
+## Predictions and diagnostic question
 
-1. **Shared niche structure.** Species respond to common environmental gradients, so a representation pretrained on other species should improve target prediction within the training domain.
-2. **Borrowing strength.** Pooled information should matter most when the target's own data are scarce, so the gain should grow as target records shrink.
-3. **Transfer under domain shift.** If the shared representation captures general niche structure, the gain should persist in new regions. If it captures structure specific to the training domain, such as co-occurrence or recording patterns, the gain should shrink.
-4. **Shared observation process.** Species share observers, so models learn where people record as well as habitat. The neural advantage should therefore depend on whether negatives come from poorly or well-recorded places.
+The first three predictions follow from shared responses to environment and were built into the original design.
+
+1. **Development gain.** Pretraining on other species improves prediction within the development region.
+2. **Borrowing strength.** That gain grows as the target's own records shrink.
+3. **Transfer.** The gain persists in new regions. If it fails, the result alone does not tell us why: the shared information may be niche structure, recording patterns, or an optimisation effect.
+
+The fourth item is a diagnostic question, not a prediction. It arose from the development results and was fixed before the new-region data were opened. The Tasmanian survey-only check came later.
+
+4. **Negative evidence.** Do model rankings change with how well recorded the negative observations are?
 
 ## What we did
 
-- We trained residual neural networks on many other species and fine-tuned each one on a target species.
-- We compared these against identical networks trained only on the target, a frozen-encoder control, and tuned conventional SDMs.
-- We used three Australian cases (Tasmanian mammals, mainland mammals transferred to Tasmania, and 157 birds) and held out whole bioregions.
-- Primary models and scoring were fixed before we looked at outcomes.
+- Multilayer perceptrons were pretrained on other species and fine-tuned to each target.
+- Each was compared with an identical network trained on the target species only, and with a conventional model selected within the development data.
+- Three cases:
+  - Tasmanian mammals, scored on held-out patches;
+  - mainland mammals transferred to Tasmania;
+  - 73 birds scored on three withheld bioregions.
 
 ## What we found
 
-- Pretraining improved discrimination within the training region (+0.006 to +0.009 AUC), but that gain vanished in the held-out regions (birds −0.0004, mammals transferred to Tasmania −0.016).
-- The network trained only on the target still beat conventional models there (+0.003).
-- Neural–conventional ensembles gained most (+0.010).
-- Rankings shifted with evaluation extent and with how negatives were defined.
+- **Development:** pretraining raised AUC for mainland mammals (+0.009) and birds (+0.006). The bird gain grew to +0.009 at a quarter of the target data.
+- **New regions:** no average gain (birds −0.0004; mammals −0.016).
+- **Bird networks** beat conventional models with or without pretraining (+0.003).
+- **Ensembles** gained the most (+0.010).
 
 ## What the results mean
 
-- The gains a successful pretrained model appears to make are mostly available without learning from other species.
-- The shared representation encodes structure that does not transfer, consistent with hypothesis 3's second branch.
-- Labels and recording processes, not the learner, set the ceiling on performance.
+The development benefit of learning from other species did not carry into new regions on average. The network's advantage there was available without pretraining. Model rankings depended on which negative observations scored them.
 
 ## What it is good for, and how it generalises
 
-Any claim that transfer helps should be tested against a target-only twin, in the regions and with the observations where predictions will be used. Ensembling neural and conventional models is a cheap gain. Improving observation data is likely to beat adding model complexity. Both apply to any taxon or region.
+Claims that a multi-species model's success comes from learning across species need a matched single-species twin. That twin must be tested in the regions, and against the observations, where predictions will be used. This holds for any taxon or region.
 
 ## Notes for later steps
 
-- The current draft states no hypotheses. Hypotheses 1–4 map onto evidence it already has:
-  - **H1:** the gains within the training domain.
-  - **H2:** the target-data learning curves, plus the least-recorded third of species (+0.0006 against conventional models, +0.0041 against the target-only network). H2 is only partly supported: the gain grew under subsampling, but the least-recorded species gained little against conventional models.
-  - **H3:** the held-out region results, and the extent-matched analysis showing the pretraining gain stays positive within regions in the development data.
-  - **H4:** the recording-richness gradient, which was a prospectively fixed diagnostic in the held-out regions, and the Tasmanian survey-only negatives, which were post hoc.
-- **Correction to an earlier Claude answer in chat (12 November).** The recording-richness gradient refers to **places**: background cells with few other recorded species. It does not refer to sparsely recorded species. The neural advantage over conventional models was largest against poorly recorded background, and smallest or negative against well-recorded background. Among the least-recorded *species*, the advantage over conventional models was almost nil.
+**Novelty.** Basile et al. (2026, Ecography, 10.1002/ecog.08269) already show that neural joint models weaken under regional transfer. Our contribution is the **attribution**: target-excluded pretraining, a same-architecture single-species control, and geographic exclusion. The extent and negative-evidence diagnostics support it.
 
-## Draft abstract v1 (149 words; target <150 for now, Ecography limit 300)
+**Provenance**, to be stated once in Methods:
 
-Deep species distribution models promise better predictions by learning from many species, a benefit rarely tested against matched single-species networks in new regions, where predictions matter. We pretrained neural networks on other species, fine-tuned them to each target, and compared them with identical networks trained only on the target and with conventional models, using Tasmanian mammals, mainland mammals transferred to Tasmania, and 157 birds evaluated in withheld bioregions. Pretraining slightly improved within-region discrimination for mainland mammals and birds (AUC +0.006 to +0.009), but the gain vanished or reversed in new regions (birds −0.0004; mammals −0.016). In withheld bird regions, target-only networks still beat conventional models (+0.003), and neural–conventional ensembles gained most (+0.010). Rankings also depended on evaluation extent and on how negative observations were defined. Claims that learning across species helps should be tested against target-only twins, in the regions and with the observations where models will be used.
+| Element | Status |
+|---|---|
+| Matched comparisons and target-data curves | Original design |
+| Richness gradient | Found in development; outer version fixed before opening |
+| Extent rescoring, single-species ensemble and survey-only negatives | Post hoc |
+| Fine-tuned ensemble | Prespecified as exploratory |
+
+**Wording.**
+- The extent diagnostic scores development predictions **within bioregions and spatial folds**. It does not match areas.
+- In Tasmania, the "survey-supported negatives" are nondetections, not confirmed absences.
+
+**Correction (Claude, 12 November).** The recording-richness gradient concerns background *places*, not sparsely recorded species. The least-recorded third of species led conventional models by only +0.0006, but led the single-species network by +0.0041.
+
+## Draft abstract v2 (149 words; target under 150 for now; Ecography limit 300)
+
+Neural networks that learn from many species promise better distribution models, yet the source of their gains is rarely tested against an identical network trained on the target alone, in new regions where predictions are used. We pretrained multilayer perceptrons on other species, fine-tuned them to each target, and compared them with matched single-species networks and conventional models in Tasmanian mammals, mainland mammals transferred to Tasmania, and 73 birds in three withheld bioregions. Pretraining improved development discrimination for mainland mammals and birds (AUC +0.009 and +0.006), more so with scarce target records, but gave no average gain in new regions (mammals −0.016; birds −0.0004). In new bird regions, the network's advantage over conventional models was available without pretraining (+0.003), and averaging network and conventional predictions gained most (+0.010). Model rankings changed with the source of negative observations. Multi-species gains should be measured against single-species twins where predictions are needed.
