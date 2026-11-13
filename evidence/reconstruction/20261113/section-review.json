@@ -1,0 +1,168 @@
+{
+  "schema_version": "dsdm-section-abstract-review-v1",
+  "review_date": "2026-11-13",
+  "reviewed_commit": "0cdc4c7eed612c46b30a25be3b32febc2bf973a3",
+  "status": "pass",
+  "scope": "Aggregate-only arithmetic and source/prose verification. No fitting or raw responses.",
+  "frozen_encoder_primary73_full_target_by_auxiliary": {
+    "20": {
+      "mean": -0.004375193158861822,
+      "positive": 8,
+      "n": 73
+    },
+    "80": {
+      "mean": 0.0016061079193275605,
+      "positive": 52,
+      "n": 73
+    },
+    "full": {
+      "mean": 0.0021967244731018643,
+      "positive": 57,
+      "n": 73
+    }
+  },
+  "richness_fine_tuned_minus_conventional": {
+    "all": {
+      "bins": [
+        "10_24",
+        "25_99",
+        "100_plus"
+      ],
+      "mean_auc_contrasts": [
+        0.005022962719855718,
+        0.0019480126381936898,
+        -0.003921530237560449
+      ],
+      "common_support_n": 59,
+      "monotonic_decline": true
+    },
+    "SEH": {
+      "bins": [
+        "10_24",
+        "25_99",
+        "100_plus"
+      ],
+      "mean_auc_contrasts": [
+        -0.003807555364,
+        -0.01395075079,
+        -0.028264412786
+      ],
+      "common_support_n": 38,
+      "monotonic_decline": true
+    },
+    "NNC": {
+      "bins": [
+        "10_24",
+        "25_99",
+        "100_plus"
+      ],
+      "mean_auc_contrasts": [
+        0.014775304039,
+        0.006021758649,
+        -0.025870759025
+      ],
+      "common_support_n": 55,
+      "monotonic_decline": true
+    },
+    "NCP": {
+      "bins": [
+        "10_24",
+        "25_99",
+        "100_plus"
+      ],
+      "mean_auc_contrasts": [],
+      "common_support_n": 0,
+      "monotonic_decline": null
+    }
+  },
+  "tasmania_full_target_mean_auc": {
+    "original_mixed": {
+      "multihead_full_finetune": {
+        "original_training_mean_auc": 0.8390004474558865,
+        "filtered_training_mean_auc": 0.7657343545253559
+      },
+      "target_only_resmlp": {
+        "original_training_mean_auc": 0.8537416594308743,
+        "filtered_training_mean_auc": 0.77039531123365
+      },
+      "selected_conventional": {
+        "original_training_mean_auc": 0.8441416669928229,
+        "filtered_training_mean_auc": 0.7728206154848514
+      }
+    },
+    "survey_only": {
+      "multihead_full_finetune": {
+        "original_training_mean_auc": 0.835241069433989,
+        "filtered_training_mean_auc": 0.8571718159946808
+      },
+      "target_only_resmlp": {
+        "original_training_mean_auc": 0.8403336523394398,
+        "filtered_training_mean_auc": 0.8587038345322625
+      },
+      "selected_conventional": {
+        "original_training_mean_auc": 0.8198122154442538,
+        "filtered_training_mean_auc": 0.8384513747657868
+      }
+    }
+  },
+  "tasmania_fixed_original_training_auc_reversal": {
+    "original_mixed": -0.005141219536936359,
+    "survey_only": 0.015428853989735258
+  },
+  "maps": {
+    "changed_method_species_pairs": 21,
+    "changed_species": 7,
+    "unchanged_species": "thylogale_billardierii",
+    "minimum_top_decile_retention": 0.31352949457975504,
+    "maximum_top_decile_retention": 0.8552724201041814
+  },
+  "word_count_definition": "Whitespace-delimited words after stripping Markdown emphasis and bullet markers; headings excluded.",
+  "source_section_words": {
+    "Introduction": 300,
+    "Material and methods": 297,
+    "Results": 283,
+    "Discussion": 299
+  },
+  "proposal_section_words": {
+    "Introduction": 280,
+    "Material and methods": 299,
+    "Results": 256,
+    "Discussion": 295
+  },
+  "proposal_sha256": "0615675e8b10ca51da91a88e1b2f4ba79af8b37ca48414fa5fe99f5e8811a342",
+  "input_bindings": [
+    {
+      "path": "manuscript/reconstruction/03a-section-abstracts.md",
+      "sha256": "ac330af3167c3158173b4a3bbbe74a2221c56cb3dea3fde9b87c87aea568f62b"
+    },
+    {
+      "path": "manuscript/text/main.md",
+      "sha256": "d430fe052b78fdb127f2f1c07d436c95fb4dc40954dfd9cf9e93ae4aab399085"
+    },
+    {
+      "path": "evidence/seawfb_dsdm/goal052/summary.json",
+      "sha256": "ec0bc6c2df8cabd3554f5b2b9eebda97b3426ddd186bfa2acc64ba3d1244a3d3"
+    },
+    {
+      "path": "evidence/seawfb_dsdm/goal052/completion_review.json",
+      "sha256": "a6510ab3d06ae51bb1499dc0e0cbd2ab982e2f3a95614e1dbb8ca7328c6b0b02"
+    },
+    {
+      "path": "evidence/cross_case_synthesis/20261018/recording-richness.csv",
+      "sha256": "17c80c0f9d2b0f6be0a9965a8184a959bab75542604dc25a6d0de843b7c377d7"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261011/survey-only/performance.csv",
+      "sha256": "2589625618db2a0da34fe78fbb880963b1476c5a758f6ef2033db49babf3b933"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261009/map-comparison.csv",
+      "sha256": "43fc119cb0300a8a4e4cfd56c0e40b73eccdad30a7ab7b668384beee176750dc"
+    }
+  ],
+  "limits": [
+    "Aggregate arithmetic does not independently validate raw prediction production.",
+    "Training intervention changes maps; evaluation filtering reuses predictions.",
+    "Auxiliary-size curves are development comparisons, not an outer ensemble-versus-pool-size experiment."
+  ]
+}

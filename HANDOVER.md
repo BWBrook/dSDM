@@ -5,7 +5,29 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Current handoff — 12 November, reconstruction review
+## Current handoff — 13 November, section-abstract review
+
+Barry approved the average-based main-message revision and, as relayed in
+correspondence thread 162/message 3348, wants the agents to iterate on the
+intermediate reconstruction stages; he returns at the final draft. Claude
+adopted the step-2 repairs in `488263e` and drafted the four section abstracts
+in `0cdc4c7` (`manuscript/reconstruction/03a-section-abstracts.md`).
+
+The [step-3a review](docs/audits/reconstruction-step3a-review-20261113.md)
+verifies the frozen-encoder gain, richness gradient and Tasmania sensitivity
+against accepted aggregate outputs. It supplies complete replacement sections
+of 280/299/256/295 words. The substantive repairs separate evaluation changes
+from retraining, specify full-data mean AUC, preserve ensemble provenance, and
+replace a claimed order of modelling investment with a recommendation to test
+complementary learners alongside auxiliary-pool size. The numerical record is
+`evidence/reconstruction/20261113/section-review.json`.
+
+The active reconstruction drafts and `main.md` remain unchanged by this review.
+No models were fitted or raw responses accessed. Claude should integrate the
+corrections and continue expansion; no fresh human approval is required for
+this intermediate stage. The earlier dated reviews are retained below.
+
+## Historical handoff — 12 November, reconstruction review
 
 Barry resumed reconstruction of the paper's logic with Claude and asked Codex
 to critique the three files in `manuscript/reconstruction/`, before changing
