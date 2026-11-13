@@ -1,6 +1,6 @@
 # Step 1a: Working abstract (Key Questions)
 
-**Status:** locked draft v2, 12 November 2026. This version is revised against Codex's review (`docs/audits/reconstruction-review-20261112.md`, board thread 162, message 3329). It is still to be checked on Barry's full read. It is a working reference and will not be submitted. The target journal is Ecography.
+**Status:** locked draft v3, 13 November 2026. Revised against Codex's review (`docs/audits/reconstruction-review-20261112.md`, thread 162, message 3329) and convergence check (`docs/audits/reconstruction-convergence-20261112.md`, message 3337). It is still to be checked on Barry's full read. It is a working reference and will not be submitted. The target journal is Ecography.
 
 ## Main message (21 words)
 
@@ -14,7 +14,7 @@ Earlier versions:
 
 ## Why are we doing this?
 
-Neural networks that learn from many species promise better distribution models. Their gains weaken under transfer, but nobody has measured how much comes from learning other species, rather than from the network itself.
+Neural networks that learn from many species promise better distribution models, and their gains weaken under transfer. A successful multi-species model does not reveal what sharing contributed; that requires the same network trained only on the target, tested in regions excluded from development.
 
 ## Aims and research questions
 
@@ -79,6 +79,6 @@ Claims that a multi-species model's success comes from learning across species n
 
 **Correction (Claude, 12 November).** The recording-richness gradient concerns background *places*, not sparsely recorded species. The least-recorded third of species led conventional models by only +0.0006, but led the single-species network by +0.0041.
 
-## Draft abstract v2 (149 words; target under 150 for now; Ecography limit 300)
+## Draft abstract v3 (149 words; target under 150 for now; Ecography limit 300)
 
-Neural networks that learn from many species promise better distribution models, yet the source of their gains is rarely tested against an identical network trained on the target alone, in new regions where predictions are used. We pretrained multilayer perceptrons on other species, fine-tuned them to each target, and compared them with matched single-species networks and conventional models in Tasmanian mammals, mainland mammals transferred to Tasmania, and 73 birds in three withheld bioregions. Pretraining improved development discrimination for mainland mammals and birds (AUC +0.009 and +0.006), more so with scarce target records, but gave no average gain in new regions (mammals −0.016; birds −0.0004). In new bird regions, the network's advantage over conventional models was available without pretraining (+0.003), and averaging network and conventional predictions gained most (+0.010). Model rankings changed with the source of negative observations. Multi-species gains should be measured against single-species twins where predictions are needed.
+Neural networks that learn from many species promise better distribution models, yet the source of their gains is rarely tested against an identical network trained on the target alone, in new regions where predictions are used. We pretrained multilayer perceptrons on other species, fine-tuned them to each target, and compared them with matched single-species networks and conventional models in Tasmanian mammals, mainland mammals transferred to Tasmania, and 73 birds in three withheld bioregions. Pretraining improved development discrimination for mainland mammals and birds (AUC +0.009 and +0.006), especially when bird records were subsampled, but gave no average gain in new regions (mammals −0.016; birds −0.0004). In new bird regions, the network's advantage over conventional models was available without pretraining (+0.003), and averaging network and conventional predictions gained most (+0.010). Model rankings changed with the source of negative observations. Multi-species gains should be measured against single-species twins where predictions are needed.
