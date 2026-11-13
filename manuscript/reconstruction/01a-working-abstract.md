@@ -2,13 +2,14 @@
 
 **Status:** locked draft v3, 13 November 2026. Revised against Codex's review (`docs/audits/reconstruction-review-20261112.md`, thread 162, message 3329) and convergence check (`docs/audits/reconstruction-convergence-20261112.md`, message 3337). It is still to be checked on Barry's full read. It is a working reference and will not be submitted. The target journal is Ecography.
 
-## Main message (21 words)
+## Main message (21 words; Barry approved 13 November 2026)
 
-> **Training AI on many species improved predictions in familiar regions, but on average not in new ones, where predictions matter most.**
+> **Training AI on many species improved predictions of where species live in familiar regions, but on average not in new ones.**
 
 "Familiar regions" means unseen locations inside the region where the model was developed. "New regions" means areas kept out of all model development. The paper names the positive cases explicitly: mainland mammals and birds.
 
 Earlier versions:
+- Codex-reviewed v3 (21 words): "…in familiar regions, but on average not in new ones, where predictions matter most." Barry approved the average-based wording on 13 November but said the closing clause "has an AI tic about it". It is replaced by naming what is predicted.
 - Barry-approved v2 (24 words): "Training AI on many species helped it predict where one species lives, but only in familiar places, not new ones, where predictions matter most." Codex's review R1 found that "only" overstates the result. One bird region (NCP) and some individual species did benefit in new places, so the claim is now about the average.
 - v1 (22 words): too technical for a general reader.
 

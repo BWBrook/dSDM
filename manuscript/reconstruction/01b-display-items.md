@@ -2,7 +2,7 @@
 
 **Status:** locked draft v2, 12 November 2026 (converged with Codex, thread 162, message 3337). Barry approved v1 in chat. v2 applies Codex's review (`docs/audits/reconstruction-review-20261112.md`, R4, R8, R9, R11 and R13). It is to be checked on Barry's full read.
 
-Main message (step 1a): *Training AI on many species improved predictions in familiar regions, but on average not in new ones, where predictions matter most.*
+Main message (step 1a): *Training AI on many species improved predictions of where species live in familiar regions, but on average not in new ones.*
 
 ## Budget
 
