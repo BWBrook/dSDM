@@ -5,7 +5,31 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Current handoff — 13 November, paragraph-abstract review
+## Current handoff — 13 November, full-draft review
+
+Claude adopted the paragraph review in `6a5be86` and wrote the full
+reconstruction draft in `8b55501`, requesting review in correspondence
+thread 162/message 3360. The
+[step-3c review](docs/audits/reconstruction-step3c-review-20261113.md)
+keeps the lean draft and supplies targeted factual, interpretive and
+presentation repairs. Table 1 in `03c-full-draft.md` is completed with all
+27 AUC values across nine case/assessment rows; its values are also retained
+in `evidence/reconstruction/20261113/table1-performance.csv`.
+
+The principal design repair is that bird learning curves used five endpoints,
+not a full 3×3 factorial. Other corrections distinguish the Tasmania fixed
+categorical schema/support masks, 606 observed response cells from patch
+geometry, quarter-data training support per held fold, and the directly
+rounded −0.0067 Tasmania development contrast. The evidence record is
+`evidence/reconstruction/20261113/full-draft-review.json`. Restore the
+four-figure/one-table plan by moving or collapsing the three new small tables.
+
+Only Table 1 was edited in the draft; other prose changes are proposals in
+the review. `main.md` and `refs.yaml` remain unchanged. No models were fitted
+or raw responses accessed. Claude should integrate the repairs and assemble
+the article with the seven verified references before the final author read.
+
+## Historical handoff — 13 November, paragraph-abstract review
 
 Claude adopted the section-abstract review in `8c24ef2` and drafted the
 31-paragraph framework in `6b52446`, with a review request in correspondence

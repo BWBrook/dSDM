@@ -47,17 +47,19 @@ We synthesise three separately specified experiments, each addressing a differen
 
 In every case, models discriminate recorded presences from specified negative observations, so their outputs are relative scores rather than occupancy probabilities.
 
-**Table 1.** Prediction settings, geographic exclusions and mean AUC. All development assessments used five spatial folds. The three bird regions share one training domain and the same 73-species panel. Regional roles were specified before model outcomes were seen.
+**Table 1.** Prediction settings, geographic exclusions and mean AUC. Development values average five spatial folds within species, then species equally. Tasmania patch values pool the withheld patches; mainland transfer uses camera-supported Tasmania records. Bird regional values average species within each named region, while the three-region mean first averages regions within species. All bird models exclude NCP, SEH and NNC and their 50 km buffers simultaneously. The regions' contrasting roles were specified before model outcomes were seen.
 
-| Setting | Targets | Geographic task | Excluded from development |
-|---|---:|---|---|
-| Tasmanian mammals | 8 | Interpolation in five patches | Patch cells; no buffer |
-| Mainland mammals | 5 | Transfer to camera-supported Tasmania | All Tasmania |
-| Birds: Naracoorte Coastal Plain (NCP) | 73 | Environmentally supported transfer | Region plus 50 km |
-| Birds: South Eastern Highlands (SEH) | 73 | Transfer to an environmental edge | Region plus 50 km |
-| Birds: NSW North Coast (NNC) | 73 | Transfer to a fragmented land-use mosaic | Region plus 50 km |
-
-[Codex: add AUC columns for fine-tuned, target-only and conventional learners, in development and geographic assessment, from the accepted synthesis. Add a pooled bird row. No ensemble columns.]
+| Case and assessment | Targets | Geographic exclusion from development | Fine-tuned network | Target-only network | Conventional model |
+|---|---:|---|---:|---:|---:|
+| Tasmanian mammals: development | 8 | Five patches; no buffer | 0.7133 | 0.7200 | 0.7631 |
+| Tasmanian mammals: withheld patches | 8 | Five patches; no buffer | 0.8390 | 0.8537 | 0.8441 |
+| Mainland mammals: development | 5 | All Tasmania | 0.9091 | 0.9004 | 0.9052 |
+| Mainland mammals: transfer to Tasmania | 5 | All Tasmania | 0.5560 | 0.5715 | 0.5837 |
+| Birds: development | 73 | All three regions plus 50 km | 0.8316 | 0.8258 | 0.8282 |
+| Birds: NCP transfer | 73 | All three regions plus 50 km | 0.6909 | 0.6846 | 0.6831 |
+| Birds: SEH transfer | 73 | All three regions plus 50 km | 0.6827 | 0.6867 | 0.6897 |
+| Birds: NNC transfer | 73 | All three regions plus 50 km | 0.6746 | 0.6781 | 0.6670 |
+| Birds: three-region mean | 73 | All three regions plus 50 km | 0.6827 | 0.6831 | 0.6800 |
 
 Occurrence records for 2001–2025 came from the Atlas of Living Australia [@belbin2021ala], and camera surveys supplied survey-supported responses in Tasmania. The mainland and bird experiments shared a versioned environmental substrate that included WorldClim 2.1 climate [@fick2017worldclim]. The Tasmanian experiment used a separate legacy stack of 28 predictors, encoded as 77 columns. Bird inputs were 24 variables, encoded as 103 columns:
 - 19 bioclimatic variables;

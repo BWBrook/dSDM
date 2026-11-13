@@ -1,0 +1,318 @@
+{
+  "schema_version": "dsdm-full-draft-review-v1",
+  "review_date": "2026-11-13",
+  "base_commit": "8b5550156c843340967911fffd75b8022da9bbd0",
+  "status": "pass",
+  "scope": "Full-draft review and requested Table 1 filling. Scientific source values checked by independent delegated routes and parent integration; no refits or raw responses.",
+  "source_before_sha256": "4d66d67068763a3c81948a5cea1ffd36bc453f570a886e2943e76a62a1e47200",
+  "source_after": {
+    "path": "manuscript/reconstruction/03c-full-draft.md",
+    "sha256": "eb854636409d13fe0bd10c6026aed460f508d65fe0f34a0e4e6199f1b9dcda24"
+  },
+  "source_change_outside_table1": false,
+  "table1": {
+    "path": "evidence/reconstruction/20261113/table1-performance.csv",
+    "rows": 9,
+    "auc_cells": 27,
+    "all_cells_equal_accepted_means": true,
+    "rounding": "four decimals directly from unrounded accepted values",
+    "bird_combined_estimand": "equal region within species then equal species; not pooled observations"
+  },
+  "executed_bird_condition_counts": [
+    {
+      "fraction": 25,
+      "auxiliary": "full",
+      "targets": 73
+    },
+    {
+      "fraction": 50,
+      "auxiliary": "full",
+      "targets": 73
+    },
+    {
+      "fraction": 100,
+      "auxiliary": "20",
+      "targets": 73
+    },
+    {
+      "fraction": 100,
+      "auxiliary": "80",
+      "targets": 73
+    },
+    {
+      "fraction": 100,
+      "auxiliary": "full",
+      "targets": 157
+    }
+  ],
+  "tasmania_development_ft_minus_target_only": {
+    "exact": -0.006749640344026919,
+    "four_decimal_display": "-0.0067"
+  },
+  "tasmania_held_support": {
+    "response_rows": 1672,
+    "observed_response_cells": 606,
+    "map_cells": 6753,
+    "patches": 5
+  },
+  "quarter_training_support": {
+    "verification": "Independent count-only reconstruction of frozen fold-class quotas from accepted aggregates and the sampling algorithm",
+    "median_across_target_held_fold_fits": 2825,
+    "median_across_species_of_mean_fold_counts": 2813,
+    "fits": 365,
+    "interpretation": "about 2800 presences per held-fold training/replay fit, not one quarter of all retained presences"
+  },
+  "preprocessing": "Bird vocabulary fitted per training mask; Tasmania fixed response-independent 77-column vocabulary with training-only active-indicator masks. Description repair, not an identified fit failure.",
+  "reviewed_results_values": {
+    "mainland_ft_minus_conventional": {
+      "mean": 0.003949973861805622,
+      "positive": 5,
+      "n": 5
+    },
+    "bird_ft_minus_conventional": {
+      "mean": 0.0033898583175572808,
+      "positive": 67,
+      "n": 73
+    },
+    "tasmania_ft_minus_conventional": -0.04978754791259646,
+    "sparse_third": {
+      "species": 53,
+      "presence_min": 224,
+      "presence_max": 3649
+    },
+    "ft_minus_to_aux80": 0.006075970503450646,
+    "mainland_transfer_ft_minus_to_median": 0.026863275494271144,
+    "regional_ft_minus_conventional": {
+      "NCP": 0.007796995416773446,
+      "SEH": -0.007051941188840895,
+      "NNC": 0.007566498073230546
+    },
+    "ft_ensemble_positive_against_to_ensemble": 37,
+    "development_domain_complement_cells": 360625,
+    "region_pooled_ft_minus_to": {
+      "mean": 0.010958041008605998,
+      "positive": 56,
+      "n": 73
+    },
+    "richness_primary_common59_ft_minus_to": [
+      0.007547793771007824,
+      0.0038835274252925493,
+      -0.004262802558591892
+    ],
+    "high_recording_background_mean_percent": {
+      "NCP": 0.278699,
+      "SEH": 0.611167,
+      "NNC": 2.77157
+    },
+    "half_target_ft_minus_conventional": 0.005300678965412339,
+    "removed_training_pseudoabsences": {
+      "removed": 368,
+      "baseline_rows": 11039,
+      "baseline_negatives": 2240,
+      "percent_rows": 3.3336352930519073,
+      "percent_negatives": 16.428571428571427
+    },
+    "top_decile_retention": {
+      "min": 0.31352949457975504,
+      "max": 0.8552724201041814,
+      "affected_method_species_pairs": 21,
+      "affected_species": 7
+    }
+  },
+  "ratios_of_ensemble_and_neural_auc_increments": {
+    "target_only": 3.0381783369284285,
+    "fine_tuned": 3.7365644009469334
+  },
+  "ratio_recommendation": "Report the approximately .010 and .003 mean increments rather than a generic three-times claim.",
+  "cited_keys": [
+    "allouche2006",
+    "araujo2007",
+    "basile2026",
+    "belbin2021ala",
+    "bourel2025",
+    "breiner2015",
+    "brun2024",
+    "cawley2010",
+    "chen2017",
+    "deneu2021",
+    "fick2017worldclim",
+    "fithian2015",
+    "hanley1982",
+    "he2016",
+    "jimenezvalverde2012",
+    "johnston2021",
+    "kumar2022",
+    "lange2025",
+    "lobo2008",
+    "norberg2019",
+    "ovaskainen2025",
+    "phillips2009",
+    "pili2025",
+    "roberts2017",
+    "valavi2022",
+    "warton2013",
+    "wenger2012",
+    "yates2018"
+  ],
+  "verified_but_not_installed_keys": [
+    "allouche2006",
+    "basile2026",
+    "breiner2015",
+    "fithian2015",
+    "hanley1982",
+    "he2016",
+    "pili2025"
+  ],
+  "current_table_count": 4,
+  "planned_figure_count": 4,
+  "recommended_display_count": 5,
+  "prior_evidence_paths_unchanged": [
+    "evidence/cross_case_synthesis/20261005/revision-01/case_contrasts.csv",
+    "evidence/cross_case_synthesis/20261005/revision-01/case_metrics.csv",
+    "evidence/cross_case_synthesis/20261005/revision-01/summary.json",
+    "evidence/cross_case_synthesis/20261008/bird-composition-resampling.json",
+    "evidence/cross_case_synthesis/20261018/recording-richness.csv",
+    "evidence/reconstruction/20261112/numerical-review.json",
+    "evidence/reconstruction/20261113/section-review.json",
+    "evidence/seawfb_dsdm/goal052/completion_review.json",
+    "evidence/seawfb_dsdm/goal052/extent-review-20261005.json",
+    "evidence/seawfb_dsdm/goal052/summary.json",
+    "evidence/tasmania_pseudoabsence/20261009/map-comparison.csv",
+    "evidence/tasmania_pseudoabsence/20261011/survey-only/performance.csv",
+    "evidence/tasmania_pseudoabsence/20261011/survey-only/summary.json"
+  ],
+  "owning_source_bindings": [
+    {
+      "path": "config/ala_spatial_normalization_plan.json",
+      "sha256": "516b0bbb089cfcbc6558677ea0f0b4ac2662acb2c79e33308485ae6ff605d75b"
+    },
+    {
+      "path": "evidence/model_ready_features/2026-07-27/summary.json",
+      "sha256": "9ad2add3c1b923f2bb344a51da2e63c2052d0f9bbc564965b53c2a985ccde457"
+    },
+    {
+      "path": "evidence/spatial_partition/2026-07-26/summary.json",
+      "sha256": "4e851c22d4f9764cd95abc914bc4f0c1a653ac9e07c4e3b2984b91e735e6d703"
+    },
+    {
+      "path": "config/model_ready_feature_plan.json",
+      "sha256": "7375a6b0382a8d90956c2f58d48860cde4e61b06cc92f9c81f7676d9acb19821"
+    },
+    {
+      "path": "docs/goals/032-dsdm-real-compute-calibration/Decision.md",
+      "sha256": "46b89fb10f2df0bf8e6d268d9a63e6551d189378a3ec2ab0bc39777ff8225709"
+    },
+    {
+      "path": "docs/goals/035-dsdm-final-inner-lifecycle/Decision.md",
+      "sha256": "8214ba20665e3e18e001daef5e2c84c8cefc6a937ec46c9d8cb1dfba6e0e0030"
+    },
+    {
+      "path": "config/goal046_mainland_dsdm.json",
+      "sha256": "b3f3005a0777330e28ff88a11497d76013fec8000bfee5451328b3278621afd2"
+    },
+    {
+      "path": "config/goal042_transfer_response.json",
+      "sha256": "7cbaef4bf993b1813eb7175d38581d0d782706cb91d00358644b14133acb71c1"
+    },
+    {
+      "path": "evidence/tasmania_transfer/goal047/summary.json",
+      "sha256": "99fea9eb10fce97985ff3ebe8bf6f1679b707980b18124f04f24c3d9a1c041cc"
+    },
+    {
+      "path": "metadata/goal049_registry_receipt.json",
+      "sha256": "4e731de461da7af9be73361331ce03bc4fc905eac2b0616e2f68bc961e85dde9"
+    },
+    {
+      "path": "metadata/goal050_manifest.json",
+      "sha256": "239dd61cc5d3ab942a813201c0cb4117820b74367c7ba71deffddc6990d36198"
+    },
+    {
+      "path": "metadata/goal050_transforms.json",
+      "sha256": "1d8b3d09b139264e288630f283e330d28919c00b4631132aa9a79529ad3abb52"
+    },
+    {
+      "path": "config/goal050_seawfb_modeling_foundation.json",
+      "sha256": "8391a3b05a0f7a97509433e31f08aa9a889eb9ea09e4253afa150fa369a1b463"
+    },
+    {
+      "path": "config/goal052_seawfb_dsdm.json",
+      "sha256": "04b667168944b39ced1044da8f381553c4024e31cca1f5590f2fbc693e521f9a"
+    },
+    {
+      "path": "config/goal048_seawfb_bioregional_freeze.json",
+      "sha256": "08726d899a5af331639e4e0144f8e34bae1d1e93108c766cdb66d1b2136ffc47"
+    },
+    {
+      "path": "config/dsdm_final_inner_lifecycle.json",
+      "sha256": "87c3afa6fbb9a2177caafc0b2aacb0130c7f6545523839cd0fd030218795d7c2"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261008/source-census.json",
+      "sha256": "211bad0f88daa140f1d56ac2916fd5da584f4164e6e96e36748547b8dc392352"
+    },
+    {
+      "path": "evidence/tasmania_pseudoabsence/20261011/survey-only/summary.json",
+      "sha256": "0edae61c9bc851c57cd6716d43fb93df204d4742f2c4e7fb2a6cbad73b9f224e"
+    },
+    {
+      "path": "evidence/seawfb_dsdm/goal052/summary.json",
+      "sha256": "ec0bc6c2df8cabd3554f5b2b9eebda97b3426ddd186bfa2acc64ba3d1244a3d3"
+    },
+    {
+      "path": "evidence/seawfb_dsdm/goal052/fable-review-20260927.json",
+      "sha256": "117f2546610c8ac9fe62f53db33b313ef69493a3479dd947d3b8693217f2833e"
+    },
+    {
+      "path": "evidence/seawfb_dsdm/goal052/effort-followup-20261002.json",
+      "sha256": "742c367ab100886da764853cceeaca1684176259d934794d7ec83c8896e5cad0"
+    },
+    {
+      "path": "evidence/seawfb_dsdm/goal052/extent-review-20261005.json",
+      "sha256": "08652c0909c600bd0e4794d89b522a1e3ecb32557e4f2dad64598cea3be12fa7"
+    },
+    {
+      "path": "evidence/seawfb_dsdm/goal052/outer-review-20261005/native-report.md",
+      "sha256": "b64ce1356ab8394f6c7b6668766576b7855ee60830eaf172a21e1bf9dbe0fbdb"
+    },
+    {
+      "path": "evidence/seawfb_dsdm/goal052/outer-acceptance-20261005.json",
+      "sha256": "f233cd66528bd981e14e6d19a6f191910d99c912bbf685a038932a656790643a"
+    },
+    {
+      "path": "evidence/mainland_dsdm/goal046/summary.json",
+      "sha256": "868a2083036d7b5f14cde9137621977e06405033252551b80fd0d5107627c10b"
+    },
+    {
+      "path": "evidence/dsdm_inner_evaluation/goal036/stratum_metrics.csv",
+      "sha256": "2065ca48895af50036da90ad3e945096c6190594000527056309d78c5ee2bdc6"
+    },
+    {
+      "path": "evidence/dsdm_inner_evaluation/goal036/conventional_selection.csv",
+      "sha256": "3e05784670f58e88144dcbda43819c3811e8303c59cd15c36f23fdf38736a561"
+    },
+    {
+      "path": "src/dsdm_phase1/goal050_seawfb_foundation.py",
+      "sha256": "be87bf257eb2f200317b97440f65fbcd42f9d80ec2534a38f11f64eb9e662af5"
+    },
+    {
+      "path": "evidence/cross_case_synthesis/20261005/revision-01/summary.json",
+      "sha256": "6834e34c74767864686862734f57a64a2ac10b324fcdadab89797e1cecbe0fd2"
+    }
+  ],
+  "delivery_bindings": [
+    {
+      "path": "evidence/reconstruction/20261113/table1-performance.csv",
+      "sha256": "c4ab8f081cd5589d53f2827e12de9692fba9a5edb5ee906919f128cc6c5c18c2"
+    },
+    {
+      "path": "docs/audits/reconstruction-step3c-review-20261113.md",
+      "sha256": "6b7c551ec41f34a79a32cf4f73348a2d8e6d25338fad6d90803267b1f4704b36"
+    },
+    {
+      "path": "manuscript/references/refs.yaml",
+      "sha256": "40f9815941efd575c23a3fac34c5a13fa1998d2a1acd65ab46406a713efa7064"
+    }
+  ],
+  "article_body_unchanged": true,
+  "native_manuscript_build": "Not run; only Table 1 in the reconstruction draft was edited. Remaining prose, figures and new bibliography entries await assembly."
+}

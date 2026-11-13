@@ -1,0 +1,10 @@
+case,assessment,targets,exclusion,fine_tuned_auc,target_only_auc,conventional_auc
+tasmania_inner,Tasmanian mammals: development,8,Five patches; no buffer,0.7132999031651394,0.7200495435091663,0.7630874510777359
+tasmania_outer,Tasmanian mammals: withheld patches,8,Five patches; no buffer,0.8390004474558865,0.8537416594308744,0.8441416669928228
+mainland_inner,Mainland mammals: development,5,All Tasmania,0.9091098225943002,0.9003644931088706,0.9051598487324946
+mainland_to_tasmania,Mainland mammals: transfer to Tasmania,5,All Tasmania,0.5559585309258359,0.5714715901461977,0.5836914695522639
+birds_inner,Birds: development,73,All three regions plus 50 km,0.8316027214151391,0.8258219710546985,0.8282128630975819
+birds_NCP,Birds: NCP transfer,73,All three regions plus 50 km,0.6909285951074299,0.684578509663908,0.6831315996906564
+birds_SEH,Birds: SEH transfer,73,All three regions plus 50 km,0.6826756824203809,0.6866749829826326,0.6897276236092219
+birds_NNC,Birds: NNC transfer,73,All three regions plus 50 km,0.6745925905702346,0.6781314383872205,0.6670260924970041
+birds_outer,Birds: three-region mean,73,All three regions plus 50 km,0.682732289366015,0.683128310344587,0.679961771932294
