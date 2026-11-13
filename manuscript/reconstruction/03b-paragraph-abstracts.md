@@ -1,8 +1,8 @@
 # Step 3b: Paragraph abstracts
 
-**Status:** draft v1, 13 November 2026 (Claude). For Codex review, then the next expansion stage. Barry reviews at the final draft.
+**Status:** draft v2, 13 November 2026. Claude wrote v1 (6b52446). Codex reviewed it (`docs/audits/reconstruction-step3b-review-20261113.md`, thread 162, message 3358) and this version adopts its replacement paragraphs and reference placements. Barry reviews at the final draft.
 
-Source: the section abstracts (`03a-section-abstracts.md`, v2, 8c24ef2). Each paragraph carries one message. References in square brackets are signposts. "To add" marks works not yet in `manuscript/references/refs.yaml`. Each one needs verifying from its DOI metadata before it is cited.
+Source: the section abstracts (`03a-section-abstracts.md`, v2, 8c24ef2). Each paragraph carries one message. References in square brackets are signposts. Codex verified the identities of the seven new works from their DOI metadata (`manuscript/references/reconstruction-reference-check-20261113.json`): Basile 2026, Pili 2025, Fithian 2015, He 2016, Hanley & McNeil 1982, Allouche 2006 and Breiner 2015. They go into `refs.yaml` at drafting. Araújo & New 2007 already exists as `araujo2007`.
 
 **Budget.** Ecography allows 5,000 words from the Introduction to the end of the Discussion. The plan has 31 paragraphs. At about 150 words each, that comes to about 4,800 words, split as follows:
 
@@ -33,7 +33,7 @@ Source: the section abstracts (`03a-section-abstracts.md`, v2, 8c24ef2). Each pa
 *Study design*
 1. **Design.** Three separately specified experiments, synthesised descriptively, test prediction within the development region and in excluded geography.
 2. **Data and inputs.** Occurrence records and camera surveys supplied the responses, and grid-cell climate and habitat summaries supplied the inputs.
-3. **Tasmanian mammals.** Eight species were assessed by interpolation in five held-out patches, using three kinds of negative.
+3. **Tasmanian mammals.** Eight species were assessed by interpolation in five held-out patches, with two negative sources and unknown combinations masked.
 4. **Mainland mammals.** Five targets were transferred to Tasmania, changing both geography and observation source.
 5. **Birds.** For 157 targets, background was defined by the recording of other species, and 73 targets were assessed in three contrasting bioregions withheld with buffers.
 
@@ -55,7 +55,7 @@ Source: the section abstracts (`03a-section-abstracts.md`, v2, 8c24ef2). Each pa
 2. **Borrowing strength.** The bird gain grew as target data were subsampled, and the frozen encoder showed the shared features were useful.
 3. **New regions.** The mean gain from pretraining disappeared in new regions; species and regions varied around zero, and in the Tasmanian patches AUC and TSS disagreed.
 4. **Network and ensembles.** In new bird regions the network's advantage did not need pretraining, and averaging with conventional predictions gained most.
-5. **Extent.** Scoring unchanged development predictions within bioregions reproduced most of the fall in absolute AUC.
+5. **Extent.** Scoring unchanged development predictions within bioregions also produced low absolute AUC.
 6. **Recording richness.** The neural advantage declined as background recording richness rose, in development and in both supported new regions.
 7. **Tasmanian negatives.** Changing the evaluation negatives reversed the ranking, and removing training pseudoabsences changed scores and maps.
 
@@ -63,9 +63,9 @@ Source: the section abstracts (`03a-section-abstracts.md`, v2, 8c24ef2). Each pa
 
 ### Discussion
 
-1. **Principal finding.** The network's small advantage in new bird regions was available without learning from other species, and the matched control is what reveals it.
+1. **Principal finding.** The network's small advantage in new bird regions was available without learning from other species; the matched pretraining contrast averaged −0.0004.
 2. **Shared information.** Shared information improved development prediction, but its value in new regions varied among species and regions.
-3. **Practical route.** Averaging complementary learners gave the larger gain in new regions, so it should be tested alongside larger auxiliary pools.
+3. **Practical route.** Fixed averaging gave the larger mean gain in new bird regions and warrants comparison alongside larger auxiliary pools.
 4. **Subsampling versus rarity.** Subsampling well-recorded species is a different data limitation from natural rarity.
 5. **Absolute AUC.** Absolute AUC is a poor guide to loss under transfer, so learners should be compared on the same observations.
 6. **Negative evidence.** Negative evidence defines the prediction problem: evaluation choices change rankings, and training choices change maps.
@@ -81,13 +81,13 @@ Source: the section abstracts (`03a-section-abstracts.md`, v2, 8c24ef2). Each pa
 
 **I1. Need.** Conservation decisions need predictions where species records are sparse. Distribution models fill such gaps by transferring relationships from well-sampled areas. Transfer succeeds only when those relationships hold in the new setting, and that is often untested. [Yates et al. 2018; Wenger & Olden 2012]
 
-**I2. Promise.** Species share responses to climate and habitat, so records of one species can inform predictions for another. Multi-species pretraining fits a neural network to many species, then adapts it to a target. Shared learning has improved prediction through species embeddings, joint models, deep distribution models and common-to-rare transfer. Gains in neural joint models weaken under geographic transfer. [Ovaskainen et al. 2025; Norberg et al. 2019; Harris 2015; Chen et al. 2017; Botella et al. 2018; Deneu et al. 2021; Cole et al. 2023; Brun et al. 2024; Bourel et al. 2025; Lange et al. 2025; Santos et al. 2026; Basile et al. 2026 (to add)]
+**I2. Promise.** Species share environmental responses, so records of one species can inform predictions for another. Multi-species pretraining learns from other species before adapting to a target. Shared learning has improved ecological prediction through several modelling approaches. In a European continental-to-regional comparison, neural joint models' development advantage did not persist under transfer. [Chen et al. 2017; Norberg et al. 2019; Brun et al. 2024; Ovaskainen et al. 2025; Basile et al. 2026]
 
-**I3. Gap.** A successful multi-species model does not reveal what sharing contributed. Comparing a pretrained network with the same architecture trained only on the target measures the increment from pretraining. Comparing either network with a conventional model measures its practical advantage. Same-architecture controls have precedents; we combine one with target-excluded pretraining and whole-region exclusion. [Chen et al. 2017; Bourel et al. 2025; Basile et al. 2026 (to add); Pili et al. 2025 (to add; verify its relevance)]
+**I3. Gap.** A successful multi-species model does not reveal what sharing contributed. Comparing pretrained and target-only networks with the same architecture measures the increment from pretraining. Comparing either network with a conventional model assesses its practical advantage. We combine established controls with target-excluded pretraining and whole-region exclusion to assess that increment in new regions. [Chen et al. 2017; Bourel et al. 2025]
 
-**I4. Geographic evaluation.** Predicting a new region is a different task from predicting withheld cells inside a sampled domain. Spatial cross-validation should match the intended use. AUC depends on the extent of the presence–negative comparisons, so absolute AUC can fall with no change in predictions. [Wenger & Olden 2012; Roberts et al. 2017; Lobo et al. 2008; Jiménez-Valverde 2012]
+**I4. Geographic evaluation.** Predicting a new region is a different task from predicting withheld cells inside a sampled domain. Spatial cross-validation should match the intended use. AUC depends on the extent of the presence–negative comparisons, so absolute AUC can fall with no change in predictions. [Wenger & Olden 2012; Roberts et al. 2017; Lobo et al. 2008; Jiménez-Valverde 2012; Pili et al. 2025]
 
-**I5. Negative evidence.** Most occurrence data record where a species was found, not where it was absent. Models fitted against background locations learn recording patterns alongside habitat. Species that share recorders share these patterns, so pretraining could transfer information about observers as well as niches. Survey nondetections offer a different, and sparser, negative class. [Phillips et al. 2009; Warton et al. 2013; Fithian et al. 2015 (to add); Johnston et al. 2021]
+**I5. Negative evidence.** Most occurrence data record where a species was found, not where it was absent. Models fitted against background locations learn recording patterns alongside habitat. Species that share recorders share these patterns, so pretraining could transfer information about observers as well as niches. Survey nondetections offer a different, and sparser, negative class. [Phillips et al. 2009; Warton et al. 2013; Fithian et al. 2015; Johnston et al. 2021]
 
 **I6. Aims.** Shared environmental responses motivate three predictions:
 - pretraining improves development prediction;
@@ -100,9 +100,9 @@ Development results raised a diagnostic question: do rankings depend on the evid
 
 **M1. Design.** We synthesise three separately specified experiments (Table 1; Fig. 1). They share some taxa, observation sources and Tasmanian geography, so the cross-case summaries are descriptive. Development assessment used spatial folds within the training domain. Geographic assessment withheld five Tasmanian patches, all of Tasmania, or three buffered bird regions. [Roberts et al. 2017]
 
-**M2. Data and inputs.** Responses came from Atlas of Living Australia records (2001–2025) and Tasmanian camera surveys. Inputs were grid-cell summaries of climate, terrain, vegetation, soil and land use. Scaling and encoding were fitted on training partitions only. Sources, versions and predictor lists are in Supporting information. [Belbin et al. 2021; Fick & Hijmans 2017]
+**M2. Data and inputs.** Responses came from Atlas of Living Australia occurrence records (2001–2025) and Tasmanian camera surveys. Inputs summarised grid-cell climate, terrain, vegetation, soil and land use. Scaling and encoding were fitted on training partitions. Predictor definitions, available source metadata and provenance gaps are documented in Supporting information. [Belbin et al. 2021; Fick & Hijmans 2017]
 
-**M3. Tasmanian mammals.** Eight species were modelled on a 0.01° grid. Negatives were of three kinds: camera-supported nondetections, constructed pseudoabsences and masked unknowns. Five patches, fixed before modelling and touching the training areas, test interpolation. [no citations; Supporting information]
+**M3. Tasmanian mammals.** Eight species were modelled on a 0.01° grid. Responses comprised presences and two negative sources: camera-supported nondetections and constructed pseudoabsences. Unknown species–cell combinations were masked and excluded from the response loss and evaluation. Five patches fixed before modelling touched the training areas and assessed interpolation. [Supporting information]
 
 **M4. Mainland mammals.** Each of five targets was pretrained with 19 auxiliary mammals on the mainland. The primary assessment used camera-supported records in Tasmania, which supplied no training data or transformations. The transfer therefore changed observation source as well as geography. [no citations]
 
@@ -113,15 +113,15 @@ Development results raised a diagnostic question: do rankings depend on the evid
 
 All three regions and their 50 km buffers were excluded together. [Phillips et al. 2009]
 
-**M6. Pretraining.** A residual multilayer perceptron learned a shared encoder, with a separate head for each auxiliary species. Each target was excluded from pretraining. In birds its whole computational block of targets was excluded too. The geographic exclusions applied to pretraining as well as to fitting. [He et al. 2016 (to add), for residual networks]
+**M6. Pretraining.** A residual multilayer perceptron learned a shared encoder, with a separate head for each auxiliary species. Each target was excluded from pretraining. In birds its whole computational block of targets was excluded too. The geographic exclusions applied to pretraining as well as to fitting. [He et al. 2016, for the residual-learning principle only]
 
 **M7. Neural comparisons.** Fine-tuning updated the encoder and fitted a new target head. The target-only network used the same architecture, data, optimisation and evaluation, starting from random weights. Frozen-encoder and pooled-community controls tested simpler uses of shared information. The bird architecture, selected for fine-tuning, was inherited by the target-only network, and predictions averaged five matched seeds. [Kumar et al. 2022; Cawley & Talbot 2010]
 
 **M8. Conventional benchmark.** The candidates were elastic net, random forest, gradient boosting, a shallow network and an intercept model. Hyperparameters and family were selected within the development data and then fixed. No outer response chose a model, an epoch, a weight or a threshold. [Valavi et al. 2022; Norberg et al. 2019]
 
-**M9. Data experiments.** Bird and Tasmanian learning curves used 25%, 50% and 100% of target data. Bird auxiliary pools held 20, 80 or all eligible species. The corrected mainland comparison used full target data. In Tasmania, we separately removed training pseudoabsences and filtered the evaluation negatives. [no citations]
+**M9. Data experiments.** Bird learning curves crossed 25%, 50% and 100% target data in the primary 73-species panel with 20, 80 or all eligible auxiliary species. Original Tasmania used nested target-data ladders at those fractions. Corrected mainland comparisons used full target data. Tasmania separately tested removing training pseudoabsences and filtering evaluation negatives. [Supporting information]
 
-**M10. Metrics and summaries.** AUC was the primary metric, with TSS co-primary in Tasmania at thresholds fixed from development predictions. Bird summaries average regions within species, then weight species equally. Species-composition resampling gives ranges, which are not confidence intervals; AUC ranks scores and TSS judges a fixed threshold, so they can disagree. [Hanley & McNeil 1982 (to add); Allouche et al. 2006 (to add)]
+**M10. Metrics and summaries.** AUC was primary; TSS was co-primary in Tasmania using thresholds fixed from development predictions. Bird geographic summaries averaged regions within species and then species equally; development summaries averaged folds. Species-composition resampling supplied descriptive ranges. AUC assesses ranking, whereas TSS assesses classification at a fixed threshold. [Hanley & McNeil 1982; Allouche et al. 2006; Supporting information]
 
 **M11. Diagnostics and timing.** Primary comparisons and curves were fixed before the withheld responses were opened. The richness diagnostic was fixed after development and before opening. Fine-tuned/conventional averaging was prespecified as exploratory. Extent rescoring, target-only averaging and survey-only evaluation were post hoc, and the removal of training negatives was implemented after the primary outcomes. [Lobo et al. 2008]
 
@@ -129,45 +129,45 @@ All three regions and their 50 km buffers were excluded together. [Phillips et a
 
 **R1. Development gain.** Pretraining improved development AUC for mainland mammals (+0.009; four of five species) and birds (+0.006; 72 of 73). Scored within bioregions and spatial folds, the bird gain stayed positive (+0.007; 68 of 73). Tasmanian mammals showed a negative development mean (−0.007). [Fig. 2]
 
-**R2. Borrowing strength.** Subsampling bird target data from full to half to a quarter raised the pretraining increment from +0.0058 to +0.0075 to +0.0095. The least-recorded third of bird species gained +0.004 over the target-only network and +0.0006 over conventional models. With the full auxiliary pool, the frozen encoder gained +0.0022 over the target-only network (57 of 73 species). [Supporting information, learning curves]
+**R2. Borrowing strength.** Subsampling bird target data from full to half to quarter increased the matched pretraining increment from +0.0058 through +0.0075 to +0.0095. The least-recorded third of all 157 bird targets gained +0.004 over target-only and +0.0006 over conventional models. At full target data and auxiliary size, the frozen encoder gained +0.0022 over target-only on the primary panel, with 57 of 73 species benefiting. [Supporting information]
 
 **R3. New regions.** In new regions the mean pretraining increment was −0.016 for mainland mammals and −0.0004 for birds, with 34 of 73 bird species benefiting. Bird regional means were +0.006 in Naracoorte Coastal Plain and −0.004 in both South Eastern Highlands and NSW North Coast. In Tasmania's held-out patches, pretraining lowered AUC by 0.015 and raised TSS by 0.048. [Fig. 2; Table 1]
 
-**R4. Network and ensembles.** In new bird regions, the target-only network exceeded conventional models by 0.0032 and the fine-tuned network by 0.0028. Fixed 50:50 averaging with conventional predictions gained 0.0096 with the target-only network (64 of 73 species) and 0.0104 with the fine-tuned network (60 of 73). Both ensembles exceeded either network alone. [Fig. 3]
+**R4. Networks and ensembles.** Relative to conventional models, mean AUC increments in new bird regions were +0.0032 for target-only and +0.0028 for fine-tuning. Their fixed 50:50 ensembles with conventional predictions gained +0.0096 and +0.0104, positive for 64 and 60 of 73 species, respectively. Both ensemble means exceeded both neural means. [Fig. 3]
 
-**R5. Extent.** Absolute AUC was 0.83 in development and 0.68 in new regions. Unchanged development predictions scored within bioregions and folds gave 0.69. Most of the absolute fall therefore reflects the scoring extent. [Table 1; Supporting information]
+**R5. Extent.** Mean AUC was 0.83 in development and 0.68 in new regions. Scoring unchanged development predictions within bioregions and spatial folds gave 0.69. Regional scoring therefore also produced low absolute AUC within the development data. [Table 1; Supporting information]
 
 **R6. Recording richness.** The fine-tuned-minus-conventional contrast declined across background recording-richness bins. In development it went from +0.005 to +0.002 to −0.004, for 10–24, 25–99 and at least 100 other recorded species (59 species). It also declined in South Eastern Highlands (38 species) and NSW North Coast (55); Naracoorte Coastal Plain had no common support. [Fig. 4a]
 
-**R7. Tasmanian negatives.** At full target data and with training unchanged, survey-only evaluation reversed the fine-tuned-minus-conventional contrast, from −0.005 to +0.015. Removing training pseudoabsences lowered mean AUC against mixed negatives and raised it against survey-supported negatives. It also changed the highest-scoring cells for all seven affected species. [Fig. 4b; Supporting information]
+**R7. Tasmanian negatives.** At full target data with training unchanged, survey-only evaluation reversed the fine-tuned-minus-conventional mean AUC contrast from −0.005 to +0.015. Removing training pseudoabsences lowered mean AUC against mixed negatives and raised it against survey-supported negatives. Retraining also changed the highest-scoring cells for all seven affected species. [Fig. 4b; Supporting information]
 
 ### Discussion
 
-**D1. Principal finding.** In new bird regions, the network's small average advantage was available without pretraining. A comparison with conventional models alone would have credited it to sharing. The matched target-only network isolates what pretraining added, which on average was nothing. [Basile et al. 2026 (to add)]
+**D1. Principal finding.** In new bird regions, the small average neural advantage was available without pretraining. A comparison against conventional models alone could credit that advantage to shared learning. The matched pretraining contrast averaged −0.0004 AUC across the three regions. [Basile et al. 2026, for the comparison with previous transfer evidence]
 
-**D2. Shared information.** The development gains and the frozen-encoder result show that shared information improved prediction within the tested setting. In new regions its increment varied, with a positive mean in Naracoorte Coastal Plain and 34 species benefiting. Our results fit the documented promise of shared learning and locate where it holds. [Chen et al. 2017; Brun et al. 2024; Bourel et al. 2025; Ovaskainen et al. 2025; Lange et al. 2025; Basile et al. 2026 (to add)]
+**D2. Shared information.** Development gains and the frozen-encoder result show that shared information improved prediction in the tested setting. In new regions, its increment varied among species and regions, including a positive mean in Naracoorte Coastal Plain. These results distinguish useful development information from its additional predictive value after geographic transfer. [Chen et al. 2017; Brun et al. 2024; Bourel et al. 2025; Ovaskainen et al. 2025; Lange et al. 2025; Basile et al. 2026]
 
-**D3. Practical route.** Averaging neural and conventional predictions gave the larger mean gain in new bird regions, whether or not the network was pretrained. Complementary learners are cheap to test. They deserve testing alongside larger auxiliary pools. [Norberg et al. 2019; Valavi et al. 2022; Araújo & New 2007 (to add)]
+**D3. Practical route.** Fixed averaging produced the larger mean AUC gain in new bird regions with either neural model. Both averages used retained predictions and fixed weights. Complementary learners therefore deserve comparison alongside larger auxiliary pools. [Norberg et al. 2019; Valavi et al. 2022; Araújo & New 2007]
 
-**D4. Subsampling versus rarity.** Subsampling well-recorded species and predicting naturally poorly recorded species are different data limitations. Pretraining's increment grew under subsampling. The least-recorded species gained little over conventional models. Tests built around rare species are needed. [Ovaskainen et al. 2025; Breiner et al. 2015 (to add)]
+**D4. Subsampling versus rarity.** Subsampling well-recorded species and predicting naturally poorly recorded species are different data limitations. Pretraining's increment grew under subsampling. The least-recorded species gained little over conventional models. Tests built around rare species are needed. [Ovaskainen et al. 2025; Breiner et al. 2015, for rare-species modelling only]
 
-**D5. Absolute AUC.** Regional AUC fell by a similar amount whether or not a model was transferred. Absolute AUC is therefore a poor gauge of what transfer costs. Learners should be compared on the same observations. [Lobo et al. 2008; Jiménez-Valverde 2012; Yates et al. 2018]
+**D5. Absolute AUC.** Development predictions scored within bioregions and folds had an AUC of 0.69, close to the new-region mean of 0.68. Low regional AUC can therefore occur without transferring a fitted model. Comparing learners on the same observations makes their relative predictive gains explicit. [Lobo et al. 2008; Jiménez-Valverde 2012; Yates et al. 2018]
 
-**D6. Negative evidence.** The choice of evaluation negatives changed which model ranked first. Removing training pseudoabsences and refitting changed the maps. Defining the negative class is part of specifying the prediction problem. [Phillips et al. 2009; Warton et al. 2013; Johnston et al. 2021]
+**D6. Negative evidence.** Changing evaluation negatives reversed the fine-tuned-versus-conventional mean AUC ranking in Tasmania. Removing training pseudoabsences and refitting changed prediction maps. Negative evidence is therefore part of specifying both model fitting and the problem against which predictions are assessed. [Phillips et al. 2009; Warton et al. 2013; Fithian et al. 2015; Pili et al. 2025; Johnston et al. 2021]
 
-**D7. Limitations and next tests.** The tests used tabular inputs, and the target-only network inherited an architecture selected for fine-tuning. Auxiliary-pool size changed record volume and species composition together; shared geography, taxa and auxiliary models make the summaries descriptive, and several diagnostics are post hoc. Background cells and camera nondetections are not ecological absences, and the design does not separate niche structure, recording processes and optimisation. Fresh regional tests should combine spatial inputs, observation-aware models and independent surveys under prespecified rules, each with a matched single-species control. [Deneu et al. 2021; Cawley & Talbot 2010; Kumar et al. 2022; Johnston et al. 2021]
+**D7. Limitations and next tests.** The tests used tabular inputs and, in birds, an architecture selected for fine-tuning. Auxiliary pools changed records and species together; shared geography and models make the summaries descriptive. Several diagnostics were post hoc, while negative observations neither establish ecological absence nor identify the mechanism behind a model contrast. Fresh regional tests should pair matched target-only controls with spatial inputs, observation-aware models and independent surveys. [Deneu et al. 2021; Cawley & Talbot 2010; Kumar et al. 2022; Johnston et al. 2021]
 
 ---
 
-## 3. Notes for Codex
+## 3. Decisions from the v1 review
 
-1. **Merged Discussion paragraph.** I merged the limitations and the next tests into D7 so that the Discussion has seven paragraphs. Should they stay separate?
-3. **Works to add.** Each needs checking for fit. Please confirm or reject each one:
-   - Basile 2026 and Pili 2025, already identified;
-   - Fithian et al. 2015, on pooling species to model shared observation bias;
-   - He et al. 2016, on residual networks;
-   - Hanley & McNeil 1982, on AUC;
-   - Allouche et al. 2006, on TSS;
-   - Araújo & New 2007, on ensembles;
-   - Breiner et al. 2015, on ensembles of small models for rare species.
-3. **R5's inference.** "Most of the absolute fall reflects the scoring extent" needs checking. Is it supported, given that development and new-region assessments differ in fitted models and composition? Or should R5 state only the numbers?
+- **R5 and D5** say that rescoring unchanged development predictions within regions also produces low absolute AUC. They attribute no share of the transfer decline to the scoring extent, because no decomposition was estimated.
+- **M3:** masked unknowns are excluded from the analysis. They are not a negative class, and the two negative sources are camera nondetections and constructed pseudoabsences.
+- **D1** states the matched contrast (−0.0004), not "nothing".
+- **D7 stays merged,** at about 170–190 words in the full draft.
+- **Citation scopes:**
+  - Pili sits with sampling and evaluation (I4, D6), not the attribution gap.
+  - Breiner supports rare-species modelling only.
+  - He supports the residual-learning principle only.
+  - Basile is a transfer precedent with no matched target-only control, and its results are not converted into an AUC drop.
+- **Word budgets:** the section allocations, not a uniform 150 words per paragraph.
