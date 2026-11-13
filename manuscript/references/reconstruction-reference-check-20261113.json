@@ -1,0 +1,251 @@
+{
+  "schema_version": "dsdm-reconstruction-reference-review-v1",
+  "checked_on": "2026-11-13",
+  "reviewed_commit": "6b52446",
+  "reviewers": "Two Codex subagents (gpt-6.1-sol), integrated by Codex (gpt-6.1-sol)",
+  "verification": "Live registered DOI metadata plus primary article/proceedings records. Bibliographic fields transcribed from the reviewers' source checks; full registry responses are not embedded.",
+  "status": "All eight identities verified; seven possible new entries and one existing entry. Placement decisions retain limits of the supporting source.",
+  "bibliography_modified": false,
+  "records": [
+    {
+      "id": "basile2026",
+      "doi": "10.1002/ecog.08269",
+      "title": "Harnessing the power of machine and deep learning for transferring joint species distribution models considering the structure of biotic interactions",
+      "authors": [
+        "Marco Basile",
+        "Maximilian Pichler",
+        "Francesco Valerio",
+        "Lorenzo Balducci",
+        "Francesco Chianucci",
+        "Sérgio Godinho",
+        "Francesco Rota",
+        "Frédéric Archaux",
+        "Christophe Bouget",
+        "Gediminas Brazaitis",
+        "Thomas Campagnaro",
+        "Ettore D’Andrea",
+        "Luc De Keersmaeker",
+        "Wouter Dekoninck",
+        "Pallieter De Smedt",
+        "Zoltán Elek",
+        "Itziar García-Mijangos",
+        "Frédéric Gosselin",
+        "Marion Gosselin",
+        "Andrin Gross",
+        "Elena Haeler",
+        "Sebastian Kepfer-Rojas",
+        "Nathalie Korboulewsky",
+        "Daniel Kozák",
+        "Thibault Lachat",
+        "Carlos Miguel Landivar Albis",
+        "Anja Leyman",
+        "Xiang Liu",
+        "Anders Mårell",
+        "Radim Matula",
+        "Martin Mikoláš",
+        "Péter Ódor",
+        "Yoan Paillet",
+        "Kastytis Šimkevičius",
+        "Tommaso Sitzia",
+        "Silvia Stofer",
+        "Nicolas Strebel",
+        "Miroslav Svoboda",
+        "Flóra Tinya",
+        "Mariana Ujházyová",
+        "Kris Vandekerkhove",
+        "Kris Verheyen",
+        "Michael Wohlwend",
+        "Fotios Xystrakis",
+        "Sabina Burrascano"
+      ],
+      "year": 2026,
+      "container": "Ecography",
+      "volume": "2026",
+      "issue": "6",
+      "article_number": "e08269",
+      "online_date": "2026-04-15",
+      "decision": "confirm",
+      "placement": [
+        "I2",
+        "D1",
+        "D2"
+      ],
+      "scope": "Continental neural-joint-model advantage did not persist in regional transfer, measured with Boyce indices. Not a matched target-only neural ablation; avoid comparing AUC and Boyce magnitudes directly.",
+      "primary_url": "https://nsojournals.onlinelibrary.wiley.com/doi/full/10.1002/ecog.08269",
+      "registry_method": "Crossref REST",
+      "metadata_note": "Three registry name splits differ from primary author display: Luc De/Keersmaeker, Itziar García-/Mijangos, Sebastian Kepfer-/Rojas. Authors above follow the primary display; preserve this note when preparing CSL.",
+      "registry_url": "https://api.crossref.org/works/10.1002/ecog.08269"
+    },
+    {
+      "id": "pili2025",
+      "doi": "10.1002/ecog.08002",
+      "title": "Correcting environmental sampling bias improves transferability of species distribution models",
+      "authors": [
+        "Arman Pili",
+        "Boris Leroy",
+        "Damaris Zurell"
+      ],
+      "year": 2025,
+      "container": "Ecography",
+      "volume": "2025",
+      "issue": "10",
+      "article_number": "e08002",
+      "online_date": "2025-07-09",
+      "decision": "relocate",
+      "placement": [
+        "I4",
+        "I5",
+        "D6"
+      ],
+      "scope": "Virtual-species sampling-correction experiments distinguish internal evaluation from independent prediction and transfer. Not evidence for a target-only ablation gap or a causal interpretation of this study's richness gradient.",
+      "primary_url": "https://nsojournals.onlinelibrary.wiley.com/doi/full/10.1002/ecog.08002",
+      "registry_method": "Crossref REST",
+      "registry_url": "https://api.crossref.org/works/10.1002/ecog.08002"
+    },
+    {
+      "id": "fithian2015",
+      "doi": "10.1111/2041-210X.12242",
+      "title": "Bias correction in species distribution models: pooling survey and collection data for multiple species",
+      "authors": [
+        "William Fithian",
+        "Jane Elith",
+        "Trevor Hastie",
+        "David A. Keith"
+      ],
+      "year": 2015,
+      "container": "Methods in Ecology and Evolution",
+      "volume": "6",
+      "issue": "4",
+      "pages": "424–438",
+      "online_date": "2014-10-10",
+      "decision": "confirm",
+      "placement": [
+        "I5",
+        "D6"
+      ],
+      "scope": "Pooling survey and collection data can estimate shared sampling bias under an explicit proportional-bias model. It does not establish what this study's encoder learned.",
+      "primary_url": "https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.12242",
+      "registry_method": "Crossref REST",
+      "metadata_note": "Cite the 2015 issue year despite 2014 online publication.",
+      "registry_url": "https://api.crossref.org/works/10.1111/2041-210X.12242"
+    },
+    {
+      "id": "he2016",
+      "doi": "10.1109/CVPR.2016.90",
+      "title": "Deep Residual Learning for Image Recognition",
+      "authors": [
+        "Kaiming He",
+        "Xiangyu Zhang",
+        "Shaoqing Ren",
+        "Jian Sun"
+      ],
+      "year": 2016,
+      "container": "2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
+      "pages": "770–778",
+      "decision": "confirm_narrowly",
+      "placement": [
+        "M6"
+      ],
+      "scope": "Residual-learning/skip-connection principle. The cited convolutional image architecture is not this study's dense residual MLP or auxiliary-training protocol.",
+      "primary_url": "https://openaccess.thecvf.com/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html",
+      "registry_method": "DOI CSL content negotiation; Crossref-registered metadata",
+      "registry_url": "https://api.crossref.org/works/10.1109/CVPR.2016.90"
+    },
+    {
+      "id": "hanley1982",
+      "doi": "10.1148/radiology.143.1.7063747",
+      "title": "The meaning and use of the area under a receiver operating characteristic (ROC) curve",
+      "authors": [
+        "J. A. Hanley",
+        "B. J. McNeil"
+      ],
+      "year": 1982,
+      "container": "Radiology",
+      "volume": "143",
+      "issue": "1",
+      "pages": "29–36",
+      "decision": "confirm",
+      "placement": [
+        "M10"
+      ],
+      "scope": "Meaning and ranking interpretation of AUC. Not the source of this study's spatial weighting or composition-resampling design.",
+      "primary_url": "https://doi.org/10.1148/radiology.143.1.7063747",
+      "registry_method": "DOI CSL content negotiation; Crossref-registered metadata",
+      "metadata_note": "Primary article gives James A. Hanley and Barbara J. McNeil.",
+      "registry_url": "https://api.crossref.org/works/10.1148/radiology.143.1.7063747"
+    },
+    {
+      "id": "allouche2006",
+      "doi": "10.1111/j.1365-2664.2006.01214.x",
+      "title": "Assessing the accuracy of species distribution models: prevalence, kappa and the true skill statistic (TSS)",
+      "authors": [
+        "Omri Allouche",
+        "Asaf Tsoar",
+        "Ronen Kadmon"
+      ],
+      "year": 2006,
+      "container": "Journal of Applied Ecology",
+      "volume": "43",
+      "issue": "6",
+      "pages": "1223–1232",
+      "online_date": "2006-09-12",
+      "decision": "confirm",
+      "placement": [
+        "M10"
+      ],
+      "scope": "TSS equals sensitivity plus specificity minus one and evaluates binary classification. No claim of threshold independence or invariance to changing negative-source composition; freezing development thresholds is our design.",
+      "primary_url": "https://besjournals.onlinelibrary.wiley.com/doi/10.1111/j.1365-2664.2006.01214.x",
+      "registry_method": "DOI CSL content negotiation; Crossref-registered metadata",
+      "registry_url": "https://api.crossref.org/works/10.1111/j.1365-2664.2006.01214.x"
+    },
+    {
+      "id": "araujo2007",
+      "doi": "10.1016/j.tree.2006.09.010",
+      "title": "Ensemble forecasting of species distributions",
+      "authors": [
+        "Miguel B. Araújo",
+        "Mark New"
+      ],
+      "year": 2007,
+      "container": "Trends in Ecology & Evolution",
+      "volume": "22",
+      "issue": "1",
+      "pages": "42–47",
+      "online_date": "2006-09-29",
+      "decision": "reuse_existing",
+      "placement": [
+        "D3"
+      ],
+      "scope": "Rationale for comparing/combining forecasts; not universal superiority, cheapness or an empirical ordering relative to larger auxiliary pools.",
+      "primary_url": "https://pubmed.ncbi.nlm.nih.gov/17011070/",
+      "registry_method": "Crossref REST",
+      "metadata_note": "Already present in manuscript/references/refs.yaml as araujo2007. Remove its to-add label; do not duplicate it.",
+      "registry_url": "https://api.crossref.org/works/10.1016/j.tree.2006.09.010"
+    },
+    {
+      "id": "breiner2015",
+      "doi": "10.1111/2041-210X.12403",
+      "title": "Overcoming limitations of modelling rare species by using ensembles of small models",
+      "authors": [
+        "Frank T. Breiner",
+        "Antoine Guisan",
+        "Ariel Bergamini",
+        "Michael P. Nobis"
+      ],
+      "year": 2015,
+      "container": "Methods in Ecology and Evolution",
+      "volume": "6",
+      "issue": "10",
+      "pages": "1210–1218",
+      "decision": "confirm_narrowly",
+      "placement": [
+        "D4"
+      ],
+      "scope": "Dedicated rare/undersampled-species alternative using AUC-weighted ensembles of bivariate models. Not support for this study's equal-weight neural-plus-conventional averaging.",
+      "primary_url": "https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.12403",
+      "registry_method": "Crossref REST",
+      "metadata_note": "Registry online date is June 2015; publisher displays 4 May 2015. Citation year 2015 and October issue agree; do not invent a single reconciled online day.",
+      "registry_url": "https://api.crossref.org/works/10.1111/2041-210X.12403"
+    }
+  ]
+}

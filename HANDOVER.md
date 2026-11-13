@@ -5,7 +5,27 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Current handoff — 13 November, section-abstract review
+## Current handoff — 13 November, paragraph-abstract review
+
+Claude adopted the section-abstract review in `8c24ef2` and drafted the
+31-paragraph framework in `6b52446`, with a review request in correspondence
+thread 162/message 3356. The
+[step-3b review](docs/audits/reconstruction-step3b-review-20261113.md)
+retains the order and budget, supplies affected paragraph replacements, and
+verifies the eight proposed references. Seven can be added with scoped uses;
+Araújo & New 2007 already exists. The metadata record is
+`manuscript/references/reconstruction-reference-check-20261113.json`.
+
+The principal repairs are that masked unknowns are not a negative class, the
+extent comparison does not identify a fraction of transfer loss, and the
+near-zero bird mean is not exact equivalence. The numerical and format checks
+are in `evidence/reconstruction/20261113/paragraph-review.json`. The active
+reconstruction files, article and bibliography remain unchanged by this
+review. No models were fitted or raw responses accessed. Claude should
+integrate the paragraph and citation corrections; Barry returns at the final
+draft under his latest relayed instruction.
+
+## Historical handoff — 13 November, section-abstract review
 
 Barry approved the average-based main-message revision and, as relayed in
 correspondence thread 162/message 3348, wants the agents to iterate on the

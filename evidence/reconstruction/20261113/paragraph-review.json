@@ -1,0 +1,132 @@
+{
+  "schema_version": "dsdm-paragraph-review-v1",
+  "review_date": "2026-11-13",
+  "reviewed_commit": "6b5244681a5df6e623a8807eed7198e104778df4",
+  "status": "pass",
+  "scope": "Paragraph/claim/reference review; no new fitting, raw-response access or ecological experiment.",
+  "source_paragraph_ids": [
+    "I1",
+    "I2",
+    "I3",
+    "I4",
+    "I5",
+    "I6",
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6",
+    "M7",
+    "M8",
+    "M9",
+    "M10",
+    "M11",
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "R5",
+    "R6",
+    "R7",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "D5",
+    "D6",
+    "D7"
+  ],
+  "source_paragraph_count": 31,
+  "proposed_sentence_counts": {
+    "I2": 4,
+    "I3": 4,
+    "M2": 4,
+    "M3": 4,
+    "M9": 4,
+    "M10": 4,
+    "R2": 3,
+    "R4": 3,
+    "R5": 3,
+    "R7": 3,
+    "D1": 3,
+    "D2": 3,
+    "D3": 3,
+    "D5": 3,
+    "D6": 3,
+    "D7": 4
+  },
+  "proposal_sha256": "4fe52af1847ad3f43c938facc9695aa75de0031eba60b8d4eac28496176980e8",
+  "previous_numerical_evidence_paths_rechecked": [
+    "evidence/cross_case_synthesis/20261005/revision-01/case_contrasts.csv",
+    "evidence/cross_case_synthesis/20261005/revision-01/case_metrics.csv",
+    "evidence/cross_case_synthesis/20261005/revision-01/summary.json",
+    "evidence/cross_case_synthesis/20261008/bird-composition-resampling.json",
+    "evidence/cross_case_synthesis/20261018/recording-richness.csv",
+    "evidence/seawfb_dsdm/goal052/completion_review.json",
+    "evidence/seawfb_dsdm/goal052/extent-review-20261005.json",
+    "evidence/seawfb_dsdm/goal052/summary.json",
+    "evidence/tasmania_pseudoabsence/20261009/map-comparison.csv",
+    "evidence/tasmania_pseudoabsence/20261011/survey-only/performance.csv",
+    "evidence/tasmania_pseudoabsence/20261011/survey-only/summary.json"
+  ],
+  "outer_bird_ensemble_species_recomputation": {
+    "ft_conv_ensemble_minus_conv": {
+      "mean": 0.010352216815044847,
+      "positive": 60,
+      "n": 73
+    },
+    "to_conv_ensemble_minus_conv": {
+      "mean": 0.00962050840728023,
+      "positive": 64,
+      "n": 73
+    }
+  },
+  "fine_tuned_absolute_auc": {
+    "published_mean_fold": 0.8316027214151391,
+    "region_fold": 0.6897088551226503,
+    "outer_equal_regions": 0.6827322893660152
+  },
+  "auc_interpretation": "These summaries do not identify a fraction of transfer loss caused by scoring extent. Regional rescoring changes support, pairs and weights, while outer evaluation also changes fitted models and composition.",
+  "reference_identity_records": 8,
+  "reference_new_entries": 7,
+  "existing_reference_id": "araujo2007",
+  "input_bindings": [
+    {
+      "path": "manuscript/reconstruction/03b-paragraph-abstracts.md",
+      "sha256": "59bf9b8ed8dba1b42170df18403eff9ff7ff26587af91752437f7510b933f73a"
+    },
+    {
+      "path": "manuscript/reconstruction/03a-section-abstracts.md",
+      "sha256": "1bf5dedad1fa0b9b95b05e347ce806c672d7458bc3a2475cc4890d5bbdd42966"
+    },
+    {
+      "path": "manuscript/text/main.md",
+      "sha256": "d430fe052b78fdb127f2f1c07d436c95fb4dc40954dfd9cf9e93ae4aab399085"
+    },
+    {
+      "path": "manuscript/references/refs.yaml",
+      "sha256": "40f9815941efd575c23a3fac34c5a13fa1998d2a1acd65ab46406a713efa7064"
+    },
+    {
+      "path": "manuscript/references/reconstruction-reference-check-20261113.json",
+      "sha256": "202a1acbe2d1afbc642b817dceadb6203f6c789ec64fa35461d03fca3391bcc0"
+    },
+    {
+      "path": "evidence/seawfb_dsdm/goal052/extent-review-20261005.json",
+      "sha256": "08652c0909c600bd0e4794d89b522a1e3ecb32557e4f2dad64598cea3be12fa7"
+    },
+    {
+      "path": "evidence/cross_case_synthesis/20261005/revision-01/summary.json",
+      "sha256": "6834e34c74767864686862734f57a64a2ac10b324fcdadab89797e1cecbe0fd2"
+    },
+    {
+      "path": "evidence/reconstruction/20261112/numerical-review.json",
+      "sha256": "c8f6c8ed097091bb6d5e0eb4c0eef8a56add43ab0e74ce6662619fc9eeec7250"
+    },
+    {
+      "path": "evidence/reconstruction/20261113/section-review.json",
+      "sha256": "c5b874943521908757a7f2f25568ae57e884e2017fd2cca43246249111bcdfa3"
+    }
+  ]
+}
