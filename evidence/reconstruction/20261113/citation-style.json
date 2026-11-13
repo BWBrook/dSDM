@@ -1,0 +1,14 @@
+{
+  "retrieved": "2026-11-13",
+  "repository": "https://github.com/citation-style-language/styles",
+  "revision": "af0aea3fffd44fe798cce9285598d0d5cf62ef23",
+  "journal": "Ecography",
+  "dependent_style": "manuscript/csl/ecography.csl",
+  "independent_parent": "manuscript/csl/oikos.csl",
+  "resolution": "The official Ecography dependent style declares Oikos as its independent parent. Profiles use that complete parent file directly; no local style modification.",
+  "guidelines": "https://nso-journals.org/author-guidelines",
+  "sha256": {
+    "manuscript/csl/ecography.csl": "fa1347a14c10918f2bb0ba0f4ecf1fe0edc4aae351f0fb8bf880631aabefef2a",
+    "manuscript/csl/oikos.csl": "b5ae79a8a83a06046b257a5690e8aa1d9e09d915b324b04470eedff7ca3945d0"
+  }
+}

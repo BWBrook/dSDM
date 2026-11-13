@@ -1,142 +1,86 @@
 # Manuscript
 
-This directory is a repo-local manuscript workspace backed by the shared `makedoc` builder in `/Users/bwbrook/work/makedoc`.
+The working Ecography manuscript was reconstructed on 13 November 2026 in
+stages reviewed by Claude and Codex. `text/main.md` carries the accepted
+argument, one table and citations to four figures. `text/figures.md` defines
+the four figure captions. The article and Supporting information are author
+review drafts; no submission, release or DOI assignment is made by this build.
 
-The active source is `text/main.md`, completely rewritten on 18 October 2026
-through three substantive review rounds with Claude. The question title,
-abstract and argument are written for both an informed generalist editor and
-specialist readers. Barry's subsequent humanisation request prompted a further
-revision of the framing, flow and repeated caveats, with an independent
-scientific check. Claude's fourth review then prompted simpler terminology,
-finding-led Results and a new Table S1f retaining the absolute AUCs moved out
-of the prose. Three Results sections distinguish the pretraining
-increment, evaluation extent and model averaging, and the definition of
-negative observations. The paper contains three figures and two main tables.
-The earlier May 2026 conversion and original draft remain in Git history.
-`evidence-ledger.md` records result sources, prospective versus post hoc status,
-and the remaining steps needed before submission.
+## Current displays and evidence
 
-## Current review status — 18 October
+The four displays follow `reconstruction/01b-display-items.md`:
 
-The [drafting record](../docs/plan/ManuscriptDrafting-20261018.md) documents the
-full rewrites, Claude's reviews and the scientific qualifications retained
-through disagreement. The manuscript now includes the post hoc survey-only
-Tasmania panel as a crossed training/evaluation comparison, with full metrics
-and species support in Tables S10–S11. Supplementary Methods S4 documents
-dataset products, acquisition dates and remaining source-provenance gaps.
+1. Public study boundaries and the three-learner design.
+2. Paired species-level pretraining gains in development and geographic assessment.
+3. Neural models and fixed neural/conventional averages in the new bird regions.
+4. Recording richness and the crossed Tasmania training/evaluation comparison.
 
-PDF and Word outputs are `build/dsdm_manuscript.{pdf,docx}` and
-`build/dsdm_supplement.{pdf,docx}`. Final source/output bindings and checks are
-in `../evidence/cross_case_synthesis/20261018/final-statements-verification.json`.
-Claude's final read (message 2006) accepted the draft for both audiences.
-The final statement revision adds Jessie C. Buettel, camera-data custodianship
-and contacts, and a fuller account of the AI systems' actual contributions.
-The dSDM-only correspondence review package is prepared locally under
-`../outputs/correspondence/dsdm-20261018/`; it has not been published or assigned
-a DOI. See the [publication preparation record](../docs/plan/PublicationPreparation-20261018.md).
-The preceding fourth-round bindings remain in
-`../evidence/cross_case_synthesis/20261018/claude-round4-verification.json`,
-with source and document outputs preserved in `build/archive/20261018-before-final-statements/`.
-The preceding humanisation record remains
-`../evidence/cross_case_synthesis/20261018/humanisation-verification.json`,
-with its source and outputs archived in `build/archive/20261018-before-claude-round4/`.
-The original delivery record remains
-`../evidence/cross_case_synthesis/20261018/draft-delivery-verification.json`,
-with its outputs archived in `build/archive/20261018-before-humanisation/`.
-Earlier document outputs were archived in `build/archive/20261011/`; prior
-analysis receipts retain their original bindings. This is an author-review
-draft for both authors' final read. Public deposits and their identifiers,
-final author confirmation and journal/style remain to be completed. Source
-metadata gaps are disclosed in Supplementary Methods S4.
+`evidence/reconstruction/20261113/` contains the extracted figure data,
+resampling ranges and source bindings. The new ranges are a post hoc reporting
+extension over accepted species aggregates. They describe composition of the
+observed species panels conditional on fitted models, rather than confidence
+intervals. No fits or raw observations are required for plotting.
+
+Supporting information is assembled as one document from `text/supplement.md`,
+`text/tasmania-sensitivity.md`, `text/survey-only-and-design.md` and
+`text/data-sources.md`. It preserves the original S1–S11 material and adds
+all-case TSS, extended ranges, the former main Table 2, five-endpoint learning
+curves and controls, absolute AUC by extent, and every primary species' paired
+contrasts. Numbered tables provide navigation inside that document; the main
+article cites only “Supporting information”.
+
+Accepted historical analyses and their dated receipts are unchanged. Do not
+run the historical report generators to regenerate these revised manuscript
+sources: some replace the old S1 source. The historical drafting and release
+records remain in `docs/plan/ManuscriptDrafting-20261018.md` and
+`docs/plan/PublicationPreparation-20261018.md`.
 
 ## Build
 
-From the repository root:
+The shared builder is `~/work/makedoc`. Set up its one Python dependency in
+the ignored manuscript-only environment, without changing system Python:
 
 ```sh
-make -C manuscript validate
-make -C manuscript all
+make -C manuscript setup
+make -C manuscript all check
+make -C manuscript all check PROFILE=supplement
 ```
 
-The 18 October build used the existing Python 3.14 runtime (with PyYAML) and
-repo-local caches, avoiding global runtime changes:
+`requirements-build.txt` pins PyYAML. The wrapper selects that environment
+and gives each profile its own local cache and LaTeX directory. PDF, Word
+and build manifests are written to the ignored `manuscript/build/` directory:
+`dsdm_manuscript.{pdf,docx}` and `dsdm_supplement.{pdf,docx}`. The wrapper's
+Word postprocessor preserves document text and images while applying the
+review table layout. Final visual checks use the PDF renders.
+
+Profiles identify Ecography. Its official [dependent CSL style](https://github.com/citation-style-language/styles/blob/af0aea3fffd44fe798cce9285598d0d5cf62ef23/dependent/ecography.csl)
+declares Oikos as its independent parent; the profiles therefore use the
+complete official `csl/oikos.csl`, with `csl/ecography.csl` retained as the
+journal identity. Both files and the source revision are bound in
+`evidence/reconstruction/20261113/citation-style.json`. The current parent
+prints complete author lists. The [journal guidelines](https://nso-journals.org/author-guidelines)
+specify generic Supporting information citations in the main text.
+
+## Regenerate the current figures
+
+From the repository root, using the existing locked analysis environment
+for the Python scripts and the host R for plotting:
 
 ```sh
-PATH=/opt/homebrew/opt/python@3.14/libexec/bin:$PATH make -C manuscript all check \
-  PROFILE_CACHE_DIR="$PWD/manuscript/.cache" \
-  PDF_ENGINE_OUTPUT_DIR="$PWD/manuscript/.cache/latex"
+.venv/bin/python scripts/reconstruction_display_data.py
+.venv/bin/python scripts/plot_reconstruction_design.py
+Rscript scripts/plot_reconstruction_results.R
 ```
 
-Outputs are written to `manuscript/build/`, which is ignored by git. The default profile is `draft`; use `PROFILE=submission` for the stricter lint profile once citations and references have been cleaned up.
+The extraction checks frozen source hashes and reproduces the earlier bird
+resampling ranges before writing the new small figure-data tables. It uses
+retained aggregate metrics only; some original aggregate and public-boundary
+inputs must first be staged at their recorded paths. Plotting Figures 2–4
+needs only the small public CSVs in the reconstruction evidence directory.
+Figure 1 uses public IBRA 7.1 and ASGS boundaries and `rsvg-convert`; its five
+patch positions are explicitly schematic. Analysis geometry is unchanged.
+Each figure is supplied as a vector PDF and 300 dpi PNG; Figure 1 also has SVG.
 
-The repo wrapper applies `../scripts/format_review_docx.py` after Word builds:
-A4 margins, compact table text, intact rows and repeated headers. It checks
-that text and images remain unchanged, then refreshes the build manifest.
-PDF and Word pagination can differ; both are review formats.
-
-The synthesis tables and figures can be regenerated from the accepted
-aggregate receipts, without reopening responses or fitting models:
-
-```sh
-python3 scripts/cross_case_synthesis.py --tasmania-summary evidence/tasmania_outer_assessment/20261005/receipt.json
-uv run --locked python scripts/bird_composition_resampling.py
-Rscript scripts/plot_cross_case_synthesis.R
-Rscript scripts/plot_bird_extent_synthesis.R
-python3 scripts/cross_case_supplement.py
-```
-
-Run those commands from the repository root only when intentionally rebuilding
-historical reporting outputs; `cross_case_supplement.py` writes the original
-S1 supplement source. Preserve historical source and receipt bindings. The
-18 October figures and added tables can be checked without regenerating old
-reports:
-
-```sh
-Rscript scripts/plot_cross_case_synthesis.R
-Rscript scripts/plot_bird_extent_synthesis.R
-Rscript scripts/plot_bird_recording_richness.R
-python3 scripts/check_survey_only_supplement.py
-```
-
-Revised reporting outputs are
-under `evidence/cross_case_synthesis/20261005/revision-01/`; the first review
-summaries are preserved. Bird composition-resampling outputs are under
-`evidence/cross_case_synthesis/20261008/`; their fixed reporting plan and limits
-are in `docs/plan/BirdCompositionResampling-20261008.md`. Build the supplementary PDF and Word file with
-`make -C manuscript PROFILE=supplement all`. The underlying bird extent
-reproduction uses private saved predictions and already-opened responses:
-`uv run --locked python3 scripts/goal052_extent_review.py`.
-
-## Tasmania sensitivity
-
-The completed analysis and claim limits are in
-[the results report](../docs/plan/TasmaniaPseudoabsenceResults-20261009.md).
-The report generator reads verified aggregates only:
-
-```sh
-python3 scripts/tasmania_pseudoabsence_report.py
-make -C manuscript all
-make -C manuscript PROFILE=supplement all
-```
-
-Run from the repository root. Existing reporting files must match exactly;
-intentional reporting changes require preserving the prior source and receipt.
-Do not rerun fitting, collection or held-response scoring to rebuild documents.
-Tables S5–S9 live in `text/tasmania-sensitivity.md`, the second supplement
-source. Eight map plates and the numerical tables are under
-`evidence/tasmania_pseudoabsence/20261009/`; a combined map PDF is in
-`build/dsdm_tasmania_sensitivity_maps.pdf`. The final delivery verification
-binds the manuscript, supplement and map outputs to the completed assessment.
-
-## Layout
-
-- `settings/build.yaml`: `makedoc` profiles with paths relative to this repo.
-- `text/main.md`: active cross-case manuscript review draft.
-- `text/figures.md`: `makedoc` figure blocks.
-- `text/supplement.md`: generated supplementary methods and descriptive tables.
-- `text/tasmania-sensitivity.md`: verified sensitivity methods and Tables S5–S9.
-- `text/survey-only-and-design.md`: post hoc survey-only methods and Tables S10–S11.
-- `text/data-sources.md`: data products, provenance and unresolved source metadata.
-- `figures/`: tracked source figures for the paper.
-- `references/refs.yaml`: Pandoc YAML bibliography.
-- `csl/oikos.csl`: placeholder journal style copied from the `makedoc` testbed.
+The source/figure/output verification record is
+`evidence/reconstruction/20261113/assembled-display-verification.json`.
+The scientific evidence ledger remains `evidence-ledger.md`.

@@ -150,7 +150,7 @@ Each cell is the equal-species mean Matthews correlation for the named training 
 Values are primary → pseudoabsence-filtered sensitivity fine-tuning minus the named comparator, using the survey-only evaluation panel at the 100%/full endpoint. Negative counts are retained survey-supported negative rows for that species; all 1,300 held presences are retained. The seven-negative support for *Vombatus ursinus* is shown explicitly. These paired contrasts are descriptive and do not establish true absence, occupancy or causal mechanism.
 
 | Species | Negative n | Fine-tuning − target-only AUC | Fine-tuning − target-only TSS | Fine-tuning − conventional AUC | Fine-tuning − conventional TSS |
-| --- | ---: | ---: | ---: | ---: | ---: |
+|--------------------|-----------:|-----------------:|-----------------:|-----------------:|-----------------:|
 | *Dasyurus maculatus* | 21 | +0.0353 → +0.0197 | +0.0082 → +0.0431 | -0.0279 → +0.0538 | +0.0571 → +0.3030 |
 | *Dasyurus viverrinus* | 69 | -0.0054 → -0.0080 | -0.0458 → -0.0323 | -0.0080 → +0.0041 | -0.0748 → -0.0580 |
 | *Notamacropus rufogriseus* | 17 | -0.0411 → -0.0380 | +0.0000 → +0.0049 | +0.0380 → +0.0481 | +0.1133 → +0.0887 |
@@ -162,3 +162,183 @@ Values are primary → pseudoabsence-filtered sensitivity fine-tuning minus the 
 ### Public source and deterministic check
 
 These tables use the accepted public aggregates in evidence/tasmania_pseudoabsence/20261011/survey-only/. Exact source hashes, receipt digests, support counts and the deterministic checker are recorded in evidence/cross_case_synthesis/20261018/survey-only-reporting.json. The recorded check reads only accepted aggregate CSV/JSON files; it does not read responses, coordinates, memberships or predictions.
+
+\newpage
+
+## Table S12. Full-data Tasmania training-by-evaluation comparison
+
+Mean withheld-patch performance across eight Tasmanian mammals at full target data. Original training includes constructed target pseudoabsences; filtered training removes them. Mixed evaluation contains 1,300 presences, 242 survey-supported negatives and 130 pseudoabsences. Survey-only evaluation retains the same presences and only survey-supported negatives. Each method's threshold is fixed from its own training regime. Evaluation panels reuse predictions; the survey-only analysis was post hoc. All-endpoint values and per-species survey-only contrasts appear in Tables S10–S11. These two panels retain the former main-text Table 2, including the co-primary Tasmania TSS result.
+
+### Table S12a. ROC AUC
+
+| Training | Evaluation negatives | FT | Target-only | Conventional |
+|---|---|---:|---:|---:|
+| Original | Mixed | 0.8390 | 0.8537 | 0.8441 |
+| Filtered | Mixed | 0.7657 | 0.7704 | 0.7728 |
+| Original | Survey only | 0.8352 | 0.8403 | 0.8198 |
+| Filtered | Survey only | 0.8572 | 0.8587 | 0.8385 |
+
+### Table S12b. True skill statistic
+
+| Training | Evaluation negatives | FT | Target-only | Conventional |
+|---|---|---:|---:|---:|
+| Original | Mixed | 0.5575 | 0.5099 | 0.5316 |
+| Filtered | Mixed | 0.4475 | 0.4657 | 0.4082 |
+| Original | Survey only | 0.5568 | 0.5018 | 0.4628 |
+| Filtered | Survey only | 0.6066 | 0.5969 | 0.5045 |
+
+\newpage
+
+## Table S13. Bird learning curves and shared-information controls
+
+### Table S13a. The five executed endpoints
+
+All rows use the same 73 primary species and mean-fold development AUC. Target data were varied only at the full auxiliary pool; auxiliary-pool size was varied only at full target data. These are five endpoints, not a full factorial. Each contrast first pairs learners within species, then weights species equally. The frozen-encoder control fits a new target head while keeping its pretrained encoder fixed.
+
+| Target data | Auxiliary species | Fine-tuned − target-only | Fine-tuned − conventional | Frozen − target-only |
+| --- | --- | --- | --- | --- |
+| 25% | full | +0.0095 | +0.0069 | +0.0086 |
+| 50% | full | +0.0075 | +0.0053 | +0.0050 |
+| 100% | 20 | +0.0046 | +0.0023 | -0.0044 |
+| 100% | 80 | +0.0061 | +0.0037 | +0.0016 |
+| 100% | full | +0.0058 | +0.0034 | +0.0022 |
+
+Quarter-data training/replay fits still contained a median of about 2,800 presence cells per held fold. The full-panel minimum-recorded tertile contained 53 of the 157 targets, with 224–3,649 retained presence cells. Their full-data fine-tuned-minus-conventional mean was +0.0006 AUC. Subsampling the primary panel and predicting a poorly recorded species therefore address different data limitations.
+
+### Table S13b. Full-data bird controls
+
+The development column uses the primary 73 species, with folds averaged within species. The new-region column averages NCP, SEH and NNC within each of the same species. Community-score controls add a target-excluded pooled-community prediction as a scalar covariate. They do not transfer a shared encoder; neither that score nor recording richness is a measured ecological absence probability.
+
+| Learner | Development AUC | New-region AUC |
+| --- | --- | --- |
+| Target-only | 0.8258 | 0.6831 |
+| Target-only + community score | 0.8258 | 0.6828 |
+| Frozen encoder | 0.8280 | 0.6814 |
+| Fine-tuned encoder | 0.8316 | 0.6827 |
+| Conventional | 0.8282 | 0.6800 |
+| Conventional + community score | 0.8286 | 0.6807 |
+
+\newpage
+
+## Table S14. Absolute bird AUC under every scoring extent
+
+The same 73 species contribute to each row. The first four rows reuse unchanged development predictions, changing only the observations, presence–background pairs and aggregation. Regional scoring omits 360,625 domain-complement cells. Within-region and within-region-and-fold summaries average eligible strata within species before weighting species equally. The last row uses the separately fitted geographic predictions and averages the three withheld regions within species. Comparisons of absolute scores across these rows do not isolate a geographic penalty.
+
+| Scoring extent | Fine-tuned | Target-only | Conventional |
+| --- | --- | --- | --- |
+| Development: mean of folds | 0.8316 | 0.8258 | 0.8282 |
+| Development: pooled domain | 0.8327 | 0.8266 | 0.8296 |
+| Development: within bioregions | 0.6911 | 0.6802 | 0.6874 |
+| Development: within bioregions and folds | 0.6897 | 0.6825 | 0.6838 |
+| New regions: mean of three regions | 0.6827 | 0.6831 | 0.6800 |
+
+\newpage
+
+## Table S15. Per-species bird contrasts
+
+Each of the primary 73 species contributes one paired AUC contrast per setting. FT = fine-tuned network; TO = target-only network; C = selected conventional model. Development first averages spatial folds, and new-region assessment first averages NCP, SEH and NNC within species. Thus every species, including those with negative or near-zero contrasts, remains visible. Absolute mean performance by region appears in main Table 1; region-specific contrast summaries remain in the accepted outer aggregate report.
+
+| Species | Development FT − TO | New-region FT − TO | Development FT − C | New-region FT − C |
+| --- | --- | --- | --- | --- |
+| *Acanthagenys rufogularis* | +0.0083 | +0.0087 | +0.0042 | +0.0143 |
+| *Acanthiza chrysorrhoa* | +0.0126 | -0.0006 | +0.0039 | +0.0017 |
+| *Acanthiza lineata* | +0.0056 | -0.0102 | +0.0038 | +0.0004 |
+| *Acanthiza nana* | +0.0070 | +0.0579 | -0.0019 | +0.0206 |
+| *Acanthiza pusilla* | +0.0054 | +0.0076 | +0.0019 | +0.0083 |
+| *Acanthiza reguloides* | +0.0097 | +0.0011 | +0.0045 | +0.0011 |
+| *Acanthorhynchus tenuirostris* | +0.0046 | -0.0069 | +0.0051 | -0.0031 |
+| *Acrocephalus australis* | +0.0224 | +0.0115 | +0.0072 | +0.0200 |
+| *Anthochaera chrysoptera* | +0.0034 | -0.0061 | +0.0043 | -0.0015 |
+| *Artamus cyanopterus* | +0.0064 | -0.0080 | +0.0074 | -0.0150 |
+| *Cacatua galerita* | +0.0060 | +0.0058 | +0.0031 | +0.0249 |
+| *Cacatua sanguinea* | +0.0094 | -0.0095 | +0.0068 | -0.0084 |
+| *Cacatua tenuirostris* | +0.0038 | +0.0089 | +0.0069 | +0.0305 |
+| *Cacomantis flabelliformis* | +0.0035 | -0.0020 | +0.0039 | -0.0001 |
+| *Caligavis chrysops* | +0.0036 | +0.0046 | +0.0040 | +0.0139 |
+| *Ceyx azureus* | +0.0046 | -0.0226 | +0.0045 | -0.0077 |
+| *Chalcites basalis* | +0.0090 | -0.0011 | +0.0032 | -0.0135 |
+| *Chalcites lucidus* | +0.0033 | -0.0223 | +0.0029 | -0.0107 |
+| *Cincloramphus mathewsi* | +0.0064 | -0.0004 | +0.0041 | -0.0077 |
+| *Climacteris picumnus* | +0.0072 | +0.0013 | +0.0024 | +0.0177 |
+| *Colluricincla harmonica* | +0.0054 | -0.0147 | +0.0024 | -0.0128 |
+| *Coracina novaehollandiae* | +0.0085 | -0.0153 | +0.0054 | -0.0189 |
+| *Coracina papuensis* | +0.0070 | -0.0349 | +0.0074 | -0.0557 |
+| *Corcorax melanorhamphos* | +0.0033 | -0.0063 | -0.0013 | -0.0262 |
+| *Cormobates leucophaea* | +0.0046 | +0.0198 | +0.0041 | +0.0177 |
+| *Corvus coronoides* | +0.0029 | +0.0208 | -0.0003 | -0.0129 |
+| *Corvus tasmanicus* | -0.0004 | +0.0137 | +0.0004 | +0.0018 |
+| *Cracticus torquatus* | +0.0093 | +0.0300 | +0.0038 | +0.0433 |
+| *Dacelo novaeguineae* | +0.0050 | +0.0084 | +0.0025 | -0.0092 |
+| *Daphoenositta chrysoptera* | +0.0069 | +0.0209 | +0.0065 | +0.0111 |
+| *Dicaeum hirundinaceum* | +0.0079 | +0.0033 | +0.0031 | -0.0077 |
+| *Entomyzon cyanotis* | +0.0012 | -0.0417 | +0.0017 | -0.0192 |
+| *Eolophus roseicapilla* | +0.0060 | -0.0114 | +0.0016 | -0.0022 |
+| *Eopsaltria australis* | +0.0030 | +0.0297 | +0.0017 | +0.0423 |
+| *Falcunculus frontatus* | +0.0103 | -0.0005 | +0.0079 | -0.0129 |
+| *Geopelia placida* | +0.0075 | -0.0053 | +0.0032 | +0.0045 |
+| *Heteroscenes pallidus* | +0.0095 | +0.0026 | +0.0083 | +0.0250 |
+| *Malurus cyaneus* | +0.0055 | -0.0048 | +0.0027 | +0.0291 |
+| *Malurus lamberti* | +0.0058 | -0.0118 | +0.0013 | +0.0266 |
+| *Manorina melanocephala* | +0.0058 | -0.0145 | -0.0001 | -0.0264 |
+| *Melithreptus gularis* | +0.0148 | -0.0266 | +0.0043 | -0.0068 |
+| *Melithreptus lunatus* | +0.0039 | +0.0058 | +0.0028 | +0.0100 |
+| *Microeca fascinans* | +0.0057 | +0.0150 | +0.0009 | +0.0133 |
+| *Myiagra inquieta* | +0.0066 | -0.0079 | +0.0001 | -0.0156 |
+| *Neochmia temporalis* | +0.0048 | +0.0003 | +0.0056 | +0.0372 |
+| *Nesoptilotis leucotis* | +0.0064 | -0.0056 | +0.0042 | -0.0120 |
+| *Ocyphaps lophotes* | +0.0035 | -0.0030 | +0.0023 | +0.0070 |
+| *Oriolus sagittatus* | +0.0032 | -0.0267 | +0.0022 | -0.0258 |
+| *Pachycephala pectoralis* | +0.0047 | +0.0117 | +0.0037 | +0.0185 |
+| *Pachycephala rufiventris* | +0.0044 | -0.0205 | +0.0022 | -0.0050 |
+| *Pardalotus punctatus* | +0.0079 | -0.0050 | +0.0028 | +0.0072 |
+| *Pardalotus striatus* | +0.0092 | -0.0141 | +0.0035 | -0.0313 |
+| *Petroica boodang* | +0.0051 | +0.0046 | +0.0038 | -0.0058 |
+| *Petroica phoenicea* | +0.0036 | -0.0057 | +0.0005 | -0.0384 |
+| *Phaps elegans* | +0.0043 | -0.0050 | +0.0050 | +0.0293 |
+| *Phylidonyris novaehollandiae* | +0.0039 | +0.0150 | +0.0028 | +0.0214 |
+| *Phylidonyris pyrrhopterus* | +0.0011 | +0.0025 | +0.0016 | -0.0050 |
+| *Platycercus elegans* | +0.0043 | -0.0261 | +0.0035 | +0.0264 |
+| *Platycercus eximius* | +0.0056 | -0.0175 | +0.0037 | +0.0116 |
+| *Psephotus haematonotus* | +0.0033 | +0.0213 | +0.0025 | -0.0001 |
+| *Ptilotula penicillata* | +0.0044 | -0.0056 | +0.0043 | -0.0045 |
+| *Rhipidura albiscapa* | +0.0053 | +0.0035 | +0.0042 | +0.0070 |
+| *Rhipidura rufifrons* | +0.0022 | +0.0385 | +0.0024 | +0.0331 |
+| *Sericornis frontalis* | +0.0039 | +0.0063 | +0.0049 | +0.0129 |
+| *Smicrornis brevirostris* | +0.0061 | -0.0201 | +0.0031 | -0.0193 |
+| *Stipiturus malachurus* | +0.0027 | +0.0146 | -0.0003 | +0.0054 |
+| *Strepera graculina* | +0.0021 | -0.0020 | +0.0022 | +0.0315 |
+| *Threskiornis spinicollis* | +0.0068 | +0.0167 | +0.0094 | +0.0145 |
+| *Todiramphus sanctus* | +0.0068 | +0.0077 | +0.0059 | +0.0177 |
+| *Turnix varius* | +0.0126 | -0.0128 | +0.0055 | -0.0199 |
+| *Vanellus miles* | +0.0012 | +0.0063 | +0.0018 | +0.0040 |
+| *Zoothera lunulata* | +0.0006 | +0.0006 | -0.0011 | +0.0109 |
+| *Zosterops lateralis* | +0.0037 | -0.0011 | +0.0025 | -0.0105 |
+
+\newpage
+
+## Table S16. Per-species mammal contrasts
+
+FT = fine-tuned network; TO = target-only network; C = selected conventional model. Values are paired AUC differences. Development first averages spatial folds. The geographic setting is the five pooled withheld patches for the eight Tasmanian targets and camera-supported Tasmania for the five mainland targets. Species are repeated across the separately specified experiments without treating them as independent ecological replicates.
+
+### Table S16a. Tasmanian targets
+
+| Species | Development FT − TO | New-region FT − TO | Development FT − C | New-region FT − C |
+| --- | --- | --- | --- | --- |
+| *Dasyurus maculatus* | -0.0061 | +0.0052 | -0.0357 | +0.0048 |
+| *Dasyurus viverrinus* | -0.0476 | -0.0134 | -0.0662 | -0.0164 |
+| *Notamacropus rufogriseus* | +0.0078 | -0.0302 | -0.0335 | +0.0235 |
+| *Pseudocheirus peregrinus* | +0.0007 | -0.0382 | -0.0045 | -0.0458 |
+| *Sarcophilus harrisii* | -0.0071 | -0.0106 | -0.0474 | +0.1111 |
+| *Thylogale billardierii* | -0.0547 | -0.0003 | -0.1602 | -0.0003 |
+| *Trichosurus vulpecula* | +0.0189 | -0.0031 | -0.0424 | -0.0579 |
+| *Vombatus ursinus* | +0.0341 | -0.0273 | -0.0084 | -0.0603 |
+
+### Table S16b. Mainland targets
+
+| Species | Development FT − TO | New-region FT − TO | Development FT − C | New-region FT − C |
+| --- | --- | --- | --- | --- |
+| *Dasyurus maculatus* | +0.0097 | +0.0272 | +0.0025 | -0.0192 |
+| *Notamacropus rufogriseus* | +0.0027 | -0.0830 | +0.0004 | +0.0647 |
+| *Pseudocheirus peregrinus* | +0.0107 | +0.0965 | +0.0051 | -0.0446 |
+| *Trichosurus vulpecula* | +0.0211 | -0.1451 | +0.0108 | -0.1172 |
+| *Vombatus ursinus* | -0.0005 | +0.0269 | +0.0009 | -0.0224 |

@@ -1,0 +1,242 @@
+{
+  "schema_version": "dsdm-supporting-information-review-v1",
+  "date": "2026-11-13",
+  "base_commit": "f62df73",
+  "status": "pass",
+  "source_sha256": {
+    "evidence/seawfb_dsdm/goal052/summary.json": "ec0bc6c2df8cabd3554f5b2b9eebda97b3426ddd186bfa2acc64ba3d1244a3d3",
+    "evidence/mainland_dsdm/goal046/summary.json": "868a2083036d7b5f14cde9137621977e06405033252551b80fd0d5107627c10b",
+    "evidence/tasmania_transfer/goal047/summary.json": "99fea9eb10fce97985ff3ebe8bf6f1679b707980b18124f04f24c3d9a1c041cc",
+    "evidence/tasmania_outer_assessment/20261005/receipt.json": "3e7fe324b33450b76089edca0f2d5bf438d219121c9c0842961fedcd9695be26",
+    "evidence/dsdm_inner_evaluation/goal036/stratum_metrics.csv": "2065ca48895af50036da90ad3e945096c6190594000527056309d78c5ee2bdc6",
+    "evidence/dsdm_inner_evaluation/goal036/conventional_selection.csv": "3e05784670f58e88144dcbda43819c3811e8303c59cd15c36f23fdf38736a561",
+    "evidence/cross_case_synthesis/20261005/revision-01/bird_extent_plot.csv": "ea1fbc189ae1cd9f0adf07d11b31e0c5aa5d78ca1f72eb0302eb0f67773aa89f",
+    "evidence/cross_case_synthesis/20261018/recording-richness.csv": "17c80c0f9d2b0f6be0a9965a8184a959bab75542604dc25a6d0de843b7c377d7",
+    "evidence/tasmania_pseudoabsence/20261011/survey-only/performance.csv": "2589625618db2a0da34fe78fbb880963b1476c5a758f6ef2033db49babf3b933",
+    "evidence/seawfb_dsdm/goal052/outer-review-20261005/native-report.md": "b64ce1356ab8394f6c7b6668766576b7855ee60830eaf172a21e1bf9dbe0fbdb",
+    "evidence/seawfb_dsdm/goal052/extent-review-20261005.json": "08652c0909c600bd0e4794d89b522a1e3ecb32557e4f2dad64598cea3be12fa7",
+    "evidence/reconstruction/20261113/display-resampling.csv": "ede0b059382f8e8bbb9624a798091814906d9bc8309be9dc67ce2905af9ff552",
+    "evidence/cross_case_synthesis/20261005/revision-01/case_contrasts.csv": "0941334780b2c58c72ee8aed5adf02f8a23c462dab8c680e7b60619f52474ddc"
+  },
+  "changes": [
+    "Retained Tables S1-S11 and added navigation under Supporting information",
+    "Added S1g TSS across six case/settings",
+    "Added S2c held-region richness common support and S2d mean within-species background shares",
+    "Moved previous main Table 2 unchanged into S12a-b",
+    "Added S13 five-endpoint bird learning curves and full-data controls",
+    "Added S14 absolute AUC by scoring extent",
+    "Corrected obsolete Fig.2 scoring reference to Table S14",
+    "Placed new S12-S14 after S11 so internal table numbers follow the assembled reading order",
+    "Added S1h five extended primary73 resampling comparisons and S2e nine common-panel richness ranges",
+    "Documented paired PCG64 species-resampling streams, conditional range meaning and excluded uncertainty",
+    "Added S15 all 73 primary bird species and S16 all 13 experiment-specific mammal targets with paired development/geographic AUC contrasts"
+  ],
+  "old_main_table2_source": "d20964b:manuscript/text/main.md",
+  "tss": {
+    "Tasmania development": {
+      "n": 8,
+      "fine_tuned": 0.34930662110894084,
+      "target_only": 0.34838663453154883,
+      "conventional": 0.40837777892223986
+    },
+    "Tasmania withheld patches": {
+      "n": 8,
+      "fine_tuned": 0.5575113240288951,
+      "target_only": 0.5098585788242709,
+      "conventional": 0.5315522997683274
+    },
+    "Mainland development": {
+      "n": 5,
+      "fine_tuned": 0.6790125306006168,
+      "target_only": 0.6554512778299244,
+      "conventional": 0.6717103960548048
+    },
+    "Mainland to Tasmania": {
+      "n": 5,
+      "fine_tuned": -0.011870863904532358,
+      "target_only": 0.012103552707870757,
+      "conventional": 0.029180858663255614
+    },
+    "Bird development": {
+      "n": 73,
+      "fine_tuned": 0.5251191218345647,
+      "target_only": 0.5156331022155669,
+      "conventional": 0.5186330411062938
+    },
+    "Bird new regions": {
+      "n": 73,
+      "fine_tuned": 0.201804,
+      "target_only": 0.191966,
+      "conventional": 0.190104
+    }
+  },
+  "learning_endpoints": [
+    {
+      "target_fraction": 25,
+      "auxiliary": "full",
+      "n": 73,
+      "ft_minus_to": 0.009457997466085348,
+      "ft_minus_conv": 0.0069233660168488255,
+      "frozen_minus_to": 0.008635655669252977
+    },
+    {
+      "target_fraction": 50,
+      "auxiliary": "full",
+      "n": 73,
+      "ft_minus_to": 0.00747053486283968,
+      "ft_minus_conv": 0.005300678965412339,
+      "frozen_minus_to": 0.004959830099972568
+    },
+    {
+      "target_fraction": 100,
+      "auxiliary": "20",
+      "n": 73,
+      "ft_minus_to": 0.004643331353227576,
+      "ft_minus_conv": 0.0022524393103441676,
+      "frozen_minus_to": -0.004375193158861822
+    },
+    {
+      "target_fraction": 100,
+      "auxiliary": "80",
+      "n": 73,
+      "ft_minus_to": 0.006075970503450646,
+      "ft_minus_conv": 0.003685078460567237,
+      "frozen_minus_to": 0.0016061079193275605
+    },
+    {
+      "target_fraction": 100,
+      "auxiliary": "full",
+      "n": 73,
+      "ft_minus_to": 0.005780750360440689,
+      "ft_minus_conv": 0.0033898583175572808,
+      "frozen_minus_to": 0.0021967244731018643
+    }
+  ],
+  "full_data_bird_controls": [
+    [
+      "Target-only",
+      0.8258219710546985,
+      0.683128310344587
+    ],
+    [
+      "Target-only + community score",
+      0.8258309838889871,
+      0.6827940550832953
+    ],
+    [
+      "Frozen encoder",
+      0.8280186955278003,
+      0.6813540306429694
+    ],
+    [
+      "Fine-tuned encoder",
+      0.8316027214151391,
+      0.6827322893660152
+    ],
+    [
+      "Conventional",
+      0.8282128630975818,
+      0.6799617719322941
+    ],
+    [
+      "Conventional + community score",
+      0.828594314788416,
+      0.680651
+    ]
+  ],
+  "extent_values": [
+    [
+      "Development: mean of folds",
+      0.8316027214151391,
+      0.8258219710546985,
+      0.8282128630975819
+    ],
+    [
+      "Development: pooled domain",
+      0.832677308622367,
+      0.826556631856293,
+      0.8295658235006641
+    ],
+    [
+      "Development: within bioregions",
+      0.6911164540135926,
+      0.6801584130049866,
+      0.6874140406295466
+    ],
+    [
+      "Development: within bioregions and folds",
+      0.6897088551226503,
+      0.6824652905437539,
+      0.6837929464293558
+    ],
+    [
+      "New regions: mean of three regions",
+      0.6827322893660152,
+      0.683128310344587,
+      0.6799617719322941
+    ]
+  ],
+  "scope": "aggregate reporting only; no refitting, raw response access, model selection or new ecological analysis",
+  "checks": {
+    "bird_conditions_five_by73": true,
+    "tasmania_inner_selected_conventional_join": true,
+    "case_n": [
+      8,
+      8,
+      5,
+      5,
+      73,
+      73
+    ],
+    "old_main_table2_content_preserved": true,
+    "internal_numbered_tables_retained": true,
+    "all_original_table_blocks_preserved": 26,
+    "old_main_table2_independently_matches_survey_aggregate": true,
+    "new_tss_learning_control_extent_cells_match_record": true,
+    "per_species_344_cells_match_accepted_rows": true,
+    "rectangular_tables": true,
+    "no_stubs": true,
+    "source_hashes_match": true,
+    "all_14_extended_resampling_rows_match_display_csv": true
+  },
+  "precision_note": "Bird new-region TSS and q-augmented conventional AUC, plus background shares, are read from the accepted native report at its printed precision, then displayed at four decimals.",
+  "display_resampling_rows_added": 14,
+  "per_species_contrasts": {
+    "bird_rows": 73,
+    "tasmania_rows": 8,
+    "mainland_rows": 5,
+    "numeric_cells": 344,
+    "accepted_source_rows_unique": true
+  },
+  "updated_sources": {
+    "manuscript/text/supplement.md": "cd948172d82486c4590dcb23f1f99395866a911e71ff03fa58666a2b7fb41a3f",
+    "manuscript/text/survey-only-and-design.md": "34abdfb2345a462cec7237354d4e2151631494754bbe6c44514eba3dce08414c"
+  },
+  "reproduce_checks": [
+    "python3 scripts/check_survey_only_supplement.py",
+    "PATH=\"$PWD/manuscript/.venv/bin:$PATH\" make -C manuscript check PROFILE=supplement PROFILE_CACHE_DIR=\"$PWD/manuscript/.cache\" PDF_ENGINE_OUTPUT_DIR=\"$PWD/manuscript/.cache/latex-supplement\""
+  ],
+  "build_checks": {
+    "manuscript_lint": "pass",
+    "reference_audit": {
+      "cited": 9,
+      "unknown": 0,
+      "status": "pass"
+    },
+    "makedoc_unit_checks": {
+      "tests": 37,
+      "status": "pass"
+    },
+    "author_metadata_injection": "pass",
+    "full_make_check": "not passed: final render smoke emitted PDF but exited43 with Infinite glue shrinkage; parent owns isolated per-profile rendering and final visual verification"
+  },
+  "parent_final_build": {
+    "status": "pass",
+    "commands": [
+      "make -C manuscript all check",
+      "make -C manuscript all check PROFILE=supplement"
+    ],
+    "layout_adjustment": "S11 column-ruler widths widened for scientific names; all27 original tables (including the unchanged data-provenance table) have identical headers and data cells after ignoring ruler formatting.",
+    "original_table_data_blocks_unchanged": 27
+  }
+}

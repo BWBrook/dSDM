@@ -23,11 +23,13 @@ Where a model is tested shapes what the test can show. Predicting withheld cells
 Most occurrence data record where species were found, not where they were absent. Models fitted against background locations learn where observers looked as well as where species live [@phillips2009; @warton2013]. Species recorded by the same observers share that signal, which is why pooling species helps estimate sampling bias [@fithian2015]. Pretraining could therefore transfer information about recording as well as about niches. Survey nondetections provide a different, sparser negative class. Comparing the two shows how far a model ranking depends on the evidence used for absence [@johnston2021].
 
 Here we ask whether learning from other species improves distribution models in new regions. Shared environmental responses give three predictions:
+
 - pretraining improves prediction within the development region;
 - its gain grows as the target's own records shrink;
 - the gain persists in new regions.
 
 Development results raised a diagnostic question: do model rankings depend on the evidence used for absence? We test the predictions with tabular climate and habitat inputs in three Australian cases:
+
 - eight Tasmanian mammals;
 - five mainland mammals transferred to Tasmania;
 - 157 birds, 73 of them assessed in three bioregions withheld from all model development.
@@ -37,27 +39,29 @@ Development results raised a diagnostic question: do model rankings depend on th
 ### Study design
 
 We synthesise three separately specified experiments, each addressing a different prediction task (Table 1, Fig. 1). They share some taxa, observation sources and Tasmanian geography, so cross-case summaries are descriptive. *Development* denotes assessment by spatial folds within the training domain. *Geographic assessment* withheld one of three things, depending on the case:
+
 - five Tasmanian patches;
 - all of Tasmania;
 - three buffered bird bioregions.
 
 In every case, models discriminate recorded presences from specified negative observations, so their outputs are relative scores rather than occupancy probabilities.
 
-**Table 1.** Prediction settings, geographic exclusions and mean AUC. Development values average five spatial folds within species, then species equally. Tasmania patch values pool the withheld patches; mainland transfer uses camera-supported Tasmania records. Bird regional values average species within each named region, while the three-region mean first averages regions within species. All bird models exclude NCP, SEH and NNC and their 50 km buffers simultaneously. The regions' contrasting roles were specified before model outcomes were seen.
+Table: Prediction settings, geographic exclusions and mean AUC. Development values average five spatial folds within species, then species equally. Tasmania patch values pool the withheld patches; mainland transfer uses camera-supported Tasmania records. Bird regional values average species within each named region, while the three-region mean first averages regions within species. All bird models exclude NCP, SEH and NNC and their 50 km buffers simultaneously. Tasmanian patches have no buffer; mainland transfer is to Tasmania. Pretrained denotes the fine-tuned network; single-species denotes the matched target-only network. The regions' contrasting roles were specified before model outcomes were seen.
 
-| Case and assessment | Targets | Geographic exclusion from development | Fine-tuned network | Target-only network | Conventional model |
-|---|---:|---|---:|---:|---:|
-| Tasmanian mammals: development | 8 | Five patches; no buffer | 0.7133 | 0.7200 | 0.7631 |
-| Tasmanian mammals: withheld patches | 8 | Five patches; no buffer | 0.8390 | 0.8537 | 0.8441 |
-| Mainland mammals: development | 5 | All Tasmania | 0.9091 | 0.9004 | 0.9052 |
-| Mainland mammals: transfer to Tasmania | 5 | All Tasmania | 0.5560 | 0.5715 | 0.5837 |
-| Birds: development | 73 | All three regions plus 50 km | 0.8316 | 0.8258 | 0.8282 |
-| Birds: NCP transfer | 73 | All three regions plus 50 km | 0.6909 | 0.6846 | 0.6831 |
-| Birds: SEH transfer | 73 | All three regions plus 50 km | 0.6827 | 0.6867 | 0.6897 |
-| Birds: NNC transfer | 73 | All three regions plus 50 km | 0.6746 | 0.6781 | 0.6670 |
-| Birds: three-region mean | 73 | All three regions plus 50 km | 0.6827 | 0.6831 | 0.6800 |
+| Case and assessment | Species | Excluded | Pretrained | Single-species | Conventional |
+|------------------------------|----------:|-----------------|------------:|------------:|---------------:|
+| Tasmania: development | 8 | Five patches | 0.7133 | 0.7200 | 0.7631 |
+| Tasmania: patches | 8 | Five patches | 0.8390 | 0.8537 | 0.8441 |
+| Mainland: development | 5 | Tasmania | 0.9091 | 0.9004 | 0.9052 |
+| Mainland: transfer | 5 | Tasmania | 0.5560 | 0.5715 | 0.5837 |
+| Birds: development | 73 | Three regions | 0.8316 | 0.8258 | 0.8282 |
+| Birds: NCP | 73 | Three regions | 0.6909 | 0.6846 | 0.6831 |
+| Birds: SEH | 73 | Three regions | 0.6827 | 0.6867 | 0.6897 |
+| Birds: NNC | 73 | Three regions | 0.6746 | 0.6781 | 0.6670 |
+| Birds: regional mean | 73 | Three regions | 0.6827 | 0.6831 | 0.6800 |
 
 Occurrence records for 2001–2025 came from the Atlas of Living Australia [@belbin2021ala], and camera surveys supplied survey-supported responses in Tasmania. The mainland and bird experiments shared a versioned environmental substrate that included WorldClim 2.1 climate [@fick2017worldclim]. The Tasmanian experiment used a separate legacy stack of 28 predictors, encoded as 77 columns. Bird inputs were 24 variables, encoded as 103 columns:
+
 - 19 bioclimatic variables;
 - elevation mean and standard deviation;
 - vegetation group;
@@ -71,6 +75,7 @@ The Tasmanian experiment modelled eight mammal species on a 0.01° grid. Respons
 The mainland experiment pretrained on 19 auxiliary mammal species for each of five targets. A background cell needed records of at least three other support species and had to lie at least 5 km from any target presence. Tasmania supplied no training responses or fitted transformations. The primary assessment used 4,077 camera-supported species–cell rows in Tasmania, with an all-source assessment as secondary. The transfer therefore changed observation source as well as geography.
 
 The bird experiment used records of 505 taxa, the recording-support set, to identify sampled cells. A background cell had no record of the focal species and records of at least ten other support-set species; a stricter threshold of 20 was also evaluated. Recording richness was never a predictor. Of 259 eligible species, 157 met the target support criteria. Seventy-three had enough data in each of three bioregions, which were chosen before outcomes were seen as contrasting settings:
+
 - Naracoorte Coastal Plain, for environmentally supported transfer;
 - South Eastern Highlands, an environmental edge;
 - NSW North Coast, a fragmented land-use mosaic.
@@ -94,12 +99,14 @@ In Tasmania we also removed the constructed pseudoabsences from target training:
 AUC was the primary metric [@hanley1982]. The true skill statistic (TSS; sensitivity plus specificity minus one) was co-primary in Tasmania [@allouche2006]. Its thresholds were chosen by maximum TSS on development out-of-fold predictions and held fixed for geographic assessment. Bird geographic summaries averaged the three regional AUCs within species, then weighted species equally; development summaries averaged folds within species. We report paired species contrasts, means and counts of positive species, keeping every species. Single-species deletion and paired species-composition resampling, with central 95% ranges, describe how much results vary with panel composition alone.
 
 Four diagnostics interpret the main contrasts:
+
 - **Recording richness.** Bird discrimination was compared against background cells holding records of 10–24, 25–99 or at least 100 other support-set species, reusing all focal presences across the three bins. Development comparisons required at least 20 observations of each class in every fold, and geographic comparisons 20 per class within the region; each assessment kept the same species across its three bins.
 - **Extent.** Unchanged development predictions were rescored within named retained bioregions, and within region-by-fold strata, requiring at least 30 and 20 cells per class respectively. Eligible strata were averaged within species, then species were weighted equally.
 - **Averaging.** Fixed equal-weight ensembles combined each network's saved scores with those of the conventional model.
 - **Negative evidence.** Tasmanian patch evaluation was repeated against survey-supported negatives only: 1,300 presences and 242 negatives, excluding 130 pseudoabsences.
 
 The analyses were fixed at different stages:
+
 - the primary comparisons and learning curves, before withheld responses were opened;
 - the richness diagnostic, found in development, with its geographic version fixed before opening;
 - the fine-tuned/conventional ensemble, prespecified as exploratory;
@@ -117,6 +124,7 @@ On the primary bird panel, the pretraining increment increased from +0.0058 at f
 ### New regions
 
 In new regions the mean increment from pretraining disappeared (Fig. 2).
+
 - **Mainland mammals transferred to Tasmania.** Fine-tuning trailed target-only by 0.0155 mean AUC. Three of five species benefited, and the median was +0.0269.
 - **Birds.** Across the three withheld regions, mean AUC was 0.6827 for fine-tuning and 0.6831 for target-only. The paired difference of −0.0004 was positive for 34 of 73 species. Regional means were +0.0064 in Naracoorte Coastal Plain, −0.0040 in South Eastern Highlands and −0.0035 in NSW North Coast. The species-resampling ranges for both geographic contrasts spanned zero.
 - **Tasmania's withheld patches.** The co-primary metrics disagreed. Fine-tuning trailed target-only by 0.0147 mean AUC, positive for one of eight species, and led it by 0.0477 mean TSS, positive for five with one tie.
@@ -126,6 +134,7 @@ In new bird regions, the networks' advantage over conventional models did not de
 ### Diagnostics
 
 Absolute bird AUC was 0.83 in development and 0.68 in new regions (Table 1). The unchanged development predictions were also scored more narrowly:
+
 - within named bioregions, they gave 0.691;
 - within region-by-fold strata, they gave 0.690, close to the new-region mean of 0.683.
 
@@ -150,6 +159,7 @@ Regional AUC was low even when unchanged development predictions were rescored w
 The choice of negative evidence changed which model ranked first. In Tasmania, restricting evaluation to survey-supported negatives reversed the mean AUC ranking of fine-tuning and conventional models, with predictions unchanged. Removing training pseudoabsences and refitting changed which cells scored highest. In birds, the neural advantage fell as background became better recorded. Defining the negative class is thus part of specifying both the model and the test [@phillips2009; @warton2013; @fithian2015; @pili2025].
 
 These conclusions have limits:
+
 - They rest on tabular climate and habitat summaries; spatial context and imagery may carry information that transfers better [@deneu2021].
 - The bird target-only network inherited an architecture selected for fine-tuning [@cawley2010].
 - Larger auxiliary pools added records and species together.
@@ -172,7 +182,7 @@ The private camera-survey data are jointly held by Barry W. Brook and Jessie C. 
 
 This study developed through sustained collaboration between the human researchers and two AI systems, which carried out most of the technical and writing work and contributed to scientific design and interpretation. OpenAI Codex designed analysis plans, wrote and ran the analysis code, checked results, data sources and literature, and produced the figures. Anthropic Claude provided scientific criticism and performed post hoc diagnostic calculations using retained predictions; Codex independently implemented or reproduced the reported diagnostics.
 
-Codex drafted the first manuscript in October 2026. In November 2026 the paper was rebuilt from first principles in stages set by Barry W. Brook: main message, working abstract, display plan, one-page paper, section abstracts, paragraph abstracts and full draft. Claude drafted each stage. Codex reviewed each stage against the accepted evidence, verified every reported number and reference identity, and supplied replacement text, most of which was adopted. Both systems challenged interpretations and corrected one another through written correspondence; agreement between them was not treated as validation, and key numerical results were checked by independent recomputation against retained outputs.
+Codex drafted the first manuscript in October 2026. In November 2026 the paper was rebuilt from first principles in stages set by Barry W. Brook: main message, working abstract, display plan, one-page paper, section abstracts, paragraph abstracts and full draft. Claude drafted each stage. Codex reviewed each stage against the accepted evidence, verified every reported number and reference identity, and supplied replacement text, most of which was adopted. Codex then generated the four reconstructed figures and expanded Supporting information from accepted aggregate results. Both systems challenged interpretations and corrected one another through written correspondence; agreement between them was not treated as validation, and key numerical results were checked by independent recomputation against retained outputs.
 
 The lead models were GPT-6 (October revisions) and gpt-6.1-sol (November reconstruction) in Codex, and Claude Opus 5.5. Bounded Codex subagent audits used gpt-5.6-sol, gpt-5.6-luna and gpt-6.1-sol. Earlier correspondence used the participant names Astra for Codex and Fable for Claude; the earlier Claude version was reported as Fable 5.1. The archive retains model identifiers where recorded and does not infer missing versions. Barry W. Brook guided the research questions, ecological interpretation and reconstruction method, approved the main message, and authorised staged access to withheld responses. The authors take responsibility for the final work. The project correspondence will accompany the public code release, with its archive identifier added before publication.
 

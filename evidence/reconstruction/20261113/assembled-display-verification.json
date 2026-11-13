@@ -1,0 +1,149 @@
+{
+  "schema_version": "dsdm-assembled-displays-v1",
+  "date": "2026-11-13",
+  "base_commit": "f62df73",
+  "status": "pass",
+  "scope": "Four reconstructed figures, bounded aggregate resampling, Supporting information, journal style and author-review builds. No fits, raw observations or row-level predictions.",
+  "source_sha256": {
+    "manuscript/text/main.md": "67a3226f8502fd8d910109b35aa4c267c0dc602e539201078fe2c801584d0164",
+    "manuscript/text/figures.md": "a768c6f6b46aa029a84bc3a49d412149e4b4406281c6531353621bdf56de3f89",
+    "manuscript/text/supplement.md": "cd948172d82486c4590dcb23f1f99395866a911e71ff03fa58666a2b7fb41a3f",
+    "manuscript/text/tasmania-sensitivity.md": "5c29e6a7cfa86477f73c8a4b5b9330f5363f5731fe31823f811ca9e57f8206b1",
+    "manuscript/text/survey-only-and-design.md": "34abdfb2345a462cec7237354d4e2151631494754bbe6c44514eba3dce08414c",
+    "manuscript/text/data-sources.md": "687a1a67f209a80afbd4f4f2402036fc5317d9672f968a2f9fce0c1b5da22482",
+    "manuscript/settings/build.yaml": "6fcbb32ddda29a39cd572074a1b26f8b479f5188bfaa94ed530f7c7009fb1fcc",
+    "manuscript/Makefile": "64a8a2d118cccfe562cca4a4bfcf75778cf6acb23cd30650ff1f53c0ee06d2bf",
+    "manuscript/requirements-build.txt": "0969da99a0bc2a1b71ed50584560f4588a37567ac63af3ddbaf3c4617ca5621a",
+    "manuscript/references/refs.yaml": "d60dfd2c9937d9e6ef9a8d5959a800e1b5e8bdf05c63fcd286bfa79ca583d1af",
+    "scripts/plot_reconstruction_results.R": "00d8119e4f5efb1227936cc4b45d79c9a587633903480981d122765a4d9d02e1",
+    "scripts/reconstruction_display_data.py": "8e2d32871d0fb6fb505aeec8a51e766697fc789611525fa922624c4c0db1506e",
+    "scripts/plot_reconstruction_design.py": "849e831afa5bb62eeefc5ba4c547d8668134810e7d8c699e3bb73c95d2e2b60f"
+  },
+  "figures": {
+    "manuscript/figures/bird-networks-and-averages.pdf": {
+      "sha256": "22854c40f13275abbf5e5e3cd95c3a75f1ca7b24fa19d1c7fff6fe7c10108ac0",
+      "bytes": 23263
+    },
+    "manuscript/figures/bird-networks-and-averages.png": {
+      "sha256": "1bbc92f4bb846f4ed45711ddfa0a78795ca80b85f8140df42a48cc9c172c2a42",
+      "bytes": 130591
+    },
+    "manuscript/figures/negative-evidence.pdf": {
+      "sha256": "41760d6843194581d97e8c72f7c806828dc752d997aedf8f4cd520da913e252d",
+      "bytes": 41746
+    },
+    "manuscript/figures/negative-evidence.png": {
+      "sha256": "19163f66b8b74b9085506c606d295f090df4825172af0eb9817045d52eaf75ea",
+      "bytes": 178568
+    },
+    "manuscript/figures/pretraining-across-regions.pdf": {
+      "sha256": "361f6a61a442062771b837a3c3ac28ffcdafeece6b730000c88c1ee983b0559e",
+      "bytes": 35698
+    },
+    "manuscript/figures/pretraining-across-regions.png": {
+      "sha256": "0ee2fd976fdf5e70990d099f72622aa29a0b20d6115cc927b5d68df744df8fa3",
+      "bytes": 352452
+    },
+    "manuscript/figures/study-design.pdf": {
+      "sha256": "74f7b0226bef97df398126b6199cc01d583409efdf78df3d4936b3c117061147",
+      "bytes": 276361
+    },
+    "manuscript/figures/study-design.png": {
+      "sha256": "65268fe63e346611506da7600a7df2a624979ed70ed6d588d44a8c34a852afd6",
+      "bytes": 783910
+    },
+    "manuscript/figures/study-design.svg": {
+      "sha256": "27a60731c255abe4f8b07412dbb5ae8af87fcf97de92bffd1f23919162881def",
+      "bytes": 417694
+    }
+  },
+  "outputs": {
+    "manuscript/build/dsdm_manuscript.pdf": {
+      "sha256": "18a9ed544221ea91203c082144063f593151a005afd6b678550a0de4186a88df",
+      "bytes": 1450310
+    },
+    "manuscript/build/dsdm_manuscript.docx": {
+      "sha256": "c89ca166c481041ceeab98f30d6de032dce998d7eb3aec3c0ff100361755a4f8",
+      "bytes": 1403335
+    },
+    "manuscript/build/dsdm_supplement.pdf": {
+      "sha256": "8ed576c959de8452f4b617d1fa1b3b32673e769ea52e73d13f05a0c997a1a8ac",
+      "bytes": 116079
+    },
+    "manuscript/build/dsdm_supplement.docx": {
+      "sha256": "18f86e84661e8907acb6a2cb4da671b18dc6d516d53450966577cbe942bcd769",
+      "bytes": 49072
+    }
+  },
+  "pdf_pages": {
+    "dsdm_manuscript": 24,
+    "dsdm_supplement": 36
+  },
+  "checks": {
+    "all27_table1_values_unchanged": true,
+    "four_figures_match_main_numbers": true,
+    "generic_supporting_information_citations": true,
+    "original27_SI_tables_preserve_headers_and_cells": true,
+    "main_lint": true,
+    "draft_build_check": true,
+    "supplement_build_check": true,
+    "cited_keys": {
+      "main": 28,
+      "supporting_information": 9,
+      "unknown": 0
+    },
+    "survey_only_checker": "336 aggregate rows and42 exact summaries match;84 metric rows and8 species rows retained",
+    "no_missing_glyph_warnings": true,
+    "data_replay": "eight extraction outputs byte-identical; historical primary-bird resampling endpoints reproduced",
+    "independent_figure_caption_review": "pass; study-design delegate reviewed Figures2\u20134 and all captions"
+  },
+  "visual_inspection": {
+    "all_pages_overview": true,
+    "detail_pages": {
+      "main": [
+        5,
+        21,
+        22,
+        23,
+        24
+      ],
+      "supporting_information": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34
+      ]
+    },
+    "result": "No clipped figures, lost table cells or overlapping scientific names. All main figures retain vector PDF companions. Table1 and caption share one page."
+  },
+  "render_notes": {
+    "main_overfull_boxes": 0,
+    "SI_small_alignment_warning_pt": 0.1111,
+    "SI_ignored_glue_messages": "XeTeX logs ignored split-box glue messages in long tables; both builds exit0 and checked rendered pages retain all table cells.",
+    "word": "Built and OOXML-format preservation checked; PDF was the visual review format."
+  },
+  "build_runtime": {
+    "python": "Python 3.12.13",
+    "PyYAML": "6.0.3",
+    "makedoc_commit": "b613e715a86f81623953403f84353314405057db"
+  },
+  "commands": [
+    "make -C manuscript setup",
+    "make -C manuscript all check",
+    "make -C manuscript all check PROFILE=supplement",
+    ".venv/bin/python scripts/reconstruction_display_data.py",
+    ".venv/bin/python scripts/plot_reconstruction_design.py",
+    "Rscript scripts/plot_reconstruction_results.R",
+    "python3 scripts/check_survey_only_supplement.py"
+  ],
+  "release_status": "Author review draft. No release, DOI, correspondence export or submission."
+}

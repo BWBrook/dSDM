@@ -2,7 +2,7 @@ default_profile: draft
 
 profiles:
   draft:
-    description: Editor and specialist review draft, 18 October 2026.
+    description: Ecography reconstruction for author review, 13 November 2026.
     manuscript_sources:
       - ../text/main.md
       - ../text/figures.md
@@ -11,7 +11,7 @@ profiles:
     author_metadata: ../authors.yaml
     bibliography: ../references/refs.yaml
     csl: ../csl/oikos.csl
-    journal: Oikos
+    journal: Ecography
     csl_search_dirs:
       - ../csl
     output_dir: ../build
@@ -43,7 +43,7 @@ profiles:
     author_metadata: ../authors.yaml
     bibliography: ../references/refs.yaml
     csl: ../csl/oikos.csl
-    journal: Oikos
+    journal: Ecography
     csl_search_dirs:
       - ../csl
     output_dir: ../build
@@ -79,7 +79,7 @@ profiles:
     author_metadata: ../authors.yaml
     bibliography: ../references/refs.yaml
     csl: ../csl/oikos.csl
-    journal: Oikos
+    journal: Ecography
     csl_search_dirs:
       - ../csl
     output_dir: ../build

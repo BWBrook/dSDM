@@ -1,0 +1,21 @@
+{
+  "schema_version": "dsdm-display-data-replay-v1",
+  "status": "pass",
+  "command": ".venv/bin/python scripts/reconstruction_display_data.py",
+  "checks": [
+    "All eight output files byte-identical after second separate execution",
+    "All owning input hashes matched on both executions",
+    "Historical development and held-region FT-minus-target-only ranges reproduced",
+    "Twelve Tasmania means agree with all eight underlying species scores"
+  ],
+  "outputs": {
+    "fig2-pretraining-species.csv": "315612510d4bfbb40a1e4eb59b918acc343b48737dffa31bbaa3497c75446fb7",
+    "fig2-bird-region-means.csv": "636ba09ddf99399d8939fab5935e0c30f0ce16a172f142af685d712e62892a8e",
+    "fig3-bird-comparisons.csv": "5e91883571cb0f55a790705acb0def5f6faf04060b70330099962e14c098c987",
+    "fig4-richness-species.csv": "052fa265d0b2b4b9b41e10a736c5c54646457b8bd74d9a290a742e17e8d2d99d",
+    "fig4-tasmania-means.csv": "955ac19db4fbde73f58a587f1f6948269998ac811721155fa96afee0d21fcfb5",
+    "fig4-tasmania-species.csv": "45e7f56f4f7317b2611b8ed6beb25b82ac691bcca9e563c09e1af40616d7bc43",
+    "display-resampling.csv": "ede0b059382f8e8bbb9624a798091814906d9bc8309be9dc67ce2905af9ff552",
+    "display-data-verification.json": "f762a4f3fb0ef64b8a91f2381b1563d89804780f3adc2595ada719033a7fd047"
+  }
+}

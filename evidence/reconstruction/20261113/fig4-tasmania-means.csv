@@ -1,0 +1,13 @@
+evaluation,training,learner,n,auc
+mixed,original,pretrained,8,0.8390004474558865
+mixed,pseudoabsences_removed,pretrained,8,0.7657343545253559
+mixed,original,single_species,8,0.8537416594308744
+mixed,pseudoabsences_removed,single_species,8,0.77039531123365
+mixed,original,conventional,8,0.8441416669928229
+mixed,pseudoabsences_removed,conventional,8,0.7728206154848514
+survey_only,original,pretrained,8,0.835241069433989
+survey_only,pseudoabsences_removed,pretrained,8,0.8571718159946808
+survey_only,original,single_species,8,0.8403336523394398
+survey_only,pseudoabsences_removed,single_species,8,0.8587038345322624
+survey_only,original,conventional,8,0.8198122154442539
+survey_only,pseudoabsences_removed,conventional,8,0.8384513747657868

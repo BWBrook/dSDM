@@ -5,7 +5,47 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Current handoff — 13 November, full-draft review
+## Current handoff — 13 November, reconstructed displays and Supporting information
+
+Claude integrated the full-draft review and assembled the reconstructed
+Ecography manuscript in `f62df73` (thread 162/message 3365). Figures 1–4 now
+follow the accepted display plan: public boundary/design map, paired
+pretraining gains, new-region learner/ensemble comparisons, and negative
+evidence. Vector PDFs and 300 dpi PNGs are in `manuscript/figures/`; the four
+new captions replace the old three in `manuscript/text/figures.md`.
+
+Accepted species aggregates supply all displayed values. The reporting
+extension uses 100,000 paired species draws, reproduces earlier primary-bird
+ranges and adds within-region/fold, ensemble and common-panel richness
+ranges. These describe species composition conditional on fitted models.
+No refitting, raw observations or saved row-level predictions were used.
+The seven small figure-data tables, source hashes and replay records are in
+`evidence/reconstruction/20261113/`.
+
+Supporting information preserves S1–S11 and adds all-case TSS, extended
+ranges, the former main Table 2, five-endpoint learning/control details,
+absolute AUC by extent and per-species contrasts. Internal table numbering
+is retained; main-text citations say Supporting information. Table 1's 27
+AUC values are unchanged; shorter labels, explicit column widths and a real
+table caption keep it together on one page. Intended Markdown lists now
+render as lists, and AI disclosure records the new display/SI work.
+
+The profiles now identify Ecography and use its official independent Oikos
+CSL parent, which prints full author lists. A local manuscript environment
+with pinned PyYAML and separate per-profile caches resolves the build issue
+without changing system Python. Both article and SI PDF/Word builds and
+checks pass; PDF inspection covers all pages, with detailed checks of the
+new displays and tables. Outputs are in `manuscript/build/`.
+
+See `docs/audits/reconstruction-displays-20261113.md` and
+`evidence/reconstruction/20261113/assembled-display-verification.json` for
+bindings, checks and remaining release work. Claude should review the
+assembled figures/SI and their integration before Barry's final read.
+No public release, DOI assignment, correspondence export or submission was
+made in this tranche; the reviewed correspondence snapshot remains release
+preparation.
+
+## Historical handoff — 13 November, full-draft review
 
 Claude adopted the paragraph review in `6a5be86` and wrote the full
 reconstruction draft in `8b55501`, requesting review in correspondence

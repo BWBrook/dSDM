@@ -1,0 +1,135 @@
+{
+  "schema_version": "dsdm-reconstruction-display-data-v1",
+  "status": "pass",
+  "date": "2026-11-13",
+  "scope": "Accepted aggregate extraction and post hoc species-composition reporting extension; no raw responses, predictions or fits",
+  "sources": {
+    "synthesis": {
+      "path": "evidence/cross_case_synthesis/20261005/revision-01/summary.json",
+      "sha256": "6834e34c74767864686862734f57a64a2ac10b324fcdadab89797e1cecbe0fd2"
+    },
+    "extent": {
+      "path": "evidence/seawfb_dsdm/goal052/extent-review-20261005.json",
+      "sha256": "08652c0909c600bd0e4794d89b522a1e3ecb32557e4f2dad64598cea3be12fa7"
+    },
+    "effort": {
+      "path": "evidence/seawfb_dsdm/goal052/effort-followup-20261002.json",
+      "sha256": "742c367ab100886da764853cceeaca1684176259d934794d7ec83c8896e5cad0"
+    },
+    "outer_scores": {
+      "path": "data/processed/dsdm/goal052-seawfb-dsdm-experiment/outer-assessment-20261003-r2/scores.json",
+      "sha256": "3a81b166f95551afc199577b86c200bf8cc6f91a24289ec5ad5583a9421f4a41"
+    },
+    "tasmania_summary": {
+      "path": "evidence/tasmania_pseudoabsence/20261011/survey-only/summary.json",
+      "sha256": "0edae61c9bc851c57cd6716d43fb93df204d4742f2c4e7fb2a6cbad73b9f224e"
+    },
+    "tasmania_species": {
+      "path": "evidence/tasmania_pseudoabsence/20261011/survey-only/performance.csv",
+      "sha256": "2589625618db2a0da34fe78fbb880963b1476c5a758f6ef2033db49babf3b933"
+    },
+    "prior_resampling": {
+      "path": "evidence/cross_case_synthesis/20261008/bird-composition-resampling.csv",
+      "sha256": "27e9815fc4ec58900690b7a06e7374a10ae780e619c53c0de6461c392f9cbc13"
+    }
+  },
+  "script": {
+    "path": "scripts/reconstruction_display_data.py",
+    "sha256": "8e2d32871d0fb6fb505aeec8a51e766697fc789611525fa922624c4c0db1506e"
+  },
+  "resampling": {
+    "replicates": 100000,
+    "batch_size": 4096,
+    "bit_generator": "PCG64",
+    "numpy": "2.5.1",
+    "python": "3.12.13",
+    "quantiles": [
+      0.025,
+      0.975
+    ],
+    "quantile_method": "linear",
+    "species_order": "ascending lexical",
+    "primary73_seed": 20261008,
+    "primary73_spawn_key": [
+      0
+    ],
+    "pairing": "One index draw jointly carries all primary73 methods and assessments; bins paired within each separate richness panel",
+    "richness_seed": 20261113,
+    "richness_streams": [
+      {
+        "stage": "development",
+        "region": "all",
+        "n": 59,
+        "spawn_key": [
+          0
+        ]
+      },
+      {
+        "stage": "new_regions",
+        "region": "SEH",
+        "n": 38,
+        "spawn_key": [
+          1
+        ]
+      },
+      {
+        "stage": "new_regions",
+        "region": "NNC",
+        "n": 55,
+        "spawn_key": [
+          2
+        ]
+      }
+    ],
+    "interpretation": "Central 95% species-composition resampling range conditional on the observed species panel and fitted models; not a confidence interval; excludes fitting, spatial-sampling, selection and population uncertainty",
+    "prior_ranges_reproduced": [
+      "birds_inner",
+      "birds_outer"
+    ]
+  },
+  "estimands": {
+    "fig2_development": "Equal mean of five spatial folds within species, then species",
+    "fig2_region_fold": "Equal eligible bioregion-by-fold strata within species, then species; retained development predictions",
+    "fig2_new_regions": "Equal NCP/SEH/NNC mean within species, then species",
+    "fig3": "Fixed-model contrasts against conventional, equal regions within species then equal species",
+    "fig4_richness": "FT minus conventional on each common three-bin species panel; equal folds within development species; no NCP common-three-bin estimate",
+    "fig4_tasmania": "Equal eight-species mean AUC of full-target/full-auxiliary models, original or pseudoabsence-removed training crossed with mixed or survey-only evaluation"
+  },
+  "checks": {
+    "accepted_hashes_match": true,
+    "source_aggregate_means_match": true,
+    "prior_primary73_ranges_match": true,
+    "tasmania_means_match_eight_species": true,
+    "ncp_common_three_bin_support": 0
+  },
+  "outputs": {
+    "fig2-pretraining-species.csv": {
+      "rows": 245,
+      "sha256": "315612510d4bfbb40a1e4eb59b918acc343b48737dffa31bbaa3497c75446fb7"
+    },
+    "fig2-bird-region-means.csv": {
+      "rows": 3,
+      "sha256": "636ba09ddf99399d8939fab5935e0c30f0ce16a172f142af685d712e62892a8e"
+    },
+    "fig3-bird-comparisons.csv": {
+      "rows": 292,
+      "sha256": "5e91883571cb0f55a790705acb0def5f6faf04060b70330099962e14c098c987"
+    },
+    "fig4-richness-species.csv": {
+      "rows": 456,
+      "sha256": "052fa265d0b2b4b9b41e10a736c5c54646457b8bd74d9a290a742e17e8d2d99d"
+    },
+    "fig4-tasmania-means.csv": {
+      "rows": 12,
+      "sha256": "955ac19db4fbde73f58a587f1f6948269998ac811721155fa96afee0d21fcfb5"
+    },
+    "fig4-tasmania-species.csv": {
+      "rows": 96,
+      "sha256": "45e7f56f4f7317b2611b8ed6beb25b82ac691bcca9e563c09e1af40616d7bc43"
+    },
+    "display-resampling.csv": {
+      "rows": 20,
+      "sha256": "ede0b059382f8e8bbb9624a798091814906d9bc8309be9dc67ce2905af9ff552"
+    }
+  }
+}

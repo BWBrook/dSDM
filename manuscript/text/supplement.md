@@ -1,12 +1,22 @@
-# Supplementary methods and descriptive tables
+# Supporting information
 
-This supplement gives model specifications and descriptive comparisons for the three study settings.
+This file gives model specifications and descriptive comparisons for the three study settings. The article cites it as Supporting information; table numbers below provide navigation within this file.
 
-## Supplementary methods
+- Tables S1–S4: paired cross-case results, bird recording-richness diagnostics, model grids and the target-only benchmark.
+- Tables S5–S9: Tasmania training-pseudoabsence sensitivity, including per-species performance, maps and negative-source specificity.
+- Tables S10–S12: the crossed training and evaluation comparison, with AUC, TSS and MCC.
+- Tables S13–S14: bird learning curves, shared-information controls and absolute AUC by scoring extent.
+- Tables S15–S16: all primary bird and mammal species’ paired AUC contrasts.
+
+Methods S1–S4 describe the paired reporting, Tasmania sensitivity, survey-only evaluation and data sources. All tables use accepted aggregate outputs; no model fits or held-response scoring were repeated for this reconstruction.
+
+## Supplementary methods S1. Model specifications and paired reporting
 
 Cross-case contrasts are reported in the paired order of the inner and outer assessments. Within each assessment, species-level ROC AUC contrasts were summarized by their arithmetic mean, median and interquartile range. Quartiles use linear interpolation with inclusive endpoints (R type 7). The positive count is the number of species with a contrast greater than zero. The single-deletion range is the minimum and maximum of the species mean after deleting each species once. These summaries are descriptive; the IQR is not a confidence interval, and the deletion calculation does not assume independent species or represent joint ecological uncertainty.
 
 The central 95% species-composition resampling ranges in Table S1d use 100,000 draws of 73 species with replacement from the observed primary bird panel. A single draw carries all methods, inner estimates and the three outer regions together; outer AUC remains the equal-region mean within species before averaging species. The reported endpoints are the 2.5th and 97.5th percentiles of replicate means, with linear interpolation. NumPy PCG64 uses two spawned streams from SeedSequence(20261008), stream 0 for species and stream 1 for focal blocks. These post hoc ranges describe empirical reweighting conditional on the fitted models, data and regions. They are not confidence intervals and exclude fitting, spatial-sampling, model-selection and population uncertainty. No coverage, significance or probability-of-benefit interpretation is attached to them.
+
+The November display extension uses the same 100,000 paired species draws and primary-panel random stream for the within-bioregion-and-fold contrast and the four new-region model comparisons (Table S1h). For recording-richness ranges (Table S2e), the same species draw carries all three bins within each common-support panel. The separate 59-species development, 38-species SEH and 55-species NNC panels use PCG64 streams 0, 1 and 2 spawned from SeedSequence(20261113), with species sorted lexically. Quantiles again use linear interpolation. Each range describes empirical species composition conditional on its own observed panel, fitted models, data and regions; it is not a confidence interval or an estimate of fitting, spatial-sampling, model-selection or population uncertainty.
 
 The inner-only focal-block width check uses 100,000 draws of ten blocks with replacement, keeping every primary-panel species in each sampled block occurrence. The mean is the sum of these species contrasts divided by their total count, rather than an equal mean of block means. The ten primary-panel block sizes are 6, 4, 3, 9, 7, 8, 9, 10, 7 and 10. These hash-balanced computational blocks share pretrained objects but are neither taxonomic nor spatial clusters. Common folds, predictors, geography, architecture selection and overlapping auxiliary pools still induce dependence across blocks. Ten blocks give limited tail resolution. Table S1e compares widths descriptively; neither range is selected as a conservative inferential bound.
 
@@ -83,7 +93,7 @@ Both schemes preserve paired model comparisons. Block replicates contain varying
 
 ### Table S1f. Absolute AUC at full target data
 
-Mean ROC AUC across species under the original training and evaluation definitions. Tasmania uses eight species, mainland mammals five, and birds the common 73-species panel. Development values first average the five spatial folds within species; Tasmania patch values pool the withheld patches, mainland transfer uses camera-supported Tasmania, and bird transfer first averages the three withheld regions within species. The Tasmania evaluation includes both constructed and survey-supported negatives. The bird development mean differs from the pooled-domain value in Fig. 2 because the latter recomputes AUC across all retained predictions.
+Mean ROC AUC across species under the original training and evaluation definitions. Tasmania uses eight species, mainland mammals five, and birds the common 73-species panel. Development values first average the five spatial folds within species; Tasmania patch values pool the withheld patches, mainland transfer uses camera-supported Tasmania, and bird transfer first averages the three withheld regions within species. The Tasmania evaluation includes both constructed and survey-supported negatives. The bird development mean differs from the pooled-domain value in Table S14 because the latter recomputes AUC across all retained predictions.
 
 | Assessment | Fine-tuned | Target-only | Conventional |
 | --- | ---: | ---: | ---: |
@@ -93,6 +103,35 @@ Mean ROC AUC across species under the original training and evaluation definitio
 | Mainland to Tasmania | 0.5560 | 0.5715 | 0.5837 |
 | Bird development | 0.8316 | 0.8258 | 0.8282 |
 | Bird withheld regions | 0.6827 | 0.6831 | 0.6800 |
+
+\newpage
+
+### Table S1g. Full-data true skill statistic in every setting
+
+Values are equal-species means. Development first averages the five folds within species; Tasmania geographic assessment pools the five withheld patches, mainland transfer uses camera-supported Tasmania, and bird geographic assessment averages the three regions within species. Each learner uses its own maximum-TSS development threshold, frozen for geographic assessment. TSS was co-primary in the original Tasmania design; the other settings use it descriptively. These threshold-dependent scores need not rank learners like AUC.
+
+| Assessment | Species | Fine-tuned | Target-only | Conventional |
+| --- | --- | --- | --- | --- |
+| Tasmania development | 8 | 0.3493 | 0.3484 | 0.4084 |
+| Tasmania withheld patches | 8 | 0.5575 | 0.5099 | 0.5316 |
+| Mainland development | 5 | 0.6790 | 0.6555 | 0.6717 |
+| Mainland to Tasmania | 5 | -0.0119 | 0.0121 | 0.0292 |
+| Bird development | 73 | 0.5251 | 0.5156 | 0.5186 |
+| Bird new regions | 73 | 0.2018 | 0.1920 | 0.1901 |
+
+\newpage
+
+### Table S1h. Extended bird species-composition ranges
+
+The first row rescored retained development predictions within bioregions and spatial folds. Other rows use new-region predictions and average NCP, SEH and NNC within species. All rows retain the primary 73 species. Ensemble weights are fixed at 50:50. The fine-tuned ensemble was prespecified as exploratory; the target-only ensemble and the extent diagnostic were post hoc.
+
+| Assessment | Contrast | Mean | Resampling range |
+| --- | --- | --- | --- |
+| Development: within bioregions and folds | Fine-tuned − target-only | +0.0072 | [+0.0058, +0.0086] |
+| New regions | Target-only − conventional | +0.0032 | [-0.0006, +0.0071] |
+| New regions | Fine-tuned − conventional | +0.0028 | [-0.0017, +0.0072] |
+| New regions | Target-only ensemble − conventional | +0.0096 | [+0.0074, +0.0119] |
+| New regions | Fine-tuned ensemble − conventional | +0.0104 | [+0.0078, +0.0129] |
 
 \newpage
 
@@ -131,6 +170,58 @@ Mean ROC AUC across species under the original training and evaluation definitio
 | Sum of contributions | +0.003389858318 | +0.000937856232 |
 | All-background mean | +0.003389858318 | +0.000937856232 |
 | Maximum identity error | 2.151e-16 | 1.704e-16 |
+
+### Table S2c. Withheld-region recording-richness contrasts
+
+These are fine-tuned-minus-conventional AUC contrasts. All focal presences are reused against each background bin. A region's same species must have at least 20 presences and 20 backgrounds in every bin: 38 species in SEH and 55 in NNC. NCP has no common three-bin species and no corresponding estimate. The diagnostic definitions were fixed after development inspection but before the withheld responses were opened. Background richness records how many other species were recorded in a cell; it does not separate survey effort from ecological richness or environment.
+
+| Region | Other species recorded | Common species | Mean AUC contrast |
+| --- | --- | --- | --- |
+| NCP | 10–24 | 0 | NA |
+| NCP | 25–99 | 0 | NA |
+| NCP | 100+ | 0 | NA |
+| SEH | 10–24 | 38 | -0.0038 |
+| SEH | 25–99 | 38 | -0.0140 |
+| SEH | 100+ | 38 | -0.0283 |
+| NNC | 10–24 | 55 | +0.0148 |
+| NNC | 25–99 | 55 | +0.0060 |
+| NNC | 100+ | 55 | -0.0259 |
+
+### Table S2d. Background recording-richness shares in the withheld regions
+
+Shares are averaged within species across the 73-species primary panel, rather than calculated from pooled counts. In particular, the high-richness means describe a small part of the background support.
+
+| Region | Other species recorded | Mean background share (%) |
+| --- | --- | --- |
+| NCP | 10–24 | 62.2060 |
+| NCP | 25–99 | 37.5153 |
+| NCP | 100+ | 0.2787 |
+| SEH | 10–24 | 57.9879 |
+| SEH | 25–99 | 41.4010 |
+| SEH | 100+ | 0.6112 |
+| NNC | 10–24 | 49.7439 |
+| NNC | 25–99 | 47.4845 |
+| NNC | 100+ | 2.7716 |
+
+\newpage
+
+### Table S2e. Recording-richness species-composition ranges
+
+These ranges accompany Figure 4a. Each panel retains the same species across all three bins and resamples those species jointly across bins. Development uses 59 species, SEH 38 and NNC 55. No NCP three-bin range is defined. Means and resampling ranges are AUC differences, fine-tuned minus conventional.
+
+| Panel | Other species recorded | Mean | Resampling range |
+| --- | --- | --- | --- |
+| Development | 10–24 | +0.0050 | [+0.0043, +0.0058] |
+| Development | 25–99 | +0.0019 | [+0.0011, +0.0027] |
+| Development | 100+ | -0.0039 | [-0.0062, -0.0017] |
+| SEH | 10–24 | -0.0038 | [-0.0163, +0.0088] |
+| SEH | 25–99 | -0.0140 | [-0.0291, +0.0010] |
+| SEH | 100+ | -0.0283 | [-0.0646, +0.0052] |
+| NNC | 10–24 | +0.0148 | [+0.0061, +0.0238] |
+| NNC | 25–99 | +0.0060 | [-0.0011, +0.0132] |
+| NNC | 100+ | -0.0259 | [-0.0383, -0.0143] |
+
+\newpage
 
 ## Table S3. Conventional grids and bird architecture candidates
 
