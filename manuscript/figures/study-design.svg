@@ -53,7 +53,6 @@
 <rect x="1430" y="1005" width="57" height="46" rx="3" fill="#F4DADF" stroke="#BC623C" stroke-width="2"/>
 <rect x="1530" y="985" width="57" height="46" rx="3" fill="#F4DADF" stroke="#BC623C" stroke-width="2"/>
 <text x="1125" y="1090" font-size="26" font-weight="normal" fill="#596A73" text-anchor="start">Invented positions; no observation locations</text>
-<text x="60" y="1160" font-size="27" font-weight="normal" fill="#596A73" text-anchor="start">a: Boundaries show study extents, not the availability of records or predictors.</text>
 <text x="60" y="1250" font-size="43" font-weight="bold" fill="#23343C" text-anchor="start">(b)  Three learners separate two sources of improvement</text>
 <rect x="60" y="1300" width="520" height="84" rx="12" fill="#E4EFF6" stroke="#286C9E" stroke-width="3"/>
 <text x="320" y="1354" font-size="35" font-weight="bold" fill="#286C9E" text-anchor="middle">Pretrained network</text>

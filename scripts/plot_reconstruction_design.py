@@ -18,7 +18,7 @@ STATES = ROOT / 'data/raw/goal040/domain/extracted/STE_2026_AUST_GDA2020.shp'
 MANIFEST = ROOT / 'metadata/goal040_domain_boundary_manifest.json'
 CONFIG = ROOT / 'config/goal048_seawfb_bioregional_freeze.json'
 OLD_SVG = ROOT / 'evidence/seawfb_bioregional_freeze/goal048/selected_holdouts.svg'
-RECEIPT = ROOT / 'evidence/reconstruction/20261113/design-figure.json'
+RECEIPT = ROOT / 'evidence/reconstruction/20261114/design-figure.json'
 W, H = 1800, 2140
 BLUE, ORANGE, GREY = '#286C9E', '#BC623C', '#5D666D'
 DARK = '#23343C'
@@ -132,7 +132,6 @@ def build() -> None:
     for i,(xx,yy) in enumerate([(1145,985),(1225,1010),(1320,990),(1430,1005),(1530,985)]):
         rect(xx,yy,57,46,fill='#F4DADF',stroke=ORANGE,radius=3)
     text(1125,1090,'Invented positions; no observation locations',size=26,fill='#596A73')
-    text(60,1160,'a: Boundaries show study extents, not the availability of records or predictors.',size=27,fill='#596A73')
 
     text(60,1250,'(b)  Three learners separate two sources of improvement',size=43,weight='bold')
     xs=[60,640,1220]
@@ -171,7 +170,7 @@ def build() -> None:
     subprocess.run(['rsvg-convert','-f','png','-d','300','-p','300','-o',str(OUT/'study-design.png'),str(svg)],check=True)
     inputs = [IBRA,state_zip,MANIFEST,CONFIG,OLD_SVG,ROOT/'scripts/goal048_seawfb_bioregional_freeze.py']
     receipt = {
-        'schema_version':'dsdm-design-figure-v1','date':'2026-11-13','base_commit':'f62df73',
+        'schema_version':'dsdm-design-figure-v1','date':'2026-11-14','base_commit':'803860d',
         'status':'pass; 300 dpi PNG visually inspected for legibility and overlaps',
         'sources':[{'path':str(p.relative_to(ROOT)),'sha256':sha(p)} for p in inputs],
         'outputs':[{'path':str(p.relative_to(ROOT)),'sha256':sha(p)} for p in [svg,OUT/'study-design.pdf',OUT/'study-design.png']],

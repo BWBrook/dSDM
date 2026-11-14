@@ -1,5 +1,7 @@
 args <- commandArgs(trailingOnly=TRUE)
 root <- if (length(args)) normalizePath(args[[1]]) else normalizePath('.')
+selected_figures <- if (length(args)>1) args[-1] else c('2','3','4')
+stopifnot(all(selected_figures %in% c('2','3','4')))
 data_dir <- file.path(root, 'evidence/reconstruction/20261113')
 out_dir <- file.path(root, 'manuscript/figures')
 read_data <- function(name) read.csv(file.path(data_dir, name), stringsAsFactors=FALSE)
@@ -65,7 +67,7 @@ draw_f2 <- function() {
   abline(h=0,col=grey,lty=2)
   axis(2,at=ticks)
   axis(1,at=1:3,labels=c('Familiar regions\nwhole domain',
-       'Familiar regions\nwithin regions + folds','New regions\nthree-region mean'),
+       'Familiar regions\nwithin bioregions and folds','New regions\nthree-region mean'),
        tick=FALSE,cex.axis=.78)
   for (i in seq_along(unique(bird$species))) {
     sp <- sort(unique(bird$species))[[i]]
@@ -90,7 +92,8 @@ draw_f2 <- function() {
   regions <- regions[match(c('NCP','SEH','NNC'),regions$region),]
   points(1:3,regions$mean,pch=18,col=blue,cex=1.25)
   axis(1,at=1:3,labels=regions$region,tick=FALSE,cex.axis=.75)
-  text(1:3,regions$mean+c(.012,-.013,-.026),fmt(regions$mean),cex=.64)
+  text(1:3,regions$mean,fmt(regions$mean),
+       pos=ifelse(regions$mean>=0,3,1),offset=.55,cex=.7)
   mtext('New regions\nseparately',3,line=.7,font=2,cex=.8)
   par(mar=c(4.0,5.7,3.2,1.0))
   mm <- f2[f2$case!='birds',]
@@ -157,23 +160,24 @@ draw_f3 <- function() {
   }
 }
 draw_f4 <- function() {
-  layout(matrix(c(1,1,2,2,3,3,4,4,4,5,5,5),2,byrow=TRUE),
-         heights=c(1.15,1))
+  layout(matrix(c(1,1,2,2,3,3,4,4,4,5,5,5,6,6,6,6,6,6),3,byrow=TRUE),
+         heights=c(1.15,1,.14))
   setup()
   bins <- c('10_24','25_99','100_plus')
   binlabels <- c('10–24','25–99','≥100')
-  lim <- range(c(richness$difference,0))
-  lim <- lim+c(-.025,.04)
-  ticks <- pretty(lim,n=4)
   for (i in 1:3) {
     region <- c('all','SEH','NNC')[[i]]
     dd <- richness[richness$region==region,]
-    par(mar=c(4.1,if(i==1) 5.8 else 1.8,4.0,.6))
+    lim <- range(c(dd$difference,0))
+    span <- diff(lim)
+    lim <- lim+span*c(-.08,.18)
+    ticks <- pretty(lim,n=4)
+    par(mar=c(4.1,if(i==1) 5.8 else 4.4,4.0,.6))
     plot(NA,xlim=c(.65,3.35),ylim=lim,axes=FALSE,xlab='',
          ylab=if(i==1) 'Pretrained − conventional AUC' else '')
     abline(h=ticks,col=grid,lwd=.7)
     abline(h=0,col=grey,lty=2)
-    if(i==1) axis(2,at=ticks)
+    axis(2,at=ticks,cex.axis=.8)
     axis(1,at=1:3,labels=binlabels,tick=FALSE,cex.axis=.8)
     means <- c()
     for (j in 1:3) {
@@ -187,7 +191,7 @@ draw_f4 <- function() {
       stopifnot(nrow(rr)==1)
       means <- c(means,rr$mean)
       mean_range(j,rr)
-      text(j,lim[2]-.006,fmt(rr$mean),cex=.8,adj=c(.5,1))
+      text(j,lim[2]-.02*diff(lim),fmt(rr$mean),cex=.8,adj=c(.5,1))
     }
     lines(1:3,means,col=blue,lwd=1)
     label <- if (i==1) '(a) Birds: development' else paste('New region:',region)
@@ -215,11 +219,19 @@ draw_f4 <- function() {
     }
     mtext(if(i==1) '(b) Tasmania: mixed negatives' else 'Survey-supported negatives only',
           3,line=1.9,adj=0,font=2,cex=.84)
-    if(i==1) legend('bottomleft',legend=c('Pretrained','Single-species','Conventional'),
-          col=c(blue,orange,grey),pch=c(16,17,15),lty=c(1,2,3),bty='n',cex=.9)
+  }
+  par(mar=rep(0,4))
+  plot(NA,xlim=c(0,1),ylim=c(0,1),axes=FALSE,xlab='',ylab='',bty='n',
+       xaxs='i',yaxs='i')
+  for (j in 1:3) {
+    x <- c(.15,.42,.73)[[j]]
+    colour <- c(blue,orange,grey)[[j]]
+    segments(x,.5,x+.04,.5,col=colour,lty=c(1,2,3)[[j]],lwd=1.6)
+    points(x+.02,.5,col=colour,pch=c(16,17,15)[[j]],cex=.9)
+    text(x+.06,.5,c('Pretrained','Single-species','Conventional')[[j]],adj=c(0,.5),cex=.9)
   }
 }
 dir.create(out_dir,recursive=TRUE,showWarnings=FALSE)
-save_figure('pretraining-across-regions',7.2,7.0,draw_f2)
-save_figure('bird-networks-and-averages',7.2,4.5,draw_f3)
-save_figure('negative-evidence',7.2,6.8,draw_f4)
+if('2' %in% selected_figures) save_figure('pretraining-across-regions',7.2,7.0,draw_f2)
+if('3' %in% selected_figures) save_figure('bird-networks-and-averages',7.2,4.5,draw_f3)
+if('4' %in% selected_figures) save_figure('negative-evidence',7.2,6.8,draw_f4)

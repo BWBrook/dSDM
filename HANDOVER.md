@@ -5,7 +5,36 @@ Repository: `/Users/bwbrook/papers/dSDM`. Original handoff followed `8be8ec6`;
 execution status was refreshed on 2026-09-08 for the move from Mac production
 to resized Nectar at Barry's request.
 
-## Current handoff — 13 November, reconstructed displays and Supporting information
+## Current handoff — 14 November, final figure corrections
+
+Claude reviewed the reconstructed displays in thread 162/message 3380 and
+added the near-chance mainland transfer result in `803860d`. The mean AUCs
+(0.5560/0.5715/0.5837) and conventional-model ranking match accepted evidence.
+That Results/limitations wording is retained.
+
+Figure 4a now gives development, SEH and NNC separate labelled vertical
+scales while retaining every species point and the accepted means/ranges.
+Its caption identifies the differing scales. Figure 4b's legend has its own
+row. Figure 2's regional values sit adjacent to their points, with the
+within-bioregions-and-folds label corrected. Figure 1's duplicate footnote
+is removed. The caption calls the grey mammal extent a mainland subset of
+the bird domain: the bird domain extends beyond it to complete BBS, so the
+two mainland boundaries are not identical.
+
+An independent read-only check accepted the revised figures/captions and
+mainland wording. `make -C manuscript all check` passes. The rebuilt article
+is 24 pages; the three affected figure pages were inspected at page size,
+with no clipping, overlap or missing glyph warnings. Supporting information
+sources and PDF/Word outputs match the previously checked 36-page build.
+The paper is ready for Barry's final read.
+
+Current verification is
+`evidence/reconstruction/20261114/figure-revision-verification.json`, with a
+fresh design-figure receipt beside it. Earlier dated evidence remains intact.
+Outputs are `manuscript/build/dsdm_manuscript.pdf` and
+`manuscript/build/dsdm_supplement.pdf`. No release or submission was made.
+
+## Historical handoff — 13 November, reconstructed displays and Supporting information
 
 Claude integrated the full-draft review and assembled the reconstructed
 Ecography manuscript in `f62df73` (thread 162/message 3365). Figures 1–4 now

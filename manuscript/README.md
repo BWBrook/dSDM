@@ -81,6 +81,8 @@ Figure 1 uses public IBRA 7.1 and ASGS boundaries and `rsvg-convert`; its five
 patch positions are explicitly schematic. Analysis geometry is unchanged.
 Each figure is supplied as a vector PDF and 300 dpi PNG; Figure 1 also has SVG.
 
-The source/figure/output verification record is
-`evidence/reconstruction/20261113/assembled-display-verification.json`.
+The original assembly verification record is
+`evidence/reconstruction/20261113/assembled-display-verification.json`. The
+14 November figure corrections and current outputs are bound in
+`evidence/reconstruction/20261114/figure-revision-verification.json`.
 The scientific evidence ledger remains `evidence-ledger.md`.

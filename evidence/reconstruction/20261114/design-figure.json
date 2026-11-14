@@ -1,0 +1,57 @@
+{
+  "schema_version": "dsdm-design-figure-v1",
+  "date": "2026-11-14",
+  "base_commit": "803860d",
+  "status": "pass; 300 dpi PNG visually inspected for legibility and overlaps",
+  "sources": [
+    {
+      "path": "data/raw/goal040/domain/ibra7_1_subregions.geojson",
+      "sha256": "bff6feea4da7e456e461149e454a83db3dcbfda090d295af4ec5bb4c0a7c06b4"
+    },
+    {
+      "path": "data/raw/goal040/domain/STE_2026_AUST_SHP_GDA2020.zip",
+      "sha256": "057befed53bc7bd095e54d1594fe32925ed324443df767d66a889c52ba655c03"
+    },
+    {
+      "path": "metadata/goal040_domain_boundary_manifest.json",
+      "sha256": "44435b4bd890fab04d5eba8b29801a0d1a7c509043c4ff51d25b429e488dd999"
+    },
+    {
+      "path": "config/goal048_seawfb_bioregional_freeze.json",
+      "sha256": "08726d899a5af331639e4e0144f8e34bae1d1e93108c766cdb66d1b2136ffc47"
+    },
+    {
+      "path": "evidence/seawfb_bioregional_freeze/goal048/selected_holdouts.svg",
+      "sha256": "dd9733564f7ba3a0072bcce0da87b5cf3dbe30b55828c06e997e10736905a587"
+    },
+    {
+      "path": "scripts/goal048_seawfb_bioregional_freeze.py",
+      "sha256": "c68896d3b0eb618e252bfe41f09d53716f456c3ca20eb55b8e4275ec506f1eb2"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "manuscript/figures/study-design.svg",
+      "sha256": "087a3e3e21c90fe6fee3f3028ada399af762822d36282ba20a2680098724ba00"
+    },
+    {
+      "path": "manuscript/figures/study-design.pdf",
+      "sha256": "e9577f4381cc6f20ac15589fcd2f925143f776ed1308e3e13d9bbc3985614739"
+    },
+    {
+      "path": "manuscript/figures/study-design.png",
+      "sha256": "a6af44a0e7881292cfc2715a8b21f2eba6598b71fea970797bd240669b09d2d4"
+    }
+  ],
+  "geographic_source": "IBRA 7.1 official subregions (419 features,89 regions); ASGS Edition4 state land; source hashes match frozen Goal040 manifest",
+  "licences": {
+    "IBRA7.1": "CC BY 3.0 AU; Australian Government DCCEEW",
+    "ASGS2026": "CC BY 4.0; Australian Bureau of Statistics"
+  },
+  "bird_extent": "Goal040 163-subregion public-boundary union within its footprint and land mask, plus complete BBS boundary on land; Tasmania ordinary bird development geography",
+  "mainland_mammal_extent": "Goal040 boundary extent excluding Tasmania",
+  "cartography": "EPSG:3577; 50km buffers constructed before 3km display simplification; no analytical geometry or masks changed",
+  "limitations": "Boundary-only display omits response support, predictor coverage and subscale inland-water exclusions. Five displayed patches are invented schematic positions, not real withheld patches.",
+  "raw_observations_read": false,
+  "reproduce": ".venv/bin/python scripts/plot_reconstruction_design.py (existing project environment; rsvg-convert on PATH)"
+}

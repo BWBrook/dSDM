@@ -1,0 +1,126 @@
+{
+  "schema_version": "dsdm-figure-revision-v1",
+  "date": "2026-11-14",
+  "base_commit": "803860d",
+  "review": "correspondence thread162/message3380",
+  "status": "pass",
+  "sources": {
+    "scripts/plot_reconstruction_design.py": "41a9829a9aed0a77c37ee8191f1e8066b8c88658f21e2dd053a733231b1f88fa",
+    "scripts/plot_reconstruction_results.R": "a5e2653bddd24154191868e538914d69df278efa9fdd63475c3b1cf388542812",
+    "manuscript/text/figures.md": "5f25e3187ecc538851fde2426d6af9fb82f370c1674a610b991522830bc58315",
+    "manuscript/text/main.md": "4fdfa639177b2d8543aacf4a1a35b6b58890d714916b37c0b1dd8ccccca0d695",
+    "manuscript/settings/build.yaml": "6fcbb32ddda29a39cd572074a1b26f8b479f5188bfaa94ed530f7c7009fb1fcc"
+  },
+  "plot_data": {
+    "evidence/reconstruction/20261113/fig2-bird-region-means.csv": "636ba09ddf99399d8939fab5935e0c30f0ce16a172f142af685d712e62892a8e",
+    "evidence/reconstruction/20261113/fig2-pretraining-species.csv": "315612510d4bfbb40a1e4eb59b918acc343b48737dffa31bbaa3497c75446fb7",
+    "evidence/reconstruction/20261113/fig3-bird-comparisons.csv": "5e91883571cb0f55a790705acb0def5f6faf04060b70330099962e14c098c987",
+    "evidence/reconstruction/20261113/fig4-richness-species.csv": "052fa265d0b2b4b9b41e10a736c5c54646457b8bd74d9a290a742e17e8d2d99d",
+    "evidence/reconstruction/20261113/fig4-tasmania-means.csv": "955ac19db4fbde73f58a587f1f6948269998ac811721155fa96afee0d21fcfb5",
+    "evidence/reconstruction/20261113/fig4-tasmania-species.csv": "45e7f56f4f7317b2611b8ed6beb25b82ac691bcca9e563c09e1af40616d7bc43",
+    "evidence/reconstruction/20261113/display-resampling.csv": "ede0b059382f8e8bbb9624a798091814906d9bc8309be9dc67ce2905af9ff552"
+  },
+  "figures": {
+    "manuscript/figures/negative-evidence.pdf": "55672c13600c40c07becff24fc4ce5904cfabddd22ba15976caa95ac1b587366",
+    "manuscript/figures/negative-evidence.png": "c7b69925632001aabee4d6b8619cffaae0ed3a874ca527d733eb90b6b8fa76d6",
+    "manuscript/figures/pretraining-across-regions.pdf": "f9121bc27f185e491110a21a0a182bebc3410491998f6e591cfb74fafbffb1a7",
+    "manuscript/figures/pretraining-across-regions.png": "856fac3eecb859cade26a5010f568acfd766f4d831ecc61888889746e69e46d0",
+    "manuscript/figures/study-design.pdf": "e9577f4381cc6f20ac15589fcd2f925143f776ed1308e3e13d9bbc3985614739",
+    "manuscript/figures/study-design.png": "a6af44a0e7881292cfc2715a8b21f2eba6598b71fea970797bd240669b09d2d4",
+    "manuscript/figures/study-design.svg": "087a3e3e21c90fe6fee3f3028ada399af762822d36282ba20a2680098724ba00"
+  },
+  "outputs": {
+    "manuscript/build/dsdm_manuscript.pdf": {
+      "sha256": "e9c7105b9f145888a4db762d0a9e7d8d19c2e6edf820674ffa65c03664af1023",
+      "bytes": 1440927
+    },
+    "manuscript/build/dsdm_manuscript.docx": {
+      "sha256": "795b3ad52a24d76a8166d0624582c7a5267517a2a729f22a8ac2967a50f4edc3",
+      "bytes": 1392638
+    },
+    "manuscript/build/dsdm_supplement.pdf": {
+      "sha256": "8ed576c959de8452f4b617d1fa1b3b32673e769ea52e73d13f05a0c997a1a8ac",
+      "bytes": 116079
+    },
+    "manuscript/build/dsdm_supplement.docx": {
+      "sha256": "18f86e84661e8907acb6a2cb4da671b18dc6d516d53450966577cbe942bcd769",
+      "bytes": 49072
+    }
+  },
+  "mainland_transfer_mean_auc": {
+    "fine_tuned_auc": 0.5559585309258359,
+    "target_only_auc": 0.5714715901461977,
+    "conventional_auc": 0.5836914695522639
+  },
+  "mainland_wording": "Mean AUC close to chance relative to 0.5 is descriptive; conventional ranks highest. The accepted main text from 803860d is unmodified.",
+  "figure4a": {
+    "scales": "separate axes per panel; full species extent retained",
+    "panels": {
+      "all": {
+        "species": 59,
+        "points": 177,
+        "data_range": [
+          -0.03596598994420865,
+          0.01670469802364318
+        ],
+        "axis_limits": [
+          -0.0401796449816368,
+          0.026185421857856512
+        ]
+      },
+      "SEH": {
+        "species": 38,
+        "points": 114,
+        "data_range": [
+          -0.368432827034028,
+          0.16896943578534263
+        ],
+        "axis_limits": [
+          -0.41142500805957766,
+          0.26570184309282935
+        ]
+      },
+      "NNC": {
+        "species": 55,
+        "points": 165,
+        "data_range": [
+          -0.1778682547399123,
+          0.14219824033585482
+        ],
+        "axis_limits": [
+          -0.20347357434597368,
+          0.1998102094494929
+        ]
+      }
+    },
+    "mean_and_range_data_unchanged": true
+  },
+  "figure4b": "Legend in separate full-width row below both panels",
+  "figure2": "Regional labels adjacent above positive/below negative points; within bioregions and folds wording",
+  "figure1": {
+    "svg_change": "Only the duplicated caveat footnote line is removed; all geometry and other SVG elements byte-identical.",
+    "caption": "Grey mainland mammal source is a mainland subset, because the bird domain additionally completes BBS.",
+    "design_receipt": "evidence/reconstruction/20261114/design-figure.json"
+  },
+  "checks": {
+    "make_all_check": "pass",
+    "main_text_unchanged_since_reviewed_commit": true,
+    "all7_plot_data_files_unchanged": true,
+    "figure3_files_unchanged": true,
+    "SI_sources_and_pdf_word_outputs_match_prior_verified_build": true,
+    "unknown_citation_keys": 0,
+    "main_missing_glyph_or_overfull_warnings": 0,
+    "pdf_pages": {
+      "main": 24,
+      "supporting_information": 36
+    },
+    "visual_review": "Affected PNGs and captions passed independent review; parent inspected final PDF pages 21, 22 and 24.",
+    "scope": "Presentation fixes and rebuild only; no fits, new estimates, resampling or raw responses."
+  },
+  "commands": [
+    "Rscript scripts/plot_reconstruction_results.R . 2 4",
+    ".venv/bin/python scripts/plot_reconstruction_design.py",
+    "make -C manuscript all check"
+  ],
+  "handoff": "Barry final author read; no release or submission"
+}
