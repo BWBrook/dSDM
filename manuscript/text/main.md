@@ -125,7 +125,7 @@ On the primary bird panel, the pretraining increment increased from +0.0058 at f
 
 In new regions the mean increment from pretraining disappeared (Fig. 2).
 
-- **Mainland mammals transferred to Tasmania.** Fine-tuning trailed target-only by 0.0155 mean AUC. Three of five species benefited, and the median was +0.0269.
+- **Mainland mammals transferred to Tasmania.** All three learners transferred poorly (mean AUC 0.556–0.584; Table 1), with the conventional model highest. Fine-tuning trailed target-only by 0.0155 mean AUC. Three of five species benefited, and the median was +0.0269.
 - **Birds.** Across the three withheld regions, mean AUC was 0.6827 for fine-tuning and 0.6831 for target-only. The paired difference of −0.0004 was positive for 34 of 73 species. Regional means were +0.0064 in Naracoorte Coastal Plain, −0.0040 in South Eastern Highlands and −0.0035 in NSW North Coast. The species-resampling ranges for both geographic contrasts spanned zero.
 - **Tasmania's withheld patches.** The co-primary metrics disagreed. Fine-tuning trailed target-only by 0.0147 mean AUC, positive for one of eight species, and led it by 0.0477 mean TSS, positive for five with one tie.
 
@@ -165,6 +165,7 @@ These conclusions have limits:
 - Larger auxiliary pools added records and species together.
 - Shared geography, taxa and auxiliary models make the species and case summaries descriptive.
 - Extent rescoring, target-only averaging and survey-only evaluation were post hoc.
+- Mainland-to-Tasmania transfer was close to chance for every learner, so the bird regions carry the transfer test.
 - Background cells and camera nondetections are not ecological absences.
 - Recording richness combines survey effort, community richness and environment.
 - The development and geographic assessments differ in fitted models, environmental composition and recording support, so their absolute AUCs are not a measure of transfer loss.
